@@ -35,7 +35,7 @@ class EventThreatDetectionCustomModuleState {
   /// [organization] Numerical ID of the parent organization.
   /// [type] Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
   /// [updateTime] The time at which the custom module was last updated.
-  EventThreatDetectionCustomModuleState({
+  const EventThreatDetectionCustomModuleState({
     this.config,
     this.displayName,
     this.enablementState,

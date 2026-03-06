@@ -73,7 +73,7 @@ class ObjectStorageObjectArgs {
   /// [secretKey] The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
   /// [source] The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
   /// [websiteRedirect] Specifies a target URL for website redirect.
-  ObjectStorageObjectArgs({
+  const ObjectStorageObjectArgs({
     this.accessKey,
     this.acl,
     required this.bucket,

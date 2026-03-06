@@ -30,7 +30,7 @@ class GetPermissionSetResult {
   /// [relayState] Relay state URL used to redirect users within the application during the federation authentication process.
   /// [sessionDuration] Length of time that the application user sessions are valid in the ISO-8601 standard.
   /// [tags] Key-value map of resource tags.
-  GetPermissionSetResult({
+  const GetPermissionSetResult({
     required this.arn,
     required this.createdDate,
     required this.description,

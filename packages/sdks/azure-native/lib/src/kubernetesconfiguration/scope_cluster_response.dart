@@ -9,7 +9,7 @@ class ScopeClusterResponse {
 
   /// Creates a new [ScopeClusterResponse].
   /// [releaseNamespace] Namespace where the extension Release must be placed, for a Cluster scoped extension.  If this namespace does not exist, it will be created
-  ScopeClusterResponse({
+  const ScopeClusterResponse({
     this.releaseNamespace,
   });
 

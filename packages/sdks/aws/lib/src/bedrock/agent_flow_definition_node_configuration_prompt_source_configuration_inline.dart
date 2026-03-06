@@ -21,7 +21,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
   /// [modelId] Required.
   /// [templateConfiguration] Contains a prompt and variables in the prompt that can be replaced with values at runtime. See Prompt Template Configuration for more information.
   /// [templateType] The type of prompt template. Valid values: `TEXT`, `CHAT`.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline({
     this.additionalModelRequestFields,
     this.inferenceConfiguration,
     required this.modelId,

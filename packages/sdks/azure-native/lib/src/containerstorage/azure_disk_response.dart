@@ -20,7 +20,7 @@ class AzureDiskResponse {
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool
   /// [resourceGroup] Managed resource group for the pool.
   /// [skuName] Sku name
-  AzureDiskResponse({
+  const AzureDiskResponse({
     this.disks,
     this.encryption,
     required this.resourceGroup,

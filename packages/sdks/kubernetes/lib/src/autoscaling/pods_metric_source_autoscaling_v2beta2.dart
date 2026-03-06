@@ -14,7 +14,7 @@ class PodsMetricSourceAutoscalingV2beta2 {
   /// Creates a new [PodsMetricSourceAutoscalingV2beta2].
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  PodsMetricSourceAutoscalingV2beta2({
+  const PodsMetricSourceAutoscalingV2beta2({
     required this.metric,
     required this.target,
   });

@@ -15,7 +15,7 @@ class UserMapping {
   /// [groups] A list of groups within Kubernetes to which the user is mapped to.
   /// [userArn] The ARN of the IAM user to add.
   /// [username] The user name within Kubernetes to map to the IAM user. By default, the user name is the ARN of the IAM user.
-  UserMapping({
+  const UserMapping({
     required this.groups,
     required this.userArn,
     required this.username,

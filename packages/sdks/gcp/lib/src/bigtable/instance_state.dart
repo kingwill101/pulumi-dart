@@ -52,7 +52,7 @@ class InstanceState {
   /// [name] The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
-  InstanceState({
+  const InstanceState({
     this.clusters,
     this.deletionProtection,
     this.displayName,

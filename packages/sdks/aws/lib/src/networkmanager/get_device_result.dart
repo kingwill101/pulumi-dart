@@ -45,7 +45,7 @@ class GetDeviceResult {
   /// [tags] Key-value tags for the device.
   /// [type] Type of device.
   /// [vendor] Vendor of the device.
-  GetDeviceResult({
+  const GetDeviceResult({
     required this.arn,
     required this.awsLocations,
     required this.description,

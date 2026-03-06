@@ -27,7 +27,7 @@ class GetTriggersResult {
   /// [outputFile] Optional.
   /// [serviceName] Required.
   /// [triggers] A list of FC triggers. Each element contains the following attributes:
-  GetTriggersResult({
+  const GetTriggersResult({
     required this.functionName,
     required this.id,
     required this.ids,

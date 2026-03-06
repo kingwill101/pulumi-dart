@@ -31,7 +31,7 @@ class ClusterModifyClusterServiceConfig {
   /// [hostInstanceId] Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
   /// [refreshHostConfig] Cluster service configuration modification refresh host config, ’true’ or ’false’.
   /// [serviceName] Required.
-  ClusterModifyClusterServiceConfig({
+  const ClusterModifyClusterServiceConfig({
     this.comment,
     required this.configParams,
     this.configType,

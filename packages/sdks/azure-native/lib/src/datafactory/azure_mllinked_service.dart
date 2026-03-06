@@ -52,7 +52,7 @@ class AzureMLLinkedService {
   /// [type] Type of linked service.
   /// [updateResourceEndpoint] The Update Resource REST URL for an Azure ML Studio Web Service endpoint. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AzureMLLinkedService({
+  const AzureMLLinkedService({
     this.annotations,
     required this.apiKey,
     this.authentication,

@@ -18,7 +18,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExpl
   /// [bigquery] BigQuery location for BatchExplain output.
   /// [gcs] Cloud Storage location for BatchExplain output.
   /// [predictionFormat] The storage format of the predictions generated BatchPrediction job.
-  GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline({
+  const GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline({
     this.bigquery,
     this.gcs,
     this.predictionFormat,

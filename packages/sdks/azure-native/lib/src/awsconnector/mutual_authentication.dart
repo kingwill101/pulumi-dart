@@ -15,7 +15,7 @@ class MutualAuthentication {
   /// [ignoreClientCertificateExpiry] Indicates whether expired client certificates are ignored.
   /// [mode] The client certificate handling method. Options are ``off``, ``passthrough`` or ``verify``. The default value is ``off``.
   /// [trustStoreArn] The Amazon Resource Name (ARN) of the trust store.
-  MutualAuthentication({
+  const MutualAuthentication({
     this.ignoreClientCertificateExpiry,
     this.mode,
     this.trustStoreArn,

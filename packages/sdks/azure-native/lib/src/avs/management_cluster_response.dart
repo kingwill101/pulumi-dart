@@ -21,7 +21,7 @@ class ManagementClusterResponse {
   /// [hosts] The hosts
   /// [provisioningState] The state of the cluster provisioning
   /// [vsanDatastoreName] Name of the vsan datastore associated with the cluster
-  ManagementClusterResponse({
+  const ManagementClusterResponse({
     required this.clusterId,
     this.clusterSize,
     this.hosts,

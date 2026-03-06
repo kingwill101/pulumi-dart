@@ -21,7 +21,7 @@ class EnvFeatureState {
   /// [featureVersion] Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
   /// [namespace] Namespace.
   /// [status] Status.
-  EnvFeatureState({
+  const EnvFeatureState({
     this.envFeatureName,
     this.environmentId,
     this.featureVersion,

@@ -17,7 +17,7 @@ class ServiceApiMethod {
   /// [requestType] The type URL for the request to this API.
   /// [responseType] The type URL for the response from this API.
   /// [syntax] `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
-  ServiceApiMethod({
+  const ServiceApiMethod({
     this.name,
     this.requestType,
     this.responseType,

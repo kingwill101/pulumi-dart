@@ -10,7 +10,7 @@ class HealthModelProperties {
 
   /// Creates a new [HealthModelProperties].
   /// [discovery] Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
-  HealthModelProperties({
+  const HealthModelProperties({
     this.discovery,
   });
 

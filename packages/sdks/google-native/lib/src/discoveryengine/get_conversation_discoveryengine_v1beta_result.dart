@@ -25,7 +25,7 @@ class GetConversationDiscoveryengineV1betaResult {
   /// [startTime] The time the conversation started.
   /// [state] The state of the Conversation.
   /// [userPseudoId] A unique identifier for tracking users.
-  GetConversationDiscoveryengineV1betaResult({
+  const GetConversationDiscoveryengineV1betaResult({
     required this.endTime,
     required this.messages,
     required this.name,

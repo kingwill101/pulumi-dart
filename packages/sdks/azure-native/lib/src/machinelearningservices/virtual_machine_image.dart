@@ -9,7 +9,7 @@ class VirtualMachineImage {
 
   /// Creates a new [VirtualMachineImage].
   /// [id] Virtual Machine image path
-  VirtualMachineImage({
+  const VirtualMachineImage({
     required this.id,
   });
 

@@ -33,7 +33,7 @@ class GetLBResult {
   /// [resourceGroupName] Required.
   /// [sku] The SKU of the Load Balancer.
   /// [tags] A mapping of tags assigned to the resource.
-  GetLBResult({
+  const GetLBResult({
     required this.frontendIpConfigurations,
     required this.id,
     required this.location,

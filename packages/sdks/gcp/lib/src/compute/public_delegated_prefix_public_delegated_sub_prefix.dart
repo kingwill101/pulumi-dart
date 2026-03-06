@@ -58,7 +58,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
   /// [name] Name of the resource. The name must be 1-63 characters long, and
   /// [region] A region where the prefix will reside.
   /// [status] The status of the sub public delegated prefix.
-  PublicDelegatedPrefixPublicDelegatedSubPrefix({
+  const PublicDelegatedPrefixPublicDelegatedSubPrefix({
     this.allocatablePrefixLength,
     this.delegateeProject,
     this.description,

@@ -26,7 +26,7 @@ class HealthbotState {
   /// [resourceGroupName] Specifies The name of the Resource Group in which to create the Healthbot Service. changing this forces a new resource to be created.
   /// [skuName] The name which should be used for the SKU of the service. Possible values are `C0`, `C1`, `F0`, `PES` and `S1`.
   /// [tags] A mapping of tags which should be assigned to the service.
-  HealthbotState({
+  const HealthbotState({
     this.botManagementPortalUrl,
     this.location,
     this.name,

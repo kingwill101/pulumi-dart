@@ -21,7 +21,7 @@ class InstanceMaintenanceWindow {
   /// Creates a new [InstanceMaintenanceWindow].
   /// [dayOfWeek] Required. Day of the week for this MaintenanceWindow (in UTC).
   /// [startTime] Required. Start time of the window in UTC time.
-  InstanceMaintenanceWindow({
+  const InstanceMaintenanceWindow({
     required this.dayOfWeek,
     required this.startTime,
   });

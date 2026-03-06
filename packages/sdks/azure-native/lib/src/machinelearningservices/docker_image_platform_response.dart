@@ -8,7 +8,7 @@ class DockerImagePlatformResponse {
 
   /// Creates a new [DockerImagePlatformResponse].
   /// [operatingSystemType] The OS type the Environment.
-  DockerImagePlatformResponse({
+  const DockerImagePlatformResponse({
     this.operatingSystemType,
   });
 

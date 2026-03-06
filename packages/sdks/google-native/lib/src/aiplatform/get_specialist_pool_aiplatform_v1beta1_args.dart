@@ -15,7 +15,7 @@ class GetSpecialistPoolAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [specialistPoolId] Required.
-  GetSpecialistPoolAiplatformV1beta1Args({
+  const GetSpecialistPoolAiplatformV1beta1Args({
     required this.location,
     this.project,
     required this.specialistPoolId,

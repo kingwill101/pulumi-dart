@@ -31,7 +31,7 @@ class GetTrailsDeprecatedResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [trails] Required.
-  GetTrailsDeprecatedResult({
+  const GetTrailsDeprecatedResult({
     required this.actiontrails,
     required this.id,
     required this.ids,

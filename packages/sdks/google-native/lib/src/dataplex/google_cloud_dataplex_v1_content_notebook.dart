@@ -10,7 +10,7 @@ class GoogleCloudDataplexV1ContentNotebook {
 
   /// Creates a new [GoogleCloudDataplexV1ContentNotebook].
   /// [kernelType] Kernel Type of the notebook.
-  GoogleCloudDataplexV1ContentNotebook({
+  const GoogleCloudDataplexV1ContentNotebook({
     required this.kernelType,
   });
 

@@ -50,7 +50,7 @@ class ServiceMeshMeshConfigKiali {
   /// [serverConfig] When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `server_config` below.
   /// [url] Kiali service address
   /// [usePopulatedArmsPrometheus] Whether the mesh topology automatically uses the integrated ARMS Prometheus. When the integrated ARMS Prometheus is automatically used, there is no need to specify the dependent Prometheus HTTP API Url.
-  ServiceMeshMeshConfigKiali({
+  const ServiceMeshMeshConfigKiali({
     this.aggregatedKialiAddress,
     this.authStrategy,
     this.customPrometheusUrl,

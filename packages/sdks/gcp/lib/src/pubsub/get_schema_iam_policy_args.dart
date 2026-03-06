@@ -16,7 +16,7 @@ class GetSchemaIamPolicyArgs {
   /// Creates a new [GetSchemaIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [schema] Used to find the parent resource to bind the IAM policy to
-  GetSchemaIamPolicyArgs({
+  const GetSchemaIamPolicyArgs({
     this.project,
     required this.schema,
   });

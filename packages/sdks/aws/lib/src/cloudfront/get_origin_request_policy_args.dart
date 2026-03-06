@@ -15,7 +15,7 @@ class GetOriginRequestPolicyArgs {
   /// Creates a new [GetOriginRequestPolicyArgs].
   /// [id] Identifier for the origin request policy.
   /// [name] Unique name to identify the origin request policy.
-  GetOriginRequestPolicyArgs({
+  const GetOriginRequestPolicyArgs({
     this.id,
     this.name,
   });

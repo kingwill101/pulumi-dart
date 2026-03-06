@@ -20,7 +20,7 @@ class AwsIntegrationsEcs {
   /// [metricsPollingInterval] The data polling interval in seconds.
   /// [tagKey] Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   /// [tagValue] Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  AwsIntegrationsEcs({
+  const AwsIntegrationsEcs({
     this.awsRegions,
     this.fetchTags,
     this.metricsPollingInterval,

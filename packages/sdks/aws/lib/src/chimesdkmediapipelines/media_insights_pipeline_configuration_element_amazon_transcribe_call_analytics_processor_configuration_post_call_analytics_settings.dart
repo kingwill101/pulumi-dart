@@ -17,7 +17,7 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProc
   /// [dataAccessRoleArn] ARN of the role used by AWS Transcribe to upload your post call analysis.
   /// [outputEncryptionKmsKeyId] ID of the KMS key used to encrypt the output.
   /// [outputLocation] The Amazon S3 location where you want your Call Analytics post-call transcription output stored.
-  MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings({
+  const MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfigurationPostCallAnalyticsSettings({
     this.contentRedactionOutput,
     required this.dataAccessRoleArn,
     this.outputEncryptionKmsKeyId,

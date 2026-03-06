@@ -23,7 +23,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
   /// [gcs] A Cloud Storage object. Structure is
   /// [localPath] A local path within the VM to use.
   /// [remote] A generic remote file. Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource({
     this.allowInsecure,
     this.gcs,
     this.localPath,

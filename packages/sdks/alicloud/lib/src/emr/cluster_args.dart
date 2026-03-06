@@ -95,7 +95,7 @@ class ClusterArgs {
   /// [userDefinedEmrEcsRole] Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
   /// [vswitchId] Global vswitch id, you can also specify it in host group.
   /// [zoneId] Zone ID, e.g. cn-huhehaote-a
-  ClusterArgs({
+  const ClusterArgs({
     this.bootstrapActions,
     this.chargeType,
     required this.clusterType,

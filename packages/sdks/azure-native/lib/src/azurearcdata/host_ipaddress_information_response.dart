@@ -12,7 +12,7 @@ class HostIPAddressInformationResponse {
   /// Creates a new [HostIPAddressInformationResponse].
   /// [ipAddress] IP address
   /// [subnetMask] Subnet mask
-  HostIPAddressInformationResponse({
+  const HostIPAddressInformationResponse({
     required this.ipAddress,
     required this.subnetMask,
   });

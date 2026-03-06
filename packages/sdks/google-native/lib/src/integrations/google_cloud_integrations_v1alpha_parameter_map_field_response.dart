@@ -13,7 +13,7 @@ class GoogleCloudIntegrationsV1alphaParameterMapFieldResponse {
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapFieldResponse].
   /// [literalValue] Passing a literal value.
   /// [referenceKey] Referencing one of the Integration variables.
-  GoogleCloudIntegrationsV1alphaParameterMapFieldResponse({
+  const GoogleCloudIntegrationsV1alphaParameterMapFieldResponse({
     required this.literalValue,
     required this.referenceKey,
   });

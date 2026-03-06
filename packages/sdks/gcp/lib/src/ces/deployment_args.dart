@@ -33,7 +33,7 @@ class DeploymentArgs {
   /// [displayName] Display name of the deployment.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
-  DeploymentArgs({
+  const DeploymentArgs({
     required this.app,
     required this.appVersion,
     required this.channelProfile,

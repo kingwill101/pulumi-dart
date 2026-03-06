@@ -21,7 +21,7 @@ class ContainerStateResponse {
   /// [finishTime] The date-time when the container instance state finished.
   /// [startTime] The date-time when the container instance state started.
   /// [state] The state of the container instance.
-  ContainerStateResponse({
+  const ContainerStateResponse({
     required this.detailStatus,
     required this.exitCode,
     required this.finishTime,

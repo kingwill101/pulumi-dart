@@ -69,7 +69,7 @@ class GetServiceMetricAlarmRulesRule {
   /// [sourceType] The type of the alert rule.
   /// [status] Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
   /// [webhook] The callback URL.
-  GetServiceMetricAlarmRulesRule({
+  const GetServiceMetricAlarmRulesRule({
     required this.compositeExpression,
     required this.contactGroups,
     required this.dimensions,

@@ -9,7 +9,7 @@ class ImageMappingRuleProfile {
 
   /// Creates a new [ImageMappingRuleProfile].
   /// [userConfiguration] List of values.
-  ImageMappingRuleProfile({
+  const ImageMappingRuleProfile({
     this.userConfiguration,
   });
 

@@ -16,7 +16,7 @@ class A2ACrossClusterMigrationEnableProtectionInput {
   /// [fabricObjectId] The fabric specific object Id of the virtual machine.
   /// [instanceType] The class type.
   /// [recoveryContainerId] The recovery container Id.
-  A2ACrossClusterMigrationEnableProtectionInput({
+  const A2ACrossClusterMigrationEnableProtectionInput({
     this.fabricObjectId,
     required this.instanceType,
     this.recoveryContainerId,

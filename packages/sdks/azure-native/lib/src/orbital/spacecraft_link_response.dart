@@ -25,7 +25,7 @@ class SpacecraftLinkResponse {
   /// [direction] Direction (Uplink or Downlink).
   /// [name] Link name.
   /// [polarization] Polarization. e.g. (RHCP, LHCP).
-  SpacecraftLinkResponse({
+  const SpacecraftLinkResponse({
     required this.authorizations,
     required this.bandwidthMHz,
     required this.centerFrequencyMHz,

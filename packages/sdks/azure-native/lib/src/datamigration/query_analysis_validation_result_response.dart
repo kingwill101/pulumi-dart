@@ -14,7 +14,7 @@ class QueryAnalysisValidationResultResponse {
   /// Creates a new [QueryAnalysisValidationResultResponse].
   /// [queryResults] List of queries executed and it's execution results in source and target
   /// [validationErrors] Errors that are part of the execution
-  QueryAnalysisValidationResultResponse({
+  const QueryAnalysisValidationResultResponse({
     this.queryResults,
     this.validationErrors,
   });

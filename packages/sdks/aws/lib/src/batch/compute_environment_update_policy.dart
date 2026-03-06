@@ -11,7 +11,7 @@ class ComputeEnvironmentUpdatePolicy {
   /// Creates a new [ComputeEnvironmentUpdatePolicy].
   /// [jobExecutionTimeoutMinutes] Specifies the job timeout (in minutes) when the compute environment infrastructure is updated.
   /// [terminateJobsOnUpdate] Specifies whether jobs are automatically terminated when the compute environment infrastructure is updated.
-  ComputeEnvironmentUpdatePolicy({
+  const ComputeEnvironmentUpdatePolicy({
     this.jobExecutionTimeoutMinutes,
     this.terminateJobsOnUpdate,
   });

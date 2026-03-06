@@ -18,7 +18,7 @@ class GetUserPoolClientsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [userPoolId] Required.
-  GetUserPoolClientsResult({
+  const GetUserPoolClientsResult({
     required this.clientIds,
     required this.clientNames,
     required this.id,

@@ -44,7 +44,7 @@ class MetastoreFederationIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  MetastoreFederationIamMemberArgs({
+  const MetastoreFederationIamMemberArgs({
     this.condition,
     required this.federationId,
     this.location,

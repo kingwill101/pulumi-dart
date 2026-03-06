@@ -9,7 +9,7 @@ class RecordingConfigurationDestinationConfiguration {
 
   /// Creates a new [RecordingConfigurationDestinationConfiguration].
   /// [s3] S3 destination configuration where recorded videos will be stored.
-  RecordingConfigurationDestinationConfiguration({
+  const RecordingConfigurationDestinationConfiguration({
     required this.s3,
   });
 

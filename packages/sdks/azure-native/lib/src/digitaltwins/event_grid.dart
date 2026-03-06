@@ -32,7 +32,7 @@ class EventGrid {
   /// [endpointType] The type of Digital Twins endpoint
   /// [identity] Managed identity properties for the endpoint.
   /// [topicEndpoint] EventGrid Topic Endpoint.
-  EventGrid({
+  const EventGrid({
     required this.accessKey1,
     this.accessKey2,
     this.authenticationType,

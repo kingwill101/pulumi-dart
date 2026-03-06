@@ -191,7 +191,7 @@ class ProfileServerSslState {
   /// [tmOptions] List of Enabled selection from a set of industry standard options for handling SSL processing.By default,
   /// [uncleanShutdown] Unclean Shutdown (enabled / disabled)
   /// [untrustedCertResponseControl] Unclean Shutdown (drop / ignore)
-  ProfileServerSslState({
+  const ProfileServerSslState({
     this.alertTimeout,
     this.authenticate,
     this.authenticateDepth,

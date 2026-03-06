@@ -12,7 +12,7 @@ class UncountedTerminatedPodsPatch {
   /// Creates a new [UncountedTerminatedPodsPatch].
   /// [failed] failed holds UIDs of failed Pods.
   /// [succeeded] succeeded holds UIDs of succeeded Pods.
-  UncountedTerminatedPodsPatch({
+  const UncountedTerminatedPodsPatch({
     this.failed,
     this.succeeded,
   });

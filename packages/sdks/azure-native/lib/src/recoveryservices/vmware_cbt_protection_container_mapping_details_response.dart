@@ -34,7 +34,7 @@ class VMwareCbtProtectionContainerMappingDetailsResponse {
   /// [storageAccountId] The storage account ARM Id.
   /// [storageAccountSasSecretName] The secret name of the storage account.
   /// [targetLocation] The target location.
-  VMwareCbtProtectionContainerMappingDetailsResponse({
+  const VMwareCbtProtectionContainerMappingDetailsResponse({
     this.excludedSkus,
     required this.instanceType,
     required this.keyVaultId,

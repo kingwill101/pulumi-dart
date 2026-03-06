@@ -11,7 +11,7 @@ class ExperimentSelector {
   /// Creates a new [ExperimentSelector].
   /// [chaosStudioTargetIds] A list of Chaos Studio Target IDs that should be part of this Selector.
   /// [name] The name of this Selector.
-  ExperimentSelector({
+  const ExperimentSelector({
     required this.chaosStudioTargetIds,
     required this.name,
   });

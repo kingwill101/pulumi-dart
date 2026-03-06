@@ -31,7 +31,7 @@ class ServiceSoftwareOptions {
   /// [optionalDeployment] &lt;p&gt;True if a service software is never automatically updated. False if a service software is automatically updated after the automated update date.&lt;/p&gt;
   /// [updateAvailable] &lt;p&gt;True if you're able to update your service software version. False if you can't update your service software version.&lt;/p&gt;
   /// [updateStatus] &lt;p&gt;The status of your service software update.&lt;/p&gt;
-  ServiceSoftwareOptions({
+  const ServiceSoftwareOptions({
     this.automatedUpdateDate,
     this.cancellable,
     this.currentVersion,

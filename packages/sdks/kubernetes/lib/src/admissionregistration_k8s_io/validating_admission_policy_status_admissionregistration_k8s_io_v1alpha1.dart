@@ -17,7 +17,7 @@ class ValidatingAdmissionPolicyStatusAdmissionregistrationK8sIoV1alpha1 {
   /// [conditions] The conditions represent the latest available observations of a policy's current state.
   /// [observedGeneration] The generation observed by the controller.
   /// [typeChecking] The results of type checking for each expression. Presence of this field indicates the completion of the type checking.
-  ValidatingAdmissionPolicyStatusAdmissionregistrationK8sIoV1alpha1({
+  const ValidatingAdmissionPolicyStatusAdmissionregistrationK8sIoV1alpha1({
     this.conditions,
     this.observedGeneration,
     this.typeChecking,

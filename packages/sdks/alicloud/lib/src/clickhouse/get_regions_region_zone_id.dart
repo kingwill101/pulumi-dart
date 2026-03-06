@@ -11,7 +11,7 @@ class GetRegionsRegionZoneId {
   /// Creates a new [GetRegionsRegionZoneId].
   /// [vpcEnabled] Whether to support vpc network.
   /// [zoneId] The zone ID.
-  GetRegionsRegionZoneId({
+  const GetRegionsRegionZoneId({
     required this.vpcEnabled,
     required this.zoneId,
   });

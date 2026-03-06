@@ -28,7 +28,7 @@ class PrivateEndpointConnectionResponse {
   /// [privateLinkServiceConnectionState] Details about the state of the connection.
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
   /// [type] Type of the resource.
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     this.groupIds,
     required this.id,
     required this.name,

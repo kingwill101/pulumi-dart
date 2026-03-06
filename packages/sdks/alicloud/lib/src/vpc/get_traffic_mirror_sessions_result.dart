@@ -34,7 +34,7 @@ class GetTrafficMirrorSessionsResult {
   /// [trafficMirrorSessionName] Optional.
   /// [trafficMirrorSourceId] Optional.
   /// [trafficMirrorTargetId] Optional.
-  GetTrafficMirrorSessionsResult({
+  const GetTrafficMirrorSessionsResult({
     this.enabled,
     required this.id,
     required this.ids,

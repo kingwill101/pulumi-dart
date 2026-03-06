@@ -17,7 +17,7 @@ class GetLinuxFunctionAppAuthSettingGithub {
   /// [clientSecret] The OAuth 2.0 client secret that was created for the app used for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
   /// [oauthScopes] A list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication.
-  GetLinuxFunctionAppAuthSettingGithub({
+  const GetLinuxFunctionAppAuthSettingGithub({
     required this.clientId,
     required this.clientSecret,
     required this.clientSecretSettingName,

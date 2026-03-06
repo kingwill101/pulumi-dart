@@ -8,7 +8,7 @@ class InstanceInitialReplicationReplica {
 
   /// Creates a new [InstanceInitialReplicationReplica].
   /// [peerInstance] The peer instance.
-  InstanceInitialReplicationReplica({
+  const InstanceInitialReplicationReplica({
     required this.peerInstance,
   });
 

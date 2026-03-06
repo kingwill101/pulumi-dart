@@ -12,7 +12,7 @@ class ApplicationApplicationConfigurationApplicationCodeConfiguration {
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfiguration].
   /// [codeContent] The location and type of the application code.
   /// [codeContentType] Specifies whether the code content is in text or zip format. Valid values: `PLAINTEXT`, `ZIPFILE`.
-  ApplicationApplicationConfigurationApplicationCodeConfiguration({
+  const ApplicationApplicationConfigurationApplicationCodeConfiguration({
     this.codeContent,
     required this.codeContentType,
   });

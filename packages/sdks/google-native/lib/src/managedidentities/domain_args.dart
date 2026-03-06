@@ -35,7 +35,7 @@ class DomainArgs {
   /// [name] The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
   /// [project] Optional.
   /// [reservedIpRange] The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-  DomainArgs({
+  const DomainArgs({
     this.admin,
     this.auditLogsEnabled,
     this.authorizedNetworks,

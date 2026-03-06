@@ -12,7 +12,7 @@ class URIResponse {
   /// Creates a new [URIResponse].
   /// [label] A label for the URI.
   /// [uri] The unique resource identifier.
-  URIResponse({
+  const URIResponse({
     required this.label,
     required this.uri,
   });

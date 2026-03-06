@@ -13,7 +13,7 @@ class GetAuthorityConfigSubjectConfig {
   /// Creates a new [GetAuthorityConfigSubjectConfig].
   /// [subjectAltNames] The subject alternative name fields.
   /// [subjects] Contains distinguished name fields such as the location and organization.
-  GetAuthorityConfigSubjectConfig({
+  const GetAuthorityConfigSubjectConfig({
     required this.subjectAltNames,
     required this.subjects,
   });

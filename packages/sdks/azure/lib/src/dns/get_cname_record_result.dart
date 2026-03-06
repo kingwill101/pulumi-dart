@@ -29,7 +29,7 @@ class GetCnameRecordResult {
   /// [targetResourceId] The Azure resource id of the target object from where the dns resource value is taken.
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Required.
-  GetCnameRecordResult({
+  const GetCnameRecordResult({
     required this.fqdn,
     required this.id,
     required this.name,

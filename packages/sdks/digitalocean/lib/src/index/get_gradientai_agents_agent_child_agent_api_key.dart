@@ -8,7 +8,7 @@ class GetGradientaiAgentsAgentChildAgentApiKey {
 
   /// Creates a new [GetGradientaiAgentsAgentChildAgentApiKey].
   /// [apiKey] API Key value
-  GetGradientaiAgentsAgentChildAgentApiKey({
+  const GetGradientaiAgentsAgentChildAgentApiKey({
     this.apiKey,
   });
 

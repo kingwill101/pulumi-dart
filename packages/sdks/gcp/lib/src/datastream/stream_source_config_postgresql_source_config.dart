@@ -27,7 +27,7 @@ class StreamSourceConfigPostgresqlSourceConfig {
   /// [maxConcurrentBackfillTasks] Maximum number of concurrent backfill tasks. The number should be non
   /// [publication] The name of the publication that includes the set of all tables
   /// [replicationSlot] The name of the logical replication slot that's configured with
-  StreamSourceConfigPostgresqlSourceConfig({
+  const StreamSourceConfigPostgresqlSourceConfig({
     this.excludeObjects,
     this.includeObjects,
     this.maxConcurrentBackfillTasks,

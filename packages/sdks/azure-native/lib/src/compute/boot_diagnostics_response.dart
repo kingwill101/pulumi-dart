@@ -12,7 +12,7 @@ class BootDiagnosticsResponse {
   /// Creates a new [BootDiagnosticsResponse].
   /// [enabled] Whether boot diagnostics should be enabled on the Virtual Machine.
   /// [storageUri] Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
-  BootDiagnosticsResponse({
+  const BootDiagnosticsResponse({
     this.enabled,
     this.storageUri,
   });

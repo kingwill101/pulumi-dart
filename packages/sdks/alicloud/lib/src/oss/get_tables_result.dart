@@ -26,7 +26,7 @@ class GetTablesResult {
   /// [names] A list of table names.
   /// [outputFile] Optional.
   /// [tables] A list of tables. Each element contains the following attributes:
-  GetTablesResult({
+  const GetTablesResult({
     required this.id,
     required this.ids,
     required this.instanceName,

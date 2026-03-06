@@ -8,7 +8,7 @@ class DomainOsNvRamSourceVhostUserSpicePort {
 
   /// Creates a new [DomainOsNvRamSourceVhostUserSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainOsNvRamSourceVhostUserSpicePort({
+  const DomainOsNvRamSourceVhostUserSpicePort({
     required this.channel,
   });
 

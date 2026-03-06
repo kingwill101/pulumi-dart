@@ -38,7 +38,7 @@ class ProtectedVMArgs {
   /// [recoveryVaultName] Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group **associated with** the Recovery Services Vault to use. Changing this forces a new resource to be created.
   /// [sourceVmId] Specifies the ID of the virtual machine to back up. Changing this forces a new resource to be created.
-  ProtectedVMArgs({
+  const ProtectedVMArgs({
     this.backupPolicyId,
     this.excludeDiskLuns,
     this.includeDiskLuns,

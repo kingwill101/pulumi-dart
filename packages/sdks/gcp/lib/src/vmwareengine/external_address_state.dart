@@ -39,7 +39,7 @@ class ExternalAddressState {
   /// [state] State of the resource.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last updated time of this resource.
-  ExternalAddressState({
+  const ExternalAddressState({
     this.createTime,
     this.description,
     this.externalIp,

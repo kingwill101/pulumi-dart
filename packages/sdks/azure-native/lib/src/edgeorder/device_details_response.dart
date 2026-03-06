@@ -25,7 +25,7 @@ class DeviceDetailsResponse {
   /// [provisioningDetails] Provisioning Details for the device.
   /// [provisioningSupport] Determining nature of provisioning that the configuration supports.
   /// [serialNumber] Device serial number.
-  DeviceDetailsResponse({
+  const DeviceDetailsResponse({
     required this.displaySerialNumber,
     required this.managementResourceId,
     required this.managementResourceTenantId,

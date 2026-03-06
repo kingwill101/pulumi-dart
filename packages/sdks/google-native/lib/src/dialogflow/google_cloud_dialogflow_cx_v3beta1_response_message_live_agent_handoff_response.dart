@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse].
   /// [metadata] Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
-  GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse({
+  const GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse({
     required this.metadata,
   });
 

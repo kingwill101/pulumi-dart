@@ -52,7 +52,7 @@ class WidgetResponse {
   /// [timeSeriesTable] A widget that displays time series data in a tabular format.
   /// [title] Optional. The title of the widget.
   /// [xyChart] A chart of time series data.
-  WidgetResponse({
+  const WidgetResponse({
     required this.alertChart,
     required this.blank,
     required this.collapsibleGroup,

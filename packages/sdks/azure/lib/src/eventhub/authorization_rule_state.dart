@@ -47,7 +47,7 @@ class AuthorizationRuleState {
   /// [secondaryConnectionStringAlias] The alias of the Secondary Connection String for the Event Hubs Authorization Rule, which is generated when disaster recovery is enabled.
   /// [secondaryKey] The Secondary Key for the Event Hubs Authorization Rule.
   /// [send] Does this Authorization Rule have permissions to Send to the Event Hub? Defaults to `false`.
-  AuthorizationRuleState({
+  const AuthorizationRuleState({
     this.eventhubName,
     this.listen,
     this.manage,

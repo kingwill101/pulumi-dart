@@ -29,7 +29,7 @@ class NoneAuthTypeWorkspaceConnectionProperties {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  NoneAuthTypeWorkspaceConnectionProperties({
+  const NoneAuthTypeWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.expiryTime,

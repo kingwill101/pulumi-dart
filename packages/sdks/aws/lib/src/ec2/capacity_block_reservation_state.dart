@@ -63,7 +63,7 @@ class CapacityBlockReservationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block
   /// [tenancy] Indicates the tenancy of the Capacity Block Reservation. Specify either `default` or `dedicated`.
   /// [timeouts] Optional.
-  CapacityBlockReservationState({
+  const CapacityBlockReservationState({
     this.arn,
     this.availabilityZone,
     this.capacityBlockOfferingId,

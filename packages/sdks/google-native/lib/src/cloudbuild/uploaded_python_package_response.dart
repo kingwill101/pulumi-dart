@@ -17,7 +17,7 @@ class UploadedPythonPackageResponse {
   /// [fileHashes] Hash types and values of the Python Artifact.
   /// [pushTiming] Stores timing information for pushing the specified artifact.
   /// [uri] URI of the uploaded artifact.
-  UploadedPythonPackageResponse({
+  const UploadedPythonPackageResponse({
     required this.fileHashes,
     required this.pushTiming,
     required this.uri,

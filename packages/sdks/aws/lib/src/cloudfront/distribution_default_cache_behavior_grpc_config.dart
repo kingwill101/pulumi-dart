@@ -8,7 +8,7 @@ class DistributionDefaultCacheBehaviorGrpcConfig {
 
   /// Creates a new [DistributionDefaultCacheBehaviorGrpcConfig].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
-  DistributionDefaultCacheBehaviorGrpcConfig({
+  const DistributionDefaultCacheBehaviorGrpcConfig({
     this.enabled,
   });
 

@@ -11,7 +11,7 @@ class LinkedServiceAzureDatabricksKeyVaultPassword {
   /// Creates a new [LinkedServiceAzureDatabricksKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores ADB access token.
-  LinkedServiceAzureDatabricksKeyVaultPassword({
+  const LinkedServiceAzureDatabricksKeyVaultPassword({
     required this.linkedServiceName,
     required this.secretName,
   });

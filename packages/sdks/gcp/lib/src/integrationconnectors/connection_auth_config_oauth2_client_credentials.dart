@@ -12,7 +12,7 @@ class ConnectionAuthConfigOauth2ClientCredentials {
   /// Creates a new [ConnectionAuthConfigOauth2ClientCredentials].
   /// [clientId] Secret version of Password for Authentication.
   /// [clientSecret] Secret version reference containing the client secret.
-  ConnectionAuthConfigOauth2ClientCredentials({
+  const ConnectionAuthConfigOauth2ClientCredentials({
     required this.clientId,
     this.clientSecret,
   });

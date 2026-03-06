@@ -16,7 +16,7 @@ class TableResource {
   /// [createMode] Enum to indicate the mode of resource creation.
   /// [id] Name of the Cosmos DB table
   /// [restoreParameters] Parameters to indicate the information about the restore
-  TableResource({
+  const TableResource({
     this.createMode,
     required this.id,
     this.restoreParameters,

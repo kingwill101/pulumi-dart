@@ -15,7 +15,7 @@ class VolumeProviderParametersAzureFile {
   /// [accountKey] Access key of the Azure storage account for the File Share.
   /// [accountName] Name of the Azure storage account for the File Share.
   /// [shareName] Name of the Azure Files file share that provides storage for the volume.
-  VolumeProviderParametersAzureFile({
+  const VolumeProviderParametersAzureFile({
     this.accountKey,
     required this.accountName,
     required this.shareName,

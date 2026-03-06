@@ -19,7 +19,7 @@ class GetKeyRingCryptoKeyIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetKeyRingCryptoKeyIamPolicyArgs({
+  const GetKeyRingCryptoKeyIamPolicyArgs({
     required this.cryptoKeyId,
     required this.keyRingId,
     required this.location,

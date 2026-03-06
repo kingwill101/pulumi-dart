@@ -53,7 +53,7 @@ class NetworkConfigResponseContainerV1beta1 {
   /// [privateIpv6GoogleAccess] The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
   /// [serviceExternalIpsConfig] ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
   /// [subnetwork] The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
-  NetworkConfigResponseContainerV1beta1({
+  const NetworkConfigResponseContainerV1beta1({
     required this.datapathProvider,
     required this.defaultSnatStatus,
     required this.dnsConfig,

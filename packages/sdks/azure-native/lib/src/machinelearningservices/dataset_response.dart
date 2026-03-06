@@ -44,7 +44,7 @@ class DatasetResponse {
   /// [modifiedTime] The dataset last modified time (UTC).
   /// [name] Unique dataset name
   /// [tags] Tags for this dataset version.
-  DatasetResponse({
+  const DatasetResponse({
     required this.createdTime,
     required this.datasetId,
     this.datasetState,

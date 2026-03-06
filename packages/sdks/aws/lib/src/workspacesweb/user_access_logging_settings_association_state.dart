@@ -17,7 +17,7 @@ class UserAccessLoggingSettingsAssociationState {
   /// [portalArn] ARN of the portal to associate with the user access logging settings. Forces replacement if changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userAccessLoggingSettingsArn] ARN of the user access logging settings to associate with the portal. Forces replacement if changed.
-  UserAccessLoggingSettingsAssociationState({
+  const UserAccessLoggingSettingsAssociationState({
     this.portalArn,
     this.region,
     this.userAccessLoggingSettingsArn,

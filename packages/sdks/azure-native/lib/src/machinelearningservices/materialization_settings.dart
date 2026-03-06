@@ -23,7 +23,7 @@ class MaterializationSettings {
   /// [schedule] Specifies the schedule details
   /// [sparkConfiguration] Specifies the spark compute settings
   /// [storeType] Specifies the stores to which materialization should happen
-  MaterializationSettings({
+  const MaterializationSettings({
     this.notification,
     this.resource,
     this.schedule,

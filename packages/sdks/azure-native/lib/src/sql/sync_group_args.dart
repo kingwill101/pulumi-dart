@@ -53,7 +53,7 @@ class SyncGroupArgs {
   /// [syncDatabaseId] ARM resource id of the sync database in the sync group.
   /// [syncGroupName] The name of the sync group.
   /// [usePrivateLinkConnection] If use private link connection is enabled.
-  SyncGroupArgs({
+  const SyncGroupArgs({
     this.conflictLoggingRetentionInDays,
     this.conflictResolutionPolicy,
     required this.databaseName,

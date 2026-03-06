@@ -23,7 +23,7 @@ class AclConfigState {
   /// [location] The geographic location where the data store should reside. The value can
   /// [name] The unique full resource name of the aclConfig. Values are of the format
   /// [project] The ID of the project in which the resource belongs.
-  AclConfigState({
+  const AclConfigState({
     this.idpConfig,
     this.location,
     this.name,

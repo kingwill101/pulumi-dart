@@ -9,7 +9,7 @@ class RemotePrivateEndpointConnection {
 
   /// Creates a new [RemotePrivateEndpointConnection].
   /// [id] Gets or sets the remote private endpoint connection id.
-  RemotePrivateEndpointConnection({
+  const RemotePrivateEndpointConnection({
     this.id,
   });
 

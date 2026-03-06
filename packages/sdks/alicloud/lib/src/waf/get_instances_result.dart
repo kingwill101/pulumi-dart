@@ -25,7 +25,7 @@ class GetInstancesResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Optional.
   /// [status] Indicates whether the WAF instance has expired.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.ids,
     this.instanceSource,

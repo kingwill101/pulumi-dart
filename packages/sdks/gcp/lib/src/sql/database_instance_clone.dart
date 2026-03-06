@@ -27,7 +27,7 @@ class DatabaseInstanceClone {
   /// [preferredZone] (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance. [clone-unavailable-instance](https://cloud.google.com/sql/docs/postgres/clone-instance#clone-unavailable-instance)
   /// [sourceInstanceDeletionTime] The timestamp of when the source instance was deleted for a clone from a deleted instance.
   /// [sourceInstanceName] Name of the source instance which will be cloned.
-  DatabaseInstanceClone({
+  const DatabaseInstanceClone({
     this.allocatedIpRange,
     this.databaseNames,
     this.pointInTime,

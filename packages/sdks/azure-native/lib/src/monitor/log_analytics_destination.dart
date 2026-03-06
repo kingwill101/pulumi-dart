@@ -13,7 +13,7 @@ class LogAnalyticsDestination {
   /// Creates a new [LogAnalyticsDestination].
   /// [name] A friendly name for the destination.
   /// [workspaceResourceId] The resource ID of the Log Analytics workspace.
-  LogAnalyticsDestination({
+  const LogAnalyticsDestination({
     this.name,
     this.workspaceResourceId,
   });

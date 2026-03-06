@@ -12,7 +12,7 @@ class HelmOperatorPropertiesResponse {
   /// Creates a new [HelmOperatorPropertiesResponse].
   /// [chartValues] Values override for the operator Helm chart.
   /// [chartVersion] Version of the operator Helm chart.
-  HelmOperatorPropertiesResponse({
+  const HelmOperatorPropertiesResponse({
     this.chartValues,
     this.chartVersion,
   });

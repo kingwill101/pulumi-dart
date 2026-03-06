@@ -55,7 +55,7 @@ class VirtualMachineScaleSetExtensionArgs {
   /// [typeHandlerVersion] Specifies the version of the script handler.
   /// [vmScaleSetName] The name of the VM scale set.
   /// [vmssExtensionName] The name of the VM scale set extension.
-  VirtualMachineScaleSetExtensionArgs({
+  const VirtualMachineScaleSetExtensionArgs({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,

@@ -13,7 +13,7 @@ class NonCompliantSummary {
   /// Creates a new [NonCompliantSummary].
   /// [nonCompliantCount] &lt;p&gt;The total number of compliance items that aren't compliant.&lt;/p&gt;
   /// [severitySummary] &lt;p&gt;A summary of the non-compliance severity by compliance type&lt;/p&gt;
-  NonCompliantSummary({
+  const NonCompliantSummary({
     this.nonCompliantCount,
     this.severitySummary,
   });

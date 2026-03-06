@@ -52,7 +52,7 @@ class GetIntegrationAccountAgreementResult {
   /// [name] Gets the resource name.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountAgreementResult({
+  const GetIntegrationAccountAgreementResult({
     required this.agreementType,
     required this.azureApiVersion,
     required this.changedTime,

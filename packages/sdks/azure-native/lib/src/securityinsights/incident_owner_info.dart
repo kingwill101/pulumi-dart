@@ -21,7 +21,7 @@ class IncidentOwnerInfo {
   /// [objectId] The object id of the user the incident is assigned to.
   /// [ownerType] The type of the owner the incident is assigned to.
   /// [userPrincipalName] The user principal name of the user the incident is assigned to.
-  IncidentOwnerInfo({
+  const IncidentOwnerInfo({
     this.assignedTo,
     this.email,
     this.objectId,

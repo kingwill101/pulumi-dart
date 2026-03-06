@@ -21,7 +21,7 @@ class AzurermPortalDashboardArgs {
   /// [displayName] Specifies the display name of the shared Azure Portal Dashboard.
   /// [name] Specifies the name of the shared Azure Portal Dashboard.
   /// [resourceGroupName] Specifies the name of the resource group the shared Azure Portal Dashboard is located in.
-  AzurermPortalDashboardArgs({
+  const AzurermPortalDashboardArgs({
     this.dashboardProperties,
     this.displayName,
     this.name,

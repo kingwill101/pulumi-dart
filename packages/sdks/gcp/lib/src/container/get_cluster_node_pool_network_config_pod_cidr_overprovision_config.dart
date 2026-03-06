@@ -7,7 +7,7 @@ class GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
 
   /// Creates a new [GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig].
   /// [disabled] Required.
-  GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig({
+  const GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig({
     required this.disabled,
   });
 

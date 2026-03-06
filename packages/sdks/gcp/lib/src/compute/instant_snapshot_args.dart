@@ -36,7 +36,7 @@ class InstantSnapshotArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceDisk] A reference to the disk used to create this instant snapshot.
   /// [zone] A reference to the zone where the disk is located.
-  InstantSnapshotArgs({
+  const InstantSnapshotArgs({
     this.description,
     this.labels,
     this.name,

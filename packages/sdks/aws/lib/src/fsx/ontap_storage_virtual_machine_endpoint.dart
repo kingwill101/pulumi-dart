@@ -21,7 +21,7 @@ class OntapStorageVirtualMachineEndpoint {
   /// [managements] An endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
   /// [nfs] An endpoint for accessing data on your storage virtual machine via NFS protocol. See Endpoint.
   /// [smbs] An endpoint for accessing data on your storage virtual machine via SMB protocol. This is only set if an active_directory_configuration has been set. See Endpoint.
-  OntapStorageVirtualMachineEndpoint({
+  const OntapStorageVirtualMachineEndpoint({
     this.iscsis,
     this.managements,
     this.nfs,

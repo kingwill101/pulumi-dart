@@ -20,7 +20,7 @@ class UserPoolEmailConfiguration {
   /// [fromEmailAddress] Sender’s email address or sender’s display name with their email address (e.g., `john@example.com`, `John Smith &lt;john@example.com&gt;` or `\"John Smith Ph.D.\" &lt;john@example.com&gt;`). Escaped double quotes are required around display names that contain certain characters as specified in [RFC 5322](https://tools.ietf.org/html/rfc5322).
   /// [replyToEmailAddress] REPLY-TO email address.
   /// [sourceArn] ARN of the SES verified email identity to use. Required if `email_sending_account` is set to `DEVELOPER`.
-  UserPoolEmailConfiguration({
+  const UserPoolEmailConfiguration({
     this.configurationSet,
     this.emailSendingAccount,
     this.fromEmailAddress,

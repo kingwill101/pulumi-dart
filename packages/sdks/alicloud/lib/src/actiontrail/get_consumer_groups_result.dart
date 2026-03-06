@@ -27,7 +27,7 @@ class GetConsumerGroupsResult {
   /// [instanceId] The instance_id of the instance.
   /// [names] A list of consumer group names.
   /// [outputFile] Optional.
-  GetConsumerGroupsResult({
+  const GetConsumerGroupsResult({
     this.consumerIdRegex,
     required this.consumerIds,
     required this.groups,

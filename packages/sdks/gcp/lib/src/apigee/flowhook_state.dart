@@ -24,7 +24,7 @@ class FlowhookState {
   /// [flowHookPoint] Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
   /// [orgId] The Apigee Organization associated with the environment
   /// [sharedflow] Id of the Sharedflow attaching to a flowhook point.
-  FlowhookState({
+  const FlowhookState({
     this.continueOnError,
     this.description,
     this.environment,

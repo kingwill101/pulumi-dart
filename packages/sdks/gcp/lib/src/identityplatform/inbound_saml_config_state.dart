@@ -32,7 +32,7 @@ class InboundSamlConfigState {
   /// [name] The name of the InboundSamlConfig resource. Must start with 'saml.' and can only have alphanumeric characters,
   /// [project] The ID of the project in which the resource belongs.
   /// [spConfig] SAML SP (Service Provider) configuration when the project acts as the relying party to receive
-  InboundSamlConfigState({
+  const InboundSamlConfigState({
     this.displayName,
     this.enabled,
     this.idpConfig,

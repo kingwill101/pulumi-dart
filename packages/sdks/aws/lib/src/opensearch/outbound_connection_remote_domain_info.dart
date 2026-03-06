@@ -14,7 +14,7 @@ class OutboundConnectionRemoteDomainInfo {
   /// [domainName] The name of the remote domain.
   /// [ownerId] The Account ID of the owner of the remote domain.
   /// [region] The region of the remote domain.
-  OutboundConnectionRemoteDomainInfo({
+  const OutboundConnectionRemoteDomainInfo({
     required this.domainName,
     required this.ownerId,
     required this.region,

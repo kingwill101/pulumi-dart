@@ -46,7 +46,7 @@ class GetAppSpecFunction {
   /// [name] The name of the component.
   /// [routes] Required.
   /// [sourceDir] An optional path to the working directory to use for the build.
-  GetAppSpecFunction({
+  const GetAppSpecFunction({
     this.alerts,
     this.bitbucket,
     this.cors,

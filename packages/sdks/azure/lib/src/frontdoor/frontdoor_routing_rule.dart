@@ -31,7 +31,7 @@ class FrontdoorRoutingRule {
   /// [name] Specifies the name of the Routing Rule.
   /// [patternsToMatches] The route patterns for the Backend Routing Rule.
   /// [redirectConfiguration] A `redirect_configuration` block as defined below.
-  FrontdoorRoutingRule({
+  const FrontdoorRoutingRule({
     required this.acceptedProtocols,
     this.enabled,
     this.forwardingConfiguration,

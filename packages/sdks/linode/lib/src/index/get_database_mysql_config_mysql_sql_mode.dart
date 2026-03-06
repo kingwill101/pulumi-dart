@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlSqlMode {
   /// [pattern] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlSqlMode({
+  const GetDatabaseMysqlConfigMysqlSqlMode({
     required this.description,
     required this.example,
     required this.maxLength,

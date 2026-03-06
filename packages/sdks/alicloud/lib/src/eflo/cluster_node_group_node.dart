@@ -17,7 +17,7 @@ class ClusterNodeGroupNode {
   /// [nodeId] Optional.
   /// [vpcId] Optional.
   /// [vswitchId] Optional.
-  ClusterNodeGroupNode({
+  const ClusterNodeGroupNode({
     this.hostname,
     this.loginPassword,
     this.nodeId,

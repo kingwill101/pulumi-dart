@@ -41,7 +41,7 @@ class CertificateState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [usage] Specifies if a certificate is being used for signing or encryption. The valid values are SIGNING and ENCRYPTION.
-  CertificateState({
+  const CertificateState({
     this.activeDate,
     this.arn,
     this.certificate,

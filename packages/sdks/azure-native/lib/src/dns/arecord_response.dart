@@ -9,7 +9,7 @@ class ARecordResponse {
 
   /// Creates a new [ARecordResponse].
   /// [ipv4Address] The IPv4 address of this A record.
-  ARecordResponse({
+  const ARecordResponse({
     this.ipv4Address,
   });
 

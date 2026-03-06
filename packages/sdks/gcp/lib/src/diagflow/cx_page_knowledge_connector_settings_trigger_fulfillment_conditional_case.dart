@@ -9,7 +9,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
 
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase].
   /// [cases] A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-  CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase({
+  const CxPageKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase({
     this.cases,
   });
 

@@ -14,7 +14,7 @@ class GetDataCollectionRuleDataSourceDataImportEventHubDataSource {
   /// [consumerGroup] The Event Hub consumer group name.
   /// [name] Specifies the name of the Data Collection Rule.
   /// [stream] The stream to collect from Event Hub. Possible value should be a custom stream name.
-  GetDataCollectionRuleDataSourceDataImportEventHubDataSource({
+  const GetDataCollectionRuleDataSourceDataImportEventHubDataSource({
     required this.consumerGroup,
     required this.name,
     required this.stream,

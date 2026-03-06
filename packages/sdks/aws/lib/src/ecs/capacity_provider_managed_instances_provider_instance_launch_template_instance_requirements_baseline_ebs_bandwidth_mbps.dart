@@ -9,7 +9,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps].
   /// [max] Optional.
   /// [min] Optional.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps({
     this.max,
     this.min,
   });

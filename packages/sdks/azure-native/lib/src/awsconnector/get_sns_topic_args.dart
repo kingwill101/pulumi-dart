@@ -15,7 +15,7 @@ class GetSnsTopicArgs {
   /// Creates a new [GetSnsTopicArgs].
   /// [name] Name of SnsTopic
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSnsTopicArgs({
+  const GetSnsTopicArgs({
     required this.name,
     required this.resourceGroupName,
   });

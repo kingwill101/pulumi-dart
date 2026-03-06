@@ -20,7 +20,7 @@ class ForwardingRuleRuleCondition {
   /// [pathConfig] The configuration of the path. See `path_config` below.
   /// [ruleConditionType] The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
   /// [ruleConditionValue] The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
-  ForwardingRuleRuleCondition({
+  const ForwardingRuleRuleCondition({
     this.hostConfigs,
     this.pathConfig,
     required this.ruleConditionType,

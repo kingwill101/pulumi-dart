@@ -12,7 +12,7 @@ class Credentials {
   /// Creates a new [Credentials].
   /// [password] The password for the user. This is required for the TemplateVM createOption.
   /// [username] The username to use when signing in to lab VMs.
-  Credentials({
+  const Credentials({
     this.password,
     required this.username,
   });

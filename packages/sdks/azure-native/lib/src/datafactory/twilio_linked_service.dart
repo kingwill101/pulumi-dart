@@ -34,7 +34,7 @@ class TwilioLinkedService {
   /// [type] Type of linked service.
   /// [userName] The Account SID of Twilio service. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  TwilioLinkedService({
+  const TwilioLinkedService({
     this.annotations,
     this.connectVia,
     this.description,

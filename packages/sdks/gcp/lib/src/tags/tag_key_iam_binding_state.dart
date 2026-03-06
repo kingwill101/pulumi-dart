@@ -34,7 +34,7 @@ class TagKeyIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   /// [tagKey] Used to find the parent resource to bind the IAM policy to
-  TagKeyIamBindingState({
+  const TagKeyIamBindingState({
     this.condition,
     this.etag,
     this.members,

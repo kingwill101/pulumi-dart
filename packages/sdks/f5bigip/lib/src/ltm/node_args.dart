@@ -44,7 +44,7 @@ class NodeArgs {
   /// [ratio] Sets the ratio number for the node.
   /// [session] Enables or disables the node for new sessions. The default value is user-enabled.
   /// [state] Default is "user-up" you can set to "user-down" if you want to disable
-  NodeArgs({
+  const NodeArgs({
     required this.address,
     this.connectionLimit,
     this.description,

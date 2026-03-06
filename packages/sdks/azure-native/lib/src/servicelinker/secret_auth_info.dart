@@ -20,7 +20,7 @@ class SecretAuthInfo {
   /// [authType] The authentication type.
   /// [name] Username or account name for secret auth.
   /// [secretInfo] Password or key vault secret for secret auth.
-  SecretAuthInfo({
+  const SecretAuthInfo({
     this.authMode,
     required this.authType,
     this.name,

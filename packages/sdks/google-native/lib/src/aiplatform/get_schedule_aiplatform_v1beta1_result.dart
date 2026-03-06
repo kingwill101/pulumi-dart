@@ -61,7 +61,7 @@ class GetScheduleAiplatformV1beta1Result {
   /// [startedRunCount] The number of runs started by this schedule.
   /// [state] The state of this Schedule.
   /// [updateTime] Timestamp when this Schedule was updated.
-  GetScheduleAiplatformV1beta1Result({
+  const GetScheduleAiplatformV1beta1Result({
     required this.allowQueueing,
     required this.catchUp,
     required this.createPipelineJobRequest,

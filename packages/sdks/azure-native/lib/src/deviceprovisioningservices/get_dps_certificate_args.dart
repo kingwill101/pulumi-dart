@@ -18,7 +18,7 @@ class GetDpsCertificateArgs {
   /// [certificateName] Name of the certificate to retrieve.
   /// [provisioningServiceName] Name of the provisioning service the certificate is associated with.
   /// [resourceGroupName] Resource group identifier.
-  GetDpsCertificateArgs({
+  const GetDpsCertificateArgs({
     required this.certificateName,
     required this.provisioningServiceName,
     required this.resourceGroupName,

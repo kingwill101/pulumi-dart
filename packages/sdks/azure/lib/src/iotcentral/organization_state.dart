@@ -18,7 +18,7 @@ class OrganizationState {
   /// [iotcentralApplicationId] The application `id`. Changing this forces a new resource to be created.
   /// [organizationId] The ID of the organization. Changing this forces a new resource to be created.
   /// [parentOrganizationId] The `organization_id` of the parent organization. Changing this forces a new resource to be created.
-  OrganizationState({
+  const OrganizationState({
     this.displayName,
     this.iotcentralApplicationId,
     this.organizationId,

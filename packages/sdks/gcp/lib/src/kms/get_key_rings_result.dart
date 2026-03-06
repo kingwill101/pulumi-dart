@@ -19,7 +19,7 @@ class GetKeyRingsResult {
   /// [keyRings] A list of all the retrieved key rings from the provided location. This list is influenced by the provided filter argument.
   /// [location] Required.
   /// [project] Optional.
-  GetKeyRingsResult({
+  const GetKeyRingsResult({
     this.filter,
     required this.id,
     required this.keyRings,

@@ -33,7 +33,7 @@ class GetTransitRoutersResult {
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterIds] Optional.
   /// [transitRouters] A list of CEN Transit Routers. Each element contains the following attributes:
-  GetTransitRoutersResult({
+  const GetTransitRoutersResult({
     required this.cenId,
     required this.id,
     this.ids,

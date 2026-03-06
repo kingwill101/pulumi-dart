@@ -9,7 +9,7 @@ class LinuxOsInfoResponse {
 
   /// Creates a new [LinuxOsInfoResponse].
   /// [linuxOsState] The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-  LinuxOsInfoResponse({
+  const LinuxOsInfoResponse({
     this.linuxOsState,
   });
 

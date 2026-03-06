@@ -44,7 +44,7 @@ class GetUserResult {
   /// [securityProfileIds] A list of identifiers for the security profiles for the user.
   /// [tags] A map of tags to assign to the User.
   /// [userId] Required.
-  GetUserResult({
+  const GetUserResult({
     required this.arn,
     required this.directoryUserId,
     required this.hierarchyGroupId,

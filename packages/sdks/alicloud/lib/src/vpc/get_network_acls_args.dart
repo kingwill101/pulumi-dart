@@ -33,7 +33,7 @@ class GetNetworkAclsArgs {
   /// [resourceType] The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
   /// [status] The state of the network ACL. Valid values: `Available` and `Modifying`.
   /// [vpcId] The ID of the associated VPC.
-  GetNetworkAclsArgs({
+  const GetNetworkAclsArgs({
     this.ids,
     this.nameRegex,
     this.networkAclName,

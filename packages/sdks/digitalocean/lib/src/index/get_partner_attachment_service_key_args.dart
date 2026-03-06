@@ -11,7 +11,7 @@ class GetPartnerAttachmentServiceKeyArgs {
 
   /// Creates a new [GetPartnerAttachmentServiceKeyArgs].
   /// [attachmentId] Required.
-  GetPartnerAttachmentServiceKeyArgs({
+  const GetPartnerAttachmentServiceKeyArgs({
     required this.attachmentId,
   });
 

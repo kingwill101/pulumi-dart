@@ -36,7 +36,7 @@ class AzureFirewallNatRuleResponse {
   /// [translatedAddress] The translated address for this NAT rule.
   /// [translatedFqdn] The translated FQDN for this NAT rule.
   /// [translatedPort] The translated port for this NAT rule.
-  AzureFirewallNatRuleResponse({
+  const AzureFirewallNatRuleResponse({
     this.description,
     this.destinationAddresses,
     this.destinationPorts,

@@ -37,7 +37,7 @@ class ModelVersion {
   /// [properties] The asset property dictionary.
   /// [stage] Stage in the model lifecycle assigned to this model
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ModelVersion({
+  const ModelVersion({
     this.description,
     this.flavors,
     this.isAnonymous,

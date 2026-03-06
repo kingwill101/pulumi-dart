@@ -25,7 +25,7 @@ class ConfigurationAssignmentsForSubscriptionArgs {
   /// [location] Location of the resource
   /// [maintenanceConfigurationId] The maintenance configuration Id
   /// [resourceId] The unique resourceId
-  ConfigurationAssignmentsForSubscriptionArgs({
+  const ConfigurationAssignmentsForSubscriptionArgs({
     this.configurationAssignmentName,
     this.filter,
     this.location,

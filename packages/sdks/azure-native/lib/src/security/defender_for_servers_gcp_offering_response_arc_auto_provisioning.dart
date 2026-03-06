@@ -13,7 +13,7 @@ class DefenderForServersGcpOfferingResponseArcAutoProvisioning {
   /// Creates a new [DefenderForServersGcpOfferingResponseArcAutoProvisioning].
   /// [configuration] Configuration for servers Arc auto provisioning for a given environment
   /// [enabled] Is arc auto provisioning enabled
-  DefenderForServersGcpOfferingResponseArcAutoProvisioning({
+  const DefenderForServersGcpOfferingResponseArcAutoProvisioning({
     this.configuration,
     this.enabled,
   });

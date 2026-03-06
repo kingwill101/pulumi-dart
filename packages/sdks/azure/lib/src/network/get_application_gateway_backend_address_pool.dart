@@ -17,7 +17,7 @@ class GetApplicationGatewayBackendAddressPool {
   /// [id] The ID of the Rewrite Rule Set
   /// [ipAddresses] A list of IP Addresses which are part of the Backend Address Pool.
   /// [name] The name of this Application Gateway.
-  GetApplicationGatewayBackendAddressPool({
+  const GetApplicationGatewayBackendAddressPool({
     required this.fqdns,
     required this.id,
     required this.ipAddresses,

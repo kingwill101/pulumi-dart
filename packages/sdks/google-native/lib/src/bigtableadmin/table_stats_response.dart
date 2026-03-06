@@ -18,7 +18,7 @@ class TableStatsResponse {
   /// [averageColumnsPerRow] How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
   /// [logicalDataBytes] This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
   /// [rowCount] How many rows are in the table.
-  TableStatsResponse({
+  const TableStatsResponse({
     required this.averageCellsPerColumn,
     required this.averageColumnsPerRow,
     required this.logicalDataBytes,

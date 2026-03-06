@@ -8,7 +8,7 @@ class GcpIntegrationsFireStore {
 
   /// Creates a new [GcpIntegrationsFireStore].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsFireStore({
+  const GcpIntegrationsFireStore({
     this.metricsPollingInterval,
   });
 

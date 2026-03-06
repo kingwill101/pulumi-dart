@@ -9,7 +9,7 @@ class CredentialProviderTypeEnumValue {
 
   /// Creates a new [CredentialProviderTypeEnumValue].
   /// [value] Property value
-  CredentialProviderTypeEnumValue({
+  const CredentialProviderTypeEnumValue({
     this.value,
   });
 

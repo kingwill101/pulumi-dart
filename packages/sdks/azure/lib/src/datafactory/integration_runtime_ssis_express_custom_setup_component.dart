@@ -15,7 +15,7 @@ class IntegrationRuntimeSsisExpressCustomSetupComponent {
   /// [keyVaultLicense] A `key_vault_secret_reference` block as defined below.
   /// [license] The license used for the Component.
   /// [name] The Component Name installed for the Azure-SSIS Integration Runtime.
-  IntegrationRuntimeSsisExpressCustomSetupComponent({
+  const IntegrationRuntimeSsisExpressCustomSetupComponent({
     this.keyVaultLicense,
     this.license,
     required this.name,

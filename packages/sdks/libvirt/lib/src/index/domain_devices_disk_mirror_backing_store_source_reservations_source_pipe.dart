@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe {
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe({
+  const DomainDevicesDiskMirrorBackingStoreSourceReservationsSourcePipe({
     required this.path,
     this.secLabels,
   });

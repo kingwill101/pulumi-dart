@@ -62,7 +62,7 @@ class GetVirtualNetworkGatewayResult {
   /// [type] The type of the Virtual Network Gateway.
   /// [vpnClientConfigurations] A `vpn_client_configuration` block which is documented below.
   /// [vpnType] The routing type of the Virtual Network Gateway.
-  GetVirtualNetworkGatewayResult({
+  const GetVirtualNetworkGatewayResult({
     required this.activeActive,
     required this.bgpSettings,
     required this.customRoutes,

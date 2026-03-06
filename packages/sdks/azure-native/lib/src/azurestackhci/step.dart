@@ -33,7 +33,7 @@ class Step {
   /// [startTimeUtc] When the step started, or empty if it has not started executing.
   /// [status] Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
   /// [steps] Recursive model for child steps of this step.
-  Step({
+  const Step({
     this.description,
     this.endTimeUtc,
     this.errorMessage,

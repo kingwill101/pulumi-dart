@@ -15,7 +15,7 @@ class BackupFileInfoResponse {
   /// [familySequenceNumber] Sequence number of the backup file in the backup set
   /// [fileLocation] Location of the backup file in shared folder
   /// [status] Status of the backup file during migration
-  BackupFileInfoResponse({
+  const BackupFileInfoResponse({
     this.familySequenceNumber,
     this.fileLocation,
     this.status,

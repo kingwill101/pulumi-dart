@@ -194,7 +194,7 @@ class DatabasePostgresqlV2Args {
   /// [timeouts] Optional.
   /// [type] The Linode Instance type used for the nodes of the Managed Database.
   /// [updates] Configuration settings for automated patch update maintenance for the Managed Database.
-  DatabasePostgresqlV2Args({
+  const DatabasePostgresqlV2Args({
     this.allowLists,
     this.clusterSize,
     this.engineConfigPgAutovacuumAnalyzeScaleFactor,

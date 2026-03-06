@@ -46,7 +46,7 @@ class BranchRuleArgs {
   /// [requireCommentsResolved] Determines if require comments resolved before merging to the branch.
   /// [requireLinearHistory] Determines if require linear history before merging to the branch.
   /// [requirePullRequest] Determines if the branch rule requires a pull request or not.
-  BranchRuleArgs({
+  const BranchRuleArgs({
     this.allowStaleReviews,
     required this.branchRuleId,
     this.disabled,

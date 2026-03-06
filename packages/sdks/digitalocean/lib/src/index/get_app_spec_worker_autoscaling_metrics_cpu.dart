@@ -8,7 +8,7 @@ class GetAppSpecWorkerAutoscalingMetricsCpu {
 
   /// Creates a new [GetAppSpecWorkerAutoscalingMetricsCpu].
   /// [percent] The average target CPU utilization for the component.
-  GetAppSpecWorkerAutoscalingMetricsCpu({
+  const GetAppSpecWorkerAutoscalingMetricsCpu({
     required this.percent,
   });
 

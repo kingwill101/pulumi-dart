@@ -18,7 +18,7 @@ class ForwardShippingDetailsResponse {
   /// [carrierName] Name of the carrier.
   /// [trackingId] TrackingId of the package.
   /// [trackingUrl] TrackingUrl of the package.
-  ForwardShippingDetailsResponse({
+  const ForwardShippingDetailsResponse({
     required this.carrierDisplayName,
     required this.carrierName,
     required this.trackingId,

@@ -34,7 +34,7 @@ class WorkstationIamPolicyState {
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] The ID of the parent workstation cluster config.
   /// [workstationId] Used to find the parent resource to bind the IAM policy to
-  WorkstationIamPolicyState({
+  const WorkstationIamPolicyState({
     this.etag,
     this.location,
     this.policyData,

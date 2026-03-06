@@ -47,7 +47,7 @@ class GetDatasetAiplatformV1beta1Result {
   /// [name] The resource name of the Dataset.
   /// [savedQueries] All SavedQueries belong to the Dataset will be returned in List/Get Dataset response. The annotation_specs field will not be populated except for UI cases which will only use annotation_spec_count. In CreateDataset request, a SavedQuery is created together if this field is set, up to one SavedQuery can be set in CreateDatasetRequest. The SavedQuery should not contain any AnnotationSpec.
   /// [updateTime] Timestamp when this Dataset was last updated.
-  GetDatasetAiplatformV1beta1Result({
+  const GetDatasetAiplatformV1beta1Result({
     required this.createTime,
     required this.dataItemCount,
     required this.description,

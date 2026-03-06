@@ -11,7 +11,7 @@ class AgentDataSourceDataSourceConfigurationSharePointConfiguration {
   /// Creates a new [AgentDataSourceDataSourceConfigurationSharePointConfiguration].
   /// [crawlerConfiguration] Optional.
   /// [sourceConfiguration] Optional.
-  AgentDataSourceDataSourceConfigurationSharePointConfiguration({
+  const AgentDataSourceDataSourceConfigurationSharePointConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,
   });

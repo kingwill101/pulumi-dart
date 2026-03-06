@@ -35,7 +35,7 @@ class GetGceServiceDiscoveryResult {
   /// [type] Optional.
   /// [undetectableAction] Optional.
   /// [updateInterval] Optional.
-  GetGceServiceDiscoveryResult({
+  const GetGceServiceDiscoveryResult({
     this.addressRealm,
     this.credentialUpdate,
     this.encodedCredentials,

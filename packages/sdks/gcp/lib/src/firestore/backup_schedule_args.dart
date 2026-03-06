@@ -29,7 +29,7 @@ class BackupScheduleArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [retention] At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// [weeklyRecurrence] For a schedule that runs weekly on a specific day.
-  BackupScheduleArgs({
+  const BackupScheduleArgs({
     this.dailyRecurrence,
     this.database,
     this.project,

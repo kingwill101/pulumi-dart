@@ -35,7 +35,7 @@ class AssemblyPropertiesResponse {
   /// [contentType] The content type.
   /// [createdTime] The artifact creation time.
   /// [metadata] Optional.
-  AssemblyPropertiesResponse({
+  const AssemblyPropertiesResponse({
     this.assemblyCulture,
     required this.assemblyName,
     this.assemblyPublicKeyToken,

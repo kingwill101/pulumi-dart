@@ -88,7 +88,7 @@ class GetRamDirectoriesDirectory {
   /// [trustPassword] The trust password.
   /// [vpcId] The ID of the vpc.
   /// [vswitchIds] List of vSwitch IDs in the directory.
-  GetRamDirectoriesDirectory({
+  const GetRamDirectoriesDirectory({
     required this.adConnectors,
     required this.createTime,
     required this.customSecurityGroupId,

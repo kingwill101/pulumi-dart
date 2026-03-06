@@ -97,7 +97,7 @@ class DomainOs {
   /// [type] Specifies the type of operating system to be used by the domain.
   /// [typeArch] Sets the architecture type for the operating system.
   /// [typeMachine] Defines the machine type associated with the operating system.
-  DomainOs({
+  const DomainOs({
     this.acpi,
     this.bios,
     this.bootDevices,

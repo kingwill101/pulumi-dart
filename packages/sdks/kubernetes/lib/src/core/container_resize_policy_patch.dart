@@ -12,7 +12,7 @@ class ContainerResizePolicyPatch {
   /// Creates a new [ContainerResizePolicyPatch].
   /// [resourceName] Name of the resource to which this resource resize policy applies. Supported values: cpu, memory.
   /// [restartPolicy] Restart policy to apply when specified resource is resized. If not specified, it defaults to NotRequired.
-  ContainerResizePolicyPatch({
+  const ContainerResizePolicyPatch({
     this.resourceName,
     this.restartPolicy,
   });

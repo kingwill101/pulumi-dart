@@ -7,7 +7,7 @@ class ImportCollectorProperties {
 
   /// Creates a new [ImportCollectorProperties].
   /// [discoverySiteId] Optional.
-  ImportCollectorProperties({
+  const ImportCollectorProperties({
     this.discoverySiteId,
   });
 

@@ -11,7 +11,7 @@ class GlobalReplicationGroupGlobalNodeGroup {
   /// Creates a new [GlobalReplicationGroupGlobalNodeGroup].
   /// [globalNodeGroupId] The ID of the global node group.
   /// [slots] The keyspace for this node group.
-  GlobalReplicationGroupGlobalNodeGroup({
+  const GlobalReplicationGroupGlobalNodeGroup({
     this.globalNodeGroupId,
     this.slots,
   });

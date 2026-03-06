@@ -77,7 +77,7 @@ class ServerState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [transparentDataEncryptionKeyVaultKeyId] The fully versioned `Key Vault` `Key` URL (e.g. `'https://&lt;YourVaultName&gt;.vault.azure.net/keys/&lt;YourKeyName&gt;/&lt;YourKeyVersion&gt;`) to be used as the `Customer Managed Key`(CMK/BYOK) for the `Transparent Data Encryption`(TDE) layer.
   /// [version] The version for the new server. Valid values are: 2.0 (for v11 server) and 12.0 (for v12 server). Changing this forces a new resource to be created.
-  ServerState({
+  const ServerState({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.administratorLoginPasswordWoVersion,

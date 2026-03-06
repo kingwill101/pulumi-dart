@@ -11,7 +11,7 @@ class GetProductProductSkusPackageVersion {
   /// Creates a new [GetProductProductSkusPackageVersion].
   /// [packageName] The package name of this product sku package.
   /// [packageVersion] The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
-  GetProductProductSkusPackageVersion({
+  const GetProductProductSkusPackageVersion({
     required this.packageName,
     required this.packageVersion,
   });

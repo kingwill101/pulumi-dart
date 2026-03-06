@@ -59,7 +59,7 @@ class AccessPointState {
   /// [tags] Map of tags to assign to the bucket. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcConfiguration] Configuration block to restrict access to this access point to requests from the specified Virtual Private Cloud (VPC). Required for S3 on Outposts. Detailed below.
-  AccessPointState({
+  const AccessPointState({
     this.accountId,
     this.alias,
     this.arn,

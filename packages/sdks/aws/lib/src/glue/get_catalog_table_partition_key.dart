@@ -17,7 +17,7 @@ class GetCatalogTablePartitionKey {
   /// [name] Name of the table.
   /// [parameters] Map of initialization parameters for the SerDe, in key-value form.
   /// [type] Datatype of data in the Column.
-  GetCatalogTablePartitionKey({
+  const GetCatalogTablePartitionKey({
     required this.comment,
     required this.name,
     required this.parameters,

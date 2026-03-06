@@ -8,7 +8,7 @@ class GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
 
   /// Creates a new [GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig].
   /// [mode] Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
-  GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig({
+  const GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig({
     required this.mode,
   });
 

@@ -17,7 +17,7 @@ class ConnectToMongoDbTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Describes a connection to a MongoDB data source
   /// [taskType] Task type.
-  ConnectToMongoDbTaskProperties({
+  const ConnectToMongoDbTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

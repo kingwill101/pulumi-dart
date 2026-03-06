@@ -13,7 +13,7 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection {
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection].
   /// [accessTokenOnly] The OIDC configuration for processing access tokens. See Access Token Only below.
   /// [identityTokenOnly] The OIDC configuration for processing identity (ID) tokens. See Identity Token Only below.
-  IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection({
+  const IdentitySourceConfigurationOpenIdConnectConfigurationTokenSelection({
     this.accessTokenOnly,
     this.identityTokenOnly,
   });

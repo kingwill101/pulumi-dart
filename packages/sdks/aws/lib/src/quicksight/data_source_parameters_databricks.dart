@@ -14,7 +14,7 @@ class DataSourceParametersDatabricks {
   /// [host] The host name of the Databricks data source.
   /// [port] The port for the Databricks data source.
   /// [sqlEndpointPath] The HTTP path of the Databricks data source.
-  DataSourceParametersDatabricks({
+  const DataSourceParametersDatabricks({
     required this.host,
     required this.port,
     required this.sqlEndpointPath,

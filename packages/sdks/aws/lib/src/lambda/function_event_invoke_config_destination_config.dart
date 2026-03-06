@@ -13,7 +13,7 @@ class FunctionEventInvokeConfigDestinationConfig {
   /// Creates a new [FunctionEventInvokeConfigDestinationConfig].
   /// [onFailure] Configuration block with destination configuration for failed asynchronous invocations. See below.
   /// [onSuccess] Configuration block with destination configuration for successful asynchronous invocations. See below.
-  FunctionEventInvokeConfigDestinationConfig({
+  const FunctionEventInvokeConfigDestinationConfig({
     this.onFailure,
     this.onSuccess,
   });

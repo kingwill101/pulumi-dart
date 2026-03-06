@@ -8,7 +8,7 @@ class GetRegionsRegionZone {
 
   /// Creates a new [GetRegionsRegionZone].
   /// [zoneId] The ID of the zone.
-  GetRegionsRegionZone({
+  const GetRegionsRegionZone({
     required this.zoneId,
   });
 

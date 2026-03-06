@@ -15,7 +15,7 @@ class GetSqlServerInstanceArgs {
   /// Creates a new [GetSqlServerInstanceArgs].
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
-  GetSqlServerInstanceArgs({
+  const GetSqlServerInstanceArgs({
     required this.resourceGroupName,
     required this.sqlServerInstanceName,
   });

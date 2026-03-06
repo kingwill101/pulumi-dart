@@ -15,7 +15,7 @@ class GetServiceTemplateVolumeGc {
   /// [bucket] GCS Bucket name
   /// [mountOptions] A list of flags to pass to the gcsfuse command for configuring this volume.
   /// [readOnly] If true, mount the GCS bucket as read-only
-  GetServiceTemplateVolumeGc({
+  const GetServiceTemplateVolumeGc({
     required this.bucket,
     required this.mountOptions,
     required this.readOnly,

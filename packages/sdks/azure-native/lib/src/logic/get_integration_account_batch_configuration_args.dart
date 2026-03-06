@@ -18,7 +18,7 @@ class GetIntegrationAccountBatchConfigurationArgs {
   /// [batchConfigurationName] The batch configuration name.
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationAccountBatchConfigurationArgs({
+  const GetIntegrationAccountBatchConfigurationArgs({
     required this.batchConfigurationName,
     required this.integrationAccountName,
     required this.resourceGroupName,

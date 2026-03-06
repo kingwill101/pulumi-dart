@@ -43,7 +43,7 @@ class ProjectCustomModuleState {
   /// [name] The resource name of the custom module. Its format is "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}".
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time at which the custom module was last updated.
-  ProjectCustomModuleState({
+  const ProjectCustomModuleState({
     this.ancestorModule,
     this.customConfig,
     this.displayName,

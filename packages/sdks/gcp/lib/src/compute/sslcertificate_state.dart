@@ -55,7 +55,7 @@ class SSLCertificateState {
   /// [privateKey] The write-only private key in PEM format.
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
-  SSLCertificateState({
+  const SSLCertificateState({
     this.certificate,
     this.certificateId,
     this.creationTimestamp,

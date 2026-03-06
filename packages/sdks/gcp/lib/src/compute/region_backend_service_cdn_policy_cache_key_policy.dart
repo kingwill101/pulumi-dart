@@ -36,7 +36,7 @@ class RegionBackendServiceCdnPolicyCacheKeyPolicy {
   /// [includeQueryString] If true, include query string parameters in the cache key
   /// [queryStringBlacklists] Names of query string parameters to exclude in cache keys.
   /// [queryStringWhitelists] Names of query string parameters to include in cache keys.
-  RegionBackendServiceCdnPolicyCacheKeyPolicy({
+  const RegionBackendServiceCdnPolicyCacheKeyPolicy({
     this.includeHost,
     this.includeNamedCookies,
     this.includeProtocol,

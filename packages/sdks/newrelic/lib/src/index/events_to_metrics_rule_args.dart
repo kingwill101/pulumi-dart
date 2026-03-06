@@ -24,7 +24,7 @@ class EventsToMetricsRuleArgs {
   /// [enabled] True means this rule is enabled. False means the rule is currently not creating metrics.
   /// [name] The name of the rule. This must be unique within an account.
   /// [nrql] Explains how to create metrics from events.
-  EventsToMetricsRuleArgs({
+  const EventsToMetricsRuleArgs({
     this.accountId,
     this.description,
     this.enabled,

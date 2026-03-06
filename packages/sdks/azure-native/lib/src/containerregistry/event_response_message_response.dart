@@ -21,7 +21,7 @@ class EventResponseMessageResponse {
   /// [reasonPhrase] The reason phrase of the event response message.
   /// [statusCode] The status code of the event response message.
   /// [version] The HTTP message version.
-  EventResponseMessageResponse({
+  const EventResponseMessageResponse({
     this.content,
     this.headers,
     this.reasonPhrase,

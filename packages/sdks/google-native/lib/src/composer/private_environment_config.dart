@@ -32,7 +32,7 @@ class PrivateEnvironmentConfig {
   /// [networkingConfig] Optional. Configuration for the network connections configuration in the environment.
   /// [privateClusterConfig] Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
   /// [webServerIpv4CidrBlock] Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  PrivateEnvironmentConfig({
+  const PrivateEnvironmentConfig({
     this.cloudComposerConnectionSubnetwork,
     this.cloudComposerNetworkIpv4CidrBlock,
     this.cloudSqlIpv4CidrBlock,

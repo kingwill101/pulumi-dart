@@ -12,7 +12,7 @@ class ServiceSignUp {
   /// Creates a new [ServiceSignUp].
   /// [enabled] Can users sign up on the development portal?
   /// [termsOfService] A `terms_of_service` block as defined below.
-  ServiceSignUp({
+  const ServiceSignUp({
     required this.enabled,
     required this.termsOfService,
   });

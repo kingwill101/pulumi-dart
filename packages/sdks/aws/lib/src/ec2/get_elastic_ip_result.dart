@@ -64,7 +64,7 @@ class GetElasticIpResult {
   /// [publicIpv4Pool] ID of an address pool.
   /// [region] Required.
   /// [tags] Key-value map of tags associated with Elastic IP.
-  GetElasticIpResult({
+  const GetElasticIpResult({
     required this.arn,
     required this.associationId,
     required this.carrierIp,

@@ -15,7 +15,7 @@ class GetBucketPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policy] IAM bucket policy.
   /// [region] Required.
-  GetBucketPolicyResult({
+  const GetBucketPolicyResult({
     required this.bucket,
     required this.id,
     required this.policy,

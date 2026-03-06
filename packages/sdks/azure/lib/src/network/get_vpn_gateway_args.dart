@@ -15,7 +15,7 @@ class GetVpnGatewayArgs {
   /// Creates a new [GetVpnGatewayArgs].
   /// [name] The Name of the VPN Gateway.
   /// [resourceGroupName] The name of the Resource Group where the VPN Gateway exists.
-  GetVpnGatewayArgs({
+  const GetVpnGatewayArgs({
     required this.name,
     required this.resourceGroupName,
   });

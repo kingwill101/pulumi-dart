@@ -23,7 +23,7 @@ class HostingCustomDomainCertVerificationDnsDesiredRecord {
   /// [rdata] The data of the record. The meaning of the value depends on record type:
   /// [requiredAction] Indicates the a required action for this record.
   /// [type] The record's type, which determines what data the record contains.
-  HostingCustomDomainCertVerificationDnsDesiredRecord({
+  const HostingCustomDomainCertVerificationDnsDesiredRecord({
     this.domainName,
     this.rdata,
     this.requiredAction,

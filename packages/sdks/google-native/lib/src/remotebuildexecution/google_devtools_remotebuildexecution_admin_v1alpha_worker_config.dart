@@ -40,7 +40,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// [reserved] Determines whether the worker is reserved (equivalent to a Compute Engine on-demand VM and therefore won't be preempted). See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more details.
   /// [soleTenantNodeType] The node type name to be used for sole-tenant nodes.
   /// [vmImage] The name of the image used by each VM.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig({
+  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig({
     this.accelerator,
     required this.diskSizeGb,
     required this.diskType,

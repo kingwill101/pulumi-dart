@@ -11,7 +11,7 @@ class FilterFilterCriteriaEc2InstanceSubnetId {
   /// Creates a new [FilterFilterCriteriaEc2InstanceSubnetId].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaEc2InstanceSubnetId({
+  const FilterFilterCriteriaEc2InstanceSubnetId({
     required this.comparison,
     required this.value,
   });

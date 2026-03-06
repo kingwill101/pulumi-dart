@@ -22,7 +22,7 @@ class DashboardDefinitionArgs {
   /// [definitionName] The name of the Dashboard Definition.
   /// [properties] Properties specific to the dashboard definition resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DashboardDefinitionArgs({
+  const DashboardDefinitionArgs({
     required this.dashboardName,
     this.definitionName,
     this.properties,

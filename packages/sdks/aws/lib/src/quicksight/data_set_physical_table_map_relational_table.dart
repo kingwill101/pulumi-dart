@@ -21,7 +21,7 @@ class DataSetPhysicalTableMapRelationalTable {
   /// [inputColumns] Column schema of the table. See input_columns.
   /// [name] Name of the relational table.
   /// [schema] Schema name. This name applies to certain relational database engines.
-  DataSetPhysicalTableMapRelationalTable({
+  const DataSetPhysicalTableMapRelationalTable({
     this.catalog,
     required this.dataSourceArn,
     required this.inputColumns,

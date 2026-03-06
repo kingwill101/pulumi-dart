@@ -18,7 +18,7 @@ class DeploymentTargets {
   /// [accounts] AWS accounts that you want to create stack instances in the specified Region(s) for.
   /// [accountsUrl] Returns the value of the AccountsUrl property.
   /// [organizationalUnitIds] The organization root ID or organizational unit (OU) IDs to which StackSets deploys.
-  DeploymentTargets({
+  const DeploymentTargets({
     this.accountFilterType,
     this.accounts,
     this.accountsUrl,

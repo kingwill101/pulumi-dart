@@ -9,7 +9,7 @@ class ManualResolutionPropertiesResponse {
 
   /// Creates a new [ManualResolutionPropertiesResponse].
   /// [targetId] Gets or sets the target resource ARM ID of the dependent resource if the resource type is Manual.
-  ManualResolutionPropertiesResponse({
+  const ManualResolutionPropertiesResponse({
     this.targetId,
   });
 

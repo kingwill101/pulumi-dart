@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2ErrorResponse {
   /// Creates a new [GooglePrivacyDlpV2ErrorResponse].
   /// [details] Detailed error codes and messages.
   /// [timestamps] The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
-  GooglePrivacyDlpV2ErrorResponse({
+  const GooglePrivacyDlpV2ErrorResponse({
     required this.details,
     required this.timestamps,
   });

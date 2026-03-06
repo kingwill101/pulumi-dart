@@ -9,7 +9,7 @@ class SecondaryConfig {
 
   /// Creates a new [SecondaryConfig].
   /// [primaryClusterName] The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
-  SecondaryConfig({
+  const SecondaryConfig({
     this.primaryClusterName,
   });
 

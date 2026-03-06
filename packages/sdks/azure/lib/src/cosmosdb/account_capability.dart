@@ -8,7 +8,7 @@ class AccountCapability {
 
   /// Creates a new [AccountCapability].
   /// [name] Specifies the name of the CosmosDB Account. Changing this forces a new resource to be created.
-  AccountCapability({
+  const AccountCapability({
     required this.name,
   });
 

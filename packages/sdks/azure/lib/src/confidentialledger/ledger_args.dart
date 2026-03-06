@@ -32,7 +32,7 @@ class LedgerArgs {
   /// [name] Specifies the name of the Confidential Ledger. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Confidential Ledger exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Confidential Ledger.
-  LedgerArgs({
+  const LedgerArgs({
     required this.azureadBasedServicePrincipals,
     this.certificateBasedSecurityPrincipals,
     required this.ledgerType,

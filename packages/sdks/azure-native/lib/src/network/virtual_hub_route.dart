@@ -12,7 +12,7 @@ class VirtualHubRoute {
   /// Creates a new [VirtualHubRoute].
   /// [addressPrefixes] List of all addressPrefixes.
   /// [nextHopIpAddress] NextHop ip address.
-  VirtualHubRoute({
+  const VirtualHubRoute({
     this.addressPrefixes,
     this.nextHopIpAddress,
   });

@@ -9,7 +9,7 @@ class AutoUpgradeNodeImageSelection {
 
   /// Creates a new [AutoUpgradeNodeImageSelection].
   /// [type] The node image upgrade type.
-  AutoUpgradeNodeImageSelection({
+  const AutoUpgradeNodeImageSelection({
     required this.type,
   });
 

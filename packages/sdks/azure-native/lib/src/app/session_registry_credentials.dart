@@ -18,7 +18,7 @@ class SessionRegistryCredentials {
   /// [passwordSecretRef] The name of the secret that contains the registry login password
   /// [server] Container registry server.
   /// [username] Container registry username.
-  SessionRegistryCredentials({
+  const SessionRegistryCredentials({
     this.identity,
     this.passwordSecretRef,
     this.server,

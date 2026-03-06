@@ -12,7 +12,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig {
   /// Creates a new [ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig].
   /// [certificateAuthorityDomainConfigs] List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
   /// [enabled] Enables private registry config. If set to false, all other fields in this object must not be set.
-  ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig({
+  const ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig({
     this.certificateAuthorityDomainConfigs,
     required this.enabled,
   });

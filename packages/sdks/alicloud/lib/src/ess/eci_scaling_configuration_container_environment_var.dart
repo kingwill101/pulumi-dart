@@ -11,7 +11,7 @@ class EciScalingConfigurationContainerEnvironmentVar {
   /// [fieldRefFieldPath] Optional.
   /// [key] Optional.
   /// [value] Optional.
-  EciScalingConfigurationContainerEnvironmentVar({
+  const EciScalingConfigurationContainerEnvironmentVar({
     this.fieldRefFieldPath,
     this.key,
     this.value,

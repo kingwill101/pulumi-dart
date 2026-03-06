@@ -35,7 +35,7 @@ class GetPolicyAttachmentsResult {
   /// [principalName] The name of the object to which the policy is attached.
   /// [principalType] The type of the object to which the policy is attached.
   /// [resourceGroupId] The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
-  GetPolicyAttachmentsResult({
+  const GetPolicyAttachmentsResult({
     required this.attachments,
     required this.id,
     required this.ids,

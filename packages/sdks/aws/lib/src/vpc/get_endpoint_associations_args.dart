@@ -15,7 +15,7 @@ class GetEndpointAssociationsArgs {
   /// Creates a new [GetEndpointAssociationsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] ID of the specific VPC Endpoint to retrieve.
-  GetEndpointAssociationsArgs({
+  const GetEndpointAssociationsArgs({
     this.region,
     required this.vpcEndpointId,
   });

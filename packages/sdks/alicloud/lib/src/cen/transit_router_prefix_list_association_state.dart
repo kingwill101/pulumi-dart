@@ -31,7 +31,7 @@ class TransitRouterPrefixListAssociationState {
   /// [status] The status of the prefix list.
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterTableId] The ID of the route table of the transit router.
-  TransitRouterPrefixListAssociationState({
+  const TransitRouterPrefixListAssociationState({
     this.nextHop,
     this.nextHopType,
     this.ownerUid,

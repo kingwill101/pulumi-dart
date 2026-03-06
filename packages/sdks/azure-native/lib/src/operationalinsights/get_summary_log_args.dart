@@ -18,7 +18,7 @@ class GetSummaryLogArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [summaryLogsName] The name of the summary logs. Must not contain '/'.
   /// [workspaceName] The name of the workspace.
-  GetSummaryLogArgs({
+  const GetSummaryLogArgs({
     required this.resourceGroupName,
     required this.summaryLogsName,
     required this.workspaceName,

@@ -19,7 +19,7 @@ class GetReservedIpv6Result {
   /// [ip] Required.
   /// [regionSlug] The region that the reserved IPv6 is reserved to.
   /// [urn] The uniform resource name of the reserved IPv6.
-  GetReservedIpv6Result({
+  const GetReservedIpv6Result({
     required this.dropletId,
     required this.id,
     required this.ip,

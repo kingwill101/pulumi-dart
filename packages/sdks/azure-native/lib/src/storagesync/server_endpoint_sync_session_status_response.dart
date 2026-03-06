@@ -31,7 +31,7 @@ class ServerEndpointSyncSessionStatusResponse {
   /// [lastSyncTimestamp] Last sync timestamp
   /// [persistentFilesNotSyncingCount] Count of persistent files not syncing.
   /// [transientFilesNotSyncingCount] Count of transient files not syncing.
-  ServerEndpointSyncSessionStatusResponse({
+  const ServerEndpointSyncSessionStatusResponse({
     required this.filesNotSyncingErrors,
     required this.lastSyncMode,
     required this.lastSyncPerItemErrorCount,

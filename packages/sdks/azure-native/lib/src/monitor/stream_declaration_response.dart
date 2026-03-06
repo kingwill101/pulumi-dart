@@ -10,7 +10,7 @@ class StreamDeclarationResponse {
 
   /// Creates a new [StreamDeclarationResponse].
   /// [columns] List of columns used by data in this stream.
-  StreamDeclarationResponse({
+  const StreamDeclarationResponse({
     this.columns,
   });
 

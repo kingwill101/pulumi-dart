@@ -9,7 +9,7 @@ class PtrRecordResponse {
 
   /// Creates a new [PtrRecordResponse].
   /// [ptrdname] The PTR target domain name for this PTR record.
-  PtrRecordResponse({
+  const PtrRecordResponse({
     this.ptrdname,
   });
 

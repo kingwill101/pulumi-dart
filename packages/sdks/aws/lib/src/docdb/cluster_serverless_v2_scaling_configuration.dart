@@ -11,7 +11,7 @@ class ClusterServerlessV2ScalingConfiguration {
   /// Creates a new [ClusterServerlessV2ScalingConfiguration].
   /// [maxCapacity] Maximum number of Amazon DocumentDB capacity units (DCUs) for an instance in an Amazon DocumentDB Serverless cluster. Valid values are multiples of 0.5 between 1 and 256.
   /// [minCapacity] Minimum number of Amazon DocumentDB capacity units (DCUs) for an instance in an Amazon DocumentDB Serverless cluster. Valid values are multiples of 0.5 between 0.5 and 256.
-  ClusterServerlessV2ScalingConfiguration({
+  const ClusterServerlessV2ScalingConfiguration({
     required this.maxCapacity,
     required this.minCapacity,
   });

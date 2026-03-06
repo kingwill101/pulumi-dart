@@ -13,7 +13,7 @@ class FhirStoreStreamConfigBigqueryDestination {
   /// Creates a new [FhirStoreStreamConfigBigqueryDestination].
   /// [datasetUri] BigQuery URI to a dataset, up to 2000 characters long, in the format bq://projectId.bqDatasetId
   /// [schemaConfig] The configuration for the exported BigQuery schema.
-  FhirStoreStreamConfigBigqueryDestination({
+  const FhirStoreStreamConfigBigqueryDestination({
     required this.datasetUri,
     required this.schemaConfig,
   });

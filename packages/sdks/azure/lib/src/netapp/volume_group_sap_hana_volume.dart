@@ -75,7 +75,7 @@ class VolumeGroupSapHanaVolume {
   /// [volumePath] A unique file path for the volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [volumeSpecName] Volume specification name. Possible values are `data`, `log`, `shared`, `data-backup` and `log-backup`. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [zone] Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement). Changing this forces a new Application Volume Group to be created and data will be lost.
-  VolumeGroupSapHanaVolume({
+  const VolumeGroupSapHanaVolume({
     required this.capacityPoolId,
     this.dataProtectionReplication,
     this.dataProtectionSnapshotPolicy,

@@ -27,7 +27,7 @@ class GetSecretVersionsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [secretName] The name of the secret.
   /// [versionStage] The stage of the secret version.
-  GetSecretVersionsArgs({
+  const GetSecretVersionsArgs({
     this.enableDetails,
     this.ids,
     this.includeDeprecated,

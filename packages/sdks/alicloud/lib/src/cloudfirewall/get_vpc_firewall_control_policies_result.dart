@@ -50,7 +50,7 @@ class GetVpcFirewallControlPoliciesResult {
   /// [release] The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
   /// [source] Access control over VPC firewalls strategy in the source address.
   /// [vpcFirewallId] The ID of the VPC firewall instance.
-  GetVpcFirewallControlPoliciesResult({
+  const GetVpcFirewallControlPoliciesResult({
     this.aclAction,
     this.aclUuid,
     this.description,

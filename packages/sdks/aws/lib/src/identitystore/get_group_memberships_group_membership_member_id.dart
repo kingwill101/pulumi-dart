@@ -8,7 +8,7 @@ class GetGroupMembershipsGroupMembershipMemberId {
 
   /// Creates a new [GetGroupMembershipsGroupMembershipMemberId].
   /// [userId] User identifier of the group member.
-  GetGroupMembershipsGroupMembershipMemberId({
+  const GetGroupMembershipsGroupMembershipMemberId({
     required this.userId,
   });
 

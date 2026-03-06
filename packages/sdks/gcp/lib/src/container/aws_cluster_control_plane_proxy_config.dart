@@ -11,7 +11,7 @@ class AwsClusterControlPlaneProxyConfig {
   /// Creates a new [AwsClusterControlPlaneProxyConfig].
   /// [secretArn] The ARN of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
   /// [secretVersion] The version string of the AWS Secret Manager secret that contains the HTTP(S) proxy configuration.
-  AwsClusterControlPlaneProxyConfig({
+  const AwsClusterControlPlaneProxyConfig({
     required this.secretArn,
     required this.secretVersion,
   });

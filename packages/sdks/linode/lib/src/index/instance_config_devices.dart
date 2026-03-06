@@ -37,7 +37,7 @@ class InstanceConfigDevices {
   /// [sdf] Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
   /// [sdg] Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
   /// [sdh] Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
-  InstanceConfigDevices({
+  const InstanceConfigDevices({
     this.sda,
     this.sdb,
     this.sdc,

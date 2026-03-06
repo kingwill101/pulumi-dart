@@ -13,7 +13,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
   /// Creates a new [CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText].
   /// [allowPlaybackInterruption] (Output)
   /// [texts] A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-  CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText({
+  const CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText({
     this.allowPlaybackInterruption,
     this.texts,
   });

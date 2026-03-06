@@ -10,7 +10,7 @@ class ImmediateCopyOption {
 
   /// Creates a new [ImmediateCopyOption].
   /// [objectType] Type of the specific object - used for deserializing
-  ImmediateCopyOption({
+  const ImmediateCopyOption({
     required this.objectType,
   });
 

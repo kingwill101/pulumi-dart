@@ -11,7 +11,7 @@ class SpringCloudBuilderBuildPackGroup {
   /// Creates a new [SpringCloudBuilderBuildPackGroup].
   /// [buildPackIds] Specifies a list of the build pack's ID.
   /// [name] The name which should be used for this build pack group.
-  SpringCloudBuilderBuildPackGroup({
+  const SpringCloudBuilderBuildPackGroup({
     this.buildPackIds,
     required this.name,
   });

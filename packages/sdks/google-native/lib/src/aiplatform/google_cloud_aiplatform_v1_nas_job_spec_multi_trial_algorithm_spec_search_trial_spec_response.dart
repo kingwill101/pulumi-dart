@@ -19,7 +19,7 @@ class GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecRes
   /// [maxParallelTrialCount] The maximum number of trials to run in parallel.
   /// [maxTrialCount] The maximum number of Neural Architecture Search (NAS) trials to run.
   /// [searchTrialJobSpec] The spec of a search trial job. The same spec applies to all search trials.
-  GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse({
+  const GoogleCloudAiplatformV1NasJobSpecMultiTrialAlgorithmSpecSearchTrialSpecResponse({
     required this.maxFailedTrialCount,
     required this.maxParallelTrialCount,
     required this.maxTrialCount,

@@ -62,7 +62,7 @@ class SpacesBucketObjectArgs {
   /// [region] The region where the bucket resides (Defaults to `nyc3`)
   /// [source] The path to a file that will be read and uploaded as raw bytes for the object content.
   /// [websiteRedirect] Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
-  SpacesBucketObjectArgs({
+  const SpacesBucketObjectArgs({
     this.acl,
     required this.bucket,
     this.cacheControl,

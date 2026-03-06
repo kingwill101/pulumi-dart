@@ -17,7 +17,7 @@ class ApplicationApplicationConfigurationFlinkApplicationConfiguration {
   /// [checkpointConfiguration] Describes an application's checkpointing configuration.
   /// [monitoringConfiguration] Describes configuration parameters for CloudWatch logging for an application.
   /// [parallelismConfiguration] Describes parameters for how an application executes multiple tasks simultaneously.
-  ApplicationApplicationConfigurationFlinkApplicationConfiguration({
+  const ApplicationApplicationConfigurationFlinkApplicationConfiguration({
     this.checkpointConfiguration,
     this.monitoringConfiguration,
     this.parallelismConfiguration,

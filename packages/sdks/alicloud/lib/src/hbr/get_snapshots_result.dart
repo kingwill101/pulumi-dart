@@ -38,7 +38,7 @@ class GetSnapshotsResult {
   /// [sourceType] Required.
   /// [status] Optional.
   /// [vaultId] Required.
-  GetSnapshotsResult({
+  const GetSnapshotsResult({
     this.bucket,
     this.completeTime,
     this.completeTimeChecker,

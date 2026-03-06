@@ -17,7 +17,7 @@ class ManagementPolicyRuleActions {
   /// [baseBlob] A `base_blob` block as documented below.
   /// [snapshot] A `snapshot` block as documented below.
   /// [version] A `version` block as documented below.
-  ManagementPolicyRuleActions({
+  const ManagementPolicyRuleActions({
     this.baseBlob,
     this.snapshot,
     this.version,

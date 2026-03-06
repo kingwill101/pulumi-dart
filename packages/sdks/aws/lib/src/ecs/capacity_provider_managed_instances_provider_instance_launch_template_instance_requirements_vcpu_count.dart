@@ -9,7 +9,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsVcpuCount].
   /// [max] Optional.
   /// [min] Required.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsVcpuCount({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsVcpuCount({
     this.max,
     required this.min,
   });

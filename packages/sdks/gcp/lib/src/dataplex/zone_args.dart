@@ -44,7 +44,7 @@ class ZoneArgs {
   /// [project] The project for the resource
   /// [resourceSpec] Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
   /// [type] Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
-  ZoneArgs({
+  const ZoneArgs({
     this.description,
     required this.discoverySpec,
     this.displayName,

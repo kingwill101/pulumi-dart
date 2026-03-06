@@ -17,7 +17,7 @@ class GetCertificatesCertificate {
   /// [id] The ID of this certificate.
   /// [name] The name of certificate.
   /// [tags] The tags of this certificate.
-  GetCertificatesCertificate({
+  const GetCertificatesCertificate({
     required this.enabled,
     required this.id,
     required this.name,

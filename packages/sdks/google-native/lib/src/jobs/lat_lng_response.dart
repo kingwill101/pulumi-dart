@@ -12,7 +12,7 @@ class LatLngResponse {
   /// Creates a new [LatLngResponse].
   /// [latitude] The latitude in degrees. It must be in the range [-90.0, +90.0].
   /// [longitude] The longitude in degrees. It must be in the range [-180.0, +180.0].
-  LatLngResponse({
+  const LatLngResponse({
     required this.latitude,
     required this.longitude,
   });

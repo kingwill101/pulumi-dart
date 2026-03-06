@@ -21,7 +21,7 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule {
   /// [monthDays] A list of days of the month that the job should execute on.
   /// [monthlies] A `monthly` block as documented below.
   /// [weekDays] A list of days of the week that the job should execute on. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
-  IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule({
+  const IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule({
     this.hours,
     this.minutes,
     this.monthDays,

@@ -19,7 +19,7 @@ class GetClusterBrokerNodeGroupInfo {
   /// [instanceType] Required.
   /// [securityGroups] Required.
   /// [storageInfos] Required.
-  GetClusterBrokerNodeGroupInfo({
+  const GetClusterBrokerNodeGroupInfo({
     required this.azDistribution,
     required this.clientSubnets,
     required this.connectivityInfos,

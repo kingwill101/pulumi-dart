@@ -23,7 +23,7 @@ class MongoUserDefinitionArgs {
   /// [inheritedRoleNames] A list of Mongo Roles that are inherited to the Mongo User Definition.
   /// [password] The password for the Mongo User Definition.
   /// [username] The username for the Mongo User Definition. Changing this forces a new resource to be created.
-  MongoUserDefinitionArgs({
+  const MongoUserDefinitionArgs({
     required this.cosmosMongoDatabaseId,
     this.inheritedRoleNames,
     required this.password,

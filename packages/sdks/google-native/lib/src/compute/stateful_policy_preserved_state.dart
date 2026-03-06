@@ -15,7 +15,7 @@ class StatefulPolicyPreservedState {
   /// [disks] Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
   /// [externalIPs] External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
   /// [internalIPs] Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
-  StatefulPolicyPreservedState({
+  const StatefulPolicyPreservedState({
     this.disks,
     this.externalIPs,
     this.internalIPs,

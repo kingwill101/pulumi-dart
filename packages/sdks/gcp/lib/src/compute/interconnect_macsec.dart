@@ -20,7 +20,7 @@ class InterconnectMacsec {
   /// Creates a new [InterconnectMacsec].
   /// [failOpen] If set to true, the Interconnect connection is configured with a should-secure
   /// [preSharedKeys] A keychain placeholder describing a set of named key objects along with their
-  InterconnectMacsec({
+  const InterconnectMacsec({
     this.failOpen,
     required this.preSharedKeys,
   });

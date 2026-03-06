@@ -83,7 +83,7 @@ class SweepJob {
   /// [services] List of JobEndpoints.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [trial] [Required] Trial component definition.
-  SweepJob({
+  const SweepJob({
     this.componentId,
     this.computeId,
     this.description,

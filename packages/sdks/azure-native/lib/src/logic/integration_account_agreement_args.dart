@@ -48,7 +48,7 @@ class IntegrationAccountAgreementArgs {
   /// [metadata] The metadata.
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
-  IntegrationAccountAgreementArgs({
+  const IntegrationAccountAgreementArgs({
     this.agreementName,
     required this.agreementType,
     required this.content,

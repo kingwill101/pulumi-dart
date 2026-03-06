@@ -29,7 +29,7 @@ class ManagedStorageAccountState {
   /// [storageAccountId] The ID of the Storage Account.
   /// [storageAccountKey] Which Storage Account access key that is managed by Key Vault. Possible values are `key1` and `key2`.
   /// [tags] A mapping of tags which should be assigned to the Key Vault Managed Storage Account. Changing this forces a new resource to be created.
-  ManagedStorageAccountState({
+  const ManagedStorageAccountState({
     this.keyVaultId,
     this.name,
     this.regenerateKeyAutomatically,

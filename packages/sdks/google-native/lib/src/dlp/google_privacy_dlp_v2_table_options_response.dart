@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2TableOptionsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2TableOptionsResponse].
   /// [identifyingFields] The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided.
-  GooglePrivacyDlpV2TableOptionsResponse({
+  const GooglePrivacyDlpV2TableOptionsResponse({
     required this.identifyingFields,
   });
 

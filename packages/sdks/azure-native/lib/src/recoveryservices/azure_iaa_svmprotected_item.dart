@@ -76,7 +76,7 @@ class AzureIaaSVMProtectedItem {
   /// [resourceGuardOperationRequests] ResourceGuardOperationRequests on which LAC check will be performed
   /// [softDeleteRetentionPeriodInDays] Soft delete retention period in days
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  AzureIaaSVMProtectedItem({
+  const AzureIaaSVMProtectedItem({
     this.backupSetName,
     this.containerName,
     this.createMode,

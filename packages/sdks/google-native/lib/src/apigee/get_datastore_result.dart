@@ -27,7 +27,7 @@ class GetDatastoreResult {
   /// [org] Organization that the datastore belongs to
   /// [self] Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
   /// [targetType] Destination storage type. Supported types `gcs` or `bigquery`.
-  GetDatastoreResult({
+  const GetDatastoreResult({
     required this.createTime,
     required this.datastoreConfig,
     required this.displayName,

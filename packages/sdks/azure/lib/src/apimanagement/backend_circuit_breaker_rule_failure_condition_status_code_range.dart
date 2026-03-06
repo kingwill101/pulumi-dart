@@ -11,7 +11,7 @@ class BackendCircuitBreakerRuleFailureConditionStatusCodeRange {
   /// Creates a new [BackendCircuitBreakerRuleFailureConditionStatusCodeRange].
   /// [max] Specifies the maximum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
   /// [min] Specifies the minimum HTTP status code to consider as a failure. Possible values are between `200` and `599`.
-  BackendCircuitBreakerRuleFailureConditionStatusCodeRange({
+  const BackendCircuitBreakerRuleFailureConditionStatusCodeRange({
     required this.max,
     required this.min,
   });

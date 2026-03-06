@@ -74,7 +74,7 @@ class FirehoseDeliveryStreamSnowflakeConfiguration {
   /// [snowflakeVpcConfiguration] The VPC configuration for Snowflake.
   /// [table] The Snowflake table name.
   /// [user] The user for authentication. This value is required if `secrets_manager_configuration` is not provided.
-  FirehoseDeliveryStreamSnowflakeConfiguration({
+  const FirehoseDeliveryStreamSnowflakeConfiguration({
     required this.accountUrl,
     this.bufferingInterval,
     this.bufferingSize,

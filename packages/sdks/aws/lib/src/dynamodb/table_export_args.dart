@@ -45,7 +45,7 @@ class TableExportArgs {
   /// [s3SseAlgorithm] Type of encryption used on the bucket where export data will be stored. Valid values are: `AES256`, `KMS`.
   /// [s3SseKmsKeyId] ID of the AWS KMS managed key used to encrypt the S3 bucket where export data will be stored (if applicable).
   /// [tableArn] ARN associated with the table to export.
-  TableExportArgs({
+  const TableExportArgs({
     this.exportFormat,
     this.exportTime,
     this.exportType,

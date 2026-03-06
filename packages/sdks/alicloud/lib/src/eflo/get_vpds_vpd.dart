@@ -29,7 +29,7 @@ class GetVpdsVpd {
   /// [status] The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
   /// [vpdId] The id of the vpd.
   /// [vpdName] The Name of the VPD.
-  GetVpdsVpd({
+  const GetVpdsVpd({
     required this.cidr,
     required this.createTime,
     required this.gmtModified,

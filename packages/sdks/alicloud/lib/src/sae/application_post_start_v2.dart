@@ -9,7 +9,7 @@ class ApplicationPostStartV2 {
 
   /// Creates a new [ApplicationPostStartV2].
   /// [exec] Execute. See `exec` below.
-  ApplicationPostStartV2({
+  const ApplicationPostStartV2({
     this.exec,
   });
 

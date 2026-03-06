@@ -18,7 +18,7 @@ class ResourcePolicyArgs {
   /// [policy] The content of the resource policy being updated.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) of the account to create or update a resource policy for.
-  ResourcePolicyArgs({
+  const ResourcePolicyArgs({
     required this.policy,
     this.region,
     required this.resourceArn,

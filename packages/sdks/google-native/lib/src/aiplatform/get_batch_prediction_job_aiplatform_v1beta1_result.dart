@@ -110,7 +110,7 @@ class GetBatchPredictionJobAiplatformV1beta1Result {
   /// [state] The detailed state of the job.
   /// [unmanagedContainerModel] Contains model information necessary to perform batch prediction without requiring uploading to model registry. Exactly one of model and unmanaged_container_model must be set.
   /// [updateTime] Time when the BatchPredictionJob was most recently updated.
-  GetBatchPredictionJobAiplatformV1beta1Result({
+  const GetBatchPredictionJobAiplatformV1beta1Result({
     required this.completionStats,
     required this.createTime,
     required this.dedicatedResources,

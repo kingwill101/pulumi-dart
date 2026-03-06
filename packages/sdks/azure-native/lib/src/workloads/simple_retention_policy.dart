@@ -14,7 +14,7 @@ class SimpleRetentionPolicy {
   /// Creates a new [SimpleRetentionPolicy].
   /// [retentionDuration] Retention duration of the protection policy.
   /// [retentionPolicyType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
-  SimpleRetentionPolicy({
+  const SimpleRetentionPolicy({
     this.retentionDuration,
     required this.retentionPolicyType,
   });

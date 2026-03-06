@@ -9,7 +9,7 @@ class RegistryScanningConfigurationRuleRepositoryFilter {
   /// Creates a new [RegistryScanningConfigurationRuleRepositoryFilter].
   /// [filter] Required.
   /// [filterType] Required.
-  RegistryScanningConfigurationRuleRepositoryFilter({
+  const RegistryScanningConfigurationRuleRepositoryFilter({
     required this.filter,
     required this.filterType,
   });

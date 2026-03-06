@@ -9,7 +9,7 @@ class NetworkPerformanceConfigResponse {
   /// Creates a new [NetworkPerformanceConfigResponse].
   /// [externalIpEgressBandwidthTier] Required.
   /// [totalEgressBandwidthTier] Required.
-  NetworkPerformanceConfigResponse({
+  const NetworkPerformanceConfigResponse({
     required this.externalIpEgressBandwidthTier,
     required this.totalEgressBandwidthTier,
   });

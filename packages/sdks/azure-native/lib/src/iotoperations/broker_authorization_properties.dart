@@ -10,7 +10,7 @@ class BrokerAuthorizationProperties {
 
   /// Creates a new [BrokerAuthorizationProperties].
   /// [authorizationPolicies] The list of authorization policies supported by the Authorization Resource.
-  BrokerAuthorizationProperties({
+  const BrokerAuthorizationProperties({
     required this.authorizationPolicies,
   });
 

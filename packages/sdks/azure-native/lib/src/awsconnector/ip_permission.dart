@@ -31,7 +31,7 @@ class IpPermission {
   /// [prefixListIds] &lt;p&gt;The prefix list IDs.&lt;/p&gt;
   /// [toPort] &lt;p&gt;If the protocol is TCP or UDP, this is the end of the port range. If the protocol is ICMP or ICMPv6, this is the ICMP code or -1 (all ICMP codes). If the start port is -1 (all ICMP types), then the end port must be -1 (all ICMP codes).&lt;/p&gt;
   /// [userIdGroupPairs] &lt;p&gt;The security group and Amazon Web Services account ID pairs.&lt;/p&gt;
-  IpPermission({
+  const IpPermission({
     this.fromPort,
     this.ipProtocol,
     this.ipRanges,

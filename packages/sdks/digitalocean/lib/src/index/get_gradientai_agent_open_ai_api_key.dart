@@ -8,7 +8,7 @@ class GetGradientaiAgentOpenAiApiKey {
 
   /// Creates a new [GetGradientaiAgentOpenAiApiKey].
   /// [apiKey] OpenAI API Key
-  GetGradientaiAgentOpenAiApiKey({
+  const GetGradientaiAgentOpenAiApiKey({
     this.apiKey,
   });
 

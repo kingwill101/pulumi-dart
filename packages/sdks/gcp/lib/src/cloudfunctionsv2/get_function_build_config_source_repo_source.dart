@@ -28,7 +28,7 @@ class GetFunctionBuildConfigSourceRepoSource {
   /// [projectId] ID of the project that owns the Cloud Source Repository. If omitted, the
   /// [repoName] Name of the Cloud Source Repository.
   /// [tagName] Regex matching tags to build.
-  GetFunctionBuildConfigSourceRepoSource({
+  const GetFunctionBuildConfigSourceRepoSource({
     required this.branchName,
     required this.commitSha,
     required this.dir,

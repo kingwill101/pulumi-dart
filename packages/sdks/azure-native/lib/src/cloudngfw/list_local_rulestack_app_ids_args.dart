@@ -23,7 +23,7 @@ class ListLocalRulestackAppIdsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [skip] Optional.
   /// [top] Optional.
-  ListLocalRulestackAppIdsArgs({
+  const ListLocalRulestackAppIdsArgs({
     this.appIdVersion,
     this.appPrefix,
     required this.localRulestackName,

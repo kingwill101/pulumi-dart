@@ -12,7 +12,7 @@ class UpdateConfigResponse {
   /// Creates a new [UpdateConfigResponse].
   /// [maxUnavailable] The maximum number of nodes unavailable at once during a version update. Nodes will be updated in parallel. This value or maxUnavailablePercentage is required to have a value.The maximum number is 100.
   /// [maxUnavailablePercentage] The maximum percentage of nodes unavailable during a version update. This percentage of nodes will be updated in parallel, up to 100 nodes at once. This value or maxUnavailable is required to have a value.
-  UpdateConfigResponse({
+  const UpdateConfigResponse({
     this.maxUnavailable,
     this.maxUnavailablePercentage,
   });

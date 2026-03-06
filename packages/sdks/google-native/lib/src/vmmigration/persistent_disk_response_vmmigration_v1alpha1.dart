@@ -12,7 +12,7 @@ class PersistentDiskResponseVmmigrationV1alpha1 {
   /// Creates a new [PersistentDiskResponseVmmigrationV1alpha1].
   /// [diskUri] The URI of the Persistent Disk.
   /// [sourceDiskNumber] The ordinal number of the source VM disk.
-  PersistentDiskResponseVmmigrationV1alpha1({
+  const PersistentDiskResponseVmmigrationV1alpha1({
     required this.diskUri,
     required this.sourceDiskNumber,
   });

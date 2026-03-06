@@ -24,7 +24,7 @@ class GetRulesArgs {
   /// [loadBalancerId] ID of the SLB with listener rules.
   /// [nameRegex] A regex string to filter results by rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRulesArgs({
+  const GetRulesArgs({
     required this.frontendPort,
     this.ids,
     required this.loadBalancerId,

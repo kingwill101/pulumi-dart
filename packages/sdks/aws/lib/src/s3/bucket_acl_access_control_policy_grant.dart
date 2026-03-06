@@ -12,7 +12,7 @@ class BucketAclAccessControlPolicyGrant {
   /// Creates a new [BucketAclAccessControlPolicyGrant].
   /// [grantee] Configuration block for the person being granted permissions. See below.
   /// [permission] Logging permissions assigned to the grantee for the bucket. Valid values: `FULL_CONTROL`, `WRITE`, `WRITE_ACP`, `READ`, `READ_ACP`. See [What permissions can I grant?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions) for more details about what each permission means in the context of buckets.
-  BucketAclAccessControlPolicyGrant({
+  const BucketAclAccessControlPolicyGrant({
     this.grantee,
     required this.permission,
   });

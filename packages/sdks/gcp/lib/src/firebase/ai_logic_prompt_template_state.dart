@@ -47,7 +47,7 @@ class AiLogicPromptTemplateState {
   /// [templateId] The unique ID of the PromptTemplate, which is the final component of the
   /// [templateString] The DotPrompt raw template string.
   /// [updateTime] Timestamp when the PromptTemplate was last updated.
-  AiLogicPromptTemplateState({
+  const AiLogicPromptTemplateState({
     this.createTime,
     this.displayName,
     this.location,

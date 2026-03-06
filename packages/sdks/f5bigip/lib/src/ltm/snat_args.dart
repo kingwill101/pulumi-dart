@@ -43,7 +43,7 @@ class SnatArgs {
   /// [translation] Specifies the IP address configured for translation. Note that translated addresses are outside the traffic management system. You can only use this option when `automap` and `snatpool` are not used.
   /// [vlans] Specifies the available VLANs or tunnels and those for which the SNAT is enabled or disabled.
   /// [vlansdisabled] Specifies the VLANs or tunnels for which the SNAT is enabled or disabled. The default is `true`, vlandisabled on VLANS specified by `vlans`,if set to `false` vlanEnabled set on VLANS specified by `vlans` .
-  SnatArgs({
+  const SnatArgs({
     this.autolasthop,
     this.fullPath,
     this.mirror,

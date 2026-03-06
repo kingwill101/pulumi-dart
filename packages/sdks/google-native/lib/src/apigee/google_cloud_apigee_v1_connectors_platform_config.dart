@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1ConnectorsPlatformConfig {
 
   /// Creates a new [GoogleCloudApigeeV1ConnectorsPlatformConfig].
   /// [enabled] Flag that specifies whether the Connectors Platform add-on is enabled.
-  GoogleCloudApigeeV1ConnectorsPlatformConfig({
+  const GoogleCloudApigeeV1ConnectorsPlatformConfig({
     this.enabled,
   });
 

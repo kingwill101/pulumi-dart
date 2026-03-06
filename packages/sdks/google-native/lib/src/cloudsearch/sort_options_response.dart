@@ -11,7 +11,7 @@ class SortOptionsResponse {
   /// Creates a new [SortOptionsResponse].
   /// [operatorName] The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
   /// [sortOrder] Ascending is the default sort order
-  SortOptionsResponse({
+  const SortOptionsResponse({
     required this.operatorName,
     required this.sortOrder,
   });

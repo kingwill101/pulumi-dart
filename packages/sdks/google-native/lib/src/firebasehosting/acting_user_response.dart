@@ -12,7 +12,7 @@ class ActingUserResponse {
   /// Creates a new [ActingUserResponse].
   /// [email] The email address of the user when the user performed the action.
   /// [imageUrl] A profile image URL for the user. May not be present if the user has changed their email address or deleted their account.
-  ActingUserResponse({
+  const ActingUserResponse({
     required this.email,
     required this.imageUrl,
   });

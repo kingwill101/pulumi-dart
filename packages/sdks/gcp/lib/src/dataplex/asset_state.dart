@@ -71,7 +71,7 @@ class AssetState {
   /// [state] Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   /// [uid] Output only. System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
   /// [updateTime] Output only. The time when the asset was last updated.
-  AssetState({
+  const AssetState({
     this.createTime,
     this.dataplexZone,
     this.description,

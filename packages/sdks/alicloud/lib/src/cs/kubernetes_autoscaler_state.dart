@@ -25,7 +25,7 @@ class KubernetesAutoscalerState {
   /// [nodepools] The list of the node pools. See `nodepools` below.
   /// [useEcsRamRoleToken] Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
   /// [utilization] The utilization option of cluster-autoscaler.
-  KubernetesAutoscalerState({
+  const KubernetesAutoscalerState({
     this.clusterId,
     this.coolDownDuration,
     this.deferScaleInDuration,

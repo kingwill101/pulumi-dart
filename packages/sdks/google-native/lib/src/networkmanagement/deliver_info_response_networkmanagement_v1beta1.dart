@@ -12,7 +12,7 @@ class DeliverInfoResponseNetworkmanagementV1beta1 {
   /// Creates a new [DeliverInfoResponseNetworkmanagementV1beta1].
   /// [resourceUri] URI of the resource that the packet is delivered to.
   /// [target] Target type where the packet is delivered to.
-  DeliverInfoResponseNetworkmanagementV1beta1({
+  const DeliverInfoResponseNetworkmanagementV1beta1({
     required this.resourceUri,
     required this.target,
   });

@@ -24,7 +24,7 @@ class ManagedZoneDnssecConfigDefaultKeySpec {
   /// [keyLength] Length of the keys in bits
   /// [keyType] Specifies whether this is a key signing key (KSK) or a zone
   /// [kind] Identifies what kind of resource this is
-  ManagedZoneDnssecConfigDefaultKeySpec({
+  const ManagedZoneDnssecConfigDefaultKeySpec({
     this.algorithm,
     this.keyLength,
     this.keyType,

@@ -31,7 +31,7 @@ class ConversationDiscoveryengineV1betaArgs {
   /// [project] Optional.
   /// [state] The state of the Conversation.
   /// [userPseudoId] A unique identifier for tracking users.
-  ConversationDiscoveryengineV1betaArgs({
+  const ConversationDiscoveryengineV1betaArgs({
     required this.collectionId,
     required this.dataStoreId,
     this.location,

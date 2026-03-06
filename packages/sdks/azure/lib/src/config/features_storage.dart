@@ -7,7 +7,7 @@ class FeaturesStorage {
 
   /// Creates a new [FeaturesStorage].
   /// [dataPlaneAvailable] Optional.
-  FeaturesStorage({
+  const FeaturesStorage({
     this.dataPlaneAvailable,
   });
 

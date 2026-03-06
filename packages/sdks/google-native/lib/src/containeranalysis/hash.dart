@@ -13,7 +13,7 @@ class Hash {
   /// Creates a new [Hash].
   /// [type] The type of hash that was performed.
   /// [value] The hash value.
-  Hash({
+  const Hash({
     this.type,
     this.value,
   });

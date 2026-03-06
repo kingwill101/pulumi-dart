@@ -44,7 +44,7 @@ class SqlServerStoredProcedureActivityResponse {
   /// [storedProcedureParameters] Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}".
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  SqlServerStoredProcedureActivityResponse({
+  const SqlServerStoredProcedureActivityResponse({
     this.dependsOn,
     this.description,
     required this.linkedServiceName,

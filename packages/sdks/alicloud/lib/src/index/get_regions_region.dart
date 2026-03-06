@@ -13,7 +13,7 @@ class GetRegionsRegion {
   /// [id] ID of the region.
   /// [localName] Name of the region in the local language.
   /// [regionId] Required.
-  GetRegionsRegion({
+  const GetRegionsRegion({
     required this.id,
     required this.localName,
     required this.regionId,

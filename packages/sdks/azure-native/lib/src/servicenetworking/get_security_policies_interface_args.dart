@@ -18,7 +18,7 @@ class GetSecurityPoliciesInterfaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityPolicyName] SecurityPolicy
   /// [trafficControllerName] traffic controller name for path
-  GetSecurityPoliciesInterfaceArgs({
+  const GetSecurityPoliciesInterfaceArgs({
     required this.resourceGroupName,
     required this.securityPolicyName,
     required this.trafficControllerName,

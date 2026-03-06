@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDest
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination({
     required this.destinationRefId,
   });
 

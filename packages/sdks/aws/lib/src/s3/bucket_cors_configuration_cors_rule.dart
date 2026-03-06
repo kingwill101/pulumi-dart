@@ -23,7 +23,7 @@ class BucketCorsConfigurationCorsRule {
   /// [exposeHeaders] Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript `XMLHttpRequest` object).
   /// [id] Unique identifier for the rule. The value cannot be longer than 255 characters.
   /// [maxAgeSeconds] Time in seconds that your browser is to cache the preflight response for the specified resource.
-  BucketCorsConfigurationCorsRule({
+  const BucketCorsConfigurationCorsRule({
     this.allowedHeaders,
     required this.allowedMethods,
     required this.allowedOrigins,

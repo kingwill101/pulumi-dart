@@ -9,7 +9,7 @@ class Barrier {
 
   /// Creates a new [Barrier].
   /// [name] Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
-  Barrier({
+  const Barrier({
     this.name,
   });
 

@@ -50,7 +50,7 @@ class FloorsettingState {
   /// [name] Identifier. The resource name.
   /// [parent] Will be any one of these:
   /// [updateTime] [Output only] Update timestamp
-  FloorsettingState({
+  const FloorsettingState({
     this.aiPlatformFloorSetting,
     this.createTime,
     this.enableFloorSettingEnforcement,

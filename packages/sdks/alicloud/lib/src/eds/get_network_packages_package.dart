@@ -35,7 +35,7 @@ class GetNetworkPackagesPackage {
   /// [officeSiteId] The ID of office site.
   /// [officeSiteName] The name of office site.
   /// [status] The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
-  GetNetworkPackagesPackage({
+  const GetNetworkPackagesPackage({
     required this.bandwidth,
     required this.createTime,
     required this.eipAddresses,

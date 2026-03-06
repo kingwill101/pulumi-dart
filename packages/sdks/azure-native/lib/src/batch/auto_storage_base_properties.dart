@@ -17,7 +17,7 @@ class AutoStorageBaseProperties {
   /// [authenticationMode] The authentication mode which the Batch service will use to manage the auto-storage account.
   /// [nodeIdentityReference] The identity referenced here must be assigned to pools which have compute nodes that need access to auto-storage.
   /// [storageAccountId] The resource ID of the storage account to be used for auto-storage account.
-  AutoStorageBaseProperties({
+  const AutoStorageBaseProperties({
     this.authenticationMode,
     this.nodeIdentityReference,
     required this.storageAccountId,

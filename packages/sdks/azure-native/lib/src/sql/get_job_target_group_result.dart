@@ -22,7 +22,7 @@ class GetJobTargetGroupResult {
   /// [members] Members of the target group.
   /// [name] Resource name.
   /// [type] Resource type.
-  GetJobTargetGroupResult({
+  const GetJobTargetGroupResult({
     required this.azureApiVersion,
     required this.id,
     required this.members,

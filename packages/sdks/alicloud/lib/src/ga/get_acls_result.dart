@@ -30,7 +30,7 @@ class GetAclsResult {
   /// [names] A list of Acl names.
   /// [outputFile] Optional.
   /// [status] The status of the resource.
-  GetAclsResult({
+  const GetAclsResult({
     this.aclName,
     required this.acls,
     this.enableDetails,

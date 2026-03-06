@@ -21,7 +21,7 @@ class GetTagTemplateIamPolicyResult {
   /// [project] Required.
   /// [region] Required.
   /// [tagTemplate] Required.
-  GetTagTemplateIamPolicyResult({
+  const GetTagTemplateIamPolicyResult({
     required this.etag,
     required this.id,
     required this.policyData,

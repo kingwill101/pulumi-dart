@@ -11,7 +11,7 @@ class SoftwareUpdateConfigurationPostTask {
   /// Creates a new [SoftwareUpdateConfigurationPostTask].
   /// [parameters] Specifies a map of parameters for the task.
   /// [source] The name of the runbook for the post task.
-  SoftwareUpdateConfigurationPostTask({
+  const SoftwareUpdateConfigurationPostTask({
     this.parameters,
     this.source,
   });

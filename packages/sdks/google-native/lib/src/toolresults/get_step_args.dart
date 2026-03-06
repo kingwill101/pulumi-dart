@@ -17,7 +17,7 @@ class GetStepArgs {
   /// [historyId] Required.
   /// [project] Optional.
   /// [stepId] Required.
-  GetStepArgs({
+  const GetStepArgs({
     required this.executionId,
     required this.historyId,
     this.project,

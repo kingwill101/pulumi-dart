@@ -11,7 +11,7 @@ class StreamProcessorSettingsConnectedHome {
   /// Creates a new [StreamProcessorSettingsConnectedHome].
   /// [labels] Specifies what you want to detect in the video, such as people, packages, or pets. The current valid labels you can include in this list are: `PERSON`, `PET`, `PACKAGE`, and `ALL`.
   /// [minConfidence] Minimum confidence required to label an object in the video.
-  StreamProcessorSettingsConnectedHome({
+  const StreamProcessorSettingsConnectedHome({
     this.labels,
     this.minConfidence,
   });

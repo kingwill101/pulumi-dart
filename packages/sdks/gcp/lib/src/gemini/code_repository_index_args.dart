@@ -31,7 +31,7 @@ class CodeRepositoryIndexArgs {
   /// [labels] Optional. Labels as key value pairs.
   /// [location] The location of the Code Repository Index, for example `us-central1`.
   /// [project] The ID of the project in which the resource belongs.
-  CodeRepositoryIndexArgs({
+  const CodeRepositoryIndexArgs({
     required this.codeRepositoryIndexId,
     this.forceDestroy,
     this.kmsKey,

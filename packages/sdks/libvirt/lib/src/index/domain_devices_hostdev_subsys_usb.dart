@@ -9,7 +9,7 @@ class DomainDevicesHostdevSubsysUsb {
 
   /// Creates a new [DomainDevicesHostdevSubsysUsb].
   /// [source] Specifies the source attributes for the USB subsystem device, detailing its origin.
-  DomainDevicesHostdevSubsysUsb({
+  const DomainDevicesHostdevSubsysUsb({
     this.source,
   });
 

@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlGroupConcatMaxLen {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlGroupConcatMaxLen({
+  const GetDatabaseMysqlConfigMysqlGroupConcatMaxLen({
     required this.description,
     required this.example,
     required this.maximum,

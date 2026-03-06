@@ -20,7 +20,7 @@ class S3LogsConfigResponse {
   /// [encryptionDisabled] &lt;p&gt; Set to true if you do not want your S3 build log output encrypted. By default S3 build logs are encrypted. &lt;/p&gt;
   /// [location] &lt;p&gt; The ARN of an S3 bucket and the path prefix for S3 logs. If your Amazon S3 bucket name is &lt;code&gt;my-bucket&lt;/code&gt;, and your path prefix is &lt;code&gt;build-log&lt;/code&gt;, then acceptable formats are &lt;code&gt;my-bucket/build-log&lt;/code&gt; or &lt;code&gt;arn:aws:s3:::my-bucket/build-log&lt;/code&gt;. &lt;/p&gt;
   /// [status] &lt;p&gt;The current status of the S3 build logs. Valid values are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLED&lt;/code&gt;: S3 build logs are enabled for this build project.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLED&lt;/code&gt;: S3 build logs are not enabled for this build project.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  S3LogsConfigResponse({
+  const S3LogsConfigResponse({
     this.bucketOwnerAccess,
     this.encryptionDisabled,
     this.location,

@@ -12,7 +12,7 @@ class LaunchTemplateInstanceMarketOptions {
   /// Creates a new [LaunchTemplateInstanceMarketOptions].
   /// [marketType] The market type. Can be `spot`.
   /// [spotOptions] The options for [Spot Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html)
-  LaunchTemplateInstanceMarketOptions({
+  const LaunchTemplateInstanceMarketOptions({
     this.marketType,
     this.spotOptions,
   });

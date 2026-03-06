@@ -15,7 +15,7 @@ class CloudHsmPropertiesResponse {
   /// [fqdn] FQDN of the Cloud HSM
   /// [state] The Cloud HSM State. Values are: Deploying, ConfiguringSlb, Starting, Starting, Failed, Failed, Deleting, DeletingSlbEntry, InitialProvisioning, Updating
   /// [stateMessage] The Cloud HSM State message
-  CloudHsmPropertiesResponse({
+  const CloudHsmPropertiesResponse({
     this.fqdn,
     this.state,
     this.stateMessage,

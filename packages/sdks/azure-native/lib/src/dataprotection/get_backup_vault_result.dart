@@ -38,7 +38,7 @@ class GetBackupVaultResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetBackupVaultResult({
+  const GetBackupVaultResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

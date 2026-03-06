@@ -33,7 +33,7 @@ class GetPublicIpPrefixResult {
   /// [skuTier] The SKU Tier of the Public IP.
   /// [tags] A mapping of tags to assigned to the resource.
   /// [zones] A list of Availability Zones in which this Public IP Prefix is located.
-  GetPublicIpPrefixResult({
+  const GetPublicIpPrefixResult({
     required this.id,
     required this.ipPrefix,
     required this.location,

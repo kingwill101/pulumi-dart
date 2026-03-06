@@ -35,7 +35,7 @@ class WorkforceOidcConfig {
   /// [scope] An array of string identifiers used to refer to the specific pieces of user data or claims that the client application wants to access.
   /// [tokenEndpoint] The OIDC IdP token endpoint used to configure your private workforce.
   /// [userInfoEndpoint] The OIDC IdP user information endpoint used to configure your private workforce.
-  WorkforceOidcConfig({
+  const WorkforceOidcConfig({
     this.authenticationRequestExtraParams,
     required this.authorizationEndpoint,
     required this.clientId,

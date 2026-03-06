@@ -12,7 +12,7 @@ class GoogleCloudRetailV2ConditionTimeRangeResponse {
   /// Creates a new [GoogleCloudRetailV2ConditionTimeRangeResponse].
   /// [endTime] End of time range. Range is inclusive.
   /// [startTime] Start of time range. Range is inclusive.
-  GoogleCloudRetailV2ConditionTimeRangeResponse({
+  const GoogleCloudRetailV2ConditionTimeRangeResponse({
     required this.endTime,
     required this.startTime,
   });

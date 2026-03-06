@@ -24,7 +24,7 @@ class GetAuthorizationLoginLinkPostArgs {
   /// [postLoginRedirectUrl] The redirect URL after login has completed.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetAuthorizationLoginLinkPostArgs({
+  const GetAuthorizationLoginLinkPostArgs({
     required this.authorizationId,
     required this.authorizationProviderId,
     this.postLoginRedirectUrl,

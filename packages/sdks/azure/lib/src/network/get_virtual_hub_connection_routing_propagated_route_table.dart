@@ -11,7 +11,7 @@ class GetVirtualHubConnectionRoutingPropagatedRouteTable {
   /// Creates a new [GetVirtualHubConnectionRoutingPropagatedRouteTable].
   /// [labels] The list of labels assigned to this route table.
   /// [routeTableIds] A list of Route Table IDs associated with this Virtual Hub Connection.
-  GetVirtualHubConnectionRoutingPropagatedRouteTable({
+  const GetVirtualHubConnectionRoutingPropagatedRouteTable({
     required this.labels,
     required this.routeTableIds,
   });

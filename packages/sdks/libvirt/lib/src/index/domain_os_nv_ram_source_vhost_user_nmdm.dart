@@ -11,7 +11,7 @@ class DomainOsNvRamSourceVhostUserNmdm {
   /// Creates a new [DomainOsNvRamSourceVhostUserNmdm].
   /// [master] Specifies the master device in a master-slave NMDM configuration for the EGD backend.
   /// [slave] Specifies the slave device in a master-slave NMDM configuration for the EGD backend.
-  DomainOsNvRamSourceVhostUserNmdm({
+  const DomainOsNvRamSourceVhostUserNmdm({
     required this.master,
     required this.slave,
   });

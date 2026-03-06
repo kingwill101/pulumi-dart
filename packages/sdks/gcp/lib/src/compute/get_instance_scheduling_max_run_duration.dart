@@ -15,7 +15,7 @@ class GetInstanceSchedulingMaxRunDuration {
   /// Creates a new [GetInstanceSchedulingMaxRunDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  GetInstanceSchedulingMaxRunDuration({
+  const GetInstanceSchedulingMaxRunDuration({
     required this.nanos,
     required this.seconds,
   });

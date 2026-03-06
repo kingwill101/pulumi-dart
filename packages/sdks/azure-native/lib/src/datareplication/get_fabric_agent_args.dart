@@ -18,7 +18,7 @@ class GetFabricAgentArgs {
   /// [fabricAgentName] The fabric agent name.
   /// [fabricName] The fabric name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFabricAgentArgs({
+  const GetFabricAgentArgs({
     required this.fabricAgentName,
     required this.fabricName,
     required this.resourceGroupName,

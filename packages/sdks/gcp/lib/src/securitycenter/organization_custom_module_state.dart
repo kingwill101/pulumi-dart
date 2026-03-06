@@ -42,7 +42,7 @@ class OrganizationCustomModuleState {
   /// [name] The resource name of the custom module. Its format is "organizations/{org_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
   /// [organization] Numerical ID of the parent organization.
   /// [updateTime] The time at which the custom module was last updated.
-  OrganizationCustomModuleState({
+  const OrganizationCustomModuleState({
     this.ancestorModule,
     this.customConfig,
     this.displayName,

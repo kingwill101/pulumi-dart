@@ -30,7 +30,7 @@ class PrivateLocationState {
   /// [locationId] An alternate identifier based on name.
   /// [name] The name of the private location.
   /// [verifiedScriptExecution] The private location requires a password to edit if value is true. Defaults to `false`
-  PrivateLocationState({
+  const PrivateLocationState({
     this.accountId,
     this.description,
     this.domainId,

@@ -11,7 +11,7 @@ class ProjectEnvironmentDockerServer {
   /// Creates a new [ProjectEnvironmentDockerServer].
   /// [computeType] Compute type for the Docker server. Valid values: `BUILD_GENERAL1_SMALL`, `BUILD_GENERAL1_MEDIUM`, `BUILD_GENERAL1_LARGE`, `BUILD_GENERAL1_XLARGE`, and `BUILD_GENERAL1_2XLARGE`.
   /// [securityGroupIds] List of security group IDs to assign to the Docker server.
-  ProjectEnvironmentDockerServer({
+  const ProjectEnvironmentDockerServer({
     required this.computeType,
     this.securityGroupIds,
   });

@@ -20,7 +20,7 @@ class UrlSigningKeyParameters {
   /// [secretSource] Resource reference to the Azure Key Vault secret. Expected to be in format of /subscriptions/{​​​​​​​​​subscriptionId}​​​​​​​​​/resourceGroups/{​​​​​​​​​resourceGroupName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/providers/Microsoft.KeyVault/vaults/{vaultName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​/secrets/{secretName}​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
   /// [secretVersion] Version of the secret to be used
   /// [type] The type of the secret resource.
-  UrlSigningKeyParameters({
+  const UrlSigningKeyParameters({
     required this.keyId,
     required this.secretSource,
     required this.secretVersion,

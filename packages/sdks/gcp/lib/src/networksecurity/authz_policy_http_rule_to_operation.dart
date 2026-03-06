@@ -26,7 +26,7 @@ class AuthzPolicyHttpRuleToOperation {
   /// [hosts] A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
   /// [methods] A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
   /// [paths] A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-  AuthzPolicyHttpRuleToOperation({
+  const AuthzPolicyHttpRuleToOperation({
     this.headerSet,
     this.hosts,
     this.methods,

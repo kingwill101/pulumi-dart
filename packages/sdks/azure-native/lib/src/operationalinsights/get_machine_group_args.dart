@@ -24,7 +24,7 @@ class GetMachineGroupArgs {
   /// [resourceGroupName] Resource group name within the specified subscriptionId.
   /// [startTime] UTC date and time specifying the start time of an interval. When not specified the service uses DateTime.UtcNow - 10m
   /// [workspaceName] OMS workspace containing the resources of interest.
-  GetMachineGroupArgs({
+  const GetMachineGroupArgs({
     this.endTime,
     required this.machineGroupName,
     required this.resourceGroupName,

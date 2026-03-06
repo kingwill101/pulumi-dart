@@ -57,7 +57,7 @@ class BucketObjectState {
   /// [serverSideEncryption] Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
   /// [source] The path to the source file being uploaded to the bucket.
   /// [versionId] A unique version ID value for the object, if bucket versioning is enabled.
-  BucketObjectState({
+  const BucketObjectState({
     this.acl,
     this.bucket,
     this.cacheControl,

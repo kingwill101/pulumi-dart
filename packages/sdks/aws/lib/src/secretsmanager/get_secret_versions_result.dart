@@ -24,7 +24,7 @@ class GetSecretVersionsResult {
   /// [region] Required.
   /// [secretId] Required.
   /// [versions] List of the versions of the secret. Attributes are specified below.
-  GetSecretVersionsResult({
+  const GetSecretVersionsResult({
     required this.arn,
     required this.id,
     this.includeDeprecated,

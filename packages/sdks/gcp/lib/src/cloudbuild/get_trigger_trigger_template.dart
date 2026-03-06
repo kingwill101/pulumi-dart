@@ -33,7 +33,7 @@ class GetTriggerTriggerTemplate {
   /// [projectId] ID of the project that owns the Cloud Source Repository. If
   /// [repoName] Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
   /// [tagName] Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
-  GetTriggerTriggerTemplate({
+  const GetTriggerTriggerTemplate({
     required this.branchName,
     required this.commitSha,
     required this.dir,

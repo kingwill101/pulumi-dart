@@ -12,7 +12,7 @@ class FirewallRuleProperties {
   /// Creates a new [FirewallRuleProperties].
   /// [endIpAddress] The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
   /// [startIpAddress] The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
-  FirewallRuleProperties({
+  const FirewallRuleProperties({
     required this.endIpAddress,
     required this.startIpAddress,
   });

@@ -90,7 +90,7 @@ class BucketObjectArgs {
   /// [storageClass] [Storage Class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html#AmazonS3-PutObject-request-header-StorageClass) for the object. Defaults to "`STANDARD`".
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [websiteRedirect] Target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
-  BucketObjectArgs({
+  const BucketObjectArgs({
     this.acl,
     required this.bucket,
     this.bucketKeyEnabled,

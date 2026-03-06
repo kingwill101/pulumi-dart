@@ -35,7 +35,7 @@ class BindingState {
   /// [instanceId] The ID of the instance.
   /// [sourceExchange] The name of the source exchange.
   /// [virtualHostName] The name of the vhost.
-  BindingState({
+  const BindingState({
     this.argument,
     this.bindingKey,
     this.bindingType,

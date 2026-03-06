@@ -28,7 +28,7 @@ class GalleryScriptArgs {
   /// [properties] Describes the properties of a gallery Script Definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  GalleryScriptArgs({
+  const GalleryScriptArgs({
     required this.galleryName,
     this.galleryScriptName,
     this.location,

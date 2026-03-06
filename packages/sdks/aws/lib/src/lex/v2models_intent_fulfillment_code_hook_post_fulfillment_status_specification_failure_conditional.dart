@@ -16,7 +16,7 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
   /// [active] Whether a conditional branch is active. When active is false, the conditions are not evaluated.
   /// [conditionalBranches] Configuration blocks for conditional branches. A conditional branch is made up of a condition, a response and a next step. The response and next step are executed when the condition is true. See `conditional_branch`.
   /// [defaultBranch] Configuration block for the conditional branch that should be followed when the conditions for other branches are not satisfied. A branch is made up of a condition, a response and a next step. See `default_branch`.
-  V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditional({
+  const V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditional({
     required this.active,
     this.conditionalBranches,
     this.defaultBranch,

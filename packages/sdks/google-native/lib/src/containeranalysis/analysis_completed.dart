@@ -8,7 +8,7 @@ class AnalysisCompleted {
 
   /// Creates a new [AnalysisCompleted].
   /// [analysisType] Optional.
-  AnalysisCompleted({
+  const AnalysisCompleted({
     this.analysisType,
   });
 

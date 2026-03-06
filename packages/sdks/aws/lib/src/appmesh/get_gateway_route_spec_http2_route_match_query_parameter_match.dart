@@ -7,7 +7,7 @@ class GetGatewayRouteSpecHttp2RouteMatchQueryParameterMatch {
 
   /// Creates a new [GetGatewayRouteSpecHttp2RouteMatchQueryParameterMatch].
   /// [exact] Required.
-  GetGatewayRouteSpecHttp2RouteMatchQueryParameterMatch({
+  const GetGatewayRouteSpecHttp2RouteMatchQueryParameterMatch({
     required this.exact,
   });
 

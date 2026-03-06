@@ -15,7 +15,7 @@ class GetGraphQueryArgs {
   /// Creates a new [GetGraphQueryArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Graph Query resource.
-  GetGraphQueryArgs({
+  const GetGraphQueryArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

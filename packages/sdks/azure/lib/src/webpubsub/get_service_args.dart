@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [name] Specifies the name of the Web Pubsub service.
   /// [resourceGroupName] Specifies the name of the resource group the Web Pubsub service is located in.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

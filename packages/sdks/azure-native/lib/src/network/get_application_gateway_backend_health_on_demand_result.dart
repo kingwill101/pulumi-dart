@@ -13,7 +13,7 @@ class GetApplicationGatewayBackendHealthOnDemandResult {
   /// Creates a new [GetApplicationGatewayBackendHealthOnDemandResult].
   /// [backendAddressPool] Reference to an ApplicationGatewayBackendAddressPool resource.
   /// [backendHealthHttpSettings] Application gateway BackendHealthHttp settings.
-  GetApplicationGatewayBackendHealthOnDemandResult({
+  const GetApplicationGatewayBackendHealthOnDemandResult({
     this.backendAddressPool,
     this.backendHealthHttpSettings,
   });

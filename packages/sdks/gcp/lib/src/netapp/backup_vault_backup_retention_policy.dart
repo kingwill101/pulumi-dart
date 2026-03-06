@@ -20,7 +20,7 @@ class BackupVaultBackupRetentionPolicy {
   /// [manualBackupImmutable] Indicates if the manual backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
   /// [monthlyBackupImmutable] Indicates if the monthly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
   /// [weeklyBackupImmutable] Indicates if the weekly backups are immutable. At least one of daily_backup_immutable, weekly_backup_immutable, monthly_backup_immutable and manual_backup_immutable must be true.
-  BackupVaultBackupRetentionPolicy({
+  const BackupVaultBackupRetentionPolicy({
     required this.backupMinimumEnforcedRetentionDays,
     this.dailyBackupImmutable,
     this.manualBackupImmutable,

@@ -15,7 +15,7 @@ class GetVirtualNetworkGatewayConnectionArgs {
   /// Creates a new [GetVirtualNetworkGatewayConnectionArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayConnectionName] The name of the virtual network gateway connection.
-  GetVirtualNetworkGatewayConnectionArgs({
+  const GetVirtualNetworkGatewayConnectionArgs({
     required this.resourceGroupName,
     required this.virtualNetworkGatewayConnectionName,
   });

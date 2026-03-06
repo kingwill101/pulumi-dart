@@ -21,7 +21,7 @@ class GetMountPointsArgs {
   /// [ids] A list of Mount Point IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Mount Point. Valid values: `Active`, `Inactive`.
-  GetMountPointsArgs({
+  const GetMountPointsArgs({
     required this.fileSystemId,
     this.ids,
     this.outputFile,

@@ -31,7 +31,7 @@ class GetVolumeGroupResult {
   /// [name] Required.
   /// [networkRules] One or more `network_rule` blocks as defined below.
   /// [protocolType] The type of the storage target.
-  GetVolumeGroupResult({
+  const GetVolumeGroupResult({
     required this.elasticSanId,
     required this.encryptionType,
     required this.encryptions,

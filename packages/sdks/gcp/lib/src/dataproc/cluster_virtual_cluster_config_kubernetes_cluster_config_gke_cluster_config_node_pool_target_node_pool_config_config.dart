@@ -25,7 +25,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   /// [minCpuPlatform] Minimum CPU platform to be used by this instance.
   /// [preemptible] Whether the nodes are created as preemptible VM instances.
   /// [spot] Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
-  ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig({
+  const ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig({
     this.localSsdCount,
     this.machineType,
     this.minCpuPlatform,

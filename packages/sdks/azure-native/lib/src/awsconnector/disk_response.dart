@@ -27,7 +27,7 @@ class DiskResponse {
   /// [isSystemDisk] Is the Attached disk is the system disk of the Instance.
   /// [path] Path of the disk attached to the instance.
   /// [sizeInGb] Size of the disk attached to the Instance.
-  DiskResponse({
+  const DiskResponse({
     this.attachedTo,
     this.attachmentState,
     this.diskName,

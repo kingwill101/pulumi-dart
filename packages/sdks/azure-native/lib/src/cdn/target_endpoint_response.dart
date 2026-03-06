@@ -12,7 +12,7 @@ class TargetEndpointResponse {
   /// Creates a new [TargetEndpointResponse].
   /// [ports] The Ports to be allowed for the FQDN.
   /// [targetFqdn] The FQDN for traffic endpoint.
-  TargetEndpointResponse({
+  const TargetEndpointResponse({
     this.ports,
     this.targetFqdn,
   });

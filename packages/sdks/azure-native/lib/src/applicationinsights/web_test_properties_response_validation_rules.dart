@@ -22,7 +22,7 @@ class WebTestPropertiesResponseValidationRules {
   /// [ignoreHttpStatusCode] When set, validation will ignore the status code.
   /// [sSLCertRemainingLifetimeCheck] A number of days to check still remain before the the existing SSL cert expires.  Value must be positive and the SSLCheck must be set to true.
   /// [sSLCheck] Checks to see if the SSL cert is still valid.
-  WebTestPropertiesResponseValidationRules({
+  const WebTestPropertiesResponseValidationRules({
     this.contentValidation,
     this.expectedHttpStatusCode,
     this.ignoreHttpStatusCode,

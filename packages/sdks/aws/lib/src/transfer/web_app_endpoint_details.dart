@@ -9,7 +9,7 @@ class WebAppEndpointDetails {
 
   /// Creates a new [WebAppEndpointDetails].
   /// [vpc] Block defining VPC configuration for hosting the web app endpoint within a VPC. See Vpc below.
-  WebAppEndpointDetails({
+  const WebAppEndpointDetails({
     this.vpc,
   });
 

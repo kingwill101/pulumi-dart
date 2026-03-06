@@ -20,7 +20,7 @@ class LoadBalancerBackendServer {
   /// [serverId] Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
   /// [type] Backend server type  Example value: ens.
   /// [weight] Weight of the backend server  Example value: 100.
-  LoadBalancerBackendServer({
+  const LoadBalancerBackendServer({
     this.ip,
     this.port,
     required this.serverId,

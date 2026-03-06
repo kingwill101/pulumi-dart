@@ -11,7 +11,7 @@ class GetAccountsAccountDatabasePrivilege {
   /// Creates a new [GetAccountsAccountDatabasePrivilege].
   /// [accountPrivilege] Account privilege of database
   /// [dbName] The account owned database name
-  GetAccountsAccountDatabasePrivilege({
+  const GetAccountsAccountDatabasePrivilege({
     required this.accountPrivilege,
     required this.dbName,
   });

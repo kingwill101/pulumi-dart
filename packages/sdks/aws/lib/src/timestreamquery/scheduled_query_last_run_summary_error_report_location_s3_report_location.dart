@@ -11,7 +11,7 @@ class ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation {
   /// Creates a new [ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation].
   /// [bucketName] S3 bucket name.
   /// [objectKey] S3 key.
-  ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation({
+  const ScheduledQueryLastRunSummaryErrorReportLocationS3ReportLocation({
     this.bucketName,
     this.objectKey,
   });

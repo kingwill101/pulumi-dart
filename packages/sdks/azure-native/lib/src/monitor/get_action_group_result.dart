@@ -82,7 +82,7 @@ class GetActionGroupResult {
   /// [type] Azure resource type
   /// [voiceReceivers] The list of voice receivers that are part of this action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this action group.
-  GetActionGroupResult({
+  const GetActionGroupResult({
     this.armRoleReceivers,
     this.automationRunbookReceivers,
     required this.azureApiVersion,

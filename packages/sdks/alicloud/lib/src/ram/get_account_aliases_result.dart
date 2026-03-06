@@ -12,7 +12,7 @@ class GetAccountAliasesResult {
   /// [accountAlias] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
-  GetAccountAliasesResult({
+  const GetAccountAliasesResult({
     required this.accountAlias,
     required this.id,
     this.outputFile,

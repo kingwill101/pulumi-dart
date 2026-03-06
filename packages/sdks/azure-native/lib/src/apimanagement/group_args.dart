@@ -31,7 +31,7 @@ class GroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [type] Group type.
-  GroupArgs({
+  const GroupArgs({
     this.description,
     required this.displayName,
     this.externalId,

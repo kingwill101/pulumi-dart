@@ -90,7 +90,7 @@ class GetSubscriptionJobsJob {
   /// [subscriptionInstanceVpcId] The ID of subscription instance vpc.
   /// [subscriptionInstanceVswitchId] The ID of subscription instance vswitch.
   /// [tags] The tag of the resource.
-  GetSubscriptionJobsJob({
+  const GetSubscriptionJobsJob({
     required this.checkpoint,
     required this.createTime,
     required this.dbList,

@@ -20,7 +20,7 @@ class GetApplicationGatewaySslProfileSslPolicy {
   /// [minProtocolVersion] The minimum TLS version.
   /// [policyName] The Name of the Policy.
   /// [policyType] The Type of the Policy.
-  GetApplicationGatewaySslProfileSslPolicy({
+  const GetApplicationGatewaySslProfileSslPolicy({
     required this.cipherSuites,
     required this.disabledProtocols,
     required this.minProtocolVersion,

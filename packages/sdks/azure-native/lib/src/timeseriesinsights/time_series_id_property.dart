@@ -12,7 +12,7 @@ class TimeSeriesIdProperty {
   /// Creates a new [TimeSeriesIdProperty].
   /// [name] The name of the property.
   /// [type] The type of the property.
-  TimeSeriesIdProperty({
+  const TimeSeriesIdProperty({
     this.name,
     this.type,
   });

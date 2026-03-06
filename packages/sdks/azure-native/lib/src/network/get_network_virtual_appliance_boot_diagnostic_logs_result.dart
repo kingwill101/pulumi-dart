@@ -8,7 +8,7 @@ class GetNetworkVirtualApplianceBootDiagnosticLogsResult {
 
   /// Creates a new [GetNetworkVirtualApplianceBootDiagnosticLogsResult].
   /// [instanceId] The network virtual appliance instance id for which boot diagnostic logs is being requested
-  GetNetworkVirtualApplianceBootDiagnosticLogsResult({
+  const GetNetworkVirtualApplianceBootDiagnosticLogsResult({
     this.instanceId,
   });
 

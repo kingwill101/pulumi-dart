@@ -9,7 +9,7 @@ class AdvancedNetworkingObservability {
 
   /// Creates a new [AdvancedNetworkingObservability].
   /// [enabled] Indicates the enablement of Advanced Networking observability functionalities on clusters.
-  AdvancedNetworkingObservability({
+  const AdvancedNetworkingObservability({
     this.enabled,
   });
 

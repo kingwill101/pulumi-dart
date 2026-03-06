@@ -28,7 +28,7 @@ class MachineExtensionArgs {
   /// [properties] Describes Machine Extension Properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  MachineExtensionArgs({
+  const MachineExtensionArgs({
     this.extensionName,
     this.location,
     required this.machineName,

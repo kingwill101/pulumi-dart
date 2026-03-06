@@ -37,7 +37,7 @@ class InstanceFailoverGroupArgs {
   /// [readWriteEndpoint] Read-write endpoint of the failover group instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [secondaryType] Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
-  InstanceFailoverGroupArgs({
+  const InstanceFailoverGroupArgs({
     this.failoverGroupName,
     required this.locationName,
     required this.managedInstancePairs,

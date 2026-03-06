@@ -22,7 +22,7 @@ class CustomRuleResponse {
   /// [matchConditions] List of match conditions.
   /// [name] Defines the name of the custom rule
   /// [priority] Defines in what order this rule be evaluated in the overall list of custom rules
-  CustomRuleResponse({
+  const CustomRuleResponse({
     required this.action,
     this.enabledState,
     required this.matchConditions,

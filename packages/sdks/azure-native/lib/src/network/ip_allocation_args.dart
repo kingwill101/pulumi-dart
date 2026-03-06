@@ -42,7 +42,7 @@ class IpAllocationArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   /// [type] The type for the IpAllocation.
-  IpAllocationArgs({
+  const IpAllocationArgs({
     this.allocationTags,
     this.id,
     this.ipAllocationName,

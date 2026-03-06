@@ -28,7 +28,7 @@ class CompilationResultArgs {
   /// [releaseConfig] Immutable. The name of the release config to compile. The release config's 'current_compilation_result' field will be updated to this compilation result. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
   /// [repositoryId] Required.
   /// [workspace] Immutable. The name of the workspace to compile. Must be in the format `projects/*/locations/*/repositories/*/workspaces/*`.
-  CompilationResultArgs({
+  const CompilationResultArgs({
     this.codeCompilationConfig,
     this.gitCommitish,
     this.location,

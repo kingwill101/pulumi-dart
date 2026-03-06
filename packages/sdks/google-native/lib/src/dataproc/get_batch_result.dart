@@ -65,7 +65,7 @@ class GetBatchResult {
   /// [stateMessage] Batch state details, such as a failure description if the state is FAILED.
   /// [stateTime] The time when the batch entered a current state.
   /// [uuid] A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
-  GetBatchResult({
+  const GetBatchResult({
     required this.createTime,
     required this.creator,
     required this.environmentConfig,

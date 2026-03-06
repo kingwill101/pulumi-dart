@@ -15,7 +15,7 @@ class GetHciClusterArgs {
   /// Creates a new [GetHciClusterArgs].
   /// [name] The name of the Azure Stack HCI Cluster.
   /// [resourceGroupName] The name of the Resource Group where the Azure Stack HCI Cluster exists.
-  GetHciClusterArgs({
+  const GetHciClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

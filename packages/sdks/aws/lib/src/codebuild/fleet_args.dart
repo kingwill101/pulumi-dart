@@ -50,7 +50,7 @@ class FleetArgs {
   /// [scalingConfiguration] Configuration block. This option is only valid when your overflow behavior is `QUEUE`. See `scaling_configuration` below.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfigs] Configuration block. See `vpc_config` below.
-  FleetArgs({
+  const FleetArgs({
     required this.baseCapacity,
     this.computeConfiguration,
     required this.computeType,

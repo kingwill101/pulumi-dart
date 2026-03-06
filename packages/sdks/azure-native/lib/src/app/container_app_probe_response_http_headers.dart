@@ -12,7 +12,7 @@ class ContainerAppProbeResponseHttpHeaders {
   /// Creates a new [ContainerAppProbeResponseHttpHeaders].
   /// [name] The header field name
   /// [value] The header field value
-  ContainerAppProbeResponseHttpHeaders({
+  const ContainerAppProbeResponseHttpHeaders({
     required this.name,
     required this.value,
   });

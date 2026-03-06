@@ -24,7 +24,7 @@ class GetNetworkVirtualApplianceBootDiagnosticLogsArgs {
   /// [networkVirtualApplianceName] The name of Network Virtual Appliance.
   /// [resourceGroupName] The name of the resource group.
   /// [serialConsoleStorageSasUrl] Specifies the sas-url to the storage blob into which serial console logs for the requested instance will be written
-  GetNetworkVirtualApplianceBootDiagnosticLogsArgs({
+  const GetNetworkVirtualApplianceBootDiagnosticLogsArgs({
     this.consoleScreenshotStorageSasUrl,
     this.instanceId,
     required this.networkVirtualApplianceName,

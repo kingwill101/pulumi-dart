@@ -13,7 +13,7 @@ class GetRouteArgs {
   /// Creates a new [GetRouteArgs].
   /// [project] Optional.
   /// [route] Required.
-  GetRouteArgs({
+  const GetRouteArgs({
     this.project,
     required this.route,
   });

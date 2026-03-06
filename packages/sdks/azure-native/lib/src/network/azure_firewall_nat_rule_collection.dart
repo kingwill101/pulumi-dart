@@ -23,7 +23,7 @@ class AzureFirewallNatRuleCollection {
   /// [name] The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
   /// [priority] Priority of the NAT rule collection resource.
   /// [rules] Collection of rules used by a NAT rule collection.
-  AzureFirewallNatRuleCollection({
+  const AzureFirewallNatRuleCollection({
     this.action,
     this.id,
     this.name,

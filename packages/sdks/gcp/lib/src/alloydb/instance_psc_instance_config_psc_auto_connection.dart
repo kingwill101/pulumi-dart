@@ -29,7 +29,7 @@ class InstancePscInstanceConfigPscAutoConnection {
   /// [consumerProject] The consumer project to which the PSC service automation endpoint will
   /// [ipAddress] (Output)
   /// [status] (Output)
-  InstancePscInstanceConfigPscAutoConnection({
+  const InstancePscInstanceConfigPscAutoConnection({
     this.consumerNetwork,
     this.consumerNetworkStatus,
     this.consumerProject,

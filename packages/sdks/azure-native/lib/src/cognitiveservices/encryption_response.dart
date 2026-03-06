@@ -13,7 +13,7 @@ class EncryptionResponse {
   /// Creates a new [EncryptionResponse].
   /// [keySource] Enumerates the possible value of keySource for Encryption
   /// [keyVaultProperties] Properties of KeyVault
-  EncryptionResponse({
+  const EncryptionResponse({
     this.keySource,
     this.keyVaultProperties,
   });

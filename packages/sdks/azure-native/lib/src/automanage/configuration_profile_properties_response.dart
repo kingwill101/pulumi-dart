@@ -9,7 +9,7 @@ class ConfigurationProfilePropertiesResponse {
 
   /// Creates a new [ConfigurationProfilePropertiesResponse].
   /// [configuration] configuration dictionary of the configuration profile.
-  ConfigurationProfilePropertiesResponse({
+  const ConfigurationProfilePropertiesResponse({
     this.configuration,
   });
 

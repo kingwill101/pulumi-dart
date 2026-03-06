@@ -14,7 +14,7 @@ class RegionInstanceTemplateSchedulingGracefulShutdown {
   /// Creates a new [RegionInstanceTemplateSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
   /// [maxDuration] The time allotted for the instance to gracefully shut down.
-  RegionInstanceTemplateSchedulingGracefulShutdown({
+  const RegionInstanceTemplateSchedulingGracefulShutdown({
     required this.enabled,
     this.maxDuration,
   });

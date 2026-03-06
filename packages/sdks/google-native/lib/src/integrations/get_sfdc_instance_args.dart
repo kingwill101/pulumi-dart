@@ -17,7 +17,7 @@ class GetSfdcInstanceArgs {
   /// [productId] Required.
   /// [project] Optional.
   /// [sfdcInstanceId] Required.
-  GetSfdcInstanceArgs({
+  const GetSfdcInstanceArgs({
     required this.location,
     required this.productId,
     this.project,

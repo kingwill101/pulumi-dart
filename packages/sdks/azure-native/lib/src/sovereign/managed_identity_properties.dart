@@ -12,7 +12,7 @@ class ManagedIdentityProperties {
   /// Creates a new [ManagedIdentityProperties].
   /// [type] The type of managed identity.
   /// [userAssignedIdentityResourceId] The resource id of the managed identity.
-  ManagedIdentityProperties({
+  const ManagedIdentityProperties({
     required this.type,
     this.userAssignedIdentityResourceId,
   });

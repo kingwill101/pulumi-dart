@@ -12,7 +12,7 @@ class AgentReference {
   /// Creates a new [AgentReference].
   /// [agentId] Gets the agent's unique identifier within the organization (subscription).
   /// [agentName] Gets the agent's name (unique within the project/app).
-  AgentReference({
+  const AgentReference({
     this.agentId,
     this.agentName,
   });

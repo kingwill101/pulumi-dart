@@ -10,7 +10,7 @@ class OsPolicyAssignmentInstanceFilterExclusionLabel {
 
   /// Creates a new [OsPolicyAssignmentInstanceFilterExclusionLabel].
   /// [labels] Labels are identified by key/value pairs in this map.
-  OsPolicyAssignmentInstanceFilterExclusionLabel({
+  const OsPolicyAssignmentInstanceFilterExclusionLabel({
     this.labels,
   });
 

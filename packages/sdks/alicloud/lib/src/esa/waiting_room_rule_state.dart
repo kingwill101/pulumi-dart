@@ -26,7 +26,7 @@ class WaitingRoomRuleState {
   /// [status] Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// [waitingRoomId] Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   /// [waitingRoomRuleId] The rule ID, which can be used to query a specific rule.
-  WaitingRoomRuleState({
+  const WaitingRoomRuleState({
     this.rule,
     this.ruleName,
     this.siteId,

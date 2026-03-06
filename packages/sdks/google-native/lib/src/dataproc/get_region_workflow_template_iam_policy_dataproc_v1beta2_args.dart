@@ -17,7 +17,7 @@ class GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args {
   /// [project] Optional.
   /// [regionId] Required.
   /// [workflowTemplateId] Required.
-  GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args({
+  const GetRegionWorkflowTemplateIamPolicyDataprocV1beta2Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.regionId,

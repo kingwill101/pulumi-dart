@@ -109,7 +109,7 @@ class SnapshotState {
   /// [storageBytes] A size of the storage used by the snapshot. As snapshots share
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
   /// [zone] A reference to the zone where the disk is hosted.
-  SnapshotState({
+  const SnapshotState({
     this.chainName,
     this.creationTimestamp,
     this.description,

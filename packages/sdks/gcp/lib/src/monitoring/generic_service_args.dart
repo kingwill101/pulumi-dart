@@ -35,7 +35,7 @@ class GenericServiceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] An optional service ID to use. If not given, the server will generate a
   /// [userLabels] Labels which have been used to annotate the service. Label keys must start
-  GenericServiceArgs({
+  const GenericServiceArgs({
     this.basicService,
     this.displayName,
     this.project,

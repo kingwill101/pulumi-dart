@@ -34,7 +34,7 @@ class PlacementResponse {
   /// [partitionNumber] &lt;p&gt;The number of the partition that the instance is in. Valid only if the placement group strategy is set to &lt;code&gt;partition&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;.&lt;/p&gt;
   /// [spreadDomain] &lt;p&gt;Reserved for future use.&lt;/p&gt;
   /// [tenancy] &lt;p&gt;The tenancy of the instance. An instance with a tenancy of &lt;code&gt;dedicated&lt;/code&gt; runs on single-tenant hardware.&lt;/p&gt; &lt;p&gt;This parameter is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet'&gt;CreateFleet&lt;/a&gt;. The &lt;code&gt;host&lt;/code&gt; tenancy is not supported for &lt;a href='https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html'&gt;ImportInstance&lt;/a&gt; or for T3 instances that are configured for the &lt;code&gt;unlimited&lt;/code&gt; CPU credit option.&lt;/p&gt;
-  PlacementResponse({
+  const PlacementResponse({
     this.affinity,
     this.availabilityZone,
     this.groupId,

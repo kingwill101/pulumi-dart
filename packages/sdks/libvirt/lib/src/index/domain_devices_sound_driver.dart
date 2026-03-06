@@ -17,7 +17,7 @@ class DomainDevicesSoundDriver {
   /// [iommu] This field configures the IOMMU settings for the sound device driver in the guest domain.
   /// [packed] This field enables or disables packed mode for the sound device driver configuration in the domain.
   /// [pagePerVq] This field sets the page per virtual queue attribute for the sound device driver in the domain.
-  DomainDevicesSoundDriver({
+  const DomainDevicesSoundDriver({
     this.ats,
     this.iommu,
     this.packed,

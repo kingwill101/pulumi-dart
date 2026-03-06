@@ -21,7 +21,7 @@ class GetShardingNetworkPublicAddressesArgs {
   /// [nodeId] The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [role] The role of the node. Valid values: `Primary` or `Secondary`.
-  GetShardingNetworkPublicAddressesArgs({
+  const GetShardingNetworkPublicAddressesArgs({
     required this.dbInstanceId,
     this.nodeId,
     this.outputFile,

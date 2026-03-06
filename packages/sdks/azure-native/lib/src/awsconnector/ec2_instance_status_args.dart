@@ -25,7 +25,7 @@ class Ec2InstanceStatusArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Ec2InstanceStatusArgs({
+  const Ec2InstanceStatusArgs({
     this.location,
     this.name,
     this.properties,

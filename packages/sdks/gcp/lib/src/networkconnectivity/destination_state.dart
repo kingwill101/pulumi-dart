@@ -67,7 +67,7 @@ class DestinationState {
   /// [stateTimelines] The timeline of the expected `Destination` states or the current rest
   /// [uid] The Google-generated unique ID for the `Destination` resource.
   /// [updateTime] Time when the `Destination` resource was updated.
-  DestinationState({
+  const DestinationState({
     this.createTime,
     this.description,
     this.effectiveLabels,

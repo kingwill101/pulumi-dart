@@ -38,7 +38,7 @@ class GetConnectionMonitorTestResult {
   /// [sourceAgent] The Connection Monitor test source agent
   /// [testFrequencyInSec] The Connection Monitor test frequency in seconds
   /// [type] The type of the resource.
-  GetConnectionMonitorTestResult({
+  const GetConnectionMonitorTestResult({
     required this.azureApiVersion,
     this.destination,
     this.destinationPort,

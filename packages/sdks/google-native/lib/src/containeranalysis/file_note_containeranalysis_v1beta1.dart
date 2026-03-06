@@ -16,7 +16,7 @@ class FileNoteContaineranalysisV1beta1 {
   /// [checksum] Provide a unique identifier to match analysis information on each specific file in a package
   /// [fileType] This field provides information about the type of file identified
   /// [title] Identify the full path and filename that corresponds to the file information in this section
-  FileNoteContaineranalysisV1beta1({
+  const FileNoteContaineranalysisV1beta1({
     this.checksum,
     this.fileType,
     this.title,

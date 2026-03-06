@@ -18,7 +18,7 @@ class MetricTargetPatchAutoscalingV2beta2 {
   /// [averageValue] averageValue is the target value of the average of the metric across all relevant pods (as a quantity)
   /// [type] type represents whether the metric type is Utilization, Value, or AverageValue
   /// [value] value is the target value of the metric (as a quantity).
-  MetricTargetPatchAutoscalingV2beta2({
+  const MetricTargetPatchAutoscalingV2beta2({
     this.averageUtilization,
     this.averageValue,
     this.type,

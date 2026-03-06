@@ -51,7 +51,7 @@ class AssistantState {
   /// [name] Resource name of the assistant.
   /// [project] The ID of the project in which the resource belongs.
   /// [webGroundingType] The type of web grounding to use.
-  AssistantState({
+  const AssistantState({
     this.assistantId,
     this.collectionId,
     this.customerPolicy,

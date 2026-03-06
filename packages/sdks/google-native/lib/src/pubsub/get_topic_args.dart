@@ -13,7 +13,7 @@ class GetTopicArgs {
   /// Creates a new [GetTopicArgs].
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicArgs({
+  const GetTopicArgs({
     this.project,
     required this.topicId,
   });

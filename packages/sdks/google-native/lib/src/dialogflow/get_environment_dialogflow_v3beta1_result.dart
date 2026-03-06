@@ -30,7 +30,7 @@ class GetEnvironmentDialogflowV3beta1Result {
   /// [updateTime] Update time of this environment.
   /// [versionConfigs] A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
   /// [webhookConfig] The webhook configuration for this environment.
-  GetEnvironmentDialogflowV3beta1Result({
+  const GetEnvironmentDialogflowV3beta1Result({
     required this.description,
     required this.displayName,
     required this.name,

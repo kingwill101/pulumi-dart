@@ -28,7 +28,7 @@ class GetGatewaysArgs {
   /// [pageSize] Optional.
   /// [status] gateway status.
   /// [storageBundleId] storage bundle id.
-  GetGatewaysArgs({
+  const GetGatewaysArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

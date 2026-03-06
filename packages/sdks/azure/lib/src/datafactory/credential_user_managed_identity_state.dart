@@ -25,7 +25,7 @@ class CredentialUserManagedIdentityState {
   /// [description] The description for the Data Factory Credential.
   /// [identityId] The Resouce ID of an existing User Assigned Managed Identity. This can be changed without recreating the resource. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Credential. Changing this forces a new resource to be created.
-  CredentialUserManagedIdentityState({
+  const CredentialUserManagedIdentityState({
     this.annotations,
     this.dataFactoryId,
     this.description,

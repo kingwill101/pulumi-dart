@@ -11,7 +11,7 @@ class ApplicationUserAssignedIdentity {
   /// Creates a new [ApplicationUserAssignedIdentity].
   /// [name] The friendly name of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
-  ApplicationUserAssignedIdentity({
+  const ApplicationUserAssignedIdentity({
     required this.name,
     required this.principalId,
   });

@@ -54,7 +54,7 @@ class AwsElasticLoadBalancingV2LoadBalancerProperties {
   /// [subnets] The IDs of the subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings, but not both. To specify an Elastic IP address, specify subnet mappings instead of subnets. [Application Load Balancers] You must specify subnets from at least two Availability Zones. [Application Load Balancers on Outposts] You must specify one Outpost subnet. [Application Load Balancers on Local Zones] You can specify subnets from one or more Local Zones. [Network Load Balancers] You can specify subnets from one or more Availability Zones. [Gateway Load Balancers] You can specify subnets from one or more Availability Zones.
   /// [tags] The tags to assign to the load balancer.
   /// [type] The type of load balancer. The default is ``application``.
-  AwsElasticLoadBalancingV2LoadBalancerProperties({
+  const AwsElasticLoadBalancingV2LoadBalancerProperties({
     this.canonicalHostedZoneID,
     this.dnsName,
     this.enforceSecurityGroupInboundRulesOnPrivateLinkTraffic,

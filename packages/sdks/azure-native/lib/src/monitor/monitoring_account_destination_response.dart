@@ -16,7 +16,7 @@ class MonitoringAccountDestinationResponse {
   /// [accountId] The immutable ID  of the account.
   /// [accountResourceId] The resource ID of the monitoring account.
   /// [name] A friendly name for the destination.
-  MonitoringAccountDestinationResponse({
+  const MonitoringAccountDestinationResponse({
     required this.accountId,
     this.accountResourceId,
     this.name,

@@ -9,7 +9,7 @@ class PublicIPAddressArmReferenceResponse {
 
   /// Creates a new [PublicIPAddressArmReferenceResponse].
   /// [resourceId] The Azure Resource ID of a Public IP resource
-  PublicIPAddressArmReferenceResponse({
+  const PublicIPAddressArmReferenceResponse({
     this.resourceId,
   });
 

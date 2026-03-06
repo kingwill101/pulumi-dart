@@ -11,7 +11,7 @@ class PipelineArtifactStoreEncryptionKey {
   /// Creates a new [PipelineArtifactStoreEncryptionKey].
   /// [id] The KMS key ARN or ID
   /// [type] The type of key; currently only `KMS` is supported
-  PipelineArtifactStoreEncryptionKey({
+  const PipelineArtifactStoreEncryptionKey({
     required this.id,
     required this.type,
   });

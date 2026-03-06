@@ -21,7 +21,7 @@ class DestinationAddrResponse {
   /// [feeds] list of feeds
   /// [fqdnLists] fqdn list
   /// [prefixLists] prefix list
-  DestinationAddrResponse({
+  const DestinationAddrResponse({
     this.cidrs,
     this.countries,
     this.feeds,

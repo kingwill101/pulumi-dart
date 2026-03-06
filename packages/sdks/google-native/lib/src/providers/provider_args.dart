@@ -27,7 +27,7 @@ class ProviderArgs {
   /// [project] The default project to manage resources in. If another project is specified on a resource, it will take precedence.
   /// [region] The default region to manage resources in. If another region is specified on a regional resource, it will take precedence.
   /// [zone] The default zone to manage resources in. Generally, this zone should be within the default region you specified. If another zone is specified on a zonal resource, it will take precedence.
-  ProviderArgs({
+  const ProviderArgs({
     this.appendUserAgent,
     this.disablePartnerName,
     this.partnerName,

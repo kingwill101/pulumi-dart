@@ -18,7 +18,7 @@ class GetIamCustomRolesArgs {
   /// [project] The project were the custom role has been created in. Defaults to the provider project configuration.
   /// [showDeleted] Include Roles that have been deleted. Defaults to `false`.
   /// [view] When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
-  GetIamCustomRolesArgs({
+  const GetIamCustomRolesArgs({
     this.project,
     this.showDeleted,
     this.view,

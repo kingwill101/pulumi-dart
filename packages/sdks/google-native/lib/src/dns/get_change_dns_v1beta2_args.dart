@@ -17,7 +17,7 @@ class GetChangeDnsV1beta2Args {
   /// [clientOperationId] Optional.
   /// [managedZone] Required.
   /// [project] Optional.
-  GetChangeDnsV1beta2Args({
+  const GetChangeDnsV1beta2Args({
     required this.changeId,
     this.clientOperationId,
     required this.managedZone,

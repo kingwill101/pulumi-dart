@@ -22,7 +22,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
   /// [restartDelay] Number of seconds to wait until a restart is initiated.
   /// [salt] Optional.
   /// [token] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings({
     this.connectionRetryInterval,
     this.filecacheDuration,
     this.httpTransferMode,

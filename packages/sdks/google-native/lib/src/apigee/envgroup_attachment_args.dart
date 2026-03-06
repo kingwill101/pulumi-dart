@@ -19,7 +19,7 @@ class EnvgroupAttachmentArgs {
   /// [environment] ID of the attached environment.
   /// [name] ID of the environment group attachment.
   /// [organizationId] Required.
-  EnvgroupAttachmentArgs({
+  const EnvgroupAttachmentArgs({
     required this.envgroupId,
     required this.environment,
     this.name,

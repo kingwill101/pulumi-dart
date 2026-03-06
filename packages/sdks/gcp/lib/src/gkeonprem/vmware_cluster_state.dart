@@ -164,7 +164,7 @@ class VMwareClusterState {
   /// [validationChecks] ValidationCheck represents the result of the preflight check job.
   /// [vcenter] VmwareVCenterConfig specifies vCenter config for the user cluster.
   /// [vmTrackingEnabled] Enable VM tracking.
-  VMwareClusterState({
+  const VMwareClusterState({
     this.adminClusterMembership,
     this.annotations,
     this.antiAffinityGroups,

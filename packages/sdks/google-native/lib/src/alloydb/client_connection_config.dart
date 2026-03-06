@@ -13,7 +13,7 @@ class ClientConnectionConfig {
   /// Creates a new [ClientConnectionConfig].
   /// [requireConnectors] Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   /// [sslConfig] Optional. SSL config option for this instance.
-  ClientConnectionConfig({
+  const ClientConnectionConfig({
     this.requireConnectors,
     this.sslConfig,
   });

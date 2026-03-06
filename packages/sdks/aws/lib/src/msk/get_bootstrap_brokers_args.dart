@@ -15,7 +15,7 @@ class GetBootstrapBrokersArgs {
   /// Creates a new [GetBootstrapBrokersArgs].
   /// [clusterArn] ARN of the cluster the nodes belong to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBootstrapBrokersArgs({
+  const GetBootstrapBrokersArgs({
     required this.clusterArn,
     this.region,
   });

@@ -12,7 +12,7 @@ class GetNetworkInterfacesFilter {
   /// Creates a new [GetNetworkInterfacesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetNetworkInterfacesFilter({
+  const GetNetworkInterfacesFilter({
     required this.name,
     required this.values,
   });

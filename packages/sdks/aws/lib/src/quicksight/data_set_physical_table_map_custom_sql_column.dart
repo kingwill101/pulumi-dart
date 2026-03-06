@@ -11,7 +11,7 @@ class DataSetPhysicalTableMapCustomSqlColumn {
   /// Creates a new [DataSetPhysicalTableMapCustomSqlColumn].
   /// [name] Name of this column in the underlying data source.
   /// [type] Data type of the column.
-  DataSetPhysicalTableMapCustomSqlColumn({
+  const DataSetPhysicalTableMapCustomSqlColumn({
     required this.name,
     required this.type,
   });

@@ -29,7 +29,7 @@ class SubnetGroupState {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The Amazon Virtual Private Cloud identifier (VPC ID) of the cache subnet group.
-  SubnetGroupState({
+  const SubnetGroupState({
     this.arn,
     this.description,
     this.name,

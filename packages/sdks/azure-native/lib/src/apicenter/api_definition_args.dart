@@ -33,7 +33,7 @@ class ApiDefinitionArgs {
   /// [title] API definition title.
   /// [versionName] The name of the API version.
   /// [workspaceName] The name of the workspace.
-  ApiDefinitionArgs({
+  const ApiDefinitionArgs({
     required this.apiName,
     this.definitionName,
     this.description,

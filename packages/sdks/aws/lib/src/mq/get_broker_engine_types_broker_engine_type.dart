@@ -12,7 +12,7 @@ class GetBrokerEngineTypesBrokerEngineType {
   /// Creates a new [GetBrokerEngineTypesBrokerEngineType].
   /// [engineType] MQ engine type to return version details for.
   /// [engineVersions] List of engine versions. See Engine Versions.
-  GetBrokerEngineTypesBrokerEngineType({
+  const GetBrokerEngineTypesBrokerEngineType({
     required this.engineType,
     required this.engineVersions,
   });

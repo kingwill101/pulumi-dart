@@ -22,7 +22,7 @@ class GetEndpointConnectionPrivateServiceConnection {
   /// [privateIpAddress] The private IP address associated with the private endpoint, note that you will have a private IP address assigned to the private endpoint even if the connection request was `Rejected`.
   /// [requestResponse] Possible values are as follows:
   /// [status] The current status of the private endpoint request, possible values will be `Pending`, `Approved`, `Rejected`, or `Disconnected`.
-  GetEndpointConnectionPrivateServiceConnection({
+  const GetEndpointConnectionPrivateServiceConnection({
     required this.name,
     required this.privateIpAddress,
     required this.requestResponse,

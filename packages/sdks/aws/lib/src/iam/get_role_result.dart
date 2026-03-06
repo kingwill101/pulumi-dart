@@ -42,7 +42,7 @@ class GetRoleResult {
   /// [roleLastUseds] Contains information about the last time that an IAM role was used. See `role_last_used` for details.
   /// [tags] Tags attached to the role.
   /// [uniqueId] Stable and unique string identifying the role.
-  GetRoleResult({
+  const GetRoleResult({
     required this.arn,
     required this.assumeRolePolicy,
     required this.createDate,

@@ -28,7 +28,7 @@ class InsightsConfigRuntimeConfig {
   /// [gkeWorkload] GKEWorkload represents the Google Kubernetes Engine runtime.
   /// [state] (Output)
   /// [uri] The URI of the runtime configuration.
-  InsightsConfigRuntimeConfig({
+  const InsightsConfigRuntimeConfig({
     this.appHubWorkload,
     this.gkeWorkload,
     this.state,

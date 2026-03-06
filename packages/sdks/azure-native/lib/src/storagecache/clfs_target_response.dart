@@ -9,7 +9,7 @@ class ClfsTargetResponse {
 
   /// Creates a new [ClfsTargetResponse].
   /// [target] Resource ID of storage container.
-  ClfsTargetResponse({
+  const ClfsTargetResponse({
     this.target,
   });
 

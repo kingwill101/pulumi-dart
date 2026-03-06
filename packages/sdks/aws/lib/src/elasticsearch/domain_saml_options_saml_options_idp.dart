@@ -11,7 +11,7 @@ class DomainSamlOptionsSamlOptionsIdp {
   /// Creates a new [DomainSamlOptionsSamlOptionsIdp].
   /// [entityId] The unique Entity ID of the application in SAML Identity Provider.
   /// [metadataContent] The Metadata of the SAML application in xml format.
-  DomainSamlOptionsSamlOptionsIdp({
+  const DomainSamlOptionsSamlOptionsIdp({
     required this.entityId,
     required this.metadataContent,
   });

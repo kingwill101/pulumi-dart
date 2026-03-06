@@ -18,7 +18,7 @@ class LoadBalancerSecurityGroupAttachmentArgs {
   /// [dryRun] Specifies whether to perform a dry run, without performing the actual request. Valid values:
   /// [loadBalancerId] The ID of the NLB instance to be associated with the security group.
   /// [securityGroupId] The ID of the security group to be disassociated.
-  LoadBalancerSecurityGroupAttachmentArgs({
+  const LoadBalancerSecurityGroupAttachmentArgs({
     this.dryRun,
     required this.loadBalancerId,
     required this.securityGroupId,

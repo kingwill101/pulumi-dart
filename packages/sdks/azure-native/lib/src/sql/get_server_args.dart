@@ -18,7 +18,7 @@ class GetServerArgs {
   /// [expand] The child resources to include in the response.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetServerArgs({
+  const GetServerArgs({
     this.expand,
     required this.resourceGroupName,
     required this.serverName,

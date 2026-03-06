@@ -11,7 +11,7 @@ class DomainAdminContactExtraParam {
   /// Creates a new [DomainAdminContactExtraParam].
   /// [name] The name of an additional parameter that is required by a top-level domain.
   /// [value] The value that corresponds with the name of an extra parameter.
-  DomainAdminContactExtraParam({
+  const DomainAdminContactExtraParam({
     required this.name,
     required this.value,
   });

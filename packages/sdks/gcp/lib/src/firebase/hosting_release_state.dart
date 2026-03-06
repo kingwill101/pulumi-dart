@@ -38,7 +38,7 @@ class HostingReleaseState {
   /// [siteId] Required. The ID of the site to which the release belongs.
   /// [type] The type of the release; indicates what happened to the content of the site. There is no need to specify
   /// [versionName] The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
-  HostingReleaseState({
+  const HostingReleaseState({
     this.channelId,
     this.message,
     this.name,

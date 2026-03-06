@@ -21,7 +21,7 @@ class GetAccessPackageCatalogResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [objectId] Required.
   /// [published] Whether the access packages in this catalog are available for management.
-  GetAccessPackageCatalogResult({
+  const GetAccessPackageCatalogResult({
     required this.description,
     required this.displayName,
     required this.externallyVisible,

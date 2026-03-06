@@ -15,7 +15,7 @@ class GetAttachedVersionsResult {
   /// [location] Required.
   /// [project] Required.
   /// [validVersions] A list of versions available for use with this project and location.
-  GetAttachedVersionsResult({
+  const GetAttachedVersionsResult({
     required this.id,
     required this.location,
     required this.project,

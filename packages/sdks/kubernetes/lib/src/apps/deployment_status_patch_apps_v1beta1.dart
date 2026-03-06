@@ -31,7 +31,7 @@ class DeploymentStatusPatchAppsV1beta1 {
   /// [replicas] Total number of non-terminated pods targeted by this deployment (their labels match the selector).
   /// [unavailableReplicas] Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.
   /// [updatedReplicas] Total number of non-terminated pods targeted by this deployment that have the desired template spec.
-  DeploymentStatusPatchAppsV1beta1({
+  const DeploymentStatusPatchAppsV1beta1({
     this.availableReplicas,
     this.collisionCount,
     this.conditions,

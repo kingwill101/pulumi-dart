@@ -18,7 +18,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
   /// [mediaStoreStorageClass] Optional.
   /// [numRetries] Number of retry attempts.
   /// [restartDelay] Number of seconds to wait until a restart is initiated.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings({
     this.connectionRetryInterval,
     this.filecacheDuration,
     this.mediaStoreStorageClass,

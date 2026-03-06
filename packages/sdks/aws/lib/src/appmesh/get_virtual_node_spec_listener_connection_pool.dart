@@ -17,7 +17,7 @@ class GetVirtualNodeSpecListenerConnectionPool {
   /// [http2s] Required.
   /// [https] Required.
   /// [tcps] Required.
-  GetVirtualNodeSpecListenerConnectionPool({
+  const GetVirtualNodeSpecListenerConnectionPool({
     required this.grpcs,
     required this.http2s,
     required this.https,

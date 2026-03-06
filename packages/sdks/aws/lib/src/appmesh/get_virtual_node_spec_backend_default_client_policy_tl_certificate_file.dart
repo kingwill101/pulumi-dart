@@ -9,7 +9,7 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile {
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile].
   /// [certificateChain] Required.
   /// [privateKey] Required.
-  GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile({
+  const GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificateFile({
     required this.certificateChain,
     required this.privateKey,
   });

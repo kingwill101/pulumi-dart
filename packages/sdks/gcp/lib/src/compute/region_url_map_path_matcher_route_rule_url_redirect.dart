@@ -48,7 +48,7 @@ class RegionUrlMapPathMatcherRouteRuleUrlRedirect {
   /// [prefixRedirect] The prefix that replaces the prefixMatch specified in the
   /// [redirectResponseCode] The HTTP Status code to use for this RedirectAction. Supported values are:
   /// [stripQuery] If set to true, any accompanying query portion of the original URL is removed
-  RegionUrlMapPathMatcherRouteRuleUrlRedirect({
+  const RegionUrlMapPathMatcherRouteRuleUrlRedirect({
     this.hostRedirect,
     this.httpsRedirect,
     this.pathRedirect,

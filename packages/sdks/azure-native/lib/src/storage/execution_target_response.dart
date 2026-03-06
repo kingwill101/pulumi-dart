@@ -12,7 +12,7 @@ class ExecutionTargetResponse {
   /// Creates a new [ExecutionTargetResponse].
   /// [excludePrefix] List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor
   /// [prefix] Required list of object prefixes to be included for task execution
-  ExecutionTargetResponse({
+  const ExecutionTargetResponse({
     this.excludePrefix,
     this.prefix,
   });

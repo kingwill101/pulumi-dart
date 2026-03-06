@@ -19,7 +19,7 @@ class AmlFilesystemClientInfoResponse {
   /// [lustreVersion] The version of Lustre running in the AML file system
   /// [mgsAddress] The IPv4 address used by clients to mount the AML file system's Lustre Management Service (MGS).
   /// [mountCommand] Recommended command to mount the AML file system
-  AmlFilesystemClientInfoResponse({
+  const AmlFilesystemClientInfoResponse({
     required this.containerStorageInterface,
     required this.lustreVersion,
     required this.mgsAddress,

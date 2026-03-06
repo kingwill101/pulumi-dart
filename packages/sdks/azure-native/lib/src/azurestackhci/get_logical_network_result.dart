@@ -50,7 +50,7 @@ class GetLogicalNetworkResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmSwitchName] name of the network switch to be used for VMs
-  GetLogicalNetworkResult({
+  const GetLogicalNetworkResult({
     required this.azureApiVersion,
     this.dhcpOptions,
     this.extendedLocation,

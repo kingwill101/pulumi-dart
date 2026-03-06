@@ -28,7 +28,7 @@ class ApplicableScheduleResponse {
   /// [name] The name of the resource.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
-  ApplicableScheduleResponse({
+  const ApplicableScheduleResponse({
     required this.id,
     this.labVmsShutdown,
     this.labVmsStartup,

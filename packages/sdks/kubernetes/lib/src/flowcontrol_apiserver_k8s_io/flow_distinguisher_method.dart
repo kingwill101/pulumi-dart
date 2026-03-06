@@ -9,7 +9,7 @@ class FlowDistinguisherMethod {
 
   /// Creates a new [FlowDistinguisherMethod].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  FlowDistinguisherMethod({
+  const FlowDistinguisherMethod({
     required this.type,
   });
 

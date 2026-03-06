@@ -27,7 +27,7 @@ class GetDispatchRulesResult {
   /// [names] A list of Dispatch Rule names.
   /// [outputFile] Optional.
   /// [rules] A list of Arms Dispatch Rules. Each element contains the following attributes:
-  GetDispatchRulesResult({
+  const GetDispatchRulesResult({
     this.dispatchRuleName,
     this.enableDetails,
     required this.id,

@@ -64,7 +64,7 @@ class PluginArgs {
   /// [pluginCategory] Possible values:
   /// [pluginId] The ID to use for the Plugin resource, which will become the final
   /// [project] The ID of the project in which the resource belongs.
-  PluginArgs({
+  const PluginArgs({
     this.actionsConfigs,
     this.configTemplate,
     this.description,

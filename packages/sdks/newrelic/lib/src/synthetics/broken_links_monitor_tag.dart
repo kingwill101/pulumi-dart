@@ -11,7 +11,7 @@ class BrokenLinksMonitorTag {
   /// Creates a new [BrokenLinksMonitorTag].
   /// [key] Name of the tag key.
   /// [values] Values associated with the tag key.
-  BrokenLinksMonitorTag({
+  const BrokenLinksMonitorTag({
     required this.key,
     required this.values,
   });

@@ -11,7 +11,7 @@ class DataLakeSettingsCreateDatabaseDefaultPermission {
   /// Creates a new [DataLakeSettingsCreateDatabaseDefaultPermission].
   /// [permissions] List of permissions that are granted to the principal. Valid values may include `ALL`, `SELECT`, `ALTER`, `DROP`, `DELETE`, `INSERT`, `DESCRIBE`, and `CREATE_TABLE`. For more details, see [Lake Formation Permissions Reference](https://docs.aws.amazon.com/lake-formation/latest/dg/lf-permissions-reference.html).
   /// [principal] Principal who is granted permissions. To enforce metadata and underlying data access control only by IAM on new databases and tables set `principal` to `IAM_ALLOWED_PRINCIPALS` and `permissions` to `["ALL"]`.
-  DataLakeSettingsCreateDatabaseDefaultPermission({
+  const DataLakeSettingsCreateDatabaseDefaultPermission({
     this.permissions,
     this.principal,
   });

@@ -55,7 +55,7 @@ class GetApplicationGatewayBackendHttpSetting {
   /// [protocol] The Protocol used for this Probe.
   /// [requestTimeout] The request timeout in seconds.
   /// [trustedRootCertificateNames] A list of `trusted_root_certificate` names.
-  GetApplicationGatewayBackendHttpSetting({
+  const GetApplicationGatewayBackendHttpSetting({
     required this.affinityCookieName,
     required this.authenticationCertificates,
     required this.connectionDrainings,

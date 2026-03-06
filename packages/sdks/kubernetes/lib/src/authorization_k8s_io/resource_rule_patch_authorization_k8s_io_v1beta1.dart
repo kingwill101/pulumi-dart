@@ -19,7 +19,7 @@ class ResourceRulePatchAuthorizationK8sIoV1beta1 {
   /// [resourceNames] ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.  "*" means all.
   /// [resources] Resources is a list of resources this rule applies to.  "*" means all in the specified apiGroups.
   /// [verbs] Verb is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy.  "*" means all.
-  ResourceRulePatchAuthorizationK8sIoV1beta1({
+  const ResourceRulePatchAuthorizationK8sIoV1beta1({
     this.apiGroups,
     this.resourceNames,
     this.resources,

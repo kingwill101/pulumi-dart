@@ -23,7 +23,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequest {
   /// [location] The regional endpoint to which to direct the request.
   /// [projectId] The ID of the Cloud Platform project that the job belongs to.
   /// [validateOnly] (Optional)
-  PipelineWorkloadDataflowLaunchTemplateRequest({
+  const PipelineWorkloadDataflowLaunchTemplateRequest({
     this.gcsPath,
     this.launchParameters,
     this.location,

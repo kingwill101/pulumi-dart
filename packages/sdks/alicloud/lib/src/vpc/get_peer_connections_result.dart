@@ -31,7 +31,7 @@ class GetPeerConnectionsResult {
   /// [peerConnectionName] The name of the resource.
   /// [status] The status of the resource.
   /// [vpcId] The ID of the requester VPC.
-  GetPeerConnectionsResult({
+  const GetPeerConnectionsResult({
     required this.connections,
     required this.id,
     required this.ids,

@@ -22,7 +22,7 @@ class AliasState {
   /// [routingConfig] The Function Compute alias' route configuration settings. See `routing_config` below.
   /// [serviceName] The Function Compute service name.
   /// [serviceVersion] The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
-  AliasState({
+  const AliasState({
     this.aliasName,
     this.description,
     this.routingConfig,

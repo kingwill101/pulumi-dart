@@ -18,7 +18,7 @@ class GetNamespaceVirtualNetworkRuleArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [virtualNetworkRuleName] The Virtual Network Rule name.
-  GetNamespaceVirtualNetworkRuleArgs({
+  const GetNamespaceVirtualNetworkRuleArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     required this.virtualNetworkRuleName,

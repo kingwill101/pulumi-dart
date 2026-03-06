@@ -15,7 +15,7 @@ class KxEnvironmentTransitGatewayConfiguration {
   /// [attachmentNetworkAclConfigurations] Rules that define how you manage outbound traffic from kdb network to your internal network. Defined below.
   /// [routableCidrSpace] Routing CIDR on behalf of KX environment. It could be any “/26 range in the 100.64.0.0 CIDR space. After providing, it will be added to the customer’s transit gateway routing table so that the traffics could be routed to KX network.
   /// [transitGatewayId] Identifier of the transit gateway created by the customer to connect outbound traffics from KX network to your internal network.
-  KxEnvironmentTransitGatewayConfiguration({
+  const KxEnvironmentTransitGatewayConfiguration({
     this.attachmentNetworkAclConfigurations,
     required this.routableCidrSpace,
     required this.transitGatewayId,

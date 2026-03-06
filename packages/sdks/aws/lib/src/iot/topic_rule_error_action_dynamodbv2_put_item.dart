@@ -8,7 +8,7 @@ class TopicRuleErrorActionDynamodbv2PutItem {
 
   /// Creates a new [TopicRuleErrorActionDynamodbv2PutItem].
   /// [tableName] The name of the DynamoDB table.
-  TopicRuleErrorActionDynamodbv2PutItem({
+  const TopicRuleErrorActionDynamodbv2PutItem({
     required this.tableName,
   });
 

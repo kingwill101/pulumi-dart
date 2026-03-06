@@ -9,7 +9,7 @@ class GoogleCloudMlV1EncryptionConfigResponse {
 
   /// Creates a new [GoogleCloudMlV1EncryptionConfigResponse].
   /// [kmsKeyName] The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a training job. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-  GoogleCloudMlV1EncryptionConfigResponse({
+  const GoogleCloudMlV1EncryptionConfigResponse({
     required this.kmsKeyName,
   });
 

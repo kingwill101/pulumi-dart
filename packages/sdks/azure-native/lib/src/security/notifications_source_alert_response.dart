@@ -13,7 +13,7 @@ class NotificationsSourceAlertResponse {
   /// Creates a new [NotificationsSourceAlertResponse].
   /// [minimalSeverity] Defines the minimal alert severity which will be sent as email notifications
   /// [sourceType] The source type that will trigger the notification
-  NotificationsSourceAlertResponse({
+  const NotificationsSourceAlertResponse({
     this.minimalSeverity,
     required this.sourceType,
   });

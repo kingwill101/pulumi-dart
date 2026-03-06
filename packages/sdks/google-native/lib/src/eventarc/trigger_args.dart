@@ -43,7 +43,7 @@ class TriggerArgs {
   /// [serviceAccount] Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The `iam.serviceAccounts.actAs` permission must be granted on the service account to allow a principal to impersonate the service account. For more information, see the [Roles and permissions](/eventarc/docs/all-roles-permissions) page specific to the trigger destination.
   /// [transport] Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
   /// [triggerId] Required. The user-provided ID to be assigned to the trigger.
-  TriggerArgs({
+  const TriggerArgs({
     this.channel,
     required this.destination,
     this.eventDataContentType,

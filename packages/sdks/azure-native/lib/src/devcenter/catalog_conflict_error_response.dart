@@ -12,7 +12,7 @@ class CatalogConflictErrorResponse {
   /// Creates a new [CatalogConflictErrorResponse].
   /// [name] Name of the conflicting catalog item.
   /// [path] The path of the file that has a conflicting name.
-  CatalogConflictErrorResponse({
+  const CatalogConflictErrorResponse({
     required this.name,
     required this.path,
   });

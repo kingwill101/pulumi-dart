@@ -17,7 +17,7 @@ class NetworkIpDhcp {
   /// [bootps] Configures BOOTP settings for the DHCP configuration.
   /// [hosts] Configures host entries for DHCP clients within the network.
   /// [ranges] Represents the DHCP range for IP addresses to be allocated.
-  NetworkIpDhcp({
+  const NetworkIpDhcp({
     this.bootps,
     this.hosts,
     this.ranges,

@@ -11,7 +11,7 @@ class BillingAccountSinkBigqueryOptions {
 
   /// Creates a new [BillingAccountSinkBigqueryOptions].
   /// [usePartitionedTables] Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-  BillingAccountSinkBigqueryOptions({
+  const BillingAccountSinkBigqueryOptions({
     required this.usePartitionedTables,
   });
 

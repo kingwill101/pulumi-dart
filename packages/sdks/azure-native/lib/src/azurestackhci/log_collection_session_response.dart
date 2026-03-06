@@ -34,7 +34,7 @@ class LogCollectionSessionResponse {
   /// [logSize] Size of the logs collected
   /// [logStartTime] Start Time of the logs when it was collected
   /// [timeCollected] Duration of logs collected
-  LogCollectionSessionResponse({
+  const LogCollectionSessionResponse({
     required this.correlationId,
     required this.endTimeCollected,
     required this.logCollectionError,

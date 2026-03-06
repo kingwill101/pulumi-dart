@@ -64,7 +64,7 @@ class GetCustomImageResult {
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [vhd] The VHD from which the image is to be created.
   /// [vm] The virtual machine from which the image is to be created.
-  GetCustomImageResult({
+  const GetCustomImageResult({
     this.author,
     required this.azureApiVersion,
     required this.creationDate,

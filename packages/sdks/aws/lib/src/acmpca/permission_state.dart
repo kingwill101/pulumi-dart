@@ -24,7 +24,7 @@ class PermissionState {
   /// [principal] AWS service or identity that receives the permission. At this time, the only valid principal is `acm.amazonaws.com`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceAccount] ID of the calling account
-  PermissionState({
+  const PermissionState({
     this.actions,
     this.certificateAuthorityArn,
     this.policy,

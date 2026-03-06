@@ -21,7 +21,7 @@ class GetTunnelInstanceIamPolicyArgs {
   /// [instance] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Used to find the parent resource to bind the IAM policy to. If not specified,
-  GetTunnelInstanceIamPolicyArgs({
+  const GetTunnelInstanceIamPolicyArgs({
     required this.instance,
     this.project,
     this.zone,

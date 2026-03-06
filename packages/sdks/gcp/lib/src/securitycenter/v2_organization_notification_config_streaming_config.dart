@@ -26,7 +26,7 @@ class V2OrganizationNotificationConfigStreamingConfig {
 
   /// Creates a new [V2OrganizationNotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  V2OrganizationNotificationConfigStreamingConfig({
+  const V2OrganizationNotificationConfigStreamingConfig({
     required this.filter,
   });
 

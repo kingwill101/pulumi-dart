@@ -29,7 +29,7 @@ class GetConnectionsResult {
   /// [names] (Optional) names of the VPN connections.
   /// [outputFile] Optional.
   /// [vpnGatewayId] ID of the VPN gateway.
-  GetConnectionsResult({
+  const GetConnectionsResult({
     required this.connections,
     this.customerGatewayId,
     required this.id,

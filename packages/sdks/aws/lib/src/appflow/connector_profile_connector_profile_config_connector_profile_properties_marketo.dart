@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo {
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesMarketo({
     required this.instanceUrl,
   });
 

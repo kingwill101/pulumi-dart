@@ -24,7 +24,7 @@ class GetGroupsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [provisionType] Optional.
-  GetGroupsResult({
+  const GetGroupsResult({
     required this.directoryId,
     required this.groups,
     required this.id,

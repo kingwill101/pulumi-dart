@@ -12,7 +12,7 @@ class PortGroupProperties {
   /// Creates a new [PortGroupProperties].
   /// [name] The name of the port group.
   /// [ports] List of the ports that need to be matched.
-  PortGroupProperties({
+  const PortGroupProperties({
     this.name,
     this.ports,
   });

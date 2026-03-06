@@ -32,7 +32,7 @@ class InstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [validationMode] Validation mode for the SCOM managed instance
-  InstanceArgs({
+  const InstanceArgs({
     this.identity,
     this.instanceName,
     this.location,

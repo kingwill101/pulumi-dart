@@ -26,7 +26,7 @@ class PodCertificateRequestPatch {
   /// [metadata] metadata contains the object metadata.
   /// [spec] spec contains the details about the certificate being requested.
   /// [status] status contains the issued certificate, and a standard set of conditions.
-  PodCertificateRequestPatch({
+  const PodCertificateRequestPatch({
     this.apiVersion,
     this.kind,
     this.metadata,

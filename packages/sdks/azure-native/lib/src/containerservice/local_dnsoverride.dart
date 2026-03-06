@@ -30,7 +30,7 @@ class LocalDNSOverride {
   /// [queryLogging] Log level for DNS queries in localDNS.
   /// [serveStale] Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information.
   /// [serveStaleDurationInSeconds] Serve stale duration in seconds. See [cache plugin](https://coredns.io/plugins/cache) for more information.
-  LocalDNSOverride({
+  const LocalDNSOverride({
     this.cacheDurationInSeconds,
     this.forwardDestination,
     this.forwardPolicy,

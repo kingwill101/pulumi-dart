@@ -64,7 +64,7 @@ class CatalogTableArgs {
   /// [targetTable] Configuration block of a target table for resource linking. See `target_table` below.
   /// [viewExpandedText] If the table is a view, the expanded text of the view; otherwise null.
   /// [viewOriginalText] If the table is a view, the original text of the view; otherwise null.
-  CatalogTableArgs({
+  const CatalogTableArgs({
     this.catalogId,
     required this.databaseName,
     this.description,

@@ -16,7 +16,7 @@ class TagState {
   /// [autoscalingGroupName] Name of the Autoscaling Group to apply the tag to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tag] Tag to create. The `tag` block is documented below.
-  TagState({
+  const TagState({
     this.autoscalingGroupName,
     this.region,
     this.tag,

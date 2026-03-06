@@ -31,7 +31,7 @@ class InstancePscInstanceConfig {
   /// [pscDnsName] (Output)
   /// [pscInterfaceConfigs] Configurations for setting up PSC interfaces attached to the instance
   /// [serviceAttachmentLink] (Output)
-  InstancePscInstanceConfig({
+  const InstancePscInstanceConfig({
     this.allowedConsumerProjects,
     this.pscAutoConnections,
     this.pscDnsName,

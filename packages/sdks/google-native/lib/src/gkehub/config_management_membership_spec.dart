@@ -24,7 +24,7 @@ class ConfigManagementMembershipSpec {
   /// [hierarchyController] Hierarchy Controller configuration for the cluster.
   /// [policyController] Policy Controller configuration for the cluster.
   /// [version] Version of ACM installed.
-  ConfigManagementMembershipSpec({
+  const ConfigManagementMembershipSpec({
     this.cluster,
     this.configSync,
     this.hierarchyController,

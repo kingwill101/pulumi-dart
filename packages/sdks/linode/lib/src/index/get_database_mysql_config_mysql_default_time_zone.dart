@@ -19,7 +19,7 @@ class GetDatabaseMysqlConfigMysqlDefaultTimeZone {
   /// [pattern] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlDefaultTimeZone({
+  const GetDatabaseMysqlConfigMysqlDefaultTimeZone({
     required this.description,
     required this.example,
     required this.maxLength,

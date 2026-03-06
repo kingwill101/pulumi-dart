@@ -41,7 +41,7 @@ class InstancePartitionState {
   /// [processingUnits] The number of processing units allocated to this instance partition.
   /// [project] The ID of the project in which the resource belongs.
   /// [state] The current instance partition state. Possible values are:
-  InstancePartitionState({
+  const InstancePartitionState({
     this.config,
     this.displayName,
     this.instance,

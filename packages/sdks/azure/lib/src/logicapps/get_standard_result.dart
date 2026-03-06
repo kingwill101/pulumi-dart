@@ -99,7 +99,7 @@ class GetStandardResult {
   /// [useExtensionBundle] Whether the logic app should use the bundled extension package.
   /// [version] The runtime version associated with the Logic App.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
-  GetStandardResult({
+  const GetStandardResult({
     required this.appServicePlanId,
     required this.appSettings,
     required this.bundleVersion,

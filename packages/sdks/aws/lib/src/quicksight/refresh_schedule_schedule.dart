@@ -15,7 +15,7 @@ class RefreshScheduleSchedule {
   /// [refreshType] The type of refresh that the dataset undergoes. Valid values are `INCREMENTAL_REFRESH` and `FULL_REFRESH`.
   /// [scheduleFrequency] The configuration of the [schedule frequency](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshFrequency.html). See schedule_frequency.
   /// [startAfterDateTime] Time after which the refresh schedule can be started, expressed in `YYYY-MM-DDTHH:MM:SS` format.
-  RefreshScheduleSchedule({
+  const RefreshScheduleSchedule({
     required this.refreshType,
     required this.scheduleFrequency,
     this.startAfterDateTime,

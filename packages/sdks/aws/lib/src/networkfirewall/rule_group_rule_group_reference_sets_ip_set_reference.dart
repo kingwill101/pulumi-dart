@@ -11,7 +11,7 @@ class RuleGroupRuleGroupReferenceSetsIpSetReference {
   /// Creates a new [RuleGroupRuleGroupReferenceSetsIpSetReference].
   /// [ipSetReferences] Set of configuration blocks that define the IP Reference information. See IP Set Reference below for details.
   /// [key] Required.
-  RuleGroupRuleGroupReferenceSetsIpSetReference({
+  const RuleGroupRuleGroupReferenceSetsIpSetReference({
     required this.ipSetReferences,
     required this.key,
   });

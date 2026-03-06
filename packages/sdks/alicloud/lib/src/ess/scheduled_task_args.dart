@@ -60,7 +60,7 @@ class ScheduledTaskArgs {
   /// [scheduledAction] The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
   /// [scheduledTaskName] Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
   /// [taskEnabled] Specifies whether to start the scheduled task. Default to true.
-  ScheduledTaskArgs({
+  const ScheduledTaskArgs({
     this.description,
     this.desiredCapacity,
     this.launchExpirationTime,

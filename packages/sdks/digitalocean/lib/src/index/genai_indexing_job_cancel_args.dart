@@ -12,7 +12,7 @@ class GenaiIndexingJobCancelArgs {
 
   /// Creates a new [GenaiIndexingJobCancelArgs].
   /// [uuid] The UUID of the indexing job to cancel.
-  GenaiIndexingJobCancelArgs({
+  const GenaiIndexingJobCancelArgs({
     required this.uuid,
   });
 

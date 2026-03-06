@@ -38,7 +38,7 @@ class GetTopicsTopic {
   /// [statusName] The status_name of the topic.
   /// [tags] A mapping of tags to assign to the topic.
   /// [topic] A topic to filter results by the topic name.
-  GetTopicsTopic({
+  const GetTopicsTopic({
     required this.compactTopic,
     required this.createTime,
     required this.id,

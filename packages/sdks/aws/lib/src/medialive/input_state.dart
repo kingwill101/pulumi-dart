@@ -63,7 +63,7 @@ class InputState {
   /// [tagsAll] Optional.
   /// [type] The different types of inputs that AWS Elemental MediaLive supports.
   /// [vpc] Settings for a private VPC Input. See VPC for more details.
-  InputState({
+  const InputState({
     this.arn,
     this.attachedChannels,
     this.destinations,

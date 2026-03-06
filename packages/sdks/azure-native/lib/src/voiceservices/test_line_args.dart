@@ -30,7 +30,7 @@ class TestLineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [testLineName] Unique identifier for this test line
-  TestLineArgs({
+  const TestLineArgs({
     required this.communicationsGatewayName,
     this.location,
     required this.phoneNumber,

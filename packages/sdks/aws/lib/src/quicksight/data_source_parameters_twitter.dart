@@ -11,7 +11,7 @@ class DataSourceParametersTwitter {
   /// Creates a new [DataSourceParametersTwitter].
   /// [maxRows] The maximum number of rows to query.
   /// [query] The Twitter query to retrieve the data.
-  DataSourceParametersTwitter({
+  const DataSourceParametersTwitter({
     required this.maxRows,
     required this.query,
   });

@@ -17,7 +17,7 @@ class SoftwareUpdateConfigurationWindows {
   /// [excludedKnowledgeBaseNumbers] Specifies a list of knowledge base numbers excluded.
   /// [includedKnowledgeBaseNumbers] Specifies a list of knowledge base numbers included.
   /// [reboot] Specifies the reboot settings after software update, possible values are `IfRequired`, `Never`, `RebootOnly` and `Always`. Defaults to `IfRequired`.
-  SoftwareUpdateConfigurationWindows({
+  const SoftwareUpdateConfigurationWindows({
     required this.classificationsIncludeds,
     this.excludedKnowledgeBaseNumbers,
     this.includedKnowledgeBaseNumbers,

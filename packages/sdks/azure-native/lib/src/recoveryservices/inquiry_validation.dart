@@ -9,7 +9,7 @@ class InquiryValidation {
 
   /// Creates a new [InquiryValidation].
   /// [status] Status for the Inquiry Validation.
-  InquiryValidation({
+  const InquiryValidation({
     this.status,
   });
 

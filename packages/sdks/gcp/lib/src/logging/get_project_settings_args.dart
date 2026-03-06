@@ -12,7 +12,7 @@ class GetProjectSettingsArgs {
 
   /// Creates a new [GetProjectSettingsArgs].
   /// [project] The ID of the project for which to retrieve settings.
-  GetProjectSettingsArgs({
+  const GetProjectSettingsArgs({
     required this.project,
   });
 

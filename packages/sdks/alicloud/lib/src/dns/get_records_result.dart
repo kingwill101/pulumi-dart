@@ -39,7 +39,7 @@ class GetRecordsResult {
   /// [type] Type of the record.
   /// [urls] A list of entire URLs. Each item format as `&lt;host_record&gt;.&lt;domain_name&gt;`.
   /// [valueRegex] Optional.
-  GetRecordsResult({
+  const GetRecordsResult({
     required this.domainName,
     this.hostRecordRegex,
     required this.id,

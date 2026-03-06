@@ -28,7 +28,7 @@ class GetConnectResult {
   /// [transitGatewayConnectId] Required.
   /// [transitGatewayId] EC2 Transit Gateway identifier
   /// [transportAttachmentId] The underlaying VPC attachment
-  GetConnectResult({
+  const GetConnectResult({
     this.filters,
     required this.id,
     required this.protocol,

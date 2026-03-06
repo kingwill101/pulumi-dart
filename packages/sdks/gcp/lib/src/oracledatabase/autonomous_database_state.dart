@@ -91,7 +91,7 @@ class AutonomousDatabaseState {
   /// [properties] The properties of an Autonomous Database.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [sourceConfig] The source Autonomous Database configuration for the standby Autonomous Database.
-  AutonomousDatabaseState({
+  const AutonomousDatabaseState({
     this.adminPassword,
     this.autonomousDatabaseId,
     this.cidr,

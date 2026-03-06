@@ -24,7 +24,7 @@ class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataR
   /// [metadata] A map that contains metadata about the summarization and the document from which it originates.
   /// [text] The summarization content that is concatenated into one string.
   /// [textSections] The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value.
-  GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse({
     required this.answerRecord,
     required this.confidence,
     required this.conversationModel,

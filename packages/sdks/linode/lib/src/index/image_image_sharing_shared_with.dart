@@ -11,7 +11,7 @@ class ImageImageSharingSharedWith {
   /// Creates a new [ImageImageSharingSharedWith].
   /// [sharegroupCount] The number of sharegroups the private image is present in.
   /// [sharegroupListUrl] The GET api url to view the sharegroups in which the image is shared.
-  ImageImageSharingSharedWith({
+  const ImageImageSharingSharedWith({
     this.sharegroupCount,
     this.sharegroupListUrl,
   });

@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1ReportPropertyResponse {
   /// Creates a new [GoogleCloudApigeeV1ReportPropertyResponse].
   /// [property] name of the property
   /// [value] property values
-  GoogleCloudApigeeV1ReportPropertyResponse({
+  const GoogleCloudApigeeV1ReportPropertyResponse({
     required this.property,
     required this.value,
   });

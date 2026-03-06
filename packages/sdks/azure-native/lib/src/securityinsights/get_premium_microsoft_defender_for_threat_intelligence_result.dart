@@ -41,7 +41,7 @@ class GetPremiumMicrosoftDefenderForThreatIntelligenceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tenantId] The tenant id to connect to, and get the data from.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPremiumMicrosoftDefenderForThreatIntelligenceResult({
+  const GetPremiumMicrosoftDefenderForThreatIntelligenceResult({
     required this.azureApiVersion,
     required this.dataTypes,
     this.etag,

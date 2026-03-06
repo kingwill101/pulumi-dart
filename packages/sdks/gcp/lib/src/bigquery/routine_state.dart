@@ -98,7 +98,7 @@ class RoutineState {
   /// [routineType] The type of routine.
   /// [securityMode] Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
   /// [sparkOptions] Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
-  RoutineState({
+  const RoutineState({
     this.arguments,
     this.creationTime,
     this.dataGovernanceType,

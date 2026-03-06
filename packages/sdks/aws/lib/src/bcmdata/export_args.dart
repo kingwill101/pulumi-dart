@@ -19,7 +19,7 @@ class ExportArgs {
   /// [export] The details of the export, including data query, name, description, and destination configuration.  See the `export` argument reference below.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  ExportArgs({
+  const ExportArgs({
     this.export,
     this.tags,
     this.timeouts,

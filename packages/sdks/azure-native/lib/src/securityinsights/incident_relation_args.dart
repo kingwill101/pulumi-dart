@@ -24,7 +24,7 @@ class IncidentRelationArgs {
   /// [relationName] Relation Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  IncidentRelationArgs({
+  const IncidentRelationArgs({
     required this.incidentId,
     required this.relatedResourceId,
     this.relationName,

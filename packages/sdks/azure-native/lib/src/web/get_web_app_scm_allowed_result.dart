@@ -23,7 +23,7 @@ class GetWebAppScmAllowedResult {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  GetWebAppScmAllowedResult({
+  const GetWebAppScmAllowedResult({
     required this.allow,
     required this.azureApiVersion,
     required this.id,

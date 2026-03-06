@@ -14,7 +14,7 @@ class BudgetResourceGroupFilterTag {
   /// [name] The name of the tag to use for the filter.
   /// [operator] The operator to use for comparison. The allowed values are `In`. Defaults to `In`.
   /// [values] Specifies a list of values for the tag.
-  BudgetResourceGroupFilterTag({
+  const BudgetResourceGroupFilterTag({
     required this.name,
     this.operator,
     required this.values,

@@ -20,7 +20,7 @@ class GetAnnotationResult {
   /// [name] name of resource.
   /// [type] Type of an annotation.
   /// [updateTime] Update time stamp.
-  GetAnnotationResult({
+  const GetAnnotationResult({
     required this.createTime,
     required this.labels,
     required this.name,

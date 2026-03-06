@@ -18,7 +18,7 @@ class QueuedResourceStatusFailedDataErrorErrorsItemResponse {
   /// [errorDetails] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
   /// [location] Indicates the field in the request that caused the error. This property is optional.
   /// [message] An optional, human-readable error message.
-  QueuedResourceStatusFailedDataErrorErrorsItemResponse({
+  const QueuedResourceStatusFailedDataErrorErrorsItemResponse({
     required this.code,
     required this.errorDetails,
     required this.location,

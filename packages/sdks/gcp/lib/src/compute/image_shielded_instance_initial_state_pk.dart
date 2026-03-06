@@ -12,7 +12,7 @@ class ImageShieldedInstanceInitialStatePk {
   /// Creates a new [ImageShieldedInstanceInitialStatePk].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  ImageShieldedInstanceInitialStatePk({
+  const ImageShieldedInstanceInitialStatePk({
     required this.content,
     this.fileType,
   });

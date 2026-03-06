@@ -10,7 +10,7 @@ class GetClusterIstioServiceTelemetry {
 
   /// Creates a new [GetClusterIstioServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GetClusterIstioServiceTelemetry({
+  const GetClusterIstioServiceTelemetry({
     required this.resourceName,
   });
 

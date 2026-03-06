@@ -26,7 +26,7 @@ class GetExternalAddressResult {
   /// [state] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetExternalAddressResult({
+  const GetExternalAddressResult({
     required this.createTime,
     required this.description,
     required this.externalIp,

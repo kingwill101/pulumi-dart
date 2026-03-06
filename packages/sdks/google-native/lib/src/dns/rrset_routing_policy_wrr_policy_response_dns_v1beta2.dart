@@ -11,7 +11,7 @@ class RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2 {
   /// Creates a new [RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2].
   /// [items] Required.
   /// [kind] Required.
-  RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2({
+  const RRSetRoutingPolicyWrrPolicyResponseDnsV1beta2({
     required this.items,
     required this.kind,
   });

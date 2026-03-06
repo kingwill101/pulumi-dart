@@ -117,7 +117,7 @@ class EnvironmentState {
   /// [webserverVpcEndpointService] The VPC endpoint for the environment's web server
   /// [weeklyMaintenanceWindowStart] Specifies the start date for the weekly maintenance window.
   /// [workerReplacementStrategy] Worker replacement strategy. Valid values: `FORCED`, `GRACEFUL`.
-  EnvironmentState({
+  const EnvironmentState({
     this.airflowConfigurationOptions,
     this.airflowVersion,
     this.arn,

@@ -15,7 +15,7 @@ class GetApiConnectionArgs {
   /// Creates a new [GetApiConnectionArgs].
   /// [name] The name of the API Connection.
   /// [resourceGroupName] The name of the Resource Group where the API Connection exists.
-  GetApiConnectionArgs({
+  const GetApiConnectionArgs({
     required this.name,
     required this.resourceGroupName,
   });

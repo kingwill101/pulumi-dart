@@ -15,7 +15,7 @@ class V3ConcurrencyConfigArgs {
   /// Creates a new [V3ConcurrencyConfigArgs].
   /// [functionName] Function Name
   /// [reservedConcurrency] Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
-  V3ConcurrencyConfigArgs({
+  const V3ConcurrencyConfigArgs({
     required this.functionName,
     this.reservedConcurrency,
   });

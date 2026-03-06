@@ -7,7 +7,7 @@ class PlanWorkflowStepDocumentDbConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepDocumentDbConfigUngraceful].
   /// [ungraceful] Required.
-  PlanWorkflowStepDocumentDbConfigUngraceful({
+  const PlanWorkflowStepDocumentDbConfigUngraceful({
     required this.ungraceful,
   });
 

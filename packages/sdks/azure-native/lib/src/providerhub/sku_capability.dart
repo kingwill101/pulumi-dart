@@ -11,7 +11,7 @@ class SkuCapability {
   /// Creates a new [SkuCapability].
   /// [name] The name.
   /// [value] The value.
-  SkuCapability({
+  const SkuCapability({
     required this.name,
     required this.value,
   });

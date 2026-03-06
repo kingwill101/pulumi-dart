@@ -18,7 +18,7 @@ class DockerImageResponse {
   /// [dockerImageUri] [Required] Image name of a custom base image.
   /// [dockerSpecificationType] Enum to determine docker specification type. Must be either Build or Image.
   /// [platform] The platform information of the docker image.
-  DockerImageResponse({
+  const DockerImageResponse({
     required this.dockerImageUri,
     required this.dockerSpecificationType,
     this.platform,

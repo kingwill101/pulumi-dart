@@ -11,7 +11,7 @@ class SecurityPolicyAssociationComputeBeta {
   /// Creates a new [SecurityPolicyAssociationComputeBeta].
   /// [attachmentId] The resource that the security policy is attached to.
   /// [name] The name for an association.
-  SecurityPolicyAssociationComputeBeta({
+  const SecurityPolicyAssociationComputeBeta({
     this.attachmentId,
     this.name,
   });

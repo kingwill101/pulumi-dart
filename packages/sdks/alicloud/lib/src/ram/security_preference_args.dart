@@ -81,7 +81,7 @@ class SecurityPreferenceArgs {
   /// [mfaOperationForLogin] MFA must be used during logon (replace the original EnforceMFAForLogin parameter, the original parameter is still valid, we recommend that you update it to a new parameter). Value:
   /// [operationForRiskLogin] Whether MFA is verified twice during abnormal logon. Value:
   /// [verificationTypes] Means of multi-factor authentication. Value:
-  SecurityPreferenceArgs({
+  const SecurityPreferenceArgs({
     this.allowUserToChangePassword,
     this.allowUserToLoginWithPasskey,
     this.allowUserToManageAccessKeys,

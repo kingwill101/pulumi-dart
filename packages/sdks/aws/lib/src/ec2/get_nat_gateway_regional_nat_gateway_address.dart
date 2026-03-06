@@ -26,7 +26,7 @@ class GetNatGatewayRegionalNatGatewayAddress {
   /// [networkInterfaceId] ID of the network interface.
   /// [publicIp] Public IP address.
   /// [status] Status of the NAT gateway address.
-  GetNatGatewayRegionalNatGatewayAddress({
+  const GetNatGatewayRegionalNatGatewayAddress({
     required this.allocationId,
     required this.associationId,
     required this.availabilityZone,

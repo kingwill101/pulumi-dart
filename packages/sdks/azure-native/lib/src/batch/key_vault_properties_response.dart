@@ -13,7 +13,7 @@ class KeyVaultPropertiesResponse {
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [keyIdentifier] Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
-  KeyVaultPropertiesResponse({
+  const KeyVaultPropertiesResponse({
     this.keyIdentifier,
   });
 

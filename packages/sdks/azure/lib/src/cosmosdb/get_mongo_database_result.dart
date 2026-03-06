@@ -17,7 +17,7 @@ class GetMongoDatabaseResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Cosmos DB Mongo Database.
-  GetMongoDatabaseResult({
+  const GetMongoDatabaseResult({
     required this.accountName,
     required this.id,
     required this.name,

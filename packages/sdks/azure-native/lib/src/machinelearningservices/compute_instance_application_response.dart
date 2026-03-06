@@ -12,7 +12,7 @@ class ComputeInstanceApplicationResponse {
   /// Creates a new [ComputeInstanceApplicationResponse].
   /// [displayName] Name of the ComputeInstance application.
   /// [endpointUri] Application' endpoint URI.
-  ComputeInstanceApplicationResponse({
+  const ComputeInstanceApplicationResponse({
     this.displayName,
     this.endpointUri,
   });

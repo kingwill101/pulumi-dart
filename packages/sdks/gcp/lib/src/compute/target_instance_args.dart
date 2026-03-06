@@ -48,7 +48,7 @@ class TargetInstanceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [securityPolicy] The resource URL for the security policy associated with this target instance.
   /// [zone] URL of the zone where the target instance resides.
-  TargetInstanceArgs({
+  const TargetInstanceArgs({
     this.description,
     required this.instance,
     this.name,

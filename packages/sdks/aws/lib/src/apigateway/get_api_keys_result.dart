@@ -20,7 +20,7 @@ class GetApiKeysResult {
   /// [includeValues] Optional.
   /// [items] List of objects containing API Key information. See below.
   /// [region] Required.
-  GetApiKeysResult({
+  const GetApiKeysResult({
     this.customerId,
     required this.id,
     this.includeValues,

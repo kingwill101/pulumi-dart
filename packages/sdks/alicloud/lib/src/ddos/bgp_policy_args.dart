@@ -19,7 +19,7 @@ class BgpPolicyArgs {
   /// [content] Configuration Content See `content` below.
   /// [policyName] The name of the resource
   /// [type] Type
-  BgpPolicyArgs({
+  const BgpPolicyArgs({
     this.content,
     required this.policyName,
     required this.type,

@@ -10,7 +10,7 @@ class CompensationInfoJobsV4 {
 
   /// Creates a new [CompensationInfoJobsV4].
   /// [entries] Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as **base compensation entry** for the job.
-  CompensationInfoJobsV4({
+  const CompensationInfoJobsV4({
     this.entries,
   });
 

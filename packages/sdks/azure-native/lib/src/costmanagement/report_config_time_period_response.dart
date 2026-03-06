@@ -12,7 +12,7 @@ class ReportConfigTimePeriodResponse {
   /// Creates a new [ReportConfigTimePeriodResponse].
   /// [from] The start date to pull data from.
   /// [to] The end date to pull data to.
-  ReportConfigTimePeriodResponse({
+  const ReportConfigTimePeriodResponse({
     required this.from,
     required this.to,
   });

@@ -22,7 +22,7 @@ class GlobalParameterArgs {
   /// [globalParameterName] The global parameter name.
   /// [properties] Properties of the global parameter.
   /// [resourceGroupName] The resource group name.
-  GlobalParameterArgs({
+  const GlobalParameterArgs({
     required this.factoryName,
     this.globalParameterName,
     required this.properties,

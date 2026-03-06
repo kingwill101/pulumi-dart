@@ -18,7 +18,7 @@ class SnatEntryArgs {
   /// [cidrBlock] The destination CIDR block.
   /// [sagId] The ID of the SAG instance.
   /// [snatIp] The public IP address.
-  SnatEntryArgs({
+  const SnatEntryArgs({
     required this.cidrBlock,
     required this.sagId,
     required this.snatIp,

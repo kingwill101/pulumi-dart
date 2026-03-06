@@ -15,7 +15,7 @@ class MetadataSource {
   /// [kind] Source type of the content
   /// [name] Name of the content source.  The repo name, solution name, LA workspace name etc.
   /// [sourceId] ID of the content source.  The solution ID, workspace ID, etc
-  MetadataSource({
+  const MetadataSource({
     required this.kind,
     this.name,
     this.sourceId,

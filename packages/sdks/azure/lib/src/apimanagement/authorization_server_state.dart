@@ -70,7 +70,7 @@ class AuthorizationServerState {
   /// [supportState] Does this Authorization Server support State? If this is set to `true` the client may use the state parameter to raise protocol security.
   /// [tokenBodyParameters] A `token_body_parameter` block as defined below.
   /// [tokenEndpoint] The OAUTH Token Endpoint.
-  AuthorizationServerState({
+  const AuthorizationServerState({
     this.apiManagementName,
     this.authorizationEndpoint,
     this.authorizationMethods,

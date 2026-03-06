@@ -11,7 +11,7 @@ class VMwareClusterValidationCheckStatus {
 
   /// Creates a new [VMwareClusterValidationCheckStatus].
   /// [results] (Output)
-  VMwareClusterValidationCheckStatus({
+  const VMwareClusterValidationCheckStatus({
     this.results,
   });
 

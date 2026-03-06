@@ -12,7 +12,7 @@ class RelatedUrlResponseContaineranalysisV1beta1 {
   /// Creates a new [RelatedUrlResponseContaineranalysisV1beta1].
   /// [label] Label to describe usage of the URL.
   /// [url] Specific URL associated with the resource.
-  RelatedUrlResponseContaineranalysisV1beta1({
+  const RelatedUrlResponseContaineranalysisV1beta1({
     required this.label,
     required this.url,
   });

@@ -12,7 +12,7 @@ class AgentPromptVariantTemplateConfigurationChatSystem {
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatSystem].
   /// [cachePoint] Creates a cache checkpoint within a tool designation. See Cache Point for more information.
   /// [text] The text in the system prompt.
-  AgentPromptVariantTemplateConfigurationChatSystem({
+  const AgentPromptVariantTemplateConfigurationChatSystem({
     this.cachePoint,
     this.text,
   });

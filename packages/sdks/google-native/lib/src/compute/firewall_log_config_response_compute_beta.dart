@@ -12,7 +12,7 @@ class FirewallLogConfigResponseComputeBeta {
   /// Creates a new [FirewallLogConfigResponseComputeBeta].
   /// [enable] This field denotes whether to enable logging for a particular firewall rule.
   /// [metadata] This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
-  FirewallLogConfigResponseComputeBeta({
+  const FirewallLogConfigResponseComputeBeta({
     required this.enable,
     required this.metadata,
   });

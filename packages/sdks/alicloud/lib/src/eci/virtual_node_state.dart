@@ -40,7 +40,7 @@ class VirtualNodeState {
   /// [virtualNodeName] The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The Zone.
-  VirtualNodeState({
+  const VirtualNodeState({
     this.eipInstanceId,
     this.enablePublicNetwork,
     this.kubeConfig,

@@ -9,7 +9,7 @@ class IntegrationAccountMapPropertiesResponseParametersSchema {
 
   /// Creates a new [IntegrationAccountMapPropertiesResponseParametersSchema].
   /// [ref] The reference name.
-  IntegrationAccountMapPropertiesResponseParametersSchema({
+  const IntegrationAccountMapPropertiesResponseParametersSchema({
     this.ref,
   });
 

@@ -12,7 +12,7 @@ class StatusItemResponse {
   /// Creates a new [StatusItemResponse].
   /// [statusName] Status name - e.g. "Active", "Failed".
   /// [statusValue] Status value. e.g. "100", or "100%".
-  StatusItemResponse({
+  const StatusItemResponse({
     this.statusName,
     this.statusValue,
   });

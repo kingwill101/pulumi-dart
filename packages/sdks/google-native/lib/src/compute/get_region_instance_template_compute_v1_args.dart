@@ -15,7 +15,7 @@ class GetRegionInstanceTemplateComputeV1Args {
   /// [instanceTemplate] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionInstanceTemplateComputeV1Args({
+  const GetRegionInstanceTemplateComputeV1Args({
     required this.instanceTemplate,
     this.project,
     required this.region,

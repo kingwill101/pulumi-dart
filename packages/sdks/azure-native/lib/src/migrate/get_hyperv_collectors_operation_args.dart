@@ -18,7 +18,7 @@ class GetHypervCollectorsOperationArgs {
   /// [hypervCollectorName] Hyper-V collector ARM name
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHypervCollectorsOperationArgs({
+  const GetHypervCollectorsOperationArgs({
     required this.hypervCollectorName,
     required this.projectName,
     required this.resourceGroupName,

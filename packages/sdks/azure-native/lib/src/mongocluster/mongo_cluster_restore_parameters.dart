@@ -12,7 +12,7 @@ class MongoClusterRestoreParameters {
   /// Creates a new [MongoClusterRestoreParameters].
   /// [pointInTimeUTC] UTC point in time to restore a mongo cluster
   /// [sourceResourceId] Resource ID to locate the source cluster to restore
-  MongoClusterRestoreParameters({
+  const MongoClusterRestoreParameters({
     this.pointInTimeUTC,
     this.sourceResourceId,
   });

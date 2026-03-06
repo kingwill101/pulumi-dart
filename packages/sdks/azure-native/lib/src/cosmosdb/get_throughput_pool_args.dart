@@ -15,7 +15,7 @@ class GetThroughputPoolArgs {
   /// Creates a new [GetThroughputPoolArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [throughputPoolName] Cosmos DB Throughput Pool name.
-  GetThroughputPoolArgs({
+  const GetThroughputPoolArgs({
     required this.resourceGroupName,
     required this.throughputPoolName,
   });

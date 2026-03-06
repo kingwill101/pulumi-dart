@@ -13,7 +13,7 @@ class MetricRangeResponse {
   /// Creates a new [MetricRangeResponse].
   /// [range] Range of values considered "good." For a one-sided range, set one bound to an infinite value.
   /// [timeSeries] A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
-  MetricRangeResponse({
+  const MetricRangeResponse({
     required this.range,
     required this.timeSeries,
   });

@@ -23,7 +23,7 @@ class GetFunctionArgs {
   /// [qualifier] Alias name or version number of the Lambda function. E.g., `$LATEST`, `my-alias`, or `1`. When not included: the data source resolves to the most recent published version; if no published version exists: it resolves to the most recent unpublished version.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the Lambda Function.
-  GetFunctionArgs({
+  const GetFunctionArgs({
     required this.functionName,
     this.qualifier,
     this.region,

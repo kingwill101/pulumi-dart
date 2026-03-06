@@ -11,7 +11,7 @@ class JobAgentIdentity {
   /// Creates a new [JobAgentIdentity].
   /// [identityIds] Specifies a list of User Assigned Managed Identity IDs to assign to this Elastic Job Agent.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Elastic Job Agent. Currently only `UserAssigned` is supported.
-  JobAgentIdentity({
+  const JobAgentIdentity({
     required this.identityIds,
     required this.type,
   });

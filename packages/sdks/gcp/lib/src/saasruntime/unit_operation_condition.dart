@@ -34,7 +34,7 @@ class UnitOperationCondition {
   /// [reason] (Output)
   /// [status] (Output)
   /// [type] (Output)
-  UnitOperationCondition({
+  const UnitOperationCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

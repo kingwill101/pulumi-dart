@@ -19,7 +19,7 @@ class LinuxWebAppAuthSettingsV2FacebookV2 {
   /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook Login.
   /// [graphApiVersion] The version of the Facebook API to be used while logging in.
   /// [loginScopes] The list of scopes that should be requested as part of Facebook Login authentication.
-  LinuxWebAppAuthSettingsV2FacebookV2({
+  const LinuxWebAppAuthSettingsV2FacebookV2({
     required this.appId,
     required this.appSecretSettingName,
     this.graphApiVersion,

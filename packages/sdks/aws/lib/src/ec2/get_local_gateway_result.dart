@@ -24,7 +24,7 @@ class GetLocalGatewayResult {
   /// [region] Required.
   /// [state] State of the local gateway.
   /// [tags] Required.
-  GetLocalGatewayResult({
+  const GetLocalGatewayResult({
     this.filters,
     required this.id,
     required this.outpostArn,

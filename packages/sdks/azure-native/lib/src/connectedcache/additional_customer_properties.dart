@@ -45,7 +45,7 @@ class AdditionalCustomerProperties {
   /// [optionalProperty3] Optional property #3 of Mcc response object.
   /// [optionalProperty4] Optional property #4 of Mcc response object.
   /// [optionalProperty5] Optional property #5 of Mcc response object.
-  AdditionalCustomerProperties({
+  const AdditionalCustomerProperties({
     this.customerAsn,
     this.customerEmail,
     this.customerEntitlementExpiration,

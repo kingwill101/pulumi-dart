@@ -24,7 +24,7 @@ class DeploymentInstanceResponse {
   /// [startTime] Start time of the deployment instance
   /// [status] Status of the deployment instance
   /// [zone] Availability zone information of the deployment instance
-  DeploymentInstanceResponse({
+  const DeploymentInstanceResponse({
     required this.discoveryStatus,
     required this.name,
     required this.reason,

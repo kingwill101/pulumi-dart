@@ -69,7 +69,7 @@ class RatePlanArgs {
   /// [setupFee] Initial, one-time fee paid when purchasing the API product.
   /// [startTime] Time when the rate plan becomes active in milliseconds since epoch.
   /// [state] Current state of the rate plan (draft or published).
-  RatePlanArgs({
+  const RatePlanArgs({
     this.apiproduct,
     required this.apiproductId,
     this.billingPeriod,

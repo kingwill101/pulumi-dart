@@ -29,7 +29,7 @@ class GetWorkspaceApiSchemaResult {
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI.
-  GetWorkspaceApiSchemaResult({
+  const GetWorkspaceApiSchemaResult({
     required this.azureApiVersion,
     this.components,
     required this.contentType,

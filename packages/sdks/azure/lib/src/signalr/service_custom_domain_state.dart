@@ -20,7 +20,7 @@ class ServiceCustomDomainState {
   /// [name] Specifies the name of the SignalR Custom Domain. Changing this forces a new resource to be created.
   /// [signalrCustomCertificateId] Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
   /// [signalrServiceId] Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
-  ServiceCustomDomainState({
+  const ServiceCustomDomainState({
     this.domainName,
     this.name,
     this.signalrCustomCertificateId,

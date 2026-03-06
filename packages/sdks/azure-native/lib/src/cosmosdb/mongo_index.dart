@@ -14,7 +14,7 @@ class MongoIndex {
   /// Creates a new [MongoIndex].
   /// [key] Cosmos DB MongoDB collection index keys
   /// [options] Cosmos DB MongoDB collection index key options
-  MongoIndex({
+  const MongoIndex({
     this.key,
     this.options,
   });

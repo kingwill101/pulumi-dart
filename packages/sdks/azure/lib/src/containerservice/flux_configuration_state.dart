@@ -37,7 +37,7 @@ class FluxConfigurationState {
   /// [name] Specifies the name which should be used for this Kubernetes Flux Configuration. Changing this forces a new Kubernetes Flux Configuration to be created.
   /// [namespace] Specifies the namespace to which this configuration is installed to. Changing this forces a new Kubernetes Flux Configuration to be created.
   /// [scope] Specifies the scope at which the operator will be installed. Possible values are `cluster` and `namespace`. Defaults to `namespace`. Changing this forces a new Kubernetes Flux Configuration to be created.
-  FluxConfigurationState({
+  const FluxConfigurationState({
     this.blobStorage,
     this.bucket,
     this.clusterId,

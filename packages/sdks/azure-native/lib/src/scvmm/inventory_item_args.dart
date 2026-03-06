@@ -24,7 +24,7 @@ class InventoryItemArgs {
   /// [kind] Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   /// [resourceGroupName] The name of the resource group.
   /// [vmmServerName] Name of the VMMServer.
-  InventoryItemArgs({
+  const InventoryItemArgs({
     this.inventoryItemName,
     required this.inventoryType,
     this.kind,

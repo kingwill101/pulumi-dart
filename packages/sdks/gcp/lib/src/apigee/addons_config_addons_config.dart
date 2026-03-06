@@ -30,7 +30,7 @@ class AddonsConfigAddonsConfig {
   /// [connectorsPlatformConfig] Configuration for the Monetization add-on.
   /// [integrationConfig] Configuration for the Integration add-on.
   /// [monetizationConfig] Configuration for the Monetization add-on.
-  AddonsConfigAddonsConfig({
+  const AddonsConfigAddonsConfig({
     this.advancedApiOpsConfig,
     this.apiSecurityConfig,
     this.connectorsPlatformConfig,

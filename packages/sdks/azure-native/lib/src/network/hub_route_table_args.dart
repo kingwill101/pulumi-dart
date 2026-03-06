@@ -31,7 +31,7 @@ class HubRouteTableArgs {
   /// [routeTableName] The name of the RouteTable.
   /// [routes] List of all routes.
   /// [virtualHubName] The name of the VirtualHub.
-  HubRouteTableArgs({
+  const HubRouteTableArgs({
     this.id,
     this.labels,
     this.name,

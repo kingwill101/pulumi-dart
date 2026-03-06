@@ -13,7 +13,7 @@ class BrokerAuthenticatorMethodX509 {
   /// Creates a new [BrokerAuthenticatorMethodX509].
   /// [authorizationAttributes] X509 authorization attributes properties.
   /// [trustedClientCaCert] Name of the trusted client ca cert resource.
-  BrokerAuthenticatorMethodX509({
+  const BrokerAuthenticatorMethodX509({
     this.authorizationAttributes,
     this.trustedClientCaCert,
   });

@@ -11,7 +11,7 @@ class GetDirectorySamlProperty {
   /// [relayStateParameterName] Required.
   /// [status] Required.
   /// [userAccessUrl] Required.
-  GetDirectorySamlProperty({
+  const GetDirectorySamlProperty({
     required this.relayStateParameterName,
     required this.status,
     required this.userAccessUrl,

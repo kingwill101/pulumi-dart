@@ -26,7 +26,7 @@ class GetProvisioningArtifactsProvisioningArtifactDetail {
   /// [id] The identifier of the provisioning artifact.
   /// [name] The name of the provisioning artifact.
   /// [type] The type of provisioning artifact.
-  GetProvisioningArtifactsProvisioningArtifactDetail({
+  const GetProvisioningArtifactsProvisioningArtifactDetail({
     required this.active,
     required this.createdTime,
     required this.description,

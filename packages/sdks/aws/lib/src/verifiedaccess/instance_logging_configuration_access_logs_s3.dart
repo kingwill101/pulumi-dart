@@ -17,7 +17,7 @@ class InstanceLoggingConfigurationAccessLogsS3 {
   /// [bucketOwner] The ID of the AWS account that owns the Amazon S3 bucket.
   /// [enabled] Indicates whether logging is enabled.
   /// [prefix] The bucket prefix.
-  InstanceLoggingConfigurationAccessLogsS3({
+  const InstanceLoggingConfigurationAccessLogsS3({
     this.bucketName,
     this.bucketOwner,
     required this.enabled,

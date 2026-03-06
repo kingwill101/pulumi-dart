@@ -19,7 +19,7 @@ class LoggingConfigurationState {
   /// [firewallArn] The Amazon Resource Name (ARN) of the Network Firewall firewall.
   /// [loggingConfiguration] A configuration block describing how AWS Network Firewall performs logging for a firewall. See Logging Configuration below for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LoggingConfigurationState({
+  const LoggingConfigurationState({
     this.enableMonitoringDashboard,
     this.firewallArn,
     this.loggingConfiguration,

@@ -12,7 +12,7 @@ class StatelessRuleGroupReferenceResponse {
   /// Creates a new [StatelessRuleGroupReferenceResponse].
   /// [priority] Property priority
   /// [resourceArn] A resource ARN.
-  StatelessRuleGroupReferenceResponse({
+  const StatelessRuleGroupReferenceResponse({
     this.priority,
     this.resourceArn,
   });

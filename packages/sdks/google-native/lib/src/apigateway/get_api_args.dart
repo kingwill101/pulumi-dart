@@ -15,7 +15,7 @@ class GetApiArgs {
   /// [apiId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetApiArgs({
+  const GetApiArgs({
     required this.apiId,
     required this.location,
     this.project,

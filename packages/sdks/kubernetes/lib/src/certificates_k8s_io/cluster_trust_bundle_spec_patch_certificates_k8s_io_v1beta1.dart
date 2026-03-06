@@ -24,7 +24,7 @@ class ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1 {
   /// Creates a new [ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1].
   /// [signerName] signerName indicates the associated signer, if any.
   /// [trustBundle] trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
-  ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1({
+  const ClusterTrustBundleSpecPatchCertificatesK8sIoV1beta1({
     this.signerName,
     this.trustBundle,
   });

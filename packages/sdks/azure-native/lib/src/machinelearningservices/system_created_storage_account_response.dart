@@ -29,7 +29,7 @@ class SystemCreatedStorageAccountResponse {
   /// [storageAccountHnsEnabled] HNS enabled for storage account
   /// [storageAccountName] Name of the storage account
   /// [storageAccountType] Allowed values:
-  SystemCreatedStorageAccountResponse({
+  const SystemCreatedStorageAccountResponse({
     this.allowBlobPublicAccess,
     this.armResourceId,
     this.storageAccountHnsEnabled,

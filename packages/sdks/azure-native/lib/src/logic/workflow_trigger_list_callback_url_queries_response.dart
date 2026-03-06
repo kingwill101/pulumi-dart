@@ -21,7 +21,7 @@ class WorkflowTriggerListCallbackUrlQueriesResponse {
   /// [sig] The SAS signature.
   /// [sp] The SAS permissions.
   /// [sv] The SAS version.
-  WorkflowTriggerListCallbackUrlQueriesResponse({
+  const WorkflowTriggerListCallbackUrlQueriesResponse({
     this.apiVersion,
     this.se,
     this.sig,

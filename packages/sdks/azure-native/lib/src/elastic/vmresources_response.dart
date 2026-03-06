@@ -9,7 +9,7 @@ class VMResourcesResponse {
 
   /// Creates a new [VMResourcesResponse].
   /// [vmResourceId] The ARM id of the VM resource.
-  VMResourcesResponse({
+  const VMResourcesResponse({
     this.vmResourceId,
   });
 

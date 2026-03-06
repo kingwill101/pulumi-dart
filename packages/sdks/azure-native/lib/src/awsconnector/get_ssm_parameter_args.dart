@@ -15,7 +15,7 @@ class GetSsmParameterArgs {
   /// Creates a new [GetSsmParameterArgs].
   /// [name] Name of SsmParameter
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSsmParameterArgs({
+  const GetSsmParameterArgs({
     required this.name,
     required this.resourceGroupName,
   });

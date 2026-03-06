@@ -13,7 +13,7 @@ class ExistingRecoveryServicesVault {
   /// Creates a new [ExistingRecoveryServicesVault].
   /// [id] The resource ID of the recovery services vault that has been created.
   /// [vaultType] The vault type, whether it is existing or has to be created.
-  ExistingRecoveryServicesVault({
+  const ExistingRecoveryServicesVault({
     required this.id,
     required this.vaultType,
   });

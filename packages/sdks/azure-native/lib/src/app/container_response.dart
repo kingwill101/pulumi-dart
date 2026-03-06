@@ -37,7 +37,7 @@ class ContainerResponse {
   /// [probes] List of probes for the container.
   /// [resources] Container resource requirements.
   /// [volumeMounts] Container volume mounts.
-  ContainerResponse({
+  const ContainerResponse({
     this.args,
     this.command,
     this.env,

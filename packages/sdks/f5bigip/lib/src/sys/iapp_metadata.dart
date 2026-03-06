@@ -11,7 +11,7 @@ class IAppMetadata {
   /// Creates a new [IAppMetadata].
   /// [persists] Name of origin
   /// [value] Name of origin
-  IAppMetadata({
+  const IAppMetadata({
     this.persists,
     this.value,
   });

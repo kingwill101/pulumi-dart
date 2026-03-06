@@ -75,7 +75,7 @@ class ProfileTcpArgs {
   /// [timewaitRecycle] Using this setting enabled, the system can recycle a wait-state connection immediately upon receipt of a new connection request instead of having to wait until the connection times out of the wait state. By default, this setting is enabled.
   /// [verifiedAccept] Specifies, when checked (enabled), that the system can actually communicate with the server before establishing a client connection. To determine this, the system sends the server a SYN packet before responding to the client's SYN with a SYN-ACK. When unchecked, the system accepts the client connection before selecting a server to talk to. By default, this setting is `disabled`.
   /// [zerowindowTimeout] Specifies the timeout in milliseconds for terminating a connection with an effective zero length TCP transmit window.
-  ProfileTcpArgs({
+  const ProfileTcpArgs({
     this.closeWaitTimeout,
     this.congestionControl,
     this.defaultsFrom,

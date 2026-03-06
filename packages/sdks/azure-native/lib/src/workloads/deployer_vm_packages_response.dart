@@ -12,7 +12,7 @@ class DeployerVmPackagesResponse {
   /// Creates a new [DeployerVmPackagesResponse].
   /// [storageAccountId] The deployer VM packages storage account id
   /// [url] The URL to the deployer VM packages file.
-  DeployerVmPackagesResponse({
+  const DeployerVmPackagesResponse({
     this.storageAccountId,
     this.url,
   });

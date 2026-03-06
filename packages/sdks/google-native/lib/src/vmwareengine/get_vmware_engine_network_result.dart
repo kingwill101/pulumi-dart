@@ -34,7 +34,7 @@ class GetVmwareEngineNetworkResult {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
   /// [vpcNetworks] VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects, the internet, and other Google Cloud services.
-  GetVmwareEngineNetworkResult({
+  const GetVmwareEngineNetworkResult({
     required this.createTime,
     required this.description,
     required this.etag,

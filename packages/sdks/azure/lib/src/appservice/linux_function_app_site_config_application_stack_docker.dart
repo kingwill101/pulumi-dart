@@ -24,7 +24,7 @@ class LinuxFunctionAppSiteConfigApplicationStackDocker {
   /// [registryPassword] The password for the account to use to connect to the registry.
   /// [registryUrl] The URL of the docker registry.
   /// [registryUsername] The username to use for connections to the registry.
-  LinuxFunctionAppSiteConfigApplicationStackDocker({
+  const LinuxFunctionAppSiteConfigApplicationStackDocker({
     required this.imageName,
     required this.imageTag,
     this.registryPassword,

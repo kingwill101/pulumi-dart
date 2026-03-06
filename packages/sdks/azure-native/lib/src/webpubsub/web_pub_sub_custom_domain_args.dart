@@ -25,7 +25,7 @@ class WebPubSubCustomDomainArgs {
   /// [name] Custom domain name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  WebPubSubCustomDomainArgs({
+  const WebPubSubCustomDomainArgs({
     required this.customCertificate,
     required this.domainName,
     this.name,

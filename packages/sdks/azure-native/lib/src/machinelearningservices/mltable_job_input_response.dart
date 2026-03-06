@@ -18,7 +18,7 @@ class MLTableJobInputResponse {
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [mode] Input Asset Delivery Mode.
   /// [uri] [Required] Input Asset URI.
-  MLTableJobInputResponse({
+  const MLTableJobInputResponse({
     this.description,
     required this.jobInputType,
     this.mode,

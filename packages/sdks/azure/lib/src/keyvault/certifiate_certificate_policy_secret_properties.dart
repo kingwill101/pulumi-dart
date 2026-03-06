@@ -8,7 +8,7 @@ class CertifiateCertificatePolicySecretProperties {
 
   /// Creates a new [CertifiateCertificatePolicySecretProperties].
   /// [contentType] The Content-Type of the Certificate, such as `application/x-pkcs12` for a PFX or `application/x-pem-file` for a PEM.
-  CertifiateCertificatePolicySecretProperties({
+  const CertifiateCertificatePolicySecretProperties({
     required this.contentType,
   });
 

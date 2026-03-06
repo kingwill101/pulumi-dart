@@ -9,7 +9,7 @@ class GitLabRepositoryId {
 
   /// Creates a new [GitLabRepositoryId].
   /// [id] Identifier for the repository. example: "namespace/project-slug", namespace is usually the username or group ID
-  GitLabRepositoryId({
+  const GitLabRepositoryId({
     required this.id,
   });
 

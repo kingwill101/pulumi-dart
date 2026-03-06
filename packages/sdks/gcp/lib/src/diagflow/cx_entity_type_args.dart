@@ -53,7 +53,7 @@ class CxEntityTypeArgs {
   /// [languageCode] The language of the following fields in entityType:
   /// [parent] The agent to create a entity type for.
   /// [redact] Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
-  CxEntityTypeArgs({
+  const CxEntityTypeArgs({
     this.autoExpansionMode,
     required this.displayName,
     this.enableFuzzyExtraction,

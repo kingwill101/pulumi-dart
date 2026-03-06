@@ -28,7 +28,7 @@ class GetTransitRouterMulticastDomainPeerMembersResult {
   /// [resourceType] Optional.
   /// [transitRouterAttachmentId] Optional.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
-  GetTransitRouterMulticastDomainPeerMembersResult({
+  const GetTransitRouterMulticastDomainPeerMembersResult({
     required this.id,
     required this.ids,
     required this.members,

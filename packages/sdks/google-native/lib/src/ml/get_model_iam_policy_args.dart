@@ -15,7 +15,7 @@ class GetModelIamPolicyArgs {
   /// [modelId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetModelIamPolicyArgs({
+  const GetModelIamPolicyArgs({
     required this.modelId,
     this.optionsRequestedPolicyVersion,
     this.project,

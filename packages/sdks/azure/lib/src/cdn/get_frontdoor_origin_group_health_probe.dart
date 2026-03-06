@@ -17,7 +17,7 @@ class GetFrontdoorOriginGroupHealthProbe {
   /// [path] Specifies the path relative to the origin that is used to determine the health of the origin.
   /// [protocol] Specifies the protocol to use for health probe.
   /// [requestType] Specifies the type of health probe request that is made.
-  GetFrontdoorOriginGroupHealthProbe({
+  const GetFrontdoorOriginGroupHealthProbe({
     required this.intervalInSeconds,
     required this.path,
     required this.protocol,

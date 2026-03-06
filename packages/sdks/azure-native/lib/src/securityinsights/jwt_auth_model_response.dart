@@ -34,7 +34,7 @@ class JwtAuthModelResponse {
   /// [tokenEndpoint] Token endpoint to request JWT
   /// [type] Type of paging
   /// [userName] The user name. If user name and password sent in header request we only need to populate the `value` property with the user name (Same as basic auth). If user name and password sent in body request we need to specify the `Key` and `Value`.
-  JwtAuthModelResponse({
+  const JwtAuthModelResponse({
     this.headers,
     this.isCredentialsInHeaders,
     this.isJsonRequest,

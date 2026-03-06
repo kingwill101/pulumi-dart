@@ -50,7 +50,7 @@ class FunctionArgs {
   /// [name] A user-defined name of the function. Function names must
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceConfig] Describes the Service being deployed.
-  FunctionArgs({
+  const FunctionArgs({
     this.buildConfig,
     this.description,
     this.eventTrigger,

@@ -20,7 +20,7 @@ class GetInfrastructureConfigurationsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] Set of names of the matched Image Builder Infrastructure Configurations.
   /// [region] Required.
-  GetInfrastructureConfigurationsResult({
+  const GetInfrastructureConfigurationsResult({
     required this.arns,
     this.filters,
     required this.id,

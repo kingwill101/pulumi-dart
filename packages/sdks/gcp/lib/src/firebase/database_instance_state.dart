@@ -42,7 +42,7 @@ class DatabaseInstanceState {
   /// [region] A reference to the region where the Firebase Realtime database resides.
   /// [state] The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
   /// [type] The database type.
-  DatabaseInstanceState({
+  const DatabaseInstanceState({
     this.databaseUrl,
     this.desiredState,
     this.instanceId,

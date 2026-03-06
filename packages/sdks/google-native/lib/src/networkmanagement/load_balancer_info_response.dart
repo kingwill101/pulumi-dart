@@ -22,7 +22,7 @@ class LoadBalancerInfoResponse {
   /// [backends] Information for the loadbalancer backends.
   /// [healthCheckUri] URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
   /// [loadBalancerType] Type of the load balancer.
-  LoadBalancerInfoResponse({
+  const LoadBalancerInfoResponse({
     required this.backendType,
     required this.backendUri,
     required this.backends,

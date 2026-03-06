@@ -19,7 +19,7 @@ class GetIndexDocumentMetadataConfigurationUpdate {
   /// [relevances] Block that provides manual tuning parameters to determine how the field affects the search results. Documented below.
   /// [searches] Block that provides information about how the field is used during a search. Documented below.
   /// [type] Data type of the index field. Valid values are `STRING_VALUE`, `STRING_LIST_VALUE`, `LONG_VALUE`, `DATE_VALUE`.
-  GetIndexDocumentMetadataConfigurationUpdate({
+  const GetIndexDocumentMetadataConfigurationUpdate({
     required this.name,
     required this.relevances,
     required this.searches,

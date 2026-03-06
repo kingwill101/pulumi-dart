@@ -11,7 +11,7 @@ class GetServerBackupPlansFilter {
   /// Creates a new [GetServerBackupPlansFilter].
   /// [key] The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
   /// [values] Set of values that are accepted for the given field.
-  GetServerBackupPlansFilter({
+  const GetServerBackupPlansFilter({
     this.key,
     this.values,
   });

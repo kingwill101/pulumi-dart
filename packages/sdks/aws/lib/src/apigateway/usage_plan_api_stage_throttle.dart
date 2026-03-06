@@ -14,7 +14,7 @@ class UsagePlanApiStageThrottle {
   /// [burstLimit] The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.
   /// [path] Method to apply the throttle settings for. Specfiy the path and method, for example `/test/GET`.
   /// [rateLimit] The API request steady-state rate limit.
-  UsagePlanApiStageThrottle({
+  const UsagePlanApiStageThrottle({
     this.burstLimit,
     required this.path,
     this.rateLimit,

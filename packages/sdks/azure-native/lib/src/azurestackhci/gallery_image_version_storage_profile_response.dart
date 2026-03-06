@@ -10,7 +10,7 @@ class GalleryImageVersionStorageProfileResponse {
 
   /// Creates a new [GalleryImageVersionStorageProfileResponse].
   /// [osDiskImage] This is the OS disk image.
-  GalleryImageVersionStorageProfileResponse({
+  const GalleryImageVersionStorageProfileResponse({
     this.osDiskImage,
   });
 

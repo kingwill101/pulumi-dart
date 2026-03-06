@@ -26,7 +26,7 @@ class VirtualNetworksProperties {
   /// [ipAddressPrefix] IP Address Prefix of the network
   /// [vipPool] Virtual IP Pool for Kubernetes
   /// [vmipPool] IP Pool for Virtual Machines
-  VirtualNetworksProperties({
+  const VirtualNetworksProperties({
     this.dnsServers,
     this.gateway,
     this.infraVnetProfile,

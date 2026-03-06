@@ -32,7 +32,7 @@ class RampUpRuleResponse {
   /// [minReroutePercentage] Specifies lower boundary above which ReroutePercentage will stay.
   /// [name] Name of the routing rule. The recommended name would be to point to the slot which will receive the traffic in the experiment.
   /// [reroutePercentage] Percentage of the traffic which will be redirected to &lt;code&gt;ActionHostName&lt;/code&gt;.
-  RampUpRuleResponse({
+  const RampUpRuleResponse({
     this.actionHostName,
     this.changeDecisionCallbackUrl,
     this.changeIntervalInMinutes,

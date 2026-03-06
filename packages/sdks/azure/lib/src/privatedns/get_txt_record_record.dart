@@ -8,7 +8,7 @@ class GetTxtRecordRecord {
 
   /// Creates a new [GetTxtRecordRecord].
   /// [value] The value of the record. Max length: 1024 characters
-  GetTxtRecordRecord({
+  const GetTxtRecordRecord({
     required this.value,
   });
 

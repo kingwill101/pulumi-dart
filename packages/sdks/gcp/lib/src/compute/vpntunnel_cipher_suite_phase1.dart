@@ -17,7 +17,7 @@ class VPNTunnelCipherSuitePhase1 {
   /// [encryptions] Encryption algorithms.
   /// [integrities] Integrity algorithms.
   /// [prves] Pseudo-random functions.
-  VPNTunnelCipherSuitePhase1({
+  const VPNTunnelCipherSuitePhase1({
     this.dhs,
     this.encryptions,
     this.integrities,

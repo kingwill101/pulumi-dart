@@ -16,7 +16,7 @@ class DataCatalogEncryptionSettingsState {
   /// [catalogId] The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.
   /// [dataCatalogEncryptionSettings] The security configuration to set. see Data Catalog Encryption Settings.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DataCatalogEncryptionSettingsState({
+  const DataCatalogEncryptionSettingsState({
     this.catalogId,
     this.dataCatalogEncryptionSettings,
     this.region,

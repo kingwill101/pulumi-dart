@@ -19,7 +19,7 @@ class AccountCredentialDetailsResponse {
   /// [accountName] Name of the account.
   /// [dataAccountType] Type of the account.
   /// [shareCredentialDetails] Per share level unencrypted access credentials.
-  AccountCredentialDetailsResponse({
+  const AccountCredentialDetailsResponse({
     required this.accountConnectionString,
     required this.accountName,
     required this.dataAccountType,

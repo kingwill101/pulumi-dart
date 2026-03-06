@@ -20,7 +20,7 @@ class ClusterDiagnosticsConfig {
   /// [queueEndpoint] The Queue Endpoint of the Storage Account.
   /// [storageAccountName] The name of the Storage Account where the Diagnostics should be sent to.
   /// [tableEndpoint] The Table Endpoint of the Storage Account.
-  ClusterDiagnosticsConfig({
+  const ClusterDiagnosticsConfig({
     required this.blobEndpoint,
     required this.protectedAccountKeyName,
     required this.queueEndpoint,

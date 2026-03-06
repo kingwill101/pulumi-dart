@@ -14,7 +14,7 @@ class GetLinuxWebAppConnectionString {
   /// [name] The name of this Linux Web App.
   /// [type] The Azure Storage Type.
   /// [value] The Connection String value.
-  GetLinuxWebAppConnectionString({
+  const GetLinuxWebAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

@@ -16,7 +16,7 @@ class StandardAppVersionDeployment {
   /// Creates a new [StandardAppVersionDeployment].
   /// [files] Manifest of the files stored in Google Cloud Storage that are included as part of this version.
   /// [zip] Zip File
-  StandardAppVersionDeployment({
+  const StandardAppVersionDeployment({
     this.files,
     this.zip,
   });

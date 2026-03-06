@@ -25,7 +25,7 @@ class IpGroupState {
   /// [rules] One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
   /// [tags] A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  IpGroupState({
+  const IpGroupState({
     this.description,
     this.name,
     this.region,

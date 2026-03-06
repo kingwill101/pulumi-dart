@@ -16,7 +16,7 @@ class DiskPoolVolume {
   /// [lunName] Name of the LUN to be used for datastore
   /// [mountOption] Mode that describes whether the LUN has to be mounted as a datastore or
   /// [targetId] Azure resource ID of the iSCSI target
-  DiskPoolVolume({
+  const DiskPoolVolume({
     required this.lunName,
     this.mountOption,
     required this.targetId,

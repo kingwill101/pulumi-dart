@@ -23,7 +23,7 @@ class AppVersionSnapshotGuardrailAction {
   /// [generativeAnswers] (Output)
   /// [respondImmediatelies] (Output)
   /// [transferAgents] (Output)
-  AppVersionSnapshotGuardrailAction({
+  const AppVersionSnapshotGuardrailAction({
     this.generativeAnswers,
     this.respondImmediatelies,
     this.transferAgents,

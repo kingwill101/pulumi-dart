@@ -55,7 +55,7 @@ class SecurityPolicyArgs {
   /// [recaptchaOptionsConfig] [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
   /// [rules] The set of rules that belong to this policy. There must always be a default
   /// [type] The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-  SecurityPolicyArgs({
+  const SecurityPolicyArgs({
     this.adaptiveProtectionConfig,
     this.advancedOptionsConfig,
     this.description,

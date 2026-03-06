@@ -15,7 +15,7 @@ class EnrolledIntuneAppResponse {
   /// [appId] Intune app id.
   /// [appName] Intune app name.
   /// [expectedInstallationPath] Intune app expected installation path.
-  EnrolledIntuneAppResponse({
+  const EnrolledIntuneAppResponse({
     required this.appId,
     required this.appName,
     required this.expectedInstallationPath,

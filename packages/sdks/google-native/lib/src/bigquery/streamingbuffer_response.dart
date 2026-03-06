@@ -14,7 +14,7 @@ class StreamingbufferResponse {
   /// [estimatedBytes] A lower-bound estimate of the number of bytes currently in the streaming buffer.
   /// [estimatedRows] A lower-bound estimate of the number of rows currently in the streaming buffer.
   /// [oldestEntryTime] Contains the timestamp of the oldest entry in the streaming buffer, in milliseconds since the epoch, if the streaming buffer is available.
-  StreamingbufferResponse({
+  const StreamingbufferResponse({
     required this.estimatedBytes,
     required this.estimatedRows,
     required this.oldestEntryTime,

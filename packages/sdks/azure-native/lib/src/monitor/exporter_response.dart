@@ -20,7 +20,7 @@ class ExporterResponse {
   /// [name] The name of exporter.
   /// [tcp] TCP based exporter. Used for pipelineGroup exporter.
   /// [type] The type of exporter.
-  ExporterResponse({
+  const ExporterResponse({
     this.azureMonitorWorkspaceLogs,
     required this.name,
     this.tcp,

@@ -18,7 +18,7 @@ class ClusterIstio {
   /// [location] The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the location resource label in k8s_cluster resources.
   /// [serviceName] The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
   /// [serviceNamespace] The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
-  ClusterIstio({
+  const ClusterIstio({
     this.clusterName,
     this.location,
     this.serviceName,

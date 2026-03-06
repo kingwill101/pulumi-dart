@@ -187,7 +187,7 @@ class GetPolicyRuleCondition {
   /// [version] Required.
   /// [vlan] Required.
   /// [vlanId] Required.
-  GetPolicyRuleCondition({
+  const GetPolicyRuleCondition({
     required this.address,
     required this.all,
     required this.appService,

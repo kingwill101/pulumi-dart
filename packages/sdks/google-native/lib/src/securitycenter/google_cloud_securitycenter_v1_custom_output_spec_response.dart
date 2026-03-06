@@ -10,7 +10,7 @@ class GoogleCloudSecuritycenterV1CustomOutputSpecResponse {
 
   /// Creates a new [GoogleCloudSecuritycenterV1CustomOutputSpecResponse].
   /// [properties] A list of custom output properties to add to the finding.
-  GoogleCloudSecuritycenterV1CustomOutputSpecResponse({
+  const GoogleCloudSecuritycenterV1CustomOutputSpecResponse({
     required this.properties,
   });
 

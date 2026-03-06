@@ -11,7 +11,7 @@ class DomainDevicesGraphicRdpListenerNetwork {
   /// Creates a new [DomainDevicesGraphicRdpListenerNetwork].
   /// [address] Sets the network address for the Spice network listener.
   /// [network] Specifies the network to which the Spice listener belongs.
-  DomainDevicesGraphicRdpListenerNetwork({
+  const DomainDevicesGraphicRdpListenerNetwork({
     this.address,
     this.network,
   });

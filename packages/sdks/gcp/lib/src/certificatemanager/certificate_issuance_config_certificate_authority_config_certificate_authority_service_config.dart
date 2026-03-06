@@ -10,7 +10,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
 
   /// Creates a new [CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig].
   /// [caPool] A CA pool resource used to issue a certificate.
-  CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig({
+  const CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig({
     required this.caPool,
   });
 

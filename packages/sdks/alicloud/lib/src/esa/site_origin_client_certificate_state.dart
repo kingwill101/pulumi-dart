@@ -27,7 +27,7 @@ class SiteOriginClientCertificateState {
   /// [siteOriginClientCertificateId] The certificate ID on ESA.
   /// [siteOriginClientCertificateName] The certificate name.
   /// [status] The status of the certificate.
-  SiteOriginClientCertificateState({
+  const SiteOriginClientCertificateState({
     this.certificate,
     this.createTime,
     this.privateKey,

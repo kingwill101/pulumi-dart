@@ -12,7 +12,7 @@ class MqttBridgeRemoteBrokerConnectionTls {
   /// Creates a new [MqttBridgeRemoteBrokerConnectionTls].
   /// [tlsEnabled] Tls Enabled on Remote Broker Connection.
   /// [trustedCaCertificateConfigMap] Trusted CA certificate name for Remote Broker.
-  MqttBridgeRemoteBrokerConnectionTls({
+  const MqttBridgeRemoteBrokerConnectionTls({
     required this.tlsEnabled,
     this.trustedCaCertificateConfigMap,
   });

@@ -33,7 +33,7 @@ class GetNetworkManagerRoutingConfigurationResult {
   /// [resourceGuid] Unique identifier for this resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetNetworkManagerRoutingConfigurationResult({
+  const GetNetworkManagerRoutingConfigurationResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

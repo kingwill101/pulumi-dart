@@ -8,7 +8,7 @@ class DomainDevicesSmartcardPassthroughSpicePort {
 
   /// Creates a new [DomainDevicesSmartcardPassthroughSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesSmartcardPassthroughSpicePort({
+  const DomainDevicesSmartcardPassthroughSpicePort({
     required this.channel,
   });
 

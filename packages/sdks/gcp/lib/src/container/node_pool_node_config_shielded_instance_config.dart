@@ -11,7 +11,7 @@ class NodePoolNodeConfigShieldedInstanceConfig {
   /// Creates a new [NodePoolNodeConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  NodePoolNodeConfigShieldedInstanceConfig({
+  const NodePoolNodeConfigShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
   });

@@ -36,7 +36,7 @@ class ClientTlsPolicyArgs {
   /// [project] Optional.
   /// [serverValidationCa] Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
   /// [sni] Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
-  ClientTlsPolicyArgs({
+  const ClientTlsPolicyArgs({
     this.clientCertificate,
     required this.clientTlsPolicyId,
     this.description,

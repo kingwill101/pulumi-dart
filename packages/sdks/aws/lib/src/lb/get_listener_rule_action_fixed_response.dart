@@ -14,7 +14,7 @@ class GetListenerRuleActionFixedResponse {
   /// [contentType] Content type of the response.
   /// [messageBody] Message body of the response.
   /// [statusCode] The HTTP redirect code.
-  GetListenerRuleActionFixedResponse({
+  const GetListenerRuleActionFixedResponse({
     required this.contentType,
     required this.messageBody,
     required this.statusCode,

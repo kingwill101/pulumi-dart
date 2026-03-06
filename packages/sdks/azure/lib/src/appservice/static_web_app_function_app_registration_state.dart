@@ -16,7 +16,7 @@ class StaticWebAppFunctionAppRegistrationState {
   /// Creates a new [StaticWebAppFunctionAppRegistrationState].
   /// [functionAppId] The ID of a Linux or Windows Function App to connect to the Static Web App as a Backend. Changing this forces a new resource to be created.
   /// [staticWebAppId] The ID of the Static Web App to register the Function App to as a backend. Changing this forces a new resource to be created.
-  StaticWebAppFunctionAppRegistrationState({
+  const StaticWebAppFunctionAppRegistrationState({
     this.functionAppId,
     this.staticWebAppId,
   });

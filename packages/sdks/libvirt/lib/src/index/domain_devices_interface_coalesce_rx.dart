@@ -9,7 +9,7 @@ class DomainDevicesInterfaceCoalesceRx {
 
   /// Creates a new [DomainDevicesInterfaceCoalesceRx].
   /// [frames] Configures frame settings for received packets in coalescing, impacting how received packets are grouped for processing.
-  DomainDevicesInterfaceCoalesceRx({
+  const DomainDevicesInterfaceCoalesceRx({
     this.frames,
   });
 

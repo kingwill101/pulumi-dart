@@ -15,7 +15,7 @@ class GetSystemTopicArgs {
   /// Creates a new [GetSystemTopicArgs].
   /// [name] The name of the Event Grid System Topic resource.
   /// [resourceGroupName] The name of the resource group in which the Event Grid System Topic exists.
-  GetSystemTopicArgs({
+  const GetSystemTopicArgs({
     required this.name,
     required this.resourceGroupName,
   });

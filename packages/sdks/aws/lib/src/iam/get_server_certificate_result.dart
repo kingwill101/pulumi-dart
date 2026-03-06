@@ -34,7 +34,7 @@ class GetServerCertificateResult {
   /// [path] is set to the path of the IAM Server Certificate
   /// [pathPrefix] Optional.
   /// [uploadDate] is the date when the server certificate was uploaded
-  GetServerCertificateResult({
+  const GetServerCertificateResult({
     required this.arn,
     required this.certificateBody,
     required this.certificateChain,

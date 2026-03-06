@@ -10,7 +10,7 @@ class NodeSettings {
 
   /// Creates a new [NodeSettings].
   /// [common] Some settings.
-  NodeSettings({
+  const NodeSettings({
     this.common,
   });
 

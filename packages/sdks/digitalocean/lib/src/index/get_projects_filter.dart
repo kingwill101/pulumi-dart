@@ -23,7 +23,7 @@ class GetProjectsFilter {
   /// [key] Filter the projects by this key. This may be one of `name`,
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves projects
-  GetProjectsFilter({
+  const GetProjectsFilter({
     this.all,
     required this.key,
     this.matchBy,

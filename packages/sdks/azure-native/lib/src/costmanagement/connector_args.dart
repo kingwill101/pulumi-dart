@@ -39,7 +39,7 @@ class ConnectorArgs {
   /// [resourceGroupName] Azure Resource Group Name.
   /// [status] Connector status
   /// [tags] Resource tags.
-  ConnectorArgs({
+  const ConnectorArgs({
     this.connectorName,
     this.credentialsKey,
     this.credentialsSecret,

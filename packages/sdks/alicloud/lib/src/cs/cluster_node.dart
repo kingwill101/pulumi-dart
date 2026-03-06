@@ -15,7 +15,7 @@ class ClusterNode {
   /// [name] Optional.
   /// [privateIp] Optional.
   /// [status] Optional.
-  ClusterNode({
+  const ClusterNode({
     this.eip,
     this.id,
     this.name,

@@ -35,7 +35,7 @@ class GetOidcProvidersProvider {
   /// [issuerUrl] The issuer URL of the OIDC identity provider.
   /// [oidcProviderName] The name of the OIDC identity provider.
   /// [updateTime] Modification Time (UTC time).
-  GetOidcProvidersProvider({
+  const GetOidcProvidersProvider({
     required this.arn,
     required this.clientIds,
     required this.createTime,

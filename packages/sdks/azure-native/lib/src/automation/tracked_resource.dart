@@ -12,7 +12,7 @@ class TrackedResource {
   /// Creates a new [TrackedResource].
   /// [location] The geo-location where the resource lives
   /// [tags] Resource tags.
-  TrackedResource({
+  const TrackedResource({
     required this.location,
     this.tags,
   });

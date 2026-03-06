@@ -32,7 +32,7 @@ class UsernamePasswordAuthTypeWorkspaceConnectionProperties {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  UsernamePasswordAuthTypeWorkspaceConnectionProperties({
+  const UsernamePasswordAuthTypeWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

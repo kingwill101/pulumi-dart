@@ -12,7 +12,7 @@ class StorageBillingPropertiesResponse {
   /// Creates a new [StorageBillingPropertiesResponse].
   /// [billingMode] the billing mode for the storage instance
   /// [sku] the SKU type that is provisioned
-  StorageBillingPropertiesResponse({
+  const StorageBillingPropertiesResponse({
     this.billingMode,
     this.sku,
   });

@@ -24,7 +24,7 @@ class GetAlertRobotsArgs {
   /// [nameRegex] A regex string to filter results by Alert Robot name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [robotType] The robot type.
-  GetAlertRobotsArgs({
+  const GetAlertRobotsArgs({
     this.alertRobotName,
     this.ids,
     this.nameRegex,

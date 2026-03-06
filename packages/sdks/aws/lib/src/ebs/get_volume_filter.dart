@@ -9,7 +9,7 @@ class GetVolumeFilter {
   /// Creates a new [GetVolumeFilter].
   /// [name] Required.
   /// [values] Required.
-  GetVolumeFilter({
+  const GetVolumeFilter({
     required this.name,
     required this.values,
   });

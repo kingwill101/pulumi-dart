@@ -45,7 +45,7 @@ class GoogleCloudAiplatformV1CustomJobSpecResponse {
   /// [serviceAccount] Specifies the service account for workload run-as account. Users submitting jobs must have act-as permission on this run-as account. If unspecified, the [Vertex AI Custom Code Service Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) for the CustomJob's project is used.
   /// [tensorboard] Optional. The name of a Vertex AI Tensorboard resource to which this CustomJob will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
   /// [workerPoolSpecs] The spec of the worker pools including machine type and Docker image. All worker pools except the first one are optional and can be skipped by providing an empty value.
-  GoogleCloudAiplatformV1CustomJobSpecResponse({
+  const GoogleCloudAiplatformV1CustomJobSpecResponse({
     required this.baseOutputDirectory,
     required this.enableDashboardAccess,
     required this.enableWebAccess,

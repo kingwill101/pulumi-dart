@@ -27,7 +27,7 @@ class ServerGroupServerAttachmentArgs {
   /// [serverId] The ID of the backend server. You can specify the ID of an Elastic Compute Service (ECS) instance or an elastic network interface (ENI).
   /// [type] The type of backend server. Valid values: `ecs`, `eni`, `eci`. **NOTE:** From version 1.246.0, `type` can be set to `eci`.
   /// [weight] The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no requests are forwarded to the backend server.
-  ServerGroupServerAttachmentArgs({
+  const ServerGroupServerAttachmentArgs({
     this.description,
     required this.port,
     required this.serverGroupId,

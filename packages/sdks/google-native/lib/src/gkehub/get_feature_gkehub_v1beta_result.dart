@@ -48,7 +48,7 @@ class GetFeatureGkehubV1betaResult {
   /// [spec] Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   /// [state] The Hub-wide Feature state.
   /// [updateTime] When the Feature resource was last updated.
-  GetFeatureGkehubV1betaResult({
+  const GetFeatureGkehubV1betaResult({
     required this.createTime,
     required this.deleteTime,
     required this.fleetDefaultMemberConfig,

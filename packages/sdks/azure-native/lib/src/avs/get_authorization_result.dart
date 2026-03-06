@@ -33,7 +33,7 @@ class GetAuthorizationResult {
   /// [provisioningState] The state of the ExpressRoute Circuit Authorization provisioning
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAuthorizationResult({
+  const GetAuthorizationResult({
     required this.azureApiVersion,
     required this.expressRouteAuthorizationId,
     required this.expressRouteAuthorizationKey,

@@ -25,7 +25,7 @@ class GetRegistryEnterpriseInstancesResult {
   /// [nameRegex] Optional.
   /// [names] A list of instance names.
   /// [outputFile] Optional.
-  GetRegistryEnterpriseInstancesResult({
+  const GetRegistryEnterpriseInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

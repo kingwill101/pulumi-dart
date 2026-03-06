@@ -25,7 +25,7 @@ class GetTagRuleResult {
   /// [properties] Properties of the monitoring tag rules.
   /// [systemData] The system metadata relating to this resource
   /// [type] The type of the rule set.
-  GetTagRuleResult({
+  const GetTagRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

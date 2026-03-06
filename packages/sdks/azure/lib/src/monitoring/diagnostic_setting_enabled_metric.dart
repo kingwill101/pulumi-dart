@@ -10,7 +10,7 @@ class DiagnosticSettingEnabledMetric {
 
   /// Creates a new [DiagnosticSettingEnabledMetric].
   /// [category] The name of a Diagnostic Metric Category for this Resource.
-  DiagnosticSettingEnabledMetric({
+  const DiagnosticSettingEnabledMetric({
     required this.category,
   });
 

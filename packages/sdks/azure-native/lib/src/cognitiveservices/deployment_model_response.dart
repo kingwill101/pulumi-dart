@@ -28,7 +28,7 @@ class DeploymentModelResponse {
   /// [source] Optional. Deployment model source ARM resource ID.
   /// [sourceAccount] Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID.
   /// [version] Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
-  DeploymentModelResponse({
+  const DeploymentModelResponse({
     required this.callRateLimit,
     this.format,
     this.name,

@@ -28,7 +28,7 @@ class JobCollectionArgs {
   /// [properties] Gets or sets the job collection properties.
   /// [resourceGroupName] The resource group name.
   /// [tags] Gets or sets the tags.
-  JobCollectionArgs({
+  const JobCollectionArgs({
     this.jobCollectionName,
     this.location,
     this.name,

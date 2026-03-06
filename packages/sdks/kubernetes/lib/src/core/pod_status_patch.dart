@@ -77,7 +77,7 @@ class PodStatusPatch {
   /// [resourceClaimStatuses] Status of resource claims.
   /// [resources] Resources represents the compute resource requests and limits that have been applied at the pod level if pod-level requests or limits are set in PodSpec.Resources
   /// [startTime] RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.
-  PodStatusPatch({
+  const PodStatusPatch({
     this.allocatedResources,
     this.conditions,
     this.containerStatuses,

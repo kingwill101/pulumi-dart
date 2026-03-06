@@ -20,7 +20,7 @@ class OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair {
   /// [action] The repair action that will be used for repairing unhealthy virtual machines in the scale set. Possible values include `Replace`, `Restart`, `Reimage`.
   /// [enabled] Should the automatic instance repair be enabled on this Virtual Machine Scale Set? Possible values are `true` and `false`.
   /// [gracePeriod] Amount of time for which automatic repairs will be delayed. The grace period starts right after the VM is found unhealthy. Possible values are between `10` and `90` minutes. The time duration should be specified in `ISO 8601` format (e.g. `PT10M` to `PT90M`).
-  OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair({
+  const OrchestratedVirtualMachineScaleSetAutomaticInstanceRepair({
     this.action,
     required this.enabled,
     this.gracePeriod,

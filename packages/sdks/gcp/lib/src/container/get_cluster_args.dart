@@ -21,7 +21,7 @@ class GetClusterArgs {
   /// [location] The location (zone or region) this cluster has been
   /// [name] The name of the cluster.
   /// [project] The project in which the resource belongs. If it
-  GetClusterArgs({
+  const GetClusterArgs({
     this.location,
     required this.name,
     this.project,

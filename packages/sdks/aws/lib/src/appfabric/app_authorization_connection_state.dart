@@ -29,7 +29,7 @@ class AppAuthorizationConnectionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tenants] Contains information about an application tenant, such as the application display name and identifier.
   /// [timeouts] Optional.
-  AppAuthorizationConnectionState({
+  const AppAuthorizationConnectionState({
     this.app,
     this.appAuthorizationArn,
     this.appBundleArn,

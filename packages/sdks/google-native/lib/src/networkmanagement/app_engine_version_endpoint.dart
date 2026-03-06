@@ -9,7 +9,7 @@ class AppEngineVersionEndpoint {
 
   /// Creates a new [AppEngineVersionEndpoint].
   /// [uri] An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
-  AppEngineVersionEndpoint({
+  const AppEngineVersionEndpoint({
     this.uri,
   });
 

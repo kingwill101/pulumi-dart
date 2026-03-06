@@ -15,7 +15,7 @@ class GetDeveloperArgs {
   /// [action] Optional.
   /// [developerId] Required.
   /// [organizationId] Required.
-  GetDeveloperArgs({
+  const GetDeveloperArgs({
     this.action,
     required this.developerId,
     required this.organizationId,

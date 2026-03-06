@@ -12,7 +12,7 @@ class ApplicationEndpointResponse {
   /// Creates a new [ApplicationEndpointResponse].
   /// [host] Hostname or IP address of the remote application endpoint.
   /// [port] Port of the remote application endpoint.
-  ApplicationEndpointResponse({
+  const ApplicationEndpointResponse({
     required this.host,
     required this.port,
   });

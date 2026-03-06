@@ -9,7 +9,7 @@ class ConnectionDrainingComputeBeta {
 
   /// Creates a new [ConnectionDrainingComputeBeta].
   /// [drainingTimeoutSec] Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
-  ConnectionDrainingComputeBeta({
+  const ConnectionDrainingComputeBeta({
     this.drainingTimeoutSec,
   });
 

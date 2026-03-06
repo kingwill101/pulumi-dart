@@ -43,7 +43,7 @@ class PartnerNamespaceArgs {
   /// [publicNetworkAccess] This determines if traffic is allowed over public network. By default it is enabled.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
-  PartnerNamespaceArgs({
+  const PartnerNamespaceArgs({
     this.disableLocalAuth,
     this.inboundIpRules,
     this.location,

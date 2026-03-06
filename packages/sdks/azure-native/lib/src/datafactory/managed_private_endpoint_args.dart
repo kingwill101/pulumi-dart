@@ -25,7 +25,7 @@ class ManagedPrivateEndpointArgs {
   /// [managedVirtualNetworkName] Managed virtual network name
   /// [properties] Managed private endpoint properties.
   /// [resourceGroupName] The resource group name.
-  ManagedPrivateEndpointArgs({
+  const ManagedPrivateEndpointArgs({
     required this.factoryName,
     this.managedPrivateEndpointName,
     required this.managedVirtualNetworkName,

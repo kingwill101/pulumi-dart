@@ -50,7 +50,7 @@ class FileSystemState {
   /// [storageType] The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
   /// [throughputMode] The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
   /// [zoneId] Zone Id, which is used to create file system resources to the specified zone.
-  FileSystemState({
+  const FileSystemState({
     this.createTime,
     this.dataRedundancyType,
     this.dedicatedClusterId,

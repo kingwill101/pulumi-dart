@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesDacReadSearch {
 
   /// Creates a new [DomainFeaturesCapabilitiesDacReadSearch].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesDacReadSearch({
+  const DomainFeaturesCapabilitiesDacReadSearch({
     this.state,
   });
 

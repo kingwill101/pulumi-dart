@@ -23,7 +23,7 @@ class CertificateCertificateAttribute {
   /// [notBefore] The not before valid time of the Key Vault Certificate.
   /// [recoveryLevel] The deletion recovery level of the Key Vault Certificate.
   /// [updated] The recent update time of the Key Vault Certificate.
-  CertificateCertificateAttribute({
+  const CertificateCertificateAttribute({
     this.created,
     this.enabled,
     this.expires,

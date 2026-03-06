@@ -27,7 +27,7 @@ class IntegrationFabricArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
-  IntegrationFabricArgs({
+  const IntegrationFabricArgs({
     this.integrationFabricName,
     this.location,
     this.properties,

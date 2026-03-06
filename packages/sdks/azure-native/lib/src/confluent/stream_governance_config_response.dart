@@ -9,7 +9,7 @@ class StreamGovernanceConfigResponse {
 
   /// Creates a new [StreamGovernanceConfigResponse].
   /// [package] Stream governance configuration
-  StreamGovernanceConfigResponse({
+  const StreamGovernanceConfigResponse({
     this.package,
   });
 

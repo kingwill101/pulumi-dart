@@ -49,7 +49,7 @@ class VpcCenTrFirewallArgs {
   /// [trAttachmentSlaveCidr] The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
   /// [trAttachmentSlaveZone] The secondary zone of the vSwitch.
   /// [transitRouterId] The ID of the Transit Router instance.
-  VpcCenTrFirewallArgs({
+  const VpcCenTrFirewallArgs({
     required this.cenId,
     this.firewallDescription,
     required this.firewallName,

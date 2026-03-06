@@ -16,7 +16,7 @@ class GetRouteSpecHttp2RouteMatchHeaderMatch {
   /// [ranges] Required.
   /// [regex] Required.
   /// [suffix] Required.
-  GetRouteSpecHttp2RouteMatchHeaderMatch({
+  const GetRouteSpecHttp2RouteMatchHeaderMatch({
     required this.exact,
     required this.prefix,
     required this.ranges,

@@ -31,7 +31,7 @@ class GetMigrateProjectResult {
   /// [properties] Gets or sets the nested properties.
   /// [tags] Gets or sets the tags.
   /// [type] Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
-  GetMigrateProjectResult({
+  const GetMigrateProjectResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

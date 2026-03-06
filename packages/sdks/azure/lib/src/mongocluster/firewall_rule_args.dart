@@ -21,7 +21,7 @@ class FirewallRuleArgs {
   /// [mongoClusterId] The ID of the Mongo Cluster. Changing this forces a new resource to be created.
   /// [name] The name of the Mongo Cluster Firewall Rule. Changing this forces a new resource to be created.
   /// [startIpAddress] The start IP address of the Mongo Cluster Firewall Rule.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.endIpAddress,
     required this.mongoClusterId,
     this.name,

@@ -13,7 +13,7 @@ class ScriptsToExecute {
   /// Creates a new [ScriptsToExecute].
   /// [creationScript] Script that's run only once during provision of the compute.
   /// [startupScript] Script that's run every time the machine starts.
-  ScriptsToExecute({
+  const ScriptsToExecute({
     this.creationScript,
     this.startupScript,
   });

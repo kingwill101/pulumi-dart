@@ -15,7 +15,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSour
   /// [digest] Collection of cryptographic digests for the contents of the artifact specified by invocation.configSource.uri.
   /// [entryPoint] String identifying the entry point into the build.
   /// [uri] URI indicating the identity of the source of the config.
-  GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource({
+  const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaConfigSource({
     this.digest,
     this.entryPoint,
     this.uri,

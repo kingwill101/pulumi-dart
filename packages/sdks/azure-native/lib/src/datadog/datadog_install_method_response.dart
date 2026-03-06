@@ -14,7 +14,7 @@ class DatadogInstallMethodResponse {
   /// [installerVersion] The installer version.
   /// [tool] The tool.
   /// [toolVersion] The tool version.
-  DatadogInstallMethodResponse({
+  const DatadogInstallMethodResponse({
     this.installerVersion,
     this.tool,
     this.toolVersion,

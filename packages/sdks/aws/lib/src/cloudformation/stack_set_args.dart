@@ -57,7 +57,7 @@ class StackSetArgs {
   /// [tags] Key-value map of tags to associate with this StackSet and the Stacks created from it. AWS CloudFormation also propagates these tags to supported resources that are created in the Stacks. A maximum number of 50 tags can be specified. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [templateBody] String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `template_url`.
   /// [templateUrl] String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `template_body`.
-  StackSetArgs({
+  const StackSetArgs({
     this.administrationRoleArn,
     this.autoDeployment,
     this.callAs,

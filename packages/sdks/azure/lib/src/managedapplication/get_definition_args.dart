@@ -15,7 +15,7 @@ class GetDefinitionArgs {
   /// Creates a new [GetDefinitionArgs].
   /// [name] Specifies the name of the Managed Application Definition.
   /// [resourceGroupName] Specifies the name of the Resource Group where this Managed Application Definition exists.
-  GetDefinitionArgs({
+  const GetDefinitionArgs({
     required this.name,
     required this.resourceGroupName,
   });

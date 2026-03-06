@@ -62,7 +62,7 @@ class AppHostingBackendArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceAccount] The name of the service account used for Cloud Build and Cloud Run.
   /// [servingLocality] Immutable. Specifies how App Hosting will serve the content for this backend. It will
-  AppHostingBackendArgs({
+  const AppHostingBackendArgs({
     this.annotations,
     required this.appId,
     required this.backendId,

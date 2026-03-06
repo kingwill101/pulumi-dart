@@ -8,7 +8,7 @@ class GetListenerRuleConditionSourceIp {
 
   /// Creates a new [GetListenerRuleConditionSourceIp].
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleConditionSourceIp({
+  const GetListenerRuleConditionSourceIp({
     required this.values,
   });
 

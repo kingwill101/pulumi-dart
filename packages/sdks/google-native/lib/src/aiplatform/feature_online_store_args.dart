@@ -26,7 +26,7 @@ class FeatureOnlineStoreArgs {
   /// [labels] Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
   /// [location] Optional.
   /// [project] Optional.
-  FeatureOnlineStoreArgs({
+  const FeatureOnlineStoreArgs({
     this.bigtable,
     this.etag,
     required this.featureOnlineStoreId,

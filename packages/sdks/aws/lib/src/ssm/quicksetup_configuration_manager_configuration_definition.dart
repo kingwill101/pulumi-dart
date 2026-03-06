@@ -21,7 +21,7 @@ class QuicksetupConfigurationManagerConfigurationDefinition {
   /// [parameters] Parameters for the configuration definition type. Parameters for configuration definitions vary based the configuration type. See the [AWS API documentation](https://docs.aws.amazon.com/quick-setup/latest/APIReference/API_ConfigurationDefinitionInput.html) for a complete list of parameters for each configuration type.
   /// [type] Type of the Quick Setup configuration.
   /// [typeVersion] Version of the Quick Setup type to use.
-  QuicksetupConfigurationManagerConfigurationDefinition({
+  const QuicksetupConfigurationManagerConfigurationDefinition({
     this.id,
     this.localDeploymentAdministrationRoleArn,
     this.localDeploymentExecutionRoleName,

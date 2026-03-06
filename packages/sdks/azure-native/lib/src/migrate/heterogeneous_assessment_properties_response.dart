@@ -30,7 +30,7 @@ class HeterogeneousAssessmentPropertiesResponse {
   /// [schemaVersion] Schema version.
   /// [sizingCriterion] Sizing criterion for assessment.
   /// [status] Whether assessment is in valid state and all machines have been assessed.
-  HeterogeneousAssessmentPropertiesResponse({
+  const HeterogeneousAssessmentPropertiesResponse({
     this.assessmentArmIds,
     required this.azureLocation,
     required this.confidenceRatingInPercentage,

@@ -17,7 +17,7 @@ class GetEndpointsEndpointIpConfig {
   /// [ip] The IP address within the parameter range of the subnet mask. **NOTE:** It is recommended to use the IP address assigned by the system.
   /// [vswitchId] The Vswitch id.
   /// [zoneId] The Zone ID.
-  GetEndpointsEndpointIpConfig({
+  const GetEndpointsEndpointIpConfig({
     required this.cidrBlock,
     required this.ip,
     required this.vswitchId,

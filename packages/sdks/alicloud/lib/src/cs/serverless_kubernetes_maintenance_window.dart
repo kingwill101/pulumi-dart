@@ -27,7 +27,7 @@ class ServerlessKubernetesMaintenanceWindow {
   /// [enable] Whether to open the maintenance window. The following parameters take effect only `enable = true`.
   /// [maintenanceTime] Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
   /// [weeklyPeriod] Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
-  ServerlessKubernetesMaintenanceWindow({
+  const ServerlessKubernetesMaintenanceWindow({
     this.duration,
     this.enable,
     this.maintenanceTime,

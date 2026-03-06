@@ -64,7 +64,7 @@ class PolicyState {
   /// [securityServicePolicyData] The objects to include in Security Service Policy Data. See the `security_service_policy_data` block.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  PolicyState({
+  const PolicyState({
     this.arn,
     this.deleteAllPolicyResources,
     this.deleteUnusedFmManagedResources,

@@ -14,7 +14,7 @@ class GetInstancesInstanceMongo {
   /// [class_] The instance type of the shard node.
   /// [description] The description of the shard node.
   /// [nodeId] The ID of the shard node.
-  GetInstancesInstanceMongo({
+  const GetInstancesInstanceMongo({
     required this.class_,
     required this.description,
     required this.nodeId,

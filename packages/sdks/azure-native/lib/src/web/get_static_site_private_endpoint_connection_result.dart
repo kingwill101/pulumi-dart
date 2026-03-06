@@ -33,7 +33,7 @@ class GetStaticSitePrivateEndpointConnectionResult {
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [provisioningState] Required.
   /// [type] Resource type.
-  GetStaticSitePrivateEndpointConnectionResult({
+  const GetStaticSitePrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     this.ipAddresses,

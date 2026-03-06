@@ -38,7 +38,7 @@ class ServerBackupPlanArgs {
   /// [instanceId] The ID of ECS instance.
   /// [retention] Backup retention days, the minimum is 1.
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`
-  ServerBackupPlanArgs({
+  const ServerBackupPlanArgs({
     this.crossAccountRoleName,
     this.crossAccountType,
     this.crossAccountUserId,

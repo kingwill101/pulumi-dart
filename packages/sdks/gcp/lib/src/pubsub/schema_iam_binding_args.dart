@@ -38,7 +38,7 @@ class SchemaIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [schema] Used to find the parent resource to bind the IAM policy to
-  SchemaIamBindingArgs({
+  const SchemaIamBindingArgs({
     this.condition,
     required this.members,
     this.project,

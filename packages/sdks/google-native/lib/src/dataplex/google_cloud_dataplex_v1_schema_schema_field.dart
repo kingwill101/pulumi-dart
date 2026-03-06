@@ -23,7 +23,7 @@ class GoogleCloudDataplexV1SchemaSchemaField {
   /// [mode] Additional field semantics.
   /// [name] The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
   /// [type] The type of field.
-  GoogleCloudDataplexV1SchemaSchemaField({
+  const GoogleCloudDataplexV1SchemaSchemaField({
     this.description,
     this.fields,
     required this.mode,

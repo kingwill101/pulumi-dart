@@ -11,7 +11,7 @@ class UserProfileDetail {
   /// Creates a new [UserProfileDetail].
   /// [iams] Required.
   /// [ssos] Required.
-  UserProfileDetail({
+  const UserProfileDetail({
     required this.iams,
     required this.ssos,
   });

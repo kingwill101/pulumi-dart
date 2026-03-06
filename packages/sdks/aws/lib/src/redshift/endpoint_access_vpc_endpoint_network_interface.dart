@@ -17,7 +17,7 @@ class EndpointAccessVpcEndpointNetworkInterface {
   /// [networkInterfaceId] The network interface identifier.
   /// [privateIpAddress] The IPv4 address of the network interface within the subnet.
   /// [subnetId] The subnet identifier.
-  EndpointAccessVpcEndpointNetworkInterface({
+  const EndpointAccessVpcEndpointNetworkInterface({
     this.availabilityZone,
     this.networkInterfaceId,
     this.privateIpAddress,

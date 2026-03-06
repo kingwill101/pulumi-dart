@@ -21,7 +21,7 @@ class DiskAttachmentArgs {
   /// [diskPath] Disk path to expose to the instance.
   /// [instanceName] Name of the Lightsail instance to attach to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DiskAttachmentArgs({
+  const DiskAttachmentArgs({
     required this.diskName,
     required this.diskPath,
     required this.instanceName,

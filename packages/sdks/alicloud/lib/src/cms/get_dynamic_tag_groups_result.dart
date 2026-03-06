@@ -20,7 +20,7 @@ class GetDynamicTagGroupsResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [tagKey] Optional.
-  GetDynamicTagGroupsResult({
+  const GetDynamicTagGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

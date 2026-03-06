@@ -38,7 +38,7 @@ class ConnectionArgs {
   /// [requestMacsec] Boolean value indicating whether you want the connection to support MAC Security (MACsec). MAC Security (MACsec) is only available on dedicated connections. See [MACsec prerequisites](https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites) for more information about MAC Security (MACsec) prerequisites. Default value: `false`.
   /// [skipDestroy] Set to true if you do not wish the connection to be deleted at destroy time, and instead just removed from the state.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ConnectionArgs({
+  const ConnectionArgs({
     required this.bandwidth,
     this.encryptionMode,
     required this.location,

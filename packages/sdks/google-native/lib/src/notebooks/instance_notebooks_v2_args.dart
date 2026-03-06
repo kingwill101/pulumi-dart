@@ -32,7 +32,7 @@ class InstanceNotebooksV2Args {
   /// [location] Optional.
   /// [project] Optional.
   /// [requestId] Optional. Idempotent request UUID.
-  InstanceNotebooksV2Args({
+  const InstanceNotebooksV2Args({
     this.disableProxyAccess,
     this.gceSetup,
     required this.instanceId,

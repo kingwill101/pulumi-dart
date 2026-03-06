@@ -24,7 +24,7 @@ class SelfSubjectRulesReview {
   /// [metadata] Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Spec holds information about the request being evaluated.
   /// [status] Status is filled in by the server and indicates the set of actions a user can perform.
-  SelfSubjectRulesReview({
+  const SelfSubjectRulesReview({
     this.apiVersion,
     this.kind,
     this.metadata,

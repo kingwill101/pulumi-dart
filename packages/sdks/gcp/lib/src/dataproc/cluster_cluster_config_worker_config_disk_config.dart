@@ -22,7 +22,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig {
   /// [bootDiskType] The disk type of the primary disk attached to each node.
   /// [localSsdInterface] Interface type of local SSDs (default is "scsi"). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
   /// [numLocalSsds] The amount of local SSD disks that will be
-  ClusterClusterConfigWorkerConfigDiskConfig({
+  const ClusterClusterConfigWorkerConfigDiskConfig({
     this.bootDiskSizeGb,
     this.bootDiskType,
     this.localSsdInterface,

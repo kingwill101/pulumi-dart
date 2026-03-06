@@ -13,7 +13,7 @@ class ClientEncryptionPolicyResponse {
   /// Creates a new [ClientEncryptionPolicyResponse].
   /// [includedPaths] Paths of the item that need encryption along with path-specific settings.
   /// [policyFormatVersion] Version of the client encryption policy definition. Supported versions are 1 and 2. Version 2 supports id and partition key path encryption.
-  ClientEncryptionPolicyResponse({
+  const ClientEncryptionPolicyResponse({
     required this.includedPaths,
     required this.policyFormatVersion,
   });

@@ -15,7 +15,7 @@ class GetPullThroughCacheRuleArgs {
   /// Creates a new [GetPullThroughCacheRuleArgs].
   /// [ecrRepositoryPrefix] The repository name prefix to use when caching images from the source registry.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPullThroughCacheRuleArgs({
+  const GetPullThroughCacheRuleArgs({
     required this.ecrRepositoryPrefix,
     this.region,
   });

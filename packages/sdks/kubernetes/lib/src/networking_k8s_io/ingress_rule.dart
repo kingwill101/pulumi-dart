@@ -19,7 +19,7 @@ class IngressRule {
   /// Creates a new [IngressRule].
   /// [host] host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in RFC 3986: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to
   /// [http] Optional.
-  IngressRule({
+  const IngressRule({
     this.host,
     this.http,
   });

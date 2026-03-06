@@ -21,7 +21,7 @@ class WnsCredentialResponse {
   /// [secretKey] Gets or sets the secret key.
   /// [windowsLiveEndpoint] Gets or sets the Windows Live endpoint.
   /// [wnsCertificate] Gets or sets the WNS Certificate.
-  WnsCredentialResponse({
+  const WnsCredentialResponse({
     this.certificateKey,
     this.packageSid,
     this.secretKey,

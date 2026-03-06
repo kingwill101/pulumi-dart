@@ -17,7 +17,7 @@ class GetTriggerIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [triggerId] Required.
-  GetTriggerIamPolicyArgs({
+  const GetTriggerIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

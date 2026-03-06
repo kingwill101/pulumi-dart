@@ -55,7 +55,7 @@ class GetInstanceClassesArgs {
   /// [sortedBy] Optional.
   /// [storageType] It has been deprecated from 1.68.0.
   /// [zoneId] The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
-  GetInstanceClassesArgs({
+  const GetInstanceClassesArgs({
     this.architecture,
     this.editionType,
     this.engine,

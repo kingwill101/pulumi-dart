@@ -29,7 +29,7 @@ class ListenerState {
   /// [serverGroupId] The server group ID.
   /// [status] The status of the listener.
   /// [tags] The tags. You can specify at most 20 tags in each call.
-  ListenerState({
+  const ListenerState({
     this.dryRun,
     this.listenerDescription,
     this.loadBalancerId,

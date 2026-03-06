@@ -39,7 +39,7 @@ class AppHostingDefaultDomainState {
   /// [project] The ID of the project in which the resource belongs.
   /// [uid] System-assigned, unique identifier.
   /// [updateTime] Time at which the domain was last updated.
-  AppHostingDefaultDomainState({
+  const AppHostingDefaultDomainState({
     this.backend,
     this.createTime,
     this.disabled,

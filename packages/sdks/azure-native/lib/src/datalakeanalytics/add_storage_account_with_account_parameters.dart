@@ -15,7 +15,7 @@ class AddStorageAccountWithAccountParameters {
   /// [accessKey] The access key associated with this Azure Storage account that will be used to connect to it.
   /// [name] The unique name of the Azure Storage account to add.
   /// [suffix] The optional suffix for the storage account.
-  AddStorageAccountWithAccountParameters({
+  const AddStorageAccountWithAccountParameters({
     required this.accessKey,
     required this.name,
     this.suffix,

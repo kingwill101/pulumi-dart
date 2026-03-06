@@ -26,7 +26,7 @@ class GetServiceEndpointConnectionsPrivateEndpointConnection {
   /// [privateEndpointId] The resource id of the private link endpoint.
   /// [privateEndpointName] The name of the private link endpoint.
   /// [status] Indicates the state of the connection between the private link service and the private link endpoint, possible values are `Pending`, `Approved` or `Rejected`.
-  GetServiceEndpointConnectionsPrivateEndpointConnection({
+  const GetServiceEndpointConnectionsPrivateEndpointConnection({
     required this.actionRequired,
     required this.connectionId,
     required this.connectionName,

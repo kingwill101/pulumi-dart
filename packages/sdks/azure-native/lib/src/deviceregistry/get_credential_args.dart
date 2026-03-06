@@ -15,7 +15,7 @@ class GetCredentialArgs {
   /// Creates a new [GetCredentialArgs].
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCredentialArgs({
+  const GetCredentialArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

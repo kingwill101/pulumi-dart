@@ -28,7 +28,7 @@ class GetTrafficMirrorFiltersResult {
   /// [outputFile] Optional.
   /// [status] The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
   /// [trafficMirrorFilterName] The name of the filter.
-  GetTrafficMirrorFiltersResult({
+  const GetTrafficMirrorFiltersResult({
     required this.filters,
     required this.id,
     required this.ids,

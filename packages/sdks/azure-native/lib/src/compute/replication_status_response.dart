@@ -13,7 +13,7 @@ class ReplicationStatusResponse {
   /// Creates a new [ReplicationStatusResponse].
   /// [aggregatedState] This is the aggregated replication status based on all the regional replication status flags.
   /// [summary] This is a summary of replication status for each region.
-  ReplicationStatusResponse({
+  const ReplicationStatusResponse({
     required this.aggregatedState,
     required this.summary,
   });

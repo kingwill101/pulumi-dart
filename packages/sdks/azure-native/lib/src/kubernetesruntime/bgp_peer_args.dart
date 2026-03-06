@@ -24,7 +24,7 @@ class BgpPeerArgs {
   /// [peerAddress] Peer Address
   /// [peerAsn] Peer ASN
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  BgpPeerArgs({
+  const BgpPeerArgs({
     this.bgpPeerName,
     required this.myAsn,
     required this.peerAddress,

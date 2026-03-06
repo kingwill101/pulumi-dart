@@ -53,7 +53,7 @@ class GlossaryTermState {
   /// [termId] The term id for creation.
   /// [uid] System generated unique id for the GlossaryTerm. This ID will be different if the GlossaryTerm is deleted and re-created with the same name.
   /// [updateTime] The time at which the GlossaryTerm was last updated.
-  GlossaryTermState({
+  const GlossaryTermState({
     this.createTime,
     this.description,
     this.displayName,

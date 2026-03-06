@@ -42,7 +42,7 @@ class AliasArgs {
   /// [keystoreId] Required.
   /// [organizationId] Required.
   /// [password] DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
-  AliasArgs({
+  const AliasArgs({
     this.alias,
     this.contentType,
     this.data,

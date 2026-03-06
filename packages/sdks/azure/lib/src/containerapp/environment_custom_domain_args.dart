@@ -21,7 +21,7 @@ class EnvironmentCustomDomainArgs {
   /// [certificatePassword] The password for the Certificate bundle.
   /// [containerAppEnvironmentId] The ID of the Container Apps Managed Environment. Changing this forces a new resource to be created.
   /// [dnsSuffix] Custom DNS Suffix for the Container App Environment.
-  EnvironmentCustomDomainArgs({
+  const EnvironmentCustomDomainArgs({
     required this.certificateBlobBase64,
     required this.certificatePassword,
     required this.containerAppEnvironmentId,

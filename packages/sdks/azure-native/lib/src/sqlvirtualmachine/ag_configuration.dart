@@ -10,7 +10,7 @@ class AgConfiguration {
 
   /// Creates a new [AgConfiguration].
   /// [replicas] Replica configurations.
-  AgConfiguration({
+  const AgConfiguration({
     this.replicas,
   });
 

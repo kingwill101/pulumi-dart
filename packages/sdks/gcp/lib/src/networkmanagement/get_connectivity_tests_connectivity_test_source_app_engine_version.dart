@@ -8,7 +8,7 @@ class GetConnectivityTestsConnectivityTestSourceAppEngineVersion {
 
   /// Creates a new [GetConnectivityTestsConnectivityTestSourceAppEngineVersion].
   /// [uri] A Cloud Run revision URI.
-  GetConnectivityTestsConnectivityTestSourceAppEngineVersion({
+  const GetConnectivityTestsConnectivityTestSourceAppEngineVersion({
     required this.uri,
   });
 

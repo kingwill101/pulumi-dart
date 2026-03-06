@@ -14,7 +14,7 @@ class AuthenticationWebsecurityscannerV1alpha {
   /// Creates a new [AuthenticationWebsecurityscannerV1alpha].
   /// [customAccount] Authentication using a custom account.
   /// [googleAccount] Authentication using a Google account.
-  AuthenticationWebsecurityscannerV1alpha({
+  const AuthenticationWebsecurityscannerV1alpha({
     this.customAccount,
     this.googleAccount,
   });

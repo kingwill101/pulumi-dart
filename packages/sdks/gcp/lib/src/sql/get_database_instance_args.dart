@@ -15,7 +15,7 @@ class GetDatabaseInstanceArgs {
   /// Creates a new [GetDatabaseInstanceArgs].
   /// [name] The name of the instance.
   /// [project] The ID of the project in which the resource belongs.
-  GetDatabaseInstanceArgs({
+  const GetDatabaseInstanceArgs({
     required this.name,
     this.project,
   });

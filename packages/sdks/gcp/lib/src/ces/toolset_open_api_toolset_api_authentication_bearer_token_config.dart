@@ -8,7 +8,7 @@ class ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig {
 
   /// Creates a new [ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig].
   /// [token] (Optional)
-  ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig({
+  const ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfig({
     this.token,
   });
 

@@ -95,7 +95,7 @@ class ApiState {
   /// [version] The Version number of this API, if this API is versioned.
   /// [versionDescription] The description of the API Version of the API Management API.
   /// [versionSetId] The ID of the Version Set which this API is associated with.
-  ApiState({
+  const ApiState({
     this.apiManagementName,
     this.apiType,
     this.contact,

@@ -43,7 +43,7 @@ class TriggerState {
   /// [sourceArn] Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   /// [triggerId] The Function Compute trigger ID.
   /// [type] The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
-  TriggerState({
+  const TriggerState({
     this.config,
     this.configMns,
     this.function,

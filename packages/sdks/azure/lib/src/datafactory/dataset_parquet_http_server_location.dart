@@ -20,7 +20,7 @@ class DatasetParquetHttpServerLocation {
   /// [filename] The filename of the file on the web server.
   /// [path] The folder path to the file on the web server.
   /// [relativeUrl] The base URL to the web server hosting the file.
-  DatasetParquetHttpServerLocation({
+  const DatasetParquetHttpServerLocation({
     this.dynamicFilenameEnabled,
     this.dynamicPathEnabled,
     required this.filename,

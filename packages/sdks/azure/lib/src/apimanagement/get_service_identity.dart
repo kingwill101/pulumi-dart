@@ -17,7 +17,7 @@ class GetServiceIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this API Management Service.
   /// [tenantId] The ID of the Tenant which has access to this API Management instance.
   /// [type] The type of Managed Service Identity that is configured on this API Management Service.
-  GetServiceIdentity({
+  const GetServiceIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

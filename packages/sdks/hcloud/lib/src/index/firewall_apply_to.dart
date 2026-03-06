@@ -13,7 +13,7 @@ class FirewallApplyTo {
   /// Creates a new [FirewallApplyTo].
   /// [labelSelector] Label Selector to select servers the firewall should be applied to (only one
   /// [server] ID of the server you want to apply the firewall to (only one of `server`
-  FirewallApplyTo({
+  const FirewallApplyTo({
     this.labelSelector,
     this.server,
   });

@@ -18,7 +18,7 @@ class GetLinkedWorkspaceArgs {
   /// [linkName] Friendly name of the linked workspace
   /// [resourceGroupName] Name of the resource group in which workspace is located.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetLinkedWorkspaceArgs({
+  const GetLinkedWorkspaceArgs({
     required this.linkName,
     required this.resourceGroupName,
     required this.workspaceName,

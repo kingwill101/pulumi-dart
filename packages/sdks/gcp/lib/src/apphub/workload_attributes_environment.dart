@@ -9,7 +9,7 @@ class WorkloadAttributesEnvironment {
 
   /// Creates a new [WorkloadAttributesEnvironment].
   /// [type] Environment type.
-  WorkloadAttributesEnvironment({
+  const WorkloadAttributesEnvironment({
     required this.type,
   });
 

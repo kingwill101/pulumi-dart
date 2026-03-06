@@ -10,7 +10,7 @@ class CloudServiceOsProfile {
 
   /// Creates a new [CloudServiceOsProfile].
   /// [secrets] Specifies set of certificates that should be installed onto the role instances.
-  CloudServiceOsProfile({
+  const CloudServiceOsProfile({
     this.secrets,
   });
 

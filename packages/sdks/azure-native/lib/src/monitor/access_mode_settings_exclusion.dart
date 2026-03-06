@@ -15,7 +15,7 @@ class AccessModeSettingsExclusion {
   /// [ingestionAccessMode] Specifies the access mode of ingestion through the specified private endpoint connection in the exclusion.
   /// [privateEndpointConnectionName] The private endpoint connection name associated to the private endpoint on which we want to apply the specific access mode settings.
   /// [queryAccessMode] Specifies the access mode of queries through the specified private endpoint connection in the exclusion.
-  AccessModeSettingsExclusion({
+  const AccessModeSettingsExclusion({
     this.ingestionAccessMode,
     this.privateEndpointConnectionName,
     this.queryAccessMode,

@@ -12,7 +12,7 @@ class FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties {
   /// Creates a new [FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties].
   /// [armLocation] The location of  global database account in the Fleetspace Account.
   /// [resourceId] The resource identifier of global database account in the Fleetspace Account.
-  FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties({
+  const FleetspaceAccountPropertiesResponseGlobalDatabaseAccountProperties({
     this.armLocation,
     this.resourceId,
   });

@@ -22,7 +22,7 @@ class SignalDefinitionArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [signalDefinitionName] Name of the signal definition. Must be unique within a health model.
-  SignalDefinitionArgs({
+  const SignalDefinitionArgs({
     required this.healthModelName,
     this.properties,
     required this.resourceGroupName,

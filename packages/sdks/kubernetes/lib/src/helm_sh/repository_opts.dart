@@ -24,7 +24,7 @@ class RepositoryOpts {
   /// [password] Password for HTTP basic authentication
   /// [repo] Repository where to locate the requested chart. If it's a URL the chart is installed without installing the repository.
   /// [username] Username for HTTP basic authentication
-  RepositoryOpts({
+  const RepositoryOpts({
     this.caFile,
     this.certFile,
     this.keyFile,

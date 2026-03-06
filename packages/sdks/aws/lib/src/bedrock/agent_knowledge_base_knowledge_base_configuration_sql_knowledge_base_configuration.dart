@@ -12,7 +12,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration].
   /// [redshiftConfiguration] Configurations for a knowledge base connected to an Amazon Redshift database. See `redshift_configuration` block for details.
   /// [type] Type of SQL database to connect to the knowledge base. Valid values: `REDSHIFT`.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfiguration({
     this.redshiftConfiguration,
     required this.type,
   });

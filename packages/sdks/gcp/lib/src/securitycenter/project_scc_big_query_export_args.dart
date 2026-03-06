@@ -45,7 +45,7 @@ class ProjectSccBigQueryExportArgs {
   /// [description] The description of the notification config (max of 1024 characters).
   /// [filter] Expression that defines the filter to apply across create/update
   /// [project] The ID of the project in which the resource belongs.
-  ProjectSccBigQueryExportArgs({
+  const ProjectSccBigQueryExportArgs({
     required this.bigQueryExportId,
     this.dataset,
     this.description,

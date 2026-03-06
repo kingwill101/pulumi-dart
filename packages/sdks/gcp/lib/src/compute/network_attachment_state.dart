@@ -57,7 +57,7 @@ class NetworkAttachmentState {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource's resource id.
   /// [subnetworks] An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
-  NetworkAttachmentState({
+  const NetworkAttachmentState({
     this.connectionEndpoints,
     this.connectionPreference,
     this.creationTimestamp,

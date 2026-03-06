@@ -14,7 +14,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
   /// Creates a new [CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio].
   /// [allowPlaybackInterruption] (Output)
   /// [audioUri] URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-  CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio({
+  const CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio({
     this.allowPlaybackInterruption,
     required this.audioUri,
   });

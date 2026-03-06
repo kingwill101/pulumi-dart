@@ -11,7 +11,7 @@ class GetRouterNatLogConfig {
   /// Creates a new [GetRouterNatLogConfig].
   /// [enable] Indicates whether or not to export logs.
   /// [filter] Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
-  GetRouterNatLogConfig({
+  const GetRouterNatLogConfig({
     required this.enable,
     required this.filter,
   });

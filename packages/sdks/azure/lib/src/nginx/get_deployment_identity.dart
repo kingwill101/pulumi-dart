@@ -15,7 +15,7 @@ class GetDeploymentIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] Type of identity attached to the NGINX Deployment.
-  GetDeploymentIdentity({
+  const GetDeploymentIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

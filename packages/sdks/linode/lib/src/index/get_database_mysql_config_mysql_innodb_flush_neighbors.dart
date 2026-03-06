@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors({
+  const GetDatabaseMysqlConfigMysqlInnodbFlushNeighbors({
     required this.description,
     required this.example,
     required this.maximum,

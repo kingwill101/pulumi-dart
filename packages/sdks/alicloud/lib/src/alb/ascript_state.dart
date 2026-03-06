@@ -34,7 +34,7 @@ class AScriptState {
   /// [position] Script execution location.
   /// [scriptContent] AScript script content.
   /// [status] Script status
-  AScriptState({
+  const AScriptState({
     this.ascriptName,
     this.dryRun,
     this.enabled,

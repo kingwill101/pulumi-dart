@@ -22,7 +22,7 @@ class HeterogeneousAssessmentOperationArgs {
   /// [projectName] Assessment Project Name
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  HeterogeneousAssessmentOperationArgs({
+  const HeterogeneousAssessmentOperationArgs({
     this.assessmentName,
     required this.projectName,
     this.properties,

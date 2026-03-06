@@ -51,7 +51,7 @@ class SoftwareUpdateConfigurationSchedule {
   /// [startTime] Start time of the schedule. Must be at least five minutes in the future. Defaults to seven minutes in the future from the time the resource is created.
   /// [startTimeOffsetMinutes] The time offset in minutes for the start time.
   /// [timeZone] The timezone of the start time. Defaults to `Etc/UTC`. For possible values see: &lt;https://docs.microsoft.com/en-us/rest/api/maps/timezone/gettimezoneenumwindows&gt;
-  SoftwareUpdateConfigurationSchedule({
+  const SoftwareUpdateConfigurationSchedule({
     this.advancedMonthDays,
     this.advancedWeekDays,
     this.creationTime,

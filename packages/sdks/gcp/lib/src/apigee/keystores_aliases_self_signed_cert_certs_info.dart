@@ -11,7 +11,7 @@ class KeystoresAliasesSelfSignedCertCertsInfo {
 
   /// Creates a new [KeystoresAliasesSelfSignedCertCertsInfo].
   /// [certInfos] (Output)
-  KeystoresAliasesSelfSignedCertCertsInfo({
+  const KeystoresAliasesSelfSignedCertCertsInfo({
     this.certInfos,
   });
 

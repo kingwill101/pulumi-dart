@@ -15,7 +15,7 @@ class GetServiceConnectionPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceConnectionPolicyId] Required.
-  GetServiceConnectionPolicyArgs({
+  const GetServiceConnectionPolicyArgs({
     required this.location,
     this.project,
     required this.serviceConnectionPolicyId,

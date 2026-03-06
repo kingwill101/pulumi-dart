@@ -18,7 +18,7 @@ class LogConfigArgs {
   /// [logType] The type the of log. Valid values: `PROVIDER`.
   /// [slsLogStore] The name of the Log Store.
   /// [slsProject] The name of the Project.
-  LogConfigArgs({
+  const LogConfigArgs({
     required this.logType,
     required this.slsLogStore,
     required this.slsProject,

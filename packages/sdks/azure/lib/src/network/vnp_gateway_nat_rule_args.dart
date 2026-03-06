@@ -32,7 +32,7 @@ class VnpGatewayNatRuleArgs {
   /// [name] The name which should be used for this VPN Gateway NAT Rule. Changing this forces a new resource to be created.
   /// [type] The type of the VPN Gateway NAT Rule. Possible values are `Dynamic` and `Static`. Defaults to `Static`. Changing this forces a new resource to be created.
   /// [vpnGatewayId] The ID of the VPN Gateway that this VPN Gateway NAT Rule belongs to. Changing this forces a new resource to be created.
-  VnpGatewayNatRuleArgs({
+  const VnpGatewayNatRuleArgs({
     this.externalMappings,
     this.internalMappings,
     this.ipConfigurationId,

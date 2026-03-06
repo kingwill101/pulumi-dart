@@ -8,7 +8,7 @@ class BackupVaultEncryptionConfig {
 
   /// Creates a new [BackupVaultEncryptionConfig].
   /// [kmsKeyName] The Resource name of the Cloud KMS key to be used to encrypt new backups. The key must be in the same location as the backup vault. The key must be a Cloud KMS CryptoKey.
-  BackupVaultEncryptionConfig({
+  const BackupVaultEncryptionConfig({
     this.kmsKeyName,
   });
 

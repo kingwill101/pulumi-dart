@@ -10,7 +10,7 @@ class SdnIntegrationResponse {
 
   /// Creates a new [SdnIntegrationResponse].
   /// [networkController] network controller config for SDN Integration to deploy AzureStackHCI Cluster.
-  SdnIntegrationResponse({
+  const SdnIntegrationResponse({
     this.networkController,
   });
 

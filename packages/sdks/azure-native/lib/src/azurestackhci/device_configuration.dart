@@ -13,7 +13,7 @@ class DeviceConfiguration {
   /// Creates a new [DeviceConfiguration].
   /// [deviceMetadata] Device metadata details.
   /// [nicDetails] NIC Details of device
-  DeviceConfiguration({
+  const DeviceConfiguration({
     this.deviceMetadata,
     this.nicDetails,
   });

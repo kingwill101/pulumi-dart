@@ -52,7 +52,7 @@ class TaskArgs {
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Task. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [taskMode] One of the following task modes for your data transfer:
   /// [taskReportConfig] Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
-  TaskArgs({
+  const TaskArgs({
     this.cloudwatchLogGroupArn,
     required this.destinationLocationArn,
     this.excludes,

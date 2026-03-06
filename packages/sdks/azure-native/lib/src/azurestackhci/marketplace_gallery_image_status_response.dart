@@ -23,7 +23,7 @@ class MarketplaceGalleryImageStatusResponse {
   /// [errorMessage] Descriptive error message
   /// [progressPercentage] The progress of the operation in percentage
   /// [provisioningStatus] Provisioning status of marketplace gallery image
-  MarketplaceGalleryImageStatusResponse({
+  const MarketplaceGalleryImageStatusResponse({
     this.downloadStatus,
     this.errorCode,
     this.errorMessage,

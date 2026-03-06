@@ -14,7 +14,7 @@ class PullTimeUpdateExclusionState {
   /// Creates a new [PullTimeUpdateExclusionState].
   /// [principalArn] ARN of the IAM principal to exclude from having image pull times recorded.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PullTimeUpdateExclusionState({
+  const PullTimeUpdateExclusionState({
     this.principalArn,
     this.region,
   });

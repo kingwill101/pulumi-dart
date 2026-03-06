@@ -23,7 +23,7 @@ class GetMachineGroupsResult {
   /// [ids] A list of Machine Group IDs.
   /// [outputFile] Optional.
   /// [projectName] Required.
-  GetMachineGroupsResult({
+  const GetMachineGroupsResult({
     this.groupName,
     required this.groups,
     required this.id,

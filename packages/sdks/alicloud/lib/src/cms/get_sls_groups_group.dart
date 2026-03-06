@@ -21,7 +21,7 @@ class GetSlsGroupsGroup {
   /// [slsGroupConfigs] The Config of the Sls Group.
   /// [slsGroupDescription] The Description of the Sls Group.
   /// [slsGroupName] The name of the resource.
-  GetSlsGroupsGroup({
+  const GetSlsGroupsGroup({
     required this.createTime,
     required this.id,
     required this.slsGroupConfigs,

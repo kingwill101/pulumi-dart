@@ -48,7 +48,7 @@ class GetAnycastEipAddressesAddress {
   /// [paymentType] The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
   /// [serviceLocation] Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
   /// [status] IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
-  GetAnycastEipAddressesAddress({
+  const GetAnycastEipAddressesAddress({
     required this.aliUid,
     required this.anycastEipAddressName,
     required this.anycastEipBindInfoLists,

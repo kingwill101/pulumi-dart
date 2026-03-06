@@ -18,7 +18,7 @@ class GetLabelByWorkspaceArgs {
   /// [labelName] The name of the Label.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the Workspace.
-  GetLabelByWorkspaceArgs({
+  const GetLabelByWorkspaceArgs({
     required this.labelName,
     required this.resourceGroupName,
     required this.workspaceName,

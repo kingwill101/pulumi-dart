@@ -31,7 +31,7 @@ class GetSynapseWorkspaceSqlPoolTableDataSetResult {
   /// [synapseWorkspaceSqlPoolTableResourceId] Resource id of the Synapse Workspace SQL Pool Table
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetSynapseWorkspaceSqlPoolTableDataSetResult({
+  const GetSynapseWorkspaceSqlPoolTableDataSetResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.id,

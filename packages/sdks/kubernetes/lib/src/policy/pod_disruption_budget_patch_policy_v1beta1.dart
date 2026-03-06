@@ -23,7 +23,7 @@ class PodDisruptionBudgetPatchPolicyV1beta1 {
   /// [metadata] Optional.
   /// [spec] Specification of the desired behavior of the PodDisruptionBudget.
   /// [status] Most recently observed status of the PodDisruptionBudget.
-  PodDisruptionBudgetPatchPolicyV1beta1({
+  const PodDisruptionBudgetPatchPolicyV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

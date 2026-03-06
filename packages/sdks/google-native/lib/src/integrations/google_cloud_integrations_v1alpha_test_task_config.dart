@@ -20,7 +20,7 @@ class GoogleCloudIntegrationsV1alphaTestTaskConfig {
   /// [mockConfig] Optional. Defines how to mock the given task during test execution
   /// [task] This defines in the test case, the task name in integration which will be mocked by this test task config
   /// [taskNumber] This defines in the test case, the task in integration which will be mocked by this test task config
-  GoogleCloudIntegrationsV1alphaTestTaskConfig({
+  const GoogleCloudIntegrationsV1alphaTestTaskConfig({
     this.assertions,
     this.mockConfig,
     required this.task,

@@ -38,7 +38,7 @@ class GetSpringCloudAppResult {
   /// [serviceName] Required.
   /// [tlsEnabled] Is End to End TLS Enabled?
   /// [url] The public endpoint of the Spring Cloud Application.
-  GetSpringCloudAppResult({
+  const GetSpringCloudAppResult({
     required this.fqdn,
     required this.httpsOnly,
     required this.id,

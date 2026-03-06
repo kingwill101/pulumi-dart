@@ -80,7 +80,7 @@ class SubnetArgs {
   /// [subnetName] The name of the subnet.
   /// [type] Resource type.
   /// [virtualNetworkName] The name of the virtual network.
-  SubnetArgs({
+  const SubnetArgs({
     this.addressPrefix,
     this.addressPrefixes,
     this.applicationGatewayIPConfigurations,

@@ -9,7 +9,7 @@ class NetworkPolicyConfigContainerV1beta1 {
 
   /// Creates a new [NetworkPolicyConfigContainerV1beta1].
   /// [disabled] Whether NetworkPolicy is enabled for this cluster.
-  NetworkPolicyConfigContainerV1beta1({
+  const NetworkPolicyConfigContainerV1beta1({
     this.disabled,
   });
 

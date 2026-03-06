@@ -24,7 +24,7 @@ class WebAppDiscoverySiteDataSourcesControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
   /// [webAppSiteName] Web app site name.
-  WebAppDiscoverySiteDataSourcesControllerArgs({
+  const WebAppDiscoverySiteDataSourcesControllerArgs({
     this.discoverySiteDataSourceName,
     this.discoverySiteId,
     required this.resourceGroupName,

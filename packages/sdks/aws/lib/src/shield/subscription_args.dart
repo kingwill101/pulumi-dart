@@ -15,7 +15,7 @@ class SubscriptionArgs {
   /// Creates a new [SubscriptionArgs].
   /// [autoRenew] Toggle for automated renewal of the subscription. Valid values are `ENABLED` or `DISABLED`. Default is `ENABLED`.
   /// [skipDestroy] Skip attempting to disable automated renewal upon destruction. If set to `true`, the `auto_renew` value will be left as-is and the resource will simply be removed from state.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.autoRenew,
     this.skipDestroy,
   });

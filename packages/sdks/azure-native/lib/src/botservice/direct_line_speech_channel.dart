@@ -20,7 +20,7 @@ class DirectLineSpeechChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to DirectLine Speech channel resource
-  DirectLineSpeechChannel({
+  const DirectLineSpeechChannel({
     required this.channelName,
     this.etag,
     this.location,

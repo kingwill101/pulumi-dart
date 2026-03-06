@@ -55,7 +55,7 @@ class ResourceTypeRegistrationPropertiesManagementResponse {
   /// [resourceAccessRoles] The resource access roles.
   /// [schemaOwners] The schema owners.
   /// [serviceTreeInfos] The service tree infos.
-  ResourceTypeRegistrationPropertiesManagementResponse({
+  const ResourceTypeRegistrationPropertiesManagementResponse({
     this.authorizationOwners,
     this.canaryManifestOwners,
     this.errorResponseMessageOptions,

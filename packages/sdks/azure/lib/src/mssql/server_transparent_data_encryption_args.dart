@@ -24,7 +24,7 @@ class ServerTransparentDataEncryptionArgs {
   /// [keyVaultKeyId] To use customer managed keys from Azure Key Vault, provide the AKV Key ID. To use service managed keys, omit this field.
   /// [managedHsmKeyId] Optional.
   /// [serverId] Specifies the name of the MS SQL Server. Changing this forces a new resource to be created.
-  ServerTransparentDataEncryptionArgs({
+  const ServerTransparentDataEncryptionArgs({
     this.autoRotationEnabled,
     this.keyVaultKeyId,
     this.managedHsmKeyId,

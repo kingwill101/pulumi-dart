@@ -17,7 +17,7 @@ class ApplicationFallbackPublicClientArgs {
   /// Creates a new [ApplicationFallbackPublicClientArgs].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [enabled] Whether to enable the application as a fallback public client.
-  ApplicationFallbackPublicClientArgs({
+  const ApplicationFallbackPublicClientArgs({
     required this.applicationId,
     this.enabled,
   });

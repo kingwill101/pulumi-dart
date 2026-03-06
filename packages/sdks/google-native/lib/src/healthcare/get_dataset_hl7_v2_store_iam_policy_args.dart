@@ -19,7 +19,7 @@ class GetDatasetHl7V2StoreIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetHl7V2StoreIamPolicyArgs({
+  const GetDatasetHl7V2StoreIamPolicyArgs({
     required this.datasetId,
     required this.hl7V2StoreId,
     required this.location,

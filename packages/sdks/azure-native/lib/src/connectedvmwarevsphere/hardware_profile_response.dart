@@ -24,7 +24,7 @@ class HardwareProfileResponse {
   /// [memorySizeMB] Gets or sets memory size in MBs for the vm.
   /// [numCPUs] Gets or sets the number of vCPUs for the vm.
   /// [numCoresPerSocket] Gets or sets the number of cores per socket for the vm. Defaults to 1 if unspecified.
-  HardwareProfileResponse({
+  const HardwareProfileResponse({
     required this.cpuHotAddEnabled,
     required this.cpuHotRemoveEnabled,
     required this.memoryHotAddEnabled,

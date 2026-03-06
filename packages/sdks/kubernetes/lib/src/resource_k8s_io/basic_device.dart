@@ -17,7 +17,7 @@ class BasicDevice {
   /// Creates a new [BasicDevice].
   /// [attributes] Attributes defines the set of attributes for this device. The name of each attribute must be unique in that set.
   /// [capacity] Capacity defines the set of capacities for this device. The name of each capacity must be unique in that set.
-  BasicDevice({
+  const BasicDevice({
     this.attributes,
     this.capacity,
   });

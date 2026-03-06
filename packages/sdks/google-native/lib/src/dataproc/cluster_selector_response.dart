@@ -12,7 +12,7 @@ class ClusterSelectorResponse {
   /// Creates a new [ClusterSelectorResponse].
   /// [clusterLabels] The cluster labels. Cluster must have all labels to match.
   /// [zone] Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
-  ClusterSelectorResponse({
+  const ClusterSelectorResponse({
     required this.clusterLabels,
     required this.zone,
   });

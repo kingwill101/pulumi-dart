@@ -41,7 +41,7 @@ class StatementArgs {
   /// [statementName] The name of the SQL statement. You can name the SQL statement when you create it to identify the query.
   /// [withEvent] A value that indicates whether to send an event to the Amazon EventBridge event bus after the SQL statement runs.
   /// [workgroupName] The serverless workgroup name. This parameter is required when connecting to a serverless workgroup and authenticating using either Secrets Manager or temporary credentials.
-  StatementArgs({
+  const StatementArgs({
     this.clusterIdentifier,
     required this.database,
     this.dbUser,

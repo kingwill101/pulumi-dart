@@ -44,7 +44,7 @@ class GetNodeResult {
   /// [ratio] Node ratio weight.
   /// [session] Required.
   /// [state] The current state of the node.
-  GetNodeResult({
+  const GetNodeResult({
     this.address,
     required this.connectionLimit,
     this.description,

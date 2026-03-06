@@ -38,7 +38,7 @@ class AwsSageMakerNotebookInstanceSummaryProperties {
   /// [notebookInstanceName] &lt;p&gt;The name of the notebook instance that you want a summary for.&lt;/p&gt;
   /// [notebookInstanceStatus] &lt;p&gt;The status of the notebook instance.&lt;/p&gt;
   /// [url] &lt;p&gt;The URL that you use to connect to the Jupyter notebook running in your notebook instance. &lt;/p&gt;
-  AwsSageMakerNotebookInstanceSummaryProperties({
+  const AwsSageMakerNotebookInstanceSummaryProperties({
     this.additionalCodeRepositories,
     this.creationTime,
     this.defaultCodeRepository,

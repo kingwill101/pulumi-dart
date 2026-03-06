@@ -15,7 +15,7 @@ class GetSlackWorkspaceArgs {
   /// Creates a new [GetSlackWorkspaceArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [slackTeamName] Slack workspace name configured with AWS Chatbot.
-  GetSlackWorkspaceArgs({
+  const GetSlackWorkspaceArgs({
     this.region,
     required this.slackTeamName,
   });

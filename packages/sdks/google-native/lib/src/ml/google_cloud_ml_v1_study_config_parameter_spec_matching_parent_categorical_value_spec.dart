@@ -9,7 +9,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec 
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec].
   /// [values] Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in `categorical_value_spec` of parent parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec({
+  const GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec({
     this.values,
   });
 

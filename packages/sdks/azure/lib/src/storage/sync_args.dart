@@ -24,7 +24,7 @@ class SyncArgs {
   /// [name] The name which should be used for this Storage Sync. Changing this forces a new Storage Sync to be created.
   /// [resourceGroupName] The name of the Resource Group where the Storage Sync should exist. Changing this forces a new Storage Sync to be created.
   /// [tags] A mapping of tags which should be assigned to the Storage Sync.
-  SyncArgs({
+  const SyncArgs({
     this.incomingTrafficPolicy,
     this.location,
     this.name,

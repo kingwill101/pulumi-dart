@@ -9,7 +9,7 @@ class EnvironmentTypeEnumValueResponse {
 
   /// Creates a new [EnvironmentTypeEnumValueResponse].
   /// [value] Property value
-  EnvironmentTypeEnumValueResponse({
+  const EnvironmentTypeEnumValueResponse({
     this.value,
   });
 

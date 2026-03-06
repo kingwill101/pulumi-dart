@@ -52,7 +52,7 @@ class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse {
   /// [superscript] Whether the text is a superscript.
   /// [textColor] Color of the text.
   /// [underlined] Whether the text is underlined.
-  GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse({
+  const GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse({
     required this.backgroundColor,
     required this.bold,
     required this.fontSize,

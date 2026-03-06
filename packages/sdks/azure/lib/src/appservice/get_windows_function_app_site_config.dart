@@ -118,7 +118,7 @@ class GetWindowsFunctionAppSiteConfig {
   /// [websocketsEnabled] Are Web Sockets enabled?
   /// [windowsFxVersion] The Windows FX version.
   /// [workerCount] The number of Workers for this Windows Function App.
-  GetWindowsFunctionAppSiteConfig({
+  const GetWindowsFunctionAppSiteConfig({
     required this.alwaysOn,
     required this.apiDefinitionUrl,
     required this.apiManagementApiId,

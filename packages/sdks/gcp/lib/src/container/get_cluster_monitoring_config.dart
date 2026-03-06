@@ -16,7 +16,7 @@ class GetClusterMonitoringConfig {
   /// [advancedDatapathObservabilityConfigs] Configuration of Advanced Datapath Observability features.
   /// [enableComponents] GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET, WORKLOADS, KUBELET, CADVISOR, DCGM and JOBSET.
   /// [managedPrometheuses] Configuration for Google Cloud Managed Services for Prometheus.
-  GetClusterMonitoringConfig({
+  const GetClusterMonitoringConfig({
     required this.advancedDatapathObservabilityConfigs,
     required this.enableComponents,
     required this.managedPrometheuses,

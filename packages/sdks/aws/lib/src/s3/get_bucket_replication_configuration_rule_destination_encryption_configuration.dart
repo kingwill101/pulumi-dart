@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration {
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration].
   /// [replicaKmsKeyId] Required.
-  GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration({
+  const GetBucketReplicationConfigurationRuleDestinationEncryptionConfiguration({
     required this.replicaKmsKeyId,
   });
 

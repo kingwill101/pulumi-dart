@@ -36,7 +36,7 @@ class GetJobDefinitionEksPropertyPodProperty {
   /// [serviceAccountName] The name of the service account that's used to run the pod.
   /// [shareProcessNamespace] (Optional) Indicates if the processes in a container are shared, or visible, to other containers in the same pod.
   /// [volumes] A list of data volumes used in a job.
-  GetJobDefinitionEksPropertyPodProperty({
+  const GetJobDefinitionEksPropertyPodProperty({
     required this.containers,
     required this.dnsPolicy,
     required this.hostNetwork,

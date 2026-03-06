@@ -20,7 +20,7 @@ class ContactSettingsDomainsV1alpha2 {
   /// [privacy] Privacy setting for the contacts associated with the `Registration`.
   /// [registrantContact] The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
   /// [technicalContact] The technical contact for the `Registration`.
-  ContactSettingsDomainsV1alpha2({
+  const ContactSettingsDomainsV1alpha2({
     required this.adminContact,
     required this.privacy,
     required this.registrantContact,

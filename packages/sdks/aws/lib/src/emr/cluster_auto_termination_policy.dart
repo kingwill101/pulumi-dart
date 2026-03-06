@@ -8,7 +8,7 @@ class ClusterAutoTerminationPolicy {
 
   /// Creates a new [ClusterAutoTerminationPolicy].
   /// [idleTimeout] Specifies the amount of idle time in seconds after which the cluster automatically terminates. You can specify a minimum of `60` seconds and a maximum of `604800` seconds (seven days).
-  ClusterAutoTerminationPolicy({
+  const ClusterAutoTerminationPolicy({
     this.idleTimeout,
   });
 

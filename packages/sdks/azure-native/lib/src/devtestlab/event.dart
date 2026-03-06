@@ -9,7 +9,7 @@ class Event {
 
   /// Creates a new [Event].
   /// [eventName] The event type for which this notification is enabled (i.e. AutoShutdown, Cost)
-  Event({
+  const Event({
     this.eventName,
   });
 

@@ -19,7 +19,7 @@ class EventConnectionAuthParametersOauth {
   /// [clientParameters] Contains the client parameters for OAuth authorization. Contains the following two parameters.
   /// [httpMethod] A password for the authorization. Created and stored in AWS Secrets Manager.
   /// [oauthHttpParameters] OAuth Http Parameters are additional credentials used to sign the request to the authorization endpoint to exchange the OAuth Client information for an access token. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
-  EventConnectionAuthParametersOauth({
+  const EventConnectionAuthParametersOauth({
     required this.authorizationEndpoint,
     this.clientParameters,
     required this.httpMethod,

@@ -9,7 +9,7 @@ class GetQuotaAlarmsQuotaDimension {
   /// Creates a new [GetQuotaAlarmsQuotaDimension].
   /// [key] Optional.
   /// [value] Optional.
-  GetQuotaAlarmsQuotaDimension({
+  const GetQuotaAlarmsQuotaDimension({
     this.key,
     this.value,
   });

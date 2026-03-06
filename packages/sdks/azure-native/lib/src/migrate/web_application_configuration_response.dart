@@ -39,7 +39,7 @@ class WebApplicationConfigurationResponse {
   /// [targetFilePath] Gets or sets the configuration target file path.
   /// [type] Gets or sets the configuration type.
   /// [value] Gets or sets the configuration value.
-  WebApplicationConfigurationResponse({
+  const WebApplicationConfigurationResponse({
     this.filePath,
     required this.id,
     this.identifier,

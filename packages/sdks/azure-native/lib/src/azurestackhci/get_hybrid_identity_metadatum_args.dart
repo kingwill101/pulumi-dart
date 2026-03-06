@@ -18,7 +18,7 @@ class GetHybridIdentityMetadatumArgs {
   /// [metadataName] Name of the HybridIdentityMetadata.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualMachineName] Name of the vm.
-  GetHybridIdentityMetadatumArgs({
+  const GetHybridIdentityMetadatumArgs({
     required this.metadataName,
     required this.resourceGroupName,
     required this.virtualMachineName,

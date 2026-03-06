@@ -17,7 +17,7 @@ class GetSubnetArgs {
   /// Creates a new [GetSubnetArgs].
   /// [name] Name of the resource.
   /// [parent] The resource name of the private cloud that this subnet belongs.
-  GetSubnetArgs({
+  const GetSubnetArgs({
     required this.name,
     required this.parent,
   });

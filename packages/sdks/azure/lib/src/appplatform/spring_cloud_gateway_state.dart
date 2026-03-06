@@ -64,7 +64,7 @@ class SpringCloudGatewayState {
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Gateway to be created.
   /// [sso] A `sso` block as defined below.
   /// [url] URL of the Spring Cloud Gateway, exposed when 'public_network_access_enabled' is true.
-  SpringCloudGatewayState({
+  const SpringCloudGatewayState({
     this.apiMetadata,
     this.applicationPerformanceMonitoringIds,
     this.applicationPerformanceMonitoringTypes,

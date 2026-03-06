@@ -9,7 +9,7 @@ class GetComputeEnvironmentUpdatePolicy {
   /// Creates a new [GetComputeEnvironmentUpdatePolicy].
   /// [jobExecutionTimeoutMinutes] Required.
   /// [terminateJobsOnUpdate] Required.
-  GetComputeEnvironmentUpdatePolicy({
+  const GetComputeEnvironmentUpdatePolicy({
     required this.jobExecutionTimeoutMinutes,
     required this.terminateJobsOnUpdate,
   });

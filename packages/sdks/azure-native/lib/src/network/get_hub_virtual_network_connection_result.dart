@@ -37,7 +37,7 @@ class GetHubVirtualNetworkConnectionResult {
   /// [provisioningState] The provisioning state of the hub virtual network connection resource.
   /// [remoteVirtualNetwork] Reference to the remote virtual network.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
-  GetHubVirtualNetworkConnectionResult({
+  const GetHubVirtualNetworkConnectionResult({
     this.allowHubToRemoteVnetTransit,
     this.allowRemoteVnetToUseHubVnetGateways,
     required this.azureApiVersion,

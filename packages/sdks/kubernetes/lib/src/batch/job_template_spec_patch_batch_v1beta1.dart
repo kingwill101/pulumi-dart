@@ -14,7 +14,7 @@ class JobTemplateSpecPatchBatchV1beta1 {
   /// Creates a new [JobTemplateSpecPatchBatchV1beta1].
   /// [metadata] Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  JobTemplateSpecPatchBatchV1beta1({
+  const JobTemplateSpecPatchBatchV1beta1({
     this.metadata,
     this.spec,
   });

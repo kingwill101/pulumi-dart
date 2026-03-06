@@ -8,7 +8,7 @@ class WorkstationClusterDomainConfig {
 
   /// Creates a new [WorkstationClusterDomainConfig].
   /// [domain] Domain used by Workstations for HTTP ingress.
-  WorkstationClusterDomainConfig({
+  const WorkstationClusterDomainConfig({
     required this.domain,
   });
 

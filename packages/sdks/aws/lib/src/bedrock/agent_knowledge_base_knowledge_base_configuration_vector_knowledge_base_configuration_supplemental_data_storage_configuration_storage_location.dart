@@ -12,7 +12,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation].
   /// [s3Location] Contains information about the Amazon S3 location for the extracted images.  See `s3_location` block for details.
   /// [type] Storage service used for this location. `S3` is the only valid value.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationSupplementalDataStorageConfigurationStorageLocation({
     this.s3Location,
     required this.type,
   });

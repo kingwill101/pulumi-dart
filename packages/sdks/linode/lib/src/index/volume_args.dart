@@ -35,7 +35,7 @@ class VolumeArgs {
   /// [sourceVolumeId] The ID of a Linode Volume to clone. NOTE: Cloned volumes must be in the same region as the source volume.
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [timeouts] Optional.
-  VolumeArgs({
+  const VolumeArgs({
     this.encryption,
     required this.label,
     this.linodeId,

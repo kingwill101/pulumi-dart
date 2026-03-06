@@ -54,7 +54,7 @@ class LinuxWebAppSlotSiteConfigApplicationStack {
   /// [phpVersion] The version of PHP to run. Possible values are `7.4`, `8.0`, `8.1`, `8.2`, `8.3` and `8.4`.
   /// [pythonVersion] The version of Python to run. Possible values include `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
   /// [rubyVersion] The version of Ruby to run. Possible values include `2.6` and `2.7`.
-  LinuxWebAppSlotSiteConfigApplicationStack({
+  const LinuxWebAppSlotSiteConfigApplicationStack({
     this.dockerImageName,
     this.dockerRegistryPassword,
     this.dockerRegistryUrl,

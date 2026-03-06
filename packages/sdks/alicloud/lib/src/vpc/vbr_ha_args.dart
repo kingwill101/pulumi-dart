@@ -27,7 +27,7 @@ class VbrHaArgs {
   /// [peerVbrId] The instance ID of another VBR in The VBR switching group.
   /// [vbrHaName] VBR switch group name.
   /// [vbrId] The VBR instance ID.
-  VbrHaArgs({
+  const VbrHaArgs({
     this.description,
     this.dryRun,
     required this.peerVbrId,

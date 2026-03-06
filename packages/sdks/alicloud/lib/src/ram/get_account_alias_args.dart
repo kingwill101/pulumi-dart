@@ -12,7 +12,7 @@ class GetAccountAliasArgs {
 
   /// Creates a new [GetAccountAliasArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAccountAliasArgs({
+  const GetAccountAliasArgs({
     this.outputFile,
   });
 

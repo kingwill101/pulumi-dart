@@ -14,7 +14,7 @@ class GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
   /// [configOverrides] A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
   /// [key] Required.
   /// [version] The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
-  GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion({
+  const GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion({
     required this.configOverrides,
     required this.key,
     required this.version,

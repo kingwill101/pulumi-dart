@@ -16,7 +16,7 @@ class ArcAgentProfile {
   /// [agentAutoUpgrade] Indicates whether the Arc agents on the be upgraded automatically to the latest version. Defaults to Enabled.
   /// [desiredAgentVersion] Version of the Arc agents to be installed on the cluster resource
   /// [systemComponents] List of system extensions can be installed on the cluster resource.
-  ArcAgentProfile({
+  const ArcAgentProfile({
     this.agentAutoUpgrade,
     this.desiredAgentVersion,
     this.systemComponents,

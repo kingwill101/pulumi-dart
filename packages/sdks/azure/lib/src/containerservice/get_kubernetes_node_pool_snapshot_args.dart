@@ -15,7 +15,7 @@ class GetKubernetesNodePoolSnapshotArgs {
   /// Creates a new [GetKubernetesNodePoolSnapshotArgs].
   /// [name] The name of the Kubernetes Node Pool Snapshot.
   /// [resourceGroupName] The name of the Resource Group in which the Kubernetes Node Pool Snapshot exists.
-  GetKubernetesNodePoolSnapshotArgs({
+  const GetKubernetesNodePoolSnapshotArgs({
     required this.name,
     required this.resourceGroupName,
   });

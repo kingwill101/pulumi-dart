@@ -42,7 +42,7 @@ class VpcAttachmentArgs {
   /// [transitGatewayDefaultRouteTablePropagation] Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`. **Setting this argument to** `false` will cause Terraform to remove the default propagation if it exists. This argument does not simply “ignore” the propagation; it actively manages (adds or removes) the propagation in AWS to match the value in your configuration. Do not attempt to manage the same propagation with both this resource and `aws.ec2transitgateway.RouteTablePropagation`, as this will cause perpetual diffs and resource churn. Use conditional logic to ensure only one resource manages the propagation at a time.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   /// [vpcId] Identifier of EC2 VPC.
-  VpcAttachmentArgs({
+  const VpcAttachmentArgs({
     this.applianceModeSupport,
     this.dnsSupport,
     this.ipv6Support,

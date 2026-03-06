@@ -11,7 +11,7 @@ class PoolAutoScale {
   /// Creates a new [PoolAutoScale].
   /// [evaluationInterval] The interval to wait before evaluating if the pool needs to be scaled. Defaults to `PT15M`.
   /// [formula] The autoscale formula that needs to be used for scaling the Batch pool.
-  PoolAutoScale({
+  const PoolAutoScale({
     this.evaluationInterval,
     required this.formula,
   });

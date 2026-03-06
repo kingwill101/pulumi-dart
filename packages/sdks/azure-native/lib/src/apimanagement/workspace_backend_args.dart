@@ -62,7 +62,7 @@ class WorkspaceBackendArgs {
   /// [type] Type of the backend. A backend can be either Single or Pool.
   /// [url] Runtime Url of the Backend. Required when backend type is 'Single'.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceBackendArgs({
+  const WorkspaceBackendArgs({
     this.backendId,
     this.circuitBreaker,
     this.credentials,

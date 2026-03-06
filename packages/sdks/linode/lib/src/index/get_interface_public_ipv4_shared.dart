@@ -11,7 +11,7 @@ class GetInterfacePublicIpv4Shared {
   /// Creates a new [GetInterfacePublicIpv4Shared].
   /// [address] The shared IPv4 address.
   /// [linodeId] The ID of the Linode that this shared address belongs to.
-  GetInterfacePublicIpv4Shared({
+  const GetInterfacePublicIpv4Shared({
     required this.address,
     required this.linodeId,
   });

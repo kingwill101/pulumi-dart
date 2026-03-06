@@ -28,7 +28,7 @@ class GetExtensionProvidersResult {
   /// [providers] A list of Service Mesh Extension Providers. Each element contains the following attributes:
   /// [serviceMeshId] The ID of the Service Mesh.
   /// [type] The type of the Service Mesh Extension Provider.
-  GetExtensionProvidersResult({
+  const GetExtensionProvidersResult({
     required this.id,
     required this.ids,
     this.nameRegex,

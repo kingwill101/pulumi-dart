@@ -39,7 +39,7 @@ class SslKeyCertState {
   /// [keyName] Name of the SSL key to be Imported on to BIGIP.
   /// [partition] Partition on to SSL certificate and key to be imported.
   /// [passphrase] Passphrase on the SSL key.
-  SslKeyCertState({
+  const SslKeyCertState({
     this.certContent,
     this.certFullPath,
     this.certMonitoringType,

@@ -10,7 +10,7 @@ class ActionList {
 
   /// Creates a new [ActionList].
   /// [actionGroups] The list of the Action Groups.
-  ActionList({
+  const ActionList({
     this.actionGroups,
   });
 

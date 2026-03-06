@@ -11,7 +11,7 @@ class FunctionIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  FunctionIamMemberCondition({
+  const FunctionIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

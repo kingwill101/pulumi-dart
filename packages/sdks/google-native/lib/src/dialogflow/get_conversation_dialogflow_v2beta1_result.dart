@@ -27,7 +27,7 @@ class GetConversationDialogflowV2beta1Result {
   /// [name] The unique identifier of this conversation. Format: `projects//locations//conversations/`.
   /// [phoneNumber] Required if the conversation is to be connected over telephony.
   /// [startTime] The time the conversation was started.
-  GetConversationDialogflowV2beta1Result({
+  const GetConversationDialogflowV2beta1Result({
     required this.conversationProfile,
     required this.conversationStage,
     required this.endTime,

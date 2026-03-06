@@ -14,7 +14,7 @@ class JobExtractSourceModel {
   /// [datasetId] The ID of the dataset containing this model.
   /// [modelId] The ID of the model.
   /// [projectId] The ID of the project containing this model.
-  JobExtractSourceModel({
+  const JobExtractSourceModel({
     required this.datasetId,
     required this.modelId,
     required this.projectId,

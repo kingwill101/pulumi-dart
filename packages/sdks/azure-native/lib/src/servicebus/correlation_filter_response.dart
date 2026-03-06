@@ -36,7 +36,7 @@ class CorrelationFilterResponse {
   /// [requiresPreprocessing] Value that indicates whether the rule action requires preprocessing.
   /// [sessionId] Session identifier.
   /// [to] Address to send to.
-  CorrelationFilterResponse({
+  const CorrelationFilterResponse({
     this.contentType,
     this.correlationId,
     this.label,

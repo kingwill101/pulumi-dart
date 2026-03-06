@@ -61,7 +61,7 @@ class EnvironmentConfigComposerV1beta1 {
   /// [webServerConfig] Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   /// [webServerNetworkAccessControl] Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
   /// [workloadsConfig] Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  EnvironmentConfigComposerV1beta1({
+  const EnvironmentConfigComposerV1beta1({
     this.databaseConfig,
     this.encryptionConfig,
     this.environmentSize,

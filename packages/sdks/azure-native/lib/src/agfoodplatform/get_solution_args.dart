@@ -18,7 +18,7 @@ class GetSolutionArgs {
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionId] SolutionId for Data Manager For Agriculture Resource.
-  GetSolutionArgs({
+  const GetSolutionArgs({
     required this.dataManagerForAgricultureResourceName,
     required this.resourceGroupName,
     required this.solutionId,

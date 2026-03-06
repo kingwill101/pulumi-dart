@@ -21,7 +21,7 @@ class WorkspaceServiceAccountArgs {
   /// [name] A name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workspaceId] The Grafana workspace with which the service account is associated.
-  WorkspaceServiceAccountArgs({
+  const WorkspaceServiceAccountArgs({
     required this.grafanaRole,
     this.name,
     this.region,

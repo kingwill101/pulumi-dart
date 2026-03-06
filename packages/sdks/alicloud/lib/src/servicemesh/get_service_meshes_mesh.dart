@@ -57,7 +57,7 @@ class GetServiceMeshesMesh {
   /// [sidecarVersion] (Available since v1.170.0) The SideCar Version. **Note:** `sidecar_version` takes effect only if `enable_details` is set to `true`.
   /// [status] The status of the Service Mesh. Valid values: `running`, `initial`.
   /// [version] The version of the Service Mesh instance.
-  GetServiceMeshesMesh({
+  const GetServiceMeshesMesh({
     required this.clusters,
     required this.createTime,
     required this.edition,

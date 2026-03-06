@@ -15,7 +15,7 @@ class GetL2ConnectionArgs {
   /// Creates a new [GetL2ConnectionArgs].
   /// [l2ConnectionName] L2 Connection name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetL2ConnectionArgs({
+  const GetL2ConnectionArgs({
     required this.l2ConnectionName,
     required this.resourceGroupName,
   });

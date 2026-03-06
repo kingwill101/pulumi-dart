@@ -61,7 +61,7 @@ class HBaseLinkedService {
   /// [type] Type of linked service.
   /// [username] The user name used to connect to the HBase instance.
   /// [version] Version of the linked service.
-  HBaseLinkedService({
+  const HBaseLinkedService({
     this.allowHostNameCNMismatch,
     this.allowSelfSignedServerCert,
     this.annotations,

@@ -20,7 +20,7 @@ class RoutePolicyStatementProperties {
   /// [annotation] Switch configuration description.
   /// [condition] Route policy condition properties.
   /// [sequenceNumber] Sequence to insert to/delete from existing route.
-  RoutePolicyStatementProperties({
+  const RoutePolicyStatementProperties({
     required this.action,
     this.annotation,
     required this.condition,

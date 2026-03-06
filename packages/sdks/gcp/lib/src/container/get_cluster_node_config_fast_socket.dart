@@ -8,7 +8,7 @@ class GetClusterNodeConfigFastSocket {
 
   /// Creates a new [GetClusterNodeConfigFastSocket].
   /// [enabled] Whether or not NCCL Fast Socket is enabled
-  GetClusterNodeConfigFastSocket({
+  const GetClusterNodeConfigFastSocket({
     required this.enabled,
   });
 

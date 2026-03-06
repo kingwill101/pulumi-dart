@@ -8,7 +8,7 @@ class GetInstanceGroupManagerResourcePolicy {
 
   /// Creates a new [GetInstanceGroupManagerResourcePolicy].
   /// [workloadPolicy] The URL of the workload policy that is specified for this managed instance group. It can be a full or partial URL.
-  GetInstanceGroupManagerResourcePolicy({
+  const GetInstanceGroupManagerResourcePolicy({
     required this.workloadPolicy,
   });
 

@@ -8,7 +8,7 @@ class ResourceProviderManifestPropertiesResponseOptions {
 
   /// Creates a new [ResourceProviderManifestPropertiesResponseOptions].
   /// [serviceClientOptionsType] Optional.
-  ResourceProviderManifestPropertiesResponseOptions({
+  const ResourceProviderManifestPropertiesResponseOptions({
     this.serviceClientOptionsType,
   });
 

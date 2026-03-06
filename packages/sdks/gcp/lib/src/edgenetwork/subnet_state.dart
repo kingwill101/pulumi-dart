@@ -65,7 +65,7 @@ class SubnetState {
   /// [updateTime] The time when the subnet was last updated.
   /// [vlanId] VLAN ID for this subnetwork. If not specified, one is assigned automatically.
   /// [zone] The name of the target Distributed Cloud Edge zone.
-  SubnetState({
+  const SubnetState({
     this.createTime,
     this.description,
     this.effectiveLabels,

@@ -22,7 +22,7 @@ class DeploymentSku {
   /// [name] The name of the SKU. Possible values include `Standard`, `DataZoneBatch`, `DataZoneStandard`, `DataZoneProvisionedManaged`, `GlobalBatch`, `GlobalProvisionedManaged`, `GlobalStandard`, and `ProvisionedManaged`. Changing this forces a new resource to be created.
   /// [size] The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. Changing this forces a new resource to be created.
   /// [tier] Possible values are `Free`, `Basic`, `Standard`, `Premium`, `Enterprise`. This property is required only when multiple tiers are available with the SKU name. Changing this forces a new resource to be created.
-  DeploymentSku({
+  const DeploymentSku({
     this.capacity,
     this.family,
     required this.name,

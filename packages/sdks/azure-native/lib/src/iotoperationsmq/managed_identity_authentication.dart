@@ -12,7 +12,7 @@ class ManagedIdentityAuthentication {
   /// Creates a new [ManagedIdentityAuthentication].
   /// [audience] Token audience.
   /// [extensionName] Arc Extension name.
-  ManagedIdentityAuthentication({
+  const ManagedIdentityAuthentication({
     required this.audience,
     this.extensionName,
   });

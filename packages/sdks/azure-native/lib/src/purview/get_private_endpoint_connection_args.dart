@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [accountName] The name of the account.
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [resourceGroupName] The resource group name.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.accountName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

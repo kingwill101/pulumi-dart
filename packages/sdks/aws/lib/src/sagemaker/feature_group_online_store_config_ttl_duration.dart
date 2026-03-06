@@ -11,7 +11,7 @@ class FeatureGroupOnlineStoreConfigTtlDuration {
   /// Creates a new [FeatureGroupOnlineStoreConfigTtlDuration].
   /// [unit] TtlDuration time unit. Valid values are `Seconds`, `Minutes`, `Hours`, `Days`, or `Weeks`.
   /// [value] TtlDuration time value.
-  FeatureGroupOnlineStoreConfigTtlDuration({
+  const FeatureGroupOnlineStoreConfigTtlDuration({
     this.unit,
     this.value,
   });

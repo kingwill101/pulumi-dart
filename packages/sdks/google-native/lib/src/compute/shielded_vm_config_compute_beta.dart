@@ -15,7 +15,7 @@ class ShieldedVmConfigComputeBeta {
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
   /// [enableVtpm] Defines whether the instance has the vTPM enabled.
-  ShieldedVmConfigComputeBeta({
+  const ShieldedVmConfigComputeBeta({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

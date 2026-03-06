@@ -16,7 +16,7 @@ class HciClusterIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID of the Azure Active Directory which is used by the Azure Stack HCI Cluster. Changing this forces a new resource to be created.
   /// [type] Specifies the type of Managed Service Identity that should be configured on the Azure Stack HCI Cluster. Possible value is `SystemAssigned`.
-  HciClusterIdentity({
+  const HciClusterIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

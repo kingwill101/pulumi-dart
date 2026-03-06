@@ -52,7 +52,7 @@ class HealthErrorResponse {
   /// [recommendedAction] Recommended action to resolve error.
   /// [recoveryProviderErrorMessage] DRA error message.
   /// [summaryMessage] Summary message of the entity.
-  HealthErrorResponse({
+  const HealthErrorResponse({
     this.creationTimeUtc,
     this.customerResolvability,
     this.entityId,

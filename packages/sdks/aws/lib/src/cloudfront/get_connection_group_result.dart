@@ -40,7 +40,7 @@ class GetConnectionGroupResult {
   /// [routingEndpoint] Required.
   /// [status] Current status of the connection group. `Deployed` if the
   /// [tags] Required.
-  GetConnectionGroupResult({
+  const GetConnectionGroupResult({
     required this.anycastIpListId,
     required this.arn,
     required this.enabled,

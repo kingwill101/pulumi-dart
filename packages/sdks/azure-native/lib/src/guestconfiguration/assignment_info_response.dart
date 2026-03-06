@@ -13,7 +13,7 @@ class AssignmentInfoResponse {
   /// Creates a new [AssignmentInfoResponse].
   /// [configuration] Information about the configuration.
   /// [name] Name of the guest configuration assignment.
-  AssignmentInfoResponse({
+  const AssignmentInfoResponse({
     this.configuration,
     required this.name,
   });

@@ -18,7 +18,7 @@ class BareMetalAdminClusterControlPlane {
   /// Creates a new [BareMetalAdminClusterControlPlane].
   /// [apiServerArgs] Customizes the default API server args. Only a subset of
   /// [controlPlaneNodePoolConfig] Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
-  BareMetalAdminClusterControlPlane({
+  const BareMetalAdminClusterControlPlane({
     this.apiServerArgs,
     required this.controlPlaneNodePoolConfig,
   });

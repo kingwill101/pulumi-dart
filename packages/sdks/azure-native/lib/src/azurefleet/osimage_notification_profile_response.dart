@@ -15,7 +15,7 @@ class OSImageNotificationProfileResponse {
   /// Creates a new [OSImageNotificationProfileResponse].
   /// [enable] Specifies whether the OS Image Scheduled event is enabled or disabled.
   /// [notBeforeTimeout] Length of time a Virtual Machine being reimaged or having its OS upgraded will
-  OSImageNotificationProfileResponse({
+  const OSImageNotificationProfileResponse({
     this.enable,
     this.notBeforeTimeout,
   });

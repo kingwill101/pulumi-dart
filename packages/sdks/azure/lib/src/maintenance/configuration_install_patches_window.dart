@@ -14,7 +14,7 @@ class ConfigurationInstallPatchesWindow {
   /// [classificationsToIncludes] List of Classification category of patches to be patched. Possible values are `Critical`, `Security`, `UpdateRollup`, `FeaturePack`, `ServicePack`, `Definition`, `Tools` and `Updates`.
   /// [kbNumbersToExcludes] List of KB numbers to be excluded from patching.
   /// [kbNumbersToIncludes] List of KB numbers to be included for patching.
-  ConfigurationInstallPatchesWindow({
+  const ConfigurationInstallPatchesWindow({
     this.classificationsToIncludes,
     this.kbNumbersToExcludes,
     this.kbNumbersToIncludes,

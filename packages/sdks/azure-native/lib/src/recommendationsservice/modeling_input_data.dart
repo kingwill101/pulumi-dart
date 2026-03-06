@@ -9,7 +9,7 @@ class ModelingInputData {
 
   /// Creates a new [ModelingInputData].
   /// [connectionString] Connection string to raw input data.
-  ModelingInputData({
+  const ModelingInputData({
     this.connectionString,
   });
 

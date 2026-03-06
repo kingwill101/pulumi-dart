@@ -37,7 +37,7 @@ class InfrastructureProfile {
   /// [uuid] Unique ID of the virtual machine.
   /// [vmName] VMName is the name of VM on the SCVMM server.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  InfrastructureProfile({
+  const InfrastructureProfile({
     this.biosGuid,
     this.checkpointType,
     this.checkpoints,

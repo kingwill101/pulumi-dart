@@ -18,7 +18,7 @@ class BackupPolicyDiskRetentionRule {
   /// [duration] Duration of deletion after given timespan. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Disk to be created.
   /// [name] The name which should be used for this retention rule. Changing this forces a new Backup Policy Disk to be created.
   /// [priority] Retention Tag priority. Changing this forces a new Backup Policy Disk to be created.
-  BackupPolicyDiskRetentionRule({
+  const BackupPolicyDiskRetentionRule({
     required this.criteria,
     required this.duration,
     required this.name,

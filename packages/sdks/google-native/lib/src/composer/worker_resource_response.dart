@@ -21,7 +21,7 @@ class WorkerResourceResponse {
   /// [memoryGb] Optional. Memory (GB) request and limit for a single Airflow worker replica.
   /// [minCount] Optional. Minimum number of workers for autoscaling.
   /// [storageGb] Optional. Storage (GB) request and limit for a single Airflow worker replica.
-  WorkerResourceResponse({
+  const WorkerResourceResponse({
     required this.cpu,
     required this.maxCount,
     required this.memoryGb,

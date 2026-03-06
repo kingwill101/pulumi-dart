@@ -15,7 +15,7 @@ class PrivateLinkServiceConnectionState {
   /// [actionsRequired] A message indicating if changes on the service provider require any updates on the consumer.
   /// [description] The description for connection status. For example if connection is rejected it can indicate reason for rejection.
   /// [status] The private link service connection status.
-  PrivateLinkServiceConnectionState({
+  const PrivateLinkServiceConnectionState({
     this.actionsRequired,
     this.description,
     this.status,

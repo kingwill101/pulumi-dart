@@ -10,7 +10,7 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput {
 
   /// Creates a new [ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput].
   /// [targetConnectionInfo] Connection information for target Azure Database for PostgreSQL server
-  ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput({
+  const ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskInput({
     required this.targetConnectionInfo,
   });
 

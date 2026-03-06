@@ -24,7 +24,7 @@ class GetDiskArgs {
   /// [name] The name of the Disk
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
-  GetDiskArgs({
+  const GetDiskArgs({
     this.expand,
     required this.labName,
     required this.name,

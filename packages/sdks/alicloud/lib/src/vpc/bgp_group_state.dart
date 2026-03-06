@@ -46,7 +46,7 @@ class BgpGroupState {
   /// [routeLimit] The maximum number of routes supported by a BGP peer. Default value: 110.
   /// [routerId] The ID of the virtual border router (VBR) that is associated with the BGP group.
   /// [status] The status of the resource
-  BgpGroupState({
+  const BgpGroupState({
     this.authKey,
     this.bgpGroupName,
     this.clearAuthKey,

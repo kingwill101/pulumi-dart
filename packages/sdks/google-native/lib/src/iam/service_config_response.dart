@@ -9,7 +9,7 @@ class ServiceConfigResponse {
 
   /// Creates a new [ServiceConfigResponse].
   /// [domain] Optional. Domain name of the service. Example: console.cloud.google
-  ServiceConfigResponse({
+  const ServiceConfigResponse({
     required this.domain,
   });
 

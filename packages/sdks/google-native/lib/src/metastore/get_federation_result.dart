@@ -35,7 +35,7 @@ class GetFederationResult {
   /// [uid] The globally unique resource identifier of the metastore federation.
   /// [updateTime] The time when the metastore federation was last updated.
   /// [version] Immutable. The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
-  GetFederationResult({
+  const GetFederationResult({
     required this.backendMetastores,
     required this.createTime,
     required this.endpointUri,

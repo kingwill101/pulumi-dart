@@ -33,7 +33,7 @@ class GetEcsDedicatedHostClustersCluster {
   /// [resourceGroupId] The ID of the resource group to which the dedicated host cluster belongs.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the dedicated host cluster.
-  GetEcsDedicatedHostClustersCluster({
+  const GetEcsDedicatedHostClustersCluster({
     required this.dedicatedHostClusterCapacities,
     required this.dedicatedHostClusterId,
     required this.dedicatedHostClusterName,

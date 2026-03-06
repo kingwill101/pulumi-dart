@@ -14,7 +14,7 @@ class GetInstanceConfidentialInstanceConfig {
   /// Creates a new [GetInstanceConfidentialInstanceConfig].
   /// [confidentialInstanceType] The confidential computing technology the instance uses.
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
-  GetInstanceConfidentialInstanceConfig({
+  const GetInstanceConfidentialInstanceConfig({
     required this.confidentialInstanceType,
     required this.enableConfidentialCompute,
   });

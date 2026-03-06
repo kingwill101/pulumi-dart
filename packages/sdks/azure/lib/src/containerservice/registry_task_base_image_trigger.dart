@@ -20,7 +20,7 @@ class RegistryTaskBaseImageTrigger {
   /// [type] The type of the trigger. Possible values are `All` and `Runtime`.
   /// [updateTriggerEndpoint] The endpoint URL for receiving the trigger.
   /// [updateTriggerPayloadType] Type of payload body for the trigger. Possible values are `Default` and `Token`.
-  RegistryTaskBaseImageTrigger({
+  const RegistryTaskBaseImageTrigger({
     this.enabled,
     required this.name,
     required this.type,

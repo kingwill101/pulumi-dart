@@ -18,7 +18,7 @@ class ListLocalUserKeysArgs {
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [username] The name of local user. The username must contain lowercase letters and numbers only. It must be unique only within the storage account.
-  ListLocalUserKeysArgs({
+  const ListLocalUserKeysArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.username,

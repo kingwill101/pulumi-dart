@@ -24,7 +24,7 @@ class SharedflowDeploymentState {
   /// [revision] Revision of the Sharedflow to be deployed.
   /// [serviceAccount] The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   /// [sharedflowId] Id of the Sharedflow to be deployed.
-  SharedflowDeploymentState({
+  const SharedflowDeploymentState({
     this.environment,
     this.orgId,
     this.revision,

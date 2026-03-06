@@ -29,7 +29,7 @@ class MuxStreamResponse {
   /// [fmp4] Optional. `fmp4` container configuration.
   /// [key] A unique key for this multiplexed stream.
   /// [segmentSettings] Segment settings for `ts`, `fmp4` and `vtt`.
-  MuxStreamResponse({
+  const MuxStreamResponse({
     required this.container,
     required this.elementaryStreams,
     required this.encryptionId,

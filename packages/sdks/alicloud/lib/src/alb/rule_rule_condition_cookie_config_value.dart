@@ -9,7 +9,7 @@ class RuleRuleConditionCookieConfigValue {
   /// Creates a new [RuleRuleConditionCookieConfigValue].
   /// [key] Optional.
   /// [value] Optional.
-  RuleRuleConditionCookieConfigValue({
+  const RuleRuleConditionCookieConfigValue({
     this.key,
     this.value,
   });

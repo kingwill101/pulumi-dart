@@ -18,7 +18,7 @@ class GetDscConfigurationArgs {
   /// [automationAccountName] The name of the automation account.
   /// [configurationName] The configuration name.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetDscConfigurationArgs({
+  const GetDscConfigurationArgs({
     required this.automationAccountName,
     required this.configurationName,
     required this.resourceGroupName,

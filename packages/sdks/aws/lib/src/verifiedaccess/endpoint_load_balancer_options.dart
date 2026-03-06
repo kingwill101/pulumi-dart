@@ -16,7 +16,7 @@ class EndpointLoadBalancerOptions {
   /// [portRanges] Optional.
   /// [protocol] Optional.
   /// [subnetIds] Optional.
-  EndpointLoadBalancerOptions({
+  const EndpointLoadBalancerOptions({
     this.loadBalancerArn,
     this.port,
     this.portRanges,

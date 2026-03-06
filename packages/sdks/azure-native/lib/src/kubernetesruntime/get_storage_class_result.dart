@@ -58,7 +58,7 @@ class GetStorageClassResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [typeProperties] Properties of the StorageClass
   /// [volumeBindingMode] Binding mode of volumes: Immediate, WaitForFirstConsumer
-  GetStorageClassResult({
+  const GetStorageClassResult({
     this.accessModes,
     this.allowVolumeExpansion,
     required this.azureApiVersion,

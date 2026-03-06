@@ -14,7 +14,7 @@ class PrivateEndpointConnectionProperties {
   /// Creates a new [PrivateEndpointConnectionProperties].
   /// [privateEndpoint] Private endpoint which the connection belongs to.
   /// [privateLinkServiceConnectionState] Connection state of the private endpoint connection.
-  PrivateEndpointConnectionProperties({
+  const PrivateEndpointConnectionProperties({
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
   });

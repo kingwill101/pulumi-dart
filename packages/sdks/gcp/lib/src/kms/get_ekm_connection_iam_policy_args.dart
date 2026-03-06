@@ -23,7 +23,7 @@ class GetEkmConnectionIamPolicyArgs {
   /// [location] The location for the EkmConnection.
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetEkmConnectionIamPolicyArgs({
+  const GetEkmConnectionIamPolicyArgs({
     this.location,
     required this.name,
     this.project,

@@ -8,7 +8,7 @@ class BareMetalAdminClusterLoadBalancerPortConfig {
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerPortConfig].
   /// [controlPlaneLoadBalancerPort] The port that control plane hosted load balancers will listen on.
-  BareMetalAdminClusterLoadBalancerPortConfig({
+  const BareMetalAdminClusterLoadBalancerPortConfig({
     required this.controlPlaneLoadBalancerPort,
   });
 

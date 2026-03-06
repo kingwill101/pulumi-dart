@@ -11,7 +11,7 @@ class GetTrafficManagerProfileMonitorConfigCustomHeader {
   /// Creates a new [GetTrafficManagerProfileMonitorConfigCustomHeader].
   /// [name] Specifies the name of the Traffic Manager Profile.
   /// [value] The value of custom header. Applicable for HTTP and HTTPS protocol.
-  GetTrafficManagerProfileMonitorConfigCustomHeader({
+  const GetTrafficManagerProfileMonitorConfigCustomHeader({
     required this.name,
     required this.value,
   });

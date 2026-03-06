@@ -22,7 +22,7 @@ class PrivateEndpointConnectionOperationArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionOperationArgs({
+  const PrivateEndpointConnectionOperationArgs({
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,
     required this.projectName,

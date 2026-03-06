@@ -32,7 +32,7 @@ class ConnectionArgs {
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link for the first device.
   /// [tags] Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ConnectionArgs({
+  const ConnectionArgs({
     required this.connectedDeviceId,
     this.connectedLinkId,
     this.description,

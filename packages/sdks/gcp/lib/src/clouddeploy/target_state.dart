@@ -91,7 +91,7 @@ class TargetState {
   /// [targetId] Output only. Resource id of the `Target`.
   /// [uid] Output only. Unique identifier of the `Target`.
   /// [updateTime] Output only. Most recent time at which the `Target` was updated.
-  TargetState({
+  const TargetState({
     this.annotations,
     this.anthosCluster,
     this.associatedEntities,

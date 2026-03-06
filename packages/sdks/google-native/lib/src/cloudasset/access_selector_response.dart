@@ -12,7 +12,7 @@ class AccessSelectorResponse {
   /// Creates a new [AccessSelectorResponse].
   /// [permissions] Optional. The permissions to appear in result.
   /// [roles] Optional. The roles to appear in result.
-  AccessSelectorResponse({
+  const AccessSelectorResponse({
     required this.permissions,
     required this.roles,
   });

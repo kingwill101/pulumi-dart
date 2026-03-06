@@ -14,7 +14,7 @@ class ManagedEnvironmentStorageProperties {
   /// Creates a new [ManagedEnvironmentStorageProperties].
   /// [azureFile] Azure file properties
   /// [nfsAzureFile] NFS Azure file properties
-  ManagedEnvironmentStorageProperties({
+  const ManagedEnvironmentStorageProperties({
     this.azureFile,
     this.nfsAzureFile,
   });

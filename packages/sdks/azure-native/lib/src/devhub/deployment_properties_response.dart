@@ -19,7 +19,7 @@ class DeploymentPropertiesResponse {
   /// [kubeManifestLocations] Optional.
   /// [manifestType] Determines the type of manifests within the repository.
   /// [overrides] Manifest override values.
-  DeploymentPropertiesResponse({
+  const DeploymentPropertiesResponse({
     this.helmChartPath,
     this.helmValues,
     this.kubeManifestLocations,

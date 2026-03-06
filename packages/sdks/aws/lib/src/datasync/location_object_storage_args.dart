@@ -42,7 +42,7 @@ class LocationObjectStorageArgs {
   /// [serverProtocol] The protocol that the object storage server uses to communicate. Valid values are `HTTP` or `HTTPS`.
   /// [subdirectory] A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LocationObjectStorageArgs({
+  const LocationObjectStorageArgs({
     this.accessKey,
     this.agentArns,
     required this.bucketName,

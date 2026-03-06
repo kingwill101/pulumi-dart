@@ -14,7 +14,7 @@ class GetAppIngressCustomDomain {
   /// [certificateBindingType] The Binding type.
   /// [certificateId] The ID of the Container App Environment Certificate.
   /// [name] The name of the Container App.
-  GetAppIngressCustomDomain({
+  const GetAppIngressCustomDomain({
     required this.certificateBindingType,
     required this.certificateId,
     required this.name,

@@ -16,7 +16,7 @@ class ExecutionStageState {
   /// [currentStateTime] The time at which the stage transitioned to this state.
   /// [executionStageName] The name of the execution stage.
   /// [executionStageState] Executions stage states allow the same set of values as JobState.
-  ExecutionStageState({
+  const ExecutionStageState({
     this.currentStateTime,
     this.executionStageName,
     this.executionStageState,

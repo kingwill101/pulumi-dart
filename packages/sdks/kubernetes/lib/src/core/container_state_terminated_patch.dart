@@ -27,7 +27,7 @@ class ContainerStateTerminatedPatch {
   /// [reason] (brief) reason from the last termination of the container
   /// [signal] Signal from the last termination of the container
   /// [startedAt] Time at which previous execution of the container started
-  ContainerStateTerminatedPatch({
+  const ContainerStateTerminatedPatch({
     this.containerID,
     this.exitCode,
     this.finishedAt,

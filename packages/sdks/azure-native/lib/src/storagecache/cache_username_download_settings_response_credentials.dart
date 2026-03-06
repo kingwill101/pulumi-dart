@@ -12,7 +12,7 @@ class CacheUsernameDownloadSettingsResponseCredentials {
   /// Creates a new [CacheUsernameDownloadSettingsResponseCredentials].
   /// [bindDn] The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
   /// [bindPassword] The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  CacheUsernameDownloadSettingsResponseCredentials({
+  const CacheUsernameDownloadSettingsResponseCredentials({
     this.bindDn,
     this.bindPassword,
   });

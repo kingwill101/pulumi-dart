@@ -27,7 +27,7 @@ class GetShareResult {
   /// [name] The name of the snapshot schedule.
   /// [snapshotSchedules] A `snapshot_schedule` block as defined below.
   /// [terms] The terms of the Data Share.
-  GetShareResult({
+  const GetShareResult({
     required this.accountId,
     required this.description,
     required this.id,

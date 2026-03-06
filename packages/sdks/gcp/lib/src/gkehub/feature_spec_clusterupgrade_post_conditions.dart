@@ -8,7 +8,7 @@ class FeatureSpecClusterupgradePostConditions {
 
   /// Creates a new [FeatureSpecClusterupgradePostConditions].
   /// [soaking] Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
-  FeatureSpecClusterupgradePostConditions({
+  const FeatureSpecClusterupgradePostConditions({
     required this.soaking,
   });
 

@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of Azure API Center service.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.resourceGroupName,
     required this.serviceName,
   });

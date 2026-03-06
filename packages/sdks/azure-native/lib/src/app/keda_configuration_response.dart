@@ -9,7 +9,7 @@ class KedaConfigurationResponse {
 
   /// Creates a new [KedaConfigurationResponse].
   /// [version] The version of Keda
-  KedaConfigurationResponse({
+  const KedaConfigurationResponse({
     required this.version,
   });
 

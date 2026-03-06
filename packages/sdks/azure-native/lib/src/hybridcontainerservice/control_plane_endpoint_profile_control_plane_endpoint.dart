@@ -12,7 +12,7 @@ class ControlPlaneEndpointProfileControlPlaneEndpoint {
   /// Creates a new [ControlPlaneEndpointProfileControlPlaneEndpoint].
   /// [hostIP] Host IP address for API server
   /// [port] Port for the API server
-  ControlPlaneEndpointProfileControlPlaneEndpoint({
+  const ControlPlaneEndpointProfileControlPlaneEndpoint({
     this.hostIP,
     this.port,
   });

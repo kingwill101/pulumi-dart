@@ -20,7 +20,7 @@ class GetLogConfigsConfig {
   /// [regionId] The region ID of the Log Config.
   /// [slsLogStore] The name of the Log Store.
   /// [slsProject] The name of the Project.
-  GetLogConfigsConfig({
+  const GetLogConfigsConfig({
     required this.id,
     required this.logType,
     required this.regionId,

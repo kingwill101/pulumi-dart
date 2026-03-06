@@ -26,7 +26,7 @@ class InstanceServerlessConfig {
   /// [maxCapacity] The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
   /// [minCapacity] The minimum number of RCUs. The value of this parameter must be less than or equal to `max_capacity`. Valid values:
   /// [switchForce] Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
-  InstanceServerlessConfig({
+  const InstanceServerlessConfig({
     this.autoPause,
     required this.maxCapacity,
     required this.minCapacity,

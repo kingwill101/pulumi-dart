@@ -34,7 +34,7 @@ class GetZoneShareV2Args {
   /// [shareId] The ID of the DNS zone share to retrieve. If
   /// [targetProjectId] If provided, the data source returns the
   /// [zoneId] The ID of the DNS zone for which to get share.
-  GetZoneShareV2Args({
+  const GetZoneShareV2Args({
     this.allProjects,
     this.projectId,
     this.region,

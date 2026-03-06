@@ -25,7 +25,7 @@ class MigrateProjectsControllerMigrateProjectArgs {
   /// [migrateProjectName] Migrate project name.
   /// [properties] Properties of a migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  MigrateProjectsControllerMigrateProjectArgs({
+  const MigrateProjectsControllerMigrateProjectArgs({
     this.eTag,
     this.location,
     this.migrateProjectName,

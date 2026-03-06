@@ -20,7 +20,7 @@ class TumblingWindowTriggerDependencyReferenceResponse {
   /// [referenceTrigger] Referenced trigger.
   /// [size] The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
   /// [type] The type of dependency reference.
-  TumblingWindowTriggerDependencyReferenceResponse({
+  const TumblingWindowTriggerDependencyReferenceResponse({
     this.offset,
     required this.referenceTrigger,
     this.size,

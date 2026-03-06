@@ -52,7 +52,7 @@ class StandardWebTestState {
   /// [tags] A mapping of tags which should be assigned to the Application Insights Standard WebTest.
   /// [timeout] Seconds until this WebTest will timeout and fail. Default is `30`.
   /// [validationRules] A `validation_rules` block as defined below.
-  StandardWebTestState({
+  const StandardWebTestState({
     this.applicationInsightsId,
     this.description,
     this.enabled,

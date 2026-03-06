@@ -20,7 +20,7 @@ class PolicyVMWorkloadProtectionPolicyRetentionMonthly {
   /// [monthdays] The monthday backups to retain. Possible values are between `0` and `28`.
   /// [weekdays] The weekday backups to retain. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
   /// [weeks] The weeks of the month to retain backups of. Possible values are `First`, `Second`, `Third`, `Fourth` and `Last`.
-  PolicyVMWorkloadProtectionPolicyRetentionMonthly({
+  const PolicyVMWorkloadProtectionPolicyRetentionMonthly({
     required this.count,
     required this.formatType,
     this.monthdays,

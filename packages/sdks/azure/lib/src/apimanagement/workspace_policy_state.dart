@@ -17,7 +17,7 @@ class WorkspacePolicyState {
   /// [apiManagementWorkspaceId] Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
   /// [xmlContent] Specifies the API Management Workspace Policy as an XML string.
   /// [xmlLink] Specifies a publicly accessible URL to a policy XML document.
-  WorkspacePolicyState({
+  const WorkspacePolicyState({
     this.apiManagementWorkspaceId,
     this.xmlContent,
     this.xmlLink,

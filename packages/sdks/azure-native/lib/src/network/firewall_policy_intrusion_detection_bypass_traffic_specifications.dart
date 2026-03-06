@@ -30,7 +30,7 @@ class FirewallPolicyIntrusionDetectionBypassTrafficSpecifications {
   /// [protocol] The rule bypass protocol.
   /// [sourceAddresses] List of source IP addresses or ranges for this rule.
   /// [sourceIpGroups] List of source IpGroups for this rule.
-  FirewallPolicyIntrusionDetectionBypassTrafficSpecifications({
+  const FirewallPolicyIntrusionDetectionBypassTrafficSpecifications({
     this.description,
     this.destinationAddresses,
     this.destinationIpGroups,

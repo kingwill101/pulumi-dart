@@ -22,7 +22,7 @@ class LoadBalancerConfiguration {
   /// [probePort] Probe port.
   /// [publicIpAddressResourceId] Resource id of the public IP.
   /// [sqlVirtualMachineInstances] List of the SQL virtual machine instance resource id's that are enrolled into the availability group listener.
-  LoadBalancerConfiguration({
+  const LoadBalancerConfiguration({
     this.loadBalancerResourceId,
     this.privateIpAddress,
     this.probePort,

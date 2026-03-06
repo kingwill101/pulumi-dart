@@ -18,7 +18,7 @@ class UriFileJobInput {
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [mode] Input Asset Delivery Mode.
   /// [uri] [Required] Input Asset URI.
-  UriFileJobInput({
+  const UriFileJobInput({
     this.description,
     required this.jobInputType,
     this.mode,

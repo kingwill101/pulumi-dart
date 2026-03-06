@@ -12,7 +12,7 @@ class GetZonesZone {
   /// Creates a new [GetZonesZone].
   /// [instanceTypes] A list of instance type information collection
   /// [zoneId] String to filter results by zone id.
-  GetZonesZone({
+  const GetZonesZone({
     required this.instanceTypes,
     required this.zoneId,
   });

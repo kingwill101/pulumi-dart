@@ -9,7 +9,7 @@ class NrqlAlertConditionOutlierConfiguration {
 
   /// Creates a new [NrqlAlertConditionOutlierConfiguration].
   /// [dbscan] BETA PREVIEW: the `dbscan` field is in limited release and only enabled for preview on a per-account basis. - Container for DBSCAN settings used to cluster data points and classify noise as outliers. Requires `epsilon` and `minimum_points`; optional `evaluation_group_facet` partitions data before analysis.
-  NrqlAlertConditionOutlierConfiguration({
+  const NrqlAlertConditionOutlierConfiguration({
     required this.dbscan,
   });
 

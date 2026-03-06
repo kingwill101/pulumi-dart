@@ -15,7 +15,7 @@ class MetadataAssignmentResponse {
   /// [deprecated] Deprecated assignment
   /// [entity] The entities this metadata schema component gets applied to.
   /// [required] Required assignment
-  MetadataAssignmentResponse({
+  const MetadataAssignmentResponse({
     this.deprecated,
     this.entity,
     this.required,

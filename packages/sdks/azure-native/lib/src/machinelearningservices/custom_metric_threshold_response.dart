@@ -12,7 +12,7 @@ class CustomMetricThresholdResponse {
   /// Creates a new [CustomMetricThresholdResponse].
   /// [metric] [Required] The user-defined metric to calculate.
   /// [threshold] The threshold value. If null, a default value will be set depending on the selected metric.
-  CustomMetricThresholdResponse({
+  const CustomMetricThresholdResponse({
     required this.metric,
     this.threshold,
   });

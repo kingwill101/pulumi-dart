@@ -127,7 +127,7 @@ class SqlServerInstancePropertiesResponse {
   /// [vCore] The number of logical processors used by the SQL Server instance.
   /// [version] SQL Server version.
   /// [vmId] The unique ID of the hybrid machine that this resource belongs to.
-  SqlServerInstancePropertiesResponse({
+  const SqlServerInstancePropertiesResponse({
     required this.alwaysOnRole,
     this.authentication,
     required this.azureDefenderStatus,

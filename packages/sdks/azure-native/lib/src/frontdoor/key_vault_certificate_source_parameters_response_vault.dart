@@ -9,7 +9,7 @@ class KeyVaultCertificateSourceParametersResponseVault {
 
   /// Creates a new [KeyVaultCertificateSourceParametersResponseVault].
   /// [id] Resource ID.
-  KeyVaultCertificateSourceParametersResponseVault({
+  const KeyVaultCertificateSourceParametersResponseVault({
     this.id,
   });
 

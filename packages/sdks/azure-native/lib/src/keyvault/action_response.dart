@@ -8,7 +8,7 @@ class ActionResponse {
 
   /// Creates a new [ActionResponse].
   /// [type] The type of action.
-  ActionResponse({
+  const ActionResponse({
     this.type,
   });
 

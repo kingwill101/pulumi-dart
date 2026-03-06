@@ -22,7 +22,7 @@ class CycleStepResponseVmmigrationV1alpha1 {
   /// [postProcessing] Post processing step.
   /// [replicating] Replicating step.
   /// [startTime] The time the cycle step has started.
-  CycleStepResponseVmmigrationV1alpha1({
+  const CycleStepResponseVmmigrationV1alpha1({
     required this.endTime,
     required this.initializingReplication,
     required this.postProcessing,

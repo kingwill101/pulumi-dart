@@ -8,7 +8,7 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrig
 
   /// Creates a new [DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger].
   /// [scoreThreshold] The score range is in [0,100].
-  DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger({
+  const DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger({
     this.scoreThreshold,
   });
 

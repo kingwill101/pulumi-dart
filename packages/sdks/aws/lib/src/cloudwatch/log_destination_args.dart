@@ -24,7 +24,7 @@ class LogDestinationArgs {
   /// [roleArn] The ARN of an IAM role that grants Amazon CloudWatch Logs permissions to put data into the target.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetArn] The ARN of the target Amazon Kinesis stream resource for the destination.
-  LogDestinationArgs({
+  const LogDestinationArgs({
     this.name,
     this.region,
     required this.roleArn,

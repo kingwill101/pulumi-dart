@@ -12,7 +12,7 @@ class IpPools {
   /// Creates a new [IpPools].
   /// [endingAddress] Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
   /// [startingAddress] Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
-  IpPools({
+  const IpPools({
     this.endingAddress,
     this.startingAddress,
   });

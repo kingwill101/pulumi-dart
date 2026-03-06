@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesLabel {
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesLabel].
   /// [key] The identifier for this object. Format specified above.
   /// [value] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesLabel({
+  const RestoreWorkloadComputeInstanceRestorePropertiesLabel({
     required this.key,
     this.value,
   });

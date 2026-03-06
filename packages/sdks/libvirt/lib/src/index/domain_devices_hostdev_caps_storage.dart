@@ -9,7 +9,7 @@ class DomainDevicesHostdevCapsStorage {
 
   /// Creates a new [DomainDevicesHostdevCapsStorage].
   /// [source] Sets the source attributes for the host device's storage capabilities.
-  DomainDevicesHostdevCapsStorage({
+  const DomainDevicesHostdevCapsStorage({
     this.source,
   });
 

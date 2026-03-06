@@ -42,7 +42,7 @@ class GetRestorePlanResult {
   /// [stateReason] Human-readable description of why RestorePlan is in the current `state`
   /// [uid] Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
   /// [updateTime] The timestamp when this RestorePlan resource was last updated.
-  GetRestorePlanResult({
+  const GetRestorePlanResult({
     required this.backupPlan,
     required this.cluster,
     required this.createTime,

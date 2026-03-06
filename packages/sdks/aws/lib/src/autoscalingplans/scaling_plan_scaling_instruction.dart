@@ -54,7 +54,7 @@ class ScalingPlanScalingInstruction {
   /// [scheduledActionBufferTime] Amount of time, in seconds, to buffer the run time of scheduled scaling actions when scaling out.
   /// [serviceNamespace] Namespace of the AWS service. Valid values: `autoscaling`, `dynamodb`, `ecs`, `ec2`, `rds`.
   /// [targetTrackingConfigurations] Structure that defines new target tracking configurations. Each of these structures includes a specific scaling metric and a target value for the metric, along with various parameters to use with dynamic scaling.
-  ScalingPlanScalingInstruction({
+  const ScalingPlanScalingInstruction({
     this.customizedLoadMetricSpecification,
     this.disableDynamicScaling,
     required this.maxCapacity,

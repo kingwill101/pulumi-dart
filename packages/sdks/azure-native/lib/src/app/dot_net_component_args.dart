@@ -29,7 +29,7 @@ class DotNetComponentArgs {
   /// [name] Name of the .NET Component.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceBinds] List of .NET Components that are bound to the .NET component
-  DotNetComponentArgs({
+  const DotNetComponentArgs({
     this.componentType,
     this.configurations,
     required this.environmentName,

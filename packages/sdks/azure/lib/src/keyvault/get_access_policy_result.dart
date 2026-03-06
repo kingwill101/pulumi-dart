@@ -19,7 +19,7 @@ class GetAccessPolicyResult {
   /// [keyPermissions] the key permissions for the access policy
   /// [name] Required.
   /// [secretPermissions] the secret permissions for the access policy
-  GetAccessPolicyResult({
+  const GetAccessPolicyResult({
     required this.certificatePermissions,
     required this.id,
     required this.keyPermissions,

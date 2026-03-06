@@ -13,7 +13,7 @@ class WorkbookTemplateLocalizedGallery {
   /// Creates a new [WorkbookTemplateLocalizedGallery].
   /// [galleries] Workbook galleries supported by the template.
   /// [templateData] Valid JSON object containing workbook template payload.
-  WorkbookTemplateLocalizedGallery({
+  const WorkbookTemplateLocalizedGallery({
     this.galleries,
     this.templateData,
   });

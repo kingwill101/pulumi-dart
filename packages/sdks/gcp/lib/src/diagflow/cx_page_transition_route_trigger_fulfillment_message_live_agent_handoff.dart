@@ -8,7 +8,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
 
   /// Creates a new [CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff({
+  const CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff({
     this.metadata,
   });
 

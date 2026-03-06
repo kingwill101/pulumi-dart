@@ -12,7 +12,7 @@ class DomainDevicesSmartcardPassthroughPipe {
   /// Creates a new [DomainDevicesSmartcardPassthroughPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesSmartcardPassthroughPipe({
+  const DomainDevicesSmartcardPassthroughPipe({
     required this.path,
     this.secLabels,
   });

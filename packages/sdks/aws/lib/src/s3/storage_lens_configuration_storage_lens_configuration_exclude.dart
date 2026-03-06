@@ -11,7 +11,7 @@ class StorageLensConfigurationStorageLensConfigurationExclude {
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationExclude].
   /// [buckets] List of S3 bucket ARNs.
   /// [regions] List of AWS Regions.
-  StorageLensConfigurationStorageLensConfigurationExclude({
+  const StorageLensConfigurationStorageLensConfigurationExclude({
     this.buckets,
     this.regions,
   });

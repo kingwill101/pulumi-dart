@@ -44,7 +44,7 @@ class PodIdentityAssociationState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetRoleArn] The Amazon Resource Name (ARN) of the IAM role to be chained to the the IAM role specified as `role_arn`.
-  PodIdentityAssociationState({
+  const PodIdentityAssociationState({
     this.associationArn,
     this.associationId,
     this.clusterName,

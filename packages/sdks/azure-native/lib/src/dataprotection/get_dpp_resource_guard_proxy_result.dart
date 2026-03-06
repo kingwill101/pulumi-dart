@@ -25,7 +25,7 @@ class GetDppResourceGuardProxyResult {
   /// [properties] ResourceGuardProxyBaseResource properties
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetDppResourceGuardProxyResult({
+  const GetDppResourceGuardProxyResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

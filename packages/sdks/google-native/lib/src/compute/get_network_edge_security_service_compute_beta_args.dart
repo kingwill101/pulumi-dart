@@ -15,7 +15,7 @@ class GetNetworkEdgeSecurityServiceComputeBetaArgs {
   /// [networkEdgeSecurityService] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNetworkEdgeSecurityServiceComputeBetaArgs({
+  const GetNetworkEdgeSecurityServiceComputeBetaArgs({
     required this.networkEdgeSecurityService,
     this.project,
     required this.region,

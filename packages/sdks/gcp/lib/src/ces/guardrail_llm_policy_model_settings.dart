@@ -15,7 +15,7 @@ class GuardrailLlmPolicyModelSettings {
   /// Creates a new [GuardrailLlmPolicyModelSettings].
   /// [model] The LLM model that the agent should use.
   /// [temperature] If set, this temperature will be used for the LLM model. Temperature
-  GuardrailLlmPolicyModelSettings({
+  const GuardrailLlmPolicyModelSettings({
     this.model,
     this.temperature,
   });

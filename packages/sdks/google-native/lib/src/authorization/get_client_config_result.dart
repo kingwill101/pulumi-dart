@@ -14,7 +14,7 @@ class GetClientConfigResult {
   /// [project] Project of the current user.
   /// [region] Google Cloud region
   /// [zone] Google Cloud zone
-  GetClientConfigResult({
+  const GetClientConfigResult({
     required this.project,
     required this.region,
     this.zone,

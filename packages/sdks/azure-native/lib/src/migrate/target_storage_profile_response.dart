@@ -34,7 +34,7 @@ class TargetStorageProfileResponse {
   /// [storageProjectionType] Gets or sets the target projection type.
   /// [targetName] Gets or sets the name of the projected volume on the target environment.
   /// [targetSize] Gets or sets the storage size on the target.
-  TargetStorageProfileResponse({
+  const TargetStorageProfileResponse({
     this.azureFileShareProfile,
     this.hydrationStorageProviderType,
     this.persistentVolumeId,

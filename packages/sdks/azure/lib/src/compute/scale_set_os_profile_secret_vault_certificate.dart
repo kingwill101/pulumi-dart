@@ -11,7 +11,7 @@ class ScaleSetOsProfileSecretVaultCertificate {
   /// Creates a new [ScaleSetOsProfileSecretVaultCertificate].
   /// [certificateStore] (Required, on windows machines) Specifies the certificate store on the Virtual Machine where the certificate should be added to.
   /// [certificateUrl] It is the Base64 encoding of a JSON Object that which is encoded in UTF-8 of which the contents need to be `data`, `dataType` and `password`.
-  ScaleSetOsProfileSecretVaultCertificate({
+  const ScaleSetOsProfileSecretVaultCertificate({
     this.certificateStore,
     required this.certificateUrl,
   });

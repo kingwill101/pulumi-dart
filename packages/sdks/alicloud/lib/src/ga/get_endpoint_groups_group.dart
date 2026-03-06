@@ -55,7 +55,7 @@ class GetEndpointGroupsGroup {
   /// [status] The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
   /// [thresholdCount] The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
   /// [trafficPercentage] The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
-  GetEndpointGroupsGroup({
+  const GetEndpointGroupsGroup({
     required this.description,
     required this.endpointConfigurations,
     required this.endpointGroupId,

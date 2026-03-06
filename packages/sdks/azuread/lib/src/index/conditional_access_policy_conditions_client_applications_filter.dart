@@ -11,7 +11,7 @@ class ConditionalAccessPolicyConditionsClientApplicationsFilter {
   /// Creates a new [ConditionalAccessPolicyConditionsClientApplicationsFilter].
   /// [mode] Whether to include in, or exclude from, matching items from the policy. Supported values are `include` or `exclude`.
   /// [rule] Condition filter to match items.
-  ConditionalAccessPolicyConditionsClientApplicationsFilter({
+  const ConditionalAccessPolicyConditionsClientApplicationsFilter({
     required this.mode,
     required this.rule,
   });

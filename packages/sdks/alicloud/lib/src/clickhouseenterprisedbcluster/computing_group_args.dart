@@ -27,7 +27,7 @@ class ComputingGroupArgs {
   /// [nodeCount] Number of computing group nodes
   /// [nodeScaleMax] Computing group node elasticity upper limit
   /// [nodeScaleMin] Lower limit of computing group node elasticity
-  ComputingGroupArgs({
+  const ComputingGroupArgs({
     this.computingGroupDescription,
     required this.dbInstanceId,
     required this.isReadonly,

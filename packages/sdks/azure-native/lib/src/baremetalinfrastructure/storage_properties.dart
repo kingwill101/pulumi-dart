@@ -28,7 +28,7 @@ class StorageProperties {
   /// [storageBillingProperties] the billing related information for the resource
   /// [storageType] the storage protocol for which the resource is getting provisioned
   /// [workloadType] the workload for which the resource is getting provisioned
-  StorageProperties({
+  const StorageProperties({
     this.generation,
     this.hardwareType,
     this.offeringType,

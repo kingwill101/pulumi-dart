@@ -13,7 +13,7 @@ class AcceleratorConfig {
   /// Creates a new [AcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Type of this accelerator.
-  AcceleratorConfig({
+  const AcceleratorConfig({
     this.coreCount,
     this.type,
   });

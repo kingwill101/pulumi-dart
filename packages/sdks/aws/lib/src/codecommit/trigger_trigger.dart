@@ -20,7 +20,7 @@ class TriggerTrigger {
   /// [destinationArn] The ARN of the resource that is the target for a trigger. For example, the ARN of a topic in Amazon Simple Notification Service (SNS).
   /// [events] The repository events that will cause the trigger to run actions in another service, such as sending a notification through Amazon Simple Notification Service (SNS). If no events are specified, the trigger will run for all repository events. Event types include: `all`, `updateReference`, `createReference`, `deleteReference`.
   /// [name] The name of the trigger.
-  TriggerTrigger({
+  const TriggerTrigger({
     this.branches,
     this.customData,
     required this.destinationArn,

@@ -28,7 +28,7 @@ class NamespaceTopicArgs {
   /// [publisherType] Publisher type of the namespace topic.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the namespace topic.
-  NamespaceTopicArgs({
+  const NamespaceTopicArgs({
     this.eventRetentionInDays,
     this.inputSchema,
     required this.namespaceName,

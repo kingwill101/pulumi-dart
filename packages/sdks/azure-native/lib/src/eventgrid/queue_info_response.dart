@@ -37,7 +37,7 @@ class QueueInfoResponse {
   /// [eventTimeToLive] Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
   /// [maxDeliveryCount] The maximum delivery count of the events.
   /// [receiveLockDurationInSeconds] Maximum period in seconds in which once the message is in received (by the client) state and waiting to be accepted, released or rejected.
-  QueueInfoResponse({
+  const QueueInfoResponse({
     this.deadLetterDestinationWithResourceIdentity,
     this.eventTimeToLive,
     this.maxDeliveryCount,

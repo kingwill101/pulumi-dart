@@ -53,7 +53,7 @@ class ProjectFeedArgs {
   /// [feedId] This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   /// [feedOutputConfig] Output configuration for asset feed destination.
   /// [project] The ID of the project in which the resource belongs.
-  ProjectFeedArgs({
+  const ProjectFeedArgs({
     this.assetNames,
     this.assetTypes,
     this.billingProject,

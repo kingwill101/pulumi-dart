@@ -18,7 +18,7 @@ class PerNodeStateResponse {
   /// [arcNodeServicePrincipalObjectId] The service principal id of the arc for server node
   /// [name] Name of the Node in HCI Cluster
   /// [state] State of Arc agent in this node.
-  PerNodeStateResponse({
+  const PerNodeStateResponse({
     required this.arcInstance,
     required this.arcNodeServicePrincipalObjectId,
     required this.name,

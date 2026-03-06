@@ -23,7 +23,7 @@ class CustomerGatewayAssociationArgs {
   /// [deviceId] ID of the device.
   /// [globalNetworkId] ID of the global network.
   /// [linkId] ID of the link.
-  CustomerGatewayAssociationArgs({
+  const CustomerGatewayAssociationArgs({
     required this.customerGatewayArn,
     required this.deviceId,
     required this.globalNetworkId,

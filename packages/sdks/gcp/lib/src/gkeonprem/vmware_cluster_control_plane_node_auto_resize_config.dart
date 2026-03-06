@@ -10,7 +10,7 @@ class VMwareClusterControlPlaneNodeAutoResizeConfig {
 
   /// Creates a new [VMwareClusterControlPlaneNodeAutoResizeConfig].
   /// [enabled] Whether to enable control plane node auto resizing.
-  VMwareClusterControlPlaneNodeAutoResizeConfig({
+  const VMwareClusterControlPlaneNodeAutoResizeConfig({
     required this.enabled,
   });
 

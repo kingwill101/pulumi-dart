@@ -25,7 +25,7 @@ class GetHybridMonitorSlsTasksArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetHybridMonitorSlsTasksArgs({
+  const GetHybridMonitorSlsTasksArgs({
     this.ids,
     this.keyword,
     this.namespace,

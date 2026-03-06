@@ -23,7 +23,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   /// [audioAndDtmfInputSpecification] Configuration block for settings on audio and DTMF input. See `audio_and_dtmf_input_specification`.
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   /// [textInputSpecification] Configuration block for the settings on text input. See `text_input_specification`.
-  V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification({
+  const V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecification({
     this.allowInterrupt,
     this.allowedInputTypes,
     this.audioAndDtmfInputSpecification,

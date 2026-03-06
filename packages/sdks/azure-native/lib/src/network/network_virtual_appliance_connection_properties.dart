@@ -25,7 +25,7 @@ class NetworkVirtualApplianceConnectionProperties {
   /// [name] The name of the resource.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [tunnelIdentifier] Unique identifier for the connection.
-  NetworkVirtualApplianceConnectionProperties({
+  const NetworkVirtualApplianceConnectionProperties({
     this.asn,
     this.bgpPeerAddress,
     this.enableInternetSecurity,

@@ -32,7 +32,7 @@ class GetOpenApiPricingModulesModule {
   /// [subscriptionType] Subscription type. Value:
   /// [unit] Attribute unit.
   /// [values] Property.
-  GetOpenApiPricingModulesModule({
+  const GetOpenApiPricingModulesModule({
     required this.code,
     required this.id,
     required this.pricingModuleName,

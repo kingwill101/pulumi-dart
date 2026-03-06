@@ -27,7 +27,7 @@ class ServerlessSecurityConfigArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [samlOptions] Configuration block for SAML options.
   /// [type] Type of configuration. Must be `saml`.
-  ServerlessSecurityConfigArgs({
+  const ServerlessSecurityConfigArgs({
     this.description,
     this.name,
     this.region,

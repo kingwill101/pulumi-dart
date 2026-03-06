@@ -10,7 +10,7 @@ class GrafeasV1beta1DiscoveryDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1DiscoveryDetailsResponse].
   /// [discovered] Analysis status for the discovered resource.
-  GrafeasV1beta1DiscoveryDetailsResponse({
+  const GrafeasV1beta1DiscoveryDetailsResponse({
     required this.discovered,
   });
 

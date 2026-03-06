@@ -23,7 +23,7 @@ class GreyTagRouteState {
   /// [dubboRules] The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
   /// [greyTagRouteName] The name of GreyTagRoute.
   /// [scRules] The grayscale rule created for SpringCloud Application. See `sc_rules` below.
-  GreyTagRouteState({
+  const GreyTagRouteState({
     this.appId,
     this.description,
     this.dubboRules,

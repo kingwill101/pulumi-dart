@@ -21,7 +21,7 @@ class SAMLParamsResponse {
   /// [entityId] Entity id URL
   /// [ssoUri] Single sign-on URL
   /// [userEmail] Email address of the first admin users.
-  SAMLParamsResponse({
+  const SAMLParamsResponse({
     required this.certificate,
     required this.emailMapping,
     required this.entityId,

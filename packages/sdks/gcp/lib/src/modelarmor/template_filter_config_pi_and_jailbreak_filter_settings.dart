@@ -18,7 +18,7 @@ class TemplateFilterConfigPiAndJailbreakFilterSettings {
   /// Creates a new [TemplateFilterConfigPiAndJailbreakFilterSettings].
   /// [confidenceLevel] Possible values:
   /// [filterEnforcement] Tells whether Prompt injection and Jailbreak filter is enabled or
-  TemplateFilterConfigPiAndJailbreakFilterSettings({
+  const TemplateFilterConfigPiAndJailbreakFilterSettings({
     this.confidenceLevel,
     this.filterEnforcement,
   });

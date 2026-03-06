@@ -41,7 +41,7 @@ class GetTargetPoolComputeBetaResult {
   /// [securityPolicy] The resource URL for the security policy associated with this target pool.
   /// [selfLink] Server-defined URL for the resource.
   /// [sessionAffinity] Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
-  GetTargetPoolComputeBetaResult({
+  const GetTargetPoolComputeBetaResult({
     required this.backupPool,
     required this.creationTimestamp,
     required this.description,

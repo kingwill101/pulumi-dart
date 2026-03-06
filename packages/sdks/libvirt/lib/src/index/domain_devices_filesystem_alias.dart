@@ -8,7 +8,7 @@ class DomainDevicesFilesystemAlias {
 
   /// Creates a new [DomainDevicesFilesystemAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesFilesystemAlias({
+  const DomainDevicesFilesystemAlias({
     required this.name,
   });
 

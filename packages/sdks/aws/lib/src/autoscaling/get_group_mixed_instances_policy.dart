@@ -13,7 +13,7 @@ class GetGroupMixedInstancesPolicy {
   /// Creates a new [GetGroupMixedInstancesPolicy].
   /// [instancesDistributions] List of instances distribution objects.
   /// [launchTemplates] List of launch templates along with the overrides.
-  GetGroupMixedInstancesPolicy({
+  const GetGroupMixedInstancesPolicy({
     required this.instancesDistributions,
     required this.launchTemplates,
   });

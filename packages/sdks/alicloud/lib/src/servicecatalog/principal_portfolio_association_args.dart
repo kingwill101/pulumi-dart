@@ -18,7 +18,7 @@ class PrincipalPortfolioAssociationArgs {
   /// [portfolioId] Product Portfolio ID
   /// [principalId] RAM entity ID
   /// [principalType] RAM entity type
-  PrincipalPortfolioAssociationArgs({
+  const PrincipalPortfolioAssociationArgs({
     required this.portfolioId,
     required this.principalId,
     required this.principalType,

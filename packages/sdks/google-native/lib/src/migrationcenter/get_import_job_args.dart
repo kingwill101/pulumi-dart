@@ -17,7 +17,7 @@ class GetImportJobArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetImportJobArgs({
+  const GetImportJobArgs({
     required this.importJobId,
     required this.location,
     this.project,

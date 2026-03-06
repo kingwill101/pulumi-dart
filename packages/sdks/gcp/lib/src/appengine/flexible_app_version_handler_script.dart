@@ -8,7 +8,7 @@ class FlexibleAppVersionHandlerScript {
 
   /// Creates a new [FlexibleAppVersionHandlerScript].
   /// [scriptPath] Path to the script from the application root directory.
-  FlexibleAppVersionHandlerScript({
+  const FlexibleAppVersionHandlerScript({
     required this.scriptPath,
   });
 

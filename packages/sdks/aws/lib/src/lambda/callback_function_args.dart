@@ -149,7 +149,7 @@ class CallbackFunctionArgs {
   /// [timeout] Amount of time your Lambda Function has to run in seconds. Defaults to 3. Valid between 1 and 900.
   /// [tracingConfig] Configuration block for X-Ray tracing. See below.
   /// [vpcConfig] Configuration block for VPC. See below.
-  CallbackFunctionArgs({
+  const CallbackFunctionArgs({
     this.architectures,
     this.callback,
     this.callbackFactory,

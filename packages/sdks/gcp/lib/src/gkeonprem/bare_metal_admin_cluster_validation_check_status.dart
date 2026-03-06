@@ -11,7 +11,7 @@ class BareMetalAdminClusterValidationCheckStatus {
 
   /// Creates a new [BareMetalAdminClusterValidationCheckStatus].
   /// [results] (Output)
-  BareMetalAdminClusterValidationCheckStatus({
+  const BareMetalAdminClusterValidationCheckStatus({
     this.results,
   });
 

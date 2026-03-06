@@ -11,7 +11,7 @@ class GetSubscriptionPubsubV1beta1aArgs {
 
   /// Creates a new [GetSubscriptionPubsubV1beta1aArgs].
   /// [subscriptionId] Required.
-  GetSubscriptionPubsubV1beta1aArgs({
+  const GetSubscriptionPubsubV1beta1aArgs({
     required this.subscriptionId,
   });
 

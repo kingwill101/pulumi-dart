@@ -39,7 +39,7 @@ class ReportSummaryAssetAggregateStatsResponse {
   /// [totalCores] Sum of the CPU core count of all the assets in this collection.
   /// [totalMemoryBytes] Sum of the memory in bytes of all the assets in this collection.
   /// [totalStorageBytes] Sum of persistent storage in bytes of all the assets in this collection.
-  ReportSummaryAssetAggregateStatsResponse({
+  const ReportSummaryAssetAggregateStatsResponse({
     required this.coreCountHistogram,
     required this.memoryBytesHistogram,
     required this.memoryUtilizationChart,

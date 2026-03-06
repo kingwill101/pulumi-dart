@@ -18,7 +18,7 @@ class ListNetworkManagerEffectiveSecurityAdminRuleArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   /// [virtualNetworkName] The name of the virtual network.
-  ListNetworkManagerEffectiveSecurityAdminRuleArgs({
+  const ListNetworkManagerEffectiveSecurityAdminRuleArgs({
     required this.resourceGroupName,
     this.skipToken,
     required this.virtualNetworkName,

@@ -10,7 +10,7 @@ class ListJobSecretsResult {
 
   /// Creates a new [ListJobSecretsResult].
   /// [value] Collection of resources.
-  ListJobSecretsResult({
+  const ListJobSecretsResult({
     required this.value,
   });
 

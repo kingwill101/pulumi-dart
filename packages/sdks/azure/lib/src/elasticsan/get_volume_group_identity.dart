@@ -17,7 +17,7 @@ class GetVolumeGroupIdentity {
   /// [principalId] The Principal ID associated with the Managed Service Identity assigned to this Elastic SAN Volume Group.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity assigned to this Elastic SAN Volume Group.
   /// [type] The type of Managed Identity assigned to this Elastic SAN Volume Group.
-  GetVolumeGroupIdentity({
+  const GetVolumeGroupIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

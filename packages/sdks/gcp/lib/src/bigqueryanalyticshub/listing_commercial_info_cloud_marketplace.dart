@@ -14,7 +14,7 @@ class ListingCommercialInfoCloudMarketplace {
   /// Creates a new [ListingCommercialInfoCloudMarketplace].
   /// [commercialState] (Output)
   /// [service] (Output)
-  ListingCommercialInfoCloudMarketplace({
+  const ListingCommercialInfoCloudMarketplace({
     this.commercialState,
     this.service,
   });

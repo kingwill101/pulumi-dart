@@ -9,7 +9,7 @@ class AwsCloudTrailDataConnectorDataTypesLogs {
 
   /// Creates a new [AwsCloudTrailDataConnectorDataTypesLogs].
   /// [state] Describe whether this data type connection is enabled or not.
-  AwsCloudTrailDataConnectorDataTypesLogs({
+  const AwsCloudTrailDataConnectorDataTypesLogs({
     required this.state,
   });
 

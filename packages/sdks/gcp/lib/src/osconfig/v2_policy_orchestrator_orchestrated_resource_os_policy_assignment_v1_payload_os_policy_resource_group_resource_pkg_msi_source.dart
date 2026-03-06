@@ -24,7 +24,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// [gcs] Specifies a file available as a Cloud Storage Object.
   /// [localPath] A local path within the VM to use.
   /// [remote] Specifies a file available via some URI.
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource({
     this.allowInsecure,
     this.gcs,
     this.localPath,

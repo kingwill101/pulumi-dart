@@ -39,7 +39,7 @@ class ZipBlobArgs {
   /// [storageAccountName] Required.
   /// [storageContainerName] Required.
   /// [type] Required.
-  ZipBlobArgs({
+  const ZipBlobArgs({
     this.accessTier,
     this.cacheControl,
     this.content,

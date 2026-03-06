@@ -16,7 +16,7 @@ class GetConfigurationInstallPatch {
   /// [linuxes] A `linux` block as defined below.
   /// [reboot] Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
   /// [windows] A `windows` block as defined below.
-  GetConfigurationInstallPatch({
+  const GetConfigurationInstallPatch({
     required this.linuxes,
     required this.reboot,
     required this.windows,

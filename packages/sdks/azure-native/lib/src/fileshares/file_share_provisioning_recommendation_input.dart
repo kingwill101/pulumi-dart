@@ -9,7 +9,7 @@ class FileShareProvisioningRecommendationInput {
 
   /// Creates a new [FileShareProvisioningRecommendationInput].
   /// [provisionedStorageGiB] The desired provisioned storage size of the share in GiB. Will be use to calculate the values of remaining provisioning parameters.
-  FileShareProvisioningRecommendationInput({
+  const FileShareProvisioningRecommendationInput({
     required this.provisionedStorageGiB,
   });
 

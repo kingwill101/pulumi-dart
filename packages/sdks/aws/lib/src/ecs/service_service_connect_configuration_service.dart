@@ -26,7 +26,7 @@ class ServiceServiceConnectConfigurationService {
   /// [portName] Name of one of the `portMappings` from all the containers in the task definition of this Amazon ECS service.
   /// [timeout] Configuration timeouts for Service Connect
   /// [tls] Configuration for enabling Transport Layer Security (TLS)
-  ServiceServiceConnectConfigurationService({
+  const ServiceServiceConnectConfigurationService({
     this.clientAlias,
     this.discoveryName,
     this.ingressPortOverride,

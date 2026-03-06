@@ -15,7 +15,7 @@ class MaxAgeRuleResponse {
   /// [deleteSourceFromS3] Set to true to delete a version's source bundle from Amazon S3 when Elastic Beanstalk deletes the application version.
   /// [enabled] Specify true to apply the rule, or false to disable it.
   /// [maxAgeInDays] Specify the number of days to retain an application versions.
-  MaxAgeRuleResponse({
+  const MaxAgeRuleResponse({
     this.deleteSourceFromS3,
     this.enabled,
     this.maxAgeInDays,

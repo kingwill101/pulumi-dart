@@ -28,7 +28,7 @@ class RateLimitRule {
   /// [priority] Defines in what order this rule be evaluated in the overall list of custom rules
   /// [rateLimitDurationInMinutes] Defines rate limit duration. Default is 1 minute.
   /// [rateLimitThreshold] Defines rate limit threshold.
-  RateLimitRule({
+  const RateLimitRule({
     required this.action,
     this.enabledState,
     required this.matchConditions,

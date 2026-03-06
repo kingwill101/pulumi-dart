@@ -34,7 +34,7 @@ class WorkforcePoolProviderExtraAttributesOauth2Client {
   /// [clientSecret] The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
   /// [issuerUri] The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
   /// [queryParameters] Represents the parameters to control which claims are fetched from an IdP.
-  WorkforcePoolProviderExtraAttributesOauth2Client({
+  const WorkforcePoolProviderExtraAttributesOauth2Client({
     required this.attributesType,
     required this.clientId,
     required this.clientSecret,

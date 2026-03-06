@@ -79,7 +79,7 @@ class GetScalingRulesRule {
   /// [stepAdjustments] (Available since v1.250.0) The step adjustments of the step scaling rule.
   /// [targetValue] (Available since v1.242.0) The target value of the metric.
   /// [type] Type of scaling rule.
-  GetScalingRulesRule({
+  const GetScalingRulesRule({
     required this.adjustmentType,
     required this.adjustmentValue,
     required this.cooldown,

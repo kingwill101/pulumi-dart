@@ -15,7 +15,7 @@ class SystemParameterResponse {
   /// [httpHeader] Define the HTTP header name to use for the parameter. It is case insensitive.
   /// [name] Define the name of the parameter, such as "api_key" . It is case sensitive.
   /// [urlQueryParameter] Define the URL query parameter name to use for the parameter. It is case sensitive.
-  SystemParameterResponse({
+  const SystemParameterResponse({
     required this.httpHeader,
     required this.name,
     required this.urlQueryParameter,

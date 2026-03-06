@@ -13,7 +13,7 @@ class EncryptionV2 {
   /// Creates a new [EncryptionV2].
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   /// [keyVaultProperties] Key Vault input properties for encryption.
-  EncryptionV2({
+  const EncryptionV2({
     required this.keySource,
     this.keyVaultProperties,
   });

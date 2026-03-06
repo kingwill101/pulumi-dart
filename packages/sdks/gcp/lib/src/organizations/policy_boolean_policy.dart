@@ -8,7 +8,7 @@ class PolicyBooleanPolicy {
 
   /// Creates a new [PolicyBooleanPolicy].
   /// [enforced] If true, then the Policy is enforced. If false, then any configuration is acceptable.
-  PolicyBooleanPolicy({
+  const PolicyBooleanPolicy({
     required this.enforced,
   });
 

@@ -45,7 +45,7 @@ class GetAddressPoolsPool {
   /// [type] The type of the address pool.
   /// [updateTime] The time when the address pool was updated.
   /// [updateTimestamp] The timestamp that indicates when the address pool was updated.
-  GetAddressPoolsPool({
+  const GetAddressPoolsPool({
     required this.addressPoolId,
     required this.addressPoolName,
     required this.addresses,

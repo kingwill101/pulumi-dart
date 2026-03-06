@@ -13,7 +13,7 @@ class PrivateEndpointConnectionProperties {
   /// Creates a new [PrivateEndpointConnectionProperties].
   /// [privateLinkServiceConnectionState] State of the Private Link Service connection.
   /// [provisioningState] State of Private Endpoint Connection.
-  PrivateEndpointConnectionProperties({
+  const PrivateEndpointConnectionProperties({
     this.privateLinkServiceConnectionState,
     this.provisioningState,
   });

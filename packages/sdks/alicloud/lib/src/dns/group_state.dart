@@ -9,7 +9,7 @@ class GroupState {
 
   /// Creates a new [GroupState].
   /// [name] Name of the domain group.
-  GroupState({
+  const GroupState({
     this.name,
   });
 

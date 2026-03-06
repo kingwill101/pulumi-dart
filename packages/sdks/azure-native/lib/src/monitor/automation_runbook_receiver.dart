@@ -30,7 +30,7 @@ class AutomationRunbookReceiver {
   /// [serviceUri] The URI where webhooks should be sent.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
   /// [webhookResourceId] The resource id for webhook linked to this runbook.
-  AutomationRunbookReceiver({
+  const AutomationRunbookReceiver({
     required this.automationAccountId,
     required this.isGlobalRunbook,
     this.managedIdentity,

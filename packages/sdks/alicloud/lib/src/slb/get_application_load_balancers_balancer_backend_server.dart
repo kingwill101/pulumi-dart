@@ -17,7 +17,7 @@ class GetApplicationLoadBalancersBalancerBackendServer {
   /// [serverId] The server ID.
   /// [type] The type of servers.
   /// [weight] The weight of servers.
-  GetApplicationLoadBalancersBalancerBackendServer({
+  const GetApplicationLoadBalancersBalancerBackendServer({
     required this.description,
     required this.serverId,
     required this.type,

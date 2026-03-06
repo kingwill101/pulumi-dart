@@ -15,7 +15,7 @@ class GetVirtualMachineArgs {
   /// Creates a new [GetVirtualMachineArgs].
   /// [resourceGroupName] The Resource Group Name.
   /// [virtualMachineName] Name of the virtual machine resource.
-  GetVirtualMachineArgs({
+  const GetVirtualMachineArgs({
     required this.resourceGroupName,
     required this.virtualMachineName,
   });

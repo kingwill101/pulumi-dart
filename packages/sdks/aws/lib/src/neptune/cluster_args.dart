@@ -103,7 +103,7 @@ class ClusterArgs {
   /// [storageType] Storage type associated with the cluster `standard/iopt1`. Default: `standard`.
   /// [tags] Map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate with the Cluster
-  ClusterArgs({
+  const ClusterArgs({
     this.allowMajorVersionUpgrade,
     this.applyImmediately,
     this.availabilityZones,

@@ -17,7 +17,7 @@ class PoolContainerConfigurationContainerRegistry {
   /// [registryServer] The container registry URL. Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The reference to the user assigned identity to use to access an Azure Container Registry instead of username and password. Changing this forces a new resource to be created.
   /// [userName] The user name to log into the registry server. Changing this forces a new resource to be created.
-  PoolContainerConfigurationContainerRegistry({
+  const PoolContainerConfigurationContainerRegistry({
     this.password,
     required this.registryServer,
     this.userAssignedIdentityId,

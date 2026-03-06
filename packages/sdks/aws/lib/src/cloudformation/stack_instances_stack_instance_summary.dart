@@ -32,7 +32,7 @@ class StackInstancesStackInstanceSummary {
   /// [stackSetId] Name or unique ID of the stack set that the stack instance is associated with.
   /// [status] Status of the stack instance, in terms of its synchronization with its associated stack set. Values include `CURRENT`, `OUTDATED`, `INOPERABLE`.
   /// [statusReason] Explanation for the specific status code assigned to this stack instance.
-  StackInstancesStackInstanceSummary({
+  const StackInstancesStackInstanceSummary({
     this.accountId,
     this.detailedStatus,
     this.driftStatus,

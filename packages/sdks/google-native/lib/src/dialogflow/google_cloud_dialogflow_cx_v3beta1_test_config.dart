@@ -15,7 +15,7 @@ class GoogleCloudDialogflowCxV3beta1TestConfig {
   /// [flow] Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
   /// [page] The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
   /// [trackingParameters] Session parameters to be compared when calculating differences.
-  GoogleCloudDialogflowCxV3beta1TestConfig({
+  const GoogleCloudDialogflowCxV3beta1TestConfig({
     this.flow,
     this.page,
     this.trackingParameters,

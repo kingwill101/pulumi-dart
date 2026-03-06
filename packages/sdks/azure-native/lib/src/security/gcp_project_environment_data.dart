@@ -21,7 +21,7 @@ class GcpProjectEnvironmentData {
   /// [organizationalData] The Gcp project's organizational data
   /// [projectDetails] The Gcp project's details
   /// [scanInterval] Scan interval in hours (value should be between 1-hour to 24-hours)
-  GcpProjectEnvironmentData({
+  const GcpProjectEnvironmentData({
     required this.environmentType,
     this.organizationalData,
     this.projectDetails,

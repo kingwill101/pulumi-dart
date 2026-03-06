@@ -10,7 +10,7 @@ class ServiceNetworkSettingsNetworkSettings {
 
   /// Creates a new [ServiceNetworkSettingsNetworkSettings].
   /// [ingressTrafficAllowed] The ingress settings for version or service.
-  ServiceNetworkSettingsNetworkSettings({
+  const ServiceNetworkSettingsNetworkSettings({
     this.ingressTrafficAllowed,
   });
 

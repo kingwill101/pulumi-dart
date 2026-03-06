@@ -52,7 +52,7 @@ class JiraLinkedServiceResponse {
   /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
   /// [username] The user name that you use to access Jira Service.
   /// [version] Version of the linked service.
-  JiraLinkedServiceResponse({
+  const JiraLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

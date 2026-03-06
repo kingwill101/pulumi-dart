@@ -15,7 +15,7 @@ class GetWorkerPoolCloudbuildV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [workerPoolId] Required.
-  GetWorkerPoolCloudbuildV1beta1Args({
+  const GetWorkerPoolCloudbuildV1beta1Args({
     required this.location,
     this.project,
     required this.workerPoolId,

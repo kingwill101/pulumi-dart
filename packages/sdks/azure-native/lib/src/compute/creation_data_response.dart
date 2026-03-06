@@ -46,7 +46,7 @@ class CreationDataResponse {
   /// [sourceUri] If createOption is Import, this is the URI of a blob to be imported into a managed disk.
   /// [storageAccountId] Required if createOption is Import. The Azure Resource Manager identifier of the storage account containing the blob to import as a disk.
   /// [uploadSizeBytes] If createOption is Upload, this is the size of the contents of the upload including the VHD footer. This value should be between 20972032 (20 MiB + 512 bytes for the VHD footer) and 35183298347520 bytes (32 TiB + 512 bytes for the VHD footer).
-  CreationDataResponse({
+  const CreationDataResponse({
     required this.createOption,
     this.elasticSanResourceId,
     this.galleryImageReference,

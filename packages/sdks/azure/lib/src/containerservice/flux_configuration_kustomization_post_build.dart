@@ -12,7 +12,7 @@ class FluxConfigurationKustomizationPostBuild {
   /// Creates a new [FluxConfigurationKustomizationPostBuild].
   /// [substitute] Specifies the key/value pairs holding the variables to be substituted in this Kustomization.
   /// [substituteFroms] A `substitute_from` block as defined below.
-  FluxConfigurationKustomizationPostBuild({
+  const FluxConfigurationKustomizationPostBuild({
     this.substitute,
     this.substituteFroms,
   });

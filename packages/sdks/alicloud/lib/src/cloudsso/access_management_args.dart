@@ -30,7 +30,7 @@ class AccessManagementArgs {
   /// [principalType] The type of the CloudSSO identity. Valid values: `User`, `Group`.
   /// [targetId] The ID of the task object.
   /// [targetType] The type of the task object. Valid values: `RD-Account`.
-  AccessManagementArgs({
+  const AccessManagementArgs({
     required this.accessConfigurationId,
     this.deprovisionStrategy,
     required this.directoryId,

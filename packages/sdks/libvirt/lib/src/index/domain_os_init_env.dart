@@ -11,7 +11,7 @@ class DomainOsInitEnv {
   /// Creates a new [DomainOsInitEnv].
   /// [name] Defines the name of an environment variable to set during domain initialization.
   /// [value] Specifies the value associated with an environment variable for the init process.
-  DomainOsInitEnv({
+  const DomainOsInitEnv({
     required this.name,
     required this.value,
   });

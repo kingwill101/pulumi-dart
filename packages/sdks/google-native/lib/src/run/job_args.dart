@@ -43,7 +43,7 @@ class JobArgs {
   /// [name] The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
   /// [project] Optional.
   /// [template] The template used to create executions for this Job.
-  JobArgs({
+  const JobArgs({
     this.annotations,
     this.binaryAuthorization,
     this.client,

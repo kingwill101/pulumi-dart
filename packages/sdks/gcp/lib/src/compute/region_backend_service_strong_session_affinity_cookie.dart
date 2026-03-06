@@ -16,7 +16,7 @@ class RegionBackendServiceStrongSessionAffinityCookie {
   /// [name] Name of the cookie.
   /// [path] Path to set for the cookie.
   /// [ttl] Lifetime of the cookie.
-  RegionBackendServiceStrongSessionAffinityCookie({
+  const RegionBackendServiceStrongSessionAffinityCookie({
     this.name,
     this.path,
     this.ttl,

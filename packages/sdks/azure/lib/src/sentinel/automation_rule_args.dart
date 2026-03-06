@@ -50,7 +50,7 @@ class AutomationRuleArgs {
   /// [order] The order of this Sentinel Automation Rule. Possible values varies between `1` and `1000`.
   /// [triggersOn] Specifies what triggers this automation rule. Possible values are `Alerts` and `Incidents`. Defaults to `Incidents`.
   /// [triggersWhen] Specifies when will this automation rule be triggered. Possible values are `Created` and `Updated`. Defaults to `Created`.
-  AutomationRuleArgs({
+  const AutomationRuleArgs({
     this.actionIncidentTasks,
     this.actionIncidents,
     this.actionPlaybooks,

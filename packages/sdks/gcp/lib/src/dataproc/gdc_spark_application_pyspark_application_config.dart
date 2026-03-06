@@ -23,7 +23,7 @@ class GdcSparkApplicationPysparkApplicationConfig {
   /// [jarFileUris] HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
   /// [mainPythonFileUri] The HCFS URI of the main Python file to use as the driver. Must be a .py file.
   /// [pythonFileUris] HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
-  GdcSparkApplicationPysparkApplicationConfig({
+  const GdcSparkApplicationPysparkApplicationConfig({
     this.archiveUris,
     this.args,
     this.fileUris,

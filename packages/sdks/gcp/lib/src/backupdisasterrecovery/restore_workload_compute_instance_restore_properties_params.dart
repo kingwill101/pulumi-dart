@@ -9,7 +9,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesParams {
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesParams].
   /// [resourceManagerTags] Structure is documented below.
-  RestoreWorkloadComputeInstanceRestorePropertiesParams({
+  const RestoreWorkloadComputeInstanceRestorePropertiesParams({
     this.resourceManagerTags,
   });
 

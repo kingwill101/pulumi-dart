@@ -18,7 +18,7 @@ class RestApiPolicyArgs {
   /// [policy] JSON formatted policy document that controls access to the API Gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the REST API.
-  RestApiPolicyArgs({
+  const RestApiPolicyArgs({
     required this.policy,
     this.region,
     required this.restApiId,

@@ -34,7 +34,7 @@ class SpringbootserversProperties {
   /// [server] Server is the target server name or ip address to discover of SpringBootServer.
   /// [springBootApps] The total number of spring boot apps been discovered
   /// [totalApps] The total number of apps been discovered
-  SpringbootserversProperties({
+  const SpringbootserversProperties({
     this.errors,
     this.fqdnAndIpAddressList,
     this.labels,

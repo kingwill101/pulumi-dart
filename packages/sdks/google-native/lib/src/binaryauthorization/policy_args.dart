@@ -23,7 +23,7 @@ class PolicyArgs {
   /// [platformId] Required.
   /// [policyId] Required. The platform policy ID.
   /// [project] Optional.
-  PolicyArgs({
+  const PolicyArgs({
     this.description,
     this.gkePolicy,
     required this.platformId,

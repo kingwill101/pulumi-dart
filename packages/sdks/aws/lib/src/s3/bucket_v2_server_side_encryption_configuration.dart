@@ -9,7 +9,7 @@ class BucketV2ServerSideEncryptionConfiguration {
 
   /// Creates a new [BucketV2ServerSideEncryptionConfiguration].
   /// [rules] Single object for server-side encryption by default configuration. (documented below)
-  BucketV2ServerSideEncryptionConfiguration({
+  const BucketV2ServerSideEncryptionConfiguration({
     required this.rules,
   });
 

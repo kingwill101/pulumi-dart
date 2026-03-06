@@ -54,7 +54,7 @@ class GetPrincipalPolicySimulationArgs {
   /// [resourceHandlingOption] Specifies a special simulation type to run. Some EC2 actions require special simulation behaviors and a particular set of resource ARNs to achieve a realistic result.
   /// [resourceOwnerAccountId] An AWS account ID to use for any resource ARN in `resource_arns` that doesn't include its own AWS account ID. If unspecified, the simulator will use the account ID from the `caller_arn` argument as a placeholder.
   /// [resourcePolicyJson] An IAM policy document representing the resource-level policy of all of the resources specified in `resource_arns`.
-  GetPrincipalPolicySimulationArgs({
+  const GetPrincipalPolicySimulationArgs({
     required this.actionNames,
     this.additionalPoliciesJsons,
     this.callerArn,

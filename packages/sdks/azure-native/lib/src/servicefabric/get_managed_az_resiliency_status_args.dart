@@ -15,7 +15,7 @@ class GetManagedAzResiliencyStatusArgs {
   /// Creates a new [GetManagedAzResiliencyStatusArgs].
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group.
-  GetManagedAzResiliencyStatusArgs({
+  const GetManagedAzResiliencyStatusArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

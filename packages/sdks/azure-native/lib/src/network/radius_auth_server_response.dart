@@ -12,7 +12,7 @@ class RadiusAuthServerResponse {
   /// Creates a new [RadiusAuthServerResponse].
   /// [radiusServerAddress] Radius server IPAddress
   /// [radiusServerSecret] Radius server secret
-  RadiusAuthServerResponse({
+  const RadiusAuthServerResponse({
     this.radiusServerAddress,
     this.radiusServerSecret,
   });

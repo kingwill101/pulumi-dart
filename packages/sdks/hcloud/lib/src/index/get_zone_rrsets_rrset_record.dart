@@ -11,7 +11,7 @@ class GetZoneRrsetsRrsetRecord {
   /// Creates a new [GetZoneRrsetsRrsetRecord].
   /// [comment] Comment of the record.
   /// [value] Value of the record.
-  GetZoneRrsetsRrsetRecord({
+  const GetZoneRrsetsRrsetRecord({
     required this.comment,
     required this.value,
   });

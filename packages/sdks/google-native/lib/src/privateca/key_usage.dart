@@ -18,7 +18,7 @@ class KeyUsage {
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.
   /// [extendedKeyUsage] Detailed scenarios in which a key may be used.
   /// [unknownExtendedKeyUsages] Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-  KeyUsage({
+  const KeyUsage({
     this.baseKeyUsage,
     this.extendedKeyUsage,
     this.unknownExtendedKeyUsages,

@@ -8,7 +8,7 @@ class GetSqlDatabaseAutoscaleSetting {
 
   /// Creates a new [GetSqlDatabaseAutoscaleSetting].
   /// [maxThroughput] The maximum throughput of the SQL database (RU/s).
-  GetSqlDatabaseAutoscaleSetting({
+  const GetSqlDatabaseAutoscaleSetting({
     required this.maxThroughput,
   });
 

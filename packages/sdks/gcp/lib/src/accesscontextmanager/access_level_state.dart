@@ -32,7 +32,7 @@ class AccessLevelState {
   /// [name] Resource name for the Access Level. The short_name component must begin
   /// [parent] The AccessPolicy this AccessLevel lives in.
   /// [title] Human readable title. Must be unique within the Policy.
-  AccessLevelState({
+  const AccessLevelState({
     this.basic,
     this.custom,
     this.description,

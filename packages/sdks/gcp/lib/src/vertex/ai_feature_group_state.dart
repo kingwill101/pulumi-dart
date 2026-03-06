@@ -45,7 +45,7 @@ class AiFeatureGroupState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of feature group. eg us-central1
   /// [updateTime] The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiFeatureGroupState({
+  const AiFeatureGroupState({
     this.bigQuery,
     this.createTime,
     this.description,

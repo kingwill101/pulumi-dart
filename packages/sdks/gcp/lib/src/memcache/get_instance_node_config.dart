@@ -11,7 +11,7 @@ class GetInstanceNodeConfig {
   /// Creates a new [GetInstanceNodeConfig].
   /// [cpuCount] Number of CPUs per node.
   /// [memorySizeMb] Memory size in Mebibytes for each memcache node.
-  GetInstanceNodeConfig({
+  const GetInstanceNodeConfig({
     required this.cpuCount,
     required this.memorySizeMb,
   });

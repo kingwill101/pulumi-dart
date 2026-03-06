@@ -27,7 +27,7 @@ class UserArgs {
   /// [name] A unique name for the resource.
   /// [password] User's password.
   /// [region] The region in which to create the db user. Changing
-  UserArgs({
+  const UserArgs({
     this.databases,
     this.host,
     required this.instanceId,

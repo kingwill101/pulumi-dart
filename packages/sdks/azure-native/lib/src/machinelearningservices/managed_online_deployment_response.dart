@@ -69,7 +69,7 @@ class ManagedOnlineDeploymentResponse {
   /// [requestSettings] Request settings for the deployment.
   /// [scaleSettings] Scale settings for the deployment.
   /// [startupProbe] Startup probe verify whether an application within a container has started successfully.
-  ManagedOnlineDeploymentResponse({
+  const ManagedOnlineDeploymentResponse({
     this.appInsightsEnabled,
     this.codeConfiguration,
     this.dataCollector,

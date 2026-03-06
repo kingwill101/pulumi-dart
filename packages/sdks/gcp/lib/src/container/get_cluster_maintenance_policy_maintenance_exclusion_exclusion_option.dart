@@ -11,7 +11,7 @@ class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
   /// Creates a new [GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption].
   /// [endTimeBehavior] The behavior of the exclusion end time.
   /// [scope] The scope of automatic upgrades to restrict in the exclusion window.
-  GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption({
+  const GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption({
     required this.endTimeBehavior,
     required this.scope,
   });

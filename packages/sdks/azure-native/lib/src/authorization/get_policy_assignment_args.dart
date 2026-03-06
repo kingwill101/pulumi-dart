@@ -18,7 +18,7 @@ class GetPolicyAssignmentArgs {
   /// [expand] Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   /// [policyAssignmentName] The name of the policy assignment to get.
   /// [scope] The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  GetPolicyAssignmentArgs({
+  const GetPolicyAssignmentArgs({
     this.expand,
     required this.policyAssignmentName,
     required this.scope,

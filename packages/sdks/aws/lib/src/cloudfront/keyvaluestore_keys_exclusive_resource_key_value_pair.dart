@@ -11,7 +11,7 @@ class KeyvaluestoreKeysExclusiveResourceKeyValuePair {
   /// Creates a new [KeyvaluestoreKeysExclusiveResourceKeyValuePair].
   /// [key] Key to put.
   /// [value] Value to put.
-  KeyvaluestoreKeysExclusiveResourceKeyValuePair({
+  const KeyvaluestoreKeysExclusiveResourceKeyValuePair({
     required this.key,
     required this.value,
   });

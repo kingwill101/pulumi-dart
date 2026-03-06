@@ -13,7 +13,7 @@ class InsightsDatasetConfigLink {
   /// Creates a new [InsightsDatasetConfigLink].
   /// [dataset] (Output)
   /// [linked] (Output)
-  InsightsDatasetConfigLink({
+  const InsightsDatasetConfigLink({
     this.dataset,
     this.linked,
   });

@@ -44,7 +44,7 @@ class GetHanaInstancesInstance {
   /// [userName] The username of the SYSTEMDB database.
   /// [validateCertificate] Indicates whether the SSL certificate of the SAP HANA instance is verified.
   /// [vaultId] The ID of the backup vault.
-  GetHanaInstancesInstance({
+  const GetHanaInstancesInstance({
     required this.alertSetting,
     required this.hanaInstanceId,
     required this.hanaName,

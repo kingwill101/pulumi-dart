@@ -16,7 +16,7 @@ class ImageRepositoryCredential {
   /// [imageRepositoryUrl] Image repository url (e.g.: mcr.microsoft.com).
   /// [password] Repository user password.
   /// [userName] Repository user name.
-  ImageRepositoryCredential({
+  const ImageRepositoryCredential({
     required this.imageRepositoryUrl,
     this.password,
     required this.userName,

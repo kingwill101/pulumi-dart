@@ -13,7 +13,7 @@ class AutoScalingResourceMetricResponse {
   /// Creates a new [AutoScalingResourceMetricResponse].
   /// [kind] Enumerates the metrics that are used for triggering auto scaling.
   /// [name] Name of the resource.
-  AutoScalingResourceMetricResponse({
+  const AutoScalingResourceMetricResponse({
     required this.kind,
     required this.name,
   });

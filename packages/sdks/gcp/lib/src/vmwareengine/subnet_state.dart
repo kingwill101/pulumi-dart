@@ -55,7 +55,7 @@ class SubnetState {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last updated time of this resource.
   /// [vlanId] VLAN ID of the VLAN on which the subnet is configured.
-  SubnetState({
+  const SubnetState({
     this.createTime,
     this.dhcpAddressRanges,
     this.gatewayId,

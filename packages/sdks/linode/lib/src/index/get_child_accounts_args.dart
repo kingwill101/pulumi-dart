@@ -12,7 +12,7 @@ class GetChildAccountsArgs {
 
   /// Creates a new [GetChildAccountsArgs].
   /// [filters] Optional.
-  GetChildAccountsArgs({
+  const GetChildAccountsArgs({
     this.filters,
   });
 

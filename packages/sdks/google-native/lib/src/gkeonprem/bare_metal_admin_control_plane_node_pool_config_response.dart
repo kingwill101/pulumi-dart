@@ -10,7 +10,7 @@ class BareMetalAdminControlPlaneNodePoolConfigResponse {
 
   /// Creates a new [BareMetalAdminControlPlaneNodePoolConfigResponse].
   /// [nodePoolConfig] The generic configuration for a node pool running the control plane.
-  BareMetalAdminControlPlaneNodePoolConfigResponse({
+  const BareMetalAdminControlPlaneNodePoolConfigResponse({
     required this.nodePoolConfig,
   });
 

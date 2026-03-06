@@ -18,7 +18,7 @@ class GetIruleArgs {
   /// [irule] Irule configured on bigip
   /// [name] Name of the irule
   /// [partition] partition of the ltm irule
-  GetIruleArgs({
+  const GetIruleArgs({
     this.irule,
     required this.name,
     required this.partition,

@@ -15,7 +15,7 @@ class GetLambdaFunctionArgs {
   /// Creates a new [GetLambdaFunctionArgs].
   /// [name] Name of LambdaFunction
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLambdaFunctionArgs({
+  const GetLambdaFunctionArgs({
     required this.name,
     required this.resourceGroupName,
   });

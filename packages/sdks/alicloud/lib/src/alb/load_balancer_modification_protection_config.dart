@@ -11,7 +11,7 @@ class LoadBalancerModificationProtectionConfig {
   /// Creates a new [LoadBalancerModificationProtectionConfig].
   /// [reason] Managed Instance
   /// [status] Load Balancing Modify the Protection Status
-  LoadBalancerModificationProtectionConfig({
+  const LoadBalancerModificationProtectionConfig({
     this.reason,
     this.status,
   });

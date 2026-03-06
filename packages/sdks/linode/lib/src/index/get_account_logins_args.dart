@@ -12,7 +12,7 @@ class GetAccountLoginsArgs {
 
   /// Creates a new [GetAccountLoginsArgs].
   /// [filters] Optional.
-  GetAccountLoginsArgs({
+  const GetAccountLoginsArgs({
     this.filters,
   });
 

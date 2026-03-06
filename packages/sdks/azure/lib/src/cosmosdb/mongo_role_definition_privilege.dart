@@ -12,7 +12,7 @@ class MongoRoleDefinitionPrivilege {
   /// Creates a new [MongoRoleDefinitionPrivilege].
   /// [actions] A list of actions that are allowed.
   /// [resource] A `resource` block as defined below.
-  MongoRoleDefinitionPrivilege({
+  const MongoRoleDefinitionPrivilege({
     required this.actions,
     required this.resource,
   });

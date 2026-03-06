@@ -35,7 +35,7 @@ class MethodSettingsSettings {
   /// [throttlingBurstLimit] Throttling burst limit. Default: `-1` (throttling disabled).
   /// [throttlingRateLimit] Throttling rate limit. Default: `-1` (throttling disabled).
   /// [unauthorizedCacheControlHeaderStrategy] How to handle unauthorized requests for cache invalidation. The available values are `FAIL_WITH_403`, `SUCCEED_WITH_RESPONSE_HEADER`, `SUCCEED_WITHOUT_RESPONSE_HEADER`.
-  MethodSettingsSettings({
+  const MethodSettingsSettings({
     this.cacheDataEncrypted,
     this.cacheTtlInSeconds,
     this.cachingEnabled,

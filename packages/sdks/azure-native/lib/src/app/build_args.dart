@@ -26,7 +26,7 @@ class BuildArgs {
   /// [configuration] Configuration of the build.
   /// [destinationContainerRegistry] Container registry that the final image will be uploaded to.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  BuildArgs({
+  const BuildArgs({
     this.buildName,
     required this.builderName,
     this.configuration,

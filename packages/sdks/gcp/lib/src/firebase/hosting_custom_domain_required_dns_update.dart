@@ -18,7 +18,7 @@ class HostingCustomDomainRequiredDnsUpdate {
   /// [checkTime] (Output)
   /// [desireds] A text string to serve at the path.
   /// [discovereds] Whether Hosting was able to find the required file contents on the
-  HostingCustomDomainRequiredDnsUpdate({
+  const HostingCustomDomainRequiredDnsUpdate({
     this.checkTime,
     this.desireds,
     this.discovereds,

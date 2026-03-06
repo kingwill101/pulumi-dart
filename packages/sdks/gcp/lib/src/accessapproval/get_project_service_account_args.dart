@@ -12,7 +12,7 @@ class GetProjectServiceAccountArgs {
 
   /// Creates a new [GetProjectServiceAccountArgs].
   /// [projectId] The project ID the service account was created for.
-  GetProjectServiceAccountArgs({
+  const GetProjectServiceAccountArgs({
     required this.projectId,
   });
 

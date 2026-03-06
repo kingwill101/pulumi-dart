@@ -25,7 +25,7 @@ class ScheduledActionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduledActionName] The name of the ScheduledAction
   /// [tags] Resource tags.
-  ScheduledActionArgs({
+  const ScheduledActionArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

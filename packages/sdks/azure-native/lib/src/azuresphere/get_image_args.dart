@@ -18,7 +18,7 @@ class GetImageArgs {
   /// [catalogName] Name of catalog
   /// [imageName] Image name. Use an image GUID for GA versions of the API.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetImageArgs({
+  const GetImageArgs({
     required this.catalogName,
     required this.imageName,
     required this.resourceGroupName,

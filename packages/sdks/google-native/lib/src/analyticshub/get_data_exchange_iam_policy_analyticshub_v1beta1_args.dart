@@ -15,7 +15,7 @@ class GetDataExchangeIamPolicyAnalyticshubV1beta1Args {
   /// [dataExchangeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataExchangeIamPolicyAnalyticshubV1beta1Args({
+  const GetDataExchangeIamPolicyAnalyticshubV1beta1Args({
     required this.dataExchangeId,
     required this.location,
     this.project,

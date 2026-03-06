@@ -20,7 +20,7 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActive
   /// [fileSystemAdministratorsGroup] The name of the domain group whose members have administrative privileges for the FSx file system.
   /// [organizationalUnitDistinguishedName] The fully qualified distinguished name of the organizational unit within the self-managed AD directory to which the Windows File Server or ONTAP storage virtual machine (SVM) instance is joined.
   /// [username] The user name for the service account on your self-managed AD domain that FSx uses to join to your AD domain.
-  GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration({
+  const GetOntapStorageVirtualMachineActiveDirectoryConfigurationSelfManagedActiveDirectoryConfiguration({
     required this.dnsIps,
     required this.domainName,
     required this.fileSystemAdministratorsGroup,

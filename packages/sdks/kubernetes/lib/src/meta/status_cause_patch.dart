@@ -19,7 +19,7 @@ class StatusCausePatch {
   /// [field] The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.
   /// [message] A human-readable description of the cause of the error.  This field may be presented as-is to a reader.
   /// [reason] A machine-readable description of the cause of the error. If this value is empty there is no information available.
-  StatusCausePatch({
+  const StatusCausePatch({
     this.field,
     this.message,
     this.reason,

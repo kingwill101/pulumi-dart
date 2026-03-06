@@ -15,7 +15,7 @@ class GetStaticSiteArgs {
   /// Creates a new [GetStaticSiteArgs].
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetStaticSiteArgs({
+  const GetStaticSiteArgs({
     required this.name,
     required this.resourceGroupName,
   });

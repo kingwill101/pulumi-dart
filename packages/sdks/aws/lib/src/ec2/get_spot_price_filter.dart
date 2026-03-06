@@ -11,7 +11,7 @@ class GetSpotPriceFilter {
   /// Creates a new [GetSpotPriceFilter].
   /// [name] Name of the filter.
   /// [values] List of one or more values for the filter.
-  GetSpotPriceFilter({
+  const GetSpotPriceFilter({
     required this.name,
     required this.values,
   });

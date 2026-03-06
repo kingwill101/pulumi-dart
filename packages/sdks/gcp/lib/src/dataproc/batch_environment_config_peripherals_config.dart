@@ -13,7 +13,7 @@ class BatchEnvironmentConfigPeripheralsConfig {
   /// Creates a new [BatchEnvironmentConfigPeripheralsConfig].
   /// [metastoreService] Resource name of an existing Dataproc Metastore service.
   /// [sparkHistoryServerConfig] The Spark History Server configuration for the workload.
-  BatchEnvironmentConfigPeripheralsConfig({
+  const BatchEnvironmentConfigPeripheralsConfig({
     this.metastoreService,
     this.sparkHistoryServerConfig,
   });

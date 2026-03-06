@@ -19,7 +19,7 @@ class RoboStartingIntent {
   /// [noActivity] Skips the starting activity
   /// [startActivity] An intent that starts an activity with specific details.
   /// [timeout] Timeout in seconds for each intent.
-  RoboStartingIntent({
+  const RoboStartingIntent({
     this.launcherActivity,
     this.noActivity,
     this.startActivity,

@@ -14,7 +14,7 @@ class BackendAddressPoolAddressInboundNatRulePortMapping {
   /// [backendPort] The Backend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   /// [frontendPort] The Frontend Port of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
   /// [inboundNatRuleName] The name of the Load Balancing Inbound NAT Rules associated with this Backend Address Pool Address.
-  BackendAddressPoolAddressInboundNatRulePortMapping({
+  const BackendAddressPoolAddressInboundNatRulePortMapping({
     this.backendPort,
     this.frontendPort,
     this.inboundNatRuleName,

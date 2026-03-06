@@ -9,7 +9,7 @@ class ResourcePool {
 
   /// Creates a new [ResourcePool].
   /// [id] resource pool id (privateCloudId:vsphereId)
-  ResourcePool({
+  const ResourcePool({
     required this.id,
   });
 

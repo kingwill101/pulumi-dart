@@ -21,7 +21,7 @@ class URLMapDefaultCustomErrorResponsePolicy {
   /// Creates a new [URLMapDefaultCustomErrorResponsePolicy].
   /// [errorResponseRules] Specifies rules for returning error responses.
   /// [errorService] The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-  URLMapDefaultCustomErrorResponsePolicy({
+  const URLMapDefaultCustomErrorResponsePolicy({
     this.errorResponseRules,
     this.errorService,
   });

@@ -39,7 +39,7 @@ class ExternalVpnGatewayArgs {
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [project] The ID of the project in which the resource belongs.
   /// [redundancyType] Indicates the redundancy type of this external VPN gateway
-  ExternalVpnGatewayArgs({
+  const ExternalVpnGatewayArgs({
     this.description,
     this.interfaces,
     this.labels,

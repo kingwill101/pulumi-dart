@@ -38,7 +38,7 @@ class GetVocabularyResult {
   /// [state] The current state of the custom vocabulary. Valid values are `CREATION_IN_PROGRESS`, `ACTIVE`, `CREATION_FAILED`, `DELETE_IN_PROGRESS`.
   /// [tags] A map of tags to assign to the Vocabulary.
   /// [vocabularyId] The identifier of the custom vocabulary.
-  GetVocabularyResult({
+  const GetVocabularyResult({
     required this.arn,
     required this.content,
     required this.failureReason,

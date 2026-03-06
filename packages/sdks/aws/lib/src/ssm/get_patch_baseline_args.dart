@@ -26,7 +26,7 @@ class GetPatchBaselineArgs {
   /// [operatingSystem] Specified OS for the baseline. Valid values: `AMAZON_LINUX`, `AMAZON_LINUX_2`, `UBUNTU`, `REDHAT_ENTERPRISE_LINUX`, `SUSE`, `CENTOS`, `ORACLE_LINUX`, `DEBIAN`, `MACOS`, `RASPBIAN` and `ROCKY_LINUX`.
   /// [owner] Owner of the baseline. Valid values: `All`, `AWS`, `Self` (the current account).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPatchBaselineArgs({
+  const GetPatchBaselineArgs({
     this.defaultBaseline,
     this.namePrefix,
     this.operatingSystem,

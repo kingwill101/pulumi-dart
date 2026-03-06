@@ -37,7 +37,7 @@ class SynapseSparkResponseProperties {
   /// [sparkVersion] Spark version.
   /// [subscriptionId] Azure subscription identifier.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  SynapseSparkResponseProperties({
+  const SynapseSparkResponseProperties({
     this.autoPauseProperties,
     this.autoScaleProperties,
     this.nodeCount,

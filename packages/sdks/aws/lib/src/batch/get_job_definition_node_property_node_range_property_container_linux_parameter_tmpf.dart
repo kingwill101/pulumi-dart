@@ -14,7 +14,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf {
   /// [containerPath] The absolute file path in the container where the tmpfs volume is mounted.
   /// [mountOptions] The list of tmpfs volume mount options.
   /// [size] The size (in MiB) of the tmpfs volume.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterTmpf({
     required this.containerPath,
     required this.mountOptions,
     required this.size,

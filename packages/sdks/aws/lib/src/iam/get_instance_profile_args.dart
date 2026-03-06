@@ -12,7 +12,7 @@ class GetInstanceProfileArgs {
 
   /// Creates a new [GetInstanceProfileArgs].
   /// [name] Friendly IAM instance profile name to match.
-  GetInstanceProfileArgs({
+  const GetInstanceProfileArgs({
     required this.name,
   });
 

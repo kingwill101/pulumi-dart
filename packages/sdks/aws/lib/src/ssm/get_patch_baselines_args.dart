@@ -19,7 +19,7 @@ class GetPatchBaselinesArgs {
   /// [defaultBaselines] Only return baseline identities where `default_baseline` is `true`.
   /// [filters] Key-value pairs used to filter the results. See `filter` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPatchBaselinesArgs({
+  const GetPatchBaselinesArgs({
     this.defaultBaselines,
     this.filters,
     this.region,

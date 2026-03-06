@@ -9,7 +9,7 @@ class RegionalSecretVersionCustomerManagedEncryption {
 
   /// Creates a new [RegionalSecretVersionCustomerManagedEncryption].
   /// [kmsKeyVersionName] (Output)
-  RegionalSecretVersionCustomerManagedEncryption({
+  const RegionalSecretVersionCustomerManagedEncryption({
     this.kmsKeyVersionName,
   });
 

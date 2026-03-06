@@ -17,7 +17,7 @@ class GetDatabaseInstanceLatestRecoveryTimeArgs {
   /// [instance] The name of the instance.
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceInstanceDeletionTime] Optional.
-  GetDatabaseInstanceLatestRecoveryTimeArgs({
+  const GetDatabaseInstanceLatestRecoveryTimeArgs({
     required this.instance,
     this.project,
     this.sourceInstanceDeletionTime,

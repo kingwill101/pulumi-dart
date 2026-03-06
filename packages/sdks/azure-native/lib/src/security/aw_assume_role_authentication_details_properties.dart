@@ -16,7 +16,7 @@ class AwAssumeRoleAuthenticationDetailsProperties {
   /// [authenticationType] Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
   /// [awsAssumeRoleArn] Assumed role ID is an identifier that you can use to create temporary security credentials.
   /// [awsExternalId] A unique identifier that is required when you assume a role in another account.
-  AwAssumeRoleAuthenticationDetailsProperties({
+  const AwAssumeRoleAuthenticationDetailsProperties({
     required this.authenticationType,
     required this.awsAssumeRoleArn,
     required this.awsExternalId,

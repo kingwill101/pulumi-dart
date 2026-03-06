@@ -30,7 +30,7 @@ class GetTopicIngestionDataSourceSetting {
   /// [cloudStorages] Settings for ingestion from Cloud Storage.
   /// [confluentClouds] Settings for ingestion from Confluent Cloud.
   /// [platformLogsSettings] Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
-  GetTopicIngestionDataSourceSetting({
+  const GetTopicIngestionDataSourceSetting({
     required this.awsKineses,
     required this.awsMsks,
     required this.azureEventHubs,

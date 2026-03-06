@@ -11,7 +11,7 @@ class DbInstanceInstanceNetInfoPortList {
   /// Creates a new [DbInstanceInstanceNetInfoPortList].
   /// [port] The port that is used to connect.
   /// [protocol] The protocol of the port.
-  DbInstanceInstanceNetInfoPortList({
+  const DbInstanceInstanceNetInfoPortList({
     this.port,
     this.protocol,
   });

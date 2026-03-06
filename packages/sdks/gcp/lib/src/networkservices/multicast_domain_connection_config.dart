@@ -17,7 +17,7 @@ class MulticastDomainConnectionConfig {
   /// Creates a new [MulticastDomainConnectionConfig].
   /// [connectionType] The VPC connection type.
   /// [nccHub] The resource name of the
-  MulticastDomainConnectionConfig({
+  const MulticastDomainConnectionConfig({
     required this.connectionType,
     this.nccHub,
   });

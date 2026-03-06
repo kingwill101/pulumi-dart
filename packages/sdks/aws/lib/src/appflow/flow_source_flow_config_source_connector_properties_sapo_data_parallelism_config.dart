@@ -8,7 +8,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig].
   /// [maxPageSize] he maximum number of records that Amazon AppFlow receives in each page of the response from your SAP application.
-  FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig({
+  const FlowSourceFlowConfigSourceConnectorPropertiesSapoDataParallelismConfig({
     required this.maxPageSize,
   });
 

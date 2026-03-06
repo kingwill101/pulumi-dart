@@ -14,7 +14,7 @@ class GetManagedApiResult {
   /// [location] Required.
   /// [name] Required.
   /// [tags] Required.
-  GetManagedApiResult({
+  const GetManagedApiResult({
     required this.id,
     required this.location,
     required this.name,

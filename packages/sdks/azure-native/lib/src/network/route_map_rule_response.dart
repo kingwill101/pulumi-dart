@@ -20,7 +20,7 @@ class RouteMapRuleResponse {
   /// [matchCriteria] List of matching criterion which will be applied to traffic.
   /// [name] The unique name for the rule.
   /// [nextStepIfMatched] Next step after rule is evaluated. Current supported behaviors are 'Continue'(to next rule) and 'Terminate'.
-  RouteMapRuleResponse({
+  const RouteMapRuleResponse({
     this.actions,
     this.matchCriteria,
     this.name,

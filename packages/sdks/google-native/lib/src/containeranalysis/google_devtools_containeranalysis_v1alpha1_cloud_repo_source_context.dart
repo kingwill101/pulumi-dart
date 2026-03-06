@@ -17,7 +17,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext {
   /// [aliasContext] An alias, which may be a branch or tag.
   /// [repoId] The ID of the repo.
   /// [revisionId] A revision ID.
-  GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext({
+  const GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContext({
     this.aliasContext,
     this.repoId,
     this.revisionId,

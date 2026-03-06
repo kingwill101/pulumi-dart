@@ -8,7 +8,7 @@ class DomainDevicesInterfaceLink {
 
   /// Creates a new [DomainDevicesInterfaceLink].
   /// [state] Configures the operational state of the network link (up or down).
-  DomainDevicesInterfaceLink({
+  const DomainDevicesInterfaceLink({
     required this.state,
   });
 

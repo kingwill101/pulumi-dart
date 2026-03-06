@@ -54,7 +54,7 @@ class GetDedicatedHostResult {
   /// [sockets] Number of sockets on the Dedicated Host.
   /// [tags] Required.
   /// [totalVcpus] Total number of vCPUs on the Dedicated Host.
-  GetDedicatedHostResult({
+  const GetDedicatedHostResult({
     required this.arn,
     required this.assetId,
     required this.autoPlacement,

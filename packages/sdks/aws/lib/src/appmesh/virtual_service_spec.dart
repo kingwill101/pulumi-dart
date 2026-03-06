@@ -9,7 +9,7 @@ class VirtualServiceSpec {
 
   /// Creates a new [VirtualServiceSpec].
   /// [provider] App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
-  VirtualServiceSpec({
+  const VirtualServiceSpec({
     this.provider,
   });
 

@@ -15,7 +15,7 @@ class GenaiKnowledgeBaseDataSourceState {
   /// [knowledgeBaseUuid] UUID of the Knowledge Base
   /// [spacesDataSource] Optional.
   /// [webCrawlerDataSource] Optional.
-  GenaiKnowledgeBaseDataSourceState({
+  const GenaiKnowledgeBaseDataSourceState({
     this.knowledgeBaseUuid,
     this.spacesDataSource,
     this.webCrawlerDataSource,

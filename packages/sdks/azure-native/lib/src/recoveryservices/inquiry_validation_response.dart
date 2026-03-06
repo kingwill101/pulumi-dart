@@ -19,7 +19,7 @@ class InquiryValidationResponse {
   /// [errorDetail] Error Detail in case the status is non-success.
   /// [protectableItemCount] Dictionary to store the count of ProtectableItems with key POType.
   /// [status] Status for the Inquiry Validation.
-  InquiryValidationResponse({
+  const InquiryValidationResponse({
     required this.additionalDetail,
     this.errorDetail,
     required this.protectableItemCount,

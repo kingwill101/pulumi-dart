@@ -23,7 +23,7 @@ class GetSpecialistPoolAiplatformV1beta1Result {
   /// [specialistManagerEmails] The email addresses of the managers in the SpecialistPool.
   /// [specialistManagersCount] The number of managers in this SpecialistPool.
   /// [specialistWorkerEmails] The email addresses of workers in the SpecialistPool.
-  GetSpecialistPoolAiplatformV1beta1Result({
+  const GetSpecialistPoolAiplatformV1beta1Result({
     required this.displayName,
     required this.name,
     required this.pendingDataLabelingJobs,

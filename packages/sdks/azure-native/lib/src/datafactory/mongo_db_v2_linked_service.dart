@@ -33,7 +33,7 @@ class MongoDbV2LinkedService {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  MongoDbV2LinkedService({
+  const MongoDbV2LinkedService({
     this.annotations,
     this.connectVia,
     required this.connectionString,

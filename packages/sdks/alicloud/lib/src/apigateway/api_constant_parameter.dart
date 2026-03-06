@@ -17,7 +17,7 @@ class ApiConstantParameter {
   /// [in_] Constant parameter location; values: 'HEAD' and 'QUERY'.
   /// [name] Constant parameter name.
   /// [value] Constant parameter value.
-  ApiConstantParameter({
+  const ApiConstantParameter({
     this.description,
     required this.in_,
     required this.name,

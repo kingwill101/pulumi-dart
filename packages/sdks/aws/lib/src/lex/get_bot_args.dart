@@ -18,7 +18,7 @@ class GetBotArgs {
   /// [name] Name of the bot. The name is case sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version or alias of the bot.
-  GetBotArgs({
+  const GetBotArgs({
     required this.name,
     this.region,
     this.version,

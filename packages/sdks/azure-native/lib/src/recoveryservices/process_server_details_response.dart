@@ -94,7 +94,7 @@ class ProcessServerDetailsResponse {
   /// [usedMemoryInBytes] The used memory.
   /// [usedSpaceInBytes] The used disk space.
   /// [version] The version.
-  ProcessServerDetailsResponse({
+  const ProcessServerDetailsResponse({
     required this.availableMemoryInBytes,
     required this.availableSpaceInBytes,
     required this.biosId,

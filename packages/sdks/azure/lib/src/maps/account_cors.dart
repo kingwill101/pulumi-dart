@@ -8,7 +8,7 @@ class AccountCors {
 
   /// Creates a new [AccountCors].
   /// [allowedOrigins] A list of origins that should be allowed to make cross-origin calls.
-  AccountCors({
+  const AccountCors({
     required this.allowedOrigins,
   });
 

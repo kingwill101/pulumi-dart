@@ -12,7 +12,7 @@ class WebhookNotificationResponse {
   /// Creates a new [WebhookNotificationResponse].
   /// [properties] a property bag of settings. This value can be empty.
   /// [serviceUri] the service address to receive the notification.
-  WebhookNotificationResponse({
+  const WebhookNotificationResponse({
     this.properties,
     this.serviceUri,
   });

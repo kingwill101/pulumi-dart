@@ -14,7 +14,7 @@ class GetUserEmail {
   /// [primary] When `true`, this is the primary phone number associated with the user.
   /// [type] The type of phone number.
   /// [value] The user's phone number.
-  GetUserEmail({
+  const GetUserEmail({
     required this.primary,
     required this.type,
     required this.value,

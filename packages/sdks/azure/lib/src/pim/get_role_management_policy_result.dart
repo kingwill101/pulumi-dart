@@ -35,7 +35,7 @@ class GetRoleManagementPolicyResult {
   /// [notificationRules] A `notification_rules` block as defined below.
   /// [roleDefinitionId] Required.
   /// [scope] Required.
-  GetRoleManagementPolicyResult({
+  const GetRoleManagementPolicyResult({
     required this.activationRules,
     required this.activeAssignmentRules,
     required this.description,

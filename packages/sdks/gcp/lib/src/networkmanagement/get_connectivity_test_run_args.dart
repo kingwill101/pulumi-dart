@@ -19,7 +19,7 @@ class GetConnectivityTestRunArgs {
   /// Creates a new [GetConnectivityTestRunArgs].
   /// [name] Unique name for the connectivity test.
   /// [project] The ID of the project in which the resource belongs.
-  GetConnectivityTestRunArgs({
+  const GetConnectivityTestRunArgs({
     required this.name,
     this.project,
   });

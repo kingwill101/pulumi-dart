@@ -22,7 +22,7 @@ class SubscriptionArgs {
   /// [endTime] Time when the API product subscription ends in milliseconds since epoch.
   /// [organizationId] Required.
   /// [startTime] Time when the API product subscription starts in milliseconds since epoch.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.apiproduct,
     required this.developerId,
     this.endTime,

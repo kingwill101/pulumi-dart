@@ -8,7 +8,7 @@ class ListServiceGloballyEnabledApmsResult {
 
   /// Creates a new [ListServiceGloballyEnabledApmsResult].
   /// [value] Collection of the globally enabled APMs
-  ListServiceGloballyEnabledApmsResult({
+  const ListServiceGloballyEnabledApmsResult({
     this.value,
   });
 

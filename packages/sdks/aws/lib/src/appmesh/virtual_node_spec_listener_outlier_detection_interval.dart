@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerOutlierDetectionInterval {
   /// Creates a new [VirtualNodeSpecListenerOutlierDetectionInterval].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  VirtualNodeSpecListenerOutlierDetectionInterval({
+  const VirtualNodeSpecListenerOutlierDetectionInterval({
     required this.unit,
     required this.value,
   });

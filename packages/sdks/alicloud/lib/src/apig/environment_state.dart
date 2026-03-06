@@ -18,7 +18,7 @@ class EnvironmentState {
   /// [environmentName] The name of the resource
   /// [gatewayId] Gateway id
   /// [resourceGroupId] The ID of the resource group
-  EnvironmentState({
+  const EnvironmentState({
     this.description,
     this.environmentName,
     this.gatewayId,

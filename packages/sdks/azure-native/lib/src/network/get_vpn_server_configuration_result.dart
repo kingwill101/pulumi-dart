@@ -30,7 +30,7 @@ class GetVpnServerConfigurationResult {
   /// [properties] Properties of the P2SVpnServer configuration.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetVpnServerConfigurationResult({
+  const GetVpnServerConfigurationResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

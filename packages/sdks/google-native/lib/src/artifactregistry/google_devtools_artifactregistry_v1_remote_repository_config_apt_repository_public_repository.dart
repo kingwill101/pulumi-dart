@@ -13,7 +13,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
   /// Creates a new [GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Apt.
   /// [repositoryPath] A custom field to define a path to a specific repository from the base.
-  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository({
+  const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository({
     this.repositoryBase,
     this.repositoryPath,
   });

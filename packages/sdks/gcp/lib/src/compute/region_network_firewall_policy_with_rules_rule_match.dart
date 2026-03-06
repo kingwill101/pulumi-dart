@@ -77,7 +77,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch {
   /// [srcRegionCodes] Region codes whose IP addresses will be used to match for source
   /// [srcSecureTags] List of secure tag values, which should be matched at the source
   /// [srcThreatIntelligences] Names of Network Threat Intelligence lists.
-  RegionNetworkFirewallPolicyWithRulesRuleMatch({
+  const RegionNetworkFirewallPolicyWithRulesRuleMatch({
     this.destAddressGroups,
     this.destFqdns,
     this.destIpRanges,

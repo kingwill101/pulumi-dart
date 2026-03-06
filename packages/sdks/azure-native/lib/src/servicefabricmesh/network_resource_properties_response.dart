@@ -22,7 +22,7 @@ class NetworkResourcePropertiesResponse {
   /// [provisioningState] State of the resource.
   /// [status] Status of the network.
   /// [statusDetails] Gives additional information about the current status of the network.
-  NetworkResourcePropertiesResponse({
+  const NetworkResourcePropertiesResponse({
     this.description,
     required this.kind,
     required this.provisioningState,

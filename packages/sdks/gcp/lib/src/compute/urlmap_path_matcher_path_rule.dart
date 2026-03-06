@@ -42,7 +42,7 @@ class URLMapPathMatcherPathRule {
   /// [routeAction] In response to a matching path, the load balancer performs advanced routing
   /// [service] The backend service or backend bucket to use if any of the given paths match.
   /// [urlRedirect] When a path pattern is matched, the request is redirected to a URL specified
-  URLMapPathMatcherPathRule({
+  const URLMapPathMatcherPathRule({
     this.customErrorResponsePolicy,
     required this.paths,
     this.routeAction,

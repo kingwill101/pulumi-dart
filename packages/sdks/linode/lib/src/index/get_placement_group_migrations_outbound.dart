@@ -8,7 +8,7 @@ class GetPlacementGroupMigrationsOutbound {
 
   /// Creates a new [GetPlacementGroupMigrationsOutbound].
   /// [linodeId] The ID of the Linode.
-  GetPlacementGroupMigrationsOutbound({
+  const GetPlacementGroupMigrationsOutbound({
     required this.linodeId,
   });
 

@@ -16,7 +16,7 @@ class DNSSettings {
   /// [dnsServers] List of IPs associated with the Firewall
   /// [enableDnsProxy] Enable DNS proxy, disabled by default
   /// [enabledDnsType] Enabled DNS proxy type, disabled by default
-  DNSSettings({
+  const DNSSettings({
     this.dnsServers,
     this.enableDnsProxy,
     this.enabledDnsType,

@@ -14,7 +14,7 @@ class ImageOccurrence {
   /// Creates a new [ImageOccurrence].
   /// [fingerprint] The fingerprint of the derived image.
   /// [layerInfo] This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  ImageOccurrence({
+  const ImageOccurrence({
     required this.fingerprint,
     this.layerInfo,
   });

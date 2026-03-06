@@ -25,7 +25,7 @@ class ApiEventConfig {
   /// [defaultPublishAuthModes] List of default authentication modes for publishing. See Auth Modes below.
   /// [defaultSubscribeAuthModes] List of default authentication modes for subscribing. See Auth Modes below.
   /// [logConfig] Logging configuration. See Log Config below.
-  ApiEventConfig({
+  const ApiEventConfig({
     required this.authProviders,
     required this.connectionAuthModes,
     required this.defaultPublishAuthModes,

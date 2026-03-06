@@ -55,7 +55,7 @@ class GetHealthCheckResult {
   /// [timeoutSec] Required.
   /// [type] Required.
   /// [unhealthyThreshold] Required.
-  GetHealthCheckResult({
+  const GetHealthCheckResult({
     required this.checkIntervalSec,
     required this.creationTimestamp,
     required this.description,

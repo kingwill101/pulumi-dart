@@ -9,7 +9,7 @@ class GetAliasRoutingConfiguration {
   /// Creates a new [GetAliasRoutingConfiguration].
   /// [stateMachineVersionArn] Required.
   /// [weight] Required.
-  GetAliasRoutingConfiguration({
+  const GetAliasRoutingConfiguration({
     required this.stateMachineVersionArn,
     required this.weight,
   });

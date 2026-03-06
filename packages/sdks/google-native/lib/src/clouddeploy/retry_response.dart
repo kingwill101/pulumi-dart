@@ -15,7 +15,7 @@ class RetryResponse {
   /// [attempts] Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
   /// [backoffMode] Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
   /// [wait] Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
-  RetryResponse({
+  const RetryResponse({
     required this.attempts,
     required this.backoffMode,
     required this.wait,

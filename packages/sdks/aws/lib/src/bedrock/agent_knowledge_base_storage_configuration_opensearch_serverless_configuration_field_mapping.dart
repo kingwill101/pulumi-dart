@@ -14,7 +14,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFie
   /// [metadataField] Name of the field in which Amazon Bedrock stores metadata about the vector store.
   /// [textField] Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
   /// [vectorField] Name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
-  AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping({
+  const AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfigurationFieldMapping({
     required this.metadataField,
     required this.textField,
     required this.vectorField,

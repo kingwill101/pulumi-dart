@@ -9,7 +9,7 @@ class PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret {
 
   /// Creates a new [PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret].
   /// [secretVersion] The resource name of the secret version in the format,
-  PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret({
+  const PluginInstanceAuthConfigOauth2ClientCredentialsConfigClientSecret({
     required this.secretVersion,
   });
 

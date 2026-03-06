@@ -34,7 +34,7 @@ class RdsBackupState {
   /// [dbName] The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
   /// [removeFromState] Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
   /// [storeStatus] Indicates whether the data backup file can be deleted. Valid values: `Enabled` and `Disabled`.
-  RdsBackupState({
+  const RdsBackupState({
     this.backupId,
     this.backupMethod,
     this.backupStrategy,

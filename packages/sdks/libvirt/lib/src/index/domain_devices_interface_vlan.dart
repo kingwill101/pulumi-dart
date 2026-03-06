@@ -12,7 +12,7 @@ class DomainDevicesInterfaceVlan {
   /// Creates a new [DomainDevicesInterfaceVlan].
   /// [tags] Defines the tags associated with the VLAN configuration.
   /// [trunk] Indicates if the VLAN is set to trunk mode.
-  DomainDevicesInterfaceVlan({
+  const DomainDevicesInterfaceVlan({
     this.tags,
     this.trunk,
   });

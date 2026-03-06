@@ -23,7 +23,7 @@ class BootDiskDefaultsResponseVmmigrationV1alpha1 {
   /// [diskType] Optional. The type of disk provisioning to use for the VM.
   /// [encryption] Optional. The encryption to apply to the boot disk.
   /// [image] The image to use when creating the disk.
-  BootDiskDefaultsResponseVmmigrationV1alpha1({
+  const BootDiskDefaultsResponseVmmigrationV1alpha1({
     required this.deviceName,
     required this.diskName,
     required this.diskType,

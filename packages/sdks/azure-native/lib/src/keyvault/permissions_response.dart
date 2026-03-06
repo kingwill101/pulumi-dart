@@ -18,7 +18,7 @@ class PermissionsResponse {
   /// [keys] Permissions to keys
   /// [secrets] Permissions to secrets
   /// [storage] Permissions to storage accounts
-  PermissionsResponse({
+  const PermissionsResponse({
     this.certificates,
     this.keys,
     this.secrets,

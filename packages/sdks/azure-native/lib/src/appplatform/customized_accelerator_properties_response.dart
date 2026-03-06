@@ -26,7 +26,7 @@ class CustomizedAcceleratorPropertiesResponse {
   /// [iconUrl] Optional.
   /// [imports] Imports references all imports that this accelerator/fragment depends upon.
   /// [provisioningState] State of the customized accelerator.
-  CustomizedAcceleratorPropertiesResponse({
+  const CustomizedAcceleratorPropertiesResponse({
     this.acceleratorTags,
     this.acceleratorType,
     this.description,

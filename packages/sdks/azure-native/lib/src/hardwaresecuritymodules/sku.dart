@@ -9,7 +9,7 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] SKU of the dedicated HSM
-  Sku({
+  const Sku({
     this.name,
   });
 

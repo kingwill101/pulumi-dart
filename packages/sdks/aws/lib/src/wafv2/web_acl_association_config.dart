@@ -9,7 +9,7 @@ class WebAclAssociationConfig {
 
   /// Creates a new [WebAclAssociationConfig].
   /// [requestBodies] Customizes the request body that your protected resource forward to AWS WAF for inspection. See `request_body` below for details.
-  WebAclAssociationConfig({
+  const WebAclAssociationConfig({
     this.requestBodies,
   });
 

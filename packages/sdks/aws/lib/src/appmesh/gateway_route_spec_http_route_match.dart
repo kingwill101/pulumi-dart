@@ -27,7 +27,7 @@ class GatewayRouteSpecHttpRouteMatch {
   /// [port] The port number to match from the request.
   /// [prefix] Path to match requests with. This parameter must always start with `/`, which by itself matches all requests to the virtual service name.
   /// [queryParameters] Client request query parameters to match on.
-  GatewayRouteSpecHttpRouteMatch({
+  const GatewayRouteSpecHttpRouteMatch({
     this.headers,
     this.hostname,
     this.path,

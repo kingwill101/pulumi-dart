@@ -12,7 +12,7 @@ class MaterialContaineranalysisV1alpha1 {
   /// Creates a new [MaterialContaineranalysisV1alpha1].
   /// [digest] digest is a map from a hash algorithm (e.g. sha256) to the value in the material
   /// [uri] uri is the uri of the material
-  MaterialContaineranalysisV1alpha1({
+  const MaterialContaineranalysisV1alpha1({
     this.digest,
     this.uri,
   });

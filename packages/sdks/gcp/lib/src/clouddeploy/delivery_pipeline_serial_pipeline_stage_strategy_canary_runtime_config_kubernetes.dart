@@ -13,7 +13,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes].
   /// [gatewayServiceMesh] Kubernetes Gateway API service mesh configuration.
   /// [serviceNetworking] Kubernetes Service networking configuration.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes({
     this.gatewayServiceMesh,
     this.serviceNetworking,
   });

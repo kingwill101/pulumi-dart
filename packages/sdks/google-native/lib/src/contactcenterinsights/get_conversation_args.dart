@@ -17,7 +17,7 @@ class GetConversationArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetConversationArgs({
+  const GetConversationArgs({
     required this.conversationId,
     required this.location,
     this.project,

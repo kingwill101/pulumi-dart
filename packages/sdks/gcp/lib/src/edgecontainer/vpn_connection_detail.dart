@@ -25,7 +25,7 @@ class VpnConnectionDetail {
   /// [cloudVpns] (Output)
   /// [error] (Output)
   /// [state] (Output)
-  VpnConnectionDetail({
+  const VpnConnectionDetail({
     this.cloudRouters,
     this.cloudVpns,
     this.error,

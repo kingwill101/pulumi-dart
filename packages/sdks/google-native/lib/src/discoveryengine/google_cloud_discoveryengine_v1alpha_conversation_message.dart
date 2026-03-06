@@ -14,7 +14,7 @@ class GoogleCloudDiscoveryengineV1alphaConversationMessage {
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaConversationMessage].
   /// [reply] Search reply.
   /// [userInput] User text input.
-  GoogleCloudDiscoveryengineV1alphaConversationMessage({
+  const GoogleCloudDiscoveryengineV1alphaConversationMessage({
     this.reply,
     this.userInput,
   });

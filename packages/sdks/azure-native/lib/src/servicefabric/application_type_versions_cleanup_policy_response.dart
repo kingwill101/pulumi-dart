@@ -9,7 +9,7 @@ class ApplicationTypeVersionsCleanupPolicyResponse {
 
   /// Creates a new [ApplicationTypeVersionsCleanupPolicyResponse].
   /// [maxUnusedVersionsToKeep] Number of unused versions per application type to keep.
-  ApplicationTypeVersionsCleanupPolicyResponse({
+  const ApplicationTypeVersionsCleanupPolicyResponse({
     required this.maxUnusedVersionsToKeep,
   });
 

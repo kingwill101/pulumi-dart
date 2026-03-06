@@ -13,7 +13,7 @@ class VpcAccessConnectorAppengineV1beta {
   /// Creates a new [VpcAccessConnectorAppengineV1beta].
   /// [egressSetting] The egress setting for the connector, controlling what traffic is diverted through it.
   /// [name] Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
-  VpcAccessConnectorAppengineV1beta({
+  const VpcAccessConnectorAppengineV1beta({
     this.egressSetting,
     this.name,
   });

@@ -14,7 +14,7 @@ class GetDomainClusterConfigNodeOptionNodeConfig {
   /// [count] Number of nodes of a particular node type in the cluster.
   /// [enabled] Enabled disabled toggle for off-peak update window
   /// [type] The instance type of a particular node type in the cluster.
-  GetDomainClusterConfigNodeOptionNodeConfig({
+  const GetDomainClusterConfigNodeOptionNodeConfig({
     required this.count,
     required this.enabled,
     required this.type,

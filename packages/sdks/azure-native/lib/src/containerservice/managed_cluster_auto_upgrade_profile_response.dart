@@ -12,7 +12,7 @@ class ManagedClusterAutoUpgradeProfileResponse {
   /// Creates a new [ManagedClusterAutoUpgradeProfileResponse].
   /// [nodeOSUpgradeChannel] Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage.
   /// [upgradeChannel] The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel).
-  ManagedClusterAutoUpgradeProfileResponse({
+  const ManagedClusterAutoUpgradeProfileResponse({
     this.nodeOSUpgradeChannel,
     this.upgradeChannel,
   });

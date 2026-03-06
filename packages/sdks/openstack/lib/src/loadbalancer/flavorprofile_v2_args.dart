@@ -29,7 +29,7 @@ class FlavorprofileV2Args {
   /// [name] Name of the flavorprofile. Changing this updates the existing
   /// [providerName] The provider_name that the flavor_profile will use.
   /// [region] The region in which to obtain the V2 Networking client.
-  FlavorprofileV2Args({
+  const FlavorprofileV2Args({
     required this.flavorData,
     this.name,
     required this.providerName,

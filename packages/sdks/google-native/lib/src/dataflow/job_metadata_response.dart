@@ -37,7 +37,7 @@ class JobMetadataResponse {
   /// [sdkVersion] The SDK version used to run the job.
   /// [spannerDetails] Identification of a Spanner source used in the Dataflow job.
   /// [userDisplayProperties] List of display properties to help UI filter jobs.
-  JobMetadataResponse({
+  const JobMetadataResponse({
     required this.bigTableDetails,
     required this.bigqueryDetails,
     required this.datastoreDetails,

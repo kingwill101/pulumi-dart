@@ -41,7 +41,7 @@ class GetHciClusterResult {
   /// [serviceEndpoint] The region specific Data Path Endpoint of the Azure Stack HCI Cluster.
   /// [tags] A mapping of tags assigned to the Azure Stack HCI Cluster.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
-  GetHciClusterResult({
+  const GetHciClusterResult({
     required this.automanageConfigurationId,
     required this.clientId,
     required this.cloudId,

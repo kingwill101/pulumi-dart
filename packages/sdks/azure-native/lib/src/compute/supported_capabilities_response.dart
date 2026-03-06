@@ -15,7 +15,7 @@ class SupportedCapabilitiesResponse {
   /// [acceleratedNetwork] True if the image from which the OS disk is created supports accelerated networking.
   /// [architecture] CPU architecture supported by an OS disk.
   /// [diskControllerTypes] The disk controllers that an OS disk supports. If set it can be SCSI or SCSI, NVME or NVME, SCSI.
-  SupportedCapabilitiesResponse({
+  const SupportedCapabilitiesResponse({
     this.acceleratedNetwork,
     this.architecture,
     this.diskControllerTypes,

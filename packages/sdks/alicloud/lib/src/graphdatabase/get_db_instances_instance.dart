@@ -105,7 +105,7 @@ class GetDbInstancesInstance {
   /// [vpcId] The vpc id of the db instance.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the resource.
-  GetDbInstancesInstance({
+  const GetDbInstancesInstance({
     required this.connectionString,
     required this.createTime,
     required this.currentMinorVersion,

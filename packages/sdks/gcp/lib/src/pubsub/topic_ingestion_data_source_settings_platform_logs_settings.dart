@@ -11,7 +11,7 @@ class TopicIngestionDataSourceSettingsPlatformLogsSettings {
 
   /// Creates a new [TopicIngestionDataSourceSettingsPlatformLogsSettings].
   /// [severity] The minimum severity level of Platform Logs that will be written. If unspecified,
-  TopicIngestionDataSourceSettingsPlatformLogsSettings({
+  const TopicIngestionDataSourceSettingsPlatformLogsSettings({
     this.severity,
   });
 

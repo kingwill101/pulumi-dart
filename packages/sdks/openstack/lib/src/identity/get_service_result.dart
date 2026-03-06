@@ -23,7 +23,7 @@ class GetServiceResult {
   /// [name] See Argument Reference above.
   /// [region] See Argument Reference above.
   /// [type] See Argument Reference above.
-  GetServiceResult({
+  const GetServiceResult({
     required this.description,
     this.enabled,
     required this.id,

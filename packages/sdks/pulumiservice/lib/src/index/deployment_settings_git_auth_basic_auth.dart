@@ -12,7 +12,7 @@ class DeploymentSettingsGitAuthBasicAuth {
   /// Creates a new [DeploymentSettingsGitAuthBasicAuth].
   /// [password] Password for git basic authentication.
   /// [username] User name for git basic authentication.
-  DeploymentSettingsGitAuthBasicAuth({
+  const DeploymentSettingsGitAuthBasicAuth({
     required this.password,
     required this.username,
   });

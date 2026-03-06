@@ -14,7 +14,7 @@ class DeliveryRuleUrlFileNameCondition {
   /// Creates a new [DeliveryRuleUrlFileNameCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleUrlFileNameCondition({
+  const DeliveryRuleUrlFileNameCondition({
     required this.name,
     required this.parameters,
   });

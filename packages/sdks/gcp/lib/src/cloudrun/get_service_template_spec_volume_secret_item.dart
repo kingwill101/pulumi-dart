@@ -21,7 +21,7 @@ class GetServiceTemplateSpecVolumeSecretItem {
   /// [key] The Cloud Secret Manager secret version.
   /// [mode] Mode bits to use on this file, must be a value between 0000 and 0777. If
   /// [path] The relative path of the file to map the key to.
-  GetServiceTemplateSpecVolumeSecretItem({
+  const GetServiceTemplateSpecVolumeSecretItem({
     required this.key,
     required this.mode,
     required this.path,

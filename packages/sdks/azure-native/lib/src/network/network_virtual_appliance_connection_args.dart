@@ -28,7 +28,7 @@ class NetworkVirtualApplianceConnectionArgs {
   /// [networkVirtualApplianceName] The name of the Network Virtual Appliance.
   /// [properties] Properties of the express route connection.
   /// [resourceGroupName] The name of the resource group.
-  NetworkVirtualApplianceConnectionArgs({
+  const NetworkVirtualApplianceConnectionArgs({
     this.connectionName,
     this.id,
     this.name,

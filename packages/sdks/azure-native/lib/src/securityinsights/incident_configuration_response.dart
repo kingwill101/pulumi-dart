@@ -13,7 +13,7 @@ class IncidentConfigurationResponse {
   /// Creates a new [IncidentConfigurationResponse].
   /// [createIncident] Create incidents from alerts triggered by this analytics rule
   /// [groupingConfiguration] Set how the alerts that are triggered by this analytics rule, are grouped into incidents
-  IncidentConfigurationResponse({
+  const IncidentConfigurationResponse({
     required this.createIncident,
     this.groupingConfiguration,
   });

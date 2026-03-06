@@ -18,7 +18,7 @@ class GetBucketObjectsArgs {
   /// [bucket] The name of the containing bucket.
   /// [matchGlob] A glob pattern used to filter results (for example, `foo*bar`).
   /// [prefix] Filter results to include only objects whose names begin with this prefix.
-  GetBucketObjectsArgs({
+  const GetBucketObjectsArgs({
     required this.bucket,
     this.matchGlob,
     this.prefix,

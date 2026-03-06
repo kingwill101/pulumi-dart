@@ -8,7 +8,7 @@ class IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration 
 
   /// Creates a new [IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration].
   /// [groupEntityType] The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
-  IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration({
+  const IdentitySourceConfigurationCognitoUserPoolConfigurationGroupConfiguration({
     required this.groupEntityType,
   });
 

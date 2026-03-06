@@ -52,7 +52,7 @@ class AzureNodePoolArgs {
   /// [project] The project for the resource
   /// [subnetId] The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
   /// [version] The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
-  AzureNodePoolArgs({
+  const AzureNodePoolArgs({
     this.annotations,
     required this.autoscaling,
     this.azureAvailabilityZone,

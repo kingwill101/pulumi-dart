@@ -45,7 +45,7 @@ class CertificateMapEntryArgs {
   /// [matcher] A predefined matcher for particular cases, other than SNI selection
   /// [name] A user-defined name of the Certificate Map Entry. Certificate Map Entry
   /// [project] The ID of the project in which the resource belongs.
-  CertificateMapEntryArgs({
+  const CertificateMapEntryArgs({
     required this.certificates,
     this.description,
     this.hostname,

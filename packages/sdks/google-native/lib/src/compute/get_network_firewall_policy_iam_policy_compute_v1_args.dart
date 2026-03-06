@@ -15,7 +15,7 @@ class GetNetworkFirewallPolicyIamPolicyComputeV1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetNetworkFirewallPolicyIamPolicyComputeV1Args({
+  const GetNetworkFirewallPolicyIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

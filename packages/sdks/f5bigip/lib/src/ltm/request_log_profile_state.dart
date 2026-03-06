@@ -66,7 +66,7 @@ class RequestLogProfileState {
   /// [responselogPool] Defines the pool to send logs to. Typically, the pool contains one or more syslog servers. It is recommended that you create a pool specifically for logging responses. The default is `none`.
   /// [responselogProtocol] Specifies the protocol to be used for high-speed logging of responses. The default is `mds-udp`,possible values are `mds-udp` and `mds-tcp`.
   /// [responselogTemplate] Specifies the directives and entries to be logged. More infor on responselog_template can be found [here](https://techdocs.f5.com/en-us/bigip-15-0-0/external-monitoring-of-big-ip-systems-implementations/configuring-request-logging.html). how to use can be find [here](https://my.f5.com/manage/s/article/K00847516).
-  RequestLogProfileState({
+  const RequestLogProfileState({
     this.defaultsFrom,
     this.description,
     this.name,

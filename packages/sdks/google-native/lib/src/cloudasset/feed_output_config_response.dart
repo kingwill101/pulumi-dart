@@ -10,7 +10,7 @@ class FeedOutputConfigResponse {
 
   /// Creates a new [FeedOutputConfigResponse].
   /// [pubsubDestination] Destination on Pub/Sub.
-  FeedOutputConfigResponse({
+  const FeedOutputConfigResponse({
     required this.pubsubDestination,
   });
 

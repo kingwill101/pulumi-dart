@@ -12,7 +12,7 @@ class NeighborGroupDestination {
   /// Creates a new [NeighborGroupDestination].
   /// [ipv4Addresses] Array of IPv4 Addresses.
   /// [ipv6Addresses] Array of IPv6 Addresses.
-  NeighborGroupDestination({
+  const NeighborGroupDestination({
     this.ipv4Addresses,
     this.ipv6Addresses,
   });

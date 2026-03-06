@@ -79,7 +79,7 @@ class GetRegionDiskResult {
   /// [sourceSnapshotId] Required.
   /// [type] Required.
   /// [users] Required.
-  GetRegionDiskResult({
+  const GetRegionDiskResult({
     required this.accessMode,
     required this.asyncPrimaryDisks,
     required this.createSnapshotBeforeDestroy,

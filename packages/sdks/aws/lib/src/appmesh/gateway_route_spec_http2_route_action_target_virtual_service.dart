@@ -8,7 +8,7 @@ class GatewayRouteSpecHttp2RouteActionTargetVirtualService {
 
   /// Creates a new [GatewayRouteSpecHttp2RouteActionTargetVirtualService].
   /// [virtualServiceName] Name of the virtual service that traffic is routed to. Must be between 1 and 255 characters in length.
-  GatewayRouteSpecHttp2RouteActionTargetVirtualService({
+  const GatewayRouteSpecHttp2RouteActionTargetVirtualService({
     required this.virtualServiceName,
   });
 

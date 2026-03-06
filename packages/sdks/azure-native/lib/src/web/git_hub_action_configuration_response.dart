@@ -20,7 +20,7 @@ class GitHubActionConfigurationResponse {
   /// [containerConfiguration] GitHub Action container configuration.
   /// [generateWorkflowFile] Workflow option to determine whether the workflow file should be generated and written to the repository.
   /// [isLinux] This will help determine the workflow configuration to select.
-  GitHubActionConfigurationResponse({
+  const GitHubActionConfigurationResponse({
     this.codeConfiguration,
     this.containerConfiguration,
     this.generateWorkflowFile,

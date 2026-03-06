@@ -9,7 +9,7 @@ class CmkProfile {
 
   /// Creates a new [CmkProfile].
   /// [keyUri] URI of Key in AKV
-  CmkProfile({
+  const CmkProfile({
     required this.keyUri,
   });
 

@@ -28,7 +28,7 @@ class GetVirtualNetworkGatewayIpConfiguration {
   /// [privateIpAddressAllocation] Defines how the private IP address
   /// [publicIpAddressId] The ID of the Public IP Address associated
   /// [subnetId] The ID of the gateway subnet of a virtual network in
-  GetVirtualNetworkGatewayIpConfiguration({
+  const GetVirtualNetworkGatewayIpConfiguration({
     required this.id,
     required this.name,
     required this.privateIpAddress,

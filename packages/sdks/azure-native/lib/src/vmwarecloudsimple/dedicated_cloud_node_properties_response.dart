@@ -51,7 +51,7 @@ class DedicatedCloudNodePropertiesResponse {
   /// [purchaseId] purchase id
   /// [status] Node status, indicates is private cloud set up on this node or not
   /// [vmwareClusterName] VMWare Cluster Name
-  DedicatedCloudNodePropertiesResponse({
+  const DedicatedCloudNodePropertiesResponse({
     required this.availabilityZoneId,
     required this.availabilityZoneName,
     required this.cloudRackName,

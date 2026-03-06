@@ -9,7 +9,7 @@ class AkriConnectorPropertiesResponse {
 
   /// Creates a new [AkriConnectorPropertiesResponse].
   /// [provisioningState] The status of the last operation.
-  AkriConnectorPropertiesResponse({
+  const AkriConnectorPropertiesResponse({
     required this.provisioningState,
   });
 

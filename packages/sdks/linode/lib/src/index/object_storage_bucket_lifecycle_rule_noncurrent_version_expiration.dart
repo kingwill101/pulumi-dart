@@ -8,7 +8,7 @@ class ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration {
 
   /// Creates a new [ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration].
   /// [days] Specifies the number of days non-current object versions expire.
-  ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration({
+  const ObjectStorageBucketLifecycleRuleNoncurrentVersionExpiration({
     required this.days,
   });
 

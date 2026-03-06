@@ -9,7 +9,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes {
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes].
   /// [types] A set of BiqQuery table types
-  PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes({
+  const PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypes({
     this.types,
   });
 

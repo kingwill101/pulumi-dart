@@ -38,7 +38,7 @@ class OrganizationPolicyArgs {
   /// [listPolicy] A policy that can define specific values that are allowed or denied for the given constraint. It
   /// [restorePolicy] A restore policy is a constraint to restore the default policy. Structure is documented below.
   /// [version] Version of the Policy. Default version is 0.
-  OrganizationPolicyArgs({
+  const OrganizationPolicyArgs({
     this.booleanPolicy,
     required this.constraint,
     required this.folder,

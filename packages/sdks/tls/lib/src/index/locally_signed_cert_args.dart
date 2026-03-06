@@ -35,7 +35,7 @@ class LocallySignedCertArgs {
   /// [maxPathLength] Maximum number of intermediate certificates that may follow this certificate in a valid certification path. If `is_ca_certificate` is `false`, this value is ignored.
   /// [setSubjectKeyId] Should the generated certificate include a [subject key identifier](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.2) (default: `false`).
   /// [validityPeriodHours] Number of hours, after initial issuing, that the certificate will remain valid for.
-  LocallySignedCertArgs({
+  const LocallySignedCertArgs({
     required this.allowedUses,
     required this.caCertPem,
     required this.caPrivateKeyPem,

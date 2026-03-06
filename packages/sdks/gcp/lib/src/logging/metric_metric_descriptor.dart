@@ -35,7 +35,7 @@ class MetricMetricDescriptor {
   /// [metricKind] Whether the metric records instantaneous values, changes to a value, etc.
   /// [unit] The unit in which the metric value is reported. It is only applicable if the valueType is
   /// [valueType] Whether the measurement is an integer, a floating-point number, etc.
-  MetricMetricDescriptor({
+  const MetricMetricDescriptor({
     this.displayName,
     this.labels,
     required this.metricKind,

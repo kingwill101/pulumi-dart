@@ -22,7 +22,7 @@ class OriginPoolArgs {
   /// [originPoolName] The source address pool name.
   /// [origins] The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
   /// [siteId] The site ID.
-  OriginPoolArgs({
+  const OriginPoolArgs({
     this.enabled,
     required this.originPoolName,
     this.origins,

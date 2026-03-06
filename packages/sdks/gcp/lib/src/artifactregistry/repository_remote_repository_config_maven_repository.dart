@@ -14,7 +14,7 @@ class RepositoryRemoteRepositoryConfigMavenRepository {
   /// Creates a new [RepositoryRemoteRepositoryConfigMavenRepository].
   /// [customRepository] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// [publicRepository] Address of the remote repository.
-  RepositoryRemoteRepositoryConfigMavenRepository({
+  const RepositoryRemoteRepositoryConfigMavenRepository({
     this.customRepository,
     this.publicRepository,
   });

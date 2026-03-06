@@ -31,7 +31,7 @@ class ClusterNetworking {
   /// [networkType] (Output)
   /// [servicesIpv4CidrBlocks] All services in the cluster are assigned an RFC1918 IPv4 address from these
   /// [servicesIpv6CidrBlocks] If specified, dual stack mode is enabled and all services in the cluster are
-  ClusterNetworking({
+  const ClusterNetworking({
     required this.clusterIpv4CidrBlocks,
     this.clusterIpv6CidrBlocks,
     this.networkType,

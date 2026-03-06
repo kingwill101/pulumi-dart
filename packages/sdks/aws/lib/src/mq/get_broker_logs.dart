@@ -11,7 +11,7 @@ class GetBrokerLogs {
   /// Creates a new [GetBrokerLogs].
   /// [audit] Whether audit logging is enabled.
   /// [general] Whether general logging is enabled.
-  GetBrokerLogs({
+  const GetBrokerLogs({
     required this.audit,
     required this.general,
   });

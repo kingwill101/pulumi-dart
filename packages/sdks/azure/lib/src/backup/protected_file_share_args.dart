@@ -26,7 +26,7 @@ class ProtectedFileShareArgs {
   /// [resourceGroupName] The name of the resource group in which to create the Azure Backup Protected File Share. Changing this forces a new resource to be created.
   /// [sourceFileShareName] Specifies the name of the file share to backup. Changing this forces a new resource to be created.
   /// [sourceStorageAccountId] Specifies the ID of the storage account of the file share to backup. Changing this forces a new resource to be created.
-  ProtectedFileShareArgs({
+  const ProtectedFileShareArgs({
     required this.backupPolicyId,
     required this.recoveryVaultName,
     required this.resourceGroupName,

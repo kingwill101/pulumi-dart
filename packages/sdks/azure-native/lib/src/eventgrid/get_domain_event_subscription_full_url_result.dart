@@ -8,7 +8,7 @@ class GetDomainEventSubscriptionFullUrlResult {
 
   /// Creates a new [GetDomainEventSubscriptionFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetDomainEventSubscriptionFullUrlResult({
+  const GetDomainEventSubscriptionFullUrlResult({
     this.endpointUrl,
   });
 

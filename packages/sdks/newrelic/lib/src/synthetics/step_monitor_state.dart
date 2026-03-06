@@ -68,7 +68,7 @@ class StepMonitorState {
   /// [steps] The steps that make up the script the monitor will run. See Nested steps blocks below for details.
   /// [tags] The tags that will be associated with the monitor. See Nested tag blocks below for details.
   /// [useUnsupportedLegacyRuntime] A boolean attribute to be set true by the customer, if they would like to use the unsupported legacy runtime of Synthetic Monitors by means of an exemption given until the October 22, 2024 Legacy Runtime EOL. Setting this attribute to true would allow skipping validation performed by the the New Relic Terraform Provider starting v3.43.0 to disallow using the legacy runtime with new monitors. This would, hence, allow creation of monitors in the legacy runtime until the October 22, 2024 Legacy Runtime EOL, if exempt by the API.
-  StepMonitorState({
+  const StepMonitorState({
     this.accountId,
     this.browsers,
     this.devices,

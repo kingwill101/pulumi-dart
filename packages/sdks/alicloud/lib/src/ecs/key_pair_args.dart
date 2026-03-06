@@ -27,7 +27,7 @@ class KeyPairArgs {
   /// [publicKey] You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
   /// [resourceGroupId] The Id of resource group which the key pair belongs.
   /// [tags] Optional.
-  KeyPairArgs({
+  const KeyPairArgs({
     this.keyFile,
     this.keyName,
     this.keyNamePrefix,

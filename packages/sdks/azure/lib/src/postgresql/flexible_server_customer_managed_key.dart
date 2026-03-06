@@ -23,7 +23,7 @@ class FlexibleServerCustomerManagedKey {
   /// [geoBackupUserAssignedIdentityId] The geo backup user managed identity id for a Customer Managed Key. Must be added to `identity.identity_ids`.
   /// [keyVaultKeyId] The versioned/versionless ID of the Key Vault Key.
   /// [primaryUserAssignedIdentityId] Specifies the primary user managed identity id for a Customer Managed Key. Must be added to `identity.identity_ids`.
-  FlexibleServerCustomerManagedKey({
+  const FlexibleServerCustomerManagedKey({
     this.geoBackupKeyVaultKeyId,
     this.geoBackupUserAssignedIdentityId,
     required this.keyVaultKeyId,

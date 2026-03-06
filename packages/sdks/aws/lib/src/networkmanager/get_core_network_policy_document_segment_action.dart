@@ -44,7 +44,7 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
   /// [shareWiths] A list of strings to share with. Must be a substring is all segments. Valid values include: `["*"]` or `["&lt;segment-names&gt;"]`.
   /// [via] The network function groups and any edge overrides associated with the action.
   /// [whenSentTo] The destination segments for the `send-via` or `send-to` `action`.
-  GetCoreNetworkPolicyDocumentSegmentAction({
+  const GetCoreNetworkPolicyDocumentSegmentAction({
     required this.action,
     this.description,
     this.destinationCidrBlocks,

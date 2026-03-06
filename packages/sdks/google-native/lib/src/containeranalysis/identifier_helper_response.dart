@@ -12,7 +12,7 @@ class IdentifierHelperResponse {
   /// Creates a new [IdentifierHelperResponse].
   /// [field] The field that is set in the API proto.
   /// [genericUri] Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
-  IdentifierHelperResponse({
+  const IdentifierHelperResponse({
     required this.field,
     required this.genericUri,
   });

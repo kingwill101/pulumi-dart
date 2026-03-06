@@ -14,7 +14,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity {
   /// [key] (Optional)
   /// [operator] Possible values are: `OPERATOR_UNSPECIFIED`, `IN`, `NOT_IN`.
   /// [values] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity({
+  const RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity({
     this.key,
     this.operator,
     this.values,

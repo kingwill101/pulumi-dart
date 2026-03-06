@@ -43,7 +43,7 @@ class GetAccountResult {
   /// [type] Type of the azure resource
   /// [userEmail] Email of the user who created the resource
   /// [userName] Name of the user who created the resource
-  GetAccountResult({
+  const GetAccountResult({
     required this.azureApiVersion,
     required this.createdAt,
     required this.id,

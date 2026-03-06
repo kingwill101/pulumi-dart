@@ -43,7 +43,7 @@ class GetPrimaryIpResult {
   /// [name] (string) Name of the Primary IP.
   /// [type] (string) Type of the Primary IP.
   /// [withSelector] Optional.
-  GetPrimaryIpResult({
+  const GetPrimaryIpResult({
     required this.assigneeId,
     required this.assigneeType,
     required this.autoDelete,

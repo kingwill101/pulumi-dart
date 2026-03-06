@@ -11,7 +11,7 @@ class AgentcoreBrowserNetworkConfigurationVpcConfig {
   /// Creates a new [AgentcoreBrowserNetworkConfigurationVpcConfig].
   /// [securityGroups] Set of security group IDs for the VPC configuration.
   /// [subnets] Set of subnet IDs for the VPC configuration.
-  AgentcoreBrowserNetworkConfigurationVpcConfig({
+  const AgentcoreBrowserNetworkConfigurationVpcConfig({
     required this.securityGroups,
     required this.subnets,
   });

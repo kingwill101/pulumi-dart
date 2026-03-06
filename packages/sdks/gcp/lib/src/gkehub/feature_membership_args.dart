@@ -36,7 +36,7 @@ class FeatureMembershipArgs {
   /// [mesh] Service mesh specific spec. Structure is documented below.
   /// [policycontroller] Policy Controller-specific spec. Structure is documented below.
   /// [project] The project of the feature
-  FeatureMembershipArgs({
+  const FeatureMembershipArgs({
     this.configmanagement,
     required this.feature,
     required this.location,

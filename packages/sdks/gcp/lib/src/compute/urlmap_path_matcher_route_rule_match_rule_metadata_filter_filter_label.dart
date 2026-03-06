@@ -13,7 +13,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel {
   /// Creates a new [URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel].
   /// [name] Name of metadata label. The name can have a maximum length of 1024 characters
   /// [value] The value of the label must match the specified value. value can have a maximum
-  URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel({
+  const URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel({
     required this.name,
     required this.value,
   });

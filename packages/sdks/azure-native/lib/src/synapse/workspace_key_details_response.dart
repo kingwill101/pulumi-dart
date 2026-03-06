@@ -12,7 +12,7 @@ class WorkspaceKeyDetailsResponse {
   /// Creates a new [WorkspaceKeyDetailsResponse].
   /// [keyVaultUrl] Workspace Key sub-resource key vault url
   /// [name] Workspace Key sub-resource name
-  WorkspaceKeyDetailsResponse({
+  const WorkspaceKeyDetailsResponse({
     this.keyVaultUrl,
     this.name,
   });

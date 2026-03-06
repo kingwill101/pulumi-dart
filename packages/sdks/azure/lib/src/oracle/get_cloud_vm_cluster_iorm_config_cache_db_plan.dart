@@ -14,7 +14,7 @@ class GetCloudVmClusterIormConfigCacheDbPlan {
   /// [dbName] The database name. For the default `DbPlan`, the `dbName` is `default`.
   /// [flashCacheLimit] The flash cache limit for this database. This value is internally configured based on the share value assigned to the database.
   /// [share] The relative priority of this database.
-  GetCloudVmClusterIormConfigCacheDbPlan({
+  const GetCloudVmClusterIormConfigCacheDbPlan({
     required this.dbName,
     required this.flashCacheLimit,
     required this.share,

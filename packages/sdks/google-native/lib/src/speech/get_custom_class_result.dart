@@ -46,7 +46,7 @@ class GetCustomClassResult {
   /// [reconciling] Whether or not this CustomClass is in the process of being updated. This field is not used.
   /// [state] The CustomClass lifecycle state. This field is not used.
   /// [uid] System-assigned unique identifier for the CustomClass. This field is not used.
-  GetCustomClassResult({
+  const GetCustomClassResult({
     required this.annotations,
     required this.customClassId,
     required this.deleteTime,

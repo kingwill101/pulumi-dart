@@ -22,7 +22,7 @@ class AccountCapabilityHostArgs {
   /// [capabilityHostName] The name of the capability host associated with the Cognitive Services Resource
   /// [capabilityHostProperties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AccountCapabilityHostArgs({
+  const AccountCapabilityHostArgs({
     required this.accountName,
     this.capabilityHostName,
     required this.capabilityHostProperties,

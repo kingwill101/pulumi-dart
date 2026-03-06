@@ -12,7 +12,7 @@ class ListPolicySetDefinitionVersionAllAtManagementGroupArgs {
 
   /// Creates a new [ListPolicySetDefinitionVersionAllAtManagementGroupArgs].
   /// [managementGroupName] The name of the management group. The name is case insensitive.
-  ListPolicySetDefinitionVersionAllAtManagementGroupArgs({
+  const ListPolicySetDefinitionVersionAllAtManagementGroupArgs({
     required this.managementGroupName,
   });
 

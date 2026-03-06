@@ -8,7 +8,7 @@ class GetVirtualRouterSpecListener {
 
   /// Creates a new [GetVirtualRouterSpecListener].
   /// [portMappings] Required.
-  GetVirtualRouterSpecListener({
+  const GetVirtualRouterSpecListener({
     required this.portMappings,
   });
 

@@ -13,7 +13,7 @@ class FleetLaunchTemplateConfig {
   /// Creates a new [FleetLaunchTemplateConfig].
   /// [launchTemplateSpecification] Nested argument containing EC2 Launch Template to use. Defined below.
   /// [overrides] Nested argument(s) containing parameters to override the same parameters in the Launch Template. Defined below.
-  FleetLaunchTemplateConfig({
+  const FleetLaunchTemplateConfig({
     this.launchTemplateSpecification,
     this.overrides,
   });

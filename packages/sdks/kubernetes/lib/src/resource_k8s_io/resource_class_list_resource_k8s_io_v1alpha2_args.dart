@@ -23,7 +23,7 @@ class ResourceClassListResourceK8sIoV1alpha2Args {
   /// [items] Items is the list of resource classes.
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard list metadata
-  ResourceClassListResourceK8sIoV1alpha2Args({
+  const ResourceClassListResourceK8sIoV1alpha2Args({
     this.apiVersion,
     required this.items,
     this.kind,

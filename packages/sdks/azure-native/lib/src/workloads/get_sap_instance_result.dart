@@ -46,7 +46,7 @@ class GetSapInstanceResult {
   /// [systemSid] This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSapInstanceResult({
+  const GetSapInstanceResult({
     required this.application,
     required this.azureApiVersion,
     required this.environment,

@@ -24,7 +24,7 @@ class TrafficTargetResponse {
   /// [revisionName] Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
   /// [tag] Tag is used to expose a dedicated url for referencing this target exclusively.
   /// [url] URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. https://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
-  TrafficTargetResponse({
+  const TrafficTargetResponse({
     required this.configurationName,
     required this.latestRevision,
     required this.percent,

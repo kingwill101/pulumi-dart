@@ -12,7 +12,7 @@ class GetVpcSubnetLinode {
   /// Creates a new [GetVpcSubnetLinode].
   /// [id] The unique id of this VPC subnet.
   /// [interfaces] A list of networking interfaces objects.
-  GetVpcSubnetLinode({
+  const GetVpcSubnetLinode({
     required this.id,
     required this.interfaces,
   });

@@ -17,7 +17,7 @@ class GetIruleResult {
   /// [irule] Irule configured on bigip
   /// [name] Name of irule configured on bigip with full path
   /// [partition] Bigip partition in which rule is configured
-  GetIruleResult({
+  const GetIruleResult({
     required this.id,
     this.irule,
     required this.name,

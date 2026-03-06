@@ -17,7 +17,7 @@ class RoleManagementPolicyNotificationRulesEligibleActivations {
   /// [adminNotifications] Admin notification settings
   /// [approverNotifications] Approver notification settings
   /// [assigneeNotifications] Assignee notification settings
-  RoleManagementPolicyNotificationRulesEligibleActivations({
+  const RoleManagementPolicyNotificationRulesEligibleActivations({
     this.adminNotifications,
     this.approverNotifications,
     this.assigneeNotifications,

@@ -32,7 +32,7 @@ class GetSubscriptionResult {
   /// [startTime] Start time of the subscription.
   /// [state] The current state of the subscription.
   /// [type] Type of subscription.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.autoRenewEnabled,
     required this.createTime,
     required this.endTime,

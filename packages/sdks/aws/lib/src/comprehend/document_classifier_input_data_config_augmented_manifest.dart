@@ -25,7 +25,7 @@ class DocumentClassifierInputDataConfigAugmentedManifest {
   /// [s3Uri] Location of augmented manifest file.
   /// [sourceDocumentsS3Uri] Location of source PDF files.
   /// [split] Purpose of data in augmented manifest.
-  DocumentClassifierInputDataConfigAugmentedManifest({
+  const DocumentClassifierInputDataConfigAugmentedManifest({
     this.annotationDataS3Uri,
     required this.attributeNames,
     this.documentType,

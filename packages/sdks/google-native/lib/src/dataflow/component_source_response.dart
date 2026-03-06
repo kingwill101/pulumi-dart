@@ -15,7 +15,7 @@ class ComponentSourceResponse {
   /// [name] Dataflow service generated name for this source.
   /// [originalTransformOrCollection] User name for the original user transform or collection with which this source is most closely associated.
   /// [userName] Human-readable name for this transform; may be user or system generated.
-  ComponentSourceResponse({
+  const ComponentSourceResponse({
     required this.name,
     required this.originalTransformOrCollection,
     required this.userName,

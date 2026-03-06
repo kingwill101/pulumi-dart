@@ -11,7 +11,7 @@ class SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth {
   /// Creates a new [SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth].
   /// [password] Specifies the password of git repository basic auth.
   /// [username] Specifies the username of git repository basic auth.
-  SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth({
+  const SpringCloudCustomizedAcceleratorGitRepositoryBasicAuth({
     required this.password,
     required this.username,
   });

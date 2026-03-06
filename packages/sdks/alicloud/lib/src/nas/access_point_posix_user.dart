@@ -14,7 +14,7 @@ class AccessPointPosixUser {
   /// [posixGroupId] The ID of the Posix user group.
   /// [posixSecondaryGroupIds] The ID of the second user group.
   /// [posixUserId] The Posix user ID.
-  AccessPointPosixUser({
+  const AccessPointPosixUser({
     this.posixGroupId,
     this.posixSecondaryGroupIds,
     this.posixUserId,

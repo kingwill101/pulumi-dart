@@ -18,7 +18,7 @@ class GetAccountProjectArgs {
   /// [cognitiveAccountName] The name of the Cognitive Services Account in which the Project exists.
   /// [name] The name of the Cognitive Services Account Project.
   /// [resourceGroupName] The name of the Resource Group where the Cognitive Services Account exists.
-  GetAccountProjectArgs({
+  const GetAccountProjectArgs({
     required this.cognitiveAccountName,
     required this.name,
     required this.resourceGroupName,

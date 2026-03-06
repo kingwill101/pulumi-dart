@@ -25,7 +25,7 @@ class InstancePropertiesResponse {
   /// [provisioningState] Provisioning state of the resource.
   /// [singleSignOnProperties] Single sign-on properties
   /// [user] Details of the user.
-  InstancePropertiesResponse({
+  const InstancePropertiesResponse({
     required this.marketplace,
     this.partnerProperties,
     required this.provisioningState,

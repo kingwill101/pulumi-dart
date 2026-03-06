@@ -63,7 +63,7 @@ class WebAppInstanceFunctionSlotArgs {
   /// [slot] Name of the deployment slot.
   /// [testData] Test data used when testing via the Azure Portal.
   /// [testDataHref] Test data URI.
-  WebAppInstanceFunctionSlotArgs({
+  const WebAppInstanceFunctionSlotArgs({
     this.config,
     this.configHref,
     this.files,

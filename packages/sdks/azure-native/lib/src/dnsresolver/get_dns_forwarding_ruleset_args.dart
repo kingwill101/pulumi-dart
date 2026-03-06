@@ -15,7 +15,7 @@ class GetDnsForwardingRulesetArgs {
   /// Creates a new [GetDnsForwardingRulesetArgs].
   /// [dnsForwardingRulesetName] The name of the DNS forwarding ruleset.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDnsForwardingRulesetArgs({
+  const GetDnsForwardingRulesetArgs({
     required this.dnsForwardingRulesetName,
     required this.resourceGroupName,
   });

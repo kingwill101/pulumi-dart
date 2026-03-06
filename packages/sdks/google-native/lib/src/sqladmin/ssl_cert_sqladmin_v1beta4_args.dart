@@ -16,7 +16,7 @@ class SslCertSqladminV1beta4Args {
   /// [commonName] User supplied name. Must be a distinct name from the other certificates for this instance.
   /// [instance] Required.
   /// [project] Optional.
-  SslCertSqladminV1beta4Args({
+  const SslCertSqladminV1beta4Args({
     this.commonName,
     required this.instance,
     this.project,

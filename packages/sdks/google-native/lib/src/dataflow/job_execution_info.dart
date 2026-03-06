@@ -9,7 +9,7 @@ class JobExecutionInfo {
 
   /// Creates a new [JobExecutionInfo].
   /// [stages] A mapping from each stage to the information about that stage.
-  JobExecutionInfo({
+  const JobExecutionInfo({
     this.stages,
   });
 

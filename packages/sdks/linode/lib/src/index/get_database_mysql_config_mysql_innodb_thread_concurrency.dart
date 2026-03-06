@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency({
+  const GetDatabaseMysqlConfigMysqlInnodbThreadConcurrency({
     required this.description,
     required this.example,
     required this.maximum,

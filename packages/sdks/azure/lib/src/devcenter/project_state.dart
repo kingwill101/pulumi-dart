@@ -34,7 +34,7 @@ class ProjectState {
   /// [name] Specifies the name of this Dev Center Project. Changing this forces a new Dev Center Project to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Dev Center Project should exist. Changing this forces a new Dev Center Project to be created.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Project.
-  ProjectState({
+  const ProjectState({
     this.description,
     this.devCenterId,
     this.devCenterUri,

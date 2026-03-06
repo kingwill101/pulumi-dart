@@ -47,7 +47,7 @@ class GetRegionNetworkEndpointGroupResult {
   /// [selfLink] Optional.
   /// [serverlessDeployments] Required.
   /// [subnetwork] subnetwork to which all network endpoints in the RNEG belong.
-  GetRegionNetworkEndpointGroupResult({
+  const GetRegionNetworkEndpointGroupResult({
     required this.appEngines,
     required this.cloudFunctions,
     required this.cloudRuns,

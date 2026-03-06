@@ -10,7 +10,7 @@ class VMwareClusterNetworkConfigStaticIpConfig {
 
   /// Creates a new [VMwareClusterNetworkConfigStaticIpConfig].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
-  VMwareClusterNetworkConfigStaticIpConfig({
+  const VMwareClusterNetworkConfigStaticIpConfig({
     required this.ipBlocks,
   });
 

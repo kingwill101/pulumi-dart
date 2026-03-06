@@ -9,7 +9,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders].
   /// [returnHeaders] The list of response header rules for mirroring back-to-source return. See `return_header` below.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders({
     this.returnHeaders,
   });
 

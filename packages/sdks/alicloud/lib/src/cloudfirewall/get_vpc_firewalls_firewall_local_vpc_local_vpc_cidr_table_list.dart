@@ -12,7 +12,7 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList {
   /// Creates a new [GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList].
   /// [localRouteEntryLists] The list of route entries of the local VPC.
   /// [localRouteTableId] The ID of the route table of the local VPC.
-  GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList({
+  const GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableList({
     required this.localRouteEntryLists,
     required this.localRouteTableId,
   });

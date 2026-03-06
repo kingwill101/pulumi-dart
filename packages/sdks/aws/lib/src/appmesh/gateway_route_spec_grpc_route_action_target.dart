@@ -12,7 +12,7 @@ class GatewayRouteSpecGrpcRouteActionTarget {
   /// Creates a new [GatewayRouteSpecGrpcRouteActionTarget].
   /// [port] The port number that corresponds to the target for Virtual Service provider port. This is required when the provider (router or node) of the Virtual Service has multiple listeners.
   /// [virtualService] Virtual service gateway route target.
-  GatewayRouteSpecGrpcRouteActionTarget({
+  const GatewayRouteSpecGrpcRouteActionTarget({
     this.port,
     required this.virtualService,
   });

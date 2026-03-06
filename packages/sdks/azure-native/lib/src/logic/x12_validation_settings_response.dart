@@ -36,7 +36,7 @@ class X12ValidationSettingsResponse {
   /// [validateCharacterSet] The value indicating whether to validate character set in the message.
   /// [validateEDITypes] The value indicating whether to Whether to validate EDI types.
   /// [validateXSDTypes] The value indicating whether to Whether to validate XSD types.
-  X12ValidationSettingsResponse({
+  const X12ValidationSettingsResponse({
     required this.allowLeadingAndTrailingSpacesAndZeroes,
     required this.checkDuplicateGroupControlNumber,
     required this.checkDuplicateInterchangeControlNumber,

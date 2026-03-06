@@ -19,7 +19,7 @@ class GetVirtualNodeSpecListenerHealthCheck {
   /// [protocol] Required.
   /// [timeoutMillis] Required.
   /// [unhealthyThreshold] Required.
-  GetVirtualNodeSpecListenerHealthCheck({
+  const GetVirtualNodeSpecListenerHealthCheck({
     required this.healthyThreshold,
     required this.intervalMillis,
     required this.path,

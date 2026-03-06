@@ -14,7 +14,7 @@ class BudgetActionDefinitionSsmActionDefinition {
   /// [actionSubType] The action subType. Valid values are `STOP_EC2_INSTANCES` or `STOP_RDS_INSTANCES`.
   /// [instanceIds] The EC2 and RDS instance IDs.
   /// [region] The Region to run the SSM document.
-  BudgetActionDefinitionSsmActionDefinition({
+  const BudgetActionDefinitionSsmActionDefinition({
     required this.actionSubType,
     required this.instanceIds,
     required this.region,

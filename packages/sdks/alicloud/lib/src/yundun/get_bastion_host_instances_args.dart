@@ -17,7 +17,7 @@ class GetBastionHostInstancesArgs {
   /// [ids] Optional.
   /// [outputFile] Optional.
   /// [tags] Optional.
-  GetBastionHostInstancesArgs({
+  const GetBastionHostInstancesArgs({
     this.descriptionRegex,
     this.ids,
     this.outputFile,

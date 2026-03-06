@@ -15,7 +15,7 @@ class GetMetricAlertArgs {
   /// Creates a new [GetMetricAlertArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] The name of the rule.
-  GetMetricAlertArgs({
+  const GetMetricAlertArgs({
     required this.resourceGroupName,
     required this.ruleName,
   });

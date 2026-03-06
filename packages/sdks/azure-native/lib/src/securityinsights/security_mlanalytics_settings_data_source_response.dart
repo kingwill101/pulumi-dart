@@ -12,7 +12,7 @@ class SecurityMLAnalyticsSettingsDataSourceResponse {
   /// Creates a new [SecurityMLAnalyticsSettingsDataSourceResponse].
   /// [connectorId] The connector id that provides the following data types
   /// [dataTypes] The data types used by the security ml analytics settings
-  SecurityMLAnalyticsSettingsDataSourceResponse({
+  const SecurityMLAnalyticsSettingsDataSourceResponse({
     this.connectorId,
     this.dataTypes,
   });

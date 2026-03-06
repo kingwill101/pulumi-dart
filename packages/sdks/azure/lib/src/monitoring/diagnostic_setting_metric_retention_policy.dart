@@ -9,7 +9,7 @@ class DiagnosticSettingMetricRetentionPolicy {
   /// Creates a new [DiagnosticSettingMetricRetentionPolicy].
   /// [days] Optional.
   /// [enabled] Required.
-  DiagnosticSettingMetricRetentionPolicy({
+  const DiagnosticSettingMetricRetentionPolicy({
     this.days,
     required this.enabled,
   });

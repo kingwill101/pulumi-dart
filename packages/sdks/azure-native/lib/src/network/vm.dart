@@ -15,7 +15,7 @@ class VM {
   /// [id] Resource ID.
   /// [location] Resource location.
   /// [tags] Resource tags.
-  VM({
+  const VM({
     this.id,
     this.location,
     this.tags,

@@ -65,7 +65,7 @@ class DomainDevicesDiskIoTune {
   /// [writeIopsSec] Defines the maximum number of write I/O operations per second for the disk, influencing its performance.
   /// [writeIopsSecMax] Sets the upper limit for write IOPS on the disk, adjusting its output operations.
   /// [writeIopsSecMaxLength] Configures the effective duration for the maximum write IOPS limit.
-  DomainDevicesDiskIoTune({
+  const DomainDevicesDiskIoTune({
     this.groupName,
     this.readBytesSec,
     this.readBytesSecMax,

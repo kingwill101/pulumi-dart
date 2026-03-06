@@ -10,7 +10,7 @@ class OriginGroupFailoverCriteriaResponse {
 
   /// Creates a new [OriginGroupFailoverCriteriaResponse].
   /// [statusCodes] The status codes that, when returned from the primary origin, will trigger CloudFront to failover to the second origin. A complex data type for the status codes that you specify that, when returned by a primary origin, trigger CloudFront to failover to a second origin.
-  OriginGroupFailoverCriteriaResponse({
+  const OriginGroupFailoverCriteriaResponse({
     this.statusCodes,
   });
 

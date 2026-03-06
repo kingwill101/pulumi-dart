@@ -12,7 +12,7 @@ class LinkedResourceResponse {
   /// Creates a new [LinkedResourceResponse].
   /// [id] ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
   /// [uniqueName] A provided name which uniquely identifies the linked resource.
-  LinkedResourceResponse({
+  const LinkedResourceResponse({
     required this.id,
     required this.uniqueName,
   });

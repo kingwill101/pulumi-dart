@@ -57,7 +57,7 @@ class GetNetworksResult {
   /// [vpcOwnerId] Optional.
   /// [vpcs] A list of VPCs. Each element contains the following attributes:
   /// [vswitchId] Optional.
-  GetNetworksResult({
+  const GetNetworksResult({
     this.cidrBlock,
     this.dhcpOptionsSetId,
     this.dryRun,

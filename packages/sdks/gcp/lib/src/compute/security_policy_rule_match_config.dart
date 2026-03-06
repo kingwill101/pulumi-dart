@@ -8,7 +8,7 @@ class SecurityPolicyRuleMatchConfig {
 
   /// Creates a new [SecurityPolicyRuleMatchConfig].
   /// [srcIpRanges] CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
-  SecurityPolicyRuleMatchConfig({
+  const SecurityPolicyRuleMatchConfig({
     this.srcIpRanges,
   });
 

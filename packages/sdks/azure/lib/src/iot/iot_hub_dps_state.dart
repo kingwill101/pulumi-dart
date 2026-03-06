@@ -48,7 +48,7 @@ class IotHubDpsState {
   /// [serviceOperationsHostName] The service endpoint of the IoT Device Provisioning Service.
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  IotHubDpsState({
+  const IotHubDpsState({
     this.allocationPolicy,
     this.dataResidencyEnabled,
     this.deviceProvisioningHostName,

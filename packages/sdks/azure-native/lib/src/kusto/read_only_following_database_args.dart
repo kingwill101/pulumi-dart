@@ -31,7 +31,7 @@ class ReadOnlyFollowingDatabaseArgs {
   /// [kind] Kind of the database
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ReadOnlyFollowingDatabaseArgs({
+  const ReadOnlyFollowingDatabaseArgs({
     this.callerRole,
     required this.clusterName,
     this.databaseName,

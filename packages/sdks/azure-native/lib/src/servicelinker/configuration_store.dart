@@ -9,7 +9,7 @@ class ConfigurationStore {
 
   /// Creates a new [ConfigurationStore].
   /// [appConfigurationId] The app configuration id to store configuration
-  ConfigurationStore({
+  const ConfigurationStore({
     this.appConfigurationId,
   });
 

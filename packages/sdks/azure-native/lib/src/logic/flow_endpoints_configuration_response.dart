@@ -13,7 +13,7 @@ class FlowEndpointsConfigurationResponse {
   /// Creates a new [FlowEndpointsConfigurationResponse].
   /// [connector] The connector endpoints.
   /// [workflow] The workflow endpoints.
-  FlowEndpointsConfigurationResponse({
+  const FlowEndpointsConfigurationResponse({
     this.connector,
     this.workflow,
   });

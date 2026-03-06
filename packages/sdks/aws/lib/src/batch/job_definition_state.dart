@@ -68,7 +68,7 @@ class JobDefinitionState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeout] Timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
   /// [type] Type of job definition. Must be `container` or `multinode`.
-  JobDefinitionState({
+  const JobDefinitionState({
     this.arn,
     this.arnPrefix,
     this.containerProperties,

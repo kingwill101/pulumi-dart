@@ -13,7 +13,7 @@ class DataImportDetailsResponse {
   /// Creates a new [DataImportDetailsResponse].
   /// [accountDetails] Account details of the data to be transferred
   /// [logCollectionLevel] Level of the logs to be collected.
-  DataImportDetailsResponse({
+  const DataImportDetailsResponse({
     required this.accountDetails,
     this.logCollectionLevel,
   });

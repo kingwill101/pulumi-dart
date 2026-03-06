@@ -35,7 +35,7 @@ class InvitationArgs {
   /// [targetActiveDirectoryId] The target Azure AD Id. Can't be combined with email.
   /// [targetEmail] The email the invitation is directed to.
   /// [targetObjectId] The target user or application Id that invitation is being sent to.
-  InvitationArgs({
+  const InvitationArgs({
     required this.accountName,
     this.expirationDate,
     this.invitationName,

@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2PubSubExpressions {
   /// Creates a new [GooglePrivacyDlpV2PubSubExpressions].
   /// [conditions] Conditions to apply to the expression.
   /// [logicalOperator] The operator to apply to the collection of conditions.
-  GooglePrivacyDlpV2PubSubExpressions({
+  const GooglePrivacyDlpV2PubSubExpressions({
     this.conditions,
     this.logicalOperator,
   });

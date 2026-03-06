@@ -37,7 +37,7 @@ class DeploymentChannelProfile {
   /// [personaProperty] Represents the persona property of a channel.
   /// [profileId] The unique identifier of the channel profile.
   /// [webWidgetConfig] Message for configuration for the web widget.
-  DeploymentChannelProfile({
+  const DeploymentChannelProfile({
     this.channelType,
     this.disableBargeInControl,
     this.disableDtmf,

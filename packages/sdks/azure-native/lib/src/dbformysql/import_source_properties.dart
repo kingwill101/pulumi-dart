@@ -18,7 +18,7 @@ class ImportSourceProperties {
   /// [sasToken] Sas token for accessing source storage. Read and list permissions are required for sas token.
   /// [storageType] Storage type of import source.
   /// [storageUrl] Uri of the import source storage.
-  ImportSourceProperties({
+  const ImportSourceProperties({
     this.dataDirPath,
     this.sasToken,
     this.storageType,

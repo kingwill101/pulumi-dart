@@ -13,7 +13,7 @@ class GalleryImageVersionResponse {
   /// Creates a new [GalleryImageVersionResponse].
   /// [name] This is the version of the gallery image.
   /// [storageProfile] This is the storage profile of a Gallery Image Version.
-  GalleryImageVersionResponse({
+  const GalleryImageVersionResponse({
     this.name,
     required this.storageProfile,
   });

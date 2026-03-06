@@ -17,7 +17,7 @@ class GetSystemSecurityPoliciesPolicy {
   /// [id] The ID of the Security Policy.
   /// [securityPolicyId] The first ID of the resource.
   /// [tlsVersions] The TLS protocol versions are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
-  GetSystemSecurityPoliciesPolicy({
+  const GetSystemSecurityPoliciesPolicy({
     required this.ciphers,
     required this.id,
     required this.securityPolicyId,

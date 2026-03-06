@@ -11,7 +11,7 @@ class HadoopClusterComputeIsolation {
   /// Creates a new [HadoopClusterComputeIsolation].
   /// [computeIsolationEnabled] This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
   /// [hostSku] The name of the host SKU.
-  HadoopClusterComputeIsolation({
+  const HadoopClusterComputeIsolation({
     this.computeIsolationEnabled,
     this.hostSku,
   });

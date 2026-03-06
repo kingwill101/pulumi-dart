@@ -12,7 +12,7 @@ class Powershell72ModuleModuleLink {
   /// Creates a new [Powershell72ModuleModuleLink].
   /// [hash] A `hash` block as defined below.
   /// [uri] The URI of the module content (zip or nupkg).
-  Powershell72ModuleModuleLink({
+  const Powershell72ModuleModuleLink({
     this.hash,
     required this.uri,
   });

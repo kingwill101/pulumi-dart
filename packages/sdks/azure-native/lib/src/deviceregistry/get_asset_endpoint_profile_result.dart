@@ -57,7 +57,7 @@ class GetAssetEndpointProfileResult {
   /// [targetAddress] The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Globally unique, immutable, non-reusable id.
-  GetAssetEndpointProfileResult({
+  const GetAssetEndpointProfileResult({
     this.additionalConfiguration,
     this.authentication,
     required this.azureApiVersion,

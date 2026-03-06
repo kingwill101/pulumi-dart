@@ -20,7 +20,7 @@ class CassandraViewGetPropertiesResponseResource {
   /// [rid] A system generated property. A unique identifier.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
   /// [viewDefinition] View Definition of the Cosmos DB Cassandra view
-  CassandraViewGetPropertiesResponseResource({
+  const CassandraViewGetPropertiesResponseResource({
     required this.etag,
     required this.id,
     required this.rid,

@@ -41,7 +41,7 @@ class ScalingConfigurationDataDisk {
   /// [provisionedIops] IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
   /// [size] Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
   /// [snapshotId] Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
-  ScalingConfigurationDataDisk({
+  const ScalingConfigurationDataDisk({
     this.autoSnapshotPolicyId,
     this.category,
     this.deleteWithInstance,

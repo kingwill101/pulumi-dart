@@ -17,7 +17,7 @@ class BudgetActionDefinitionIamActionDefinition {
   /// [policyArn] The Amazon Resource Name (ARN) of the policy to be attached.
   /// [roles] A list of roles to be attached. There must be at least one role.
   /// [users] A list of users to be attached. There must be at least one user.
-  BudgetActionDefinitionIamActionDefinition({
+  const BudgetActionDefinitionIamActionDefinition({
     this.groups,
     required this.policyArn,
     this.roles,

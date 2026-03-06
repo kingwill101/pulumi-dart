@@ -20,7 +20,7 @@ class GetHoneypotProbesProbeHoneypotBindListBindPortList {
   /// [fixed] Whether the port is fixed.
   /// [startPort] Start port.
   /// [targetPort] Destination port.
-  GetHoneypotProbesProbeHoneypotBindListBindPortList({
+  const GetHoneypotProbesProbeHoneypotBindListBindPortList({
     required this.bindPort,
     required this.endPort,
     required this.fixed,

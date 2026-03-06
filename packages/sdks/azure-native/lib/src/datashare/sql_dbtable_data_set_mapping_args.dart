@@ -40,7 +40,7 @@ class SqlDBTableDataSetMappingArgs {
   /// [shareSubscriptionName] The name of the share subscription which will hold the data set sink.
   /// [sqlServerResourceId] Resource id of SQL server
   /// [tableName] SQL DB table name.
-  SqlDBTableDataSetMappingArgs({
+  const SqlDBTableDataSetMappingArgs({
     required this.accountName,
     required this.dataSetId,
     this.dataSetMappingName,

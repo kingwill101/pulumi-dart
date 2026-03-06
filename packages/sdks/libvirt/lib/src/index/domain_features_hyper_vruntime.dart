@@ -8,7 +8,7 @@ class DomainFeaturesHyperVRuntime {
 
   /// Creates a new [DomainFeaturesHyperVRuntime].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVRuntime({
+  const DomainFeaturesHyperVRuntime({
     this.state,
   });
 

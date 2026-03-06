@@ -13,7 +13,7 @@ class ProductResponseContaineranalysisV1alpha1 {
   /// Creates a new [ProductResponseContaineranalysisV1alpha1].
   /// [identifierHelper] Helps in identifying the underlying product.
   /// [name] Name of the product.
-  ProductResponseContaineranalysisV1alpha1({
+  const ProductResponseContaineranalysisV1alpha1({
     required this.identifierHelper,
     required this.name,
   });

@@ -12,7 +12,7 @@ class GetManagedDisksArgs {
 
   /// Creates a new [GetManagedDisksArgs].
   /// [resourceGroupName] Specifies the name of the Resource Group where this Managed Disk exists.
-  GetManagedDisksArgs({
+  const GetManagedDisksArgs({
     required this.resourceGroupName,
   });
 

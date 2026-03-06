@@ -47,7 +47,7 @@ class HdfsReadSettings {
   /// [type] The read setting type.
   /// [wildcardFileName] HDFS wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] HDFS wildcardFolderPath. Type: string (or Expression with resultType string).
-  HdfsReadSettings({
+  const HdfsReadSettings({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.distcpSettings,

@@ -8,7 +8,7 @@ class InboundSamlConfigIdpConfigIdpCertificate {
 
   /// Creates a new [InboundSamlConfigIdpConfigIdpCertificate].
   /// [x509Certificate] The IdP's x509 certificate.
-  InboundSamlConfigIdpConfigIdpCertificate({
+  const InboundSamlConfigIdpConfigIdpCertificate({
     this.x509Certificate,
   });
 

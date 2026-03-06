@@ -10,7 +10,7 @@ class GoogleCloudRetailV2SearchRequestPersonalizationSpec {
 
   /// Creates a new [GoogleCloudRetailV2SearchRequestPersonalizationSpec].
   /// [mode] Defaults to Mode.AUTO.
-  GoogleCloudRetailV2SearchRequestPersonalizationSpec({
+  const GoogleCloudRetailV2SearchRequestPersonalizationSpec({
     this.mode,
   });
 

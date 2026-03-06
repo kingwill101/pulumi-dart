@@ -13,7 +13,7 @@ class SecurityServicesTypeListResponse {
   /// Creates a new [SecurityServicesTypeListResponse].
   /// [entry] list
   /// [type] security services type
-  SecurityServicesTypeListResponse({
+  const SecurityServicesTypeListResponse({
     required this.entry,
     this.type,
   });

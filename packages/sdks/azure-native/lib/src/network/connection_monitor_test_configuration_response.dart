@@ -34,7 +34,7 @@ class ConnectionMonitorTestConfigurationResponse {
   /// [successThreshold] The threshold for declaring a test successful.
   /// [tcpConfiguration] The parameters used to perform test evaluation over TCP.
   /// [testFrequencySec] The frequency of test evaluation, in seconds.
-  ConnectionMonitorTestConfigurationResponse({
+  const ConnectionMonitorTestConfigurationResponse({
     this.httpConfiguration,
     this.icmpConfiguration,
     required this.name,

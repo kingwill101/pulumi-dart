@@ -56,7 +56,7 @@ class GetCertificatesCertificate {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [sanDnsnames] The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
   /// [scope] The scope of the certificate.
-  GetCertificatesCertificate({
+  const GetCertificatesCertificate({
     required this.description,
     required this.effectiveLabels,
     required this.labels,

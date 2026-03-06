@@ -12,7 +12,7 @@ class FileUploadLimitArgs {
 
   /// Creates a new [FileUploadLimitArgs].
   /// [limit] File Upload Threshold.
-  FileUploadLimitArgs({
+  const FileUploadLimitArgs({
     required this.limit,
   });
 

@@ -12,7 +12,7 @@ class BucketServerProperties {
   /// Creates a new [BucketServerProperties].
   /// [certificateObject] A base64-encoded PEM file, which includes both the bucket server's certificate and private key. It is used to authenticate the user and allows access to volume data in a read-only manner.
   /// [fqdn] The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
-  BucketServerProperties({
+  const BucketServerProperties({
     this.certificateObject,
     this.fqdn,
   });

@@ -8,7 +8,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind {
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind].
   /// [name] The name of the Datastore kind.
-  PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind({
+  const PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind({
     required this.name,
   });
 

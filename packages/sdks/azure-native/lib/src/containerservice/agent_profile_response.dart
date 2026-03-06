@@ -12,7 +12,7 @@ class AgentProfileResponse {
   /// Creates a new [AgentProfileResponse].
   /// [subnetId] The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used.
   /// [vmSize] The virtual machine size of the Fleet hub.
-  AgentProfileResponse({
+  const AgentProfileResponse({
     this.subnetId,
     this.vmSize,
   });

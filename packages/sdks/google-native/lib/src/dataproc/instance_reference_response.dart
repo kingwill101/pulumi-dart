@@ -18,7 +18,7 @@ class InstanceReferenceResponse {
   /// [instanceName] The user-friendly name of the Compute Engine instance.
   /// [publicEciesKey] The public ECIES key used for sharing data with this instance.
   /// [publicKey] The public RSA key used for sharing data with this instance.
-  InstanceReferenceResponse({
+  const InstanceReferenceResponse({
     required this.instanceId,
     required this.instanceName,
     required this.publicEciesKey,

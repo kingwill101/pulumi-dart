@@ -35,7 +35,7 @@ class GetMachineLearningDatastoreResult {
   /// [sku] The sku of the workspace.
   /// [tags] Contains resource tags defined as key/value pairs.
   /// [type] Specifies the type of the resource.
-  GetMachineLearningDatastoreResult({
+  const GetMachineLearningDatastoreResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

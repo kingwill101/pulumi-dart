@@ -52,7 +52,7 @@ class GetContactProfileResult {
   /// [tags] Resource tags.
   /// [thirdPartyConfigurations] Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetContactProfileResult({
+  const GetContactProfileResult({
     this.autoTrackingConfiguration,
     required this.azureApiVersion,
     this.eventHubUri,

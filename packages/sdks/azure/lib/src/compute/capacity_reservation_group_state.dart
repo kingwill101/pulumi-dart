@@ -21,7 +21,7 @@ class CapacityReservationGroupState {
   /// [resourceGroupName] Specifies the name of the resource group the Capacity Reservation Group is located in. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zones] Specifies a list of Availability Zones for this Capacity Reservation Group. Changing this forces a new resource to be created.
-  CapacityReservationGroupState({
+  const CapacityReservationGroupState({
     this.location,
     this.name,
     this.resourceGroupName,

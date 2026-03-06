@@ -29,7 +29,7 @@ class ServiceArgs {
   /// [serviceName] The name of the Service resource.
   /// [sku] Sku of the Service resource
   /// [tags] Tags of the service which is a list of key value pairs that describe the resource.
-  ServiceArgs({
+  const ServiceArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

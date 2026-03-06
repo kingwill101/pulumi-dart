@@ -9,7 +9,7 @@ class SnapshotOptions {
 
   /// Creates a new [SnapshotOptions].
   /// [automatedSnapshotStartHour] &lt;p&gt;The time, in UTC format, when OpenSearch Service takes a daily automated snapshot of the specified domain. Default is &lt;code&gt;0&lt;/code&gt; hours.&lt;/p&gt;
-  SnapshotOptions({
+  const SnapshotOptions({
     this.automatedSnapshotStartHour,
   });
 

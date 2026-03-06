@@ -14,7 +14,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3 {
   /// [bucket] Name of the Amazon S3 bucket.
   /// [prefix] Key of the object containing the ZIP file of the source code for the agent runtime in the Amazon S3 bucket.
   /// [versionId] Version ID of the Amazon S3 object. If not specified, the latest version of the object is used.
-  AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3({
+  const AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3({
     required this.bucket,
     required this.prefix,
     this.versionId,

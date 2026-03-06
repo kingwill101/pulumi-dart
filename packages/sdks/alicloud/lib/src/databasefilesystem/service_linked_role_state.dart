@@ -12,7 +12,7 @@ class ServiceLinkedRoleState {
   /// Creates a new [ServiceLinkedRoleState].
   /// [productName] The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
   /// [status] The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
-  ServiceLinkedRoleState({
+  const ServiceLinkedRoleState({
     this.productName,
     this.status,
   });

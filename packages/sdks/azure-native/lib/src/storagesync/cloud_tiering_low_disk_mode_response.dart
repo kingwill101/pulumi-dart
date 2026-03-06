@@ -12,7 +12,7 @@ class CloudTieringLowDiskModeResponse {
   /// Creates a new [CloudTieringLowDiskModeResponse].
   /// [lastUpdatedTimestamp] Last updated timestamp
   /// [state] Low disk mode state
-  CloudTieringLowDiskModeResponse({
+  const CloudTieringLowDiskModeResponse({
     required this.lastUpdatedTimestamp,
     required this.state,
   });

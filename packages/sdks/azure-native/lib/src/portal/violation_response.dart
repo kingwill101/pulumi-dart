@@ -15,7 +15,7 @@ class ViolationResponse {
   /// [errorMessage] Error message.
   /// [id] Id of the item that violates tenant configuration.
   /// [userId] Id of the user who owns violated item.
-  ViolationResponse({
+  const ViolationResponse({
     required this.errorMessage,
     required this.id,
     required this.userId,

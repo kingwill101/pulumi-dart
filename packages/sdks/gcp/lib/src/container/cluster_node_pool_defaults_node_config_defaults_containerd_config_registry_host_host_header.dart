@@ -11,7 +11,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostH
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader].
   /// [key] Configures the header key.
   /// [values] Configures the header value.
-  ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader({
+  const ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader({
     required this.key,
     required this.values,
   });

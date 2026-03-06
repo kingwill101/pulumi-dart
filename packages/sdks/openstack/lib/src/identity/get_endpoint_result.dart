@@ -32,7 +32,7 @@ class GetEndpointResult {
   /// [serviceName] See Argument Reference above.
   /// [serviceType] See Argument Reference above.
   /// [url] The endpoint URL.
-  GetEndpointResult({
+  const GetEndpointResult({
     this.endpointRegion,
     required this.id,
     this.interface,

@@ -19,7 +19,7 @@ class GetRuleResult {
   /// [name] Required.
   /// [stage] indicates the stage of a role in the launch lifecycle, such as `GA`, `BETA` or `ALPHA`.
   /// [title] is a friendly title for the role, such as "Role Viewer"
-  GetRuleResult({
+  const GetRuleResult({
     required this.id,
     required this.includedPermissions,
     required this.name,

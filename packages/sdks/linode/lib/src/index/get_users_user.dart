@@ -76,7 +76,7 @@ class GetUsersUser {
   /// [verifiedPhoneNumber] The phone number verified for this User Profile with the Phone Number Verify command. null if this User Profile has no verified phone number.
   /// [volumeGrants] A set containing all of the user's active grants.
   /// [vpcGrants] A set containing all of the user's active grants.
-  GetUsersUser({
+  const GetUsersUser({
     required this.databaseGrants,
     required this.domainGrants,
     required this.email,

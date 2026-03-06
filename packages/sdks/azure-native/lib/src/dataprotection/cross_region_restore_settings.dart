@@ -8,7 +8,7 @@ class CrossRegionRestoreSettings {
 
   /// Creates a new [CrossRegionRestoreSettings].
   /// [state] CrossRegionRestore state
-  CrossRegionRestoreSettings({
+  const CrossRegionRestoreSettings({
     this.state,
   });
 

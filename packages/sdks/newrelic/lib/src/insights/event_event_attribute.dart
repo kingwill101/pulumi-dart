@@ -14,7 +14,7 @@ class EventEventAttribute {
   /// [key] The name of the attribute.
   /// [type] Specify the type for the attribute value. This is useful when passing integer or float values to Insights. Allowed values are string, int, or float. Defaults to string.
   /// [value] The value of the attribute.
-  EventEventAttribute({
+  const EventEventAttribute({
     required this.key,
     this.type,
     required this.value,

@@ -12,7 +12,7 @@ class ValidationOptionsResponse {
   /// Creates a new [ValidationOptionsResponse].
   /// [schemaValidation] Customize how deployment manager will validate the resource against schema errors.
   /// [undeclaredProperties] Specify what to do with extra properties when executing a request.
-  ValidationOptionsResponse({
+  const ValidationOptionsResponse({
     required this.schemaValidation,
     required this.undeclaredProperties,
   });

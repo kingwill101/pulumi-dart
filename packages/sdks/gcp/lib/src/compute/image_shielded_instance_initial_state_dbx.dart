@@ -12,7 +12,7 @@ class ImageShieldedInstanceInitialStateDbx {
   /// Creates a new [ImageShieldedInstanceInitialStateDbx].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  ImageShieldedInstanceInitialStateDbx({
+  const ImageShieldedInstanceInitialStateDbx({
     required this.content,
     this.fileType,
   });

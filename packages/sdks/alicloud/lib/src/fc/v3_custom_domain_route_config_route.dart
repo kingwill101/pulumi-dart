@@ -21,7 +21,7 @@ class V3CustomDomainRouteConfigRoute {
   /// [path] Route matching rule
   /// [qualifier] Version or Alias
   /// [rewriteConfig] Override Configuration See `rewrite_config` below.
-  V3CustomDomainRouteConfigRoute({
+  const V3CustomDomainRouteConfigRoute({
     this.functionName,
     this.methods,
     this.path,

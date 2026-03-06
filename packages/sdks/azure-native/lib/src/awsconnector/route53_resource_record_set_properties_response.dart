@@ -34,7 +34,7 @@ class Route53ResourceRecordSetPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Route53ResourceRecordSetPropertiesResponse({
+  const Route53ResourceRecordSetPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

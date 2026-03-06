@@ -22,7 +22,7 @@ class ManagedClusterWindowsProfileResponse {
   /// [enableCSIProxy] Whether to enable CSI proxy. For more details on CSI proxy, see the [CSI proxy GitHub repo](https://github.com/kubernetes-csi/csi-proxy).
   /// [gmsaProfile] The Windows gMSA Profile in the Managed Cluster.
   /// [licenseType] The license type to use for Windows VMs. See [Azure Hybrid User Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) for more details.
-  ManagedClusterWindowsProfileResponse({
+  const ManagedClusterWindowsProfileResponse({
     this.adminPassword,
     required this.adminUsername,
     this.enableCSIProxy,

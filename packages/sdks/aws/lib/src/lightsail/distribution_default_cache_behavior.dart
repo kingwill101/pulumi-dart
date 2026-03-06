@@ -8,7 +8,7 @@ class DistributionDefaultCacheBehavior {
 
   /// Creates a new [DistributionDefaultCacheBehavior].
   /// [behavior] Cache behavior of the distribution. Valid values: `cache`, `dont-cache`.
-  DistributionDefaultCacheBehavior({
+  const DistributionDefaultCacheBehavior({
     required this.behavior,
   });
 

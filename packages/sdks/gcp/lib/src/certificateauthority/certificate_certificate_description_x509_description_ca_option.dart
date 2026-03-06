@@ -12,7 +12,7 @@ class CertificateCertificateDescriptionX509DescriptionCaOption {
   /// Creates a new [CertificateCertificateDescriptionX509DescriptionCaOption].
   /// [isCa] When true, the "CA" in Basic Constraints extension will be set to true.
   /// [maxIssuerPathLength] Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
-  CertificateCertificateDescriptionX509DescriptionCaOption({
+  const CertificateCertificateDescriptionX509DescriptionCaOption({
     this.isCa,
     this.maxIssuerPathLength,
   });

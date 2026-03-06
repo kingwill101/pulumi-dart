@@ -43,7 +43,7 @@ class Datapolicyv2DataPolicyIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  Datapolicyv2DataPolicyIamBindingArgs({
+  const Datapolicyv2DataPolicyIamBindingArgs({
     this.condition,
     required this.dataPolicyId,
     this.location,

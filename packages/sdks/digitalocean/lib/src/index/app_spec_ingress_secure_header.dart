@@ -10,7 +10,7 @@ class AppSpecIngressSecureHeader {
   /// Creates a new [AppSpecIngressSecureHeader].
   /// [key] The name of the environment variable.
   /// [value] Optional.
-  AppSpecIngressSecureHeader({
+  const AppSpecIngressSecureHeader({
     this.key,
     this.value,
   });

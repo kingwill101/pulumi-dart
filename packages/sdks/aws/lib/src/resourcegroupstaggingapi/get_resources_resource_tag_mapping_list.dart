@@ -15,7 +15,7 @@ class GetResourcesResourceTagMappingList {
   /// [complianceDetails] List of objects with information that shows whether a resource is compliant with the effective tag policy, including details on any noncompliant tag keys.
   /// [resourceArn] ARN of the resource.
   /// [tags] Map of tags assigned to the resource.
-  GetResourcesResourceTagMappingList({
+  const GetResourcesResourceTagMappingList({
     required this.complianceDetails,
     required this.resourceArn,
     required this.tags,

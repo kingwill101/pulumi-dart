@@ -9,7 +9,7 @@ class GetRoutersRouterMd5AuthenticationKey {
   /// Creates a new [GetRoutersRouterMd5AuthenticationKey].
   /// [key] Required.
   /// [name] Required.
-  GetRoutersRouterMd5AuthenticationKey({
+  const GetRoutersRouterMd5AuthenticationKey({
     required this.key,
     required this.name,
   });

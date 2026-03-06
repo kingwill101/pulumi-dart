@@ -12,7 +12,7 @@ class ElasticFileSystemTag {
   /// Creates a new [ElasticFileSystemTag].
   /// [key] The tag key (String). The key can't start with ``aws:``.
   /// [value] The value of the tag key.
-  ElasticFileSystemTag({
+  const ElasticFileSystemTag({
     this.key,
     this.value,
   });

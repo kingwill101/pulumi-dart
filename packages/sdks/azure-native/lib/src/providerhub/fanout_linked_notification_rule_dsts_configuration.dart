@@ -12,7 +12,7 @@ class FanoutLinkedNotificationRuleDstsConfiguration {
   /// Creates a new [FanoutLinkedNotificationRuleDstsConfiguration].
   /// [serviceDnsName] This is a URI property.
   /// [serviceName] The service name.
-  FanoutLinkedNotificationRuleDstsConfiguration({
+  const FanoutLinkedNotificationRuleDstsConfiguration({
     this.serviceDnsName,
     required this.serviceName,
   });

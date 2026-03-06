@@ -39,7 +39,7 @@ class PolicyArgs {
   /// [serviceNamespace] AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
   /// [stepScalingPolicyConfiguration] Step scaling policy configuration, requires `policy_type = "StepScaling"` (default). See supported fields below.
   /// [targetTrackingScalingPolicyConfiguration] Target tracking policy configuration, requires `policy_type = "TargetTrackingScaling"`. See supported fields below.
-  PolicyArgs({
+  const PolicyArgs({
     this.name,
     this.policyType,
     this.predictiveScalingPolicyConfiguration,

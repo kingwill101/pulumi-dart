@@ -7,7 +7,7 @@ class GetKubernetesClusterRdmaSharedDevicePlugin {
 
   /// Creates a new [GetKubernetesClusterRdmaSharedDevicePlugin].
   /// [enabled] Required.
-  GetKubernetesClusterRdmaSharedDevicePlugin({
+  const GetKubernetesClusterRdmaSharedDevicePlugin({
     required this.enabled,
   });
 

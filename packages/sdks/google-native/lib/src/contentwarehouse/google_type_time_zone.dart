@@ -12,7 +12,7 @@ class GoogleTypeTimeZone {
   /// Creates a new [GoogleTypeTimeZone].
   /// [id] IANA Time Zone Database time zone, e.g. "America/New_York".
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  GoogleTypeTimeZone({
+  const GoogleTypeTimeZone({
     this.id,
     this.version,
   });

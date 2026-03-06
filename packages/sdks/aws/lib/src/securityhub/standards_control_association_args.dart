@@ -26,7 +26,7 @@ class StandardsControlAssociationArgs {
   /// [securityControlId] The unique identifier for the security control whose enablement status you want to update.
   /// [standardsArn] The Amazon Resource Name (ARN) of the standard in which you want to update the control's enablement status.
   /// [updatedReason] The reason for updating the control's enablement status in the standard. Required when `association_status` is `DISABLED`.
-  StandardsControlAssociationArgs({
+  const StandardsControlAssociationArgs({
     required this.associationStatus,
     this.region,
     required this.securityControlId,

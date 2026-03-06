@@ -18,7 +18,7 @@ class ConnectToTargetSqlDbTaskOutputResponse {
   /// [id] Result identifier
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Version of the target server
-  ConnectToTargetSqlDbTaskOutputResponse({
+  const ConnectToTargetSqlDbTaskOutputResponse({
     required this.databases,
     required this.id,
     required this.targetServerBrandVersion,

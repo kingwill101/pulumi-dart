@@ -9,7 +9,7 @@ class CertificateFingerprintResponse {
 
   /// Creates a new [CertificateFingerprintResponse].
   /// [sha256Hash] The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
-  CertificateFingerprintResponse({
+  const CertificateFingerprintResponse({
     required this.sha256Hash,
   });
 

@@ -12,7 +12,7 @@ class TracesConfiguration {
   /// Creates a new [TracesConfiguration].
   /// [destinations] Open telemetry traces destinations
   /// [includeDapr] Boolean indicating if including dapr traces
-  TracesConfiguration({
+  const TracesConfiguration({
     this.destinations,
     this.includeDapr,
   });

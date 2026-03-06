@@ -11,7 +11,7 @@ class GetDataCollectionRuleStreamDeclarationColumn {
   /// Creates a new [GetDataCollectionRuleStreamDeclarationColumn].
   /// [name] Specifies the name of the Data Collection Rule.
   /// [type] cSpecifies the type of Managed Service Identity that should be configured on this Data Collection Rule. Possible values are `SystemAssigned` and `UserAssigned`.
-  GetDataCollectionRuleStreamDeclarationColumn({
+  const GetDataCollectionRuleStreamDeclarationColumn({
     required this.name,
     required this.type,
   });

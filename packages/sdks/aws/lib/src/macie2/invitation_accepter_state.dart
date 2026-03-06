@@ -15,7 +15,7 @@ class InvitationAccepterState {
   /// [administratorAccountId] The AWS account ID for the account that sent the invitation.
   /// [invitationId] The unique identifier for the invitation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InvitationAccepterState({
+  const InvitationAccepterState({
     this.administratorAccountId,
     this.invitationId,
     this.region,

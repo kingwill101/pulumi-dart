@@ -21,7 +21,7 @@ class GetDatabaseEnginesResult {
   /// [latest] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetDatabaseEnginesResult({
+  const GetDatabaseEnginesResult({
     required this.engines,
     this.filters,
     required this.id,

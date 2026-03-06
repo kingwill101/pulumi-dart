@@ -27,7 +27,7 @@ class PartnerTopicInfoResponse {
   /// [name] Name of the partner topic associated with the channel.
   /// [resourceGroupName] Azure Resource Group of the subscriber. The partner topic associated with the channel will be
   /// [source] The source information is provided by the publisher to determine the scope or context from which the events
-  PartnerTopicInfoResponse({
+  const PartnerTopicInfoResponse({
     this.azureSubscriptionId,
     this.eventTypeInfo,
     this.name,

@@ -8,7 +8,7 @@ class GetSqlRoleDefinitionPermission {
 
   /// Creates a new [GetSqlRoleDefinitionPermission].
   /// [dataActions] A list of data actions that are allowed for the Cosmos DB SQL Role Definition.
-  GetSqlRoleDefinitionPermission({
+  const GetSqlRoleDefinitionPermission({
     required this.dataActions,
   });
 

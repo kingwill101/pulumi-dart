@@ -18,7 +18,7 @@ class GoogleCloudChannelV1ConditionalOverride {
   /// [adjustment] Information about the applied override's adjustment.
   /// [rebillingBasis] The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
   /// [repricingCondition] Specifies the condition which, if met, will apply the override.
-  GoogleCloudChannelV1ConditionalOverride({
+  const GoogleCloudChannelV1ConditionalOverride({
     required this.adjustment,
     required this.rebillingBasis,
     required this.repricingCondition,

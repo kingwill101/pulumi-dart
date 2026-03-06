@@ -30,7 +30,7 @@ class RolloutSequenceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rolloutSequenceId] The user-provided identifier of the RolloutSequence.
   /// [stages] Ordered list of stages that constitute this Rollout Sequence.
-  RolloutSequenceArgs({
+  const RolloutSequenceArgs({
     this.displayName,
     this.labels,
     this.project,

@@ -17,7 +17,7 @@ class GetStandardSiteConfigScmIpRestrictionHeaders {
   /// [xFdHealthProbe] A list to allow the Azure FrontDoor health probe header.
   /// [xForwardedFors] A list of allowed 'X-Forwarded-For' IPs in CIDR notation.
   /// [xForwardedHosts] A list of allowed 'X-Forwarded-Host' domains.
-  GetStandardSiteConfigScmIpRestrictionHeaders({
+  const GetStandardSiteConfigScmIpRestrictionHeaders({
     required this.xAzureFdids,
     required this.xFdHealthProbe,
     required this.xForwardedFors,

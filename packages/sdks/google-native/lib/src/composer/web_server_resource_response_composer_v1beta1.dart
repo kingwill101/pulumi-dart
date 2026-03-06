@@ -15,7 +15,7 @@ class WebServerResourceResponseComposerV1beta1 {
   /// [cpu] Optional. CPU request and limit for Airflow web server.
   /// [memoryGb] Optional. Memory (GB) request and limit for Airflow web server.
   /// [storageGb] Optional. Storage (GB) request and limit for Airflow web server.
-  WebServerResourceResponseComposerV1beta1({
+  const WebServerResourceResponseComposerV1beta1({
     required this.cpu,
     required this.memoryGb,
     required this.storageGb,

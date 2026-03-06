@@ -137,145 +137,145 @@ import 'package:pulumi_azure/waf.dart' as module_waf;
 import 'package:pulumi_azure/webpubsub.dart' as module_webpubsub;
 import 'package:pulumi_azure/workloadssap.dart' as module_workloadssap;
 
-final aadb2c = _Aadb2cModuleNamespace();
-final advisor = _AdvisorModuleNamespace();
-final aifoundry = _AifoundryModuleNamespace();
-final analysisservices = _AnalysisservicesModuleNamespace();
-final apimanagement = _ApimanagementModuleNamespace();
-final appconfiguration = _AppconfigurationModuleNamespace();
-final appinsights = _AppinsightsModuleNamespace();
-final appplatform = _AppplatformModuleNamespace();
-final appservice = _AppserviceModuleNamespace();
-final arc = _ArcModuleNamespace();
-final arckubernetes = _ArckubernetesModuleNamespace();
-final arcmachine = _ArcmachineModuleNamespace();
-final armmsi = _ArmmsiModuleNamespace();
-final attestation = _AttestationModuleNamespace();
-final authorization = _AuthorizationModuleNamespace();
-final automanage = _AutomanageModuleNamespace();
-final automation = _AutomationModuleNamespace();
-final avs = _AvsModuleNamespace();
-final backup = _BackupModuleNamespace();
-final batch = _BatchModuleNamespace();
-final billing = _BillingModuleNamespace();
-final blueprint = _BlueprintModuleNamespace();
-final bot = _BotModuleNamespace();
-final cdn = _CdnModuleNamespace();
-final chaosstudio = _ChaosstudioModuleNamespace();
-final cognitive = _CognitiveModuleNamespace();
-final communication = _CommunicationModuleNamespace();
-final compute = _ComputeModuleNamespace();
-final confidentialledger = _ConfidentialledgerModuleNamespace();
-final connections = _ConnectionsModuleNamespace();
-final consumption = _ConsumptionModuleNamespace();
-final containerapp = _ContainerappModuleNamespace();
-final containerservice = _ContainerserviceModuleNamespace();
-final core = _CoreModuleNamespace();
-final cosmosdb = _CosmosdbModuleNamespace();
-final costmanagement = _CostmanagementModuleNamespace();
-final customip = _CustomipModuleNamespace();
-final dashboard = _DashboardModuleNamespace();
-final databasemigration = _DatabasemigrationModuleNamespace();
-final databoxedge = _DataboxedgeModuleNamespace();
-final databricks = _DatabricksModuleNamespace();
-final datadog = _DatadogModuleNamespace();
-final datafactory = _DatafactoryModuleNamespace();
-final dataprotection = _DataprotectionModuleNamespace();
-final datashare = _DatashareModuleNamespace();
-final desktopvirtualization = _DesktopvirtualizationModuleNamespace();
-final devcenter = _DevcenterModuleNamespace();
-final devtest = _DevtestModuleNamespace();
-final digitaltwins = _DigitaltwinsModuleNamespace();
-final dns = _DnsModuleNamespace();
-final domainservices = _DomainservicesModuleNamespace();
-final dynatrace = _DynatraceModuleNamespace();
-final elasticcloud = _ElasticcloudModuleNamespace();
-final elasticsan = _ElasticsanModuleNamespace();
-final eventgrid = _EventgridModuleNamespace();
-final eventhub = _EventhubModuleNamespace();
-final expressroute = _ExpressrouteModuleNamespace();
-final extendedlocation = _ExtendedlocationModuleNamespace();
-final fabric = _FabricModuleNamespace();
-final fluidrelay = _FluidrelayModuleNamespace();
-final frontdoor = _FrontdoorModuleNamespace();
-final graph = _GraphModuleNamespace();
-final hdinsight = _HdinsightModuleNamespace();
-final healthcare = _HealthcareModuleNamespace();
-final hpc = _HpcModuleNamespace();
-final hsm = _HsmModuleNamespace();
-final index = _IndexModuleNamespace();
-final iot = _IotModuleNamespace();
-final iotcentral = _IotcentralModuleNamespace();
-final keyvault = _KeyvaultModuleNamespace();
-final kusto = _KustoModuleNamespace();
-final lb = _LbModuleNamespace();
-final lighthouse = _LighthouseModuleNamespace();
-final loadtest = _LoadtestModuleNamespace();
-final loganalytics = _LoganalyticsModuleNamespace();
-final logicapps = _LogicappsModuleNamespace();
-final machinelearning = _MachinelearningModuleNamespace();
-final maintenance = _MaintenanceModuleNamespace();
-final managedapplication = _ManagedapplicationModuleNamespace();
-final managedlustre = _ManagedlustreModuleNamespace();
-final managedredis = _ManagedredisModuleNamespace();
-final management = _ManagementModuleNamespace();
-final managementgroups = _ManagementgroupsModuleNamespace();
-final managementresource = _ManagementresourceModuleNamespace();
-final maps = _MapsModuleNamespace();
-final marketplace = _MarketplaceModuleNamespace();
-final mongocluster = _MongoclusterModuleNamespace();
-final monitoring = _MonitoringModuleNamespace();
-final msi = _MsiModuleNamespace();
-final mssql = _MssqlModuleNamespace();
-final mysql = _MysqlModuleNamespace();
-final netapp = _NetappModuleNamespace();
-final network = _NetworkModuleNamespace();
-final networkfunction = _NetworkfunctionModuleNamespace();
-final newrelic = _NewrelicModuleNamespace();
-final nginx = _NginxModuleNamespace();
-final notificationhub = _NotificationhubModuleNamespace();
-final operationalinsights = _OperationalinsightsModuleNamespace();
-final oracle = _OracleModuleNamespace();
-final orbital = _OrbitalModuleNamespace();
-final paloalto = _PaloaltoModuleNamespace();
-final pim = _PimModuleNamespace();
-final policy = _PolicyModuleNamespace();
-final portal = _PortalModuleNamespace();
-final postgresql = _PostgresqlModuleNamespace();
-final powerbi = _PowerbiModuleNamespace();
-final privatedns = _PrivatednsModuleNamespace();
-final privatelink = _PrivatelinkModuleNamespace();
-final providers = _ProvidersModuleNamespace();
-final proximity = _ProximityModuleNamespace();
-final purview = _PurviewModuleNamespace();
-final qumulo = _QumuloModuleNamespace();
-final recoveryservices = _RecoveryservicesModuleNamespace();
-final redhatopenshift = _RedhatopenshiftModuleNamespace();
-final redis = _RedisModuleNamespace();
-final relay = _RelayModuleNamespace();
-final role = _RoleModuleNamespace();
-final search = _SearchModuleNamespace();
-final securitycenter = _SecuritycenterModuleNamespace();
-final sentinel = _SentinelModuleNamespace();
-final servicebus = _ServicebusModuleNamespace();
-final servicefabric = _ServicefabricModuleNamespace();
-final signalr = _SignalrModuleNamespace();
-final siterecovery = _SiterecoveryModuleNamespace();
-final stack = _StackModuleNamespace();
-final storage = _StorageModuleNamespace();
-final streamanalytics = _StreamanalyticsModuleNamespace();
-final synapse = _SynapseModuleNamespace();
-final systemcenter = _SystemcenterModuleNamespace();
-final trafficmanager = _TrafficmanagerModuleNamespace();
-final trustedsigning = _TrustedsigningModuleNamespace();
-final videoindexer = _VideoindexerModuleNamespace();
-final voice = _VoiceModuleNamespace();
-final waf = _WafModuleNamespace();
-final webpubsub = _WebpubsubModuleNamespace();
-final workloadssap = _WorkloadssapModuleNamespace();
+final aadb2c = const _Aadb2cModuleNamespace();
+final advisor = const _AdvisorModuleNamespace();
+final aifoundry = const _AifoundryModuleNamespace();
+final analysisservices = const _AnalysisservicesModuleNamespace();
+final apimanagement = const _ApimanagementModuleNamespace();
+final appconfiguration = const _AppconfigurationModuleNamespace();
+final appinsights = const _AppinsightsModuleNamespace();
+final appplatform = const _AppplatformModuleNamespace();
+final appservice = const _AppserviceModuleNamespace();
+final arc = const _ArcModuleNamespace();
+final arckubernetes = const _ArckubernetesModuleNamespace();
+final arcmachine = const _ArcmachineModuleNamespace();
+final armmsi = const _ArmmsiModuleNamespace();
+final attestation = const _AttestationModuleNamespace();
+final authorization = const _AuthorizationModuleNamespace();
+final automanage = const _AutomanageModuleNamespace();
+final automation = const _AutomationModuleNamespace();
+final avs = const _AvsModuleNamespace();
+final backup = const _BackupModuleNamespace();
+final batch = const _BatchModuleNamespace();
+final billing = const _BillingModuleNamespace();
+final blueprint = const _BlueprintModuleNamespace();
+final bot = const _BotModuleNamespace();
+final cdn = const _CdnModuleNamespace();
+final chaosstudio = const _ChaosstudioModuleNamespace();
+final cognitive = const _CognitiveModuleNamespace();
+final communication = const _CommunicationModuleNamespace();
+final compute = const _ComputeModuleNamespace();
+final confidentialledger = const _ConfidentialledgerModuleNamespace();
+final connections = const _ConnectionsModuleNamespace();
+final consumption = const _ConsumptionModuleNamespace();
+final containerapp = const _ContainerappModuleNamespace();
+final containerservice = const _ContainerserviceModuleNamespace();
+final core = const _CoreModuleNamespace();
+final cosmosdb = const _CosmosdbModuleNamespace();
+final costmanagement = const _CostmanagementModuleNamespace();
+final customip = const _CustomipModuleNamespace();
+final dashboard = const _DashboardModuleNamespace();
+final databasemigration = const _DatabasemigrationModuleNamespace();
+final databoxedge = const _DataboxedgeModuleNamespace();
+final databricks = const _DatabricksModuleNamespace();
+final datadog = const _DatadogModuleNamespace();
+final datafactory = const _DatafactoryModuleNamespace();
+final dataprotection = const _DataprotectionModuleNamespace();
+final datashare = const _DatashareModuleNamespace();
+final desktopvirtualization = const _DesktopvirtualizationModuleNamespace();
+final devcenter = const _DevcenterModuleNamespace();
+final devtest = const _DevtestModuleNamespace();
+final digitaltwins = const _DigitaltwinsModuleNamespace();
+final dns = const _DnsModuleNamespace();
+final domainservices = const _DomainservicesModuleNamespace();
+final dynatrace = const _DynatraceModuleNamespace();
+final elasticcloud = const _ElasticcloudModuleNamespace();
+final elasticsan = const _ElasticsanModuleNamespace();
+final eventgrid = const _EventgridModuleNamespace();
+final eventhub = const _EventhubModuleNamespace();
+final expressroute = const _ExpressrouteModuleNamespace();
+final extendedlocation = const _ExtendedlocationModuleNamespace();
+final fabric = const _FabricModuleNamespace();
+final fluidrelay = const _FluidrelayModuleNamespace();
+final frontdoor = const _FrontdoorModuleNamespace();
+final graph = const _GraphModuleNamespace();
+final hdinsight = const _HdinsightModuleNamespace();
+final healthcare = const _HealthcareModuleNamespace();
+final hpc = const _HpcModuleNamespace();
+final hsm = const _HsmModuleNamespace();
+final index = const _IndexModuleNamespace();
+final iot = const _IotModuleNamespace();
+final iotcentral = const _IotcentralModuleNamespace();
+final keyvault = const _KeyvaultModuleNamespace();
+final kusto = const _KustoModuleNamespace();
+final lb = const _LbModuleNamespace();
+final lighthouse = const _LighthouseModuleNamespace();
+final loadtest = const _LoadtestModuleNamespace();
+final loganalytics = const _LoganalyticsModuleNamespace();
+final logicapps = const _LogicappsModuleNamespace();
+final machinelearning = const _MachinelearningModuleNamespace();
+final maintenance = const _MaintenanceModuleNamespace();
+final managedapplication = const _ManagedapplicationModuleNamespace();
+final managedlustre = const _ManagedlustreModuleNamespace();
+final managedredis = const _ManagedredisModuleNamespace();
+final management = const _ManagementModuleNamespace();
+final managementgroups = const _ManagementgroupsModuleNamespace();
+final managementresource = const _ManagementresourceModuleNamespace();
+final maps = const _MapsModuleNamespace();
+final marketplace = const _MarketplaceModuleNamespace();
+final mongocluster = const _MongoclusterModuleNamespace();
+final monitoring = const _MonitoringModuleNamespace();
+final msi = const _MsiModuleNamespace();
+final mssql = const _MssqlModuleNamespace();
+final mysql = const _MysqlModuleNamespace();
+final netapp = const _NetappModuleNamespace();
+final network = const _NetworkModuleNamespace();
+final networkfunction = const _NetworkfunctionModuleNamespace();
+final newrelic = const _NewrelicModuleNamespace();
+final nginx = const _NginxModuleNamespace();
+final notificationhub = const _NotificationhubModuleNamespace();
+final operationalinsights = const _OperationalinsightsModuleNamespace();
+final oracle = const _OracleModuleNamespace();
+final orbital = const _OrbitalModuleNamespace();
+final paloalto = const _PaloaltoModuleNamespace();
+final pim = const _PimModuleNamespace();
+final policy = const _PolicyModuleNamespace();
+final portal = const _PortalModuleNamespace();
+final postgresql = const _PostgresqlModuleNamespace();
+final powerbi = const _PowerbiModuleNamespace();
+final privatedns = const _PrivatednsModuleNamespace();
+final privatelink = const _PrivatelinkModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
+final proximity = const _ProximityModuleNamespace();
+final purview = const _PurviewModuleNamespace();
+final qumulo = const _QumuloModuleNamespace();
+final recoveryservices = const _RecoveryservicesModuleNamespace();
+final redhatopenshift = const _RedhatopenshiftModuleNamespace();
+final redis = const _RedisModuleNamespace();
+final relay = const _RelayModuleNamespace();
+final role = const _RoleModuleNamespace();
+final search = const _SearchModuleNamespace();
+final securitycenter = const _SecuritycenterModuleNamespace();
+final sentinel = const _SentinelModuleNamespace();
+final servicebus = const _ServicebusModuleNamespace();
+final servicefabric = const _ServicefabricModuleNamespace();
+final signalr = const _SignalrModuleNamespace();
+final siterecovery = const _SiterecoveryModuleNamespace();
+final stack = const _StackModuleNamespace();
+final storage = const _StorageModuleNamespace();
+final streamanalytics = const _StreamanalyticsModuleNamespace();
+final synapse = const _SynapseModuleNamespace();
+final systemcenter = const _SystemcenterModuleNamespace();
+final trafficmanager = const _TrafficmanagerModuleNamespace();
+final trustedsigning = const _TrustedsigningModuleNamespace();
+final videoindexer = const _VideoindexerModuleNamespace();
+final voice = const _VoiceModuleNamespace();
+final waf = const _WafModuleNamespace();
+final webpubsub = const _WebpubsubModuleNamespace();
+final workloadssap = const _WorkloadssapModuleNamespace();
 
 class _Aadb2cModuleNamespace {
-  _Aadb2cModuleNamespace();
+  const _Aadb2cModuleNamespace();
   final Directory = module_aadb2c.Directory.new;
   final DirectoryArgs = module_aadb2c.DirectoryArgs.new;
   final DirectoryState = module_aadb2c.DirectoryState.new;
@@ -287,7 +287,7 @@ class _Aadb2cModuleNamespace {
 }
 
 class _AdvisorModuleNamespace {
-  _AdvisorModuleNamespace();
+  const _AdvisorModuleNamespace();
   final GetRecommendationsArgs = module_advisor.GetRecommendationsArgs.new;
   final GetRecommendationsRecommendation = module_advisor.GetRecommendationsRecommendation.new;
   final GetRecommendationsRecommendationArgs = module_advisor.GetRecommendationsRecommendation.new;
@@ -301,7 +301,7 @@ class _AdvisorModuleNamespace {
 }
 
 class _AifoundryModuleNamespace {
-  _AifoundryModuleNamespace();
+  const _AifoundryModuleNamespace();
   final Hub = module_aifoundry.Hub.new;
   final HubArgs = module_aifoundry.HubArgs.new;
   final HubEncryption = module_aifoundry.HubEncryption.new;
@@ -321,7 +321,7 @@ class _AifoundryModuleNamespace {
 }
 
 class _AnalysisservicesModuleNamespace {
-  _AnalysisservicesModuleNamespace();
+  const _AnalysisservicesModuleNamespace();
   final Server = module_analysisservices.Server.new;
   final ServerArgs = module_analysisservices.ServerArgs.new;
   final ServerIpv4FirewallRule = module_analysisservices.ServerIpv4FirewallRule.new;
@@ -331,7 +331,7 @@ class _AnalysisservicesModuleNamespace {
 }
 
 class _ApimanagementModuleNamespace {
-  _ApimanagementModuleNamespace();
+  const _ApimanagementModuleNamespace();
   final Api = module_apimanagement.Api.new;
   final ApiArgs = module_apimanagement.ApiArgs.new;
   final ApiContact = module_apimanagement.ApiContact.new;
@@ -805,7 +805,7 @@ class _ApimanagementModuleNamespace {
 }
 
 class _AppconfigurationModuleNamespace {
-  _AppconfigurationModuleNamespace();
+  const _AppconfigurationModuleNamespace();
   final ConfigurationFeature = module_appconfiguration.ConfigurationFeature.new;
   final ConfigurationFeatureArgs = module_appconfiguration.ConfigurationFeatureArgs.new;
   final ConfigurationFeatureState = module_appconfiguration.ConfigurationFeatureState.new;
@@ -885,7 +885,7 @@ class _AppconfigurationModuleNamespace {
 }
 
 class _AppinsightsModuleNamespace {
-  _AppinsightsModuleNamespace();
+  const _AppinsightsModuleNamespace();
   final AnalyticsItem = module_appinsights.AnalyticsItem.new;
   final AnalyticsItemArgs = module_appinsights.AnalyticsItemArgs.new;
   final AnalyticsItemState = module_appinsights.AnalyticsItemState.new;
@@ -937,7 +937,7 @@ class _AppinsightsModuleNamespace {
 }
 
 class _AppplatformModuleNamespace {
-  _AppplatformModuleNamespace();
+  const _AppplatformModuleNamespace();
   final GetSpringCloudAppArgs = module_appplatform.GetSpringCloudAppArgs.new;
   final GetSpringCloudAppIdentity = module_appplatform.GetSpringCloudAppIdentity.new;
   final GetSpringCloudAppIdentityArgs = module_appplatform.GetSpringCloudAppIdentity.new;
@@ -1165,7 +1165,7 @@ class _AppplatformModuleNamespace {
 }
 
 class _AppserviceModuleNamespace {
-  _AppserviceModuleNamespace();
+  const _AppserviceModuleNamespace();
   final ActiveSlot = module_appservice.ActiveSlot.new;
   final ActiveSlotArgs = module_appservice.ActiveSlotArgs.new;
   final ActiveSlotState = module_appservice.ActiveSlotState.new;
@@ -2653,7 +2653,7 @@ class _AppserviceModuleNamespace {
 }
 
 class _ArcModuleNamespace {
-  _ArcModuleNamespace();
+  const _ArcModuleNamespace();
   final GetResourceBridgeApplianceArgs = module_arc.GetResourceBridgeApplianceArgs.new;
   final GetResourceBridgeApplianceIdentity = module_arc.GetResourceBridgeApplianceIdentity.new;
   final GetResourceBridgeApplianceIdentityArgs = module_arc.GetResourceBridgeApplianceIdentity.new;
@@ -2673,7 +2673,7 @@ class _ArcModuleNamespace {
 }
 
 class _ArckubernetesModuleNamespace {
-  _ArckubernetesModuleNamespace();
+  const _ArckubernetesModuleNamespace();
   final Cluster = module_arckubernetes.Cluster.new;
   final ClusterArgs = module_arckubernetes.ClusterArgs.new;
   final ClusterExtension = module_arckubernetes.ClusterExtension.new;
@@ -2711,7 +2711,7 @@ class _ArckubernetesModuleNamespace {
 }
 
 class _ArcmachineModuleNamespace {
-  _ArcmachineModuleNamespace();
+  const _ArcmachineModuleNamespace();
   final ArcMachine = module_arcmachine.ArcMachine.new;
   final ArcMachineArgs = module_arcmachine.ArcMachineArgs.new;
   final ArcMachineIdentity = module_arcmachine.ArcMachineIdentity.new;
@@ -2761,7 +2761,7 @@ class _ArcmachineModuleNamespace {
 }
 
 class _ArmmsiModuleNamespace {
-  _ArmmsiModuleNamespace();
+  const _ArmmsiModuleNamespace();
   final FederatedIdentityCredential = module_armmsi.FederatedIdentityCredential.new;
   final FederatedIdentityCredentialArgs = module_armmsi.FederatedIdentityCredentialArgs.new;
   final FederatedIdentityCredentialState = module_armmsi.FederatedIdentityCredentialState.new;
@@ -2769,7 +2769,7 @@ class _ArmmsiModuleNamespace {
 }
 
 class _AttestationModuleNamespace {
-  _AttestationModuleNamespace();
+  const _AttestationModuleNamespace();
   final GetProviderArgs = module_attestation.GetProviderArgs.new;
   final GetProviderResult = module_attestation.GetProviderResult.new;
   final GetProviderResultArgs = module_attestation.GetProviderResult.new;
@@ -2781,7 +2781,7 @@ class _AttestationModuleNamespace {
 }
 
 class _AuthorizationModuleNamespace {
-  _AuthorizationModuleNamespace();
+  const _AuthorizationModuleNamespace();
   final Assignment = module_authorization.Assignment.new;
   final AssignmentArgs = module_authorization.AssignmentArgs.new;
   final AssignmentState = module_authorization.AssignmentState.new;
@@ -2809,7 +2809,7 @@ class _AuthorizationModuleNamespace {
 }
 
 class _AutomanageModuleNamespace {
-  _AutomanageModuleNamespace();
+  const _AutomanageModuleNamespace();
   final Configuration = module_automanage.Configuration.new;
   final ConfigurationAntimalware = module_automanage.ConfigurationAntimalware.new;
   final ConfigurationAntimalwareArgs = module_automanage.ConfigurationAntimalware.new;
@@ -2837,7 +2837,7 @@ class _AutomanageModuleNamespace {
 }
 
 class _AutomationModuleNamespace {
-  _AutomationModuleNamespace();
+  const _AutomationModuleNamespace();
   final Account = module_automation.Account.new;
   final AccountArgs = module_automation.AccountArgs.new;
   final AccountEncryption = module_automation.AccountEncryption.new;
@@ -3057,7 +3057,7 @@ class _AutomationModuleNamespace {
 }
 
 class _AvsModuleNamespace {
-  _AvsModuleNamespace();
+  const _AvsModuleNamespace();
   final Cluster = module_avs.Cluster.new;
   final ClusterArgs = module_avs.ClusterArgs.new;
   final ClusterState = module_avs.ClusterState.new;
@@ -3089,7 +3089,7 @@ class _AvsModuleNamespace {
 }
 
 class _BackupModuleNamespace {
-  _BackupModuleNamespace();
+  const _BackupModuleNamespace();
   final ContainerStorageAccount = module_backup.ContainerStorageAccount.new;
   final ContainerStorageAccountArgs = module_backup.ContainerStorageAccountArgs.new;
   final ContainerStorageAccountState = module_backup.ContainerStorageAccountState.new;
@@ -3169,7 +3169,7 @@ class _BackupModuleNamespace {
 }
 
 class _BatchModuleNamespace {
-  _BatchModuleNamespace();
+  const _BatchModuleNamespace();
   final Account = module_batch.Account.new;
   final AccountArgs = module_batch.AccountArgs.new;
   final AccountEncryption = module_batch.AccountEncryption.new;
@@ -3349,7 +3349,7 @@ class _BatchModuleNamespace {
 }
 
 class _BillingModuleNamespace {
-  _BillingModuleNamespace();
+  const _BillingModuleNamespace();
   final AccountCostManagementExport = module_billing.AccountCostManagementExport.new;
   final AccountCostManagementExportArgs = module_billing.AccountCostManagementExportArgs.new;
   final AccountCostManagementExportExportDataOptions = module_billing.AccountCostManagementExportExportDataOptions.new;
@@ -3373,7 +3373,7 @@ class _BillingModuleNamespace {
 }
 
 class _BlueprintModuleNamespace {
-  _BlueprintModuleNamespace();
+  const _BlueprintModuleNamespace();
   final Assignment = module_blueprint.Assignment.new;
   final AssignmentArgs = module_blueprint.AssignmentArgs.new;
   final AssignmentIdentity = module_blueprint.AssignmentIdentity.new;
@@ -3391,7 +3391,7 @@ class _BlueprintModuleNamespace {
 }
 
 class _BotModuleNamespace {
-  _BotModuleNamespace();
+  const _BotModuleNamespace();
   final ChannelAlexa = module_bot.ChannelAlexa.new;
   final ChannelAlexaArgs = module_bot.ChannelAlexaArgs.new;
   final ChannelAlexaState = module_bot.ChannelAlexaState.new;
@@ -3463,7 +3463,7 @@ class _BotModuleNamespace {
 }
 
 class _CdnModuleNamespace {
-  _CdnModuleNamespace();
+  const _CdnModuleNamespace();
   final Endpoint = module_cdn.Endpoint.new;
   final EndpointArgs = module_cdn.EndpointArgs.new;
   final EndpointCustomDomain = module_cdn.EndpointCustomDomain.new;
@@ -3735,7 +3735,7 @@ class _CdnModuleNamespace {
 }
 
 class _ChaosstudioModuleNamespace {
-  _ChaosstudioModuleNamespace();
+  const _ChaosstudioModuleNamespace();
   final Capability = module_chaosstudio.Capability.new;
   final CapabilityArgs = module_chaosstudio.CapabilityArgs.new;
   final CapabilityState = module_chaosstudio.CapabilityState.new;
@@ -3761,7 +3761,7 @@ class _ChaosstudioModuleNamespace {
 }
 
 class _CognitiveModuleNamespace {
-  _CognitiveModuleNamespace();
+  const _CognitiveModuleNamespace();
   final AIServices = module_cognitive.AIServices.new;
   final AIServicesArgs = module_cognitive.AIServicesArgs.new;
   final AIServicesCustomerManagedKey = module_cognitive.AIServicesCustomerManagedKey.new;
@@ -3843,7 +3843,7 @@ class _CognitiveModuleNamespace {
 }
 
 class _CommunicationModuleNamespace {
-  _CommunicationModuleNamespace();
+  const _CommunicationModuleNamespace();
   final EmailService = module_communication.EmailService.new;
   final EmailServiceArgs = module_communication.EmailServiceArgs.new;
   final EmailServiceDomain = module_communication.EmailServiceDomain.new;
@@ -3883,7 +3883,7 @@ class _CommunicationModuleNamespace {
 }
 
 class _ComputeModuleNamespace {
-  _ComputeModuleNamespace();
+  const _ComputeModuleNamespace();
   final AutomanageConfigurationAssignment = module_compute.AutomanageConfigurationAssignment.new;
   final AutomanageConfigurationAssignmentArgs = module_compute.AutomanageConfigurationAssignmentArgs.new;
   final AutomanageConfigurationAssignmentState = module_compute.AutomanageConfigurationAssignmentState.new;
@@ -4541,7 +4541,7 @@ class _ComputeModuleNamespace {
 }
 
 class _ConfidentialledgerModuleNamespace {
-  _ConfidentialledgerModuleNamespace();
+  const _ConfidentialledgerModuleNamespace();
   final Ledger = module_confidentialledger.Ledger.new;
   final LedgerArgs = module_confidentialledger.LedgerArgs.new;
   final LedgerAzureadBasedServicePrincipal = module_confidentialledger.LedgerAzureadBasedServicePrincipal.new;
@@ -4553,7 +4553,7 @@ class _ConfidentialledgerModuleNamespace {
 }
 
 class _ConnectionsModuleNamespace {
-  _ConnectionsModuleNamespace();
+  const _ConnectionsModuleNamespace();
   final ApiConnection = module_connections.ApiConnection.new;
   final ApiConnectionArgs = module_connections.ApiConnectionArgs.new;
   final ApiConnectionState = module_connections.ApiConnectionState.new;
@@ -4569,7 +4569,7 @@ class _ConnectionsModuleNamespace {
 }
 
 class _ConsumptionModuleNamespace {
-  _ConsumptionModuleNamespace();
+  const _ConsumptionModuleNamespace();
   final BudgetManagementGroup = module_consumption.BudgetManagementGroup.new;
   final BudgetManagementGroupArgs = module_consumption.BudgetManagementGroupArgs.new;
   final BudgetManagementGroupFilter = module_consumption.BudgetManagementGroupFilter.new;
@@ -4655,7 +4655,7 @@ class _ConsumptionModuleNamespace {
 }
 
 class _ContainerappModuleNamespace {
-  _ContainerappModuleNamespace();
+  const _ContainerappModuleNamespace();
   final App = module_containerapp.App.new;
   final AppArgs = module_containerapp.AppArgs.new;
   final AppDapr = module_containerapp.AppDapr.new;
@@ -4883,7 +4883,7 @@ class _ContainerappModuleNamespace {
 }
 
 class _ContainerserviceModuleNamespace {
-  _ContainerserviceModuleNamespace();
+  const _ContainerserviceModuleNamespace();
   final ClusterTrustedAccessRoleBinding = module_containerservice.ClusterTrustedAccessRoleBinding.new;
   final ClusterTrustedAccessRoleBindingArgs = module_containerservice.ClusterTrustedAccessRoleBindingArgs.new;
   final ClusterTrustedAccessRoleBindingState = module_containerservice.ClusterTrustedAccessRoleBindingState.new;
@@ -5305,7 +5305,7 @@ class _ContainerserviceModuleNamespace {
 }
 
 class _CoreModuleNamespace {
-  _CoreModuleNamespace();
+  const _CoreModuleNamespace();
   final CustomProvider = module_core.CustomProvider.new;
   final CustomProviderAction = module_core.CustomProviderAction.new;
   final CustomProviderActionArgs = module_core.CustomProviderAction.new;
@@ -5546,7 +5546,7 @@ class _CoreModuleNamespace {
 }
 
 class _CosmosdbModuleNamespace {
-  _CosmosdbModuleNamespace();
+  const _CosmosdbModuleNamespace();
   final Account = module_cosmosdb.Account.new;
   final AccountAnalyticalStorage = module_cosmosdb.AccountAnalyticalStorage.new;
   final AccountAnalyticalStorageArgs = module_cosmosdb.AccountAnalyticalStorage.new;
@@ -5792,7 +5792,7 @@ class _CosmosdbModuleNamespace {
 }
 
 class _CostmanagementModuleNamespace {
-  _CostmanagementModuleNamespace();
+  const _CostmanagementModuleNamespace();
   final AnomalyAlert = module_costmanagement.AnomalyAlert.new;
   final AnomalyAlertArgs = module_costmanagement.AnomalyAlertArgs.new;
   final AnomalyAlertState = module_costmanagement.AnomalyAlertState.new;
@@ -5804,7 +5804,7 @@ class _CostmanagementModuleNamespace {
 }
 
 class _CustomipModuleNamespace {
-  _CustomipModuleNamespace();
+  const _CustomipModuleNamespace();
   final Prefix = module_customip.Prefix.new;
   final PrefixArgs = module_customip.PrefixArgs.new;
   final PrefixState = module_customip.PrefixState.new;
@@ -5812,7 +5812,7 @@ class _CustomipModuleNamespace {
 }
 
 class _DashboardModuleNamespace {
-  _DashboardModuleNamespace();
+  const _DashboardModuleNamespace();
   final AzurermPortalDashboardArgs = module_dashboard.AzurermPortalDashboardArgs.new;
   final AzurermPortalDashboardResult = module_dashboard.AzurermPortalDashboardResult.new;
   final AzurermPortalDashboardResultArgs = module_dashboard.AzurermPortalDashboardResult.new;
@@ -5842,7 +5842,7 @@ class _DashboardModuleNamespace {
 }
 
 class _DatabasemigrationModuleNamespace {
-  _DatabasemigrationModuleNamespace();
+  const _DatabasemigrationModuleNamespace();
   final GetProjectArgs = module_databasemigration.GetProjectArgs.new;
   final GetProjectResult = module_databasemigration.GetProjectResult.new;
   final GetProjectResultArgs = module_databasemigration.GetProjectResult.new;
@@ -5862,7 +5862,7 @@ class _DatabasemigrationModuleNamespace {
 }
 
 class _DataboxedgeModuleNamespace {
-  _DataboxedgeModuleNamespace();
+  const _DataboxedgeModuleNamespace();
   final Device = module_databoxedge.Device.new;
   final DeviceArgs = module_databoxedge.DeviceArgs.new;
   final DeviceDeviceProperty = module_databoxedge.DeviceDeviceProperty.new;
@@ -5878,7 +5878,7 @@ class _DataboxedgeModuleNamespace {
 }
 
 class _DatabricksModuleNamespace {
-  _DatabricksModuleNamespace();
+  const _DatabricksModuleNamespace();
   final AccessConnector = module_databricks.AccessConnector.new;
   final AccessConnectorArgs = module_databricks.AccessConnectorArgs.new;
   final AccessConnectorIdentity = module_databricks.AccessConnectorIdentity.new;
@@ -5936,7 +5936,7 @@ class _DatabricksModuleNamespace {
 }
 
 class _DatadogModuleNamespace {
-  _DatadogModuleNamespace();
+  const _DatadogModuleNamespace();
   final Monitor = module_datadog.Monitor.new;
   final MonitorArgs = module_datadog.MonitorArgs.new;
   final MonitorDatadogOrganization = module_datadog.MonitorDatadogOrganization.new;
@@ -5966,7 +5966,7 @@ class _DatadogModuleNamespace {
 }
 
 class _DatafactoryModuleNamespace {
-  _DatafactoryModuleNamespace();
+  const _DatafactoryModuleNamespace();
   final CredentialServicePrincipal = module_datafactory.CredentialServicePrincipal.new;
   final CredentialServicePrincipalArgs = module_datafactory.CredentialServicePrincipalArgs.new;
   final CredentialServicePrincipalServicePrincipalKey = module_datafactory.CredentialServicePrincipalServicePrincipalKey.new;
@@ -6406,7 +6406,7 @@ class _DatafactoryModuleNamespace {
 }
 
 class _DataprotectionModuleNamespace {
-  _DataprotectionModuleNamespace();
+  const _DataprotectionModuleNamespace();
   final BackupInstanceBlogStorage = module_dataprotection.BackupInstanceBlogStorage.new;
   final BackupInstanceBlogStorageArgs = module_dataprotection.BackupInstanceBlogStorageArgs.new;
   final BackupInstanceBlogStorageState = module_dataprotection.BackupInstanceBlogStorageState.new;
@@ -6524,7 +6524,7 @@ class _DataprotectionModuleNamespace {
 }
 
 class _DatashareModuleNamespace {
-  _DatashareModuleNamespace();
+  const _DatashareModuleNamespace();
   final Account = module_datashare.Account.new;
   final AccountArgs = module_datashare.AccountArgs.new;
   final AccountIdentity = module_datashare.AccountIdentity.new;
@@ -6588,7 +6588,7 @@ class _DatashareModuleNamespace {
 }
 
 class _DesktopvirtualizationModuleNamespace {
-  _DesktopvirtualizationModuleNamespace();
+  const _DesktopvirtualizationModuleNamespace();
   final Application = module_desktopvirtualization.Application.new;
   final ApplicationArgs = module_desktopvirtualization.ApplicationArgs.new;
   final ApplicationGroup = module_desktopvirtualization.ApplicationGroup.new;
@@ -6648,7 +6648,7 @@ class _DesktopvirtualizationModuleNamespace {
 }
 
 class _DevcenterModuleNamespace {
-  _DevcenterModuleNamespace();
+  const _DevcenterModuleNamespace();
   final AttachedNetwork = module_devcenter.AttachedNetwork.new;
   final AttachedNetworkArgs = module_devcenter.AttachedNetworkArgs.new;
   final AttachedNetworkState = module_devcenter.AttachedNetworkState.new;
@@ -6756,7 +6756,7 @@ class _DevcenterModuleNamespace {
 }
 
 class _DevtestModuleNamespace {
-  _DevtestModuleNamespace();
+  const _DevtestModuleNamespace();
   final GetLabArgs = module_devtest.GetLabArgs.new;
   final GetLabResult = module_devtest.GetLabResult.new;
   final GetLabResultArgs = module_devtest.GetLabResult.new;
@@ -6824,7 +6824,7 @@ class _DevtestModuleNamespace {
 }
 
 class _DigitaltwinsModuleNamespace {
-  _DigitaltwinsModuleNamespace();
+  const _DigitaltwinsModuleNamespace();
   final EndpointEventGrid = module_digitaltwins.EndpointEventGrid.new;
   final EndpointEventGridArgs = module_digitaltwins.EndpointEventGridArgs.new;
   final EndpointEventGridState = module_digitaltwins.EndpointEventGridState.new;
@@ -6854,7 +6854,7 @@ class _DigitaltwinsModuleNamespace {
 }
 
 class _DnsModuleNamespace {
-  _DnsModuleNamespace();
+  const _DnsModuleNamespace();
   final ARecord = module_dns.ARecord.new;
   final ARecordArgs = module_dns.ARecordArgs.new;
   final ARecordState = module_dns.ARecordState.new;
@@ -6960,7 +6960,7 @@ class _DnsModuleNamespace {
 }
 
 class _DomainservicesModuleNamespace {
-  _DomainservicesModuleNamespace();
+  const _DomainservicesModuleNamespace();
   final GetServiceArgs = module_domainservices.GetServiceArgs.new;
   final GetServiceNotification = module_domainservices.GetServiceNotification.new;
   final GetServiceNotificationArgs = module_domainservices.GetServiceNotification.new;
@@ -6996,7 +6996,7 @@ class _DomainservicesModuleNamespace {
 }
 
 class _DynatraceModuleNamespace {
-  _DynatraceModuleNamespace();
+  const _DynatraceModuleNamespace();
   final GetMonitorArgs = module_dynatrace.GetMonitorArgs.new;
   final GetMonitorEnvironmentProperty = module_dynatrace.GetMonitorEnvironmentProperty.new;
   final GetMonitorEnvironmentPropertyArgs = module_dynatrace.GetMonitorEnvironmentProperty.new;
@@ -7040,7 +7040,7 @@ class _DynatraceModuleNamespace {
 }
 
 class _ElasticcloudModuleNamespace {
-  _ElasticcloudModuleNamespace();
+  const _ElasticcloudModuleNamespace();
   final Elasticsearch = module_elasticcloud.Elasticsearch.new;
   final ElasticsearchArgs = module_elasticcloud.ElasticsearchArgs.new;
   final ElasticsearchLogs = module_elasticcloud.ElasticsearchLogs.new;
@@ -7060,7 +7060,7 @@ class _ElasticcloudModuleNamespace {
 }
 
 class _ElasticsanModuleNamespace {
-  _ElasticsanModuleNamespace();
+  const _ElasticsanModuleNamespace();
   final ElasticSan = module_elasticsan.ElasticSan.new;
   final ElasticSanArgs = module_elasticsan.ElasticSanArgs.new;
   final ElasticSanSku = module_elasticsan.ElasticSanSku.new;
@@ -7106,7 +7106,7 @@ class _ElasticsanModuleNamespace {
 }
 
 class _EventgridModuleNamespace {
-  _EventgridModuleNamespace();
+  const _EventgridModuleNamespace();
   final Domain = module_eventgrid.Domain.new;
   final DomainArgs = module_eventgrid.DomainArgs.new;
   final DomainIdentity = module_eventgrid.DomainIdentity.new;
@@ -7334,7 +7334,7 @@ class _EventgridModuleNamespace {
 }
 
 class _EventhubModuleNamespace {
-  _EventhubModuleNamespace();
+  const _EventhubModuleNamespace();
   final AuthorizationRule = module_eventhub.AuthorizationRule.new;
   final AuthorizationRuleArgs = module_eventhub.AuthorizationRuleArgs.new;
   final AuthorizationRuleState = module_eventhub.AuthorizationRuleState.new;
@@ -7560,7 +7560,7 @@ class _EventhubModuleNamespace {
 }
 
 class _ExpressrouteModuleNamespace {
-  _ExpressrouteModuleNamespace();
+  const _ExpressrouteModuleNamespace();
   final GetCircuitPeeringArgs = module_expressroute.GetCircuitPeeringArgs.new;
   final GetCircuitPeeringResult = module_expressroute.GetCircuitPeeringResult.new;
   final GetCircuitPeeringResultArgs = module_expressroute.GetCircuitPeeringResult.new;
@@ -7568,7 +7568,7 @@ class _ExpressrouteModuleNamespace {
 }
 
 class _ExtendedlocationModuleNamespace {
-  _ExtendedlocationModuleNamespace();
+  const _ExtendedlocationModuleNamespace();
   final CustomLocation = module_extendedlocation.CustomLocation.new;
   final CustomLocationArgs = module_extendedlocation.CustomLocationArgs.new;
   final CustomLocationAuthentication = module_extendedlocation.CustomLocationAuthentication.new;
@@ -7584,7 +7584,7 @@ class _ExtendedlocationModuleNamespace {
 }
 
 class _FabricModuleNamespace {
-  _FabricModuleNamespace();
+  const _FabricModuleNamespace();
   final Capacity = module_fabric.Capacity.new;
   final CapacityArgs = module_fabric.CapacityArgs.new;
   final CapacitySku = module_fabric.CapacitySku.new;
@@ -7594,7 +7594,7 @@ class _FabricModuleNamespace {
 }
 
 class _FluidrelayModuleNamespace {
-  _FluidrelayModuleNamespace();
+  const _FluidrelayModuleNamespace();
   final Server = module_fluidrelay.Server.new;
   final ServerArgs = module_fluidrelay.ServerArgs.new;
   final ServerCustomerManagedKey = module_fluidrelay.ServerCustomerManagedKey.new;
@@ -7606,7 +7606,7 @@ class _FluidrelayModuleNamespace {
 }
 
 class _FrontdoorModuleNamespace {
-  _FrontdoorModuleNamespace();
+  const _FrontdoorModuleNamespace();
   final CustomHttpsConfiguration = module_frontdoor.CustomHttpsConfiguration.new;
   final CustomHttpsConfigurationArgs = module_frontdoor.CustomHttpsConfigurationArgs.new;
   final CustomHttpsConfigurationCustomHttpsConfiguration = module_frontdoor.CustomHttpsConfigurationCustomHttpsConfiguration.new;
@@ -7674,7 +7674,7 @@ class _FrontdoorModuleNamespace {
 }
 
 class _GraphModuleNamespace {
-  _GraphModuleNamespace();
+  const _GraphModuleNamespace();
   final GetServicesAccountArgs = module_graph.GetServicesAccountArgs.new;
   final GetServicesAccountResult = module_graph.GetServicesAccountResult.new;
   final GetServicesAccountResultArgs = module_graph.GetServicesAccountResult.new;
@@ -7686,7 +7686,7 @@ class _GraphModuleNamespace {
 }
 
 class _HdinsightModuleNamespace {
-  _HdinsightModuleNamespace();
+  const _HdinsightModuleNamespace();
   final GetClusterArgs = module_hdinsight.GetClusterArgs.new;
   final GetClusterGateway = module_hdinsight.GetClusterGateway.new;
   final GetClusterGatewayArgs = module_hdinsight.GetClusterGateway.new;
@@ -7988,7 +7988,7 @@ class _HdinsightModuleNamespace {
 }
 
 class _HealthcareModuleNamespace {
-  _HealthcareModuleNamespace();
+  const _HealthcareModuleNamespace();
   final DicomService = module_healthcare.DicomService.new;
   final DicomServiceArgs = module_healthcare.DicomServiceArgs.new;
   final DicomServiceAuthentication = module_healthcare.DicomServiceAuthentication.new;
@@ -8086,7 +8086,7 @@ class _HealthcareModuleNamespace {
 }
 
 class _HpcModuleNamespace {
-  _HpcModuleNamespace();
+  const _HpcModuleNamespace();
   final Cache = module_hpc.Cache.new;
   final CacheAccessPolicy = module_hpc.CacheAccessPolicy.new;
   final CacheAccessPolicyAccessRule = module_hpc.CacheAccessPolicyAccessRule.new;
@@ -8130,7 +8130,7 @@ class _HpcModuleNamespace {
 }
 
 class _HsmModuleNamespace {
-  _HsmModuleNamespace();
+  const _HsmModuleNamespace();
   final Module = module_hsm.Module.new;
   final ModuleArgs = module_hsm.ModuleArgs.new;
   final ModuleManagementNetworkProfile = module_hsm.ModuleManagementNetworkProfile.new;
@@ -8142,7 +8142,7 @@ class _HsmModuleNamespace {
 }
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final ProviderFeatures = module_index.ProviderFeatures.new;
   final ProviderFeaturesApiManagement = module_index.ProviderFeaturesApiManagement.new;
   final ProviderFeaturesApiManagementArgs = module_index.ProviderFeaturesApiManagement.new;
@@ -8186,7 +8186,7 @@ class _IndexModuleNamespace {
 }
 
 class _IotModuleNamespace {
-  _IotModuleNamespace();
+  const _IotModuleNamespace();
   final Certificate = module_iot.Certificate.new;
   final CertificateArgs = module_iot.CertificateArgs.new;
   final CertificateState = module_iot.CertificateState.new;
@@ -8330,7 +8330,7 @@ class _IotModuleNamespace {
 }
 
 class _IotcentralModuleNamespace {
-  _IotcentralModuleNamespace();
+  const _IotcentralModuleNamespace();
   final Application = module_iotcentral.Application.new;
   final ApplicationArgs = module_iotcentral.ApplicationArgs.new;
   final ApplicationIdentity = module_iotcentral.ApplicationIdentity.new;
@@ -8350,7 +8350,7 @@ class _IotcentralModuleNamespace {
 }
 
 class _KeyvaultModuleNamespace {
-  _KeyvaultModuleNamespace();
+  const _KeyvaultModuleNamespace();
   final AccessPolicy = module_keyvault.AccessPolicy.new;
   final AccessPolicyArgs = module_keyvault.AccessPolicyArgs.new;
   final AccessPolicyState = module_keyvault.AccessPolicyState.new;
@@ -8558,7 +8558,7 @@ class _KeyvaultModuleNamespace {
 }
 
 class _KustoModuleNamespace {
-  _KustoModuleNamespace();
+  const _KustoModuleNamespace();
   final AttachedDatabaseConfiguration = module_kusto.AttachedDatabaseConfiguration.new;
   final AttachedDatabaseConfigurationArgs = module_kusto.AttachedDatabaseConfigurationArgs.new;
   final AttachedDatabaseConfigurationSharing = module_kusto.AttachedDatabaseConfigurationSharing.new;
@@ -8632,7 +8632,7 @@ class _KustoModuleNamespace {
 }
 
 class _LbModuleNamespace {
-  _LbModuleNamespace();
+  const _LbModuleNamespace();
   final BackendAddressPool = module_lb.BackendAddressPool.new;
   final BackendAddressPoolAddress = module_lb.BackendAddressPoolAddress.new;
   final BackendAddressPoolAddressArgs = module_lb.BackendAddressPoolAddressArgs.new;
@@ -8702,7 +8702,7 @@ class _LbModuleNamespace {
 }
 
 class _LighthouseModuleNamespace {
-  _LighthouseModuleNamespace();
+  const _LighthouseModuleNamespace();
   final Assignment = module_lighthouse.Assignment.new;
   final AssignmentArgs = module_lighthouse.AssignmentArgs.new;
   final AssignmentState = module_lighthouse.AssignmentState.new;
@@ -8724,7 +8724,7 @@ class _LighthouseModuleNamespace {
 }
 
 class _LoadtestModuleNamespace {
-  _LoadtestModuleNamespace();
+  const _LoadtestModuleNamespace();
   final GetArgs = module_loadtest.GetArgs.new;
   final GetEncryption = module_loadtest.GetEncryption.new;
   final GetEncryptionArgs = module_loadtest.GetEncryption.new;
@@ -8748,7 +8748,7 @@ class _LoadtestModuleNamespace {
 }
 
 class _LoganalyticsModuleNamespace {
-  _LoganalyticsModuleNamespace();
+  const _LoganalyticsModuleNamespace();
   final Cluster = module_loganalytics.Cluster.new;
   final ClusterArgs = module_loganalytics.ClusterArgs.new;
   final ClusterCustomerManagedKey = module_loganalytics.ClusterCustomerManagedKey.new;
@@ -8810,7 +8810,7 @@ class _LoganalyticsModuleNamespace {
 }
 
 class _LogicappsModuleNamespace {
-  _LogicappsModuleNamespace();
+  const _LogicappsModuleNamespace();
   final ActionCustom = module_logicapps.ActionCustom.new;
   final ActionCustomArgs = module_logicapps.ActionCustomArgs.new;
   final ActionCustomState = module_logicapps.ActionCustomState.new;
@@ -8964,7 +8964,7 @@ class _LogicappsModuleNamespace {
 }
 
 class _MachinelearningModuleNamespace {
-  _MachinelearningModuleNamespace();
+  const _MachinelearningModuleNamespace();
   final ComputeCluster = module_machinelearning.ComputeCluster.new;
   final ComputeClusterArgs = module_machinelearning.ComputeClusterArgs.new;
   final ComputeClusterIdentity = module_machinelearning.ComputeClusterIdentity.new;
@@ -9046,7 +9046,7 @@ class _MachinelearningModuleNamespace {
 }
 
 class _MaintenanceModuleNamespace {
-  _MaintenanceModuleNamespace();
+  const _MaintenanceModuleNamespace();
   final AssignmentDedicatedHost = module_maintenance.AssignmentDedicatedHost.new;
   final AssignmentDedicatedHostArgs = module_maintenance.AssignmentDedicatedHostArgs.new;
   final AssignmentDedicatedHostState = module_maintenance.AssignmentDedicatedHostState.new;
@@ -9100,7 +9100,7 @@ class _MaintenanceModuleNamespace {
 }
 
 class _ManagedapplicationModuleNamespace {
-  _ManagedapplicationModuleNamespace();
+  const _ManagedapplicationModuleNamespace();
   final Application = module_managedapplication.Application.new;
   final ApplicationArgs = module_managedapplication.ApplicationArgs.new;
   final ApplicationPlan = module_managedapplication.ApplicationPlan.new;
@@ -9120,7 +9120,7 @@ class _ManagedapplicationModuleNamespace {
 }
 
 class _ManagedlustreModuleNamespace {
-  _ManagedlustreModuleNamespace();
+  const _ManagedlustreModuleNamespace();
   final FileSystem = module_managedlustre.FileSystem.new;
   final FileSystemArgs = module_managedlustre.FileSystemArgs.new;
   final FileSystemEncryptionKey = module_managedlustre.FileSystemEncryptionKey.new;
@@ -9138,7 +9138,7 @@ class _ManagedlustreModuleNamespace {
 }
 
 class _ManagedredisModuleNamespace {
-  _ManagedredisModuleNamespace();
+  const _ManagedredisModuleNamespace();
   final AccessPolicyAssignment = module_managedredis.AccessPolicyAssignment.new;
   final AccessPolicyAssignmentArgs = module_managedredis.AccessPolicyAssignmentArgs.new;
   final AccessPolicyAssignmentState = module_managedredis.AccessPolicyAssignmentState.new;
@@ -9178,7 +9178,7 @@ class _ManagedredisModuleNamespace {
 }
 
 class _ManagementModuleNamespace {
-  _ManagementModuleNamespace();
+  const _ManagementModuleNamespace();
   final GetGroupArgs = module_management.GetGroupArgs.new;
   final GetGroupResult = module_management.GetGroupResult.new;
   final GetGroupResultArgs = module_management.GetGroupResult.new;
@@ -9246,7 +9246,7 @@ class _ManagementModuleNamespace {
 }
 
 class _ManagementgroupsModuleNamespace {
-  _ManagementgroupsModuleNamespace();
+  const _ManagementgroupsModuleNamespace();
   final GetManagementGroupArgs = module_managementgroups.GetManagementGroupArgs.new;
   final GetManagementGroupResult = module_managementgroups.GetManagementGroupResult.new;
   final GetManagementGroupResultArgs = module_managementgroups.GetManagementGroupResult.new;
@@ -9258,7 +9258,7 @@ class _ManagementgroupsModuleNamespace {
 }
 
 class _ManagementresourceModuleNamespace {
-  _ManagementresourceModuleNamespace();
+  const _ManagementresourceModuleNamespace();
   final ManangementLock = module_managementresource.ManangementLock.new;
   final ManangementLockArgs = module_managementresource.ManangementLockArgs.new;
   final ManangementLockState = module_managementresource.ManangementLockState.new;
@@ -9266,7 +9266,7 @@ class _ManagementresourceModuleNamespace {
 }
 
 class _MapsModuleNamespace {
-  _MapsModuleNamespace();
+  const _MapsModuleNamespace();
   final Account = module_maps.Account.new;
   final AccountArgs = module_maps.AccountArgs.new;
   final AccountCors = module_maps.AccountCors.new;
@@ -9288,7 +9288,7 @@ class _MapsModuleNamespace {
 }
 
 class _MarketplaceModuleNamespace {
-  _MarketplaceModuleNamespace();
+  const _MarketplaceModuleNamespace();
   final Agreement = module_marketplace.Agreement.new;
   final AgreementArgs = module_marketplace.AgreementArgs.new;
   final AgreementState = module_marketplace.AgreementState.new;
@@ -9304,7 +9304,7 @@ class _MarketplaceModuleNamespace {
 }
 
 class _MongoclusterModuleNamespace {
-  _MongoclusterModuleNamespace();
+  const _MongoclusterModuleNamespace();
   final FirewallRule = module_mongocluster.FirewallRule.new;
   final FirewallRuleArgs = module_mongocluster.FirewallRuleArgs.new;
   final FirewallRuleState = module_mongocluster.FirewallRuleState.new;
@@ -9330,7 +9330,7 @@ class _MongoclusterModuleNamespace {
 }
 
 class _MonitoringModuleNamespace {
-  _MonitoringModuleNamespace();
+  const _MonitoringModuleNamespace();
   final AadDiagnosticSetting = module_monitoring.AadDiagnosticSetting.new;
   final AadDiagnosticSettingArgs = module_monitoring.AadDiagnosticSettingArgs.new;
   final AadDiagnosticSettingEnabledLog = module_monitoring.AadDiagnosticSettingEnabledLog.new;
@@ -9762,7 +9762,7 @@ class _MonitoringModuleNamespace {
 }
 
 class _MsiModuleNamespace {
-  _MsiModuleNamespace();
+  const _MsiModuleNamespace();
   final UserAssignedIdentity = module_msi.UserAssignedIdentity.new;
   final UserAssignedIdentityArgs = module_msi.UserAssignedIdentityArgs.new;
   final UserAssignedIdentityState = module_msi.UserAssignedIdentityState.new;
@@ -9770,7 +9770,7 @@ class _MsiModuleNamespace {
 }
 
 class _MssqlModuleNamespace {
-  _MssqlModuleNamespace();
+  const _MssqlModuleNamespace();
   final Database = module_mssql.Database.new;
   final DatabaseArgs = module_mssql.DatabaseArgs.new;
   final DatabaseExtendedAuditingPolicy = module_mssql.DatabaseExtendedAuditingPolicy.new;
@@ -10022,7 +10022,7 @@ class _MssqlModuleNamespace {
 }
 
 class _MysqlModuleNamespace {
-  _MysqlModuleNamespace();
+  const _MysqlModuleNamespace();
   final FlexibleDatabase = module_mysql.FlexibleDatabase.new;
   final FlexibleDatabaseArgs = module_mysql.FlexibleDatabaseArgs.new;
   final FlexibleDatabaseState = module_mysql.FlexibleDatabaseState.new;
@@ -10066,7 +10066,7 @@ class _MysqlModuleNamespace {
 }
 
 class _NetappModuleNamespace {
-  _NetappModuleNamespace();
+  const _NetappModuleNamespace();
   final Account = module_netapp.Account.new;
   final AccountActiveDirectory = module_netapp.AccountActiveDirectory.new;
   final AccountActiveDirectoryArgs = module_netapp.AccountActiveDirectory.new;
@@ -10226,7 +10226,7 @@ class _NetappModuleNamespace {
 }
 
 class _NetworkModuleNamespace {
-  _NetworkModuleNamespace();
+  const _NetworkModuleNamespace();
   final ApplicationGateway = module_network.ApplicationGateway.new;
   final ApplicationGatewayArgs = module_network.ApplicationGatewayArgs.new;
   final ApplicationGatewayAuthenticationCertificate = module_network.ApplicationGatewayAuthenticationCertificate.new;
@@ -11284,7 +11284,7 @@ class _NetworkModuleNamespace {
 }
 
 class _NetworkfunctionModuleNamespace {
-  _NetworkfunctionModuleNamespace();
+  const _NetworkfunctionModuleNamespace();
   final AzureTrafficCollector = module_networkfunction.AzureTrafficCollector.new;
   final AzureTrafficCollectorArgs = module_networkfunction.AzureTrafficCollectorArgs.new;
   final AzureTrafficCollectorState = module_networkfunction.AzureTrafficCollectorState.new;
@@ -11300,7 +11300,7 @@ class _NetworkfunctionModuleNamespace {
 }
 
 class _NewrelicModuleNamespace {
-  _NewrelicModuleNamespace();
+  const _NewrelicModuleNamespace();
   final Monitor = module_newrelic.Monitor.new;
   final MonitorArgs = module_newrelic.MonitorArgs.new;
   final MonitorIdentity = module_newrelic.MonitorIdentity.new;
@@ -11322,7 +11322,7 @@ class _NewrelicModuleNamespace {
 }
 
 class _NginxModuleNamespace {
-  _NginxModuleNamespace();
+  const _NginxModuleNamespace();
   final ApiKey = module_nginx.ApiKey.new;
   final ApiKeyArgs = module_nginx.ApiKeyArgs.new;
   final ApiKeyState = module_nginx.ApiKeyState.new;
@@ -11414,7 +11414,7 @@ class _NginxModuleNamespace {
 }
 
 class _NotificationhubModuleNamespace {
-  _NotificationhubModuleNamespace();
+  const _NotificationhubModuleNamespace();
   final AuthorizationRule = module_notificationhub.AuthorizationRule.new;
   final AuthorizationRuleArgs = module_notificationhub.AuthorizationRuleArgs.new;
   final AuthorizationRuleState = module_notificationhub.AuthorizationRuleState.new;
@@ -11450,7 +11450,7 @@ class _NotificationhubModuleNamespace {
 }
 
 class _OperationalinsightsModuleNamespace {
-  _OperationalinsightsModuleNamespace();
+  const _OperationalinsightsModuleNamespace();
   final AnalyticsSolution = module_operationalinsights.AnalyticsSolution.new;
   final AnalyticsSolutionArgs = module_operationalinsights.AnalyticsSolutionArgs.new;
   final AnalyticsSolutionPlan = module_operationalinsights.AnalyticsSolutionPlan.new;
@@ -11474,7 +11474,7 @@ class _OperationalinsightsModuleNamespace {
 }
 
 class _OracleModuleNamespace {
-  _OracleModuleNamespace();
+  const _OracleModuleNamespace();
   final AutonomousDatabase = module_oracle.AutonomousDatabase.new;
   final AutonomousDatabaseArgs = module_oracle.AutonomousDatabaseArgs.new;
   final AutonomousDatabaseBackup = module_oracle.AutonomousDatabaseBackup.new;
@@ -11620,7 +11620,7 @@ class _OracleModuleNamespace {
 }
 
 class _OrbitalModuleNamespace {
-  _OrbitalModuleNamespace();
+  const _OrbitalModuleNamespace();
   final Contact = module_orbital.Contact.new;
   final ContactArgs = module_orbital.ContactArgs.new;
   final ContactProfile = module_orbital.ContactProfile.new;
@@ -11644,7 +11644,7 @@ class _OrbitalModuleNamespace {
 }
 
 class _PaloaltoModuleNamespace {
-  _PaloaltoModuleNamespace();
+  const _PaloaltoModuleNamespace();
   final GetLocalRulestackArgs = module_paloalto.GetLocalRulestackArgs.new;
   final GetLocalRulestackResult = module_paloalto.GetLocalRulestackResult.new;
   final GetLocalRulestackResultArgs = module_paloalto.GetLocalRulestackResult.new;
@@ -11788,7 +11788,7 @@ class _PaloaltoModuleNamespace {
 }
 
 class _PimModuleNamespace {
-  _PimModuleNamespace();
+  const _PimModuleNamespace();
   final ActiveRoleAssignment = module_pim.ActiveRoleAssignment.new;
   final ActiveRoleAssignmentArgs = module_pim.ActiveRoleAssignmentArgs.new;
   final ActiveRoleAssignmentSchedule = module_pim.ActiveRoleAssignmentSchedule.new;
@@ -11898,7 +11898,7 @@ class _PimModuleNamespace {
 }
 
 class _PolicyModuleNamespace {
-  _PolicyModuleNamespace();
+  const _PolicyModuleNamespace();
   final Definition = module_policy.Definition.new;
   final DefinitionArgs = module_policy.DefinitionArgs.new;
   final DefinitionState = module_policy.DefinitionState.new;
@@ -11950,7 +11950,7 @@ class _PolicyModuleNamespace {
 }
 
 class _PortalModuleNamespace {
-  _PortalModuleNamespace();
+  const _PortalModuleNamespace();
   final AzurermPortalDashboardArgs = module_portal.AzurermPortalDashboardArgs.new;
   final AzurermPortalDashboardResult = module_portal.AzurermPortalDashboardResult.new;
   final AzurermPortalDashboardResultArgs = module_portal.AzurermPortalDashboardResult.new;
@@ -11962,7 +11962,7 @@ class _PortalModuleNamespace {
 }
 
 class _PostgresqlModuleNamespace {
-  _PostgresqlModuleNamespace();
+  const _PostgresqlModuleNamespace();
   final ActiveDirectoryAdministrator = module_postgresql.ActiveDirectoryAdministrator.new;
   final ActiveDirectoryAdministratorArgs = module_postgresql.ActiveDirectoryAdministratorArgs.new;
   final ActiveDirectoryAdministratorState = module_postgresql.ActiveDirectoryAdministratorState.new;
@@ -12050,7 +12050,7 @@ class _PostgresqlModuleNamespace {
 }
 
 class _PowerbiModuleNamespace {
-  _PowerbiModuleNamespace();
+  const _PowerbiModuleNamespace();
   final Embedded = module_powerbi.Embedded.new;
   final EmbeddedArgs = module_powerbi.EmbeddedArgs.new;
   final EmbeddedState = module_powerbi.EmbeddedState.new;
@@ -12058,7 +12058,7 @@ class _PowerbiModuleNamespace {
 }
 
 class _PrivatednsModuleNamespace {
-  _PrivatednsModuleNamespace();
+  const _PrivatednsModuleNamespace();
   final AAAARecord = module_privatedns.AAAARecord.new;
   final AAAARecordArgs = module_privatedns.AAAARecordArgs.new;
   final AAAARecordState = module_privatedns.AAAARecordState.new;
@@ -12214,7 +12214,7 @@ class _PrivatednsModuleNamespace {
 }
 
 class _PrivatelinkModuleNamespace {
-  _PrivatelinkModuleNamespace();
+  const _PrivatelinkModuleNamespace();
   final ApplicationSecurityGroupAssociation = module_privatelink.ApplicationSecurityGroupAssociation.new;
   final ApplicationSecurityGroupAssociationArgs = module_privatelink.ApplicationSecurityGroupAssociationArgs.new;
   final ApplicationSecurityGroupAssociationState = module_privatelink.ApplicationSecurityGroupAssociationState.new;
@@ -12260,7 +12260,7 @@ class _PrivatelinkModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Azure = module_providers.ProviderProvider.new;
   final AzureArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
@@ -12273,7 +12273,7 @@ class _ProvidersModuleNamespace {
 }
 
 class _ProximityModuleNamespace {
-  _ProximityModuleNamespace();
+  const _ProximityModuleNamespace();
   final GetPlacementGroupArgs = module_proximity.GetPlacementGroupArgs.new;
   final GetPlacementGroupResult = module_proximity.GetPlacementGroupResult.new;
   final GetPlacementGroupResultArgs = module_proximity.GetPlacementGroupResult.new;
@@ -12285,7 +12285,7 @@ class _ProximityModuleNamespace {
 }
 
 class _PurviewModuleNamespace {
-  _PurviewModuleNamespace();
+  const _PurviewModuleNamespace();
   final Account = module_purview.Account.new;
   final AccountArgs = module_purview.AccountArgs.new;
   final AccountIdentity = module_purview.AccountIdentity.new;
@@ -12297,7 +12297,7 @@ class _PurviewModuleNamespace {
 }
 
 class _QumuloModuleNamespace {
-  _QumuloModuleNamespace();
+  const _QumuloModuleNamespace();
   final FileSystem = module_qumulo.FileSystem.new;
   final FileSystemArgs = module_qumulo.FileSystemArgs.new;
   final FileSystemState = module_qumulo.FileSystemState.new;
@@ -12305,7 +12305,7 @@ class _QumuloModuleNamespace {
 }
 
 class _RecoveryservicesModuleNamespace {
-  _RecoveryservicesModuleNamespace();
+  const _RecoveryservicesModuleNamespace();
   final GetVaultArgs = module_recoveryservices.GetVaultArgs.new;
   final GetVaultIdentity = module_recoveryservices.GetVaultIdentity.new;
   final GetVaultIdentityArgs = module_recoveryservices.GetVaultIdentity.new;
@@ -12329,7 +12329,7 @@ class _RecoveryservicesModuleNamespace {
 }
 
 class _RedhatopenshiftModuleNamespace {
-  _RedhatopenshiftModuleNamespace();
+  const _RedhatopenshiftModuleNamespace();
   final Cluster = module_redhatopenshift.Cluster.new;
   final ClusterApiServerProfile = module_redhatopenshift.ClusterApiServerProfile.new;
   final ClusterApiServerProfileArgs = module_redhatopenshift.ClusterApiServerProfile.new;
@@ -12351,7 +12351,7 @@ class _RedhatopenshiftModuleNamespace {
 }
 
 class _RedisModuleNamespace {
-  _RedisModuleNamespace();
+  const _RedisModuleNamespace();
   final Cache = module_redis.Cache.new;
   final CacheAccessPolicy = module_redis.CacheAccessPolicy.new;
   final CacheAccessPolicyArgs = module_redis.CacheAccessPolicyArgs.new;
@@ -12403,7 +12403,7 @@ class _RedisModuleNamespace {
 }
 
 class _RelayModuleNamespace {
-  _RelayModuleNamespace();
+  const _RelayModuleNamespace();
   final HybridConnection = module_relay.HybridConnection.new;
   final HybridConnectionArgs = module_relay.HybridConnectionArgs.new;
   final HybridConnectionAuthorizationRule = module_relay.HybridConnectionAuthorizationRule.new;
@@ -12423,7 +12423,7 @@ class _RelayModuleNamespace {
 }
 
 class _RoleModuleNamespace {
-  _RoleModuleNamespace();
+  const _RoleModuleNamespace();
   final Assignment = module_role.Assignment.new;
   final AssignmentArgs = module_role.AssignmentArgs.new;
   final AssignmentState = module_role.AssignmentState.new;
@@ -12443,7 +12443,7 @@ class _RoleModuleNamespace {
 }
 
 class _SearchModuleNamespace {
-  _SearchModuleNamespace();
+  const _SearchModuleNamespace();
   final GetServiceArgs = module_search.GetServiceArgs.new;
   final GetServiceIdentity = module_search.GetServiceIdentity.new;
   final GetServiceIdentityArgs = module_search.GetServiceIdentity.new;
@@ -12467,7 +12467,7 @@ class _SearchModuleNamespace {
 }
 
 class _SecuritycenterModuleNamespace {
-  _SecuritycenterModuleNamespace();
+  const _SecuritycenterModuleNamespace();
   final AdvancedThreatProtection = module_securitycenter.AdvancedThreatProtection.new;
   final AdvancedThreatProtectionArgs = module_securitycenter.AdvancedThreatProtectionArgs.new;
   final AdvancedThreatProtectionState = module_securitycenter.AdvancedThreatProtectionState.new;
@@ -12531,7 +12531,7 @@ class _SecuritycenterModuleNamespace {
 }
 
 class _SentinelModuleNamespace {
-  _SentinelModuleNamespace();
+  const _SentinelModuleNamespace();
   final AlertRuleAnomalyBuiltIn = module_sentinel.AlertRuleAnomalyBuiltIn.new;
   final AlertRuleAnomalyBuiltInArgs = module_sentinel.AlertRuleAnomalyBuiltInArgs.new;
   final AlertRuleAnomalyBuiltInMultiSelectObservation = module_sentinel.AlertRuleAnomalyBuiltInMultiSelectObservation.new;
@@ -12781,7 +12781,7 @@ class _SentinelModuleNamespace {
 }
 
 class _ServicebusModuleNamespace {
-  _ServicebusModuleNamespace();
+  const _ServicebusModuleNamespace();
   final GetNamespaceArgs = module_servicebus.GetNamespaceArgs.new;
   final GetNamespaceAuthorizationRuleArgs = module_servicebus.GetNamespaceAuthorizationRuleArgs.new;
   final GetNamespaceAuthorizationRuleResult = module_servicebus.GetNamespaceAuthorizationRuleResult.new;
@@ -12867,7 +12867,7 @@ class _ServicebusModuleNamespace {
 }
 
 class _ServicefabricModuleNamespace {
-  _ServicefabricModuleNamespace();
+  const _ServicefabricModuleNamespace();
   final Cluster = module_servicefabric.Cluster.new;
   final ClusterArgs = module_servicefabric.ClusterArgs.new;
   final ClusterAzureActiveDirectory = module_servicefabric.ClusterAzureActiveDirectory.new;
@@ -12929,7 +12929,7 @@ class _ServicefabricModuleNamespace {
 }
 
 class _SignalrModuleNamespace {
-  _SignalrModuleNamespace();
+  const _SignalrModuleNamespace();
   final GetServiceArgs = module_signalr.GetServiceArgs.new;
   final GetServiceResult = module_signalr.GetServiceResult.new;
   final GetServiceResultArgs = module_signalr.GetServiceResult.new;
@@ -12971,7 +12971,7 @@ class _SignalrModuleNamespace {
 }
 
 class _SiterecoveryModuleNamespace {
-  _SiterecoveryModuleNamespace();
+  const _SiterecoveryModuleNamespace();
   final Fabric = module_siterecovery.Fabric.new;
   final FabricArgs = module_siterecovery.FabricArgs.new;
   final FabricState = module_siterecovery.FabricState.new;
@@ -13093,7 +13093,7 @@ class _SiterecoveryModuleNamespace {
 }
 
 class _StackModuleNamespace {
-  _StackModuleNamespace();
+  const _StackModuleNamespace();
   final GetHciClusterArgs = module_stack.GetHciClusterArgs.new;
   final GetHciClusterIdentity = module_stack.GetHciClusterIdentity.new;
   final GetHciClusterIdentityArgs = module_stack.GetHciClusterIdentity.new;
@@ -13177,7 +13177,7 @@ class _StackModuleNamespace {
 }
 
 class _StorageModuleNamespace {
-  _StorageModuleNamespace();
+  const _StorageModuleNamespace();
   final Account = module_storage.Account.new;
   final AccountArgs = module_storage.AccountArgs.new;
   final AccountAzureFilesAuthentication = module_storage.AccountAzureFilesAuthentication.new;
@@ -13495,7 +13495,7 @@ class _StorageModuleNamespace {
 }
 
 class _StreamanalyticsModuleNamespace {
-  _StreamanalyticsModuleNamespace();
+  const _StreamanalyticsModuleNamespace();
   final Cluster = module_streamanalytics.Cluster.new;
   final ClusterArgs = module_streamanalytics.ClusterArgs.new;
   final ClusterState = module_streamanalytics.ClusterState.new;
@@ -13627,7 +13627,7 @@ class _StreamanalyticsModuleNamespace {
 }
 
 class _SynapseModuleNamespace {
-  _SynapseModuleNamespace();
+  const _SynapseModuleNamespace();
   final FirewallRule = module_synapse.FirewallRule.new;
   final FirewallRuleArgs = module_synapse.FirewallRuleArgs.new;
   final FirewallRuleState = module_synapse.FirewallRuleState.new;
@@ -13751,7 +13751,7 @@ class _SynapseModuleNamespace {
 }
 
 class _SystemcenterModuleNamespace {
-  _SystemcenterModuleNamespace();
+  const _SystemcenterModuleNamespace();
   final GetVirtualMachineManagerInventoryItemsArgs = module_systemcenter.GetVirtualMachineManagerInventoryItemsArgs.new;
   final GetVirtualMachineManagerInventoryItemsInventoryItem = module_systemcenter.GetVirtualMachineManagerInventoryItemsInventoryItem.new;
   final GetVirtualMachineManagerInventoryItemsInventoryItemArgs = module_systemcenter.GetVirtualMachineManagerInventoryItemsInventoryItem.new;
@@ -13799,7 +13799,7 @@ class _SystemcenterModuleNamespace {
 }
 
 class _TrafficmanagerModuleNamespace {
-  _TrafficmanagerModuleNamespace();
+  const _TrafficmanagerModuleNamespace();
   final GetGeographicalLocationArgs = module_trafficmanager.GetGeographicalLocationArgs.new;
   final GetGeographicalLocationResult = module_trafficmanager.GetGeographicalLocationResult.new;
   final GetGeographicalLocationResultArgs = module_trafficmanager.GetGeographicalLocationResult.new;
@@ -13817,7 +13817,7 @@ class _TrafficmanagerModuleNamespace {
 }
 
 class _TrustedsigningModuleNamespace {
-  _TrustedsigningModuleNamespace();
+  const _TrustedsigningModuleNamespace();
   final Account = module_trustedsigning.Account.new;
   final AccountArgs = module_trustedsigning.AccountArgs.new;
   final AccountState = module_trustedsigning.AccountState.new;
@@ -13829,7 +13829,7 @@ class _TrustedsigningModuleNamespace {
 }
 
 class _VideoindexerModuleNamespace {
-  _VideoindexerModuleNamespace();
+  const _VideoindexerModuleNamespace();
   final Account = module_videoindexer.Account.new;
   final AccountArgs = module_videoindexer.AccountArgs.new;
   final AccountIdentity = module_videoindexer.AccountIdentity.new;
@@ -13841,7 +13841,7 @@ class _VideoindexerModuleNamespace {
 }
 
 class _VoiceModuleNamespace {
-  _VoiceModuleNamespace();
+  const _VoiceModuleNamespace();
   final ServicesCommunicationsGateway = module_voice.ServicesCommunicationsGateway.new;
   final ServicesCommunicationsGatewayArgs = module_voice.ServicesCommunicationsGatewayArgs.new;
   final ServicesCommunicationsGatewayServiceLocation = module_voice.ServicesCommunicationsGatewayServiceLocation.new;
@@ -13855,7 +13855,7 @@ class _VoiceModuleNamespace {
 }
 
 class _WafModuleNamespace {
-  _WafModuleNamespace();
+  const _WafModuleNamespace();
   final GetFirewallPolicyArgs = module_waf.GetFirewallPolicyArgs.new;
   final GetFirewallPolicyResult = module_waf.GetFirewallPolicyResult.new;
   final GetFirewallPolicyResultArgs = module_waf.GetFirewallPolicyResult.new;
@@ -13893,7 +13893,7 @@ class _WafModuleNamespace {
 }
 
 class _WebpubsubModuleNamespace {
-  _WebpubsubModuleNamespace();
+  const _WebpubsubModuleNamespace();
   final CustomCertificate = module_webpubsub.CustomCertificate.new;
   final CustomCertificateArgs = module_webpubsub.CustomCertificateArgs.new;
   final CustomCertificateState = module_webpubsub.CustomCertificateState.new;
@@ -13953,7 +13953,7 @@ class _WebpubsubModuleNamespace {
 }
 
 class _WorkloadssapModuleNamespace {
-  _WorkloadssapModuleNamespace();
+  const _WorkloadssapModuleNamespace();
   final DiscoveryVirtualInstance = module_workloadssap.DiscoveryVirtualInstance.new;
   final DiscoveryVirtualInstanceArgs = module_workloadssap.DiscoveryVirtualInstanceArgs.new;
   final DiscoveryVirtualInstanceIdentity = module_workloadssap.DiscoveryVirtualInstanceIdentity.new;

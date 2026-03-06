@@ -23,7 +23,7 @@ class NetworkManagerNetworkGroupArgs {
   /// [memberType] The member type for the network group. Possible values are `Subnet` and `VirtualNetwork`. Defaults to `VirtualNetwork`.
   /// [name] Specifies the name which should be used for this Network Manager Network Group. Changing this forces a new Network Manager Network Group to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager. Changing this forces a new Network Manager Network Group to be created.
-  NetworkManagerNetworkGroupArgs({
+  const NetworkManagerNetworkGroupArgs({
     this.description,
     this.memberType,
     this.name,

@@ -11,7 +11,7 @@ class FleetUpdateRunManagedClusterUpdateUpgrade {
   /// Creates a new [FleetUpdateRunManagedClusterUpdateUpgrade].
   /// [kubernetesVersion] Specifies the Kubernetes version to upgrade the member clusters to. This is required if `type` is set to `Full`.
   /// [type] Specifies the type of upgrade to perform. Possible values are `Full` and `NodeImageOnly`.
-  FleetUpdateRunManagedClusterUpdateUpgrade({
+  const FleetUpdateRunManagedClusterUpdateUpgrade({
     this.kubernetesVersion,
     required this.type,
   });

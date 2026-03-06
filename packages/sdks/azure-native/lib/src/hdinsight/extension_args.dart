@@ -24,7 +24,7 @@ class ExtensionArgs {
   /// [primaryKey] The certificate for the cluster monitoring extensions.
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceId] The workspace ID for the cluster monitoring extension.
-  ExtensionArgs({
+  const ExtensionArgs({
     required this.clusterName,
     this.extensionName,
     this.primaryKey,

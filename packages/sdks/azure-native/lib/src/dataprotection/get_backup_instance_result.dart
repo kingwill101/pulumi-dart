@@ -28,7 +28,7 @@ class GetBackupInstanceResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Proxy Resource tags.
   /// [type] Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetBackupInstanceResult({
+  const GetBackupInstanceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

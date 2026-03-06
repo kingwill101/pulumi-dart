@@ -15,7 +15,7 @@ class JobStepActionResponse {
   /// [source] The source of the action to execute.
   /// [type] Type of action being executed by the job step.
   /// [value] The action value, for example the text of the T-SQL script to execute.
-  JobStepActionResponse({
+  const JobStepActionResponse({
     this.source,
     this.type,
     required this.value,

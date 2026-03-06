@@ -17,7 +17,7 @@ class AuthorizationPolicyRule {
   /// Creates a new [AuthorizationPolicyRule].
   /// [destinations] List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
   /// [sources] List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
-  AuthorizationPolicyRule({
+  const AuthorizationPolicyRule({
     this.destinations,
     this.sources,
   });

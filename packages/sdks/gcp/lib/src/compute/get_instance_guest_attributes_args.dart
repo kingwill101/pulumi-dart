@@ -32,7 +32,7 @@ class GetInstanceGuestAttributesArgs {
   /// [region] Optional.
   /// [variableKey] Key of a variable to get the value of. Consists of
   /// [zone] The zone of the instance. If `self_link` is provided, this
-  GetInstanceGuestAttributesArgs({
+  const GetInstanceGuestAttributesArgs({
     required this.name,
     this.project,
     this.queryPath,

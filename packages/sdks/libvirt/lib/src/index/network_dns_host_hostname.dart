@@ -8,7 +8,7 @@ class NetworkDnsHostHostname {
 
   /// Creates a new [NetworkDnsHostHostname].
   /// [hostname] Sets the value of each hostname in the DNS configuration, allowing for individual identification.
-  NetworkDnsHostHostname({
+  const NetworkDnsHostHostname({
     required this.hostname,
   });
 

@@ -14,7 +14,7 @@ class GetPolicyDocumentStatementCondition {
   /// [operator] The operator of the condition.
   /// [values] The values of the condition.
   /// [variable] The variable of the condition.
-  GetPolicyDocumentStatementCondition({
+  const GetPolicyDocumentStatementCondition({
     required this.operator,
     required this.values,
     required this.variable,

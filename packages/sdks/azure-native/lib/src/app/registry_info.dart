@@ -15,7 +15,7 @@ class RegistryInfo {
   /// [registryPassword] registry secret.
   /// [registryUrl] registry server Url.
   /// [registryUserName] registry username.
-  RegistryInfo({
+  const RegistryInfo({
     this.registryPassword,
     this.registryUrl,
     this.registryUserName,

@@ -33,7 +33,7 @@ class HostingCustomDomainArgs {
   /// [redirectTarget] A domain name that this CustomDomain should direct traffic towards. If
   /// [siteId] The ID of the site in which to create this custom domain association.
   /// [waitDnsVerification] Optional.
-  HostingCustomDomainArgs({
+  const HostingCustomDomainArgs({
     this.certPreference,
     required this.customDomain,
     this.project,

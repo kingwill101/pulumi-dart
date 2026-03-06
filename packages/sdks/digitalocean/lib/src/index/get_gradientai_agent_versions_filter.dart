@@ -13,7 +13,7 @@ class GetGradientaiAgentVersionsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGradientaiAgentVersionsFilter({
+  const GetGradientaiAgentVersionsFilter({
     this.all,
     required this.key,
     this.matchBy,

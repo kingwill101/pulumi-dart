@@ -22,7 +22,7 @@ class GetAdConnectorDirectoriesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetAdConnectorDirectoriesResult({
+  const GetAdConnectorDirectoriesResult({
     required this.directories,
     required this.id,
     required this.ids,

@@ -17,7 +17,7 @@ class CapacityReservationInstanceViewWithNameResponse {
   /// [name] The name of the capacity reservation.
   /// [statuses] The resource status information.
   /// [utilizationInfo] Unutilized capacity of the capacity reservation.
-  CapacityReservationInstanceViewWithNameResponse({
+  const CapacityReservationInstanceViewWithNameResponse({
     required this.name,
     this.statuses,
     this.utilizationInfo,

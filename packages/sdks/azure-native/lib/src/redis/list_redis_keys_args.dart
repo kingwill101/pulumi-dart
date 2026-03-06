@@ -15,7 +15,7 @@ class ListRedisKeysArgs {
   /// Creates a new [ListRedisKeysArgs].
   /// [name] The name of the RedisResource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListRedisKeysArgs({
+  const ListRedisKeysArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -38,7 +38,7 @@ class VirtualMachineTemplateArgs {
   /// [tags] Gets or sets the Resource tags.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this template resides.
   /// [virtualMachineTemplateName] Name of the virtual machine template resource.
-  VirtualMachineTemplateArgs({
+  const VirtualMachineTemplateArgs({
     this.extendedLocation,
     this.inventoryItemId,
     this.kind,

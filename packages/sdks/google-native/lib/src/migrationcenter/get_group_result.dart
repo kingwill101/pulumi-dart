@@ -23,7 +23,7 @@ class GetGroupResult {
   /// [labels] Labels as key value pairs.
   /// [name] The name of the group.
   /// [updateTime] The timestamp when the group was last updated.
-  GetGroupResult({
+  const GetGroupResult({
     required this.createTime,
     required this.description,
     required this.displayName,

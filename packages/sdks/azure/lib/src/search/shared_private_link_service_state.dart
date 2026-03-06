@@ -26,7 +26,7 @@ class SharedPrivateLinkServiceState {
   /// [status] The status of a private endpoint connection. Possible values are Pending, Approved, Rejected or Disconnected.
   /// [subresourceName] Specify the sub resource name which the Azure Search Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [targetResourceId] Specify the ID of the Shared Private Link Enabled Remote Resource which this Azure Search Private Endpoint should be connected to. Changing this forces a new resource to be created.
-  SharedPrivateLinkServiceState({
+  const SharedPrivateLinkServiceState({
     this.name,
     this.requestMessage,
     this.searchServiceId,

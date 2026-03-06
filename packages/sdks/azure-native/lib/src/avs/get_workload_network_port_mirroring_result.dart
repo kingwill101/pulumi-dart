@@ -42,7 +42,7 @@ class GetWorkloadNetworkPortMirroringResult {
   /// [status] Port Mirroring Status.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkloadNetworkPortMirroringResult({
+  const GetWorkloadNetworkPortMirroringResult({
     required this.azureApiVersion,
     this.destination,
     this.direction,

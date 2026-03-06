@@ -31,7 +31,7 @@ class ManagedInstanceFailoverGroupArgs {
   /// [readWriteEndpointFailoverPolicy] A `read_write_endpoint_failover_policy` block as defined below.
   /// [readonlyEndpointFailoverPolicyEnabled] Failover policy for the read-only endpoint. Defaults to `true`.
   /// [secondaryType] The type of the secondary Managed Instance. Possible values are `Geo`, `Standby`. Defaults to `Geo`.
-  ManagedInstanceFailoverGroupArgs({
+  const ManagedInstanceFailoverGroupArgs({
     this.location,
     required this.managedInstanceId,
     this.name,

@@ -11,7 +11,7 @@ class GetExposureControlFeatureValueByFactoryResult {
   /// Creates a new [GetExposureControlFeatureValueByFactoryResult].
   /// [featureName] The feature name.
   /// [value] The feature value.
-  GetExposureControlFeatureValueByFactoryResult({
+  const GetExposureControlFeatureValueByFactoryResult({
     required this.featureName,
     required this.value,
   });

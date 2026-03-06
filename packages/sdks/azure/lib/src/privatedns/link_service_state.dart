@@ -45,7 +45,7 @@ class LinkServiceState {
   /// [resourceGroupName] The name of the Resource Group where the Private Link Service should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [visibilitySubscriptionIds] A list of Subscription UUID/GUID's that will be able to see this Private Link Service.
-  LinkServiceState({
+  const LinkServiceState({
     this.alias,
     this.autoApprovalSubscriptionIds,
     this.destinationIpAddress,

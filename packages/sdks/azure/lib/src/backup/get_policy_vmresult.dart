@@ -14,7 +14,7 @@ class GetPolicyVMResult {
   /// [name] Required.
   /// [recoveryVaultName] Required.
   /// [resourceGroupName] Required.
-  GetPolicyVMResult({
+  const GetPolicyVMResult({
     required this.id,
     required this.name,
     required this.recoveryVaultName,

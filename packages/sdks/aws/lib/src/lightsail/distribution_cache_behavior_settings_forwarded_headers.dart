@@ -11,7 +11,7 @@ class DistributionCacheBehaviorSettingsForwardedHeaders {
   /// Creates a new [DistributionCacheBehaviorSettingsForwardedHeaders].
   /// [headersAllowLists] Specific headers to forward to your distribution's origin.
   /// [option] Headers that you want your distribution to forward to your origin and base caching on. Valid values: `default`, `allow-list`, `all`.
-  DistributionCacheBehaviorSettingsForwardedHeaders({
+  const DistributionCacheBehaviorSettingsForwardedHeaders({
     this.headersAllowLists,
     this.option,
   });

@@ -19,7 +19,7 @@ class GetVpnConnectionArgs {
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpnConnectionId] Identifier of the EC2 VPN Connection.
-  GetVpnConnectionArgs({
+  const GetVpnConnectionArgs({
     this.filters,
     this.region,
     this.vpnConnectionId,

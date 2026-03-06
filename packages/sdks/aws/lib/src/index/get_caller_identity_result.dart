@@ -17,7 +17,7 @@ class GetCallerIdentityResult {
   /// [arn] ARN associated with the calling entity.
   /// [id] Account ID number of the account that owns or contains the calling entity.
   /// [userId] Unique identifier of the calling entity.
-  GetCallerIdentityResult({
+  const GetCallerIdentityResult({
     required this.accountId,
     required this.arn,
     required this.id,

@@ -45,7 +45,7 @@ class GetSubnetsArgs {
   /// [type] Eflo subnet usage type, optional value:
   /// [vpdId] The Eflo VPD ID.
   /// [zoneId] The zone ID of the resource.
-  GetSubnetsArgs({
+  const GetSubnetsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

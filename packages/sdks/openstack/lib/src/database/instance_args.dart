@@ -53,7 +53,7 @@ class InstanceArgs {
   /// [size] Specifies the volume size in GB. Changing this creates new instance.
   /// [users] An array of username, password, host and databases. The user
   /// [volumeType] Specifies the volume type to use. If you want to
-  InstanceArgs({
+  const InstanceArgs({
     this.configurationId,
     this.databases,
     required this.datastore,

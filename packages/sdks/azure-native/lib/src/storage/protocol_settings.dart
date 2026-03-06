@@ -10,7 +10,7 @@ class ProtocolSettings {
 
   /// Creates a new [ProtocolSettings].
   /// [smb] Setting for SMB protocol
-  ProtocolSettings({
+  const ProtocolSettings({
     this.smb,
   });
 

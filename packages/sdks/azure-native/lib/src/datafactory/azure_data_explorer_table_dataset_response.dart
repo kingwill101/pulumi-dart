@@ -37,7 +37,7 @@ class AzureDataExplorerTableDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [table] The table name of the Azure Data Explorer database. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  AzureDataExplorerTableDatasetResponse({
+  const AzureDataExplorerTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

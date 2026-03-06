@@ -20,7 +20,7 @@ class GetIndexDocumentMetadataConfigurationUpdateRelevance {
   /// [importance] Relative importance of the field in the search. Larger numbers provide more of a boost than smaller numbers. Minimum value of 1. Maximum value of 10.
   /// [rankOrder] Determines how values should be interpreted. For more information, refer to [RankOrder](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-RankOrder).
   /// [valuesImportanceMap] A list of values that should be given a different boost when they appear in the result list. For more information, refer to [ValueImportanceMap](https://docs.aws.amazon.com/kendra/latest/APIReference/API_Relevance.html#Kendra-Type-Relevance-ValueImportanceMap).
-  GetIndexDocumentMetadataConfigurationUpdateRelevance({
+  const GetIndexDocumentMetadataConfigurationUpdateRelevance({
     required this.duration,
     required this.freshness,
     required this.importance,

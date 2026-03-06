@@ -16,7 +16,7 @@ class ParameterGroupParameter {
   /// [applyMethod] "immediate" (default), or "pending-reboot". Some
   /// [name] The name of the DB parameter.
   /// [value] The value of the DB parameter.
-  ParameterGroupParameter({
+  const ParameterGroupParameter({
     this.applyMethod,
     required this.name,
     required this.value,

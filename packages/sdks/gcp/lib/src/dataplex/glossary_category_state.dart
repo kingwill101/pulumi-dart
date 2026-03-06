@@ -53,7 +53,7 @@ class GlossaryCategoryState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] System generated unique id for the GlossaryCategory. This ID will be different if the GlossaryCategory is deleted and re-created with the same name.
   /// [updateTime] The time at which the GlossaryCategory was last updated.
-  GlossaryCategoryState({
+  const GlossaryCategoryState({
     this.categoryId,
     this.createTime,
     this.description,

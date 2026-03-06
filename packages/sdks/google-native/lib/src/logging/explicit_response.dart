@@ -9,7 +9,7 @@ class ExplicitResponse {
 
   /// Creates a new [ExplicitResponse].
   /// [bounds] The values must be monotonically increasing.
-  ExplicitResponse({
+  const ExplicitResponse({
     required this.bounds,
   });
 

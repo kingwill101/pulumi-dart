@@ -13,7 +13,7 @@ class CustomAction {
   /// Creates a new [CustomAction].
   /// [actionDefinition] Property actionDefinition
   /// [actionName] Property actionName
-  CustomAction({
+  const CustomAction({
     this.actionDefinition,
     this.actionName,
   });

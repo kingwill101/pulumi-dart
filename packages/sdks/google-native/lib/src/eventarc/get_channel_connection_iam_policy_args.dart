@@ -17,7 +17,7 @@ class GetChannelConnectionIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetChannelConnectionIamPolicyArgs({
+  const GetChannelConnectionIamPolicyArgs({
     required this.channelConnectionId,
     required this.location,
     this.optionsRequestedPolicyVersion,

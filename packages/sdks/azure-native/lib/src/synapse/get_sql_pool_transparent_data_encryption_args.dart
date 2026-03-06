@@ -21,7 +21,7 @@ class GetSqlPoolTransparentDataEncryptionArgs {
   /// [sqlPoolName] SQL pool name
   /// [transparentDataEncryptionName] The name of the transparent data encryption configuration.
   /// [workspaceName] The name of the workspace.
-  GetSqlPoolTransparentDataEncryptionArgs({
+  const GetSqlPoolTransparentDataEncryptionArgs({
     required this.resourceGroupName,
     required this.sqlPoolName,
     required this.transparentDataEncryptionName,

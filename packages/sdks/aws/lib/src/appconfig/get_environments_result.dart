@@ -15,7 +15,7 @@ class GetEnvironmentsResult {
   /// [environmentIds] Set of Environment IDs associated with this AppConfig Application.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetEnvironmentsResult({
+  const GetEnvironmentsResult({
     required this.applicationId,
     required this.environmentIds,
     required this.id,

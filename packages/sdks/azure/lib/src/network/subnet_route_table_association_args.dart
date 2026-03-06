@@ -17,7 +17,7 @@ class SubnetRouteTableAssociationArgs {
   /// Creates a new [SubnetRouteTableAssociationArgs].
   /// [routeTableId] The ID of the Route Table which should be associated with the Subnet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet. Changing this forces a new resource to be created.
-  SubnetRouteTableAssociationArgs({
+  const SubnetRouteTableAssociationArgs({
     required this.routeTableId,
     required this.subnetId,
   });

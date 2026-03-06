@@ -15,7 +15,7 @@ class GetWorkspacePrivateEndpointConnectionArgs {
   /// Creates a new [GetWorkspacePrivateEndpointConnectionArgs].
   /// [privateEndpointId] The resource ID of the Private Endpoint.
   /// [workspaceId] The resource ID of the Databricks Workspace.
-  GetWorkspacePrivateEndpointConnectionArgs({
+  const GetWorkspacePrivateEndpointConnectionArgs({
     required this.privateEndpointId,
     required this.workspaceId,
   });

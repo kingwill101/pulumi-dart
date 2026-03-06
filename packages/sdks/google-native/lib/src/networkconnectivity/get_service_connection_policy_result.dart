@@ -41,7 +41,7 @@ class GetServiceConnectionPolicyResult {
   /// [pscConnections] [Output only] Information about each Private Service Connect connection.
   /// [serviceClass] The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
   /// [updateTime] Time when the ServiceConnectionMap was updated.
-  GetServiceConnectionPolicyResult({
+  const GetServiceConnectionPolicyResult({
     required this.createTime,
     required this.description,
     required this.etag,

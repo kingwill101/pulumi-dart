@@ -10,7 +10,7 @@ class OracleRdbmsDatastreamV1alpha1 {
 
   /// Creates a new [OracleRdbmsDatastreamV1alpha1].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
-  OracleRdbmsDatastreamV1alpha1({
+  const OracleRdbmsDatastreamV1alpha1({
     this.oracleSchemas,
   });
 

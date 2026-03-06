@@ -35,7 +35,7 @@ class BookmarkTimelineItemResponse {
   /// [labels] List of labels relevant to this bookmark
   /// [notes] The notes of the bookmark
   /// [startTimeUtc] The bookmark start time.
-  BookmarkTimelineItemResponse({
+  const BookmarkTimelineItemResponse({
     required this.azureResourceId,
     this.createdBy,
     this.displayName,

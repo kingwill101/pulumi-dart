@@ -79,7 +79,7 @@ class GetWebAppSiteExtensionSlotResult {
   /// [title] Optional.
   /// [type] Resource type.
   /// [version] Version information.
-  GetWebAppSiteExtensionSlotResult({
+  const GetWebAppSiteExtensionSlotResult({
     this.authors,
     required this.azureApiVersion,
     this.comment,

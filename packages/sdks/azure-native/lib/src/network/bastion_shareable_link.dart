@@ -10,7 +10,7 @@ class BastionShareableLink {
 
   /// Creates a new [BastionShareableLink].
   /// [vm] Reference of the virtual machine resource.
-  BastionShareableLink({
+  const BastionShareableLink({
     required this.vm,
   });
 

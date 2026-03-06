@@ -9,7 +9,7 @@ class AutomationRuleCriteriaSeverityLabel {
   /// Creates a new [AutomationRuleCriteriaSeverityLabel].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaSeverityLabel({
+  const AutomationRuleCriteriaSeverityLabel({
     required this.comparison,
     required this.value,
   });

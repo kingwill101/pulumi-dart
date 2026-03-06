@@ -11,7 +11,7 @@ class InstanceFleetInstanceTypeConfigConfiguration {
   /// Creates a new [InstanceFleetInstanceTypeConfigConfiguration].
   /// [classification] The classification within a configuration.
   /// [properties] A map of properties specified within a configuration classification
-  InstanceFleetInstanceTypeConfigConfiguration({
+  const InstanceFleetInstanceTypeConfigConfiguration({
     this.classification,
     this.properties,
   });

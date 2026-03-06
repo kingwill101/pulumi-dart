@@ -53,7 +53,7 @@ class ThemeConfigurationUiColorPalette {
   /// [successForeground] Color (hexadecimal) that applies to any text or other elements that appear over the success color.
   /// [warning] Color (hexadecimal) that applies to warning and informational messages.
   /// [warningForeground] Color (hexadecimal) that applies to any text or other elements that appear over the warning color.
-  ThemeConfigurationUiColorPalette({
+  const ThemeConfigurationUiColorPalette({
     this.accent,
     this.accentForeground,
     this.danger,

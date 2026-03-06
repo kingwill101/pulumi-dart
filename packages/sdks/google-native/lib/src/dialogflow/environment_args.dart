@@ -30,7 +30,7 @@ class EnvironmentArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [textToSpeechSettings] Optional. Text to speech settings for this environment.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.agentVersion,
     this.description,
     required this.environmentId,

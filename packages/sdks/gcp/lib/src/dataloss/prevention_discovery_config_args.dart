@@ -47,7 +47,7 @@ class PreventionDiscoveryConfigArgs {
   /// [parent] The parent of the discovery config in any of the following formats:
   /// [status] Required. A status for this configuration
   /// [targets] Target to match against for determining what to scan and how frequently
-  PreventionDiscoveryConfigArgs({
+  const PreventionDiscoveryConfigArgs({
     this.actions,
     this.displayName,
     this.inspectTemplates,

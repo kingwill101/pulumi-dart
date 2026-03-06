@@ -15,7 +15,7 @@ class GetTopicIamPolicyPubsubV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicIamPolicyPubsubV1beta2Args({
+  const GetTopicIamPolicyPubsubV1beta2Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.topicId,

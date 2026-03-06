@@ -15,7 +15,7 @@ class GetJobTemplatesArgs {
   /// Creates a new [GetJobTemplatesArgs].
   /// [ids] A list of Job Template IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetJobTemplatesArgs({
+  const GetJobTemplatesArgs({
     this.ids,
     this.outputFile,
   });

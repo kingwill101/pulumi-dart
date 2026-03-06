@@ -34,7 +34,7 @@ class ClusterControlPlaneEncryption {
   /// [kmsKeyActiveVersion] (Output)
   /// [kmsKeyState] (Output)
   /// [kmsStatuses] (Output)
-  ClusterControlPlaneEncryption({
+  const ClusterControlPlaneEncryption({
     this.kmsKey,
     this.kmsKeyActiveVersion,
     this.kmsKeyState,

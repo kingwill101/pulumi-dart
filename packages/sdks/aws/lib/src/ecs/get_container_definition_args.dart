@@ -18,7 +18,7 @@ class GetContainerDefinitionArgs {
   /// [containerName] Name of the container definition
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [taskDefinition] ARN of the task definition which contains the container
-  GetContainerDefinitionArgs({
+  const GetContainerDefinitionArgs({
     required this.containerName,
     this.region,
     required this.taskDefinition,

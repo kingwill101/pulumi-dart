@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysRawIo {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysRawIo].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysRawIo({
+  const DomainFeaturesCapabilitiesSysRawIo({
     this.state,
   });
 

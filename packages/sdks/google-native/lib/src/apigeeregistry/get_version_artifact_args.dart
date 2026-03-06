@@ -19,7 +19,7 @@ class GetVersionArtifactArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [versionId] Required.
-  GetVersionArtifactArgs({
+  const GetVersionArtifactArgs({
     required this.apiId,
     required this.artifactId,
     required this.location,

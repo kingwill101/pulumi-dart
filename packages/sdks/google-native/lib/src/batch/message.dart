@@ -18,7 +18,7 @@ class Message {
   /// [newJobState] The new job state.
   /// [newTaskState] The new task state.
   /// [type] The message type.
-  Message({
+  const Message({
     this.newJobState,
     this.newTaskState,
     this.type,

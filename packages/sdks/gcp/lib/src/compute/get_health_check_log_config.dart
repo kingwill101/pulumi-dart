@@ -9,7 +9,7 @@ class GetHealthCheckLogConfig {
 
   /// Creates a new [GetHealthCheckLogConfig].
   /// [enable] Indicates whether or not to export logs. This is false by default,
-  GetHealthCheckLogConfig({
+  const GetHealthCheckLogConfig({
     required this.enable,
   });
 

@@ -17,7 +17,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   /// [key] Matches a taint key (not necessarily unique).
   /// [operator] Matches a taint operator.
   /// [value] Matches a taint value.
-  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration({
+  const FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration({
     this.effect,
     this.key,
     this.operator,

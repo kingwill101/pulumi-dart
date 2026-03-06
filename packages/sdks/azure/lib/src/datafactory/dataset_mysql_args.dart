@@ -42,7 +42,7 @@ class DatasetMysqlArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset MySQL.
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [tableName] The table name of the Data Factory Dataset MySQL.
-  DatasetMysqlArgs({
+  const DatasetMysqlArgs({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

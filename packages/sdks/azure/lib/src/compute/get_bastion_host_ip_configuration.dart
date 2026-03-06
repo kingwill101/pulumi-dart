@@ -14,7 +14,7 @@ class GetBastionHostIpConfiguration {
   /// [name] The name of the Bastion Host.
   /// [publicIpAddressId] Reference to a Public IP Address associated to this Bastion Host.
   /// [subnetId] Reference to the subnet in which this Bastion Host has been created.
-  GetBastionHostIpConfiguration({
+  const GetBastionHostIpConfiguration({
     required this.name,
     required this.publicIpAddressId,
     required this.subnetId,

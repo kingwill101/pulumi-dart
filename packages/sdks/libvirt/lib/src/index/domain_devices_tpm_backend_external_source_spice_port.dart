@@ -8,7 +8,7 @@ class DomainDevicesTpmBackendExternalSourceSpicePort {
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourceSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesTpmBackendExternalSourceSpicePort({
+  const DomainDevicesTpmBackendExternalSourceSpicePort({
     required this.channel,
   });
 

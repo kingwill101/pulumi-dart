@@ -18,7 +18,7 @@ class GetReplicationRecoveryPlanArgs {
   /// [recoveryPlanName] Name of the recovery plan.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  GetReplicationRecoveryPlanArgs({
+  const GetReplicationRecoveryPlanArgs({
     required this.recoveryPlanName,
     required this.resourceGroupName,
     required this.resourceName,

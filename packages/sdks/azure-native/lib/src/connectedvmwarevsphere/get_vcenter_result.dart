@@ -67,7 +67,7 @@ class GetVCenterResult {
   /// [type] Gets or sets the type of the resource.
   /// [uuid] Gets or sets a unique identifier for this resource.
   /// [version] Gets or sets the version of the vCenter.
-  GetVCenterResult({
+  const GetVCenterResult({
     required this.azureApiVersion,
     required this.connectionStatus,
     this.credentials,

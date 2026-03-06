@@ -15,7 +15,7 @@ class A2AVmDiskInputDetails {
   /// [diskUri] The disk Uri.
   /// [primaryStagingAzureStorageAccountId] The primary staging storage account Id.
   /// [recoveryAzureStorageAccountId] The recovery VHD storage account Id.
-  A2AVmDiskInputDetails({
+  const A2AVmDiskInputDetails({
     required this.diskUri,
     required this.primaryStagingAzureStorageAccountId,
     required this.recoveryAzureStorageAccountId,

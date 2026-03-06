@@ -12,7 +12,7 @@ class DataDiskImageEncryption {
   /// Creates a new [DataDiskImageEncryption].
   /// [diskEncryptionSetId] A relative URI containing the resource ID of the disk encryption set.
   /// [lun] This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
-  DataDiskImageEncryption({
+  const DataDiskImageEncryption({
     this.diskEncryptionSetId,
     required this.lun,
   });

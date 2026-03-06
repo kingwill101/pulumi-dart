@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettin
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination({
     required this.destinationRefId,
   });
 

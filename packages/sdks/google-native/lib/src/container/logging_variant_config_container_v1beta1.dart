@@ -10,7 +10,7 @@ class LoggingVariantConfigContainerV1beta1 {
 
   /// Creates a new [LoggingVariantConfigContainerV1beta1].
   /// [variant] Logging variant deployed on nodes.
-  LoggingVariantConfigContainerV1beta1({
+  const LoggingVariantConfigContainerV1beta1({
     this.variant,
   });
 

@@ -22,7 +22,7 @@ class PoolUserAccount {
   /// [name] The name of the user account.
   /// [password] The password for the user account.
   /// [windowsUserConfigurations] The `windows_user_configuration` block defined below is a windows-specific user configuration for the user account. This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
-  PoolUserAccount({
+  const PoolUserAccount({
     required this.elevationLevel,
     this.linuxUserConfigurations,
     required this.name,

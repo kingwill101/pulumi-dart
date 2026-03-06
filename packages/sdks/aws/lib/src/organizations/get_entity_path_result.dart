@@ -13,7 +13,7 @@ class GetEntityPathResult {
   /// [entityId] Required.
   /// [entityPath] Entity path.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetEntityPathResult({
+  const GetEntityPathResult({
     required this.entityId,
     required this.entityPath,
     required this.id,

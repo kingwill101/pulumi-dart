@@ -108,7 +108,7 @@ class GatewayFileShareState {
   /// [supportArchive] Whether to support the archive transparent read.
   /// [transferAcceleration] The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version &gt;= 1.3.0 above support.
   /// [windowsAcl] Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
-  GatewayFileShareState({
+  const GatewayFileShareState({
     this.accessBasedEnumeration,
     this.backendLimit,
     this.browsable,

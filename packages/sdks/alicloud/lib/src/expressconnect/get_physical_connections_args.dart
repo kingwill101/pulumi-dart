@@ -24,7 +24,7 @@ class GetPhysicalConnectionsArgs {
   /// [nameRegex] A regex string to filter results by Physical Connection name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
-  GetPhysicalConnectionsArgs({
+  const GetPhysicalConnectionsArgs({
     this.ids,
     this.includeReservationData,
     this.nameRegex,

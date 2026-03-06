@@ -11,7 +11,7 @@ class GetServiceResult {
   /// Creates a new [GetServiceResult].
   /// [producerProjectId] ID of the project that produces and owns this service.
   /// [serviceName] The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
-  GetServiceResult({
+  const GetServiceResult({
     required this.producerProjectId,
     required this.serviceName,
   });

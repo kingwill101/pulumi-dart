@@ -21,7 +21,7 @@ class CorsPolicy {
   /// [allowedOrigins] The origin domains that are permitted to make a request against the service via CORS.
   /// [exposedHeaders] The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer.
   /// [maxAgeInSeconds] The maximum amount time that a browser should cache the preflight OPTIONS request.
-  CorsPolicy({
+  const CorsPolicy({
     this.allowedHeaders,
     this.allowedMethods,
     required this.allowedOrigins,

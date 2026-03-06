@@ -65,7 +65,7 @@ class ParameterState {
   /// [valueWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [valueWoVersion] Used together with `value_wo` to trigger an update. Increment this value when an update to the `value_wo` is required.
   /// [version] Version of the parameter.
-  ParameterState({
+  const ParameterState({
     this.allowedPattern,
     this.arn,
     this.dataType,

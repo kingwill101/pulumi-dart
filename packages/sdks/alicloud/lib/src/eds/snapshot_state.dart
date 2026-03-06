@@ -21,7 +21,7 @@ class SnapshotState {
   /// [snapshotName] The name of the Snapshot.
   /// [sourceDiskType] The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
   /// [status] The status of the snapshot.
-  SnapshotState({
+  const SnapshotState({
     this.description,
     this.desktopId,
     this.snapshotName,

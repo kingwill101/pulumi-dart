@@ -12,7 +12,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
   /// Creates a new [PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule].
   /// [moduleEnablementState] The state of enablement for the module at its level of the resource hierarchy.
   /// [moduleName] The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
-  PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule({
+  const PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule({
     this.moduleEnablementState,
     required this.moduleName,
   });

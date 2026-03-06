@@ -14,7 +14,7 @@ class VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConn
   /// [addressPrefixes] A list of address prefixes for P2S VPN Client.
   /// [name] The name of the Virtual Network Gateway Client Connection.
   /// [policyGroupNames] A list of names of Virtual Network Gateway Policy Groups.
-  VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection({
+  const VirtualNetworkGatewayVpnClientConfigurationVirtualNetworkGatewayClientConnection({
     required this.addressPrefixes,
     required this.name,
     required this.policyGroupNames,

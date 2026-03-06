@@ -13,7 +13,7 @@ class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig {
   /// Creates a new [ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig].
   /// [effectiveEdition] (Output)
   /// [intelligenceConfig] (Output)
-  ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig({
+  const ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig({
     this.effectiveEdition,
     this.intelligenceConfig,
   });

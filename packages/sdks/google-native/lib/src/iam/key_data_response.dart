@@ -21,7 +21,7 @@ class KeyDataResponse {
   /// [keySpec] The specifications for the key.
   /// [notAfterTime] Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate.
   /// [notBeforeTime] Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate.
-  KeyDataResponse({
+  const KeyDataResponse({
     required this.format,
     required this.key,
     required this.keySpec,

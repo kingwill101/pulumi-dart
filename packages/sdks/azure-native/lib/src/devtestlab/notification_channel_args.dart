@@ -40,7 +40,7 @@ class NotificationChannelArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   /// [webHookUrl] The webhook URL to send notifications to.
-  NotificationChannelArgs({
+  const NotificationChannelArgs({
     this.description,
     this.emailRecipient,
     this.events,

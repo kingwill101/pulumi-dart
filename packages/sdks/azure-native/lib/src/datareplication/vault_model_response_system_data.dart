@@ -25,7 +25,7 @@ class VaultModelResponseSystemData {
   /// [lastModifiedAt] Gets or sets the timestamp of resource last modification (UTC).
   /// [lastModifiedBy] Gets or sets the identity that last modified the resource.
   /// [lastModifiedByType] Gets or sets the type of identity that last modified the resource: user, application,
-  VaultModelResponseSystemData({
+  const VaultModelResponseSystemData({
     this.createdAt,
     this.createdBy,
     this.createdByType,

@@ -21,7 +21,7 @@ class CacheNodeInstallPropertiesResponse {
   /// [primaryAccountKey] Mcc primary account key. Internal to Mcc.
   /// [registrationKey] Mcc Iot Central temporary device registration key, used once.
   /// [secondaryAccountKey] Mcc secondary account key. Internal to Mcc.
-  CacheNodeInstallPropertiesResponse({
+  const CacheNodeInstallPropertiesResponse({
     this.cacheNodeId,
     this.customerId,
     required this.primaryAccountKey,

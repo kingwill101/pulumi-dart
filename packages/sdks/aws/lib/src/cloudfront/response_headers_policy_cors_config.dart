@@ -30,7 +30,7 @@ class ResponseHeadersPolicyCorsConfig {
   /// [accessControlExposeHeaders] Object that contains an attribute `items` that contains a list of HTTP headers that CloudFront includes as values for the `Access-Control-Expose-Headers` HTTP response header.
   /// [accessControlMaxAgeSec] A number that CloudFront uses as the value for the `Access-Control-Max-Age` HTTP response header.
   /// [originOverride] A Boolean value that determines how CloudFront behaves for the HTTP response header.
-  ResponseHeadersPolicyCorsConfig({
+  const ResponseHeadersPolicyCorsConfig({
     required this.accessControlAllowCredentials,
     required this.accessControlAllowHeaders,
     required this.accessControlAllowMethods,

@@ -7,7 +7,7 @@ class GetNetworkInterfacesInterfaceAssociatedPublicIp {
 
   /// Creates a new [GetNetworkInterfacesInterfaceAssociatedPublicIp].
   /// [publicIpAddress] Required.
-  GetNetworkInterfacesInterfaceAssociatedPublicIp({
+  const GetNetworkInterfacesInterfaceAssociatedPublicIp({
     required this.publicIpAddress,
   });
 

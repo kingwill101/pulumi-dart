@@ -12,7 +12,7 @@ class AttachedVolumePatch {
   /// Creates a new [AttachedVolumePatch].
   /// [devicePath] DevicePath represents the device path where the volume should be available
   /// [name] Name of the attached volume
-  AttachedVolumePatch({
+  const AttachedVolumePatch({
     this.devicePath,
     this.name,
   });

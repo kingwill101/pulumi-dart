@@ -14,7 +14,7 @@ class DomainDevicesHostdevCapsNetIp {
   /// [address] Sets the specific IP address assigned to the host device within the network configuration.
   /// [family] Defines the address family (IPv4 or IPv6) for the IP configuration of the host device.
   /// [prefix] Specifies the prefix length for the IP address of the host device, determining the subnet.
-  DomainDevicesHostdevCapsNetIp({
+  const DomainDevicesHostdevCapsNetIp({
     this.address,
     this.family,
     this.prefix,

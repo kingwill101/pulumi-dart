@@ -24,7 +24,7 @@ class PrefixArgs {
   /// [prefix] The prefix from which your traffic originates.
   /// [prefixName] The name of the prefix.
   /// [resourceGroupName] The name of the resource group.
-  PrefixArgs({
+  const PrefixArgs({
     required this.peeringServiceName,
     this.peeringServicePrefixKey,
     this.prefix,

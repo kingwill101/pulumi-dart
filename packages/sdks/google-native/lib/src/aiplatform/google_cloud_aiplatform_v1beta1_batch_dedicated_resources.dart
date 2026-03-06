@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1beta1BatchDedicatedResources {
   /// [machineSpec] Immutable. The specification of a single machine.
   /// [maxReplicaCount] Immutable. The maximum number of machine replicas the batch operation may be scaled to. The default value is 10.
   /// [startingReplicaCount] Immutable. The number of machine replicas used at the start of the batch operation. If not set, Vertex AI decides starting number, not greater than max_replica_count
-  GoogleCloudAiplatformV1beta1BatchDedicatedResources({
+  const GoogleCloudAiplatformV1beta1BatchDedicatedResources({
     required this.machineSpec,
     this.maxReplicaCount,
     this.startingReplicaCount,

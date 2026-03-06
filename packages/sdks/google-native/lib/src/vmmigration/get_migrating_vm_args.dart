@@ -19,7 +19,7 @@ class GetMigratingVmArgs {
   /// [project] Optional.
   /// [sourceId] Required.
   /// [view] Optional.
-  GetMigratingVmArgs({
+  const GetMigratingVmArgs({
     required this.location,
     required this.migratingVmId,
     this.project,

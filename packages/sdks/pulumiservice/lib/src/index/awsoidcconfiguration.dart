@@ -17,7 +17,7 @@ class AWSOIDCConfiguration {
   /// [policyARNs] Optional set of IAM policy ARNs that further restrict the assume-role session
   /// [roleARN] The ARN of the role to assume using the OIDC token.
   /// [sessionName] The name of the assume-role session.
-  AWSOIDCConfiguration({
+  const AWSOIDCConfiguration({
     this.duration,
     this.policyARNs,
     required this.roleARN,

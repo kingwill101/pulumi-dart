@@ -30,7 +30,7 @@ class VirtualNic {
   /// [nicType] NIC type
   /// [powerOnBoot] Is NIC powered on/off on boot
   /// [virtualNicId] NIC id
-  VirtualNic({
+  const VirtualNic({
     this.customization,
     this.ipAddresses,
     this.macAddress,

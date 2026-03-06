@@ -33,7 +33,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions {
   /// [fileTypes] List of file type groups to include in the scan. If empty, all files are scanned and available data
   /// [filesLimitPercent] Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
   /// [sampleMethod] How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
-  PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions({
+  const PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions({
     this.bytesLimitPerFile,
     this.bytesLimitPerFilePercent,
     required this.fileSet,

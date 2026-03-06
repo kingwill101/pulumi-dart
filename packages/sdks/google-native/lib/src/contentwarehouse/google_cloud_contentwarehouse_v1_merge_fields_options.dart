@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1MergeFieldsOptions {
   /// Creates a new [GoogleCloudContentwarehouseV1MergeFieldsOptions].
   /// [replaceMessageFields] When merging message fields, the default behavior is to merge the content of two message fields together. If you instead want to use the field from the source message to replace the corresponding field in the destination message, set this flag to true. When this flag is set, specified submessage fields that are missing in source will be cleared in destination.
   /// [replaceRepeatedFields] When merging repeated fields, the default behavior is to append entries from the source repeated field to the destination repeated field. If you instead want to keep only the entries from the source repeated field, set this flag to true. If you want to replace a repeated field within a message field on the destination message, you must set both replace_repeated_fields and replace_message_fields to true, otherwise the repeated fields will be appended.
-  GoogleCloudContentwarehouseV1MergeFieldsOptions({
+  const GoogleCloudContentwarehouseV1MergeFieldsOptions({
     this.replaceMessageFields,
     this.replaceRepeatedFields,
   });

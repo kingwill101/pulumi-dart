@@ -34,7 +34,7 @@ class DaxClusterPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  DaxClusterPropertiesResponse({
+  const DaxClusterPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

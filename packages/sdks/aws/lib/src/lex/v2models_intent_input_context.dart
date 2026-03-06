@@ -8,7 +8,7 @@ class V2modelsIntentInputContext {
 
   /// Creates a new [V2modelsIntentInputContext].
   /// [name] Name of the context.
-  V2modelsIntentInputContext({
+  const V2modelsIntentInputContext({
     required this.name,
   });
 

@@ -111,7 +111,7 @@ class BackupPolicyArgs {
   /// [preferredBackupTime] DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
   /// [releasedKeepPolicy] The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
   /// [retentionPeriod] It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     this.archiveBackupKeepCount,
     this.archiveBackupKeepPolicy,
     this.archiveBackupRetentionPeriod,

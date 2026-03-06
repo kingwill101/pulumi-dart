@@ -21,7 +21,7 @@ class P2SVpnServerConfigRadiusServerRootCertificateResponse {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the radius server root certificate resource.
   /// [publicCertData] The certificate public data.
-  P2SVpnServerConfigRadiusServerRootCertificateResponse({
+  const P2SVpnServerConfigRadiusServerRootCertificateResponse({
     this.etag,
     this.id,
     this.name,

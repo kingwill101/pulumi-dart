@@ -10,7 +10,7 @@ class VolumeTypeResponse {
 
   /// Creates a new [VolumeTypeResponse].
   /// [elasticSan] Properties of the ElasticSAN iSCSI target
-  VolumeTypeResponse({
+  const VolumeTypeResponse({
     required this.elasticSan,
   });
 

@@ -12,7 +12,7 @@ class HTTPHeaderPatch {
   /// Creates a new [HTTPHeaderPatch].
   /// [name] The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
   /// [value] The header field value
-  HTTPHeaderPatch({
+  const HTTPHeaderPatch({
     this.name,
     this.value,
   });

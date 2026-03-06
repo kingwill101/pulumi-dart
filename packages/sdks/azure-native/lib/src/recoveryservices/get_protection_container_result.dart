@@ -30,7 +30,7 @@ class GetProtectionContainerResult {
   /// [properties] ProtectionContainerResource properties
   /// [tags] Resource tags.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetProtectionContainerResult({
+  const GetProtectionContainerResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

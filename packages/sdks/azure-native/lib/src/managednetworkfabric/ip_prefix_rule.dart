@@ -21,7 +21,7 @@ class IpPrefixRule {
   /// [networkPrefix] Network Prefix specifying IPv4/IPv6 packets to be permitted or denied. Example: 1.1.1.0/24 | 3FFE:FFFF:0:CD30::/126
   /// [sequenceNumber] Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
   /// [subnetMaskLength] SubnetMaskLength gives the minimum NetworkPrefix length to be matched. Possible values for IPv4 are 1 - 32 . Possible values of IPv6 are 1 - 128.
-  IpPrefixRule({
+  const IpPrefixRule({
     required this.action,
     this.condition,
     required this.networkPrefix,

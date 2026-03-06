@@ -19,7 +19,7 @@ class ManagedOnlineEndpointDeploymentResourcePropertiesResponse {
   /// [model] Optional.
   /// [provisioningState] Read-only provision state status property.
   /// [type] Kind of the deployment.
-  ManagedOnlineEndpointDeploymentResourcePropertiesResponse({
+  const ManagedOnlineEndpointDeploymentResourcePropertiesResponse({
     this.endpointComputeType,
     this.failureReason,
     this.model,

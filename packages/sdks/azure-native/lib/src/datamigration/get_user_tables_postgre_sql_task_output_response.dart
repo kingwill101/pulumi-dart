@@ -17,7 +17,7 @@ class GetUserTablesPostgreSqlTaskOutputResponse {
   /// [databaseName] The database this result is for
   /// [tables] List of valid tables found for this database
   /// [validationErrors] Validation errors associated with the task
-  GetUserTablesPostgreSqlTaskOutputResponse({
+  const GetUserTablesPostgreSqlTaskOutputResponse({
     required this.databaseName,
     required this.tables,
     required this.validationErrors,

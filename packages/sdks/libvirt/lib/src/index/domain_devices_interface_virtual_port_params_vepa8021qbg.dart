@@ -17,7 +17,7 @@ class DomainDevicesInterfaceVirtualPortParamsVepa8021qbg {
   /// [managerId] Specifies the manager ID for the VEPA8021QBG virtual port parameters.
   /// [typeId] Sets the type ID for the VEPA8021QBG virtual port parameters.
   /// [typeIdVersion] Indicates the version of the type ID for the VEPA8021QBG virtual port parameters.
-  DomainDevicesInterfaceVirtualPortParamsVepa8021qbg({
+  const DomainDevicesInterfaceVirtualPortParamsVepa8021qbg({
     this.instanceId,
     this.managerId,
     this.typeId,

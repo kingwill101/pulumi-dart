@@ -32,7 +32,7 @@ class MultiAccountDeliveryChannelResourceSnapshotDelivery {
   /// [slsProperties] The Simple Log Service configurations. See `sls_properties` below.
   /// [targetArn] The Alibaba Cloud Resource Name (ARN) of the delivery destination.
   /// [targetType] The type of the delivery destination.
-  MultiAccountDeliveryChannelResourceSnapshotDelivery({
+  const MultiAccountDeliveryChannelResourceSnapshotDelivery({
     this.customExpression,
     this.deliveryTime,
     this.enabled,

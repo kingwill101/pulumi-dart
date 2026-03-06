@@ -17,7 +17,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   /// [messageGroups] Optional.
   /// [messageSelectionStrategy] Optional.
   /// [promptAttemptsSpecifications] Optional.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecification({
     this.allowInterrupt,
     required this.maxRetries,
     this.messageGroups,

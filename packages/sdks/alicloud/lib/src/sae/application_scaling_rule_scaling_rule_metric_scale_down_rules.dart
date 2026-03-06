@@ -14,7 +14,7 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules {
   /// [disabled] Whether shrinkage is prohibited.
   /// [stabilizationWindowSeconds] Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
   /// [step] Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-  ApplicationScalingRuleScalingRuleMetricScaleDownRules({
+  const ApplicationScalingRuleScalingRuleMetricScaleDownRules({
     this.disabled,
     this.stabilizationWindowSeconds,
     this.step,

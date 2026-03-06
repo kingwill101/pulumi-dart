@@ -13,7 +13,7 @@ class ConfluentBootstrapServerResponse {
   /// Creates a new [ConfluentBootstrapServerResponse].
   /// [endpoint] The endpoint of service.
   /// [type] The target service type.
-  ConfluentBootstrapServerResponse({
+  const ConfluentBootstrapServerResponse({
     this.endpoint,
     required this.type,
   });

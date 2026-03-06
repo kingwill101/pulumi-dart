@@ -9,7 +9,7 @@ class ConnectionAuthConfigOauth2JwtBearerClientKey {
 
   /// Creates a new [ConnectionAuthConfigOauth2JwtBearerClientKey].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionAuthConfigOauth2JwtBearerClientKey({
+  const ConnectionAuthConfigOauth2JwtBearerClientKey({
     required this.secretVersion,
   });
 

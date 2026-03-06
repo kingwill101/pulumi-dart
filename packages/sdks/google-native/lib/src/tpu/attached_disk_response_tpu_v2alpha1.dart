@@ -12,7 +12,7 @@ class AttachedDiskResponseTpuV2alpha1 {
   /// Creates a new [AttachedDiskResponseTpuV2alpha1].
   /// [mode] The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
   /// [sourceDisk] Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk".
-  AttachedDiskResponseTpuV2alpha1({
+  const AttachedDiskResponseTpuV2alpha1({
     required this.mode,
     required this.sourceDisk,
   });

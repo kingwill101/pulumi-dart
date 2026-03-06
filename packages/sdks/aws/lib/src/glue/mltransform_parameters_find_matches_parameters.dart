@@ -17,7 +17,7 @@ class MLTransformParametersFindMatchesParameters {
   /// [enforceProvidedLabels] The value to switch on or off to force the output to match the provided labels from users.
   /// [precisionRecallTradeOff] The value selected when tuning your transform for a balance between precision and recall.
   /// [primaryKeyColumnName] The name of a column that uniquely identifies rows in the source table.
-  MLTransformParametersFindMatchesParameters({
+  const MLTransformParametersFindMatchesParameters({
     this.accuracyCostTradeOff,
     this.enforceProvidedLabels,
     this.precisionRecallTradeOff,

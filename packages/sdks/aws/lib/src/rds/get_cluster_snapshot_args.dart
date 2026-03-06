@@ -39,7 +39,7 @@ class GetClusterSnapshotArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotType] Type of snapshots to be returned. If you don't specify a SnapshotType
   /// [tags] Mapping of tags, each pair of which must exactly match
-  GetClusterSnapshotArgs({
+  const GetClusterSnapshotArgs({
     this.dbClusterIdentifier,
     this.dbClusterSnapshotIdentifier,
     this.includePublic,

@@ -34,5 +34,5 @@ class PulumiserviceConfig {
 
 }
 
-final config = PulumiserviceConfig();
+const config = PulumiserviceConfig();
 

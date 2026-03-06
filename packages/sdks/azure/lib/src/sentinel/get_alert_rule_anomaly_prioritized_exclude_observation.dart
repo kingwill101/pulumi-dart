@@ -17,7 +17,7 @@ class GetAlertRuleAnomalyPrioritizedExcludeObservation {
   /// [exclude] The excluded value per `description`.
   /// [name] The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   /// [prioritize] The prioritized value per `description`.
-  GetAlertRuleAnomalyPrioritizedExcludeObservation({
+  const GetAlertRuleAnomalyPrioritizedExcludeObservation({
     required this.description,
     required this.exclude,
     required this.name,

@@ -19,7 +19,7 @@ class BatchAccountIdentityResponse {
   /// [tenantId] The tenant id associated with the Batch account. This property will only be provided for a system assigned identity.
   /// [type] The type of identity used for the Batch account.
   /// [userAssignedIdentities] The list of user identities associated with the Batch account.
-  BatchAccountIdentityResponse({
+  const BatchAccountIdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

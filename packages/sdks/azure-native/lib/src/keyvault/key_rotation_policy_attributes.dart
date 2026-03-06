@@ -8,7 +8,7 @@ class KeyRotationPolicyAttributes {
 
   /// Creates a new [KeyRotationPolicyAttributes].
   /// [expiryTime] The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
-  KeyRotationPolicyAttributes({
+  const KeyRotationPolicyAttributes({
     this.expiryTime,
   });
 

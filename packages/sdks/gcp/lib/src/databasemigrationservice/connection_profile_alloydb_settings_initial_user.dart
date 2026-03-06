@@ -16,7 +16,7 @@ class ConnectionProfileAlloydbSettingsInitialUser {
   /// [password] The initial password for the user.
   /// [passwordSet] (Output)
   /// [user] The database username.
-  ConnectionProfileAlloydbSettingsInitialUser({
+  const ConnectionProfileAlloydbSettingsInitialUser({
     required this.password,
     this.passwordSet,
     required this.user,

@@ -12,7 +12,7 @@ class GetLocationArgs {
 
   /// Creates a new [GetLocationArgs].
   /// [location] Specifies the supported Azure location where the resource exists.
-  GetLocationArgs({
+  const GetLocationArgs({
     required this.location,
   });
 

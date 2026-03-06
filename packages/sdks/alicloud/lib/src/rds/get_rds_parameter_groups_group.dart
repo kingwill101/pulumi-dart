@@ -26,7 +26,7 @@ class GetRdsParameterGroupsGroup {
   /// [parameterGroupId] Required.
   /// [parameterGroupName] Required.
   /// [parameterGroupType] Required.
-  GetRdsParameterGroupsGroup({
+  const GetRdsParameterGroupsGroup({
     required this.engine,
     required this.engineVersion,
     required this.forceRestart,

@@ -14,7 +14,7 @@ class GetSourceIamPolicyArgs {
   /// Creates a new [GetSourceIamPolicyArgs].
   /// [organization] Required.
   /// [source] Used to find the parent resource to bind the IAM policy to
-  GetSourceIamPolicyArgs({
+  const GetSourceIamPolicyArgs({
     required this.organization,
     required this.source,
   });

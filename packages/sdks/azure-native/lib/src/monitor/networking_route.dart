@@ -18,7 +18,7 @@ class NetworkingRoute {
   /// [port] The port that will be configured externally. If not specified, it will use the port from the receiver definition.
   /// [receiver] The name of the previously defined receiver.
   /// [subdomain] Route subdomain.
-  NetworkingRoute({
+  const NetworkingRoute({
     this.path,
     this.port,
     required this.receiver,

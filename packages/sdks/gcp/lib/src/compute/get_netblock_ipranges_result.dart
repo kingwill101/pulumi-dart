@@ -19,7 +19,7 @@ class GetNetblockIPRangesResult {
   /// [cidrBlocksIpv6s] Retrieve list of the IPv6 CIDR blocks, if available.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [rangeType] Optional.
-  GetNetblockIPRangesResult({
+  const GetNetblockIPRangesResult({
     required this.cidrBlocks,
     required this.cidrBlocksIpv4s,
     required this.cidrBlocksIpv6s,

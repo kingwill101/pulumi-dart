@@ -24,7 +24,7 @@ class JobTemplateConfigOverlayAnimationAnimationFade {
   /// [fadeType] Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
   /// [startTimeOffset] The time to start the fade animation, in seconds.
   /// [xy] Normalized coordinates based on output video resolution.
-  JobTemplateConfigOverlayAnimationAnimationFade({
+  const JobTemplateConfigOverlayAnimationAnimationFade({
     this.endTimeOffset,
     required this.fadeType,
     this.startTimeOffset,

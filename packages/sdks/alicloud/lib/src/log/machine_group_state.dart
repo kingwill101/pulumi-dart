@@ -21,7 +21,7 @@ class MachineGroupState {
   /// [name] The machine group name, which is unique in the same project.
   /// [project] The project name to the machine group belongs.
   /// [topic] The topic of a machine group.
-  MachineGroupState({
+  const MachineGroupState({
     this.identifyLists,
     this.identifyType,
     this.name,

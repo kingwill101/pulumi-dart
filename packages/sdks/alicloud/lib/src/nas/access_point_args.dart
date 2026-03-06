@@ -38,7 +38,7 @@ class AccessPointArgs {
   /// [rootPathPermission] Root permissions. See `root_path_permission` below.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The vSwitch ID.
-  AccessPointArgs({
+  const AccessPointArgs({
     required this.accessGroup,
     this.accessPointName,
     this.enabledRam,

@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton].
   /// [openUriAction] Action to take when a user taps on the button.
   /// [title] The title of the button.
-  GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton({
+  const GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton({
     required this.openUriAction,
     required this.title,
   });

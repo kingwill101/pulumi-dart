@@ -14,7 +14,7 @@ class EncryptionEntitiesDefinition {
   /// Creates a new [EncryptionEntitiesDefinition].
   /// [managedDisk] Encryption properties for the databricks managed disks.
   /// [managedServices] Encryption properties for the databricks managed services.
-  EncryptionEntitiesDefinition({
+  const EncryptionEntitiesDefinition({
     this.managedDisk,
     this.managedServices,
   });

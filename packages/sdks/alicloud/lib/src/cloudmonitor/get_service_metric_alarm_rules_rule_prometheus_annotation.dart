@@ -11,7 +11,7 @@ class GetServiceMetricAlarmRulesRulePrometheusAnnotation {
   /// Creates a new [GetServiceMetricAlarmRulesRulePrometheusAnnotation].
   /// [key] The subject of the alert notificaThe key of the annotation.
   /// [value] The value of the annotation.
-  GetServiceMetricAlarmRulesRulePrometheusAnnotation({
+  const GetServiceMetricAlarmRulesRulePrometheusAnnotation({
     required this.key,
     required this.value,
   });

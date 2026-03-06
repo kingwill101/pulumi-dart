@@ -12,7 +12,7 @@ class VirtualNetworkGatewaySku {
   /// Creates a new [VirtualNetworkGatewaySku].
   /// [name] Gateway SKU name.
   /// [tier] Gateway SKU tier.
-  VirtualNetworkGatewaySku({
+  const VirtualNetworkGatewaySku({
     this.name,
     this.tier,
   });

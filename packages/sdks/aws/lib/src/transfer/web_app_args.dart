@@ -36,7 +36,7 @@ class WebAppArgs {
   /// [tags] Key-value pairs that can be used to group and search for web apps.
   /// [webAppEndpointPolicy] Type of endpoint policy for the web app. Valid values are: `STANDARD`(default) or `FIPS`.
   /// [webAppUnits] Block for number of concurrent connections or the user sessions on the web app.
-  WebAppArgs({
+  const WebAppArgs({
     this.accessEndpoint,
     this.endpointDetails,
     required this.identityProviderDetails,

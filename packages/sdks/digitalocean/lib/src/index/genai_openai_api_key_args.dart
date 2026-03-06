@@ -19,7 +19,7 @@ class GenaiOpenaiApiKeyArgs {
   /// [apiKey] The OpenAI API key.
   /// [models] Models associated with the OpenAI API key
   /// [name] A name for the API key.
-  GenaiOpenaiApiKeyArgs({
+  const GenaiOpenaiApiKeyArgs({
     required this.apiKey,
     this.models,
     this.name,

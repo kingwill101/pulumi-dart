@@ -11,7 +11,7 @@ class BucketLogging {
   /// Creates a new [BucketLogging].
   /// [targetBucket] Name of the bucket that will receive the log objects.
   /// [targetPrefix] To specify a key prefix for log objects.
-  BucketLogging({
+  const BucketLogging({
     required this.targetBucket,
     this.targetPrefix,
   });

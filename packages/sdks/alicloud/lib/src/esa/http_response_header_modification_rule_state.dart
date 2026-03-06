@@ -33,7 +33,7 @@ class HttpResponseHeaderModificationRuleState {
   /// [sequence] The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
   /// [siteId] The site ID.
   /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-  HttpResponseHeaderModificationRuleState({
+  const HttpResponseHeaderModificationRuleState({
     this.configId,
     this.responseHeaderModifications,
     this.rule,

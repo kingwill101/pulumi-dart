@@ -17,7 +17,7 @@ class WorkloadStatusConfigStatic {
   /// [enabled] Whether the static status configuration is enabled or not.
   /// [status] The status of the workload.
   /// [summary] A short description of the status of the workload.
-  WorkloadStatusConfigStatic({
+  const WorkloadStatusConfigStatic({
     this.description,
     required this.enabled,
     required this.status,

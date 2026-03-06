@@ -25,7 +25,7 @@ class ConnectionMonitorHttpConfiguration {
   /// [preferHTTPS] Value indicating whether HTTPS is preferred over HTTP in cases where the choice is not explicit.
   /// [requestHeaders] The HTTP headers to transmit with the request.
   /// [validStatusCodeRanges] HTTP status codes to consider successful. For instance, "2xx,301-304,418".
-  ConnectionMonitorHttpConfiguration({
+  const ConnectionMonitorHttpConfiguration({
     this.method,
     this.path,
     this.port,

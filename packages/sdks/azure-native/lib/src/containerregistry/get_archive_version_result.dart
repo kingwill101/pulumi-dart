@@ -27,7 +27,7 @@ class GetArchiveVersionResult {
   /// [provisioningState] The provisioning state of the archive at the time the operation was called.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetArchiveVersionResult({
+  const GetArchiveVersionResult({
     this.archiveVersionErrorMessage,
     required this.azureApiVersion,
     required this.id,

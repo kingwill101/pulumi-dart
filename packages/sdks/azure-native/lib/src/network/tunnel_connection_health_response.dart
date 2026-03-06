@@ -21,7 +21,7 @@ class TunnelConnectionHealthResponse {
   /// [ingressBytesTransferred] The Ingress Bytes Transferred in this connection.
   /// [lastConnectionEstablishedUtcTime] The time at which connection was established in Utc format.
   /// [tunnel] Tunnel name.
-  TunnelConnectionHealthResponse({
+  const TunnelConnectionHealthResponse({
     required this.connectionStatus,
     required this.egressBytesTransferred,
     required this.ingressBytesTransferred,

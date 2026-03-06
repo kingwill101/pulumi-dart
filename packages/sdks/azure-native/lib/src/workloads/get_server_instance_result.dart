@@ -54,7 +54,7 @@ class GetServerInstanceResult {
   /// [serverName] This is the Virtual Machine Name of the SAP system. Add all the virtual machines attached to an SAP system which you wish to migrate to Azure. Keeping this not equal to ID as for single tier all InstanceTypes would be on same server, leading to multiple resources with same servername.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetServerInstanceResult({
+  const GetServerInstanceResult({
     required this.azureApiVersion,
     required this.configurationData,
     required this.errors,

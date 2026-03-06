@@ -44,7 +44,7 @@ class DdosBgpInstanceState {
   /// [status] (Available since v1.259.0) The status of the Instance.
   /// [tags] The key of the tag that is added to the Anti-DDoS Origin instance.
   /// [type] The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
-  DdosBgpInstanceState({
+  const DdosBgpInstanceState({
     this.bandwidth,
     this.baseBandwidth,
     this.instanceName,

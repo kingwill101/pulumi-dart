@@ -40,7 +40,7 @@ class SapCloudForCustomerLinkedServiceResponse {
   /// [url] The URL of SAP Cloud for Customer OData API. For example, '[https://[tenantname].crm.ondemand.com/sap/c4c/odata/v1]'. Type: string (or Expression with resultType string).
   /// [username] The username for Basic authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SapCloudForCustomerLinkedServiceResponse({
+  const SapCloudForCustomerLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

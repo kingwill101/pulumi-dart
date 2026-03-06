@@ -21,7 +21,7 @@ class GetTaxonomyIamPolicyResult {
   /// [project] Required.
   /// [region] Required.
   /// [taxonomy] Required.
-  GetTaxonomyIamPolicyResult({
+  const GetTaxonomyIamPolicyResult({
     required this.etag,
     required this.id,
     required this.policyData,

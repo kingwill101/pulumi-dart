@@ -9,7 +9,7 @@ class ConnectionDrainingComputeV1 {
 
   /// Creates a new [ConnectionDrainingComputeV1].
   /// [drainingTimeoutSec] Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
-  ConnectionDrainingComputeV1({
+  const ConnectionDrainingComputeV1({
     this.drainingTimeoutSec,
   });
 

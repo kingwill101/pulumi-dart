@@ -16,7 +16,7 @@ class InstanceEncryptionConfig {
   /// [kmsKeyName] Name of the customer managed encryption key (CMEK) in KMS.
   /// [kmsKeyNameVersion] (Output)
   /// [kmsKeyState] (Output)
-  InstanceEncryptionConfig({
+  const InstanceEncryptionConfig({
     this.kmsKeyName,
     this.kmsKeyNameVersion,
     this.kmsKeyState,

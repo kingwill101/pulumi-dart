@@ -10,7 +10,7 @@ class PkixPublicKeySet {
 
   /// Creates a new [PkixPublicKeySet].
   /// [pkixPublicKeys] `pkix_public_keys` must have at least one entry.
-  PkixPublicKeySet({
+  const PkixPublicKeySet({
     required this.pkixPublicKeys,
   });
 

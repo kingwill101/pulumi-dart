@@ -9,7 +9,7 @@ class UserAssignedIdentity {
   /// Creates a new [UserAssignedIdentity].
   /// [clientId] Optional.
   /// [principalId] Optional.
-  UserAssignedIdentity({
+  const UserAssignedIdentity({
     this.clientId,
     this.principalId,
   });

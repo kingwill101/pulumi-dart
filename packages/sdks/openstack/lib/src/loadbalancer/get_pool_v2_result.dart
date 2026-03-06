@@ -90,7 +90,7 @@ class GetPoolV2Result {
   /// [tlsContainerRef] The reference to the key manager service secret
   /// [tlsEnabled] When true connections to backend member servers will use
   /// [tlsVersions] A list of TLS protocol versions.
-  GetPoolV2Result({
+  const GetPoolV2Result({
     required this.adminStateUp,
     required this.alpnProtocols,
     required this.caTlsContainerRef,

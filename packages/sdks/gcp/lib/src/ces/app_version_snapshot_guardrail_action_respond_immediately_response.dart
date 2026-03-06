@@ -13,7 +13,7 @@ class AppVersionSnapshotGuardrailActionRespondImmediatelyResponse {
   /// Creates a new [AppVersionSnapshotGuardrailActionRespondImmediatelyResponse].
   /// [disabled] (Output)
   /// [text] (Output)
-  AppVersionSnapshotGuardrailActionRespondImmediatelyResponse({
+  const AppVersionSnapshotGuardrailActionRespondImmediatelyResponse({
     this.disabled,
     this.text,
   });

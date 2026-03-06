@@ -34,7 +34,7 @@ class AccessReviewInstanceResponse {
   /// [startDateTime] The DateTime when the review instance is scheduled to be start.
   /// [status] This read-only field specifies the status of an access review instance.
   /// [type] The resource type.
-  AccessReviewInstanceResponse({
+  const AccessReviewInstanceResponse({
     this.backupReviewers,
     this.endDateTime,
     required this.id,

@@ -12,7 +12,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpec {
   /// Creates a new [GoogleCloudDatalabelingV1beta1AnnotationSpec].
   /// [description] Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
   /// [displayName] The display name of the AnnotationSpec. Maximum of 64 characters.
-  GoogleCloudDatalabelingV1beta1AnnotationSpec({
+  const GoogleCloudDatalabelingV1beta1AnnotationSpec({
     this.description,
     required this.displayName,
   });

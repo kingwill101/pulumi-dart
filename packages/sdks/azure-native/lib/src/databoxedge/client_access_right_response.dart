@@ -12,7 +12,7 @@ class ClientAccessRightResponse {
   /// Creates a new [ClientAccessRightResponse].
   /// [accessPermission] Type of access to be allowed for the client.
   /// [client] IP of the client.
-  ClientAccessRightResponse({
+  const ClientAccessRightResponse({
     required this.accessPermission,
     required this.client,
   });

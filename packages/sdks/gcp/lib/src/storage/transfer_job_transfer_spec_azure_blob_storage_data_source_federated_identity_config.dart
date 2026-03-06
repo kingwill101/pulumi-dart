@@ -13,7 +13,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig {
   /// Creates a new [TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig].
   /// [clientId] The client (application) ID of the application with federated credentials.
   /// [tenantId] The client (directory) ID of the application with federated credentials.
-  TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig({
+  const TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig({
     required this.clientId,
     required this.tenantId,
   });

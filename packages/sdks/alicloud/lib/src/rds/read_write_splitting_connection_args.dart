@@ -27,7 +27,7 @@ class ReadWriteSplittingConnectionArgs {
   /// [maxDelayTime] Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
   /// [port] Intranet connection port. Valid value: [3001-3999]. Default to 3306.
   /// [weight] Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distribution_type is set to Custom.
-  ReadWriteSplittingConnectionArgs({
+  const ReadWriteSplittingConnectionArgs({
     this.connectionPrefix,
     required this.distributionType,
     required this.instanceId,

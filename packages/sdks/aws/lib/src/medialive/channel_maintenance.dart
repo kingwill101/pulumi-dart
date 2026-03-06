@@ -11,7 +11,7 @@ class ChannelMaintenance {
   /// Creates a new [ChannelMaintenance].
   /// [maintenanceDay] The day of the week to use for maintenance.
   /// [maintenanceStartTime] The hour maintenance will start.
-  ChannelMaintenance({
+  const ChannelMaintenance({
     required this.maintenanceDay,
     required this.maintenanceStartTime,
   });

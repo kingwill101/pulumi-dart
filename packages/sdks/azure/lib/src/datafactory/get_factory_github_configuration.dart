@@ -20,7 +20,7 @@ class GetFactoryGithubConfiguration {
   /// [gitUrl] The GitHub repository url.
   /// [repositoryName] The name of the git repository.
   /// [rootFolder] The root folder within the repository.
-  GetFactoryGithubConfiguration({
+  const GetFactoryGithubConfiguration({
     required this.accountName,
     required this.branchName,
     required this.gitUrl,

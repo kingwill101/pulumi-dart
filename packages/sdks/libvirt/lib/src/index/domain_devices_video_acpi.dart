@@ -8,7 +8,7 @@ class DomainDevicesVideoAcpi {
 
   /// Creates a new [DomainDevicesVideoAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesVideoAcpi({
+  const DomainDevicesVideoAcpi({
     this.index,
   });
 

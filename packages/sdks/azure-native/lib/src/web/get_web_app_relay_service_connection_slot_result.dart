@@ -34,7 +34,7 @@ class GetWebAppRelayServiceConnectionSlotResult {
   /// [resourceConnectionString] Optional.
   /// [resourceType] Optional.
   /// [type] Resource type.
-  GetWebAppRelayServiceConnectionSlotResult({
+  const GetWebAppRelayServiceConnectionSlotResult({
     required this.azureApiVersion,
     this.biztalkUri,
     this.entityConnectionString,

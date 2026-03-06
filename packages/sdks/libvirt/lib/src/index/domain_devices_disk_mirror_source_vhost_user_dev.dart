@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorSourceVhostUserDev {
   /// Creates a new [DomainDevicesDiskMirrorSourceVhostUserDev].
   /// [path] Specifies the path to the device file for the EGD backend.
   /// [secLabels] Configures the security label settings for the device source in the EGD backend.
-  DomainDevicesDiskMirrorSourceVhostUserDev({
+  const DomainDevicesDiskMirrorSourceVhostUserDev({
     required this.path,
     this.secLabels,
   });

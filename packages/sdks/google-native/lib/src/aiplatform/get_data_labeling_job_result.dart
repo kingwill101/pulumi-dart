@@ -63,7 +63,7 @@ class GetDataLabelingJobResult {
   /// [specialistPools] The SpecialistPools' resource names associated with this job.
   /// [state] The detailed state of the job.
   /// [updateTime] Timestamp when this DataLabelingJob was updated most recently.
-  GetDataLabelingJobResult({
+  const GetDataLabelingJobResult({
     required this.activeLearningConfig,
     required this.annotationLabels,
     required this.createTime,

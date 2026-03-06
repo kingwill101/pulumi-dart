@@ -12,7 +12,7 @@ class KeyVaultSecretObject {
   /// Creates a new [KeyVaultSecretObject].
   /// [name] KeyVault secret name.
   /// [version] KeyVault secret version.
-  KeyVaultSecretObject({
+  const KeyVaultSecretObject({
     required this.name,
     this.version,
   });

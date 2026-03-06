@@ -12,7 +12,7 @@ class FleetObservabilityFeatureErrorResponseGkehubV1alpha {
   /// Creates a new [FleetObservabilityFeatureErrorResponseGkehubV1alpha].
   /// [code] The code of the error.
   /// [description] A human-readable description of the current status.
-  FleetObservabilityFeatureErrorResponseGkehubV1alpha({
+  const FleetObservabilityFeatureErrorResponseGkehubV1alpha({
     required this.code,
     required this.description,
   });

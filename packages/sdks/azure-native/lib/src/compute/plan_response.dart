@@ -18,7 +18,7 @@ class PlanResponse {
   /// [product] Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   /// [promotionCode] The promotion code.
   /// [publisher] The publisher ID.
-  PlanResponse({
+  const PlanResponse({
     this.name,
     this.product,
     this.promotionCode,

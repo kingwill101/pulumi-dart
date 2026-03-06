@@ -35,7 +35,7 @@ class AzureDevOpsOrgPropertiesResponse {
   /// [provisioningState] The provisioning state of the resource.
   /// [provisioningStatusMessage] Gets or sets resource status message.
   /// [provisioningStatusUpdateTimeUtc] Gets or sets time when resource was last checked.
-  AzureDevOpsOrgPropertiesResponse({
+  const AzureDevOpsOrgPropertiesResponse({
     this.actionableRemediation,
     this.onboardingState,
     this.provisioningState,

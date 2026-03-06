@@ -18,7 +18,7 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfigResponse {
   /// [actions] Actions to execute at the completion of the job. Are executed in the order provided.
   /// [privacyMetric] Privacy metric to compute.
   /// [sourceTable] Input dataset to compute metrics over.
-  GooglePrivacyDlpV2RiskAnalysisJobConfigResponse({
+  const GooglePrivacyDlpV2RiskAnalysisJobConfigResponse({
     required this.actions,
     required this.privacyMetric,
     required this.sourceTable,

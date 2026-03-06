@@ -24,7 +24,7 @@ class CustomRoutingEndpointArgs {
   /// [endpointGroupId] The ID of the endpoint group in which to create endpoints.
   /// [trafficToEndpointPolicy] The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
   /// [type] The backend service type of the endpoint. Valid values: `PrivateSubNet`.
-  CustomRoutingEndpointArgs({
+  const CustomRoutingEndpointArgs({
     required this.endpoint,
     required this.endpointGroupId,
     this.trafficToEndpointPolicy,

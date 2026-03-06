@@ -44,7 +44,7 @@ class ExpressRouteCircuitConnectionArgs {
   /// [peerExpressRouteCircuitPeering] Reference to Express Route Circuit Private Peering Resource of the peered circuit.
   /// [peeringName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
-  ExpressRouteCircuitConnectionArgs({
+  const ExpressRouteCircuitConnectionArgs({
     this.addressPrefix,
     this.authorizationKey,
     required this.circuitName,

@@ -13,7 +13,7 @@ class BrokerAuthorizationPropertiesResponse {
   /// Creates a new [BrokerAuthorizationPropertiesResponse].
   /// [authorizationPolicies] The list of authorization policies supported by the Authorization Resource.
   /// [provisioningState] The status of the last operation.
-  BrokerAuthorizationPropertiesResponse({
+  const BrokerAuthorizationPropertiesResponse({
     required this.authorizationPolicies,
     required this.provisioningState,
   });

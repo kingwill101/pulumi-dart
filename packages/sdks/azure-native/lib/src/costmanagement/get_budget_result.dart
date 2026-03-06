@@ -90,7 +90,7 @@ class GetBudgetResult {
   /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain.
   /// [timePeriod] The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
   /// [type] Resource type.
-  GetBudgetResult({
+  const GetBudgetResult({
     this.amount,
     required this.azureApiVersion,
     required this.category,

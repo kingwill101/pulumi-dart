@@ -14,7 +14,7 @@ class GetDatabaseEnginesFilter {
   /// [matchBy] The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
   /// [name] The name of the field to filter by.
   /// [values] A list of values for the filter to allow. These values should all be in string form.
-  GetDatabaseEnginesFilter({
+  const GetDatabaseEnginesFilter({
     this.matchBy,
     required this.name,
     required this.values,

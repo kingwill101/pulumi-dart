@@ -11,7 +11,7 @@ class NoteIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  NoteIamMemberCondition({
+  const NoteIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

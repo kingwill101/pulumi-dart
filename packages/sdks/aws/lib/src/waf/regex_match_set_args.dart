@@ -16,7 +16,7 @@ class RegexMatchSetArgs {
   /// Creates a new [RegexMatchSetArgs].
   /// [name] The name or description of the Regex Match Set.
   /// [regexMatchTuples] The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
-  RegexMatchSetArgs({
+  const RegexMatchSetArgs({
     this.name,
     this.regexMatchTuples,
   });

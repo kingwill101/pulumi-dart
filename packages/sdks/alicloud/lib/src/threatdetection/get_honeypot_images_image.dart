@@ -35,7 +35,7 @@ class GetHoneypotImagesImage {
   /// [proto] Honeypot-supported protocols.
   /// [servicePort] Honeypot service port.
   /// [template] Honeypot configuration parameter template.
-  GetHoneypotImagesImage({
+  const GetHoneypotImagesImage({
     required this.honeypotImageDisplayName,
     required this.honeypotImageId,
     required this.honeypotImageName,

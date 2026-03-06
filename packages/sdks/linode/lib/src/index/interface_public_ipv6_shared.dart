@@ -11,7 +11,7 @@ class InterfacePublicIpv6Shared {
   /// Creates a new [InterfacePublicIpv6Shared].
   /// [range] The IPv6 network range in CIDR notation.
   /// [routeTarget] The public IPv6 address that the range is routed to.
-  InterfacePublicIpv6Shared({
+  const InterfacePublicIpv6Shared({
     this.range,
     this.routeTarget,
   });

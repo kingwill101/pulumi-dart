@@ -8,7 +8,7 @@ class PacketMirroringMirroredResourceInfoSubnetInfo {
 
   /// Creates a new [PacketMirroringMirroredResourceInfoSubnetInfo].
   /// [url] Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
-  PacketMirroringMirroredResourceInfoSubnetInfo({
+  const PacketMirroringMirroredResourceInfoSubnetInfo({
     this.url,
   });
 

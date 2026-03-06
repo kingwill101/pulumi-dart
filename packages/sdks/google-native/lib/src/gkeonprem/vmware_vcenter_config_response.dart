@@ -30,7 +30,7 @@ class VmwareVCenterConfigResponse {
   /// [folder] The name of the vCenter folder for the user cluster.
   /// [resourcePool] The name of the vCenter resource pool for the user cluster.
   /// [storagePolicyName] The name of the vCenter storage policy for the user cluster.
-  VmwareVCenterConfigResponse({
+  const VmwareVCenterConfigResponse({
     required this.address,
     required this.caCertData,
     required this.cluster,

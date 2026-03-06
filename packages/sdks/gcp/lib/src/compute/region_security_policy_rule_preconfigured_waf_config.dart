@@ -10,7 +10,7 @@ class RegionSecurityPolicyRulePreconfiguredWafConfig {
 
   /// Creates a new [RegionSecurityPolicyRulePreconfiguredWafConfig].
   /// [exclusions] An exclusion to apply during preconfigured WAF evaluation.
-  RegionSecurityPolicyRulePreconfiguredWafConfig({
+  const RegionSecurityPolicyRulePreconfiguredWafConfig({
     this.exclusions,
   });
 

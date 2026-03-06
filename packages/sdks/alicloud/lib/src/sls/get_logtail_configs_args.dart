@@ -33,7 +33,7 @@ class GetLogtailConfigsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project name
   /// [size] The number of rows per page set for a pagination query. The maximum value is 500.
-  GetLogtailConfigsArgs({
+  const GetLogtailConfigsArgs({
     this.ids,
     required this.logstoreName,
     this.logtailConfigName,

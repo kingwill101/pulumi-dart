@@ -12,7 +12,7 @@ class ListenerRuleMatchHttpMatchPathMatchMatch {
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatchMatch].
   /// [exact] Specifies an exact type match.
   /// [prefix] Specifies a prefix type match.
-  ListenerRuleMatchHttpMatchPathMatchMatch({
+  const ListenerRuleMatchHttpMatchPathMatchMatch({
     this.exact,
     this.prefix,
   });

@@ -38,7 +38,7 @@ class GenaiKnowledgeBaseLastIndexingJob {
   /// [totalDatasources] Total number of datasources in the last indexing job
   /// [updatedAt] Timestamp when the last indexing job updated
   /// [uuid] UUID  of the last indexing job
-  GenaiKnowledgeBaseLastIndexingJob({
+  const GenaiKnowledgeBaseLastIndexingJob({
     this.completedDatasources,
     this.createdAt,
     this.dataSourceUuids,

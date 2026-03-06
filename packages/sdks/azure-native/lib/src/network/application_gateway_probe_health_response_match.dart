@@ -12,7 +12,7 @@ class ApplicationGatewayProbeHealthResponseMatch {
   /// Creates a new [ApplicationGatewayProbeHealthResponseMatch].
   /// [body] Body that must be contained in the health response. Default value is empty.
   /// [statusCodes] Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
-  ApplicationGatewayProbeHealthResponseMatch({
+  const ApplicationGatewayProbeHealthResponseMatch({
     this.body,
     this.statusCodes,
   });

@@ -25,7 +25,7 @@ class PosturePolicySetPolicyConstraint {
   /// [orgPolicyConstraintCustom] Organization policy custom constraint policy definition.
   /// [securityHealthAnalyticsCustomModule] Definition of Security Health Analytics Custom Module.
   /// [securityHealthAnalyticsModule] Security Health Analytics built-in detector definition.
-  PosturePolicySetPolicyConstraint({
+  const PosturePolicySetPolicyConstraint({
     this.orgPolicyConstraint,
     this.orgPolicyConstraintCustom,
     this.securityHealthAnalyticsCustomModule,

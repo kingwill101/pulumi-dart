@@ -39,7 +39,7 @@ class PoolArgs {
   /// [reselectTries] Specifies the number of times the system tries to contact a new pool member after a passive failure.
   /// [serviceDownAction] Specifies how the system should respond when the target pool member becomes unavailable. The default is `None`, Possible values: `[none, reset, reselect, drop]`.
   /// [slowRampTime] Specifies the duration during which the system sends less traffic to a newly-enabled pool member.
-  PoolArgs({
+  const PoolArgs({
     this.allowNat,
     this.allowSnat,
     this.description,

@@ -37,7 +37,7 @@ class SapTableResourceDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableName] The name of the SAP Table. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  SapTableResourceDatasetResponse({
+  const SapTableResourceDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

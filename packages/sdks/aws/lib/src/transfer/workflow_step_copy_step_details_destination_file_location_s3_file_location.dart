@@ -11,7 +11,7 @@ class WorkflowStepCopyStepDetailsDestinationFileLocationS3FileLocation {
   /// Creates a new [WorkflowStepCopyStepDetailsDestinationFileLocationS3FileLocation].
   /// [bucket] Specifies the S3 bucket for the customer input file.
   /// [key] The name assigned to the file when it was created in S3. You use the object key to retrieve the object.
-  WorkflowStepCopyStepDetailsDestinationFileLocationS3FileLocation({
+  const WorkflowStepCopyStepDetailsDestinationFileLocationS3FileLocation({
     this.bucket,
     this.key,
   });

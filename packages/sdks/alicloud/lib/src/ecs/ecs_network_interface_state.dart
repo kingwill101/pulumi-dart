@@ -78,7 +78,7 @@ class EcsNetworkInterfaceState {
   /// [status] The status of the ENI.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
-  EcsNetworkInterfaceState({
+  const EcsNetworkInterfaceState({
     this.description,
     this.instanceType,
     this.ipv4PrefixCount,

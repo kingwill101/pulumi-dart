@@ -19,7 +19,7 @@ class FacebookChannelProperties {
   /// [appSecret] Facebook application secret. Value only returned through POST to the action Channel List API, otherwise empty.
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [pages] The list of Facebook pages
-  FacebookChannelProperties({
+  const FacebookChannelProperties({
     required this.appId,
     this.appSecret,
     required this.isEnabled,

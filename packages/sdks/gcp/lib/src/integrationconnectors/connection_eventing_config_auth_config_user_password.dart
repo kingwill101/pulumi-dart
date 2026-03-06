@@ -13,7 +13,7 @@ class ConnectionEventingConfigAuthConfigUserPassword {
   /// Creates a new [ConnectionEventingConfigAuthConfigUserPassword].
   /// [password] Password for Authentication.
   /// [username] Username for Authentication.
-  ConnectionEventingConfigAuthConfigUserPassword({
+  const ConnectionEventingConfigAuthConfigUserPassword({
     this.password,
     this.username,
   });

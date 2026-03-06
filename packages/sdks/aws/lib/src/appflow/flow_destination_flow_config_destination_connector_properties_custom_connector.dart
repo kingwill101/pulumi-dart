@@ -16,7 +16,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector {
   /// [errorHandlingConfig] Optional.
   /// [idFieldNames] Optional.
   /// [writeOperationType] Optional.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector({
     this.customProperties,
     required this.entityName,
     this.errorHandlingConfig,

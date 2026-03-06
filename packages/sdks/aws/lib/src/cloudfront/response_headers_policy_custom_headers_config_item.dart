@@ -12,7 +12,7 @@ class ResponseHeadersPolicyCustomHeadersConfigItem {
   /// [header] Required.
   /// [override] Required.
   /// [value] The value for the HTTP response header.
-  ResponseHeadersPolicyCustomHeadersConfigItem({
+  const ResponseHeadersPolicyCustomHeadersConfigItem({
     required this.header,
     required this.override,
     required this.value,

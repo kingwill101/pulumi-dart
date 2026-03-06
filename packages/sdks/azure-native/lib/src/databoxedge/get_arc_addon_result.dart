@@ -49,7 +49,7 @@ class GetArcAddonResult {
   /// [systemData] Metadata pertaining to creation and last modification of Addon
   /// [type] The hierarchical type of the object.
   /// [version] Arc resource version
-  GetArcAddonResult({
+  const GetArcAddonResult({
     required this.azureApiVersion,
     required this.hostPlatform,
     required this.hostPlatformType,

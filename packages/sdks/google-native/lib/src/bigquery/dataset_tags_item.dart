@@ -11,7 +11,7 @@ class DatasetTagsItem {
   /// Creates a new [DatasetTagsItem].
   /// [tagKey] [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
   /// [tagValue] [Required] Friendly short name of the tag value, e.g. "production".
-  DatasetTagsItem({
+  const DatasetTagsItem({
     this.tagKey,
     this.tagValue,
   });

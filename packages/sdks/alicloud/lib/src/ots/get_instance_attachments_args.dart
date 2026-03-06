@@ -18,7 +18,7 @@ class GetInstanceAttachmentsArgs {
   /// [instanceName] The name of OTS instance.
   /// [nameRegex] A regex string to filter results by vpc name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetInstanceAttachmentsArgs({
+  const GetInstanceAttachmentsArgs({
     required this.instanceName,
     this.nameRegex,
     this.outputFile,

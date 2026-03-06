@@ -23,7 +23,7 @@ class SkypeChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Skype channel resource
   /// [provisioningState] Provisioning state of the resource
-  SkypeChannelResponse({
+  const SkypeChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

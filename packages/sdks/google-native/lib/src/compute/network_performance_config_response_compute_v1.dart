@@ -7,7 +7,7 @@ class NetworkPerformanceConfigResponseComputeV1 {
 
   /// Creates a new [NetworkPerformanceConfigResponseComputeV1].
   /// [totalEgressBandwidthTier] Required.
-  NetworkPerformanceConfigResponseComputeV1({
+  const NetworkPerformanceConfigResponseComputeV1({
     required this.totalEgressBandwidthTier,
   });
 

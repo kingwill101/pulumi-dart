@@ -17,7 +17,7 @@ class GetContextAiplatformV1beta1Args {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetContextAiplatformV1beta1Args({
+  const GetContextAiplatformV1beta1Args({
     required this.contextId,
     required this.location,
     required this.metadataStoreId,

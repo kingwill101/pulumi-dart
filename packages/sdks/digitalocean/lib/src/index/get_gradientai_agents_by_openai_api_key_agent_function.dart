@@ -35,7 +35,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentFunction {
   /// [updatedAt] Updated At timestamp for the Agent
   /// [url] Url of the Deployment
   /// [uuid] API Key value
-  GetGradientaiAgentsByOpenaiApiKeyAgentFunction({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentFunction({
     this.apiKey,
     required this.createdAt,
     this.description,

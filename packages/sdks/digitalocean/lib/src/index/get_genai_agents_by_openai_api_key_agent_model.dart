@@ -46,7 +46,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgentModel {
   /// [url] URL of the Model
   /// [usecases] List of Usecases for the Model
   /// [versions] URL of the Model
-  GetGenaiAgentsByOpenaiApiKeyAgentModel({
+  const GetGenaiAgentsByOpenaiApiKeyAgentModel({
     this.agreements,
     required this.createdAt,
     this.inferenceName,

@@ -27,7 +27,7 @@ class RestoreResponseMetastoreV1beta {
   /// [startTime] The time when the restore started.
   /// [state] The current state of the restore.
   /// [type] The type of restore.
-  RestoreResponseMetastoreV1beta({
+  const RestoreResponseMetastoreV1beta({
     required this.backup,
     required this.backupLocation,
     required this.details,

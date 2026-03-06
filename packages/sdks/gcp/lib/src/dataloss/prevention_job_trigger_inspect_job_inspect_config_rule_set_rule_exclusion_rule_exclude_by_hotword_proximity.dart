@@ -11,7 +11,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity].
   /// [windowAfter] Number of characters after the finding to consider. Either this or window_before must be specified
   /// [windowBefore] Number of characters before the finding to consider. Either this or window_after must be specified
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity({
     this.windowAfter,
     this.windowBefore,
   });

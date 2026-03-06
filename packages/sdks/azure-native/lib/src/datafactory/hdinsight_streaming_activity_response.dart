@@ -74,7 +74,7 @@ class HDInsightStreamingActivityResponse {
   /// [storageLinkedServices] Storage linked service references.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  HDInsightStreamingActivityResponse({
+  const HDInsightStreamingActivityResponse({
     this.arguments,
     this.combiner,
     this.commandEnvironment,

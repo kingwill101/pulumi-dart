@@ -17,7 +17,7 @@ class EciScalingConfigurationImageRegistryCredential {
   /// [password] The password used to log on to the image repository. It is required
   /// [server] The address of the image repository. It is required when `image_registry_credential` is
   /// [username] The username used to log on to the image repository. It is required
-  EciScalingConfigurationImageRegistryCredential({
+  const EciScalingConfigurationImageRegistryCredential({
     this.password,
     this.server,
     this.username,

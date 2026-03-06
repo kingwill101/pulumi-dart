@@ -42,7 +42,7 @@ class SapVirtualInstanceArgs {
   /// [sapProduct] Defines the SAP Product type.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
   /// [tags] Resource tags.
-  SapVirtualInstanceArgs({
+  const SapVirtualInstanceArgs({
     required this.configuration,
     required this.environment,
     this.identity,

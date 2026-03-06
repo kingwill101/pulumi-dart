@@ -24,7 +24,7 @@ class GoogleCloudApigeeV1SecurityReportMetadataResponse {
   /// [mimeType] MIME type / Output format.
   /// [startTimestamp] Start timestamp of the query range.
   /// [timeUnit] Query GroupBy time unit. Example: "seconds", "minute", "hour"
-  GoogleCloudApigeeV1SecurityReportMetadataResponse({
+  const GoogleCloudApigeeV1SecurityReportMetadataResponse({
     required this.dimensions,
     required this.endTimestamp,
     required this.metrics,

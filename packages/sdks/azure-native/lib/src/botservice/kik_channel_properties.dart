@@ -18,7 +18,7 @@ class KikChannelProperties {
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [isValidated] Whether this channel is validated for the bot
   /// [userName] The Kik user name
-  KikChannelProperties({
+  const KikChannelProperties({
     this.apiKey,
     required this.isEnabled,
     this.isValidated,

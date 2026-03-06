@@ -15,7 +15,7 @@ class GetSitesByServiceGroupArgs {
   /// Creates a new [GetSitesByServiceGroupArgs].
   /// [servicegroupName] The name of the service group
   /// [siteName] The name of the Site
-  GetSitesByServiceGroupArgs({
+  const GetSitesByServiceGroupArgs({
     required this.servicegroupName,
     required this.siteName,
   });

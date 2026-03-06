@@ -12,7 +12,7 @@ class RelatedUrl {
   /// Creates a new [RelatedUrl].
   /// [label] Label to describe usage of the URL.
   /// [url] Specific URL associated with the resource.
-  RelatedUrl({
+  const RelatedUrl({
     this.label,
     this.url,
   });

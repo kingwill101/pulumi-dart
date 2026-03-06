@@ -11,7 +11,7 @@ class AwsNodePoolUpdateSettingsSurgeSettings {
   /// Creates a new [AwsNodePoolUpdateSettingsSurgeSettings].
   /// [maxSurge] Optional. The maximum number of nodes that can be created beyond the current size of the node pool during the update process.
   /// [maxUnavailable] Optional. The maximum number of nodes that can be simultaneously unavailable during the update process. A node is considered unavailable if its status is not Ready.
-  AwsNodePoolUpdateSettingsSurgeSettings({
+  const AwsNodePoolUpdateSettingsSurgeSettings({
     this.maxSurge,
     this.maxUnavailable,
   });

@@ -21,7 +21,7 @@ class NetworkIpDhcpHost {
   /// [lease] Configures lease settings for DHCP host entries.
   /// [mac] Specifies the MAC address of the DHCP host.
   /// [name] Defines the name for the DHCP host entry.
-  NetworkIpDhcpHost({
+  const NetworkIpDhcpHost({
     this.id,
     this.ip,
     this.lease,

@@ -122,7 +122,7 @@ class GetListenerV2Result {
   /// [timeoutTcpInspect] Time, in milliseconds, to wait for additional TCP
   /// [tlsCiphers] List of ciphers in OpenSSL format (colon-separated).
   /// [tlsVersions] A list of TLS protocol versions.
-  GetListenerV2Result({
+  const GetListenerV2Result({
     required this.adminStateUp,
     required this.allowedCidrs,
     required this.alpnProtocols,

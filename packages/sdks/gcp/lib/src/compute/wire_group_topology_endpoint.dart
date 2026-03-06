@@ -11,7 +11,7 @@ class WireGroupTopologyEndpoint {
   /// Creates a new [WireGroupTopologyEndpoint].
   /// [city] (Output)
   /// [label] (Output)
-  WireGroupTopologyEndpoint({
+  const WireGroupTopologyEndpoint({
     this.city,
     this.label,
   });

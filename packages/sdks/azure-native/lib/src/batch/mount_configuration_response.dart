@@ -22,7 +22,7 @@ class MountConfigurationResponse {
   /// [azureFileShareConfiguration] This property is mutually exclusive with all other properties.
   /// [cifsMountConfiguration] This property is mutually exclusive with all other properties.
   /// [nfsMountConfiguration] This property is mutually exclusive with all other properties.
-  MountConfigurationResponse({
+  const MountConfigurationResponse({
     this.azureBlobFileSystemConfiguration,
     this.azureFileShareConfiguration,
     this.cifsMountConfiguration,

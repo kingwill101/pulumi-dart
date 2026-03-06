@@ -45,7 +45,7 @@ class GetKubernetesRoleResult {
   /// [roleStatus] Role status.
   /// [systemData] Metadata pertaining to creation and last modification of Role
   /// [type] The hierarchical type of the object.
-  GetKubernetesRoleResult({
+  const GetKubernetesRoleResult({
     required this.azureApiVersion,
     required this.hostPlatform,
     required this.hostPlatformType,

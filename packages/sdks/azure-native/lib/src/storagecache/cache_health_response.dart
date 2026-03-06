@@ -16,7 +16,7 @@ class CacheHealthResponse {
   /// [conditions] Outstanding conditions that need to be investigated and resolved.
   /// [state] List of cache health states. Down is when the cluster is not responding.  Degraded is when its functioning but has some alerts. Transitioning when it is creating or deleting. Unknown will be returned in old api versions when a new value is added in future versions. WaitingForKey is when the create is waiting for the system assigned identity to be given access to the encryption key in the encryption settings.
   /// [statusDescription] Describes explanation of state.
-  CacheHealthResponse({
+  const CacheHealthResponse({
     required this.conditions,
     this.state,
     this.statusDescription,

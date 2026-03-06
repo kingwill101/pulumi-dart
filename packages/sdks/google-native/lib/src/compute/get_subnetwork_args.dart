@@ -15,7 +15,7 @@ class GetSubnetworkArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [subnetwork] Required.
-  GetSubnetworkArgs({
+  const GetSubnetworkArgs({
     this.project,
     required this.region,
     required this.subnetwork,

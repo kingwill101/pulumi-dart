@@ -44,7 +44,7 @@ class GetRouteTablesTable {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] Vpc id of the route table.
   /// [vswitchIds] A list of vswitch id.
-  GetRouteTablesTable({
+  const GetRouteTablesTable({
     required this.description,
     required this.id,
     required this.name,

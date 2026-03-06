@@ -20,7 +20,7 @@ class GetVirtualHubRouteTableRoute {
   /// [name] The name of the Virtual Hub Route Table.
   /// [nextHop] The next hop's resource ID.
   /// [nextHopType] The type of next hop.
-  GetVirtualHubRouteTableRoute({
+  const GetVirtualHubRouteTableRoute({
     required this.destinations,
     required this.destinationsType,
     required this.name,

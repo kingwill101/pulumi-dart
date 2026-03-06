@@ -35,7 +35,7 @@ class DefaultSupportedIdpConfigArgs {
   /// [enabled] If this IDP allows the user to sign in
   /// [idpId] ID of the IDP. Possible values include:
   /// [project] The ID of the project in which the resource belongs.
-  DefaultSupportedIdpConfigArgs({
+  const DefaultSupportedIdpConfigArgs({
     required this.clientId,
     required this.clientSecret,
     this.enabled,

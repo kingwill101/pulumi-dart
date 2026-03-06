@@ -24,7 +24,7 @@ class FqdnListGlobalRulestackArgs {
   /// [fqdnList] fqdn list
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] fqdn list name
-  FqdnListGlobalRulestackArgs({
+  const FqdnListGlobalRulestackArgs({
     this.auditComment,
     this.description,
     required this.fqdnList,

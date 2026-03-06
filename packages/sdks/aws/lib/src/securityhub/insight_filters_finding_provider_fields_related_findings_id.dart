@@ -9,7 +9,7 @@ class InsightFiltersFindingProviderFieldsRelatedFindingsId {
   /// Creates a new [InsightFiltersFindingProviderFieldsRelatedFindingsId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersFindingProviderFieldsRelatedFindingsId({
+  const InsightFiltersFindingProviderFieldsRelatedFindingsId({
     required this.comparison,
     required this.value,
   });

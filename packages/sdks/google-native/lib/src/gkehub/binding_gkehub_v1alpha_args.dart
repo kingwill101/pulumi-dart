@@ -27,7 +27,7 @@ class BindingGkehubV1alphaArgs {
   /// [name] The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
   /// [project] Optional.
   /// [scope] A Scope resource name in the format `projects/*/locations/*/scopes/*`.
-  BindingGkehubV1alphaArgs({
+  const BindingGkehubV1alphaArgs({
     this.labels,
     this.location,
     required this.membershipBindingId,

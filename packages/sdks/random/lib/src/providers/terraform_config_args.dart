@@ -11,7 +11,7 @@ class TerraformConfigArgs {
 
   /// Creates a new [TerraformConfigArgs].
   /// [self] Required.
-  TerraformConfigArgs({
+  const TerraformConfigArgs({
     required this.self,
   });
 

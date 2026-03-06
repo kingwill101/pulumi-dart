@@ -18,7 +18,7 @@ class IdentityServiceAzureADConfig {
   /// [clientSecret] Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
   /// [kubectlRedirectUri] The redirect URL that kubectl uses for authorization.
   /// [tenant] Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
-  IdentityServiceAzureADConfig({
+  const IdentityServiceAzureADConfig({
     this.clientId,
     this.clientSecret,
     this.kubectlRedirectUri,

@@ -12,7 +12,7 @@ class DiagnosticSettingMetric {
   /// [category] Required.
   /// [enabled] Optional.
   /// [retentionPolicy] Optional.
-  DiagnosticSettingMetric({
+  const DiagnosticSettingMetric({
     required this.category,
     this.enabled,
     this.retentionPolicy,

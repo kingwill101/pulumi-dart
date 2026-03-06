@@ -8,7 +8,7 @@ class Tags {
 
   /// Creates a new [Tags].
   /// [tags] Optional.
-  Tags({
+  const Tags({
     this.tags,
   });
 

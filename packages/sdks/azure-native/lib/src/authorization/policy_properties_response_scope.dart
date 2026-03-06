@@ -15,7 +15,7 @@ class PolicyPropertiesResponseScope {
   /// [displayName] Display name of the resource
   /// [id] Scope id of the resource
   /// [type] Type of the resource
-  PolicyPropertiesResponseScope({
+  const PolicyPropertiesResponseScope({
     this.displayName,
     this.id,
     this.type,

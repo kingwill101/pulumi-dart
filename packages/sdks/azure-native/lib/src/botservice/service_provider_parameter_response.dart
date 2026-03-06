@@ -28,7 +28,7 @@ class ServiceProviderParameterResponse {
   /// [metadata] Meta data for the Service Provider
   /// [name] Name of the Service Provider
   /// [type] Type of the Service Provider
-  ServiceProviderParameterResponse({
+  const ServiceProviderParameterResponse({
     required this.default_,
     required this.description,
     required this.displayName,

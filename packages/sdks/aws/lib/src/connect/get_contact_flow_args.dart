@@ -29,7 +29,7 @@ class GetContactFlowArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to assign to the Contact Flow.
   /// [type] Type of Contact Flow.
-  GetContactFlowArgs({
+  const GetContactFlowArgs({
     this.contactFlowId,
     required this.instanceId,
     this.name,

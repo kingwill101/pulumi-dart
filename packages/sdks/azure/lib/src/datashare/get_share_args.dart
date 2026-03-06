@@ -15,7 +15,7 @@ class GetShareArgs {
   /// Creates a new [GetShareArgs].
   /// [accountId] The ID of the Data Share account in which the Data Share is created.
   /// [name] The name of this Data Share.
-  GetShareArgs({
+  const GetShareArgs({
     required this.accountId,
     required this.name,
   });

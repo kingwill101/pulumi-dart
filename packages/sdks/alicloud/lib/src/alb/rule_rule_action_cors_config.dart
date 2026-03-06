@@ -23,7 +23,7 @@ class RuleRuleActionCorsConfig {
   /// [allowOrigins] The allowed origins of CORS requests.
   /// [exposeHeaders] The headers that can be exposed.
   /// [maxAge] The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-  RuleRuleActionCorsConfig({
+  const RuleRuleActionCorsConfig({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

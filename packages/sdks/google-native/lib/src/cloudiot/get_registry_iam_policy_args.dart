@@ -15,7 +15,7 @@ class GetRegistryIamPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [registryId] Required.
-  GetRegistryIamPolicyArgs({
+  const GetRegistryIamPolicyArgs({
     required this.location,
     this.project,
     required this.registryId,

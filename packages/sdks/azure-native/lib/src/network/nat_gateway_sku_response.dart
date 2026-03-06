@@ -9,7 +9,7 @@ class NatGatewaySkuResponse {
 
   /// Creates a new [NatGatewaySkuResponse].
   /// [name] Name of Nat Gateway SKU.
-  NatGatewaySkuResponse({
+  const NatGatewaySkuResponse({
     this.name,
   });
 

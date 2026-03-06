@@ -15,7 +15,7 @@ class V2modelsSlotTypeSlotTypeValue {
   /// Creates a new [V2modelsSlotTypeSlotTypeValue].
   /// [sampleValues] Value of the slot type entry.
   /// [synonyms] A list of additional values related to the slot type entry.
-  V2modelsSlotTypeSlotTypeValue({
+  const V2modelsSlotTypeSlotTypeValue({
     this.sampleValues,
     this.synonyms,
   });

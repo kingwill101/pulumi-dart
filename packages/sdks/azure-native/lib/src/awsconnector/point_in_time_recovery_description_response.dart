@@ -16,7 +16,7 @@ class PointInTimeRecoveryDescriptionResponse {
   /// [earliestRestorableDateTime] &lt;p&gt;Specifies the earliest point in time you can restore your table to. You can restore your table to any point in time during the last 35 days. &lt;/p&gt;
   /// [latestRestorableDateTime] &lt;p&gt; &lt;code&gt;LatestRestorableDateTime&lt;/code&gt; is typically 5 minutes before the current time. &lt;/p&gt;
   /// [pointInTimeRecoveryStatus] &lt;p&gt;The current state of point in time recovery:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLED&lt;/code&gt; - Point in time recovery is enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLED&lt;/code&gt; - Point in time recovery is disabled.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  PointInTimeRecoveryDescriptionResponse({
+  const PointInTimeRecoveryDescriptionResponse({
     this.earliestRestorableDateTime,
     this.latestRestorableDateTime,
     this.pointInTimeRecoveryStatus,

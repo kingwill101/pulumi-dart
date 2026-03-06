@@ -12,7 +12,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
   /// [digest] Optional.
   /// [entryPoint] Optional.
   /// [uri] Optional.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource({
     this.digest,
     this.entryPoint,
     this.uri,

@@ -15,7 +15,7 @@ class GetIscsiPathArgs {
   /// Creates a new [GetIscsiPathArgs].
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIscsiPathArgs({
+  const GetIscsiPathArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
   });

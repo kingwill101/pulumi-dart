@@ -7,7 +7,7 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride].
   /// [action] Required.
-  GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride({
+  const GetFirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride({
     required this.action,
   });
 

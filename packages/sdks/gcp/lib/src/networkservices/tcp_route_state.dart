@@ -52,7 +52,7 @@ class TcpRouteState {
   /// [rules] Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
   /// [selfLink] Server-defined URL of this resource.
   /// [updateTime] Time the TcpRoute was updated in UTC.
-  TcpRouteState({
+  const TcpRouteState({
     this.createTime,
     this.description,
     this.effectiveLabels,

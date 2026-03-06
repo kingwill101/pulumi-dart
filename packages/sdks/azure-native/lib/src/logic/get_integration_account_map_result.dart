@@ -49,7 +49,7 @@ class GetIntegrationAccountMapResult {
   /// [parametersSchema] The parameters schema of integration account map.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountMapResult({
+  const GetIntegrationAccountMapResult({
     required this.azureApiVersion,
     required this.changedTime,
     this.content,

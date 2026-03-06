@@ -15,7 +15,7 @@ class GetAckServiceResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [status] The current service enable status.
   /// [type] Required.
-  GetAckServiceResult({
+  const GetAckServiceResult({
     this.enable,
     required this.id,
     required this.status,

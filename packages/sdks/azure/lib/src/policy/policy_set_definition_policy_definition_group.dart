@@ -20,7 +20,7 @@ class PolicySetDefinitionPolicyDefinitionGroup {
   /// [description] The description of this Policy Definition Group.
   /// [displayName] The display name of this Policy Definition Group.
   /// [name] The name which should be used for this Policy Definition Group.
-  PolicySetDefinitionPolicyDefinitionGroup({
+  const PolicySetDefinitionPolicyDefinitionGroup({
     this.additionalMetadataResourceId,
     this.category,
     this.description,

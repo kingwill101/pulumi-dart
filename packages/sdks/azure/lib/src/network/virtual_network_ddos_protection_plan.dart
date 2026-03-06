@@ -11,7 +11,7 @@ class VirtualNetworkDdosProtectionPlan {
   /// Creates a new [VirtualNetworkDdosProtectionPlan].
   /// [enable] Enable/disable DDoS Protection Plan on Virtual Network.
   /// [id] The ID of DDoS Protection Plan.
-  VirtualNetworkDdosProtectionPlan({
+  const VirtualNetworkDdosProtectionPlan({
     required this.enable,
     required this.id,
   });

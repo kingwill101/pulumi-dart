@@ -11,7 +11,7 @@ class ImagePipelineImageTestsConfiguration {
   /// Creates a new [ImagePipelineImageTestsConfiguration].
   /// [imageTestsEnabled] Whether image tests are enabled. Defaults to `true`.
   /// [timeoutMinutes] Number of minutes before image tests time out. Valid values are between `60` and `1440`. Defaults to `720`.
-  ImagePipelineImageTestsConfiguration({
+  const ImagePipelineImageTestsConfiguration({
     this.imageTestsEnabled,
     this.timeoutMinutes,
   });

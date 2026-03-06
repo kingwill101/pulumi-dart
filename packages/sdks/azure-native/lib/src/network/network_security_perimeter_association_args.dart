@@ -37,7 +37,7 @@ class NetworkSecurityPerimeterAssociationArgs {
   /// [profile] Profile id to which the PaaS resource is associated.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NetworkSecurityPerimeterAssociationArgs({
+  const NetworkSecurityPerimeterAssociationArgs({
     this.accessMode,
     this.associationName,
     this.id,

@@ -8,7 +8,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace].
   /// [apiToken] The API tokens used by Dynatrace API to authenticate various API calls.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDynatrace({
     required this.apiToken,
   });
 

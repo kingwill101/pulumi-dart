@@ -13,7 +13,7 @@ class CustomRolloutProperties {
   /// Creates a new [CustomRolloutProperties].
   /// [specification] The specification.
   /// [status] The status.
-  CustomRolloutProperties({
+  const CustomRolloutProperties({
     required this.specification,
     this.status,
   });

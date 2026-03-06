@@ -40,7 +40,7 @@ class ImageDiskDeviceMapping {
   /// [remainTime] For an image being replicated, return the remaining time of the replication task, in seconds.
   /// [size] The size of disk N in the custom image. Unit: GiB. The valid values and default value of DiskDeviceMapping.N.Size vary based on the value of DiskDeviceMapping.N.SnapshotId.
   /// [snapshotId] The ID of snapshot N to use to create the custom image. .
-  ImageDiskDeviceMapping({
+  const ImageDiskDeviceMapping({
     this.device,
     this.diskType,
     this.format,

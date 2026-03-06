@@ -33,7 +33,7 @@ class ServiceState {
   /// [secondaryConnectionString] The secondary connection string of the Communication Service.
   /// [secondaryKey] The secondary key of the Communication Service.
   /// [tags] A mapping of tags which should be assigned to the Communication Service.
-  ServiceState({
+  const ServiceState({
     this.dataLocation,
     this.hostname,
     this.name,

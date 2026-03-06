@@ -9,7 +9,7 @@ class CollapsibleGroup {
 
   /// Creates a new [CollapsibleGroup].
   /// [collapsed] The collapsed state of the widget on first page load.
-  CollapsibleGroup({
+  const CollapsibleGroup({
     this.collapsed,
   });
 

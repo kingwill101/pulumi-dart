@@ -27,7 +27,7 @@ class GetDiscoveredServiceResult {
   /// [serviceProperties] Properties of an underlying compute resource that can comprise a Service. Structure is documented below
   /// [serviceReferences] Reference to an underlying networking resource that can comprise a Service. Structure is documented below
   /// [serviceUri] Required.
-  GetDiscoveredServiceResult({
+  const GetDiscoveredServiceResult({
     required this.id,
     required this.location,
     required this.name,

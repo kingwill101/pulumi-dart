@@ -17,7 +17,7 @@ class GetFunctionEventTrigger {
   /// [eventType] The type of event to observe. For example: `"google.storage.object.finalize"`.
   /// [failurePolicies] Policy for failed executions. Structure is documented below.
   /// [resource] The name of the resource whose events are being observed, for example, `"myBucket"`
-  GetFunctionEventTrigger({
+  const GetFunctionEventTrigger({
     required this.eventType,
     required this.failurePolicies,
     required this.resource,

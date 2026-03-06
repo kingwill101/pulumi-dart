@@ -9,7 +9,7 @@ class DomainDevicesDiskMirrorSourceDataStore {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.
-  DomainDevicesDiskMirrorSourceDataStore({
+  const DomainDevicesDiskMirrorSourceDataStore({
     this.format,
   });
 

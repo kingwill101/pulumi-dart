@@ -25,7 +25,7 @@ class VmwareSeesawConfigResponse {
   /// [masterIp] MasterIP is the IP announced by the master of Seesaw group.
   /// [stackdriverName] Name to be used by Stackdriver.
   /// [vms] Names of the VMs created for this Seesaw group.
-  VmwareSeesawConfigResponse({
+  const VmwareSeesawConfigResponse({
     required this.enableHa,
     required this.group,
     required this.ipBlocks,

@@ -21,7 +21,7 @@ class GetWafDomainsArgs {
   /// [ids] A list of Waf Domain IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [queryArgs] The query conditions. You can filter domain names by name. Fuzzy match is supported `QueryArgs={"DomainName":"Accelerated domain name"}`.
-  GetWafDomainsArgs({
+  const GetWafDomainsArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

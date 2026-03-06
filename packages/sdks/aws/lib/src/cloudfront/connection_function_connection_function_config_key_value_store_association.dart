@@ -8,7 +8,7 @@ class ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation {
 
   /// Creates a new [ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation].
   /// [keyValueStoreArn] ARN of the key value store.
-  ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation({
+  const ConnectionFunctionConnectionFunctionConfigKeyValueStoreAssociation({
     required this.keyValueStoreArn,
   });
 

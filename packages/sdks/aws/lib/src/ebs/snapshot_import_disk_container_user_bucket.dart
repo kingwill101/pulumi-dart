@@ -11,7 +11,7 @@ class SnapshotImportDiskContainerUserBucket {
   /// Creates a new [SnapshotImportDiskContainerUserBucket].
   /// [s3Bucket] The name of the Amazon S3 bucket where the disk image is located.
   /// [s3Key] The file name of the disk image.
-  SnapshotImportDiskContainerUserBucket({
+  const SnapshotImportDiskContainerUserBucket({
     required this.s3Bucket,
     required this.s3Key,
   });

@@ -12,7 +12,7 @@ class AzureMonitorInformationResponse {
   /// Creates a new [AzureMonitorInformationResponse].
   /// [dcrId] ID of Data Collection Rule (DCR) associated with this service.
   /// [enablementStatus] Indicates whether the service is enabled.
-  AzureMonitorInformationResponse({
+  const AzureMonitorInformationResponse({
     required this.dcrId,
     required this.enablementStatus,
   });

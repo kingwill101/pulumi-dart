@@ -36,7 +36,7 @@ class TaskPropertiesResponse {
   /// [stage] Task Stage
   /// [status] Task Status
   /// [taskType] Task Type
-  TaskPropertiesResponse({
+  const TaskPropertiesResponse({
     required this.completionDate,
     this.description,
     required this.displayName,

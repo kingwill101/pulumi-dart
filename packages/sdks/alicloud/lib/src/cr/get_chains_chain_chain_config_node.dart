@@ -15,7 +15,7 @@ class GetChainsChainChainConfigNode {
   /// [enable] Whether to enable the delivery chain node. Valid values: `true`, `false`.
   /// [nodeConfigs] The configuration of delivery chain node.
   /// [nodeName] The name of delivery chain node.
-  GetChainsChainChainConfigNode({
+  const GetChainsChainChainConfigNode({
     required this.enable,
     required this.nodeConfigs,
     required this.nodeName,

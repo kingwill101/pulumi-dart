@@ -12,7 +12,7 @@ class BareMetalVipConfig {
   /// Creates a new [BareMetalVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
   /// [ingressVip] The VIP which you previously set aside for ingress traffic into this bare metal user cluster.
-  BareMetalVipConfig({
+  const BareMetalVipConfig({
     this.controlPlaneVip,
     this.ingressVip,
   });

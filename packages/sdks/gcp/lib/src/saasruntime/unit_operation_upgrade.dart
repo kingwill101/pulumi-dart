@@ -13,7 +13,7 @@ class UnitOperationUpgrade {
   /// Creates a new [UnitOperationUpgrade].
   /// [inputVariables] Set of input variables. Maximum 100. (optional)
   /// [release] Reference to the Release object to use for the Unit. (optional).
-  UnitOperationUpgrade({
+  const UnitOperationUpgrade({
     this.inputVariables,
     this.release,
   });

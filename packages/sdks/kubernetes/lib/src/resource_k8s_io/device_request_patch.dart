@@ -25,7 +25,7 @@ class DeviceRequestPatch {
   /// [exactly] Exactly specifies the details for a single request that must be met exactly for the request to be satisfied.
   /// [firstAvailable] FirstAvailable contains subrequests, of which exactly one will be selected by the scheduler. It tries to satisfy them in the order in which they are listed here. So if there are two entries in the list, the scheduler will only check the second one if it determines that the first one can not be used.
   /// [name] Name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim.
-  DeviceRequestPatch({
+  const DeviceRequestPatch({
     this.exactly,
     this.firstAvailable,
     this.name,

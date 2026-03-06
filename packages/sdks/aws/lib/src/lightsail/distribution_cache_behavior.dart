@@ -11,7 +11,7 @@ class DistributionCacheBehavior {
   /// Creates a new [DistributionCacheBehavior].
   /// [behavior] Cache behavior for the specified path. Valid values: `cache`, `dont-cache`.
   /// [path] Path to a directory or file to cache, or not cache. Use an asterisk symbol to specify wildcard directories (`path/to/assets/*`), and file types (`*.html`, `*.jpg`, `*.js`). Directories and file paths are case-sensitive.
-  DistributionCacheBehavior({
+  const DistributionCacheBehavior({
     required this.behavior,
     required this.path,
   });

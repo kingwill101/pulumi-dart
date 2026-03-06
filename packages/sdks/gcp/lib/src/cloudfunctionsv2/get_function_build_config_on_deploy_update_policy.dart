@@ -8,7 +8,7 @@ class GetFunctionBuildConfigOnDeployUpdatePolicy {
 
   /// Creates a new [GetFunctionBuildConfigOnDeployUpdatePolicy].
   /// [runtimeVersion] The runtime version which was used during latest function deployment.
-  GetFunctionBuildConfigOnDeployUpdatePolicy({
+  const GetFunctionBuildConfigOnDeployUpdatePolicy({
     required this.runtimeVersion,
   });
 

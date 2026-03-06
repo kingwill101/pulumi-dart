@@ -15,7 +15,7 @@ class ReleaseChannelConfigResponse {
   /// [channel] The release channel this configuration applies to.
   /// [defaultVersion] The default version for newly created clusters on the channel.
   /// [validVersions] List of valid versions for the channel.
-  ReleaseChannelConfigResponse({
+  const ReleaseChannelConfigResponse({
     required this.channel,
     required this.defaultVersion,
     required this.validVersions,

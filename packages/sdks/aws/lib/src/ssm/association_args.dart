@@ -64,7 +64,7 @@ class AssociationArgs {
   /// [tags] A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
   /// [waitForSuccessTimeoutSeconds] The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
-  AssociationArgs({
+  const AssociationArgs({
     this.applyOnlyAtCronInterval,
     this.associationName,
     this.automationTargetParameterName,

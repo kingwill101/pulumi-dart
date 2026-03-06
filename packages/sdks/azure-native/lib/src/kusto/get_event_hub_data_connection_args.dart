@@ -21,7 +21,7 @@ class GetEventHubDataConnectionArgs {
   /// [dataConnectionName] The name of the data connection.
   /// [databaseName] The name of the database in the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEventHubDataConnectionArgs({
+  const GetEventHubDataConnectionArgs({
     required this.clusterName,
     required this.dataConnectionName,
     required this.databaseName,

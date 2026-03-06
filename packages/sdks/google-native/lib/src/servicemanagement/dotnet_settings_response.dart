@@ -25,7 +25,7 @@ class DotnetSettingsResponse {
   /// [ignoredResources] List of full resource types to ignore during generation. This is typically used for API-specific Location resources, which should be handled by the generator as if they were actually the common Location resources. Example entry: "documentai.googleapis.com/Location"
   /// [renamedResources] Map from full resource types to the effective short name for the resource. This is used when otherwise resource named from different services would cause naming collisions. Example entry: "datalabeling.googleapis.com/Dataset": "DataLabelingDataset"
   /// [renamedServices] Map from original service names to renamed versions. This is used when the default generated types would cause a naming conflict. (Neither name is fully-qualified.) Example: Subscriber to SubscriberServiceApi.
-  DotnetSettingsResponse({
+  const DotnetSettingsResponse({
     required this.common,
     required this.forcedNamespaceAliases,
     required this.handwrittenSignatures,

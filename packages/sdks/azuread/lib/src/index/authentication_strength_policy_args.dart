@@ -18,7 +18,7 @@ class AuthenticationStrengthPolicyArgs {
   /// [allowedCombinations] List of allowed authentication methods for this authentication strength policy.
   /// [description] The description for this authentication strength policy.
   /// [displayName] The friendly name for this authentication strength policy.
-  AuthenticationStrengthPolicyArgs({
+  const AuthenticationStrengthPolicyArgs({
     required this.allowedCombinations,
     this.description,
     required this.displayName,

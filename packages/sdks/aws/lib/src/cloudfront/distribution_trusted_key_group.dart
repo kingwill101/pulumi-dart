@@ -12,7 +12,7 @@ class DistributionTrustedKeyGroup {
   /// Creates a new [DistributionTrustedKeyGroup].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
   /// [items] List of nested attributes for each trusted signer
-  DistributionTrustedKeyGroup({
+  const DistributionTrustedKeyGroup({
     this.enabled,
     this.items,
   });

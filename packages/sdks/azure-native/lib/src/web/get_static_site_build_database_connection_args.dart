@@ -21,7 +21,7 @@ class GetStaticSiteBuildDatabaseConnectionArgs {
   /// [environmentName] The stage site identifier.
   /// [name] Name of the static site
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetStaticSiteBuildDatabaseConnectionArgs({
+  const GetStaticSiteBuildDatabaseConnectionArgs({
     required this.databaseConnectionName,
     required this.environmentName,
     required this.name,

@@ -112,7 +112,7 @@ class InstanceState {
   /// [tags] A map of resource manager tags. Resource manager tag keys
   /// [tier] The service tier of the instance.
   /// [zone] (Optional, Deprecated)
-  InstanceState({
+  const InstanceState({
     this.createTime,
     this.deletionProtectionEnabled,
     this.deletionProtectionReason,

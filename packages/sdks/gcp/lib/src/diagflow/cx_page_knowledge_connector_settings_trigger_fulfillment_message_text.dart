@@ -13,7 +13,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText {
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText].
   /// [allowPlaybackInterruption] (Output)
   /// [texts] A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-  CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText({
+  const CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageText({
     this.allowPlaybackInterruption,
     this.texts,
   });

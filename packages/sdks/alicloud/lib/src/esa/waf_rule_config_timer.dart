@@ -18,7 +18,7 @@ class WafRuleConfigTimer {
   /// [scopes] Timing type:
   /// [weeklyPeriods] Weekly recurring time schedules. See `weekly_periods` below.
   /// [zone] The time zone. If it is not specified, the default value is UTC +00:00.  Example: 8 means East Zone 8,-8 means West Zone 8  Range:-12 -+14
-  WafRuleConfigTimer({
+  const WafRuleConfigTimer({
     this.periods,
     this.scopes,
     this.weeklyPeriods,

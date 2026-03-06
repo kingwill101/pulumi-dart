@@ -12,7 +12,7 @@ class ClusterComponentComponentConfig {
   /// Creates a new [ClusterComponentComponentConfig].
   /// [basicArgs] Component Basic Parameters
   /// [nodeUnits] Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
-  ClusterComponentComponentConfig({
+  const ClusterComponentComponentConfig({
     this.basicArgs,
     this.nodeUnits,
   });

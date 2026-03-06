@@ -19,7 +19,7 @@ class GetFirewallsResult {
   /// [id] The unique ID assigned to this Firewall.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetFirewallsResult({
+  const GetFirewallsResult({
     this.filters,
     required this.firewalls,
     required this.id,

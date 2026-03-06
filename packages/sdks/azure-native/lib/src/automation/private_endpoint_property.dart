@@ -9,7 +9,7 @@ class PrivateEndpointProperty {
 
   /// Creates a new [PrivateEndpointProperty].
   /// [id] Resource id of the private endpoint.
-  PrivateEndpointProperty({
+  const PrivateEndpointProperty({
     this.id,
   });
 

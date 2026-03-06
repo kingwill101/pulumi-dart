@@ -15,7 +15,7 @@ class AttachmentState {
   /// [elb] The name of the ELB.
   /// [instance] Instance ID to place in the ELB pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AttachmentState({
+  const AttachmentState({
     this.elb,
     this.instance,
     this.region,

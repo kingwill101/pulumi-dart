@@ -16,7 +16,7 @@ class HardwareInventoryResponse {
   /// [additionalHostInformation] Freeform data extracted from the environment about this machine. This information varies depending on the specific hardware and configuration.
   /// [interfaces] The list of network interfaces and associated details for the bare metal machine.
   /// [nics] Field Deprecated. Will be removed in an upcoming version. The list of network interface cards and associated details for the bare metal machine.
-  HardwareInventoryResponse({
+  const HardwareInventoryResponse({
     required this.additionalHostInformation,
     required this.interfaces,
     required this.nics,

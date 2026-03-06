@@ -37,7 +37,7 @@ class ScheduledQueryRulesLogArgs {
   /// [name] The name of the scheduled query rule. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the scheduled query rule instance. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  ScheduledQueryRulesLogArgs({
+  const ScheduledQueryRulesLogArgs({
     this.authorizedResourceIds,
     required this.criteria,
     required this.dataSourceId,

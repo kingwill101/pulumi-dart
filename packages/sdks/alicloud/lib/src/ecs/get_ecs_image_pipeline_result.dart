@@ -26,7 +26,7 @@ class GetEcsImagePipelineResult {
   /// [pipelines] Required.
   /// [resourceGroupId] Optional.
   /// [tags] Optional.
-  GetEcsImagePipelineResult({
+  const GetEcsImagePipelineResult({
     required this.id,
     required this.ids,
     this.name,

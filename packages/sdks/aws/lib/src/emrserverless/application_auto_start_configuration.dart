@@ -8,7 +8,7 @@ class ApplicationAutoStartConfiguration {
 
   /// Creates a new [ApplicationAutoStartConfiguration].
   /// [enabled] Enables the application to automatically start on job submission. Defaults to `true`.
-  ApplicationAutoStartConfiguration({
+  const ApplicationAutoStartConfiguration({
     this.enabled,
   });
 

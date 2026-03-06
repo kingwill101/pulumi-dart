@@ -17,7 +17,7 @@ class ServiceNetworkAclPublicNetwork {
   /// Creates a new [ServiceNetworkAclPublicNetwork].
   /// [allowedRequestTypes] The allowed request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   /// [deniedRequestTypes] The denied request types for the public network. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
-  ServiceNetworkAclPublicNetwork({
+  const ServiceNetworkAclPublicNetwork({
     this.allowedRequestTypes,
     this.deniedRequestTypes,
   });

@@ -15,7 +15,7 @@ class GetPrivateCloudArgs {
   /// Creates a new [GetPrivateCloudArgs].
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateCloudArgs({
+  const GetPrivateCloudArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
   });

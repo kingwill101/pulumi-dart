@@ -81,7 +81,7 @@ class DiskArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] Optional.
   /// [zoneId] Optional.
-  DiskArgs({
+  const DiskArgs({
     this.advancedFeatures,
     this.availabilityZone,
     this.burstingEnabled,

@@ -10,7 +10,7 @@ class MaintenanceExclusionOptionsContainerV1beta1 {
 
   /// Creates a new [MaintenanceExclusionOptionsContainerV1beta1].
   /// [scope] Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
-  MaintenanceExclusionOptionsContainerV1beta1({
+  const MaintenanceExclusionOptionsContainerV1beta1({
     this.scope,
   });
 

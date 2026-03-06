@@ -15,7 +15,7 @@ class FileSharePropertiesFileSharePaidBursting {
   /// [paidBurstingEnabled] Indicates whether paid bursting is enabled for the share. This property is only for file shares created under Files Provisioned v1 SSD account type.
   /// [paidBurstingMaxBandwidthMibps] The maximum paid bursting bandwidth for the share, in mebibytes per second. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 10340 which is the maximum allowed bandwidth for a share.
   /// [paidBurstingMaxIops] The maximum paid bursting IOPS for the share. This property is only for file shares created under Files Provisioned v1 SSD account type. The maximum allowed value is 102400 which is the maximum allowed IOPS for a share.
-  FileSharePropertiesFileSharePaidBursting({
+  const FileSharePropertiesFileSharePaidBursting({
     this.paidBurstingEnabled,
     this.paidBurstingMaxBandwidthMibps,
     this.paidBurstingMaxIops,

@@ -11,7 +11,7 @@ class CisBenchmark {
   /// Creates a new [CisBenchmark].
   /// [profileLevel] Optional.
   /// [severity] Optional.
-  CisBenchmark({
+  const CisBenchmark({
     this.profileLevel,
     this.severity,
   });

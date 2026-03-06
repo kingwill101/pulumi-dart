@@ -39,7 +39,7 @@ class WatcherArgs {
   /// [scriptParameters] Specifies a list of key-vaule parameters. Changing this forces a new Automation watcher to be created.
   /// [scriptRunOn] Specify the name of the Hybrid work group the watcher will run on.
   /// [tags] A mapping of tags which should be assigned to the Automation Watcher.
-  WatcherArgs({
+  const WatcherArgs({
     required this.automationAccountId,
     this.description,
     this.etag,

@@ -27,7 +27,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1 {
   /// [name] The name of the sub public delegated prefix.
   /// [region] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
   /// [status] The status of the sub public delegated prefix.
-  PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1({
+  const PublicDelegatedPrefixPublicDelegatedSubPrefixResponseComputeV1({
     required this.delegateeProject,
     required this.description,
     required this.ipCidrRange,

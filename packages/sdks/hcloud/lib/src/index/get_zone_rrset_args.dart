@@ -24,7 +24,7 @@ class GetZoneRrsetArgs {
   /// [type] Type of the Zone RRSet.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [zone] ID or Name of the parent Zone.
-  GetZoneRrsetArgs({
+  const GetZoneRrsetArgs({
     this.id,
     this.name,
     this.type,

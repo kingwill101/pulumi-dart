@@ -11,7 +11,7 @@ class GetGradientaiIndexingJobArgs {
 
   /// Creates a new [GetGradientaiIndexingJobArgs].
   /// [uuid] Required.
-  GetGradientaiIndexingJobArgs({
+  const GetGradientaiIndexingJobArgs({
     required this.uuid,
   });
 

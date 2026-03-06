@@ -16,7 +16,7 @@ class LabelDescriptor {
   /// [description] A human-readable description for the label.
   /// [key] The label key.
   /// [valueType] The type of data that can be assigned to the label.
-  LabelDescriptor({
+  const LabelDescriptor({
     this.description,
     this.key,
     this.valueType,

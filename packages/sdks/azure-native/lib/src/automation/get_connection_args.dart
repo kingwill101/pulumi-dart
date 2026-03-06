@@ -18,7 +18,7 @@ class GetConnectionArgs {
   /// [automationAccountName] The name of the automation account.
   /// [connectionName] The name of connection.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetConnectionArgs({
+  const GetConnectionArgs({
     required this.automationAccountName,
     required this.connectionName,
     required this.resourceGroupName,

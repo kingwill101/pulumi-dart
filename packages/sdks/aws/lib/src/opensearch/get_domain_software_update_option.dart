@@ -8,7 +8,7 @@ class GetDomainSoftwareUpdateOption {
 
   /// Creates a new [GetDomainSoftwareUpdateOption].
   /// [autoSoftwareUpdateEnabled] Enabled or disabled.
-  GetDomainSoftwareUpdateOption({
+  const GetDomainSoftwareUpdateOption({
     required this.autoSoftwareUpdateEnabled,
   });
 

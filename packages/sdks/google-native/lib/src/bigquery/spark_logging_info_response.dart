@@ -11,7 +11,7 @@ class SparkLoggingInfoResponse {
   /// Creates a new [SparkLoggingInfoResponse].
   /// [project] Project ID used for logging
   /// [resourceType] Resource type used for logging
-  SparkLoggingInfoResponse({
+  const SparkLoggingInfoResponse({
     required this.project,
     required this.resourceType,
   });

@@ -17,7 +17,7 @@ class OptionalLogGroup {
   /// [args] Arguments to use instead of the default values during creation.
   /// [enable] Enable creation of the log group.
   /// [existing] Identity of an existing log group to use. Cannot be used in combination with `args` or `opts`.
-  OptionalLogGroup({
+  const OptionalLogGroup({
     this.args,
     this.enable,
     this.existing,

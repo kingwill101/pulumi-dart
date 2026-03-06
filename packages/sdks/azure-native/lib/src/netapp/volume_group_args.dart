@@ -29,7 +29,7 @@ class VolumeGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeGroupName] The name of the volumeGroup
   /// [volumes] List of volumes from group
-  VolumeGroupArgs({
+  const VolumeGroupArgs({
     required this.accountName,
     this.groupMetaData,
     this.location,

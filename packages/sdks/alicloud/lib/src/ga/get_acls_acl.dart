@@ -24,7 +24,7 @@ class GetAclsAcl {
   /// [addressIpVersion] The address ip version.
   /// [id] The ID of the Acl. Its value is same as `acl_id`.
   /// [status] The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
-  GetAclsAcl({
+  const GetAclsAcl({
     required this.aclEntries,
     required this.aclId,
     required this.aclName,

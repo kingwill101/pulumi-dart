@@ -15,7 +15,7 @@ class DropletSnapshotArgs {
   /// Creates a new [DropletSnapshotArgs].
   /// [dropletId] The ID of the Droplet from which the snapshot will be taken.
   /// [name] A name for the Droplet snapshot.
-  DropletSnapshotArgs({
+  const DropletSnapshotArgs({
     required this.dropletId,
     this.name,
   });

@@ -15,7 +15,7 @@ class GetBatchPredictionJobArgs {
   /// [batchPredictionJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBatchPredictionJobArgs({
+  const GetBatchPredictionJobArgs({
     required this.batchPredictionJobId,
     required this.location,
     this.project,

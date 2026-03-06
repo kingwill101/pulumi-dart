@@ -18,7 +18,7 @@ class GoogleCloudContactcenterinsightsV1SmartReplyDataResponse {
   /// [metadata] Map that contains metadata about the Smart Reply and the document from which it originates.
   /// [queryRecord] The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
   /// [reply] The content of the reply.
-  GoogleCloudContactcenterinsightsV1SmartReplyDataResponse({
+  const GoogleCloudContactcenterinsightsV1SmartReplyDataResponse({
     required this.confidenceScore,
     required this.metadata,
     required this.queryRecord,

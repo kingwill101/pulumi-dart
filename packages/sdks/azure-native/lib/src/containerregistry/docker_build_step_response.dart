@@ -39,7 +39,7 @@ class DockerBuildStepResponse {
   /// [noCache] The value of this property indicates whether the image cache is enabled or not.
   /// [target] The name of the target build stage for the docker build.
   /// [type] The type of the step.
-  DockerBuildStepResponse({
+  const DockerBuildStepResponse({
     this.arguments,
     required this.baseImageDependencies,
     this.contextAccessToken,

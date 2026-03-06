@@ -27,7 +27,7 @@ class EnterpriseCrmEventbusStatsDimensionsResponse {
   /// [warningEnumString] Required.
   /// [workflowId] Required.
   /// [workflowName] Required.
-  EnterpriseCrmEventbusStatsDimensionsResponse({
+  const EnterpriseCrmEventbusStatsDimensionsResponse({
     required this.clientId,
     required this.enumFilterType,
     required this.errorEnumString,

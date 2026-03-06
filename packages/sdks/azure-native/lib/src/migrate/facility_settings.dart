@@ -9,7 +9,7 @@ class FacilitySettings {
 
   /// Creates a new [FacilitySettings].
   /// [facilitiesCostPerKwh] The facilities cost.
-  FacilitySettings({
+  const FacilitySettings({
     this.facilitiesCostPerKwh,
   });
 

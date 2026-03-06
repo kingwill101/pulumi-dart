@@ -15,7 +15,7 @@ class V2FunctionCustomDns {
   /// [dnsOptions] DNS resolver configuration parameter list. See `dns_options` below.
   /// [nameServers] List of IP addresses of DNS servers.
   /// [searches] List of DNS search domains.
-  V2FunctionCustomDns({
+  const V2FunctionCustomDns({
     this.dnsOptions,
     this.nameServers,
     this.searches,

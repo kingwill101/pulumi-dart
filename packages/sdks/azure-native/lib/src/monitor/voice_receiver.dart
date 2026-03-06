@@ -15,7 +15,7 @@ class VoiceReceiver {
   /// [countryCode] The country code of the voice receiver.
   /// [name] The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
   /// [phoneNumber] The phone number of the voice receiver.
-  VoiceReceiver({
+  const VoiceReceiver({
     required this.countryCode,
     required this.name,
     required this.phoneNumber,

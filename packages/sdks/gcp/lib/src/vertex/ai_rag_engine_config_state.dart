@@ -21,7 +21,7 @@ class AiRagEngineConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [ragManagedDbConfig] Required. The config of the RagManagedDb used by RagEngine.
   /// [region] The region of the RagEngineConfig. eg us-central1
-  AiRagEngineConfigState({
+  const AiRagEngineConfigState({
     this.name,
     this.project,
     this.ragManagedDbConfig,

@@ -14,7 +14,7 @@ class UserProfileUserSettingsCodeEditorAppSettingsCustomImage {
   /// [appImageConfigName] The name of the App Image Config.
   /// [imageName] The name of the Custom Image.
   /// [imageVersionNumber] The version number of the Custom Image.
-  UserProfileUserSettingsCodeEditorAppSettingsCustomImage({
+  const UserProfileUserSettingsCodeEditorAppSettingsCustomImage({
     required this.appImageConfigName,
     required this.imageName,
     this.imageVersionNumber,

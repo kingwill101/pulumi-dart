@@ -140,7 +140,7 @@ class LinuxWebAppSlotState {
   /// [vnetImagePullEnabled] Should the traffic for the image pull be routed over virtual network enabled. Defaults to `false`.
   /// [webdeployPublishBasicAuthenticationEnabled] Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   /// [zipDeployFile] The local path and filename of the Zip packaged application to deploy to this Linux Web App.
-  LinuxWebAppSlotState({
+  const LinuxWebAppSlotState({
     this.appMetadata,
     this.appServiceId,
     this.appSettings,

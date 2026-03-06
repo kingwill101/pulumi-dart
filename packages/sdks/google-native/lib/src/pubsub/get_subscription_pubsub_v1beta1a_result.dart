@@ -18,7 +18,7 @@ class GetSubscriptionPubsubV1beta1aResult {
   /// [name] Name of the subscription.
   /// [pushConfig] If push delivery is used with this subscription, this field is used to configure it.
   /// [topic] The name of the topic from which this subscription is receiving messages.
-  GetSubscriptionPubsubV1beta1aResult({
+  const GetSubscriptionPubsubV1beta1aResult({
     required this.ackDeadlineSeconds,
     required this.name,
     required this.pushConfig,

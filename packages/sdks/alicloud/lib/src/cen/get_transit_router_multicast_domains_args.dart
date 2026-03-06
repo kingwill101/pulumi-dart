@@ -27,7 +27,7 @@ class GetTransitRouterMulticastDomainsArgs {
   /// [status] The status of the multicast domain. Valid Value: `Active`.
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain.
-  GetTransitRouterMulticastDomainsArgs({
+  const GetTransitRouterMulticastDomainsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -40,7 +40,7 @@ class NetezzaTableDatasetResponse {
   /// [table] The table name of the Netezza. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  NetezzaTableDatasetResponse({
+  const NetezzaTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

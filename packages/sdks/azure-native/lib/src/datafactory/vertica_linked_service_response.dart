@@ -49,7 +49,7 @@ class VerticaLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [uid] Username for authentication. Type: string.
   /// [version] Version of the linked service.
-  VerticaLinkedServiceResponse({
+  const VerticaLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.connectionString,

@@ -27,7 +27,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
   /// [nodeConfigs] Structure is documented below.
   /// [operatingSystem] The available Operating Systems to be run in a Node.
   /// [taints] Structure is documented below.
-  BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig({
     this.kubeletConfig,
     this.labels,
     this.nodeConfigs,

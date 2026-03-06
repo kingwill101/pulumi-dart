@@ -11,7 +11,7 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingContr
   /// Creates a new [PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl].
   /// [routingControlArn] ARN of the routing control.
   /// [state] State of the routing control. Valid values: `On`, `Off`.
-  PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl({
+  const PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControlRoutingControl({
     required this.routingControlArn,
     required this.state,
   });

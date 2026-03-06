@@ -69,7 +69,7 @@ class InstanceState {
   /// [status] The status of the resource.
   /// [udCbool] Whether to use OSS. Valid values: `yes`,`no`.
   /// [udc] OSS Size.
-  InstanceState({
+  const InstanceState({
     this.authed,
     this.dataphin,
     this.dataphinCount,

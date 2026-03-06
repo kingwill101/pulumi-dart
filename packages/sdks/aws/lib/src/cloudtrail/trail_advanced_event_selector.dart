@@ -12,7 +12,7 @@ class TrailAdvancedEventSelector {
   /// Creates a new [TrailAdvancedEventSelector].
   /// [fieldSelectors] Specifies the selector statements in an advanced event selector. Fields documented below.
   /// [name] Name of the trail.
-  TrailAdvancedEventSelector({
+  const TrailAdvancedEventSelector({
     required this.fieldSelectors,
     this.name,
   });

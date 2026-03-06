@@ -30,7 +30,7 @@ class DedicatedHostGroupArgs {
   /// [resourceGroupName] Specifies the name of the resource group the Dedicated Host Group is located in. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zone] Specifies the Availability Zone in which this Dedicated Host Group should be located. Changing this forces a new Dedicated Host Group to be created.
-  DedicatedHostGroupArgs({
+  const DedicatedHostGroupArgs({
     this.automaticPlacementEnabled,
     this.location,
     this.name,

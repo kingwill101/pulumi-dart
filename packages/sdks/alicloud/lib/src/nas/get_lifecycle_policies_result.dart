@@ -22,7 +22,7 @@ class GetLifecyclePoliciesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [policies] Required.
-  GetLifecyclePoliciesResult({
+  const GetLifecyclePoliciesResult({
     required this.fileSystemId,
     required this.id,
     required this.ids,

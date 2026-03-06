@@ -51,7 +51,7 @@ class V3CustomDomainState {
   /// [subdomainCount] Number of subdomains.
   /// [tlsConfig] TLS configuration information See `tls_config` below.
   /// [wafConfig] Web application firewall configuration information See `waf_config` below.
-  V3CustomDomainState({
+  const V3CustomDomainState({
     this.accountId,
     this.apiVersion,
     this.authConfig,

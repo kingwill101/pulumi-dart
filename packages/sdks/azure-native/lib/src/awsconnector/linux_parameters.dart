@@ -30,7 +30,7 @@ class LinuxParameters {
   /// [sharedMemorySize] The value for the size (in MiB) of the ``/dev/shm`` volume. This parameter maps to the ``--shm-size`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  If you are using tasks that use the Fargate launch type, the ``sharedMemorySize`` parameter is not supported.
   /// [swappiness] This allows you to tune a container's memory swappiness behavior. A ``swappiness`` value of ``0`` will cause swapping to not happen unless absolutely necessary. A ``swappiness`` value of ``100`` will cause pages to be swapped very aggressively. Accepted values are whole numbers between ``0`` and ``100``. If the ``swappiness`` parameter is not specified, a default value of ``60`` is used. If a value is not specified for ``maxSwap`` then this parameter is ignored. This parameter maps to the ``--memory-swappiness`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  If you're using tasks that use the Fargate launch type, the ``swappiness`` parameter isn't supported. If you're using tasks on Amazon Linux 2023 the ``swappiness`` parameter isn't supported.
   /// [tmpfs] The container path, mount options, and size (in MiB) of the tmpfs mount. This parameter maps to the ``--tmpfs`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  If you're using tasks that use the Fargate launch type, the ``tmpfs`` parameter isn't supported.
-  LinuxParameters({
+  const LinuxParameters({
     this.capabilities,
     this.devices,
     this.initProcessEnabled,

@@ -18,7 +18,7 @@ class ServiceLevelObjective {
   /// [name] A short name for the SLI that will help anyone understand what it is about.
   /// [target] The target of the objective, valid values between `0` and `100`. Up to 5 decimals accepted.
   /// [timeWindow] Time window is the period of the objective.
-  ServiceLevelObjective({
+  const ServiceLevelObjective({
     this.description,
     this.name,
     required this.target,

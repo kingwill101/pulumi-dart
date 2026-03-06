@@ -56,7 +56,7 @@ class ScheduledQueryArgs {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetConfiguration] Configuration block for writing the result of a query. See below.
   /// [timeouts] Optional.
-  ScheduledQueryArgs({
+  const ScheduledQueryArgs({
     required this.errorReportConfiguration,
     required this.executionRoleArn,
     this.kmsKeyId,

@@ -12,7 +12,7 @@ class GetConsoleArgs {
 
   /// Creates a new [GetConsoleArgs].
   /// [consoleName] The name of the console
-  GetConsoleArgs({
+  const GetConsoleArgs({
     required this.consoleName,
   });
 

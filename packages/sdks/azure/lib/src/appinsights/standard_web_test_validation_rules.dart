@@ -18,7 +18,7 @@ class StandardWebTestValidationRules {
   /// [expectedStatusCode] The expected status code of the response. Default is '200', '0' means 'response code &lt; 400'
   /// [sslCertRemainingLifetime] The number of days of SSL certificate validity remaining for the checked endpoint. If the certificate has a shorter remaining lifetime left, the test will fail. This number should be between 1 and 365.
   /// [sslCheckEnabled] Should the SSL check be enabled?
-  StandardWebTestValidationRules({
+  const StandardWebTestValidationRules({
     this.content,
     this.expectedStatusCode,
     this.sslCertRemainingLifetime,

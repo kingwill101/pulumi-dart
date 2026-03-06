@@ -39,7 +39,7 @@ class GetGrafanaResult {
   /// [systemData] The system meta data relating to this grafana resource.
   /// [tags] The tags for grafana resource.
   /// [type] The type of the grafana resource.
-  GetGrafanaResult({
+  const GetGrafanaResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

@@ -11,7 +11,7 @@ class InstanceGroupNamedPort {
   /// Creates a new [InstanceGroupNamedPort].
   /// [name] The name which the port will be mapped to.
   /// [port] The port number to map the name to.
-  InstanceGroupNamedPort({
+  const InstanceGroupNamedPort({
     required this.name,
     required this.port,
   });

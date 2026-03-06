@@ -10,7 +10,7 @@ class UploadLimitScheduleResponse {
 
   /// Creates a new [UploadLimitScheduleResponse].
   /// [weeklyRecurrences] The set of weekly repeating recurrences of the WAN-link upload limit schedule.
-  UploadLimitScheduleResponse({
+  const UploadLimitScheduleResponse({
     this.weeklyRecurrences,
   });
 

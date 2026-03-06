@@ -18,7 +18,7 @@ class ListManagedClusterAdminCredentialsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   /// [serverFqdn] server fqdn type for credentials to be returned
-  ListManagedClusterAdminCredentialsArgs({
+  const ListManagedClusterAdminCredentialsArgs({
     required this.resourceGroupName,
     required this.resourceName,
     this.serverFqdn,

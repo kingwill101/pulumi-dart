@@ -15,7 +15,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
   /// [enable] If set to true, enables CAAP for L7 DDoS detection.
   /// [ruleVisibility] Rule visibility. Supported values include: "STANDARD", "PREMIUM".
   /// [thresholdConfigs] Configuration options for layer7 adaptive protection for various customizable thresholds.
-  GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig({
+  const GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig({
     required this.enable,
     required this.ruleVisibility,
     required this.thresholdConfigs,

@@ -11,7 +11,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig].
   /// [baselineModelVersion] Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
   /// [model] Conversation model resource name. Format: projects/&lt;Project ID&gt;/conversationModels/&lt;Model ID&gt;.
-  ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig({
+  const ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationModelConfig({
     this.baselineModelVersion,
     this.model,
   });

@@ -12,7 +12,7 @@ class BasicScalingResponse {
   /// Creates a new [BasicScalingResponse].
   /// [idleTimeout] Duration of time after the last request that an instance must wait before the instance is shut down.
   /// [maxInstances] Maximum number of instances to create for this version.
-  BasicScalingResponse({
+  const BasicScalingResponse({
     required this.idleTimeout,
     required this.maxInstances,
   });

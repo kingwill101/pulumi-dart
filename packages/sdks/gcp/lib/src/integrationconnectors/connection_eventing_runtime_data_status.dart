@@ -12,7 +12,7 @@ class ConnectionEventingRuntimeDataStatus {
   /// Creates a new [ConnectionEventingRuntimeDataStatus].
   /// [description] An arbitrary description for the Connection.
   /// [state] (Output)
-  ConnectionEventingRuntimeDataStatus({
+  const ConnectionEventingRuntimeDataStatus({
     this.description,
     this.state,
   });

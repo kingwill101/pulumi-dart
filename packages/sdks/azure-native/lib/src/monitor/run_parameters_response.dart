@@ -16,7 +16,7 @@ class RunParametersResponse {
   /// [alerts] The alerts used to run the investigation
   /// [impactTime] The impact time to investigate (in UTC)
   /// [resources] The resources used to run the investigation
-  RunParametersResponse({
+  const RunParametersResponse({
     required this.alerts,
     required this.impactTime,
     required this.resources,

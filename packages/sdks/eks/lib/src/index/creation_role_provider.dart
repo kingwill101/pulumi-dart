@@ -14,7 +14,7 @@ class CreationRoleProvider {
   /// Creates a new [CreationRoleProvider].
   /// [provider] Required.
   /// [role] Required.
-  CreationRoleProvider({
+  const CreationRoleProvider({
     required this.provider,
     required this.role,
   });

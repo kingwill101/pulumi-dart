@@ -52,7 +52,7 @@ class GetCaseResult {
   /// [testCase] Whether this case was created for internal API testing and should not be acted on by the support team.
   /// [timeZone] The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
   /// [updateTime] The time this case was last updated.
-  GetCaseResult({
+  const GetCaseResult({
     required this.classification,
     required this.contactEmail,
     required this.createTime,

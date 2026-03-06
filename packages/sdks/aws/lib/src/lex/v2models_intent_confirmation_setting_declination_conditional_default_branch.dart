@@ -13,7 +13,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranch {
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
   /// [response] Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranch({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranch({
     this.nextStep,
     this.response,
   });

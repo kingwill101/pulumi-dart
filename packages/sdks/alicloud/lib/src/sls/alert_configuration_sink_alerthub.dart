@@ -8,7 +8,7 @@ class AlertConfigurationSinkAlerthub {
 
   /// Creates a new [AlertConfigurationSinkAlerthub].
   /// [enabled] Open.
-  AlertConfigurationSinkAlerthub({
+  const AlertConfigurationSinkAlerthub({
     this.enabled,
   });
 

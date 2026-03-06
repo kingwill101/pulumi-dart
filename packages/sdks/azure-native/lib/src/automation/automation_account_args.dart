@@ -42,7 +42,7 @@ class AutomationAccountArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [sku] Gets or sets account SKU.
   /// [tags] Gets or sets the tags attached to the resource.
-  AutomationAccountArgs({
+  const AutomationAccountArgs({
     this.automationAccountName,
     this.disableLocalAuth,
     this.encryption,

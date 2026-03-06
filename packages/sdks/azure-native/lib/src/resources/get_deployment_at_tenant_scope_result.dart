@@ -27,7 +27,7 @@ class GetDeploymentAtTenantScopeResult {
   /// [properties] Deployment properties.
   /// [tags] Deployment tags
   /// [type] The type of the deployment.
-  GetDeploymentAtTenantScopeResult({
+  const GetDeploymentAtTenantScopeResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

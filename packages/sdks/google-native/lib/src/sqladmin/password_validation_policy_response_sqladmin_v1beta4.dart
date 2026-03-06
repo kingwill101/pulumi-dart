@@ -27,7 +27,7 @@ class PasswordValidationPolicyResponseSqladminV1beta4 {
   /// [minLength] Minimum number of characters allowed.
   /// [passwordChangeInterval] Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
   /// [reuseInterval] Number of previous passwords that cannot be reused.
-  PasswordValidationPolicyResponseSqladminV1beta4({
+  const PasswordValidationPolicyResponseSqladminV1beta4({
     required this.complexity,
     required this.disallowCompromisedCredentials,
     required this.disallowUsernameSubstring,

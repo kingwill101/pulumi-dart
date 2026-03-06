@@ -23,7 +23,7 @@ class GetBundlesArgs {
   /// [ids] A list of Bundle IDs.
   /// [nameRegex] A regex string to filter results by Bundle name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBundlesArgs({
+  const GetBundlesArgs({
     this.bundleIds,
     this.bundleType,
     this.ids,

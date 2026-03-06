@@ -15,7 +15,7 @@ class MsixPackageDependencies {
   /// [dependencyName] Name of package dependency.
   /// [minVersion] Dependency version required.
   /// [publisher] Name of dependency publisher.
-  MsixPackageDependencies({
+  const MsixPackageDependencies({
     this.dependencyName,
     this.minVersion,
     this.publisher,

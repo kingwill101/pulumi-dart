@@ -29,7 +29,7 @@ class ApplicationState {
   /// [services] Optional.
   /// [template] Optional.
   /// [version] Optional.
-  ApplicationState({
+  const ApplicationState({
     this.blueGreen,
     this.blueGreenConfirm,
     this.clusterName,

@@ -17,7 +17,7 @@ class GetManagedInstanceIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this SQL Managed Instance.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this SQL Managed Instance.
   /// [type] The identity type of the SQL Managed Instance.
-  GetManagedInstanceIdentity({
+  const GetManagedInstanceIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

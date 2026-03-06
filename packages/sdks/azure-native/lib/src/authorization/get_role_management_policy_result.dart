@@ -48,7 +48,7 @@ class GetRoleManagementPolicyResult {
   /// [rules] The rule applied to the policy.
   /// [scope] The role management policy scope.
   /// [type] The role management policy type.
-  GetRoleManagementPolicyResult({
+  const GetRoleManagementPolicyResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

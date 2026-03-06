@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1CertificateResponse {
 
   /// Creates a new [GoogleCloudApigeeV1CertificateResponse].
   /// [certInfo] Chain of certificates under this name.
-  GoogleCloudApigeeV1CertificateResponse({
+  const GoogleCloudApigeeV1CertificateResponse({
     required this.certInfo,
   });
 

@@ -18,7 +18,7 @@ class RunbookParameterResponse {
   /// [isMandatory] Gets or sets a Boolean value to indicate whether the parameter is mandatory or not.
   /// [position] Get or sets the position of the parameter.
   /// [type] Gets or sets the type of the parameter.
-  RunbookParameterResponse({
+  const RunbookParameterResponse({
     this.defaultValue,
     this.isMandatory,
     this.position,

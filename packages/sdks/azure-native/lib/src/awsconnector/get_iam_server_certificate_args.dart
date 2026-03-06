@@ -15,7 +15,7 @@ class GetIamServerCertificateArgs {
   /// Creates a new [GetIamServerCertificateArgs].
   /// [name] Name of IamServerCertificate
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamServerCertificateArgs({
+  const GetIamServerCertificateArgs({
     required this.name,
     required this.resourceGroupName,
   });

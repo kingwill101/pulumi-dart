@@ -8,7 +8,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute {
 
   /// Creates a new [DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute].
   /// [listenerArns] List of Amazon Resource Names (ARNs) of the load balancer listeners.
-  DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute({
+  const DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute({
     required this.listenerArns,
   });
 

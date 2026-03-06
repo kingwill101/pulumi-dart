@@ -22,7 +22,7 @@ class RepositoryIamBindingArgs {
   /// [region] Optional.
   /// [repository] Required.
   /// [role] Required.
-  RepositoryIamBindingArgs({
+  const RepositoryIamBindingArgs({
     this.condition,
     required this.members,
     this.project,

@@ -24,7 +24,7 @@ class InMageRcmLastAgentUpgradeErrorDetailsResponse {
   /// [errorTags] The error tags.
   /// [possibleCauses] The possible causes.
   /// [recommendedAction] The recommended action.
-  InMageRcmLastAgentUpgradeErrorDetailsResponse({
+  const InMageRcmLastAgentUpgradeErrorDetailsResponse({
     required this.errorCode,
     required this.errorMessage,
     required this.errorMessageParameters,

@@ -10,7 +10,7 @@ class GetDiskParam {
 
   /// Creates a new [GetDiskParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the disk. Tag keys and values have the
-  GetDiskParam({
+  const GetDiskParam({
     required this.resourceManagerTags,
   });
 

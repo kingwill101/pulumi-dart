@@ -21,7 +21,7 @@ class BrokerAuthenticatorMethods {
   /// [method] Custom authentication configuration.
   /// [serviceAccountTokenSettings] ServiceAccountToken authentication configuration.
   /// [x509Settings] X.509 authentication configuration.
-  BrokerAuthenticatorMethods({
+  const BrokerAuthenticatorMethods({
     this.customSettings,
     required this.method,
     this.serviceAccountTokenSettings,

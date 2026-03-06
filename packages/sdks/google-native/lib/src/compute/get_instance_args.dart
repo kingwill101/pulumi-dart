@@ -17,7 +17,7 @@ class GetInstanceArgs {
   /// [project] Optional.
   /// [view] Optional.
   /// [zone] Required.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.instance,
     this.project,
     this.view,

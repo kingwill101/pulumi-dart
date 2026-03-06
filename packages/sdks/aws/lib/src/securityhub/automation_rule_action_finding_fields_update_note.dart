@@ -11,7 +11,7 @@ class AutomationRuleActionFindingFieldsUpdateNote {
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateNote].
   /// [text] The updated note text.
   /// [updatedBy] The principal that updated the note.
-  AutomationRuleActionFindingFieldsUpdateNote({
+  const AutomationRuleActionFindingFieldsUpdateNote({
     required this.text,
     required this.updatedBy,
   });

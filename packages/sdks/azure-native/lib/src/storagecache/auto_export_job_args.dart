@@ -33,7 +33,7 @@ class AutoExportJobArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [state] The operational state of auto export. InProgress indicates the export is running.  Disabling indicates the user has requested to disable the export but the disabling is still in progress. Disabled indicates auto export has been disabled.  DisableFailed indicates the disabling has failed.  Failed means the export was unable to continue, due to a fatal error.
   /// [tags] Resource tags.
-  AutoExportJobArgs({
+  const AutoExportJobArgs({
     this.adminStatus,
     required this.amlFilesystemName,
     this.autoExportJobName,

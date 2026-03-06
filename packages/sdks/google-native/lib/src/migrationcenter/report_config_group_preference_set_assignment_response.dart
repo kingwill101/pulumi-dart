@@ -12,7 +12,7 @@ class ReportConfigGroupPreferenceSetAssignmentResponse {
   /// Creates a new [ReportConfigGroupPreferenceSetAssignmentResponse].
   /// [group] Name of the group.
   /// [preferenceSet] Name of the Preference Set.
-  ReportConfigGroupPreferenceSetAssignmentResponse({
+  const ReportConfigGroupPreferenceSetAssignmentResponse({
     required this.group,
     required this.preferenceSet,
   });

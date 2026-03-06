@@ -48,7 +48,7 @@ class InferenceProfileState {
   /// [timeouts] Optional.
   /// [type] The type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
   /// [updatedAt] The time at which the inference profile was last updated.
-  InferenceProfileState({
+  const InferenceProfileState({
     this.arn,
     this.createdAt,
     this.description,

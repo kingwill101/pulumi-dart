@@ -24,7 +24,7 @@ class EnrichmentArgs {
   /// [key] The key of the enrichment. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the IoTHub resource is created. Changing this forces a new resource to be created.
   /// [value] The value of the enrichment. Value can be any static string, the name of the IoT hub sending the message (use `$iothubname`) or information from the device twin (ex: `$twin.tags.latitude`)
-  EnrichmentArgs({
+  const EnrichmentArgs({
     required this.endpointNames,
     required this.iothubName,
     required this.key,

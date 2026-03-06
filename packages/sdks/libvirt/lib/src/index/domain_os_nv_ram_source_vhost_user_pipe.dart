@@ -12,7 +12,7 @@ class DomainOsNvRamSourceVhostUserPipe {
   /// Creates a new [DomainOsNvRamSourceVhostUserPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainOsNvRamSourceVhostUserPipe({
+  const DomainOsNvRamSourceVhostUserPipe({
     required this.path,
     this.secLabels,
   });

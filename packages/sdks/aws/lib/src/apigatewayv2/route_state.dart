@@ -49,7 +49,7 @@ class RouteState {
   /// [routeKey] Route key for the route. For HTTP APIs, the route key can be either `$default`, or a combination of an HTTP method and resource path, for example, `GET /pets`.
   /// [routeResponseSelectionExpression] The [route response selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-response-selection-expressions) for the route. Supported only for WebSocket APIs.
   /// [target] Target for the route, of the form `integrations/`*`IntegrationID`*, where *`IntegrationID`* is the identifier of an `aws.apigatewayv2.Integration` resource.
-  RouteState({
+  const RouteState({
     this.apiId,
     this.apiKeyRequired,
     this.authorizationScopes,

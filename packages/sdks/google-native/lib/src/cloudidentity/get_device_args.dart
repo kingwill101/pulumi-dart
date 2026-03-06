@@ -13,7 +13,7 @@ class GetDeviceArgs {
   /// Creates a new [GetDeviceArgs].
   /// [customer] Optional.
   /// [deviceId] Required.
-  GetDeviceArgs({
+  const GetDeviceArgs({
     this.customer,
     required this.deviceId,
   });

@@ -21,7 +21,7 @@ class GetGroupMembershipsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identityStoreId] Identity store identifier.
   /// [region] Required.
-  GetGroupMembershipsResult({
+  const GetGroupMembershipsResult({
     required this.groupId,
     required this.groupMemberships,
     required this.id,

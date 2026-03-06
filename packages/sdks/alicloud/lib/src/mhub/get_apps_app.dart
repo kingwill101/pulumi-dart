@@ -35,7 +35,7 @@ class GetAppsApp {
   /// [packageName] Android App package name.  **NOTE:** Either `bundle_id` or `package_name` must be set.
   /// [productId] The ID of the Product.
   /// [type] The type of the App. Valid values: `Android` and `iOS`.
-  GetAppsApp({
+  const GetAppsApp({
     required this.appKey,
     required this.appName,
     required this.bundleId,

@@ -9,7 +9,7 @@ class LogAnalyticsOutputResponse {
 
   /// Creates a new [LogAnalyticsOutputResponse].
   /// [output] Output file Uri path to blob container.
-  LogAnalyticsOutputResponse({
+  const LogAnalyticsOutputResponse({
     required this.output,
   });
 

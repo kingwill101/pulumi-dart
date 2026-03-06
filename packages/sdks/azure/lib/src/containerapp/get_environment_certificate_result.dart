@@ -30,7 +30,7 @@ class GetEnvironmentCertificateResult {
   /// [subjectName] The Subject Name for the Certificate.
   /// [tags] A mapping of tags assigned to the resource.
   /// [thumbprint] The Thumbprint of the Certificate.
-  GetEnvironmentCertificateResult({
+  const GetEnvironmentCertificateResult({
     required this.containerAppEnvironmentId,
     required this.expirationDate,
     required this.id,

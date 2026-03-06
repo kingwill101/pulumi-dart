@@ -16,7 +16,7 @@ class RegexMatchSetState {
   /// [name] The name or description of the Regex Match Set.
   /// [regexMatchTuples] The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  RegexMatchSetState({
+  const RegexMatchSetState({
     this.name,
     this.regexMatchTuples,
     this.region,

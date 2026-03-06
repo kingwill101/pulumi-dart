@@ -8,7 +8,7 @@ class UptimeCheckConfigTcpCheckPingConfig {
 
   /// Creates a new [UptimeCheckConfigTcpCheckPingConfig].
   /// [pingsCount] Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-  UptimeCheckConfigTcpCheckPingConfig({
+  const UptimeCheckConfigTcpCheckPingConfig({
     required this.pingsCount,
   });
 

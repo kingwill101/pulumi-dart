@@ -42,7 +42,7 @@ class IndexEndpointAiplatformV1beta1Args {
   /// [privateServiceConnectConfig] Optional. Configuration for private service connect. network and private_service_connect_config are mutually exclusive.
   /// [project] Optional.
   /// [publicEndpointEnabled] Optional. If true, the deployed index will be accessible through public endpoint.
-  IndexEndpointAiplatformV1beta1Args({
+  const IndexEndpointAiplatformV1beta1Args({
     this.description,
     required this.displayName,
     this.enablePrivateServiceConnect,

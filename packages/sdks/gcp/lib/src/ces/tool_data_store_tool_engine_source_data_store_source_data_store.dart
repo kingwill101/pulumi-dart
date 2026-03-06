@@ -45,7 +45,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStore {
   /// [documentProcessingMode] (Output)
   /// [name] Full resource name of the DataStore.
   /// [type] (Output)
-  ToolDataStoreToolEngineSourceDataStoreSourceDataStore({
+  const ToolDataStoreToolEngineSourceDataStoreSourceDataStore({
     this.connectorConfigs,
     this.createTime,
     this.displayName,

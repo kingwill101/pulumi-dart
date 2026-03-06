@@ -9,7 +9,7 @@ class AiMetadataStoreState {
 
   /// Creates a new [AiMetadataStoreState].
   /// [diskUtilizationBytes] (Output)
-  AiMetadataStoreState({
+  const AiMetadataStoreState({
     this.diskUtilizationBytes,
   });
 

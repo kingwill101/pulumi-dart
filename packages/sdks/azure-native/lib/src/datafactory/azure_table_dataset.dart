@@ -37,7 +37,7 @@ class AzureTableDataset {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableName] The table name of the Azure Table storage. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  AzureTableDataset({
+  const AzureTableDataset({
     this.annotations,
     this.description,
     this.folder,

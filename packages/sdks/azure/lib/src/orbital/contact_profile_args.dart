@@ -40,7 +40,7 @@ class ContactProfileArgs {
   /// [networkConfigurationSubnetId] ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the contact profile exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  ContactProfileArgs({
+  const ContactProfileArgs({
     required this.autoTracking,
     this.eventHubUri,
     required this.links,

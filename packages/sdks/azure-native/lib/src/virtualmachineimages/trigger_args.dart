@@ -21,7 +21,7 @@ class TriggerArgs {
   /// [kind] The kind of trigger.
   /// [resourceGroupName] The name of the resource group.
   /// [triggerName] The name of the trigger
-  TriggerArgs({
+  const TriggerArgs({
     required this.imageTemplateName,
     required this.kind,
     required this.resourceGroupName,

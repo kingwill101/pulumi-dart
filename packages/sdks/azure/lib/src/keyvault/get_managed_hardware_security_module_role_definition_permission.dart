@@ -17,7 +17,7 @@ class GetManagedHardwareSecurityModuleRoleDefinitionPermission {
   /// [dataActions] A list of data action permission granted.
   /// [notActions] A list of action permission excluded (but not denied).
   /// [notDataActions] A list of data action permission granted.
-  GetManagedHardwareSecurityModuleRoleDefinitionPermission({
+  const GetManagedHardwareSecurityModuleRoleDefinitionPermission({
     required this.actions,
     required this.dataActions,
     required this.notActions,

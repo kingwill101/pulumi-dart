@@ -24,7 +24,7 @@ class CloudTieringSpaceSavingsResponse {
   /// [spaceSavingsPercent] Percentage of cached size over total size
   /// [totalSizeCloudBytes] Total size of content in the azure file share
   /// [volumeSizeBytes] Volume size
-  CloudTieringSpaceSavingsResponse({
+  const CloudTieringSpaceSavingsResponse({
     required this.cachedSizeBytes,
     required this.lastUpdatedTimestamp,
     required this.spaceSavingsBytes,

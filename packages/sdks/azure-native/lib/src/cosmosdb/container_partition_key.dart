@@ -15,7 +15,7 @@ class ContainerPartitionKey {
   /// [kind] Indicates the kind of algorithm used for partitioning. For MultiHash, multiple partition keys (upto three maximum) are supported for container create
   /// [paths] List of paths using which data within the container can be partitioned
   /// [version] Indicates the version of the partition key definition
-  ContainerPartitionKey({
+  const ContainerPartitionKey({
     this.kind,
     this.paths,
     this.version,

@@ -27,7 +27,7 @@ class ComplianceNoteResponse {
   /// [scanInstructions] Serialized scan instructions with a predefined format.
   /// [title] The title that identifies this compliance check.
   /// [version] The OS and config versions the benchmark applies to.
-  ComplianceNoteResponse({
+  const ComplianceNoteResponse({
     required this.cisBenchmark,
     required this.description,
     required this.rationale,

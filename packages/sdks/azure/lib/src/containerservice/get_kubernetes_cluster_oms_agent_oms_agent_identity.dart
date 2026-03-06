@@ -14,7 +14,7 @@ class GetKubernetesClusterOmsAgentOmsAgentIdentity {
   /// [clientId] The Client ID of the user-defined Managed Identity assigned to the Kubelets.
   /// [objectId] The Object ID of the user-defined Managed Identity assigned to the Kubelets.
   /// [userAssignedIdentityId] The ID of the User Assigned Identity assigned to the Kubelets.
-  GetKubernetesClusterOmsAgentOmsAgentIdentity({
+  const GetKubernetesClusterOmsAgentOmsAgentIdentity({
     required this.clientId,
     required this.objectId,
     required this.userAssignedIdentityId,

@@ -30,7 +30,7 @@ class GetSuppressionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [ttl] The duration for which the suppression is valid.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSuppressionResult({
+  const GetSuppressionResult({
     required this.azureApiVersion,
     required this.expirationTimeStamp,
     required this.id,

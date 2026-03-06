@@ -38,7 +38,7 @@ class TableGlobalSecondaryIndex {
   /// [readCapacity] Number of read units for this index. Must be set if billing_mode is set to PROVISIONED.
   /// [warmThroughput] Sets the number of warm read and write units for this index. See below.
   /// [writeCapacity] Number of write units for this index. Must be set if billing_mode is set to PROVISIONED.
-  TableGlobalSecondaryIndex({
+  const TableGlobalSecondaryIndex({
     this.hashKey,
     this.keySchemas,
     required this.name,

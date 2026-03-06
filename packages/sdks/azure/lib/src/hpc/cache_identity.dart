@@ -19,7 +19,7 @@ class CacheIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this HPC Cache. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both). Changing this forces a new resource to be created.
-  CacheIdentity({
+  const CacheIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

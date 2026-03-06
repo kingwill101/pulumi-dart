@@ -31,7 +31,7 @@ class GoogleCloudChannelV1CloudIdentityInfoResponse {
   /// [languageCode] Language code.
   /// [phoneNumber] Phone number associated with the Cloud Identity.
   /// [primaryDomain] The primary domain name.
-  GoogleCloudChannelV1CloudIdentityInfoResponse({
+  const GoogleCloudChannelV1CloudIdentityInfoResponse({
     required this.adminConsoleUri,
     required this.alternateEmail,
     required this.customerType,

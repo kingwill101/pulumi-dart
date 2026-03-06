@@ -142,7 +142,7 @@ class ContainerDefinition {
   /// [user] The user to use inside the container. This parameter maps to ``User`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--user`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).  When running tasks using the ``host`` network mode, don't run containers using the root user (UID 0). We recommend using a non-root user for better security.  You can specify the ``user`` using the following formats. If specifying a UID or GID, you must specify it as a positive integer.  +   ``user``   +   ``user:group``   +   ``uid``   +   ``uid:gid``   +   ``user:gid``   +   ``uid:group``     This parameter is not supported for Windows containers.
   /// [volumesFrom] Data volumes to mount from another container. This parameter maps to ``VolumesFrom`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--volumes-from`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
   /// [workingDirectory] The working directory to run commands inside the container in. This parameter maps to ``WorkingDir`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--workdir`` option to [docker run](https://docs.docker.com/engine/reference/run/#security-configuration).
-  ContainerDefinition({
+  const ContainerDefinition({
     this.command,
     this.cpu,
     this.credentialSpecs,

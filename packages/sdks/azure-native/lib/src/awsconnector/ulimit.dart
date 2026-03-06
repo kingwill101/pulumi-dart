@@ -15,7 +15,7 @@ class Ulimit {
   /// [hardLimit] The hard limit for the ``ulimit`` type.
   /// [name] The ``type`` of the ``ulimit``.
   /// [softLimit] The soft limit for the ``ulimit`` type.
-  Ulimit({
+  const Ulimit({
     this.hardLimit,
     this.name,
     this.softLimit,

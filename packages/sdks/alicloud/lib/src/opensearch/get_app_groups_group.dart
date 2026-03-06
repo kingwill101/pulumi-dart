@@ -83,7 +83,7 @@ class GetAppGroupsGroup {
   /// [status] The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
   /// [switchedTime] The Switched time.
   /// [type] Application type. Valid Values: `standard`, `enhanced`.
-  GetAppGroupsGroup({
+  const GetAppGroupsGroup({
     required this.appGroupId,
     required this.appGroupName,
     required this.chargeWay,

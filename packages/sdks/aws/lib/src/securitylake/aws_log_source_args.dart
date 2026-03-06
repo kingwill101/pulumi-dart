@@ -16,7 +16,7 @@ class AwsLogSourceArgs {
   /// Creates a new [AwsLogSourceArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [source] Specify the natively-supported AWS service to add as a source in Security Lake.
-  AwsLogSourceArgs({
+  const AwsLogSourceArgs({
     this.region,
     required this.source,
   });

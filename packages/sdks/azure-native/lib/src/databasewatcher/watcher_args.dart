@@ -32,7 +32,7 @@ class WatcherArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [watcherName] The database watcher name.
-  WatcherArgs({
+  const WatcherArgs({
     this.datastore,
     this.defaultAlertRuleIdentityResourceId,
     this.identity,

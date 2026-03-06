@@ -18,7 +18,7 @@ class RedirectResponse {
   /// [location] The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
   /// [regex] The user-supplied RE2 regular expression to match against the request URL path.
   /// [statusCode] The status HTTP code to return in the response. It must be a valid 3xx status code.
-  RedirectResponse({
+  const RedirectResponse({
     required this.glob,
     required this.location,
     required this.regex,

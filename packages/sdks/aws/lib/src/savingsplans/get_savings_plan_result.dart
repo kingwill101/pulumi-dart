@@ -65,7 +65,7 @@ class GetSavingsPlanResult {
   /// [tags] A map of tags assigned to the resource.
   /// [termDurationInSeconds] The duration of the term, in seconds.
   /// [upfrontPaymentAmount] The up-front payment amount.
-  GetSavingsPlanResult({
+  const GetSavingsPlanResult({
     required this.commitment,
     required this.currency,
     required this.description,

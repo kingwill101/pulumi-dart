@@ -12,7 +12,7 @@ class AgentProtocolVersion {
   /// Creates a new [AgentProtocolVersion].
   /// [protocol] The protocol used by the agent/exposed by a deployment.
   /// [version] The version of the protocol.
-  AgentProtocolVersion({
+  const AgentProtocolVersion({
     this.protocol,
     this.version,
   });

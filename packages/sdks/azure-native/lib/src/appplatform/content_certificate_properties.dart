@@ -13,7 +13,7 @@ class ContentCertificateProperties {
   /// Creates a new [ContentCertificateProperties].
   /// [content] The content of uploaded certificate.
   /// [type] The type of the certificate source.
-  ContentCertificateProperties({
+  const ContentCertificateProperties({
     this.content,
     required this.type,
   });

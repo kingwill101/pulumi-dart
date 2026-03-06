@@ -8,7 +8,7 @@ class DomainDevicesMemorydevTargetAddress {
 
   /// Creates a new [DomainDevicesMemorydevTargetAddress].
   /// [base] Configures the base address for the target of the memory device, specifying where it starts in memory.
-  DomainDevicesMemorydevTargetAddress({
+  const DomainDevicesMemorydevTargetAddress({
     this.base,
   });
 

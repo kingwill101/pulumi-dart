@@ -25,7 +25,7 @@ class NetworkAttachmentConnectionEndpoint {
   /// [secondaryIpCidrRanges] (Output)
   /// [status] (Output)
   /// [subnetwork] (Output)
-  NetworkAttachmentConnectionEndpoint({
+  const NetworkAttachmentConnectionEndpoint({
     this.ipAddress,
     this.projectIdOrNum,
     this.secondaryIpCidrRanges,

@@ -14,7 +14,7 @@ class ClusterNodeConfigSoleTenantConfigNodeAffinity {
   /// [key] The default or custom node affinity label key name.
   /// [operator] Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
   /// [values] List of node affinity label values as strings.
-  ClusterNodeConfigSoleTenantConfigNodeAffinity({
+  const ClusterNodeConfigSoleTenantConfigNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

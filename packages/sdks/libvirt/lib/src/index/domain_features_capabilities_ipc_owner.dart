@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesIpcOwner {
 
   /// Creates a new [DomainFeaturesCapabilitiesIpcOwner].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesIpcOwner({
+  const DomainFeaturesCapabilitiesIpcOwner({
     this.state,
   });
 

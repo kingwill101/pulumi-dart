@@ -16,7 +16,7 @@ class DataflowGraphDestinationNodeSettings {
   /// [dataDestination] Data destination at the endpoint.
   /// [endpointRef] The name of the DataflowEndpoint resource .
   /// [outputSchemaSettings] Output schema settings.
-  DataflowGraphDestinationNodeSettings({
+  const DataflowGraphDestinationNodeSettings({
     required this.dataDestination,
     required this.endpointRef,
     this.outputSchemaSettings,

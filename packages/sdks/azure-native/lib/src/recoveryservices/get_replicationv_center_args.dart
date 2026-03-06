@@ -21,7 +21,7 @@ class GetReplicationvCenterArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
   /// [vcenterName] vcenter name.
-  GetReplicationvCenterArgs({
+  const GetReplicationvCenterArgs({
     required this.fabricName,
     required this.resourceGroupName,
     required this.resourceName,

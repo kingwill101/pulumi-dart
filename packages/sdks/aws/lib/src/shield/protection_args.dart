@@ -18,7 +18,7 @@ class ProtectionArgs {
   /// [name] A friendly name for the Protection you are creating.
   /// [resourceArn] The ARN (Amazon Resource Name) of the resource to be protected.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ProtectionArgs({
+  const ProtectionArgs({
     this.name,
     required this.resourceArn,
     this.tags,

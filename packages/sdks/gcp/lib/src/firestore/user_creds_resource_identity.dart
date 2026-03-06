@@ -10,7 +10,7 @@ class UserCredsResourceIdentity {
 
   /// Creates a new [UserCredsResourceIdentity].
   /// [principal] (Output)
-  UserCredsResourceIdentity({
+  const UserCredsResourceIdentity({
     this.principal,
   });
 

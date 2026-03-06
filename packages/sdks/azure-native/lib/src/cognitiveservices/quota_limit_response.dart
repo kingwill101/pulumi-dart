@@ -12,7 +12,7 @@ class QuotaLimitResponse {
   /// [count] Optional.
   /// [renewalPeriod] Optional.
   /// [rules] Optional.
-  QuotaLimitResponse({
+  const QuotaLimitResponse({
     this.count,
     this.renewalPeriod,
     this.rules,

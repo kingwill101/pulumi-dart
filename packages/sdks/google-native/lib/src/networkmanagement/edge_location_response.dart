@@ -9,7 +9,7 @@ class EdgeLocationResponse {
 
   /// Creates a new [EdgeLocationResponse].
   /// [metropolitanArea] Name of the metropolitan area.
-  EdgeLocationResponse({
+  const EdgeLocationResponse({
     required this.metropolitanArea,
   });
 

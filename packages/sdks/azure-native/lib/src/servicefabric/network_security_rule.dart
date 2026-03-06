@@ -48,7 +48,7 @@ class NetworkSecurityRule {
   /// [sourceAddressPrefixes] The CIDR or source IP ranges.
   /// [sourcePortRange] The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   /// [sourcePortRanges] The source port ranges.
-  NetworkSecurityRule({
+  const NetworkSecurityRule({
     required this.access,
     this.description,
     this.destinationAddressPrefix,

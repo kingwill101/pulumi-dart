@@ -26,7 +26,7 @@ class GetLifecycleHooksResult {
   /// [names] A list of lifecycle hook names.
   /// [outputFile] Optional.
   /// [scalingGroupId] ID of the scaling group.
-  GetLifecycleHooksResult({
+  const GetLifecycleHooksResult({
     required this.hooks,
     required this.id,
     required this.ids,

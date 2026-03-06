@@ -25,7 +25,7 @@ class NatGatewayPropertiesResponse {
   /// [publicIPAddresses] List of public ip addresses that the gateway can use for NAT.
   /// [status] The observed state of Nat Gateway
   /// [subnets] List of subnets associated with the nat gateway. These can only be vnet subnets and must be from the same vnet
-  NatGatewayPropertiesResponse({
+  const NatGatewayPropertiesResponse({
     this.inboundNATRules,
     required this.provisioningState,
     this.publicIPAddresses,

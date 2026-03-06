@@ -9,7 +9,7 @@ class GetMembershipEndpoint {
 
   /// Creates a new [GetMembershipEndpoint].
   /// [gkeClusters] If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
-  GetMembershipEndpoint({
+  const GetMembershipEndpoint({
     required this.gkeClusters,
   });
 

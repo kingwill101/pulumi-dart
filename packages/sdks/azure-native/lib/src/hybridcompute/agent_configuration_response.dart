@@ -31,7 +31,7 @@ class AgentConfigurationResponse {
   /// [incomingConnectionsPorts] Specifies the list of ports that the agent will be able to listen on.
   /// [proxyBypass] List of service names which should not use the specified proxy server.
   /// [proxyUrl] Specifies the URL of the proxy to be used.
-  AgentConfigurationResponse({
+  const AgentConfigurationResponse({
     required this.configMode,
     required this.extensionsAllowList,
     required this.extensionsBlockList,

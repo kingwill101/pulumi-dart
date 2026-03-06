@@ -14,7 +14,7 @@ class AccessPointRootPathPermission {
   /// [ownerGroupId] The ID of the primary user group.
   /// [ownerUserId] The owner user ID.
   /// [permission] The Portable Operating System Interface for UNIX (POSIX) permission.
-  AccessPointRootPathPermission({
+  const AccessPointRootPathPermission({
     this.ownerGroupId,
     this.ownerUserId,
     this.permission,

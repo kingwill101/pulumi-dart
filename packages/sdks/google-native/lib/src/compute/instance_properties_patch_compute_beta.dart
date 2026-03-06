@@ -12,7 +12,7 @@ class InstancePropertiesPatchComputeBeta {
   /// Creates a new [InstancePropertiesPatchComputeBeta].
   /// [labels] The label key-value pairs that you want to patch onto the instance.
   /// [metadata] The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-  InstancePropertiesPatchComputeBeta({
+  const InstancePropertiesPatchComputeBeta({
     this.labels,
     this.metadata,
   });

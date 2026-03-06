@@ -18,7 +18,7 @@ class VscMountPointArgs {
   /// [aliasPrefix] Mount point alias prefix, which is used as the prefix for generating VSC mount point aliases.
   /// [description] The description of the Mount point.  The length is 0 to 100 characters.
   /// [fileSystemId] The ID of the HDFS file system resource associated with the VSC mount point.
-  VscMountPointArgs({
+  const VscMountPointArgs({
     this.aliasPrefix,
     this.description,
     required this.fileSystemId,

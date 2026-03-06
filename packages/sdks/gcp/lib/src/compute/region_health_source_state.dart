@@ -59,7 +59,7 @@ class RegionHealthSourceState {
   /// [selfLinkWithId] Server-defined URL with id for the resource.
   /// [sourceType] Specifies the type of the `HealthSource`. The only allowed value
   /// [sources] URLs to the source resources. Must be size 1. Must be a
-  RegionHealthSourceState({
+  const RegionHealthSourceState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

@@ -10,7 +10,7 @@ class SetupScripts {
 
   /// Creates a new [SetupScripts].
   /// [scripts] Customized setup scripts
-  SetupScripts({
+  const SetupScripts({
     this.scripts,
   });
 

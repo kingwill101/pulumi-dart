@@ -14,7 +14,7 @@ class GetAccessPointRootDirectoryCreationInfo {
   /// [ownerGid] POSIX owner group ID
   /// [ownerUid] POSIX owner user ID
   /// [permissions] POSIX permissions mode
-  GetAccessPointRootDirectoryCreationInfo({
+  const GetAccessPointRootDirectoryCreationInfo({
     required this.ownerGid,
     required this.ownerUid,
     required this.permissions,

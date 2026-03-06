@@ -46,7 +46,7 @@ class SapBWLinkedService {
   /// [type] Type of linked service.
   /// [userName] Username to access the SAP BW server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SapBWLinkedService({
+  const SapBWLinkedService({
     this.annotations,
     required this.clientId,
     this.connectVia,

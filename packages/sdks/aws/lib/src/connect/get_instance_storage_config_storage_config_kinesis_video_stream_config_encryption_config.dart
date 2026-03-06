@@ -11,7 +11,7 @@ class GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionCon
   /// Creates a new [GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig].
   /// [encryptionType] The type of encryption. Valid Values: `KMS`.
   /// [keyId] The full ARN of the encryption key. Be sure to provide the full ARN of the encryption key, not just the ID.
-  GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig({
+  const GetInstanceStorageConfigStorageConfigKinesisVideoStreamConfigEncryptionConfig({
     required this.encryptionType,
     required this.keyId,
   });

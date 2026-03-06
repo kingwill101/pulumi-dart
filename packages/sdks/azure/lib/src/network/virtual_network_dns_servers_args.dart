@@ -15,7 +15,7 @@ class VirtualNetworkDnsServersArgs {
   /// Creates a new [VirtualNetworkDnsServersArgs].
   /// [dnsServers] List of IP addresses of DNS servers
   /// [virtualNetworkId] The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
-  VirtualNetworkDnsServersArgs({
+  const VirtualNetworkDnsServersArgs({
     this.dnsServers,
     required this.virtualNetworkId,
   });

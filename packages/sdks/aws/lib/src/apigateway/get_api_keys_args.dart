@@ -18,7 +18,7 @@ class GetApiKeysArgs {
   /// [customerId] Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   /// [includeValues] Set this value to `true` if you wish the result contains the key value. Defaults to `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetApiKeysArgs({
+  const GetApiKeysArgs({
     this.customerId,
     this.includeValues,
     this.region,

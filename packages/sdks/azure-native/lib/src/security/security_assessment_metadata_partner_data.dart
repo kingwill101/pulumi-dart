@@ -15,7 +15,7 @@ class SecurityAssessmentMetadataPartnerData {
   /// [partnerName] Name of the company of the partner
   /// [productName] Name of the product of the partner that created the assessment
   /// [secret] Secret to authenticate the partner and verify it created the assessment - write only
-  SecurityAssessmentMetadataPartnerData({
+  const SecurityAssessmentMetadataPartnerData({
     required this.partnerName,
     this.productName,
     required this.secret,

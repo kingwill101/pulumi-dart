@@ -18,7 +18,7 @@ class SpokeGateway {
   /// [capacity] the capacity of the gateway spoke, in Gbps.
   /// [ipRangeReservations] A list of IP ranges that are reserved for this gateway's internal infrastructure.
   /// [routers] (Output, Beta)
-  SpokeGateway({
+  const SpokeGateway({
     required this.capacity,
     required this.ipRangeReservations,
     this.routers,

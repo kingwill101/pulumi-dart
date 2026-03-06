@@ -11,7 +11,7 @@ class OutboundRuleFrontendIpConfiguration {
   /// Creates a new [OutboundRuleFrontendIpConfiguration].
   /// [id] The ID of the Load Balancer Outbound Rule.
   /// [name] The name of the Frontend IP Configuration.
-  OutboundRuleFrontendIpConfiguration({
+  const OutboundRuleFrontendIpConfiguration({
     this.id,
     required this.name,
   });

@@ -23,7 +23,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskProperties {
   /// [isCloneable] whether the task can be cloned or not
   /// [taskId] Task id
   /// [taskType] Task type.
-  MigrateMySqlAzureDbForMySqlOfflineTaskProperties({
+  const MigrateMySqlAzureDbForMySqlOfflineTaskProperties({
     this.clientData,
     this.input,
     this.isCloneable,

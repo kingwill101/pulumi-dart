@@ -15,7 +15,7 @@ class ReplicationPropertiesResponse {
   /// [replicationState] The replication link state of the replica cluster.
   /// [role] The replication role of the cluster
   /// [sourceResourceId] The resource id the source cluster for the replica cluster.
-  ReplicationPropertiesResponse({
+  const ReplicationPropertiesResponse({
     required this.replicationState,
     required this.role,
     required this.sourceResourceId,

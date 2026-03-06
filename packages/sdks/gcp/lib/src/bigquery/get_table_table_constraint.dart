@@ -13,7 +13,7 @@ class GetTableTableConstraint {
   /// Creates a new [GetTableTableConstraint].
   /// [foreignKeys] Present only if the table has a foreign key. The foreign key is not enforced.
   /// [primaryKeys] Represents a primary key constraint on a table's columns. Present only if the table has a primary key. The primary key is not enforced.
-  GetTableTableConstraint({
+  const GetTableTableConstraint({
     required this.foreignKeys,
     required this.primaryKeys,
   });

@@ -12,7 +12,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings {
   /// [bitrate] Optional.
   /// [codingMode] Optional.
   /// [sampleRate] Sample rate in Hz.
-  ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings({
+  const ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings({
     this.bitrate,
     this.codingMode,
     this.sampleRate,

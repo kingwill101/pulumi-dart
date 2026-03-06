@@ -9,7 +9,7 @@ class DomainSysInfoSmbiosBios {
 
   /// Creates a new [DomainSysInfoSmbiosBios].
   /// [entries] Specifies individual entries for the BIOS information in the SMBIOS.
-  DomainSysInfoSmbiosBios({
+  const DomainSysInfoSmbiosBios({
     this.entries,
   });
 

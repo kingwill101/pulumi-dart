@@ -12,7 +12,7 @@ class RouterNatLogConfig {
   /// Creates a new [RouterNatLogConfig].
   /// [enable] Indicates whether or not to export logs.
   /// [filter] Specifies the desired filtering of logs on this NAT.
-  RouterNatLogConfig({
+  const RouterNatLogConfig({
     required this.enable,
     required this.filter,
   });

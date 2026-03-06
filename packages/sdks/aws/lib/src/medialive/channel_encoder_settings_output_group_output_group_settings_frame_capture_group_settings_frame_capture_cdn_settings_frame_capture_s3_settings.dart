@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSetti
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettingsFrameCaptureS3Settings].
   /// [cannedAcl] Specify the canned ACL to apply to each S3 request.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettingsFrameCaptureS3Settings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettingsFrameCaptureCdnSettingsFrameCaptureS3Settings({
     this.cannedAcl,
   });
 

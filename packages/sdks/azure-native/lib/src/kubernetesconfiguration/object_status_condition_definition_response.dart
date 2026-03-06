@@ -21,7 +21,7 @@ class ObjectStatusConditionDefinitionResponse {
   /// [reason] Reason for the specified status condition type status
   /// [status] Status of the Kubernetes object condition type
   /// [type] Object status condition type for this object
-  ObjectStatusConditionDefinitionResponse({
+  const ObjectStatusConditionDefinitionResponse({
     this.lastTransitionTime,
     this.message,
     this.reason,

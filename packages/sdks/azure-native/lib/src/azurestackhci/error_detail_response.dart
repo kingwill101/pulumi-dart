@@ -25,7 +25,7 @@ class ErrorDetailResponse {
   /// [exception] Exception details while installing extension.
   /// [message] The error message.
   /// [target] The error target.
-  ErrorDetailResponse({
+  const ErrorDetailResponse({
     required this.additionalInfo,
     required this.code,
     required this.details,

@@ -21,7 +21,7 @@ class GetOutboundRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the workspace managed network outbound rule
   /// [workspaceName] Azure Machine Learning Workspace Name
-  GetOutboundRuleArgs({
+  const GetOutboundRuleArgs({
     required this.managedNetworkName,
     required this.resourceGroupName,
     required this.ruleName,

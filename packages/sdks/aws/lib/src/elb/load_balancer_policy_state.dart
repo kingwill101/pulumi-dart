@@ -22,7 +22,7 @@ class LoadBalancerPolicyState {
   /// [policyName] The name of the load balancer policy.
   /// [policyTypeName] The policy type.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LoadBalancerPolicyState({
+  const LoadBalancerPolicyState({
     this.loadBalancerName,
     this.policyAttributes,
     this.policyName,

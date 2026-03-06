@@ -12,7 +12,7 @@ class SandboxConfigResponseContainerV1beta1 {
   /// Creates a new [SandboxConfigResponseContainerV1beta1].
   /// [sandboxType] Type of the sandbox to use for the node (e.g. 'gvisor')
   /// [type] Type of the sandbox to use for the node.
-  SandboxConfigResponseContainerV1beta1({
+  const SandboxConfigResponseContainerV1beta1({
     required this.sandboxType,
     required this.type,
   });

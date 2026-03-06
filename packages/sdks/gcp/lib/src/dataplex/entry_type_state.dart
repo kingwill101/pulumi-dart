@@ -61,7 +61,7 @@ class EntryTypeState {
   /// [typeAliases] Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
   /// [uid] System generated globally unique ID for the EntryType. This ID will be different if the EntryType is deleted and re-created with the same name.
   /// [updateTime] The time when the EntryType was last updated.
-  EntryTypeState({
+  const EntryTypeState({
     this.createTime,
     this.description,
     this.displayName,

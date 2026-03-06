@@ -11,7 +11,7 @@ class ListLocalRulestackAppIdsResult {
   /// Creates a new [ListLocalRulestackAppIdsResult].
   /// [nextLink] next Link
   /// [value] List of AppIds
-  ListLocalRulestackAppIdsResult({
+  const ListLocalRulestackAppIdsResult({
     this.nextLink,
     required this.value,
   });

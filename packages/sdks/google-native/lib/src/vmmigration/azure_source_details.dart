@@ -19,7 +19,7 @@ class AzureSourceDetails {
   /// [clientSecretCreds] Azure Credentials using tenant ID, client ID and secret.
   /// [migrationResourcesUserTags] User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m4ce` or `m2vm`.
   /// [subscriptionId] Immutable. Azure subscription ID.
-  AzureSourceDetails({
+  const AzureSourceDetails({
     this.azureLocation,
     this.clientSecretCreds,
     this.migrationResourcesUserTags,

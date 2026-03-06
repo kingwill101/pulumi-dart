@@ -13,7 +13,7 @@ class SecurityGatewayHub {
   /// Creates a new [SecurityGatewayHub].
   /// [internetGateway] Internet Gateway configuration.
   /// [region] The identifier for this object. Format specified above.
-  SecurityGatewayHub({
+  const SecurityGatewayHub({
     this.internetGateway,
     required this.region,
   });

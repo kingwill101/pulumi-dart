@@ -27,7 +27,7 @@ class GetRegionInstanceGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region in which the resource belongs.  If `self_link`
   /// [selfLink] The link to the instance group.  One of `name` or `self_link` must be provided.
-  GetRegionInstanceGroupArgs({
+  const GetRegionInstanceGroupArgs({
     this.name,
     this.project,
     this.region,

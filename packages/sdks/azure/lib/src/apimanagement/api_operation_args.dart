@@ -45,7 +45,7 @@ class ApiOperationArgs {
   /// [responses] One or more `response` blocks as defined below.
   /// [templateParameters] One or more `template_parameter` blocks as defined below. Required if `url_template` contains one or more parameters.
   /// [urlTemplate] The relative URL Template identifying the target resource for this operation, which may include parameters.
-  ApiOperationArgs({
+  const ApiOperationArgs({
     required this.apiManagementName,
     required this.apiName,
     this.description,

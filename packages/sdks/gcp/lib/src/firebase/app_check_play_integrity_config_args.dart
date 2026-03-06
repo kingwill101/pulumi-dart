@@ -22,7 +22,7 @@ class AppCheckPlayIntegrityConfigArgs {
   /// [appId] The ID of an
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from Play Integrity artifacts will be valid.
-  AppCheckPlayIntegrityConfigArgs({
+  const AppCheckPlayIntegrityConfigArgs({
     required this.appId,
     this.project,
     this.tokenTtl,

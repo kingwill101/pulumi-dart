@@ -15,7 +15,7 @@ class GetAppServicePlanArgs {
   /// Creates a new [GetAppServicePlanArgs].
   /// [name] The name of the App Service Plan.
   /// [resourceGroupName] The Name of the Resource Group where the App Service Plan exists.
-  GetAppServicePlanArgs({
+  const GetAppServicePlanArgs({
     required this.name,
     required this.resourceGroupName,
   });

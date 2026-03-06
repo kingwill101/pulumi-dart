@@ -14,7 +14,7 @@ class DomainDevicesDiskMirrorSourceSlicesSlice {
   /// [offset] Sets the offset for the specific slice in the mirror source configuration.
   /// [size] Configures the size of the slice in the mirror source.
   /// [type] Specifies the type of the slice in the mirror source configuration.
-  DomainDevicesDiskMirrorSourceSlicesSlice({
+  const DomainDevicesDiskMirrorSourceSlicesSlice({
     required this.offset,
     required this.size,
     required this.type,

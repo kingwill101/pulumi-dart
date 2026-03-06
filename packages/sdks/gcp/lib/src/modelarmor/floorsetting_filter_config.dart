@@ -25,7 +25,7 @@ class FloorsettingFilterConfig {
   /// [piAndJailbreakFilterSettings] Prompt injection and Jailbreak Filter settings.
   /// [raiSettings] Responsible AI Filter settings.
   /// [sdpSettings] Sensitive Data Protection settings.
-  FloorsettingFilterConfig({
+  const FloorsettingFilterConfig({
     this.maliciousUriFilterSettings,
     this.piAndJailbreakFilterSettings,
     this.raiSettings,

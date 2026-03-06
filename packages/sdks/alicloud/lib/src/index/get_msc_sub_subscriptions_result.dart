@@ -15,7 +15,7 @@ class GetMscSubSubscriptionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [subscriptions] A list of Msc Sub Subscriptions. Each element contains the following attributes:
-  GetMscSubSubscriptionsResult({
+  const GetMscSubSubscriptionsResult({
     required this.id,
     this.outputFile,
     required this.subscriptions,

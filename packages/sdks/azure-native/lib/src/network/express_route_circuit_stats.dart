@@ -18,7 +18,7 @@ class ExpressRouteCircuitStats {
   /// [primarybytesOut] The primary BytesOut of the peering.
   /// [secondarybytesIn] The secondary BytesIn of the peering.
   /// [secondarybytesOut] The secondary BytesOut of the peering.
-  ExpressRouteCircuitStats({
+  const ExpressRouteCircuitStats({
     this.primarybytesIn,
     this.primarybytesOut,
     this.secondarybytesIn,

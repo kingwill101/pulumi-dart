@@ -9,7 +9,7 @@ class EstablishedMultiRegionAccessPointPolicyResponse {
 
   /// Creates a new [EstablishedMultiRegionAccessPointPolicyResponse].
   /// [policy] &lt;p&gt;The details of the last established policy.&lt;/p&gt;
-  EstablishedMultiRegionAccessPointPolicyResponse({
+  const EstablishedMultiRegionAccessPointPolicyResponse({
     this.policy,
   });
 

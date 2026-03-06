@@ -36,7 +36,7 @@ class AnycastEipAddressState {
   /// [serviceLocation] Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
   /// [status] The status of the resource.
   /// [tags] List of resource-bound tags.
-  AnycastEipAddressState({
+  const AnycastEipAddressState({
     this.anycastEipAddressName,
     this.bandwidth,
     this.createTime,

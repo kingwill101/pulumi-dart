@@ -12,7 +12,7 @@ class GetHostedZoneIdResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [loadBalancerType] Optional.
   /// [region] Required.
-  GetHostedZoneIdResult({
+  const GetHostedZoneIdResult({
     required this.id,
     this.loadBalancerType,
     required this.region,

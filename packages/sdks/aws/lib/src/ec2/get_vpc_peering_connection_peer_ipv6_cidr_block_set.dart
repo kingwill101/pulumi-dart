@@ -7,7 +7,7 @@ class GetVpcPeeringConnectionPeerIpv6CidrBlockSet {
 
   /// Creates a new [GetVpcPeeringConnectionPeerIpv6CidrBlockSet].
   /// [ipv6CidrBlock] Required.
-  GetVpcPeeringConnectionPeerIpv6CidrBlockSet({
+  const GetVpcPeeringConnectionPeerIpv6CidrBlockSet({
     required this.ipv6CidrBlock,
   });
 

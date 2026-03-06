@@ -14,7 +14,7 @@ class ApplicationPortalOptionsSignInOptions {
   /// Creates a new [ApplicationPortalOptionsSignInOptions].
   /// [applicationUrl] URL that accepts authentication requests for an application.
   /// [origin] Determines how IAM Identity Center navigates the user to the target application.
-  ApplicationPortalOptionsSignInOptions({
+  const ApplicationPortalOptionsSignInOptions({
     this.applicationUrl,
     required this.origin,
   });

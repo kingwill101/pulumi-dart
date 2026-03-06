@@ -25,7 +25,7 @@ class GetDigitalTwinsEndpointResult {
   /// [properties] DigitalTwinsInstance endpoint resource properties.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type.
-  GetDigitalTwinsEndpointResult({
+  const GetDigitalTwinsEndpointResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

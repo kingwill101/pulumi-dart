@@ -19,7 +19,7 @@ class GetIndexFirestoreV1beta1Result {
   /// [fields] The fields to index.
   /// [name] The resource name of the index. Output only.
   /// [state] The state of the index. Output only.
-  GetIndexFirestoreV1beta1Result({
+  const GetIndexFirestoreV1beta1Result({
     required this.collectionId,
     required this.fields,
     required this.name,

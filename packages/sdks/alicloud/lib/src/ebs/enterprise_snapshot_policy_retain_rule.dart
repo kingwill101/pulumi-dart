@@ -14,7 +14,7 @@ class EnterpriseSnapshotPolicyRetainRule {
   /// [number] Retention based on counting method.
   /// [timeInterval] Time unit.
   /// [timeUnit] Time-based retention.
-  EnterpriseSnapshotPolicyRetainRule({
+  const EnterpriseSnapshotPolicyRetainRule({
     this.number,
     this.timeInterval,
     this.timeUnit,

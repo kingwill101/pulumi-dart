@@ -27,7 +27,7 @@ class TransferJobTransferSpecAwsS3DataSource {
   /// [managedPrivateNetwork] Egress bytes over a Google-managed private network. This network is shared between other users of Storage Transfer Service.
   /// [path] S3 Bucket path in bucket to transfer.
   /// [roleArn] The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
-  TransferJobTransferSpecAwsS3DataSource({
+  const TransferJobTransferSpecAwsS3DataSource({
     this.awsAccessKey,
     required this.bucketName,
     this.cloudfrontDomain,

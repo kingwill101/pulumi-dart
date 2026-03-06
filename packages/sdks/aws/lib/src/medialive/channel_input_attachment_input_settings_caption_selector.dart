@@ -15,7 +15,7 @@ class ChannelInputAttachmentInputSettingsCaptionSelector {
   /// [languageCode] Optional.
   /// [name] Name of the Channel.
   /// [selectorSettings] Optional.
-  ChannelInputAttachmentInputSettingsCaptionSelector({
+  const ChannelInputAttachmentInputSettingsCaptionSelector({
     this.languageCode,
     required this.name,
     this.selectorSettings,

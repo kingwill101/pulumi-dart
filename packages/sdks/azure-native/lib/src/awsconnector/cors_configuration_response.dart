@@ -10,7 +10,7 @@ class CorsConfigurationResponse {
 
   /// Creates a new [CorsConfigurationResponse].
   /// [corsRules] A set of origins and methods (cross-origin access that you want to allow). You can add up to 100 rules to the configuration.
-  CorsConfigurationResponse({
+  const CorsConfigurationResponse({
     this.corsRules,
   });
 

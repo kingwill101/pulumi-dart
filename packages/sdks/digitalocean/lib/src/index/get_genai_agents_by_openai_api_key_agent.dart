@@ -127,7 +127,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgent {
   /// [updatedAt] Timestamp when the Agent was updated
   /// [url] URL for the Agent
   /// [userId] User ID linked with the Agent
-  GetGenaiAgentsByOpenaiApiKeyAgent({
+  const GetGenaiAgentsByOpenaiApiKeyAgent({
     this.agentGuardrails,
     required this.agentId,
     this.anthropicApiKeys,

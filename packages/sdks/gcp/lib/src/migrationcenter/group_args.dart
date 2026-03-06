@@ -30,7 +30,7 @@ class GroupArgs {
   /// [labels] Labels as key value pairs.
   /// [location] The location of the group.
   /// [project] The ID of the project in which the resource belongs.
-  GroupArgs({
+  const GroupArgs({
     this.description,
     this.displayName,
     required this.groupId,

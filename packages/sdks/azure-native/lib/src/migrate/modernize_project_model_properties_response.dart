@@ -19,7 +19,7 @@ class ModernizeProjectModelPropertiesResponse {
   /// [provisioningState] Gets or sets the provisioning state of the ModernizeProject.
   /// [serviceEndpoint] Gets or sets the service endpoint.
   /// [serviceResourceId] Gets or sets the service resource Id.
-  ModernizeProjectModelPropertiesResponse({
+  const ModernizeProjectModelPropertiesResponse({
     this.migrationConfiguration,
     required this.provisioningState,
     required this.serviceEndpoint,

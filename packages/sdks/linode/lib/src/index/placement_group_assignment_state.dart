@@ -14,7 +14,7 @@ class PlacementGroupAssignmentState {
   /// [compliantOnly] Optional.
   /// [linodeId] The unique ID of the Linode to assign.
   /// [placementGroupId] The unique ID of the target Placement Group.
-  PlacementGroupAssignmentState({
+  const PlacementGroupAssignmentState({
     this.compliantOnly,
     this.linodeId,
     this.placementGroupId,

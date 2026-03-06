@@ -21,7 +21,7 @@ class StreamingDataServiceArgs {
   /// [serviceDescription] The description of the service.
   /// [serviceName] Service Name
   /// [serviceSpec] Resource Specifications
-  StreamingDataServiceArgs({
+  const StreamingDataServiceArgs({
     required this.dbInstanceId,
     this.serviceDescription,
     required this.serviceName,

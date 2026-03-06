@@ -33,7 +33,7 @@ class FloatingIpState {
   /// [name] Name of the Floating IP.
   /// [serverId] Server to assign the Floating IP to. Optional if `home_location` argument is passed.
   /// [type] Type of the Floating IP. `ipv4` `ipv6`
-  FloatingIpState({
+  const FloatingIpState({
     this.deleteProtection,
     this.description,
     this.homeLocation,

@@ -76,7 +76,7 @@ class GoogleAdWordsLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [useSystemTrustStore] (Deprecated) Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
   /// [version] Version of the linked service.
-  GoogleAdWordsLinkedServiceResponse({
+  const GoogleAdWordsLinkedServiceResponse({
     this.annotations,
     this.authenticationType,
     this.clientCustomerID,

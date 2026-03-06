@@ -15,7 +15,7 @@ class ListWebAppHostKeysArgs {
   /// Creates a new [ListWebAppHostKeysArgs].
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppHostKeysArgs({
+  const ListWebAppHostKeysArgs({
     required this.name,
     required this.resourceGroupName,
   });

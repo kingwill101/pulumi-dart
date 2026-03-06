@@ -55,7 +55,7 @@ class GetIoTHubEventSourceResult {
   /// [time] ISO8601 UTC datetime with seconds precision (milliseconds are optional), specifying the date and time that will be the starting point for Events to be consumed.
   /// [timestampPropertyName] The event property that will be used as the event source's timestamp. If a value isn't specified for timestampPropertyName, or if null or empty-string is specified, the event creation time will be used.
   /// [type] Resource type
-  GetIoTHubEventSourceResult({
+  const GetIoTHubEventSourceResult({
     required this.azureApiVersion,
     required this.consumerGroupName,
     required this.creationTime,

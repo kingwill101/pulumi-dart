@@ -46,7 +46,7 @@ class ImageArgs {
   /// [sourceVirtualMachineId] The Virtual Machine ID from which to create the image.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneResilient] Is zone resiliency enabled? Defaults to `false`. Changing this forces a new resource to be created.
-  ImageArgs({
+  const ImageArgs({
     this.dataDisks,
     this.hyperVGeneration,
     this.location,

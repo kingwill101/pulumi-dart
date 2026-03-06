@@ -12,7 +12,7 @@ class LibraryRequirements {
   /// Creates a new [LibraryRequirements].
   /// [content] The library requirements.
   /// [filename] The filename of the library requirements file.
-  LibraryRequirements({
+  const LibraryRequirements({
     this.content,
     this.filename,
   });

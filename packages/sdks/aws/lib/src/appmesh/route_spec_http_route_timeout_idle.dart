@@ -11,7 +11,7 @@ class RouteSpecHttpRouteTimeoutIdle {
   /// Creates a new [RouteSpecHttpRouteTimeoutIdle].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  RouteSpecHttpRouteTimeoutIdle({
+  const RouteSpecHttpRouteTimeoutIdle({
     required this.unit,
     required this.value,
   });

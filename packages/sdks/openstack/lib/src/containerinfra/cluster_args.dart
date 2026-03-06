@@ -80,7 +80,7 @@ class ClusterArgs {
   /// [name] The name of the cluster. Changing this creates a new
   /// [nodeCount] The number of nodes for the cluster.
   /// [region] The region in which to obtain the V1 Container Infra
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterTemplateId,
     this.createTimeout,
     this.discoveryUrl,

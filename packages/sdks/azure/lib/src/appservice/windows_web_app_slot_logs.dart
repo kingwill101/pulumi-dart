@@ -19,7 +19,7 @@ class WindowsWebAppSlotLogs {
   /// [detailedErrorMessages] Should detailed error messages be enabled.
   /// [failedRequestTracing] Should failed request tracing be enabled.
   /// [httpLogs] An `http_logs` block as defined above.
-  WindowsWebAppSlotLogs({
+  const WindowsWebAppSlotLogs({
     this.applicationLogs,
     this.detailedErrorMessages,
     this.failedRequestTracing,

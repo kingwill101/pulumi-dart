@@ -27,7 +27,7 @@ class TypeState {
   /// [format] The type format: `SDL` or `JSON`.
   /// [name] The type name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  TypeState({
+  const TypeState({
     this.apiId,
     this.arn,
     this.definition,

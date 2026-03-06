@@ -50,7 +50,7 @@ class ResourceShareState {
   /// [status] The status of resource share.  `Active`,`Deleted` and `Deleting`.
   /// [tags] The tag of the resource
   /// [targets] Resource user.
-  ResourceShareState({
+  const ResourceShareState({
     this.allowExternalTargets,
     this.createTime,
     this.permissionNames,

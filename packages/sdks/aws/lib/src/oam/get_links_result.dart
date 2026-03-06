@@ -13,7 +13,7 @@ class GetLinksResult {
   /// [arns] Set of ARN of the Links.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetLinksResult({
+  const GetLinksResult({
     required this.arns,
     required this.id,
     required this.region,

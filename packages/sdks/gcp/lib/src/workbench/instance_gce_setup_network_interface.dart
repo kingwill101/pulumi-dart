@@ -24,7 +24,7 @@ class InstanceGceSetupNetworkInterface {
   /// [network] Optional. The name of the VPC that this VM instance is in.
   /// [nicType] Optional. The type of vNIC to be used on this interface. This
   /// [subnet] Optional. The name of the subnet that this VM instance is in.
-  InstanceGceSetupNetworkInterface({
+  const InstanceGceSetupNetworkInterface({
     this.accessConfigs,
     this.network,
     this.nicType,

@@ -18,7 +18,7 @@ class VolumeSnapshotArgs {
   /// [name] A name for the volume snapshot.
   /// [tags] A list of the tags to be applied to this volume snapshot.
   /// [volumeId] The ID of the volume from which the volume snapshot originated.
-  VolumeSnapshotArgs({
+  const VolumeSnapshotArgs({
     this.name,
     this.tags,
     required this.volumeId,

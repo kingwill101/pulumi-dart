@@ -13,7 +13,7 @@ class NWRuleSetVirtualNetworkRulesResponse {
   /// Creates a new [NWRuleSetVirtualNetworkRulesResponse].
   /// [ignoreMissingVnetServiceEndpoint] Value that indicates whether to ignore missing Vnet Service Endpoint
   /// [subnet] Subnet properties
-  NWRuleSetVirtualNetworkRulesResponse({
+  const NWRuleSetVirtualNetworkRulesResponse({
     this.ignoreMissingVnetServiceEndpoint,
     this.subnet,
   });

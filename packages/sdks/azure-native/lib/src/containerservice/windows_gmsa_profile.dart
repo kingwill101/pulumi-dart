@@ -15,7 +15,7 @@ class WindowsGmsaProfile {
   /// [dnsServer] Specifies the DNS server for Windows gMSA. &lt;br&gt;&lt;br&gt; Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster.
   /// [enabled] Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
   /// [rootDomainName] Specifies the root domain name for Windows gMSA. &lt;br&gt;&lt;br&gt; Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster.
-  WindowsGmsaProfile({
+  const WindowsGmsaProfile({
     this.dnsServer,
     this.enabled,
     this.rootDomainName,

@@ -14,7 +14,7 @@ class GetActionGroupSmsReceiver {
   /// [countryCode] The country code of the voice receiver.
   /// [name] Specifies the name of the Action Group.
   /// [phoneNumber] The phone number of the voice receiver.
-  GetActionGroupSmsReceiver({
+  const GetActionGroupSmsReceiver({
     required this.countryCode,
     required this.name,
     required this.phoneNumber,

@@ -32,7 +32,7 @@ class SolutionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [version] Version of the particular resource.
-  SolutionArgs({
+  const SolutionArgs({
     this.components,
     required this.extendedLocation,
     this.location,

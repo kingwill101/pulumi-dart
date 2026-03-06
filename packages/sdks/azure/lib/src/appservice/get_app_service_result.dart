@@ -71,7 +71,7 @@ class GetAppServiceResult {
   /// [siteCredentials] Required.
   /// [sourceControls] A `source_control` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  GetAppServiceResult({
+  const GetAppServiceResult({
     required this.appServicePlanId,
     required this.appSettings,
     required this.clientAffinityEnabled,

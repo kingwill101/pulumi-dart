@@ -45,7 +45,7 @@ class HostSecurityReportArgs {
   /// [organizationId] Required.
   /// [reportDefinitionId] Report Definition ID.
   /// [timeRange] Time range for the query. Can use the following predefined strings to specify the time range: `last60minutes` `last24hours` `last7days` Or, specify the timeRange as a structure describing start and end timestamps in the ISO format: yyyy-mm-ddThh:mm:ssZ. Example: "timeRange": { "start": "2018-07-29T00:13:00Z", "end": "2018-08-01T00:18:00Z" }
-  HostSecurityReportArgs({
+  const HostSecurityReportArgs({
     this.csvDelimiter,
     this.dimensions,
     this.displayName,

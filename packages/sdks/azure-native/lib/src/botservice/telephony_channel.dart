@@ -20,7 +20,7 @@ class TelephonyChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Telephony channel resource
-  TelephonyChannel({
+  const TelephonyChannel({
     required this.channelName,
     this.etag,
     this.location,

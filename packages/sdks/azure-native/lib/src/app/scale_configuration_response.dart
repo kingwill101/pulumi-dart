@@ -12,7 +12,7 @@ class ScaleConfigurationResponse {
   /// Creates a new [ScaleConfigurationResponse].
   /// [maxConcurrentSessions] The maximum count of sessions at the same time.
   /// [readySessionInstances] The minimum count of ready session instances.
-  ScaleConfigurationResponse({
+  const ScaleConfigurationResponse({
     this.maxConcurrentSessions,
     this.readySessionInstances,
   });

@@ -48,7 +48,7 @@ class AutoBackupSettings {
   /// [storageAccessKey] Storage account key where backup will be taken to.
   /// [storageAccountUrl] Storage account url where backup will be taken to.
   /// [storageContainerName] Storage container name where backup will be taken to.
-  AutoBackupSettings({
+  const AutoBackupSettings({
     this.backupScheduleType,
     this.backupSystemDbs,
     this.daysOfWeek,

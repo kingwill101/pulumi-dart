@@ -23,7 +23,7 @@ class WebChatChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Web Chat channel resource
   /// [provisioningState] Provisioning state of the resource
-  WebChatChannelResponse({
+  const WebChatChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

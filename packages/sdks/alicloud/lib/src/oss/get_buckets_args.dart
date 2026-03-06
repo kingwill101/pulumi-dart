@@ -15,7 +15,7 @@ class GetBucketsArgs {
   /// Creates a new [GetBucketsArgs].
   /// [nameRegex] A regex string to filter results by bucket name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBucketsArgs({
+  const GetBucketsArgs({
     this.nameRegex,
     this.outputFile,
   });

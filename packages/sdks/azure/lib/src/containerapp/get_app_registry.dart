@@ -17,7 +17,7 @@ class GetAppRegistry {
   /// [passwordSecretName] The name of the Secret Reference containing the password value for the user on the Container Registry.
   /// [server] The hostname for the Container Registry.
   /// [username] The username used for this Container Registry.
-  GetAppRegistry({
+  const GetAppRegistry({
     required this.identity,
     required this.passwordSecretName,
     required this.server,

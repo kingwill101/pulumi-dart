@@ -9,7 +9,7 @@ class CFNS3LogsConfiguration {
 
   /// Creates a new [CFNS3LogsConfiguration].
   /// [enable] Property enable
-  CFNS3LogsConfiguration({
+  const CFNS3LogsConfiguration({
     this.enable,
   });
 

@@ -10,7 +10,7 @@ class SelfSubjectReviewStatusAuthenticationK8sIoV1alpha1 {
 
   /// Creates a new [SelfSubjectReviewStatusAuthenticationK8sIoV1alpha1].
   /// [userInfo] User attributes of the user making this request.
-  SelfSubjectReviewStatusAuthenticationK8sIoV1alpha1({
+  const SelfSubjectReviewStatusAuthenticationK8sIoV1alpha1({
     this.userInfo,
   });
 

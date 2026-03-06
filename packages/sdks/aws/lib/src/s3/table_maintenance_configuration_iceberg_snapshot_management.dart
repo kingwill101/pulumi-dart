@@ -14,7 +14,7 @@ class TableMaintenanceConfigurationIcebergSnapshotManagement {
   /// Creates a new [TableMaintenanceConfigurationIcebergSnapshotManagement].
   /// [settings] Settings object for snapshot management.
   /// [status] Whether the configuration is enabled.
-  TableMaintenanceConfigurationIcebergSnapshotManagement({
+  const TableMaintenanceConfigurationIcebergSnapshotManagement({
     required this.settings,
     required this.status,
   });

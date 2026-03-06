@@ -17,7 +17,7 @@ class SubscriptionFeatureRegistrationProperties {
   /// [metadata] Key-value pairs for meta data.
   /// [shouldFeatureDisplayInPortal] Indicates whether feature should be displayed in Portal.
   /// [state] The state.
-  SubscriptionFeatureRegistrationProperties({
+  const SubscriptionFeatureRegistrationProperties({
     this.description,
     this.metadata,
     this.shouldFeatureDisplayInPortal,

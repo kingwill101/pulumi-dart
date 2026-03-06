@@ -233,7 +233,7 @@ class WindowsVirtualMachineScaleSetArgs {
   /// [winrmListeners] One or more `winrm_listener` blocks as defined below. Changing this forces a new resource to be created.
   /// [zoneBalance] Should the Virtual Machines in this Scale Set be strictly evenly distributed across Availability Zones? Defaults to `false`. Changing this forces a new resource to be created.
   /// [zones] Specifies a list of Availability Zones in which this Windows Virtual Machine Scale Set should be located.
-  WindowsVirtualMachineScaleSetArgs({
+  const WindowsVirtualMachineScaleSetArgs({
     this.additionalCapabilities,
     this.additionalUnattendContents,
     required this.adminPassword,

@@ -18,7 +18,7 @@ class MLTableJobOutputResponse {
   /// [jobOutputType] Enum to determine the Job Output Type.
   /// [mode] Output Asset Delivery Mode.
   /// [uri] Output Asset URI.
-  MLTableJobOutputResponse({
+  const MLTableJobOutputResponse({
     this.description,
     required this.jobOutputType,
     this.mode,

@@ -11,7 +11,7 @@ class GetSecurityPolicyRuleRedirectOption {
   /// Creates a new [GetSecurityPolicyRuleRedirectOption].
   /// [target] Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
   /// [type] Type of the redirect action. Available options: EXTERNAL_302: Must specify the corresponding target field in config. GOOGLE_RECAPTCHA: Cannot specify target field in config.
-  GetSecurityPolicyRuleRedirectOption({
+  const GetSecurityPolicyRuleRedirectOption({
     required this.target,
     required this.type,
   });

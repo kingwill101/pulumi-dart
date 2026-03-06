@@ -9,7 +9,7 @@ class NetworkTagsContainerV1beta1 {
 
   /// Creates a new [NetworkTagsContainerV1beta1].
   /// [tags] List of network tags.
-  NetworkTagsContainerV1beta1({
+  const NetworkTagsContainerV1beta1({
     this.tags,
   });
 

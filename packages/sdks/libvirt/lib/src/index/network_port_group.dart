@@ -22,7 +22,7 @@ class NetworkPortGroup {
   /// [trustGuestRxFilters] Controls whether to trust incoming packets based on guest-defined filters.
   /// [virtualPort] Configures the virtual port associated with a port group.
   /// [vlan] Defines VLAN settings for the port group in the network configuration.
-  NetworkPortGroup({
+  const NetworkPortGroup({
     this.default_,
     this.name,
     this.trustGuestRxFilters,

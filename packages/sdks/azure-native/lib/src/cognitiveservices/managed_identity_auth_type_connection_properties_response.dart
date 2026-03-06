@@ -39,7 +39,7 @@ class ManagedIdentityAuthTypeConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  ManagedIdentityAuthTypeConnectionPropertiesResponse({
+  const ManagedIdentityAuthTypeConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

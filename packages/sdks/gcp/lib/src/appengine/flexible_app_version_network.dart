@@ -28,7 +28,7 @@ class FlexibleAppVersionNetwork {
   /// [name] Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
   /// [sessionAffinity] Enable session affinity.
   /// [subnetwork] Google Cloud Platform sub-network where the virtual machines are created. Specify the short name, not the resource path.
-  FlexibleAppVersionNetwork({
+  const FlexibleAppVersionNetwork({
     this.forwardedPorts,
     this.instanceIpMode,
     this.instanceTag,

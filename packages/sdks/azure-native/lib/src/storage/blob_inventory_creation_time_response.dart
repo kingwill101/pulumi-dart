@@ -9,7 +9,7 @@ class BlobInventoryCreationTimeResponse {
 
   /// Creates a new [BlobInventoryCreationTimeResponse].
   /// [lastNDays] When set the policy filters the objects that are created in the last N days. Where N is an integer value between 1 to 36500.
-  BlobInventoryCreationTimeResponse({
+  const BlobInventoryCreationTimeResponse({
     this.lastNDays,
   });
 

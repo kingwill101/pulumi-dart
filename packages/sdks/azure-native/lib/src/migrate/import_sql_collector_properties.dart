@@ -9,7 +9,7 @@ class ImportSqlCollectorProperties {
 
   /// Creates a new [ImportSqlCollectorProperties].
   /// [discoverySiteId] The sql db extended details.
-  ImportSqlCollectorProperties({
+  const ImportSqlCollectorProperties({
     this.discoverySiteId,
   });
 

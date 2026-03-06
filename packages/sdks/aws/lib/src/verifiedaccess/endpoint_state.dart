@@ -70,7 +70,7 @@ class EndpointState {
   /// [tagsAll] Optional.
   /// [verifiedAccessGroupId] The ID of the Verified Access group to associate the endpoint with.
   /// [verifiedAccessInstanceId] Optional.
-  EndpointState({
+  const EndpointState({
     this.applicationDomain,
     this.attachmentType,
     this.cidrOptions,

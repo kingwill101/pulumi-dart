@@ -12,7 +12,7 @@ class TopologySelectorLabelRequirementPatch {
   /// Creates a new [TopologySelectorLabelRequirementPatch].
   /// [key] The label key that the selector applies to.
   /// [values] An array of string values. One value must match the label to be selected. Each entry in Values is ORed.
-  TopologySelectorLabelRequirementPatch({
+  const TopologySelectorLabelRequirementPatch({
     this.key,
     this.values,
   });

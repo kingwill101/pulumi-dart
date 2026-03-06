@@ -15,7 +15,7 @@ class GetEc2ImageArgs {
   /// Creates a new [GetEc2ImageArgs].
   /// [name] Name of Ec2Image
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2ImageArgs({
+  const GetEc2ImageArgs({
     required this.name,
     required this.resourceGroupName,
   });

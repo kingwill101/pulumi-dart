@@ -11,7 +11,7 @@ class SubscriptionStateOverrideActionResponse {
   /// Creates a new [SubscriptionStateOverrideActionResponse].
   /// [action] The action.
   /// [state] The state.
-  SubscriptionStateOverrideActionResponse({
+  const SubscriptionStateOverrideActionResponse({
     required this.action,
     required this.state,
   });

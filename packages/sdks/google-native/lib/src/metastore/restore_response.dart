@@ -27,7 +27,7 @@ class RestoreResponse {
   /// [startTime] The time when the restore started.
   /// [state] The current state of the restore.
   /// [type] The type of restore.
-  RestoreResponse({
+  const RestoreResponse({
     required this.backup,
     required this.backupLocation,
     required this.details,

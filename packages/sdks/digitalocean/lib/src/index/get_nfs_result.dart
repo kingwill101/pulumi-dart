@@ -31,7 +31,7 @@ class GetNfsResult {
   /// [size] The size of the NFS share in GiB.
   /// [status] The current status of the NFS share.
   /// [tags] Required.
-  GetNfsResult({
+  const GetNfsResult({
     required this.host,
     required this.id,
     required this.mountPath,

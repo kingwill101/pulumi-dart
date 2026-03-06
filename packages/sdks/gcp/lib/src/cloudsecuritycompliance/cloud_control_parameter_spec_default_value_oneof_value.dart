@@ -13,7 +13,7 @@ class CloudControlParameterSpecDefaultValueOneofValue {
   /// Creates a new [CloudControlParameterSpecDefaultValueOneofValue].
   /// [name] The name of the parameter.
   /// [parameterValue] The value of the parameter.
-  CloudControlParameterSpecDefaultValueOneofValue({
+  const CloudControlParameterSpecDefaultValueOneofValue({
     this.name,
     this.parameterValue,
   });

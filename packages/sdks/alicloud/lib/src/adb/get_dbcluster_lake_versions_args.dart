@@ -28,7 +28,7 @@ class GetDBClusterLakeVersionsArgs {
   /// [pageSize] Optional.
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
-  GetDBClusterLakeVersionsArgs({
+  const GetDBClusterLakeVersionsArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

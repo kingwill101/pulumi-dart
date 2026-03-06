@@ -12,7 +12,7 @@ class GetPlacementGroupArgs {
 
   /// Creates a new [GetPlacementGroupArgs].
   /// [id] The ID of the Placement Group.
-  GetPlacementGroupArgs({
+  const GetPlacementGroupArgs({
     required this.id,
   });
 

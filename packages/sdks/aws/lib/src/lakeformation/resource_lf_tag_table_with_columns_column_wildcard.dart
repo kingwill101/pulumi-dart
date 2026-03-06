@@ -8,7 +8,7 @@ class ResourceLfTagTableWithColumnsColumnWildcard {
 
   /// Creates a new [ResourceLfTagTableWithColumnsColumnWildcard].
   /// [excludedColumnNames] Set of column names for the table to exclude. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid Terraform reporting a difference.
-  ResourceLfTagTableWithColumnsColumnWildcard({
+  const ResourceLfTagTableWithColumnsColumnWildcard({
     this.excludedColumnNames,
   });
 

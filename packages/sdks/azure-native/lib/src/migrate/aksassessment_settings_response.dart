@@ -43,7 +43,7 @@ class AKSAssessmentSettingsResponse {
   /// [savingsOptions] Gets or sets savings options.
   /// [scalingFactor] Gets or sets scaling factor.
   /// [sizingCriteria] Gets or sets sizing criteria.
-  AKSAssessmentSettingsResponse({
+  const AKSAssessmentSettingsResponse({
     required this.azureLocation,
     required this.category,
     required this.consolidation,

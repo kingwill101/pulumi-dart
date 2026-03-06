@@ -38,7 +38,7 @@ class DataCollectionEndpointArgs {
   /// [networkAcls] Network access control rules for the endpoints.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DataCollectionEndpointArgs({
+  const DataCollectionEndpointArgs({
     this.dataCollectionEndpointName,
     this.description,
     this.identity,

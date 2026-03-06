@@ -27,7 +27,7 @@ class GetApplicationResult {
   /// [semanticVersion] Required.
   /// [sourceCodeUrl] URL pointing to the source code of the application version.
   /// [templateUrl] URL pointing to the Cloud Formation template for the application version.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.applicationId,
     required this.id,
     required this.name,

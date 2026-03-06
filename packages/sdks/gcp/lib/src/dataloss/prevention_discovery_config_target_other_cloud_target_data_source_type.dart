@@ -8,7 +8,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType {
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType].
   /// [dataSource] (Optional)
-  PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceType({
     this.dataSource,
   });
 

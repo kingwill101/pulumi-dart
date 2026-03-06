@@ -38,7 +38,7 @@ class RepositoryState {
   /// [project] The ID of the project in which the resource belongs.
   /// [remoteUri] Required. Git Clone HTTPS URI.
   /// [updateTime] Output only. Server assigned timestamp for when the connection was updated.
-  RepositoryState({
+  const RepositoryState({
     this.annotations,
     this.createTime,
     this.effectiveAnnotations,

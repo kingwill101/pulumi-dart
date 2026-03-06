@@ -23,7 +23,7 @@ class IAMPolicyState {
   /// [etag] (Computed) The etag of the project's IAM policy.
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
   /// [project] The project id of the target project. This is not
-  IAMPolicyState({
+  const IAMPolicyState({
     this.etag,
     this.policyData,
     this.project,

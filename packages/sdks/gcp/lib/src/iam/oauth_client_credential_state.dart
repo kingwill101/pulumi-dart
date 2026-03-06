@@ -43,7 +43,7 @@ class OauthClientCredentialState {
   /// [oauthClientCredentialId] Required. The ID to use for the OauthClientCredential, which becomes the
   /// [oauthclient] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
-  OauthClientCredentialState({
+  const OauthClientCredentialState({
     this.clientSecret,
     this.disabled,
     this.displayName,

@@ -28,7 +28,7 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse {
   /// [parameters] The parameters for the Flex Template. Example: `{"num_workers":"5"}`
   /// [transformNameMappings] Use this to pass transform name mappings for streaming update jobs. Example: `{"oldTransformName":"newTransformName",...}`
   /// [update] Set this to true if you are sending a request to update a running streaming job. When set, the job name should be the same as the running job.
-  GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse({
+  const GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterResponse({
     required this.containerSpecGcsPath,
     required this.environment,
     required this.jobName,

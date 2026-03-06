@@ -33,7 +33,7 @@ class GetInstanceRootBlockDevice {
   /// [volumeId] Required.
   /// [volumeSize] Size of the volume, in GiB.
   /// [volumeType] Type of the volume.
-  GetInstanceRootBlockDevice({
+  const GetInstanceRootBlockDevice({
     required this.deleteOnTermination,
     required this.deviceName,
     required this.encrypted,

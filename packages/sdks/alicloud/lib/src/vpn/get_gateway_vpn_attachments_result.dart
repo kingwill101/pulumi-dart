@@ -30,7 +30,7 @@ class GetGatewayVpnAttachmentsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The negotiation status of Tunnel. - **ike_sa_not_established**: Phase 1 negotiations failed.- **ike_sa_established**: Phase 1 negotiations succeeded.- **ipsec_sa_not_established**: Phase 2 negotiations failed.- **ipsec_sa_established**: Phase 2 negotiations succeeded.
-  GetGatewayVpnAttachmentsResult({
+  const GetGatewayVpnAttachmentsResult({
     required this.attachments,
     required this.id,
     required this.ids,

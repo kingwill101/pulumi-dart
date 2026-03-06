@@ -166,7 +166,7 @@ class GetClusterNodeConfig {
   /// [taints] List of Kubernetes taints to be applied to each node.
   /// [windowsNodeConfigs] Parameters that can be configured on Windows nodes.
   /// [workloadMetadataConfigs] The workload metadata configuration for this node.
-  GetClusterNodeConfig({
+  const GetClusterNodeConfig({
     required this.advancedMachineFeatures,
     required this.bootDiskKmsKey,
     required this.bootDisks,

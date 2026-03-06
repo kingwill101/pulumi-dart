@@ -15,7 +15,7 @@ class ListWebAppSiteBackupsArgs {
   /// Creates a new [ListWebAppSiteBackupsArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppSiteBackupsArgs({
+  const ListWebAppSiteBackupsArgs({
     required this.name,
     required this.resourceGroupName,
   });

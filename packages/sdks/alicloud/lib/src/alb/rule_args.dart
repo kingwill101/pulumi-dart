@@ -34,7 +34,7 @@ class RuleArgs {
   /// [ruleActions] The actions of the forwarding rules. See `rule_actions` below.
   /// [ruleConditions] The conditions of the forwarding rule. See `rule_conditions` below.
   /// [ruleName] The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-  RuleArgs({
+  const RuleArgs({
     this.direction,
     this.dryRun,
     required this.listenerId,

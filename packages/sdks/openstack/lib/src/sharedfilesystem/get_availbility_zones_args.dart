@@ -13,7 +13,7 @@ class GetAvailbilityZonesArgs {
 
   /// Creates a new [GetAvailbilityZonesArgs].
   /// [region] The region in which to obtain the V2 Shared File System
-  GetAvailbilityZonesArgs({
+  const GetAvailbilityZonesArgs({
     this.region,
   });
 

@@ -30,7 +30,7 @@ class StoreIndexFieldSearch {
   /// [name] When using the json_keys field, this field is required.
   /// [token] The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
   /// [type] The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-  StoreIndexFieldSearch({
+  const StoreIndexFieldSearch({
     this.alias,
     this.caseSensitive,
     this.enableAnalytics,

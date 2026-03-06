@@ -16,7 +16,7 @@ class CatalogArgs {
   /// [catalogId] Required. The ID to use for the catalog, which will become the final component of the catalog's resource name.
   /// [location] Optional.
   /// [project] Optional.
-  CatalogArgs({
+  const CatalogArgs({
     required this.catalogId,
     this.location,
     this.project,

@@ -11,7 +11,7 @@ class JobStatistics4Response {
   /// Creates a new [JobStatistics4Response].
   /// [destinationUriFileCounts] Number of files per destination URI or URI pattern specified in the extract configuration. These values will be in the same order as the URIs specified in the 'destinationUris' field.
   /// [inputBytes] Number of user bytes extracted into the result. This is the byte count as computed by BigQuery for billing purposes.
-  JobStatistics4Response({
+  const JobStatistics4Response({
     required this.destinationUriFileCounts,
     required this.inputBytes,
   });

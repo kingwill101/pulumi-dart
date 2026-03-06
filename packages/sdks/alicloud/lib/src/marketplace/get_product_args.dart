@@ -15,7 +15,7 @@ class GetProductArgs {
   /// Creates a new [GetProductArgs].
   /// [availableRegion] A available region id used to filter market place Ecs images.
   /// [productCode] The product code of the market product.
-  GetProductArgs({
+  const GetProductArgs({
     this.availableRegion,
     required this.productCode,
   });

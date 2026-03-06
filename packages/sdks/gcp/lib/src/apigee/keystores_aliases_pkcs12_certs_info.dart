@@ -11,7 +11,7 @@ class KeystoresAliasesPkcs12CertsInfo {
 
   /// Creates a new [KeystoresAliasesPkcs12CertsInfo].
   /// [certInfos] (Output)
-  KeystoresAliasesPkcs12CertsInfo({
+  const KeystoresAliasesPkcs12CertsInfo({
     this.certInfos,
   });
 

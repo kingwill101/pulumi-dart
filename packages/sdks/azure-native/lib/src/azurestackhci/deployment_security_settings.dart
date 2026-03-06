@@ -36,7 +36,7 @@ class DeploymentSecuritySettings {
   /// [smbClusterEncryption] When set to true, cluster east-west traffic is encrypted.
   /// [smbSigningEnforced] When set to true, the SMB default instance requires sign in for the client and server services.
   /// [wdacEnforced] WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
-  DeploymentSecuritySettings({
+  const DeploymentSecuritySettings({
     this.bitlockerBootVolume,
     this.bitlockerDataVolumes,
     this.credentialGuardEnforced,

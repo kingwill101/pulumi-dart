@@ -13,7 +13,7 @@ class LoadBalancerRule {
   /// Creates a new [LoadBalancerRule].
   /// [name] name of the load balancer rule
   /// [properties] load balancer rule properties
-  LoadBalancerRule({
+  const LoadBalancerRule({
     required this.name,
     required this.properties,
   });

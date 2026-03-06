@@ -19,7 +19,7 @@ class LogSettings {
   /// [categoryGroup] Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
   /// [enabled] a value indicating whether this log is enabled.
   /// [retentionPolicy] the retention policy for this log.
-  LogSettings({
+  const LogSettings({
     this.category,
     this.categoryGroup,
     required this.enabled,

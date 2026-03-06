@@ -11,7 +11,7 @@ class BudgetActionDefinitionScpActionDefinition {
   /// Creates a new [BudgetActionDefinitionScpActionDefinition].
   /// [policyId] The policy ID attached.
   /// [targetIds] A list of target IDs.
-  BudgetActionDefinitionScpActionDefinition({
+  const BudgetActionDefinitionScpActionDefinition({
     required this.policyId,
     required this.targetIds,
   });

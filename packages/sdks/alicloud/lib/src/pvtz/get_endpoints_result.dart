@@ -22,7 +22,7 @@ class GetEndpointsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetEndpointsResult({
+  const GetEndpointsResult({
     required this.endpoints,
     required this.id,
     required this.ids,

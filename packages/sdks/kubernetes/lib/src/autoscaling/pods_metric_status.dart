@@ -14,7 +14,7 @@ class PodsMetricStatus {
   /// Creates a new [PodsMetricStatus].
   /// [current] current contains the current value for the given metric
   /// [metric] metric identifies the target metric by name and selector
-  PodsMetricStatus({
+  const PodsMetricStatus({
     required this.current,
     required this.metric,
   });

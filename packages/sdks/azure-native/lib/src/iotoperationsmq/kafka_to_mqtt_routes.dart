@@ -21,7 +21,7 @@ class KafkaToMqttRoutes {
   /// [mqttTopic] The mqtt topic to publish to.
   /// [name] The name of the route.
   /// [qos] The qos to use for mqtt.
-  KafkaToMqttRoutes({
+  const KafkaToMqttRoutes({
     this.consumerGroupId,
     required this.kafkaTopic,
     required this.mqttTopic,

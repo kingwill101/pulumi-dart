@@ -14,7 +14,7 @@ class EdgeMachineNetworkProfileResponse {
   /// Creates a new [EdgeMachineNetworkProfileResponse].
   /// [nicDetails] List of Network Interface Card (NIC) Details of edge machine.
   /// [switchDetails] List of switch Details of edge machine.
-  EdgeMachineNetworkProfileResponse({
+  const EdgeMachineNetworkProfileResponse({
     required this.nicDetails,
     required this.switchDetails,
   });

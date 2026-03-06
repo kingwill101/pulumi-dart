@@ -21,7 +21,7 @@ class Sku {
   /// [family] If the service has different generations of hardware, for the same SKU, then that can be captured here
   /// [name] The name of the SKU for VMWare CloudSimple Node
   /// [tier] The tier of the SKU
-  Sku({
+  const Sku({
     this.capacity,
     this.description,
     this.family,

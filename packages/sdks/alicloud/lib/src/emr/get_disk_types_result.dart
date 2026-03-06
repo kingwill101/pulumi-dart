@@ -28,7 +28,7 @@ class GetDiskTypesResult {
   /// [outputFile] Optional.
   /// [types] A list of emr instance types. Each element contains the following attributes:
   /// [zoneId] Optional.
-  GetDiskTypesResult({
+  const GetDiskTypesResult({
     required this.clusterType,
     required this.destinationResource,
     required this.id,

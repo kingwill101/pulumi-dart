@@ -9,7 +9,7 @@ class GetRulesRuleRuleActionForwardGroupConfig {
 
   /// Creates a new [GetRulesRuleRuleActionForwardGroupConfig].
   /// [serverGroupTuples] The destination server group to which requests are forwarded.
-  GetRulesRuleRuleActionForwardGroupConfig({
+  const GetRulesRuleRuleActionForwardGroupConfig({
     required this.serverGroupTuples,
   });
 

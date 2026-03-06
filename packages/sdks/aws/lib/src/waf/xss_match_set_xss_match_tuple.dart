@@ -16,7 +16,7 @@ class XssMatchSetXssMatchTuple {
   /// Creates a new [XssMatchSetXssMatchTuple].
   /// [fieldToMatch] Specifies where in a web request to look for cross-site scripting attacks.
   /// [textTransformation] Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
-  XssMatchSetXssMatchTuple({
+  const XssMatchSetXssMatchTuple({
     required this.fieldToMatch,
     required this.textTransformation,
   });

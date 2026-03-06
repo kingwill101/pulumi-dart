@@ -34,7 +34,7 @@ class HubState {
   /// [s3StorageConfig] The Amazon S3 storage configuration for the hub. See S3 Storage Config details below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  HubState({
+  const HubState({
     this.arn,
     this.hubDescription,
     this.hubDisplayName,

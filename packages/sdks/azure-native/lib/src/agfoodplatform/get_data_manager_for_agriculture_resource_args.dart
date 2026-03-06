@@ -15,7 +15,7 @@ class GetDataManagerForAgricultureResourceArgs {
   /// Creates a new [GetDataManagerForAgricultureResourceArgs].
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDataManagerForAgricultureResourceArgs({
+  const GetDataManagerForAgricultureResourceArgs({
     required this.dataManagerForAgricultureResourceName,
     required this.resourceGroupName,
   });

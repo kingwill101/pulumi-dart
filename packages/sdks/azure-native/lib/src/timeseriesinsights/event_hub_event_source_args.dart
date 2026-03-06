@@ -59,7 +59,7 @@ class EventHubEventSourceArgs {
   /// [time] ISO8601 UTC datetime with seconds precision (milliseconds are optional), specifying the date and time that will be the starting point for Events to be consumed.
   /// [timestampPropertyName] The event property that will be used as the event source's timestamp. If a value isn't specified for timestampPropertyName, or if null or empty-string is specified, the event creation time will be used.
   /// [type] The type of the ingressStartAt, It can be "EarliestAvailable", "EventSourceCreationTime", "CustomEnqueuedTime".
-  EventHubEventSourceArgs({
+  const EventHubEventSourceArgs({
     required this.consumerGroupName,
     required this.environmentName,
     required this.eventHubName,

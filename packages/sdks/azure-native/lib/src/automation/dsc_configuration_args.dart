@@ -44,7 +44,7 @@ class DscConfigurationArgs {
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [source] Gets or sets the source.
   /// [tags] Gets or sets the tags attached to the resource.
-  DscConfigurationArgs({
+  const DscConfigurationArgs({
     required this.automationAccountName,
     this.configurationName,
     this.description,

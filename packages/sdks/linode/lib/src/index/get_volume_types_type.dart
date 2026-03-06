@@ -22,7 +22,7 @@ class GetVolumeTypesType {
   /// [prices] Cost in US dollars, broken down into hourly and monthly charges.
   /// [regionPrices] A list of region-specific prices for this Volume Type.
   /// [transfer] The monthly outbound transfer amount, in MB.
-  GetVolumeTypesType({
+  const GetVolumeTypesType({
     required this.id,
     required this.label,
     required this.prices,

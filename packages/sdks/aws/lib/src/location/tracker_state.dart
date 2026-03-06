@@ -38,7 +38,7 @@ class TrackerState {
   /// [trackerArn] The Amazon Resource Name (ARN) for the tracker resource. Used when you need to specify a resource across all AWS.
   /// [trackerName] The name of the tracker resource.
   /// [updateTime] The timestamp for when the tracker resource was last updated in ISO 8601 format.
-  TrackerState({
+  const TrackerState({
     this.createTime,
     this.description,
     this.kmsKeyId,

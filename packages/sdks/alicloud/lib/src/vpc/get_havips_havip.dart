@@ -38,7 +38,7 @@ class GetHavipsHavip {
   /// [status] The status.
   /// [vpcId] The VPC ID to which the HaVip instance belongs.
   /// [vswitchId] The vswitch id.
-  GetHavipsHavip({
+  const GetHavipsHavip({
     required this.associatedEipAddresses,
     required this.associatedInstances,
     required this.description,

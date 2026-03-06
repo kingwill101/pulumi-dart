@@ -18,7 +18,7 @@ class TrackingCorrelationContextResponse {
   /// [operationType] The operation type for correlation context.
   /// [propertyName] The name of the correlation property.
   /// [value] The template expression for correlation context property value.
-  TrackingCorrelationContextResponse({
+  const TrackingCorrelationContextResponse({
     this.operationName,
     this.operationType,
     this.propertyName,

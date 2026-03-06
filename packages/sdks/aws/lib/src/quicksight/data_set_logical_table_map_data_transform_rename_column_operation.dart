@@ -11,7 +11,7 @@ class DataSetLogicalTableMapDataTransformRenameColumnOperation {
   /// Creates a new [DataSetLogicalTableMapDataTransformRenameColumnOperation].
   /// [columnName] Column to be renamed.
   /// [newColumnName] New name for the column.
-  DataSetLogicalTableMapDataTransformRenameColumnOperation({
+  const DataSetLogicalTableMapDataTransformRenameColumnOperation({
     required this.columnName,
     required this.newColumnName,
   });

@@ -43,7 +43,7 @@ class PolicySettings {
   /// [requestBodyEnforcement] Whether allow WAF to enforce request body limits.
   /// [requestBodyInspectLimitInKB] Max inspection limit in KB for request body inspection for WAF.
   /// [state] The state of the policy.
-  PolicySettings({
+  const PolicySettings({
     this.customBlockResponseBody,
     this.customBlockResponseStatusCode,
     this.fileUploadEnforcement,

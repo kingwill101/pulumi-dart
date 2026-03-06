@@ -77,7 +77,7 @@ class DPMProtectedItemResponse {
   /// [sourceResourceId] ARM ID of the resource to be backed up.
   /// [vaultId] ID of the vault which protects this item
   /// [workloadType] Type of workload this item represents.
-  DPMProtectedItemResponse({
+  const DPMProtectedItemResponse({
     this.backupEngineName,
     required this.backupManagementType,
     this.backupSetName,

@@ -41,7 +41,7 @@ class GetEndpointPostgresSetting {
   /// [pluginName] Required.
   /// [serviceAccessRoleArn] Required.
   /// [slotName] Required.
-  GetEndpointPostgresSetting({
+  const GetEndpointPostgresSetting({
     required this.afterConnectScript,
     required this.authenticationMethod,
     required this.babelfishDatabaseName,

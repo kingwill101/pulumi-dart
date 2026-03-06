@@ -15,7 +15,7 @@ class GetEndpointPolicyArgs {
   /// [endpointPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEndpointPolicyArgs({
+  const GetEndpointPolicyArgs({
     required this.endpointPolicyId,
     required this.location,
     this.project,

@@ -15,7 +15,7 @@ class KubernetesClusterOmsAgent {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace which the OMS Agent should send data to.
   /// [msiAuthForMonitoringEnabled] Is managed identity authentication for monitoring enabled?
   /// [omsAgentIdentities] An `oms_agent_identity` block is exported. The exported attributes are defined below.
-  KubernetesClusterOmsAgent({
+  const KubernetesClusterOmsAgent({
     required this.logAnalyticsWorkspaceId,
     this.msiAuthForMonitoringEnabled,
     this.omsAgentIdentities,

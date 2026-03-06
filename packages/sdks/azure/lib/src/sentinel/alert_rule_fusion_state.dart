@@ -21,7 +21,7 @@ class AlertRuleFusionState {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace this Sentinel Fusion Alert Rule belongs to. Changing this forces a new Sentinel Fusion Alert Rule to be created.
   /// [name] Optional.
   /// [sources] One or more `source` blocks as defined below.
-  AlertRuleFusionState({
+  const AlertRuleFusionState({
     this.alertRuleTemplateGuid,
     this.enabled,
     this.logAnalyticsWorkspaceId,

@@ -14,7 +14,7 @@ class GetResolverInboundEndpointIpConfiguration {
   /// [privateIpAddress] The private IP address of the IP configuration.
   /// [privateIpAllocationMethod] The private IP address allocation method.
   /// [subnetId] The subnet ID of the IP configuration.
-  GetResolverInboundEndpointIpConfiguration({
+  const GetResolverInboundEndpointIpConfiguration({
     required this.privateIpAddress,
     required this.privateIpAllocationMethod,
     required this.subnetId,

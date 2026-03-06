@@ -32,7 +32,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] Connection State of the Private Endpoint Connection.
   /// [provisioningState] Provisioning state of the private endpoint.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     required this.accountName,
     this.groupId,
     this.privateEndpoint,

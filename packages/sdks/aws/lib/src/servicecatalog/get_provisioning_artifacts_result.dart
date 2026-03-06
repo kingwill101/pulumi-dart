@@ -19,7 +19,7 @@ class GetProvisioningArtifactsResult {
   /// [productId] Required.
   /// [provisioningArtifactDetails] List with information about the provisioning artifacts. See details below.
   /// [region] Required.
-  GetProvisioningArtifactsResult({
+  const GetProvisioningArtifactsResult({
     this.acceptLanguage,
     required this.id,
     required this.productId,

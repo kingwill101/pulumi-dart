@@ -8,7 +8,7 @@ class SubResourceResponse {
 
   /// Creates a new [SubResourceResponse].
   /// [id] Resource Id
-  SubResourceResponse({
+  const SubResourceResponse({
     this.id,
   });
 

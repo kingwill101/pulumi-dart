@@ -13,7 +13,7 @@ class BooleanConditionProperties {
   /// Creates a new [BooleanConditionProperties].
   /// [conditionProperties] Describes an automation rule condition with boolean operators.
   /// [conditionType] Expected value is 'Boolean'.
-  BooleanConditionProperties({
+  const BooleanConditionProperties({
     this.conditionProperties,
     required this.conditionType,
   });

@@ -14,7 +14,7 @@ class StorageDomainRoutingRuleRoute {
   /// [endpointType] Endpoint Type.
   /// [instanceDomain] Instance domain name.
   /// [storageDomain] Storage domain name.
-  StorageDomainRoutingRuleRoute({
+  const StorageDomainRoutingRuleRoute({
     required this.endpointType,
     required this.instanceDomain,
     required this.storageDomain,

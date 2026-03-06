@@ -17,7 +17,7 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfo {
   /// [locale] The locale of the service.
   /// [name] The name of the service.
   /// [shortDescription] The short description of the service.
-  GetNestServiceInstancesServiceInstanceServiceServiceInfo({
+  const GetNestServiceInstancesServiceInstanceServiceServiceInfo({
     required this.image,
     required this.locale,
     required this.name,

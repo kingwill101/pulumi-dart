@@ -41,7 +41,7 @@ class FrontendEndpointResponse {
   /// [sessionAffinityTtlSeconds] UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
   /// [type] Resource type.
   /// [webApplicationFirewallPolicyLink] Defines the Web Application Firewall policy for each host (if applicable)
-  FrontendEndpointResponse({
+  const FrontendEndpointResponse({
     required this.customHttpsConfiguration,
     required this.customHttpsProvisioningState,
     required this.customHttpsProvisioningSubstate,

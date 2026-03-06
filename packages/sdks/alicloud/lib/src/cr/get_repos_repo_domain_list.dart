@@ -14,7 +14,7 @@ class GetReposRepoDomainList {
   /// [internal] Domain of internal endpoint, only in some regions.
   /// [public] Domain of public endpoint.
   /// [vpc] Domain of vpc endpoint.
-  GetReposRepoDomainList({
+  const GetReposRepoDomainList({
     required this.internal,
     required this.public,
     required this.vpc,

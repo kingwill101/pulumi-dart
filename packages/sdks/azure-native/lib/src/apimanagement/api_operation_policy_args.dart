@@ -30,7 +30,7 @@ class ApiOperationPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the Policy as defined by the format.
-  ApiOperationPolicyArgs({
+  const ApiOperationPolicyArgs({
     required this.apiId,
     this.format,
     required this.operationId,

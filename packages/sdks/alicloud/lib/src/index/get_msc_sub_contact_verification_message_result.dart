@@ -15,7 +15,7 @@ class GetMscSubContactVerificationMessageResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [status] The sending status of the message. Valid values : `Success`, `Failed`.
   /// [type] Required.
-  GetMscSubContactVerificationMessageResult({
+  const GetMscSubContactVerificationMessageResult({
     required this.contactId,
     required this.id,
     required this.status,

@@ -8,7 +8,7 @@ class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch {
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch].
   /// [exacts] Values sent must match the specified values exactly.
-  VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch({
+  const VirtualNodeSpecListenerTlsValidationSubjectAlternativeNamesMatch({
     required this.exacts,
   });
 

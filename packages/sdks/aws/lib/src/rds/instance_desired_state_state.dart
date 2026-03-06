@@ -18,7 +18,7 @@ class InstanceDesiredStateState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] Configured state of the DB Instance. Valid values are `available` and `stopped`.
   /// [timeouts] Optional.
-  InstanceDesiredStateState({
+  const InstanceDesiredStateState({
     this.identifier,
     this.region,
     this.state,

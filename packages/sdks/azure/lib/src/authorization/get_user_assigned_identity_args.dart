@@ -15,7 +15,7 @@ class GetUserAssignedIdentityArgs {
   /// Creates a new [GetUserAssignedIdentityArgs].
   /// [name] The name of the User Assigned Identity.
   /// [resourceGroupName] The name of the Resource Group in which the User Assigned Identity exists.
-  GetUserAssignedIdentityArgs({
+  const GetUserAssignedIdentityArgs({
     required this.name,
     required this.resourceGroupName,
   });

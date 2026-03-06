@@ -21,7 +21,7 @@ class GetServiceArgs {
   /// [location] The location of the cloud run instance. eg us-central1
   /// [name] The name of the Cloud Run Service.
   /// [project] The project in which the resource belongs. If it
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.location,
     required this.name,
     this.project,

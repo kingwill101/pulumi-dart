@@ -11,7 +11,7 @@ class DataGroupRecord {
   /// Creates a new [DataGroupRecord].
   /// [data] , sets the value of the record's `data` attribute, specifying a value here will create a record in the form of `name := data`
   /// [name] , sets the value of the record's `name` attribute, must be of type defined in `type` attribute
-  DataGroupRecord({
+  const DataGroupRecord({
     this.data,
     required this.name,
   });

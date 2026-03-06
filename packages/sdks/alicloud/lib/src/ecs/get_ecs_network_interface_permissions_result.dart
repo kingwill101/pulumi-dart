@@ -26,7 +26,7 @@ class GetEcsNetworkInterfacePermissionsResult {
   /// [permissions] Required.
   /// [status] Optional.
   /// [totalCount] Required.
-  GetEcsNetworkInterfacePermissionsResult({
+  const GetEcsNetworkInterfacePermissionsResult({
     required this.id,
     required this.ids,
     required this.networkInterfaceId,

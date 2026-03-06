@@ -23,7 +23,7 @@ class DirectLineSpeechChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to DirectLine Speech channel resource
   /// [provisioningState] Provisioning state of the resource
-  DirectLineSpeechChannelResponse({
+  const DirectLineSpeechChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

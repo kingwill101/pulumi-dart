@@ -10,7 +10,7 @@ class GetDnsResourceReferenceByTarResourcesResult {
 
   /// Creates a new [GetDnsResourceReferenceByTarResourcesResult].
   /// [dnsResourceReferences] The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request
-  GetDnsResourceReferenceByTarResourcesResult({
+  const GetDnsResourceReferenceByTarResourcesResult({
     this.dnsResourceReferences,
   });
 

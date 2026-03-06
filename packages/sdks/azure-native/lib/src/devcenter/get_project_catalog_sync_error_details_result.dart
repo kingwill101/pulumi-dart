@@ -18,7 +18,7 @@ class GetProjectCatalogSyncErrorDetailsResult {
   /// [conflicts] Catalog items that have conflicting names.
   /// [errors] Errors that occured during synchronization.
   /// [operationError] Error information for the overall synchronization operation.
-  GetProjectCatalogSyncErrorDetailsResult({
+  const GetProjectCatalogSyncErrorDetailsResult({
     required this.conflicts,
     required this.errors,
     required this.operationError,

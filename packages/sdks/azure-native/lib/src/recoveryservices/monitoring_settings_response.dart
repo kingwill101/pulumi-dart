@@ -14,7 +14,7 @@ class MonitoringSettingsResponse {
   /// Creates a new [MonitoringSettingsResponse].
   /// [azureMonitorAlertSettings] Settings for Azure Monitor based alerts
   /// [classicAlertSettings] Settings for classic alerts
-  MonitoringSettingsResponse({
+  const MonitoringSettingsResponse({
     this.azureMonitorAlertSettings,
     this.classicAlertSettings,
   });

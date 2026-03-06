@@ -15,7 +15,7 @@ class GetDbClustersArgs {
   /// Creates a new [GetDbClustersArgs].
   /// [ids] A list of DBCluster IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetDbClustersArgs({
+  const GetDbClustersArgs({
     this.ids,
     this.outputFile,
   });

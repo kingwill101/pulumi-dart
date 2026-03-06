@@ -68,7 +68,7 @@ class StageState {
   /// [variables] Map that defines the stage variables.
   /// [webAclArn] ARN of the WebAcl associated with the Stage.
   /// [xrayTracingEnabled] Whether active tracing with X-ray is enabled. Defaults to `false`.
-  StageState({
+  const StageState({
     this.accessLogSettings,
     this.arn,
     this.cacheClusterEnabled,

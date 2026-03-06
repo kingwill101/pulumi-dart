@@ -13,7 +13,7 @@ class BuildpacksGroupPropertiesResponse {
   /// Creates a new [BuildpacksGroupPropertiesResponse].
   /// [buildpacks] Buildpacks in the buildpack group
   /// [name] Buildpack group name
-  BuildpacksGroupPropertiesResponse({
+  const BuildpacksGroupPropertiesResponse({
     this.buildpacks,
     this.name,
   });

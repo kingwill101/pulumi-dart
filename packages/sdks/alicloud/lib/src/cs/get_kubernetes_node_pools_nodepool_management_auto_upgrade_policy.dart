@@ -8,7 +8,7 @@ class GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy {
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy].
   /// [autoUpgradeKubelet] Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-  GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy({
+  const GetKubernetesNodePoolsNodepoolManagementAutoUpgradePolicy({
     required this.autoUpgradeKubelet,
   });
 

@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2KAnonymityResultResponse {
 
   /// Creates a new [GooglePrivacyDlpV2KAnonymityResultResponse].
   /// [equivalenceClassHistogramBuckets] Histogram of k-anonymity equivalence classes.
-  GooglePrivacyDlpV2KAnonymityResultResponse({
+  const GooglePrivacyDlpV2KAnonymityResultResponse({
     required this.equivalenceClassHistogramBuckets,
   });
 

@@ -39,7 +39,7 @@ class GetSecurityAdminConfigurationResult {
   /// [resourceGuid] Unique identifier for this resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetSecurityAdminConfigurationResult({
+  const GetSecurityAdminConfigurationResult({
     this.applyOnNetworkIntentPolicyBasedServices,
     required this.azureApiVersion,
     this.description,

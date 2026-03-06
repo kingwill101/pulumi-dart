@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvision
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport].
   /// [minimumApiVersion] Minimum API version.
-  ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport({
+  const ResourceTypeRegistrationPropertiesResourceManagementOptionsNestedProvisioningSupport({
     this.minimumApiVersion,
   });
 

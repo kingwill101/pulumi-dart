@@ -34,7 +34,7 @@ class SnsSubscriptionPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SnsSubscriptionPropertiesResponse({
+  const SnsSubscriptionPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

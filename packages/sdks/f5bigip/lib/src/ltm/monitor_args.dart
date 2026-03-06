@@ -99,7 +99,7 @@ class MonitorArgs {
   /// [transparent] Specifies whether the monitor operates in transparent mode.
   /// [upInterval] Specifies the interval for the system to use to perform the health check when a resource is up. The default is `0(Disabled)`
   /// [username] Specifies the user name if the monitored target requires authentication
-  MonitorArgs({
+  const MonitorArgs({
     this.adaptive,
     this.adaptiveLimit,
     this.base,

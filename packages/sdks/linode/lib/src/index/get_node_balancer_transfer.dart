@@ -14,7 +14,7 @@ class GetNodeBalancerTransfer {
   /// [in_] The total transfer, in MB, used by this NodeBalancer for the current month
   /// [out] The total inbound transfer, in MB, used for this NodeBalancer for the current month
   /// [total] The total outbound transfer, in MB, used for this NodeBalancer for the current month
-  GetNodeBalancerTransfer({
+  const GetNodeBalancerTransfer({
     required this.in_,
     required this.out,
     required this.total,

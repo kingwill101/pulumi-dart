@@ -48,7 +48,7 @@ class GetClustersCluster {
   /// [resourceGroupId] The Resource Group ID.
   /// [stateChangeReason] The cluster state change reason.
   /// [tags] A mapping of tags to assign to the resource.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.clusterId,
     required this.clusterName,
     required this.clusterState,

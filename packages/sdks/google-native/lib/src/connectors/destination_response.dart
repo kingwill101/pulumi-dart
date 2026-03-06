@@ -14,7 +14,7 @@ class DestinationResponse {
   /// [host] For publicly routable host.
   /// [port] The port is the target port number that is accepted by the destination.
   /// [serviceAttachment] PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
-  DestinationResponse({
+  const DestinationResponse({
     required this.host,
     required this.port,
     required this.serviceAttachment,

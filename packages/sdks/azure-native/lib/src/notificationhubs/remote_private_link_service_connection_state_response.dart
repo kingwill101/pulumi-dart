@@ -15,7 +15,7 @@ class RemotePrivateLinkServiceConnectionStateResponse {
   /// [actionsRequired] Human-friendly description of required actions.
   /// [description] Human-friendly description.
   /// [status] State of Private Link Connection.
-  RemotePrivateLinkServiceConnectionStateResponse({
+  const RemotePrivateLinkServiceConnectionStateResponse({
     required this.actionsRequired,
     required this.description,
     this.status,

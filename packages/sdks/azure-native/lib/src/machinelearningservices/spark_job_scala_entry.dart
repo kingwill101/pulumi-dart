@@ -11,7 +11,7 @@ class SparkJobScalaEntry {
   /// Creates a new [SparkJobScalaEntry].
   /// [className] [Required] Scala class name used as entry point.
   /// [sparkJobEntryType] Expected value is 'SparkJobScalaEntry'.
-  SparkJobScalaEntry({
+  const SparkJobScalaEntry({
     required this.className,
     required this.sparkJobEntryType,
   });

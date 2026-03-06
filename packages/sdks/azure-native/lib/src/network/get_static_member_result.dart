@@ -33,7 +33,7 @@ class GetStaticMemberResult {
   /// [resourceId] Resource Id.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetStaticMemberResult({
+  const GetStaticMemberResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

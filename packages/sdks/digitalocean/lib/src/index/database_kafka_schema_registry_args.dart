@@ -21,7 +21,7 @@ class DatabaseKafkaSchemaRegistryArgs {
   /// [schema] The schema definition as a string.
   /// [schemaType] The schema type. Available values are: avro, json, or protobuf.
   /// [subjectName] The name of the schema subject.
-  DatabaseKafkaSchemaRegistryArgs({
+  const DatabaseKafkaSchemaRegistryArgs({
     required this.clusterId,
     required this.schema,
     required this.schemaType,

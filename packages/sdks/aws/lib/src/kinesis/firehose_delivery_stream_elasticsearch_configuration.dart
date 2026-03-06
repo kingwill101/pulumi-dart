@@ -51,7 +51,7 @@ class FirehoseDeliveryStreamElasticsearchConfiguration {
   /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
   /// [typeName] The Elasticsearch type name with maximum length of 100 characters.
   /// [vpcConfig] The VPC configuration for the delivery stream to connect to Elastic Search associated with the VPC. See `vpc_config` block below for details.
-  FirehoseDeliveryStreamElasticsearchConfiguration({
+  const FirehoseDeliveryStreamElasticsearchConfiguration({
     this.bufferingInterval,
     this.bufferingSize,
     this.cloudwatchLoggingOptions,

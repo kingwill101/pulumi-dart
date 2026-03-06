@@ -13,7 +13,7 @@ class ListLocalRulestackPredefinedUrlCategoriesResult {
   /// Creates a new [ListLocalRulestackPredefinedUrlCategoriesResult].
   /// [nextLink] next link
   /// [value] predefined url categories
-  ListLocalRulestackPredefinedUrlCategoriesResult({
+  const ListLocalRulestackPredefinedUrlCategoriesResult({
     this.nextLink,
     required this.value,
   });

@@ -12,7 +12,7 @@ class AutoscalingSettingsResponse {
   /// Creates a new [AutoscalingSettingsResponse].
   /// [algorithm] The algorithm to use for autoscaling.
   /// [maxNumWorkers] The maximum number of workers to cap scaling at.
-  AutoscalingSettingsResponse({
+  const AutoscalingSettingsResponse({
     required this.algorithm,
     required this.maxNumWorkers,
   });

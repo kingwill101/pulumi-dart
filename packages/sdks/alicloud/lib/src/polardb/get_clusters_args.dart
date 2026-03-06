@@ -29,7 +29,7 @@ class GetClustersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] status of the cluster.
   /// [tags] A mapping of tags to assign to the resource.
-  GetClustersArgs({
+  const GetClustersArgs({
     this.dbType,
     this.descriptionRegex,
     this.ids,

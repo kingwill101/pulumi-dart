@@ -21,7 +21,7 @@ class InstanceNetworkInterfaceAssociationResponse {
   /// [ipOwnerId] &lt;p&gt;The ID of the owner of the Elastic IP address.&lt;/p&gt;
   /// [publicDnsName] &lt;p&gt;The public DNS name.&lt;/p&gt;
   /// [publicIp] &lt;p&gt;The public IP address or Elastic IP address bound to the network interface.&lt;/p&gt;
-  InstanceNetworkInterfaceAssociationResponse({
+  const InstanceNetworkInterfaceAssociationResponse({
     this.carrierIp,
     this.customerOwnedIp,
     this.ipOwnerId,

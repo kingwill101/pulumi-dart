@@ -11,7 +11,7 @@ class IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration {
   /// Creates a new [IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration].
   /// [groupClaim] The token claim that you want Verified Permissions to interpret as group membership. For example, `groups`.
   /// [groupEntityType] The name of the schema entity type that's mapped to the user pool group. Defaults to `AWS::CognitoGroup`.
-  IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration({
+  const IdentitySourceConfigurationOpenIdConnectConfigurationGroupConfiguration({
     required this.groupClaim,
     required this.groupEntityType,
   });

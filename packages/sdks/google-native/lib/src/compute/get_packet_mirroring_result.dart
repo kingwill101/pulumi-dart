@@ -48,7 +48,7 @@ class GetPacketMirroringResult {
   /// [region] URI of the region where the packetMirroring resides.
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
-  GetPacketMirroringResult({
+  const GetPacketMirroringResult({
     required this.collectorIlb,
     required this.creationTimestamp,
     required this.description,

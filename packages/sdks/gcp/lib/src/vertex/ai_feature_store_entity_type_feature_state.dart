@@ -43,7 +43,7 @@ class AiFeatureStoreEntityTypeFeatureState {
   /// [region] The region of the feature
   /// [updateTime] The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// [valueType] Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
-  AiFeatureStoreEntityTypeFeatureState({
+  const AiFeatureStoreEntityTypeFeatureState({
     this.createTime,
     this.description,
     this.effectiveLabels,

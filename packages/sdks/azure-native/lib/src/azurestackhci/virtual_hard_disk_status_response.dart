@@ -24,7 +24,7 @@ class VirtualHardDiskStatusResponse {
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] Provisioning status of the vhd
   /// [uploadStatus] The upload status of the virtual hard disk
-  VirtualHardDiskStatusResponse({
+  const VirtualHardDiskStatusResponse({
     this.downloadStatus,
     this.errorCode,
     this.errorMessage,

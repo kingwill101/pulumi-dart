@@ -44,7 +44,7 @@ class ResourceGatewayState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcId] ID of the VPC for the resource gateway.
-  ResourceGatewayState({
+  const ResourceGatewayState({
     this.arn,
     this.ipAddressType,
     this.ipv4AddressesPerEni,

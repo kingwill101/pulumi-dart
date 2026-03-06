@@ -22,7 +22,7 @@ class GetDirectoriesResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetDirectoriesResult({
+  const GetDirectoriesResult({
     required this.directories,
     this.enableDetails,
     required this.id,

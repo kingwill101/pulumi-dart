@@ -8,7 +8,7 @@ class GcpIntegrationsKubernetes {
 
   /// Creates a new [GcpIntegrationsKubernetes].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsKubernetes({
+  const GcpIntegrationsKubernetes({
     this.metricsPollingInterval,
   });
 

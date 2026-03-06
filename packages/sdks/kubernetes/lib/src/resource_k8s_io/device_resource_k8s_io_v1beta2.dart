@@ -83,7 +83,7 @@ class DeviceResourceK8sIoV1beta2 {
   /// [nodeName] NodeName identifies the node where the device is available.
   /// [nodeSelector] NodeSelector defines the nodes where the device is available.
   /// [taints] If specified, these are the driver-defined taints.
-  DeviceResourceK8sIoV1beta2({
+  const DeviceResourceK8sIoV1beta2({
     this.allNodes,
     this.allowMultipleAllocations,
     this.attributes,

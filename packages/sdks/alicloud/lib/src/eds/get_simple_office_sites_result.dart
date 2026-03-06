@@ -22,7 +22,7 @@ class GetSimpleOfficeSitesResult {
   /// [outputFile] Optional.
   /// [sites] Required.
   /// [status] Optional.
-  GetSimpleOfficeSitesResult({
+  const GetSimpleOfficeSitesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

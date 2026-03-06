@@ -18,7 +18,7 @@ class GetPacketCaptureArgs {
   /// [networkWatcherName] The name of the network watcher.
   /// [packetCaptureName] The name of the packet capture session.
   /// [resourceGroupName] The name of the resource group.
-  GetPacketCaptureArgs({
+  const GetPacketCaptureArgs({
     required this.networkWatcherName,
     required this.packetCaptureName,
     required this.resourceGroupName,

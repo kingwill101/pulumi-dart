@@ -17,7 +17,7 @@ class GetMembershipIamPolicyArgs {
   /// [membershipId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetMembershipIamPolicyArgs({
+  const GetMembershipIamPolicyArgs({
     required this.location,
     required this.membershipId,
     this.optionsRequestedPolicyVersion,

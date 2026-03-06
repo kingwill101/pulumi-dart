@@ -14,7 +14,7 @@ class ResourceClaimSchedulingStatus {
   /// Creates a new [ResourceClaimSchedulingStatus].
   /// [name] Name matches the pod.spec.resourceClaims[*].Name field.
   /// [unsuitableNodes] UnsuitableNodes lists nodes that the ResourceClaim cannot be allocated for.
-  ResourceClaimSchedulingStatus({
+  const ResourceClaimSchedulingStatus({
     this.name,
     this.unsuitableNodes,
   });

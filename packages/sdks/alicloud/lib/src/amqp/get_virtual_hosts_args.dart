@@ -21,7 +21,7 @@ class GetVirtualHostsArgs {
   /// [instanceId] InstanceId.
   /// [nameRegex] A regex string to filter results by Virtual Host name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetVirtualHostsArgs({
+  const GetVirtualHostsArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

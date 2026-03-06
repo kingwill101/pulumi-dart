@@ -8,7 +8,7 @@ class DomainDevicesRedirDevSourceDbus {
 
   /// Creates a new [DomainDevicesRedirDevSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesRedirDevSourceDbus({
+  const DomainDevicesRedirDevSourceDbus({
     this.channel,
   });
 

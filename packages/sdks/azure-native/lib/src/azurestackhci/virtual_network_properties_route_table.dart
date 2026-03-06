@@ -19,7 +19,7 @@ class VirtualNetworkPropertiesRouteTable {
   /// [name] Name - READ-ONLY; Resource name.
   /// [routes] Routes - Collection of routes contained within a route table.
   /// [type] Type - READ-ONLY; Resource type.
-  VirtualNetworkPropertiesRouteTable({
+  const VirtualNetworkPropertiesRouteTable({
     this.id,
     this.name,
     this.routes,

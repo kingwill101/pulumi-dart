@@ -16,7 +16,7 @@ class IngressBackendPatch {
   /// [resource] Resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, serviceName and servicePort must not be specified.
   /// [serviceName] Specifies the name of the referenced service.
   /// [servicePort] Specifies the port of the referenced service.
-  IngressBackendPatch({
+  const IngressBackendPatch({
     this.resource,
     this.serviceName,
     this.servicePort,

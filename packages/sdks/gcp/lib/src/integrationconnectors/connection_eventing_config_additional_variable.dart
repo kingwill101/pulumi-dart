@@ -27,7 +27,7 @@ class ConnectionEventingConfigAdditionalVariable {
   /// [key] Key for the configVariable
   /// [secretValue] Secret value of configVariable
   /// [stringValue] String Value of configVariabley.
-  ConnectionEventingConfigAdditionalVariable({
+  const ConnectionEventingConfigAdditionalVariable({
     this.booleanValue,
     this.encryptionKeyValue,
     this.integerValue,

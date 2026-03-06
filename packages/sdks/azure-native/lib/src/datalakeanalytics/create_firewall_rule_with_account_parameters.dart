@@ -15,7 +15,7 @@ class CreateFirewallRuleWithAccountParameters {
   /// [endIpAddress] The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   /// [name] The unique name of the firewall rule to create.
   /// [startIpAddress] The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  CreateFirewallRuleWithAccountParameters({
+  const CreateFirewallRuleWithAccountParameters({
     required this.endIpAddress,
     required this.name,
     required this.startIpAddress,

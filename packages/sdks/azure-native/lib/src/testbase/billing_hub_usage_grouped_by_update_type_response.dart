@@ -16,7 +16,7 @@ class BillingHubUsageGroupedByUpdateTypeResponse {
   /// [totalUsedFreeHours] Optional.
   /// [updateType] Optional.
   /// [usageGroups] Optional.
-  BillingHubUsageGroupedByUpdateTypeResponse({
+  const BillingHubUsageGroupedByUpdateTypeResponse({
     this.totalCharges,
     this.totalUsedBillableHours,
     this.totalUsedFreeHours,

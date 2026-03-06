@@ -9,7 +9,7 @@ class IncidentLabel {
 
   /// Creates a new [IncidentLabel].
   /// [labelName] The name of the label
-  IncidentLabel({
+  const IncidentLabel({
     required this.labelName,
   });
 

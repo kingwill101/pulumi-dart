@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageSsm
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageSsmlMessage({
+  const V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageSsmlMessage({
     required this.value,
   });
 

@@ -13,7 +13,7 @@ class RegistryEndpointAnonymousAuthenticationResponse {
   /// Creates a new [RegistryEndpointAnonymousAuthenticationResponse].
   /// [anonymousSettings] Anonymous authentication properties
   /// [method] The authentication method.
-  RegistryEndpointAnonymousAuthenticationResponse({
+  const RegistryEndpointAnonymousAuthenticationResponse({
     required this.anonymousSettings,
     required this.method,
   });

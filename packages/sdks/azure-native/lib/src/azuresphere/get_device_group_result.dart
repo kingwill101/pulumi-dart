@@ -42,7 +42,7 @@ class GetDeviceGroupResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatePolicy] Update policy of the device group.
-  GetDeviceGroupResult({
+  const GetDeviceGroupResult({
     this.allowCrashDumpsCollection,
     required this.azureApiVersion,
     this.description,

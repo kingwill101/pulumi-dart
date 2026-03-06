@@ -14,7 +14,7 @@ class SiteLocation {
   /// [address] Address of the location.
   /// [latitude] Latitude of the location.
   /// [longitude] Longitude of the location.
-  SiteLocation({
+  const SiteLocation({
     this.address,
     this.latitude,
     this.longitude,

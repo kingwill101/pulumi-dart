@@ -17,7 +17,7 @@ class StorageQueueMessage {
   /// [queueName] Gets or sets the queue name.
   /// [sasToken] Gets or sets the SAS key.
   /// [storageAccount] Gets or sets the storage account name.
-  StorageQueueMessage({
+  const StorageQueueMessage({
     this.message,
     this.queueName,
     this.sasToken,

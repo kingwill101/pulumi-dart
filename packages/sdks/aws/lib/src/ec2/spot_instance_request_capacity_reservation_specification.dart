@@ -14,7 +14,7 @@ class SpotInstanceRequestCapacityReservationSpecification {
   /// Creates a new [SpotInstanceRequestCapacityReservationSpecification].
   /// [capacityReservationPreference] Indicates the instance's Capacity Reservation preferences. Can be `"open"` or `"none"`. (Default: `"open"`).
   /// [capacityReservationTarget] Information about the target Capacity Reservation. See Capacity Reservation Target below for more details.
-  SpotInstanceRequestCapacityReservationSpecification({
+  const SpotInstanceRequestCapacityReservationSpecification({
     this.capacityReservationPreference,
     this.capacityReservationTarget,
   });

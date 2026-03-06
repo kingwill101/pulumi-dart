@@ -15,7 +15,7 @@ class GetAppArgs {
   /// Creates a new [GetAppArgs].
   /// [resourceGroupName] The name of the resource group that contains the IoT Central application.
   /// [resourceName] The ARM resource name of the IoT Central application.
-  GetAppArgs({
+  const GetAppArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

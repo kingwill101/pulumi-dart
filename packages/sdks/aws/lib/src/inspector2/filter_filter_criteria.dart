@@ -189,7 +189,7 @@ class FilterFilterCriteria {
   /// [vulnerabilityIds] (Optional) The ID of the vulnerability. Documented below.
   /// [vulnerabilitySources] (Optional) The source of the vulnerability. Documented below.
   /// [vulnerablePackages] (Optional) Details about vulnerable packages. Documented below.
-  FilterFilterCriteria({
+  const FilterFilterCriteria({
     this.awsAccountIds,
     this.codeRepositoryProjectNames,
     this.codeRepositoryProviderTypes,

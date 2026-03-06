@@ -140,7 +140,7 @@ class GetUserResult {
   /// [usageLocation] The usage location of the user.
   /// [userPrincipalName] The user principal name (UPN) of the user.
   /// [userType] The user type in the directory. Possible values are `Guest` or `Member`.
-  GetUserResult({
+  const GetUserResult({
     required this.accountEnabled,
     required this.ageGroup,
     required this.businessPhones,

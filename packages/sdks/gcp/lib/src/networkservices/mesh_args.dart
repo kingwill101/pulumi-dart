@@ -34,7 +34,7 @@ class MeshArgs {
   /// [location] Location (region) of the Mesh resource to be created. Only the value 'global' is currently allowed; defaults to 'global' if omitted.
   /// [name] Short name of the Mesh resource to be created.
   /// [project] The ID of the project in which the resource belongs.
-  MeshArgs({
+  const MeshArgs({
     this.description,
     this.interceptionPort,
     this.labels,

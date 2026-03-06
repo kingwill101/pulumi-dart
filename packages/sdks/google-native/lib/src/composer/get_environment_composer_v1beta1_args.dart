@@ -15,7 +15,7 @@ class GetEnvironmentComposerV1beta1Args {
   /// [environmentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEnvironmentComposerV1beta1Args({
+  const GetEnvironmentComposerV1beta1Args({
     required this.environmentId,
     required this.location,
     this.project,

@@ -72,7 +72,7 @@ class InstanceNetworkInterface {
   /// [status] &lt;p&gt;The status of the network interface.&lt;/p&gt;
   /// [subnetId] &lt;p&gt;The ID of the subnet.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The ID of the VPC.&lt;/p&gt;
-  InstanceNetworkInterface({
+  const InstanceNetworkInterface({
     this.association,
     this.attachment,
     this.connectionTrackingConfiguration,

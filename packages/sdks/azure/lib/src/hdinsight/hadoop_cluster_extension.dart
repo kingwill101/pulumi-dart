@@ -11,7 +11,7 @@ class HadoopClusterExtension {
   /// Creates a new [HadoopClusterExtension].
   /// [logAnalyticsWorkspaceId] The workspace ID of the log analytics extension.
   /// [primaryKey] The workspace key of the log analytics extension.
-  HadoopClusterExtension({
+  const HadoopClusterExtension({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

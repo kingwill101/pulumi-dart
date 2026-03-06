@@ -8,7 +8,7 @@ class DomainFeaturesHyperVFrequencies {
 
   /// Creates a new [DomainFeaturesHyperVFrequencies].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVFrequencies({
+  const DomainFeaturesHyperVFrequencies({
     this.state,
   });
 

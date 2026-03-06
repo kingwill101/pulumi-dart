@@ -18,7 +18,7 @@ class GetCapacityPoolArgs {
   /// [accountName] The name of the NetApp account
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCapacityPoolArgs({
+  const GetCapacityPoolArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

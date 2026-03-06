@@ -11,7 +11,7 @@ class WorkstationConfigEncryptionKey {
   /// Creates a new [WorkstationConfigEncryptionKey].
   /// [kmsKey] The name of the Google Cloud KMS encryption key.
   /// [kmsKeyServiceAccount] The service account to use with the specified KMS key.
-  WorkstationConfigEncryptionKey({
+  const WorkstationConfigEncryptionKey({
     required this.kmsKey,
     required this.kmsKeyServiceAccount,
   });

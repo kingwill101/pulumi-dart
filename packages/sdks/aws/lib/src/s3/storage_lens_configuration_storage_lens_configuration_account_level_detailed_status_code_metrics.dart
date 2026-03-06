@@ -8,7 +8,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatus
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatusCodeMetrics].
   /// [enabled] Whether detailed status code metrics are enabled.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatusCodeMetrics({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelDetailedStatusCodeMetrics({
     this.enabled,
   });
 

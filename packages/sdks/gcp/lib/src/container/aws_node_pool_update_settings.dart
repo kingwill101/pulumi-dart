@@ -9,7 +9,7 @@ class AwsNodePoolUpdateSettings {
 
   /// Creates a new [AwsNodePoolUpdateSettings].
   /// [surgeSettings] Optional. Settings for surge update.
-  AwsNodePoolUpdateSettings({
+  const AwsNodePoolUpdateSettings({
     this.surgeSettings,
   });
 

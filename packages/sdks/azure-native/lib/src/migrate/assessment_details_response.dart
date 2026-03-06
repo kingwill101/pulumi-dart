@@ -21,7 +21,7 @@ class AssessmentDetailsResponse {
   /// [pricesTimestamp] Last time when rates were queried.
   /// [status] Whether assessment is in valid state and all machines have been assessed.
   /// [updatedTimestamp] Date and Time when assessment was last updated.
-  AssessmentDetailsResponse({
+  const AssessmentDetailsResponse({
     required this.confidenceRatingInPercentage,
     required this.createdTimestamp,
     required this.pricesTimestamp,

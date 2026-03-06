@@ -43,7 +43,7 @@ class A2AFabricSpecificLocationDetailsResponse {
   /// [recoveryExtendedLocation] The recovery ExtendedLocation.
   /// [recoveryFabricLocation] The recovery fabric location info.
   /// [recoveryZone] The target zone info.
-  A2AFabricSpecificLocationDetailsResponse({
+  const A2AFabricSpecificLocationDetailsResponse({
     this.initialPrimaryExtendedLocation,
     this.initialPrimaryFabricLocation,
     this.initialPrimaryZone,

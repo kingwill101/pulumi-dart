@@ -24,7 +24,7 @@ class IdentityPoolProviderPrincipalTagArgs {
   /// [principalTags] String to string map of variables.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [useDefaults] use default (username and clientID) attribute mappings.
-  IdentityPoolProviderPrincipalTagArgs({
+  const IdentityPoolProviderPrincipalTagArgs({
     required this.identityPoolId,
     required this.identityProviderName,
     this.principalTags,

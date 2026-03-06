@@ -11,7 +11,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction 
   /// Creates a new [CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction].
   /// [parameter] Display name of the parameter.
   /// [value] The new JSON-encoded value of the parameter. A null value clears the parameter.
-  CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction({
+  const CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction({
     this.parameter,
     this.value,
   });

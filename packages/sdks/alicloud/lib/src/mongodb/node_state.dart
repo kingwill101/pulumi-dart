@@ -79,7 +79,7 @@ class NodeState {
   /// [shardDirect] Whether to apply for the direct connection address of the Shard node. Value description:
   /// [status] Running status of node in sharded cluster
   /// [switchTime] Optional.
-  NodeState({
+  const NodeState({
     this.accountName,
     this.accountPassword,
     this.autoPay,

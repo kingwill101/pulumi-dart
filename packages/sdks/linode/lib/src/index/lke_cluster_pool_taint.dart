@@ -16,7 +16,7 @@ class LkeClusterPoolTaint {
   /// [effect] The Kubernetes taint effect. Accepted values are `NoSchedule`, `PreferNoSchedule`, and `NoExecute`. For the descriptions of these values, see [Kubernetes Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
   /// [key] The Kubernetes taint key.
   /// [value] The Kubernetes taint value.
-  LkeClusterPoolTaint({
+  const LkeClusterPoolTaint({
     required this.effect,
     required this.key,
     required this.value,

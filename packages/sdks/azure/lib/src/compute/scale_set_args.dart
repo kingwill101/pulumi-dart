@@ -111,7 +111,7 @@ class ScaleSetArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [upgradePolicyMode] Specifies the mode of an upgrade to virtual machines in the scale set. Possible values, `Rolling`, `Manual`, or `Automatic`. When choosing `Rolling`, you will need to set a health probe.
   /// [zones] A collection of availability zones to spread the Virtual Machines over. Changing this forces a new resource to be created.
-  ScaleSetArgs({
+  const ScaleSetArgs({
     this.automaticOsUpgrade,
     this.bootDiagnostics,
     this.evictionPolicy,

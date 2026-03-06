@@ -70,7 +70,7 @@ class StackState {
   /// [templateVersion] The version of the template.
   /// [timeoutInMinutes] The timeout period that is specified for the stack creation request. Default to: `60`.
   /// [usePreviousParameters] Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
-  StackState({
+  const StackState({
     this.createOption,
     this.deletionProtection,
     this.disableRollback,

@@ -29,7 +29,7 @@ class AppVersionSnapshotToolOpenApiToolApiAuthentication {
   /// [oauthConfigs] (Output)
   /// [serviceAccountAuthConfigs] (Output)
   /// [serviceAgentIdTokenAuthConfigs] (Output)
-  AppVersionSnapshotToolOpenApiToolApiAuthentication({
+  const AppVersionSnapshotToolOpenApiToolApiAuthentication({
     this.apiKeyConfigs,
     this.oauthConfigs,
     this.serviceAccountAuthConfigs,

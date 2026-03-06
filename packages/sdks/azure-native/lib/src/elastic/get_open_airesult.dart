@@ -21,7 +21,7 @@ class GetOpenAIResult {
   /// [name] Name of the integration.
   /// [properties] Open AI Integration details.
   /// [type] The type of the integration.
-  GetOpenAIResult({
+  const GetOpenAIResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

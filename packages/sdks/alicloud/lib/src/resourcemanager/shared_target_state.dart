@@ -18,7 +18,7 @@ class SharedTargetState {
   /// [resourceShareId] The ID of the resource share.
   /// [status] The status of shared target.
   /// [targetId] The ID of the principal.
-  SharedTargetState({
+  const SharedTargetState({
     this.createTime,
     this.resourceShareId,
     this.status,

@@ -12,7 +12,7 @@ class EnvironmentSettingResponse {
   /// Creates a new [EnvironmentSettingResponse].
   /// [name] The name of the environment variable.
   /// [value] The value of the environment variable.
-  EnvironmentSettingResponse({
+  const EnvironmentSettingResponse({
     required this.name,
     this.value,
   });

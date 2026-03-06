@@ -34,7 +34,7 @@ class BackupConfiguration {
   /// [replicationLogArchivingEnabled] Reserved for future use.
   /// [startTime] Start time for the daily backup configuration in UTC timezone in the 24 hour format - `HH:MM`.
   /// [transactionLogRetentionDays] The number of days of transaction logs we retain for point in time restore, from 1-7.
-  BackupConfiguration({
+  const BackupConfiguration({
     this.backupRetentionSettings,
     this.binaryLogEnabled,
     this.enabled,

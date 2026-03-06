@@ -16,7 +16,7 @@ class PluginInstanceActionHubInstanceAction {
   /// Creates a new [PluginInstanceActionHubInstanceAction].
   /// [currentExecutionState] The current state of the execution.
   /// [lastExecutions] The result of the last execution of the plugin instance.
-  PluginInstanceActionHubInstanceAction({
+  const PluginInstanceActionHubInstanceAction({
     this.currentExecutionState,
     this.lastExecutions,
   });

@@ -24,7 +24,7 @@ class GetAccountsAccount {
   /// [accountStatus] Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
   /// [accountType] Account type, Valid values are `Normal`, `Super`.
   /// [databasePrivileges] A list of database privilege. Each element contains the following attributes.
-  GetAccountsAccount({
+  const GetAccountsAccount({
     required this.accountDescription,
     required this.accountLockState,
     required this.accountName,

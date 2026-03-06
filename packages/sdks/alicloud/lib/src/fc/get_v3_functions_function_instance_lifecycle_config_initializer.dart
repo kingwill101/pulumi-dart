@@ -14,7 +14,7 @@ class GetV3FunctionsFunctionInstanceLifecycleConfigInitializer {
   /// [commands] Lifecycle Initialization Phase Callback Instructions.
   /// [handler] The execution entry of the callback method, which is similar to the request handler.
   /// [timeout] The maximum running time of the function, in seconds.
-  GetV3FunctionsFunctionInstanceLifecycleConfigInitializer({
+  const GetV3FunctionsFunctionInstanceLifecycleConfigInitializer({
     required this.commands,
     required this.handler,
     required this.timeout,

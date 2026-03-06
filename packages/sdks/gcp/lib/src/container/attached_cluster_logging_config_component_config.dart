@@ -9,7 +9,7 @@ class AttachedClusterLoggingConfigComponentConfig {
 
   /// Creates a new [AttachedClusterLoggingConfigComponentConfig].
   /// [enableComponents] The components to be enabled.
-  AttachedClusterLoggingConfigComponentConfig({
+  const AttachedClusterLoggingConfigComponentConfig({
     this.enableComponents,
   });
 

@@ -25,7 +25,7 @@ class AddRecoveryServicesProviderInputProperties {
   /// [machineId] The Id of the machine where the provider is getting added.
   /// [machineName] The name of the machine where the provider is getting added.
   /// [resourceAccessIdentityInput] The identity provider input for resource access.
-  AddRecoveryServicesProviderInputProperties({
+  const AddRecoveryServicesProviderInputProperties({
     required this.authenticationIdentityInput,
     this.biosId,
     this.dataPlaneAuthenticationIdentityInput,

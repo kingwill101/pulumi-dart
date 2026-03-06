@@ -28,7 +28,7 @@ class VirtualMachineSqlInstance {
   /// [maxDop] Maximum Degree of Parallelism of the SQL Server. Possible values are between `0` and `32767`. Defaults to `0`.
   /// [maxServerMemoryMb] Maximum amount memory that SQL Server Memory Manager can allocate to the SQL Server process. Possible values are between `128` and `2147483647` Defaults to `2147483647`.
   /// [minServerMemoryMb] Minimum amount memory that SQL Server Memory Manager can allocate to the SQL Server process. Possible values are between `0` and `2147483647` Defaults to `0`.
-  VirtualMachineSqlInstance({
+  const VirtualMachineSqlInstance({
     this.adhocWorkloadsOptimizationEnabled,
     this.collation,
     this.instantFileInitializationEnabled,

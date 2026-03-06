@@ -9,7 +9,7 @@ class TaskDefinitionFirelensConfiguration {
   /// Creates a new [TaskDefinitionFirelensConfiguration].
   /// [options] Optional.
   /// [type] Optional.
-  TaskDefinitionFirelensConfiguration({
+  const TaskDefinitionFirelensConfiguration({
     this.options,
     this.type,
   });

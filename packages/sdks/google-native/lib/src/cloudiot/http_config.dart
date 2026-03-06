@@ -10,7 +10,7 @@ class HttpConfig {
 
   /// Creates a new [HttpConfig].
   /// [httpEnabledState] If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-  HttpConfig({
+  const HttpConfig({
     this.httpEnabledState,
   });
 

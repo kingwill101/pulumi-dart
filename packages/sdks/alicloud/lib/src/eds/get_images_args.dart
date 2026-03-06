@@ -30,7 +30,7 @@ class GetImagesArgs {
   /// [osType] The operating system type of the image. Valid values: `Windows` and `Linux`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
-  GetImagesArgs({
+  const GetImagesArgs({
     this.desktopInstanceType,
     this.ids,
     this.imageType,

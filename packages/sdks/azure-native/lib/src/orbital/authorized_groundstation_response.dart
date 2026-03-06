@@ -12,7 +12,7 @@ class AuthorizedGroundstationResponse {
   /// Creates a new [AuthorizedGroundstationResponse].
   /// [expirationDate] Date of authorization expiration.
   /// [groundStation] Groundstation name.
-  AuthorizedGroundstationResponse({
+  const AuthorizedGroundstationResponse({
     required this.expirationDate,
     required this.groundStation,
   });

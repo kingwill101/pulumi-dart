@@ -67,7 +67,7 @@ class AccountArgs {
   /// [resourceGroupName] The name of the Azure resource group.
   /// [storageAccounts] The list of Azure Blob Storage accounts associated with this account.
   /// [tags] The resource tags.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.computePolicies,
     required this.dataLakeStoreAccounts,

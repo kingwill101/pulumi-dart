@@ -21,7 +21,7 @@ class ReceiptFilterArgs {
   /// [name] The name of the filter
   /// [policy] Block or Allow
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ReceiptFilterArgs({
+  const ReceiptFilterArgs({
     required this.cidr,
     this.name,
     required this.policy,

@@ -15,7 +15,7 @@ class RuntimeTemplateSoftwareConfig {
   /// Creates a new [RuntimeTemplateSoftwareConfig].
   /// [envs] Environment variables to be passed to the container.
   /// [postStartupScriptConfig] Post startup script config.
-  RuntimeTemplateSoftwareConfig({
+  const RuntimeTemplateSoftwareConfig({
     this.envs,
     this.postStartupScriptConfig,
   });

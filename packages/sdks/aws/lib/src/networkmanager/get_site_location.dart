@@ -14,7 +14,7 @@ class GetSiteLocation {
   /// [address] Address of the location.
   /// [latitude] Latitude of the location.
   /// [longitude] Longitude of the location.
-  GetSiteLocation({
+  const GetSiteLocation({
     required this.address,
     required this.latitude,
     required this.longitude,

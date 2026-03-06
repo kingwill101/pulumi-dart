@@ -14,7 +14,7 @@ class CommandState {
   /// [commandResults] The resulting output from the `commands` executed.
   /// [commands] The commands to send to the remote BIG-IP device over the configured provider. The resulting output from the command is returned and added to `command_result`
   /// [when] Optional.
-  CommandState({
+  const CommandState({
     this.commandResults,
     this.commands,
     this.when,

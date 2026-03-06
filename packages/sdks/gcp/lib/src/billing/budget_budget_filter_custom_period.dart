@@ -16,7 +16,7 @@ class BudgetBudgetFilterCustomPeriod {
   /// Creates a new [BudgetBudgetFilterCustomPeriod].
   /// [endDate] Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
   /// [startDate] A start date is required. The start date must be after January 1, 2017.
-  BudgetBudgetFilterCustomPeriod({
+  const BudgetBudgetFilterCustomPeriod({
     this.endDate,
     required this.startDate,
   });

@@ -38,7 +38,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
   /// [minCpuPlatform] Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
   /// [numInstances] The number of VM instances in the instance group. For master instance groups, must be set to 1.
   /// [preemptibility] Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
-  WorkflowTemplatePlacementManagedClusterConfigMasterConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigMasterConfig({
     this.accelerators,
     this.diskConfig,
     this.image,

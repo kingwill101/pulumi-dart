@@ -9,7 +9,7 @@ class ScalingRuleHybridMetricDimension {
   /// Creates a new [ScalingRuleHybridMetricDimension].
   /// [dimensionKey] Optional.
   /// [dimensionValue] Optional.
-  ScalingRuleHybridMetricDimension({
+  const ScalingRuleHybridMetricDimension({
     this.dimensionKey,
     this.dimensionValue,
   });

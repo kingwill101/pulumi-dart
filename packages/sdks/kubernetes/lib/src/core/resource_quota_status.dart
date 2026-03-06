@@ -12,7 +12,7 @@ class ResourceQuotaStatus {
   /// Creates a new [ResourceQuotaStatus].
   /// [hard] Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
   /// [used] Used is the current observed total usage of the resource in the namespace.
-  ResourceQuotaStatus({
+  const ResourceQuotaStatus({
     this.hard,
     this.used,
   });

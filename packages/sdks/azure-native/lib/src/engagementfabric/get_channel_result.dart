@@ -26,7 +26,7 @@ class GetChannelResult {
   /// [id] The ID of the resource
   /// [name] The name of the resource
   /// [type] The fully qualified type of the resource
-  GetChannelResult({
+  const GetChannelResult({
     required this.azureApiVersion,
     this.channelFunctions,
     required this.channelType,

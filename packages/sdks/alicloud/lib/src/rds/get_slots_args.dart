@@ -18,7 +18,7 @@ class GetSlotsArgs {
   /// [dbInstanceId] The db instance id.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The resource group id.
-  GetSlotsArgs({
+  const GetSlotsArgs({
     required this.dbInstanceId,
     this.outputFile,
     this.resourceGroupId,

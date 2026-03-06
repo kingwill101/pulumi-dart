@@ -12,7 +12,7 @@ class WorkgroupConfigurationManagedQueryResultsConfiguration {
   /// Creates a new [WorkgroupConfigurationManagedQueryResultsConfiguration].
   /// [enabled] If set to `true`, allows you to store query results in Athena owned storage. If set to `false`, workgroup member stores query results in the location specified under `result_configuration.output_location`. The default is `false`. A workgroup cannot have the `result_configuration.output_location` set when this is `true`.
   /// [encryptionConfiguration] Configuration block for the encryption configuration. See Managed Query Results Encryption Configuration below.
-  WorkgroupConfigurationManagedQueryResultsConfiguration({
+  const WorkgroupConfigurationManagedQueryResultsConfiguration({
     this.enabled,
     this.encryptionConfiguration,
   });

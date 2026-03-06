@@ -9,7 +9,7 @@ class DataSetRefreshPropertiesRefreshConfiguration {
 
   /// Creates a new [DataSetRefreshPropertiesRefreshConfiguration].
   /// [incrementalRefresh] The incremental refresh for the data set. See incremental_refresh.
-  DataSetRefreshPropertiesRefreshConfiguration({
+  const DataSetRefreshPropertiesRefreshConfiguration({
     required this.incrementalRefresh,
   });
 

@@ -15,7 +15,7 @@ class RegexPatternSetArgs {
   /// Creates a new [RegexPatternSetArgs].
   /// [name] The name or description of the Regex Pattern Set.
   /// [regexPatternStrings] A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  RegexPatternSetArgs({
+  const RegexPatternSetArgs({
     this.name,
     this.regexPatternStrings,
   });

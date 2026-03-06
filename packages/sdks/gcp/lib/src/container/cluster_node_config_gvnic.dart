@@ -8,7 +8,7 @@ class ClusterNodeConfigGvnic {
 
   /// Creates a new [ClusterNodeConfigGvnic].
   /// [enabled] Whether or not the Google Virtual NIC (gVNIC) is enabled
-  ClusterNodeConfigGvnic({
+  const ClusterNodeConfigGvnic({
     required this.enabled,
   });
 

@@ -8,7 +8,7 @@ class BucketOverwriteConfigRulePrincipals {
 
   /// Creates a new [BucketOverwriteConfigRulePrincipals].
   /// [principals] Authorized subject. Supports the input of primary accounts, sub-accounts, or roles. Invalid setting if the value is empty.
-  BucketOverwriteConfigRulePrincipals({
+  const BucketOverwriteConfigRulePrincipals({
     this.principals,
   });
 

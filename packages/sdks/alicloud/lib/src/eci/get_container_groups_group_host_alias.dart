@@ -11,7 +11,7 @@ class GetContainerGroupsGroupHostAlias {
   /// Creates a new [GetContainerGroupsGroupHostAlias].
   /// [hostnames] The name of the host.
   /// [ip] The IP address of the container.
-  GetContainerGroupsGroupHostAlias({
+  const GetContainerGroupsGroupHostAlias({
     required this.hostnames,
     required this.ip,
   });

@@ -14,7 +14,7 @@ class GetNamespaceResult {
   /// [labels] Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
   /// [name] Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
   /// [uid] The globally unique identifier of the namespace in the UUID4 format.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     required this.labels,
     required this.name,
     required this.uid,

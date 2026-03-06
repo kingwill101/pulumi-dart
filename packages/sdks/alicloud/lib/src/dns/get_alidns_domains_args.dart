@@ -54,7 +54,7 @@ class GetAlidnsDomainsArgs {
   /// [starmark] Whether to query the domain name star.
   /// [tags] A mapping of tags to assign to the resource.
   /// [versionCode] Cloud analysis version code.
-  GetAlidnsDomainsArgs({
+  const GetAlidnsDomainsArgs({
     this.aliDomain,
     this.domainNameRegex,
     this.enableDetails,

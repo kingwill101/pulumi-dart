@@ -16,7 +16,7 @@ class InvestigationScopeResponse {
   /// [id] The ID of the scope of the investigation - either an Azure alert ID or an Azure resource ID
   /// [origin] The origin of the scope
   /// [relevance] The relevance of the scope
-  InvestigationScopeResponse({
+  const InvestigationScopeResponse({
     required this.id,
     required this.origin,
     this.relevance,

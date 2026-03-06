@@ -13,7 +13,7 @@ class SaslRemoteBrokerBasicAuthenticationResponse {
   /// Creates a new [SaslRemoteBrokerBasicAuthenticationResponse].
   /// [saslType] Sasl Mechanism for remote broker authentication.
   /// [token] Sasl token for remote broker authentication.
-  SaslRemoteBrokerBasicAuthenticationResponse({
+  const SaslRemoteBrokerBasicAuthenticationResponse({
     required this.saslType,
     required this.token,
   });

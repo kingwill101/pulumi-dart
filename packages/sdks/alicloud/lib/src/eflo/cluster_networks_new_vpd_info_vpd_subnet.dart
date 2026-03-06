@@ -13,7 +13,7 @@ class ClusterNetworksNewVpdInfoVpdSubnet {
   /// [subnetCidr] Subnet cidr
   /// [subnetType] Subnet Type
   /// [zoneId] Optional.
-  ClusterNetworksNewVpdInfoVpdSubnet({
+  const ClusterNetworksNewVpdInfoVpdSubnet({
     this.subnetCidr,
     this.subnetType,
     this.zoneId,

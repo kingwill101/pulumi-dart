@@ -14,7 +14,7 @@ class GetDistributionArgs {
   /// Creates a new [GetDistributionArgs].
   /// [id] Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
   /// [tags] Optional.
-  GetDistributionArgs({
+  const GetDistributionArgs({
     required this.id,
     this.tags,
   });

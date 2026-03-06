@@ -25,7 +25,7 @@ class ResourceServerState {
   /// [scopeIdentifiers] A list of all scopes configured for this resource server in the format identifier/scope_name.
   /// [scopes] A list of Authorization Scope.
   /// [userPoolId] User pool the client belongs to.
-  ResourceServerState({
+  const ResourceServerState({
     this.identifier,
     this.name,
     this.region,

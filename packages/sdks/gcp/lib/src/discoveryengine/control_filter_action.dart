@@ -11,7 +11,7 @@ class ControlFilterAction {
   /// Creates a new [ControlFilterAction].
   /// [dataStore] The data store to filter.
   /// [filter] The filter to apply to the search results.
-  ControlFilterAction({
+  const ControlFilterAction({
     required this.dataStore,
     required this.filter,
   });

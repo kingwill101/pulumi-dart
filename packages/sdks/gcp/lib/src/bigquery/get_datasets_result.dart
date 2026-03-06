@@ -15,7 +15,7 @@ class GetDatasetsResult {
   /// [datasets] A list of all retrieved BigQuery datasets. Structure is defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [project] Optional.
-  GetDatasetsResult({
+  const GetDatasetsResult({
     required this.datasets,
     required this.id,
     this.project,

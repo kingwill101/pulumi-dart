@@ -48,7 +48,7 @@ class AssistantArgs {
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
   /// [webGroundingType] The type of web grounding to use.
-  AssistantArgs({
+  const AssistantArgs({
     required this.assistantId,
     required this.collectionId,
     this.customerPolicy,

@@ -18,7 +18,7 @@ class P2SVpnServerConfigVpnClientRootCertificate {
   /// [id] Resource ID.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [publicCertData] The certificate public data.
-  P2SVpnServerConfigVpnClientRootCertificate({
+  const P2SVpnServerConfigVpnClientRootCertificate({
     this.etag,
     this.id,
     this.name,

@@ -14,7 +14,7 @@ class DatabaseType {
   /// Creates a new [DatabaseType].
   /// [engine] The database engine.
   /// [provider] The database provider.
-  DatabaseType({
+  const DatabaseType({
     this.engine,
     this.provider,
   });

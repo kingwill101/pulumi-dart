@@ -8,7 +8,7 @@ class GetInstanceReadPoolConfig {
 
   /// Creates a new [GetInstanceReadPoolConfig].
   /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
-  GetInstanceReadPoolConfig({
+  const GetInstanceReadPoolConfig({
     required this.nodeCount,
   });
 

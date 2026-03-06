@@ -36,7 +36,7 @@ class DataflowEndpointPropertiesResponse {
   /// [localStorageSettings] Local persistent volume endpoint.
   /// [mqttSettings] Broker endpoint.
   /// [provisioningState] The status of the last operation.
-  DataflowEndpointPropertiesResponse({
+  const DataflowEndpointPropertiesResponse({
     this.dataExplorerSettings,
     this.dataLakeStorageSettings,
     required this.endpointType,

@@ -12,7 +12,7 @@ class SshKeyPairResponse {
   /// Creates a new [SshKeyPairResponse].
   /// [privateKey] SSH private key.
   /// [publicKey] SSH public key
-  SshKeyPairResponse({
+  const SshKeyPairResponse({
     this.privateKey,
     this.publicKey,
   });

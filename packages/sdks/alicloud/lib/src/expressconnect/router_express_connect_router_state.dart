@@ -32,7 +32,7 @@ class RouterExpressConnectRouterState {
   /// [resourceGroupId] The ID of the resource group to which the ECR instance belongs.
   /// [status] The status of the resource.
   /// [tags] The tag of the resource.
-  RouterExpressConnectRouterState({
+  const RouterExpressConnectRouterState({
     this.alibabaSideAsn,
     this.createTime,
     this.description,

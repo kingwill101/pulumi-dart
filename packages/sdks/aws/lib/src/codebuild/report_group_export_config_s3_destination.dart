@@ -21,7 +21,7 @@ class ReportGroupExportConfigS3Destination {
   /// [encryptionKey] The encryption key for the report's encrypted raw data. The KMS key ARN.
   /// [packaging] The type of build output artifact to create. Valid values are: `NONE` (default) and `ZIP`.
   /// [path] The path to the exported report's raw data results.
-  ReportGroupExportConfigS3Destination({
+  const ReportGroupExportConfigS3Destination({
     required this.bucket,
     this.encryptionDisabled,
     required this.encryptionKey,

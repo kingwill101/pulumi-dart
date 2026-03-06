@@ -13,7 +13,7 @@ class FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha {
   /// Creates a new [FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha].
   /// [defaultLog] The base feature state of fleet default log.
   /// [scopeLog] The base feature state of fleet scope log.
-  FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha({
+  const FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1alpha({
     required this.defaultLog,
     required this.scopeLog,
   });

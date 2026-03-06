@@ -12,7 +12,7 @@ class BucketLogging {
   /// Creates a new [BucketLogging].
   /// [logBucket] The destination bucket where the current bucket's logs should be placed.
   /// [logObjectPrefix] A prefix for log object names.
-  BucketLogging({
+  const BucketLogging({
     this.logBucket,
     this.logObjectPrefix,
   });

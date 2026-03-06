@@ -21,7 +21,7 @@ class InstanceClusterAttachmentState {
   /// [ecuMap] The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
   /// [instanceIds] The ID of instance. Type: list.
   /// [statusMap] The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
-  InstanceClusterAttachmentState({
+  const InstanceClusterAttachmentState({
     this.clusterId,
     this.clusterMemberIds,
     this.ecuMap,

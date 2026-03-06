@@ -8,7 +8,7 @@ class ChannelNamespaceSubscribeAuthMode {
 
   /// Creates a new [ChannelNamespaceSubscribeAuthMode].
   /// [authType] Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
-  ChannelNamespaceSubscribeAuthMode({
+  const ChannelNamespaceSubscribeAuthMode({
     required this.authType,
   });
 

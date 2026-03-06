@@ -14,7 +14,7 @@ class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig {
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig].
   /// [service] (Output)
-  AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig({
+  const AppVersionSnapshotToolOpenApiToolServiceDirectoryConfig({
     this.service,
   });
 

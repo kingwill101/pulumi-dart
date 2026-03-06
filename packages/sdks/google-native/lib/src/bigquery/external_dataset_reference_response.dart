@@ -11,7 +11,7 @@ class ExternalDatasetReferenceResponse {
   /// Creates a new [ExternalDatasetReferenceResponse].
   /// [connection] [Required] The connection id that is used to access the external_source. Format: projects/{project_id}/locations/{location_id}/connections/{connection_id}
   /// [externalSource] [Required] External source that backs this dataset.
-  ExternalDatasetReferenceResponse({
+  const ExternalDatasetReferenceResponse({
     required this.connection,
     required this.externalSource,
   });

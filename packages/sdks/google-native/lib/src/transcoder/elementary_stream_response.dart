@@ -21,7 +21,7 @@ class ElementaryStreamResponse {
   /// [key] A unique key for this elementary stream.
   /// [textStream] Encoding of a text stream. For example, closed captions or subtitles.
   /// [videoStream] Encoding of a video stream.
-  ElementaryStreamResponse({
+  const ElementaryStreamResponse({
     required this.audioStream,
     required this.key,
     required this.textStream,

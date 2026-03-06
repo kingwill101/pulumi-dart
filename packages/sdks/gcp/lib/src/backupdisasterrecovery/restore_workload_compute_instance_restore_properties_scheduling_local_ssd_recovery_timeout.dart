@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryT
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout].
   /// [nanos] (Optional)
   /// [seconds] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout({
+  const RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout({
     this.nanos,
     this.seconds,
   });

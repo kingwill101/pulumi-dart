@@ -12,7 +12,7 @@ class WorkflowAccessControlTrigger {
   /// Creates a new [WorkflowAccessControlTrigger].
   /// [allowedCallerIpAddressRanges] A list of the allowed caller IP address ranges.
   /// [openAuthenticationPolicies] A `open_authentication_policy` block as defined below.
-  WorkflowAccessControlTrigger({
+  const WorkflowAccessControlTrigger({
     this.allowedCallerIpAddressRanges,
     this.openAuthenticationPolicies,
   });

@@ -18,7 +18,7 @@ class SCClusterNetworkEnvironmentEntity {
   /// [id] ID of the referred resource
   /// [related] API URL for accessing or modifying the referred object
   /// [resourceName] CRN reference to the referred resource
-  SCClusterNetworkEnvironmentEntity({
+  const SCClusterNetworkEnvironmentEntity({
     this.environment,
     this.id,
     this.related,

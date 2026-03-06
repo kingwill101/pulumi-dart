@@ -39,7 +39,7 @@ class DataExportArgs {
   /// [resourceId] The destination resource ID. This can be copied from the Properties entry of the destination resource in Azure.
   /// [tableNames] An array of tables to export, for example: [“Heartbeat, SecurityEvent”].
   /// [workspaceName] The name of the workspace.
-  DataExportArgs({
+  const DataExportArgs({
     this.createdDate,
     this.dataExportId,
     this.dataExportName,

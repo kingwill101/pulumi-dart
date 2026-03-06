@@ -12,7 +12,7 @@ class TriggerResponse {
   /// Creates a new [TriggerResponse].
   /// [count] The absolute number of time series that must fail the predicate for the condition to be triggered.
   /// [percent] The percentage of time series that must fail the predicate for the condition to be triggered.
-  TriggerResponse({
+  const TriggerResponse({
     required this.count,
     required this.percent,
   });

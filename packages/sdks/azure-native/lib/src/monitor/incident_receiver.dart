@@ -19,7 +19,7 @@ class IncidentReceiver {
   /// [incidentManagementService] The incident management service type
   /// [mappings] Field mappings for the incident service
   /// [name] The name of the Incident receiver. Names must be unique across all receivers within an action group.
-  IncidentReceiver({
+  const IncidentReceiver({
     required this.connection,
     required this.incidentManagementService,
     required this.mappings,

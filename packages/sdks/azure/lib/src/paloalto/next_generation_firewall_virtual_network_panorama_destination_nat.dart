@@ -19,7 +19,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNat {
   /// [frontendConfig] A `frontend_config` block as defined below.
   /// [name] The name which should be used for this Destination NAT.
   /// [protocol] The Protocol for this Destination NAT configuration. Possible values include `TCP` and `UDP`.
-  NextGenerationFirewallVirtualNetworkPanoramaDestinationNat({
+  const NextGenerationFirewallVirtualNetworkPanoramaDestinationNat({
     this.backendConfig,
     this.frontendConfig,
     required this.name,

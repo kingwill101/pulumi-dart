@@ -9,7 +9,7 @@ class OverheadPatchNodeK8sIoV1beta1 {
 
   /// Creates a new [OverheadPatchNodeK8sIoV1beta1].
   /// [podFixed] PodFixed represents the fixed resource overhead associated with running a pod.
-  OverheadPatchNodeK8sIoV1beta1({
+  const OverheadPatchNodeK8sIoV1beta1({
     this.podFixed,
   });
 

@@ -44,7 +44,7 @@ class SQuotaPreferenceArgs {
   /// [quotaConfig] The preferred quota configuration.
   /// [quotaId] The id of the quota to which the quota preference is applied. A quota id is unique in the service.
   /// [service] The name of the service to which the quota preference is applied.
-  SQuotaPreferenceArgs({
+  const SQuotaPreferenceArgs({
     this.contactEmail,
     this.dimensions,
     this.ignoreSafetyChecks,

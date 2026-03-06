@@ -16,7 +16,7 @@ class M365Extensions {
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
-  M365Extensions({
+  const M365Extensions({
     required this.channelName,
     this.etag,
     this.location,

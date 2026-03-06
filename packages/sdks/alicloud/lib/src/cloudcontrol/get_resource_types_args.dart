@@ -18,7 +18,7 @@ class GetResourceTypesArgs {
   /// [ids] A list of Resource Type IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [product] Product Code.
-  GetResourceTypesArgs({
+  const GetResourceTypesArgs({
     this.ids,
     this.outputFile,
     required this.product,

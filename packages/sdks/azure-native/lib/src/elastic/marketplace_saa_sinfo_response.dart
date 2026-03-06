@@ -25,7 +25,7 @@ class MarketplaceSaaSInfoResponse {
   /// [marketplaceStatus] Marketplace Subscription Details: SaaS Subscription Status
   /// [marketplaceSubscription] Marketplace Subscription
   /// [subscribed] Flag specifying if the Marketplace status is subscribed or not.
-  MarketplaceSaaSInfoResponse({
+  const MarketplaceSaaSInfoResponse({
     this.billedAzureSubscriptionId,
     this.marketplaceName,
     this.marketplaceResourceId,

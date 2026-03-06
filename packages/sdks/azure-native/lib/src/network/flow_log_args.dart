@@ -55,7 +55,7 @@ class FlowLogArgs {
   /// [storageId] ID of the storage account which is used to store the flow log.
   /// [tags] Resource tags.
   /// [targetResourceId] ID of network security group to which flow log will be applied.
-  FlowLogArgs({
+  const FlowLogArgs({
     this.enabled,
     this.enabledFilteringCriteria,
     this.flowAnalyticsConfiguration,

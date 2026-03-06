@@ -12,7 +12,7 @@ class UefiSettingsResponse {
   /// Creates a new [UefiSettingsResponse].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine.
   /// [vTpmEnabled] Specifies whether vTPM should be enabled on the virtual machine.
-  UefiSettingsResponse({
+  const UefiSettingsResponse({
     this.secureBootEnabled,
     this.vTpmEnabled,
   });

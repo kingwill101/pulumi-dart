@@ -13,7 +13,7 @@ class JsonWriteSettingsResponse {
   /// Creates a new [JsonWriteSettingsResponse].
   /// [filePattern] File pattern of JSON. This setting controls the way a collection of JSON objects will be treated. The default value is 'setOfObjects'. It is case-sensitive.
   /// [type] The write setting type.
-  JsonWriteSettingsResponse({
+  const JsonWriteSettingsResponse({
     this.filePattern,
     required this.type,
   });

@@ -19,7 +19,7 @@ class AttestorPublicKeyBinaryauthorizationV1beta1 {
   /// [comment] Optional. A descriptive comment. This field may be updated.
   /// [id] The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details.
   /// [pkixPublicKey] A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
-  AttestorPublicKeyBinaryauthorizationV1beta1({
+  const AttestorPublicKeyBinaryauthorizationV1beta1({
     this.asciiArmoredPgpPublicKey,
     this.comment,
     this.id,

@@ -19,7 +19,7 @@ class JobStatusResponse {
   /// [state] Job state
   /// [statusEvents] Job status events
   /// [taskGroups] Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
-  JobStatusResponse({
+  const JobStatusResponse({
     required this.runDuration,
     required this.state,
     required this.statusEvents,

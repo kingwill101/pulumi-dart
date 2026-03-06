@@ -47,7 +47,7 @@ class GetBareMetalNodePoolResult {
   /// [uid] The unique identifier of the bare metal node pool.
   /// [updateTime] The time at which this bare metal node pool was last updated.
   /// [upgradePolicy] The worker node pool upgrade policy.
-  GetBareMetalNodePoolResult({
+  const GetBareMetalNodePoolResult({
     required this.annotations,
     required this.createTime,
     required this.deleteTime,

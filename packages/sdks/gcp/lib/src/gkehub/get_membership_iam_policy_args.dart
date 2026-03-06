@@ -23,7 +23,7 @@ class GetMembershipIamPolicyArgs {
   /// [location] Location of the membership.
   /// [membershipId] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetMembershipIamPolicyArgs({
+  const GetMembershipIamPolicyArgs({
     this.location,
     required this.membershipId,
     this.project,

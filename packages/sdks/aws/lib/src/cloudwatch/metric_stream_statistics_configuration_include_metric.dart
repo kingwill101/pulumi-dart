@@ -10,7 +10,7 @@ class MetricStreamStatisticsConfigurationIncludeMetric {
   /// Creates a new [MetricStreamStatisticsConfigurationIncludeMetric].
   /// [metricName] The name of the metric.
   /// [namespace] Required.
-  MetricStreamStatisticsConfigurationIncludeMetric({
+  const MetricStreamStatisticsConfigurationIncludeMetric({
     required this.metricName,
     required this.namespace,
   });

@@ -8,7 +8,7 @@ class NodePoolNodeConfigContainerdConfigWritableCgroups {
 
   /// Creates a new [NodePoolNodeConfigContainerdConfigWritableCgroups].
   /// [enabled] Whether writable cgroups are enabled.
-  NodePoolNodeConfigContainerdConfigWritableCgroups({
+  const NodePoolNodeConfigContainerdConfigWritableCgroups({
     required this.enabled,
   });
 

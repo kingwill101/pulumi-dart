@@ -15,7 +15,7 @@ class RegularPriorityProfileResponse {
   /// [allocationStrategy] Allocation strategy to follow when determining the VM sizes distribution for Regular VMs.
   /// [capacity] Total capacity to achieve. It is currently in terms of number of VMs.
   /// [minCapacity] Minimum capacity to achieve which cannot be updated. If we will not be able to "guarantee" minimum capacity, we will reject the request in the sync path itself.
-  RegularPriorityProfileResponse({
+  const RegularPriorityProfileResponse({
     this.allocationStrategy,
     this.capacity,
     this.minCapacity,

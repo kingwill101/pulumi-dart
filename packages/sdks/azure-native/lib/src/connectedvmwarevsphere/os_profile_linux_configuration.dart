@@ -12,7 +12,7 @@ class OsProfileLinuxConfiguration {
   /// Creates a new [OsProfileLinuxConfiguration].
   /// [assessmentMode] Specifies the assessment mode.
   /// [patchMode] Specifies the patch mode.
-  OsProfileLinuxConfiguration({
+  const OsProfileLinuxConfiguration({
     this.assessmentMode,
     this.patchMode,
   });

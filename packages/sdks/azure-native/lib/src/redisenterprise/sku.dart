@@ -12,7 +12,7 @@ class Sku {
   /// Creates a new [Sku].
   /// [capacity] This property is only used with Enterprise and EnterpriseFlash SKUs. Determines the size of the cluster. Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for EnterpriseFlash SKUs.
   /// [name] The level of Redis Enterprise cluster to deploy. Possible values: ('Balanced_B5', 'MemoryOptimized_M10', 'ComputeOptimized_X5', etc.). For more information on SKUs see the latest pricing documentation. Note that additional SKUs may become supported in the future.
-  Sku({
+  const Sku({
     this.capacity,
     required this.name,
   });

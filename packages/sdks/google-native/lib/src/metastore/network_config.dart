@@ -10,7 +10,7 @@ class NetworkConfig {
 
   /// Creates a new [NetworkConfig].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-  NetworkConfig({
+  const NetworkConfig({
     this.consumers,
   });
 

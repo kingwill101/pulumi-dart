@@ -18,7 +18,7 @@ class AppTemplateAzureQueueScaleRule {
   /// [name] The name of the Scaling Rule
   /// [queueLength] The value of the length of the queue to trigger scaling actions.
   /// [queueName] The name of the Azure Queue
-  AppTemplateAzureQueueScaleRule({
+  const AppTemplateAzureQueueScaleRule({
     required this.authentications,
     required this.name,
     required this.queueLength,

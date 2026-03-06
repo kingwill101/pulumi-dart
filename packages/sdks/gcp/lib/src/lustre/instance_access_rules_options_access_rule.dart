@@ -16,7 +16,7 @@ class InstanceAccessRulesOptionsAccessRule {
   /// [ipAddressRanges] An array of IP address strings or CIDR ranges that this rule applies to.
   /// [name] A unique identifier for the access rule.
   /// [squashMode] The squash mode for this specific rule. Currently, only "NO_SQUASH"
-  InstanceAccessRulesOptionsAccessRule({
+  const InstanceAccessRulesOptionsAccessRule({
     required this.ipAddressRanges,
     required this.name,
     required this.squashMode,

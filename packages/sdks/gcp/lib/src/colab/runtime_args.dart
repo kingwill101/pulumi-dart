@@ -39,7 +39,7 @@ class RuntimeArgs {
   /// [notebookRuntimeTemplateRef] 'Runtime specific information used for NotebookRuntime creation.'
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeUser] The user email of the NotebookRuntime.
-  RuntimeArgs({
+  const RuntimeArgs({
     this.autoUpgrade,
     this.description,
     this.desiredState,

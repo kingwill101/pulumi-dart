@@ -58,7 +58,7 @@ class RuleState {
   /// [probeId] A reference to a Probe used by this Load Balancing Rule.
   /// [protocol] The transport protocol for the external endpoint. Possible values are `Tcp`, `Udp` or `All`.
   /// [tcpResetEnabled] Is TCP Reset enabled for this Load Balancer Rule?
-  RuleState({
+  const RuleState({
     this.backendAddressPoolIds,
     this.backendPort,
     this.disableOutboundSnat,

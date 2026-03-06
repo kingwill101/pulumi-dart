@@ -35,7 +35,7 @@ class SfdcChannelArgs {
   /// [productId] Required.
   /// [project] Optional.
   /// [sfdcInstanceId] Required.
-  SfdcChannelArgs({
+  const SfdcChannelArgs({
     this.channelTopic,
     this.description,
     this.displayName,

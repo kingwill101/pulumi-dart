@@ -27,7 +27,7 @@ class GetBandwidthPackagesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
   /// [type] The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
-  GetBandwidthPackagesArgs({
+  const GetBandwidthPackagesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

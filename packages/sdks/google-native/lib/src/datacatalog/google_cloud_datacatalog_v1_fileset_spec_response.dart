@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1FilesetSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1FilesetSpecResponse].
   /// [dataplexFileset] Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
-  GoogleCloudDatacatalogV1FilesetSpecResponse({
+  const GoogleCloudDatacatalogV1FilesetSpecResponse({
     required this.dataplexFileset,
   });
 

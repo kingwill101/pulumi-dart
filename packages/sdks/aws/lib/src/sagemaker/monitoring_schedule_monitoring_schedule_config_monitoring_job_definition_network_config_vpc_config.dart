@@ -11,7 +11,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkCo
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig].
   /// [securityGroupIds] VPC security group IDs.
   /// [subnets] Subnet IDs.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfigVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
   });

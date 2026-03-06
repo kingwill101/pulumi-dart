@@ -18,7 +18,7 @@ class TagOptionResourceAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] Resource identifier.
   /// [tagOptionId] Tag Option identifier.
-  TagOptionResourceAssociationArgs({
+  const TagOptionResourceAssociationArgs({
     this.region,
     required this.resourceId,
     required this.tagOptionId,

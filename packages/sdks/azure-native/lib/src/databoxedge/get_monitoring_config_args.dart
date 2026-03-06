@@ -18,7 +18,7 @@ class GetMonitoringConfigArgs {
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
   /// [roleName] The role name.
-  GetMonitoringConfigArgs({
+  const GetMonitoringConfigArgs({
     required this.deviceName,
     required this.resourceGroupName,
     required this.roleName,

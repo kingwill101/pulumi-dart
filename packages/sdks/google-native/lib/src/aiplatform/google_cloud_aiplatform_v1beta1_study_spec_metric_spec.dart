@@ -17,7 +17,7 @@ class GoogleCloudAiplatformV1beta1StudySpecMetricSpec {
   /// [goal] The optimization goal of the metric.
   /// [metricId] The ID of the metric. Must not contain whitespaces and must be unique amongst all MetricSpecs.
   /// [safetyConfig] Used for safe search. In the case, the metric will be a safety metric. You must provide a separate metric for objective metric.
-  GoogleCloudAiplatformV1beta1StudySpecMetricSpec({
+  const GoogleCloudAiplatformV1beta1StudySpecMetricSpec({
     required this.goal,
     required this.metricId,
     this.safetyConfig,

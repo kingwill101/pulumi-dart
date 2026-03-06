@@ -13,7 +13,7 @@ class TcpRouteRouteAction {
   /// Creates a new [TcpRouteRouteAction].
   /// [destinations] Optional. The destination services to which traffic should be forwarded. At least one destination service is required. Only one of route destination or original destination can be set.
   /// [originalDestination] Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false. Only one of route destinations or original destination can be set.
-  TcpRouteRouteAction({
+  const TcpRouteRouteAction({
     this.destinations,
     this.originalDestination,
   });

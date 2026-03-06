@@ -9,7 +9,7 @@ class CertificateProviderInstanceResponseNetworksecurityV1beta1 {
 
   /// Creates a new [CertificateProviderInstanceResponseNetworksecurityV1beta1].
   /// [pluginInstance] Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
-  CertificateProviderInstanceResponseNetworksecurityV1beta1({
+  const CertificateProviderInstanceResponseNetworksecurityV1beta1({
     required this.pluginInstance,
   });
 

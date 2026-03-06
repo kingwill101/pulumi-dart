@@ -67,7 +67,7 @@ class GetQueueResult {
   /// [requiresSession] Boolean flag which controls whether the Queue requires sessions. This will allow ordered handling of unbounded sequences of related messages. With sessions enabled a queue can guarantee first-in-first-out delivery of messages.
   /// [resourceGroupName] Optional.
   /// [status] The status of the Queue. Possible values are `Active`, `Creating`, `Deleting`, `Disabled`, `ReceiveDisabled`, `Renaming`, `SendDisabled`, `Unknown`.
-  GetQueueResult({
+  const GetQueueResult({
     required this.autoDeleteOnIdle,
     required this.batchedOperationsEnabled,
     required this.deadLetteringOnMessageExpiration,

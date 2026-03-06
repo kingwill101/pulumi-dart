@@ -21,7 +21,7 @@ class ServiceProjectAttachmentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceProject] "Immutable. Service project name in the format: \"projects/abc\"
   /// [serviceProjectAttachmentId] Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
-  ServiceProjectAttachmentArgs({
+  const ServiceProjectAttachmentArgs({
     this.project,
     this.serviceProject,
     required this.serviceProjectAttachmentId,

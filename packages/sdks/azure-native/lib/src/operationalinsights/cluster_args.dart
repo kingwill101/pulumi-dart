@@ -42,7 +42,7 @@ class ClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The sku properties.
   /// [tags] Resource tags.
-  ClusterArgs({
+  const ClusterArgs({
     this.billingType,
     this.clusterName,
     this.identity,

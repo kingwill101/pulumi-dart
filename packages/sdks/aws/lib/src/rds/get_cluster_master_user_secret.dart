@@ -11,7 +11,7 @@ class GetClusterMasterUserSecret {
   /// [kmsKeyId] Required.
   /// [secretArn] Required.
   /// [secretStatus] Required.
-  GetClusterMasterUserSecret({
+  const GetClusterMasterUserSecret({
     required this.kmsKeyId,
     required this.secretArn,
     required this.secretStatus,

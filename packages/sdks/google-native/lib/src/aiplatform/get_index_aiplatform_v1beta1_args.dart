@@ -15,7 +15,7 @@ class GetIndexAiplatformV1beta1Args {
   /// [indexId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetIndexAiplatformV1beta1Args({
+  const GetIndexAiplatformV1beta1Args({
     required this.indexId,
     required this.location,
     this.project,

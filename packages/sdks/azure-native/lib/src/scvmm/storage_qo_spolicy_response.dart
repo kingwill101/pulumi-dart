@@ -24,7 +24,7 @@ class StorageQoSPolicyResponse {
   /// [iopsMinimum] The minimum IO operations per second.
   /// [name] The name of the policy.
   /// [policyId] The underlying policy.
-  StorageQoSPolicyResponse({
+  const StorageQoSPolicyResponse({
     this.bandwidthLimit,
     this.id,
     this.iopsMaximum,

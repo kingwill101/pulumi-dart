@@ -32,7 +32,7 @@ class GetServiceSubscriptionsResult {
   /// [subscriptionName] The name of the subscription.
   /// [subscriptions] A list of Subscriptions. Each element contains the following attributes:
   /// [topicName] The name of the topic.
-  GetServiceSubscriptionsResult({
+  const GetServiceSubscriptionsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

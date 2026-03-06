@@ -8,7 +8,7 @@ class GetClusterBackupSource {
 
   /// Creates a new [GetClusterBackupSource].
   /// [backupName] The name of the backup resource.
-  GetClusterBackupSource({
+  const GetClusterBackupSource({
     required this.backupName,
   });
 

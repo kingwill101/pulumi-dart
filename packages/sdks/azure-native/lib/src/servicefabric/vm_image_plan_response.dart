@@ -18,7 +18,7 @@ class VmImagePlanResponse {
   /// [product] Specifies the product of the image from the marketplace. This is the same value as Offer under the imageReference element.
   /// [promotionCode] The promotion code.
   /// [publisher] The publisher ID.
-  VmImagePlanResponse({
+  const VmImagePlanResponse({
     this.name,
     this.product,
     this.promotionCode,

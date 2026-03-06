@@ -32,7 +32,7 @@ class ReplicatorArgs {
   /// [replicatorName] The name of the replicator.
   /// [serviceExecutionRoleArn] The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ReplicatorArgs({
+  const ReplicatorArgs({
     this.description,
     required this.kafkaClusters,
     this.region,

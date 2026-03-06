@@ -21,7 +21,7 @@ class GetWorkforcePoolKeyResult {
   /// [name] The resource name of the key.
   /// [state] The state of the key.
   /// [use] The purpose of the key.
-  GetWorkforcePoolKeyResult({
+  const GetWorkforcePoolKeyResult({
     required this.expireTime,
     required this.keyData,
     required this.name,

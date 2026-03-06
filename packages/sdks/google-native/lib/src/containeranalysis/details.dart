@@ -10,7 +10,7 @@ class Details {
 
   /// Creates a new [Details].
   /// [attestation] Attestation for the resource.
-  Details({
+  const Details({
     required this.attestation,
   });
 

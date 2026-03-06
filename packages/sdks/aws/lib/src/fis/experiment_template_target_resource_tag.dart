@@ -11,7 +11,7 @@ class ExperimentTemplateTargetResourceTag {
   /// Creates a new [ExperimentTemplateTargetResourceTag].
   /// [key] Tag key.
   /// [value] Tag value.
-  ExperimentTemplateTargetResourceTag({
+  const ExperimentTemplateTargetResourceTag({
     required this.key,
     required this.value,
   });

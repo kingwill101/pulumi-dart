@@ -9,7 +9,7 @@ class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse {
 
   /// Creates a new [GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse].
   /// [kmsKey] Optional. The Cloud KMS key name to use for encrypting customer core content.
-  GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse({
+  const GoogleCloudDataprocV1WorkflowTemplateEncryptionConfigResponse({
     required this.kmsKey,
   });
 

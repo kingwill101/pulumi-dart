@@ -8,7 +8,7 @@ class PatchDeploymentPatchConfigGoo {
 
   /// Creates a new [PatchDeploymentPatchConfigGoo].
   /// [enabled] goo update settings. Use this setting to override the default goo patch rules.
-  PatchDeploymentPatchConfigGoo({
+  const PatchDeploymentPatchConfigGoo({
     required this.enabled,
   });
 

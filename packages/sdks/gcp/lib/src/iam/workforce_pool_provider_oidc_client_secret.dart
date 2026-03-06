@@ -10,7 +10,7 @@ class WorkforcePoolProviderOidcClientSecret {
 
   /// Creates a new [WorkforcePoolProviderOidcClientSecret].
   /// [value] The value of the client secret.
-  WorkforcePoolProviderOidcClientSecret({
+  const WorkforcePoolProviderOidcClientSecret({
     this.value,
   });
 

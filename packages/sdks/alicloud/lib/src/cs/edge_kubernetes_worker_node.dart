@@ -14,7 +14,7 @@ class EdgeKubernetesWorkerNode {
   /// [id] ID of the node.
   /// [name] The kubernetes cluster's name. It is unique in one Alicloud account.
   /// [privateIp] The private IP address of node.
-  EdgeKubernetesWorkerNode({
+  const EdgeKubernetesWorkerNode({
     this.id,
     this.name,
     this.privateIp,

@@ -48,7 +48,7 @@ class ClusterArgs {
   /// [openEniJumboFrame] Whether the network interface supports jumbo frames
   /// [resourceGroupId] The ID of the resource group
   /// [tags] tag
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterDescription,
     this.clusterName,
     this.clusterType,

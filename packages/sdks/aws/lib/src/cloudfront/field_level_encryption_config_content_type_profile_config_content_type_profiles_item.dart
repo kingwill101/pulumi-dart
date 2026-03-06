@@ -13,7 +13,7 @@ class FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem 
   /// [contentType] he content type for a field-level encryption content type-profile mapping. Valid value is `application/x-www-form-urlencoded`.
   /// [format] The format for a field-level encryption content type-profile mapping. Valid value is `URLEncoded`.
   /// [profileId] Optional.
-  FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem({
+  const FieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItem({
     required this.contentType,
     required this.format,
     this.profileId,

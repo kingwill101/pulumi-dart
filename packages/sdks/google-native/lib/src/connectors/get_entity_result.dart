@@ -11,7 +11,7 @@ class GetEntityResult {
   /// Creates a new [GetEntityResult].
   /// [fields] Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
   /// [name] Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id}
-  GetEntityResult({
+  const GetEntityResult({
     required this.fields,
     required this.name,
   });

@@ -25,7 +25,7 @@ class SitePropertiesResponse {
   /// [labels] Key-value pairs for labeling the site resource.
   /// [provisioningState] Provisioning state of last operation
   /// [siteAddress] Physical address of the site
-  SitePropertiesResponse({
+  const SitePropertiesResponse({
     this.addressResourceId,
     this.description,
     this.displayName,

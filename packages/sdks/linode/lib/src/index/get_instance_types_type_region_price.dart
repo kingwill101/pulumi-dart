@@ -12,7 +12,7 @@ class GetInstanceTypesTypeRegionPrice {
   /// [hourly] Required.
   /// [id] The ID representing the Linode Type.
   /// [monthly] Required.
-  GetInstanceTypesTypeRegionPrice({
+  const GetInstanceTypesTypeRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

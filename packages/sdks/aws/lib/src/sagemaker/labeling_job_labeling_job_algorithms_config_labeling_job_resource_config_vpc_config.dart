@@ -11,7 +11,7 @@ class LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig {
   /// Creates a new [LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig].
   /// [securityGroupIds] VPC security group IDs.
   /// [subnets] IDs of the subnets in the VPC to which to connect the training job. Fields are documented below.
-  LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig({
+  const LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfigVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
   });

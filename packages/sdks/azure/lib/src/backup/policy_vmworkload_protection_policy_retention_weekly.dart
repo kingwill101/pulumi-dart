@@ -11,7 +11,7 @@ class PolicyVMWorkloadProtectionPolicyRetentionWeekly {
   /// Creates a new [PolicyVMWorkloadProtectionPolicyRetentionWeekly].
   /// [count] The number of weekly backups to keep. Possible values are between `1` and `5163`.
   /// [weekdays] The weekday backups to retain. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
-  PolicyVMWorkloadProtectionPolicyRetentionWeekly({
+  const PolicyVMWorkloadProtectionPolicyRetentionWeekly({
     required this.count,
     required this.weekdays,
   });

@@ -19,7 +19,7 @@ class GetFlowArgs {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetFlowArgs({
+  const GetFlowArgs({
     required this.agentId,
     required this.flowId,
     this.languageCode,

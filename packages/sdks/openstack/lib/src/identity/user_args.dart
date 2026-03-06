@@ -59,7 +59,7 @@ class UserArgs {
   /// [name] The name of the user.
   /// [password] The password for the user.
   /// [region] The region in which to obtain the V3 Keystone client.
-  UserArgs({
+  const UserArgs({
     this.defaultProjectId,
     this.description,
     this.domainId,

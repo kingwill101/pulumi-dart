@@ -18,7 +18,7 @@ class ManagedRulesDefinition {
   /// [exceptions] The exceptions that are applied on the policy.
   /// [exclusions] The Exclusions that are applied on the policy.
   /// [managedRuleSets] The managed rule sets that are associated with the policy.
-  ManagedRulesDefinition({
+  const ManagedRulesDefinition({
     this.exceptions,
     this.exclusions,
     required this.managedRuleSets,

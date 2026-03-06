@@ -13,7 +13,7 @@ class StorageProfileResponse {
   /// Creates a new [StorageProfileResponse].
   /// [dataDisks] A list of empty data disks to attach.
   /// [osDiskStorageAccountType] The Azure SKU name of the machines in the pool.
-  StorageProfileResponse({
+  const StorageProfileResponse({
     this.dataDisks,
     this.osDiskStorageAccountType,
   });

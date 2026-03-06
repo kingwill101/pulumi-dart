@@ -10,7 +10,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial {
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial].
   /// [digest] Optional.
   /// [uri] Optional.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaMaterial({
     this.digest,
     this.uri,
   });

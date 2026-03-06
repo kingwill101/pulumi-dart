@@ -8,7 +8,7 @@ class GcpIntegrationsInterconnect {
 
   /// Creates a new [GcpIntegrationsInterconnect].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsInterconnect({
+  const GcpIntegrationsInterconnect({
     this.metricsPollingInterval,
   });
 

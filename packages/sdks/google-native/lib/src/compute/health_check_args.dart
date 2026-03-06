@@ -67,7 +67,7 @@ class HealthCheckArgs {
   /// [type] Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS, HTTP2 or GRPC. Exactly one of the protocol-specific health check fields must be specified, which must match type field.
   /// [udpHealthCheck] Optional.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-  HealthCheckArgs({
+  const HealthCheckArgs({
     this.checkIntervalSec,
     this.description,
     this.grpcHealthCheck,

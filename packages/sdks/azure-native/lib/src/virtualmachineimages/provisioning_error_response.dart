@@ -12,7 +12,7 @@ class ProvisioningErrorResponse {
   /// Creates a new [ProvisioningErrorResponse].
   /// [message] Verbose error message about the provisioning failure
   /// [provisioningErrorCode] Error code of the provisioning failure
-  ProvisioningErrorResponse({
+  const ProvisioningErrorResponse({
     this.message,
     this.provisioningErrorCode,
   });

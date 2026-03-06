@@ -15,7 +15,7 @@ class GetResourceArgs {
   /// Creates a new [GetResourceArgs].
   /// [arn] ARN of the resource, an S3 path.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetResourceArgs({
+  const GetResourceArgs({
     required this.arn,
     this.region,
   });

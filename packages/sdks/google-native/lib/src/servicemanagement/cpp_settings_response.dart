@@ -10,7 +10,7 @@ class CppSettingsResponse {
 
   /// Creates a new [CppSettingsResponse].
   /// [common] Some settings.
-  CppSettingsResponse({
+  const CppSettingsResponse({
     required this.common,
   });
 

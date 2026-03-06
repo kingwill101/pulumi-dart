@@ -21,7 +21,7 @@ class TopicIngestionDataSourceSettingsConfluentCloud {
   /// [gcpServiceAccount] The GCP service account to be used for Federated Identity authentication
   /// [identityPoolId] Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
   /// [topic] Name of the Confluent Cloud topic that Pub/Sub will import from.
-  TopicIngestionDataSourceSettingsConfluentCloud({
+  const TopicIngestionDataSourceSettingsConfluentCloud({
     required this.bootstrapServer,
     this.clusterId,
     required this.gcpServiceAccount,

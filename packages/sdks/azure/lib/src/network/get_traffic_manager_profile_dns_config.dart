@@ -11,7 +11,7 @@ class GetTrafficManagerProfileDnsConfig {
   /// Creates a new [GetTrafficManagerProfileDnsConfig].
   /// [relativeName] The relative domain name, this is combined with the domain name used by Traffic Manager to form the FQDN which is exported as documented below.
   /// [ttl] The TTL value of the Profile used by Local DNS resolvers and clients.
-  GetTrafficManagerProfileDnsConfig({
+  const GetTrafficManagerProfileDnsConfig({
     required this.relativeName,
     required this.ttl,
   });

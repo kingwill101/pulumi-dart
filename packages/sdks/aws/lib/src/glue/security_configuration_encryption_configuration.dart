@@ -15,7 +15,7 @@ class SecurityConfigurationEncryptionConfiguration {
   /// [cloudwatchEncryption] Required.
   /// [jobBookmarksEncryption] Required.
   /// [s3Encryption] A `s3_encryption ` block as described below, which contains encryption configuration for S3 data.
-  SecurityConfigurationEncryptionConfiguration({
+  const SecurityConfigurationEncryptionConfiguration({
     required this.cloudwatchEncryption,
     required this.jobBookmarksEncryption,
     required this.s3Encryption,

@@ -79,7 +79,7 @@ class BareMetalAdminClusterArgs {
   /// [proxy] Proxy configuration.
   /// [securityConfig] Security related configuration.
   /// [storage] Storage configuration.
-  BareMetalAdminClusterArgs({
+  const BareMetalAdminClusterArgs({
     this.annotations,
     required this.bareMetalAdminClusterId,
     this.bareMetalVersion,

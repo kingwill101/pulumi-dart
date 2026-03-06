@@ -10,7 +10,7 @@ class InputFormatOptionsResponse {
 
   /// Creates a new [InputFormatOptionsResponse].
   /// [csv] The options for imported source files in CSV format. The values are Delimiter and HeaderList. The options for imported source files in CSV format. The values are Delimiter and HeaderList.
-  InputFormatOptionsResponse({
+  const InputFormatOptionsResponse({
     this.csv,
   });
 

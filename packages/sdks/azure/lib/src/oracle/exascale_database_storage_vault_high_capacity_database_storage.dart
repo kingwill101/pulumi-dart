@@ -11,7 +11,7 @@ class ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage {
   /// Creates a new [ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage].
   /// [availableSizeInGb] Available size in gigabytes.
   /// [totalSizeInGb] Total capacity in gigabytes. Changing this forces a new Exadata Database Storage Vault to be created.
-  ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage({
+  const ExascaleDatabaseStorageVaultHighCapacityDatabaseStorage({
     this.availableSizeInGb,
     required this.totalSizeInGb,
   });

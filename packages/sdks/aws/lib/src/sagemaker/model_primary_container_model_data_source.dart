@@ -9,7 +9,7 @@ class ModelPrimaryContainerModelDataSource {
 
   /// Creates a new [ModelPrimaryContainerModelDataSource].
   /// [s3DataSources] S3 location of model data to deploy. See S3 Data Source.
-  ModelPrimaryContainerModelDataSource({
+  const ModelPrimaryContainerModelDataSource({
     required this.s3DataSources,
   });
 

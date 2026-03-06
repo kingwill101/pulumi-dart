@@ -45,7 +45,7 @@ class ClusterState {
   /// [slbId] Optional.
   /// [vpcId] Optional.
   /// [vswitchId] Optional.
-  ClusterState({
+  const ClusterState({
     this.agentVersion,
     this.cidrBlock,
     this.diskCategory,

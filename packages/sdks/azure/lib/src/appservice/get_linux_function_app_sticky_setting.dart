@@ -11,7 +11,7 @@ class GetLinuxFunctionAppStickySetting {
   /// Creates a new [GetLinuxFunctionAppStickySetting].
   /// [appSettingNames] A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   /// [connectionStringNames] A list of `connection_string` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
-  GetLinuxFunctionAppStickySetting({
+  const GetLinuxFunctionAppStickySetting({
     required this.appSettingNames,
     required this.connectionStringNames,
   });

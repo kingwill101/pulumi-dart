@@ -17,7 +17,7 @@ class ServiceTaskSpecRestartPolicy {
   /// [delay] Delay between restart attempts (ms|s|m|h)
   /// [maxAttempts] Maximum attempts to restart a given container before giving up (default value is `0`, which is ignored)
   /// [window] The time window used to evaluate the restart policy (default value is `0`, which is unbounded) (ms|s|m|h)
-  ServiceTaskSpecRestartPolicy({
+  const ServiceTaskSpecRestartPolicy({
     this.condition,
     this.delay,
     this.maxAttempts,

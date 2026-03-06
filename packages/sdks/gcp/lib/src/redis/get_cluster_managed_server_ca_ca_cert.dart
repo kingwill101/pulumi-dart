@@ -8,7 +8,7 @@ class GetClusterManagedServerCaCaCert {
 
   /// Creates a new [GetClusterManagedServerCaCaCert].
   /// [certificates] The certificates that form the CA chain, from leaf to root order
-  GetClusterManagedServerCaCaCert({
+  const GetClusterManagedServerCaCaCert({
     required this.certificates,
   });
 

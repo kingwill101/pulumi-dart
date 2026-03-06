@@ -10,7 +10,7 @@ class SqlServerAvailabilityGroupResourcePropertiesReplicas {
 
   /// Creates a new [SqlServerAvailabilityGroupResourcePropertiesReplicas].
   /// [value] Array of Availability Group Replicas.
-  SqlServerAvailabilityGroupResourcePropertiesReplicas({
+  const SqlServerAvailabilityGroupResourcePropertiesReplicas({
     this.value,
   });
 

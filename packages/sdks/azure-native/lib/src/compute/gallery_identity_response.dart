@@ -19,7 +19,7 @@ class GalleryIdentityResponse {
   /// [tenantId] The AAD tenant id of the gallery identity. This property will only be provided for a system assigned identity.
   /// [type] The type of identity used for the gallery. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove all identities from the gallery.
   /// [userAssignedIdentities] The list of user identities associated with the gallery. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  GalleryIdentityResponse({
+  const GalleryIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

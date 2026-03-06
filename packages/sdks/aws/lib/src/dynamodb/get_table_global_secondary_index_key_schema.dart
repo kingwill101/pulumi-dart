@@ -9,7 +9,7 @@ class GetTableGlobalSecondaryIndexKeySchema {
   /// Creates a new [GetTableGlobalSecondaryIndexKeySchema].
   /// [attributeName] Required.
   /// [keyType] Required.
-  GetTableGlobalSecondaryIndexKeySchema({
+  const GetTableGlobalSecondaryIndexKeySchema({
     required this.attributeName,
     required this.keyType,
   });

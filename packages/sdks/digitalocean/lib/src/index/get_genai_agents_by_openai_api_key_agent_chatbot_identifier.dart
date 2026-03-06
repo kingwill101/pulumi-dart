@@ -8,7 +8,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier].
   /// [chatbotId] Chatbot ID
-  GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier({
+  const GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier({
     this.chatbotId,
   });
 

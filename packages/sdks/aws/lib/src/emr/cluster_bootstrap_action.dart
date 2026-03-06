@@ -14,7 +14,7 @@ class ClusterBootstrapAction {
   /// [args] List of command line arguments to pass to the bootstrap action script.
   /// [name] Name of the bootstrap action.
   /// [path] Location of the script to run during a bootstrap action. Can be either a location in Amazon S3 or on a local file system.
-  ClusterBootstrapAction({
+  const ClusterBootstrapAction({
     this.args,
     required this.name,
     required this.path,

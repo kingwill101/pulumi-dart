@@ -143,7 +143,7 @@ class V3FunctionState {
   /// [timeout] The maximum running time of the function, in seconds.
   /// [tracingConfig] Tracing configuration
   /// [vpcConfig] VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
-  V3FunctionState({
+  const V3FunctionState({
     this.code,
     this.codeSize,
     this.cpu,

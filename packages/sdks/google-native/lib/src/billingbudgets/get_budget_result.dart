@@ -33,7 +33,7 @@ class GetBudgetResult {
   /// [notificationsRule] Optional. Rules to apply to notifications sent based on budget spend and thresholds.
   /// [ownershipScope] Required.
   /// [thresholdRules] Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  GetBudgetResult({
+  const GetBudgetResult({
     required this.amount,
     required this.budgetFilter,
     required this.displayName,

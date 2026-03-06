@@ -26,7 +26,7 @@ class GetCoreNetworkPolicyDocumentSegment {
   /// [isolateAttachments] This Boolean setting determines whether attachments on the same segment can communicate with each other. If set to `true`, the only routes available will be either shared routes through the share actions, which are attachments in other segments, or static routes. The default value is `false`. For example, you might have a segment dedicated to "development" that should never allow VPCs to talk to each other, even if they’re on the same segment. In this example, you would keep the default parameter of `false`.
   /// [name] Unique name for a segment. The name is a string used in other parts of the policy document, as well as in the console for metrics and other reference points. Valid characters are a–z, and 0–9.
   /// [requireAttachmentAcceptance] This Boolean setting determines whether attachment requests are automatically approved or require acceptance. The default is `true`, indicating that attachment requests require acceptance. For example, you might use this setting to allow a "sandbox" segment to allow any attachment request so that a core network or attachment administrator does not need to review and approve attachment requests. In this example, `require_attachment_acceptance` is set to `false`.
-  GetCoreNetworkPolicyDocumentSegment({
+  const GetCoreNetworkPolicyDocumentSegment({
     this.allowFilters,
     this.denyFilters,
     this.description,

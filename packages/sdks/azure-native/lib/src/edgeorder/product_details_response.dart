@@ -40,7 +40,7 @@ class ProductDetailsResponse {
   /// [parentProvisioningDetails] Device Provisioning Details for Parent.
   /// [productDoubleEncryptionStatus] Double encryption status of the configuration. Read-only field.
   /// [termCommitmentInformation] Term Commitment Information of the Device.
-  ProductDetailsResponse({
+  const ProductDetailsResponse({
     required this.childConfigurationDeviceDetails,
     this.displayInfo,
     required this.hierarchyInformation,

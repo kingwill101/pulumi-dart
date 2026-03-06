@@ -62,7 +62,7 @@ class GetImageResult {
   /// [state] Current state of image. Image starts in PENDING state which changes to AVAILABLE if creation passes and FAILED if it fails. Values will be from: PENDING | AVAILABLE | FAILED | COPYING | DELETING | CREATING | IMPORTING.
   /// [stateChangeReasons] Required.
   /// [type] Optional.
-  GetImageResult({
+  const GetImageResult({
     required this.applications,
     required this.appstreamAgentVersion,
     required this.arn,

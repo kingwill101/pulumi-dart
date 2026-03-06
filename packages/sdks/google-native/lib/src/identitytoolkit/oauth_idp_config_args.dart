@@ -38,7 +38,7 @@ class OauthIdpConfigArgs {
   /// [project] Optional.
   /// [responseType] The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported.
   /// [tenantId] Required.
-  OauthIdpConfigArgs({
+  const OauthIdpConfigArgs({
     this.clientId,
     this.clientSecret,
     this.displayName,

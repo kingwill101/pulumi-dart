@@ -52,7 +52,7 @@ class ComputeInstanceArgs {
   /// [subnetResourceId] Virtual network subnet resource ID the compute nodes belong to. Changing this forces a new Machine Learning Compute Instance to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning Compute Instance. Changing this forces a new Machine Learning Compute Instance to be created.
   /// [virtualMachineSize] The Virtual Machine Size. Changing this forces a new Machine Learning Compute Instance to be created.
-  ComputeInstanceArgs({
+  const ComputeInstanceArgs({
     this.assignToUser,
     this.authorizationType,
     this.description,

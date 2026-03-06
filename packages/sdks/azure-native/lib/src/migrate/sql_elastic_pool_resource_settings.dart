@@ -22,7 +22,7 @@ class SqlElasticPoolResourceSettings {
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
   /// [zoneRedundant] Defines the zone redundant resource setting.
-  SqlElasticPoolResourceSettings({
+  const SqlElasticPoolResourceSettings({
     required this.resourceType,
     this.tags,
     this.targetResourceGroupName,

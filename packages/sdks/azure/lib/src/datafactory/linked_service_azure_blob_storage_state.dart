@@ -62,7 +62,7 @@ class LinkedServiceAzureBlobStorageState {
   /// [storageKind] Optional.
   /// [tenantId] Optional.
   /// [useManagedIdentity] Optional.
-  LinkedServiceAzureBlobStorageState({
+  const LinkedServiceAzureBlobStorageState({
     this.additionalProperties,
     this.annotations,
     this.connectionString,

@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1ModelOriginalModelInfoResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1ModelOriginalModelInfoResponse].
   /// [model] The resource name of the Model this Model is a copy of, including the revision. Format: `projects/{project}/locations/{location}/models/{model_id}@{version_id}`
-  GoogleCloudAiplatformV1ModelOriginalModelInfoResponse({
+  const GoogleCloudAiplatformV1ModelOriginalModelInfoResponse({
     required this.model,
   });
 

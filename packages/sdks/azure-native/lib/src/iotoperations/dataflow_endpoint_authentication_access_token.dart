@@ -9,7 +9,7 @@ class DataflowEndpointAuthenticationAccessToken {
 
   /// Creates a new [DataflowEndpointAuthenticationAccessToken].
   /// [secretRef] Token secret name.
-  DataflowEndpointAuthenticationAccessToken({
+  const DataflowEndpointAuthenticationAccessToken({
     required this.secretRef,
   });
 

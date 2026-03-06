@@ -25,7 +25,7 @@ class GetCustomDomainResult {
   /// [properties] Properties of the custom domain resource.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetCustomDomainResult({
+  const GetCustomDomainResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

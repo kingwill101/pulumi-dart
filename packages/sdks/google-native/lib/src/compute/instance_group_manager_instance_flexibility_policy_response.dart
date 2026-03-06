@@ -11,7 +11,7 @@ class InstanceGroupManagerInstanceFlexibilityPolicyResponse {
   /// Creates a new [InstanceGroupManagerInstanceFlexibilityPolicyResponse].
   /// [instanceSelectionLists] Named instance selections configuring properties that the group will use when creating new VMs.
   /// [instanceSelections] Named instance selections configuring properties that the group will use when creating new VMs.
-  InstanceGroupManagerInstanceFlexibilityPolicyResponse({
+  const InstanceGroupManagerInstanceFlexibilityPolicyResponse({
     required this.instanceSelectionLists,
     required this.instanceSelections,
   });

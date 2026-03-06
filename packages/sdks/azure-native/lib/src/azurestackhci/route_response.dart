@@ -15,7 +15,7 @@ class RouteResponse {
   /// [addressPrefix] The destination CIDR to which the route applies.
   /// [name] Name - name of the subnet
   /// [nextHopIpAddress] The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
-  RouteResponse({
+  const RouteResponse({
     this.addressPrefix,
     this.name,
     this.nextHopIpAddress,

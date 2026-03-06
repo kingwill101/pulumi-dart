@@ -11,7 +11,7 @@ class TagTemplateIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TagTemplateIamMemberCondition({
+  const TagTemplateIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

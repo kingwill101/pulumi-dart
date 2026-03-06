@@ -8,7 +8,7 @@ class BackupPlanBackupConfigEncryptionKey {
 
   /// Creates a new [BackupPlanBackupConfigEncryptionKey].
   /// [gcpKmsEncryptionKey] Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
-  BackupPlanBackupConfigEncryptionKey({
+  const BackupPlanBackupConfigEncryptionKey({
     required this.gcpKmsEncryptionKey,
   });
 

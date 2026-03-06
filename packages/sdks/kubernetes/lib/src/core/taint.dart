@@ -18,7 +18,7 @@ class Taint {
   /// [key] Required. The taint key to be applied to a node.
   /// [timeAdded] TimeAdded represents the time at which the taint was added.
   /// [value] The taint value corresponding to the taint key.
-  Taint({
+  const Taint({
     required this.effect,
     required this.key,
     this.timeAdded,

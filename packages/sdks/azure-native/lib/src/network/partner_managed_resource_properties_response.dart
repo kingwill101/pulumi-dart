@@ -15,7 +15,7 @@ class PartnerManagedResourcePropertiesResponse {
   /// [id] The partner managed resource id.
   /// [internalLoadBalancerId] The partner managed ILB resource id
   /// [standardLoadBalancerId] The partner managed SLB resource id
-  PartnerManagedResourcePropertiesResponse({
+  const PartnerManagedResourcePropertiesResponse({
     required this.id,
     required this.internalLoadBalancerId,
     required this.standardLoadBalancerId,

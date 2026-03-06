@@ -23,7 +23,7 @@ class GetKubernetesNodePoolsResult {
   /// [nodePoolName] The name of node pool.
   /// [nodepools] A list of Nodepool Entries. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetKubernetesNodePoolsResult({
+  const GetKubernetesNodePoolsResult({
     required this.clusterId,
     required this.id,
     required this.ids,

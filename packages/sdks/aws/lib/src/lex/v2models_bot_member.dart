@@ -20,7 +20,7 @@ class V2modelsBotMember {
   /// [id] (Required) - Unique ID of a bot that is a member of this network of bots.
   /// [name] Name of the bot. The bot name must be unique in the account that creates the bot. Type String. Length Constraints: Minimum length of 1. Maximum length of 100.
   /// [version] (Required) - Version of a bot that is a member of this network of bots.
-  V2modelsBotMember({
+  const V2modelsBotMember({
     required this.aliasId,
     required this.aliasName,
     required this.id,

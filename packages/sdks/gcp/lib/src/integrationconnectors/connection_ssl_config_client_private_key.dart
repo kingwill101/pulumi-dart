@@ -8,7 +8,7 @@ class ConnectionSslConfigClientPrivateKey {
 
   /// Creates a new [ConnectionSslConfigClientPrivateKey].
   /// [secretVersion] Secret version of Secret Value for Config variable.
-  ConnectionSslConfigClientPrivateKey({
+  const ConnectionSslConfigClientPrivateKey({
     required this.secretVersion,
   });
 

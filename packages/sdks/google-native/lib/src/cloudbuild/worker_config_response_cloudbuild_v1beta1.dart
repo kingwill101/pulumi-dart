@@ -15,7 +15,7 @@ class WorkerConfigResponseCloudbuildV1beta1 {
   /// [diskSizeGb] Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
   /// [machineType] Machine type of a worker, such as `n1-standard-1`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
   /// [noExternalIp] If true, workers are created without any public address, which prevents network egress to public IPs.
-  WorkerConfigResponseCloudbuildV1beta1({
+  const WorkerConfigResponseCloudbuildV1beta1({
     required this.diskSizeGb,
     required this.machineType,
     required this.noExternalIp,

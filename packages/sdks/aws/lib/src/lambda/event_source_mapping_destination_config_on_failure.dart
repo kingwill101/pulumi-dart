@@ -8,7 +8,7 @@ class EventSourceMappingDestinationConfigOnFailure {
 
   /// Creates a new [EventSourceMappingDestinationConfigOnFailure].
   /// [destinationArn] ARN of the destination resource, or `kafka://your-topic-name` for Amazon MSK and self-managed Apache Kafka destinations.
-  EventSourceMappingDestinationConfigOnFailure({
+  const EventSourceMappingDestinationConfigOnFailure({
     required this.destinationArn,
   });
 

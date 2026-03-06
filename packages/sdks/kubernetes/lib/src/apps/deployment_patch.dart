@@ -46,7 +46,7 @@ class DeploymentPatch {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired behavior of the Deployment.
   /// [status] Most recently observed status of the Deployment.
-  DeploymentPatch({
+  const DeploymentPatch({
     this.apiVersion,
     this.kind,
     this.metadata,

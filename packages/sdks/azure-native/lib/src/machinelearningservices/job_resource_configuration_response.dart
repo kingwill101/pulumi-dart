@@ -20,7 +20,7 @@ class JobResourceConfigurationResponse {
   /// [instanceType] Optional type of VM used as supported by the compute target.
   /// [properties] Additional properties bag.
   /// [shmSize] Size of the docker container's shared memory block. This should be in the format of (number)(unit) where number as to be greater than 0 and the unit can be one of b(bytes), k(kilobytes), m(megabytes), or g(gigabytes).
-  JobResourceConfigurationResponse({
+  const JobResourceConfigurationResponse({
     this.dockerArgs,
     this.instanceCount,
     this.instanceType,

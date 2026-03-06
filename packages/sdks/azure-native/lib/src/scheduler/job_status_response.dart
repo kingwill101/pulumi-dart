@@ -20,7 +20,7 @@ class JobStatusResponse {
   /// [faultedCount] Gets the number of faulted occurrences (occurrences that were retried and failed as many times as the retry policy states).
   /// [lastExecutionTime] Gets the time the last occurrence executed in ISO-8601 format.  Could be empty if job has not run yet.
   /// [nextExecutionTime] Gets the time of the next occurrence in ISO-8601 format. Could be empty if the job is completed.
-  JobStatusResponse({
+  const JobStatusResponse({
     required this.executionCount,
     required this.failureCount,
     required this.faultedCount,

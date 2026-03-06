@@ -33,7 +33,7 @@ class GetAuthorizationResult {
   /// [parameters] Authorization parameters
   /// [status] Status of the Authorization
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAuthorizationResult({
+  const GetAuthorizationResult({
     this.authorizationType,
     required this.azureApiVersion,
     this.error,

@@ -14,7 +14,7 @@ class OverlayResponse {
   /// Creates a new [OverlayResponse].
   /// [animations] List of animations. The list should be chronological, without any time overlap.
   /// [image] Image overlay.
-  OverlayResponse({
+  const OverlayResponse({
     required this.animations,
     required this.image,
   });

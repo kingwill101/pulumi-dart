@@ -17,7 +17,7 @@ class GetRuleNetworksecurityV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [ruleId] Required.
-  GetRuleNetworksecurityV1beta1Args({
+  const GetRuleNetworksecurityV1beta1Args({
     required this.gatewaySecurityPolicyId,
     required this.location,
     this.project,

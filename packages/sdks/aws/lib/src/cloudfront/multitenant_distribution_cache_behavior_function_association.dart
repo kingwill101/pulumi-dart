@@ -11,7 +11,7 @@ class MultitenantDistributionCacheBehaviorFunctionAssociation {
   /// Creates a new [MultitenantDistributionCacheBehaviorFunctionAssociation].
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   /// [functionArn] ARN of the CloudFront function.
-  MultitenantDistributionCacheBehaviorFunctionAssociation({
+  const MultitenantDistributionCacheBehaviorFunctionAssociation({
     required this.eventType,
     required this.functionArn,
   });

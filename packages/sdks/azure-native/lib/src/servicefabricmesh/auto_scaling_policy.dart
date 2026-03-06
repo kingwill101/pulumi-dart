@@ -17,7 +17,7 @@ class AutoScalingPolicy {
   /// [mechanism] The mechanism that is used to scale when auto scaling operation is invoked.
   /// [name] The name of the auto scaling policy.
   /// [trigger] Determines when auto scaling operation will be invoked.
-  AutoScalingPolicy({
+  const AutoScalingPolicy({
     required this.mechanism,
     required this.name,
     required this.trigger,

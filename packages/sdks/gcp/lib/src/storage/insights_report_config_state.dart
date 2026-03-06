@@ -41,7 +41,7 @@ class InsightsReportConfigState {
   /// [objectMetadataReportOptions] Options for including metadata in an inventory report.
   /// [parquetOptions] An option for outputting inventory reports as parquet files.
   /// [project] The ID of the project in which the resource belongs.
-  InsightsReportConfigState({
+  const InsightsReportConfigState({
     this.csvOptions,
     this.displayName,
     this.forceDestroy,

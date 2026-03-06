@@ -16,7 +16,7 @@ class AttestationServiceCreationSpecificParams {
   /// [policySigningCertificates] JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
   /// [publicNetworkAccess] Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
   /// [tpmAttestationAuthentication] The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
-  AttestationServiceCreationSpecificParams({
+  const AttestationServiceCreationSpecificParams({
     this.policySigningCertificates,
     this.publicNetworkAccess,
     this.tpmAttestationAuthentication,

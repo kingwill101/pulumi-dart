@@ -17,7 +17,7 @@ class NetworkInsightsAnalysisForwardPathComponentInboundHeader {
   /// [protocol] Optional.
   /// [sourceAddresses] Optional.
   /// [sourcePortRanges] Optional.
-  NetworkInsightsAnalysisForwardPathComponentInboundHeader({
+  const NetworkInsightsAnalysisForwardPathComponentInboundHeader({
     this.destinationAddresses,
     this.destinationPortRanges,
     this.protocol,

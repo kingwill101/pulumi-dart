@@ -41,7 +41,7 @@ class GetFavoriteResult {
   /// [timeModified] Date and time in UTC of the last modification that was made to this favorite definition.
   /// [userId] Unique user id of the specific user that owns this favorite.
   /// [version] This instance's version of the data model. This can change as new features are added that can be marked favorite. Current examples include MetricsExplorer (ME) and Search.
-  GetFavoriteResult({
+  const GetFavoriteResult({
     required this.azureApiVersion,
     this.category,
     this.config,

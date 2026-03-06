@@ -40,7 +40,7 @@ class CacheUsernameDownloadSettings {
   /// [requireValidCertificate] Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
   /// [userFileURI] The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
   /// [usernameSource] This setting determines how the cache gets username and group names for clients.
-  CacheUsernameDownloadSettings({
+  const CacheUsernameDownloadSettings({
     this.autoDownloadCertificate,
     this.caCertificateURI,
     this.credentials,

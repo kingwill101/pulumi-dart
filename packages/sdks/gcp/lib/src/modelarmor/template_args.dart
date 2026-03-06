@@ -36,7 +36,7 @@ class TemplateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [templateId] Id of the requesting object
   /// [templateMetadata] Message describing TemplateMetadata
-  TemplateArgs({
+  const TemplateArgs({
     required this.filterConfig,
     this.labels,
     required this.location,

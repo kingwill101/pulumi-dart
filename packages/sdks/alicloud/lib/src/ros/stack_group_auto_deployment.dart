@@ -11,7 +11,7 @@ class StackGroupAutoDeployment {
   /// Creates a new [StackGroupAutoDeployment].
   /// [enabled] Enable or disable automatic deployment. Valid Values:
   /// [retainStacksOnAccountRemoval] Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
-  StackGroupAutoDeployment({
+  const StackGroupAutoDeployment({
     this.enabled,
     this.retainStacksOnAccountRemoval,
   });

@@ -118,7 +118,7 @@ class GetBareMetalClusterResult {
   /// [updateTime] The time when the bare metal user cluster was last updated.
   /// [upgradePolicy] The cluster upgrade policy.
   /// [validationCheck] The result of the preflight check.
-  GetBareMetalClusterResult({
+  const GetBareMetalClusterResult({
     required this.adminClusterMembership,
     required this.adminClusterName,
     required this.annotations,

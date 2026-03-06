@@ -67,7 +67,7 @@ class GetScriptExecutionLogsResult {
   /// [timeout] Time limit for execution
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [warnings] Standard warning out stream from the powershell execution
-  GetScriptExecutionLogsResult({
+  const GetScriptExecutionLogsResult({
     required this.errors,
     this.failureReason,
     required this.finishedAt,

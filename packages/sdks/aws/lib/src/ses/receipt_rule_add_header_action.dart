@@ -14,7 +14,7 @@ class ReceiptRuleAddHeaderAction {
   /// [headerName] The name of the header to add
   /// [headerValue] The value of the header to add
   /// [position] The position of the action in the receipt rule
-  ReceiptRuleAddHeaderAction({
+  const ReceiptRuleAddHeaderAction({
     required this.headerName,
     required this.headerValue,
     required this.position,

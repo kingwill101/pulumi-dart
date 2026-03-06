@@ -20,7 +20,7 @@ class GetFirewallsFirewallDevice {
   /// [label] The label for the Firewall. For display purposes only. If no label is provided, a default will be assigned.
   /// [type] The type of Firewall Device.
   /// [url] The URL of the underlying entity this device references.
-  GetFirewallsFirewallDevice({
+  const GetFirewallsFirewallDevice({
     required this.entityId,
     required this.id,
     required this.label,

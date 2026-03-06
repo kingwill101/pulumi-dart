@@ -55,7 +55,7 @@ class GetCloudFormationTypeResult {
   /// [typeName] Required.
   /// [versionId] Optional.
   /// [visibility] Scope of the CloudFormation Type.
-  GetCloudFormationTypeResult({
+  const GetCloudFormationTypeResult({
     required this.arn,
     required this.defaultVersionId,
     required this.deprecatedStatus,

@@ -35,7 +35,7 @@ class TaskSpecResponse {
   /// [maxRunDuration] Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
   /// [runnables] The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically (if they have not already exited) a short time after all foreground runnables have completed. Even though this is likely to result in a non-zero exit status for the background runnable, these automatic kills are not treated as Task failures.
   /// [volumes] Volumes to mount before running Tasks using this TaskSpec.
-  TaskSpecResponse({
+  const TaskSpecResponse({
     required this.computeResource,
     required this.environment,
     required this.environments,

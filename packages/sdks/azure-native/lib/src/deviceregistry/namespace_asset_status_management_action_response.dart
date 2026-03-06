@@ -20,7 +20,7 @@ class NamespaceAssetStatusManagementActionResponse {
   /// [name] The name of the action. Must be unique within the status.actions array. This name is used to correlate between the spec and status event information.
   /// [requestMessageSchemaReference] The request message schema reference object for the action.
   /// [responseMessageSchemaReference] The response message schema reference object for the action.
-  NamespaceAssetStatusManagementActionResponse({
+  const NamespaceAssetStatusManagementActionResponse({
     required this.error,
     required this.name,
     required this.requestMessageSchemaReference,

@@ -15,7 +15,7 @@ class GetDaxClusterArgs {
   /// Creates a new [GetDaxClusterArgs].
   /// [name] Name of DaxCluster
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDaxClusterArgs({
+  const GetDaxClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

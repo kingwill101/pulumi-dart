@@ -12,7 +12,7 @@ class GuestCredentialResponse {
   /// Creates a new [GuestCredentialResponse].
   /// [privateKey] Private key used to authenticate to a virtual machine through ssh.
   /// [username] Gets or sets username to connect with the guest.
-  GuestCredentialResponse({
+  const GuestCredentialResponse({
     this.privateKey,
     this.username,
   });

@@ -23,7 +23,7 @@ class GetNetworksResult {
   /// [names] A list of CCN instances names.
   /// [networks] A list of CCN instances. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetNetworksResult({
+  const GetNetworksResult({
     required this.id,
     required this.ids,
     this.nameRegex,

@@ -38,7 +38,7 @@ class GetUserResult {
   /// [protocolId] See Argument Reference above.
   /// [region] See Argument Reference above.
   /// [uniqueId] See Argument Reference above.
-  GetUserResult({
+  const GetUserResult({
     required this.defaultProjectId,
     required this.description,
     required this.domainId,

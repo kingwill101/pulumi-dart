@@ -39,7 +39,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition {
   /// [networkConfig] Networking options for the monitoring job. Fields are documented below.
   /// [roleArn] ARN of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
   /// [stoppingConditions] How long the monitoring job is allowed to run. Fields are documented below.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinition({
     this.baseline,
     this.environment,
     required this.monitoringAppSpecification,

@@ -11,7 +11,7 @@ class GetBucketsBucketWebsite {
   /// Creates a new [GetBucketsBucketWebsite].
   /// [errorDocument] Key of the HTML document containing the error page.
   /// [indexDocument] Key of the HTML document containing the home page.
-  GetBucketsBucketWebsite({
+  const GetBucketsBucketWebsite({
     required this.errorDocument,
     required this.indexDocument,
   });

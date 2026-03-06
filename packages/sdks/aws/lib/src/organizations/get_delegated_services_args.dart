@@ -12,7 +12,7 @@ class GetDelegatedServicesArgs {
 
   /// Creates a new [GetDelegatedServicesArgs].
   /// [accountId] Account ID number of a delegated administrator account in the organization.
-  GetDelegatedServicesArgs({
+  const GetDelegatedServicesArgs({
     required this.accountId,
   });
 

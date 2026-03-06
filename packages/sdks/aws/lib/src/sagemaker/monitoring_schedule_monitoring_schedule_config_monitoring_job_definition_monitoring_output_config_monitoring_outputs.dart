@@ -9,7 +9,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs].
   /// [s3Output] Amazon S3 storage location where the results of a monitoring job are saved. Fields are documented below.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputs({
     required this.s3Output,
   });
 

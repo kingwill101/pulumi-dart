@@ -25,7 +25,7 @@ class GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdC
   /// [detectionRelativeToBaselineQps] Required.
   /// [name] The name of the security policy. Provide either this or a `self_link`.
   /// [trafficGranularityConfigs] Required.
-  GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig({
+  const GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig({
     required this.autoDeployConfidenceThreshold,
     required this.autoDeployExpirationSec,
     required this.autoDeployImpactedBaselineThreshold,

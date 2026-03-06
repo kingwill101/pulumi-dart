@@ -50,7 +50,7 @@ class AppVersionSnapshotToolOpenApiTool {
   /// [serviceDirectoryConfigs] (Output)
   /// [tlsConfigs] (Output)
   /// [url] (Output)
-  AppVersionSnapshotToolOpenApiTool({
+  const AppVersionSnapshotToolOpenApiTool({
     this.apiAuthentications,
     this.description,
     this.ignoreUnknownFields,

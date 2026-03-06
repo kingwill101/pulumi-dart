@@ -53,7 +53,7 @@ class PlatformApplicationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [successFeedbackRoleArn] The IAM role ARN permitted to receive success feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
   /// [successFeedbackSampleRate] The sample rate percentage (0-100) of successfully delivered messages.
-  PlatformApplicationArgs({
+  const PlatformApplicationArgs({
     this.applePlatformBundleId,
     this.applePlatformTeamId,
     this.eventDeliveryFailureTopicArn,

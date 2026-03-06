@@ -84,7 +84,7 @@ class GetWorkerPoolResult {
   /// [terminalConditions] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetWorkerPoolResult({
+  const GetWorkerPoolResult({
     required this.annotations,
     required this.binaryAuthorizations,
     required this.client,

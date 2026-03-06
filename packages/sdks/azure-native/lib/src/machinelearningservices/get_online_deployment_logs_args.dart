@@ -27,7 +27,7 @@ class GetOnlineDeploymentLogsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tail] The maximum number of lines to tail.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetOnlineDeploymentLogsArgs({
+  const GetOnlineDeploymentLogsArgs({
     this.containerType,
     required this.deploymentName,
     required this.endpointName,

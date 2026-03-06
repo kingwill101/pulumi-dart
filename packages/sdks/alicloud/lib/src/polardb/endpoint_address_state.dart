@@ -27,7 +27,7 @@ class EndpointAddressState {
   /// [ipAddress] The ip address of connection string.
   /// [netType] Internet connection net type. Valid value: `Public`. Default to `Public`. Currently supported only `Public`.
   /// [port] Port of the specified endpoint. Valid values: 3000 to 5999.
-  EndpointAddressState({
+  const EndpointAddressState({
     this.connectionPrefix,
     this.connectionString,
     this.dbClusterId,

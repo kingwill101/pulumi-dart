@@ -9,7 +9,7 @@ class GetTopicIngestionDataSourceSettingPlatformLogsSetting {
 
   /// Creates a new [GetTopicIngestionDataSourceSettingPlatformLogsSetting].
   /// [severity] The minimum severity level of Platform Logs that will be written. If unspecified,
-  GetTopicIngestionDataSourceSettingPlatformLogsSetting({
+  const GetTopicIngestionDataSourceSettingPlatformLogsSetting({
     required this.severity,
   });
 

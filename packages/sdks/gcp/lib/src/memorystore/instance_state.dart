@@ -199,7 +199,7 @@ class InstanceState {
   /// [uid] Output only. System assigned, unique identifier for the instance.
   /// [updateTime] Output only. Latest update timestamp of the instance.
   /// [zoneDistributionConfig] Zone distribution configuration for allocation of instance resources.
-  InstanceState({
+  const InstanceState({
     this.authorizationMode,
     this.automatedBackupConfig,
     this.availableMaintenanceVersions,

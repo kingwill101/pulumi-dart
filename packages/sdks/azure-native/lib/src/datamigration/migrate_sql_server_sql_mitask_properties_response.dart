@@ -44,7 +44,7 @@ class MigrateSqlServerSqlMITaskPropertiesResponse {
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskId] task id
   /// [taskType] Task type.
-  MigrateSqlServerSqlMITaskPropertiesResponse({
+  const MigrateSqlServerSqlMITaskPropertiesResponse({
     this.clientData,
     required this.commands,
     this.createdOn,

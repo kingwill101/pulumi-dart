@@ -24,7 +24,7 @@ class BackupInstancePostgresqlFlexibleServerArgs {
   /// [name] Specifies the name of the Backup Instance for the PostgreSQL Flexible Server. Changing this forces a new resource to be created.
   /// [serverId] The ID of the source server. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the PostgreSQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
-  BackupInstancePostgresqlFlexibleServerArgs({
+  const BackupInstancePostgresqlFlexibleServerArgs({
     required this.backupPolicyId,
     this.location,
     this.name,

@@ -27,7 +27,7 @@ class ContainerRegistryState {
   /// [serverUrl] The domain of the container registry. Ex: `registry.digitalocean.com`
   /// [storageUsageBytes] The amount of storage used in the registry in bytes.
   /// [subscriptionTierSlug] The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
-  ContainerRegistryState({
+  const ContainerRegistryState({
     this.createdAt,
     this.endpoint,
     this.name,

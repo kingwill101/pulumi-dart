@@ -23,7 +23,7 @@ class GetFirewallFirewallStatus {
   /// [status] The current status of the firewall endpoint instantiation in the subnet.
   /// [syncStates] Set of subnets configured for use by the firewall.
   /// [transitGatewayAttachmentSyncStates] Set of transit gateway configured for use by the firewall.
-  GetFirewallFirewallStatus({
+  const GetFirewallFirewallStatus({
     required this.capacityUsageSummaries,
     required this.configurationSyncStateSummary,
     required this.status,

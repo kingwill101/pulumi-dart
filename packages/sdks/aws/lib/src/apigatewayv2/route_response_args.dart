@@ -27,7 +27,7 @@ class RouteResponseArgs {
   /// [responseModels] Response models for the route response.
   /// [routeId] Identifier of the `aws.apigatewayv2.Route`.
   /// [routeResponseKey] Route response key.
-  RouteResponseArgs({
+  const RouteResponseArgs({
     required this.apiId,
     this.modelSelectionExpression,
     this.region,

@@ -14,7 +14,7 @@ class RecordGeolocationRoutingPolicy {
   /// [continent] A two-letter continent code. See http://docs.aws.amazon.com/Route53/latest/APIReference/API_GetGeoLocation.html for code details. Either `continent` or `country` must be specified.
   /// [country] A two-character country code or `*` to indicate a default resource record set.
   /// [subdivision] A subdivision code for a country.
-  RecordGeolocationRoutingPolicy({
+  const RecordGeolocationRoutingPolicy({
     this.continent,
     this.country,
     this.subdivision,

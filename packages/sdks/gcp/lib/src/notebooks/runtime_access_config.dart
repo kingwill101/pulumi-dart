@@ -18,7 +18,7 @@ class RuntimeAccessConfig {
   /// [accessType] The type of access mode this instance. For valid values, see
   /// [proxyUri] (Output)
   /// [runtimeOwner] The owner of this runtime after creation. Format: `alias@example.com`.
-  RuntimeAccessConfig({
+  const RuntimeAccessConfig({
     this.accessType,
     this.proxyUri,
     this.runtimeOwner,

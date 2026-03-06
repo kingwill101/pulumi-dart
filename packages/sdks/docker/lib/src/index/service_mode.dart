@@ -12,7 +12,7 @@ class ServiceMode {
   /// Creates a new [ServiceMode].
   /// [global] When `true`, tasks will run on every worker node. Conflicts with `replicated`
   /// [replicated] The replicated service mode
-  ServiceMode({
+  const ServiceMode({
     this.global,
     this.replicated,
   });

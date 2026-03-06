@@ -35,7 +35,7 @@ class GetCertificateDataResult {
   /// [pem] The Key Vault Certificate in PEM format.
   /// [tags] A mapping of tags to assign to the resource.
   /// [version] Required.
-  GetCertificateDataResult({
+  const GetCertificateDataResult({
     required this.certificatesCount,
     required this.expires,
     required this.hex,

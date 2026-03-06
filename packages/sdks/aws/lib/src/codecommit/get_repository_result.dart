@@ -27,7 +27,7 @@ class GetRepositoryResult {
   /// [region] Required.
   /// [repositoryId] ID of the repository.
   /// [repositoryName] Required.
-  GetRepositoryResult({
+  const GetRepositoryResult({
     required this.arn,
     required this.cloneUrlHttp,
     required this.cloneUrlSsh,

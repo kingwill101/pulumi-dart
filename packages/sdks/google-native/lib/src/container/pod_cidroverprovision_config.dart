@@ -9,7 +9,7 @@ class PodCIDROverprovisionConfig {
 
   /// Creates a new [PodCIDROverprovisionConfig].
   /// [disable] Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default.
-  PodCIDROverprovisionConfig({
+  const PodCIDROverprovisionConfig({
     this.disable,
   });
 

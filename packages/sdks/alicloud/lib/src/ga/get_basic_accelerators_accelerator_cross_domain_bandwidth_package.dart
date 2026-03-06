@@ -11,7 +11,7 @@ class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage {
   /// Creates a new [GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage].
   /// [bandwidth] The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
   /// [instanceId] The ID of the cross-region acceleration bandwidth plan.
-  GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage({
+  const GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackage({
     required this.bandwidth,
     required this.instanceId,
   });

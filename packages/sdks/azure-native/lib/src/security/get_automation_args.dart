@@ -15,7 +15,7 @@ class GetAutomationArgs {
   /// Creates a new [GetAutomationArgs].
   /// [automationName] The security automation name.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetAutomationArgs({
+  const GetAutomationArgs({
     required this.automationName,
     required this.resourceGroupName,
   });

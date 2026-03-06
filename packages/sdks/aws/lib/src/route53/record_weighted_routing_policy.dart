@@ -8,7 +8,7 @@ class RecordWeightedRoutingPolicy {
 
   /// Creates a new [RecordWeightedRoutingPolicy].
   /// [weight] A numeric value indicating the relative weight of the record. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-weighted.
-  RecordWeightedRoutingPolicy({
+  const RecordWeightedRoutingPolicy({
     required this.weight,
   });
 

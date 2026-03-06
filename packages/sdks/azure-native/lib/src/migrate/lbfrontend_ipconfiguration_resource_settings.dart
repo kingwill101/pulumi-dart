@@ -23,7 +23,7 @@ class LBFrontendIPConfigurationResourceSettings {
   /// [privateIpAllocationMethod] Gets or sets PrivateIP allocation method (Static/Dynamic).
   /// [subnet] Defines reference to subnet.
   /// [zones] Gets or sets the csv list of zones.
-  LBFrontendIPConfigurationResourceSettings({
+  const LBFrontendIPConfigurationResourceSettings({
     this.name,
     this.privateIpAddress,
     this.privateIpAllocationMethod,

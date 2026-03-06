@@ -29,7 +29,7 @@ class ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse {
   /// [sourceConnectionInfo] Connection information for source SQL Server
   /// [storageResourceId] Fully qualified resourceId of storage
   /// [targetConnectionInfo] Connection information for Azure SQL Database Managed Instance
-  ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse({
+  const ValidateMigrationInputSqlServerSqlMISyncTaskInputResponse({
     required this.azureApp,
     this.backupFileShare,
     required this.selectedDatabases,

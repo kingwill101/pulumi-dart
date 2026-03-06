@@ -30,7 +30,7 @@ class GetDeviceGroupsArgs {
   /// [nameRegex] A regex string to filter CEN instances by name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [superGroupId] The id of the SuperGroup.
-  GetDeviceGroupsArgs({
+  const GetDeviceGroupsArgs({
     this.enableDetails,
     this.groupName,
     this.ids,

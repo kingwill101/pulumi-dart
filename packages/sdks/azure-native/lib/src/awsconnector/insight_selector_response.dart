@@ -9,7 +9,7 @@ class InsightSelectorResponse {
 
   /// Creates a new [InsightSelectorResponse].
   /// [insightType] The type of insight to log on a trail.
-  InsightSelectorResponse({
+  const InsightSelectorResponse({
     this.insightType,
   });
 

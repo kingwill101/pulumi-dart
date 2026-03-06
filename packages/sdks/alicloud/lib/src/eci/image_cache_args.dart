@@ -40,7 +40,7 @@ class ImageCacheArgs {
   /// [securityGroupId] The ID of the security group. You do not need to specify the same security group as the container group.
   /// [vswitchId] The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
   /// [zoneId] The zone id to cache image.
-  ImageCacheArgs({
+  const ImageCacheArgs({
     this.eipInstanceId,
     required this.imageCacheName,
     this.imageCacheSize,

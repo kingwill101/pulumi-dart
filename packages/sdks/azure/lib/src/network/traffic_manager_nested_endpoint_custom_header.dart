@@ -11,7 +11,7 @@ class TrafficManagerNestedEndpointCustomHeader {
   /// Creates a new [TrafficManagerNestedEndpointCustomHeader].
   /// [name] The name of the custom header.
   /// [value] The value of custom header. Applicable for HTTP and HTTPS protocol.
-  TrafficManagerNestedEndpointCustomHeader({
+  const TrafficManagerNestedEndpointCustomHeader({
     required this.name,
     required this.value,
   });

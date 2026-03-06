@@ -21,7 +21,7 @@ class SlsaRecipeContaineranalysisV1alpha1 {
   /// [entryPoint] String identifying the entry point into the build. This is often a path to a configuration file and/or a target label within that file. The syntax and meaning are defined by recipe.type. For example, if the recipe type were "make", then this would reference the directory in which to run make as well as which target to use.
   /// [environment] Any other builder-controlled inputs necessary for correctly evaluating the recipe. Usually only needed for reproducing the build but not evaluated as part of policy. Depending on the recipe Type, the structure may be different.
   /// [type] URI indicating what type of recipe was performed. It determines the meaning of recipe.entryPoint, recipe.arguments, recipe.environment, and materials.
-  SlsaRecipeContaineranalysisV1alpha1({
+  const SlsaRecipeContaineranalysisV1alpha1({
     this.arguments,
     this.definedInMaterial,
     this.entryPoint,

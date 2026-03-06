@@ -20,7 +20,7 @@ class TenantArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the tenant.
   /// [tenantName] Name of the SESV2 tenant.  The name must be unique within the AWS account and Region.  Changing the tenant name forces creation of a new tenant.
-  TenantArgs({
+  const TenantArgs({
     this.region,
     this.tags,
     required this.tenantName,

@@ -9,7 +9,7 @@ class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
 
   /// Creates a new [MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab].
   /// [cloudSecret] The relative resource name of a Secret Manager secret version, in the following form:
-  MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab({
+  const MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab({
     required this.cloudSecret,
   });
 

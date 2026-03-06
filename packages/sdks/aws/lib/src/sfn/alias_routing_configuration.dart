@@ -11,7 +11,7 @@ class AliasRoutingConfiguration {
   /// Creates a new [AliasRoutingConfiguration].
   /// [stateMachineVersionArn] The Amazon Resource Name (ARN) of the state machine version.
   /// [weight] Percentage of traffic routed to the state machine version.
-  AliasRoutingConfiguration({
+  const AliasRoutingConfiguration({
     required this.stateMachineVersionArn,
     required this.weight,
   });

@@ -24,7 +24,7 @@ class GetManagementPolicyResult {
   /// [name] The name of the resource
   /// [policy] The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetManagementPolicyResult({
+  const GetManagementPolicyResult({
     required this.azureApiVersion,
     required this.id,
     required this.lastModifiedTime,

@@ -40,7 +40,7 @@ class GetScheduledSynchronizationSettingResult {
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
   /// [userName] Name of the user who created the synchronization setting.
-  GetScheduledSynchronizationSettingResult({
+  const GetScheduledSynchronizationSettingResult({
     required this.azureApiVersion,
     required this.createdAt,
     required this.id,

@@ -19,7 +19,7 @@ class PolicyTargetTrackingConfiguration {
   /// [disableScaleIn] Whether scale in by the target tracking policy is disabled.
   /// [predefinedMetricSpecification] Predefined metric. Conflicts with `customized_metric_specification`.
   /// [targetValue] Target value for the metric.
-  PolicyTargetTrackingConfiguration({
+  const PolicyTargetTrackingConfiguration({
     this.customizedMetricSpecification,
     this.disableScaleIn,
     this.predefinedMetricSpecification,

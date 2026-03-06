@@ -37,7 +37,7 @@ class GetTokenResult {
   /// [status] The status of the token example enabled or disabled.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetTokenResult({
+  const GetTokenResult({
     required this.azureApiVersion,
     required this.creationDate,
     this.credentials,

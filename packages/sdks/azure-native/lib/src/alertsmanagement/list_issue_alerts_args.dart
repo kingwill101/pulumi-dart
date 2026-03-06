@@ -18,7 +18,7 @@ class ListIssueAlertsArgs {
   /// [filter] The filter to apply on the operation. For example, to filter by relevance, use "$filter=relevance eq 'Relevant'"
   /// [issueName] The name of the IssueResource
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  ListIssueAlertsArgs({
+  const ListIssueAlertsArgs({
     this.filter,
     required this.issueName,
     required this.resourceUri,

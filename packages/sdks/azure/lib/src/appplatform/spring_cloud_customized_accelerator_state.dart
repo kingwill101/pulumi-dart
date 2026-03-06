@@ -31,7 +31,7 @@ class SpringCloudCustomizedAcceleratorState {
   /// [iconUrl] Specifies the icon URL of the Spring Cloud Customized Accelerator..
   /// [name] The name which should be used for this Spring Cloud Customized Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   /// [springCloudAcceleratorId] The ID of the Spring Cloud Accelerator. Changing this forces a new Spring Cloud Customized Accelerator to be created.
-  SpringCloudCustomizedAcceleratorState({
+  const SpringCloudCustomizedAcceleratorState({
     this.acceleratorTags,
     this.acceleratorType,
     this.description,

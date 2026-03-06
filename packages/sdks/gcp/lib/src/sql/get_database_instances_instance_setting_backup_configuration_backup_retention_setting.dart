@@ -11,7 +11,7 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetti
   /// Creates a new [GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting].
   /// [retainedBackups] Number of backups to retain.
   /// [retentionUnit] The unit that 'retainedBackups' represents. Defaults to COUNT
-  GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting({
+  const GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting({
     required this.retainedBackups,
     required this.retentionUnit,
   });

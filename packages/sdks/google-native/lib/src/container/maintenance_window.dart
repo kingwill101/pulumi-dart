@@ -17,7 +17,7 @@ class MaintenanceWindow {
   /// [dailyMaintenanceWindow] DailyMaintenanceWindow specifies a daily maintenance operation window.
   /// [maintenanceExclusions] Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
   /// [recurringWindow] RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time.
-  MaintenanceWindow({
+  const MaintenanceWindow({
     this.dailyMaintenanceWindow,
     this.maintenanceExclusions,
     this.recurringWindow,

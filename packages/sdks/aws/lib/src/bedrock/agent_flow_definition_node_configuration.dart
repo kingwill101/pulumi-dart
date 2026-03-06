@@ -50,7 +50,7 @@ class AgentFlowDefinitionNodeConfiguration {
   /// [prompt] Contains configurations for a prompt node in your flow. Runs a prompt and generates the model response as the output. You can use a prompt from Prompt management or you can configure one in this node. See Prompt Node Configuration for more information.
   /// [retrieval] Contains configurations for a Retrieval node in your flow. Retrieves data from an Amazon S3 location and returns it as the output. See Retrieval Node Configuration for more information.
   /// [storage] Contains configurations for a Storage node in your flow. Stores an input in an Amazon S3 location. See Storage Node Configuration for more information.
-  AgentFlowDefinitionNodeConfiguration({
+  const AgentFlowDefinitionNodeConfiguration({
     this.agent,
     this.collector,
     this.condition,

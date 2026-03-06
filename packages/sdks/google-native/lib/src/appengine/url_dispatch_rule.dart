@@ -15,7 +15,7 @@ class UrlDispatchRule {
   /// [domain] Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*".
   /// [path] Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.The sum of the lengths of the domain and path may not exceed 100 characters.
   /// [service] Resource ID of a service in this application that should serve the matched request. The service must already exist. Example: default.
-  UrlDispatchRule({
+  const UrlDispatchRule({
     this.domain,
     this.path,
     this.service,

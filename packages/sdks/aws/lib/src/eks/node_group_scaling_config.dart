@@ -14,7 +14,7 @@ class NodeGroupScalingConfig {
   /// [desiredSize] Desired number of worker nodes.
   /// [maxSize] Maximum number of worker nodes.
   /// [minSize] Minimum number of worker nodes.
-  NodeGroupScalingConfig({
+  const NodeGroupScalingConfig({
     required this.desiredSize,
     required this.maxSize,
     required this.minSize,

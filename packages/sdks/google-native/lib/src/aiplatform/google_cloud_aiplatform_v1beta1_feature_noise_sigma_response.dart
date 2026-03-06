@@ -10,7 +10,7 @@ class GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponse].
   /// [noiseSigma] Noise sigma per feature. No noise is added to features that are not set.
-  GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponse({
+  const GoogleCloudAiplatformV1beta1FeatureNoiseSigmaResponse({
     required this.noiseSigma,
   });
 

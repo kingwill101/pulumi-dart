@@ -13,7 +13,7 @@ class GetReleaseArgs {
   /// Creates a new [GetReleaseArgs].
   /// [project] Optional.
   /// [releaseId] Required.
-  GetReleaseArgs({
+  const GetReleaseArgs({
     this.project,
     required this.releaseId,
   });

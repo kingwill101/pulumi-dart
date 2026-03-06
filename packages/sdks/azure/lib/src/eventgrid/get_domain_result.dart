@@ -50,7 +50,7 @@ class GetDomainResult {
   /// [resourceGroupName] Required.
   /// [secondaryAccessKey] The secondary access key associated with the EventGrid Domain.
   /// [tags] A mapping of tags assigned to the EventGrid Domain.
-  GetDomainResult({
+  const GetDomainResult({
     required this.endpoint,
     required this.id,
     required this.identities,

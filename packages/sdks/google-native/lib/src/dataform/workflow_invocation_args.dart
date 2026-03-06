@@ -25,7 +25,7 @@ class WorkflowInvocationArgs {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [workflowConfig] Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
-  WorkflowInvocationArgs({
+  const WorkflowInvocationArgs({
     this.compilationResult,
     this.invocationConfig,
     this.location,

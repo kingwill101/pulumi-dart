@@ -17,7 +17,7 @@ class IotHubDpsIpFilterRule {
   /// [ipMask] The IP address range in CIDR notation for the rule.
   /// [name] The name of the filter.
   /// [target] Target for requests captured by this rule. Possible values are `all`, `deviceApi` and `serviceApi`.
-  IotHubDpsIpFilterRule({
+  const IotHubDpsIpFilterRule({
     required this.action,
     required this.ipMask,
     required this.name,

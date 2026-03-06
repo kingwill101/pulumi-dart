@@ -23,7 +23,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
   /// [image] Optional. Hero image for the carousel item.
   /// [openUriAction] Action to present to the user.
   /// [title] Title of the carousel item. Maximum of two lines of text.
-  GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem({
+  const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem({
     this.description,
     this.footer,
     this.image,

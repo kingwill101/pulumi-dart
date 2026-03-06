@@ -17,7 +17,7 @@ class PacketMirroringFilter {
   /// [cidrRanges] IP CIDR ranges that apply as a filter on the source (ingress) or
   /// [direction] Direction of traffic to mirror.
   /// [ipProtocols] Possible IP protocols including tcp, udp, icmp and esp
-  PacketMirroringFilter({
+  const PacketMirroringFilter({
     this.cidrRanges,
     this.direction,
     this.ipProtocols,

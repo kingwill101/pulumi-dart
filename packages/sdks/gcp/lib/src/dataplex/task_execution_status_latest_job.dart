@@ -41,7 +41,7 @@ class TaskExecutionStatusLatestJob {
   /// [startTime] (Output)
   /// [state] (Output)
   /// [uid] (Output)
-  TaskExecutionStatusLatestJob({
+  const TaskExecutionStatusLatestJob({
     this.endTime,
     this.message,
     this.name,

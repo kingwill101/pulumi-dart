@@ -8,7 +8,7 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies {
 
   /// Creates a new [CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies].
   /// [items] List of item names, such as cookies, headers, or query strings.
-  CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies({
+  const CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies({
     this.items,
   });
 

@@ -8,7 +8,7 @@ class VpcIpamResourceDiscoveryOrganizationalUnitExclusion {
 
   /// Creates a new [VpcIpamResourceDiscoveryOrganizationalUnitExclusion].
   /// [organizationsEntityPath] AWS Organizations entity path. Build the path for the OU(s) using AWS Organizations IDs separated by a `/`. Include all child OUs by ending the path with `/*`.
-  VpcIpamResourceDiscoveryOrganizationalUnitExclusion({
+  const VpcIpamResourceDiscoveryOrganizationalUnitExclusion({
     required this.organizationsEntityPath,
   });
 

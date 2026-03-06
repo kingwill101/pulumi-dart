@@ -21,7 +21,7 @@ class DeploymentSettingsGithub {
   /// [previewPullRequests] Trigger a deployment running `pulumi preview` when a PR is opened.
   /// [pullRequestTemplate] Use this stack as a template for pull request review stacks.
   /// [repository] The GitHub repository in the format org/repo.
-  DeploymentSettingsGithub({
+  const DeploymentSettingsGithub({
     this.deployCommits,
     this.paths,
     this.previewPullRequests,

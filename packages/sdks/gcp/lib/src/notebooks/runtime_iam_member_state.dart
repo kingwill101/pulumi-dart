@@ -43,7 +43,7 @@ class RuntimeIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [runtimeName] Used to find the parent resource to bind the IAM policy to
-  RuntimeIamMemberState({
+  const RuntimeIamMemberState({
     this.condition,
     this.etag,
     this.location,

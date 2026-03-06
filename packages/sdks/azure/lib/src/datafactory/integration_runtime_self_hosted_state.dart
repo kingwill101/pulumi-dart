@@ -28,7 +28,7 @@ class IntegrationRuntimeSelfHostedState {
   /// [rbacAuthorizations] A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
   /// [secondaryAuthorizationKey] The secondary integration runtime authentication key.
   /// [selfContainedInteractiveAuthoringEnabled] Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
-  IntegrationRuntimeSelfHostedState({
+  const IntegrationRuntimeSelfHostedState({
     this.dataFactoryId,
     this.description,
     this.name,

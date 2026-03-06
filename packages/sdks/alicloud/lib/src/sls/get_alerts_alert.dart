@@ -25,7 +25,7 @@ class GetAlertsAlert {
   /// [displayName] Display name of the alarm rule
   /// [id] The ID of the resource supplied above.
   /// [schedule] Check the frequency-dependent configuration
-  GetAlertsAlert({
+  const GetAlertsAlert({
     required this.alertName,
     required this.configuration,
     required this.description,

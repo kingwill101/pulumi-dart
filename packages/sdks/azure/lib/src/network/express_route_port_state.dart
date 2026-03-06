@@ -51,7 +51,7 @@ class ExpressRoutePortState {
   /// [peeringLocation] The name of the peering location that this Express Route Port is physically mapped to. Changing this forces a new Express Route Port to be created.
   /// [resourceGroupName] The name of the Resource Group where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
   /// [tags] A mapping of tags which should be assigned to the Express Route Port.
-  ExpressRoutePortState({
+  const ExpressRoutePortState({
     this.bandwidthInGbps,
     this.billingType,
     this.encapsulation,

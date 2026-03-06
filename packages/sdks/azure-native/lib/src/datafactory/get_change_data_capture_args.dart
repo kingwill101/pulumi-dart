@@ -18,7 +18,7 @@ class GetChangeDataCaptureArgs {
   /// [changeDataCaptureName] The change data capture name.
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
-  GetChangeDataCaptureArgs({
+  const GetChangeDataCaptureArgs({
     required this.changeDataCaptureName,
     required this.factoryName,
     required this.resourceGroupName,

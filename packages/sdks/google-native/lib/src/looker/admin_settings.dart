@@ -9,7 +9,7 @@ class AdminSettings {
 
   /// Creates a new [AdminSettings].
   /// [allowedEmailDomains] Email domain allowlist for the instance.
-  AdminSettings({
+  const AdminSettings({
     this.allowedEmailDomains,
   });
 

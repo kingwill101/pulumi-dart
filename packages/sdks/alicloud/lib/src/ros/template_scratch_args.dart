@@ -37,7 +37,7 @@ class TemplateScratchArgs {
   /// [sourceResources] Source resource. See the following `Block source_resources`.
   /// [sourceTag] Source tag. See the following `Block source_tag`.
   /// [templateScratchType] The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
-  TemplateScratchArgs({
+  const TemplateScratchArgs({
     this.description,
     this.executionMode,
     this.logicalIdStrategy,

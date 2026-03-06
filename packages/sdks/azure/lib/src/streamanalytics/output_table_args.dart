@@ -39,7 +39,7 @@ class OutputTableArgs {
   /// [storageAccountName] The name of the Storage Account.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [table] The name of the table where the stream should be output to.
-  OutputTableArgs({
+  const OutputTableArgs({
     required this.batchSize,
     this.columnsToRemoves,
     this.name,

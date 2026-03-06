@@ -17,7 +17,7 @@ class GetFunctionIamPolicyCloudfunctionsV2alphaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFunctionIamPolicyCloudfunctionsV2alphaArgs({
+  const GetFunctionIamPolicyCloudfunctionsV2alphaArgs({
     required this.functionId,
     required this.location,
     this.optionsRequestedPolicyVersion,

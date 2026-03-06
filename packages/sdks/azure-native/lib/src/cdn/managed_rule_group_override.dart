@@ -13,7 +13,7 @@ class ManagedRuleGroupOverride {
   /// Creates a new [ManagedRuleGroupOverride].
   /// [ruleGroupName] Describes the managed rule group within the rule set to override
   /// [rules] List of rules that will be enabled. If none specified, all rules in the group will be disabled.
-  ManagedRuleGroupOverride({
+  const ManagedRuleGroupOverride({
     required this.ruleGroupName,
     this.rules,
   });

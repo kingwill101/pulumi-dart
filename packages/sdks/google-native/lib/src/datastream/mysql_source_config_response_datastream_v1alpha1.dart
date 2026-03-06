@@ -13,7 +13,7 @@ class MysqlSourceConfigResponseDatastreamV1alpha1 {
   /// Creates a new [MysqlSourceConfigResponseDatastreamV1alpha1].
   /// [allowlist] MySQL objects to retrieve from the source.
   /// [rejectlist] MySQL objects to exclude from the stream.
-  MysqlSourceConfigResponseDatastreamV1alpha1({
+  const MysqlSourceConfigResponseDatastreamV1alpha1({
     required this.allowlist,
     required this.rejectlist,
   });

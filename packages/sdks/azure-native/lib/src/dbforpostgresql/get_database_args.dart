@@ -18,7 +18,7 @@ class GetDatabaseArgs {
   /// [databaseName] Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.databaseName,
     required this.resourceGroupName,
     required this.serverName,

@@ -56,7 +56,7 @@ class ServiceConfigCloudfunctionsV2beta {
   /// [timeoutSeconds] The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
   /// [vpcConnector] The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*/locations/*/connectors/*`.
   /// [vpcConnectorEgressSettings] The egress settings for the connector, controlling what traffic is diverted through it.
-  ServiceConfigCloudfunctionsV2beta({
+  const ServiceConfigCloudfunctionsV2beta({
     this.allTrafficOnLatestRevision,
     this.availableCpu,
     this.availableMemory,

@@ -14,7 +14,7 @@ class TopicRuleSns {
   /// [messageFormat] The message format of the message to publish. Accepted values are "JSON" and "RAW".
   /// [roleArn] The ARN of the IAM role that grants access.
   /// [targetArn] The ARN of the SNS topic.
-  TopicRuleSns({
+  const TopicRuleSns({
     this.messageFormat,
     required this.roleArn,
     required this.targetArn,

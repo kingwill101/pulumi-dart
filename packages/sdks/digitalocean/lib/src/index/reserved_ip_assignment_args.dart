@@ -15,7 +15,7 @@ class ReservedIpAssignmentArgs {
   /// Creates a new [ReservedIpAssignmentArgs].
   /// [dropletId] The ID of Droplet that the reserved IP will be assigned to.
   /// [ipAddress] The reserved IP to assign to the Droplet.
-  ReservedIpAssignmentArgs({
+  const ReservedIpAssignmentArgs({
     required this.dropletId,
     required this.ipAddress,
   });

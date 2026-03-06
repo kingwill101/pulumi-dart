@@ -28,7 +28,7 @@ class GetServerConfigContainerV1beta1Result {
   /// [validMasterVersions] List of valid master versions, in descending order.
   /// [validNodeVersions] List of valid node upgrade target versions, in descending order.
   /// [windowsVersionMaps] Maps of Kubernetes version and supported Windows server versions.
-  GetServerConfigContainerV1beta1Result({
+  const GetServerConfigContainerV1beta1Result({
     required this.channels,
     required this.defaultClusterVersion,
     required this.defaultImageType,

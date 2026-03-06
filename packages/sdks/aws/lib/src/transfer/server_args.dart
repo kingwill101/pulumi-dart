@@ -106,7 +106,7 @@ class ServerArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [url] URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
   /// [workflowDetails] Specifies the workflow details. See `workflow_details` Block below for details.
-  ServerArgs({
+  const ServerArgs({
     this.certificate,
     this.directoryId,
     this.domain,

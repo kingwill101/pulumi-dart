@@ -9,7 +9,7 @@ class BigQueryDatasetSource {
 
   /// Creates a new [BigQueryDatasetSource].
   /// [dataset] Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
-  BigQueryDatasetSource({
+  const BigQueryDatasetSource({
     this.dataset,
   });
 

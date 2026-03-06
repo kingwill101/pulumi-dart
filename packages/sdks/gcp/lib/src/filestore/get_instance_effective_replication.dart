@@ -12,7 +12,7 @@ class GetInstanceEffectiveReplication {
   /// Creates a new [GetInstanceEffectiveReplication].
   /// [replicas] The replication role.
   /// [role] The replication role.
-  GetInstanceEffectiveReplication({
+  const GetInstanceEffectiveReplication({
     required this.replicas,
     required this.role,
   });

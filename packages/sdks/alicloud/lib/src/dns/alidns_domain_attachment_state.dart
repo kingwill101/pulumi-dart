@@ -12,7 +12,7 @@ class AlidnsDomainAttachmentState {
   /// Creates a new [AlidnsDomainAttachmentState].
   /// [domainNames] The domain names bound to the DNS instance.
   /// [instanceId] The id of the DNS instance.
-  AlidnsDomainAttachmentState({
+  const AlidnsDomainAttachmentState({
     this.domainNames,
     this.instanceId,
   });

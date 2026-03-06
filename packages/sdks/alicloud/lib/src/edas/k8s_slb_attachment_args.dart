@@ -16,7 +16,7 @@ class K8sSlbAttachmentArgs {
   /// Creates a new [K8sSlbAttachmentArgs].
   /// [appId] The ID of the EDAS k8s application to which you want to bind SLB instances.
   /// [slbConfigs] The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
-  K8sSlbAttachmentArgs({
+  const K8sSlbAttachmentArgs({
     required this.appId,
     this.slbConfigs,
   });

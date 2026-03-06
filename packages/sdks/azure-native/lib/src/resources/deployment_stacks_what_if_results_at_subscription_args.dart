@@ -22,7 +22,7 @@ class DeploymentStacksWhatIfResultsAtSubscriptionArgs {
   /// [location] The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
   /// [properties] The resource-specific properties for this resource.
   /// [tags] Resource tags.
-  DeploymentStacksWhatIfResultsAtSubscriptionArgs({
+  const DeploymentStacksWhatIfResultsAtSubscriptionArgs({
     this.deploymentStacksWhatIfResultName,
     this.location,
     this.properties,

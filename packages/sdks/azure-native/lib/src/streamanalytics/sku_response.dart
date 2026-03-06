@@ -9,7 +9,7 @@ class SkuResponse {
 
   /// Creates a new [SkuResponse].
   /// [name] The name of the SKU. Required on PUT (CreateOrReplace) requests.
-  SkuResponse({
+  const SkuResponse({
     this.name,
   });
 

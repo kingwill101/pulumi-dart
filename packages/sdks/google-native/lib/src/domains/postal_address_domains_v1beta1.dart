@@ -39,7 +39,7 @@ class PostalAddressDomainsV1beta1 {
   /// [revision] The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
   /// [sortingCode] Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
   /// [sublocality] Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
-  PostalAddressDomainsV1beta1({
+  const PostalAddressDomainsV1beta1({
     this.addressLines,
     this.administrativeArea,
     this.languageCode,

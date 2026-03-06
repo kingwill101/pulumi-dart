@@ -18,7 +18,7 @@ class UsageMetricsResponse {
   /// [milliAcceleratorSeconds] Optional. Accelerator usage in (milliAccelerator x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
   /// [milliDcuSeconds] Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
   /// [shuffleStorageGbSeconds] Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
-  UsageMetricsResponse({
+  const UsageMetricsResponse({
     required this.acceleratorType,
     required this.milliAcceleratorSeconds,
     required this.milliDcuSeconds,

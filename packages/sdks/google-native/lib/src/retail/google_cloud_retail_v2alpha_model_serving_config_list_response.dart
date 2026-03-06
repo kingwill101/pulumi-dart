@@ -9,7 +9,7 @@ class GoogleCloudRetailV2alphaModelServingConfigListResponse {
 
   /// Creates a new [GoogleCloudRetailV2alphaModelServingConfigListResponse].
   /// [servingConfigIds] Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
-  GoogleCloudRetailV2alphaModelServingConfigListResponse({
+  const GoogleCloudRetailV2alphaModelServingConfigListResponse({
     required this.servingConfigIds,
   });
 

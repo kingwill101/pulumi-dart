@@ -30,7 +30,7 @@ class GetBackupResult {
   /// [location] Location of the resource.
   /// [name] Name of the resource.
   /// [project] Required.
-  GetBackupResult({
+  const GetBackupResult({
     required this.backupVaultId,
     required this.backups,
     required this.createTime,

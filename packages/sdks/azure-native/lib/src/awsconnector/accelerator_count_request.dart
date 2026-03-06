@@ -12,7 +12,7 @@ class AcceleratorCountRequest {
   /// Creates a new [AcceleratorCountRequest].
   /// [max] The maximum value.
   /// [min] The minimum value.
-  AcceleratorCountRequest({
+  const AcceleratorCountRequest({
     this.max,
     this.min,
   });

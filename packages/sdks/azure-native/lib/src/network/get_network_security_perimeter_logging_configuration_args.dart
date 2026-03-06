@@ -18,7 +18,7 @@ class GetNetworkSecurityPerimeterLoggingConfigurationArgs {
   /// [loggingConfigurationName] The name of the NSP logging configuration. Accepts 'instance' as name.
   /// [networkSecurityPerimeterName] The name of the network security perimeter.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkSecurityPerimeterLoggingConfigurationArgs({
+  const GetNetworkSecurityPerimeterLoggingConfigurationArgs({
     required this.loggingConfigurationName,
     required this.networkSecurityPerimeterName,
     required this.resourceGroupName,

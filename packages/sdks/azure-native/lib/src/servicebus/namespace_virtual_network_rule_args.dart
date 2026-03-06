@@ -21,7 +21,7 @@ class NamespaceVirtualNetworkRuleArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [virtualNetworkRuleName] The Virtual Network Rule name.
   /// [virtualNetworkSubnetId] Resource ID of Virtual Network Subnet
-  NamespaceVirtualNetworkRuleArgs({
+  const NamespaceVirtualNetworkRuleArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     this.virtualNetworkRuleName,

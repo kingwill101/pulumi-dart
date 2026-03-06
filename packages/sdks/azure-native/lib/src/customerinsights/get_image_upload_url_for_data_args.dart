@@ -24,7 +24,7 @@ class GetImageUploadUrlForDataArgs {
   /// [hubName] The name of the hub.
   /// [relativePath] Relative path of the image.
   /// [resourceGroupName] The name of the resource group.
-  GetImageUploadUrlForDataArgs({
+  const GetImageUploadUrlForDataArgs({
     this.entityType,
     this.entityTypeName,
     required this.hubName,

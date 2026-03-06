@@ -25,7 +25,7 @@ class GetVirtualBorderRoutersResult {
   /// [outputFile] Optional.
   /// [routers] Required.
   /// [status] Optional.
-  GetVirtualBorderRoutersResult({
+  const GetVirtualBorderRoutersResult({
     this.filters,
     required this.id,
     required this.ids,

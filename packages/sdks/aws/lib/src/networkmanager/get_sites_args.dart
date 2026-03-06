@@ -15,7 +15,7 @@ class GetSitesArgs {
   /// Creates a new [GetSitesArgs].
   /// [globalNetworkId] ID of the Global Network of the sites to retrieve.
   /// [tags] Restricts the list to the sites with these tags.
-  GetSitesArgs({
+  const GetSitesArgs({
     required this.globalNetworkId,
     this.tags,
   });

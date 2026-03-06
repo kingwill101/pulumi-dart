@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [name] The Name of the Search Service.
   /// [resourceGroupName] The name of the Resource Group where the Search Service exists.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -13,7 +13,7 @@ class GoogleCloudDatacatalogLineageV1EventLink {
   /// Creates a new [GoogleCloudDatacatalogLineageV1EventLink].
   /// [source] Reference to the source entity
   /// [target] Reference to the target entity
-  GoogleCloudDatacatalogLineageV1EventLink({
+  const GoogleCloudDatacatalogLineageV1EventLink({
     required this.source,
     required this.target,
   });

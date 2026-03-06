@@ -7,7 +7,7 @@ class GetKubernetesClusterRoutingAgent {
 
   /// Creates a new [GetKubernetesClusterRoutingAgent].
   /// [enabled] Required.
-  GetKubernetesClusterRoutingAgent({
+  const GetKubernetesClusterRoutingAgent({
     required this.enabled,
   });
 

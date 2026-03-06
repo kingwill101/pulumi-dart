@@ -11,7 +11,7 @@ class MongoRoleDefinitionPrivilegeResource {
   /// Creates a new [MongoRoleDefinitionPrivilegeResource].
   /// [collectionName] The name of the Mongo DB Collection that the Role Definition is applied.
   /// [dbName] The name of the Mongo DB that the Role Definition is applied.
-  MongoRoleDefinitionPrivilegeResource({
+  const MongoRoleDefinitionPrivilegeResource({
     this.collectionName,
     this.dbName,
   });

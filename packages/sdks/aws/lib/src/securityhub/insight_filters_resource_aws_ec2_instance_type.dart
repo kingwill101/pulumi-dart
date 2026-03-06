@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsEc2InstanceType {
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceType].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsEc2InstanceType({
+  const InsightFiltersResourceAwsEc2InstanceType({
     required this.comparison,
     required this.value,
   });

@@ -12,7 +12,7 @@ class DnsDelegationPropertiesResponse {
   /// Creates a new [DnsDelegationPropertiesResponse].
   /// [domain] Domain name to delegate
   /// [nameServers] The Azure-hosted DNS Name Servers for the delegated DNS Zones
-  DnsDelegationPropertiesResponse({
+  const DnsDelegationPropertiesResponse({
     this.domain,
     required this.nameServers,
   });

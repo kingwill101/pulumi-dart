@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesMacAdmin {
 
   /// Creates a new [DomainFeaturesCapabilitiesMacAdmin].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesMacAdmin({
+  const DomainFeaturesCapabilitiesMacAdmin({
     this.state,
   });
 

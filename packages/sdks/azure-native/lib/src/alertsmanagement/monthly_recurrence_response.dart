@@ -19,7 +19,7 @@ class MonthlyRecurrenceResponse {
   /// [endTime] End time for recurrence.
   /// [recurrenceType] Specifies when the recurrence should be applied.
   /// [startTime] Start time for recurrence.
-  MonthlyRecurrenceResponse({
+  const MonthlyRecurrenceResponse({
     required this.daysOfMonth,
     this.endTime,
     required this.recurrenceType,

@@ -17,7 +17,7 @@ class GetChangeArgs {
   /// [clientOperationId] Optional.
   /// [managedZone] Required.
   /// [project] Optional.
-  GetChangeArgs({
+  const GetChangeArgs({
     required this.changeId,
     this.clientOperationId,
     required this.managedZone,

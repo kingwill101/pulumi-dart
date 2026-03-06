@@ -61,7 +61,7 @@ class RuleGroupRuleStatement {
   /// [sizeConstraintStatement] A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See Size Constraint Statement below for more details.
   /// [sqliMatchStatement] An SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See SQL Injection Match Statement below for details.
   /// [xssMatchStatement] A rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See XSS Match Statement below for details.
-  RuleGroupRuleStatement({
+  const RuleGroupRuleStatement({
     this.andStatement,
     this.asnMatchStatement,
     this.byteMatchStatement,

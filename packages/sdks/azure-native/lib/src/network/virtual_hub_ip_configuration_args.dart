@@ -38,7 +38,7 @@ class VirtualHubIpConfigurationArgs {
   /// [resourceGroupName] The resource group name of the VirtualHub.
   /// [subnet] The reference to the subnet resource.
   /// [virtualHubName] The name of the VirtualHub.
-  VirtualHubIpConfigurationArgs({
+  const VirtualHubIpConfigurationArgs({
     this.id,
     this.ipConfigName,
     this.name,

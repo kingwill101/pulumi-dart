@@ -20,7 +20,7 @@ class GetOpenApiPricingModulesModuleValue {
   /// [remark] Module value description information.
   /// [type] The attribute value type corresponding to the module Code. Value:
   /// [value] The module Code corresponds to the attribute value.
-  GetOpenApiPricingModulesModuleValue({
+  const GetOpenApiPricingModulesModuleValue({
     required this.name,
     required this.remark,
     required this.type,

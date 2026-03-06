@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleRegexExpectation].
   /// [regex] Optional. A regular expression the column value is expected to match.
-  GoogleCloudDataplexV1DataQualityRuleRegexExpectation({
+  const GoogleCloudDataplexV1DataQualityRuleRegexExpectation({
     this.regex,
   });
 

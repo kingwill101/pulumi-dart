@@ -140,7 +140,7 @@ class GetDiskComputeV1Result {
   /// [type] URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
   /// [users] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
   /// [zone] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetDiskComputeV1Result({
+  const GetDiskComputeV1Result({
     required this.architecture,
     required this.asyncPrimaryDisk,
     required this.asyncSecondaryDisks,

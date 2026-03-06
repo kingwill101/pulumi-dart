@@ -13,7 +13,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse].
   /// [caseContent] A list of case content.
   /// [condition] The condition to activate and select this case. Empty means the condition is always true. The condition is evaluated against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
-  GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse({
+  const GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse({
     required this.caseContent,
     required this.condition,
   });

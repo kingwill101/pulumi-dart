@@ -15,7 +15,7 @@ class GetQueryPackArgs {
   /// Creates a new [GetQueryPackArgs].
   /// [queryPackName] The name of the Log Analytics QueryPack resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetQueryPackArgs({
+  const GetQueryPackArgs({
     required this.queryPackName,
     required this.resourceGroupName,
   });

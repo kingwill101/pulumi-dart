@@ -9,7 +9,7 @@ class InventoryDestination {
 
   /// Creates a new [InventoryDestination].
   /// [bucket] S3 bucket configuration where inventory results are published (documented below).
-  InventoryDestination({
+  const InventoryDestination({
     required this.bucket,
   });
 

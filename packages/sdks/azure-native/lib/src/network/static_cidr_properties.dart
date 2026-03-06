@@ -14,7 +14,7 @@ class StaticCidrProperties {
   /// [addressPrefixes] List of IP address prefixes of the resource.
   /// [description] Optional.
   /// [numberOfIPAddressesToAllocate] Number of IP addresses to allocate for a static CIDR resource. The IP addresses will be assigned based on IpamPools available space.
-  StaticCidrProperties({
+  const StaticCidrProperties({
     this.addressPrefixes,
     this.description,
     this.numberOfIPAddressesToAllocate,

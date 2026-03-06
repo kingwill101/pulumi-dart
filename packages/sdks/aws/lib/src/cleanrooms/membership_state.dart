@@ -54,7 +54,7 @@ class MembershipState {
   /// [tags] Key value pairs which tag the membership.
   /// [tagsAll] Optional.
   /// [updateTime] The date and time the membership was last updated.
-  MembershipState({
+  const MembershipState({
     this.arn,
     this.collaborationArn,
     this.collaborationCreatorAccountId,

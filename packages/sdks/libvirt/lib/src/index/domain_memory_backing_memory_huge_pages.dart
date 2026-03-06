@@ -9,7 +9,7 @@ class DomainMemoryBackingMemoryHugePages {
 
   /// Creates a new [DomainMemoryBackingMemoryHugePages].
   /// [hugepages] Defines the configuration options for huge pages, particularly their count and characteristics.
-  DomainMemoryBackingMemoryHugePages({
+  const DomainMemoryBackingMemoryHugePages({
     this.hugepages,
   });
 

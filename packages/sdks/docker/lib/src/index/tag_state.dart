@@ -18,7 +18,7 @@ class TagState {
   /// [sourceImageId] ImageID of the source image in the format of `sha256:&lt;&lt;ID&gt;&gt;`
   /// [tagTriggers] List of values which cause the tag to be (re)created. This is useful for triggering a new tag when the source image changes.
   /// [targetImage] Name of the target image.
-  TagState({
+  const TagState({
     this.sourceImage,
     this.sourceImageId,
     this.tagTriggers,

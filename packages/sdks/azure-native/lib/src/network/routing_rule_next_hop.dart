@@ -12,7 +12,7 @@ class RoutingRuleNextHop {
   /// Creates a new [RoutingRuleNextHop].
   /// [nextHopAddress] Next hop address. Only required if the next hop type is VirtualAppliance.
   /// [nextHopType] Next hop type.
-  RoutingRuleNextHop({
+  const RoutingRuleNextHop({
     this.nextHopAddress,
     required this.nextHopType,
   });

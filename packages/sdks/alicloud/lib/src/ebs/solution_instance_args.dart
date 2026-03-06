@@ -25,7 +25,7 @@ class SolutionInstanceArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [solutionId] Solution ID.
   /// [solutionInstanceName] Solution Instance Name.
-  SolutionInstanceArgs({
+  const SolutionInstanceArgs({
     this.description,
     this.parameters,
     this.resourceGroupId,

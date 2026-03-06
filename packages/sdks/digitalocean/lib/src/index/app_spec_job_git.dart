@@ -11,7 +11,7 @@ class AppSpecJobGit {
   /// Creates a new [AppSpecJobGit].
   /// [branch] The name of the branch to use.
   /// [repoCloneUrl] The clone URL of the repo.
-  AppSpecJobGit({
+  const AppSpecJobGit({
     this.branch,
     this.repoCloneUrl,
   });

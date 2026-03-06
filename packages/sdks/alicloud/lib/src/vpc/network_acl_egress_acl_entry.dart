@@ -43,7 +43,7 @@ class NetworkAclEgressAclEntry {
   /// [policy] The action to be performed on network traffic that matches the rule. Valid values:
   /// [port] The destination port range of the outbound rule.
   /// [protocol] The protocol type. Value:
-  NetworkAclEgressAclEntry({
+  const NetworkAclEgressAclEntry({
     this.description,
     this.destinationCidrIp,
     this.entryType,

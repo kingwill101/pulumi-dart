@@ -10,7 +10,7 @@ class NetworkingConfig {
 
   /// Creates a new [NetworkingConfig].
   /// [connectionType] Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
-  NetworkingConfig({
+  const NetworkingConfig({
     this.connectionType,
   });
 

@@ -12,7 +12,7 @@ class GetRouterBgpAdvertisedIpRange {
   /// Creates a new [GetRouterBgpAdvertisedIpRange].
   /// [description] User-specified description for the IP range.
   /// [range] The IP range to advertise. The value must be a
-  GetRouterBgpAdvertisedIpRange({
+  const GetRouterBgpAdvertisedIpRange({
     required this.description,
     required this.range,
   });

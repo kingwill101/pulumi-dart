@@ -24,7 +24,7 @@ class GetServerGroupServerAttachmentsArgs {
   /// [serverGroupId] The ID of the server group.
   /// [serverIds] The IDs of the servers. You can specify at most 40 server IDs in each call.
   /// [serverIps] The IP addresses of the servers. You can specify at most 40 server IP addresses in each call.
-  GetServerGroupServerAttachmentsArgs({
+  const GetServerGroupServerAttachmentsArgs({
     this.ids,
     this.outputFile,
     this.serverGroupId,

@@ -31,7 +31,7 @@ class VirtualNetworkGatewayIPConfigurationResponse {
   /// [provisioningState] The provisioning state of the virtual network gateway IP configuration resource.
   /// [publicIPAddress] The reference to the public IP resource.
   /// [subnet] The reference to the subnet resource.
-  VirtualNetworkGatewayIPConfigurationResponse({
+  const VirtualNetworkGatewayIPConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

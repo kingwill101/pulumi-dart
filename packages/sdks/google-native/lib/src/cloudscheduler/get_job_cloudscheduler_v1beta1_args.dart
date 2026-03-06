@@ -15,7 +15,7 @@ class GetJobCloudschedulerV1beta1Args {
   /// [jobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetJobCloudschedulerV1beta1Args({
+  const GetJobCloudschedulerV1beta1Args({
     required this.jobId,
     required this.location,
     this.project,

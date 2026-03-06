@@ -46,7 +46,7 @@ class GetPeeringServiceResult {
   /// [sku] The SKU that defines the type of the peering service.
   /// [tags] The resource tags.
   /// [type] The type of the resource.
-  GetPeeringServiceResult({
+  const GetPeeringServiceResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

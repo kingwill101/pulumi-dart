@@ -18,7 +18,7 @@ class OraclePartitionSettingsResponse {
   /// [partitionLowerBound] The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
   /// [partitionNames] Names of the physical partitions of Oracle table.
   /// [partitionUpperBound] The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
-  OraclePartitionSettingsResponse({
+  const OraclePartitionSettingsResponse({
     this.partitionColumnName,
     this.partitionLowerBound,
     this.partitionNames,

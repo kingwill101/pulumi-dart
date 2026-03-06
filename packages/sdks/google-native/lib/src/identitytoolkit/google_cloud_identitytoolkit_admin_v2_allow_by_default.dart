@@ -9,7 +9,7 @@ class GoogleCloudIdentitytoolkitAdminV2AllowByDefault {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2AllowByDefault].
   /// [disallowedRegions] Two letter unicode region codes to disallow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
-  GoogleCloudIdentitytoolkitAdminV2AllowByDefault({
+  const GoogleCloudIdentitytoolkitAdminV2AllowByDefault({
     this.disallowedRegions,
   });
 

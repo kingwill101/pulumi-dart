@@ -15,7 +15,7 @@ class GetInstanceTypeNetworkCard {
   /// [maximumInterfaces] Required.
   /// [peakBandwidth] Required.
   /// [performance] Required.
-  GetInstanceTypeNetworkCard({
+  const GetInstanceTypeNetworkCard({
     required this.baselineBandwidth,
     required this.index,
     required this.maximumInterfaces,

@@ -14,7 +14,7 @@ class JobStatusErrorResult {
   /// [location] The geographic location of the job. The default value is US.
   /// [message] A human-readable description of the error.
   /// [reason] A short error code that summarizes the error.
-  JobStatusErrorResult({
+  const JobStatusErrorResult({
     this.location,
     this.message,
     this.reason,

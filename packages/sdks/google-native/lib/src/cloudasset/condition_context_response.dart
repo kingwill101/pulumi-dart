@@ -9,7 +9,7 @@ class ConditionContextResponse {
 
   /// Creates a new [ConditionContextResponse].
   /// [accessTime] The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
-  ConditionContextResponse({
+  const ConditionContextResponse({
     required this.accessTime,
   });
 

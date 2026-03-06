@@ -22,7 +22,7 @@ class BastionHostIPConfiguration {
   /// [privateIPAllocationMethod] Private IP allocation method.
   /// [publicIPAddress] Reference of the PublicIP resource. Null for private only bastion
   /// [subnet] Reference of the subnet resource.
-  BastionHostIPConfiguration({
+  const BastionHostIPConfiguration({
     this.id,
     this.name,
     this.privateIPAllocationMethod,

@@ -24,7 +24,7 @@ class GetCapacityPoolVolumeGroupIdForLdapUserArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [username] username is required to fetch the group to which user is part of
   /// [volumeName] The name of the volume
-  GetCapacityPoolVolumeGroupIdForLdapUserArgs({
+  const GetCapacityPoolVolumeGroupIdForLdapUserArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

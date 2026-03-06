@@ -22,7 +22,7 @@ class DeploymentSettingsGitSource {
   /// [gitAuth] Git authentication configuration for this deployment. Should not be specified if there are `gitHub` settings for this deployment.
   /// [repoDir] The directory within the repository where the Pulumi.yaml is located.
   /// [repoUrl] The repository URL to use for git settings. Should not be specified if there are `gitHub` settings for this deployment.
-  DeploymentSettingsGitSource({
+  const DeploymentSettingsGitSource({
     this.branch,
     this.commit,
     this.gitAuth,

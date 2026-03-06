@@ -14,7 +14,7 @@ class PolicyFileShareBackupHourly {
   /// [interval] Specifies the interval at which backup needs to be triggered. Possible values are `4`, `6`, `8` and `12`.
   /// [startTime] Specifies the start time of the hourly backup. The time format should be in 24-hour format. Times must be either on the hour or half hour (e.g. 12:00, 12:30, 13:00, etc.).
   /// [windowDuration] Species the duration of the backup window in hours. Details could be found [here](https://learn.microsoft.com/en-us/azure/backup/backup-azure-files-faq#what-does-the-duration-attribute-in-azure-files-backup-policy-signify-).
-  PolicyFileShareBackupHourly({
+  const PolicyFileShareBackupHourly({
     required this.interval,
     required this.startTime,
     required this.windowDuration,

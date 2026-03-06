@@ -12,7 +12,7 @@ class ApiDefinitionPropertiesSpecificationResponse {
   /// Creates a new [ApiDefinitionPropertiesSpecificationResponse].
   /// [name] Specification name.
   /// [version] Specification version.
-  ApiDefinitionPropertiesSpecificationResponse({
+  const ApiDefinitionPropertiesSpecificationResponse({
     this.name,
     this.version,
   });

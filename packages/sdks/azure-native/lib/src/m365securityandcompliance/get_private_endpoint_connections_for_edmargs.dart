@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionsForEDMArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  GetPrivateEndpointConnectionsForEDMArgs({
+  const GetPrivateEndpointConnectionsForEDMArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.resourceName,

@@ -72,7 +72,7 @@ class SynapseNotebookActivityResponse {
   /// [targetSparkConfiguration] The spark configuration of the spark job.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  SynapseNotebookActivityResponse({
+  const SynapseNotebookActivityResponse({
     this.conf,
     this.configurationType,
     this.dependsOn,

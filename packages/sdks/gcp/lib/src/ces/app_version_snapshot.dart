@@ -40,7 +40,7 @@ class AppVersionSnapshot {
   /// [guardrails] (Output)
   /// [tools] (Output)
   /// [toolsets] (Output)
-  AppVersionSnapshot({
+  const AppVersionSnapshot({
     this.agents,
     this.apps,
     this.examples,

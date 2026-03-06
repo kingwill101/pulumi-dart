@@ -19,7 +19,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSe
   /// [models] Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
   /// [noSpeechTimeout] Timeout before detecting no speech.
   /// [useTimeoutBasedEndpointing] Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
-  CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings({
+  const CxFlowKnowledgeConnectorSettingsTriggerFulfillmentAdvancedSettingsSpeechSettings({
     this.endpointerSensitivity,
     this.models,
     this.noSpeechTimeout,

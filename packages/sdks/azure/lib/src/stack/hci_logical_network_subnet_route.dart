@@ -14,7 +14,7 @@ class HciLogicalNetworkSubnetRoute {
   /// [addressPrefix] The Address in CIDR notation. Changing this forces a new resource to be created.
   /// [name] The name of the route. Changing this forces a new resource to be created.
   /// [nextHopIpAddress] The IPv4 address of the next hop. Changing this forces a new resource to be created.
-  HciLogicalNetworkSubnetRoute({
+  const HciLogicalNetworkSubnetRoute({
     required this.addressPrefix,
     this.name,
     required this.nextHopIpAddress,

@@ -11,7 +11,7 @@ class FilterFilterCriteriaEpssScore {
   /// Creates a new [FilterFilterCriteriaEpssScore].
   /// [lowerInclusive] (Optional) Lower bound of the range, inclusive.
   /// [upperInclusive] (Optional) Upper bound of the range, inclusive.
-  FilterFilterCriteriaEpssScore({
+  const FilterFilterCriteriaEpssScore({
     required this.lowerInclusive,
     required this.upperInclusive,
   });

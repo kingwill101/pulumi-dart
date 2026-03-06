@@ -12,7 +12,7 @@ class MetadataItem {
   /// Creates a new [MetadataItem].
   /// [name] The name of the metadata item.
   /// [value] The value of the metadata item.
-  MetadataItem({
+  const MetadataItem({
     required this.name,
     required this.value,
   });

@@ -11,7 +11,7 @@ class MonitorConfigIspCityNode {
   /// Creates a new [MonitorConfigIspCityNode].
   /// [cityCode] The code of the city node to monitor.
   /// [ispCode] The code of the Internet provider service (ISP) node to monitor.
-  MonitorConfigIspCityNode({
+  const MonitorConfigIspCityNode({
     required this.cityCode,
     required this.ispCode,
   });

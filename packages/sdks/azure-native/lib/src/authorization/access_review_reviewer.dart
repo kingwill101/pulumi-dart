@@ -9,7 +9,7 @@ class AccessReviewReviewer {
 
   /// Creates a new [AccessReviewReviewer].
   /// [principalId] The id of the reviewer(user/servicePrincipal)
-  AccessReviewReviewer({
+  const AccessReviewReviewer({
     this.principalId,
   });
 

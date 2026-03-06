@@ -30,7 +30,7 @@ class ReplicationVaultArgs {
   /// [replicationSourceVaultId] The vault ID of the source backup vault.
   /// [vaultName] The name of the backup vault.
   /// [vaultStorageClass] Backup Vault Storage Class
-  ReplicationVaultArgs({
+  const ReplicationVaultArgs({
     this.description,
     this.encryptType,
     this.kmsKeyId,

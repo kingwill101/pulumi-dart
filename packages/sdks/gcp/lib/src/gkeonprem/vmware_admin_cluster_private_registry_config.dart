@@ -11,7 +11,7 @@ class VmwareAdminClusterPrivateRegistryConfig {
   /// Creates a new [VmwareAdminClusterPrivateRegistryConfig].
   /// [address] The registry address.
   /// [caCert] The CA certificate public key for private registry.
-  VmwareAdminClusterPrivateRegistryConfig({
+  const VmwareAdminClusterPrivateRegistryConfig({
     this.address,
     this.caCert,
   });

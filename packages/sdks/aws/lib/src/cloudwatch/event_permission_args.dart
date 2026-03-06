@@ -29,7 +29,7 @@ class EventPermissionArgs {
   /// [principal] The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify `*` to permit any account to put events to your default event bus, optionally limited by `condition`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [statementId] An identifier string for the external account that you are granting permissions to.
-  EventPermissionArgs({
+  const EventPermissionArgs({
     this.action,
     this.condition,
     this.eventBusName,

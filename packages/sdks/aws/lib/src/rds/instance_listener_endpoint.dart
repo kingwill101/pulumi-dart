@@ -14,7 +14,7 @@ class InstanceListenerEndpoint {
   /// [address] Specifies the DNS address of the DB instance.
   /// [hostedZoneId] Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
   /// [port] The port on which the DB accepts connections.
-  InstanceListenerEndpoint({
+  const InstanceListenerEndpoint({
     this.address,
     this.hostedZoneId,
     this.port,

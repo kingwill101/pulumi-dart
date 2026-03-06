@@ -9,7 +9,7 @@ class WorkloadWorkloadPropertyFunctionalType {
 
   /// Creates a new [WorkloadWorkloadPropertyFunctionalType].
   /// [type] (Output)
-  WorkloadWorkloadPropertyFunctionalType({
+  const WorkloadWorkloadPropertyFunctionalType({
     this.type,
   });
 

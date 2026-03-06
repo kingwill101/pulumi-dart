@@ -23,7 +23,7 @@ class GetTransitRouterMulticastDomainMembersResult {
   /// [networkInterfaceId] ENI ID of multicast member.
   /// [outputFile] Optional.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
-  GetTransitRouterMulticastDomainMembersResult({
+  const GetTransitRouterMulticastDomainMembersResult({
     required this.id,
     required this.ids,
     required this.members,

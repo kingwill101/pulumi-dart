@@ -9,7 +9,7 @@ class ConfigMap {
 
   /// Creates a new [ConfigMap].
   /// [keyValuePairs] The key value pairs dictionary in the config map.
-  ConfigMap({
+  const ConfigMap({
     this.keyValuePairs,
   });
 

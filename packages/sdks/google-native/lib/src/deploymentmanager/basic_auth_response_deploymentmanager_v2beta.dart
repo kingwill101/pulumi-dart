@@ -10,7 +10,7 @@ class BasicAuthResponseDeploymentmanagerV2beta {
   /// Creates a new [BasicAuthResponseDeploymentmanagerV2beta].
   /// [password] Required.
   /// [user] Required.
-  BasicAuthResponseDeploymentmanagerV2beta({
+  const BasicAuthResponseDeploymentmanagerV2beta({
     required this.password,
     required this.user,
   });

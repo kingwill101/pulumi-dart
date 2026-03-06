@@ -19,7 +19,7 @@ class ManagedRuleOverride {
   /// [enabledState] Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
   /// [exclusions] Describes the exclusions that are applied to this specific rule.
   /// [ruleId] Identifier for the managed rule.
-  ManagedRuleOverride({
+  const ManagedRuleOverride({
     this.action,
     this.enabledState,
     this.exclusions,

@@ -19,7 +19,7 @@ class WorkerConfigResponseCloudbuildV1alpha1 {
   /// [machineType] Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool. `machine_type` is overridden if you specify a different machine type in `build_options`. In this case, the VM specified in the `build_options` will be created on demand at build time. For more information see https://cloud.google.com/cloud-build/docs/speeding-up-builds#using_custom_virtual_machine_sizes
   /// [network] The network definition used to create the worker. If this section is left empty, the workers will be created in WorkerPool.project_id on the default network.
   /// [tag] The tag applied to the worker, and the same tag used by the firewall rule. It is used to identify the Cloud Build workers among other VMs. The default value for tag is `worker`.
-  WorkerConfigResponseCloudbuildV1alpha1({
+  const WorkerConfigResponseCloudbuildV1alpha1({
     required this.diskSizeGb,
     required this.machineType,
     required this.network,

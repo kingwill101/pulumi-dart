@@ -33,7 +33,7 @@ class IamPolicyAssignmentArgs {
   /// [namespace] Namespace that contains the assignment. Defaults to `default`.
   /// [policyArn] ARN of the IAM policy to apply to the Amazon QuickSight users and groups specified in this assignment.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  IamPolicyAssignmentArgs({
+  const IamPolicyAssignmentArgs({
     required this.assignmentName,
     required this.assignmentStatus,
     this.awsAccountId,

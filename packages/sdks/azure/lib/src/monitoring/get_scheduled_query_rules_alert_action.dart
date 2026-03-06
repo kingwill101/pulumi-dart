@@ -14,7 +14,7 @@ class GetScheduledQueryRulesAlertAction {
   /// [actionGroups] List of action group reference resource IDs.
   /// [customWebhookPayload] Custom payload to be sent for all webhook URI in Azure action group.
   /// [emailSubject] Custom subject override for all email IDs in Azure action group.
-  GetScheduledQueryRulesAlertAction({
+  const GetScheduledQueryRulesAlertAction({
     required this.actionGroups,
     required this.customWebhookPayload,
     required this.emailSubject,

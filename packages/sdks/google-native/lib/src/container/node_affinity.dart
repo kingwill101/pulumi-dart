@@ -16,7 +16,7 @@ class NodeAffinity {
   /// [key] Key for NodeAffinity.
   /// [operator] Operator for NodeAffinity.
   /// [values] Values for NodeAffinity.
-  NodeAffinity({
+  const NodeAffinity({
     this.key,
     this.operator,
     this.values,

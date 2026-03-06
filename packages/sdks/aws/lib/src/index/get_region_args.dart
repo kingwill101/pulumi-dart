@@ -21,7 +21,7 @@ class GetRegionArgs {
   /// [id] Region's name (e.g. `us-east-1`).
   /// [name] Full name of the region to select. Use `region` instead.
   /// [region] Full name of the region to select (e.g. `us-east-1`), and the region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetRegionArgs({
+  const GetRegionArgs({
     this.endpoint,
     this.id,
     this.name,

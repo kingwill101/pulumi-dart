@@ -11,7 +11,7 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySession {
   /// Creates a new [RuleRuleActionForwardGroupConfigServerGroupStickySession].
   /// [enabled] Whether to enable session persistence.
   /// [timeout] The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-  RuleRuleActionForwardGroupConfigServerGroupStickySession({
+  const RuleRuleActionForwardGroupConfigServerGroupStickySession({
     this.enabled,
     this.timeout,
   });

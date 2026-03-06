@@ -9,7 +9,7 @@ class CustomLocationPropertiesResponseAuthentication {
 
   /// Creates a new [CustomLocationPropertiesResponseAuthentication].
   /// [type] The type of the Custom Locations authentication
-  CustomLocationPropertiesResponseAuthentication({
+  const CustomLocationPropertiesResponseAuthentication({
     this.type,
   });
 

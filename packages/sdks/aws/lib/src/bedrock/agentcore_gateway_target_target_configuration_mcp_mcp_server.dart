@@ -8,7 +8,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpMcpServer {
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpMcpServer].
   /// [endpoint] Endpoint for the MCP server target configuration.
-  AgentcoreGatewayTargetTargetConfigurationMcpMcpServer({
+  const AgentcoreGatewayTargetTargetConfigurationMcpMcpServer({
     required this.endpoint,
   });
 

@@ -13,7 +13,7 @@ class InstanceFleetLaunchSpecifications {
   /// Creates a new [InstanceFleetLaunchSpecifications].
   /// [onDemandSpecifications] Configuration block for on demand instances launch specifications
   /// [spotSpecifications] Configuration block for spot instances launch specifications
-  InstanceFleetLaunchSpecifications({
+  const InstanceFleetLaunchSpecifications({
     this.onDemandSpecifications,
     this.spotSpecifications,
   });

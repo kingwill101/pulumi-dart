@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk {
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesZendesk({
     required this.instanceUrl,
   });
 

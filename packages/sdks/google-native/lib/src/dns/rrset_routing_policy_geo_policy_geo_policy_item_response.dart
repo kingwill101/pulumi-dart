@@ -20,7 +20,7 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse {
   /// [location] The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
   /// [rrdatas] Required.
   /// [signatureRrdatas] DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
-  RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse({
+  const RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse({
     required this.healthCheckedTargets,
     required this.kind,
     required this.location,

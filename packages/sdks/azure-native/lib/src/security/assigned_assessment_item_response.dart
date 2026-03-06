@@ -9,7 +9,7 @@ class AssignedAssessmentItemResponse {
 
   /// Creates a new [AssignedAssessmentItemResponse].
   /// [assessmentKey] Unique key to a security assessment object
-  AssignedAssessmentItemResponse({
+  const AssignedAssessmentItemResponse({
     this.assessmentKey,
   });
 

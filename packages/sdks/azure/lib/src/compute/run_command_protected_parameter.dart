@@ -11,7 +11,7 @@ class RunCommandProtectedParameter {
   /// Creates a new [RunCommandProtectedParameter].
   /// [name] The run parameter name.
   /// [value] The run parameter value.
-  RunCommandProtectedParameter({
+  const RunCommandProtectedParameter({
     required this.name,
     required this.value,
   });

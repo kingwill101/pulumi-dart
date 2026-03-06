@@ -18,7 +18,7 @@ class GetSingleServerServerSecurityAlertPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityAlertPolicyName] The name of the security alert policy.
   /// [serverName] The name of the server.
-  GetSingleServerServerSecurityAlertPolicyArgs({
+  const GetSingleServerServerSecurityAlertPolicyArgs({
     required this.resourceGroupName,
     required this.securityAlertPolicyName,
     required this.serverName,

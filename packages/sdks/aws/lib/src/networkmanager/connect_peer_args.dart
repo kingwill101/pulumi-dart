@@ -33,7 +33,7 @@ class ConnectPeerArgs {
   /// [peerAddress] Connect peer address.
   /// [subnetArn] Subnet ARN for the Connect peer. Required when the Connect attachment protocol is `NO_ENCAP`. See `aws.networkmanager.ConnectAttachment` for details.
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ConnectPeerArgs({
+  const ConnectPeerArgs({
     this.bgpOptions,
     required this.connectAttachmentId,
     this.coreNetworkAddress,

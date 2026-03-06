@@ -23,7 +23,7 @@ class RecurrenceSchedule {
   /// [monthDays] The month days.
   /// [monthlyOccurrences] The monthly occurrences.
   /// [weekDays] The days of the week.
-  RecurrenceSchedule({
+  const RecurrenceSchedule({
     this.hours,
     this.minutes,
     this.monthDays,

@@ -32,7 +32,7 @@ class PreventionDeidentifyTemplateArgs {
   /// [displayName] User set display name of the template.
   /// [parent] The parent of the template in any of the following formats:
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens;
-  PreventionDeidentifyTemplateArgs({
+  const PreventionDeidentifyTemplateArgs({
     required this.deidentifyConfig,
     this.description,
     this.displayName,

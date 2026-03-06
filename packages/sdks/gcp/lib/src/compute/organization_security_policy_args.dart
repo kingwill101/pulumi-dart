@@ -27,7 +27,7 @@ class OrganizationSecurityPolicyArgs {
   /// [parent] The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
   /// [shortName] User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
   /// [type] The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-  OrganizationSecurityPolicyArgs({
+  const OrganizationSecurityPolicyArgs({
     this.description,
     this.displayName,
     required this.parent,

@@ -19,7 +19,7 @@ class GetQueueArgs {
   /// [namespaceId] The ID of the ServiceBus Namespace where the Service Bus Queue exists.
   /// [namespaceName] Optional.
   /// [resourceGroupName] Optional.
-  GetQueueArgs({
+  const GetQueueArgs({
     required this.name,
     this.namespaceId,
     this.namespaceName,

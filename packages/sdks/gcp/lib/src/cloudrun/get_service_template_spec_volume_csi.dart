@@ -18,7 +18,7 @@ class GetServiceTemplateSpecVolumeCsi {
   /// [driver] Unique name representing the type of file system to be created. Cloud Run supports the following values:
   /// [readOnly] If true, all mounts created from this volume will be read-only.
   /// [volumeAttributes] Driver-specific attributes. The following options are supported for available drivers:
-  GetServiceTemplateSpecVolumeCsi({
+  const GetServiceTemplateSpecVolumeCsi({
     required this.driver,
     required this.readOnly,
     required this.volumeAttributes,

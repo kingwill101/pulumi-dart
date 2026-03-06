@@ -18,7 +18,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders {
   /// [passes] Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
   /// [removes] Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
   /// [sets] Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders({
     this.passAll,
     this.passes,
     this.removes,

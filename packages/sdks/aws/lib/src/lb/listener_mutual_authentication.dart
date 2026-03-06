@@ -18,7 +18,7 @@ class ListenerMutualAuthentication {
   /// [ignoreClientCertificateExpiry] Whether client certificate expiry is ignored.
   /// [mode] Valid values are `off`, `passthrough`, and `verify`.
   /// [trustStoreArn] ARN of the elbv2 Trust Store.
-  ListenerMutualAuthentication({
+  const ListenerMutualAuthentication({
     this.advertiseTrustStoreCaNames,
     this.ignoreClientCertificateExpiry,
     required this.mode,

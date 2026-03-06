@@ -21,7 +21,7 @@ class PrivateLinkScopedServiceArgs {
   /// [name] The name of the Azure Monitor Private Link Scoped Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Azure Monitor Private Link Scoped Service should exist. Changing this forces a new resource to be created.
   /// [scopeName] The name of the Azure Monitor Private Link Scope. Changing this forces a new resource to be created.
-  PrivateLinkScopedServiceArgs({
+  const PrivateLinkScopedServiceArgs({
     required this.linkedResourceId,
     this.name,
     required this.resourceGroupName,

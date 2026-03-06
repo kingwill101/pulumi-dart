@@ -9,7 +9,7 @@ class Docker {
 
   /// Creates a new [Docker].
   /// [privileged] Indicate whether container shall run in privileged or non-privileged mode.
-  Docker({
+  const Docker({
     this.privileged,
   });
 

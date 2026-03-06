@@ -14,7 +14,7 @@ class EndpointGeoFilter {
   /// [action] The Action of the Geo Filter. Possible values include `Allow` and `Block`.
   /// [countryCodes] A List of two letter country codes (e.g. `US`, `GB`) to be associated with this Geo Filter.
   /// [relativePath] The relative path applicable to geo filter.
-  EndpointGeoFilter({
+  const EndpointGeoFilter({
     required this.action,
     required this.countryCodes,
     required this.relativePath,

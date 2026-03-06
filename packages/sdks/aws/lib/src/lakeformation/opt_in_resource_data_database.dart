@@ -11,7 +11,7 @@ class OptInResourceDataDatabase {
   /// Creates a new [OptInResourceDataDatabase].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [name] Name of the table.
-  OptInResourceDataDatabase({
+  const OptInResourceDataDatabase({
     this.catalogId,
     required this.name,
   });

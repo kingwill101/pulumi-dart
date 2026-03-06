@@ -9,7 +9,7 @@ class DefaultRolloutSpecificationExpeditedRollout {
 
   /// Creates a new [DefaultRolloutSpecificationExpeditedRollout].
   /// [enabled] Indicates whether expedited rollout is enabled/disabled
-  DefaultRolloutSpecificationExpeditedRollout({
+  const DefaultRolloutSpecificationExpeditedRollout({
     this.enabled,
   });
 

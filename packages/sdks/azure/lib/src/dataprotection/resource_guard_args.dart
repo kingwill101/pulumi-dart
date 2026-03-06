@@ -24,7 +24,7 @@ class ResourceGuardArgs {
   /// [resourceGroupName] The name of the Resource Group where the Resource Guard should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Resource Guard.
   /// [vaultCriticalOperationExclusionLists] A list of the critical operations which are not protected by this Resource Guard.
-  ResourceGuardArgs({
+  const ResourceGuardArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

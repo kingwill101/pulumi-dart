@@ -12,7 +12,7 @@ class RepositoryExternalConnections {
   /// [externalConnectionName] The name of the external connection associated with a repository.
   /// [packageFormat] Optional.
   /// [status] Optional.
-  RepositoryExternalConnections({
+  const RepositoryExternalConnections({
     required this.externalConnectionName,
     this.packageFormat,
     this.status,

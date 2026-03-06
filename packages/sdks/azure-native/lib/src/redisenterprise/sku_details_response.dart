@@ -12,7 +12,7 @@ class SkuDetailsResponse {
   /// Creates a new [SkuDetailsResponse].
   /// [name] The name of the SKU.
   /// [sizeInGB] The cache size in GB.
-  SkuDetailsResponse({
+  const SkuDetailsResponse({
     required this.name,
     required this.sizeInGB,
   });

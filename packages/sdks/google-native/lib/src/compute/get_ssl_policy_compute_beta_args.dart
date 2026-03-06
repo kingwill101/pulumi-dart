@@ -13,7 +13,7 @@ class GetSslPolicyComputeBetaArgs {
   /// Creates a new [GetSslPolicyComputeBetaArgs].
   /// [project] Optional.
   /// [sslPolicy] Required.
-  GetSslPolicyComputeBetaArgs({
+  const GetSslPolicyComputeBetaArgs({
     this.project,
     required this.sslPolicy,
   });

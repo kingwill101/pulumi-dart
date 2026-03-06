@@ -21,7 +21,7 @@ class GetDataSourceArgs {
   /// [dataSourceId] The ID of the Data Source.
   /// [location] The location in which the Data Source belongs.
   /// [project] The Google Cloud Project in which the Data Source belongs.
-  GetDataSourceArgs({
+  const GetDataSourceArgs({
     required this.backupVaultId,
     required this.dataSourceId,
     required this.location,

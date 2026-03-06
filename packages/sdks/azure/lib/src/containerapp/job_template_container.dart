@@ -52,7 +52,7 @@ class JobTemplateContainer {
   /// [readinessProbes] A `readiness_probe` block as detailed below.
   /// [startupProbes] A `startup_probe` block as detailed below.
   /// [volumeMounts] A `volume_mounts` block as detailed below.
-  JobTemplateContainer({
+  const JobTemplateContainer({
     this.args,
     this.commands,
     required this.cpu,

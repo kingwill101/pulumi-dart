@@ -35,7 +35,7 @@ class RepositoryArgs {
   /// [repository] The name of the repository to create.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [upstreams] A list of upstream repositories to associate with the repository. The order of the upstream repositories in the list determines their priority order when AWS CodeArtifact looks for a requested package version. see Upstream
-  RepositoryArgs({
+  const RepositoryArgs({
     this.description,
     required this.domain,
     this.domainOwner,

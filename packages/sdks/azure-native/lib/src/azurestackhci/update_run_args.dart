@@ -64,7 +64,7 @@ class UpdateRunArgs {
   /// [timeStarted] Timestamp of the update run was started.
   /// [updateName] The name of the Update
   /// [updateRunName] The name of the Update Run
-  UpdateRunArgs({
+  const UpdateRunArgs({
     required this.clusterName,
     this.description,
     this.duration,

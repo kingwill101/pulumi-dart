@@ -18,7 +18,7 @@ class GetFirewallPolicyRuleGroupArgs {
   /// [firewallPolicyName] The name of the Firewall Policy.
   /// [resourceGroupName] The name of the resource group.
   /// [ruleGroupName] The name of the FirewallPolicyRuleGroup.
-  GetFirewallPolicyRuleGroupArgs({
+  const GetFirewallPolicyRuleGroupArgs({
     required this.firewallPolicyName,
     required this.resourceGroupName,
     required this.ruleGroupName,

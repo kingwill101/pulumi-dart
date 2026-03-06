@@ -42,7 +42,7 @@ class UserArgs {
   /// [status] The status of the user. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`.
   /// [tags] The tag of the resource.
   /// [userName] The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
-  UserArgs({
+  const UserArgs({
     this.description,
     required this.directoryId,
     this.displayName,

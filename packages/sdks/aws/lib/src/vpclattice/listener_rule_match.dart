@@ -10,7 +10,7 @@ class ListenerRuleMatch {
 
   /// Creates a new [ListenerRuleMatch].
   /// [httpMatch] The HTTP criteria that a rule must match.
-  ListenerRuleMatch({
+  const ListenerRuleMatch({
     required this.httpMatch,
   });
 

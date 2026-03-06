@@ -28,7 +28,7 @@ class UriFolderDataVersion {
   /// [isArchived] Is the asset archived?
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  UriFolderDataVersion({
+  const UriFolderDataVersion({
     required this.dataType,
     required this.dataUri,
     this.description,

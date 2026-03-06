@@ -16,7 +16,7 @@ class GetDirectoryRoleTemplatesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [objectIds] The object IDs of the role templates.
   /// [roleTemplates] A list of role templates. Each `role_template` object provides the attributes documented below.
-  GetDirectoryRoleTemplatesResult({
+  const GetDirectoryRoleTemplatesResult({
     required this.id,
     required this.objectIds,
     required this.roleTemplates,

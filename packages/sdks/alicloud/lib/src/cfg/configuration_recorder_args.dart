@@ -17,7 +17,7 @@ class ConfigurationRecorderArgs {
   /// Creates a new [ConfigurationRecorderArgs].
   /// [enterpriseEdition] Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
   /// [resourceTypes] A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
-  ConfigurationRecorderArgs({
+  const ConfigurationRecorderArgs({
     this.enterpriseEdition,
     this.resourceTypes,
   });

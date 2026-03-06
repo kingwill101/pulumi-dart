@@ -15,7 +15,7 @@ class GetWaiterArgs {
   /// [configId] Required.
   /// [project] Optional.
   /// [waiterId] Required.
-  GetWaiterArgs({
+  const GetWaiterArgs({
     required this.configId,
     this.project,
     required this.waiterId,

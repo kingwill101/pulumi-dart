@@ -16,7 +16,7 @@ class AuditConfigResponseComputeBeta {
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [exemptedMembers] This is deprecated and has no effect. Do not use.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigResponseComputeBeta({
+  const AuditConfigResponseComputeBeta({
     required this.auditLogConfigs,
     required this.exemptedMembers,
     required this.service,

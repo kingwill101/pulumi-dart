@@ -30,7 +30,7 @@ class DataFlowSink {
   /// [name] Transformation name.
   /// [rejectedDataLinkedService] Rejected data linked service reference.
   /// [schemaLinkedService] Schema linked service reference.
-  DataFlowSink({
+  const DataFlowSink({
     this.dataset,
     this.description,
     this.flowlet,

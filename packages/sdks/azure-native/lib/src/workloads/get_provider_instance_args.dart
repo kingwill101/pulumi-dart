@@ -18,7 +18,7 @@ class GetProviderInstanceArgs {
   /// [monitorName] Name of the SAP monitor resource.
   /// [providerInstanceName] Name of the provider instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProviderInstanceArgs({
+  const GetProviderInstanceArgs({
     required this.monitorName,
     required this.providerInstanceName,
     required this.resourceGroupName,

@@ -82,7 +82,7 @@ class GetJobRunV2Result {
   /// [terminalCondition] The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state.
   /// [uid] Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   /// [updateTime] The last-modified time.
-  GetJobRunV2Result({
+  const GetJobRunV2Result({
     required this.annotations,
     required this.binaryAuthorization,
     required this.client,

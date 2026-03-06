@@ -12,7 +12,7 @@ class HiveDatabaseOptionsResponse {
   /// Creates a new [HiveDatabaseOptionsResponse].
   /// [locationUri] Cloud Storage folder URI where the database data is stored, starting with "gs://".
   /// [parameters] Stores user supplied Hive database parameters.
-  HiveDatabaseOptionsResponse({
+  const HiveDatabaseOptionsResponse({
     required this.locationUri,
     required this.parameters,
   });

@@ -8,7 +8,7 @@ class GetCertificateCertificatePolicySecretProperty {
 
   /// Creates a new [GetCertificateCertificatePolicySecretProperty].
   /// [contentType] The Content-Type of the Certificate, for example `application/x-pkcs12` for a PFX or `application/x-pem-file` for a PEM.
-  GetCertificateCertificatePolicySecretProperty({
+  const GetCertificateCertificatePolicySecretProperty({
     required this.contentType,
   });
 

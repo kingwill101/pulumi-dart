@@ -12,7 +12,7 @@ class ActivatedResourceReferenceResponse {
   /// Creates a new [ActivatedResourceReferenceResponse].
   /// [id] Resource ID.
   /// [isActive] Whether the resource is active or inactive
-  ActivatedResourceReferenceResponse({
+  const ActivatedResourceReferenceResponse({
     this.id,
     required this.isActive,
   });

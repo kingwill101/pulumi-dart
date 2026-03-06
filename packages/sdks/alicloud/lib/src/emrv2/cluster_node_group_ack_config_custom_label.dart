@@ -11,7 +11,7 @@ class ClusterNodeGroupAckConfigCustomLabel {
   /// Creates a new [ClusterNodeGroupAckConfigCustomLabel].
   /// [key] The tag key for this scaling rule specific metrics trigger.
   /// [value] The tag value for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAckConfigCustomLabel({
+  const ClusterNodeGroupAckConfigCustomLabel({
     required this.key,
     this.value,
   });

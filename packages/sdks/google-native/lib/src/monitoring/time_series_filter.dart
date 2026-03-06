@@ -24,7 +24,7 @@ class TimeSeriesFilter {
   /// [pickTimeSeriesFilter] Ranking based time series filter.
   /// [secondaryAggregation] Apply a second aggregation after aggregation is applied.
   /// [statisticalTimeSeriesFilter] Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-  TimeSeriesFilter({
+  const TimeSeriesFilter({
     this.aggregation,
     required this.filter,
     this.pickTimeSeriesFilter,

@@ -31,7 +31,7 @@ class VmwareAdminClusterPlatformConfig {
   /// [platformVersion] (Output)
   /// [requiredPlatformVersion] The required platform version e.g. 1.13.1.
   /// [statuses] (Output)
-  VmwareAdminClusterPlatformConfig({
+  const VmwareAdminClusterPlatformConfig({
     this.bundles,
     this.platformVersion,
     this.requiredPlatformVersion,

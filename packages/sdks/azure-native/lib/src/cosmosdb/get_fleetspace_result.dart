@@ -37,7 +37,7 @@ class GetFleetspaceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [throughputPoolConfiguration] Configuration for throughput pool in the fleetspace.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFleetspaceResult({
+  const GetFleetspaceResult({
     required this.azureApiVersion,
     this.dataRegions,
     this.fleetspaceApiKind,

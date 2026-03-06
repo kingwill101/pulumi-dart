@@ -27,7 +27,7 @@ class ImportSitesControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
   /// [tags] Resource tags.
-  ImportSitesControllerArgs({
+  const ImportSitesControllerArgs({
     this.discoverySolutionId,
     this.location,
     this.provisioningState,

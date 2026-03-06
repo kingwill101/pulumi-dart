@@ -17,7 +17,7 @@ class GetNamespaceWorkloadIamPolicyArgs {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [workloadId] Required.
-  GetNamespaceWorkloadIamPolicyArgs({
+  const GetNamespaceWorkloadIamPolicyArgs({
     required this.location,
     required this.namespaceId,
     this.project,

@@ -13,7 +13,7 @@ class GetManagedFolderIamPolicyArgs {
   /// Creates a new [GetManagedFolderIamPolicyArgs].
   /// [bucket] Required.
   /// [managedFolder] Required.
-  GetManagedFolderIamPolicyArgs({
+  const GetManagedFolderIamPolicyArgs({
     required this.bucket,
     required this.managedFolder,
   });

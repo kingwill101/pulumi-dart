@@ -13,7 +13,7 @@ class ListDnsResolverByVirtualNetworkResult {
   /// Creates a new [ListDnsResolverByVirtualNetworkResult].
   /// [nextLink] The continuation token for the next page of results.
   /// [value] Enumeration of the sub-resources.
-  ListDnsResolverByVirtualNetworkResult({
+  const ListDnsResolverByVirtualNetworkResult({
     required this.nextLink,
     this.value,
   });

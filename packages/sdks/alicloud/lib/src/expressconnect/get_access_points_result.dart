@@ -22,7 +22,7 @@ class GetAccessPointsResult {
   /// [outputFile] Optional.
   /// [points] Required.
   /// [status] Optional.
-  GetAccessPointsResult({
+  const GetAccessPointsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

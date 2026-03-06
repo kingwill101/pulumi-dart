@@ -11,7 +11,7 @@ class TableExportIncrementalExportSpecification {
   /// [exportFromTime] Optional.
   /// [exportToTime] Optional.
   /// [exportViewType] Optional.
-  TableExportIncrementalExportSpecification({
+  const TableExportIncrementalExportSpecification({
     this.exportFromTime,
     this.exportToTime,
     this.exportViewType,

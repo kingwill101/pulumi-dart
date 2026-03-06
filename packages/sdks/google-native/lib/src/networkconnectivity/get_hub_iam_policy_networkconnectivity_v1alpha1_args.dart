@@ -15,7 +15,7 @@ class GetHubIamPolicyNetworkconnectivityV1alpha1Args {
   /// [hubId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetHubIamPolicyNetworkconnectivityV1alpha1Args({
+  const GetHubIamPolicyNetworkconnectivityV1alpha1Args({
     required this.hubId,
     this.optionsRequestedPolicyVersion,
     this.project,

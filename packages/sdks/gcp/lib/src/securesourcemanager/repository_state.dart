@@ -54,7 +54,7 @@ class RepositoryState {
   /// [uid] Unique identifier of the repository.
   /// [updateTime] Time the repository was updated in UTC.
   /// [uris] URIs for the repository.
-  RepositoryState({
+  const RepositoryState({
     this.createTime,
     this.deletionPolicy,
     this.description,

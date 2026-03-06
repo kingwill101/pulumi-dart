@@ -24,7 +24,7 @@ class ClientCertAuthenticationResponse {
   /// [password] Gets or sets the certificate password, return value will always be empty.
   /// [pfx] Gets or sets the pfx certificate. Accepts certification in base64 encoding, return value will always be empty.
   /// [type] Gets or sets the HTTP authentication type.
-  ClientCertAuthenticationResponse({
+  const ClientCertAuthenticationResponse({
     this.certificateExpirationDate,
     this.certificateSubjectName,
     this.certificateThumbprint,

@@ -42,7 +42,7 @@ class CycleTaskState {
   /// [targetStartTime] Task start time (hours).
   /// [taskName] The task name.
   /// [taskType] The task type.
-  CycleTaskState({
+  const CycleTaskState({
     this.enable,
     this.firstDateStr,
     this.intervalPeriod,

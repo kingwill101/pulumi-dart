@@ -7,7 +7,7 @@ class SecurityPolicyDdosProtectionConfigResponseComputeV1 {
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigResponseComputeV1].
   /// [ddosProtection] Required.
-  SecurityPolicyDdosProtectionConfigResponseComputeV1({
+  const SecurityPolicyDdosProtectionConfigResponseComputeV1({
     required this.ddosProtection,
   });
 

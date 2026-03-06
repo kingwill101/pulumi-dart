@@ -42,7 +42,7 @@ class ModelPrimaryContainer {
   /// [modelDataUrl] URL for the S3 location where model artifacts are stored.
   /// [modelPackageName] Amazon Resource Name (ARN) of the model package to use to create the model.
   /// [multiModelConfig] Specifies additional configuration for multi-model endpoints. see Multi Model Config.
-  ModelPrimaryContainer({
+  const ModelPrimaryContainer({
     this.additionalModelDataSources,
     this.containerHostname,
     this.environment,

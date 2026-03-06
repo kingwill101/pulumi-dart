@@ -15,7 +15,7 @@ class GetDocumentSchemaArgs {
   /// [documentSchemaId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDocumentSchemaArgs({
+  const GetDocumentSchemaArgs({
     required this.documentSchemaId,
     required this.location,
     this.project,

@@ -18,7 +18,7 @@ class RuntimeVirtualMachine {
   /// [instanceId] (Output)
   /// [instanceName] (Output)
   /// [virtualMachineConfig] Virtual Machine configuration settings.
-  RuntimeVirtualMachine({
+  const RuntimeVirtualMachine({
     this.instanceId,
     this.instanceName,
     this.virtualMachineConfig,

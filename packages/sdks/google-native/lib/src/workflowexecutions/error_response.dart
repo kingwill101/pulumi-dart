@@ -16,7 +16,7 @@ class ErrorResponse {
   /// [context] Human-readable stack trace string.
   /// [payload] Error message and data returned represented as a JSON string.
   /// [stackTrace] Stack trace with detailed information of where error was generated.
-  ErrorResponse({
+  const ErrorResponse({
     required this.context,
     required this.payload,
     required this.stackTrace,

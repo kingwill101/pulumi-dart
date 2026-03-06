@@ -9,7 +9,7 @@ class GPUDriverInstallationConfigResponseContainerV1beta1 {
 
   /// Creates a new [GPUDriverInstallationConfigResponseContainerV1beta1].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  GPUDriverInstallationConfigResponseContainerV1beta1({
+  const GPUDriverInstallationConfigResponseContainerV1beta1({
     required this.gpuDriverVersion,
   });
 

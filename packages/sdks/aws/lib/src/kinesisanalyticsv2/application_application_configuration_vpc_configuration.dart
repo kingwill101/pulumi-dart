@@ -15,7 +15,7 @@ class ApplicationApplicationConfigurationVpcConfiguration {
   /// [subnetIds] The Subnet IDs used by the VPC configuration.
   /// [vpcConfigurationId] Optional.
   /// [vpcId] Optional.
-  ApplicationApplicationConfigurationVpcConfiguration({
+  const ApplicationApplicationConfigurationVpcConfiguration({
     required this.securityGroupIds,
     required this.subnetIds,
     this.vpcConfigurationId,

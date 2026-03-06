@@ -18,7 +18,7 @@ class GetNatRuleArgs {
   /// [gatewayName] The name of the gateway.
   /// [natRuleName] The name of the nat rule.
   /// [resourceGroupName] The resource group name of the VpnGateway.
-  GetNatRuleArgs({
+  const GetNatRuleArgs({
     required this.gatewayName,
     required this.natRuleName,
     required this.resourceGroupName,

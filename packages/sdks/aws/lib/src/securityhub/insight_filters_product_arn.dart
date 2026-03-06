@@ -9,7 +9,7 @@ class InsightFiltersProductArn {
   /// Creates a new [InsightFiltersProductArn].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersProductArn({
+  const InsightFiltersProductArn({
     required this.comparison,
     required this.value,
   });

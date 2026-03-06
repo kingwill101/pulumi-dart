@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceYUMResponse {
 
   /// Creates a new [OSPolicyResourcePackageResourceYUMResponse].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceYUMResponse({
+  const OSPolicyResourcePackageResourceYUMResponse({
     required this.name,
   });
 

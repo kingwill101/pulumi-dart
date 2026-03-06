@@ -35,7 +35,7 @@ class GetProducerImageShareGroupsImageShareGroup {
   /// [membersCount] The number of members in the Image Share Group.
   /// [updated] The date and time the Image Share Group was last updated.
   /// [uuid] The UUID of the Image Share Group.
-  GetProducerImageShareGroupsImageShareGroup({
+  const GetProducerImageShareGroupsImageShareGroup({
     required this.created,
     required this.description,
     required this.expiry,

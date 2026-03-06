@@ -18,7 +18,7 @@ class GetDevicesArgs {
   /// [globalNetworkId] ID of the Global Network of the devices to retrieve.
   /// [siteId] ID of the site of the devices to retrieve.
   /// [tags] Restricts the list to the devices with these tags.
-  GetDevicesArgs({
+  const GetDevicesArgs({
     required this.globalNetworkId,
     this.siteId,
     this.tags,

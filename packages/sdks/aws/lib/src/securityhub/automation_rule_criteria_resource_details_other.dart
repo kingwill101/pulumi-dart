@@ -12,7 +12,7 @@ class AutomationRuleCriteriaResourceDetailsOther {
   /// [comparison] Required.
   /// [key] The key of the map filter.
   /// [value] Required.
-  AutomationRuleCriteriaResourceDetailsOther({
+  const AutomationRuleCriteriaResourceDetailsOther({
     required this.comparison,
     required this.key,
     required this.value,

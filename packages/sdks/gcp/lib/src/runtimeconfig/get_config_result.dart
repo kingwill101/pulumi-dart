@@ -14,7 +14,7 @@ class GetConfigResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [project] Optional.
-  GetConfigResult({
+  const GetConfigResult({
     required this.description,
     required this.id,
     required this.name,

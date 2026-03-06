@@ -24,7 +24,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   /// [protocols] Set of protocols to inspect for, specified using the protocol's assigned internet protocol number (IANA). Network Firewall currently supports TCP only. Valid values: `6`
   /// [sourcePorts] Set of configuration blocks describing the source ports to inspect for. If not specified, this matches with any source port. See Source Ports below for details.
   /// [sources] Set of configuration blocks describing the source IP address and address ranges to inspect for, in CIDR notation. If not specified, this matches with any source address. See Source below for details.
-  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope({
+  const TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScope({
     this.destinationPorts,
     required this.destinations,
     required this.protocols,

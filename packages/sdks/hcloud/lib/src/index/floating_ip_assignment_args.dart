@@ -15,7 +15,7 @@ class FloatingIpAssignmentArgs {
   /// Creates a new [FloatingIpAssignmentArgs].
   /// [floatingIpId] ID of the Floating IP.
   /// [serverId] Server to assign the Floating IP to.
-  FloatingIpAssignmentArgs({
+  const FloatingIpAssignmentArgs({
     required this.floatingIpId,
     required this.serverId,
   });

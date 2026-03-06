@@ -27,7 +27,7 @@ class GetDnsAuthorizationResult {
   /// [labels] Set of labels associated with a DnsAuthorization.
   /// [name] A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
   /// [updateTime] The last update timestamp of a DnsAuthorization.
-  GetDnsAuthorizationResult({
+  const GetDnsAuthorizationResult({
     required this.createTime,
     required this.description,
     required this.dnsResourceRecord,

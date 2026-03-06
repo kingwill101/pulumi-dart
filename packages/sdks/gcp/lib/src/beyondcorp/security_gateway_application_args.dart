@@ -50,7 +50,7 @@ class SecurityGatewayApplicationArgs {
   /// [schema] Type of the external application.
   /// [securityGatewayId] ID of the Security Gateway resource this belongs to.
   /// [upstreams] Optional. List of which upstream resource(s) to forward traffic to.
-  SecurityGatewayApplicationArgs({
+  const SecurityGatewayApplicationArgs({
     required this.applicationId,
     this.displayName,
     this.endpointMatchers,

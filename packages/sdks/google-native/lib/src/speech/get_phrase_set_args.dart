@@ -15,7 +15,7 @@ class GetPhraseSetArgs {
   /// [location] Required.
   /// [phraseSetId] Required.
   /// [project] Optional.
-  GetPhraseSetArgs({
+  const GetPhraseSetArgs({
     required this.location,
     required this.phraseSetId,
     this.project,

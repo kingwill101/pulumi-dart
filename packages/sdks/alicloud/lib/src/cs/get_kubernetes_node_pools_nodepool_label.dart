@@ -11,7 +11,7 @@ class GetKubernetesNodePoolsNodepoolLabel {
   /// Creates a new [GetKubernetesNodePoolsNodepoolLabel].
   /// [key] The key of a taint.
   /// [value] The value of a taint.
-  GetKubernetesNodePoolsNodepoolLabel({
+  const GetKubernetesNodePoolsNodepoolLabel({
     required this.key,
     required this.value,
   });

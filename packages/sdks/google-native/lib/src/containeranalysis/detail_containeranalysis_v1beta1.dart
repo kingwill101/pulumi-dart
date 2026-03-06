@@ -44,7 +44,7 @@ class DetailContaineranalysisV1beta1 {
   /// [source] The source from which the information in this Detail was obtained.
   /// [sourceUpdateTime] The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
   /// [vendor] The name of the vendor of the product.
-  DetailContaineranalysisV1beta1({
+  const DetailContaineranalysisV1beta1({
     required this.cpeUri,
     this.description,
     this.fixedLocation,

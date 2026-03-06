@@ -8,7 +8,7 @@ class DataSourceConfigurationS3ConfigurationAccessControlListConfiguration {
 
   /// Creates a new [DataSourceConfigurationS3ConfigurationAccessControlListConfiguration].
   /// [keyPath] Path to the AWS S3 bucket that contains the ACL files.
-  DataSourceConfigurationS3ConfigurationAccessControlListConfiguration({
+  const DataSourceConfigurationS3ConfigurationAccessControlListConfiguration({
     this.keyPath,
   });
 

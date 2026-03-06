@@ -9,7 +9,7 @@ class NeighborAddress {
 
   /// Creates a new [NeighborAddress].
   /// [address] IP Address.
-  NeighborAddress({
+  const NeighborAddress({
     this.address,
   });
 

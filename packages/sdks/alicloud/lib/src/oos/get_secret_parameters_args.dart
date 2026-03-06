@@ -39,7 +39,7 @@ class GetSecretParametersArgs {
   /// [sortOrder] The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [withDecryption] Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
-  GetSecretParametersArgs({
+  const GetSecretParametersArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

@@ -9,7 +9,7 @@ class ActorResponse {
 
   /// Creates a new [ActorResponse].
   /// [name] The subject or username associated with the request context that generated the event.
-  ActorResponse({
+  const ActorResponse({
     this.name,
   });
 

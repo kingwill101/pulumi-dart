@@ -37,7 +37,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn {
   /// [precision] (Output)
   /// [primaryKey] (Output)
   /// [scale] (Output)
-  StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn({
+  const StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn({
     this.column,
     this.dataType,
     this.length,

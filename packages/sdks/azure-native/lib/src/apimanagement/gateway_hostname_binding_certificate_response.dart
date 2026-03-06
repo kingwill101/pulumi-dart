@@ -14,7 +14,7 @@ class GatewayHostnameBindingCertificateResponse {
   /// [expiry] The expiration date of the certificate.
   /// [subject] The subject of the certificate.
   /// [thumbprint] The thumbprint of the certificate.
-  GatewayHostnameBindingCertificateResponse({
+  const GatewayHostnameBindingCertificateResponse({
     required this.expiry,
     required this.subject,
     required this.thumbprint,

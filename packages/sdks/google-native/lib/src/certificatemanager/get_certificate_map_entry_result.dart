@@ -32,7 +32,7 @@ class GetCertificateMapEntryResult {
   /// [name] A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
   /// [state] A serving state of this Certificate Map Entry.
   /// [updateTime] The update timestamp of a Certificate Map Entry.
-  GetCertificateMapEntryResult({
+  const GetCertificateMapEntryResult({
     required this.certificates,
     required this.createTime,
     required this.description,

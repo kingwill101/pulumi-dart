@@ -21,7 +21,7 @@ class EnvironmentArgs {
   /// [environmentName] The name of the resource
   /// [gatewayId] Gateway id
   /// [resourceGroupId] The ID of the resource group
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.description,
     required this.environmentName,
     required this.gatewayId,

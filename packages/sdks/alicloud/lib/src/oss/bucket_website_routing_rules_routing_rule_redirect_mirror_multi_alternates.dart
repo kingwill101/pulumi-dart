@@ -9,7 +9,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates].
   /// [mirrorMultiAlternates] Mirror back-to-source multi-source station configuration list See `mirror_multi_alternate` below.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates({
     this.mirrorMultiAlternates,
   });
 

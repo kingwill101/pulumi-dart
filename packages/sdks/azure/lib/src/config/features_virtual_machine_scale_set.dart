@@ -13,7 +13,7 @@ class FeaturesVirtualMachineScaleSet {
   /// [reimageOnManualUpgrade] Optional.
   /// [rollInstancesWhenRequired] Optional.
   /// [scaleToZeroBeforeDeletion] Optional.
-  FeaturesVirtualMachineScaleSet({
+  const FeaturesVirtualMachineScaleSet({
     this.forceDelete,
     this.reimageOnManualUpgrade,
     this.rollInstancesWhenRequired,

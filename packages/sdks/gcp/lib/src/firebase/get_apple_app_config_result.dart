@@ -17,7 +17,7 @@ class GetAppleAppConfigResult {
   /// [configFilename] The filename that the configuration artifact for the IosApp is typically saved as.
   /// [id] Required.
   /// [project] Optional.
-  GetAppleAppConfigResult({
+  const GetAppleAppConfigResult({
     required this.appId,
     required this.configFileContents,
     required this.configFilename,

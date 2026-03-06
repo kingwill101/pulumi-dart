@@ -65,7 +65,7 @@ class PhysicalConnectionArgs {
   /// [redundantPhysicalConnectionId] The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundant_physical_connection_id` cannot be modified.
   /// [status] The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
   /// [type] The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
-  PhysicalConnectionArgs({
+  const PhysicalConnectionArgs({
     required this.accessPointId,
     this.bandwidth,
     this.circuitCode,

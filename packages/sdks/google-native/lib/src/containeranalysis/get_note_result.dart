@@ -82,7 +82,7 @@ class GetNoteResult {
   /// [upgrade] A note describing available package upgrades.
   /// [vulnerability] A note describing a package vulnerability.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
-  GetNoteResult({
+  const GetNoteResult({
     required this.attestation,
     required this.build,
     required this.compliance,

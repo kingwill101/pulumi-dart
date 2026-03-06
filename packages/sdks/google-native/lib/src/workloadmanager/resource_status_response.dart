@@ -12,7 +12,7 @@ class ResourceStatusResponse {
   /// Creates a new [ResourceStatusResponse].
   /// [rulesNewerVersions] Historical: Used before 2023-05-22 the new version of rule id if exists
   /// [state] State of the resource
-  ResourceStatusResponse({
+  const ResourceStatusResponse({
     required this.rulesNewerVersions,
     required this.state,
   });

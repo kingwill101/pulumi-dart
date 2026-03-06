@@ -26,7 +26,7 @@ class GetDataCentersResult {
   /// [nameRegex] Optional.
   /// [names] The name list of Cassandra data centers.
   /// [outputFile] Optional.
-  GetDataCentersResult({
+  const GetDataCentersResult({
     required this.centers,
     required this.clusterId,
     required this.id,

@@ -27,7 +27,7 @@ class FolderNotificationConfigArgs {
   /// [name] The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  FolderNotificationConfigArgs({
+  const FolderNotificationConfigArgs({
     required this.configId,
     this.description,
     required this.folderId,

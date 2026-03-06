@@ -12,7 +12,7 @@ class ConfigurationGroupSchemaPropertiesFormat {
   /// Creates a new [ConfigurationGroupSchemaPropertiesFormat].
   /// [description] Description of what schema can contain.
   /// [schemaDefinition] Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
-  ConfigurationGroupSchemaPropertiesFormat({
+  const ConfigurationGroupSchemaPropertiesFormat({
     this.description,
     this.schemaDefinition,
   });

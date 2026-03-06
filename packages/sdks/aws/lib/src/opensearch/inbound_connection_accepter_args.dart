@@ -15,7 +15,7 @@ class InboundConnectionAccepterArgs {
   /// Creates a new [InboundConnectionAccepterArgs].
   /// [connectionId] Specifies the ID of the connection to accept.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InboundConnectionAccepterArgs({
+  const InboundConnectionAccepterArgs({
     required this.connectionId,
     this.region,
   });

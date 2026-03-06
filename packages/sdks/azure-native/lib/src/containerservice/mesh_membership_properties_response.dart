@@ -12,7 +12,7 @@ class MeshMembershipPropertiesResponse {
   /// Creates a new [MeshMembershipPropertiesResponse].
   /// [managedMeshID] The ARM resource id for the managed mesh member. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/applinks/{appLinkName}/appLinkMembers/{appLinkMemberName}'. Visit https://aka.ms/applink for more information.
   /// [provisioningState] The current provisioning state of the Mesh Membership.
-  MeshMembershipPropertiesResponse({
+  const MeshMembershipPropertiesResponse({
     required this.managedMeshID,
     required this.provisioningState,
   });

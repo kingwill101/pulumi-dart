@@ -17,7 +17,7 @@ class FirewallVirtualHub {
   /// [publicIpAddresses] The list of public IP addresses associated with the Firewall.
   /// [publicIpCount] Specifies the number of public IPs to assign to the Firewall. Defaults to `1`.
   /// [virtualHubId] Specifies the ID of the Virtual Hub where the Firewall resides in.
-  FirewallVirtualHub({
+  const FirewallVirtualHub({
     this.privateIpAddress,
     this.publicIpAddresses,
     this.publicIpCount,

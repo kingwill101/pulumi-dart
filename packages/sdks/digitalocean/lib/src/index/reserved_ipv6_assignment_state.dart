@@ -12,7 +12,7 @@ class ReservedIpv6AssignmentState {
   /// Creates a new [ReservedIpv6AssignmentState].
   /// [dropletId] The ID of Droplet that the reserved IPv6 will be assigned to.
   /// [ip] The reserved IPv6 to assign to the Droplet.
-  ReservedIpv6AssignmentState({
+  const ReservedIpv6AssignmentState({
     this.dropletId,
     this.ip,
   });

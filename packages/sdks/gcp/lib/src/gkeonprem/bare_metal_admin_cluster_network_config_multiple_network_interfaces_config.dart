@@ -9,7 +9,7 @@ class BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig {
 
   /// Creates a new [BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig].
   /// [enabled] When set network_config.advanced_networking is automatically
-  BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig({
+  const BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig({
     this.enabled,
   });
 

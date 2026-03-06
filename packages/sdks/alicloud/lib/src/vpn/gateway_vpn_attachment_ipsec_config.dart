@@ -17,7 +17,7 @@ class GatewayVpnAttachmentIpsecConfig {
   /// [ipsecEncAlg] The encryption algorithm negotiated in the second stage. Valid values: aes, aes192, aes256, des, or 3des. Default value: aes.
   /// [ipsecLifetime] The life cycle of SA negotiated in the second stage. Unit: seconds. Value range: 0~86400. Default value: 86400.
   /// [ipsecPfs] Diffie-Hellman Key Exchange Algorithm Used in Second Stage Negotiation
-  GatewayVpnAttachmentIpsecConfig({
+  const GatewayVpnAttachmentIpsecConfig({
     this.ipsecAuthAlg,
     this.ipsecEncAlg,
     this.ipsecLifetime,

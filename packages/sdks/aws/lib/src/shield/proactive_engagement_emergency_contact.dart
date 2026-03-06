@@ -14,7 +14,7 @@ class ProactiveEngagementEmergencyContact {
   /// [contactNotes] Additional notes regarding the contact.
   /// [emailAddress] A valid email address that will be used for this contact.
   /// [phoneNumber] A phone number, starting with `+` and up to 15 digits that will be used for this contact.
-  ProactiveEngagementEmergencyContact({
+  const ProactiveEngagementEmergencyContact({
     this.contactNotes,
     required this.emailAddress,
     this.phoneNumber,

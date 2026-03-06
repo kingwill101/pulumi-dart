@@ -84,7 +84,7 @@ class RegionCommitmentState {
   /// [status] Status of the commitment with regards to eventual expiration
   /// [statusMessage] A human-readable explanation of the status.
   /// [type] The type of commitment, which affects the discount rate and the eligible resources.
-  RegionCommitmentState({
+  const RegionCommitmentState({
     this.autoRenew,
     this.category,
     this.commitmentId,

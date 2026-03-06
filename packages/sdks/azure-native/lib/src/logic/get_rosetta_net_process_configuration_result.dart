@@ -55,7 +55,7 @@ class GetRosettaNetProcessConfigurationResult {
   /// [responderRoleSettings] The RosettaNet responder role settings.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetRosettaNetProcessConfigurationResult({
+  const GetRosettaNetProcessConfigurationResult({
     required this.activitySettings,
     required this.azureApiVersion,
     required this.changedTime,

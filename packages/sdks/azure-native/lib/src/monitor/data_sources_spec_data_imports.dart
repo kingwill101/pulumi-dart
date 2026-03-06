@@ -10,7 +10,7 @@ class DataSourcesSpecDataImports {
 
   /// Creates a new [DataSourcesSpecDataImports].
   /// [eventHub] Definition of Event Hub configuration.
-  DataSourcesSpecDataImports({
+  const DataSourcesSpecDataImports({
     this.eventHub,
   });
 

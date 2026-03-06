@@ -34,7 +34,7 @@ class ConfigurationPolicyGroupArgs {
   /// [priority] Priority for VpnServerConfigurationPolicyGroup.
   /// [resourceGroupName] The resource group name of the ConfigurationPolicyGroup.
   /// [vpnServerConfigurationName] The name of the VpnServerConfiguration.
-  ConfigurationPolicyGroupArgs({
+  const ConfigurationPolicyGroupArgs({
     this.configurationPolicyGroupName,
     this.id,
     this.isDefault,

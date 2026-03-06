@@ -11,7 +11,7 @@ class ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguratio
   /// Creates a new [ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration].
   /// [enabled] Enables managed log persistence for monitoring logs.
   /// [encryptionKeyArn] The KMS key ARN to encrypt the logs stored in managed persistence.
-  ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration({
+  const ApplicationMonitoringConfigurationManagedPersistenceMonitoringConfiguration({
     this.enabled,
     this.encryptionKeyArn,
   });

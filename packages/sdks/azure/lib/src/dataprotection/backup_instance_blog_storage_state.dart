@@ -29,7 +29,7 @@ class BackupInstanceBlogStorageState {
   /// [storageAccountContainerNames] The list of the container names of the source Storage Account.
   /// [storageAccountId] The ID of the source Storage Account. Changing this forces a new Backup Instance Blob Storage to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Blob Storage should exist. Changing this forces a new Backup Instance Blob Storage to be created.
-  BackupInstanceBlogStorageState({
+  const BackupInstanceBlogStorageState({
     this.backupPolicyId,
     this.location,
     this.name,

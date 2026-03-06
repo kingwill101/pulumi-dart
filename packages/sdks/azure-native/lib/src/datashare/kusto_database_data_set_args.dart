@@ -28,7 +28,7 @@ class KustoDatabaseDataSetArgs {
   /// [kustoDatabaseResourceId] Resource id of the kusto database.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share to add the data set to.
-  KustoDatabaseDataSetArgs({
+  const KustoDatabaseDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.kind,

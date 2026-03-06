@@ -46,7 +46,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse {
   /// [playAudio] Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
   /// [telephonyTransferCall] A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
   /// [text] Returns a text response.
-  GoogleCloudDialogflowCxV3beta1ResponseMessageResponse({
+  const GoogleCloudDialogflowCxV3beta1ResponseMessageResponse({
     required this.channel,
     required this.conversationSuccess,
     required this.endInteraction,

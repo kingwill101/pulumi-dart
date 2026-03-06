@@ -10,7 +10,7 @@ class TestTimingResponse {
 
   /// Creates a new [TestTimingResponse].
   /// [testProcessDuration] How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
-  TestTimingResponse({
+  const TestTimingResponse({
     required this.testProcessDuration,
   });
 

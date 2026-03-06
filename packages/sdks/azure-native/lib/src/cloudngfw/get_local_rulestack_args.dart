@@ -15,7 +15,7 @@ class GetLocalRulestackArgs {
   /// Creates a new [GetLocalRulestackArgs].
   /// [localRulestackName] LocalRulestack resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLocalRulestackArgs({
+  const GetLocalRulestackArgs({
     required this.localRulestackName,
     required this.resourceGroupName,
   });

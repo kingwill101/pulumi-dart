@@ -14,7 +14,7 @@ class DatasetAccessAuthorizedDataset {
   /// Creates a new [DatasetAccessAuthorizedDataset].
   /// [dataset] The dataset this entry applies to
   /// [targetTypes] Which resources in the dataset this entry applies to. Currently, only views are supported,
-  DatasetAccessAuthorizedDataset({
+  const DatasetAccessAuthorizedDataset({
     required this.dataset,
     required this.targetTypes,
   });

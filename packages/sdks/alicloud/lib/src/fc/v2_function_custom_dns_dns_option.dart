@@ -11,7 +11,7 @@ class V2FunctionCustomDnsDnsOption {
   /// Creates a new [V2FunctionCustomDnsDnsOption].
   /// [name] DNS option name.
   /// [value] DNS option value.
-  V2FunctionCustomDnsDnsOption({
+  const V2FunctionCustomDnsDnsOption({
     this.name,
     this.value,
   });

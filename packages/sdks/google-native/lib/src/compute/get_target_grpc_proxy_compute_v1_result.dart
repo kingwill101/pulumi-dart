@@ -32,7 +32,7 @@ class GetTargetGrpcProxyComputeV1Result {
   /// [selfLinkWithId] Server-defined URL with id for the resource.
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
   /// [validateForProxyless] If true, indicates that the BackendServices referenced by the urlMap may be accessed by gRPC applications without using a sidecar proxy. This will enable configuration checks on urlMap and its referenced BackendServices to not allow unsupported features. A gRPC application must use "xds:///" scheme in the target URI of the service it is connecting to. If false, indicates that the BackendServices referenced by the urlMap will be accessed by gRPC applications via a sidecar proxy. In this case, a gRPC application must not use "xds:///" scheme in the target URI of the service it is connecting to
-  GetTargetGrpcProxyComputeV1Result({
+  const GetTargetGrpcProxyComputeV1Result({
     required this.creationTimestamp,
     required this.description,
     required this.fingerprint,

@@ -12,7 +12,7 @@ class DataDogConfiguration {
   /// Creates a new [DataDogConfiguration].
   /// [key] The data dog api key
   /// [site] The data dog site
-  DataDogConfiguration({
+  const DataDogConfiguration({
     this.key,
     this.site,
   });

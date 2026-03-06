@@ -35,7 +35,7 @@ class VmmServerArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags
   /// [vmmServerName] Name of the VMMServer.
-  VmmServerArgs({
+  const VmmServerArgs({
     this.credentials,
     required this.extendedLocation,
     required this.fqdn,

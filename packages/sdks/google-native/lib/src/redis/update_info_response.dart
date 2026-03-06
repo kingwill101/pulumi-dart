@@ -12,7 +12,7 @@ class UpdateInfoResponse {
   /// Creates a new [UpdateInfoResponse].
   /// [targetReplicaCount] Target number of replica nodes per shard.
   /// [targetShardCount] Target number of shards for redis cluster
-  UpdateInfoResponse({
+  const UpdateInfoResponse({
     required this.targetReplicaCount,
     required this.targetShardCount,
   });

@@ -52,7 +52,7 @@ class GetEipsArgs {
   /// [segmentInstanceId] Optional.
   /// [status] EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetEipsArgs({
+  const GetEipsArgs({
     this.addressName,
     this.associatedInstanceId,
     this.associatedInstanceType,

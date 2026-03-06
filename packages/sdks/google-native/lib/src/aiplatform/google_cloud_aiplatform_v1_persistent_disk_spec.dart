@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1PersistentDiskSpec {
   /// Creates a new [GoogleCloudAiplatformV1PersistentDiskSpec].
   /// [diskSizeGb] Size in GB of the disk (default is 100GB).
   /// [diskType] Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
-  GoogleCloudAiplatformV1PersistentDiskSpec({
+  const GoogleCloudAiplatformV1PersistentDiskSpec({
     this.diskSizeGb,
     this.diskType,
   });

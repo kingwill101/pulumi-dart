@@ -36,7 +36,7 @@ class GetPoolV2Args {
   /// [protocol] The protocol of the requested pool.
   /// [region] The region in which to obtain the V2 Load Balancer
   /// [tags] A set of tags applied to the loadbalancer's pool. The
-  GetPoolV2Args({
+  const GetPoolV2Args({
     this.lbMethod,
     this.loadbalancerId,
     this.name,

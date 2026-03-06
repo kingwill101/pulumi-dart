@@ -10,7 +10,7 @@ class ScopeSelectorPatch {
 
   /// Creates a new [ScopeSelectorPatch].
   /// [matchExpressions] A list of scope selector requirements by scope of the resources.
-  ScopeSelectorPatch({
+  const ScopeSelectorPatch({
     this.matchExpressions,
   });
 

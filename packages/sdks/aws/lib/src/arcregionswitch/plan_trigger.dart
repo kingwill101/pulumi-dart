@@ -21,7 +21,7 @@ class PlanTrigger {
   /// [description] Description of the trigger.
   /// [minDelayMinutesBetweenExecutions] Minimum delay in minutes between executions.
   /// [targetRegion] Target region for the trigger.
-  PlanTrigger({
+  const PlanTrigger({
     required this.action,
     this.conditions,
     this.description,

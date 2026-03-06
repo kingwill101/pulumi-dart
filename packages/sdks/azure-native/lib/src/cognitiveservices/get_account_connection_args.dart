@@ -18,7 +18,7 @@ class GetAccountConnectionArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [connectionName] Friendly name of the connection
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccountConnectionArgs({
+  const GetAccountConnectionArgs({
     required this.accountName,
     required this.connectionName,
     required this.resourceGroupName,

@@ -19,7 +19,7 @@ class ControlPolicyOrderArgs {
   /// [aclUuid] The unique ID of the access control policy.
   /// [direction] The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
   /// [order] The priority of the access control policy. The priority value starts from 1. A small priority value indicates a high priority. **NOTE:** The value of `-1` indicates the lowest priority.
-  ControlPolicyOrderArgs({
+  const ControlPolicyOrderArgs({
     required this.aclUuid,
     required this.direction,
     required this.order,

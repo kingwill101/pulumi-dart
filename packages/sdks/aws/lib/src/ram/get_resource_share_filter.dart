@@ -11,7 +11,7 @@ class GetResourceShareFilter {
   /// Creates a new [GetResourceShareFilter].
   /// [name] Name of the tag key to filter on.
   /// [values] Value of the tag key.
-  GetResourceShareFilter({
+  const GetResourceShareFilter({
     required this.name,
     required this.values,
   });

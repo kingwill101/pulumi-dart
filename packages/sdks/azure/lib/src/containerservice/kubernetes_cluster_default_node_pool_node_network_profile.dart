@@ -15,7 +15,7 @@ class KubernetesClusterDefaultNodePoolNodeNetworkProfile {
   /// [allowedHostPorts] One or more `allowed_host_ports` blocks as defined below.
   /// [applicationSecurityGroupIds] A list of Application Security Group IDs which should be associated with this Node Pool.
   /// [nodePublicIpTags] Specifies a mapping of tags to the instance-level public IPs. Changing this forces a new resource to be created.
-  KubernetesClusterDefaultNodePoolNodeNetworkProfile({
+  const KubernetesClusterDefaultNodePoolNodeNetworkProfile({
     this.allowedHostPorts,
     this.applicationSecurityGroupIds,
     this.nodePublicIpTags,

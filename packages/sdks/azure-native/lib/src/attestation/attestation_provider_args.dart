@@ -25,7 +25,7 @@ class AttestationProviderArgs {
   /// [providerName] Name of the attestation provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags that will be assigned to the attestation provider.
-  AttestationProviderArgs({
+  const AttestationProviderArgs({
     this.location,
     required this.properties,
     this.providerName,

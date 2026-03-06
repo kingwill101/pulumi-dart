@@ -10,7 +10,7 @@ class GoogleCloudApigeeV1PropertiesResponse {
 
   /// Creates a new [GoogleCloudApigeeV1PropertiesResponse].
   /// [property] List of all properties in the object
-  GoogleCloudApigeeV1PropertiesResponse({
+  const GoogleCloudApigeeV1PropertiesResponse({
     required this.property,
   });
 

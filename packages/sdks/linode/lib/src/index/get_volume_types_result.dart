@@ -19,7 +19,7 @@ class GetVolumeTypesResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [types] Required.
-  GetVolumeTypesResult({
+  const GetVolumeTypesResult({
     this.filters,
     required this.id,
     this.order,

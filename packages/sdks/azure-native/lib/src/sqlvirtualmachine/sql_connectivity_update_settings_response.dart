@@ -12,7 +12,7 @@ class SqlConnectivityUpdateSettingsResponse {
   /// Creates a new [SqlConnectivityUpdateSettingsResponse].
   /// [connectivityType] SQL Server connectivity option.
   /// [port] SQL Server port.
-  SqlConnectivityUpdateSettingsResponse({
+  const SqlConnectivityUpdateSettingsResponse({
     this.connectivityType,
     this.port,
   });

@@ -27,7 +27,7 @@ class ApprovalRuleArgs {
   /// [environmentIdentifier] The environment this rule applies to.
   /// [name] The name of the approval rule.
   /// [targetActionTypes] The type of action this rule applies to.
-  ApprovalRuleArgs({
+  const ApprovalRuleArgs({
     required this.approvalRuleConfig,
     required this.enabled,
     required this.environmentIdentifier,

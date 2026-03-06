@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePl
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentConfirmationSettingConfirmationResponseMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

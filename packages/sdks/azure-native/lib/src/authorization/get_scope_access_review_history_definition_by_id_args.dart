@@ -15,7 +15,7 @@ class GetScopeAccessReviewHistoryDefinitionByIdArgs {
   /// Creates a new [GetScopeAccessReviewHistoryDefinitionByIdArgs].
   /// [historyDefinitionId] The id of the access review history definition.
   /// [scope] The scope of the resource.
-  GetScopeAccessReviewHistoryDefinitionByIdArgs({
+  const GetScopeAccessReviewHistoryDefinitionByIdArgs({
     required this.historyDefinitionId,
     required this.scope,
   });

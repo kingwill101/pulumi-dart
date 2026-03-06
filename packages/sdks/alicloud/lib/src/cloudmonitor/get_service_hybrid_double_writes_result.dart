@@ -29,7 +29,7 @@ class GetServiceHybridDoubleWritesResult {
   /// [sourceNamespace] Source Namespace.
   /// [sourceUserId] Source UserId.
   /// [userId] Target UserId.
-  GetServiceHybridDoubleWritesResult({
+  const GetServiceHybridDoubleWritesResult({
     required this.hybridDoubleWrites,
     required this.id,
     required this.ids,

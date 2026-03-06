@@ -15,7 +15,7 @@ class GetWorkflowArgs {
   /// Creates a new [GetWorkflowArgs].
   /// [name] The name of the Logic App Workflow.
   /// [resourceGroupName] The name of the Resource Group in which the Logic App Workflow exists.
-  GetWorkflowArgs({
+  const GetWorkflowArgs({
     required this.name,
     required this.resourceGroupName,
   });

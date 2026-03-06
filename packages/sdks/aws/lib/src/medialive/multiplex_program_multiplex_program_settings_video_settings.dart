@@ -12,7 +12,7 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettings {
   /// Creates a new [MultiplexProgramMultiplexProgramSettingsVideoSettings].
   /// [constantBitrate] Constant bitrate value.
   /// [statmuxSettings] Statmux settings. See Statmux Settings for more details.
-  MultiplexProgramMultiplexProgramSettingsVideoSettings({
+  const MultiplexProgramMultiplexProgramSettingsVideoSettings({
     this.constantBitrate,
     this.statmuxSettings,
   });

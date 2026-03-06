@@ -9,7 +9,7 @@ class SchemaVersionProperties {
 
   /// Creates a new [SchemaVersionProperties].
   /// [value] Value of schema version
-  SchemaVersionProperties({
+  const SchemaVersionProperties({
     required this.value,
   });
 

@@ -45,7 +45,7 @@ class WorkloadState {
   /// [statusConfigAutomatic] An input object used to represent an automatic status configuration.See Nested status_config_automatic blocks below for details.
   /// [statusConfigStatic] A list of static status configurations. You can only configure one static status for a workload.See Nested status_config_static blocks below for details.
   /// [workloadId] The unique entity identifier of the workload.
-  WorkloadState({
+  const WorkloadState({
     this.accountId,
     this.compositeEntitySearchQuery,
     this.description,

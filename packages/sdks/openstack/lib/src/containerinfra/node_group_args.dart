@@ -61,7 +61,7 @@ class NodeGroupArgs {
   /// [nodeCount] The number of nodes for the node group. Changing
   /// [region] The region in which to obtain the V1 Container Infra
   /// [role] The role of nodes in the node group. Changing this
-  NodeGroupArgs({
+  const NodeGroupArgs({
     required this.clusterId,
     this.dockerVolumeSize,
     this.flavorId,

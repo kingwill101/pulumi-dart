@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1NodeConfig {
   /// Creates a new [GoogleCloudApigeeV1NodeConfig].
   /// [maxNodeCount] Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
   /// [minNodeCount] Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
-  GoogleCloudApigeeV1NodeConfig({
+  const GoogleCloudApigeeV1NodeConfig({
     this.maxNodeCount,
     this.minNodeCount,
   });

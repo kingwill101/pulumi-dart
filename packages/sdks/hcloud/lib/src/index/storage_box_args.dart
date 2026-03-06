@@ -38,7 +38,7 @@ class StorageBoxArgs {
   /// [snapshotPlan] Details of the active snapshot plan.
   /// [sshKeys] SSH public keys in OpenSSH format to inject into the Storage Box. It is not possible to update the SSH Keys through the API, so changing this attribute forces a replace of the Storage Box.
   /// [storageBoxType] Name of the Storage Box Type.
-  StorageBoxArgs({
+  const StorageBoxArgs({
     this.accessSettings,
     this.deleteProtection,
     this.labels,

@@ -27,7 +27,7 @@ class CassandraTableGetPropertiesResponseResource {
   /// [rid] A system generated property. A unique identifier.
   /// [schema] Schema of the Cosmos DB Cassandra table
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
-  CassandraTableGetPropertiesResponseResource({
+  const CassandraTableGetPropertiesResponseResource({
     this.analyticalStorageTtl,
     this.defaultTtl,
     required this.etag,

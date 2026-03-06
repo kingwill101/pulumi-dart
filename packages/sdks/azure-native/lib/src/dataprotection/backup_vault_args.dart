@@ -32,7 +32,7 @@ class BackupVaultArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [vaultName] The name of the backup vault.
-  BackupVaultArgs({
+  const BackupVaultArgs({
     this.eTag,
     this.identity,
     this.location,

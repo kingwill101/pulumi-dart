@@ -11,7 +11,7 @@ class WafRuleConfigTimerWeeklyPeriodDailyPeriod {
   /// Creates a new [WafRuleConfigTimerWeeklyPeriodDailyPeriod].
   /// [end] End time in HH:mm:ss format
   /// [start] Start time in HH:mm:ss format
-  WafRuleConfigTimerWeeklyPeriodDailyPeriod({
+  const WafRuleConfigTimerWeeklyPeriodDailyPeriod({
     this.end,
     this.start,
   });

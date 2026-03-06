@@ -9,7 +9,7 @@ class ApplicationInfoDimension {
   /// Creates a new [ApplicationInfoDimension].
   /// [key] Optional.
   /// [value] Optional.
-  ApplicationInfoDimension({
+  const ApplicationInfoDimension({
     this.key,
     this.value,
   });

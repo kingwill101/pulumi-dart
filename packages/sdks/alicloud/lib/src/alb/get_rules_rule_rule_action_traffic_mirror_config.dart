@@ -12,7 +12,7 @@ class GetRulesRuleRuleActionTrafficMirrorConfig {
   /// Creates a new [GetRulesRuleRuleActionTrafficMirrorConfig].
   /// [mirrorGroupConfigs] The Traffic is mirrored to the server group.
   /// [targetType] The Mirror target type.
-  GetRulesRuleRuleActionTrafficMirrorConfig({
+  const GetRulesRuleRuleActionTrafficMirrorConfig({
     required this.mirrorGroupConfigs,
     required this.targetType,
   });

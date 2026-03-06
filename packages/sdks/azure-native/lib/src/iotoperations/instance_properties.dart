@@ -13,7 +13,7 @@ class InstanceProperties {
   /// Creates a new [InstanceProperties].
   /// [description] Detailed description of the Instance.
   /// [schemaRegistryRef] The reference to the Schema Registry for this AIO Instance.
-  InstanceProperties({
+  const InstanceProperties({
     this.description,
     required this.schemaRegistryRef,
   });

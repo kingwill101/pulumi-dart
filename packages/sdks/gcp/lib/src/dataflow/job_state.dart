@@ -87,7 +87,7 @@ class JobState {
   /// [transformNameMapping] Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job. This field is not used outside of update.
   /// [type] The type of this job, selected from the [JobType enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobType)
   /// [zone] The zone in which the created job should run. If it is not provided, the provider zone is used.
-  JobState({
+  const JobState({
     this.additionalExperiments,
     this.effectiveLabels,
     this.enableStreamingEngine,

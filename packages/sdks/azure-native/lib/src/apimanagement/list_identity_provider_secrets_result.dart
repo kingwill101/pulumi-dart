@@ -8,7 +8,7 @@ class ListIdentityProviderSecretsResult {
 
   /// Creates a new [ListIdentityProviderSecretsResult].
   /// [clientSecret] Client or app secret used in IdentityProviders, Aad, OpenID or OAuth.
-  ListIdentityProviderSecretsResult({
+  const ListIdentityProviderSecretsResult({
     this.clientSecret,
   });
 

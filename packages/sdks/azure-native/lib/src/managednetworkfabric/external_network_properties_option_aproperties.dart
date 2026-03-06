@@ -37,7 +37,7 @@ class ExternalNetworkPropertiesOptionAProperties {
   /// [secondaryIpv4Prefix] Secondary IPv4 Address Prefix.
   /// [secondaryIpv6Prefix] Secondary IPv6 Address Prefix.
   /// [vlanId] Vlan identifier. Example : 501
-  ExternalNetworkPropertiesOptionAProperties({
+  const ExternalNetworkPropertiesOptionAProperties({
     this.bfdConfiguration,
     this.egressAclId,
     this.ingressAclId,

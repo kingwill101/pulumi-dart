@@ -15,7 +15,7 @@ class FlexibleServerHighAvailability {
   /// Creates a new [FlexibleServerHighAvailability].
   /// [mode] The high availability mode for the PostgreSQL Flexible Server. Possible value are `SameZone` or `ZoneRedundant`.
   /// [standbyAvailabilityZone] Specifies the Availability Zone in which the standby Flexible Server should be located.
-  FlexibleServerHighAvailability({
+  const FlexibleServerHighAvailability({
     required this.mode,
     this.standbyAvailabilityZone,
   });

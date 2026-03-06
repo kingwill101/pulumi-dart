@@ -47,7 +47,7 @@ class DataCollectionRuleDataSources {
   /// [syslog] The list of Syslog data source configurations.
   /// [windowsEventLogs] The list of Windows Event Log data source configurations.
   /// [windowsFirewallLogs] The list of Windows Firewall logs source configurations.
-  DataCollectionRuleDataSources({
+  const DataCollectionRuleDataSources({
     this.dataImports,
     this.extensions,
     this.iisLogs,

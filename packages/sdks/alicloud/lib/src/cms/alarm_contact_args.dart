@@ -32,7 +32,7 @@ class AlarmContactArgs {
   /// [channelsSms] The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
   /// [describe] The description of the alarm contact.
   /// [lang] The language type of the alarm. Valid values: `en`, `zh-cn`.
-  AlarmContactArgs({
+  const AlarmContactArgs({
     required this.alarmContactName,
     this.channelsAliim,
     this.channelsDingWebHook,

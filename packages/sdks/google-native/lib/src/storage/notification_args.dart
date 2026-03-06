@@ -41,7 +41,7 @@ class NotificationArgs {
   /// [selfLink] The canonical URL of this notification.
   /// [topic] The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
   /// [userProject] The project to be billed for this request. Required for Requester Pays buckets.
-  NotificationArgs({
+  const NotificationArgs({
     required this.bucket,
     this.customAttributes,
     this.etag,

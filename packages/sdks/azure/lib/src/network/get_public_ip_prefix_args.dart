@@ -15,7 +15,7 @@ class GetPublicIpPrefixArgs {
   /// Creates a new [GetPublicIpPrefixArgs].
   /// [name] Specifies the name of the public IP prefix.
   /// [resourceGroupName] Specifies the name of the resource group.
-  GetPublicIpPrefixArgs({
+  const GetPublicIpPrefixArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -15,7 +15,7 @@ class ScaleRuleMetricDimension {
   /// [dimensionName] Name of the dimension.
   /// [operator] the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
   /// [values] list of dimension values. For example: ["App1","App2"].
-  ScaleRuleMetricDimension({
+  const ScaleRuleMetricDimension({
     required this.dimensionName,
     required this.operator,
     required this.values,

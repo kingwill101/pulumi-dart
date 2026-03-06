@@ -13,7 +13,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector].
   /// [includedFolders] Names of the folders in scope.
   /// [includedProjects] Names of the projects in scope.
-  V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector({
+  const V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelector({
     this.includedFolders,
     this.includedProjects,
   });

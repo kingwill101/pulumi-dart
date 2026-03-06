@@ -18,7 +18,7 @@ class AccessGroupState {
   /// [createTime] The creation time of the permission group resource.
   /// [description] The permission group description.  No more than 32 characters in length.
   /// [networkType] The permission group type. Only VPC (VPC) is supported.
-  AccessGroupState({
+  const AccessGroupState({
     this.accessGroupName,
     this.createTime,
     this.description,

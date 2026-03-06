@@ -25,7 +25,7 @@ class GetRemoteWritesResult {
   /// [names] A list of Remote Write names.
   /// [outputFile] Optional.
   /// [remoteWrites] A list of Remote Writes. Each element contains the following attributes:
-  GetRemoteWritesResult({
+  const GetRemoteWritesResult({
     required this.clusterId,
     required this.id,
     required this.ids,

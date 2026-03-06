@@ -43,7 +43,7 @@ class ConfigurationAssignmentParentArgs {
   /// [resourceParentName] Resource parent name
   /// [resourceParentType] Resource parent type
   /// [resourceType] Resource type
-  ConfigurationAssignmentParentArgs({
+  const ConfigurationAssignmentParentArgs({
     this.configurationAssignmentName,
     this.filter,
     this.location,

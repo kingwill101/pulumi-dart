@@ -12,7 +12,7 @@ class MatchVariableResponse {
   /// Creates a new [MatchVariableResponse].
   /// [selector] The selector of match variable.
   /// [variableName] Match Variable.
-  MatchVariableResponse({
+  const MatchVariableResponse({
     this.selector,
     required this.variableName,
   });

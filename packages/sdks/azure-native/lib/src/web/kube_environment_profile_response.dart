@@ -15,7 +15,7 @@ class KubeEnvironmentProfileResponse {
   /// [id] Resource ID of the Kubernetes Environment.
   /// [name] Name of the Kubernetes Environment.
   /// [type] Resource type of the Kubernetes Environment.
-  KubeEnvironmentProfileResponse({
+  const KubeEnvironmentProfileResponse({
     this.id,
     required this.name,
     required this.type,

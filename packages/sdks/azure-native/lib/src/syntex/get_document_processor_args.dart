@@ -15,7 +15,7 @@ class GetDocumentProcessorArgs {
   /// Creates a new [GetDocumentProcessorArgs].
   /// [processorName] The name of document processor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDocumentProcessorArgs({
+  const GetDocumentProcessorArgs({
     required this.processorName,
     required this.resourceGroupName,
   });

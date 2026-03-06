@@ -21,7 +21,7 @@ class GetFlavorprofileV2Result {
   /// [name] The name of the flavorprofile.
   /// [providerName] The name of the provider that the flavorprofile uses.
   /// [region] Required.
-  GetFlavorprofileV2Result({
+  const GetFlavorprofileV2Result({
     required this.flavorData,
     required this.flavorprofileId,
     required this.id,

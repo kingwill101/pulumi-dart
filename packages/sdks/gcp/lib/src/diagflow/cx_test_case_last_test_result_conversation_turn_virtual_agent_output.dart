@@ -33,7 +33,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
   /// [status] Response error from the agent in the test result. If set, other output is empty.
   /// [textResponses] The text responses from the agent for the turn.
   /// [triggeredIntent] The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
-  CxTestCaseLastTestResultConversationTurnVirtualAgentOutput({
+  const CxTestCaseLastTestResultConversationTurnVirtualAgentOutput({
     this.currentPage,
     this.differences,
     this.sessionParameters,

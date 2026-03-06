@@ -30,7 +30,7 @@ class HoneyPotState {
   /// [presetId] The custom parameter ID of honeypot.
   /// [states] Honeypot status.
   /// [status] The status of the resource.
-  HoneyPotState({
+  const HoneyPotState({
     this.honeypotId,
     this.honeypotImageId,
     this.honeypotImageName,

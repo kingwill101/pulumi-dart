@@ -20,7 +20,7 @@ class GetVpcIpamsResult {
   /// [ipamIds] Optional.
   /// [ipams] List of IPAM resources matching the provided arguments.
   /// [region] Required.
-  GetVpcIpamsResult({
+  const GetVpcIpamsResult({
     this.filters,
     required this.id,
     this.ipamIds,

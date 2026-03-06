@@ -9,7 +9,7 @@ class GetDataSetPhysicalTableMapS3SourceInputColumn {
   /// Creates a new [GetDataSetPhysicalTableMapS3SourceInputColumn].
   /// [name] Required.
   /// [type] Required.
-  GetDataSetPhysicalTableMapS3SourceInputColumn({
+  const GetDataSetPhysicalTableMapS3SourceInputColumn({
     required this.name,
     required this.type,
   });

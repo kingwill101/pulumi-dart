@@ -16,7 +16,7 @@ class V2QueuedResourceTpuNodeSpec {
   /// [node] The node.
   /// [nodeId] Unqualified node identifier used to identify the node in the project once provisioned.
   /// [parent] The parent resource name.
-  V2QueuedResourceTpuNodeSpec({
+  const V2QueuedResourceTpuNodeSpec({
     required this.node,
     this.nodeId,
     required this.parent,

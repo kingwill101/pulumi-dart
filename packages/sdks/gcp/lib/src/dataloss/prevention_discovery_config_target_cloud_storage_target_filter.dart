@@ -18,7 +18,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilter {
   /// [cloudStorageResourceReference] The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
   /// [collection] A collection of resources for this filter to apply to.
   /// [others] Match discovery resources not covered by any other filter.
-  PreventionDiscoveryConfigTargetCloudStorageTargetFilter({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetFilter({
     this.cloudStorageResourceReference,
     this.collection,
     this.others,

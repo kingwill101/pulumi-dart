@@ -37,7 +37,7 @@ class OSPolicyResourcePackageResourceResponse {
   /// [rpm] An rpm package file.
   /// [yum] A package managed by YUM.
   /// [zypper] A package managed by Zypper.
-  OSPolicyResourcePackageResourceResponse({
+  const OSPolicyResourcePackageResourceResponse({
     required this.apt,
     required this.deb,
     required this.desiredState,

@@ -9,7 +9,7 @@ class IPConfigurationArmReferenceResponse {
 
   /// Creates a new [IPConfigurationArmReferenceResponse].
   /// [resourceId] The Azure Resource ID of an IPConfiguration resource
-  IPConfigurationArmReferenceResponse({
+  const IPConfigurationArmReferenceResponse({
     this.resourceId,
   });
 

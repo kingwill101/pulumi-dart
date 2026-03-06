@@ -15,7 +15,7 @@ class DataSetLogicalTableMapSource {
   /// [dataSetArn] ARN of the parent data set.
   /// [joinInstruction] Specifies the result of a join of two logical tables. See join_instruction.
   /// [physicalTableId] Physical table ID.
-  DataSetLogicalTableMapSource({
+  const DataSetLogicalTableMapSource({
     this.dataSetArn,
     this.joinInstruction,
     this.physicalTableId,

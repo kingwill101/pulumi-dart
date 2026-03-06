@@ -114,7 +114,7 @@ class InstanceTemplateDisk {
   /// [sourceSnapshot] The source snapshot to create this disk.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption
   /// [type] The type of GCE disk, can be either `"SCRATCH"` or
-  InstanceTemplateDisk({
+  const InstanceTemplateDisk({
     this.architecture,
     this.autoDelete,
     this.boot,

@@ -11,7 +11,7 @@ class GetInstanceTypesFilter {
   /// Creates a new [GetInstanceTypesFilter].
   /// [name] Name of the filter.
   /// [values] List of one or more values for the filter.
-  GetInstanceTypesFilter({
+  const GetInstanceTypesFilter({
     required this.name,
     required this.values,
   });

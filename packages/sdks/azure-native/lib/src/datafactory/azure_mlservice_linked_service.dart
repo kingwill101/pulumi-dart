@@ -52,7 +52,7 @@ class AzureMLServiceLinkedService {
   /// [tenant] The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureMLServiceLinkedService({
+  const AzureMLServiceLinkedService({
     this.annotations,
     this.authentication,
     this.connectVia,

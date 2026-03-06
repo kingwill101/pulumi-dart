@@ -22,7 +22,7 @@ class PrincipalAccessBoundaryPolicyDetailsRule {
   /// [description] The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
   /// [effect] The access relationship of principals to the resources in this rule.
   /// [resources] A list of Cloud Resource Manager resources. The resource
-  PrincipalAccessBoundaryPolicyDetailsRule({
+  const PrincipalAccessBoundaryPolicyDetailsRule({
     this.description,
     required this.effect,
     required this.resources,

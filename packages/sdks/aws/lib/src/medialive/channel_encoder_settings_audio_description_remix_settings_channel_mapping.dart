@@ -10,7 +10,7 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping {
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping].
   /// [inputChannelLevels] Required.
   /// [outputChannel] Required.
-  ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping({
+  const ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping({
     required this.inputChannelLevels,
     required this.outputChannel,
   });

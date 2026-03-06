@@ -12,7 +12,7 @@ class UserPasswordAlloydbV1alpha {
   /// Creates a new [UserPasswordAlloydbV1alpha].
   /// [password] The initial password for the user.
   /// [user] The database username.
-  UserPasswordAlloydbV1alpha({
+  const UserPasswordAlloydbV1alpha({
     this.password,
     this.user,
   });

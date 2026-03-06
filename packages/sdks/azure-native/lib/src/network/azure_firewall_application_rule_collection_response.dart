@@ -29,7 +29,7 @@ class AzureFirewallApplicationRuleCollectionResponse {
   /// [priority] Priority of the application rule collection resource.
   /// [provisioningState] The provisioning state of the application rule collection resource.
   /// [rules] Collection of rules used by a application rule collection.
-  AzureFirewallApplicationRuleCollectionResponse({
+  const AzureFirewallApplicationRuleCollectionResponse({
     this.action,
     required this.etag,
     this.id,

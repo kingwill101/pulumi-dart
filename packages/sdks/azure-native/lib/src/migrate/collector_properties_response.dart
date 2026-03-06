@@ -17,7 +17,7 @@ class CollectorPropertiesResponse {
   /// [createdTimestamp] Time when this collector was created. Date-Time represented in ISO-8601 format.
   /// [discoverySiteId] The ARM id of the discovery service site.
   /// [updatedTimestamp] Time when this collector was updated. Date-Time represented in ISO-8601 format.
-  CollectorPropertiesResponse({
+  const CollectorPropertiesResponse({
     this.agentProperties,
     required this.createdTimestamp,
     this.discoverySiteId,

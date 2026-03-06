@@ -15,7 +15,7 @@ class GetVCenterArgs {
   /// Creates a new [GetVCenterArgs].
   /// [resourceGroupName] The Resource Group Name.
   /// [vcenterName] Name of the vCenter.
-  GetVCenterArgs({
+  const GetVCenterArgs({
     required this.resourceGroupName,
     required this.vcenterName,
   });

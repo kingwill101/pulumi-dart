@@ -11,7 +11,7 @@ class ListConnectionKeysResult {
   /// Creates a new [ListConnectionKeysResult].
   /// [connectionKey] Connection Key
   /// [parameterValues] Tokens/Claim
-  ListConnectionKeysResult({
+  const ListConnectionKeysResult({
     this.connectionKey,
     this.parameterValues,
   });

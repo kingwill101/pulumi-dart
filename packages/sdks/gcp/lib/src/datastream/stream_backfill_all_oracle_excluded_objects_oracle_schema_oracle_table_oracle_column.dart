@@ -40,7 +40,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn 
   /// [precision] (Output)
   /// [primaryKey] (Output)
   /// [scale] (Output)
-  StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn({
+  const StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn({
     this.column,
     this.dataType,
     this.encoding,

@@ -34,7 +34,7 @@ class NicIpConfigurationResourceSettings {
   /// [privateIpAllocationMethod] Gets or sets the private IP address allocation method.
   /// [publicIp] Defines reference to a public IP.
   /// [subnet] Defines reference to subnet.
-  NicIpConfigurationResourceSettings({
+  const NicIpConfigurationResourceSettings({
     this.loadBalancerBackendAddressPools,
     this.loadBalancerNatRules,
     this.name,

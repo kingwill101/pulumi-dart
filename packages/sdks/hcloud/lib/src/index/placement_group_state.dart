@@ -17,7 +17,7 @@ class PlacementGroupState {
   /// [name] Name of the Placement Group.
   /// [servers] Optional.
   /// [type] Type of the Placement Group.
-  PlacementGroupState({
+  const PlacementGroupState({
     this.labels,
     this.name,
     this.servers,

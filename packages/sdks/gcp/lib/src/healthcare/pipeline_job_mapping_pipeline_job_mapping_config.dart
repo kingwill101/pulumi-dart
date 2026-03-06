@@ -13,7 +13,7 @@ class PipelineJobMappingPipelineJobMappingConfig {
   /// Creates a new [PipelineJobMappingPipelineJobMappingConfig].
   /// [description] Describes the mapping configuration.
   /// [whistleConfigSource] Specifies the path to the mapping configuration for harmonization pipeline.
-  PipelineJobMappingPipelineJobMappingConfig({
+  const PipelineJobMappingPipelineJobMappingConfig({
     this.description,
     this.whistleConfigSource,
   });

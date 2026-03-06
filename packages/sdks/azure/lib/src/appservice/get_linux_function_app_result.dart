@@ -142,7 +142,7 @@ class GetLinuxFunctionAppResult {
   /// [virtualNetworkBackupRestoreEnabled] Whether backup and restore operations over the linked virtual network are enabled.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
   /// [webdeployPublishBasicAuthenticationEnabled] Are the default WebDeploy Basic Authentication publishing credentials enabled.
-  GetLinuxFunctionAppResult({
+  const GetLinuxFunctionAppResult({
     required this.appSettings,
     required this.authSettings,
     required this.authSettingsV2s,

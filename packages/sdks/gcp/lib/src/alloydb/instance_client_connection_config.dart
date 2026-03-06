@@ -13,7 +13,7 @@ class InstanceClientConnectionConfig {
   /// Creates a new [InstanceClientConnectionConfig].
   /// [requireConnectors] Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   /// [sslConfig] SSL config option for this instance.
-  InstanceClientConnectionConfig({
+  const InstanceClientConnectionConfig({
     this.requireConnectors,
     this.sslConfig,
   });

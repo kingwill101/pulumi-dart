@@ -15,7 +15,7 @@ class GetAssessmentProjectsOperationArgs {
   /// Creates a new [GetAssessmentProjectsOperationArgs].
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAssessmentProjectsOperationArgs({
+  const GetAssessmentProjectsOperationArgs({
     required this.projectName,
     required this.resourceGroupName,
   });

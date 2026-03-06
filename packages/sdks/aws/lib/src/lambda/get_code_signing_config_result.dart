@@ -30,7 +30,7 @@ class GetCodeSigningConfigResult {
   /// [lastModified] Date and time that the code signing configuration was last modified.
   /// [policies] List of code signing policies that control the validation failure action for signature mismatch or expiry. See below.
   /// [region] Required.
-  GetCodeSigningConfigResult({
+  const GetCodeSigningConfigResult({
     required this.allowedPublishers,
     required this.arn,
     required this.configId,

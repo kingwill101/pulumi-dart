@@ -58,7 +58,7 @@ class GetInboundNatRuleResult {
   /// [protocol] The reference to the transport protocol used by the load balancing rule.
   /// [provisioningState] The provisioning state of the inbound NAT rule resource.
   /// [type] Type of the resource.
-  GetInboundNatRuleResult({
+  const GetInboundNatRuleResult({
     required this.azureApiVersion,
     this.backendAddressPool,
     required this.backendIPConfiguration,

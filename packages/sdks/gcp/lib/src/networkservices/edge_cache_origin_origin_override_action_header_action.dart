@@ -11,7 +11,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionHeaderAction].
   /// [requestHeadersToAdds] Describes a header to add.
-  EdgeCacheOriginOriginOverrideActionHeaderAction({
+  const EdgeCacheOriginOriginOverrideActionHeaderAction({
     this.requestHeadersToAdds,
   });
 

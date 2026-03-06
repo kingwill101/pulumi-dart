@@ -12,7 +12,7 @@ class KeyVaultProperties {
   /// Creates a new [KeyVaultProperties].
   /// [identityClientId] The client id of the identity which will be used to access key vault.
   /// [keyIdentifier] The URI of the key vault key used to encrypt data.
-  KeyVaultProperties({
+  const KeyVaultProperties({
     this.identityClientId,
     this.keyIdentifier,
   });

@@ -13,7 +13,7 @@ class AiFeatureStoreOnlineServingConfig {
   /// Creates a new [AiFeatureStoreOnlineServingConfig].
   /// [fixedNodeCount] The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
   /// [scaling] Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
-  AiFeatureStoreOnlineServingConfig({
+  const AiFeatureStoreOnlineServingConfig({
     this.fixedNodeCount,
     this.scaling,
   });

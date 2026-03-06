@@ -39,7 +39,7 @@ class InventoryArgs {
   /// [optionalFields] List of optional fields that are included in the inventory results. Please refer to the S3 [documentation](https://docs.aws.amazon.com/AmazonS3/latest/API/API_InventoryConfiguration.html#AmazonS3-Type-InventoryConfiguration-OptionalFields) for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [schedule] Specifies the schedule for generating inventory results (documented below).
-  InventoryArgs({
+  const InventoryArgs({
     required this.bucket,
     required this.destination,
     this.enabled,

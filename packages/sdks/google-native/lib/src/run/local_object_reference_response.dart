@@ -9,7 +9,7 @@ class LocalObjectReferenceResponse {
 
   /// Creates a new [LocalObjectReferenceResponse].
   /// [name] Name of the referent.
-  LocalObjectReferenceResponse({
+  const LocalObjectReferenceResponse({
     required this.name,
   });
 

@@ -11,7 +11,7 @@ class RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveCo
   /// Creates a new [RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig].
   /// [targetField] The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
   /// [targetFieldValueFloat] The threshold to be applied to the target (e.g., 0.5).
-  RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig({
+  const RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig({
     this.targetField,
     this.targetFieldValueFloat,
   });

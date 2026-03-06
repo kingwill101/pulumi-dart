@@ -15,7 +15,7 @@ class SwarmNode {
   /// [name] Optional.
   /// [privateIp] Optional.
   /// [status] Optional.
-  SwarmNode({
+  const SwarmNode({
     this.eip,
     this.id,
     this.name,

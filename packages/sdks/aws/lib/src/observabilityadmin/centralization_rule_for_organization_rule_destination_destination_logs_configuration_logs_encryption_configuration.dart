@@ -14,7 +14,7 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
   /// [encryptionConflictResolutionStrategy] Strategy for resolving encryption conflicts. Valid values: `ALLOW`, `SKIP`.
   /// [encryptionStrategy] Encryption strategy for logs. Valid values: `AWS_OWNED`, `CUSTOMER_MANAGED`.
   /// [kmsKeyArn] ARN of the KMS key to use for encryption when `encryption_strategy` is `CUSTOMER_MANAGED`.
-  CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration({
+  const CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration({
     this.encryptionConflictResolutionStrategy,
     required this.encryptionStrategy,
     this.kmsKeyArn,

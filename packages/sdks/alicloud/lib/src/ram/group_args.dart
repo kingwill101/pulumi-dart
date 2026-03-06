@@ -24,7 +24,7 @@ class GroupArgs {
   /// [force] Specifies whether to force delete the Group. Default value: `false`. Valid values:
   /// [groupName] The group name. You must specify at least one of the `group_name` and `name`.
   /// [name] . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
-  GroupArgs({
+  const GroupArgs({
     this.comments,
     this.force,
     this.groupName,

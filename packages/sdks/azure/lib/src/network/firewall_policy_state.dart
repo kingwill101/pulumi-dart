@@ -73,7 +73,7 @@ class FirewallPolicyState {
   /// [threatIntelligenceAllowlist] A `threat_intelligence_allowlist` block as defined below.
   /// [threatIntelligenceMode] The operation mode for Threat Intelligence. Possible values are `Alert`, `Deny` and `Off`. Defaults to `Alert`.
   /// [tlsCertificate] A `tls_certificate` block as defined below.
-  FirewallPolicyState({
+  const FirewallPolicyState({
     this.autoLearnPrivateRangesEnabled,
     this.basePolicyId,
     this.childPolicies,

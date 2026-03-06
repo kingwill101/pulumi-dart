@@ -21,7 +21,7 @@ class GetInstanceResult {
   /// [loggingEnabled] Whether stack driver logging is enabled for the instance.
   /// [name] Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
   /// [state] State of the instance.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.featurePolicy,
     required this.location,
     required this.loggingEnabled,

@@ -30,7 +30,7 @@ class GetNetworkAclsResult {
   /// [resourceType] Optional.
   /// [status] Optional.
   /// [vpcId] Optional.
-  GetNetworkAclsResult({
+  const GetNetworkAclsResult({
     required this.acls,
     required this.id,
     required this.ids,

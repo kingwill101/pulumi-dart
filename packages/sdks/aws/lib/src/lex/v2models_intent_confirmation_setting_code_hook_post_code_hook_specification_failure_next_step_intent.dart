@@ -12,7 +12,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureN
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent].
   /// [name] Name of the intent.
   /// [slots] Configuration block for all of the slot value overrides for the intent. The name of the slot maps to the value of the slot. Slots that are not included in the map aren't overridden. See `slot`.
-  V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent({
+  const V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent({
     this.name,
     this.slots,
   });

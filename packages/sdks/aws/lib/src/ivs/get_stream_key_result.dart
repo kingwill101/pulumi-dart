@@ -21,7 +21,7 @@ class GetStreamKeyResult {
   /// [region] Required.
   /// [tags] Map of tags assigned to the resource.
   /// [value] Stream Key value.
-  GetStreamKeyResult({
+  const GetStreamKeyResult({
     required this.arn,
     required this.channelArn,
     required this.id,

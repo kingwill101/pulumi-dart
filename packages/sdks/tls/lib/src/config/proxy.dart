@@ -17,7 +17,7 @@ class Proxy {
   /// [password] Password used for Basic authentication against the Proxy.
   /// [url] URL used to connect to the Proxy. Accepted schemes are: `http`, `https`, `socks5`.
   /// [username] Username (or Token) used for Basic authentication against the Proxy.
-  Proxy({
+  const Proxy({
     this.fromEnv,
     this.password,
     this.url,

@@ -32,7 +32,7 @@ class DistributionCacheBehaviorSettings {
   /// [forwardedQueryStrings] Query strings that are forwarded to the origin. Your content is cached based on the query strings that are forwarded. See below.
   /// [maximumTtl] Maximum amount of time that objects stay in the distribution's cache before the distribution forwards another request to the origin to determine whether the object has been updated.
   /// [minimumTtl] Minimum amount of time that objects stay in the distribution's cache before the distribution forwards another request to the origin to determine whether the object has been updated.
-  DistributionCacheBehaviorSettings({
+  const DistributionCacheBehaviorSettings({
     this.allowedHttpMethods,
     this.cachedHttpMethods,
     this.defaultTtl,

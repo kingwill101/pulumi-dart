@@ -61,7 +61,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile {
   /// [syntaxFormat] The syntax of the connection string.
   /// [tlsAuthentication] This field indicates the TLS authentication type of the connection.
   /// [value] The value of the connection string.
-  GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile({
+  const GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile({
     required this.consumerGroup,
     required this.displayName,
     required this.hostFormat,

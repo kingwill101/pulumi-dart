@@ -13,7 +13,7 @@ class BootDiskConfig {
   /// Creates a new [BootDiskConfig].
   /// [customerEncryptionKey] Optional. Customer encryption key for boot disk.
   /// [enableConfidentialCompute] Optional. Whether the boot disk will be created with confidential compute mode.
-  BootDiskConfig({
+  const BootDiskConfig({
     this.customerEncryptionKey,
     this.enableConfidentialCompute,
   });

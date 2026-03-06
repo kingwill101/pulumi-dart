@@ -40,7 +40,7 @@ class GetQuotasArgs {
   /// [quotaCategory] The category of quota. Valid Values: `FlowControl` and `CommonQuota`, `WhiteListLabel`.
   /// [sortField] Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
   /// [sortOrder] Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
-  GetQuotasArgs({
+  const GetQuotasArgs({
     this.dimensions,
     this.groupCode,
     this.keyWord,

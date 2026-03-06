@@ -30,7 +30,7 @@ class VmssFabricProfile {
   /// [osProfile] The OS profile of the machines in the pool.
   /// [sku] The Azure SKU of the machines in the pool.
   /// [storageProfile] The storage profile of the machines in the pool.
-  VmssFabricProfile({
+  const VmssFabricProfile({
     required this.images,
     required this.kind,
     this.networkProfile,

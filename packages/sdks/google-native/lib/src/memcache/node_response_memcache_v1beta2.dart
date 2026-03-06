@@ -33,7 +33,7 @@ class NodeResponseMemcacheV1beta2 {
   /// [state] Current state of the Memcached node.
   /// [updateAvailable] Returns true if there is an update waiting to be applied
   /// [zone] Location (GCP Zone) for the Memcached node.
-  NodeResponseMemcacheV1beta2({
+  const NodeResponseMemcacheV1beta2({
     required this.host,
     required this.memcacheFullVersion,
     required this.memcacheVersion,

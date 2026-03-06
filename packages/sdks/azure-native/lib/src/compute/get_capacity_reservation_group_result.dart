@@ -46,7 +46,7 @@ class GetCapacityReservationGroupResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachinesAssociated] A list of references to all virtual machines associated to the capacity reservation group.
   /// [zones] The availability zones.
-  GetCapacityReservationGroupResult({
+  const GetCapacityReservationGroupResult({
     required this.azureApiVersion,
     required this.capacityReservations,
     required this.id,

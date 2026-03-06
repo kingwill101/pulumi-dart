@@ -8,7 +8,7 @@ class GetInputInputDevice {
 
   /// Creates a new [GetInputInputDevice].
   /// [id] The ID of the Input.
-  GetInputInputDevice({
+  const GetInputInputDevice({
     required this.id,
   });
 

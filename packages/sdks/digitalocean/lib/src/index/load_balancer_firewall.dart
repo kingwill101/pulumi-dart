@@ -12,7 +12,7 @@ class LoadBalancerFirewall {
   /// Creates a new [LoadBalancerFirewall].
   /// [allows] A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
   /// [denies] A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
-  LoadBalancerFirewall({
+  const LoadBalancerFirewall({
     this.allows,
     this.denies,
   });

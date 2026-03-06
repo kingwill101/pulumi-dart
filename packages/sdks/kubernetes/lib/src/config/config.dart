@@ -181,5 +181,5 @@ class KubernetesConfig {
 
 }
 
-final config = KubernetesConfig();
+const config = KubernetesConfig();
 

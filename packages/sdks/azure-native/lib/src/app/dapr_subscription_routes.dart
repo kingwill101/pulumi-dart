@@ -13,7 +13,7 @@ class DaprSubscriptionRoutes {
   /// Creates a new [DaprSubscriptionRoutes].
   /// [default_] The default path to deliver events that do not match any of the rules.
   /// [rules] The list of Dapr PubSub Event Subscription Route Rules.
-  DaprSubscriptionRoutes({
+  const DaprSubscriptionRoutes({
     this.default_,
     this.rules,
   });

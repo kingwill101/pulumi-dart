@@ -16,7 +16,7 @@ class AnalyticsConnectorFhirToParquetMappingResponse {
   /// [extensionSchemaReference] Artifact reference for extension schema.
   /// [filterConfigurationReference] Artifact reference for filter configurations.
   /// [type] Type of data mapping.
-  AnalyticsConnectorFhirToParquetMappingResponse({
+  const AnalyticsConnectorFhirToParquetMappingResponse({
     this.extensionSchemaReference,
     this.filterConfigurationReference,
     required this.type,

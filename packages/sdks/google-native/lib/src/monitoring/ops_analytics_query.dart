@@ -9,7 +9,7 @@ class OpsAnalyticsQuery {
 
   /// Creates a new [OpsAnalyticsQuery].
   /// [sql] A SQL query to fetch time series, category series, or numeric series data.
-  OpsAnalyticsQuery({
+  const OpsAnalyticsQuery({
     this.sql,
   });
 

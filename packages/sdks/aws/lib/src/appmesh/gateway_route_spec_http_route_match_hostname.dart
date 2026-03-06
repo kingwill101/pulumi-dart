@@ -11,7 +11,7 @@ class GatewayRouteSpecHttpRouteMatchHostname {
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHostname].
   /// [exact] Exact host name to match on.
   /// [suffix] Specified ending characters of the host name to match on.
-  GatewayRouteSpecHttpRouteMatchHostname({
+  const GatewayRouteSpecHttpRouteMatchHostname({
     this.exact,
     this.suffix,
   });

@@ -11,7 +11,7 @@ class DataSourcePermission {
   /// Creates a new [DataSourcePermission].
   /// [actions] Set of IAM actions to grant or revoke permissions on. Max of 16 items.
   /// [principal] The Amazon Resource Name (ARN) of the principal.
-  DataSourcePermission({
+  const DataSourcePermission({
     required this.actions,
     required this.principal,
   });

@@ -18,7 +18,7 @@ class GetIoTHubEventSourceArgs {
   /// [environmentName] The name of the Time Series Insights environment associated with the specified resource group.
   /// [eventSourceName] The name of the Time Series Insights event source associated with the specified environment.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetIoTHubEventSourceArgs({
+  const GetIoTHubEventSourceArgs({
     required this.environmentName,
     required this.eventSourceName,
     required this.resourceGroupName,

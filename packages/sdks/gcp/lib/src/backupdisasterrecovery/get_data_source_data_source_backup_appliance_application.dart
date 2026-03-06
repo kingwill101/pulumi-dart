@@ -26,7 +26,7 @@ class GetDataSourceDataSourceBackupApplianceApplication {
   /// [hostId] Hostid of the application host.
   /// [hostname] Hostname of the host where the application is running.
   /// [type] The type of the application. e.g. VMBackup
-  GetDataSourceDataSourceBackupApplianceApplication({
+  const GetDataSourceDataSourceBackupApplianceApplication({
     required this.applianceId,
     required this.applicationId,
     required this.applicationName,

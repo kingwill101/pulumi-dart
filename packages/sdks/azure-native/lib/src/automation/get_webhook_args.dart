@@ -18,7 +18,7 @@ class GetWebhookArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [webhookName] The webhook name.
-  GetWebhookArgs({
+  const GetWebhookArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.webhookName,

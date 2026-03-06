@@ -8,7 +8,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffi
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity].
   /// [nodeGroup] Required. The URI of a sole-tenant /zones/us-central1-a/nodeGroups/node-group-1` * `node-group-1`
-  WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity({
+  const WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity({
     required this.nodeGroup,
   });
 

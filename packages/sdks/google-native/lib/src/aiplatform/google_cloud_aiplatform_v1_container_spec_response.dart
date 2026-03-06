@@ -19,7 +19,7 @@ class GoogleCloudAiplatformV1ContainerSpecResponse {
   /// [command] The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
   /// [env] Environment variables to be passed to the container. Maximum limit is 100.
   /// [imageUri] The URI of a container image in the Container Registry that is to be run on each worker replica.
-  GoogleCloudAiplatformV1ContainerSpecResponse({
+  const GoogleCloudAiplatformV1ContainerSpecResponse({
     required this.args,
     required this.command,
     required this.env,

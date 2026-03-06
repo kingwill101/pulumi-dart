@@ -17,7 +17,7 @@ class GetVpcEndpointConnectionsConnection {
   /// [endpointId] The ID of the Vpc Endpoint.
   /// [id] The ID of the Vpc Endpoint Connection.
   /// [status] The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
-  GetVpcEndpointConnectionsConnection({
+  const GetVpcEndpointConnectionsConnection({
     required this.bandwidth,
     required this.endpointId,
     required this.id,

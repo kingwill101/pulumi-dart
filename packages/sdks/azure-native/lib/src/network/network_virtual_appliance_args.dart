@@ -67,7 +67,7 @@ class NetworkVirtualApplianceArgs {
   /// [tags] Resource tags.
   /// [virtualApplianceAsn] VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
   /// [virtualHub] The Virtual Hub where Network Virtual Appliance is being deployed.
-  NetworkVirtualApplianceArgs({
+  const NetworkVirtualApplianceArgs({
     this.additionalNics,
     this.bootStrapConfigurationBlobs,
     this.cloudInitConfiguration,

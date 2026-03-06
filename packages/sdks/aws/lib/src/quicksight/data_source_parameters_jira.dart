@@ -8,7 +8,7 @@ class DataSourceParametersJira {
 
   /// Creates a new [DataSourceParametersJira].
   /// [siteBaseUrl] The base URL of the Jira instance's site to which to connect.
-  DataSourceParametersJira({
+  const DataSourceParametersJira({
     required this.siteBaseUrl,
   });
 

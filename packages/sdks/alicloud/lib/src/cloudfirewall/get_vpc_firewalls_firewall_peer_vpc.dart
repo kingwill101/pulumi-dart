@@ -24,7 +24,7 @@ class GetVpcFirewallsFirewallPeerVpc {
   /// [routerInterfaceId] Required.
   /// [vpcId] The ID of the peer VPC instance.
   /// [vpcName] The instance name of the peer VPC.
-  GetVpcFirewallsFirewallPeerVpc({
+  const GetVpcFirewallsFirewallPeerVpc({
     required this.eniId,
     required this.eniPrivateIpAddress,
     required this.peerVpcCidrTableLists,

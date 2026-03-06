@@ -15,7 +15,7 @@ class GetEnterpriseMccCustomerArgs {
   /// Creates a new [GetEnterpriseMccCustomerArgs].
   /// [customerResourceName] Name of the Customer resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEnterpriseMccCustomerArgs({
+  const GetEnterpriseMccCustomerArgs({
     required this.customerResourceName,
     required this.resourceGroupName,
   });

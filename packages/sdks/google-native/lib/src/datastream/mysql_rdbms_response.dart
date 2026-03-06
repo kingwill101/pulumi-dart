@@ -10,7 +10,7 @@ class MysqlRdbmsResponse {
 
   /// Creates a new [MysqlRdbmsResponse].
   /// [mysqlDatabases] Mysql databases on the server
-  MysqlRdbmsResponse({
+  const MysqlRdbmsResponse({
     required this.mysqlDatabases,
   });
 

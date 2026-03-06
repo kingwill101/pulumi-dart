@@ -19,7 +19,7 @@ class GetAccountAccessTokenResult {
   /// [lifetime] Optional.
   /// [scopes] Required.
   /// [targetServiceAccount] Required.
-  GetAccountAccessTokenResult({
+  const GetAccountAccessTokenResult({
     required this.accessToken,
     this.delegates,
     required this.id,

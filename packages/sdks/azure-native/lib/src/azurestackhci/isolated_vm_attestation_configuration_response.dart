@@ -15,7 +15,7 @@ class IsolatedVmAttestationConfigurationResponse {
   /// [attestationResourceId] Fully qualified Azure resource id of the Microsoft Azure attestation resource associated with this cluster.
   /// [attestationServiceEndpoint] Region specific endpoint for Microsoft Azure Attestation service for the cluster
   /// [relyingPartyServiceEndpoint] Region specific endpoint for relying party service.
-  IsolatedVmAttestationConfigurationResponse({
+  const IsolatedVmAttestationConfigurationResponse({
     required this.attestationResourceId,
     required this.attestationServiceEndpoint,
     required this.relyingPartyServiceEndpoint,

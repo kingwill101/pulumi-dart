@@ -28,7 +28,7 @@ class WebAppPublicCertificateArgs {
   /// [publicCertificateLocation] Public Certificate Location
   /// [publicCertificateName] Public certificate name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppPublicCertificateArgs({
+  const WebAppPublicCertificateArgs({
     this.blob,
     this.kind,
     required this.name,

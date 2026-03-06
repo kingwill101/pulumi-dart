@@ -27,7 +27,7 @@ class SubnetArgs {
   /// [type] Eflo subnet usage type. optional value:
   /// [vpdId] The Eflo VPD ID.
   /// [zoneId] The zone ID  of the resource.
-  SubnetArgs({
+  const SubnetArgs({
     required this.cidr,
     required this.subnetName,
     this.type,

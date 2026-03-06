@@ -12,7 +12,7 @@ class PackageErrorInfoResponse {
   /// Creates a new [PackageErrorInfoResponse].
   /// [code] Package import error code.
   /// [message] Package import error message.
-  PackageErrorInfoResponse({
+  const PackageErrorInfoResponse({
     this.code,
     this.message,
   });

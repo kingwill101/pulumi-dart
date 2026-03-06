@@ -20,7 +20,7 @@ class GetReplicationPolicyResult {
   /// [recoveryPointRetentionInMinutes] The duration in minutes for which the recovery points need to be stored.
   /// [recoveryVaultName] Required.
   /// [resourceGroupName] Required.
-  GetReplicationPolicyResult({
+  const GetReplicationPolicyResult({
     required this.applicationConsistentSnapshotFrequencyInMinutes,
     required this.id,
     required this.name,

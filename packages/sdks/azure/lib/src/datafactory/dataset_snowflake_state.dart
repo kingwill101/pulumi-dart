@@ -40,7 +40,7 @@ class DatasetSnowflakeState {
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [schemaName] The schema name of the Data Factory Dataset Snowflake.
   /// [tableName] The table name of the Data Factory Dataset Snowflake.
-  DatasetSnowflakeState({
+  const DatasetSnowflakeState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

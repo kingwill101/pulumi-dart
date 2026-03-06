@@ -11,7 +11,7 @@ class PrometheusAlertRuleAnnotation {
   /// Creates a new [PrometheusAlertRuleAnnotation].
   /// [name] The name of the annotation.
   /// [value] The value of the annotation.
-  PrometheusAlertRuleAnnotation({
+  const PrometheusAlertRuleAnnotation({
     this.name,
     this.value,
   });

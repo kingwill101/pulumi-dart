@@ -15,7 +15,7 @@ class GetDataCollectionEndpointArgs {
   /// Creates a new [GetDataCollectionEndpointArgs].
   /// [name] Specifies the name of the Data Collection Endpoint.
   /// [resourceGroupName] Specifies the name of the resource group the Data Collection Endpoint is located in.
-  GetDataCollectionEndpointArgs({
+  const GetDataCollectionEndpointArgs({
     required this.name,
     required this.resourceGroupName,
   });

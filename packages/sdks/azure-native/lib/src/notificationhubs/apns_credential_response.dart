@@ -33,7 +33,7 @@ class ApnsCredentialResponse {
   /// [keyId] Gets or sets a 10-character key identifier (kid) key, obtained from
   /// [thumbprint] Gets or sets the APNS certificate Thumbprint
   /// [token] Gets or sets provider Authentication Token, obtained through your
-  ApnsCredentialResponse({
+  const ApnsCredentialResponse({
     this.apnsCertificate,
     this.appId,
     this.appName,

@@ -13,7 +13,7 @@ class KubernetesClusterWindowsProfileGmsa {
   /// Creates a new [KubernetesClusterWindowsProfileGmsa].
   /// [dnsServer] Specifies the DNS server for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
   /// [rootDomain] Specifies the root domain name for Windows gMSA. Set this to an empty string if you have configured the DNS server in the VNet which was used to create the managed cluster.
-  KubernetesClusterWindowsProfileGmsa({
+  const KubernetesClusterWindowsProfileGmsa({
     required this.dnsServer,
     required this.rootDomain,
   });

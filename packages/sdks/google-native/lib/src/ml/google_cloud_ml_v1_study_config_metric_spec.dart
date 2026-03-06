@@ -13,7 +13,7 @@ class GoogleCloudMlV1StudyConfigMetricSpec {
   /// Creates a new [GoogleCloudMlV1StudyConfigMetricSpec].
   /// [goal] The optimization goal of the metric.
   /// [metric] The name of the metric.
-  GoogleCloudMlV1StudyConfigMetricSpec({
+  const GoogleCloudMlV1StudyConfigMetricSpec({
     required this.goal,
     required this.metric,
   });

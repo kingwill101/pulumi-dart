@@ -12,7 +12,7 @@ class ResourceRequirements {
   /// Creates a new [ResourceRequirements].
   /// [cpu] Gets or sets the Cpu requirement.
   /// [memory] Gets or sets the Memory requirement.
-  ResourceRequirements({
+  const ResourceRequirements({
     this.cpu,
     this.memory,
   });

@@ -15,7 +15,7 @@ class PrivateEndpointDestination {
   /// [sparkEnabled] Optional.
   /// [sparkStatus] Type of a managed network Outbound Rule of a machine learning workspace.
   /// [subresourceTarget] Optional.
-  PrivateEndpointDestination({
+  const PrivateEndpointDestination({
     this.serviceResourceId,
     this.sparkEnabled,
     this.sparkStatus,

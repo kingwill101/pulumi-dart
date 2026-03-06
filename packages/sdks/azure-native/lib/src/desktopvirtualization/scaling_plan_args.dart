@@ -59,7 +59,7 @@ class ScalingPlanArgs {
   /// [sku] Optional.
   /// [tags] Resource tags.
   /// [timeZone] Timezone of the scaling plan.
-  ScalingPlanArgs({
+  const ScalingPlanArgs({
     this.description,
     this.exclusionTag,
     this.friendlyName,

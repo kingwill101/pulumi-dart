@@ -13,7 +13,7 @@ class GetSecurityPolicyComputeBetaArgs {
   /// Creates a new [GetSecurityPolicyComputeBetaArgs].
   /// [project] Optional.
   /// [securityPolicy] Required.
-  GetSecurityPolicyComputeBetaArgs({
+  const GetSecurityPolicyComputeBetaArgs({
     this.project,
     required this.securityPolicy,
   });

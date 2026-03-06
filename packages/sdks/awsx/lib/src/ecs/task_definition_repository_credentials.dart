@@ -7,7 +7,7 @@ class TaskDefinitionRepositoryCredentials {
 
   /// Creates a new [TaskDefinitionRepositoryCredentials].
   /// [credentialsParameter] Optional.
-  TaskDefinitionRepositoryCredentials({
+  const TaskDefinitionRepositoryCredentials({
     this.credentialsParameter,
   });
 

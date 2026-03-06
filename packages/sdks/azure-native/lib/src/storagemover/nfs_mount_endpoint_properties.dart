@@ -22,7 +22,7 @@ class NfsMountEndpointProperties {
   /// [export] The directory being exported from the server.
   /// [host] The host name or IP address of the server exporting the file system.
   /// [nfsVersion] The NFS protocol version.
-  NfsMountEndpointProperties({
+  const NfsMountEndpointProperties({
     this.description,
     required this.endpointType,
     required this.export,

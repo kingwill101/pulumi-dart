@@ -11,7 +11,7 @@ class NodePoolNodeConfigSecondaryBootDisk {
   /// Creates a new [NodePoolNodeConfigSecondaryBootDisk].
   /// [diskImage] Disk image to create the secondary boot disk from
   /// [mode] Mode for how the secondary boot disk is used.
-  NodePoolNodeConfigSecondaryBootDisk({
+  const NodePoolNodeConfigSecondaryBootDisk({
     required this.diskImage,
     this.mode,
   });

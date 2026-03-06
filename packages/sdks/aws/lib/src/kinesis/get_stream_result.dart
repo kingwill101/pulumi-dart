@@ -51,7 +51,7 @@ class GetStreamResult {
   /// [status] Current status of the stream. The stream status is one of CREATING, DELETING, ACTIVE, or UPDATING.
   /// [streamModeDetails] [Capacity mode](https://docs.aws.amazon.com/streams/latest/dev/how-do-i-size-a-stream.html) of the data stream. Detailed below.
   /// [tags] Map of tags to assigned to the stream.
-  GetStreamResult({
+  const GetStreamResult({
     required this.arn,
     required this.closedShards,
     required this.creationTimestamp,

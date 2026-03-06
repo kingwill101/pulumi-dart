@@ -11,7 +11,7 @@ class NodePoolKubeletConfigurationTracing {
   /// Creates a new [NodePoolKubeletConfigurationTracing].
   /// [endpoint] The endpoint of the collector.
   /// [samplingRatePerMillion] Number of samples to be collected per million span.
-  NodePoolKubeletConfigurationTracing({
+  const NodePoolKubeletConfigurationTracing({
     this.endpoint,
     this.samplingRatePerMillion,
   });

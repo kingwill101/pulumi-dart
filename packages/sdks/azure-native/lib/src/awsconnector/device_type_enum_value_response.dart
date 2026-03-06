@@ -9,7 +9,7 @@ class DeviceTypeEnumValueResponse {
 
   /// Creates a new [DeviceTypeEnumValueResponse].
   /// [value] Property value
-  DeviceTypeEnumValueResponse({
+  const DeviceTypeEnumValueResponse({
     this.value,
   });
 

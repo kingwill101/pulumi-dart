@@ -26,7 +26,7 @@ class GetLoadBalancersBalancerZoneMapping {
   /// [publicIpv4Address] The public IPv4 address used by the NLB instance.
   /// [vswitchId] The ID of the vSwitch. By default, you can specify one vSwitch (subnet) in each zone of the NLB instance.
   /// [zoneId] The name of the zone.
-  GetLoadBalancersBalancerZoneMapping({
+  const GetLoadBalancersBalancerZoneMapping({
     required this.allocationId,
     required this.eniId,
     required this.ipv6Address,

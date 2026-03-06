@@ -8,7 +8,7 @@ class ServicePrincipalSamlSingleSignOn {
 
   /// Creates a new [ServicePrincipalSamlSingleSignOn].
   /// [relayState] The relative URI the service provider would redirect to after completion of the single sign-on flow.
-  ServicePrincipalSamlSingleSignOn({
+  const ServicePrincipalSamlSingleSignOn({
     this.relayState,
   });
 

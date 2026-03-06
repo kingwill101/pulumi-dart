@@ -30,7 +30,7 @@ class GetProtectionIntentResult {
   /// [properties] ProtectionIntentResource properties
   /// [tags] Resource tags.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetProtectionIntentResult({
+  const GetProtectionIntentResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

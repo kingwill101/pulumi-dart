@@ -13,7 +13,7 @@ class FrontdoorBackendPoolSetting {
   /// Creates a new [FrontdoorBackendPoolSetting].
   /// [backendPoolsSendReceiveTimeoutSeconds] Specifies the send and receive timeout on forwarding request to the backend. When the timeout is reached, the request fails and returns. Possible values are between `0` - `240`. Defaults to `60`.
   /// [enforceBackendPoolsCertificateNameCheck] Enforce certificate name check on `HTTPS` requests to all backend pools, this setting will have no effect on `HTTP` requests. Permitted values are `true` or `false`.
-  FrontdoorBackendPoolSetting({
+  const FrontdoorBackendPoolSetting({
     this.backendPoolsSendReceiveTimeoutSeconds,
     required this.enforceBackendPoolsCertificateNameCheck,
   });

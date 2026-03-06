@@ -21,7 +21,7 @@ class LegacyMicrosoftAccountResponse {
   /// [login] The configuration settings of the login flow.
   /// [registration] The configuration settings of the app registration for the legacy Microsoft Account provider.
   /// [validation] The configuration settings of the legacy Microsoft Account provider token validation flow.
-  LegacyMicrosoftAccountResponse({
+  const LegacyMicrosoftAccountResponse({
     this.enabled,
     this.login,
     this.registration,

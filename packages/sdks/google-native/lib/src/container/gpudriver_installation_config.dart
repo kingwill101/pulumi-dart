@@ -10,7 +10,7 @@ class GPUDriverInstallationConfig {
 
   /// Creates a new [GPUDriverInstallationConfig].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  GPUDriverInstallationConfig({
+  const GPUDriverInstallationConfig({
     this.gpuDriverVersion,
   });
 

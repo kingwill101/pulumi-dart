@@ -12,7 +12,7 @@ class VmScannersBaseConfiguration {
   /// Creates a new [VmScannersBaseConfiguration].
   /// [exclusionTags] Tags that indicates that a resource should not be scanned
   /// [scanningMode] The scanning mode for the VM scan.
-  VmScannersBaseConfiguration({
+  const VmScannersBaseConfiguration({
     this.exclusionTags,
     this.scanningMode,
   });

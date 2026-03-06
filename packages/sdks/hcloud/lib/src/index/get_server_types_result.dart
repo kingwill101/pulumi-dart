@@ -18,7 +18,7 @@ class GetServerTypesResult {
   /// [names] Required.
   /// [serverTypeIds] Required.
   /// [serverTypes] Required.
-  GetServerTypesResult({
+  const GetServerTypesResult({
     required this.descriptions,
     required this.id,
     required this.names,

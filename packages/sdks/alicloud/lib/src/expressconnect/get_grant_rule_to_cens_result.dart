@@ -23,7 +23,7 @@ class GetGrantRuleToCensResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetGrantRuleToCensResult({
+  const GetGrantRuleToCensResult({
     required this.cens,
     required this.id,
     required this.ids,

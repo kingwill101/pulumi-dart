@@ -27,7 +27,7 @@ class GetReplicationSubnetGroupResult {
   /// [subnetIds] List of at least 2 EC2 subnet IDs for the subnet group. The subnets must cover at least 2 availability zones.
   /// [tags] Required.
   /// [vpcId] The ID of the VPC the subnet group is in.
-  GetReplicationSubnetGroupResult({
+  const GetReplicationSubnetGroupResult({
     required this.id,
     required this.region,
     required this.replicationSubnetGroupArn,

@@ -9,7 +9,7 @@ class GatewayLogConfig {
 
   /// Creates a new [GatewayLogConfig].
   /// [sls] Sls See `sls` below.
-  GatewayLogConfig({
+  const GatewayLogConfig({
     this.sls,
   });
 

@@ -21,7 +21,7 @@ class Plan {
   /// [promotionCode] The promotion code.
   /// [publisher] The publisher ID.
   /// [version] The plan's version.
-  Plan({
+  const Plan({
     required this.name,
     required this.product,
     this.promotionCode,

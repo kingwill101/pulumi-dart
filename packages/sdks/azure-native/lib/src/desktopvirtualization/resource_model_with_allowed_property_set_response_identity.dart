@@ -14,7 +14,7 @@ class ResourceModelWithAllowedPropertySetResponseIdentity {
   /// [principalId] The principal ID of resource identity. The value must be an UUID.
   /// [tenantId] The tenant ID of resource. The value must be an UUID.
   /// [type] The identity type.
-  ResourceModelWithAllowedPropertySetResponseIdentity({
+  const ResourceModelWithAllowedPropertySetResponseIdentity({
     required this.principalId,
     required this.tenantId,
     this.type,

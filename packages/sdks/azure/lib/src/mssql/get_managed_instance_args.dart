@@ -15,7 +15,7 @@ class GetManagedInstanceArgs {
   /// Creates a new [GetManagedInstanceArgs].
   /// [name] The name of the SQL Managed Instance.
   /// [resourceGroupName] The name of the resource group where the SQL Managed Instance exists.
-  GetManagedInstanceArgs({
+  const GetManagedInstanceArgs({
     required this.name,
     required this.resourceGroupName,
   });

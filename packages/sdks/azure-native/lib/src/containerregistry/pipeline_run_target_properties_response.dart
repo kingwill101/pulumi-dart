@@ -11,7 +11,7 @@ class PipelineRunTargetPropertiesResponse {
   /// Creates a new [PipelineRunTargetPropertiesResponse].
   /// [name] The name of the target.
   /// [type] The type of the target.
-  PipelineRunTargetPropertiesResponse({
+  const PipelineRunTargetPropertiesResponse({
     this.name,
     this.type,
   });

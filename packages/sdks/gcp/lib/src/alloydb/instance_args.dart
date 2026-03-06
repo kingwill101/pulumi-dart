@@ -97,7 +97,7 @@ class InstanceArgs {
   /// [pscInstanceConfig] Configuration for Private Service Connect (PSC) for the instance.
   /// [queryInsightsConfig] Configuration for query insights.
   /// [readPoolConfig] Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
-  InstanceArgs({
+  const InstanceArgs({
     this.activationPolicy,
     this.annotations,
     this.availabilityType,

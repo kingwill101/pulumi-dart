@@ -11,7 +11,7 @@ class ClusterResourceResponseEndPoints {
   /// Creates a new [ClusterResourceResponseEndPoints].
   /// [ipAddress] Ipv4 address of the endpoint
   /// [port] Port number
-  ClusterResourceResponseEndPoints({
+  const ClusterResourceResponseEndPoints({
     this.ipAddress,
     this.port,
   });

@@ -24,7 +24,7 @@ class PrivateLinkResourceResponse {
   /// [privateLinkServiceID] The private link service ID of the resource, this field is exposed only to NRP internally.
   /// [requiredMembers] The RequiredMembers of the resource
   /// [type] The resource type.
-  PrivateLinkResourceResponse({
+  const PrivateLinkResourceResponse({
     this.groupId,
     this.id,
     this.name,

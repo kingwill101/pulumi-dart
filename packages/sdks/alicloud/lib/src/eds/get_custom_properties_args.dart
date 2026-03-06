@@ -15,7 +15,7 @@ class GetCustomPropertiesArgs {
   /// Creates a new [GetCustomPropertiesArgs].
   /// [ids] A list of Custom Property IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetCustomPropertiesArgs({
+  const GetCustomPropertiesArgs({
     this.ids,
     this.outputFile,
   });

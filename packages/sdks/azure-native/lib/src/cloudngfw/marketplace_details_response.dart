@@ -18,7 +18,7 @@ class MarketplaceDetailsResponse {
   /// [marketplaceSubscriptionStatus] Marketplace Subscription Status
   /// [offerId] Offer Id
   /// [publisherId] Publisher Id
-  MarketplaceDetailsResponse({
+  const MarketplaceDetailsResponse({
     required this.marketplaceSubscriptionId,
     this.marketplaceSubscriptionStatus,
     required this.offerId,

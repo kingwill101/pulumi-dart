@@ -25,7 +25,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
   /// [lastUpdatedPartitionConfig] The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
   /// [recursiveStructureDepth] The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
   /// [schemaType] Specifies the output schema type.
-  FhirStoreStreamConfigBigqueryDestinationSchemaConfig({
+  const FhirStoreStreamConfigBigqueryDestinationSchemaConfig({
     this.lastUpdatedPartitionConfig,
     required this.recursiveStructureDepth,
     this.schemaType,

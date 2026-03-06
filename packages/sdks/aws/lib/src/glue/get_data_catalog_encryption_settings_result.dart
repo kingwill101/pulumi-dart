@@ -17,7 +17,7 @@ class GetDataCatalogEncryptionSettingsResult {
   /// [dataCatalogEncryptionSettings] The security configuration to set. see Data Catalog Encryption Settings.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetDataCatalogEncryptionSettingsResult({
+  const GetDataCatalogEncryptionSettingsResult({
     required this.catalogId,
     required this.dataCatalogEncryptionSettings,
     required this.id,

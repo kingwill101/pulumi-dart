@@ -20,7 +20,7 @@ class ListProductsAndConfigurationsArgs {
   /// [configurationFilter] Holds details about product hierarchy information and filterable property.
   /// [customerSubscriptionDetails] Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
   /// [skipToken] $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
-  ListProductsAndConfigurationsArgs({
+  const ListProductsAndConfigurationsArgs({
     this.configurationFilter,
     this.customerSubscriptionDetails,
     this.skipToken,

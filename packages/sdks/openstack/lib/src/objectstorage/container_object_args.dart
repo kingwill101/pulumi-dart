@@ -78,7 +78,7 @@ class ContainerObjectArgs {
   /// [objectManifest] A string set to specify that this is a dynamic large
   /// [region] The region in which to create the container. If
   /// [source] A string representing the local path of a file which will be used
-  ContainerObjectArgs({
+  const ContainerObjectArgs({
     required this.containerName,
     this.content,
     this.contentDisposition,

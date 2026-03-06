@@ -11,7 +11,7 @@ class AccountStorage {
   /// Creates a new [AccountStorage].
   /// [storageAccountId] The ID of the storage account to be associated with the Video Indexer Account. Changing this forces a new Video Indexer Account to be created.
   /// [userAssignedIdentityId] The reference to the user assigned identity to use to access the Storage Account.
-  AccountStorage({
+  const AccountStorage({
     required this.storageAccountId,
     this.userAssignedIdentityId,
   });

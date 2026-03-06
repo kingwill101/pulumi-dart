@@ -11,7 +11,7 @@ class PolicyDefinitionTemplateLinkedResource {
   /// Creates a new [PolicyDefinitionTemplateLinkedResource].
   /// [entityId] The entity ID of the resource.
   /// [entityType] The entity type of the resource.
-  PolicyDefinitionTemplateLinkedResource({
+  const PolicyDefinitionTemplateLinkedResource({
     required this.entityId,
     required this.entityType,
   });

@@ -10,7 +10,7 @@ class PipelineConnectionResponseProperties {
 
   /// Creates a new [PipelineConnectionResponseProperties].
   /// [internalMetadata] Internal metadata of the connection inside pipeline.
-  PipelineConnectionResponseProperties({
+  const PipelineConnectionResponseProperties({
     this.internalMetadata,
   });
 

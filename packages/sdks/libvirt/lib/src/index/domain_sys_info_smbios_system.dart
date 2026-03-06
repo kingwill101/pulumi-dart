@@ -9,7 +9,7 @@ class DomainSysInfoSmbiosSystem {
 
   /// Creates a new [DomainSysInfoSmbiosSystem].
   /// [entries] Defines individual entries for system information in the SMBIOS configuration.
-  DomainSysInfoSmbiosSystem({
+  const DomainSysInfoSmbiosSystem({
     this.entries,
   });
 

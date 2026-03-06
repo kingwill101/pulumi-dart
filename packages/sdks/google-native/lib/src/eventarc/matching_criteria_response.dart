@@ -12,7 +12,7 @@ class MatchingCriteriaResponse {
   /// Creates a new [MatchingCriteriaResponse].
   /// [attribute] The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
   /// [value] The value for the attribute.
-  MatchingCriteriaResponse({
+  const MatchingCriteriaResponse({
     required this.attribute,
     required this.value,
   });

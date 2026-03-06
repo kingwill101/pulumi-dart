@@ -13,7 +13,7 @@ class GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate {
   /// Creates a new [GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate].
   /// [name] Specifies the name of the Virtual Network Gateway.
   /// [publicCertData] The public certificate of the root certificate
-  GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate({
+  const GetVirtualNetworkGatewayVpnClientConfigurationRootCertificate({
     required this.name,
     required this.publicCertData,
   });

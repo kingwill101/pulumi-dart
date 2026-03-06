@@ -8,7 +8,7 @@ class GcpIntegrationsVirtualMachines {
 
   /// Creates a new [GcpIntegrationsVirtualMachines].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsVirtualMachines({
+  const GcpIntegrationsVirtualMachines({
     this.metricsPollingInterval,
   });
 

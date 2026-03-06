@@ -32,7 +32,7 @@ class RbacPolicyV2State {
   /// [projectId] Optional.
   /// [region] The region in which to obtain the V2 networking client.
   /// [targetTenant] The ID of the tenant to which the RBAC policy
-  RbacPolicyV2State({
+  const RbacPolicyV2State({
     this.action,
     this.objectId,
     this.objectType,

@@ -11,7 +11,7 @@ class ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy {
   /// Creates a new [ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy].
   /// [graceMinutes] Applies only if `mode` is `Automatic`. The grace period in minutes before failover with data loss is attempted.
   /// [mode] The failover mode. Possible values are `Automatic` or `Manual`.
-  ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy({
+  const ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy({
     this.graceMinutes,
     required this.mode,
   });

@@ -8,7 +8,7 @@ class AllowedImagesSettingsImageCriterionDeprecationTimeCondition {
 
   /// Creates a new [AllowedImagesSettingsImageCriterionDeprecationTimeCondition].
   /// [maximumDaysSinceDeprecated] Maximum number of days since the AMI was deprecated. Setting this to `0` means no deprecated images are allowed.
-  AllowedImagesSettingsImageCriterionDeprecationTimeCondition({
+  const AllowedImagesSettingsImageCriterionDeprecationTimeCondition({
     this.maximumDaysSinceDeprecated,
   });
 

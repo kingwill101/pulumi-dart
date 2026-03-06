@@ -8,7 +8,7 @@ class GetTableSchemaForeignTypeInfo {
 
   /// Creates a new [GetTableSchemaForeignTypeInfo].
   /// [typeSystem] Specifies the system which defines the foreign data type.
-  GetTableSchemaForeignTypeInfo({
+  const GetTableSchemaForeignTypeInfo({
     required this.typeSystem,
   });
 

@@ -21,7 +21,7 @@ class AgentFlowDefinitionConnection {
   /// [source] The node that the connection starts at.
   /// [target] The node that the connection ends at.
   /// [type] Whether the source node that the connection begins from is a condition node `Conditional` or not `Data`.
-  AgentFlowDefinitionConnection({
+  const AgentFlowDefinitionConnection({
     this.configuration,
     required this.name,
     required this.source,

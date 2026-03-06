@@ -10,7 +10,7 @@ class AmlToken {
 
   /// Creates a new [AmlToken].
   /// [identityType] Enum to determine identity framework.
-  AmlToken({
+  const AmlToken({
     required this.identityType,
   });
 

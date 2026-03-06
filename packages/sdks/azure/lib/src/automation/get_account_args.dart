@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [name] The name of the Automation Account.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Automation Account exists.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.name,
     required this.resourceGroupName,
   });

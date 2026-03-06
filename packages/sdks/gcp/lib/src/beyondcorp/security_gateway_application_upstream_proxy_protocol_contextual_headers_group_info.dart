@@ -9,7 +9,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo 
 
   /// Creates a new [SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo].
   /// [outputType] The output type of the delegated group info.
-  SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo({
+  const SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo({
     this.outputType,
   });
 

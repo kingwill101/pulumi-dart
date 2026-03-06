@@ -18,7 +18,7 @@ class GetDraftPackagePathArgs {
   /// [draftPackageName] The resource name of the Test Base Draft Package.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetDraftPackagePathArgs({
+  const GetDraftPackagePathArgs({
     required this.draftPackageName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

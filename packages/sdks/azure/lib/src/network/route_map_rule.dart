@@ -19,7 +19,7 @@ class RouteMapRule {
   /// [matchCriterions] A `match_criterion` block as defined below.
   /// [name] The unique name for the rule.
   /// [nextStepIfMatched] The next step after the rule is evaluated. Possible values are `Continue`, `Terminate` and `Unknown`. Defaults to `Unknown`.
-  RouteMapRule({
+  const RouteMapRule({
     this.actions,
     this.matchCriterions,
     required this.name,

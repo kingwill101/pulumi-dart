@@ -17,7 +17,7 @@ class GetDocumentDialogflowV2beta1Args {
   /// [knowledgeBaseId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDocumentDialogflowV2beta1Args({
+  const GetDocumentDialogflowV2beta1Args({
     required this.documentId,
     required this.knowledgeBaseId,
     required this.location,

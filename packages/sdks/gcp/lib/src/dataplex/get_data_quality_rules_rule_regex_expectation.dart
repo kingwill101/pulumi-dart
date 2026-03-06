@@ -8,7 +8,7 @@ class GetDataQualityRulesRuleRegexExpectation {
 
   /// Creates a new [GetDataQualityRulesRuleRegexExpectation].
   /// [regex] A regular expression the column value is expected to match.
-  GetDataQualityRulesRuleRegexExpectation({
+  const GetDataQualityRulesRuleRegexExpectation({
     required this.regex,
   });
 

@@ -13,7 +13,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
   /// Creates a new [StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable].
   /// [mysqlColumns] MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable({
+  const StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable({
     this.mysqlColumns,
     required this.table,
   });

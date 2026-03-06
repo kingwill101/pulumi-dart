@@ -8,7 +8,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace {
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace].
   /// [namespace] The namespace to use for aggregation
-  RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace({
+  const RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace({
     required this.namespace,
   });
 

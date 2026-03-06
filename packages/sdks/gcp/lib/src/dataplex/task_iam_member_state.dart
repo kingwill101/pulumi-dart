@@ -48,7 +48,7 @@ class TaskIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [taskId] Used to find the parent resource to bind the IAM policy to
-  TaskIamMemberState({
+  const TaskIamMemberState({
     this.condition,
     this.etag,
     this.lake,

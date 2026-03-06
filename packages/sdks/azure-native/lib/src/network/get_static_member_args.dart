@@ -21,7 +21,7 @@ class GetStaticMemberArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
   /// [staticMemberName] The name of the static member.
-  GetStaticMemberArgs({
+  const GetStaticMemberArgs({
     required this.networkGroupName,
     required this.networkManagerName,
     required this.resourceGroupName,

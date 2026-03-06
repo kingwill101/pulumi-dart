@@ -13,7 +13,7 @@ class GetWindowsWebAppSiteConfigAutoHealSetting {
   /// Creates a new [GetWindowsWebAppSiteConfigAutoHealSetting].
   /// [actions] A `action` block as defined above.
   /// [triggers] A `trigger` block as defined below.
-  GetWindowsWebAppSiteConfigAutoHealSetting({
+  const GetWindowsWebAppSiteConfigAutoHealSetting({
     required this.actions,
     required this.triggers,
   });

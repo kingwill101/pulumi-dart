@@ -23,7 +23,7 @@ class AverageLoadScalingTriggerResponse {
   /// [metric] Description of the metric that is used for scaling.
   /// [scaleIntervalInSeconds] Scale interval that indicates how often will this trigger be checked.
   /// [upperLoadThreshold] Upper load threshold (if average load is above this threshold, service will scale up).
-  AverageLoadScalingTriggerResponse({
+  const AverageLoadScalingTriggerResponse({
     required this.kind,
     required this.lowerLoadThreshold,
     required this.metric,

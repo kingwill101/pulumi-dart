@@ -15,7 +15,7 @@ class GetInternetGatewayArgs {
   /// Creates a new [GetInternetGatewayArgs].
   /// [internetGatewayName] Name of the Internet Gateway.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetInternetGatewayArgs({
+  const GetInternetGatewayArgs({
     required this.internetGatewayName,
     required this.resourceGroupName,
   });

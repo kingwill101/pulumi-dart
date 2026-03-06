@@ -19,7 +19,7 @@ class StaticDeliveryAttributeMapping {
   /// [name] Name of the delivery attribute or header.
   /// [type] Type of the delivery attribute or header name.
   /// [value] Value of the delivery attribute.
-  StaticDeliveryAttributeMapping({
+  const StaticDeliveryAttributeMapping({
     this.isSecret,
     this.name,
     required this.type,

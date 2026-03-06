@@ -45,7 +45,7 @@ class GetKustoPoolDatabasePrincipalAssignmentResult {
   /// [tenantId] The tenant id of the principal
   /// [tenantName] The tenant name of the principal
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetKustoPoolDatabasePrincipalAssignmentResult({
+  const GetKustoPoolDatabasePrincipalAssignmentResult({
     required this.aadObjectId,
     required this.azureApiVersion,
     required this.id,

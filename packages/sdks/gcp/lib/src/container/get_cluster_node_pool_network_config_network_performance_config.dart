@@ -8,7 +8,7 @@ class GetClusterNodePoolNetworkConfigNetworkPerformanceConfig {
 
   /// Creates a new [GetClusterNodePoolNetworkConfigNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool. [Valid values](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.Tier) include: "TIER_1" and "TIER_UNSPECIFIED".
-  GetClusterNodePoolNetworkConfigNetworkPerformanceConfig({
+  const GetClusterNodePoolNetworkConfigNetworkPerformanceConfig({
     required this.totalEgressBandwidthTier,
   });
 

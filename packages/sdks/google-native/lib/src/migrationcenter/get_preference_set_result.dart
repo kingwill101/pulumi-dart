@@ -24,7 +24,7 @@ class GetPreferenceSetResult {
   /// [name] Name of the preference set.
   /// [updateTime] The timestamp when the preference set was last updated.
   /// [virtualMachinePreferences] A set of preferences that applies to all virtual machines in the context.
-  GetPreferenceSetResult({
+  const GetPreferenceSetResult({
     required this.createTime,
     required this.description,
     required this.displayName,

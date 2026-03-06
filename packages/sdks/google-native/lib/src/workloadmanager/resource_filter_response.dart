@@ -19,7 +19,7 @@ class ResourceFilterResponse {
   /// [inclusionLabels] The label used for filter resource
   /// [resourceIdPatterns] The id pattern for filter resource
   /// [scopes] The scopes of evaluation resource
-  ResourceFilterResponse({
+  const ResourceFilterResponse({
     required this.gceInstanceFilter,
     required this.inclusionLabels,
     required this.resourceIdPatterns,

@@ -66,7 +66,7 @@ class ClassificationResponse {
   /// [validationData] Validation data inputs.
   /// [validationDataSize] The fraction of training dataset that needs to be set aside for validation purpose.
   /// [weightColumnName] The name of the sample weight column. Automated ML supports a weighted column as an input, causing rows in the data to be weighted up or down.
-  ClassificationResponse({
+  const ClassificationResponse({
     this.cvSplitColumnNames,
     this.featurizationSettings,
     this.limitSettings,

@@ -46,7 +46,7 @@ class RemediationConfigurationArgs {
   /// [targetId] Target ID is the name of the public document.
   /// [targetType] Type of the target. Target executes remediation. For example, SSM document.
   /// [targetVersion] Version of the target. For example, version of the SSM document
-  RemediationConfigurationArgs({
+  const RemediationConfigurationArgs({
     this.automatic,
     required this.configRuleName,
     this.executionControls,

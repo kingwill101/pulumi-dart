@@ -28,7 +28,7 @@ class PolicyDefinitionReferenceResponse {
   /// [parameters] The parameter values for the referenced policy rule. The keys are the parameter names.
   /// [policyDefinitionId] The ID of the policy definition or policy set definition.
   /// [policyDefinitionReferenceId] A unique id (within the policy set definition) for this policy definition reference.
-  PolicyDefinitionReferenceResponse({
+  const PolicyDefinitionReferenceResponse({
     this.definitionVersion,
     required this.effectiveDefinitionVersion,
     this.groupNames,

@@ -11,7 +11,7 @@ class GetMulticastDomainAssociation {
   /// Creates a new [GetMulticastDomainAssociation].
   /// [subnetId] The ID of the subnet associated with the transit gateway multicast domain.
   /// [transitGatewayAttachmentId] The ID of the transit gateway attachment.
-  GetMulticastDomainAssociation({
+  const GetMulticastDomainAssociation({
     required this.subnetId,
     required this.transitGatewayAttachmentId,
   });

@@ -43,7 +43,7 @@ class GetDeploymentDeploymentmanagerV2Result {
   /// [target] [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
   /// [update] If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
   /// [updateTime] Update timestamp in RFC3339 text format.
-  GetDeploymentDeploymentmanagerV2Result({
+  const GetDeploymentDeploymentmanagerV2Result({
     required this.description,
     required this.fingerprint,
     required this.insertTime,

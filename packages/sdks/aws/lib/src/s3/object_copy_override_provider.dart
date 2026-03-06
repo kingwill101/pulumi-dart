@@ -9,7 +9,7 @@ class ObjectCopyOverrideProvider {
 
   /// Creates a new [ObjectCopyOverrideProvider].
   /// [defaultTags] Override the provider `default_tags` configuration block.
-  ObjectCopyOverrideProvider({
+  const ObjectCopyOverrideProvider({
     this.defaultTags,
   });
 

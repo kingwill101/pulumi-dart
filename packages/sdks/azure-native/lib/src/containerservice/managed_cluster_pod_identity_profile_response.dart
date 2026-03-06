@@ -20,7 +20,7 @@ class ManagedClusterPodIdentityProfileResponse {
   /// [enabled] Whether the pod identity addon is enabled.
   /// [userAssignedIdentities] The pod identities to use in the cluster.
   /// [userAssignedIdentityExceptions] The pod identity exceptions to allow.
-  ManagedClusterPodIdentityProfileResponse({
+  const ManagedClusterPodIdentityProfileResponse({
     this.allowNetworkPluginKubenet,
     this.enabled,
     this.userAssignedIdentities,

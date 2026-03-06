@@ -19,7 +19,7 @@ class VirtualDisk {
   /// [independenceMode] Disk's independence mode type
   /// [totalSize] Disk's total size
   /// [virtualDiskId] Disk's id
-  VirtualDisk({
+  const VirtualDisk({
     required this.controllerId,
     required this.independenceMode,
     required this.totalSize,

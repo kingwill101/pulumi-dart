@@ -12,7 +12,7 @@ class AgentPath {
   /// Creates a new [AgentPath].
   /// [path] The actual path value.
   /// [type] The type of the path.
-  AgentPath({
+  const AgentPath({
     required this.path,
     required this.type,
   });

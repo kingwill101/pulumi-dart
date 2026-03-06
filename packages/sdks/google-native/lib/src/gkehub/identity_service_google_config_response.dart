@@ -9,7 +9,7 @@ class IdentityServiceGoogleConfigResponse {
 
   /// Creates a new [IdentityServiceGoogleConfigResponse].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.
-  IdentityServiceGoogleConfigResponse({
+  const IdentityServiceGoogleConfigResponse({
     required this.disable,
   });
 

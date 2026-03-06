@@ -19,7 +19,7 @@ class ServiceEndpointAclArgs {
   /// [aclStrategy] The ACL policy. Valid value:
   /// [cidr] Required.
   /// [endpointType] Access point type. Value:
-  ServiceEndpointAclArgs({
+  const ServiceEndpointAclArgs({
     required this.aclStrategy,
     required this.cidr,
     required this.endpointType,

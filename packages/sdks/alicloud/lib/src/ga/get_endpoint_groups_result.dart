@@ -32,7 +32,7 @@ class GetEndpointGroupsResult {
   /// [names] A list of Endpoint Group names.
   /// [outputFile] Optional.
   /// [status] The status of the endpoint group.
-  GetEndpointGroupsResult({
+  const GetEndpointGroupsResult({
     required this.acceleratorId,
     this.endpointGroupType,
     required this.groups,

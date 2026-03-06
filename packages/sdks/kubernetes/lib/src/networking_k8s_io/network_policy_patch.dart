@@ -24,7 +24,7 @@ class NetworkPolicyPatch {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec represents the specification of the desired behavior for this NetworkPolicy.
   /// [status] Status is the current state of the NetworkPolicy. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  NetworkPolicyPatch({
+  const NetworkPolicyPatch({
     this.apiVersion,
     this.kind,
     this.metadata,

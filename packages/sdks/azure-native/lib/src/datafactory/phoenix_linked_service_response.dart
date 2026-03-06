@@ -64,7 +64,7 @@ class PhoenixLinkedServiceResponse {
   /// [useSystemTrustStore] Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
   /// [username] The user name used to connect to the Phoenix server.
   /// [version] Version of the linked service.
-  PhoenixLinkedServiceResponse({
+  const PhoenixLinkedServiceResponse({
     this.allowHostNameCNMismatch,
     this.allowSelfSignedServerCert,
     this.annotations,

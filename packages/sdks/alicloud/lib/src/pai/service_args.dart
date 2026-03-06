@@ -24,7 +24,7 @@ class ServiceArgs {
   /// [status] Service Current Status.
   /// [tags] The tag of the resource.
   /// [workspaceId] Workspace id
-  ServiceArgs({
+  const ServiceArgs({
     this.develop,
     required this.serviceConfig,
     this.status,

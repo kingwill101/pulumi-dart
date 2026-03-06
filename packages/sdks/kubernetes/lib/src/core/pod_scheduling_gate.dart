@@ -9,7 +9,7 @@ class PodSchedulingGate {
 
   /// Creates a new [PodSchedulingGate].
   /// [name] Name of the scheduling gate. Each scheduling gate must have a unique name field.
-  PodSchedulingGate({
+  const PodSchedulingGate({
     required this.name,
   });
 

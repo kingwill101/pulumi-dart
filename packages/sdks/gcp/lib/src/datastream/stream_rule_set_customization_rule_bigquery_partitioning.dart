@@ -23,7 +23,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioning {
   /// [integerRangePartition] A nested object resource.
   /// [requirePartitionFilter] If true, queries over the table require a partition filter.
   /// [timeUnitPartition] A nested object resource.
-  StreamRuleSetCustomizationRuleBigqueryPartitioning({
+  const StreamRuleSetCustomizationRuleBigqueryPartitioning({
     this.ingestionTimePartition,
     this.integerRangePartition,
     this.requirePartitionFilter,

@@ -15,7 +15,7 @@ class BasicDependencyResponse {
   /// [id] The ID of the dependency.
   /// [resourceName] The dependency resource name.
   /// [resourceType] The dependency resource type.
-  BasicDependencyResponse({
+  const BasicDependencyResponse({
     this.id,
     this.resourceName,
     this.resourceType,

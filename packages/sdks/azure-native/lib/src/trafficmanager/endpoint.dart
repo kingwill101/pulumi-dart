@@ -59,7 +59,7 @@ class Endpoint {
   /// [targetResourceId] The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
   /// [type] The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
   /// [weight] The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
-  Endpoint({
+  const Endpoint({
     this.alwaysServe,
     this.customHeaders,
     this.endpointLocation,

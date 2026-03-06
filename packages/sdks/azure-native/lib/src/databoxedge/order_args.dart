@@ -26,7 +26,7 @@ class OrderArgs {
   /// [resourceGroupName] The resource group name.
   /// [shipmentType] ShipmentType of the order
   /// [shippingAddress] The shipping address.
-  OrderArgs({
+  const OrderArgs({
     required this.contactInformation,
     required this.deviceName,
     required this.resourceGroupName,

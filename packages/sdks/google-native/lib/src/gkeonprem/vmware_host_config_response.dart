@@ -15,7 +15,7 @@ class VmwareHostConfigResponse {
   /// [dnsSearchDomains] DNS search domains.
   /// [dnsServers] DNS servers.
   /// [ntpServers] NTP servers.
-  VmwareHostConfigResponse({
+  const VmwareHostConfigResponse({
     required this.dnsSearchDomains,
     required this.dnsServers,
     required this.ntpServers,

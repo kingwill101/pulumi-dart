@@ -10,7 +10,7 @@ class KeyData {
 
   /// Creates a new [KeyData].
   /// [keySpec] The specifications for the key.
-  KeyData({
+  const KeyData({
     required this.keySpec,
   });
 

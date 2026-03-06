@@ -21,7 +21,7 @@ class IdentityCenterConfigurationArgs {
   /// [catalogId] Identifier for the Data Catalog.
   /// [instanceArn] ARN of the IAM Identity Center Instance to associate.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  IdentityCenterConfigurationArgs({
+  const IdentityCenterConfigurationArgs({
     this.catalogId,
     required this.instanceArn,
     this.region,

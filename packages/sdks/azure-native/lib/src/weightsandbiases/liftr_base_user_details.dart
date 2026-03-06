@@ -21,7 +21,7 @@ class LiftrBaseUserDetails {
   /// [lastName] Last name of the user
   /// [phoneNumber] User's phone number
   /// [upn] User's principal name
-  LiftrBaseUserDetails({
+  const LiftrBaseUserDetails({
     this.emailAddress,
     this.firstName,
     this.lastName,

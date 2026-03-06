@@ -19,7 +19,7 @@ class RecoveryPlanScriptActionDetailsResponse {
   /// [instanceType] Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
   /// [path] The script path.
   /// [timeout] The script timeout.
-  RecoveryPlanScriptActionDetailsResponse({
+  const RecoveryPlanScriptActionDetailsResponse({
     required this.fabricLocation,
     required this.instanceType,
     required this.path,

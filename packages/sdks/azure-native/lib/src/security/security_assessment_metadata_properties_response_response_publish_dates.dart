@@ -9,7 +9,7 @@ class SecurityAssessmentMetadataPropertiesResponseResponsePublishDates {
   /// Creates a new [SecurityAssessmentMetadataPropertiesResponseResponsePublishDates].
   /// [gA] Optional.
   /// [public] Required.
-  SecurityAssessmentMetadataPropertiesResponseResponsePublishDates({
+  const SecurityAssessmentMetadataPropertiesResponseResponsePublishDates({
     this.gA,
     required this.public,
   });

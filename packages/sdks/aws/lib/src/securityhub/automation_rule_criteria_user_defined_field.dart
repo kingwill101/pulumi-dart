@@ -12,7 +12,7 @@ class AutomationRuleCriteriaUserDefinedField {
   /// [comparison] Required.
   /// [key] The key of the map filter.
   /// [value] Required.
-  AutomationRuleCriteriaUserDefinedField({
+  const AutomationRuleCriteriaUserDefinedField({
     required this.comparison,
     required this.key,
     required this.value,

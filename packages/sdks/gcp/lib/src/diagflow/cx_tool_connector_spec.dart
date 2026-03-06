@@ -24,7 +24,7 @@ class CxToolConnectorSpec {
   /// [actions] Actions for the tool to use.
   /// [endUserAuthConfig] Integration Connectors end-user authentication configuration.
   /// [name] The full resource name of the referenced Integration Connectors Connection.
-  CxToolConnectorSpec({
+  const CxToolConnectorSpec({
     required this.actions,
     this.endUserAuthConfig,
     required this.name,

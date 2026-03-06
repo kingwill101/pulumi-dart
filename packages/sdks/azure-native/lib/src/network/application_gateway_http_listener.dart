@@ -44,7 +44,7 @@ class ApplicationGatewayHttpListener {
   /// [requireServerNameIndication] Applicable only if protocol is https. Enables SNI for multi-hosting.
   /// [sslCertificate] SSL certificate resource of an application gateway.
   /// [sslProfile] SSL profile resource of the application gateway.
-  ApplicationGatewayHttpListener({
+  const ApplicationGatewayHttpListener({
     this.customErrorConfigurations,
     this.firewallPolicy,
     this.frontendIPConfiguration,

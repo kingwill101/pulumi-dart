@@ -21,7 +21,7 @@ class AiEndpointIamBindingState {
   /// [members] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  AiEndpointIamBindingState({
+  const AiEndpointIamBindingState({
     this.condition,
     this.endpoint,
     this.etag,

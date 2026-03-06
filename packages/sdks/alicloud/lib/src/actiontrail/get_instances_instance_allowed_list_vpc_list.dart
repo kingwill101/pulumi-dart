@@ -11,7 +11,7 @@ class GetInstancesInstanceAllowedListVpcList {
   /// Creates a new [GetInstancesInstanceAllowedListVpcList].
   /// [allowedIpLists] The allowed ip list of the internet_list.
   /// [portRange] The port range of the internet_list.
-  GetInstancesInstanceAllowedListVpcList({
+  const GetInstancesInstanceAllowedListVpcList({
     required this.allowedIpLists,
     required this.portRange,
   });

@@ -15,7 +15,7 @@ class GetBatchPredictionJobAiplatformV1beta1Args {
   /// [batchPredictionJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBatchPredictionJobAiplatformV1beta1Args({
+  const GetBatchPredictionJobAiplatformV1beta1Args({
     required this.batchPredictionJobId,
     required this.location,
     this.project,

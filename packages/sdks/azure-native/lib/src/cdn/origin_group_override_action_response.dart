@@ -14,7 +14,7 @@ class OriginGroupOverrideActionResponse {
   /// Creates a new [OriginGroupOverrideActionResponse].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  OriginGroupOverrideActionResponse({
+  const OriginGroupOverrideActionResponse({
     required this.name,
     required this.parameters,
   });

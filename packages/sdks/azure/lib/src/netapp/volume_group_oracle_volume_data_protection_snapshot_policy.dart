@@ -8,7 +8,7 @@ class VolumeGroupOracleVolumeDataProtectionSnapshotPolicy {
 
   /// Creates a new [VolumeGroupOracleVolumeDataProtectionSnapshotPolicy].
   /// [snapshotPolicyId] Resource ID of the snapshot policy to apply to the volume.
-  VolumeGroupOracleVolumeDataProtectionSnapshotPolicy({
+  const VolumeGroupOracleVolumeDataProtectionSnapshotPolicy({
     required this.snapshotPolicyId,
   });
 

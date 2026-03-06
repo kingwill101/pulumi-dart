@@ -17,7 +17,7 @@ class GetKubernetesNodePoolSnapshotResult {
   /// [resourceGroupName] Required.
   /// [sourceNodePoolId] The ID of the source Node Pool.
   /// [tags] Required.
-  GetKubernetesNodePoolSnapshotResult({
+  const GetKubernetesNodePoolSnapshotResult({
     required this.id,
     required this.name,
     required this.resourceGroupName,

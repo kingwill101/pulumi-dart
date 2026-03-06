@@ -29,7 +29,7 @@ class ApiReference {
   /// [name] The name of the API
   /// [swagger] The JSON representation of the swagger
   /// [type] Resource reference type
-  ApiReference({
+  const ApiReference({
     this.brandColor,
     this.description,
     this.displayName,

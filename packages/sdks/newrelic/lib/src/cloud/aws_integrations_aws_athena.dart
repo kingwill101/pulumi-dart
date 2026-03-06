@@ -11,7 +11,7 @@ class AwsIntegrationsAwsAthena {
   /// Creates a new [AwsIntegrationsAwsAthena].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsAthena({
+  const AwsIntegrationsAwsAthena({
     this.awsRegions,
     this.metricsPollingInterval,
   });

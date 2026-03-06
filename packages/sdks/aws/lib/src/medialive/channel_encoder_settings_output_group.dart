@@ -16,7 +16,7 @@ class ChannelEncoderSettingsOutputGroup {
   /// [name] Custom output group name defined by the user.
   /// [outputGroupSettings] Settings associated with the output group. See Output Group Settings for more details.
   /// [outputs] List of outputs. See Outputs for more details.
-  ChannelEncoderSettingsOutputGroup({
+  const ChannelEncoderSettingsOutputGroup({
     this.name,
     required this.outputGroupSettings,
     required this.outputs,

@@ -21,7 +21,7 @@ class GetDedicatedHostGroupsArgs {
   /// [ids] A list of Dedicated Host Group IDs.
   /// [nameRegex] A regex string to filter results by Dedicated Host Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetDedicatedHostGroupsArgs({
+  const GetDedicatedHostGroupsArgs({
     this.engine,
     this.ids,
     this.nameRegex,

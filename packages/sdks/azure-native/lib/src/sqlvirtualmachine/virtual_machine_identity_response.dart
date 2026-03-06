@@ -12,7 +12,7 @@ class VirtualMachineIdentityResponse {
   /// Creates a new [VirtualMachineIdentityResponse].
   /// [resourceId] ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
   /// [type] Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
-  VirtualMachineIdentityResponse({
+  const VirtualMachineIdentityResponse({
     this.resourceId,
     this.type,
   });

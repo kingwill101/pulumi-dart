@@ -34,7 +34,7 @@ class GetSinkResult {
   /// [id] Required.
   /// [name] A client-assigned identifier, such as `load-balancer-exclusion`.
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the configured `destination`.
-  GetSinkResult({
+  const GetSinkResult({
     required this.bigqueryOptions,
     required this.description,
     required this.destination,

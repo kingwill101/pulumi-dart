@@ -15,7 +15,7 @@ class ListSitesControllerHealthSummaryArgs {
   /// Creates a new [ListSitesControllerHealthSummaryArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
-  ListSitesControllerHealthSummaryArgs({
+  const ListSitesControllerHealthSummaryArgs({
     required this.resourceGroupName,
     required this.siteName,
   });

@@ -51,7 +51,7 @@ class TransferJobArgs {
   /// [serviceAccount] The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
   /// [status] Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
   /// [transferSpec] Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
-  TransferJobArgs({
+  const TransferJobArgs({
     required this.description,
     this.eventStream,
     this.loggingConfig,

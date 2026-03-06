@@ -14,7 +14,7 @@ class GetInputDestination {
   /// [port] Required.
   /// [url] Required.
   /// [vpcs] Required.
-  GetInputDestination({
+  const GetInputDestination({
     required this.ip,
     required this.port,
     required this.url,

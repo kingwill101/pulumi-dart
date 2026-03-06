@@ -17,7 +17,7 @@ class GoogleCloudRetailV2Condition {
   /// [activeTimeRange] Range of time(s) specifying when Condition is active. Condition true if any time range matches.
   /// [pageCategories] Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should be the same as UserEvent.page_categories;
   /// [queryTerms] A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
-  GoogleCloudRetailV2Condition({
+  const GoogleCloudRetailV2Condition({
     this.activeTimeRange,
     this.pageCategories,
     this.queryTerms,

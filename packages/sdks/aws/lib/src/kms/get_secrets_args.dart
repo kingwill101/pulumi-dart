@@ -15,7 +15,7 @@ class GetSecretsArgs {
   /// Creates a new [GetSecretsArgs].
   /// [region] Optional.
   /// [secrets] One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
-  GetSecretsArgs({
+  const GetSecretsArgs({
     this.region,
     required this.secrets,
   });

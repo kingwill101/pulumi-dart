@@ -17,7 +17,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv {
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv].
   /// [name] Name of the environment variable. Must be a valid C identifier.
   /// [value] Variables that reference a $(VAR_NAME) are expanded
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv({
     required this.name,
     required this.value,
   });

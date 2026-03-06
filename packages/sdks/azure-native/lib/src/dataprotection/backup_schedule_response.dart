@@ -45,7 +45,7 @@ class BackupScheduleResponse {
   /// Creates a new [BackupScheduleResponse].
   /// [repeatingTimeIntervals] Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
   /// [timeZone] Time Zone for a schedule.
-  BackupScheduleResponse({
+  const BackupScheduleResponse({
     required this.repeatingTimeIntervals,
     this.timeZone,
   });

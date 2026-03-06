@@ -9,7 +9,7 @@ class ResilientVMCreationPolicyResponse {
 
   /// Creates a new [ResilientVMCreationPolicyResponse].
   /// [enabled] Specifies whether resilient VM creation should be enabled on the virtual machine scale set. The default value is false.
-  ResilientVMCreationPolicyResponse({
+  const ResilientVMCreationPolicyResponse({
     this.enabled,
   });
 

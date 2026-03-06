@@ -45,7 +45,7 @@ class ApplicationState {
   /// [tags] Optional.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
-  ApplicationState({
+  const ApplicationState({
     this.arn,
     this.attachmentsConfiguration,
     this.description,

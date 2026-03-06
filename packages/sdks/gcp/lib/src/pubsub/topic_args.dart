@@ -72,7 +72,7 @@ class TopicArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [schemaSettings] Settings for validating messages published against a schema.
   /// [tags] Input only. Resource manager tags to be bound to the topic. Tag keys and
-  TopicArgs({
+  const TopicArgs({
     this.ingestionDataSourceSettings,
     this.kmsKeyName,
     this.labels,

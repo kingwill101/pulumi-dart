@@ -21,7 +21,7 @@ class PublicAdvertisedPrefixPublicDelegatedPrefixResponse {
   /// [project] The project number of the public delegated prefix
   /// [region] The region of the public delegated prefix if it is regional. If absent, the prefix is global.
   /// [status] The status of the public delegated prefix. Possible values are: INITIALIZING: The public delegated prefix is being initialized and addresses cannot be created yet. ANNOUNCED: The public delegated prefix is active.
-  PublicAdvertisedPrefixPublicDelegatedPrefixResponse({
+  const PublicAdvertisedPrefixPublicDelegatedPrefixResponse({
     required this.ipRange,
     required this.name,
     required this.project,

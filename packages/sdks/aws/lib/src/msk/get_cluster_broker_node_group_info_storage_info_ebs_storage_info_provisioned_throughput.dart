@@ -9,7 +9,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughpu
   /// Creates a new [GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput].
   /// [enabled] Required.
   /// [volumeThroughput] Required.
-  GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput({
+  const GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput({
     required this.enabled,
     required this.volumeThroughput,
   });

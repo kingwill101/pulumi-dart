@@ -9,7 +9,7 @@ class ConnectionProfilePostgresqlProfileSslConfigServerVerification {
 
   /// Creates a new [ConnectionProfilePostgresqlProfileSslConfigServerVerification].
   /// [caCertificate] PEM-encoded server root CA certificate.
-  ConnectionProfilePostgresqlProfileSslConfigServerVerification({
+  const ConnectionProfilePostgresqlProfileSslConfigServerVerification({
     required this.caCertificate,
   });
 

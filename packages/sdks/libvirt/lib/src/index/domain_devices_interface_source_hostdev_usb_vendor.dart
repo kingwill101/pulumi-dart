@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceHostdevUsbVendor {
 
   /// Creates a new [DomainDevicesInterfaceSourceHostdevUsbVendor].
   /// [id] Specifies the unique identifier for the vendor of the USB device.
-  DomainDevicesInterfaceSourceHostdevUsbVendor({
+  const DomainDevicesInterfaceSourceHostdevUsbVendor({
     this.id,
   });
 

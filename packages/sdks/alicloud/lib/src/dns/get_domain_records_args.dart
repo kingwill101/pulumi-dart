@@ -27,7 +27,7 @@ class GetDomainRecordsArgs {
   /// [status] Optional.
   /// [type] Optional.
   /// [valueRegex] Optional.
-  GetDomainRecordsArgs({
+  const GetDomainRecordsArgs({
     required this.domainName,
     this.hostRecordRegex,
     this.ids,

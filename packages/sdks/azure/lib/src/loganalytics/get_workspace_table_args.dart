@@ -15,7 +15,7 @@ class GetWorkspaceTableArgs {
   /// Creates a new [GetWorkspaceTableArgs].
   /// [name] The name of this Log Analytics Workspace Table.
   /// [workspaceId] The ID of the Log Analytics Workspace the table belongs to.
-  GetWorkspaceTableArgs({
+  const GetWorkspaceTableArgs({
     required this.name,
     required this.workspaceId,
   });

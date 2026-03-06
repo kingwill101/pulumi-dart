@@ -14,7 +14,7 @@ class SqlContainerConflictResolutionPolicy {
   /// [conflictResolutionPath] The conflict resolution path in the case of `LastWriterWins` mode.
   /// [conflictResolutionProcedure] The procedure to resolve conflicts in the case of `Custom` mode.
   /// [mode] Indicates the conflict resolution mode. Possible values include: `LastWriterWins`, `Custom`.
-  SqlContainerConflictResolutionPolicy({
+  const SqlContainerConflictResolutionPolicy({
     this.conflictResolutionPath,
     this.conflictResolutionProcedure,
     required this.mode,

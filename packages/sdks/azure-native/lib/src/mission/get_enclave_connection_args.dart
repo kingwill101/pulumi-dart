@@ -15,7 +15,7 @@ class GetEnclaveConnectionArgs {
   /// Creates a new [GetEnclaveConnectionArgs].
   /// [enclaveConnectionName] The name of the Enclave Connection Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEnclaveConnectionArgs({
+  const GetEnclaveConnectionArgs({
     required this.enclaveConnectionName,
     required this.resourceGroupName,
   });

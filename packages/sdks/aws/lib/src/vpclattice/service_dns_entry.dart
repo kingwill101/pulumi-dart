@@ -9,7 +9,7 @@ class ServiceDnsEntry {
   /// Creates a new [ServiceDnsEntry].
   /// [domainName] Optional.
   /// [hostedZoneId] Optional.
-  ServiceDnsEntry({
+  const ServiceDnsEntry({
     this.domainName,
     this.hostedZoneId,
   });

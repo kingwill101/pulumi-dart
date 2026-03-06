@@ -14,7 +14,7 @@ class CloudServiceVaultSecretGroup {
   /// Creates a new [CloudServiceVaultSecretGroup].
   /// [sourceVault] The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
   /// [vaultCertificates] The list of key vault references in SourceVault which contain certificates.
-  CloudServiceVaultSecretGroup({
+  const CloudServiceVaultSecretGroup({
     this.sourceVault,
     this.vaultCertificates,
   });

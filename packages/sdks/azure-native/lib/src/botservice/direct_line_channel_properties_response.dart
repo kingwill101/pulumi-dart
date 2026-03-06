@@ -19,7 +19,7 @@ class DirectLineChannelPropertiesResponse {
   /// [extensionKey1] The extensionKey1
   /// [extensionKey2] The extensionKey2
   /// [sites] The list of Direct Line sites
-  DirectLineChannelPropertiesResponse({
+  const DirectLineChannelPropertiesResponse({
     this.directLineEmbedCode,
     this.extensionKey1,
     this.extensionKey2,

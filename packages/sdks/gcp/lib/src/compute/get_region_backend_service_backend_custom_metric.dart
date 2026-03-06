@@ -16,7 +16,7 @@ class GetRegionBackendServiceBackendCustomMetric {
   /// [dryRun] If true, the metric data is collected and reported to Cloud
   /// [maxUtilization] Optional parameter to define a target utilization for the Custom Metrics
   /// [name] The name of the regional backend service.
-  GetRegionBackendServiceBackendCustomMetric({
+  const GetRegionBackendServiceBackendCustomMetric({
     required this.dryRun,
     required this.maxUtilization,
     required this.name,

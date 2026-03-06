@@ -27,7 +27,7 @@ class GetAccountsAccount {
   /// [id] The ID of the Account.
   /// [privExceeded] Whether the maximum number of databases managed by the account is exceeded.
   /// [status] The status of the resource.
-  GetAccountsAccount({
+  const GetAccountsAccount({
     required this.accountDescription,
     required this.accountName,
     required this.accountType,

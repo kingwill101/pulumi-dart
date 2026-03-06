@@ -128,7 +128,7 @@ class ImageState {
   /// [verifyChecksum] If false, the checksum will not be verified
   /// [visibility] The visibility of the image. Must be one of
   /// [webDownload] If true, the "web-download" import method will be
-  ImageState({
+  const ImageState({
     this.checksum,
     this.containerFormat,
     this.createdAt,

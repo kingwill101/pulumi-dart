@@ -15,7 +15,7 @@ class GetCloudServiceArgs {
   /// Creates a new [GetCloudServiceArgs].
   /// [cloudServiceName] Name of the cloud service.
   /// [resourceGroupName] Name of the resource group.
-  GetCloudServiceArgs({
+  const GetCloudServiceArgs({
     required this.cloudServiceName,
     required this.resourceGroupName,
   });

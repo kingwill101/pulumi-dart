@@ -24,7 +24,7 @@ class GoogleCloudChannelV1ContactInfoResponse {
   /// [lastName] The customer account contact's last name. Optional for Team customers.
   /// [phone] The customer account's contact phone number.
   /// [title] Optional. The customer account contact's job title.
-  GoogleCloudChannelV1ContactInfoResponse({
+  const GoogleCloudChannelV1ContactInfoResponse({
     required this.displayName,
     required this.email,
     required this.firstName,

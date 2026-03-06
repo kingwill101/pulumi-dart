@@ -9,7 +9,7 @@ class VhdImageMappingRuleProfileResponse {
 
   /// Creates a new [VhdImageMappingRuleProfileResponse].
   /// [userConfiguration] List of values.
-  VhdImageMappingRuleProfileResponse({
+  const VhdImageMappingRuleProfileResponse({
     this.userConfiguration,
   });
 

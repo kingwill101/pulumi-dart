@@ -20,7 +20,7 @@ class ImagePipelineWorkflow {
   /// [parallelGroup] The parallel group in which to run a test Workflow.
   /// [parameters] Configuration block for the workflow parameters. Detailed below.
   /// [workflowArn] Amazon Resource Name (ARN) of the Image Builder Workflow.
-  ImagePipelineWorkflow({
+  const ImagePipelineWorkflow({
     this.onFailure,
     this.parallelGroup,
     this.parameters,

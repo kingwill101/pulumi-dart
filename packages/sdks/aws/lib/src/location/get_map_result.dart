@@ -32,7 +32,7 @@ class GetMapResult {
   /// [region] Required.
   /// [tags] Key-value map of resource tags for the map.
   /// [updateTime] Timestamp for when the map resource was last updated in ISO 8601 format.
-  GetMapResult({
+  const GetMapResult({
     required this.configurations,
     required this.createTime,
     required this.description,

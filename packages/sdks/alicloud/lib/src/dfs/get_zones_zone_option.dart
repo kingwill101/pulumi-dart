@@ -11,7 +11,7 @@ class GetZonesZoneOption {
   /// Creates a new [GetZonesZoneOption].
   /// [protocolType] The protocol type. Valid values: `HDFS`.
   /// [storageType] The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-  GetZonesZoneOption({
+  const GetZonesZoneOption({
     required this.protocolType,
     required this.storageType,
   });

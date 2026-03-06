@@ -24,7 +24,7 @@ class GetInstancesResult {
   /// [outputFile] Optional.
   /// [tags] Optional.
   /// [version] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.descriptionRegex,
     required this.descriptions,
     required this.id,

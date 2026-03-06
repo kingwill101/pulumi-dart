@@ -17,7 +17,7 @@ class GetInstancesInstanceShard {
   /// [description] The description of the shard node.
   /// [nodeId] The ID of the shard node.
   /// [storage] The storage space of the shard node.
-  GetInstancesInstanceShard({
+  const GetInstancesInstanceShard({
     required this.class_,
     required this.description,
     required this.nodeId,

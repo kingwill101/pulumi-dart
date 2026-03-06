@@ -29,7 +29,7 @@ class PowerBIResourceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Specifies the tags of the resource.
   /// [tenantId] Specifies the tenant id of the resource.
-  PowerBIResourceArgs({
+  const PowerBIResourceArgs({
     this.azureResourceName,
     this.location,
     this.privateEndpointConnections,

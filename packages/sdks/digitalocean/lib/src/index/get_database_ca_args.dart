@@ -12,7 +12,7 @@ class GetDatabaseCaArgs {
 
   /// Creates a new [GetDatabaseCaArgs].
   /// [clusterId] The ID of the source database cluster.
-  GetDatabaseCaArgs({
+  const GetDatabaseCaArgs({
     required this.clusterId,
   });
 

@@ -50,7 +50,7 @@ class IndexState {
   /// [project] The ID of the project in which the resource belongs.
   /// [queryScope] The scope at which a query is run.
   /// [unique] Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
-  IndexState({
+  const IndexState({
     this.apiScope,
     this.collection,
     this.database,

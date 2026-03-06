@@ -15,7 +15,7 @@ class GetBotArgs {
   /// Creates a new [GetBotArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Bot resource.
-  GetBotArgs({
+  const GetBotArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -9,7 +9,7 @@ class SecretStorePropertiesResponse {
   /// Creates a new [SecretStorePropertiesResponse].
   /// [inputType] Required.
   /// [secretStoreId] Optional.
-  SecretStorePropertiesResponse({
+  const SecretStorePropertiesResponse({
     required this.inputType,
     this.secretStoreId,
   });

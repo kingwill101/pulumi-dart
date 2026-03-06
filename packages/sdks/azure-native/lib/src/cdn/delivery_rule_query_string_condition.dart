@@ -14,7 +14,7 @@ class DeliveryRuleQueryStringCondition {
   /// Creates a new [DeliveryRuleQueryStringCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleQueryStringCondition({
+  const DeliveryRuleQueryStringCondition({
     required this.name,
     required this.parameters,
   });

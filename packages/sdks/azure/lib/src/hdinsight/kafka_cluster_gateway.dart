@@ -13,7 +13,7 @@ class KafkaClusterGateway {
   /// Creates a new [KafkaClusterGateway].
   /// [password] The password used for the Ambari Portal.
   /// [username] The username used for the Ambari Portal. Changing this forces a new resource to be created.
-  KafkaClusterGateway({
+  const KafkaClusterGateway({
     required this.password,
     required this.username,
   });

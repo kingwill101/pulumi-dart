@@ -17,7 +17,7 @@ class GetListingAnalyticshubV1beta1Args {
   /// [listingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetListingAnalyticshubV1beta1Args({
+  const GetListingAnalyticshubV1beta1Args({
     required this.dataExchangeId,
     required this.listingId,
     required this.location,

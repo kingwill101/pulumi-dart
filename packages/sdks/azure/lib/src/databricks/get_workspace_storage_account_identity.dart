@@ -14,7 +14,7 @@ class GetWorkspaceStorageAccountIdentity {
   /// [principalId] The principal UUID for the internal databricks storage account needed to provide access to the workspace for enabling Customer Managed Keys.
   /// [tenantId] The UUID of the tenant where the internal databricks storage account was created.
   /// [type] The type of the internal databricks storage account.
-  GetWorkspaceStorageAccountIdentity({
+  const GetWorkspaceStorageAccountIdentity({
     required this.principalId,
     required this.tenantId,
     required this.type,

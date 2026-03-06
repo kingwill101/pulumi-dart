@@ -72,7 +72,7 @@ class DocumentClassifierArgs {
   /// [versionNamePrefix] Creates a unique version name beginning with the specified prefix.
   /// [volumeKmsKeyId] KMS Key used to encrypt storage volumes during job processing.
   /// [vpcConfig] Configuration parameters for VPC to contain Document Classifier resources.
-  DocumentClassifierArgs({
+  const DocumentClassifierArgs({
     required this.dataAccessRoleArn,
     required this.inputDataConfig,
     required this.languageCode,

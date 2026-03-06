@@ -8,7 +8,7 @@ class ApplicationImageConfiguration {
 
   /// Creates a new [ApplicationImageConfiguration].
   /// [imageUri] The image URI.
-  ApplicationImageConfiguration({
+  const ApplicationImageConfiguration({
     required this.imageUri,
   });
 

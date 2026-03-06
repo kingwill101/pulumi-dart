@@ -12,7 +12,7 @@ class ExpressRouteConnectionInformation {
   /// Creates a new [ExpressRouteConnectionInformation].
   /// [expressRouteAuthorizationKey] Authorization key for the circuit, must be of type Microsoft.Network/expressRouteCircuits/authorizations. The Auth Key is a mandatory attribute.
   /// [expressRouteCircuitId] The express route circuit Azure resource ID, must be of type Microsoft.Network/expressRouteCircuits/circuitName. The ExpressRoute Circuit is a mandatory attribute.
-  ExpressRouteConnectionInformation({
+  const ExpressRouteConnectionInformation({
     required this.expressRouteAuthorizationKey,
     required this.expressRouteCircuitId,
   });

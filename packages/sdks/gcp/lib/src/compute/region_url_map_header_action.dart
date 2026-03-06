@@ -21,7 +21,7 @@ class RegionUrlMapHeaderAction {
   /// [requestHeadersToRemoves] A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
   /// [responseHeadersToAdds] Headers to add the response before sending the response back to the client.
   /// [responseHeadersToRemoves] A list of header names for headers that need to be removed from the response before sending the response back to the client.
-  RegionUrlMapHeaderAction({
+  const RegionUrlMapHeaderAction({
     this.requestHeadersToAdds,
     this.requestHeadersToRemoves,
     this.responseHeadersToAdds,

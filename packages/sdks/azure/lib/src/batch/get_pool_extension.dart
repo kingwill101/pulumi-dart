@@ -29,7 +29,7 @@ class GetPoolExtension {
   /// [settingsJson] JSON formatted public settings for the extension.
   /// [type] The type of container configuration.
   /// [typeHandlerVersion] The version of script handler.
-  GetPoolExtension({
+  const GetPoolExtension({
     required this.autoUpgradeMinorVersion,
     required this.name,
     required this.protectedSettings,

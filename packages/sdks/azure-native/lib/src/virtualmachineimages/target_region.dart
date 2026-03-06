@@ -15,7 +15,7 @@ class TargetRegion {
   /// [name] The name of the region.
   /// [replicaCount] The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
   /// [storageAccountType] Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
-  TargetRegion({
+  const TargetRegion({
     required this.name,
     this.replicaCount,
     this.storageAccountType,

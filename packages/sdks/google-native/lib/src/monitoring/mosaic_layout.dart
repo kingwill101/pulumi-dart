@@ -13,7 +13,7 @@ class MosaicLayout {
   /// Creates a new [MosaicLayout].
   /// [columns] The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
   /// [tiles] The tiles to display.
-  MosaicLayout({
+  const MosaicLayout({
     this.columns,
     this.tiles,
   });

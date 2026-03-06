@@ -12,7 +12,7 @@ class GetManagedZonesArgs {
 
   /// Creates a new [GetManagedZonesArgs].
   /// [project] The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-  GetManagedZonesArgs({
+  const GetManagedZonesArgs({
     this.project,
   });
 

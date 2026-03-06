@@ -11,7 +11,7 @@ class CassandraTableSchemaColumn {
   /// Creates a new [CassandraTableSchemaColumn].
   /// [name] Name of the column to be created.
   /// [type] Type of the column to be created.
-  CassandraTableSchemaColumn({
+  const CassandraTableSchemaColumn({
     required this.name,
     required this.type,
   });

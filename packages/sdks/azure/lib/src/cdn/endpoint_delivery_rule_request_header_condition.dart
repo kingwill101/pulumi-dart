@@ -20,7 +20,7 @@ class EndpointDeliveryRuleRequestHeaderCondition {
   /// [operator] Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
   /// [selector] Header name.
   /// [transforms] A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  EndpointDeliveryRuleRequestHeaderCondition({
+  const EndpointDeliveryRuleRequestHeaderCondition({
     this.matchValues,
     this.negateCondition,
     required this.operator,

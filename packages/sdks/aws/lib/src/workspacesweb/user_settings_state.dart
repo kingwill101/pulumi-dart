@@ -61,7 +61,7 @@ class UserSettingsState {
   /// [toolbarConfiguration] Configuration of the toolbar. Detailed below.
   /// [uploadAllowed] Specifies whether the user can upload files from the local device to the streaming session. Valid values are `Enabled` or `Disabled`.
   /// [userSettingsArn] ARN of the user settings resource.
-  UserSettingsState({
+  const UserSettingsState({
     this.additionalEncryptionContext,
     this.associatedPortalArns,
     this.cookieSynchronizationConfiguration,

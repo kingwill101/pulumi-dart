@@ -27,7 +27,7 @@ class InferenceGroup {
   /// [nodeSkuType] Gets or sets compute instance type.
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [scaleUnitSize] Gets or sets Scale Unit size.
-  InferenceGroup({
+  const InferenceGroup({
     this.description,
     this.environmentConfiguration,
     this.modelConfiguration,

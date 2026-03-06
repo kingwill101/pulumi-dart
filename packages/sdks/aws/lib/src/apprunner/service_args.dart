@@ -47,7 +47,7 @@ class ServiceArgs {
   /// [serviceName] Name of the service.
   /// [sourceConfiguration] The source to deploy to the App Runner service. Can be a code or an image repository. See Source Configuration below for more details.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ServiceArgs({
+  const ServiceArgs({
     this.autoScalingConfigurationArn,
     this.encryptionConfiguration,
     this.healthCheckConfiguration,

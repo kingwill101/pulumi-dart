@@ -12,7 +12,7 @@ class WorkspaceConfigurationLimitsPerLabelSet {
   /// Creates a new [WorkspaceConfigurationLimitsPerLabelSet].
   /// [labelSet] Map of label key-value pairs that identify the metrics to which the limits apply. An empty map represents the default bucket for metrics that don't match any other label set.
   /// [limits] Configuration block for the limits to apply to the specified label set. Detailed below.
-  WorkspaceConfigurationLimitsPerLabelSet({
+  const WorkspaceConfigurationLimitsPerLabelSet({
     required this.labelSet,
     required this.limits,
   });

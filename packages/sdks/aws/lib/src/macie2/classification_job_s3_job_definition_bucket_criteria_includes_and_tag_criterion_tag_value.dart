@@ -11,7 +11,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagVa
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue].
   /// [key] The tag key.
   /// [value] The tag value.
-  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue({
+  const ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue({
     this.key,
     this.value,
   });

@@ -60,7 +60,7 @@ class JobTemplateArgs {
   /// [task] A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
   /// [thread] A Single Task and the Number of Required Threads.
   /// [variables] The Job of the Environment Variable.
-  JobTemplateArgs({
+  const JobTemplateArgs({
     this.arrayRequest,
     this.clockTime,
     required this.commandLine,

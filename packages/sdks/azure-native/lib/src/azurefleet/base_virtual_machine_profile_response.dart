@@ -86,7 +86,7 @@ class BaseVirtualMachineProfileResponse {
   /// [storageProfile] Specifies the storage settings for the virtual machine disks.
   /// [timeCreated] Specifies the time in which this VM profile for the Virtual Machine Scale Set
   /// [userData] UserData for the virtual machines in the scale set, which must be base-64
-  BaseVirtualMachineProfileResponse({
+  const BaseVirtualMachineProfileResponse({
     this.applicationProfile,
     this.capacityReservation,
     this.diagnosticsProfile,

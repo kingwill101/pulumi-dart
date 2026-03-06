@@ -13,7 +13,7 @@ class GetTransitGatewayRouteTablesFilter {
   /// Creates a new [GetTransitGatewayRouteTablesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetTransitGatewayRouteTablesFilter({
+  const GetTransitGatewayRouteTablesFilter({
     required this.name,
     required this.values,
   });

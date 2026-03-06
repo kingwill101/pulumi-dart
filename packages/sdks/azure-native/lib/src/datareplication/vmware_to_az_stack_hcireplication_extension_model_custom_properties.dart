@@ -22,7 +22,7 @@ class VMwareToAzStackHCIReplicationExtensionModelCustomProperties {
   /// [storageAccountId] Gets or sets the storage account Id.
   /// [storageAccountSasSecretName] Gets or sets the Sas Secret of storage account.
   /// [vmwareFabricArmId] Gets or sets the ARM Id of the source VMware fabric.
-  VMwareToAzStackHCIReplicationExtensionModelCustomProperties({
+  const VMwareToAzStackHCIReplicationExtensionModelCustomProperties({
     required this.azStackHciFabricArmId,
     required this.instanceType,
     this.storageAccountId,

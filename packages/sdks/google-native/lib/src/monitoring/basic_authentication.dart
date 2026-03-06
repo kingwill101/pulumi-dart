@@ -12,7 +12,7 @@ class BasicAuthentication {
   /// Creates a new [BasicAuthentication].
   /// [password] The password to use when authenticating with the HTTP server.
   /// [username] The username to use when authenticating with the HTTP server.
-  BasicAuthentication({
+  const BasicAuthentication({
     this.password,
     this.username,
   });

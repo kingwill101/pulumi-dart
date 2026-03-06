@@ -9,7 +9,7 @@ class WorkloadAttributesCriticality {
 
   /// Creates a new [WorkloadAttributesCriticality].
   /// [type] Criticality type.
-  WorkloadAttributesCriticality({
+  const WorkloadAttributesCriticality({
     required this.type,
   });
 

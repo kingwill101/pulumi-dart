@@ -15,7 +15,7 @@ class GetConfigurationProfileArgs {
   /// Creates a new [GetConfigurationProfileArgs].
   /// [configurationProfileName] The configuration profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigurationProfileArgs({
+  const GetConfigurationProfileArgs({
     required this.configurationProfileName,
     required this.resourceGroupName,
   });

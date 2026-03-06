@@ -9,7 +9,7 @@ class AssessmentScopeParametersResponse {
 
   /// Creates a new [AssessmentScopeParametersResponse].
   /// [serverGroupId] Gets or sets the server group id.
-  AssessmentScopeParametersResponse({
+  const AssessmentScopeParametersResponse({
     this.serverGroupId,
   });
 

@@ -137,7 +137,7 @@ class WorkforcePoolProviderState {
   /// [scimUsage] Agentspace only. Specifies whether the workforce identity pool
   /// [state] The current state of the provider.
   /// [workforcePoolId] The ID to use for the pool, which becomes the final component of the resource name.
-  WorkforcePoolProviderState({
+  const WorkforcePoolProviderState({
     this.attributeCondition,
     this.attributeMapping,
     this.description,

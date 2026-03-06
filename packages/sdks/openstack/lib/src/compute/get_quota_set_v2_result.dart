@@ -56,7 +56,7 @@ class GetQuotaSetV2Result {
   /// [securityGroups] The number of allowed security groups. Available until version 2.35.
   /// [serverGroupMembers] The number of allowed members for each server group.
   /// [serverGroups] The number of allowed server groups.
-  GetQuotaSetV2Result({
+  const GetQuotaSetV2Result({
     required this.cores,
     required this.fixedIps,
     required this.floatingIps,

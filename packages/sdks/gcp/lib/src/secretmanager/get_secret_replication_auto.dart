@@ -11,7 +11,7 @@ class GetSecretReplicationAuto {
 
   /// Creates a new [GetSecretReplicationAuto].
   /// [customerManagedEncryptions] The customer-managed encryption configuration of the Secret.
-  GetSecretReplicationAuto({
+  const GetSecretReplicationAuto({
     required this.customerManagedEncryptions,
   });
 

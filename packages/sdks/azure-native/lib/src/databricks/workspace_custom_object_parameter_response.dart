@@ -12,7 +12,7 @@ class WorkspaceCustomObjectParameterResponse {
   /// Creates a new [WorkspaceCustomObjectParameterResponse].
   /// [type] The type of variable that this is
   /// [value] The value which should be used for this field.
-  WorkspaceCustomObjectParameterResponse({
+  const WorkspaceCustomObjectParameterResponse({
     required this.type,
     required this.value,
   });

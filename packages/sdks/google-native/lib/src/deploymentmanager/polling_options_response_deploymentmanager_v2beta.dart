@@ -21,7 +21,7 @@ class PollingOptionsResponseDeploymentmanagerV2beta {
   /// [finishCondition] JsonPath expression that determines if the request is completed.
   /// [pollingLink] JsonPath expression that evaluates to string, it indicates where to poll.
   /// [targetLink] JsonPath expression, after polling is completed, indicates where to fetch the resource.
-  PollingOptionsResponseDeploymentmanagerV2beta({
+  const PollingOptionsResponseDeploymentmanagerV2beta({
     required this.diagnostics,
     required this.failCondition,
     required this.finishCondition,

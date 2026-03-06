@@ -8,7 +8,7 @@ class ByProductsResponse {
 
   /// Creates a new [ByProductsResponse].
   /// [customValues] Required.
-  ByProductsResponse({
+  const ByProductsResponse({
     required this.customValues,
   });
 

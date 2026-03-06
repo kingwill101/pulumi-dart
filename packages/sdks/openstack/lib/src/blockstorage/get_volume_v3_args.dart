@@ -31,7 +31,7 @@ class GetVolumeV3Args {
   /// [region] The region in which to obtain the V3 Block Storage
   /// [status] The status of the volume.
   /// [volumeType] The type of the volume.
-  GetVolumeV3Args({
+  const GetVolumeV3Args({
     this.bootable,
     this.host,
     this.metadata,

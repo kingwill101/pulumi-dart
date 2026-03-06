@@ -12,7 +12,7 @@ class ReconciliationPolicy {
   /// Creates a new [ReconciliationPolicy].
   /// [interval] Policy interval.
   /// [type] Policy type
-  ReconciliationPolicy({
+  const ReconciliationPolicy({
     this.interval,
     required this.type,
   });

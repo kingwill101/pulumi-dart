@@ -22,7 +22,7 @@ class GetNamedQueryResult {
   /// [querystring] Required.
   /// [region] Required.
   /// [workgroup] Optional.
-  GetNamedQueryResult({
+  const GetNamedQueryResult({
     required this.database,
     required this.description,
     required this.id,

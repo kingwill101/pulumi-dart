@@ -9,7 +9,7 @@ class IpFamilyEnumValue {
 
   /// Creates a new [IpFamilyEnumValue].
   /// [value] Property value
-  IpFamilyEnumValue({
+  const IpFamilyEnumValue({
     this.value,
   });
 

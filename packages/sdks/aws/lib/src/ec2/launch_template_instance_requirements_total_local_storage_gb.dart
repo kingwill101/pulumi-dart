@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsTotalLocalStorageGb {
   /// Creates a new [LaunchTemplateInstanceRequirementsTotalLocalStorageGb].
   /// [max] Maximum. May be a decimal number, e.g. `0.5`.
   /// [min] Minimum. May be a decimal number, e.g. `0.5`.
-  LaunchTemplateInstanceRequirementsTotalLocalStorageGb({
+  const LaunchTemplateInstanceRequirementsTotalLocalStorageGb({
     this.max,
     this.min,
   });

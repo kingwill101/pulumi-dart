@@ -13,7 +13,7 @@ class MachineReferenceWithHints {
   /// Creates a new [MachineReferenceWithHints].
   /// [id] Resource URI.
   /// [kind] Specifies the sub-class of the reference.
-  MachineReferenceWithHints({
+  const MachineReferenceWithHints({
     required this.id,
     required this.kind,
   });

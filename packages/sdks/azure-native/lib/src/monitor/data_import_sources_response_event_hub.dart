@@ -16,7 +16,7 @@ class DataImportSourcesResponseEventHub {
   /// [consumerGroup] Event Hub consumer group name
   /// [name] A friendly name for the data source.
   /// [stream] The stream to collect from EventHub
-  DataImportSourcesResponseEventHub({
+  const DataImportSourcesResponseEventHub({
     this.consumerGroup,
     this.name,
     this.stream,

@@ -12,7 +12,7 @@ class OrganizationDelegatedAdminAccountArgs {
 
   /// Creates a new [OrganizationDelegatedAdminAccountArgs].
   /// [accountId] An organization member account ID that you want to designate as a delegated administrator.
-  OrganizationDelegatedAdminAccountArgs({
+  const OrganizationDelegatedAdminAccountArgs({
     required this.accountId,
   });
 

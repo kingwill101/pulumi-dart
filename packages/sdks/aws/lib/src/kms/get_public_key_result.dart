@@ -35,7 +35,7 @@ class GetPublicKeyResult {
   /// [publicKeyPem] Exported public key. The value is Privacy Enhanced Mail (PEM) encoded.
   /// [region] Required.
   /// [signingAlgorithms] Signing algorithms that AWS KMS supports for this key. Only set when the `key_usage` of the public key is `SIGN_VERIFY`.
-  GetPublicKeyResult({
+  const GetPublicKeyResult({
     required this.arn,
     required this.customerMasterKeySpec,
     required this.encryptionAlgorithms,

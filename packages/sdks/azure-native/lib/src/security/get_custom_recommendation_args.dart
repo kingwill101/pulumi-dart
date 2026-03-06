@@ -15,7 +15,7 @@ class GetCustomRecommendationArgs {
   /// Creates a new [GetCustomRecommendationArgs].
   /// [customRecommendationName] Name of the Custom Recommendation.
   /// [scope] The scope of the custom recommendation. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
-  GetCustomRecommendationArgs({
+  const GetCustomRecommendationArgs({
     required this.customRecommendationName,
     required this.scope,
   });

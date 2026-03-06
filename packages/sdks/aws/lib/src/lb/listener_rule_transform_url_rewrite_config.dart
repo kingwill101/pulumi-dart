@@ -9,7 +9,7 @@ class ListenerRuleTransformUrlRewriteConfig {
 
   /// Creates a new [ListenerRuleTransformUrlRewriteConfig].
   /// [rewrite] Block for URL rewrite configuration. Only one block is accepted. See Rewrite Blocks below.
-  ListenerRuleTransformUrlRewriteConfig({
+  const ListenerRuleTransformUrlRewriteConfig({
     this.rewrite,
   });
 

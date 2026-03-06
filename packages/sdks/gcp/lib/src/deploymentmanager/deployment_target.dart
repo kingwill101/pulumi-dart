@@ -17,7 +17,7 @@ class DeploymentTarget {
   /// Creates a new [DeploymentTarget].
   /// [config] The root configuration file to use for this deployment.
   /// [imports] Specifies import files for this configuration. This can be
-  DeploymentTarget({
+  const DeploymentTarget({
     required this.config,
     this.imports,
   });

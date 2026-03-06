@@ -12,7 +12,7 @@ class StaticRoutesConfigResponse {
   /// Creates a new [StaticRoutesConfigResponse].
   /// [propagateStaticRoutes] Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
   /// [vnetLocalRouteOverrideCriteria] Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
-  StaticRoutesConfigResponse({
+  const StaticRoutesConfigResponse({
     required this.propagateStaticRoutes,
     this.vnetLocalRouteOverrideCriteria,
   });

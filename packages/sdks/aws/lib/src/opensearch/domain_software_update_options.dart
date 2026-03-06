@@ -8,7 +8,7 @@ class DomainSoftwareUpdateOptions {
 
   /// Creates a new [DomainSoftwareUpdateOptions].
   /// [autoSoftwareUpdateEnabled] Whether automatic service software updates are enabled for the domain. Defaults to `false`.
-  DomainSoftwareUpdateOptions({
+  const DomainSoftwareUpdateOptions({
     this.autoSoftwareUpdateEnabled,
   });
 

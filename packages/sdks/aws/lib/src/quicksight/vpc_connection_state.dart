@@ -47,7 +47,7 @@ class VpcConnectionState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcConnectionId] The ID of the VPC connection.
-  VpcConnectionState({
+  const VpcConnectionState({
     this.arn,
     this.availabilityStatus,
     this.awsAccountId,

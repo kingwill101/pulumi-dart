@@ -35,7 +35,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication {
   /// [oauthConfigs] (Output)
   /// [serviceAccountAuthConfigs] (Output)
   /// [serviceAgentIdTokenAuthConfigs] (Output)
-  AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication({
+  const AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication({
     this.apiKeyConfigs,
     this.bearerTokenConfigs,
     this.oauthConfigs,

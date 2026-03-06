@@ -42,7 +42,7 @@ class InvoiceUnitState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [taxInheritanceDisabled] Whether tax inheritance is disabled for this invoice unit.
   /// [timeouts] Optional.
-  InvoiceUnitState({
+  const InvoiceUnitState({
     this.arn,
     this.description,
     this.invoiceReceiver,

@@ -28,7 +28,7 @@ class InTotoStatementResponseContaineranalysisV1alpha1 {
   /// [slsaProvenanceZeroTwo] SLSA 0.2 provenance.
   /// [subject] subject is the subjects of the intoto statement
   /// [type] Always "https://in-toto.io/Statement/v0.1".
-  InTotoStatementResponseContaineranalysisV1alpha1({
+  const InTotoStatementResponseContaineranalysisV1alpha1({
     required this.predicateType,
     required this.provenance,
     required this.slsaProvenance,

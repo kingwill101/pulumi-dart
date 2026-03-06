@@ -12,7 +12,7 @@ class OSPolicyResourceRepositoryResourceGooRepositoryResponse {
   /// Creates a new [OSPolicyResourceRepositoryResourceGooRepositoryResponse].
   /// [name] The name of the repository.
   /// [url] The url of the repository.
-  OSPolicyResourceRepositoryResourceGooRepositoryResponse({
+  const OSPolicyResourceRepositoryResourceGooRepositoryResponse({
     required this.name,
     required this.url,
   });

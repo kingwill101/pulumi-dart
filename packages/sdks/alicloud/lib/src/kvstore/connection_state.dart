@@ -18,7 +18,7 @@ class ConnectionState {
   /// [connectionStringPrefix] The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
   /// [instanceId] The ID of the instance.
   /// [port] The service port number of the instance.
-  ConnectionState({
+  const ConnectionState({
     this.connectionString,
     this.connectionStringPrefix,
     this.instanceId,

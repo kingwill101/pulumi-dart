@@ -29,7 +29,7 @@ class GetDbNodesDbNodeProperty {
   /// [ocpuCount] Output only
   /// [state] Output only
   /// [totalCpuCoreCount] Output only
-  GetDbNodesDbNodeProperty({
+  const GetDbNodesDbNodeProperty({
     required this.dbNodeStorageSizeGb,
     required this.dbServerOcid,
     required this.hostname,

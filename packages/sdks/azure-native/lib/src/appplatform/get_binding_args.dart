@@ -21,7 +21,7 @@ class GetBindingArgs {
   /// [bindingName] The name of the Binding resource.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetBindingArgs({
+  const GetBindingArgs({
     required this.appName,
     required this.bindingName,
     required this.resourceGroupName,

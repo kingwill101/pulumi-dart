@@ -12,7 +12,7 @@ class DataCollectionEndpointResponseMetadata {
   /// Creates a new [DataCollectionEndpointResponseMetadata].
   /// [provisionedBy] Azure offering managing this resource on-behalf-of customer.
   /// [provisionedByResourceId] Resource Id of azure offering managing this resource on-behalf-of customer.
-  DataCollectionEndpointResponseMetadata({
+  const DataCollectionEndpointResponseMetadata({
     required this.provisionedBy,
     required this.provisionedByResourceId,
   });

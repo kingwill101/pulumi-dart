@@ -43,7 +43,7 @@ class GetOrganizationDiscoveryConfigResult {
   /// [status] A status for this configuration.
   /// [targets] Target to match against for determining what to scan and how frequently.
   /// [updateTime] The last update timestamp of a DiscoveryConfig.
-  GetOrganizationDiscoveryConfigResult({
+  const GetOrganizationDiscoveryConfigResult({
     required this.actions,
     required this.createTime,
     required this.displayName,

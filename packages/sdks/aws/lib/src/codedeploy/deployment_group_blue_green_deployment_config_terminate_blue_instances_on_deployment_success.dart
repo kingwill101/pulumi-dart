@@ -13,7 +13,7 @@ class DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeployment
   /// Creates a new [DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess].
   /// [action] The action to take on instances in the original environment after a successful blue/green deployment.
   /// [terminationWaitTimeInMinutes] The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.
-  DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess({
+  const DeploymentGroupBlueGreenDeploymentConfigTerminateBlueInstancesOnDeploymentSuccess({
     this.action,
     this.terminationWaitTimeInMinutes,
   });

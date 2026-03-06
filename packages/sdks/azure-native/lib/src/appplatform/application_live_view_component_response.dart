@@ -17,7 +17,7 @@ class ApplicationLiveViewComponentResponse {
   /// [instances] Collection of instances belong to Application Live View.
   /// [name] Name of the component.
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
-  ApplicationLiveViewComponentResponse({
+  const ApplicationLiveViewComponentResponse({
     required this.instances,
     required this.name,
     required this.resourceRequests,

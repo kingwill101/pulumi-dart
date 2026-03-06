@@ -7,7 +7,7 @@ class ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins {
 
   /// Creates a new [ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins].
   /// [items] Optional.
-  ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins({
+  const ResponseHeadersPolicyCorsConfigAccessControlAllowOrigins({
     this.items,
   });
 

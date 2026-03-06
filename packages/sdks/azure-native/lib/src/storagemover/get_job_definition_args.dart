@@ -21,7 +21,7 @@ class GetJobDefinitionArgs {
   /// [projectName] The name of the Project resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
-  GetJobDefinitionArgs({
+  const GetJobDefinitionArgs({
     required this.jobDefinitionName,
     required this.projectName,
     required this.resourceGroupName,

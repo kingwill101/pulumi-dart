@@ -17,7 +17,7 @@ class NamespaceAssetStatusStreamResponse {
   /// [error] Object to transfer and persist errors that originate from the edge.
   /// [messageSchemaReference] The message schema reference object.
   /// [name] The name of the stream. Must be unique within the status.streams array. This name is used to correlate between the spec and status event information.
-  NamespaceAssetStatusStreamResponse({
+  const NamespaceAssetStatusStreamResponse({
     required this.error,
     required this.messageSchemaReference,
     required this.name,

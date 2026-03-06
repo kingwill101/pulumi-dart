@@ -11,7 +11,7 @@ class ListSubscriptionSecretsResult {
   /// Creates a new [ListSubscriptionSecretsResult].
   /// [primaryKey] Subscription primary key.
   /// [secondaryKey] Subscription secondary key.
-  ListSubscriptionSecretsResult({
+  const ListSubscriptionSecretsResult({
     this.primaryKey,
     this.secondaryKey,
   });

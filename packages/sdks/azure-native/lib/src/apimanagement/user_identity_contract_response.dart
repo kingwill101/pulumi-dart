@@ -12,7 +12,7 @@ class UserIdentityContractResponse {
   /// Creates a new [UserIdentityContractResponse].
   /// [id] Identifier value within provider.
   /// [provider] Identity provider name.
-  UserIdentityContractResponse({
+  const UserIdentityContractResponse({
     this.id,
     this.provider,
   });

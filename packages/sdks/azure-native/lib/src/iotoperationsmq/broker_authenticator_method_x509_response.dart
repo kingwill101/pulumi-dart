@@ -13,7 +13,7 @@ class BrokerAuthenticatorMethodX509Response {
   /// Creates a new [BrokerAuthenticatorMethodX509Response].
   /// [attributes] K8S Secret name to mount for username and password.
   /// [trustedClientCaCertConfigMap] Trusted client ca cert config map.
-  BrokerAuthenticatorMethodX509Response({
+  const BrokerAuthenticatorMethodX509Response({
     this.attributes,
     this.trustedClientCaCertConfigMap,
   });

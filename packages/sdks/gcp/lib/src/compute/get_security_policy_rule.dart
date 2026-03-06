@@ -37,7 +37,7 @@ class GetSecurityPolicyRule {
   /// [priority] An unique positive integer indicating the priority of evaluation for a rule. Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
   /// [rateLimitOptions] Rate limit threshold for this security policy. Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   /// [redirectOptions] Parameters defining the redirect action. Cannot be specified for any other actions.
-  GetSecurityPolicyRule({
+  const GetSecurityPolicyRule({
     required this.action,
     required this.description,
     required this.headerActions,

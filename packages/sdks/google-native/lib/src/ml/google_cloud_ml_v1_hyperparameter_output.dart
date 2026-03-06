@@ -29,7 +29,7 @@ class GoogleCloudMlV1HyperparameterOutput {
   /// [isTrialStoppedEarly] True if the trial is stopped early.
   /// [trialId] The trial id for these results.
   /// [webAccessUris] URIs for accessing [interactive shells](https://cloud.google.com/ai-platform/training/docs/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a hyperparameter tuning job and the job's training_input.enable_web_access is `true`. The keys are names of each node in the training job; for example, `master-replica-0` for the master node, `worker-replica-0` for the first worker, and `ps-replica-0` for the first parameter server. The values are the URIs for each node's interactive shell.
-  GoogleCloudMlV1HyperparameterOutput({
+  const GoogleCloudMlV1HyperparameterOutput({
     this.allMetrics,
     this.builtInAlgorithmOutput,
     this.finalMetric,

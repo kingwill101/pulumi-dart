@@ -22,7 +22,7 @@ class JobArgs {
   /// [jobName] The job name.
   /// [properties] Gets or sets the job properties.
   /// [resourceGroupName] The resource group name.
-  JobArgs({
+  const JobArgs({
     required this.jobCollectionName,
     this.jobName,
     this.properties,

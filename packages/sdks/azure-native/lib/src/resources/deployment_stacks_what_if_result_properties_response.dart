@@ -62,7 +62,7 @@ class DeploymentStacksWhatIfResultPropertiesResponse {
   /// [provisioningState] State of the deployment stack.
   /// [retentionInterval] The interval to persist the deployment stack what-if result in ISO 8601 format.
   /// [validationLevel] The validation level of the deployment stack
-  DeploymentStacksWhatIfResultPropertiesResponse({
+  const DeploymentStacksWhatIfResultPropertiesResponse({
     required this.actionOnUnmanage,
     required this.changes,
     required this.correlationId,

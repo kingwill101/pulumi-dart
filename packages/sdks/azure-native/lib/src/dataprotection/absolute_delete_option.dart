@@ -13,7 +13,7 @@ class AbsoluteDeleteOption {
   /// Creates a new [AbsoluteDeleteOption].
   /// [duration] Duration of deletion after given timespan
   /// [objectType] Type of the specific object - used for deserializing
-  AbsoluteDeleteOption({
+  const AbsoluteDeleteOption({
     required this.duration,
     required this.objectType,
   });

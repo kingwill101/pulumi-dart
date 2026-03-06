@@ -20,7 +20,7 @@ class RegistryEndpointPropertiesResponse {
   /// [host] The Container Registry endpoint hostname.
   /// [provisioningState] The status of the last operation.
   /// [trustSettings] Trust settings for the registry endpoint
-  RegistryEndpointPropertiesResponse({
+  const RegistryEndpointPropertiesResponse({
     required this.authentication,
     required this.host,
     required this.provisioningState,

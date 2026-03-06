@@ -8,7 +8,7 @@ class JobTemplateConfigMuxStreamSegmentSettings {
 
   /// Creates a new [JobTemplateConfigMuxStreamSegmentSettings].
   /// [segmentDuration] Duration of the segments in seconds. The default is `6.0s`.
-  JobTemplateConfigMuxStreamSegmentSettings({
+  const JobTemplateConfigMuxStreamSegmentSettings({
     this.segmentDuration,
   });
 

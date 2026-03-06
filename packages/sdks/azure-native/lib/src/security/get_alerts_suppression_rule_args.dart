@@ -12,7 +12,7 @@ class GetAlertsSuppressionRuleArgs {
 
   /// Creates a new [GetAlertsSuppressionRuleArgs].
   /// [alertsSuppressionRuleName] The unique name of the suppression alert rule
-  GetAlertsSuppressionRuleArgs({
+  const GetAlertsSuppressionRuleArgs({
     required this.alertsSuppressionRuleName,
   });
 

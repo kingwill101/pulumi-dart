@@ -21,7 +21,7 @@ class PrivateZoneArgs {
   /// [privateZoneName] The name of the Private DNS zone (without a terminating dot).
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PrivateZoneArgs({
+  const PrivateZoneArgs({
     this.location,
     this.privateZoneName,
     required this.resourceGroupName,

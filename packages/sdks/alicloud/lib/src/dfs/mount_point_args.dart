@@ -33,7 +33,7 @@ class MountPointArgs {
   /// [status] Mount point status. Value: Inactive: Disable mount points Active: Activate the mount point.
   /// [vpcId] The ID of the VPC. Specifies the VPC environment to which the mount point belongs.
   /// [vswitchId] VSwitch ID, which specifies the VSwitch resource used to create the mount point.
-  MountPointArgs({
+  const MountPointArgs({
     required this.accessGroupId,
     this.aliasPrefix,
     this.description,

@@ -38,7 +38,7 @@ class FirewallVpcFirewallState {
   /// [status] The status of the resource. Valid values:
   /// [vpcFirewallId] The ID of the VPC firewall instance.
   /// [vpcFirewallName] The name of the VPC firewall instance.
-  FirewallVpcFirewallState({
+  const FirewallVpcFirewallState({
     this.bandwidth,
     this.connectType,
     this.lang,

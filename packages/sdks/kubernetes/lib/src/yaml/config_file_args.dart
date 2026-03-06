@@ -18,7 +18,7 @@ class ConfigFileArgs {
   /// [file] Path or URL to a Kubernetes manifest file. File must exist.
   /// [resourcePrefix] A prefix for the auto-generated resource names. Defaults to the name of the ConfigFile. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [skipAwait] Indicates that child resources should skip the await logic.
-  ConfigFileArgs({
+  const ConfigFileArgs({
     required this.file,
     this.resourcePrefix,
     this.skipAwait,

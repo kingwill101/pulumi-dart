@@ -23,7 +23,7 @@ class ExpressRouteCircuitPeeringIpv6 {
   /// [primaryPeerAddressPrefix] A subnet for the primary link.
   /// [routeFilterId] The ID of the Route Filter. Only available when `peering_type` is set to `MicrosoftPeering`.
   /// [secondaryPeerAddressPrefix] A subnet for the secondary link.
-  ExpressRouteCircuitPeeringIpv6({
+  const ExpressRouteCircuitPeeringIpv6({
     this.enabled,
     this.microsoftPeering,
     required this.primaryPeerAddressPrefix,

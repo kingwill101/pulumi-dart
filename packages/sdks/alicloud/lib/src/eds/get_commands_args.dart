@@ -27,7 +27,7 @@ class GetCommandsArgs {
   /// [ids] A list of Command IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
-  GetCommandsArgs({
+  const GetCommandsArgs({
     this.commandType,
     this.contentEncoding,
     this.desktopId,

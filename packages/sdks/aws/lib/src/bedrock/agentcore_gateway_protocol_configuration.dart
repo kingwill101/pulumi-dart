@@ -9,7 +9,7 @@ class AgentcoreGatewayProtocolConfiguration {
 
   /// Creates a new [AgentcoreGatewayProtocolConfiguration].
   /// [mcp] Model Context Protocol (MCP) configuration block. See `mcp` below.
-  AgentcoreGatewayProtocolConfiguration({
+  const AgentcoreGatewayProtocolConfiguration({
     this.mcp,
   });
 

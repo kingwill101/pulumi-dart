@@ -10,7 +10,7 @@ class QueuedResourceStatusFailedDataErrorResponse {
 
   /// Creates a new [QueuedResourceStatusFailedDataErrorResponse].
   /// [errors] The array of errors encountered while processing this operation.
-  QueuedResourceStatusFailedDataErrorResponse({
+  const QueuedResourceStatusFailedDataErrorResponse({
     required this.errors,
   });
 

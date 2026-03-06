@@ -12,7 +12,7 @@ class GetVolumeTypesTypeRegionPrice {
   /// [hourly] Required.
   /// [id] The ID representing the Volume type.
   /// [monthly] Required.
-  GetVolumeTypesTypeRegionPrice({
+  const GetVolumeTypesTypeRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

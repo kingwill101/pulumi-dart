@@ -15,7 +15,7 @@ class GetWebPubSubArgs {
   /// Creates a new [GetWebPubSubArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  GetWebPubSubArgs({
+  const GetWebPubSubArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -45,7 +45,7 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse {
   /// [phraseMatchData] Data specifying a phrase match.
   /// [sentimentData] Data specifying sentiment.
   /// [silenceData] Data specifying silence.
-  GoogleCloudContactcenterinsightsV1CallAnnotationResponse({
+  const GoogleCloudContactcenterinsightsV1CallAnnotationResponse({
     required this.annotationEndBoundary,
     required this.annotationStartBoundary,
     required this.channelTag,

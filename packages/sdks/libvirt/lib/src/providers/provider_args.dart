@@ -12,7 +12,7 @@ class ProviderArgs {
 
   /// Creates a new [ProviderArgs].
   /// [uri] Libvirt connection URI. Defaults to `qemu:///system` if not specified. See [libvirt URI documentation](https://libvirt.org/uri.html) for details.
-  ProviderArgs({
+  const ProviderArgs({
     this.uri,
   });
 

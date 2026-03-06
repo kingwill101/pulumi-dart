@@ -8,7 +8,7 @@ class GetApplicationPublicClient {
 
   /// Creates a new [GetApplicationPublicClient].
   /// [redirectUris] A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-  GetApplicationPublicClient({
+  const GetApplicationPublicClient({
     required this.redirectUris,
   });
 

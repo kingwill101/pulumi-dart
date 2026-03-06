@@ -9,7 +9,7 @@ class WebAclRuleStatementAndStatement {
 
   /// Creates a new [WebAclRuleStatementAndStatement].
   /// [statements] The statements to combine.
-  WebAclRuleStatementAndStatement({
+  const WebAclRuleStatementAndStatement({
     required this.statements,
   });
 

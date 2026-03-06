@@ -32,7 +32,7 @@ class RepositoryGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [repositories] Required. List of repositories to group.
   /// [repositoryGroupId] Required. Id of the Repository Group.
-  RepositoryGroupArgs({
+  const RepositoryGroupArgs({
     required this.codeRepositoryIndex,
     this.labels,
     required this.location,

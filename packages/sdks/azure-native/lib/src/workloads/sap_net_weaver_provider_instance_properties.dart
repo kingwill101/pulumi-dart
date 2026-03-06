@@ -43,7 +43,7 @@ class SapNetWeaverProviderInstanceProperties {
   /// [sapUsername] Gets or sets the SAP user name.
   /// [sslCertificateUri] Gets or sets the blob URI to SSL certificate for the SAP system.
   /// [sslPreference] Gets or sets certificate preference if secure communication is enabled.
-  SapNetWeaverProviderInstanceProperties({
+  const SapNetWeaverProviderInstanceProperties({
     required this.providerType,
     this.sapClientId,
     this.sapHostFileEntries,

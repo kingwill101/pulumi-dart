@@ -8,7 +8,7 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument {
 
   /// Creates a new [RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument({
+  const RuleGroupRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
 

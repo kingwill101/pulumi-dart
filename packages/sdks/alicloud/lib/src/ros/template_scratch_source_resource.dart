@@ -11,7 +11,7 @@ class TemplateScratchSourceResource {
   /// Creates a new [TemplateScratchSourceResource].
   /// [resourceId] The ID of the Source Resource.
   /// [resourceType] The type of the Source resource.
-  TemplateScratchSourceResource({
+  const TemplateScratchSourceResource({
     required this.resourceId,
     required this.resourceType,
   });

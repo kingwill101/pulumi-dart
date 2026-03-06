@@ -19,7 +19,7 @@ class AcceleratorSshSetting {
   /// [hostKey] Public SSH Key of git repository.
   /// [hostKeyAlgorithm] SSH Key algorithm of git repository.
   /// [privateKey] Private SSH Key algorithm of git repository.
-  AcceleratorSshSetting({
+  const AcceleratorSshSetting({
     required this.authType,
     this.hostKey,
     this.hostKeyAlgorithm,

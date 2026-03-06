@@ -21,7 +21,7 @@ class V2QueuedResourceState {
   /// [project] The ID of the project in which the resource belongs.
   /// [tpu] Defines a TPU resource.
   /// [zone] The GCP location for the Queued Resource. If it is not provided, the provider zone is used.
-  V2QueuedResourceState({
+  const V2QueuedResourceState({
     this.name,
     this.project,
     this.tpu,

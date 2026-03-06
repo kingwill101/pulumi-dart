@@ -14,7 +14,7 @@ class VirtualNetworkGatewayVpnClientConfigurationRadiusServer {
   /// [address] The address of the Radius Server.
   /// [score] The score of the Radius Server determines the priority of the server. Possible values are between `1` and `30`.
   /// [secret] The secret that is used to communicate with the Radius Server.
-  VirtualNetworkGatewayVpnClientConfigurationRadiusServer({
+  const VirtualNetworkGatewayVpnClientConfigurationRadiusServer({
     required this.address,
     required this.score,
     required this.secret,

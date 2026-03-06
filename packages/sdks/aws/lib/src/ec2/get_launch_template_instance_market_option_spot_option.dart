@@ -15,7 +15,7 @@ class GetLaunchTemplateInstanceMarketOptionSpotOption {
   /// [maxPrice] Required.
   /// [spotInstanceType] Required.
   /// [validUntil] Required.
-  GetLaunchTemplateInstanceMarketOptionSpotOption({
+  const GetLaunchTemplateInstanceMarketOptionSpotOption({
     required this.blockDurationMinutes,
     required this.instanceInterruptionBehavior,
     required this.maxPrice,

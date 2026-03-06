@@ -17,7 +17,7 @@ class VmUtilizationInfoVmmigrationV1alpha1 {
   /// [utilization] Utilization metrics for this VM.
   /// [vmId] The VM's ID in the source.
   /// [vmwareVmDetails] The description of the VM in a Source of type Vmware.
-  VmUtilizationInfoVmmigrationV1alpha1({
+  const VmUtilizationInfoVmmigrationV1alpha1({
     this.utilization,
     this.vmId,
     this.vmwareVmDetails,

@@ -7,7 +7,7 @@ class NetworkPerformanceConfigResponseComputeBeta {
 
   /// Creates a new [NetworkPerformanceConfigResponseComputeBeta].
   /// [totalEgressBandwidthTier] Required.
-  NetworkPerformanceConfigResponseComputeBeta({
+  const NetworkPerformanceConfigResponseComputeBeta({
     required this.totalEgressBandwidthTier,
   });
 

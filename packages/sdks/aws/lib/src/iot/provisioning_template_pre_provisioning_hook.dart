@@ -11,7 +11,7 @@ class ProvisioningTemplatePreProvisioningHook {
   /// Creates a new [ProvisioningTemplatePreProvisioningHook].
   /// [payloadVersion] The version of the payload that was sent to the target function. The only valid (and the default) payload version is `"2020-04-01"`.
   /// [targetArn] The ARN of the target function.
-  ProvisioningTemplatePreProvisioningHook({
+  const ProvisioningTemplatePreProvisioningHook({
     this.payloadVersion,
     required this.targetArn,
   });

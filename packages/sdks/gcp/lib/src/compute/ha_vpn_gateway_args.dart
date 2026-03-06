@@ -54,7 +54,7 @@ class HaVpnGatewayArgs {
   /// [region] The region this gateway should sit in.
   /// [stackType] The stack type for this VPN gateway to identify the IP protocols that are enabled.
   /// [vpnInterfaces] A list of interfaces on this VPN gateway.
-  HaVpnGatewayArgs({
+  const HaVpnGatewayArgs({
     this.description,
     this.gatewayIpVersion,
     this.labels,

@@ -12,7 +12,7 @@ class TermTypeDetailsResponse {
   /// Creates a new [TermTypeDetailsResponse].
   /// [termType] Term Commitment Type
   /// [termTypeDuration] Duration for the term type.
-  TermTypeDetailsResponse({
+  const TermTypeDetailsResponse({
     required this.termType,
     required this.termTypeDuration,
   });

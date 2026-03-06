@@ -16,7 +16,7 @@ class AliasArgs {
   /// Creates a new [AliasArgs].
   /// [aliasName] AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
   /// [properties] Put alias request properties.
-  AliasArgs({
+  const AliasArgs({
     this.aliasName,
     this.properties,
   });

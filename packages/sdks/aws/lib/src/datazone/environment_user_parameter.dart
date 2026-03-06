@@ -11,7 +11,7 @@ class EnvironmentUserParameter {
   /// Creates a new [EnvironmentUserParameter].
   /// [name] The name of an environment profile parameter.
   /// [value] The value of an environment profile parameter.
-  EnvironmentUserParameter({
+  const EnvironmentUserParameter({
     this.name,
     this.value,
   });

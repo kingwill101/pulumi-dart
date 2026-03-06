@@ -30,7 +30,7 @@ class GetChildInstanceRouteEntryToAttachmentsResult {
   /// [outputFile] Optional.
   /// [serviceType] ServiceType
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
-  GetChildInstanceRouteEntryToAttachmentsResult({
+  const GetChildInstanceRouteEntryToAttachmentsResult({
     required this.attachments,
     this.cenId,
     required this.childInstanceRouteTableId,

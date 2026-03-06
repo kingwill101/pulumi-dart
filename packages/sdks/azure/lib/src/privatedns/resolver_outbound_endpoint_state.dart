@@ -21,7 +21,7 @@ class ResolverOutboundEndpointState {
   /// [privateDnsResolverId] Specifies the ID of the Private DNS Resolver Outbound Endpoint. Changing this forces a new Private DNS Resolver Outbound Endpoint to be created.
   /// [subnetId] The ID of the Subnet that is linked to the Private DNS Resolver Outbound Endpoint. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Private DNS Resolver Outbound Endpoint.
-  ResolverOutboundEndpointState({
+  const ResolverOutboundEndpointState({
     this.location,
     this.name,
     this.privateDnsResolverId,

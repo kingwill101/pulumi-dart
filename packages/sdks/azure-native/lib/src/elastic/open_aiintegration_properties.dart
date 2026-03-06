@@ -15,7 +15,7 @@ class OpenAIIntegrationProperties {
   /// [key] Value of API key for Open AI resource
   /// [openAIResourceEndpoint] The API endpoint for Open AI resource
   /// [openAIResourceId] The resource name of Open AI resource
-  OpenAIIntegrationProperties({
+  const OpenAIIntegrationProperties({
     this.key,
     this.openAIResourceEndpoint,
     this.openAIResourceId,

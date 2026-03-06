@@ -9,7 +9,7 @@ class DatasetFolder {
 
   /// Creates a new [DatasetFolder].
   /// [name] The name of the folder that this Dataset is in.
-  DatasetFolder({
+  const DatasetFolder({
     this.name,
   });
 

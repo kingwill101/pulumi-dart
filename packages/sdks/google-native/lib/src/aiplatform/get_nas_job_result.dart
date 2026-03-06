@@ -48,7 +48,7 @@ class GetNasJobResult {
   /// [startTime] Time when the NasJob for the first time entered the `JOB_STATE_RUNNING` state.
   /// [state] The detailed state of the job.
   /// [updateTime] Time when the NasJob was most recently updated.
-  GetNasJobResult({
+  const GetNasJobResult({
     required this.createTime,
     required this.displayName,
     required this.enableRestrictedImageTraining,

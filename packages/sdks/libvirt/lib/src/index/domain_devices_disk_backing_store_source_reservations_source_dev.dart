@@ -12,7 +12,7 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourceDev {
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.
   /// [secLabels] Configures the security label settings for the device source in the EGD backend.
-  DomainDevicesDiskBackingStoreSourceReservationsSourceDev({
+  const DomainDevicesDiskBackingStoreSourceReservationsSourceDev({
     required this.path,
     this.secLabels,
   });

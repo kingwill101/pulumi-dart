@@ -50,7 +50,7 @@ class FileShareArgs {
   /// [shareName] The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
   /// [shareQuota] The provisioned size of the share, in gibibytes. Must be greater than 0, and less than or equal to 5TB (5120). For Large File Shares, the maximum size is 102400. For file shares created under Files Provisioned v2 account type, please refer to the GetFileServiceUsage API response for the minimum and maximum allowed provisioned storage size.
   /// [signedIdentifiers] List of stored access policies specified on the share.
-  FileShareArgs({
+  const FileShareArgs({
     this.accessTier,
     required this.accountName,
     this.enabledProtocols,

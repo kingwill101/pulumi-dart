@@ -9,7 +9,7 @@ class GetDataSetPhysicalTableMapCustomSqlColumn {
   /// Creates a new [GetDataSetPhysicalTableMapCustomSqlColumn].
   /// [name] Required.
   /// [type] Required.
-  GetDataSetPhysicalTableMapCustomSqlColumn({
+  const GetDataSetPhysicalTableMapCustomSqlColumn({
     required this.name,
     required this.type,
   });

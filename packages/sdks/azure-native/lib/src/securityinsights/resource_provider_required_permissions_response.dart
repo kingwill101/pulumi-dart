@@ -19,7 +19,7 @@ class ResourceProviderRequiredPermissionsResponse {
   /// [delete] Gets or sets a value indicating whether the permission is delete action (DELETE).
   /// [read] Gets or sets a value indicating whether the permission is read action (GET).
   /// [write] Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
-  ResourceProviderRequiredPermissionsResponse({
+  const ResourceProviderRequiredPermissionsResponse({
     this.action,
     this.delete,
     this.read,

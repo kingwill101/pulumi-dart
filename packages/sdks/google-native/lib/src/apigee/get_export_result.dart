@@ -32,7 +32,7 @@ class GetExportResult {
   /// [self] Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   /// [state] Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
   /// [updated] Time the export job was last updated.
-  GetExportResult({
+  const GetExportResult({
     required this.created,
     required this.datastoreName,
     required this.description,

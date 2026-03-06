@@ -36,7 +36,7 @@ class ComputeArgs {
   /// [sku] The sku of the workspace.
   /// [tags] Contains resource tags defined as key/value pairs.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ComputeArgs({
+  const ComputeArgs({
     this.computeName,
     this.identity,
     this.location,

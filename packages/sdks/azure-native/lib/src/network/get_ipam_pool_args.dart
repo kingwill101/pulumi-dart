@@ -18,7 +18,7 @@ class GetIpamPoolArgs {
   /// [networkManagerName] The name of the network manager.
   /// [poolName] Pool resource name.
   /// [resourceGroupName] The name of the resource group.
-  GetIpamPoolArgs({
+  const GetIpamPoolArgs({
     required this.networkManagerName,
     required this.poolName,
     required this.resourceGroupName,

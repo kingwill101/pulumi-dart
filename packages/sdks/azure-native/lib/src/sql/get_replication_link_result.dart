@@ -53,7 +53,7 @@ class GetReplicationLinkResult {
   /// [role] Local replication role.
   /// [startTime] Time at which the link was created.
   /// [type] Resource type.
-  GetReplicationLinkResult({
+  const GetReplicationLinkResult({
     required this.azureApiVersion,
     required this.id,
     required this.isTerminationAllowed,

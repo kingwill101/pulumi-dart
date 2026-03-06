@@ -9,7 +9,7 @@ class StorageResponse {
 
   /// Creates a new [StorageResponse].
   /// [configurationMode] By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
-  StorageResponse({
+  const StorageResponse({
     this.configurationMode,
   });
 

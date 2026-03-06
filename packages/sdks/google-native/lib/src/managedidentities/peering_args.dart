@@ -23,7 +23,7 @@ class PeeringArgs {
   /// [labels] Optional. Resource labels to represent user-provided metadata.
   /// [peeringId] Required. Peering Id, unique name to identify peering. It should follow the regex format "^(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)$"
   /// [project] Optional.
-  PeeringArgs({
+  const PeeringArgs({
     required this.authorizedNetwork,
     required this.domainResource,
     this.labels,

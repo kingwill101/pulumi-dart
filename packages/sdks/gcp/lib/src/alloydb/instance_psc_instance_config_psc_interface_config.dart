@@ -10,7 +10,7 @@ class InstancePscInstanceConfigPscInterfaceConfig {
 
   /// Creates a new [InstancePscInstanceConfigPscInterfaceConfig].
   /// [networkAttachmentResource] The network attachment resource created in the consumer project to which the PSC interface will be linked.
-  InstancePscInstanceConfigPscInterfaceConfig({
+  const InstancePscInstanceConfigPscInterfaceConfig({
     this.networkAttachmentResource,
   });
 

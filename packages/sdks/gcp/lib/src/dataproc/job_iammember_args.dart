@@ -39,7 +39,7 @@ class JobIAMMemberArgs {
   /// [project] The project in which the job belongs. If it
   /// [region] The region in which the job belongs. If it
   /// [role] The role that should be applied. Only one
-  JobIAMMemberArgs({
+  const JobIAMMemberArgs({
     this.condition,
     required this.jobId,
     required this.member,

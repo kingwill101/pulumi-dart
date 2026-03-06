@@ -35,7 +35,7 @@ class GetArchifeResult {
   /// [repositoryEndpointPrefix] Optional.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetArchifeResult({
+  const GetArchifeResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -22,7 +22,7 @@ class ListWebAppConnectionStringsSlotResult {
   /// [name] Resource Name.
   /// [properties] Connection strings.
   /// [type] Resource type.
-  ListWebAppConnectionStringsSlotResult({
+  const ListWebAppConnectionStringsSlotResult({
     required this.id,
     this.kind,
     required this.name,

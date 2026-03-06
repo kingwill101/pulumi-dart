@@ -14,7 +14,7 @@ class VirtualMachineScaleSetMigrationInfoResponse {
   /// Creates a new [VirtualMachineScaleSetMigrationInfoResponse].
   /// [defaultVirtualMachineScaleSetInfo] Indicates the target Virtual Machine ScaleSet properties upon triggering a seamless migration without downtime of the VMs via the ConvertToVirtualMachineScaleSet API.
   /// [migrateToVirtualMachineScaleSet] Specifies the Virtual Machine Scale Set that the Availability Set is migrated to.
-  VirtualMachineScaleSetMigrationInfoResponse({
+  const VirtualMachineScaleSetMigrationInfoResponse({
     required this.defaultVirtualMachineScaleSetInfo,
     required this.migrateToVirtualMachineScaleSet,
   });

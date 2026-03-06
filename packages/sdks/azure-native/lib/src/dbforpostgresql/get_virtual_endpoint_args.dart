@@ -18,7 +18,7 @@ class GetVirtualEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   /// [virtualEndpointName] Base name of the virtual endpoints.
-  GetVirtualEndpointArgs({
+  const GetVirtualEndpointArgs({
     required this.resourceGroupName,
     required this.serverName,
     required this.virtualEndpointName,

@@ -9,7 +9,7 @@ class AzureADAuthenticationAsArmPolicy {
 
   /// Creates a new [AzureADAuthenticationAsArmPolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
-  AzureADAuthenticationAsArmPolicy({
+  const AzureADAuthenticationAsArmPolicy({
     this.status,
   });
 

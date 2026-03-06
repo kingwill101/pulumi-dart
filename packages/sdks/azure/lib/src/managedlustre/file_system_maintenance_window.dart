@@ -11,7 +11,7 @@ class FileSystemMaintenanceWindow {
   /// Creates a new [FileSystemMaintenanceWindow].
   /// [dayOfWeek] The day of the week on which the maintenance window will occur. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
   /// [timeOfDayInUtc] The time of day (in UTC) to start the maintenance window.
-  FileSystemMaintenanceWindow({
+  const FileSystemMaintenanceWindow({
     required this.dayOfWeek,
     required this.timeOfDayInUtc,
   });

@@ -23,7 +23,7 @@ class TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn {
   /// [qualifierEncoded] Qualifier of the column. Columns in the parent column family that has this exact qualifier are exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifierString field. Otherwise, a base-64 encoded value must be set to qualifierEncoded. The column field name is the same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as fieldName.
   /// [qualifierString] Qualifier string.
   /// [type] The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive): "BYTES", "STRING", "INTEGER", "FLOAT", "BOOLEAN", "JSON", Default type is "BYTES". 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
-  TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn({
+  const TableExternalDataConfigurationBigtableOptionsColumnFamilyColumn({
     this.encoding,
     this.fieldName,
     this.onlyReadLatest,

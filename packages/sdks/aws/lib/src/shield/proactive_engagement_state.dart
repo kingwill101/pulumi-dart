@@ -13,7 +13,7 @@ class ProactiveEngagementState {
   /// Creates a new [ProactiveEngagementState].
   /// [emergencyContacts] One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
   /// [enabled] Boolean value indicating if Proactive Engagement should be enabled or not.
-  ProactiveEngagementState({
+  const ProactiveEngagementState({
     this.emergencyContacts,
     this.enabled,
   });

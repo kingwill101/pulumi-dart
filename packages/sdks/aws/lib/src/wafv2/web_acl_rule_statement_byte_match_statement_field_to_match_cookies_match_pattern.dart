@@ -12,7 +12,7 @@ class WebAclRuleStatementByteMatchStatementFieldToMatchCookiesMatchPattern {
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  WebAclRuleStatementByteMatchStatementFieldToMatchCookiesMatchPattern({
+  const WebAclRuleStatementByteMatchStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

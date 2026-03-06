@@ -18,7 +18,7 @@ class GetPublicIPPrefixArgs {
   /// [expand] Expands referenced resources.
   /// [publicIpPrefixName] The name of the public IP prefix.
   /// [resourceGroupName] The name of the resource group.
-  GetPublicIPPrefixArgs({
+  const GetPublicIPPrefixArgs({
     this.expand,
     required this.publicIpPrefixName,
     required this.resourceGroupName,

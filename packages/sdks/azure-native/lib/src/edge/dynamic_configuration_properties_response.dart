@@ -18,7 +18,7 @@ class DynamicConfigurationPropertiesResponse {
   /// [dynamicConfigurationModel] Type of dynamic configuration model
   /// [dynamicConfigurationType] Type of dynamic configuration
   /// [provisioningState] Provisioning state of resource
-  DynamicConfigurationPropertiesResponse({
+  const DynamicConfigurationPropertiesResponse({
     required this.currentVersion,
     required this.dynamicConfigurationModel,
     required this.dynamicConfigurationType,

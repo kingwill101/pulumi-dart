@@ -21,7 +21,7 @@ class AllocationResultResourceK8sIoV1alpha2 {
   /// [availableOnNodes] This field will get set by the resource driver after it has allocated the resource to inform the scheduler where it can schedule Pods using the ResourceClaim.
   /// [resourceHandles] ResourceHandles contain the state associated with an allocation that should be maintained throughout the lifetime of a claim. Each ResourceHandle contains data that should be passed to a specific kubelet plugin once it lands on a node. This data is returned by the driver after a successful allocation and is opaque to Kubernetes. Driver documentation may explain to users how to interpret this data if needed.
   /// [shareable] Shareable determines whether the resource supports more than one consumer at a time.
-  AllocationResultResourceK8sIoV1alpha2({
+  const AllocationResultResourceK8sIoV1alpha2({
     this.availableOnNodes,
     this.resourceHandles,
     this.shareable,

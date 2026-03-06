@@ -18,7 +18,7 @@ class VirtualDiskControllerResponse {
   /// [name] The display name of Controller
   /// [subType] dik controller subtype (VMWARE_PARAVIRTUAL, BUS_PARALLEL, LSI_PARALLEL, LSI_SAS)
   /// [type] disk controller type (SCSI)
-  VirtualDiskControllerResponse({
+  const VirtualDiskControllerResponse({
     required this.id,
     required this.name,
     required this.subType,

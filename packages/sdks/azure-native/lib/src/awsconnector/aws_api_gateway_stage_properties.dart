@@ -52,7 +52,7 @@ class AwsApiGatewayStageProperties {
   /// [tags] The collection of tags. Each tag element is associated with a given resource.
   /// [tracingEnabled] Specifies whether active tracing with X-ray is enabled for the Stage.
   /// [variables] A map (string-to-string map) that defines the stage variables, where the variable name is the key and the variable value is the value. Variable names are limited to alphanumeric characters. Values must match the following regular expression: ``[A-Za-z0-9-._~:/?#&=,]+``.
-  AwsApiGatewayStageProperties({
+  const AwsApiGatewayStageProperties({
     this.accessLogSetting,
     this.cacheClusterEnabled,
     this.cacheClusterSize,

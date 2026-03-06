@@ -40,7 +40,7 @@ class DatasetPostgresqlArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset PostgreSQL.
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [tableName] The table name of the Data Factory Dataset PostgreSQL.
-  DatasetPostgresqlArgs({
+  const DatasetPostgresqlArgs({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

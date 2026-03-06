@@ -21,7 +21,7 @@ class NetworkManagerDeploymentState {
   /// [networkManagerId] Specifies the ID of the Network Manager. Changing this forces a new Network Manager Deployment to be created.
   /// [scopeAccess] Specifies the configuration deployment type. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`. Changing this forces a new Network Manager Deployment to be created.
   /// [triggers] A mapping of key values pairs that can be used to keep the deployment up with the Network Manager configurations and rules.
-  NetworkManagerDeploymentState({
+  const NetworkManagerDeploymentState({
     this.configurationIds,
     this.location,
     this.networkManagerId,

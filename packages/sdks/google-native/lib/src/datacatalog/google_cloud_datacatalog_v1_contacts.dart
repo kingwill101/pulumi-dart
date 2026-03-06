@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1Contacts {
 
   /// Creates a new [GoogleCloudDatacatalogV1Contacts].
   /// [people] The list of contact people for the entry.
-  GoogleCloudDatacatalogV1Contacts({
+  const GoogleCloudDatacatalogV1Contacts({
     this.people,
   });
 

@@ -12,7 +12,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfig {
 
   /// Creates a new [FloorsettingFilterConfigSdpSettingsBasicConfig].
   /// [filterEnforcement] Tells whether the Sensitive Data Protection basic config is enabled or
-  FloorsettingFilterConfigSdpSettingsBasicConfig({
+  const FloorsettingFilterConfigSdpSettingsBasicConfig({
     this.filterEnforcement,
   });
 

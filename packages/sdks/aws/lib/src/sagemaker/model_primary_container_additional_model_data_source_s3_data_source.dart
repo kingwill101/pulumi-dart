@@ -18,7 +18,7 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSource {
   /// [modelAccessConfig] Specifies the access configuration file for the ML model. You can explicitly accept the model end-user license agreement (EULA) within the [`model_access_config` configuration block]. See Model Access Config.
   /// [s3DataType] Type of model data to deploy. Allowed values are: `S3Object` and `S3Prefix`.
   /// [s3Uri] The S3 path of model data to deploy.
-  ModelPrimaryContainerAdditionalModelDataSourceS3DataSource({
+  const ModelPrimaryContainerAdditionalModelDataSourceS3DataSource({
     required this.compressionType,
     this.modelAccessConfig,
     required this.s3DataType,

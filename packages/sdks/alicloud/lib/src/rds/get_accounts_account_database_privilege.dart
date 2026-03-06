@@ -14,7 +14,7 @@ class GetAccountsAccountDatabasePrivilege {
   /// [accountPrivilege] The type of permission for the account.
   /// [accountPrivilegeDetail] The specific permissions corresponding to the type of account permissions.
   /// [dbName] Database name.
-  GetAccountsAccountDatabasePrivilege({
+  const GetAccountsAccountDatabasePrivilege({
     required this.accountPrivilege,
     required this.accountPrivilegeDetail,
     required this.dbName,

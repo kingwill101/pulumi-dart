@@ -27,7 +27,7 @@ class GraphQueryArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Graph Query resource.
   /// [tags] Resource tags
-  GraphQueryArgs({
+  const GraphQueryArgs({
     this.description,
     this.location,
     required this.query,

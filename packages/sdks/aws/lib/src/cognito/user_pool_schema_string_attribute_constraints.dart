@@ -11,7 +11,7 @@ class UserPoolSchemaStringAttributeConstraints {
   /// Creates a new [UserPoolSchemaStringAttributeConstraints].
   /// [maxLength] Maximum length of an attribute value of the string type.
   /// [minLength] Minimum length of an attribute value of the string type.
-  UserPoolSchemaStringAttributeConstraints({
+  const UserPoolSchemaStringAttributeConstraints({
     this.maxLength,
     this.minLength,
   });

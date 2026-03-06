@@ -19,7 +19,7 @@ class AccountIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Purview Account. Possible values are `UserAssigned` and `SystemAssigned`.
-  AccountIdentity({
+  const AccountIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

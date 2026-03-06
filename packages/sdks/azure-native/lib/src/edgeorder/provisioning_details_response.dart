@@ -37,7 +37,7 @@ class ProvisioningDetailsResponse {
   /// [serialNumber] Serial Number for the Device.
   /// [uniqueDeviceIdentifier] Unique Identity for a Device.
   /// [vendorName] Vendor Name for the Device , (for 1P devices - Microsoft).
-  ProvisioningDetailsResponse({
+  const ProvisioningDetailsResponse({
     this.autoProvisioningStatus,
     this.devicePresenceVerification,
     this.managementResourceArmId,

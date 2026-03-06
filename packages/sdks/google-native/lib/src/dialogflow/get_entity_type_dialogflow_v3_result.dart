@@ -32,7 +32,7 @@ class GetEntityTypeDialogflowV3Result {
   /// [kind] Indicates the kind of entity type.
   /// [name] The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
   /// [redact] Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
-  GetEntityTypeDialogflowV3Result({
+  const GetEntityTypeDialogflowV3Result({
     required this.autoExpansionMode,
     required this.displayName,
     required this.enableFuzzyExtraction,

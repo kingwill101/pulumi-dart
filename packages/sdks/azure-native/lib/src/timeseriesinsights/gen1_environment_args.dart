@@ -39,7 +39,7 @@ class Gen1EnvironmentArgs {
   /// [sku] The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
   /// [storageLimitExceededBehavior] The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
   /// [tags] Key-value pairs of additional properties for the resource.
-  Gen1EnvironmentArgs({
+  const Gen1EnvironmentArgs({
     required this.dataRetentionTime,
     this.environmentName,
     required this.kind,

@@ -64,7 +64,7 @@ class GetAgentResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uploadLimitSchedule] The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
   /// [uptimeInSeconds] Uptime of the Agent in seconds.
-  GetAgentResult({
+  const GetAgentResult({
     required this.agentStatus,
     required this.agentVersion,
     required this.arcResourceId,

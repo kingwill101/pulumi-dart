@@ -21,7 +21,7 @@ class IfileArgs {
   /// [name] Name of the LTM iFile to be created on BIG-IP.
   /// [partition] Partition where the LTM iFile will be created. Defaults to `Common`.
   /// [subPath] Subdirectory within the partition for organizing iFiles.
-  IfileArgs({
+  const IfileArgs({
     required this.fileName,
     required this.name,
     this.partition,

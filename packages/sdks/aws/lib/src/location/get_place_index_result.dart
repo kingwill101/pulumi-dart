@@ -35,7 +35,7 @@ class GetPlaceIndexResult {
   /// [region] Required.
   /// [tags] Key-value map of resource tags for the place index.
   /// [updateTime] Timestamp for when the place index resource was last updated in ISO 8601 format.
-  GetPlaceIndexResult({
+  const GetPlaceIndexResult({
     required this.createTime,
     required this.dataSource,
     required this.dataSourceConfigurations,

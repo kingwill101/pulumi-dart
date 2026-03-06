@@ -13,7 +13,7 @@ class BotClarificationPrompt {
   /// [maxAttempts] The number of times to prompt the user for information.
   /// [messages] Required.
   /// [responseCard] Optional.
-  BotClarificationPrompt({
+  const BotClarificationPrompt({
     required this.maxAttempts,
     required this.messages,
     this.responseCard,

@@ -21,7 +21,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta {
   /// [ipCidrRange] The IP address range, in CIDR format, represented by this sub public delegated prefix.
   /// [isAddress] Whether the sub prefix is delegated to create Address resources in the delegatee project.
   /// [name] The name of the sub public delegated prefix.
-  PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta({
+  const PublicDelegatedPrefixPublicDelegatedSubPrefixComputeBeta({
     this.delegateeProject,
     this.description,
     this.ipCidrRange,

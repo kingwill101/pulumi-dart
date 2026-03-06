@@ -38,7 +38,7 @@ class UserCredsState {
   /// [securePassword] The plaintext server-generated password for the user creds.
   /// [state] The state of the user creds.
   /// [updateTime] The timestamp at which these user creds were updated.
-  UserCredsState({
+  const UserCredsState({
     this.createTime,
     this.database,
     this.name,

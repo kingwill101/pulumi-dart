@@ -58,7 +58,7 @@ class ContainerCodePackageProperties {
   /// [settings] The settings to set in this container. The setting file path can be fetched from environment variable "Fabric_SettingPath". The path for Windows container is "C:\\secrets". The path for Linux container is "/var/secrets".
   /// [volumeRefs] Volumes to be attached to the container. The lifetime of these volumes is independent of the application's lifetime.
   /// [volumes] Volumes to be attached to the container. The lifetime of these volumes is scoped to the application's lifetime.
-  ContainerCodePackageProperties({
+  const ContainerCodePackageProperties({
     this.commands,
     this.diagnostics,
     this.endpoints,

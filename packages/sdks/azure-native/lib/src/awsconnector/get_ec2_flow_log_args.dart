@@ -15,7 +15,7 @@ class GetEc2FlowLogArgs {
   /// Creates a new [GetEc2FlowLogArgs].
   /// [name] Name of Ec2FlowLog
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2FlowLogArgs({
+  const GetEc2FlowLogArgs({
     required this.name,
     required this.resourceGroupName,
   });

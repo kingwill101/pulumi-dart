@@ -13,7 +13,7 @@ class GetBackendServiceComputeV1Args {
   /// Creates a new [GetBackendServiceComputeV1Args].
   /// [backendService] Required.
   /// [project] Optional.
-  GetBackendServiceComputeV1Args({
+  const GetBackendServiceComputeV1Args({
     required this.backendService,
     this.project,
   });

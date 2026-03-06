@@ -12,7 +12,7 @@ class JobStatusResponse {
   /// Creates a new [JobStatusResponse].
   /// [jobName] Defines the job name.
   /// [jobProgress] Gets or sets the monitoring job percentage.
-  JobStatusResponse({
+  const JobStatusResponse({
     required this.jobName,
     required this.jobProgress,
   });

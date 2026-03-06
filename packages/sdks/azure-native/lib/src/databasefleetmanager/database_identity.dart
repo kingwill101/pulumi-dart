@@ -15,7 +15,7 @@ class DatabaseIdentity {
   /// [clientId] Client Id of the database identity.
   /// [principalId] Principal Id of the database identity.
   /// [resourceId] Resource Id of the database identity.
-  DatabaseIdentity({
+  const DatabaseIdentity({
     this.clientId,
     this.principalId,
     this.resourceId,

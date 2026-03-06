@@ -11,7 +11,7 @@ class NodeTemplateNodeTypeFlexibilityResponseComputeV1 {
   /// [cpus] Required.
   /// [localSsd] Required.
   /// [memory] Required.
-  NodeTemplateNodeTypeFlexibilityResponseComputeV1({
+  const NodeTemplateNodeTypeFlexibilityResponseComputeV1({
     required this.cpus,
     required this.localSsd,
     required this.memory,

@@ -17,7 +17,7 @@ class LinkedServiceAzureDatabricksInstancePool {
   /// [instancePoolId] Identifier of the instance pool within the linked ADB instance.
   /// [maxNumberOfWorkers] The max number of worker nodes. Set this value if you want to enable autoscaling between the `min_number_of_workers` and this value. Omit this value to use a fixed number of workers defined in the `min_number_of_workers` property.
   /// [minNumberOfWorkers] The minimum number of worker nodes. Defaults to `1`.
-  LinkedServiceAzureDatabricksInstancePool({
+  const LinkedServiceAzureDatabricksInstancePool({
     required this.clusterVersion,
     required this.instancePoolId,
     this.maxNumberOfWorkers,

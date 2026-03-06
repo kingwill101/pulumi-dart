@@ -19,7 +19,7 @@ class ConnectionProfile {
   /// [clientSshAccess] The enabled access level for Client Access over SSH.
   /// [webRdpAccess] The enabled access level for Web Access over RDP.
   /// [webSshAccess] The enabled access level for Web Access over SSH.
-  ConnectionProfile({
+  const ConnectionProfile({
     this.clientRdpAccess,
     this.clientSshAccess,
     this.webRdpAccess,

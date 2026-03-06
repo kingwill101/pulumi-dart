@@ -8,7 +8,7 @@ class FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMe
 
   /// Creates a new [FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension].
   /// [value] The string value to use in the custom metric dimension.
-  FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension({
+  const FirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension({
     required this.value,
   });
 

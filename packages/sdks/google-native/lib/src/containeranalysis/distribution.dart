@@ -26,7 +26,7 @@ class Distribution {
   /// [latestVersion] The latest available version of this package in this distribution channel.
   /// [maintainer] A freeform string denoting the maintainer of this package.
   /// [url] The distribution channel-specific homepage for this package.
-  Distribution({
+  const Distribution({
     this.architecture,
     required this.cpeUri,
     this.description,

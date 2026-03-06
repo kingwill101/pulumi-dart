@@ -40,7 +40,7 @@ class DrillTableDatasetResponse {
   /// [table] The table name of the Drill. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  DrillTableDatasetResponse({
+  const DrillTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

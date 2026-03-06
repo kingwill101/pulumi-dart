@@ -40,7 +40,7 @@ class AnalyticsItemArgs {
   /// [scope] Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   /// [scopePath] Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   /// [type] Enum indicating the type of the Analytics item.
-  AnalyticsItemArgs({
+  const AnalyticsItemArgs({
     this.content,
     this.id,
     this.name,

@@ -14,7 +14,7 @@ class StorageTaskAssignmentExecutionContext {
   /// Creates a new [StorageTaskAssignmentExecutionContext].
   /// [target] Execution target of the storage task assignment
   /// [trigger] Execution trigger of the storage task assignment
-  StorageTaskAssignmentExecutionContext({
+  const StorageTaskAssignmentExecutionContext({
     this.target,
     required this.trigger,
   });

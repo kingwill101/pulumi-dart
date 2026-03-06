@@ -19,7 +19,7 @@ class InsightsConfigRuntimeConfigAppHubWorkload {
   /// [criticality] (Output)
   /// [environment] (Output)
   /// [workload] (Output)
-  InsightsConfigRuntimeConfigAppHubWorkload({
+  const InsightsConfigRuntimeConfigAppHubWorkload({
     this.criticality,
     this.environment,
     this.workload,

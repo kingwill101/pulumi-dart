@@ -10,7 +10,7 @@ class DashboardParametersDecimalParameter {
   /// Creates a new [DashboardParametersDecimalParameter].
   /// [name] Display name for the dashboard.
   /// [values] Required.
-  DashboardParametersDecimalParameter({
+  const DashboardParametersDecimalParameter({
     required this.name,
     required this.values,
   });

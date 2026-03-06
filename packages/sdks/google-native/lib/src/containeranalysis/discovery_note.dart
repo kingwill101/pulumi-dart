@@ -10,7 +10,7 @@ class DiscoveryNote {
 
   /// Creates a new [DiscoveryNote].
   /// [analysisKind] Immutable. The kind of analysis that is handled by this discovery.
-  DiscoveryNote({
+  const DiscoveryNote({
     required this.analysisKind,
   });
 

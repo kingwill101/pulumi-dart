@@ -12,7 +12,7 @@ class JWTAuthenticatorValidationRule {
   /// Creates a new [JWTAuthenticatorValidationRule].
   /// [expression] The CEL expression used to validate the claim or attribute.
   /// [message] The validation error message.
-  JWTAuthenticatorValidationRule({
+  const JWTAuthenticatorValidationRule({
     required this.expression,
     this.message,
   });

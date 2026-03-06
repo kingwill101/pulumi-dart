@@ -31,7 +31,7 @@ class GetApplicationInfosResult {
   /// [quotaActionCode] Optional.
   /// [quotaCategory] Optional.
   /// [status] Optional.
-  GetApplicationInfosResult({
+  const GetApplicationInfosResult({
     required this.applications,
     this.dimensions,
     this.enableDetails,

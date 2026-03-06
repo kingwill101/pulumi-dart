@@ -12,7 +12,7 @@ class GkeClusterResponseGkehubV1alpha2 {
   /// Creates a new [GkeClusterResponseGkehubV1alpha2].
   /// [clusterMissing] If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE Control Plane.
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
-  GkeClusterResponseGkehubV1alpha2({
+  const GkeClusterResponseGkehubV1alpha2({
     required this.clusterMissing,
     required this.resourceLink,
   });

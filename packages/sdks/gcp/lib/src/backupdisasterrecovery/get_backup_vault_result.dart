@@ -68,7 +68,7 @@ class GetBackupVaultResult {
   /// [totalStoredBytes] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetBackupVaultResult({
+  const GetBackupVaultResult({
     required this.accessRestriction,
     required this.allowMissing,
     required this.annotations,

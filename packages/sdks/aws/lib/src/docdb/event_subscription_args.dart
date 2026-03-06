@@ -35,7 +35,7 @@ class EventSubscriptionArgs {
   /// [sourceIds] A list of identifiers of the event sources for which events will be returned. If not specified, then all sources are included in the response. If specified, a source_type must also be specified.
   /// [sourceType] The type of source that will be generating the events. Valid options are `db-instance`, `db-cluster`, `db-parameter-group`, `db-security-group`,` db-cluster-snapshot`. If not set, all sources will be subscribed to.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  EventSubscriptionArgs({
+  const EventSubscriptionArgs({
     this.enabled,
     this.eventCategories,
     this.name,

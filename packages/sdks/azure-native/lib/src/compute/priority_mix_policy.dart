@@ -12,7 +12,7 @@ class PriorityMixPolicy {
   /// Creates a new [PriorityMixPolicy].
   /// [baseRegularPriorityCount] The base number of regular priority VMs that will be created in this scale set as it scales out.
   /// [regularPriorityPercentageAboveBase] The percentage of VM instances, after the base regular priority count has been reached, that are expected to use regular priority.
-  PriorityMixPolicy({
+  const PriorityMixPolicy({
     this.baseRegularPriorityCount,
     this.regularPriorityPercentageAboveBase,
   });

@@ -15,7 +15,7 @@ class GetAuthorityArgs {
   /// Creates a new [GetAuthorityArgs].
   /// [authorityName] The ID of the authority
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAuthorityArgs({
+  const GetAuthorityArgs({
     required this.authorityName,
     required this.resourceGroupName,
   });

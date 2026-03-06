@@ -16,7 +16,7 @@ class WorkspaceResourceProperties {
   /// [apiKeyEnabled] Indicator of enablement of the Quantum workspace Api keys.
   /// [providers] List of Providers selected for this Workspace
   /// [storageAccount] ARM Resource Id of the storage account associated with this workspace.
-  WorkspaceResourceProperties({
+  const WorkspaceResourceProperties({
     this.apiKeyEnabled,
     this.providers,
     this.storageAccount,

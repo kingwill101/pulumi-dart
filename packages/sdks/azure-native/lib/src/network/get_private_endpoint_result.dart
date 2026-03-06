@@ -64,7 +64,7 @@ class GetPrivateEndpointResult {
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetPrivateEndpointResult({
+  const GetPrivateEndpointResult({
     this.applicationSecurityGroups,
     required this.azureApiVersion,
     this.customDnsConfigs,

@@ -9,7 +9,7 @@ class DefaultSnatStatus {
 
   /// Creates a new [DefaultSnatStatus].
   /// [disabled] Disables cluster default sNAT rules.
-  DefaultSnatStatus({
+  const DefaultSnatStatus({
     this.disabled,
   });
 

@@ -8,7 +8,7 @@ class GetInstanceManagedBackupSource {
 
   /// Creates a new [GetInstanceManagedBackupSource].
   /// [backup] Example: 'projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}'.
-  GetInstanceManagedBackupSource({
+  const GetInstanceManagedBackupSource({
     required this.backup,
   });
 

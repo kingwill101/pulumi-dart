@@ -26,7 +26,7 @@ class UserArgs {
   /// [path] Path in which to create the user.
   /// [permissionsBoundary] The ARN of the policy that is used to set the permissions boundary for the user.
   /// [tags] Key-value mapping of tags for the IAM user. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  UserArgs({
+  const UserArgs({
     this.forceDestroy,
     this.name,
     this.path,

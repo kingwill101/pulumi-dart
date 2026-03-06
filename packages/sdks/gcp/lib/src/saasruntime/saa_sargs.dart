@@ -39,7 +39,7 @@ class SaaSArgs {
   /// [locations] List of locations that the service is available in. Rollout refers to the
   /// [project] The ID of the project in which the resource belongs.
   /// [saasId] The ID value for the new saas.
-  SaaSArgs({
+  const SaaSArgs({
     this.annotations,
     this.labels,
     required this.location,

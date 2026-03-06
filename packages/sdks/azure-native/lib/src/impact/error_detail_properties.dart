@@ -12,7 +12,7 @@ class ErrorDetailProperties {
   /// Creates a new [ErrorDetailProperties].
   /// [errorCode] ARM Error code associated with the impact.
   /// [errorMessage] ARM Error Message associated with the impact
-  ErrorDetailProperties({
+  const ErrorDetailProperties({
     this.errorCode,
     this.errorMessage,
   });

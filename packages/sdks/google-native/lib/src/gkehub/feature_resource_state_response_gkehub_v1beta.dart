@@ -9,7 +9,7 @@ class FeatureResourceStateResponseGkehubV1beta {
 
   /// Creates a new [FeatureResourceStateResponseGkehubV1beta].
   /// [state] The current state of the Feature resource in the Hub API.
-  FeatureResourceStateResponseGkehubV1beta({
+  const FeatureResourceStateResponseGkehubV1beta({
     required this.state,
   });
 

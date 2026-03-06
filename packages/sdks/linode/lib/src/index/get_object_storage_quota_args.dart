@@ -12,7 +12,7 @@ class GetObjectStorageQuotaArgs {
 
   /// Creates a new [GetObjectStorageQuotaArgs].
   /// [quotaId] The Object Storage quota ID.
-  GetObjectStorageQuotaArgs({
+  const GetObjectStorageQuotaArgs({
     required this.quotaId,
   });
 

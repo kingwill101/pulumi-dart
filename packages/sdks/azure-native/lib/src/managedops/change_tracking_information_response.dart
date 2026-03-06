@@ -12,7 +12,7 @@ class ChangeTrackingInformationResponse {
   /// Creates a new [ChangeTrackingInformationResponse].
   /// [dcrId] ID of Data Collection Rule (DCR) associated with this service.
   /// [enablementStatus] Indicates whether the service is enabled.
-  ChangeTrackingInformationResponse({
+  const ChangeTrackingInformationResponse({
     required this.dcrId,
     required this.enablementStatus,
   });

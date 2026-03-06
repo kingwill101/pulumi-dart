@@ -11,7 +11,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse].
   /// [entityIdColumns] Columns to construct entity_id / row keys. Start by supporting 1 only.
   /// [uri] The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
-  GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse({
+  const GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse({
     required this.entityIdColumns,
     required this.uri,
   });

@@ -12,7 +12,7 @@ class GetPolicyTagIamPolicyArgs {
 
   /// Creates a new [GetPolicyTagIamPolicyArgs].
   /// [policyTag] Used to find the parent resource to bind the IAM policy to
-  GetPolicyTagIamPolicyArgs({
+  const GetPolicyTagIamPolicyArgs({
     required this.policyTag,
   });
 

@@ -68,7 +68,7 @@ class AmiArgs {
   /// [tpmSupport] If the image is configured for NitroTPM support, the value is `v2.0`. For more information, see [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nitrotpm.html) in the Amazon Elastic Compute Cloud User Guide.
   /// [uefiData] Base64 representation of the non-volatile UEFI variable store.
   /// [virtualizationType] Keyword to choose what virtualization mode created instances
-  AmiArgs({
+  const AmiArgs({
     this.architecture,
     this.bootMode,
     this.deprecationTime,

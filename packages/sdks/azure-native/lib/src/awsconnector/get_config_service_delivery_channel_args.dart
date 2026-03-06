@@ -15,7 +15,7 @@ class GetConfigServiceDeliveryChannelArgs {
   /// Creates a new [GetConfigServiceDeliveryChannelArgs].
   /// [name] Name of ConfigServiceDeliveryChannel
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigServiceDeliveryChannelArgs({
+  const GetConfigServiceDeliveryChannelArgs({
     required this.name,
     required this.resourceGroupName,
   });

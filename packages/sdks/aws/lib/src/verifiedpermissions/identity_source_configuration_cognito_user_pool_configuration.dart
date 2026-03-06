@@ -15,7 +15,7 @@ class IdentitySourceConfigurationCognitoUserPoolConfiguration {
   /// [clientIds] The unique application client IDs that are associated with the specified Amazon Cognito user pool.
   /// [groupConfiguration] The type of entity that a policy store maps to groups from an Amazon Cognito user pool identity source. See Group Configuration below.
   /// [userPoolArn] The Amazon Resource Name (ARN) of the Amazon Cognito user pool that contains the identities to be authorized.
-  IdentitySourceConfigurationCognitoUserPoolConfiguration({
+  const IdentitySourceConfigurationCognitoUserPoolConfiguration({
     this.clientIds,
     this.groupConfiguration,
     required this.userPoolArn,

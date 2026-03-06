@@ -9,7 +9,7 @@ class WebAclRuleActionBlock {
 
   /// Creates a new [WebAclRuleActionBlock].
   /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
-  WebAclRuleActionBlock({
+  const WebAclRuleActionBlock({
     this.customResponse,
   });
 

@@ -29,7 +29,7 @@ class CustomDomainState {
   /// [managements] One or more `management` blocks as defined below.
   /// [portals] One or more `portal` blocks as defined below.
   /// [scms] One or more `scm` blocks as defined below.
-  CustomDomainState({
+  const CustomDomainState({
     this.apiManagementId,
     this.developerPortals,
     this.gateways,

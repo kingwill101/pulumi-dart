@@ -15,7 +15,7 @@ class WatchEventPatch {
   /// Creates a new [WatchEventPatch].
   /// [object_] Object is:
   /// [type] Optional.
-  WatchEventPatch({
+  const WatchEventPatch({
     this.object_,
     this.type,
   });

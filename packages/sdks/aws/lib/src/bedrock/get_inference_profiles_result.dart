@@ -18,7 +18,7 @@ class GetInferenceProfilesResult {
   /// [inferenceProfileSummaries] List of inference profile summary objects. See `inference_profile_summaries`.
   /// [region] Required.
   /// [type] Type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means the inference profile was created by a user.
-  GetInferenceProfilesResult({
+  const GetInferenceProfilesResult({
     required this.id,
     required this.inferenceProfileSummaries,
     required this.region,

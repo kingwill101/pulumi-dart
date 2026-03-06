@@ -19,7 +19,7 @@ class GetReportArgs {
   /// [reportConfigId] Required.
   /// [reportId] Required.
   /// [view] Optional.
-  GetReportArgs({
+  const GetReportArgs({
     required this.location,
     this.project,
     required this.reportConfigId,

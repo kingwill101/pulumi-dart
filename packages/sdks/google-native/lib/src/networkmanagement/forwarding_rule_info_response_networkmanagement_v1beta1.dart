@@ -27,7 +27,7 @@ class ForwardingRuleInfoResponseNetworkmanagementV1beta1 {
   /// [target] Target type of the forwarding rule.
   /// [uri] URI of a Compute Engine forwarding rule.
   /// [vip] VIP of the forwarding rule.
-  ForwardingRuleInfoResponseNetworkmanagementV1beta1({
+  const ForwardingRuleInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.matchedPortRange,
     required this.matchedProtocol,

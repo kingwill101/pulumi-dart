@@ -24,7 +24,7 @@ class IdentityServiceAuthMethodResponse {
   /// [name] Identifier for auth config.
   /// [oidcConfig] OIDC specific configuration.
   /// [proxy] Proxy server address to use for auth method.
-  IdentityServiceAuthMethodResponse({
+  const IdentityServiceAuthMethodResponse({
     required this.azureadConfig,
     required this.googleConfig,
     required this.name,

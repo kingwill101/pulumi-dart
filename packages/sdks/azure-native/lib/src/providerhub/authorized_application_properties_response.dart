@@ -15,7 +15,7 @@ class AuthorizedApplicationPropertiesResponse {
   /// [dataAuthorizations] The authorizations that determine the level of data access permissions on the specified resource types.
   /// [providerAuthorization] Optional.
   /// [provisioningState] The provisioning state.
-  AuthorizedApplicationPropertiesResponse({
+  const AuthorizedApplicationPropertiesResponse({
     this.dataAuthorizations,
     this.providerAuthorization,
     required this.provisioningState,

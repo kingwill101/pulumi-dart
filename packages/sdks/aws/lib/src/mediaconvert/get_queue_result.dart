@@ -21,7 +21,7 @@ class GetQueueResult {
   /// [region] Required.
   /// [status] The status of the queue.
   /// [tags] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  GetQueueResult({
+  const GetQueueResult({
     required this.arn,
     required this.id,
     required this.name,

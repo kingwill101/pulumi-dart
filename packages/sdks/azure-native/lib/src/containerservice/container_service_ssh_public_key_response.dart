@@ -9,7 +9,7 @@ class ContainerServiceSshPublicKeyResponse {
 
   /// Creates a new [ContainerServiceSshPublicKeyResponse].
   /// [keyData] Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers.
-  ContainerServiceSshPublicKeyResponse({
+  const ContainerServiceSshPublicKeyResponse({
     required this.keyData,
   });
 

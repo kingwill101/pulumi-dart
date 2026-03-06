@@ -19,7 +19,7 @@ class Destination {
   /// [httpHeaderMatch] Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
   /// [methods] Optional. A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
   /// [ports] List of destination ports to match. At least one port should match.
-  Destination({
+  const Destination({
     required this.hosts,
     this.httpHeaderMatch,
     this.methods,

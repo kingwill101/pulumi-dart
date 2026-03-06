@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1DeployedIndexRefResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1DeployedIndexRefResponse].
   /// [deployedIndexId] Immutable. The ID of the DeployedIndex in the above IndexEndpoint.
   /// [indexEndpoint] Immutable. A resource name of the IndexEndpoint.
-  GoogleCloudAiplatformV1beta1DeployedIndexRefResponse({
+  const GoogleCloudAiplatformV1beta1DeployedIndexRefResponse({
     required this.deployedIndexId,
     required this.indexEndpoint,
   });

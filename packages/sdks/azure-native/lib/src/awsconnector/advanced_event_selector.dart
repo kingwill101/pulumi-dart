@@ -13,7 +13,7 @@ class AdvancedEventSelector {
   /// Creates a new [AdvancedEventSelector].
   /// [fieldSelectors] Contains all selector statements in an advanced event selector.
   /// [name] An optional, descriptive name for an advanced event selector, such as 'Log data events for only two S3 buckets'.
-  AdvancedEventSelector({
+  const AdvancedEventSelector({
     this.fieldSelectors,
     this.name,
   });

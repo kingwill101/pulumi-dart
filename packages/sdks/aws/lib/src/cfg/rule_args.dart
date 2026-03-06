@@ -39,7 +39,7 @@ class RuleArgs {
   /// [scope] Scope defines which resources can trigger an evaluation for the rule. See Scope Below.
   /// [source] Source specifies the rule owner, the rule identifier, and the notifications that cause the function to evaluate your AWS resources. See Source Below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  RuleArgs({
+  const RuleArgs({
     this.description,
     this.evaluationModes,
     this.inputParameters,

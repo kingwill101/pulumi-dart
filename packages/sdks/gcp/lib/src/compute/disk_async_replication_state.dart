@@ -15,7 +15,7 @@ class DiskAsyncReplicationState {
   /// Creates a new [DiskAsyncReplicationState].
   /// [primaryDisk] The primary disk (source of replication).
   /// [secondaryDisk] The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-  DiskAsyncReplicationState({
+  const DiskAsyncReplicationState({
     this.primaryDisk,
     this.secondaryDisk,
   });

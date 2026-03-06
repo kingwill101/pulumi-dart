@@ -17,7 +17,7 @@ class AccessPolicyAssignmentArgs {
   /// Creates a new [AccessPolicyAssignmentArgs].
   /// [managedRedisId] The ID of the Managed Redis instance. Changing this forces a new Access Policy Assignment to be created.
   /// [objectId] The object ID of the Azure Active Directory user, group, service principal, or managed identity to assign the access policy to. Changing this forces a new Access Policy Assignment to be created.
-  AccessPolicyAssignmentArgs({
+  const AccessPolicyAssignmentArgs({
     required this.managedRedisId,
     required this.objectId,
   });

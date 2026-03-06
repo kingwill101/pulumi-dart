@@ -15,7 +15,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetri
   /// [dimensions] Dimensions of the metric.
   /// [metricName] Name of the metric.
   /// [namespace] Namespace of the metric.
-  PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric({
+  const PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetric({
     this.dimensions,
     required this.metricName,
     required this.namespace,

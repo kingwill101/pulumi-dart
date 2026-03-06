@@ -16,7 +16,7 @@ class AzureArcSettings {
   /// [azureArcState] AzureArc state indicates whether to include azure arc related costs in on-premises or not.
   /// [laborCostPercentage] Gets Azure arc labour cost percentage.
   /// [managementSettings] Management settings.
-  AzureArcSettings({
+  const AzureArcSettings({
     required this.azureArcState,
     this.laborCostPercentage,
     this.managementSettings,

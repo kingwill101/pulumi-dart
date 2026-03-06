@@ -11,7 +11,7 @@ class GetQuotaApplicationsApplicationDimension {
   /// Creates a new [GetQuotaApplicationsApplicationDimension].
   /// [key] The key of dimensions.
   /// [value] The value of dimensions.
-  GetQuotaApplicationsApplicationDimension({
+  const GetQuotaApplicationsApplicationDimension({
     required this.key,
     required this.value,
   });

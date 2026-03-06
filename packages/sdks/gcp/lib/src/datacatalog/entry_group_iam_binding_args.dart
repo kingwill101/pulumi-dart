@@ -44,7 +44,7 @@ class EntryGroupIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] EntryGroup location region.
   /// [role] The role that should be applied. Only one
-  EntryGroupIamBindingArgs({
+  const EntryGroupIamBindingArgs({
     this.condition,
     required this.entryGroup,
     required this.members,

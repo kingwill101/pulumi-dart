@@ -19,7 +19,7 @@ class OrganizationKajPolicyConfigArgs {
   /// Creates a new [OrganizationKajPolicyConfigArgs].
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [organization] The organization number for which to retrieve config.
-  OrganizationKajPolicyConfigArgs({
+  const OrganizationKajPolicyConfigArgs({
     this.defaultKeyAccessJustificationPolicy,
     required this.organization,
   });

@@ -11,7 +11,7 @@ class RouteSpecHttp2RouteRetryPolicyPerRetryTimeout {
   /// Creates a new [RouteSpecHttp2RouteRetryPolicyPerRetryTimeout].
   /// [unit] Retry unit. Valid values: `ms`, `s`.
   /// [value] Retry value.
-  RouteSpecHttp2RouteRetryPolicyPerRetryTimeout({
+  const RouteSpecHttp2RouteRetryPolicyPerRetryTimeout({
     required this.unit,
     required this.value,
   });

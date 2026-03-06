@@ -30,7 +30,7 @@ class ServiceProjectAttachmentState {
   /// [serviceProjectAttachmentId] Required. The service project attachment identifier must contain the project_id of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
   /// [state] ServiceProjectAttachment state.
   /// [uid] Output only. A globally unique identifier (in UUID4 format) for the `ServiceProjectAttachment`.
-  ServiceProjectAttachmentState({
+  const ServiceProjectAttachmentState({
     this.createTime,
     this.name,
     this.project,

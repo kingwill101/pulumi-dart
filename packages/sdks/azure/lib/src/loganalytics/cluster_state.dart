@@ -30,7 +30,7 @@ class ClusterState {
   /// [resourceGroupName] The name of the Resource Group where the Log Analytics Cluster should exist. Changing this forces a new Log Analytics Cluster to be created.
   /// [sizeGb] The capacity of the Log Analytics Cluster is specified in GB/day. Possible values include `100`, `200`, `300`, `400`, `500`, `1000`, `2000`, `5000`, `10000`, `25000`, or `50000`. Defaults to `100`.
   /// [tags] A mapping of tags which should be assigned to the Log Analytics Cluster.
-  ClusterState({
+  const ClusterState({
     this.clusterId,
     this.identity,
     this.location,

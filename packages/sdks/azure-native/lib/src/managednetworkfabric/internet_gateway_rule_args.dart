@@ -28,7 +28,7 @@ class InternetGatewayRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleProperties] Rules for the InternetGateways
   /// [tags] Resource tags.
-  InternetGatewayRuleArgs({
+  const InternetGatewayRuleArgs({
     this.annotation,
     this.internetGatewayRuleName,
     this.location,

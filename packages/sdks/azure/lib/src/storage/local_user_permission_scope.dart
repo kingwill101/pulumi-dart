@@ -15,7 +15,7 @@ class LocalUserPermissionScope {
   /// [permissions] A `permissions` block as defined below.
   /// [resourceName] The container name (when `service` is set to `blob`) or the file share name (when `service` is set to `file`), used by the Storage Account Local User.
   /// [service] The storage service used by this Storage Account Local User. Possible values are `blob` and `file`.
-  LocalUserPermissionScope({
+  const LocalUserPermissionScope({
     required this.permissions,
     required this.resourceName,
     required this.service,

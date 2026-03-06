@@ -12,7 +12,7 @@ class ScaleConfiguration {
   /// Creates a new [ScaleConfiguration].
   /// [maxConcurrentSessions] The maximum count of sessions at the same time.
   /// [readySessionInstances] The minimum count of ready session instances.
-  ScaleConfiguration({
+  const ScaleConfiguration({
     this.maxConcurrentSessions,
     this.readySessionInstances,
   });

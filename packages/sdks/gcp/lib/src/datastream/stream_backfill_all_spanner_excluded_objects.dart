@@ -10,7 +10,7 @@ class StreamBackfillAllSpannerExcludedObjects {
 
   /// Creates a new [StreamBackfillAllSpannerExcludedObjects].
   /// [schemas] Spanner schemas in the database
-  StreamBackfillAllSpannerExcludedObjects({
+  const StreamBackfillAllSpannerExcludedObjects({
     required this.schemas,
   });
 

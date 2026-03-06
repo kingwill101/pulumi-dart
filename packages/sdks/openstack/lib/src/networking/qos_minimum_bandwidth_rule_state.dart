@@ -22,7 +22,7 @@ class QosMinimumBandwidthRuleState {
   /// [minKbps] The minimum kilobits per second. Changing this updates the min kbps value of the existing
   /// [qosPolicyId] The QoS policy reference. Changing this creates a new QoS minimum bandwidth rule.
   /// [region] The region in which to obtain the V2 Networking client.
-  QosMinimumBandwidthRuleState({
+  const QosMinimumBandwidthRuleState({
     this.direction,
     this.minKbps,
     this.qosPolicyId,

@@ -15,7 +15,7 @@ class WebApplicationFrameworkResponse {
   /// [id] Gets the ID.
   /// [name] Gets or sets Name of the framework.
   /// [version] Gets or sets Version of the framework.
-  WebApplicationFrameworkResponse({
+  const WebApplicationFrameworkResponse({
     required this.id,
     this.name,
     this.version,

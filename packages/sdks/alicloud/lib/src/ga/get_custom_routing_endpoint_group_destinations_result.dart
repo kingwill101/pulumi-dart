@@ -39,7 +39,7 @@ class GetCustomRoutingEndpointGroupDestinationsResult {
   /// [pageSize] Optional.
   /// [protocols] The backend service protocol of the endpoint group.
   /// [toPort] The end port of the backend service port range of the endpoint group.
-  GetCustomRoutingEndpointGroupDestinationsResult({
+  const GetCustomRoutingEndpointGroupDestinationsResult({
     required this.acceleratorId,
     required this.customRoutingEndpointGroupDestinations,
     this.endpointGroupId,

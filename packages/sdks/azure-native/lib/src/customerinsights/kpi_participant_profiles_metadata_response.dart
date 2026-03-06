@@ -9,7 +9,7 @@ class KpiParticipantProfilesMetadataResponse {
 
   /// Creates a new [KpiParticipantProfilesMetadataResponse].
   /// [typeName] Name of the type.
-  KpiParticipantProfilesMetadataResponse({
+  const KpiParticipantProfilesMetadataResponse({
     required this.typeName,
   });
 

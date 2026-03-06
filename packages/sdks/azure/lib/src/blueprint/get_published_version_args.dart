@@ -18,7 +18,7 @@ class GetPublishedVersionArgs {
   /// [blueprintName] The name of the Blueprint Definition
   /// [scopeId] The ID of the Management Group / Subscription where this Blueprint Definition is stored.
   /// [version] The Version name of the Published Version of the Blueprint Definition
-  GetPublishedVersionArgs({
+  const GetPublishedVersionArgs({
     required this.blueprintName,
     required this.scopeId,
     required this.version,

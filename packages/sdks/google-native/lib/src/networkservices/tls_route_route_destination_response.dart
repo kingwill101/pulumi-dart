@@ -12,7 +12,7 @@ class TlsRouteRouteDestinationResponse {
   /// Creates a new [TlsRouteRouteDestinationResponse].
   /// [serviceName] The URL of a BackendService to route traffic to.
   /// [weight] Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
-  TlsRouteRouteDestinationResponse({
+  const TlsRouteRouteDestinationResponse({
     required this.serviceName,
     required this.weight,
   });

@@ -57,7 +57,7 @@ class DbInstanceArgs {
   /// [vpcId] The ID of the VPC for DBInstance.
   /// [vswitchId] The ID of vswitch for DBInstance.
   /// [zoneId] The ID of zone for DBInstance.
-  DbInstanceArgs({
+  const DbInstanceArgs({
     this.adminPass,
     required this.cacheSize,
     required this.dbInstanceClass,

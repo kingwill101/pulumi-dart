@@ -25,7 +25,7 @@ class ExtensionArgs {
   /// [extensionId] Id of extension resource.
   /// [extensionVersion] Extension Version.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ExtensionArgs({
+  const ExtensionArgs({
     this.additionalApiProperties,
     required this.dataManagerForAgricultureResourceName,
     this.extensionId,

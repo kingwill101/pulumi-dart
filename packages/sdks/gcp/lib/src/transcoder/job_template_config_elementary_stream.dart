@@ -18,7 +18,7 @@ class JobTemplateConfigElementaryStream {
   /// [audioStream] Encoding of an audio stream.
   /// [key] A unique key for this atom.
   /// [videoStream] Encoding of a video stream.
-  JobTemplateConfigElementaryStream({
+  const JobTemplateConfigElementaryStream({
     this.audioStream,
     this.key,
     this.videoStream,

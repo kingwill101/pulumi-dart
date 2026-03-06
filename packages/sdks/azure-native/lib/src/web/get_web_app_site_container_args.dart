@@ -18,7 +18,7 @@ class GetWebAppSiteContainerArgs {
   /// [containerName] Site Container Name
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppSiteContainerArgs({
+  const GetWebAppSiteContainerArgs({
     required this.containerName,
     required this.name,
     required this.resourceGroupName,

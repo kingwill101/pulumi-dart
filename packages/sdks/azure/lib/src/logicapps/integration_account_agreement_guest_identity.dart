@@ -11,7 +11,7 @@ class IntegrationAccountAgreementGuestIdentity {
   /// Creates a new [IntegrationAccountAgreementGuestIdentity].
   /// [qualifier] The authenticating body that provides unique guest identities to organizations.
   /// [value] The value that identifies the documents that your logic apps receive.
-  IntegrationAccountAgreementGuestIdentity({
+  const IntegrationAccountAgreementGuestIdentity({
     required this.qualifier,
     required this.value,
   });

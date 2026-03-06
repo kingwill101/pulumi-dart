@@ -12,7 +12,7 @@ class Digest {
   /// Creates a new [Digest].
   /// [algorithmType] The digest algorithm type represents the standard digest algorithm number used to construct the digest. See: https://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml
   /// [value] The digest value is a cryptographic hash value of the referenced DNSKEY Resource Record.
-  Digest({
+  const Digest({
     this.algorithmType,
     this.value,
   });

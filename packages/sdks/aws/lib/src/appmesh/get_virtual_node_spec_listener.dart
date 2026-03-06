@@ -23,7 +23,7 @@ class GetVirtualNodeSpecListener {
   /// [portMappings] Required.
   /// [timeouts] Required.
   /// [tls] Required.
-  GetVirtualNodeSpecListener({
+  const GetVirtualNodeSpecListener({
     required this.connectionPools,
     required this.healthChecks,
     required this.outlierDetections,

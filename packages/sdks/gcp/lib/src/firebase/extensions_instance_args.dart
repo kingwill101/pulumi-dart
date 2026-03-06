@@ -22,7 +22,7 @@ class ExtensionsInstanceArgs {
   /// [config] The current Config of the Extension Instance.
   /// [instanceId] The ID to use for the Extension Instance, which will become the final
   /// [project] The ID of the project in which the resource belongs.
-  ExtensionsInstanceArgs({
+  const ExtensionsInstanceArgs({
     required this.config,
     required this.instanceId,
     this.project,

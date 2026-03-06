@@ -55,7 +55,7 @@ class GetSyncGroupResult {
   /// [syncState] Sync state of the sync group.
   /// [type] Resource type.
   /// [usePrivateLinkConnection] If use private link connection is enabled.
-  GetSyncGroupResult({
+  const GetSyncGroupResult({
     required this.azureApiVersion,
     this.conflictLoggingRetentionInDays,
     this.conflictResolutionPolicy,

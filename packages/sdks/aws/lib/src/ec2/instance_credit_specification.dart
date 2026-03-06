@@ -8,7 +8,7 @@ class InstanceCreditSpecification {
 
   /// Creates a new [InstanceCreditSpecification].
   /// [cpuCredits] Credit option for CPU usage. Valid values include `standard` or `unlimited`. T3 instances are launched as unlimited by default. T2 instances are launched as standard by default.
-  InstanceCreditSpecification({
+  const InstanceCreditSpecification({
     this.cpuCredits,
   });
 

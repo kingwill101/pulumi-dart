@@ -15,7 +15,7 @@ class GetFirewallEndpointArgs {
   /// [firewallEndpointId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetFirewallEndpointArgs({
+  const GetFirewallEndpointArgs({
     required this.firewallEndpointId,
     required this.location,
     required this.organizationId,

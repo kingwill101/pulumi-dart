@@ -86,7 +86,7 @@ class GetMetadataResult {
   /// [threatAnalysisTechniques] the techniques the resource covers, these have to be aligned with the tactics being used
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM template best practices.  Can also be any string, but then we cannot guarantee any version checks
-  GetMetadataResult({
+  const GetMetadataResult({
     this.author,
     required this.azureApiVersion,
     this.categories,

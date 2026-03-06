@@ -35,7 +35,7 @@ class ResourceAttributes {
   /// [subresource] Subresource is one of the existing resource types.  "" means none.
   /// [verb] Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
   /// [version] Version is the API Version of the Resource.  "*" means all.
-  ResourceAttributes({
+  const ResourceAttributes({
     this.fieldSelector,
     this.group,
     this.labelSelector,

@@ -19,7 +19,7 @@ class DeviceCapacityPatch {
   /// Creates a new [DeviceCapacityPatch].
   /// [requestPolicy] RequestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations.
   /// [value] Value defines how much of a certain capacity that device has.
-  DeviceCapacityPatch({
+  const DeviceCapacityPatch({
     this.requestPolicy,
     this.value,
   });

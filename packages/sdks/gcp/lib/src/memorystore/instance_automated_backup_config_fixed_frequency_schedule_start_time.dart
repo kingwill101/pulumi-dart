@@ -9,7 +9,7 @@ class InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime {
 
   /// Creates a new [InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime].
   /// [hours] Hours of day in 24 hour format. Should be from 0 to 23.
-  InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime({
+  const InstanceAutomatedBackupConfigFixedFrequencyScheduleStartTime({
     required this.hours,
   });
 

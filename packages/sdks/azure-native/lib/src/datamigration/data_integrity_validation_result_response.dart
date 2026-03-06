@@ -13,7 +13,7 @@ class DataIntegrityValidationResultResponse {
   /// Creates a new [DataIntegrityValidationResultResponse].
   /// [failedObjects] List of failed table names of source and target pair
   /// [validationErrors] List of errors that happened while performing data integrity validation
-  DataIntegrityValidationResultResponse({
+  const DataIntegrityValidationResultResponse({
     this.failedObjects,
     this.validationErrors,
   });

@@ -20,7 +20,7 @@ class GetAlertRuleAnomalyThresholdObservation {
   /// [min] The min value of the threshold observation.
   /// [name] The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   /// [value] The value of the threshold observation.
-  GetAlertRuleAnomalyThresholdObservation({
+  const GetAlertRuleAnomalyThresholdObservation({
     required this.description,
     required this.max,
     required this.min,

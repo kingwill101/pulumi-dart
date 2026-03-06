@@ -11,7 +11,7 @@ class FilterFilterCriteriaVulnerablePackageRelease {
   /// Creates a new [FilterFilterCriteriaVulnerablePackageRelease].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaVulnerablePackageRelease({
+  const FilterFilterCriteriaVulnerablePackageRelease({
     required this.comparison,
     required this.value,
   });

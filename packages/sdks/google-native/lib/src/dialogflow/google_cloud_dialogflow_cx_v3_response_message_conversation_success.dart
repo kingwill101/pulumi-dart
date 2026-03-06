@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess({
+  const GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess({
     this.metadata,
   });
 

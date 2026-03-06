@@ -50,7 +50,7 @@ class GetAccessPointResult {
   /// [region] Required.
   /// [tags] Tags assigned to the access point.
   /// [vpcConfigurations] VPC configuration for the access point.
-  GetAccessPointResult({
+  const GetAccessPointResult({
     required this.accountId,
     required this.alias,
     required this.arn,

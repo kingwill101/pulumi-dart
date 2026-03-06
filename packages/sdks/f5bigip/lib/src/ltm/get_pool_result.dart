@@ -15,7 +15,7 @@ class GetPoolResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [partition] Required.
-  GetPoolResult({
+  const GetPoolResult({
     required this.fullPath,
     required this.id,
     required this.name,

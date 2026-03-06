@@ -15,7 +15,7 @@ class GetEmailServiceArgs {
   /// Creates a new [GetEmailServiceArgs].
   /// [emailServiceName] The name of the EmailService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEmailServiceArgs({
+  const GetEmailServiceArgs({
     required this.emailServiceName,
     required this.resourceGroupName,
   });

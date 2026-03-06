@@ -8,7 +8,7 @@ class FleetUpdateRunStageGroup {
 
   /// Creates a new [FleetUpdateRunStageGroup].
   /// [name] The name which should be used for this group.
-  FleetUpdateRunStageGroup({
+  const FleetUpdateRunStageGroup({
     required this.name,
   });
 

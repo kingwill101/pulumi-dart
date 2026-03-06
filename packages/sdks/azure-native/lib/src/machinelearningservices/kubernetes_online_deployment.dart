@@ -70,7 +70,7 @@ class KubernetesOnlineDeployment {
   /// [requestSettings] Request settings for the deployment.
   /// [scaleSettings] Scale settings for the deployment.
   /// [startupProbe] Startup probe verify whether an application within a container has started successfully.
-  KubernetesOnlineDeployment({
+  const KubernetesOnlineDeployment({
     this.appInsightsEnabled,
     this.codeConfiguration,
     this.containerResourceRequirements,

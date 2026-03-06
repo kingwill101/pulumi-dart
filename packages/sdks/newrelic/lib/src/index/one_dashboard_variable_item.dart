@@ -11,7 +11,7 @@ class OneDashboardVariableItem {
   /// Creates a new [OneDashboardVariableItem].
   /// [title] (Optional) A human-friendly display string for this value.
   /// [value] (Required) A possible variable value
-  OneDashboardVariableItem({
+  const OneDashboardVariableItem({
     this.title,
     required this.value,
   });

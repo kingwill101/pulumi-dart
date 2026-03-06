@@ -11,7 +11,7 @@ class ConnectorKafkaClusterApacheKafkaClusterVpc {
   /// Creates a new [ConnectorKafkaClusterApacheKafkaClusterVpc].
   /// [securityGroups] The security groups for the connector.
   /// [subnets] The subnets for the connector.
-  ConnectorKafkaClusterApacheKafkaClusterVpc({
+  const ConnectorKafkaClusterApacheKafkaClusterVpc({
     required this.securityGroups,
     required this.subnets,
   });

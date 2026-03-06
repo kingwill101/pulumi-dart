@@ -39,7 +39,7 @@ class VolumeGroupArgs {
   /// [protocolType] Type of storage target
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeGroupName] The name of the VolumeGroup.
-  VolumeGroupArgs({
+  const VolumeGroupArgs({
     required this.elasticSanName,
     this.encryption,
     this.encryptionProperties,

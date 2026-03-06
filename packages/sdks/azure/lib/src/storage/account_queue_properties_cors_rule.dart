@@ -20,7 +20,7 @@ class AccountQueuePropertiesCorsRule {
   /// [allowedOrigins] A list of origin domains that will be allowed by CORS.
   /// [exposedHeaders] A list of response headers that are exposed to CORS clients.
   /// [maxAgeInSeconds] The number of seconds the client should cache a preflight response.
-  AccountQueuePropertiesCorsRule({
+  const AccountQueuePropertiesCorsRule({
     required this.allowedHeaders,
     required this.allowedMethods,
     required this.allowedOrigins,

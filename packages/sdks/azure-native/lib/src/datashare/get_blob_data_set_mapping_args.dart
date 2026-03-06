@@ -21,7 +21,7 @@ class GetBlobDataSetMappingArgs {
   /// [dataSetMappingName] The name of the dataSetMapping.
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
-  GetBlobDataSetMappingArgs({
+  const GetBlobDataSetMappingArgs({
     required this.accountName,
     required this.dataSetMappingName,
     required this.resourceGroupName,

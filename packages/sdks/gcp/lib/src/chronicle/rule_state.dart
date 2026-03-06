@@ -125,7 +125,7 @@ class RuleState {
   /// [severities] (Output)
   /// [text] The YARA-L content of the rule.
   /// [type] Possible values:
-  RuleState({
+  const RuleState({
     this.allowedRunFrequencies,
     this.author,
     this.compilationDiagnostics,

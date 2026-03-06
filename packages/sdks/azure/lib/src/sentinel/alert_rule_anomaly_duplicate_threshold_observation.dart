@@ -20,7 +20,7 @@ class AlertRuleAnomalyDuplicateThresholdObservation {
   /// [min] The min value of the threshold observation.
   /// [name] The name of the threshold observation.
   /// [value] The value of the threshold observation.
-  AlertRuleAnomalyDuplicateThresholdObservation({
+  const AlertRuleAnomalyDuplicateThresholdObservation({
     this.description,
     this.max,
     this.min,

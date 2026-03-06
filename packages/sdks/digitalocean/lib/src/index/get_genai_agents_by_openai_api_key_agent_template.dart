@@ -43,7 +43,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgentTemplate {
   /// [topP] Top P sampling parameter
   /// [updatedAt] Updated At timestamp for the Agent Template
   /// [uuid] uuid of the Agent Template
-  GetGenaiAgentsByOpenaiApiKeyAgentTemplate({
+  const GetGenaiAgentsByOpenaiApiKeyAgentTemplate({
     required this.createdAt,
     this.description,
     this.instruction,

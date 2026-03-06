@@ -21,7 +21,7 @@ class GetProfileResult {
   /// [resourceGroupName] Required.
   /// [sku] The pricing related information of current CDN profile.
   /// [tags] A mapping of tags assigned to the resource.
-  GetProfileResult({
+  const GetProfileResult({
     required this.id,
     required this.location,
     required this.name,

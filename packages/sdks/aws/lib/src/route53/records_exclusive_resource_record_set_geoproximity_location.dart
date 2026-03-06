@@ -23,7 +23,7 @@ class RecordsExclusiveResourceRecordSetGeoproximityLocation {
   /// [bias] Increases or decreases the size of the geographic region from which Route 53 routes traffic to a resource.
   /// [coordinates] Coordinates for a geoproximity resource record.
   /// [localZoneGroup] AWS local zone group.
-  RecordsExclusiveResourceRecordSetGeoproximityLocation({
+  const RecordsExclusiveResourceRecordSetGeoproximityLocation({
     this.awsRegion,
     this.bias,
     this.coordinates,

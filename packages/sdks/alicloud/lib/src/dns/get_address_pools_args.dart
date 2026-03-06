@@ -24,7 +24,7 @@ class GetAddressPoolsArgs {
   /// [instanceId] The id of the instance.
   /// [nameRegex] A regex string to filter results by Address Pool name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAddressPoolsArgs({
+  const GetAddressPoolsArgs({
     this.enableDetails,
     this.ids,
     required this.instanceId,

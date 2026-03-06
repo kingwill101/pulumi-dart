@@ -20,7 +20,7 @@ class GetHistoryDeliveryJobsResult {
   /// [jobs] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetHistoryDeliveryJobsResult({
+  const GetHistoryDeliveryJobsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

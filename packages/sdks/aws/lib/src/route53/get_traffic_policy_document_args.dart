@@ -29,7 +29,7 @@ class GetTrafficPolicyDocumentArgs {
   /// [startEndpoint] An endpoint to be as the starting point for the traffic policy.
   /// [startRule] A rule to be as the starting point for the traffic policy.
   /// [version] Version of the traffic policy format.
-  GetTrafficPolicyDocumentArgs({
+  const GetTrafficPolicyDocumentArgs({
     this.endpoints,
     this.recordType,
     this.rules,

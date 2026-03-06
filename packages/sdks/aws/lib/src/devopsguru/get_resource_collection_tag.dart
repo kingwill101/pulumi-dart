@@ -11,7 +11,7 @@ class GetResourceCollectionTag {
   /// Creates a new [GetResourceCollectionTag].
   /// [appBoundaryKey] An AWS tag key that is used to identify the AWS resources that DevOps Guru analyzes.
   /// [tagValues] Array of tag values.
-  GetResourceCollectionTag({
+  const GetResourceCollectionTag({
     required this.appBoundaryKey,
     required this.tagValues,
   });

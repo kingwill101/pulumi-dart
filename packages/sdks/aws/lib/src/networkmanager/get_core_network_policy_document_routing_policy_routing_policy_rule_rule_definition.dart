@@ -16,7 +16,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition {
   /// [action] Block defining the action to take when conditions match. Detailed below.
   /// [conditionLogic] Logic to apply when multiple match conditions are present. Valid values: `and`, `or`.
   /// [matchConditions] List of conditions to match against routes. Detailed below.
-  GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition({
+  const GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinition({
     required this.action,
     this.conditionLogic,
     this.matchConditions,

@@ -40,7 +40,7 @@ class GetAvailabilitySetResult {
   /// [tags] Resource tags
   /// [type] Resource Type
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  GetAvailabilitySetResult({
+  const GetAvailabilitySetResult({
     this.availabilitySetName,
     required this.azureApiVersion,
     this.extendedLocation,

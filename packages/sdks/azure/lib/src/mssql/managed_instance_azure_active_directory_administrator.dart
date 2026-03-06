@@ -20,7 +20,7 @@ class ManagedInstanceAzureActiveDirectoryAdministrator {
   /// [objectId] The object id of the Azure AD Administrator of this SQL Managed Instance.
   /// [principalType] The principal type of the Azure AD Administrator of this SQL Managed Instance. Possible values are `Application`, `Group`, `User`.
   /// [tenantId] The tenant id of the Azure AD Administrator of this SQL Managed Instance. Should be specified if the Azure AD Administrator is homed in a different tenant to the SQL Managed Instance.
-  ManagedInstanceAzureActiveDirectoryAdministrator({
+  const ManagedInstanceAzureActiveDirectoryAdministrator({
     this.azureadAuthenticationOnlyEnabled,
     required this.loginUsername,
     required this.objectId,

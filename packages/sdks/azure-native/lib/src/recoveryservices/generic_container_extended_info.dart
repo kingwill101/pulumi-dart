@@ -16,7 +16,7 @@ class GenericContainerExtendedInfo {
   /// [containerIdentityInfo] Container identity information
   /// [rawCertData] Public key of container cert
   /// [serviceEndpoints] Azure Backup Service Endpoints for the container
-  GenericContainerExtendedInfo({
+  const GenericContainerExtendedInfo({
     this.containerIdentityInfo,
     this.rawCertData,
     this.serviceEndpoints,

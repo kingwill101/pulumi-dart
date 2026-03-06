@@ -15,7 +15,7 @@ class GetDeploymentArgs {
   /// Creates a new [GetDeploymentArgs].
   /// [deploymentName] The name of the deployment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeploymentArgs({
+  const GetDeploymentArgs({
     required this.deploymentName,
     required this.resourceGroupName,
   });

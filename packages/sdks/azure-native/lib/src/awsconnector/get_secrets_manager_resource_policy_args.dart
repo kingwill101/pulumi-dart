@@ -15,7 +15,7 @@ class GetSecretsManagerResourcePolicyArgs {
   /// Creates a new [GetSecretsManagerResourcePolicyArgs].
   /// [name] Name of SecretsManagerResourcePolicy
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSecretsManagerResourcePolicyArgs({
+  const GetSecretsManagerResourcePolicyArgs({
     required this.name,
     required this.resourceGroupName,
   });

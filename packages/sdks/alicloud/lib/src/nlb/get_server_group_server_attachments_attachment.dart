@@ -35,7 +35,7 @@ class GetServerGroupServerAttachmentsAttachment {
   /// [status] Indicates the status of the backend server.
   /// [weight] The weight of the backend server.
   /// [zoneId] The zone ID of the server.
-  GetServerGroupServerAttachmentsAttachment({
+  const GetServerGroupServerAttachmentsAttachment({
     required this.description,
     required this.id,
     required this.port,

@@ -21,7 +21,7 @@ class WorkerResourceComposerV1beta1 {
   /// [memoryGb] Optional. Memory (GB) request and limit for a single Airflow worker replica.
   /// [minCount] Optional. Minimum number of workers for autoscaling.
   /// [storageGb] Optional. Storage (GB) request and limit for a single Airflow worker replica.
-  WorkerResourceComposerV1beta1({
+  const WorkerResourceComposerV1beta1({
     this.cpu,
     this.maxCount,
     this.memoryGb,

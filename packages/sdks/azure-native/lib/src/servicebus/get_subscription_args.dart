@@ -21,7 +21,7 @@ class GetSubscriptionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subscriptionName] The subscription name.
   /// [topicName] The topic name.
-  GetSubscriptionArgs({
+  const GetSubscriptionArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     required this.subscriptionName,

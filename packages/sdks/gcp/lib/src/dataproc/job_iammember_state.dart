@@ -39,7 +39,7 @@ class JobIAMMemberState {
   /// [project] The project in which the job belongs. If it
   /// [region] The region in which the job belongs. If it
   /// [role] The role that should be applied. Only one
-  JobIAMMemberState({
+  const JobIAMMemberState({
     this.condition,
     this.etag,
     this.jobId,

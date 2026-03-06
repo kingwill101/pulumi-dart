@@ -18,7 +18,7 @@ class ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm {
   /// [key] The tag key to use in the condition. The only valid value is `TAG`.
   /// [tagValues] The tag keys or tag key and value pairs to use in the condition.
   /// [target] The type of object to apply the condition to. The only valid value is `S3_OBJECT`.
-  ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm({
+  const ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTerm({
     this.comparator,
     this.key,
     this.tagValues,

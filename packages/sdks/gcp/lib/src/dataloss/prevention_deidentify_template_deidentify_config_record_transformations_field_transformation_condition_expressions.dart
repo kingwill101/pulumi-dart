@@ -15,7 +15,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions].
   /// [conditions] Conditions to apply to the expression.
   /// [logicalOperator] The operator to apply to the result of conditions. Default and currently only supported value is AND.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions({
     this.conditions,
     this.logicalOperator,
   });

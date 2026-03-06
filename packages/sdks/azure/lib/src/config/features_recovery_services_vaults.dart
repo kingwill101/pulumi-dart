@@ -7,7 +7,7 @@ class FeaturesRecoveryServicesVaults {
 
   /// Creates a new [FeaturesRecoveryServicesVaults].
   /// [recoverSoftDeletedBackupProtectedVm] Optional.
-  FeaturesRecoveryServicesVaults({
+  const FeaturesRecoveryServicesVaults({
     this.recoverSoftDeletedBackupProtectedVm,
   });
 

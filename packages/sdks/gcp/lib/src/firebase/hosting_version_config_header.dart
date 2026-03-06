@@ -14,7 +14,7 @@ class HostingVersionConfigHeader {
   /// [glob] The user-supplied glob to match against the request URL path.
   /// [headers] The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   /// [regex] The user-supplied RE2 regular expression to match against the request URL path.
-  HostingVersionConfigHeader({
+  const HostingVersionConfigHeader({
     this.glob,
     required this.headers,
     this.regex,

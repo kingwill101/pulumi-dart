@@ -18,7 +18,7 @@ class ListListFlowsByPipelineArgs {
   /// [pipelineName] The name of the pipeline on which to operate.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [value] Connection ID to target
-  ListListFlowsByPipelineArgs({
+  const ListListFlowsByPipelineArgs({
     required this.pipelineName,
     required this.resourceGroupName,
     this.value,

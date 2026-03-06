@@ -9,7 +9,7 @@ class MembershipBindingState {
 
   /// Creates a new [MembershipBindingState].
   /// [code] (Output)
-  MembershipBindingState({
+  const MembershipBindingState({
     this.code,
   });
 

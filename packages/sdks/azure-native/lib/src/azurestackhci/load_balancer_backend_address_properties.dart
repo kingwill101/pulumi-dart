@@ -13,7 +13,7 @@ class LoadBalancerBackendAddressProperties {
   /// Creates a new [LoadBalancerBackendAddressProperties].
   /// [adminState] admin state - if set to false, the address is removed from the pool
   /// [networkInterfaceIPConfiguration] Nic Based backend-ip association
-  LoadBalancerBackendAddressProperties({
+  const LoadBalancerBackendAddressProperties({
     this.adminState,
     this.networkInterfaceIPConfiguration,
   });

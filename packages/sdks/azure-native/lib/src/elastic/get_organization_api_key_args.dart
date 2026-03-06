@@ -12,7 +12,7 @@ class GetOrganizationApiKeyArgs {
 
   /// Creates a new [GetOrganizationApiKeyArgs].
   /// [emailId] The User email Id
-  GetOrganizationApiKeyArgs({
+  const GetOrganizationApiKeyArgs({
     this.emailId,
   });
 

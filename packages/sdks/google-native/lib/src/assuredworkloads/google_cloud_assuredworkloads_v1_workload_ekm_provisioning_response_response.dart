@@ -15,7 +15,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse {
   /// [ekmProvisioningErrorDomain] Indicates Ekm provisioning error if any.
   /// [ekmProvisioningErrorMapping] Detailed error message if Ekm provisioning fails
   /// [ekmProvisioningState] Indicates Ekm enrollment Provisioning of a given workload.
-  GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse({
+  const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse({
     required this.ekmProvisioningErrorDomain,
     required this.ekmProvisioningErrorMapping,
     required this.ekmProvisioningState,

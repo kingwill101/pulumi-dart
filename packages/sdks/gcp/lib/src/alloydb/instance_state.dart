@@ -134,7 +134,7 @@ class InstanceState {
   /// [state] The current state of the alloydb instance.
   /// [uid] The system-generated UID of the resource.
   /// [updateTime] Time the Instance was updated in UTC.
-  InstanceState({
+  const InstanceState({
     this.activationPolicy,
     this.annotations,
     this.availabilityType,

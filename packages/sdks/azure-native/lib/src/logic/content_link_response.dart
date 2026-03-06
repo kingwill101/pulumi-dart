@@ -22,7 +22,7 @@ class ContentLinkResponse {
   /// [contentVersion] The content version.
   /// [metadata] The metadata.
   /// [uri] The content link URI.
-  ContentLinkResponse({
+  const ContentLinkResponse({
     required this.contentHash,
     required this.contentSize,
     required this.contentVersion,

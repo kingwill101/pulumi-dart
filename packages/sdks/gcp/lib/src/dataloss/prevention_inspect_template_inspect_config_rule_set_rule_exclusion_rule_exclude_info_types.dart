@@ -10,7 +10,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes].
   /// [infoTypes] If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
-  PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes({
     required this.infoTypes,
   });
 

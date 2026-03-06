@@ -17,7 +17,7 @@ class GraphQLApiUserPoolConfig {
   /// [awsRegion] AWS region in which the user pool was created.
   /// [defaultAction] Action that you want your GraphQL API to take when a request that uses Amazon Cognito User Pool authentication doesn't match the Amazon Cognito User Pool configuration. Valid: `ALLOW` and `DENY`
   /// [userPoolId] User pool ID.
-  GraphQLApiUserPoolConfig({
+  const GraphQLApiUserPoolConfig({
     this.appIdClientRegex,
     this.awsRegion,
     required this.defaultAction,

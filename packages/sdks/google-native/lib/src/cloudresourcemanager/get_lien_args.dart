@@ -11,7 +11,7 @@ class GetLienArgs {
 
   /// Creates a new [GetLienArgs].
   /// [lienId] Required.
-  GetLienArgs({
+  const GetLienArgs({
     required this.lienId,
   });
 

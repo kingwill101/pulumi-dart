@@ -59,7 +59,7 @@ class TestCaseArgs {
   /// [updateTime] Auto-generated.
   /// [versionId] Required.
   /// [workflowId] ID of the workflow with which this test case is associated
-  TestCaseArgs({
+  const TestCaseArgs({
     this.createTime,
     this.creatorEmail,
     this.databasePersistencePolicy,

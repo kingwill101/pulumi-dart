@@ -40,7 +40,7 @@ class TriggerArgs {
   /// [service] The Function Compute service name.
   /// [sourceArn] Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   /// [type] The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mns_topic", "cdn_events", "eventbridge"].
-  TriggerArgs({
+  const TriggerArgs({
     this.config,
     this.configMns,
     required this.function,

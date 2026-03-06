@@ -7,7 +7,7 @@ class GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty {
 
   /// Creates a new [GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty].
   /// [uniqueKey] Required.
-  GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty({
+  const GetDataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperty({
     required this.uniqueKey,
   });
 

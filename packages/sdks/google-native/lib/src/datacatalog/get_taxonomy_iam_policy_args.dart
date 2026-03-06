@@ -15,7 +15,7 @@ class GetTaxonomyIamPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [taxonomyId] Required.
-  GetTaxonomyIamPolicyArgs({
+  const GetTaxonomyIamPolicyArgs({
     required this.location,
     this.project,
     required this.taxonomyId,

@@ -47,7 +47,7 @@ class GetWebAppDeploymentSlotResult {
   /// [startTime] Start time.
   /// [status] Deployment status.
   /// [type] Resource type.
-  GetWebAppDeploymentSlotResult({
+  const GetWebAppDeploymentSlotResult({
     this.active,
     this.author,
     this.authorEmail,

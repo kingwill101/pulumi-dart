@@ -70,7 +70,7 @@ class UptimeCheckConfigState {
   /// [timeout] The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). See the accepted formats
   /// [uptimeCheckId] The id of the uptime check
   /// [userLabels] User-supplied key/value data to be used for organizing and identifying the `UptimeCheckConfig` objects. The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-  UptimeCheckConfigState({
+  const UptimeCheckConfigState({
     this.checkerType,
     this.contentMatchers,
     this.displayName,

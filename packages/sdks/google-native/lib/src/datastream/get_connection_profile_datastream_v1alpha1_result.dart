@@ -46,7 +46,7 @@ class GetConnectionProfileDatastreamV1alpha1Result {
   /// [privateConnectivity] Private connectivity.
   /// [staticServiceIpConnectivity] Static Service IP connectivity.
   /// [updateTime] The update time of the resource.
-  GetConnectionProfileDatastreamV1alpha1Result({
+  const GetConnectionProfileDatastreamV1alpha1Result({
     required this.createTime,
     required this.displayName,
     required this.forwardSshConnectivity,

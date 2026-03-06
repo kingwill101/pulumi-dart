@@ -59,7 +59,7 @@ class GetWebAppSiteContainerResult {
   /// [userManagedIdentityClientId] UserManagedIdentity ClientId
   /// [userName] User Name
   /// [volumeMounts] List of volume mounts
-  GetWebAppSiteContainerResult({
+  const GetWebAppSiteContainerResult({
     this.authType,
     required this.azureApiVersion,
     required this.createdTime,

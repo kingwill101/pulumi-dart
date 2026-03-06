@@ -51,7 +51,7 @@ class GetSitesArgs {
   /// [siteSearchType] The search match pattern for the site name. The default value is exact match. Valid values:-**prefix**: matches the prefix.-**suffix**: The suffix matches.-**exact**: exact match.-**fuzzy**: fuzzy match.
   /// [status] The status of the resource
   /// [tags] Resource tags
-  GetSitesArgs({
+  const GetSitesArgs({
     this.accessType,
     this.coverage,
     this.ids,

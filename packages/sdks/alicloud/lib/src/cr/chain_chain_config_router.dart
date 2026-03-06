@@ -13,7 +13,7 @@ class ChainChainConfigRouter {
   /// Creates a new [ChainChainConfigRouter].
   /// [froms] Source node. See `from` below.
   /// [tos] Destination node. See `to` below.
-  ChainChainConfigRouter({
+  const ChainChainConfigRouter({
     this.froms,
     this.tos,
   });

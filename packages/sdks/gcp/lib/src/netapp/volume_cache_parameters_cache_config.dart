@@ -8,7 +8,7 @@ class VolumeCacheParametersCacheConfig {
 
   /// Creates a new [VolumeCacheParametersCacheConfig].
   /// [cifsChangeNotifyEnabled] Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
-  VolumeCacheParametersCacheConfig({
+  const VolumeCacheParametersCacheConfig({
     this.cifsChangeNotifyEnabled,
   });
 

@@ -16,7 +16,7 @@ class NatAddressArgs {
   /// [instanceId] Required.
   /// [name] Resource ID of the NAT address.
   /// [organizationId] Required.
-  NatAddressArgs({
+  const NatAddressArgs({
     required this.instanceId,
     this.name,
     required this.organizationId,

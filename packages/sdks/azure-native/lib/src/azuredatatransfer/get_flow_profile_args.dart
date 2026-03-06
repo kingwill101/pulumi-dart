@@ -18,7 +18,7 @@ class GetFlowProfileArgs {
   /// [flowProfileName] The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
   /// [pipelineName] The name of the pipeline on which to operate.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFlowProfileArgs({
+  const GetFlowProfileArgs({
     required this.flowProfileName,
     required this.pipelineName,
     required this.resourceGroupName,

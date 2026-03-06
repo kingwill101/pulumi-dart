@@ -8,7 +8,7 @@ class AssessmentScopeAwsAccount {
 
   /// Creates a new [AssessmentScopeAwsAccount].
   /// [id] Identifier for the Amazon Web Services account.
-  AssessmentScopeAwsAccount({
+  const AssessmentScopeAwsAccount({
     required this.id,
   });
 

@@ -27,7 +27,7 @@ class GetAlertContactsArgs {
   /// [nameRegex] A regex string to filter results by Alert Contact name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [phoneNum] The mobile number of the alert contact.
-  GetAlertContactsArgs({
+  const GetAlertContactsArgs({
     this.alertContactName,
     this.email,
     this.ids,

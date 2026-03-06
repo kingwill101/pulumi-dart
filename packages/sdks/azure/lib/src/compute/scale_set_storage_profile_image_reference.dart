@@ -20,7 +20,7 @@ class ScaleSetStorageProfileImageReference {
   /// [publisher] Specifies the publisher of the image used to create the virtual machines.
   /// [sku] Specifies the SKU of the image used to create the virtual machines.
   /// [version] Specifies the version of the image used to create the virtual machines.
-  ScaleSetStorageProfileImageReference({
+  const ScaleSetStorageProfileImageReference({
     this.id,
     this.offer,
     this.publisher,

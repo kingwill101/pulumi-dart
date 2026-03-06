@@ -12,7 +12,7 @@ class EncryptionSettings {
   /// Creates a new [EncryptionSettings].
   /// [containerAppAuthEncryptionSecretName] The secret name which is referenced for EncryptionKey.
   /// [containerAppAuthSigningSecretName] The secret name which is referenced for SigningKey.
-  EncryptionSettings({
+  const EncryptionSettings({
     this.containerAppAuthEncryptionSecretName,
     this.containerAppAuthSigningSecretName,
   });

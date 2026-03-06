@@ -30,7 +30,7 @@ class GetDomainsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the resource
-  GetDomainsResult({
+  const GetDomainsResult({
     this.acceleratorId,
     this.domain,
     required this.domains,

@@ -18,7 +18,7 @@ class DataConnectorAzureSecurityCenterArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Azure Security Center Data Connector resides in. Changing this forces a new Azure Security Center Data Connector to be created.
   /// [name] The name which should be used for this Azure Security Center Data Connector. Changing this forces a new Azure Security Center Data Connector to be created.
   /// [subscriptionId] The ID of the subscription that this Azure Security Center Data Connector connects to. Changing this forces a new Azure Security Center Data Connector to be created.
-  DataConnectorAzureSecurityCenterArgs({
+  const DataConnectorAzureSecurityCenterArgs({
     required this.logAnalyticsWorkspaceId,
     this.name,
     this.subscriptionId,

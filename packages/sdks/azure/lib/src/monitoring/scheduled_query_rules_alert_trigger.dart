@@ -15,7 +15,7 @@ class ScheduledQueryRulesAlertTrigger {
   /// [metricTrigger] A `metric_trigger` block as defined above. Trigger condition for metric query rule.
   /// [operator] Evaluation operation for rule - 'GreaterThan', GreaterThanOrEqual', 'LessThan', or 'LessThanOrEqual'.
   /// [threshold] Result or count threshold based on which rule should be triggered. Values must be between 0 and 10000 inclusive.
-  ScheduledQueryRulesAlertTrigger({
+  const ScheduledQueryRulesAlertTrigger({
     this.metricTrigger,
     required this.operator,
     required this.threshold,

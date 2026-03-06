@@ -33,7 +33,7 @@ class WsfcDomainProfileResponse {
   /// [ouPath] Organizational Unit path in which the nodes and cluster will be present.
   /// [sqlServiceAccount] Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
   /// [storageAccountUrl] Fully qualified ARM resource id of the witness storage account.
-  WsfcDomainProfileResponse({
+  const WsfcDomainProfileResponse({
     this.clusterBootstrapAccount,
     this.clusterOperatorAccount,
     this.clusterSubnetType,

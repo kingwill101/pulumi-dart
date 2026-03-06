@@ -9,7 +9,7 @@ class GetApplicationPortalOptionSignInOption {
   /// Creates a new [GetApplicationPortalOptionSignInOption].
   /// [applicationUrl] Required.
   /// [origin] Required.
-  GetApplicationPortalOptionSignInOption({
+  const GetApplicationPortalOptionSignInOption({
     required this.applicationUrl,
     required this.origin,
   });

@@ -25,7 +25,7 @@ class TargetDeviceConfiguration {
   /// [storage] Storage configuration.
   /// [time] Time configuration.
   /// [webProxy] Web proxy configuration.
-  TargetDeviceConfiguration({
+  const TargetDeviceConfiguration({
     this.hostName,
     this.network,
     this.storage,

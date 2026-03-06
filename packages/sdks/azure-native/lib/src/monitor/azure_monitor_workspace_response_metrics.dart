@@ -12,7 +12,7 @@ class AzureMonitorWorkspaceResponseMetrics {
   /// Creates a new [AzureMonitorWorkspaceResponseMetrics].
   /// [internalId] An internal identifier for the metrics container. Only to be used by the system
   /// [prometheusQueryEndpoint] The Prometheus query endpoint for the Azure Monitor Workspace
-  AzureMonitorWorkspaceResponseMetrics({
+  const AzureMonitorWorkspaceResponseMetrics({
     required this.internalId,
     required this.prometheusQueryEndpoint,
   });

@@ -28,7 +28,7 @@ class GuestConfigurationHCRPAssignmentArgs {
   /// [name] The guest configuration assignment name.
   /// [properties] Properties of the Guest configuration assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GuestConfigurationHCRPAssignmentArgs({
+  const GuestConfigurationHCRPAssignmentArgs({
     this.guestConfigurationAssignmentName,
     this.location,
     required this.machineName,

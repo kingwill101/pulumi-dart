@@ -28,7 +28,7 @@ class CreatorArgs {
   /// [properties] The Creator resource properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  CreatorArgs({
+  const CreatorArgs({
     required this.accountName,
     this.creatorName,
     this.location,

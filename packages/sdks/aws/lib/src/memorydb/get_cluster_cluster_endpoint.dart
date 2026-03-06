@@ -11,7 +11,7 @@ class GetClusterClusterEndpoint {
   /// Creates a new [GetClusterClusterEndpoint].
   /// [address] DNS hostname of the node.
   /// [port] Port number that this node is listening on.
-  GetClusterClusterEndpoint({
+  const GetClusterClusterEndpoint({
     required this.address,
     required this.port,
   });

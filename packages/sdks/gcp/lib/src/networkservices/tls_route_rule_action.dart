@@ -10,7 +10,7 @@ class TlsRouteRuleAction {
 
   /// Creates a new [TlsRouteRuleAction].
   /// [destinations] The destination to which traffic should be forwarded.
-  TlsRouteRuleAction({
+  const TlsRouteRuleAction({
     this.destinations,
   });
 

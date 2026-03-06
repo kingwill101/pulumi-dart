@@ -191,7 +191,7 @@ class PolicyRuleCondition {
   /// [version] Optional.
   /// [vlan] Optional.
   /// [vlanId] Optional.
-  PolicyRuleCondition({
+  const PolicyRuleCondition({
     this.address,
     this.all,
     this.appService,

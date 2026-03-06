@@ -18,7 +18,7 @@ class ReverseShippingDetailsResponse {
   /// [contactDetails] Contact Info.
   /// [isUpdated] A flag to indicate whether Reverse Shipping details are updated or not after device has been prepared.
   /// [shippingAddress] Shipping address where customer wishes to receive the device.
-  ReverseShippingDetailsResponse({
+  const ReverseShippingDetailsResponse({
     this.contactDetails,
     required this.isUpdated,
     this.shippingAddress,

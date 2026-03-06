@@ -51,7 +51,7 @@ class HostGroupState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] The state of the Host Group.
   /// [type] Type of the host group.
-  HostGroupState({
+  const HostGroupState({
     this.createTime,
     this.description,
     this.effectiveLabels,

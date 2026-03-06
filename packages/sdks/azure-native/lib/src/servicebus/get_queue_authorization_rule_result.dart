@@ -27,7 +27,7 @@ class GetQueueAuthorizationRuleResult {
   /// [rights] The rights associated with the rule.
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  GetQueueAuthorizationRuleResult({
+  const GetQueueAuthorizationRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

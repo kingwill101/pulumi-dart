@@ -10,7 +10,7 @@ class LocalBrokerAuthenticationMethods {
 
   /// Creates a new [LocalBrokerAuthenticationMethods].
   /// [kubernetes] Kubernetes local broker authentication method.
-  LocalBrokerAuthenticationMethods({
+  const LocalBrokerAuthenticationMethods({
     required this.kubernetes,
   });
 

@@ -38,7 +38,7 @@ class GetServiceSubscriptionsSubscription {
   /// [subscriptionUrl] The url of the subscription.
   /// [topicName] The name of the topic.
   /// [topicOwner] The account ID of the topic owner.
-  GetServiceSubscriptionsSubscription({
+  const GetServiceSubscriptionsSubscription({
     required this.createTime,
     required this.endpoint,
     required this.filterTag,

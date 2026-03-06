@@ -8,7 +8,7 @@ class JobDefinitionEksPropertiesPodPropertiesMetadata {
 
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesMetadata].
   /// [labels] Key-value pairs used to identify, sort, and organize kubernetes resources.
-  JobDefinitionEksPropertiesPodPropertiesMetadata({
+  const JobDefinitionEksPropertiesPodPropertiesMetadata({
     this.labels,
   });
 

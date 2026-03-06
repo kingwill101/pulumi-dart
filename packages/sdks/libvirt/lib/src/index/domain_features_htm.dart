@@ -8,7 +8,7 @@ class DomainFeaturesHtm {
 
   /// Creates a new [DomainFeaturesHtm].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHtm({
+  const DomainFeaturesHtm({
     this.state,
   });
 

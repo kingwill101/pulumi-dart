@@ -11,7 +11,7 @@ class ModuleModuleLinkHash {
   /// Creates a new [ModuleModuleLinkHash].
   /// [algorithm] Specifies the algorithm used for the hash content.
   /// [value] The hash value of the content.
-  ModuleModuleLinkHash({
+  const ModuleModuleLinkHash({
     required this.algorithm,
     required this.value,
   });

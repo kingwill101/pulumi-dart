@@ -11,7 +11,7 @@ class MultiplexProgramMultiplexProgramSettingsServiceDescriptor {
   /// Creates a new [MultiplexProgramMultiplexProgramSettingsServiceDescriptor].
   /// [providerName] Unique provider name.
   /// [serviceName] Unique service name.
-  MultiplexProgramMultiplexProgramSettingsServiceDescriptor({
+  const MultiplexProgramMultiplexProgramSettingsServiceDescriptor({
     required this.providerName,
     required this.serviceName,
   });

@@ -21,7 +21,7 @@ class ResourceArgs {
   /// [pathPart] Last path segment of this API resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApi] ID of the associated REST API
-  ResourceArgs({
+  const ResourceArgs({
     required this.parentId,
     required this.pathPart,
     this.region,

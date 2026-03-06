@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1EncryptionSpec {
 
   /// Creates a new [GoogleCloudAiplatformV1EncryptionSpec].
   /// [kmsKeyName] The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. The key needs to be in the same region as where the compute resource is created.
-  GoogleCloudAiplatformV1EncryptionSpec({
+  const GoogleCloudAiplatformV1EncryptionSpec({
     required this.kmsKeyName,
   });
 

@@ -12,7 +12,7 @@ class PrivateLinkServiceConnectionStateResponse {
   /// Creates a new [PrivateLinkServiceConnectionStateResponse].
   /// [description] The private link service connection description.
   /// [status] The private link service connection status.
-  PrivateLinkServiceConnectionStateResponse({
+  const PrivateLinkServiceConnectionStateResponse({
     this.description,
     this.status,
   });

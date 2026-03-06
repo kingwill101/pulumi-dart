@@ -56,7 +56,7 @@ class BatchArgs {
   /// [sparkBatch] Spark batch config.
   /// [sparkRBatch] SparkR batch config.
   /// [sparkSqlBatch] Spark SQL batch config.
-  BatchArgs({
+  const BatchArgs({
     this.batchId,
     this.environmentConfig,
     this.labels,

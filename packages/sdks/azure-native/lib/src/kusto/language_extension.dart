@@ -15,7 +15,7 @@ class LanguageExtension {
   /// [languageExtensionCustomImageName] The language extension custom image name.
   /// [languageExtensionImageName] The language extension image name.
   /// [languageExtensionName] The language extension name.
-  LanguageExtension({
+  const LanguageExtension({
     this.languageExtensionCustomImageName,
     this.languageExtensionImageName,
     this.languageExtensionName,

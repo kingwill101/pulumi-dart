@@ -24,7 +24,7 @@ class AppLoggingSettingsAudioRecordingConfig {
   /// Creates a new [AppLoggingSettingsAudioRecordingConfig].
   /// [gcsBucket] The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
   /// [gcsPathPrefix] The Cloud Storage path prefix for audio recordings.
-  AppLoggingSettingsAudioRecordingConfig({
+  const AppLoggingSettingsAudioRecordingConfig({
     this.gcsBucket,
     this.gcsPathPrefix,
   });

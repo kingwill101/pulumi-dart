@@ -14,7 +14,7 @@ class GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
   /// Creates a new [GoogleCloudNetworksecurityV1beta1CertificateProviderResponse].
   /// [certificateProviderInstance] The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
   /// [grpcEndpoint] gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-  GoogleCloudNetworksecurityV1beta1CertificateProviderResponse({
+  const GoogleCloudNetworksecurityV1beta1CertificateProviderResponse({
     required this.certificateProviderInstance,
     required this.grpcEndpoint,
   });

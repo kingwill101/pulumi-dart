@@ -13,7 +13,7 @@ class AccountKeyDatastoreSecrets {
   /// Creates a new [AccountKeyDatastoreSecrets].
   /// [key] Storage account key.
   /// [secretsType] Enum to determine the datastore secrets type.
-  AccountKeyDatastoreSecrets({
+  const AccountKeyDatastoreSecrets({
     this.key,
     required this.secretsType,
   });

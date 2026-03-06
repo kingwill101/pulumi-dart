@@ -36,7 +36,7 @@ class ServiceLinkedRoleState {
   /// [tags] Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uniqueId] The stable and unique string identifying the role.
-  ServiceLinkedRoleState({
+  const ServiceLinkedRoleState({
     this.arn,
     this.awsServiceName,
     this.createDate,

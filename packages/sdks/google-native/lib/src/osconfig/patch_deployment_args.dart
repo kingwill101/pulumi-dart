@@ -43,7 +43,7 @@ class PatchDeploymentArgs {
   /// [project] Optional.
   /// [recurringSchedule] Schedule recurring executions.
   /// [rollout] Optional. Rollout strategy of the patch job.
-  PatchDeploymentArgs({
+  const PatchDeploymentArgs({
     this.description,
     this.duration,
     required this.instanceFilter,

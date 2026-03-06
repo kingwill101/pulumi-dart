@@ -22,7 +22,7 @@ class NatAddressState {
   /// [ipAddress] The allocated NAT IP address.
   /// [name] Resource ID of the NAT address.
   /// [state] State of the NAT IP address.
-  NatAddressState({
+  const NatAddressState({
     this.activate,
     this.instanceId,
     this.ipAddress,

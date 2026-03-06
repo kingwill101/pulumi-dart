@@ -11,7 +11,7 @@ class DomainMatchingExportingConfigS3Exporting {
   /// Creates a new [DomainMatchingExportingConfigS3Exporting].
   /// [s3BucketName] The name of the S3 bucket where Identity Resolution Jobs write result files.
   /// [s3KeyName] The S3 key name of the location where Identity Resolution Jobs write result files.
-  DomainMatchingExportingConfigS3Exporting({
+  const DomainMatchingExportingConfigS3Exporting({
     required this.s3BucketName,
     this.s3KeyName,
   });

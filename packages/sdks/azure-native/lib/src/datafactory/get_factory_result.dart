@@ -59,7 +59,7 @@ class GetFactoryResult {
   /// [tags] The resource tags.
   /// [type] The resource type.
   /// [version] Version of the factory.
-  GetFactoryResult({
+  const GetFactoryResult({
     required this.azureApiVersion,
     required this.createTime,
     required this.eTag,

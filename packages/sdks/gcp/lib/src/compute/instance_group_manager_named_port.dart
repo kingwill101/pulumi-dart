@@ -12,7 +12,7 @@ class InstanceGroupManagerNamedPort {
   /// Creates a new [InstanceGroupManagerNamedPort].
   /// [name] The name of the port.
   /// [port] The port number.
-  InstanceGroupManagerNamedPort({
+  const InstanceGroupManagerNamedPort({
     required this.name,
     required this.port,
   });

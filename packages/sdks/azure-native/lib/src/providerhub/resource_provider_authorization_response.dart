@@ -25,7 +25,7 @@ class ResourceProviderAuthorizationResponse {
   /// [managedByAuthorization] Managed by authorization.
   /// [managedByRoleDefinitionId] The managed by role definition id.
   /// [roleDefinitionId] The role definition id.
-  ResourceProviderAuthorizationResponse({
+  const ResourceProviderAuthorizationResponse({
     this.allowedThirdPartyExtensions,
     this.applicationId,
     this.groupingTag,

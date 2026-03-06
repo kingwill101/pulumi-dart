@@ -21,7 +21,7 @@ class GetRecordSetArgs {
   /// [name] The DNS name for the resource.
   /// [project] The ID of the project for the Google Cloud.
   /// [type] The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
-  GetRecordSetArgs({
+  const GetRecordSetArgs({
     required this.managedZone,
     required this.name,
     this.project,

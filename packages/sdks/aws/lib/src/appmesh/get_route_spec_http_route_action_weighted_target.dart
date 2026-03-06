@@ -11,7 +11,7 @@ class GetRouteSpecHttpRouteActionWeightedTarget {
   /// [port] Required.
   /// [virtualNode] Required.
   /// [weight] Required.
-  GetRouteSpecHttpRouteActionWeightedTarget({
+  const GetRouteSpecHttpRouteActionWeightedTarget({
     required this.port,
     required this.virtualNode,
     required this.weight,

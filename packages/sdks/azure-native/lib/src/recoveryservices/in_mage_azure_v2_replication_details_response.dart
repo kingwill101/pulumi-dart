@@ -228,7 +228,7 @@ class InMageAzureV2ReplicationDetailsResponse {
   /// [vmNics] The PE Network details.
   /// [vmProtectionState] The protection state for the vm.
   /// [vmProtectionStateDescription] The protection state description for the vm.
-  InMageAzureV2ReplicationDetailsResponse({
+  const InMageAzureV2ReplicationDetailsResponse({
     this.agentExpiryDate,
     this.agentVersion,
     this.allAvailableOSUpgradeConfigurations,

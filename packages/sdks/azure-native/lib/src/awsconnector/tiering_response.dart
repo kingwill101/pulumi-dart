@@ -12,7 +12,7 @@ class TieringResponse {
   /// Creates a new [TieringResponse].
   /// [accessTier] S3 Intelligent-Tiering access tier. See [Storage class for automatically optimizing frequently and infrequently accessed objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html#sc-dynamic-data-access) for a list of access tiers in the S3 Intelligent-Tiering storage class.
   /// [days] The number of consecutive days of no access after which an object will be eligible to be transitioned to the corresponding tier. The minimum number of days specified for Archive Access tier must be at least 90 days and Deep Archive Access tier must be at least 180 days. The maximum can be up to 2 years (730 days).
-  TieringResponse({
+  const TieringResponse({
     this.accessTier,
     this.days,
   });

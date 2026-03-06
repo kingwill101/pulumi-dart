@@ -18,7 +18,7 @@ class IntegrationRuntimeVNetProperties {
   /// [subnet] The name of the subnet this integration runtime will join.
   /// [subnetId] The ID of subnet, to which this Azure-SSIS integration runtime will be joined.
   /// [vNetId] The ID of the VNet that this integration runtime will join.
-  IntegrationRuntimeVNetProperties({
+  const IntegrationRuntimeVNetProperties({
     this.publicIPs,
     this.subnet,
     this.subnetId,

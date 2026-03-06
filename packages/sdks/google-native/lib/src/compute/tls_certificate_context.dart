@@ -18,7 +18,7 @@ class TlsCertificateContext {
   /// [certificatePaths] Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH.
   /// [certificateSource] Defines how TLS certificates are obtained.
   /// [sdsConfig] Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
-  TlsCertificateContext({
+  const TlsCertificateContext({
     this.certificatePaths,
     this.certificateSource,
     this.sdsConfig,

@@ -14,7 +14,7 @@ class FleetObservabilityFeatureStateResponse {
   /// Creates a new [FleetObservabilityFeatureStateResponse].
   /// [logging] The feature state of default logging.
   /// [monitoring] The feature state of fleet monitoring.
-  FleetObservabilityFeatureStateResponse({
+  const FleetObservabilityFeatureStateResponse({
     required this.logging,
     required this.monitoring,
   });

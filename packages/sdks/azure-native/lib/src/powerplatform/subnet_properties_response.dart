@@ -9,7 +9,7 @@ class SubnetPropertiesResponse {
 
   /// Creates a new [SubnetPropertiesResponse].
   /// [name] Subnet name.
-  SubnetPropertiesResponse({
+  const SubnetPropertiesResponse({
     this.name,
   });
 

@@ -26,7 +26,7 @@ class EventRuleState {
   /// [notificationConfigurationArn] ARN of the notification configuration to associate with this event rule. Must match the pattern `arn:aws:notifications::[0-9]{12}:configuration/[a-z0-9]{27}`.
   /// [regions] Set of AWS regions where the event rule will be applied. Each region must be between 2 and 25 characters, and match the pattern `([a-z]{1,2})-([a-z]{1,15}-)+([0-9])`.
   /// [source] Source of the event. Must be between 1 and 36 characters, and match the pattern `aws.([a-z0-9\-])+`.
-  EventRuleState({
+  const EventRuleState({
     this.arn,
     this.eventPattern,
     this.eventType,

@@ -12,7 +12,7 @@ class DataSourceHttpConfig {
   /// Creates a new [DataSourceHttpConfig].
   /// [authorizationConfig] Authorization configuration in case the HTTP endpoint requires authorization. See `authorization_config` Block for details.
   /// [endpoint] HTTP URL.
-  DataSourceHttpConfig({
+  const DataSourceHttpConfig({
     this.authorizationConfig,
     required this.endpoint,
   });

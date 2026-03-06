@@ -9,7 +9,7 @@ class IPSet {
 
   /// Creates a new [IPSet].
   /// [definition] Property definition
-  IPSet({
+  const IPSet({
     this.definition,
   });
 

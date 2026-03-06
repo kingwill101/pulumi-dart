@@ -12,7 +12,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver {
   /// [bucketName] Required.
   /// [bucketPrefix] Optional.
   /// [s3OutputFormatConfig] Required.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolver({
     required this.bucketName,
     this.bucketPrefix,
     required this.s3OutputFormatConfig,

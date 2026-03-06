@@ -18,7 +18,7 @@ class GetDataLakeConnectorArgs {
   /// [dataLakeConnectorName] Name of MQ dataLakeConnector resource
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDataLakeConnectorArgs({
+  const GetDataLakeConnectorArgs({
     required this.dataLakeConnectorName,
     required this.mqName,
     required this.resourceGroupName,

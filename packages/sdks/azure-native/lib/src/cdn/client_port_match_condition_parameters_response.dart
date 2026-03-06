@@ -21,7 +21,7 @@ class ClientPortMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleClientPortConditionParameters'.
-  ClientPortMatchConditionParametersResponse({
+  const ClientPortMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

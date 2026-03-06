@@ -34,7 +34,7 @@ class ScheduleArgs {
   /// [startAt] When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
   /// [stopAt] When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
   /// [timeZoneId] The IANA timezone id for the schedule.
-  ScheduleArgs({
+  const ScheduleArgs({
     required this.labName,
     this.notes,
     this.recurrencePattern,

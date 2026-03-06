@@ -8,7 +8,7 @@ class ConnectorKafkaClusterClientAuthentication {
 
   /// Creates a new [ConnectorKafkaClusterClientAuthentication].
   /// [authenticationType] The type of client authentication used to connect to the Apache Kafka cluster. Valid values: `IAM`, `NONE`. A value of `NONE` means that no client authentication is used. The default value is `NONE`.
-  ConnectorKafkaClusterClientAuthentication({
+  const ConnectorKafkaClusterClientAuthentication({
     this.authenticationType,
   });
 

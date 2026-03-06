@@ -57,7 +57,7 @@ class ViewState {
   /// [timeouts] Optional.
   /// [updatedAt] Time when the billing view was last updated.
   /// [viewDefinitionLastUpdatedAt] Timestamp of when the billing view definition was last updated.
-  ViewState({
+  const ViewState({
     this.arn,
     this.billingViewType,
     this.createdAt,

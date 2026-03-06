@@ -21,7 +21,7 @@ class ManagedInstanceTransparentDataEncryptionState {
   /// [keyVaultKeyId] To use customer managed keys from Azure Key Vault, provide the AKV Key ID. To use service managed keys, omit this field.
   /// [managedHsmKeyId] Optional.
   /// [managedInstanceId] Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
-  ManagedInstanceTransparentDataEncryptionState({
+  const ManagedInstanceTransparentDataEncryptionState({
     this.autoRotationEnabled,
     this.keyVaultKeyId,
     this.managedHsmKeyId,

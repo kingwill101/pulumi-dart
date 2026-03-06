@@ -71,7 +71,7 @@ class GetDocumentResult {
   /// [title] Title that describes the document. This can be the top heading or text that describes the document.
   /// [updateTime] The time when the document is last updated.
   /// [updater] The user who lastly updates the document.
-  GetDocumentResult({
+  const GetDocumentResult({
     required this.cloudAiDocument,
     required this.contentCategory,
     required this.createTime,

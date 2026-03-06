@@ -11,7 +11,7 @@ class PlanRuleScanAction {
   /// Creates a new [PlanRuleScanAction].
   /// [malwareScanner] Malware scanner to use for the scan action. Currently only `GUARDDUTY` is supported.
   /// [scanMode] Scanning mode to use for the scan action. Valid values are `FULL_SCAN` and `INCREMENTAL_SCAN`.
-  PlanRuleScanAction({
+  const PlanRuleScanAction({
     required this.malwareScanner,
     required this.scanMode,
   });

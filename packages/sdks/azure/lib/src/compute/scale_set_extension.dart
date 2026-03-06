@@ -29,7 +29,7 @@ class ScaleSetExtension {
   /// [settings] The settings passed to the extension, these are specified as a JSON object in a string.
   /// [type] The type of extension, available types for a publisher can be found using the Azure CLI.
   /// [typeHandlerVersion] Specifies the version of the extension to use, available versions can be found using the Azure CLI.
-  ScaleSetExtension({
+  const ScaleSetExtension({
     this.autoUpgradeMinorVersion,
     required this.name,
     this.protectedSettings,

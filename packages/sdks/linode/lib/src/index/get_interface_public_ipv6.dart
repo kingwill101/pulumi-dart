@@ -17,7 +17,7 @@ class GetInterfacePublicIpv6 {
   /// [ranges] IPv6 ranges assigned to this interface.
   /// [shareds] IPv6 ranges shared with other Linodes.
   /// [slaacs] IPv6 SLAAC configuration.
-  GetInterfacePublicIpv6({
+  const GetInterfacePublicIpv6({
     required this.ranges,
     required this.shareds,
     required this.slaacs,

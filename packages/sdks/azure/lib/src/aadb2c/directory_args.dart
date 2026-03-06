@@ -30,7 +30,7 @@ class DirectoryArgs {
   /// [resourceGroupName] The name of the Resource Group where the AAD B2C Directory should exist. Changing this forces a new AAD B2C Directory to be created.
   /// [skuName] Billing SKU for the B2C tenant. Must be one of: `PremiumP1` or `PremiumP2` (`Standard` is not supported). See [official docs](https://aka.ms/b2cBilling) for more information.
   /// [tags] A mapping of tags which should be assigned to the AAD B2C Directory.
-  DirectoryArgs({
+  const DirectoryArgs({
     this.countryCode,
     required this.dataResidencyLocation,
     this.displayName,

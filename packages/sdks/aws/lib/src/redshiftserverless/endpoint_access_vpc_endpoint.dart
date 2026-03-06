@@ -15,7 +15,7 @@ class EndpointAccessVpcEndpoint {
   /// [networkInterfaces] The network interfaces of the endpoint.. See `Network Interface` below.
   /// [vpcEndpointId] The DNS address of the VPC endpoint.
   /// [vpcId] The port that Amazon Redshift Serverless listens on.
-  EndpointAccessVpcEndpoint({
+  const EndpointAccessVpcEndpoint({
     this.networkInterfaces,
     this.vpcEndpointId,
     this.vpcId,

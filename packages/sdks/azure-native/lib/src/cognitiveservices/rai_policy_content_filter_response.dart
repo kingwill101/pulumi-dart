@@ -24,7 +24,7 @@ class RaiPolicyContentFilterResponse {
   /// [name] Name of ContentFilter.
   /// [severityThreshold] Level at which content is filtered.
   /// [source] Content source to apply the Content Filters.
-  RaiPolicyContentFilterResponse({
+  const RaiPolicyContentFilterResponse({
     this.action,
     this.blocking,
     this.enabled,

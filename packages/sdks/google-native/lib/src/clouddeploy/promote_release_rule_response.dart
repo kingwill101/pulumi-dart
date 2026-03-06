@@ -19,7 +19,7 @@ class PromoteReleaseRuleResponse {
   /// [destinationPhase] Optional. The starting phase of the rollout created by this operation. Default to the first phase.
   /// [destinationTargetId] Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
   /// [wait] Optional. How long the release need to be paused until being promoted to the next target.
-  PromoteReleaseRuleResponse({
+  const PromoteReleaseRuleResponse({
     required this.condition,
     required this.destinationPhase,
     required this.destinationTargetId,

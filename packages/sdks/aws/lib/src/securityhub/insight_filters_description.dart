@@ -9,7 +9,7 @@ class InsightFiltersDescription {
   /// Creates a new [InsightFiltersDescription].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersDescription({
+  const InsightFiltersDescription({
     required this.comparison,
     required this.value,
   });

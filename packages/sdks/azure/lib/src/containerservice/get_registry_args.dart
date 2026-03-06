@@ -15,7 +15,7 @@ class GetRegistryArgs {
   /// Creates a new [GetRegistryArgs].
   /// [name] The name of the Container Registry.
   /// [resourceGroupName] The Name of the Resource Group where this Container Registry exists.
-  GetRegistryArgs({
+  const GetRegistryArgs({
     required this.name,
     required this.resourceGroupName,
   });

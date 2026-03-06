@@ -33,7 +33,7 @@ class DatadogOrganizationProperties {
   /// [linkingClientId] The client_id from an existing in exchange for an auth token to link organization.
   /// [name] Name of the Datadog organization.
   /// [redirectUri] The redirect URI for linking.
-  DatadogOrganizationProperties({
+  const DatadogOrganizationProperties({
     this.apiKey,
     this.applicationKey,
     this.cspm,

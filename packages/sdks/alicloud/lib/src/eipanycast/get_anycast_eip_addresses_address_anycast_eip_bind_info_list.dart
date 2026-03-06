@@ -17,7 +17,7 @@ class GetAnycastEipAddressesAddressAnycastEipBindInfoList {
   /// [bindInstanceRegionId] The region ID of the bound cloud resource instance.
   /// [bindInstanceType] Bind the cloud resource instance type.
   /// [bindTime] Binding time.
-  GetAnycastEipAddressesAddressAnycastEipBindInfoList({
+  const GetAnycastEipAddressesAddressAnycastEipBindInfoList({
     required this.bindInstanceId,
     required this.bindInstanceRegionId,
     required this.bindInstanceType,

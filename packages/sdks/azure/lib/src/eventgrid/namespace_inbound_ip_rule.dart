@@ -11,7 +11,7 @@ class NamespaceInboundIpRule {
   /// Creates a new [NamespaceInboundIpRule].
   /// [action] The action to take when the rule is matched. Possible values are `Allow`. Defaults to `Allow`.
   /// [ipMask] The IP mask (CIDR) to match on.
-  NamespaceInboundIpRule({
+  const NamespaceInboundIpRule({
     this.action,
     required this.ipMask,
   });

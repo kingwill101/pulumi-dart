@@ -38,7 +38,7 @@ class FlowletResponse {
   /// [sources] List of sources in Flowlet.
   /// [transformations_] List of transformations in Flowlet.
   /// [type] Type of data flow.
-  FlowletResponse({
+  const FlowletResponse({
     this.annotations,
     this.description,
     this.folder,

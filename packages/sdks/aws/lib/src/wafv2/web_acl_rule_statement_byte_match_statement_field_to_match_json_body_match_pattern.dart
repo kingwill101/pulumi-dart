@@ -10,7 +10,7 @@ class WebAclRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern {
   /// Creates a new [WebAclRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  WebAclRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const WebAclRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

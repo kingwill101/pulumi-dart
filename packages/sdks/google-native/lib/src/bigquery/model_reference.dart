@@ -14,7 +14,7 @@ class ModelReference {
   /// [datasetId] The ID of the dataset containing this model.
   /// [modelId] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
   /// [project] The ID of the project containing this model.
-  ModelReference({
+  const ModelReference({
     required this.datasetId,
     required this.modelId,
     required this.project,

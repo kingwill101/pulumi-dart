@@ -31,7 +31,7 @@ class S3AccessPointProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  S3AccessPointProperties({
+  const S3AccessPointProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

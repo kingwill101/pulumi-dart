@@ -14,7 +14,7 @@ class V2FunctionCode {
   /// [ossBucketName] The OSS bucket name of the function code package.
   /// [ossObjectName] The OSS object name of the function code package.
   /// [zipFile] Upload the base64 encoding of the code zip package directly in the request body.
-  V2FunctionCode({
+  const V2FunctionCode({
     this.ossBucketName,
     this.ossObjectName,
     this.zipFile,

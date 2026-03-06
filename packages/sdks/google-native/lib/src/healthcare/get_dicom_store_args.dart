@@ -17,7 +17,7 @@ class GetDicomStoreArgs {
   /// [dicomStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDicomStoreArgs({
+  const GetDicomStoreArgs({
     required this.datasetId,
     required this.dicomStoreId,
     required this.location,

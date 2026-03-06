@@ -15,7 +15,7 @@ class BucketPolicyArgs {
   /// Creates a new [BucketPolicyArgs].
   /// [bucket] The name of the Bucket.
   /// [policy] Json-formatted authorization policies for buckets.
-  BucketPolicyArgs({
+  const BucketPolicyArgs({
     required this.bucket,
     required this.policy,
   });

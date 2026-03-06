@@ -44,7 +44,7 @@ class NextGenerationFirewallVirtualHubPanoramaState {
   /// [planId] The billing plan ID as published by Liftr.PAN. Defaults to `panw-cloud-ngfw-payg`.
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Next Generation Firewall VHub Panorama should exist. Changing this forces a new Palo Alto Next Generation Firewall VHub Panorama to be created.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall VHub Panorama.
-  NextGenerationFirewallVirtualHubPanoramaState({
+  const NextGenerationFirewallVirtualHubPanoramaState({
     this.destinationNats,
     this.dnsSettings,
     this.location,

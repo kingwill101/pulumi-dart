@@ -24,7 +24,7 @@ class GetPrivateEndpointConnectionResult {
   /// [name] The resource name.
   /// [properties] Core resource properties
   /// [type] The resource type.
-  GetPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

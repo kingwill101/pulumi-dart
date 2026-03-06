@@ -21,7 +21,7 @@ class GetInstancesArgs {
   /// [lang] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userClientIp] Optional.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.domainType,
     this.ids,
     this.lang,

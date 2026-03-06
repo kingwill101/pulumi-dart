@@ -23,7 +23,7 @@ class GetKubernetesServiceVersionsResult {
   /// [location] Required.
   /// [versionPrefix] Optional.
   /// [versions] The list of all supported versions.
-  GetKubernetesServiceVersionsResult({
+  const GetKubernetesServiceVersionsResult({
     required this.defaultVersion,
     required this.id,
     this.includePreview,

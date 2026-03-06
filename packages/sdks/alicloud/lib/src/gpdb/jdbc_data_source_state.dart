@@ -36,7 +36,7 @@ class JdbcDataSourceState {
   /// [jdbcPassword] The password of the database account.
   /// [jdbcUserName] The name of the database account.
   /// [status] Data Source Status
-  JdbcDataSourceState({
+  const JdbcDataSourceState({
     this.createTime,
     this.dataSourceDescription,
     this.dataSourceId,

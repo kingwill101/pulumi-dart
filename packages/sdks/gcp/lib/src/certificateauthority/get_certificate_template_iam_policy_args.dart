@@ -21,7 +21,7 @@ class GetCertificateTemplateIamPolicyArgs {
   /// [certificateTemplate] Used to find the parent resource to bind the IAM policy to
   /// [location] The location for the resource Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
-  GetCertificateTemplateIamPolicyArgs({
+  const GetCertificateTemplateIamPolicyArgs({
     required this.certificateTemplate,
     this.location,
     this.project,

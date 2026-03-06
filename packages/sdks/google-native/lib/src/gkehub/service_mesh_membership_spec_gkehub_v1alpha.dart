@@ -18,7 +18,7 @@ class ServiceMeshMembershipSpecGkehubV1alpha {
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
   /// [defaultChannel] Determines which release channel to use for default injection and service mesh APIs.
   /// [management] Enables automatic Service Mesh management.
-  ServiceMeshMembershipSpecGkehubV1alpha({
+  const ServiceMeshMembershipSpecGkehubV1alpha({
     this.controlPlane,
     this.defaultChannel,
     this.management,

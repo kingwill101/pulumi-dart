@@ -16,7 +16,7 @@ class WeeklyMaintenanceScheduleConfiguration {
   /// [day] The day to run the maintenance job
   /// [frequency] The frequency to run the maintenance job
   /// [hour] The hour to run the maintenance job
-  WeeklyMaintenanceScheduleConfiguration({
+  const WeeklyMaintenanceScheduleConfiguration({
     required this.day,
     required this.frequency,
     required this.hour,

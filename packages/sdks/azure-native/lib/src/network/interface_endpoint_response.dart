@@ -45,7 +45,7 @@ class InterfaceEndpointResponse {
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  InterfaceEndpointResponse({
+  const InterfaceEndpointResponse({
     this.endpointService,
     this.etag,
     this.fqdn,

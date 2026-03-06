@@ -29,7 +29,7 @@ class ClusterApplicationConfig {
   /// [configScope] The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
   /// [nodeGroupId] The configuration effected which node group id of emr cluster.
   /// [nodeGroupName] The configuration effected which node group name of emr cluster.
-  ClusterApplicationConfig({
+  const ClusterApplicationConfig({
     required this.applicationName,
     this.configDescription,
     required this.configFileName,

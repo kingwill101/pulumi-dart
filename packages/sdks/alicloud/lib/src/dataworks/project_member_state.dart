@@ -19,7 +19,7 @@ class ProjectMemberState {
   /// [roles] List of roles owned by members. See `roles` below.
   /// [status] The status of the user in project
   /// [userId] The user ID of the member.
-  ProjectMemberState({
+  const ProjectMemberState({
     this.projectId,
     this.roles,
     this.status,

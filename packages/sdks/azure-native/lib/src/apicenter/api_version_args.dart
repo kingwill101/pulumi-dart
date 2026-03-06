@@ -30,7 +30,7 @@ class ApiVersionArgs {
   /// [title] API version title.
   /// [versionName] The name of the API version.
   /// [workspaceName] The name of the workspace.
-  ApiVersionArgs({
+  const ApiVersionArgs({
     required this.apiName,
     required this.lifecycleStage,
     required this.resourceGroupName,

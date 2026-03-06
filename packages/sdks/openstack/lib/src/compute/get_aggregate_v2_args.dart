@@ -22,7 +22,7 @@ class GetAggregateV2Args {
   /// [metadata] Metadata of the Host Aggregate
   /// [name] The name of the host aggregate.
   /// [region] The region in which to obtain the V2 Compute client.
-  GetAggregateV2Args({
+  const GetAggregateV2Args({
     this.hosts,
     this.metadata,
     required this.name,

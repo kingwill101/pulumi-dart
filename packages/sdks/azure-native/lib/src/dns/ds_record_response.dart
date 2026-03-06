@@ -16,7 +16,7 @@ class DsRecordResponse {
   /// [algorithm] The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
   /// [digest] The digest entity.
   /// [keyTag] The key tag value is used to determine which DNSKEY Resource Record is used for signature verification.
-  DsRecordResponse({
+  const DsRecordResponse({
     this.algorithm,
     this.digest,
     this.keyTag,

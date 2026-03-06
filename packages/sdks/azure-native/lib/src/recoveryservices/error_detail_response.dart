@@ -15,7 +15,7 @@ class ErrorDetailResponse {
   /// [code] Error code.
   /// [message] Error Message related to the Code.
   /// [recommendations] List of recommendation strings.
-  ErrorDetailResponse({
+  const ErrorDetailResponse({
     required this.code,
     required this.message,
     required this.recommendations,

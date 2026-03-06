@@ -29,7 +29,7 @@ class GoogleCloudMlV1ParameterSpec {
   /// [parameterName] The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
   /// [scaleType] Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
   /// [type] The type of the parameter.
-  GoogleCloudMlV1ParameterSpec({
+  const GoogleCloudMlV1ParameterSpec({
     this.categoricalValues,
     this.discreteValues,
     this.maxValue,

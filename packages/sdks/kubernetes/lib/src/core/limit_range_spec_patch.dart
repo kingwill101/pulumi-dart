@@ -10,7 +10,7 @@ class LimitRangeSpecPatch {
 
   /// Creates a new [LimitRangeSpecPatch].
   /// [limits] Limits is the list of LimitRangeItem objects that are enforced.
-  LimitRangeSpecPatch({
+  const LimitRangeSpecPatch({
     this.limits,
   });
 

@@ -8,7 +8,7 @@ class PrivateEndpointPropertyResponse {
 
   /// Creates a new [PrivateEndpointPropertyResponse].
   /// [id] Resource id of the private endpoint.
-  PrivateEndpointPropertyResponse({
+  const PrivateEndpointPropertyResponse({
     this.id,
   });
 

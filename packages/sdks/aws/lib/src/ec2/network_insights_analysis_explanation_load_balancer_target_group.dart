@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup({
+  const NetworkInsightsAnalysisExplanationLoadBalancerTargetGroup({
     this.arn,
     this.id,
     this.name,

@@ -21,7 +21,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings {
   /// [audioLanguageSelection] Audio Language Selection. See Audio Language Selection for more details.
   /// [audioPidSelection] Audio Pid Selection. See Audio PID Selection for more details.
   /// [audioTrackSelection] Audio Track Selection. See Audio Track Selection for more details.
-  ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings({
+  const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings({
     this.audioHlsRenditionSelection,
     this.audioLanguageSelection,
     this.audioPidSelection,

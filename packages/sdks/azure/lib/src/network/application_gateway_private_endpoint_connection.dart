@@ -11,7 +11,7 @@ class ApplicationGatewayPrivateEndpointConnection {
   /// Creates a new [ApplicationGatewayPrivateEndpointConnection].
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of the Application Gateway. Changing this forces a new resource to be created.
-  ApplicationGatewayPrivateEndpointConnection({
+  const ApplicationGatewayPrivateEndpointConnection({
     this.id,
     this.name,
   });

@@ -15,7 +15,7 @@ class GetVariableArgs {
   /// [configId] Required.
   /// [project] Optional.
   /// [variableId] Required.
-  GetVariableArgs({
+  const GetVariableArgs({
     required this.configId,
     this.project,
     required this.variableId,

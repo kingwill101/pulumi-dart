@@ -24,7 +24,7 @@ class GetSinkResult {
   /// [sinkId] Random ID string that AWS generated as part of the sink ARN.
   /// [sinkIdentifier] Required.
   /// [tags] Tags assigned to the sink.
-  GetSinkResult({
+  const GetSinkResult({
     required this.arn,
     required this.id,
     required this.name,

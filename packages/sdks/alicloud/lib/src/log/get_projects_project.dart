@@ -29,7 +29,7 @@ class GetProjectsProject {
   /// [projectName] The name of the project.
   /// [region] The region of project.
   /// [status] The status of project.
-  GetProjectsProject({
+  const GetProjectsProject({
     required this.description,
     required this.id,
     required this.lastModifyTime,

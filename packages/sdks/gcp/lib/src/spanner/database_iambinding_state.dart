@@ -39,7 +39,7 @@ class DatabaseIAMBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [role] The role that should be applied. Only one
-  DatabaseIAMBindingState({
+  const DatabaseIAMBindingState({
     this.condition,
     this.database,
     this.etag,

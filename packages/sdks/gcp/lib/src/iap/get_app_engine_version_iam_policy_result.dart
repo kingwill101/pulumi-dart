@@ -23,7 +23,7 @@ class GetAppEngineVersionIamPolicyResult {
   /// [project] Required.
   /// [service] Required.
   /// [versionId] Required.
-  GetAppEngineVersionIamPolicyResult({
+  const GetAppEngineVersionIamPolicyResult({
     required this.appId,
     required this.etag,
     required this.id,

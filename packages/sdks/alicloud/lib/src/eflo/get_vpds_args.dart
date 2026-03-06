@@ -37,7 +37,7 @@ class GetVpdsArgs {
   /// [status] The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
   /// [vpdId] The id of the vpd.
   /// [vpdName] The Name of the VPD.
-  GetVpdsArgs({
+  const GetVpdsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

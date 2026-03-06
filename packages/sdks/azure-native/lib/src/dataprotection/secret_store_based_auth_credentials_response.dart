@@ -14,7 +14,7 @@ class SecretStoreBasedAuthCredentialsResponse {
   /// Creates a new [SecretStoreBasedAuthCredentialsResponse].
   /// [objectType] Type of the specific object - used for deserializing
   /// [secretStoreResource] Secret store resource
-  SecretStoreBasedAuthCredentialsResponse({
+  const SecretStoreBasedAuthCredentialsResponse({
     required this.objectType,
     this.secretStoreResource,
   });

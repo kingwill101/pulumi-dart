@@ -16,7 +16,7 @@ class MirroringDeploymentGroupLocation {
   /// Creates a new [MirroringDeploymentGroupLocation].
   /// [location] The cloud location of the deployment group, currently restricted to `global`.
   /// [state] (Output)
-  MirroringDeploymentGroupLocation({
+  const MirroringDeploymentGroupLocation({
     this.location,
     this.state,
   });

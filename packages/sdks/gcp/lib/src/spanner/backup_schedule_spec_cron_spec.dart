@@ -18,7 +18,7 @@ class BackupScheduleSpecCronSpec {
 
   /// Creates a new [BackupScheduleSpecCronSpec].
   /// [text] Textual representation of the crontab. User can customize the
-  BackupScheduleSpecCronSpec({
+  const BackupScheduleSpecCronSpec({
     this.text,
   });
 

@@ -40,7 +40,7 @@ class GetEndpointPolicyNetworkservicesV1beta1Result {
   /// [trafficPortSelector] Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// [type] The type of endpoint policy. This is primarily used to validate the configuration.
   /// [updateTime] The timestamp when the resource was updated.
-  GetEndpointPolicyNetworkservicesV1beta1Result({
+  const GetEndpointPolicyNetworkservicesV1beta1Result({
     required this.authorizationPolicy,
     required this.clientTlsPolicy,
     required this.createTime,

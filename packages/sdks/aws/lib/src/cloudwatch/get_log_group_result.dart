@@ -33,7 +33,7 @@ class GetLogGroupResult {
   /// [region] Required.
   /// [retentionInDays] Number of days log events retained in the specified log group.
   /// [tags] Map of tags to assign to the resource.
-  GetLogGroupResult({
+  const GetLogGroupResult({
     required this.arn,
     required this.creationTime,
     required this.deletionProtectionEnabled,

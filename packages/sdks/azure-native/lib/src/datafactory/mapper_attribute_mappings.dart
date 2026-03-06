@@ -10,7 +10,7 @@ class MapperAttributeMappings {
 
   /// Creates a new [MapperAttributeMappings].
   /// [attributeMappings] List of attribute mappings.
-  MapperAttributeMappings({
+  const MapperAttributeMappings({
     this.attributeMappings,
   });
 

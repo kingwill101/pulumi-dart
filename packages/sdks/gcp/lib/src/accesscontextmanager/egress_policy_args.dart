@@ -15,7 +15,7 @@ class EgressPolicyArgs {
   /// Creates a new [EgressPolicyArgs].
   /// [egressPolicyName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
-  EgressPolicyArgs({
+  const EgressPolicyArgs({
     required this.egressPolicyName,
     required this.resource,
   });

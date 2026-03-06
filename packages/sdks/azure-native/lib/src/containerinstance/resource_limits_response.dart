@@ -16,7 +16,7 @@ class ResourceLimitsResponse {
   /// [cpu] The CPU limit of this container instance.
   /// [gpu] The GPU limit of this container instance.
   /// [memoryInGB] The memory limit in GB of this container instance.
-  ResourceLimitsResponse({
+  const ResourceLimitsResponse({
     this.cpu,
     this.gpu,
     this.memoryInGB,

@@ -16,7 +16,7 @@ class MasterAuthorizedNetworksConfigResponseContainerV1beta1 {
   /// [cidrBlocks] cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS.
   /// [enabled] Whether or not master authorized networks is enabled.
   /// [gcpPublicCidrsAccessEnabled] Whether master is accessbile via Google Compute Engine Public IP addresses.
-  MasterAuthorizedNetworksConfigResponseContainerV1beta1({
+  const MasterAuthorizedNetworksConfigResponseContainerV1beta1({
     required this.cidrBlocks,
     required this.enabled,
     required this.gcpPublicCidrsAccessEnabled,

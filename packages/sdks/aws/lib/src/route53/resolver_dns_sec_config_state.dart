@@ -21,7 +21,7 @@ class ResolverDnsSecConfigState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
   /// [validationStatus] The validation status for a DNSSEC configuration. The status can be one of the following: `ENABLING`, `ENABLED`, `DISABLING` and `DISABLED`.
-  ResolverDnsSecConfigState({
+  const ResolverDnsSecConfigState({
     this.arn,
     this.ownerId,
     this.region,

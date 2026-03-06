@@ -10,7 +10,7 @@ class ApigatewayApiConfigOpenApiDocument {
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocument].
   /// [document] The OpenAPI Specification document file.
-  ApigatewayApiConfigOpenApiDocument({
+  const ApigatewayApiConfigOpenApiDocument({
     this.document,
   });
 

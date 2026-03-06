@@ -51,7 +51,7 @@ class VpnGatewayArgs {
   /// [tags] Resource tags.
   /// [virtualHub] The VirtualHub to which the gateway belongs.
   /// [vpnGatewayScaleUnit] The scale unit for this vpn gateway.
-  VpnGatewayArgs({
+  const VpnGatewayArgs({
     this.bgpSettings,
     this.connections,
     this.enableBgpRouteTranslationForNat,

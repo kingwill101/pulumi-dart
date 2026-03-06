@@ -18,7 +18,7 @@ class GetGenaiRegionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [regions] Required.
   /// [sorts] Optional.
-  GetGenaiRegionsResult({
+  const GetGenaiRegionsResult({
     this.filters,
     required this.id,
     required this.regions,

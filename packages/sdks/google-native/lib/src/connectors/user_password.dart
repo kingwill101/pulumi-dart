@@ -13,7 +13,7 @@ class UserPassword {
   /// Creates a new [UserPassword].
   /// [password] Secret version reference containing the password.
   /// [username] Username.
-  UserPassword({
+  const UserPassword({
     this.password,
     this.username,
   });

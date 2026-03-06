@@ -61,7 +61,7 @@ class GetTableResult {
   /// [totalRetentionInDays] The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
   /// [totalRetentionInDaysAsDefault] True - Value originates from retention in days, False - Customer specific.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTableResult({
+  const GetTableResult({
     required this.archiveRetentionInDays,
     required this.azureApiVersion,
     required this.id,

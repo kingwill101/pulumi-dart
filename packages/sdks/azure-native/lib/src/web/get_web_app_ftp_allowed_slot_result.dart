@@ -23,7 +23,7 @@ class GetWebAppFtpAllowedSlotResult {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  GetWebAppFtpAllowedSlotResult({
+  const GetWebAppFtpAllowedSlotResult({
     required this.allow,
     required this.azureApiVersion,
     required this.id,

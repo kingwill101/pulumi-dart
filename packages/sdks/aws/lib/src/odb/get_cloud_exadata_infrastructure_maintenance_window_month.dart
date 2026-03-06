@@ -7,7 +7,7 @@ class GetCloudExadataInfrastructureMaintenanceWindowMonth {
 
   /// Creates a new [GetCloudExadataInfrastructureMaintenanceWindowMonth].
   /// [name] Required.
-  GetCloudExadataInfrastructureMaintenanceWindowMonth({
+  const GetCloudExadataInfrastructureMaintenanceWindowMonth({
     required this.name,
   });
 

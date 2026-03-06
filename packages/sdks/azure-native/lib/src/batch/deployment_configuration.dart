@@ -10,7 +10,7 @@ class DeploymentConfiguration {
 
   /// Creates a new [DeploymentConfiguration].
   /// [virtualMachineConfiguration] The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
-  DeploymentConfiguration({
+  const DeploymentConfiguration({
     this.virtualMachineConfiguration,
   });
 

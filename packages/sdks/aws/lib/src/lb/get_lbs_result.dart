@@ -15,7 +15,7 @@ class GetLbsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [tags] Optional.
-  GetLbsResult({
+  const GetLbsResult({
     required this.arns,
     required this.id,
     required this.region,

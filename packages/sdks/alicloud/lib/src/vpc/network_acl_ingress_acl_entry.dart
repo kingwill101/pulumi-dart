@@ -40,7 +40,7 @@ class NetworkAclIngressAclEntry {
   /// [port] The source port range of the inbound rule.
   /// [protocol] The protocol type. Value:
   /// [sourceCidrIp] The source CIDR block.
-  NetworkAclIngressAclEntry({
+  const NetworkAclIngressAclEntry({
     this.description,
     this.entryType,
     this.ipVersion,

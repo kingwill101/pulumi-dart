@@ -18,7 +18,7 @@ class KeyVaultProperties {
   /// [keyVaultUri] The Uri of the key vault.
   /// [keyVersion] The version of the key vault key.
   /// [userIdentity] The user assigned identity (ARM resource id) that has access to the key.
-  KeyVaultProperties({
+  const KeyVaultProperties({
     required this.keyName,
     required this.keyVaultUri,
     this.keyVersion,

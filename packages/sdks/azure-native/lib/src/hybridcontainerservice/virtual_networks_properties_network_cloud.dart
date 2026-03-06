@@ -9,7 +9,7 @@ class VirtualNetworksPropertiesNetworkCloud {
 
   /// Creates a new [VirtualNetworksPropertiesNetworkCloud].
   /// [networkId] The ARM ID of Network Cloud Network Resource to Associate with this VirtualNetwork
-  VirtualNetworksPropertiesNetworkCloud({
+  const VirtualNetworksPropertiesNetworkCloud({
     this.networkId,
   });
 

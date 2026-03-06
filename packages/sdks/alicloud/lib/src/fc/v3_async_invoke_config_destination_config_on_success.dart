@@ -8,7 +8,7 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccess {
 
   /// Creates a new [V3AsyncInvokeConfigDestinationConfigOnSuccess].
   /// [destination] Asynchronous call target Resource Descriptor
-  V3AsyncInvokeConfigDestinationConfigOnSuccess({
+  const V3AsyncInvokeConfigDestinationConfigOnSuccess({
     this.destination,
   });
 

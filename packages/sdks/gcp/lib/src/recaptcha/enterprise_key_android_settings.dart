@@ -11,7 +11,7 @@ class EnterpriseKeyAndroidSettings {
   /// Creates a new [EnterpriseKeyAndroidSettings].
   /// [allowAllPackageNames] If set to true, it means allowed_package_names will not be enforced.
   /// [allowedPackageNames] Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
-  EnterpriseKeyAndroidSettings({
+  const EnterpriseKeyAndroidSettings({
     this.allowAllPackageNames,
     this.allowedPackageNames,
   });

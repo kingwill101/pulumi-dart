@@ -42,7 +42,7 @@ class VirtualMachineScaleSetOSDiskResponse {
   /// [osType] This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
   /// [vhdContainers] Specifies the container urls that are used to store operating system disks for the scale set.
   /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  VirtualMachineScaleSetOSDiskResponse({
+  const VirtualMachineScaleSetOSDiskResponse({
     this.caching,
     required this.createOption,
     this.deleteOption,

@@ -32,7 +32,7 @@ class ApiKeyState {
   /// [restrictions] Key restrictions.
   /// [serviceAccountEmail] The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.devsite.corp.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
   /// [uid] Output only. Unique id in UUID4 format.
-  ApiKeyState({
+  const ApiKeyState({
     this.displayName,
     this.keyString,
     this.name,

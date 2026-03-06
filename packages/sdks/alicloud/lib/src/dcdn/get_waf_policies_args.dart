@@ -23,7 +23,7 @@ class GetWafPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [queryArgs] The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
   /// [status] The status of the resource. Valid values: `on`, `off`.
-  GetWafPoliciesArgs({
+  const GetWafPoliciesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

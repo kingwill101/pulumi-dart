@@ -9,7 +9,7 @@ class AaaaRecord {
 
   /// Creates a new [AaaaRecord].
   /// [ipv6Address] The IPv6 address of this AAAA record.
-  AaaaRecord({
+  const AaaaRecord({
     this.ipv6Address,
   });
 

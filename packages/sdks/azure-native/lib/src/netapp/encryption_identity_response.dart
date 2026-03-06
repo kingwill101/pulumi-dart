@@ -12,7 +12,7 @@ class EncryptionIdentityResponse {
   /// Creates a new [EncryptionIdentityResponse].
   /// [principalId] The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
   /// [userAssignedIdentity] The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  EncryptionIdentityResponse({
+  const EncryptionIdentityResponse({
     required this.principalId,
     this.userAssignedIdentity,
   });

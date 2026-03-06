@@ -9,7 +9,7 @@ class RollingUpdateStatefulSetStrategyAppsV1beta1 {
 
   /// Creates a new [RollingUpdateStatefulSetStrategyAppsV1beta1].
   /// [partition] Partition indicates the ordinal at which the StatefulSet should be partitioned.
-  RollingUpdateStatefulSetStrategyAppsV1beta1({
+  const RollingUpdateStatefulSetStrategyAppsV1beta1({
     this.partition,
   });
 

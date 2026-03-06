@@ -20,7 +20,7 @@ class GetServiceMeshesMeshMeshConfigProxy {
   /// [limitMemory] The memory limit  of the Sidecar injector Pods.
   /// [requestCpu] The requested cpu the Sidecar injector Pods.
   /// [requestMemory] The requested memory the Sidecar injector Pods.
-  GetServiceMeshesMeshMeshConfigProxy({
+  const GetServiceMeshesMeshMeshConfigProxy({
     required this.clusterDomain,
     required this.limitCpu,
     required this.limitMemory,

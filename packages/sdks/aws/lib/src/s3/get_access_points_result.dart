@@ -26,7 +26,7 @@ class GetAccessPointsResult {
   /// [dataSourceType] Type of the data source that the access point is attached to.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetAccessPointsResult({
+  const GetAccessPointsResult({
     required this.accessPoints,
     this.accountId,
     this.bucket,

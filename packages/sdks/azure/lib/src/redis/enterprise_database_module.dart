@@ -13,7 +13,7 @@ class EnterpriseDatabaseModule {
   /// [args] Configuration options for the module (e.g. `ERROR_RATE 0.00 INITIAL_SIZE 400`). Changing this forces a new resource to be created. Defaults to `""`.
   /// [name] The name which should be used for this module. Possible values are `RedisBloom`, `RedisTimeSeries`, `RediSearch` and `RedisJSON`. Changing this forces a new Redis Enterprise Database to be created.
   /// [version] Optional.
-  EnterpriseDatabaseModule({
+  const EnterpriseDatabaseModule({
     this.args,
     required this.name,
     this.version,

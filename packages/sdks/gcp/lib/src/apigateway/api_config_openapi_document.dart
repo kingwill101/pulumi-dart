@@ -10,7 +10,7 @@ class ApiConfigOpenapiDocument {
 
   /// Creates a new [ApiConfigOpenapiDocument].
   /// [document] The OpenAPI Specification document file.
-  ApiConfigOpenapiDocument({
+  const ApiConfigOpenapiDocument({
     required this.document,
   });
 

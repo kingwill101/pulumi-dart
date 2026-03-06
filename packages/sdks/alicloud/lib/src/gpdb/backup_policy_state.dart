@@ -38,7 +38,7 @@ class BackupPolicyState {
   /// [preferredBackupPeriod] Data backup cycle. Separate multiple values with commas (,). Value Description:
   /// [preferredBackupTime] Data backup time. Format: HH:mmZ-HH:mmZ(UTC time).
   /// [recoveryPointPeriod] Recovery point frequency. Value Description:
-  BackupPolicyState({
+  const BackupPolicyState({
     this.backupRetentionPeriod,
     this.dbInstanceId,
     this.enableRecoveryPoint,

@@ -16,7 +16,7 @@ class UpdateRunStrategy {
 
   /// Creates a new [UpdateRunStrategy].
   /// [stages] The list of stages that compose this update run. Min size: 1.
-  UpdateRunStrategy({
+  const UpdateRunStrategy({
     required this.stages,
   });
 

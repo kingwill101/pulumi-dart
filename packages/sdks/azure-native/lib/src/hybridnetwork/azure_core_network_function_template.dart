@@ -14,7 +14,7 @@ class AzureCoreNetworkFunctionTemplate {
   /// Creates a new [AzureCoreNetworkFunctionTemplate].
   /// [networkFunctionApplications] Network function applications.
   /// [nfviType] The network function type.
-  AzureCoreNetworkFunctionTemplate({
+  const AzureCoreNetworkFunctionTemplate({
     this.networkFunctionApplications,
     required this.nfviType,
   });

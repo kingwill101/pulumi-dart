@@ -25,7 +25,7 @@ class NodePoolNodeConfigLinuxNodeConfig {
   /// [sysctls] The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
   /// [transparentHugepageDefrag] The Linux kernel transparent hugepage defrag setting.
   /// [transparentHugepageEnabled] The Linux kernel transparent hugepage setting.
-  NodePoolNodeConfigLinuxNodeConfig({
+  const NodePoolNodeConfigLinuxNodeConfig({
     this.cgroupMode,
     this.hugepagesConfig,
     this.nodeKernelModuleLoading,

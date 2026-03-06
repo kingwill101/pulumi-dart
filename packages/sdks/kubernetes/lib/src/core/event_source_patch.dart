@@ -12,7 +12,7 @@ class EventSourcePatch {
   /// Creates a new [EventSourcePatch].
   /// [component] Component from which the event is generated.
   /// [host] Node name on which the event is generated.
-  EventSourcePatch({
+  const EventSourcePatch({
     this.component,
     this.host,
   });

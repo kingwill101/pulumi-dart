@@ -21,7 +21,7 @@ class GetKeyTransactionResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [type] Type of the key transaction in New Relic.
-  GetKeyTransactionResult({
+  const GetKeyTransactionResult({
     required this.accountId,
     required this.domain,
     required this.guid,

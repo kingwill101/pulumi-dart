@@ -36,7 +36,7 @@ class GetBasicEndpointsResult {
   /// [names] A list of Global Accelerator Basic Endpoint names.
   /// [outputFile] Optional.
   /// [status] The status of the Basic Endpoint.
-  GetBasicEndpointsResult({
+  const GetBasicEndpointsResult({
     required this.endpointGroupId,
     this.endpointId,
     this.endpointType,

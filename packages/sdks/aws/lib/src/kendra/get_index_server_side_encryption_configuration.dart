@@ -8,7 +8,7 @@ class GetIndexServerSideEncryptionConfiguration {
 
   /// Creates a new [GetIndexServerSideEncryptionConfiguration].
   /// [kmsKeyId] Identifier of the AWS KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
-  GetIndexServerSideEncryptionConfiguration({
+  const GetIndexServerSideEncryptionConfiguration({
     required this.kmsKeyId,
   });
 

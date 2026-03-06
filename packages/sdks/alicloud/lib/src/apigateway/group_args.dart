@@ -28,7 +28,7 @@ class GroupArgs {
   /// [name] The name of the api gateway group. Defaults to null.
   /// [userLogConfig] user_log_config defines the config of user log of the group. See `user_log_config` below.
   /// [vpcIntranetEnable] Whether to enable `vpc_domain`. Defaults to `false`.
-  GroupArgs({
+  const GroupArgs({
     this.basePath,
     this.description,
     this.instanceId,

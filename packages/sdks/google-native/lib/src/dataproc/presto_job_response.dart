@@ -29,7 +29,7 @@ class PrestoJobResponse {
   /// [properties] Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryList] A list of queries.
-  PrestoJobResponse({
+  const PrestoJobResponse({
     required this.clientTags,
     required this.continueOnFailure,
     required this.loggingConfig,

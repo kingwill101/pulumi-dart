@@ -15,7 +15,7 @@ class NetworkPackageArgs {
   /// Creates a new [NetworkPackageArgs].
   /// [bandwidth] The bandwidth of package public network bandwidth peak. Valid values: 1~200. Unit:Mbps.
   /// [officeSiteId] The ID of office site.
-  NetworkPackageArgs({
+  const NetworkPackageArgs({
     required this.bandwidth,
     required this.officeSiteId,
   });

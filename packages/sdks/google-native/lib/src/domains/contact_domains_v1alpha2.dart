@@ -19,7 +19,7 @@ class ContactDomainsV1alpha2 {
   /// [faxNumber] Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
   /// [phoneNumber] Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
   /// [postalAddress] Postal address of the contact.
-  ContactDomainsV1alpha2({
+  const ContactDomainsV1alpha2({
     required this.email,
     this.faxNumber,
     required this.phoneNumber,

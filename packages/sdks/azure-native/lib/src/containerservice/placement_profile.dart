@@ -10,7 +10,7 @@ class PlacementProfile {
 
   /// Creates a new [PlacementProfile].
   /// [defaultClusterResourcePlacement] The default ClusterResourcePlacement policy configuration.
-  PlacementProfile({
+  const PlacementProfile({
     this.defaultClusterResourcePlacement,
   });
 

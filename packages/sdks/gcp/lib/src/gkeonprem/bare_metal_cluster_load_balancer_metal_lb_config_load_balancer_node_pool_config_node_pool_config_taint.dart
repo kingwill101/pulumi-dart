@@ -15,7 +15,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   /// [effect] Specifies the nodes operating system (default: LINUX).
   /// [key] Key associated with the effect.
   /// [value] Value associated with the effect.
-  BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint({
+  const BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint({
     this.effect,
     this.key,
     this.value,

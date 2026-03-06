@@ -10,7 +10,7 @@ class VirtualNetworksPropertiesResponseStatus {
 
   /// Creates a new [VirtualNetworksPropertiesResponseStatus].
   /// [provisioningStatus] Contains Provisioning errors
-  VirtualNetworksPropertiesResponseStatus({
+  const VirtualNetworksPropertiesResponseStatus({
     this.provisioningStatus,
   });
 

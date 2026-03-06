@@ -35,7 +35,7 @@ class AlertProcessingRuleActionGroupState {
   /// [schedule] A `schedule` block as defined below.
   /// [scopes] A list of resource IDs which will be the target of alert processing rule.
   /// [tags] A mapping of tags which should be assigned to the Alert Processing Rule.
-  AlertProcessingRuleActionGroupState({
+  const AlertProcessingRuleActionGroupState({
     this.addActionGroupIds,
     this.condition,
     this.description,

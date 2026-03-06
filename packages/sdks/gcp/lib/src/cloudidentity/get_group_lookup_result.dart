@@ -14,7 +14,7 @@ class GetGroupLookupResult {
   /// [groupKey] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
-  GetGroupLookupResult({
+  const GetGroupLookupResult({
     required this.groupKey,
     required this.id,
     required this.name,

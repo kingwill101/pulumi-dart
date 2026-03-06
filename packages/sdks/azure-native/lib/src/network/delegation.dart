@@ -24,7 +24,7 @@ class Delegation {
   /// [name] The name of the resource that is unique within a subnet. This name can be used to access the resource.
   /// [serviceName] The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers).
   /// [type] Resource type.
-  Delegation({
+  const Delegation({
     this.actions,
     this.etag,
     this.id,

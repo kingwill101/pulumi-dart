@@ -21,7 +21,7 @@ class GetBundleArgs {
   /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
   /// [owner] Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBundleArgs({
+  const GetBundleArgs({
     this.bundleId,
     this.name,
     this.owner,

@@ -98,7 +98,7 @@ class GetTableResult {
   /// [timePartitionings] Required.
   /// [type] Required.
   /// [views] Required.
-  GetTableResult({
+  const GetTableResult({
     required this.biglakeConfigurations,
     required this.clusterings,
     required this.creationTime,

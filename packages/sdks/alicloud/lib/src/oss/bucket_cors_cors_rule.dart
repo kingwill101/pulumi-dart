@@ -20,7 +20,7 @@ class BucketCorsCorsRule {
   /// [allowedOrigins] The origins from which cross-origin requests are allowed. .
   /// [exposeHeaders] The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
   /// [maxAgeSeconds] The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
-  BucketCorsCorsRule({
+  const BucketCorsCorsRule({
     this.allowedHeaders,
     required this.allowedMethods,
     this.allowedOrigins,

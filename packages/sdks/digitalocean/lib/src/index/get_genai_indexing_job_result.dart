@@ -38,7 +38,7 @@ class GetGenaiIndexingJobResult {
   /// [totalItemsSkipped] Required.
   /// [updatedAt] Required.
   /// [uuid] Required.
-  GetGenaiIndexingJobResult({
+  const GetGenaiIndexingJobResult({
     required this.completedDatasources,
     required this.createdAt,
     required this.dataSourceUuids,

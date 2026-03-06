@@ -12,7 +12,7 @@ class GetScheduledQueryRulesLogCriteria {
   /// Creates a new [GetScheduledQueryRulesLogCriteria].
   /// [dimensions] A `dimension` block as defined below.
   /// [metricName] Name of the metric.
-  GetScheduledQueryRulesLogCriteria({
+  const GetScheduledQueryRulesLogCriteria({
     required this.dimensions,
     required this.metricName,
   });

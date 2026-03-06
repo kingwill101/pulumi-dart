@@ -12,7 +12,7 @@ class Preconditions {
   /// Creates a new [Preconditions].
   /// [resourceVersion] Specifies the target ResourceVersion
   /// [uid] Specifies the target UID.
-  Preconditions({
+  const Preconditions({
     this.resourceVersion,
     this.uid,
   });

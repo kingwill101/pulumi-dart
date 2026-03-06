@@ -18,7 +18,7 @@ class DhcpOptionsSetAttachmentState {
   /// [dryRun] Specifies whether to precheck this request only. Default values: `false`. Valid values:
   /// [status] The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
   /// [vpcId] The ID of the VPC network that is to be associated with the DHCP options set..
-  DhcpOptionsSetAttachmentState({
+  const DhcpOptionsSetAttachmentState({
     this.dhcpOptionsSetId,
     this.dryRun,
     this.status,

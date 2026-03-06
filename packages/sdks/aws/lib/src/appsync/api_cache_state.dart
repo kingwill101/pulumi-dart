@@ -27,7 +27,7 @@ class ApiCacheState {
   /// [transitEncryptionEnabled] Transit encryption flag when connecting to cache. You cannot update this setting after creation.
   /// [ttl] TTL in seconds for cache entries.
   /// [type] Cache instance type. Valid values are `SMALL`, `MEDIUM`, `LARGE`, `XLARGE`, `LARGE_2X`, `LARGE_4X`, `LARGE_8X`, `LARGE_12X`, `T2_SMALL`, `T2_MEDIUM`, `R4_LARGE`, `R4_XLARGE`, `R4_2XLARGE`, `R4_4XLARGE`, `R4_8XLARGE`.
-  ApiCacheState({
+  const ApiCacheState({
     this.apiCachingBehavior,
     this.apiId,
     this.atRestEncryptionEnabled,

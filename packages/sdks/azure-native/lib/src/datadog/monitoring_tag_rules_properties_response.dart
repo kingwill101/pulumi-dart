@@ -22,7 +22,7 @@ class MonitoringTagRulesPropertiesResponse {
   /// [logRules] Set of rules for sending logs for the Monitor resource.
   /// [metricRules] Set of rules for sending metrics for the Monitor resource.
   /// [provisioningState] Required.
-  MonitoringTagRulesPropertiesResponse({
+  const MonitoringTagRulesPropertiesResponse({
     this.automuting,
     this.customMetrics,
     this.logRules,

@@ -18,7 +18,7 @@ class RamRoleAttachmentArgs {
   /// [instanceId] The ID of the instance.
   /// [policy] The additional policy. When you attach an instance RAM role to instances, you can specify an additional policy to further limit the permissions of the role.
   /// [ramRoleName] The name of the instance RAM role.
-  RamRoleAttachmentArgs({
+  const RamRoleAttachmentArgs({
     required this.instanceId,
     this.policy,
     required this.ramRoleName,

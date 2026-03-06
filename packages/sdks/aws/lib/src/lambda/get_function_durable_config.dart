@@ -11,7 +11,7 @@ class GetFunctionDurableConfig {
   /// Creates a new [GetFunctionDurableConfig].
   /// [executionTimeout] Maximum execution time in seconds for the durable function.
   /// [retentionPeriod] Number of days to retain the function's execution state.
-  GetFunctionDurableConfig({
+  const GetFunctionDurableConfig({
     required this.executionTimeout,
     required this.retentionPeriod,
   });

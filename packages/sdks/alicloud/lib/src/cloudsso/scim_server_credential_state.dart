@@ -27,7 +27,7 @@ class ScimServerCredentialState {
   /// [directoryId] The ID of the Directory.
   /// [expireTime] (Available since v1.245.0) The time when the SCIM credential expires.
   /// [status] The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
-  ScimServerCredentialState({
+  const ScimServerCredentialState({
     this.createTime,
     this.credentialId,
     this.credentialSecretFile,

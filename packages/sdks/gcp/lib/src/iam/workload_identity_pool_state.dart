@@ -77,7 +77,7 @@ class WorkloadIdentityPoolState {
   /// [project] The ID of the project in which the resource belongs.
   /// [state] The state of the pool.
   /// [workloadIdentityPoolId] The ID to use for the pool, which becomes the final component of the resource name. This
-  WorkloadIdentityPoolState({
+  const WorkloadIdentityPoolState({
     this.description,
     this.disabled,
     this.displayName,

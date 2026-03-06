@@ -9,7 +9,7 @@ class CapacityReservationPreferenceEnumValueResponse {
 
   /// Creates a new [CapacityReservationPreferenceEnumValueResponse].
   /// [value] Property value
-  CapacityReservationPreferenceEnumValueResponse({
+  const CapacityReservationPreferenceEnumValueResponse({
     this.value,
   });
 

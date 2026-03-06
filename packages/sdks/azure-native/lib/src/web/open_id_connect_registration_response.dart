@@ -17,7 +17,7 @@ class OpenIdConnectRegistrationResponse {
   /// [clientCredential] The authentication credentials of the custom Open ID Connect provider.
   /// [clientId] The client id of the custom Open ID Connect provider.
   /// [openIdConnectConfiguration] The configuration settings of the endpoints used for the custom Open ID Connect provider.
-  OpenIdConnectRegistrationResponse({
+  const OpenIdConnectRegistrationResponse({
     this.clientCredential,
     this.clientId,
     this.openIdConnectConfiguration,

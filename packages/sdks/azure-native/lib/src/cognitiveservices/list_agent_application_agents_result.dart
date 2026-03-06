@@ -13,7 +13,7 @@ class ListAgentApplicationAgentsResult {
   /// Creates a new [ListAgentApplicationAgentsResult].
   /// [nextLink] The link to the next page of Agent Reference objects. If null, there are no additional pages.
   /// [value] An array of objects of type Agent Reference.
-  ListAgentApplicationAgentsResult({
+  const ListAgentApplicationAgentsResult({
     this.nextLink,
     this.value,
   });

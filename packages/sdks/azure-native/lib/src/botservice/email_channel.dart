@@ -20,7 +20,7 @@ class EmailChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to email channel resource
-  EmailChannel({
+  const EmailChannel({
     required this.channelName,
     this.etag,
     this.location,

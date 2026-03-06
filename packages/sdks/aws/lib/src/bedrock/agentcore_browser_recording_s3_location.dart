@@ -11,7 +11,7 @@ class AgentcoreBrowserRecordingS3Location {
   /// Creates a new [AgentcoreBrowserRecordingS3Location].
   /// [bucket] Name of the S3 bucket where recordings are stored.
   /// [prefix] S3 key prefix for recording files.
-  AgentcoreBrowserRecordingS3Location({
+  const AgentcoreBrowserRecordingS3Location({
     required this.bucket,
     required this.prefix,
   });

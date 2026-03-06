@@ -42,7 +42,7 @@ class AvailabilitySetArgs {
   /// [sku] Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
   /// [tags] Resource tags.
   /// [virtualMachines] A list of references to all virtual machines in the availability set.
-  AvailabilitySetArgs({
+  const AvailabilitySetArgs({
     this.availabilitySetName,
     this.location,
     this.platformFaultDomainCount,

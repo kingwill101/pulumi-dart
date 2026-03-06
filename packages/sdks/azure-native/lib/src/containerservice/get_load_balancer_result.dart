@@ -40,7 +40,7 @@ class GetLoadBalancerResult {
   /// [serviceNamespaceSelector] Services created in namespaces that match the selector can be placed on this load balancer.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLoadBalancerResult({
+  const GetLoadBalancerResult({
     this.allowServicePlacement,
     required this.azureApiVersion,
     required this.id,

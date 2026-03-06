@@ -13,7 +13,7 @@ class ManagementPolicyState {
   /// Creates a new [ManagementPolicyState].
   /// [rules] A `rule` block as documented below.
   /// [storageAccountId] Specifies the id of the storage account to apply the management policy to. Changing this forces a new resource to be created.
-  ManagementPolicyState({
+  const ManagementPolicyState({
     this.rules,
     this.storageAccountId,
   });

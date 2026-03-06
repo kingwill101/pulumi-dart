@@ -38,7 +38,7 @@ class GetBudgetCostType {
   /// [includeUpfront] A boolean value whether to include upfront costs in the cost budget. Defaults to `true`.
   /// [useAmortized] Whether a budget uses the amortized rate. Defaults to `false`.
   /// [useBlended] A boolean value whether to use blended costs in the cost budget. Defaults to `false`.
-  GetBudgetCostType({
+  const GetBudgetCostType({
     required this.includeCredit,
     required this.includeDiscount,
     required this.includeOtherSubscription,

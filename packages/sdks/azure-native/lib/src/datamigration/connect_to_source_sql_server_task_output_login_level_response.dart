@@ -29,7 +29,7 @@ class ConnectToSourceSqlServerTaskOutputLoginLevelResponse {
   /// [migrationEligibility] Information about eligibility of login for migration.
   /// [name] Login name.
   /// [resultType] Type of result - database level or task level
-  ConnectToSourceSqlServerTaskOutputLoginLevelResponse({
+  const ConnectToSourceSqlServerTaskOutputLoginLevelResponse({
     required this.defaultDatabase,
     required this.id,
     required this.isEnabled,

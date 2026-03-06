@@ -14,7 +14,7 @@ class FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationCloudwatchLogging
   /// [enabled] Enables or disables the logging. Defaults to `false`.
   /// [logGroupName] The CloudWatch group name for logging. This value is required if `enabled` is true.
   /// [logStreamName] The CloudWatch log stream name for logging. This value is required if `enabled` is true.
-  FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationCloudwatchLoggingOptions({
+  const FirehoseDeliveryStreamIcebergConfigurationS3ConfigurationCloudwatchLoggingOptions({
     this.enabled,
     this.logGroupName,
     this.logStreamName,

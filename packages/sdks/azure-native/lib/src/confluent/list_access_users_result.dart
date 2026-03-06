@@ -17,7 +17,7 @@ class ListAccessUsersResult {
   /// [data] Data of the users list
   /// [kind] Type of response
   /// [metadata] Metadata of the list
-  ListAccessUsersResult({
+  const ListAccessUsersResult({
     this.data,
     this.kind,
     this.metadata,

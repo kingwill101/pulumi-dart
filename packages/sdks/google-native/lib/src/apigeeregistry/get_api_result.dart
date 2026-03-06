@@ -35,7 +35,7 @@ class GetApiResult {
   /// [recommendedDeployment] The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
   /// [recommendedVersion] The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
   /// [updateTime] Last update timestamp.
-  GetApiResult({
+  const GetApiResult({
     required this.annotations,
     required this.availability,
     required this.createTime,

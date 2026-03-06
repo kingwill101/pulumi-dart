@@ -22,7 +22,7 @@ class ConnectedEnvironmentsStorageArgs {
   /// [properties] Storage properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
-  ConnectedEnvironmentsStorageArgs({
+  const ConnectedEnvironmentsStorageArgs({
     required this.connectedEnvironmentName,
     this.properties,
     required this.resourceGroupName,

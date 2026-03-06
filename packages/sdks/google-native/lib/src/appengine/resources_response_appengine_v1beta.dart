@@ -22,7 +22,7 @@ class ResourcesResponseAppengineV1beta {
   /// [kmsKeyReference] The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
   /// [memoryGb] Memory (GB) needed.
   /// [volumes] User specified volumes.
-  ResourcesResponseAppengineV1beta({
+  const ResourcesResponseAppengineV1beta({
     required this.cpu,
     required this.diskGb,
     required this.kmsKeyReference,

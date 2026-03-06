@@ -11,7 +11,7 @@ class GetVolumeTypesTypePrice {
   /// Creates a new [GetVolumeTypesTypePrice].
   /// [hourly] Cost (in US dollars) per hour.
   /// [monthly] Cost (in US dollars) per month.
-  GetVolumeTypesTypePrice({
+  const GetVolumeTypesTypePrice({
     required this.hourly,
     required this.monthly,
   });

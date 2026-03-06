@@ -11,7 +11,7 @@ class GetAppGatewayAllocatedConnection {
   /// Creates a new [GetAppGatewayAllocatedConnection].
   /// [ingressPort] The ingress port of an allocated connection.
   /// [pscUri] The PSC uri of an allocated connection.
-  GetAppGatewayAllocatedConnection({
+  const GetAppGatewayAllocatedConnection({
     required this.ingressPort,
     required this.pscUri,
   });

@@ -52,7 +52,7 @@ class WorkstationIamMemberState {
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] The ID of the parent workstation cluster config.
   /// [workstationId] Used to find the parent resource to bind the IAM policy to
-  WorkstationIamMemberState({
+  const WorkstationIamMemberState({
     this.condition,
     this.etag,
     this.location,

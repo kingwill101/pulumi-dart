@@ -15,7 +15,7 @@ class GetVirtualMachineImageTemplateArgs {
   /// Creates a new [GetVirtualMachineImageTemplateArgs].
   /// [imageTemplateName] The name of the image Template
   /// [resourceGroupName] The name of the resource group.
-  GetVirtualMachineImageTemplateArgs({
+  const GetVirtualMachineImageTemplateArgs({
     required this.imageTemplateName,
     required this.resourceGroupName,
   });

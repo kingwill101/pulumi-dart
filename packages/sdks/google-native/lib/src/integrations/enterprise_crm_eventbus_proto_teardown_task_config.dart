@@ -24,7 +24,7 @@ class EnterpriseCrmEventbusProtoTeardownTaskConfig {
   /// [parameters] The parameters the user can pass to this task.
   /// [properties] Optional.
   /// [teardownTaskImplementationClassName] Implementation class name.
-  EnterpriseCrmEventbusProtoTeardownTaskConfig({
+  const EnterpriseCrmEventbusProtoTeardownTaskConfig({
     this.creatorEmail,
     required this.name,
     this.nextTeardownTask,

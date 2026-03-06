@@ -27,7 +27,7 @@ class ExampleMessageChunkToolResponse {
   /// [response] The tool execution result in JSON object format.
   /// [tool] The name of the tool to execute.
   /// [toolsetTool] A tool that is created from a toolset.
-  ExampleMessageChunkToolResponse({
+  const ExampleMessageChunkToolResponse({
     this.displayName,
     this.id,
     required this.response,

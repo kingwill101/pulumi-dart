@@ -20,7 +20,7 @@ class MigrationAssessmentResponse {
   /// [enabled] Indicates if migration assessment is enabled for this SQL Server instance.
   /// [serverAssessments] Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target.
   /// [skuRecommendationResults] SKU Recommendation results for Azure migration targets for SQL Server.
-  MigrationAssessmentResponse({
+  const MigrationAssessmentResponse({
     required this.assessmentUploadTime,
     this.enabled,
     required this.serverAssessments,

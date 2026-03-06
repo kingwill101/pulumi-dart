@@ -13,7 +13,7 @@ class RegistryTaskRegistryCredential {
   /// Creates a new [RegistryTaskRegistryCredential].
   /// [customs] One or more `custom` blocks as defined above.
   /// [source] One `source` block as defined below.
-  RegistryTaskRegistryCredential({
+  const RegistryTaskRegistryCredential({
     this.customs,
     this.source,
   });

@@ -9,7 +9,7 @@ class DefenderCspmInformationResponse {
 
   /// Creates a new [DefenderCspmInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
-  DefenderCspmInformationResponse({
+  const DefenderCspmInformationResponse({
     required this.enablementStatus,
   });
 

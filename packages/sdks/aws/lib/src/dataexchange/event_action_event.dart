@@ -10,7 +10,7 @@ class EventActionEvent {
 
   /// Creates a new [EventActionEvent].
   /// [revisionPublished] Configuration for a Revision Published event.
-  EventActionEvent({
+  const EventActionEvent({
     required this.revisionPublished,
   });
 

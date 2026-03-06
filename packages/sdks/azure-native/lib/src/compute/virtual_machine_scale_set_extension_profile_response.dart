@@ -13,7 +13,7 @@ class VirtualMachineScaleSetExtensionProfileResponse {
   /// Creates a new [VirtualMachineScaleSetExtensionProfileResponse].
   /// [extensions] The virtual machine scale set child extension resources.
   /// [extensionsTimeBudget] Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
-  VirtualMachineScaleSetExtensionProfileResponse({
+  const VirtualMachineScaleSetExtensionProfileResponse({
     this.extensions,
     this.extensionsTimeBudget,
   });

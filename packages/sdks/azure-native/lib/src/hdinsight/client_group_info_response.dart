@@ -12,7 +12,7 @@ class ClientGroupInfoResponse {
   /// Creates a new [ClientGroupInfoResponse].
   /// [groupId] The AAD security group id.
   /// [groupName] The AAD security group name.
-  ClientGroupInfoResponse({
+  const ClientGroupInfoResponse({
     this.groupId,
     this.groupName,
   });

@@ -12,7 +12,7 @@ class Time {
   /// Creates a new [Time].
   /// [hour] The hour.
   /// [minute] The minute.
-  Time({
+  const Time({
     required this.hour,
     required this.minute,
   });

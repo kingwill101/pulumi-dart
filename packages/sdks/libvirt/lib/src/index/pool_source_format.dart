@@ -8,7 +8,7 @@ class PoolSourceFormat {
 
   /// Creates a new [PoolSourceFormat].
   /// [type] Defines the specific type of format for the storage source.
-  PoolSourceFormat({
+  const PoolSourceFormat({
     required this.type,
   });
 

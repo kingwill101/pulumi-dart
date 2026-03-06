@@ -35,7 +35,7 @@ class GetRegionalParameterVersionResult {
   /// [parameterVersionId] Required.
   /// [project] Required.
   /// [updateTime] The time at which the Regional Parameter Version was last updated.
-  GetRegionalParameterVersionResult({
+  const GetRegionalParameterVersionResult({
     required this.createTime,
     required this.disabled,
     required this.id,

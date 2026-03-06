@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace 
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDynatrace({
     required this.instanceUrl,
   });
 

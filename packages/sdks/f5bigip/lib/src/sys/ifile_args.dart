@@ -21,7 +21,7 @@ class IfileArgs {
   /// [name] Name of the system iFile to be created on BIG-IP. Changing this forces a new resource to be created.
   /// [partition] Partition where the iFile will be stored. Defaults to `Common`.
   /// [subPath] Subdirectory within the partition for organizing iFiles hierarchically.
-  IfileArgs({
+  const IfileArgs({
     required this.content,
     required this.name,
     this.partition,

@@ -9,7 +9,7 @@ class EnterpriseCrmEventbusProtoNextTeardownTaskResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoNextTeardownTaskResponse].
   /// [name] Name of the next teardown task.
-  EnterpriseCrmEventbusProtoNextTeardownTaskResponse({
+  const EnterpriseCrmEventbusProtoNextTeardownTaskResponse({
     required this.name,
   });
 

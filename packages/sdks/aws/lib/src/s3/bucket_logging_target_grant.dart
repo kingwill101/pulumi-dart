@@ -12,7 +12,7 @@ class BucketLoggingTargetGrant {
   /// Creates a new [BucketLoggingTargetGrant].
   /// [grantee] Configuration block for the person being granted permissions. See below.
   /// [permission] Logging permissions assigned to the grantee for the bucket. Valid values: `FULL_CONTROL`, `READ`, `WRITE`.
-  BucketLoggingTargetGrant({
+  const BucketLoggingTargetGrant({
     required this.grantee,
     required this.permission,
   });

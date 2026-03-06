@@ -12,7 +12,7 @@ class DriveBitLockerKeyResponse {
   /// Creates a new [DriveBitLockerKeyResponse].
   /// [bitLockerKey] BitLocker recovery key or password
   /// [driveId] Drive ID
-  DriveBitLockerKeyResponse({
+  const DriveBitLockerKeyResponse({
     this.bitLockerKey,
     this.driveId,
   });

@@ -12,7 +12,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfiguration {
   /// Creates a new [MediaInsightsPipelineConfigurationRealTimeAlertConfiguration].
   /// [disabled] Disables real time alert rules.
   /// [rules] Collection of real time alert rules
-  MediaInsightsPipelineConfigurationRealTimeAlertConfiguration({
+  const MediaInsightsPipelineConfigurationRealTimeAlertConfiguration({
     this.disabled,
     required this.rules,
   });

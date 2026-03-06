@@ -40,7 +40,7 @@ class GetExpressRouteConnectionResult {
   /// [provisioningState] The provisioning state of the express route connection resource.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [routingWeight] The routing weight associated to the connection.
-  GetExpressRouteConnectionResult({
+  const GetExpressRouteConnectionResult({
     this.authorizationKey,
     required this.azureApiVersion,
     this.enableInternetSecurity,

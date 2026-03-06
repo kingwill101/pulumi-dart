@@ -12,7 +12,7 @@ class RemediationFiltersResponse {
   /// Creates a new [RemediationFiltersResponse].
   /// [locations] The resource locations that will be remediated.
   /// [resourceIds] The IDs of the resources that will be remediated. Can specify at most 100 IDs. This filter cannot be used when ReEvaluateCompliance is set to ReEvaluateCompliance, and cannot be empty if provided.
-  RemediationFiltersResponse({
+  const RemediationFiltersResponse({
     this.locations,
     this.resourceIds,
   });

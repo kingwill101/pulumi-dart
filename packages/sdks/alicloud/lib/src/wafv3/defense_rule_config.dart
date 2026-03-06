@@ -132,7 +132,7 @@ class DefenseRuleConfig {
   /// [ua] The User-Agent string that is allowed for access to the address.
   /// [url] The address of the cached page.
   /// [wafBaseConfigs] The configuration of the Web core protection rules to be modified. See `waf_base_config` below.
-  DefenseRuleConfig({
+  const DefenseRuleConfig({
     this.abroadRegions,
     this.accountIdentifiers,
     this.autoUpdate,

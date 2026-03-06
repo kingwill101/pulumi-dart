@@ -18,7 +18,7 @@ class GetLoadBalancerArgs {
   /// [loadBalancerName] The name of the load balancer.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetLoadBalancerArgs({
+  const GetLoadBalancerArgs({
     required this.loadBalancerName,
     required this.resourceGroupName,
     required this.resourceName,

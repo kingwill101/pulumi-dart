@@ -12,7 +12,7 @@ class ClusterClusterConfigMetastoreConfig {
 
   /// Creates a new [ClusterClusterConfigMetastoreConfig].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.
-  ClusterClusterConfigMetastoreConfig({
+  const ClusterClusterConfigMetastoreConfig({
     required this.dataprocMetastoreService,
   });
 

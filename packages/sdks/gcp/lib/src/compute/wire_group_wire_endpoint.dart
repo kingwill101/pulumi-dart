@@ -11,7 +11,7 @@ class WireGroupWireEndpoint {
   /// Creates a new [WireGroupWireEndpoint].
   /// [interconnect] (Output)
   /// [vlanTag] (Output)
-  WireGroupWireEndpoint({
+  const WireGroupWireEndpoint({
     this.interconnect,
     this.vlanTag,
   });

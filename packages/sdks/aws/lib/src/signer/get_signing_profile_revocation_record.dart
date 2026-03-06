@@ -11,7 +11,7 @@ class GetSigningProfileRevocationRecord {
   /// [revocationEffectiveFrom] Required.
   /// [revokedAt] Required.
   /// [revokedBy] Required.
-  GetSigningProfileRevocationRecord({
+  const GetSigningProfileRevocationRecord({
     required this.revocationEffectiveFrom,
     required this.revokedAt,
     required this.revokedBy,

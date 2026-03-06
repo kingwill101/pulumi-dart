@@ -20,7 +20,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies {
   /// [deployedModelId] Deployed Model ID.
   /// [featureStats] A list of historical Stats and Anomalies generated for all Features.
   /// [objective] Model Monitoring Objective those stats and anomalies belonging to.
-  GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies({
+  const GoogleCloudAiplatformV1beta1ModelMonitoringStatsAnomalies({
     this.anomalyCount,
     this.deployedModelId,
     this.featureStats,

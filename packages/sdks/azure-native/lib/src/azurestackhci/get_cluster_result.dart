@@ -110,7 +110,7 @@ class GetClusterResult {
   /// [trialDaysRemaining] Number of days remaining in the trial period.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userAssignedIdentities] The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  GetClusterResult({
+  const GetClusterResult({
     this.aadApplicationObjectId,
     this.aadClientId,
     this.aadServicePrincipalObjectId,

@@ -23,7 +23,7 @@ class V3CustomDomainCorsConfig {
   /// [allowOrigins] List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
   /// [exposeHeaders] List of response headers that can be exposed to the browser.
   /// [maxAge] Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
-  V3CustomDomainCorsConfig({
+  const V3CustomDomainCorsConfig({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

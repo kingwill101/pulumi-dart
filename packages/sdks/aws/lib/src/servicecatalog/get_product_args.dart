@@ -23,7 +23,7 @@ class GetProductArgs {
   /// [id] ID of the product.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags applied to the product.
-  GetProductArgs({
+  const GetProductArgs({
     this.acceptLanguage,
     required this.id,
     this.region,

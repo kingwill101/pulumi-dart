@@ -9,7 +9,7 @@ class GoogleTypeTimeZoneResponse {
 
   /// Creates a new [GoogleTypeTimeZoneResponse].
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  GoogleTypeTimeZoneResponse({
+  const GoogleTypeTimeZoneResponse({
     required this.version,
   });
 

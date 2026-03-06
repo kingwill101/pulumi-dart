@@ -56,7 +56,7 @@ class ScheduledSqlScheduledSqlConfiguration {
   /// [sqlType] SQL type.
   /// [toTime] Scheduled end time.
   /// [toTimeExpr] End of the SQL time window.
-  ScheduledSqlScheduledSqlConfiguration({
+  const ScheduledSqlScheduledSqlConfiguration({
     this.dataFormat,
     this.destEndpoint,
     this.destLogstore,

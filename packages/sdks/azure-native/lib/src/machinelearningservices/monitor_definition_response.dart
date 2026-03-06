@@ -21,7 +21,7 @@ class MonitorDefinitionResponse {
   /// [computeConfiguration] [Required] The ARM resource ID of the compute resource to run the monitoring job on.
   /// [monitoringTarget] The entities targeted by the monitor.
   /// [signals] [Required] The signals to monitor.
-  MonitorDefinitionResponse({
+  const MonitorDefinitionResponse({
     this.alertNotificationSettings,
     required this.computeConfiguration,
     this.monitoringTarget,

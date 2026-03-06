@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource {
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource].
   /// [amazonS3Bucket] Amazon S3 bucket.
-  PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource({
     this.amazonS3Bucket,
   });
 

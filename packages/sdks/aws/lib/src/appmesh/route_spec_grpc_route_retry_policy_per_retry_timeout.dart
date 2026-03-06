@@ -11,7 +11,7 @@ class RouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
   /// Creates a new [RouteSpecGrpcRouteRetryPolicyPerRetryTimeout].
   /// [unit] Retry unit. Valid values: `ms`, `s`.
   /// [value] Retry value.
-  RouteSpecGrpcRouteRetryPolicyPerRetryTimeout({
+  const RouteSpecGrpcRouteRetryPolicyPerRetryTimeout({
     required this.unit,
     required this.value,
   });

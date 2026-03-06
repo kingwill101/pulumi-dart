@@ -9,7 +9,7 @@ class IotHubSettingsResponse {
 
   /// Creates a new [IotHubSettingsResponse].
   /// [resourceId] IoTHub resource ID
-  IotHubSettingsResponse({
+  const IotHubSettingsResponse({
     required this.resourceId,
   });
 

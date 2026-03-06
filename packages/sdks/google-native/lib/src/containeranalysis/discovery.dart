@@ -10,7 +10,7 @@ class Discovery {
 
   /// Creates a new [Discovery].
   /// [analysisKind] The kind of analysis that is handled by this discovery.
-  Discovery({
+  const Discovery({
     this.analysisKind,
   });
 

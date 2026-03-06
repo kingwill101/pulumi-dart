@@ -46,7 +46,7 @@ class GetServerlessCollectionResult {
   /// [standbyReplicas] Indicates whether standby replicas should be used for a collection.
   /// [tags] A map of tags to assign to the collection.
   /// [type] Type of collection.
-  GetServerlessCollectionResult({
+  const GetServerlessCollectionResult({
     required this.arn,
     required this.collectionEndpoint,
     required this.createdDate,

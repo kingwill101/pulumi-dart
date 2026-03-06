@@ -11,7 +11,7 @@ class GetContainerGroupsGroupDnsConfigOption {
   /// Creates a new [GetContainerGroupsGroupDnsConfigOption].
   /// [name] The name of the object variable.
   /// [value] The value of the object variable.
-  GetContainerGroupsGroupDnsConfigOption({
+  const GetContainerGroupsGroupDnsConfigOption({
     required this.name,
     required this.value,
   });

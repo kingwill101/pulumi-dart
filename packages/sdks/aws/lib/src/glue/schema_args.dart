@@ -33,7 +33,7 @@ class SchemaArgs {
   /// [schemaDefinition] The schema definition using the `data_format` setting for `schema_name`.
   /// [schemaName] The Name of the schema.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  SchemaArgs({
+  const SchemaArgs({
     required this.compatibility,
     required this.dataFormat,
     this.description,

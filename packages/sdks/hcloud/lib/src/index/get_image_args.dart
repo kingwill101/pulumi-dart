@@ -32,7 +32,7 @@ class GetImageArgs {
   /// [withArchitecture] Select only images with this architecture, could be `x86` (default) or `arm`.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   /// [withStatuses] Select only images with the specified status, could contain `creating` or `available`.
-  GetImageArgs({
+  const GetImageArgs({
     this.id,
     this.includeDeprecated,
     this.mostRecent,

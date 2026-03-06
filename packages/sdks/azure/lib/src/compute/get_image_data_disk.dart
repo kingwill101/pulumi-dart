@@ -20,7 +20,7 @@ class GetImageDataDisk {
   /// [lun] the logical unit number of the data disk.
   /// [managedDiskId] the ID of the Managed Disk used as the Data Disk Image.
   /// [sizeGb] the size of this Data Disk in GB.
-  GetImageDataDisk({
+  const GetImageDataDisk({
     required this.blobUri,
     required this.caching,
     required this.lun,

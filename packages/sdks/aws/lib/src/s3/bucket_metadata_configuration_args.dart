@@ -27,7 +27,7 @@ class BucketMetadataConfigurationArgs {
   /// [metadataConfiguration] Metadata configuration. See `metadata_configuration` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  BucketMetadataConfigurationArgs({
+  const BucketMetadataConfigurationArgs({
     required this.bucket,
     this.expectedBucketOwner,
     required this.metadataConfiguration,

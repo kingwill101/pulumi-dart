@@ -15,7 +15,7 @@ class GetInternetGatewayRuleArgs {
   /// Creates a new [GetInternetGatewayRuleArgs].
   /// [internetGatewayRuleName] Name of the Internet Gateway rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetInternetGatewayRuleArgs({
+  const GetInternetGatewayRuleArgs({
     required this.internetGatewayRuleName,
     required this.resourceGroupName,
   });

@@ -11,7 +11,7 @@ class AwsNodePoolAutoscaling {
   /// Creates a new [AwsNodePoolAutoscaling].
   /// [maxNodeCount] Maximum number of nodes in the NodePool. Must be &gt;= min_node_count.
   /// [minNodeCount] Minimum number of nodes in the NodePool. Must be &gt;= 1 and &lt;= max_node_count.
-  AwsNodePoolAutoscaling({
+  const AwsNodePoolAutoscaling({
     required this.maxNodeCount,
     required this.minNodeCount,
   });

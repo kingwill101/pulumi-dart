@@ -24,7 +24,7 @@ class SqlConnectionInformationResponse {
   /// [password] Password to connect to source SQL.
   /// [trustServerCertificate] Whether to trust server certificate or not.
   /// [userName] User name to connect to source SQL.
-  SqlConnectionInformationResponse({
+  const SqlConnectionInformationResponse({
     this.authentication,
     this.dataSource,
     this.encryptConnection,

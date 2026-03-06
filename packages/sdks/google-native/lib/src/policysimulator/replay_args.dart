@@ -17,7 +17,7 @@ class ReplayArgs {
   /// [config] The configuration used for the `Replay`.
   /// [location] Optional.
   /// [project] Optional.
-  ReplayArgs({
+  const ReplayArgs({
     required this.config,
     this.location,
     this.project,

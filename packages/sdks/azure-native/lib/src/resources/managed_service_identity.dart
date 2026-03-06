@@ -12,7 +12,7 @@ class ManagedServiceIdentity {
   /// Creates a new [ManagedServiceIdentity].
   /// [type] Type of the managed identity.
   /// [userAssignedIdentities] The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-  ManagedServiceIdentity({
+  const ManagedServiceIdentity({
     this.type,
     this.userAssignedIdentities,
   });

@@ -15,7 +15,7 @@ class GetRdsDbSnapshotArgs {
   /// Creates a new [GetRdsDbSnapshotArgs].
   /// [name] Name of RdsDBSnapshot
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRdsDbSnapshotArgs({
+  const GetRdsDbSnapshotArgs({
     required this.name,
     required this.resourceGroupName,
   });

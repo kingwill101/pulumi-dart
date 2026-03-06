@@ -36,7 +36,7 @@ class AlertCompoundConditionState {
   /// [runbookUrl] Runbook URL to display in notifications.
   /// [thresholdDuration] The duration, in seconds, that the trigger expression must be true before the compound alert condition will activate. Between 30-86400 seconds.
   /// [triggerExpression] Expression that defines how component condition evaluations are combined. Valid operators are 'AND', 'OR', 'NOT'. For more complex expressions, use parentheses. Use the aliases from `component_conditions` to build expressions like `"A AND B"`, `"A OR B"`, `"(A AND B) OR C"`, or `"A AND (B OR C) AND NOT (D AND E)"`.
-  AlertCompoundConditionState({
+  const AlertCompoundConditionState({
     this.accountId,
     this.componentConditions,
     this.enabled,

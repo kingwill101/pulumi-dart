@@ -26,7 +26,7 @@ class SdkvoiceVoiceProfileDomainState {
   /// [serverSideEncryptionConfiguration] Configuration for server side encryption.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  SdkvoiceVoiceProfileDomainState({
+  const SdkvoiceVoiceProfileDomainState({
     this.arn,
     this.description,
     this.name,

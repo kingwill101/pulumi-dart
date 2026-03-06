@@ -24,7 +24,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// Creates a new [FloorsettingFilterConfigSdpSettingsAdvancedConfig].
   /// [deidentifyTemplate] Optional Sensitive Data Protection Deidentify template resource name.
   /// [inspectTemplate] Sensitive Data Protection inspect template resource name
-  FloorsettingFilterConfigSdpSettingsAdvancedConfig({
+  const FloorsettingFilterConfigSdpSettingsAdvancedConfig({
     this.deidentifyTemplate,
     this.inspectTemplate,
   });

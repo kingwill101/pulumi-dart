@@ -9,7 +9,7 @@ class AddressSpaceResponse {
 
   /// Creates a new [AddressSpaceResponse].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
-  AddressSpaceResponse({
+  const AddressSpaceResponse({
     this.addressPrefixes,
   });
 

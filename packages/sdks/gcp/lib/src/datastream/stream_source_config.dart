@@ -43,7 +43,7 @@ class StreamSourceConfig {
   /// [sourceConnectionProfile] Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
   /// [spannerSourceConfig] Spanner data source configuration.
   /// [sqlServerSourceConfig] SQL Server data source configuration.
-  StreamSourceConfig({
+  const StreamSourceConfig({
     this.mongodbSourceConfig,
     this.mysqlSourceConfig,
     this.oracleSourceConfig,

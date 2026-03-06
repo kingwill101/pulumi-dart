@@ -23,7 +23,7 @@ class GetEtlsEtlConfigurationSink {
   /// [name] Output Destination Name.
   /// [project] Project Name
   /// [roleArn] The ARN role that authorizes writing to the target Logstore.
-  GetEtlsEtlConfigurationSink({
+  const GetEtlsEtlConfigurationSink({
     required this.datasets,
     required this.endpoint,
     required this.logstore,

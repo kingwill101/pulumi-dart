@@ -18,7 +18,7 @@ class GetAppSpecJobLogDestinationOpenSearch {
   /// [clusterName] The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
   /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
   /// [indexName] The index name to use for the logs. If not set, the default index name is `logs`.
-  GetAppSpecJobLogDestinationOpenSearch({
+  const GetAppSpecJobLogDestinationOpenSearch({
     required this.basicAuth,
     this.clusterName,
     this.endpoint,

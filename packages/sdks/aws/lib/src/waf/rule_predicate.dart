@@ -17,7 +17,7 @@ class RulePredicate {
   /// [dataId] A unique identifier for a predicate in the rule, such as Byte Match Set ID or IPSet ID.
   /// [negated] Set this to `false` if you want to allow, block, or count requests
   /// [type] The type of predicate in a rule. Valid values: `ByteMatch`, `GeoMatch`, `IPMatch`, `RegexMatch`, `SizeConstraint`, `SqlInjectionMatch`, or `XssMatch`.
-  RulePredicate({
+  const RulePredicate({
     required this.dataId,
     required this.negated,
     required this.type,

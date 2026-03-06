@@ -37,7 +37,7 @@ class SettingsState {
   /// [parent] Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
   /// [serviceAccountApproverSettings] This controls the node-level settings for allowing service accounts as approvers.
   /// [updateTime] Update timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
-  SettingsState({
+  const SettingsState({
     this.createTime,
     this.emailNotificationSettings,
     this.etag,

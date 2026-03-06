@@ -13,7 +13,7 @@ class NodeSelectorTerm {
   /// Creates a new [NodeSelectorTerm].
   /// [matchExpressions] A list of node selector requirements by node's labels.
   /// [matchFields] A list of node selector requirements by node's fields.
-  NodeSelectorTerm({
+  const NodeSelectorTerm({
     this.matchExpressions,
     this.matchFields,
   });

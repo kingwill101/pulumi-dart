@@ -24,7 +24,7 @@ class GetReplicationProtectionClusterArgs {
   /// [replicationProtectionClusterName] Replication protection cluster name.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  GetReplicationProtectionClusterArgs({
+  const GetReplicationProtectionClusterArgs({
     required this.fabricName,
     required this.protectionContainerName,
     required this.replicationProtectionClusterName,

@@ -40,7 +40,7 @@ class GetEvaluationResult {
   /// [ruleVersions] [Output only] The updated rule ids if exist.
   /// [schedule] crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
   /// [updateTime] [Output only] Update time stamp
-  GetEvaluationResult({
+  const GetEvaluationResult({
     required this.createTime,
     required this.customRulesBucket,
     required this.description,

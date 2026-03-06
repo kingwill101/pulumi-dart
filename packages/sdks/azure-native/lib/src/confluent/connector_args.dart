@@ -36,7 +36,7 @@ class ConnectorArgs {
   /// [organizationName] Organization resource name
   /// [partnerConnectorInfo] The connection information consumed by applications.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ConnectorArgs({
+  const ConnectorArgs({
     required this.clusterId,
     this.connectorBasicInfo,
     this.connectorName,

@@ -28,7 +28,7 @@ class GetServerlessLifecyclePolicyResult {
   /// [policyVersion] Version of the policy.
   /// [region] Required.
   /// [type] Required.
-  GetServerlessLifecyclePolicyResult({
+  const GetServerlessLifecyclePolicyResult({
     required this.createdDate,
     required this.description,
     required this.id,

@@ -53,7 +53,7 @@ class HadoopDataSourceArgs {
   /// [hiveConf] The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
   /// [mapReduceConf] The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
   /// [yarnConf] The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
-  HadoopDataSourceArgs({
+  const HadoopDataSourceArgs({
     this.dataSourceDescription,
     this.dataSourceName,
     this.dataSourceType,

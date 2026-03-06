@@ -17,7 +17,7 @@ class BucketCor {
   /// [methods] The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
   /// [origins] The list of [Origins](https://tools.ietf.org/html/rfc6454) eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
   /// [responseHeaders] The list of HTTP headers other than the [simple response headers](https://www.w3.org/TR/cors/#simple-response-header) to give permission for the user-agent to share across domains.
-  BucketCor({
+  const BucketCor({
     this.maxAgeSeconds,
     this.methods,
     this.origins,

@@ -27,7 +27,7 @@ class AppSeenInfoResponse {
   /// [tag] tag
   /// [technology] technology
   /// [title] title
-  AppSeenInfoResponse({
+  const AppSeenInfoResponse({
     required this.category,
     required this.risk,
     required this.standardPorts,

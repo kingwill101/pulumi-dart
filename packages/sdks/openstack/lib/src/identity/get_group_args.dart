@@ -19,7 +19,7 @@ class GetGroupArgs {
   /// [domainId] The domain the group belongs to.
   /// [name] The name of the group.
   /// [region] The region in which to obtain the V3 Keystone client.
-  GetGroupArgs({
+  const GetGroupArgs({
     this.domainId,
     required this.name,
     this.region,

@@ -23,7 +23,7 @@ class AwsEnvironmentDataResponse {
   /// [organizationalData] The AWS account's organizational data
   /// [regions] list of regions to scan
   /// [scanInterval] Scan interval in hours (value should be between 1-hour to 24-hours)
-  AwsEnvironmentDataResponse({
+  const AwsEnvironmentDataResponse({
     required this.accountName,
     required this.environmentType,
     this.organizationalData,

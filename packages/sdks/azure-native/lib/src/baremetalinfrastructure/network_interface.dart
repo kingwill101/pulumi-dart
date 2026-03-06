@@ -9,7 +9,7 @@ class NetworkInterface {
 
   /// Creates a new [NetworkInterface].
   /// [ipAddress] Specifies the IP address of the network interface.
-  NetworkInterface({
+  const NetworkInterface({
     this.ipAddress,
   });
 

@@ -14,7 +14,7 @@ class HostedZoneDnsSecState {
   /// Creates a new [HostedZoneDnsSecState].
   /// [hostedZoneId] Identifier of the Route 53 Hosted Zone.
   /// [signingStatus] Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
-  HostedZoneDnsSecState({
+  const HostedZoneDnsSecState({
     this.hostedZoneId,
     this.signingStatus,
   });

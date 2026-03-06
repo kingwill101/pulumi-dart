@@ -38,7 +38,7 @@ class GetCustomRoutingEndpointGroupsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the endpoint group.
-  GetCustomRoutingEndpointGroupsResult({
+  const GetCustomRoutingEndpointGroupsResult({
     required this.acceleratorId,
     this.endpointGroupId,
     required this.groups,

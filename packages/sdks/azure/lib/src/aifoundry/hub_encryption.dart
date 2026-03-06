@@ -16,7 +16,7 @@ class HubEncryption {
   /// [keyId] The Key Vault URI to access the encryption key.
   /// [keyVaultId] The Key Vault ID where the customer owned encryption key exists.
   /// [userAssignedIdentityId] The user assigned identity ID that has access to the encryption key.
-  HubEncryption({
+  const HubEncryption({
     required this.keyId,
     required this.keyVaultId,
     this.userAssignedIdentityId,

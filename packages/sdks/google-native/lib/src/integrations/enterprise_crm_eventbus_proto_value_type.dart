@@ -25,7 +25,7 @@ class EnterpriseCrmEventbusProtoValueType {
   /// [protoValue] Optional.
   /// [stringArray] Optional.
   /// [stringValue] Optional.
-  EnterpriseCrmEventbusProtoValueType({
+  const EnterpriseCrmEventbusProtoValueType({
     this.booleanValue,
     this.doubleArray,
     this.doubleValue,

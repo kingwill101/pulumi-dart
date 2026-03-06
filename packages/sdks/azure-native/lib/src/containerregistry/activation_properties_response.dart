@@ -9,7 +9,7 @@ class ActivationPropertiesResponse {
 
   /// Creates a new [ActivationPropertiesResponse].
   /// [status] The activation status of the connected registry.
-  ActivationPropertiesResponse({
+  const ActivationPropertiesResponse({
     required this.status,
   });
 

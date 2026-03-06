@@ -12,7 +12,7 @@ class EndpointPropertiesCustomHeadersItemResponse {
   /// Creates a new [EndpointPropertiesCustomHeadersItemResponse].
   /// [name] Header name.
   /// [value] Header value.
-  EndpointPropertiesCustomHeadersItemResponse({
+  const EndpointPropertiesCustomHeadersItemResponse({
     this.name,
     this.value,
   });

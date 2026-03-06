@@ -21,7 +21,7 @@ class IntegrationRuntimeSsisExpressCustomSetup {
   /// [components] One or more `component` blocks as defined below.
   /// [environment] The Environment Variables for the Azure-SSIS Integration Runtime.
   /// [powershellVersion] The version of Azure Powershell installed for the Azure-SSIS Integration Runtime.
-  IntegrationRuntimeSsisExpressCustomSetup({
+  const IntegrationRuntimeSsisExpressCustomSetup({
     this.commandKeys,
     this.components,
     this.environment,

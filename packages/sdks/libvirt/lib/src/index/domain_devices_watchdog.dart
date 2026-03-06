@@ -22,7 +22,7 @@ class DomainDevicesWatchdog {
   /// [address] Specifies the memory address for the persistent storage device in the guest's address space.
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   /// [model] Configures the model of the watchdog device, which dictates its underlying functionality and behavior in the domain.
-  DomainDevicesWatchdog({
+  const DomainDevicesWatchdog({
     this.acpi,
     this.action,
     this.address,

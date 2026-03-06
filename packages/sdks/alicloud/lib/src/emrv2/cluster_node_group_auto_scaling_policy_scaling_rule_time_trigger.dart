@@ -23,7 +23,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger {
   /// [recurrenceType] The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
   /// [recurrenceValue] The recurrence value for this scaling rule specific time trigger.
   /// [startTime] The start time for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger({
+  const ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTrigger({
     this.endTime,
     this.launchExpirationTime,
     required this.launchTime,

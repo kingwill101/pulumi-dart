@@ -26,7 +26,7 @@ class PodSchedulingContext {
   /// [metadata] Standard object metadata
   /// [spec] Spec describes where resources for the Pod are needed.
   /// [status] Status describes where resources for the Pod can be allocated.
-  PodSchedulingContext({
+  const PodSchedulingContext({
     this.apiVersion,
     this.kind,
     this.metadata,

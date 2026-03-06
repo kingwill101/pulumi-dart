@@ -47,7 +47,7 @@ class GetTransitRouterPeerAttachmentsAttachment {
   /// [transitRouterAttachmentId] The ID of CEN Transit Router peer attachments.
   /// [transitRouterAttachmentName] Name of the transit router attachment.
   /// [transitRouterId] The ID of transit router.
-  GetTransitRouterPeerAttachmentsAttachment({
+  const GetTransitRouterPeerAttachmentsAttachment({
     required this.autoPublishRouteEnabled,
     required this.bandwidth,
     required this.cenBandwidthPackageId,

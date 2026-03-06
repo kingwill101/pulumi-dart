@@ -21,7 +21,7 @@ class WorkspaceArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [tags] Resource tags.
   /// [workspaceName] The name of workspace resource.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.location,
     required this.resourceGroupName,
     this.tags,

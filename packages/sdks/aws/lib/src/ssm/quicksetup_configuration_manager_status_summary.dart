@@ -14,7 +14,7 @@ class QuicksetupConfigurationManagerStatusSummary {
   /// [status] Current status.
   /// [statusMessage] When applicable, returns an informational message relevant to the current status and status type of the status summary object.
   /// [statusType] Type of a status summary.
-  QuicksetupConfigurationManagerStatusSummary({
+  const QuicksetupConfigurationManagerStatusSummary({
     required this.status,
     required this.statusMessage,
     required this.statusType,

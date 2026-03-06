@@ -15,7 +15,7 @@ class CustomAccountResponseWebsecurityscannerV1alpha {
   /// [loginUrl] The login form URL of the website.
   /// [password] Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
   /// [username] The user name of the custom account.
-  CustomAccountResponseWebsecurityscannerV1alpha({
+  const CustomAccountResponseWebsecurityscannerV1alpha({
     required this.loginUrl,
     required this.password,
     required this.username,

@@ -11,7 +11,7 @@ class GetObjectStorageQuotaQuotaUsage {
   /// Creates a new [GetObjectStorageQuotaQuotaUsage].
   /// [quotaLimit] The maximum quantity allowed by the quota.
   /// [usage] The quantity of the Object Storage resource currently in use.
-  GetObjectStorageQuotaQuotaUsage({
+  const GetObjectStorageQuotaQuotaUsage({
     required this.quotaLimit,
     required this.usage,
   });

@@ -30,7 +30,7 @@ class ServerAzureADAdministratorArgs {
   /// [serverName] The name of the server.
   /// [sid] SID (object ID) of the server administrator.
   /// [tenantId] Tenant ID of the administrator.
-  ServerAzureADAdministratorArgs({
+  const ServerAzureADAdministratorArgs({
     this.administratorName,
     this.administratorType,
     required this.login,

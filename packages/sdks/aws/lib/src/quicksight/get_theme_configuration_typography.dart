@@ -9,7 +9,7 @@ class GetThemeConfigurationTypography {
 
   /// Creates a new [GetThemeConfigurationTypography].
   /// [fontFamilies] Determines the list of font families. Maximum number of 5 items. See font_families.
-  GetThemeConfigurationTypography({
+  const GetThemeConfigurationTypography({
     required this.fontFamilies,
   });
 

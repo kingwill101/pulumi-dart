@@ -18,7 +18,7 @@ class GetProtectedItemArgs {
   /// [protectedItemName] The protected item name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  GetProtectedItemArgs({
+  const GetProtectedItemArgs({
     required this.protectedItemName,
     required this.resourceGroupName,
     required this.vaultName,

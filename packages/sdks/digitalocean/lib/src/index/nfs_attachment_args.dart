@@ -17,7 +17,7 @@ class NfsAttachmentArgs {
   /// [region] Required.
   /// [shareId] The ID of the NFS share to attach.
   /// [vpcId] The ID of the vpc to attach the NFS share to.
-  NfsAttachmentArgs({
+  const NfsAttachmentArgs({
     required this.region,
     required this.shareId,
     required this.vpcId,

@@ -23,7 +23,7 @@ class VpcEndpointServiceConnectionState {
   /// [endpointId] The endpoint ID.
   /// [serviceId] The endpoint service ID.
   /// [status] The state of the endpoint connection.
-  VpcEndpointServiceConnectionState({
+  const VpcEndpointServiceConnectionState({
     this.bandwidth,
     this.dryRun,
     this.endpointId,

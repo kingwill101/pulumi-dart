@@ -35,7 +35,7 @@ class ShardingNetworkPrivateAddressNetworkAddress {
   /// [role] The role of the node.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch in the VPC.
-  ShardingNetworkPrivateAddressNetworkAddress({
+  const ShardingNetworkPrivateAddressNetworkAddress({
     this.expiredTime,
     this.ipAddress,
     this.networkAddress,

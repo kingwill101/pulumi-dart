@@ -11,7 +11,7 @@ class DataFlowTransformationDataset {
   /// Creates a new [DataFlowTransformationDataset].
   /// [name] The name for the Data Factory Dataset.
   /// [parameters] A map of parameters to associate with the Data Factory dataset.
-  DataFlowTransformationDataset({
+  const DataFlowTransformationDataset({
     required this.name,
     this.parameters,
   });

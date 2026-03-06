@@ -21,7 +21,7 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
   /// [localStorageCapacities] The local storage.
   /// [totalMemory] The total memory size. Unit: `GiB`.
   /// [totalVcpus] The total number of vCPUs.
-  GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity({
+  const GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity({
     required this.availableMemory,
     required this.availableVcpus,
     required this.localStorageCapacities,

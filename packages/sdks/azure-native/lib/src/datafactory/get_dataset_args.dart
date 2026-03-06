@@ -18,7 +18,7 @@ class GetDatasetArgs {
   /// [datasetName] The dataset name.
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
-  GetDatasetArgs({
+  const GetDatasetArgs({
     required this.datasetName,
     required this.factoryName,
     required this.resourceGroupName,

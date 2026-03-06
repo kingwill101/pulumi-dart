@@ -12,7 +12,7 @@ class GkeNodePoolAutoscalingConfig {
   /// Creates a new [GkeNodePoolAutoscalingConfig].
   /// [maxNodeCount] The maximum number of nodes in the node pool. Must be &gt;= min_node_count, and must be &gt; 0. Note: Quota must be sufficient to scale up the cluster.
   /// [minNodeCount] The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= max_node_count.
-  GkeNodePoolAutoscalingConfig({
+  const GkeNodePoolAutoscalingConfig({
     this.maxNodeCount,
     this.minNodeCount,
   });

@@ -12,7 +12,7 @@ class WorkforceIdentityBasedOAuth2ClientIDResponse {
   /// Creates a new [WorkforceIdentityBasedOAuth2ClientIDResponse].
   /// [firstPartyOauth2ClientId] First party OAuth Client ID for Google Identities.
   /// [thirdPartyOauth2ClientId] Third party OAuth Client ID for External Identity Providers.
-  WorkforceIdentityBasedOAuth2ClientIDResponse({
+  const WorkforceIdentityBasedOAuth2ClientIDResponse({
     required this.firstPartyOauth2ClientId,
     required this.thirdPartyOauth2ClientId,
   });

@@ -12,7 +12,7 @@ class BuildpackPropertiesResponse {
   /// Creates a new [BuildpackPropertiesResponse].
   /// [id] Id of the buildpack
   /// [version] Version of the buildpack
-  BuildpackPropertiesResponse({
+  const BuildpackPropertiesResponse({
     this.id,
     required this.version,
   });

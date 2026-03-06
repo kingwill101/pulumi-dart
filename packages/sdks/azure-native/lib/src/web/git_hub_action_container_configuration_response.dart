@@ -18,7 +18,7 @@ class GitHubActionContainerConfigurationResponse {
   /// [password] The password used to upload the image to the container registry.
   /// [serverUrl] The server URL for the container registry where the build will be hosted.
   /// [username] The username used to upload the image to the container registry.
-  GitHubActionContainerConfigurationResponse({
+  const GitHubActionContainerConfigurationResponse({
     this.imageName,
     this.password,
     this.serverUrl,

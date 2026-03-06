@@ -24,7 +24,7 @@ class ConnectionProfileOracleSsl {
   /// [clientCertificate] Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
   /// [clientKey] Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
   /// [type] (Output)
-  ConnectionProfileOracleSsl({
+  const ConnectionProfileOracleSsl({
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,

@@ -17,7 +17,7 @@ class AgentPoolNetworkProfileResponse {
   /// [allowedHostPorts] The port ranges that are allowed to access. The specified ranges are allowed to overlap.
   /// [applicationSecurityGroups] The IDs of the application security groups which agent pool will associate when created.
   /// [nodePublicIPTags] IPTags of instance-level public IPs.
-  AgentPoolNetworkProfileResponse({
+  const AgentPoolNetworkProfileResponse({
     this.allowedHostPorts,
     this.applicationSecurityGroups,
     this.nodePublicIPTags,

@@ -23,7 +23,7 @@ class RegionResizeRequestStatusErrorError {
   /// [errorDetails] (Output)
   /// [location] (Output)
   /// [message] (Output)
-  RegionResizeRequestStatusErrorError({
+  const RegionResizeRequestStatusErrorError({
     this.code,
     this.errorDetails,
     this.location,

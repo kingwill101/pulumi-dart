@@ -20,7 +20,7 @@ class CustomizedAcceleratorProperties {
   /// [displayName] Optional.
   /// [gitRepository] Required.
   /// [iconUrl] Optional.
-  CustomizedAcceleratorProperties({
+  const CustomizedAcceleratorProperties({
     this.acceleratorTags,
     this.acceleratorType,
     this.description,

@@ -9,7 +9,7 @@ class GetFileShareLimitsResult {
 
   /// Creates a new [GetFileShareLimitsResult].
   /// [properties] The properties of the file share limits.
-  GetFileShareLimitsResult({
+  const GetFileShareLimitsResult({
     required this.properties,
   });
 

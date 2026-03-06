@@ -24,7 +24,7 @@ class ApplicationGatewayFrontendPortResponse {
   /// [port] Frontend port.
   /// [provisioningState] The provisioning state of the frontend port resource.
   /// [type] Type of the resource.
-  ApplicationGatewayFrontendPortResponse({
+  const ApplicationGatewayFrontendPortResponse({
     required this.etag,
     this.id,
     this.name,

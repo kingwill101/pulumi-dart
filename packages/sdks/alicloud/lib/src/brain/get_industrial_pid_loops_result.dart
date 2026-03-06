@@ -32,7 +32,7 @@ class GetIndustrialPidLoopsResult {
   /// [pidLoopName] The name of Pid Loop.
   /// [pidProjectId] Required.
   /// [status] The status of Pid Loop.
-  GetIndustrialPidLoopsResult({
+  const GetIndustrialPidLoopsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

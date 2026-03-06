@@ -20,7 +20,7 @@ class GetQueuesResult {
   /// [names] A list of queue names.
   /// [outputFile] Optional.
   /// [queues] A list of queues. Each element contains the following attributes:
-  GetQueuesResult({
+  const GetQueuesResult({
     required this.id,
     this.namePrefix,
     required this.names,

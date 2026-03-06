@@ -11,7 +11,7 @@ class ModelVpcConfig {
   /// Creates a new [ModelVpcConfig].
   /// [securityGroupIds] List of security group IDs you want to be applied to your training job or model. Specify the security groups for the VPC that is specified in the Subnets field.
   /// [subnets] List of subnet IDs in the VPC to which you want to connect your training job or model.
-  ModelVpcConfig({
+  const ModelVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
   });

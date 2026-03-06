@@ -11,7 +11,7 @@ class ContainerMountTmpfsOptions {
   /// Creates a new [ContainerMountTmpfsOptions].
   /// [mode] The permission mode for the tmpfs mount in an integer.
   /// [sizeBytes] The size for the tmpfs mount in bytes.
-  ContainerMountTmpfsOptions({
+  const ContainerMountTmpfsOptions({
     this.mode,
     this.sizeBytes,
   });

@@ -39,7 +39,7 @@ class GetCapacityCommitmentResult {
   /// [renewalPlan] The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
   /// [slotCount] Number of slots in this commitment.
   /// [state] State of the commitment.
-  GetCapacityCommitmentResult({
+  const GetCapacityCommitmentResult({
     required this.commitmentEndTime,
     required this.commitmentStartTime,
     required this.edition,

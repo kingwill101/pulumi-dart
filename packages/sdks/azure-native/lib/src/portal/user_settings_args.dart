@@ -16,7 +16,7 @@ class UserSettingsArgs {
   /// Creates a new [UserSettingsArgs].
   /// [properties] The cloud shell user settings properties.
   /// [userSettingsName] The name of the user settings
-  UserSettingsArgs({
+  const UserSettingsArgs({
     required this.properties,
     this.userSettingsName,
   });

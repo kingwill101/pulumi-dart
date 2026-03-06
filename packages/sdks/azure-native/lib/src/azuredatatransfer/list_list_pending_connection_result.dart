@@ -13,7 +13,7 @@ class ListListPendingConnectionResult {
   /// Creates a new [ListListPendingConnectionResult].
   /// [nextLink] Link to next results
   /// [value] Connections array.
-  ListListPendingConnectionResult({
+  const ListListPendingConnectionResult({
     this.nextLink,
     this.value,
   });

@@ -11,7 +11,7 @@ class ControlTowerControlParameter {
   /// Creates a new [ControlTowerControlParameter].
   /// [key] The name of the parameter.
   /// [value] The value of the parameter.
-  ControlTowerControlParameter({
+  const ControlTowerControlParameter({
     required this.key,
     required this.value,
   });

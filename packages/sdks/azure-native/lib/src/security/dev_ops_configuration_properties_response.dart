@@ -38,7 +38,7 @@ class DevOpsConfigurationPropertiesResponse {
   /// [provisioningStatusMessage] Gets or sets resource status message.
   /// [provisioningStatusUpdateTimeUtc] Gets or sets time when resource was last checked.
   /// [topLevelInventoryList] List of top-level inventory to select when AutoDiscovery is disabled.
-  DevOpsConfigurationPropertiesResponse({
+  const DevOpsConfigurationPropertiesResponse({
     this.authorization,
     this.autoDiscovery,
     required this.capabilities,

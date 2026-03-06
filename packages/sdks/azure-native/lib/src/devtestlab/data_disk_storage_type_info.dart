@@ -12,7 +12,7 @@ class DataDiskStorageTypeInfo {
   /// Creates a new [DataDiskStorageTypeInfo].
   /// [lun] Disk Lun
   /// [storageType] Disk Storage Type
-  DataDiskStorageTypeInfo({
+  const DataDiskStorageTypeInfo({
     this.lun,
     this.storageType,
   });

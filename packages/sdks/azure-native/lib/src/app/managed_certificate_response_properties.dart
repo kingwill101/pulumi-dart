@@ -21,7 +21,7 @@ class ManagedCertificateResponseProperties {
   /// [provisioningState] Provisioning state of the certificate.
   /// [subjectName] Subject name of the certificate.
   /// [validationToken] A TXT token used for DNS TXT domain control validation when issuing this type of managed certificates.
-  ManagedCertificateResponseProperties({
+  const ManagedCertificateResponseProperties({
     this.domainControlValidation,
     required this.error,
     required this.provisioningState,

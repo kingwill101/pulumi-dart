@@ -36,7 +36,7 @@ class AuthConfigResponse {
   /// [oauth2JwtBearer] Oauth2JwtBearer.
   /// [sshPublicKey] SSH Public Key.
   /// [userPassword] UserPassword.
-  AuthConfigResponse({
+  const AuthConfigResponse({
     required this.additionalVariables,
     required this.authKey,
     required this.authType,

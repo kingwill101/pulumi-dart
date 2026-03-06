@@ -21,7 +21,7 @@ class GetUsersArgs {
   /// [ids] A list of User IDs.
   /// [keyword] The keywords of the nicknames or usernames of the members of the organization.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetUsersArgs({
+  const GetUsersArgs({
     this.enableDetails,
     this.ids,
     this.keyword,

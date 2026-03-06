@@ -51,7 +51,7 @@ class FaqState {
   /// [tags] Optional.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [updatedAt] The date and time that the FAQ was last updated.
-  FaqState({
+  const FaqState({
     this.arn,
     this.createdAt,
     this.description,

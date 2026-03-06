@@ -9,7 +9,7 @@ class NetworkingConfigResponse {
 
   /// Creates a new [NetworkingConfigResponse].
   /// [connectionType] Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
-  NetworkingConfigResponse({
+  const NetworkingConfigResponse({
     required this.connectionType,
   });
 

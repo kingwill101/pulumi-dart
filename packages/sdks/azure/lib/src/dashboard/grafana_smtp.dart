@@ -29,7 +29,7 @@ class GrafanaSmtp {
   /// [startTlsPolicy] Whether to use TLS when connecting to SMTP server. Possible values are `OpportunisticStartTLS`, `NoStartTLS`, `MandatoryStartTLS`.
   /// [user] User of SMTP authentication.
   /// [verificationSkipEnabled] Whether verify SSL for SMTP server. Defaults to `false`.
-  GrafanaSmtp({
+  const GrafanaSmtp({
     this.enabled,
     required this.fromAddress,
     this.fromName,

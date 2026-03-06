@@ -13,7 +13,7 @@ class GetRolloutArgs {
   /// Creates a new [GetRolloutArgs].
   /// [rolloutId] Required.
   /// [serviceName] Required.
-  GetRolloutArgs({
+  const GetRolloutArgs({
     required this.rolloutId,
     required this.serviceName,
   });

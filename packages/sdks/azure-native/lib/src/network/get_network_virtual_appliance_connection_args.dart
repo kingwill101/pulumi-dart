@@ -18,7 +18,7 @@ class GetNetworkVirtualApplianceConnectionArgs {
   /// [connectionName] The name of the NVA connection.
   /// [networkVirtualApplianceName] The name of the Network Virtual Appliance.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkVirtualApplianceConnectionArgs({
+  const GetNetworkVirtualApplianceConnectionArgs({
     required this.connectionName,
     required this.networkVirtualApplianceName,
     required this.resourceGroupName,

@@ -60,7 +60,7 @@ class GatewayAdvertisedRouteState {
   /// [state] The current lifecycle state of this gateway advertised route.
   /// [uniqueId] The Google-generated UUID for the gateway advertised route.
   /// [updateTime] The time the gateway advertised route was last updated.
-  GatewayAdvertisedRouteState({
+  const GatewayAdvertisedRouteState({
     this.createTime,
     this.description,
     this.effectiveLabels,

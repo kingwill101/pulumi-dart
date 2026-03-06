@@ -27,7 +27,7 @@ class UserIdGroupPairResponse {
   /// [userId] &lt;p&gt;The ID of an Amazon Web Services account.&lt;/p&gt; &lt;p&gt;For a referenced security group in another VPC, the account ID of the referenced security group is returned in the response. If the referenced security group is deleted, this value is not returned.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The ID of the VPC for the referenced security group, if applicable.&lt;/p&gt;
   /// [vpcPeeringConnectionId] &lt;p&gt;The ID of the VPC peering connection, if applicable.&lt;/p&gt;
-  UserIdGroupPairResponse({
+  const UserIdGroupPairResponse({
     this.description,
     this.groupId,
     this.groupName,

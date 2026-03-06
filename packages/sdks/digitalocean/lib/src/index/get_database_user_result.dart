@@ -31,7 +31,7 @@ class GetDatabaseUserResult {
   /// [password] The password of the database user. This will not be set for MongoDB users.
   /// [role] The role of the database user. The value will be either `primary` or `normal`.
   /// [settings] Required.
-  GetDatabaseUserResult({
+  const GetDatabaseUserResult({
     required this.accessCert,
     required this.accessKey,
     required this.clusterId,

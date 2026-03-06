@@ -23,7 +23,7 @@ class UserPoolVerificationMessageTemplate {
   /// [emailSubject] Subject line for the email message template. Conflicts with `email_verification_subject` argument.
   /// [emailSubjectByLink] Subject line for the email message template for sending a confirmation link to the user.
   /// [smsMessage] SMS message template. Must contain the `{####}` placeholder. Conflicts with `sms_verification_message` argument.
-  UserPoolVerificationMessageTemplate({
+  const UserPoolVerificationMessageTemplate({
     this.defaultEmailOption,
     this.emailMessage,
     this.emailMessageByLink,

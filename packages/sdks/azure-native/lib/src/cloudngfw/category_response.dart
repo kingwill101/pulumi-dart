@@ -12,7 +12,7 @@ class CategoryResponse {
   /// Creates a new [CategoryResponse].
   /// [feeds] feed list
   /// [urlCustom] custom URL
-  CategoryResponse({
+  const CategoryResponse({
     required this.feeds,
     required this.urlCustom,
   });

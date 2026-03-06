@@ -39,7 +39,7 @@ class VolumeReplicationTransferStat {
   /// [totalTransferDuration] (Output)
   /// [transferBytes] (Output)
   /// [updateTime] (Output)
-  VolumeReplicationTransferStat({
+  const VolumeReplicationTransferStat({
     this.lagDuration,
     this.lastTransferBytes,
     this.lastTransferDuration,

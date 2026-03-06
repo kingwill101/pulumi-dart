@@ -12,7 +12,7 @@ class Disk {
   /// Creates a new [Disk].
   /// [diskSizeGB] Specifies the size of an empty data disk in gigabytes.
   /// [name] The disk name.
-  Disk({
+  const Disk({
     this.diskSizeGB,
     this.name,
   });

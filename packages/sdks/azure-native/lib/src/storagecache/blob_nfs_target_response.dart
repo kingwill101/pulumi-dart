@@ -18,7 +18,7 @@ class BlobNfsTargetResponse {
   /// [usageModel] Identifies the StorageCache usage model to be used for this storage target.
   /// [verificationTimer] Amount of time (in seconds) the cache waits before it checks the back-end storage for file updates.
   /// [writeBackTimer] Amount of time (in seconds) the cache waits after the last file change before it copies the changed file to back-end storage.
-  BlobNfsTargetResponse({
+  const BlobNfsTargetResponse({
     this.target,
     this.usageModel,
     this.verificationTimer,

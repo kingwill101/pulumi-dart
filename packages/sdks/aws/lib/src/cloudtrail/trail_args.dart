@@ -65,7 +65,7 @@ class TrailArgs {
   /// [s3KeyPrefix] S3 key prefix that follows the name of the bucket you have designated for log file delivery.
   /// [snsTopicName] Name of the Amazon SNS topic defined for notification of log file delivery. Specify the SNS topic ARN if it resides in another region.
   /// [tags] Map of tags to assign to the trail. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  TrailArgs({
+  const TrailArgs({
     this.advancedEventSelectors,
     this.cloudWatchLogsGroupArn,
     this.cloudWatchLogsRoleArn,

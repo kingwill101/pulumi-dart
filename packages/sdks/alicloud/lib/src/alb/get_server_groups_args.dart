@@ -39,7 +39,7 @@ class GetServerGroupsArgs {
   /// [status] The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the virtual private cloud (VPC).
-  GetServerGroupsArgs({
+  const GetServerGroupsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

@@ -11,7 +11,7 @@ class GalleryExtendedLocationResponse {
   /// Creates a new [GalleryExtendedLocationResponse].
   /// [name] Optional.
   /// [type] It is type of the extended location.
-  GalleryExtendedLocationResponse({
+  const GalleryExtendedLocationResponse({
     this.name,
     this.type,
   });

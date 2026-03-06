@@ -15,7 +15,7 @@ class GetControllerArgs {
   /// Creates a new [GetControllerArgs].
   /// [name] Name of the resource.
   /// [resourceGroupName] Resource group to which the resource belongs.
-  GetControllerArgs({
+  const GetControllerArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -21,7 +21,7 @@ class PolicyDefinitionGroupResponse {
   /// [description] The group's description.
   /// [displayName] The group's display name.
   /// [name] The name of the group.
-  PolicyDefinitionGroupResponse({
+  const PolicyDefinitionGroupResponse({
     this.additionalMetadataId,
     this.category,
     this.description,

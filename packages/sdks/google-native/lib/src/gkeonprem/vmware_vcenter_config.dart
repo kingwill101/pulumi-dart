@@ -27,7 +27,7 @@ class VmwareVCenterConfig {
   /// [folder] The name of the vCenter folder for the user cluster.
   /// [resourcePool] The name of the vCenter resource pool for the user cluster.
   /// [storagePolicyName] The name of the vCenter storage policy for the user cluster.
-  VmwareVCenterConfig({
+  const VmwareVCenterConfig({
     this.caCertData,
     this.cluster,
     this.datacenter,

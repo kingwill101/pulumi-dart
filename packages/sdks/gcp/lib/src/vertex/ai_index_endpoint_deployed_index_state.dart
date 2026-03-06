@@ -70,7 +70,7 @@ class AiIndexEndpointDeployedIndexState {
   /// [privateEndpoints] Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
   /// [region] The region of the index endpoint deployment. eg us-central1
   /// [reservedIpRanges] A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
-  AiIndexEndpointDeployedIndexState({
+  const AiIndexEndpointDeployedIndexState({
     this.automaticResources,
     this.createTime,
     this.dedicatedResources,

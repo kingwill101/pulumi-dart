@@ -13,7 +13,7 @@ class ParameterValueResponse {
   /// Creates a new [ParameterValueResponse].
   /// [reference] Parameter value as reference type.
   /// [value] Parameter value. Any valid JSON value is allowed including objects, arrays, strings, numbers and booleans.
-  ParameterValueResponse({
+  const ParameterValueResponse({
     this.reference,
     this.value,
   });

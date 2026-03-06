@@ -31,7 +31,7 @@ class VpnConfigurationPropertiesOptionAProperties {
   /// [secondaryIpv4Prefix] Secondary IPv4 Address Prefix.
   /// [secondaryIpv6Prefix] Secondary IPv6 Address Prefix.
   /// [vlanId] Vlan Id.Example : 501
-  VpnConfigurationPropertiesOptionAProperties({
+  const VpnConfigurationPropertiesOptionAProperties({
     this.bfdConfiguration,
     this.mtu,
     required this.peerASN,

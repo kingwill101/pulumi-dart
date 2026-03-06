@@ -17,7 +17,7 @@ class GetRuleArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [ruleId] Required.
-  GetRuleArgs({
+  const GetRuleArgs({
     required this.gatewaySecurityPolicyId,
     required this.location,
     this.project,

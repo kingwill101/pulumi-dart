@@ -14,7 +14,7 @@ class GetInstanceTypeFamiliesFamily {
   /// [generation] The generation of the instance type family, Valid values: `ecs-1`, `ecs-2`, `ecs-3`, `ecs-4`, `ecs-5`, `ecs-6`. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.htm).
   /// [id] ID of the instance type family.
   /// [zoneIds] A list of Zone to launch the instance.
-  GetInstanceTypeFamiliesFamily({
+  const GetInstanceTypeFamiliesFamily({
     required this.generation,
     required this.id,
     required this.zoneIds,

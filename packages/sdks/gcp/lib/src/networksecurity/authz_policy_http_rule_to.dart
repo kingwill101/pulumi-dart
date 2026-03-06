@@ -15,7 +15,7 @@ class AuthzPolicyHttpRuleTo {
   /// Creates a new [AuthzPolicyHttpRuleTo].
   /// [notOperations] Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
   /// [operations] Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
-  AuthzPolicyHttpRuleTo({
+  const AuthzPolicyHttpRuleTo({
     this.notOperations,
     this.operations,
   });

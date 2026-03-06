@@ -27,7 +27,7 @@ class GetPrefixListsResult {
   /// [names] A list of Prefix List names.
   /// [outputFile] Optional.
   /// [prefixListName] The name of the prefix list.
-  GetPrefixListsResult({
+  const GetPrefixListsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

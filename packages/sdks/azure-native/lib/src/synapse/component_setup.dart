@@ -17,7 +17,7 @@ class ComponentSetup {
   /// [componentName] The name of the 3rd party component.
   /// [licenseKey] The license key to activate the component.
   /// [type] The type of custom setup.
-  ComponentSetup({
+  const ComponentSetup({
     required this.componentName,
     this.licenseKey,
     required this.type,

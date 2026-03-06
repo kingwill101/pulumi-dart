@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerTlCertificateFile {
   /// Creates a new [GetVirtualNodeSpecListenerTlCertificateFile].
   /// [certificateChain] Required.
   /// [privateKey] Required.
-  GetVirtualNodeSpecListenerTlCertificateFile({
+  const GetVirtualNodeSpecListenerTlCertificateFile({
     required this.certificateChain,
     required this.privateKey,
   });

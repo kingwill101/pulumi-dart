@@ -19,7 +19,7 @@ class ChannelWebChatState {
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Web Chat Channel should be created. Changing this forces a new resource to be created.
   /// [sites] A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
-  ChannelWebChatState({
+  const ChannelWebChatState({
     this.botName,
     this.location,
     this.resourceGroupName,

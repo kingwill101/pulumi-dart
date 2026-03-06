@@ -8,7 +8,7 @@ class ClusterNodeConfigFastSocket {
 
   /// Creates a new [ClusterNodeConfigFastSocket].
   /// [enabled] Whether or not the NCCL Fast Socket is enabled
-  ClusterNodeConfigFastSocket({
+  const ClusterNodeConfigFastSocket({
     required this.enabled,
   });
 

@@ -27,7 +27,7 @@ class ClientApplicationArgs {
   /// [ownerId] A resource identifier for the user who owns the application.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  ClientApplicationArgs({
+  const ClientApplicationArgs({
     this.clientApplicationId,
     this.description,
     required this.displayName,

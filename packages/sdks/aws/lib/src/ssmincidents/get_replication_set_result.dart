@@ -35,7 +35,7 @@ class GetReplicationSetResult {
   /// [regions] The replication set's Regions.
   /// [status] The current status of the Region.
   /// [tags] All tags applied to the replication set.
-  GetReplicationSetResult({
+  const GetReplicationSetResult({
     required this.arn,
     required this.createdBy,
     required this.deletionProtected,

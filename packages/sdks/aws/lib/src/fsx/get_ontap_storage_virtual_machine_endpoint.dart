@@ -20,7 +20,7 @@ class GetOntapStorageVirtualMachineEndpoint {
   /// [managements] An endpoint for managing SVMs using the NetApp ONTAP CLI, NetApp ONTAP API, or NetApp CloudManager. See SVM Endpoint below.
   /// [nfs] An endpoint for connecting using the Network File System (NFS) protocol. See SVM Endpoint below.
   /// [smbs] An endpoint for connecting using the Server Message Block (SMB) protocol. See SVM Endpoint below.
-  GetOntapStorageVirtualMachineEndpoint({
+  const GetOntapStorageVirtualMachineEndpoint({
     required this.iscsis,
     required this.managements,
     required this.nfs,

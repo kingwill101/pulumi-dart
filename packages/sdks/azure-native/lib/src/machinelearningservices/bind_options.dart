@@ -15,7 +15,7 @@ class BindOptions {
   /// [createHostPath] Indicate whether to create host path.
   /// [propagation] Type of Bind Option
   /// [selinux] Mention the selinux options.
-  BindOptions({
+  const BindOptions({
     this.createHostPath,
     this.propagation,
     this.selinux,

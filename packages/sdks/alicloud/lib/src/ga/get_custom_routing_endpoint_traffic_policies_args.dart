@@ -34,7 +34,7 @@ class GetCustomRoutingEndpointTrafficPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetCustomRoutingEndpointTrafficPoliciesArgs({
+  const GetCustomRoutingEndpointTrafficPoliciesArgs({
     required this.acceleratorId,
     this.address,
     this.endpointGroupId,

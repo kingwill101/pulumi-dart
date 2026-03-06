@@ -10,7 +10,7 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern {
   /// Creates a new [RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

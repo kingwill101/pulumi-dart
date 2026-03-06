@@ -29,7 +29,7 @@ class AkriConnectorTemplatePropertiesResponse {
   /// [mqttConnectionConfiguration] Mqtt connection configuration settings.
   /// [provisioningState] The status of the last operation.
   /// [runtimeConfiguration] The runtime configuration for the Connector template.
-  AkriConnectorTemplatePropertiesResponse({
+  const AkriConnectorTemplatePropertiesResponse({
     this.aioMetadata,
     required this.deviceInboundEndpointTypes,
     this.diagnostics,

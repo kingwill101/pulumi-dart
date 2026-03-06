@@ -11,7 +11,7 @@ class GetPipelineDefinitionParameterObject {
   /// Creates a new [GetPipelineDefinitionParameterObject].
   /// [attributes] Required.
   /// [id] ID of the object.
-  GetPipelineDefinitionParameterObject({
+  const GetPipelineDefinitionParameterObject({
     required this.attributes,
     required this.id,
   });

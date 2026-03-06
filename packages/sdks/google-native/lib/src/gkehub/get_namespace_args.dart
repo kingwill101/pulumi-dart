@@ -17,7 +17,7 @@ class GetNamespaceArgs {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [scopeId] Required.
-  GetNamespaceArgs({
+  const GetNamespaceArgs({
     required this.location,
     required this.namespaceId,
     this.project,

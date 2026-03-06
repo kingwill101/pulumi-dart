@@ -22,7 +22,7 @@ class GetSnapshotsResult {
   /// [outputFile] Optional.
   /// [snapshots] Required.
   /// [status] Optional.
-  GetSnapshotsResult({
+  const GetSnapshotsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

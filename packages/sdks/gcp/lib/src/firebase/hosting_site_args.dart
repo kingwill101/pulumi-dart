@@ -22,7 +22,7 @@ class HostingSiteArgs {
   /// [appId] Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
   /// [project] The ID of the project in which the resource belongs.
   /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
-  HostingSiteArgs({
+  const HostingSiteArgs({
     this.appId,
     this.project,
     this.siteId,

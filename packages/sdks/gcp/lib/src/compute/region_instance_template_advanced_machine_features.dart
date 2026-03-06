@@ -23,7 +23,7 @@ class RegionInstanceTemplateAdvancedMachineFeatures {
   /// [threadsPerCore] The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
   /// [turboMode] Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
   /// [visibleCoreCount] The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
-  RegionInstanceTemplateAdvancedMachineFeatures({
+  const RegionInstanceTemplateAdvancedMachineFeatures({
     this.enableNestedVirtualization,
     this.enableUefiNetworking,
     this.performanceMonitoringUnit,

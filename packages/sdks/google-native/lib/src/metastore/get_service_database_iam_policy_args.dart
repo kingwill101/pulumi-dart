@@ -19,7 +19,7 @@ class GetServiceDatabaseIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetServiceDatabaseIamPolicyArgs({
+  const GetServiceDatabaseIamPolicyArgs({
     required this.databaseId,
     required this.location,
     this.optionsRequestedPolicyVersion,

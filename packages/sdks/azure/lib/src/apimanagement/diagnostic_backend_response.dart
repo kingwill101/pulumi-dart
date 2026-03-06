@@ -15,7 +15,7 @@ class DiagnosticBackendResponse {
   /// [bodyBytes] Number of payload bytes to log (up to 8192).
   /// [dataMasking] A `data_masking` block as defined below.
   /// [headersToLogs] Specifies a list of headers to log.
-  DiagnosticBackendResponse({
+  const DiagnosticBackendResponse({
     this.bodyBytes,
     this.dataMasking,
     this.headersToLogs,

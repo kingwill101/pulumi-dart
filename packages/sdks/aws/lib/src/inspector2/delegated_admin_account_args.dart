@@ -15,7 +15,7 @@ class DelegatedAdminAccountArgs {
   /// Creates a new [DelegatedAdminAccountArgs].
   /// [accountId] Account to enable as delegated admin account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DelegatedAdminAccountArgs({
+  const DelegatedAdminAccountArgs({
     required this.accountId,
     this.region,
   });

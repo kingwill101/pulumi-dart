@@ -38,7 +38,7 @@ class ReportPlanState {
   /// [reportSetting] An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   /// [tags] Metadata that you can assign to help organize the report plans you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ReportPlanState({
+  const ReportPlanState({
     this.arn,
     this.creationTime,
     this.deploymentStatus,

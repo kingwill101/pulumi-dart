@@ -14,7 +14,7 @@ class Clientcert {
   /// [cert] The SSL client certificate file path. The file must contain PEM encoded data.
   /// [key] The SSL client certificate private key file path. The file must contain PEM encoded data.
   /// [sslinline] Must be set to true if you are inlining the cert/key instead of using a file path.
-  Clientcert({
+  const Clientcert({
     required this.cert,
     required this.key,
     this.sslinline,

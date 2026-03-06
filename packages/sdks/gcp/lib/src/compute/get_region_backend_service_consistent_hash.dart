@@ -24,7 +24,7 @@ class GetRegionBackendServiceConsistentHash {
   /// [httpCookies] Hash is based on HTTP Cookie. This field describes a HTTP cookie
   /// [httpHeaderName] The hash based on the value of the specified header field.
   /// [minimumRingSize] The minimum number of virtual nodes to use for the hash ring.
-  GetRegionBackendServiceConsistentHash({
+  const GetRegionBackendServiceConsistentHash({
     required this.httpCookies,
     required this.httpHeaderName,
     required this.minimumRingSize,

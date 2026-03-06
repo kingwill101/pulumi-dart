@@ -21,7 +21,7 @@ class ConnectionBitbucketCloudConfig {
   /// [readAuthorizerCredential] Required. An access token with the `repository` access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate the credentials.
   /// [webhookSecretSecretVersion] Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events, formatted as `projects/*/secrets/*/versions/*`.
   /// [workspace] The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.
-  ConnectionBitbucketCloudConfig({
+  const ConnectionBitbucketCloudConfig({
     required this.authorizerCredential,
     required this.readAuthorizerCredential,
     required this.webhookSecretSecretVersion,

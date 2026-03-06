@@ -102,7 +102,7 @@ class VPNTunnelArgs {
   /// [targetVpnGateway] URL of the Target VPN gateway with which this VPN tunnel is
   /// [vpnGateway] URL of the VPN gateway with which this VPN tunnel is associated.
   /// [vpnGatewayInterface] The interface ID of the VPN gateway with which this VPN tunnel is associated.
-  VPNTunnelArgs({
+  const VPNTunnelArgs({
     this.cipherSuite,
     this.description,
     this.ikeVersion,

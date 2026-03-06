@@ -11,7 +11,7 @@ class GetV3FunctionsFunctionCustomDnsDnsOption {
   /// Creates a new [GetV3FunctionsFunctionCustomDnsDnsOption].
   /// [name] Configuration Item Name.
   /// [value] Configuration Item Value.
-  GetV3FunctionsFunctionCustomDnsDnsOption({
+  const GetV3FunctionsFunctionCustomDnsDnsOption({
     required this.name,
     required this.value,
   });

@@ -20,7 +20,7 @@ class ListNamespaceKeysResult {
   /// [primaryKey] A base64-encoded 256-bit primary key for signing and validating the SAS token.
   /// [secondaryConnectionString] Secondary connection string of the created namespace authorization rule.
   /// [secondaryKey] A base64-encoded 256-bit secondary key for signing and validating the SAS token.
-  ListNamespaceKeysResult({
+  const ListNamespaceKeysResult({
     this.keyName,
     this.primaryConnectionString,
     this.primaryKey,

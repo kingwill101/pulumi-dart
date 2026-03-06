@@ -40,7 +40,7 @@ class GetPrefixResult {
   /// [prefixValidationState] The prefix validation state
   /// [provisioningState] The provisioning state of the resource.
   /// [type] The type of the resource.
-  GetPrefixResult({
+  const GetPrefixResult({
     required this.azureApiVersion,
     required this.errorMessage,
     required this.events,

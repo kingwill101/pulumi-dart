@@ -20,7 +20,7 @@ class InvestigationMetadataResponse {
   /// [execution] The execution details of the investigation
   /// [id] The unique identifier of the investigation
   /// [runParameters] The parameters that were used to start the investigation
-  InvestigationMetadataResponse({
+  const InvestigationMetadataResponse({
     required this.createdAt,
     required this.execution,
     required this.id,

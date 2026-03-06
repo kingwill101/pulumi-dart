@@ -47,7 +47,7 @@ class LicenseConfigArgs {
   /// [startDate] The start date.
   /// [subscriptionTerm] Subscription term.
   /// [subscriptionTier] Subscription tier information for the license config.
-  LicenseConfigArgs({
+  const LicenseConfigArgs({
     this.autoRenew,
     this.endDate,
     this.freeTrial,

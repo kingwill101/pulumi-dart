@@ -20,7 +20,7 @@ class NextGenerationFirewallVirtualHubPanoramaPanorama {
   /// [panoramaServer2] Optional.
   /// [templateName] Optional.
   /// [virtualMachineSshKey] Optional.
-  NextGenerationFirewallVirtualHubPanoramaPanorama({
+  const NextGenerationFirewallVirtualHubPanoramaPanorama({
     this.deviceGroupName,
     this.hostName,
     this.name,

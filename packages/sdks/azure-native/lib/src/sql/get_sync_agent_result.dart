@@ -35,7 +35,7 @@ class GetSyncAgentResult {
   /// [syncDatabaseId] ARM resource id of the sync database in the sync agent.
   /// [type] Resource type.
   /// [version] Version of the sync agent.
-  GetSyncAgentResult({
+  const GetSyncAgentResult({
     required this.azureApiVersion,
     required this.expiryTime,
     required this.id,

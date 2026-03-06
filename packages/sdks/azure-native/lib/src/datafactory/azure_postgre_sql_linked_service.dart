@@ -95,7 +95,7 @@ class AzurePostgreSqlLinkedService {
   /// [type] Type of linked service.
   /// [username] Username for authentication. Type: string.
   /// [version] Version of the linked service.
-  AzurePostgreSqlLinkedService({
+  const AzurePostgreSqlLinkedService({
     this.annotations,
     this.azureCloudType,
     this.commandTimeout,

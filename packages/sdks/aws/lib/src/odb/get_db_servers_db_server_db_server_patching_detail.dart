@@ -13,7 +13,7 @@ class GetDbServersDbServerDbServerPatchingDetail {
   /// [patchingStatus] Required.
   /// [timePatchingEnded] Required.
   /// [timePatchingStarted] Required.
-  GetDbServersDbServerDbServerPatchingDetail({
+  const GetDbServersDbServerDbServerPatchingDetail({
     required this.estimatedPatchDuration,
     required this.patchingStatus,
     required this.timePatchingEnded,

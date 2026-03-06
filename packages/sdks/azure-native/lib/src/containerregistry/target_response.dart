@@ -33,7 +33,7 @@ class TargetResponse {
   /// [tag] The tag name.
   /// [url] The direct URL to the content.
   /// [version] The version of the artifact.
-  TargetResponse({
+  const TargetResponse({
     this.digest,
     this.length,
     this.mediaType,

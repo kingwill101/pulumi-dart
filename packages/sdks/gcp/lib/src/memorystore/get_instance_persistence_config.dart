@@ -20,7 +20,7 @@ class GetInstancePersistenceConfig {
   /// [aofConfigs] Configuration for AOF based persistence.
   /// [mode] Optional. Current persistence mode.
   /// [rdbConfigs] Configuration for RDB based persistence.
-  GetInstancePersistenceConfig({
+  const GetInstancePersistenceConfig({
     required this.aofConfigs,
     required this.mode,
     required this.rdbConfigs,

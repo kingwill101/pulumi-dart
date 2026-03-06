@@ -15,7 +15,7 @@ class SecurityIpState {
   /// [dbInstanceId] The cluster ID.
   /// [groupName] The whitelist name.
   /// [securityIpList] The IP address list under the whitelist group.
-  SecurityIpState({
+  const SecurityIpState({
     this.dbInstanceId,
     this.groupName,
     this.securityIpList,

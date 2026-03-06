@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [name] Name by which is known a given compute size assigned to a server.
   /// [tier] Tier of the compute assigned to a server.
-  SkuResponse({
+  const SkuResponse({
     required this.name,
     required this.tier,
   });

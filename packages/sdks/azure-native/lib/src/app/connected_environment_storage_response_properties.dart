@@ -20,7 +20,7 @@ class ConnectedEnvironmentStorageResponseProperties {
   /// [deploymentErrors] Any errors that occurred during deployment or deployment validation
   /// [provisioningState] Provisioning state of the storage.
   /// [smb] SMB storage properties
-  ConnectedEnvironmentStorageResponseProperties({
+  const ConnectedEnvironmentStorageResponseProperties({
     this.azureFile,
     required this.deploymentErrors,
     required this.provisioningState,

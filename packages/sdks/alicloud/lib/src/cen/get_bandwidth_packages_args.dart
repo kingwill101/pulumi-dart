@@ -27,7 +27,7 @@ class GetBandwidthPackagesArgs {
   /// [nameRegex] A regex string to filter CEN Bandwidth Package by name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
-  GetBandwidthPackagesArgs({
+  const GetBandwidthPackagesArgs({
     this.ids,
     this.includeReservationData,
     this.instanceId,

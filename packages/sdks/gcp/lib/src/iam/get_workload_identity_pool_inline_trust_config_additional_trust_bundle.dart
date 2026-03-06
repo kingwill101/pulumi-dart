@@ -13,7 +13,7 @@ class GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle {
   /// Creates a new [GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle].
   /// [trustAnchors] List of Trust Anchors to be used while performing validation against a given
   /// [trustDomain] Required.
-  GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle({
+  const GetWorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle({
     required this.trustAnchors,
     required this.trustDomain,
   });

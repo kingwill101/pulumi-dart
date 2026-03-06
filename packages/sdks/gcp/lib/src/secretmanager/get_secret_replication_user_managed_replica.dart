@@ -12,7 +12,7 @@ class GetSecretReplicationUserManagedReplica {
   /// Creates a new [GetSecretReplicationUserManagedReplica].
   /// [customerManagedEncryptions] Customer Managed Encryption for the secret.
   /// [location] The canonical IDs of the location to replicate data. For example: "us-east1".
-  GetSecretReplicationUserManagedReplica({
+  const GetSecretReplicationUserManagedReplica({
     required this.customerManagedEncryptions,
     required this.location,
   });

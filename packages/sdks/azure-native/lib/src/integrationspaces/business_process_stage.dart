@@ -15,7 +15,7 @@ class BusinessProcessStage {
   /// [description] The description of the business stage.
   /// [properties] The properties within the properties of the business process stage.
   /// [stagesBefore] The property to keep track of stages before current in the business process stage.
-  BusinessProcessStage({
+  const BusinessProcessStage({
     this.description,
     this.properties,
     this.stagesBefore,

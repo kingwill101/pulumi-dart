@@ -12,7 +12,7 @@ class PreconditionsPatch {
   /// Creates a new [PreconditionsPatch].
   /// [resourceVersion] Specifies the target ResourceVersion
   /// [uid] Specifies the target UID.
-  PreconditionsPatch({
+  const PreconditionsPatch({
     this.resourceVersion,
     this.uid,
   });

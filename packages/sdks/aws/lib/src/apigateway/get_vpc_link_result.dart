@@ -29,7 +29,7 @@ class GetVpcLinkResult {
   /// [statusMessage] Status message of the VPC link.
   /// [tags] Key-value map of resource tags
   /// [targetArns] List of network load balancer arns in the VPC targeted by the VPC link. Currently AWS only supports 1 target.
-  GetVpcLinkResult({
+  const GetVpcLinkResult({
     required this.arn,
     required this.description,
     required this.id,

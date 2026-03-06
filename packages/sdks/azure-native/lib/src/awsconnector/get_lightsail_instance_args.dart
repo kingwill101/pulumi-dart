@@ -15,7 +15,7 @@ class GetLightsailInstanceArgs {
   /// Creates a new [GetLightsailInstanceArgs].
   /// [name] Name of LightsailInstance
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLightsailInstanceArgs({
+  const GetLightsailInstanceArgs({
     required this.name,
     required this.resourceGroupName,
   });

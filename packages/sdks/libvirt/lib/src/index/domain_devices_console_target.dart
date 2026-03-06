@@ -11,7 +11,7 @@ class DomainDevicesConsoleTarget {
   /// Creates a new [DomainDevicesConsoleTarget].
   /// [port] Sets the port number used for the console target.
   /// [type] Specifies the type of the console target.
-  DomainDevicesConsoleTarget({
+  const DomainDevicesConsoleTarget({
     this.port,
     this.type,
   });

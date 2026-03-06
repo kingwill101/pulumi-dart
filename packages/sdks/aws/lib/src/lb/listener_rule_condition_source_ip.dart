@@ -7,7 +7,7 @@ class ListenerRuleConditionSourceIp {
 
   /// Creates a new [ListenerRuleConditionSourceIp].
   /// [values] Required.
-  ListenerRuleConditionSourceIp({
+  const ListenerRuleConditionSourceIp({
     required this.values,
   });
 

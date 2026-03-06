@@ -44,7 +44,7 @@ class StorageTargetArgs {
   /// [storageTargetName] Name of Storage Target.
   /// [targetType] Type of the Storage Target.
   /// [unknown] Properties when targetType is unknown.
-  StorageTargetArgs({
+  const StorageTargetArgs({
     this.blobNfs,
     required this.cacheName,
     this.clfs,

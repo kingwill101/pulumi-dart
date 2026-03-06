@@ -10,7 +10,7 @@ class WorkspaceHubConfigResponse {
   /// Creates a new [WorkspaceHubConfigResponse].
   /// [additionalWorkspaceStorageAccounts] Optional.
   /// [defaultWorkspaceResourceGroup] Optional.
-  WorkspaceHubConfigResponse({
+  const WorkspaceHubConfigResponse({
     this.additionalWorkspaceStorageAccounts,
     this.defaultWorkspaceResourceGroup,
   });

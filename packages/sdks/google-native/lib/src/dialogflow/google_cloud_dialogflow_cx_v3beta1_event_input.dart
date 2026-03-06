@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3beta1EventInput {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1EventInput].
   /// [event] Name of the event.
-  GoogleCloudDialogflowCxV3beta1EventInput({
+  const GoogleCloudDialogflowCxV3beta1EventInput({
     this.event,
   });
 

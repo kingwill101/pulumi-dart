@@ -8,7 +8,7 @@ class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
 
   /// Creates a new [GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration].
   /// [enabled] Whether or not Cloud Data Lineage integration is enabled.
-  GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration({
+  const GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration({
     required this.enabled,
   });
 

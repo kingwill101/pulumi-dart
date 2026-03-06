@@ -9,7 +9,7 @@ class CxToolOpenApiSpecServiceDirectoryConfig {
 
   /// Creates a new [CxToolOpenApiSpecServiceDirectoryConfig].
   /// [service] The name of [Service Directory](https://cloud.google.com/service-directory/docs) service.
-  CxToolOpenApiSpecServiceDirectoryConfig({
+  const CxToolOpenApiSpecServiceDirectoryConfig({
     required this.service,
   });
 

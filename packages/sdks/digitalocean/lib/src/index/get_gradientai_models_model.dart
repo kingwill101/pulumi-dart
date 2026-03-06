@@ -40,7 +40,7 @@ class GetGradientaiModelsModel {
   /// [url] URL of the Model
   /// [uuid] UUID of the Model
   /// [versions] List of Versions for the Model
-  GetGradientaiModelsModel({
+  const GetGradientaiModelsModel({
     required this.agreements,
     required this.createdAt,
     required this.id,

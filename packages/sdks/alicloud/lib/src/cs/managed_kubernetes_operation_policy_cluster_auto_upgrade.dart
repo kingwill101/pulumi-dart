@@ -21,7 +21,7 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgrade {
   /// Creates a new [ManagedKubernetesOperationPolicyClusterAutoUpgrade].
   /// [channel] The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
   /// [enabled] Whether the RRSA feature has been enabled.
-  ManagedKubernetesOperationPolicyClusterAutoUpgrade({
+  const ManagedKubernetesOperationPolicyClusterAutoUpgrade({
     this.channel,
     this.enabled,
   });

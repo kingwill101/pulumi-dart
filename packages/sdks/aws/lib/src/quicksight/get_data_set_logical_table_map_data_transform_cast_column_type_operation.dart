@@ -11,7 +11,7 @@ class GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation {
   /// [columnName] Required.
   /// [format] Required.
   /// [newColumnType] Required.
-  GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation({
+  const GetDataSetLogicalTableMapDataTransformCastColumnTypeOperation({
     required this.columnName,
     required this.format,
     required this.newColumnType,

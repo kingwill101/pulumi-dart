@@ -15,7 +15,7 @@ class GetSqlManagedInstanceArgs {
   /// Creates a new [GetSqlManagedInstanceArgs].
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlManagedInstanceName] Name of SQL Managed Instance
-  GetSqlManagedInstanceArgs({
+  const GetSqlManagedInstanceArgs({
     required this.resourceGroupName,
     required this.sqlManagedInstanceName,
   });

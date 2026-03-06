@@ -13,7 +13,7 @@ class ClusterContinuousBackupInfoEncryptionInfo {
   /// Creates a new [ClusterContinuousBackupInfoEncryptionInfo].
   /// [encryptionType] (Output)
   /// [kmsKeyVersions] (Output)
-  ClusterContinuousBackupInfoEncryptionInfo({
+  const ClusterContinuousBackupInfoEncryptionInfo({
     this.encryptionType,
     this.kmsKeyVersions,
   });

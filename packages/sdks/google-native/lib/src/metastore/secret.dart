@@ -9,7 +9,7 @@ class Secret {
 
   /// Creates a new [Secret].
   /// [cloudSecret] The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-  Secret({
+  const Secret({
     this.cloudSecret,
   });
 

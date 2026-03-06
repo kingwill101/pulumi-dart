@@ -34,7 +34,7 @@ class WorkspaceArgs {
   /// [tags] The tags of the resource.
   /// [userStorageAccountId] The fully qualified arm id of the storage account associated with this workspace.
   /// [workspaceName] The name of the machine learning workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.keyVaultIdentifierId,
     this.location,
     required this.ownerEmail,

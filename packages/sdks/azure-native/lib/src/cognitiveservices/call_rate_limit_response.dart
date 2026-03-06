@@ -15,7 +15,7 @@ class CallRateLimitResponse {
   /// [count] The count value of Call Rate Limit.
   /// [renewalPeriod] The renewal period in seconds of Call Rate Limit.
   /// [rules] Optional.
-  CallRateLimitResponse({
+  const CallRateLimitResponse({
     this.count,
     this.renewalPeriod,
     this.rules,

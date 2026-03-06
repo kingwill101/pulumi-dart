@@ -57,7 +57,7 @@ class GetEventhubNamespaceResult {
   /// [resourceGroupName] Required.
   /// [sku] Defines which tier to use.
   /// [tags] A mapping of tags to assign to the EventHub Namespace.
-  GetEventhubNamespaceResult({
+  const GetEventhubNamespaceResult({
     required this.autoInflateEnabled,
     required this.capacity,
     required this.dedicatedClusterId,

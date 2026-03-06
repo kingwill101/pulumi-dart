@@ -18,7 +18,7 @@ class GetElasticSnapshotPolicyArgs {
   /// [accountName] The name of the ElasticAccount
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotPolicyName] The name of the ElasticSnapshotPolicy
-  GetElasticSnapshotPolicyArgs({
+  const GetElasticSnapshotPolicyArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.snapshotPolicyName,

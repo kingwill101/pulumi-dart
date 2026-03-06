@@ -20,7 +20,7 @@ class GetKeyVersionsVersion {
   /// [id] ID of the KMS KeyVersion resource.
   /// [keyId] The id of kms key.
   /// [keyVersionId] ID of the key version.
-  GetKeyVersionsVersion({
+  const GetKeyVersionsVersion({
     required this.createTime,
     required this.creationDate,
     required this.id,

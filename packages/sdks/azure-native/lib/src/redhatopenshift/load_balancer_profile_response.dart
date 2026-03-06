@@ -14,7 +14,7 @@ class LoadBalancerProfileResponse {
   /// Creates a new [LoadBalancerProfileResponse].
   /// [effectiveOutboundIps] The list of effective outbound IP addresses of the public load balancer.
   /// [managedOutboundIps] The desired managed outbound IPs for the cluster public load balancer.
-  LoadBalancerProfileResponse({
+  const LoadBalancerProfileResponse({
     required this.effectiveOutboundIps,
     this.managedOutboundIps,
   });

@@ -22,7 +22,7 @@ class SystemAssignedIdentityAuthInfoResponse {
   /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting
   /// [roles] Optional, this value specifies the Azure role to be assigned
   /// [userName] Username created in the database which is mapped to a user in AAD.
-  SystemAssignedIdentityAuthInfoResponse({
+  const SystemAssignedIdentityAuthInfoResponse({
     this.authMode,
     required this.authType,
     this.deleteOrUpdateBehavior,

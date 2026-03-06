@@ -28,7 +28,7 @@ class AclArgs {
   /// [dryRun] The dry run.
   /// [resourceGroupId] The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   /// [tags] A mapping of tags to assign to the resource.
-  AclArgs({
+  const AclArgs({
     this.aclEntries,
     this.aclName,
     required this.addressIpVersion,

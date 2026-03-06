@@ -14,7 +14,7 @@ class DataQualityRulesetTargetTable {
   /// [catalogId] The catalog id where the AWS Glue table exists.
   /// [databaseName] Name of the database where the AWS Glue table exists.
   /// [tableName] Name of the AWS Glue table.
-  DataQualityRulesetTargetTable({
+  const DataQualityRulesetTargetTable({
     this.catalogId,
     required this.databaseName,
     required this.tableName,

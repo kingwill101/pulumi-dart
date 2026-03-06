@@ -11,7 +11,7 @@ class DomainDevicesGraphicDesktop {
   /// Creates a new [DomainDevicesGraphicDesktop].
   /// [display] Sets the display option for the desktop graphics configuration.
   /// [fullScreen] Configures the fullscreen setting for the desktop graphics display.
-  DomainDevicesGraphicDesktop({
+  const DomainDevicesGraphicDesktop({
     this.display,
     this.fullScreen,
   });

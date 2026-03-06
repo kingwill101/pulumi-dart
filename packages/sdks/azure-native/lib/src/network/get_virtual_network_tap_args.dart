@@ -15,7 +15,7 @@ class GetVirtualNetworkTapArgs {
   /// Creates a new [GetVirtualNetworkTapArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [tapName] The name of virtual network tap.
-  GetVirtualNetworkTapArgs({
+  const GetVirtualNetworkTapArgs({
     required this.resourceGroupName,
     required this.tapName,
   });

@@ -45,7 +45,7 @@ class WebAppState {
   /// [resourceGroupName] The name of the resource group in which to create the Web App Bot. Changing this forces a new resource to be created.
   /// [sku] The SKU of the Web App Bot. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  WebAppState({
+  const WebAppState({
     this.developerAppInsightsApiKey,
     this.developerAppInsightsApplicationId,
     this.developerAppInsightsKey,

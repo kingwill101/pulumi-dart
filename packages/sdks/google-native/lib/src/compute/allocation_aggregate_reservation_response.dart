@@ -19,7 +19,7 @@ class AllocationAggregateReservationResponse {
   /// [reservedResources] List of reserved resources (CPUs, memory, accelerators).
   /// [vmFamily] The VM family that all instances scheduled against this reservation must belong to.
   /// [workloadType] The workload type of the instances that will target this reservation.
-  AllocationAggregateReservationResponse({
+  const AllocationAggregateReservationResponse({
     required this.inUseResources,
     required this.reservedResources,
     required this.vmFamily,

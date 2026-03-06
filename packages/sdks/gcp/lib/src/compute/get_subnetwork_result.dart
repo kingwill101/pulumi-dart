@@ -56,7 +56,7 @@ class GetSubnetworkResult {
   /// [selfLink] Required.
   /// [stackType] The stack type for the subnet. Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
   /// [subnetworkId] The numeric ID of the resource.
-  GetSubnetworkResult({
+  const GetSubnetworkResult({
     required this.description,
     required this.externalIpv6Prefix,
     required this.gatewayAddress,

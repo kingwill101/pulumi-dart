@@ -24,7 +24,7 @@ class Storage {
   /// [throughput] Maximum throughput supported for storage. Required when type of storage is PremiumV2_LRS or UltraSSD_LRS.
   /// [tier] Storage tier of a server.
   /// [type] Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
-  Storage({
+  const Storage({
     this.autoGrow,
     this.iops,
     this.storageSizeGB,

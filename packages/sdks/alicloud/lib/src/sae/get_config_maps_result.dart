@@ -22,7 +22,7 @@ class GetConfigMapsResult {
   /// [names] Required.
   /// [namespaceId] Required.
   /// [outputFile] Optional.
-  GetConfigMapsResult({
+  const GetConfigMapsResult({
     required this.id,
     required this.ids,
     required this.maps,

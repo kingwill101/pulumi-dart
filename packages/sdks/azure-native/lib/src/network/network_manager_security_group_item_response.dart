@@ -9,7 +9,7 @@ class NetworkManagerSecurityGroupItemResponse {
 
   /// Creates a new [NetworkManagerSecurityGroupItemResponse].
   /// [networkGroupId] Network manager group Id.
-  NetworkManagerSecurityGroupItemResponse({
+  const NetworkManagerSecurityGroupItemResponse({
     required this.networkGroupId,
   });
 

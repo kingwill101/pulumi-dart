@@ -53,7 +53,7 @@ class SecuritySolutionState {
   /// [recommendationsEnabled] A `recommendations_enabled` block of options to enable or disable as defined below.
   /// [resourceGroupName] Specifies the name of the resource group in which to create the Iot Security Solution. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  SecuritySolutionState({
+  const SecuritySolutionState({
     this.additionalWorkspaces,
     this.disabledDataSources,
     this.displayName,

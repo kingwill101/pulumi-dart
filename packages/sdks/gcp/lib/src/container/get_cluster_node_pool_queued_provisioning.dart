@@ -8,7 +8,7 @@ class GetClusterNodePoolQueuedProvisioning {
 
   /// Creates a new [GetClusterNodePoolQueuedProvisioning].
   /// [enabled] Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
-  GetClusterNodePoolQueuedProvisioning({
+  const GetClusterNodePoolQueuedProvisioning({
     required this.enabled,
   });
 

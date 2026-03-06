@@ -22,7 +22,7 @@ class ManagedEnvironmentsStorageArgs {
   /// [properties] Storage properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
-  ManagedEnvironmentsStorageArgs({
+  const ManagedEnvironmentsStorageArgs({
     required this.environmentName,
     this.properties,
     required this.resourceGroupName,

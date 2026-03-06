@@ -12,7 +12,7 @@ class JobQueryDefaultDataset {
   /// Creates a new [JobQueryDefaultDataset].
   /// [datasetId] The dataset. Can be specified `{{dataset_id}}` if `project_id` is also set,
   /// [projectId] The ID of the project containing this table.
-  JobQueryDefaultDataset({
+  const JobQueryDefaultDataset({
     required this.datasetId,
     this.projectId,
   });

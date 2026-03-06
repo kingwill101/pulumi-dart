@@ -36,7 +36,7 @@ class SubnetworkLogConfig {
   /// [flowSampling] Can only be specified if VPC flow logging for this subnetwork is enabled.
   /// [metadata] Can only be specified if VPC flow logging for this subnetwork is enabled.
   /// [metadataFields] List of metadata fields that should be added to reported logs.
-  SubnetworkLogConfig({
+  const SubnetworkLogConfig({
     this.aggregationInterval,
     this.filterExpr,
     this.flowSampling,

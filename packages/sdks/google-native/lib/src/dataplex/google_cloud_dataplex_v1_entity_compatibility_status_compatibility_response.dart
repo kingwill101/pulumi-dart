@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse {
   /// Creates a new [GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse].
   /// [compatible] Whether the entity is compatible and can be represented in the metadata store.
   /// [reason] Provides additional detail if the entity is incompatible with the metadata store.
-  GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse({
+  const GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponse({
     required this.compatible,
     required this.reason,
   });

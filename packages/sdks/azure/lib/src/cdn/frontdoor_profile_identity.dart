@@ -15,7 +15,7 @@ class FrontdoorProfileIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of managed identity to assign. Possible values are `SystemAssigned`, `UserAssigned` or `SystemAssigned, UserAssigned`.
-  FrontdoorProfileIdentity({
+  const FrontdoorProfileIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

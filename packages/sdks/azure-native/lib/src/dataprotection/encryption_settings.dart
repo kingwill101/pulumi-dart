@@ -20,7 +20,7 @@ class EncryptionSettings {
   /// [kekIdentity] The details of the managed identity used for CMK
   /// [keyVaultProperties] The properties of the Key Vault which hosts CMK
   /// [state] Encryption state of the Backup Vault.
-  EncryptionSettings({
+  const EncryptionSettings({
     this.infrastructureEncryption,
     this.kekIdentity,
     this.keyVaultProperties,

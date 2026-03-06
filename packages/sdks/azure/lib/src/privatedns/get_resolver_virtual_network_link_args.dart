@@ -15,7 +15,7 @@ class GetResolverVirtualNetworkLinkArgs {
   /// Creates a new [GetResolverVirtualNetworkLinkArgs].
   /// [dnsForwardingRulesetId] ID of the Private DNS Resolver DNS Forwarding Ruleset.
   /// [name] Name of the Private DNS Resolver Virtual Network Link.
-  GetResolverVirtualNetworkLinkArgs({
+  const GetResolverVirtualNetworkLinkArgs({
     required this.dnsForwardingRulesetId,
     required this.name,
   });

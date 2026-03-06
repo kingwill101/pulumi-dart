@@ -15,7 +15,7 @@ class GetMoveCollectionArgs {
   /// Creates a new [GetMoveCollectionArgs].
   /// [moveCollectionName] The Move Collection Name.
   /// [resourceGroupName] The Resource Group Name.
-  GetMoveCollectionArgs({
+  const GetMoveCollectionArgs({
     required this.moveCollectionName,
     required this.resourceGroupName,
   });

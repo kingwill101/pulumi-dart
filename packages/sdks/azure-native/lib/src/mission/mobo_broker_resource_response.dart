@@ -9,7 +9,7 @@ class MoboBrokerResourceResponse {
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] Resource identifier of a Managed-On-Behalf-Of broker resource
-  MoboBrokerResourceResponse({
+  const MoboBrokerResourceResponse({
     this.id,
   });
 

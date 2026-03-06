@@ -54,7 +54,7 @@ class SamplingRuleState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [urlPath] Matches the path from a request URL.
   /// [version] The version of the sampling rule format (`1` )
-  SamplingRuleState({
+  const SamplingRuleState({
     this.arn,
     this.attributes,
     this.fixedRate,

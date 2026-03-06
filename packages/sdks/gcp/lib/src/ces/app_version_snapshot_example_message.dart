@@ -15,7 +15,7 @@ class AppVersionSnapshotExampleMessage {
   /// Creates a new [AppVersionSnapshotExampleMessage].
   /// [chunks] (Output)
   /// [role] (Output)
-  AppVersionSnapshotExampleMessage({
+  const AppVersionSnapshotExampleMessage({
     this.chunks,
     this.role,
   });

@@ -15,7 +15,7 @@ class RouteTableAttachmentArgs {
   /// Creates a new [RouteTableAttachmentArgs].
   /// [routeTableId] The ID of the route table to be bound to the switch.
   /// [vswitchId] The ID of the switch to bind the route table.
-  RouteTableAttachmentArgs({
+  const RouteTableAttachmentArgs({
     required this.routeTableId,
     required this.vswitchId,
   });

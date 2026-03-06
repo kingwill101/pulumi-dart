@@ -44,7 +44,7 @@ class GoogleCloudMlV1PredictionInput {
   /// [signatureName] Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use signatures. Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants) , which is "serving_default".
   /// [uri] Use this field if you want to specify a Google Cloud Storage path for the model to use.
   /// [versionName] Use this field if you want to specify a version of the model to use. The string is formatted the same way as `model_version`, with the addition of the version information: `"projects/YOUR_PROJECT/models/YOUR_MODEL/versions/YOUR_VERSION"`
-  GoogleCloudMlV1PredictionInput({
+  const GoogleCloudMlV1PredictionInput({
     this.batchSize,
     required this.dataFormat,
     required this.inputPaths,

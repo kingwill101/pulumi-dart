@@ -27,7 +27,7 @@ class HybridConnectionArgs {
   /// [relayId] The ID of the Service Bus Relay. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
   /// [sendKeyName] The name of the Service Bus key which has Send permissions. Defaults to `RootManageSharedAccessKey`.
-  HybridConnectionArgs({
+  const HybridConnectionArgs({
     required this.appServiceName,
     required this.hostname,
     required this.port,

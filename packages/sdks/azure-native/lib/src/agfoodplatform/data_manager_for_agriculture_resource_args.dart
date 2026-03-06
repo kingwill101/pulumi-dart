@@ -32,7 +32,7 @@ class DataManagerForAgricultureResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sensorIntegration] Sensor integration request model.
   /// [tags] Resource tags.
-  DataManagerForAgricultureResourceArgs({
+  const DataManagerForAgricultureResourceArgs({
     this.dataManagerForAgricultureResourceName,
     this.identity,
     this.location,

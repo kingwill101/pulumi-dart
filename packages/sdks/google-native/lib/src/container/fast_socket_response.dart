@@ -9,7 +9,7 @@ class FastSocketResponse {
 
   /// Creates a new [FastSocketResponse].
   /// [enabled] Whether Fast Socket features are enabled in the node pool.
-  FastSocketResponse({
+  const FastSocketResponse({
     required this.enabled,
   });
 

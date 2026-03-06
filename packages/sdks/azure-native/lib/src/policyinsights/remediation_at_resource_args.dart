@@ -38,7 +38,7 @@ class RemediationAtResourceArgs {
   /// [resourceCount] Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   /// [resourceDiscoveryMode] The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
   /// [resourceId] Resource ID.
-  RemediationAtResourceArgs({
+  const RemediationAtResourceArgs({
     this.failureThreshold,
     this.filters,
     this.parallelDeployments,

@@ -12,7 +12,7 @@ class GetVendorArgs {
 
   /// Creates a new [GetVendorArgs].
   /// [vendorName] The name of the vendor.
-  GetVendorArgs({
+  const GetVendorArgs({
     required this.vendorName,
   });
 

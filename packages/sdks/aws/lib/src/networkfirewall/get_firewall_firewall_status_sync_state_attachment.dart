@@ -17,7 +17,7 @@ class GetFirewallFirewallStatusSyncStateAttachment {
   /// [status] The current status of the firewall endpoint instantiation in the subnet.
   /// [statusMessage] A message providing additional information about the current status.
   /// [subnetId] The unique identifier for the subnet.
-  GetFirewallFirewallStatusSyncStateAttachment({
+  const GetFirewallFirewallStatusSyncStateAttachment({
     required this.endpointId,
     required this.status,
     required this.statusMessage,

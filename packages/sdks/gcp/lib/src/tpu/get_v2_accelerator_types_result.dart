@@ -15,7 +15,7 @@ class GetV2AcceleratorTypesResult {
   /// [project] Required.
   /// [types] The list of accelerator types available for the given project and zone.
   /// [zone] Required.
-  GetV2AcceleratorTypesResult({
+  const GetV2AcceleratorTypesResult({
     required this.id,
     required this.project,
     required this.types,

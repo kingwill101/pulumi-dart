@@ -9,7 +9,7 @@ class CxAgentAnswerFeedbackSettings {
 
   /// Creates a new [CxAgentAnswerFeedbackSettings].
   /// [enableAnswerFeedback] If enabled, end users will be able to provide [answer feedback](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.sessions/submitAnswerFeedback#body.AnswerFeedback)
-  CxAgentAnswerFeedbackSettings({
+  const CxAgentAnswerFeedbackSettings({
     this.enableAnswerFeedback,
   });
 

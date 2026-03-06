@@ -19,7 +19,7 @@ class GetAccountKeyVaultStatusResult {
   /// [keyVaultPrivateEndpoints] Pairs of virtual network ID and private endpoint ID. Every virtual network that has volumes encrypted with customer-managed keys needs its own key vault private endpoint.
   /// [keyVaultResourceId] Azure resource ID of the key vault/managed HSM that should be used for encryption.
   /// [keyVaultUri] The URI of the key vault/managed HSM that should be used for encryption.
-  GetAccountKeyVaultStatusResult({
+  const GetAccountKeyVaultStatusResult({
     this.keyName,
     this.keyVaultPrivateEndpoints,
     this.keyVaultResourceId,

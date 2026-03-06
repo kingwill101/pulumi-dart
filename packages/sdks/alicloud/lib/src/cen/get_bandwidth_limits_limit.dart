@@ -20,7 +20,7 @@ class GetBandwidthLimitsLimit {
   /// [localRegionId] ID of local region.
   /// [oppositeRegionId] ID of opposite region.
   /// [status] Status of the CEN Bandwidth Limit, including "Active" and "Modifying".
-  GetBandwidthLimitsLimit({
+  const GetBandwidthLimitsLimit({
     required this.bandwidthLimit,
     required this.instanceId,
     required this.localRegionId,

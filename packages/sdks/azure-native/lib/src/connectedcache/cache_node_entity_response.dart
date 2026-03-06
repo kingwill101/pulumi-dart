@@ -162,7 +162,7 @@ class CacheNodeEntityResponse {
   /// [workerConnections] Cache node resource Mcc container deployment worker connection count.
   /// [workerConnectionsLastUpdatedDateTime] Cache node resource last updated Mcc container deployment worker connection count timestamp.
   /// [xCid] Cache node resource Azure XCid.
-  CacheNodeEntityResponse({
+  const CacheNodeEntityResponse({
     required this.addressSpace,
     this.autoUpdateRequestedDay,
     this.autoUpdateRequestedTime,

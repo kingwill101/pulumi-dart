@@ -15,7 +15,7 @@ class GetCloudFrontDistributionArgs {
   /// Creates a new [GetCloudFrontDistributionArgs].
   /// [name] Name of CloudFrontDistribution
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudFrontDistributionArgs({
+  const GetCloudFrontDistributionArgs({
     required this.name,
     required this.resourceGroupName,
   });

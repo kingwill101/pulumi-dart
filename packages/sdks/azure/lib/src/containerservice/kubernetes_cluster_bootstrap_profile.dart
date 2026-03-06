@@ -15,7 +15,7 @@ class KubernetesClusterBootstrapProfile {
   /// Creates a new [KubernetesClusterBootstrapProfile].
   /// [artifactSource] The artifact source. The source where the artifacts are downloaded from. Possible values are `Cache` and `Direct`. Defaults to `Direct`.
   /// [containerRegistryId] The resource Id of Azure Container Registry.
-  KubernetesClusterBootstrapProfile({
+  const KubernetesClusterBootstrapProfile({
     this.artifactSource,
     this.containerRegistryId,
   });

@@ -8,7 +8,7 @@ class SloBasicSliAvailability {
 
   /// Creates a new [SloBasicSliAvailability].
   /// [enabled] Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
-  SloBasicSliAvailability({
+  const SloBasicSliAvailability({
     this.enabled,
   });
 

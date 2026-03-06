@@ -8,7 +8,7 @@ class SubscriptionId {
 
   /// Creates a new [SubscriptionId].
   /// [id] Subscription id in the ARM id format.
-  SubscriptionId({
+  const SubscriptionId({
     this.id,
   });
 

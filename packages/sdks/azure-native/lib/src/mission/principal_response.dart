@@ -12,7 +12,7 @@ class PrincipalResponse {
   /// Creates a new [PrincipalResponse].
   /// [id] The object id associated with the principal
   /// [type] The type of the object id. We currently allow users, groups, and service principals
-  PrincipalResponse({
+  const PrincipalResponse({
     required this.id,
     required this.type,
   });

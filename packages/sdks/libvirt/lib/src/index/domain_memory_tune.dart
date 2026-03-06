@@ -29,7 +29,7 @@ class DomainMemoryTune {
   /// [softLimitUnit] Sets the unit for the specified soft limit on memory allocation.
   /// [swapHardLimit] Defines the hard limit for swap usage, controlling the maximum amount of swapped memory allowed.
   /// [swapHardLimitUnit] Specifies the unit for the swap hard limit configuration.
-  DomainMemoryTune({
+  const DomainMemoryTune({
     this.hardLimit,
     this.hardLimitUnit,
     this.minGuarantee,

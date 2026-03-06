@@ -57,7 +57,7 @@ class GetDevBoxDefinitionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationStatus] Validation status for the Dev Box Definition.
-  GetDevBoxDefinitionResult({
+  const GetDevBoxDefinitionResult({
     required this.activeImageReference,
     required this.azureApiVersion,
     this.hibernateSupport,

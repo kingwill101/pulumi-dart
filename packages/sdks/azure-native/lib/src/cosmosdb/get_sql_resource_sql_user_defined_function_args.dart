@@ -24,7 +24,7 @@ class GetSqlResourceSqlUserDefinedFunctionArgs {
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userDefinedFunctionName] Cosmos DB userDefinedFunction name.
-  GetSqlResourceSqlUserDefinedFunctionArgs({
+  const GetSqlResourceSqlUserDefinedFunctionArgs({
     required this.accountName,
     required this.containerName,
     required this.databaseName,

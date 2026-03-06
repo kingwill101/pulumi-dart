@@ -27,7 +27,7 @@ class GetWorkerConfigurationResult {
   /// [propertiesFileContent] contents of connect-distributed.properties file.
   /// [region] Required.
   /// [tags] A map of tags assigned to the resource.
-  GetWorkerConfigurationResult({
+  const GetWorkerConfigurationResult({
     required this.arn,
     required this.description,
     required this.id,

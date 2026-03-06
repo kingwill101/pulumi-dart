@@ -52,7 +52,7 @@ class PipelineState {
   /// [triggerAlls] A list of all triggers present on the pipeline, including default triggers added by AWS for `V2` pipelines which omit an explicit `trigger` definition.
   /// [triggers] A trigger block. Valid only when `pipeline_type` is `V2`. Triggers are documented below.
   /// [variables] A pipeline-level variable block. Valid only when `pipeline_type` is `V2`. Variable are documented below.
-  PipelineState({
+  const PipelineState({
     this.arn,
     this.artifactStores,
     this.executionMode,

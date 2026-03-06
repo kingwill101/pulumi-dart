@@ -13,7 +13,7 @@ class AutoscaleRecurrenceResponse {
   /// Creates a new [AutoscaleRecurrenceResponse].
   /// [schedule] Array of schedule-based autoscale rules
   /// [timeZone] The time zone for the autoscale schedule times
-  AutoscaleRecurrenceResponse({
+  const AutoscaleRecurrenceResponse({
     this.schedule,
     this.timeZone,
   });

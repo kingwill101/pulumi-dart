@@ -44,7 +44,7 @@ class GetInstancesInstance {
   /// [planId] The ID of the simple application server plan.
   /// [publicIpAddress] The public IP address of the simple application server.
   /// [status] The status of the resource.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.businessStatus,
     required this.createTime,
     required this.ddosStatus,

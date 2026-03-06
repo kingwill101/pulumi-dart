@@ -41,7 +41,7 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig {
   /// [scaleDownMinWorkerFraction] Minimum scale-down threshold as a fraction of total cluster size before scaling occurs.
   /// [scaleUpFactor] Fraction of average pending memory in the last cooldown period for which to
   /// [scaleUpMinWorkerFraction] Minimum scale-up threshold as a fraction of total cluster size before scaling
-  AutoscalingPolicyBasicAlgorithmYarnConfig({
+  const AutoscalingPolicyBasicAlgorithmYarnConfig({
     required this.gracefulDecommissionTimeout,
     required this.scaleDownFactor,
     this.scaleDownMinWorkerFraction,

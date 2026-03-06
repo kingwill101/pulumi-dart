@@ -120,7 +120,7 @@ class GetImageResult {
   /// [status] The status of the image. An image can be used to create other resources, such as instances, only after the image has been successfully created and the status is set to READY. Possible values are FAILED, PENDING, or READY.
   /// [storageLocations] Cloud Storage bucket storage location of the image (regional or multi-regional).
   /// [userLicenses] A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
-  GetImageResult({
+  const GetImageResult({
     required this.architecture,
     required this.archiveSizeBytes,
     required this.creationTimestamp,

@@ -22,7 +22,7 @@ class RoleUserAttachmentArgs {
   /// [projectName] Project Name
   /// [roleName] Role Name, Valid Values: super_administrator, admin, Custom Role
   /// [user] Supported input: Alibaba Cloud account, RAM user, and RAM role
-  RoleUserAttachmentArgs({
+  const RoleUserAttachmentArgs({
     required this.projectName,
     required this.roleName,
     this.user,

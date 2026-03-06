@@ -12,7 +12,7 @@ class HeaderResponse {
   /// Creates a new [HeaderResponse].
   /// [key] Key of Header.
   /// [value] Value of Header.
-  HeaderResponse({
+  const HeaderResponse({
     required this.key,
     required this.value,
   });

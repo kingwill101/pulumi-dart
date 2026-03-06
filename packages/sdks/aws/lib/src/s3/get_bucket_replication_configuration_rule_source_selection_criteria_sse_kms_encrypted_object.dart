@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncrypte
 
   /// Creates a new [GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject].
   /// [status] Required.
-  GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject({
+  const GetBucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObject({
     required this.status,
   });
 

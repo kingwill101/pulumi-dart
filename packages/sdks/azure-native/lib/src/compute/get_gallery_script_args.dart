@@ -18,7 +18,7 @@ class GetGalleryScriptArgs {
   /// [galleryName] The name of the Shared Image Gallery.
   /// [galleryScriptName] The name of the gallery Script Definition to be retrieved.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryScriptArgs({
+  const GetGalleryScriptArgs({
     required this.galleryName,
     required this.galleryScriptName,
     required this.resourceGroupName,

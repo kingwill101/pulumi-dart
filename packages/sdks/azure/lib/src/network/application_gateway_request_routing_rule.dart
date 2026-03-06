@@ -57,7 +57,7 @@ class ApplicationGatewayRequestRoutingRule {
   /// [ruleType] The Type of Routing that should be used for this Rule. Possible values are `Basic` and `PathBasedRouting`.
   /// [urlPathMapId] The ID of the associated URL Path Map.
   /// [urlPathMapName] The Name of the URL Path Map which should be associated with this Routing Rule.
-  ApplicationGatewayRequestRoutingRule({
+  const ApplicationGatewayRequestRoutingRule({
     this.backendAddressPoolId,
     this.backendAddressPoolName,
     this.backendHttpSettingsId,

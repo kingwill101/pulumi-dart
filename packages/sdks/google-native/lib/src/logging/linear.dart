@@ -15,7 +15,7 @@ class Linear {
   /// [numFiniteBuckets] Must be greater than 0.
   /// [offset] Lower bound of the first bucket.
   /// [width] Must be greater than 0.
-  Linear({
+  const Linear({
     this.numFiniteBuckets,
     this.offset,
     this.width,

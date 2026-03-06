@@ -18,7 +18,7 @@ class ArtifactStorePropertiesFormat {
   /// [managedResourceGroupConfiguration] Optional.
   /// [replicationStrategy] The replication strategy.
   /// [storeType] The artifact store type.
-  ArtifactStorePropertiesFormat({
+  const ArtifactStorePropertiesFormat({
     this.backingResourcePublicNetworkAccess,
     this.managedResourceGroupConfiguration,
     this.replicationStrategy,

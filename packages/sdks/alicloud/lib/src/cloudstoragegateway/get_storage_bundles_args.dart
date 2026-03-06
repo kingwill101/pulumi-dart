@@ -21,7 +21,7 @@ class GetStorageBundlesArgs {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetStorageBundlesArgs({
+  const GetStorageBundlesArgs({
     required this.backendBucketRegionId,
     this.ids,
     this.nameRegex,

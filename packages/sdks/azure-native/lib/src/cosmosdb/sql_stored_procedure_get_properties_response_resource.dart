@@ -20,7 +20,7 @@ class SqlStoredProcedureGetPropertiesResponseResource {
   /// [id] Name of the Cosmos DB SQL storedProcedure
   /// [rid] A system generated property. A unique identifier.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
-  SqlStoredProcedureGetPropertiesResponseResource({
+  const SqlStoredProcedureGetPropertiesResponseResource({
     this.body,
     required this.etag,
     required this.id,

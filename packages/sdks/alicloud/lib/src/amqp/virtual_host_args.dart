@@ -15,7 +15,7 @@ class VirtualHostArgs {
   /// Creates a new [VirtualHostArgs].
   /// [instanceId] InstanceId.
   /// [virtualHostName] VirtualHostName.
-  VirtualHostArgs({
+  const VirtualHostArgs({
     required this.instanceId,
     required this.virtualHostName,
   });

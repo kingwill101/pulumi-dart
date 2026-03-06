@@ -11,7 +11,7 @@ class GetTemplateScratchesScratchPreferenceParameter {
   /// Creates a new [GetTemplateScratchesScratchPreferenceParameter].
   /// [parameterKey] Priority parameter key.
   /// [parameterValue] Priority parameter value.
-  GetTemplateScratchesScratchPreferenceParameter({
+  const GetTemplateScratchesScratchPreferenceParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

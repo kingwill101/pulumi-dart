@@ -14,7 +14,7 @@ class GroupDnsConfig {
   /// [nameservers] A list of nameservers the containers will search out to resolve requests. Changing this forces a new resource to be created.
   /// [options] A list of [resolver configuration options](https://man7.org/linux/man-pages/man5/resolv.conf.5.html). Changing this forces a new resource to be created.
   /// [searchDomains] A list of search domains that DNS requests will search along. Changing this forces a new resource to be created.
-  GroupDnsConfig({
+  const GroupDnsConfig({
     required this.nameservers,
     this.options,
     this.searchDomains,

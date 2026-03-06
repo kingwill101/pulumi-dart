@@ -66,7 +66,7 @@ class ServiceMeshState {
   /// [status] The status of the resource
   /// [tags] The tag of the resource
   /// [version] Service grid version number
-  ServiceMeshState({
+  const ServiceMeshState({
     this.clusterIds,
     this.clusterSpec,
     this.createTime,

@@ -13,7 +13,7 @@ class JupyterConfig {
   /// Creates a new [JupyterConfig].
   /// [displayName] Optional. Display name, shown in the Jupyter kernelspec card.
   /// [kernel] Optional. Kernel
-  JupyterConfig({
+  const JupyterConfig({
     this.displayName,
     this.kernel,
   });

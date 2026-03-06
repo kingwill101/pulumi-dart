@@ -9,7 +9,7 @@ class NetworkInterfaceArmReference {
 
   /// Creates a new [NetworkInterfaceArmReference].
   /// [id] The Azure Resource ID for a Network Interface.
-  NetworkInterfaceArmReference({
+  const NetworkInterfaceArmReference({
     this.id,
   });
 

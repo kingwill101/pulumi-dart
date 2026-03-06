@@ -59,7 +59,7 @@ class AIServicesArgs {
   /// [skuName] Specifies the SKU Name for this AI Services Account. Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0`.
   /// [storages] A `storage` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  AIServicesArgs({
+  const AIServicesArgs({
     this.customSubdomainName,
     this.customerManagedKey,
     this.fqdns,

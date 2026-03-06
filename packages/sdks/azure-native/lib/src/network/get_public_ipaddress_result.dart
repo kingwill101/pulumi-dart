@@ -93,7 +93,7 @@ class GetPublicIPAddressResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  GetPublicIPAddressResult({
+  const GetPublicIPAddressResult({
     required this.azureApiVersion,
     this.ddosSettings,
     this.deleteOption,

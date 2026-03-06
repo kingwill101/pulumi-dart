@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesMarketplaceOptions {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesMarketplaceOptions].
   /// [addOnPlanConversionAllowed] Add-on plan conversion allowed.
-  ResourceTypeRegistrationPropertiesMarketplaceOptions({
+  const ResourceTypeRegistrationPropertiesMarketplaceOptions({
     this.addOnPlanConversionAllowed,
   });
 

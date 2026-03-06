@@ -19,7 +19,7 @@ class GetRegionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [regions] A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
   /// [sorts] Optional.
-  GetRegionsResult({
+  const GetRegionsResult({
     this.filters,
     required this.id,
     required this.regions,

@@ -35,7 +35,7 @@ class VolumeCluster {
   /// [topologyPreferred] A topology that the Cluster Volume would be preferred in
   /// [topologyRequired] A topology that the Cluster Volume must be accessible from
   /// [type] Cluster Volume access type. Can be `mount` or `block` (default).
-  VolumeCluster({
+  const VolumeCluster({
     this.availability,
     this.group,
     this.id,

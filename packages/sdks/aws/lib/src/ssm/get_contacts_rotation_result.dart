@@ -31,7 +31,7 @@ class GetContactsRotationResult {
   /// [startTime] The date and time, in RFC 3339 format, that the rotation goes into effect.
   /// [tags] A map of tags to assign to the resource.
   /// [timeZoneId] The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
-  GetContactsRotationResult({
+  const GetContactsRotationResult({
     required this.arn,
     required this.contactIds,
     required this.id,

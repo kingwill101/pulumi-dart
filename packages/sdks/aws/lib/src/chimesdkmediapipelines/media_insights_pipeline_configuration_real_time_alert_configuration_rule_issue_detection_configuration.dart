@@ -8,7 +8,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetec
 
   /// Creates a new [MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration].
   /// [ruleName] Rule name.
-  MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration({
+  const MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleIssueDetectionConfiguration({
     required this.ruleName,
   });
 

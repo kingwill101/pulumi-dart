@@ -64,7 +64,7 @@ class WorkspaceArgs {
   /// [tags] Resource tags.
   /// [uiDefinitionUri] The blob URI where the UI definition file is located.
   /// [workspaceName] The name of the workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.accessConnector,
     this.authorizations,
     this.defaultCatalog,

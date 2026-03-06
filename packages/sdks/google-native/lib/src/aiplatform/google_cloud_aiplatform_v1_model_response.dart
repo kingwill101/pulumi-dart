@@ -101,7 +101,7 @@ class GoogleCloudAiplatformV1ModelResponse {
   /// [versionDescription] The description of this version.
   /// [versionId] Immutable. The version ID of the model. A new version is committed when a new model version is uploaded or trained under an existing model id. It is an auto-incrementing decimal number in string representation.
   /// [versionUpdateTime] Timestamp when this version was most recently updated.
-  GoogleCloudAiplatformV1ModelResponse({
+  const GoogleCloudAiplatformV1ModelResponse({
     required this.artifactUri,
     required this.containerSpec,
     required this.createTime,

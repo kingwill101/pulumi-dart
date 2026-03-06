@@ -21,7 +21,7 @@ class AccessPackageCatalogArgs {
   /// [displayName] The display name of the access package catalog.
   /// [externallyVisible] Whether the access packages in this catalog can be requested by users outside the tenant.
   /// [published] Whether the access packages in this catalog are available for management.
-  AccessPackageCatalogArgs({
+  const AccessPackageCatalogArgs({
     required this.description,
     required this.displayName,
     this.externallyVisible,

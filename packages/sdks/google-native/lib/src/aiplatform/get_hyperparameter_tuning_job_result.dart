@@ -59,7 +59,7 @@ class GetHyperparameterTuningJobResult {
   /// [trialJobSpec] The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
   /// [trials] Trials of the HyperparameterTuningJob.
   /// [updateTime] Time when the HyperparameterTuningJob was most recently updated.
-  GetHyperparameterTuningJobResult({
+  const GetHyperparameterTuningJobResult({
     required this.createTime,
     required this.displayName,
     required this.encryptionSpec,

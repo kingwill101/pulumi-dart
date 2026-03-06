@@ -8,7 +8,7 @@ class GroupInstanceRefreshPreferencesAlarmSpecification {
 
   /// Creates a new [GroupInstanceRefreshPreferencesAlarmSpecification].
   /// [alarms] List of Cloudwatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
-  GroupInstanceRefreshPreferencesAlarmSpecification({
+  const GroupInstanceRefreshPreferencesAlarmSpecification({
     this.alarms,
   });
 

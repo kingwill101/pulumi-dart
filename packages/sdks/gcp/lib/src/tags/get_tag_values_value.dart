@@ -28,7 +28,7 @@ class GetTagValuesValue {
   /// [parent] The resource name of the parent tagKey in format `tagKey/{name}`.
   /// [shortName] User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
   /// [updateTime] Update time.
-  GetTagValuesValue({
+  const GetTagValuesValue({
     required this.createTime,
     required this.description,
     required this.name,

@@ -19,7 +19,7 @@ class GetAgentAgentVersionsArgs {
   /// [agentId] Unique identifier of the agent.
   /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAgentAgentVersionsArgs({
+  const GetAgentAgentVersionsArgs({
     required this.agentId,
     this.agentVersionSummaries,
     this.region,

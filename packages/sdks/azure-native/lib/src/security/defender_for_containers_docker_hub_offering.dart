@@ -10,7 +10,7 @@ class DefenderForContainersDockerHubOffering {
 
   /// Creates a new [DefenderForContainersDockerHubOffering].
   /// [offeringType] The type of the security offering.
-  DefenderForContainersDockerHubOffering({
+  const DefenderForContainersDockerHubOffering({
     required this.offeringType,
   });
 

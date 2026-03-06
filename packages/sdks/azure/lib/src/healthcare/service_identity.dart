@@ -12,7 +12,7 @@ class ServiceIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of managed identity to assign. The only possible value is `SystemAssigned`.
-  ServiceIdentity({
+  const ServiceIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

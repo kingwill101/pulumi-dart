@@ -15,7 +15,7 @@ class UserInfoResponse {
   /// [email] The email of the user.
   /// [name] The name of the user.
   /// [objectId] The object id of the user.
-  UserInfoResponse({
+  const UserInfoResponse({
     required this.email,
     required this.name,
     this.objectId,

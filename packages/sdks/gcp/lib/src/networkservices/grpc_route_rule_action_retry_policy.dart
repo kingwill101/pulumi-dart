@@ -12,7 +12,7 @@ class GrpcRouteRuleActionRetryPolicy {
   /// Creates a new [GrpcRouteRuleActionRetryPolicy].
   /// [numRetries] Specifies the allowed number of retries.
   /// [retryConditions] Specifies one or more conditions when this retry policy applies.
-  GrpcRouteRuleActionRetryPolicy({
+  const GrpcRouteRuleActionRetryPolicy({
     this.numRetries,
     this.retryConditions,
   });

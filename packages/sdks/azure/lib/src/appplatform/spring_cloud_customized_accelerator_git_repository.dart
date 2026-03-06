@@ -34,7 +34,7 @@ class SpringCloudCustomizedAcceleratorGitRepository {
   /// [path] Specifies the path under the git repository to be treated as the root directory of the accelerator or the fragment (depending on `accelerator_type`).
   /// [sshAuth] A `ssh_auth` block as defined below. Conflicts with `git_repository[0].basic_auth`. Changing this forces a new Spring Cloud Customized Accelerator to be created.
   /// [url] Specifies Git repository URL for the accelerator.
-  SpringCloudCustomizedAcceleratorGitRepository({
+  const SpringCloudCustomizedAcceleratorGitRepository({
     this.basicAuth,
     this.branch,
     this.caCertificateId,

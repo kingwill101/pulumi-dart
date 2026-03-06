@@ -18,7 +18,7 @@ class ListChannelWithKeysArgs {
   /// [channelName] The name of the Channel resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Bot resource.
-  ListChannelWithKeysArgs({
+  const ListChannelWithKeysArgs({
     required this.channelName,
     required this.resourceGroupName,
     required this.resourceName,

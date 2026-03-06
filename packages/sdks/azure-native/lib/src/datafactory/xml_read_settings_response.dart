@@ -26,7 +26,7 @@ class XmlReadSettingsResponse {
   /// [namespaces] Indicates whether namespace is enabled when reading the xml files. Type: boolean (or Expression with resultType boolean).
   /// [type] The read setting type.
   /// [validationMode] Indicates what validation method is used when reading the xml files. Allowed values: 'none', 'xsd', or 'dtd'. Type: string (or Expression with resultType string).
-  XmlReadSettingsResponse({
+  const XmlReadSettingsResponse({
     this.compressionProperties,
     this.detectDataType,
     this.namespacePrefixes,

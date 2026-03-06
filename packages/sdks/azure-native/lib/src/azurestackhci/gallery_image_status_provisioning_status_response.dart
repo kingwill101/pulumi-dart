@@ -12,7 +12,7 @@ class GalleryImageStatusProvisioningStatusResponse {
   /// Creates a new [GalleryImageStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the gallery image
   /// [status] The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
-  GalleryImageStatusProvisioningStatusResponse({
+  const GalleryImageStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

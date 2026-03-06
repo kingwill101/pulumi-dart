@@ -15,7 +15,7 @@ class GetBgpPeerArgs {
   /// Creates a new [GetBgpPeerArgs].
   /// [bgpPeerName] The name of the BgpPeer
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetBgpPeerArgs({
+  const GetBgpPeerArgs({
     required this.bgpPeerName,
     required this.resourceUri,
   });

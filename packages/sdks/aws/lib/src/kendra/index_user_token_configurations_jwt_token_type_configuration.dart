@@ -26,7 +26,7 @@ class IndexUserTokenConfigurationsJwtTokenTypeConfiguration {
   /// [secretsManagerArn] The Amazon Resource Name (ARN) of the secret.
   /// [url] The signing key URL. Valid pattern is `^(https?|ftp|file):\/\/([^\s]*)`
   /// [userNameAttributeField] The user name attribute field. Minimum length of 1. Maximum length of 100.
-  IndexUserTokenConfigurationsJwtTokenTypeConfiguration({
+  const IndexUserTokenConfigurationsJwtTokenTypeConfiguration({
     this.claimRegex,
     this.groupAttributeField,
     this.issuer,

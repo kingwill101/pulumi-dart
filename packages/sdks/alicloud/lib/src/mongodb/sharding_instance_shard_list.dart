@@ -19,7 +19,7 @@ class ShardingInstanceShardList {
   /// [nodeId] The ID of the Config Server node.
   /// [nodeStorage] The storage space of the shard node.
   /// [readonlyReplicas] The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
-  ShardingInstanceShardList({
+  const ShardingInstanceShardList({
     required this.nodeClass,
     this.nodeId,
     required this.nodeStorage,

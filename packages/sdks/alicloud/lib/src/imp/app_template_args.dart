@@ -27,7 +27,7 @@ class AppTemplateArgs {
   /// [configLists] Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
   /// [integrationMode] Integration mode. Valid values:
   /// [scene] Application Template scenario. Valid values: ["business", "classroom"].
-  AppTemplateArgs({
+  const AppTemplateArgs({
     required this.appTemplateName,
     required this.componentLists,
     this.configLists,

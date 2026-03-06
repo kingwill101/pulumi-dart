@@ -20,7 +20,7 @@ class NotebookExecutionCustomEnvironmentSpec {
   /// [machineSpec] 'The machine configuration of the runtime.'
   /// [networkSpec] The network configuration for the runtime.
   /// [persistentDiskSpec] The configuration for the data disk of the runtime.
-  NotebookExecutionCustomEnvironmentSpec({
+  const NotebookExecutionCustomEnvironmentSpec({
     this.machineSpec,
     this.networkSpec,
     this.persistentDiskSpec,

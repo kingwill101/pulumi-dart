@@ -17,7 +17,7 @@ class NodeGroupData {
   /// [autoScalingGroup] The AutoScalingGroup for the node group.
   /// [extraNodeSecurityGroups] The additional security groups for the node group that captures user-specific rules.
   /// [nodeSecurityGroup] The security group for the node group to communicate with the cluster.
-  NodeGroupData({
+  const NodeGroupData({
     required this.autoScalingGroup,
     required this.extraNodeSecurityGroups,
     required this.nodeSecurityGroup,

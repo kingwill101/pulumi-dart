@@ -11,7 +11,7 @@ class ListRegistryBuildSourceUploadUrlResult {
   /// Creates a new [ListRegistryBuildSourceUploadUrlResult].
   /// [relativePath] The relative path to the source. This is used to submit the subsequent queue build request.
   /// [uploadUrl] The URL where the client can upload the source.
-  ListRegistryBuildSourceUploadUrlResult({
+  const ListRegistryBuildSourceUploadUrlResult({
     this.relativePath,
     this.uploadUrl,
   });

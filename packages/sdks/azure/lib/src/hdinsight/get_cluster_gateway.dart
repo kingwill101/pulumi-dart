@@ -14,7 +14,7 @@ class GetClusterGateway {
   /// [enabled] Is the Ambari Portal enabled?
   /// [password] The password used for the Ambari Portal.
   /// [username] The username used for the Ambari Portal.
-  GetClusterGateway({
+  const GetClusterGateway({
     required this.enabled,
     required this.password,
     required this.username,

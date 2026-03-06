@@ -21,7 +21,7 @@ class GetSubscriptionTarDirectoryResult {
   /// [name] Subscription Name.
   /// [properties] Subscription Changed Target Directory response properties.
   /// [type] Resource type, Microsoft.Subscription/changeTenantRequest.
-  GetSubscriptionTarDirectoryResult({
+  const GetSubscriptionTarDirectoryResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

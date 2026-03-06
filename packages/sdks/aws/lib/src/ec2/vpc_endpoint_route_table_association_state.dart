@@ -15,7 +15,7 @@ class VpcEndpointRouteTableAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeTableId] Identifier of the EC2 Route Table to be associated with the VPC Endpoint.
   /// [vpcEndpointId] Identifier of the VPC Endpoint with which the EC2 Route Table will be associated.
-  VpcEndpointRouteTableAssociationState({
+  const VpcEndpointRouteTableAssociationState({
     this.region,
     this.routeTableId,
     this.vpcEndpointId,

@@ -36,7 +36,7 @@ class GetRulesRule {
   /// [ruleName] The name of the resource.
   /// [type] The type of the rule.
   /// [zoneName] The name of the forwarding zone.
-  GetRulesRule({
+  const GetRulesRule({
     required this.bindVpcs,
     required this.createTime,
     required this.endpointId,

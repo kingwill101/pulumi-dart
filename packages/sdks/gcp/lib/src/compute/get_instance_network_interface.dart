@@ -63,7 +63,7 @@ class GetInstanceNetworkInterface {
   /// [stackType] The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
   /// [subnetwork] The name or self_link of the subnetwork attached to this interface.
   /// [subnetworkProject] The project in which the subnetwork belongs.
-  GetInstanceNetworkInterface({
+  const GetInstanceNetworkInterface({
     required this.accessConfigs,
     required this.aliasIpRanges,
     required this.igmpQuery,

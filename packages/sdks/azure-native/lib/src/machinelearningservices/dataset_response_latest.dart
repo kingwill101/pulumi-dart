@@ -63,7 +63,7 @@ class DatasetResponseLatest {
   /// [telemetryInfo] Telemetry information about the dataset including information like which service the dataset was created from.
   /// [useDescriptionTagsFromDefinition] Whether to use description and tags from the definition level as opposed to dataset level (old behavior).
   /// [versionId] An identifier uniquely identifies a definition change.
-  DatasetResponseLatest({
+  const DatasetResponseLatest({
     this.createdBy,
     required this.createdTime,
     this.dataPath,

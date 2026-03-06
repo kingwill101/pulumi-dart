@@ -23,7 +23,7 @@ class GetPrivateLinkScopedResourceResult {
   /// [name] The name of the resource
   /// [provisioningState] State of the private endpoint connection.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateLinkScopedResourceResult({
+  const GetPrivateLinkScopedResourceResult({
     required this.azureApiVersion,
     required this.id,
     this.linkedResourceId,

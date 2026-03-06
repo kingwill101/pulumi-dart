@@ -32,7 +32,7 @@ class ClusterNetworks {
   /// [vpdInfo] Multiplexing VPD information See `vpd_info` below.
   /// [vswitchId] Switch ID
   /// [vswitchZoneId] Switch ZoneID
-  ClusterNetworks({
+  const ClusterNetworks({
     this.ipAllocationPolicies,
     this.newVpdInfo,
     this.securityGroupId,

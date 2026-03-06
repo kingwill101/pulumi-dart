@@ -34,7 +34,7 @@ class StreamSourceConfigSpannerSourceConfig {
   /// [maxConcurrentBackfillTasks] Max concurrent backfill tasks.
   /// [maxConcurrentCdcTasks] Max concurrent CDC tasks.
   /// [spannerRpcPriority] The RPC priority to use for Spanner queries.
-  StreamSourceConfigSpannerSourceConfig({
+  const StreamSourceConfigSpannerSourceConfig({
     this.backfillDataBoostEnabled,
     this.changeStreamName,
     this.excludeObjects,

@@ -25,7 +25,7 @@ class WebTestPropertiesRequest {
   /// [parseDependentRequests] Parse Dependent request for this WebTest.
   /// [requestBody] Base64 encoded string body to send with this web test.
   /// [requestUrl] Url location to test.
-  WebTestPropertiesRequest({
+  const WebTestPropertiesRequest({
     this.followRedirects,
     this.headers,
     this.httpVerb,

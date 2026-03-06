@@ -26,7 +26,7 @@ class SparkSqlJobResponse {
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
-  SparkSqlJobResponse({
+  const SparkSqlJobResponse({
     required this.jarFileUris,
     required this.loggingConfig,
     required this.properties,

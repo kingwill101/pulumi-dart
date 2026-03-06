@@ -45,7 +45,7 @@ class AccountState {
   /// [name] The fully-qualified name of the service account.
   /// [project] The ID of the project that the service account will be created in.
   /// [uniqueId] The unique id of the service account.
-  AccountState({
+  const AccountState({
     this.accountId,
     this.createIgnoreAlreadyExists,
     this.description,

@@ -36,7 +36,7 @@ class MongoDbAtlasLinkedServiceResponse {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  MongoDbAtlasLinkedServiceResponse({
+  const MongoDbAtlasLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     required this.connectionString,

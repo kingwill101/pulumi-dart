@@ -10,7 +10,7 @@ class StreamBackfillAllMysqlExcludedObjects {
 
   /// Creates a new [StreamBackfillAllMysqlExcludedObjects].
   /// [mysqlDatabases] MySQL databases on the server
-  StreamBackfillAllMysqlExcludedObjects({
+  const StreamBackfillAllMysqlExcludedObjects({
     required this.mysqlDatabases,
   });
 

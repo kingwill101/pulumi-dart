@@ -8,7 +8,7 @@ class GetServiceHealthCheckCustomConfig {
 
   /// Creates a new [GetServiceHealthCheckCustomConfig].
   /// [failureThreshold] The number of 30-second intervals that you want service discovery to wait before it changes the health status of a service instance.  Maximum value of 10.
-  GetServiceHealthCheckCustomConfig({
+  const GetServiceHealthCheckCustomConfig({
     required this.failureThreshold,
   });
 

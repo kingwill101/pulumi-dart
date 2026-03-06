@@ -33,7 +33,7 @@ class AnycastEipAddressArgs {
   /// [resourceGroupId] The ID of the resource group to which the instance belongs.
   /// [serviceLocation] Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
   /// [tags] List of resource-bound tags.
-  AnycastEipAddressArgs({
+  const AnycastEipAddressArgs({
     this.anycastEipAddressName,
     this.bandwidth,
     this.description,

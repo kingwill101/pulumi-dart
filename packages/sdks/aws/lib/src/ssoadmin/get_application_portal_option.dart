@@ -10,7 +10,7 @@ class GetApplicationPortalOption {
   /// Creates a new [GetApplicationPortalOption].
   /// [signInOptions] Required.
   /// [visibility] Required.
-  GetApplicationPortalOption({
+  const GetApplicationPortalOption({
     required this.signInOptions,
     required this.visibility,
   });

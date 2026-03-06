@@ -34,7 +34,7 @@ class BlockchainNodesArgs {
   /// [labels] User-provided key-value pairs
   /// [location] Location of Blockchain Node being created.
   /// [project] The ID of the project in which the resource belongs.
-  BlockchainNodesArgs({
+  const BlockchainNodesArgs({
     required this.blockchainNodeId,
     this.blockchainType,
     this.ethereumDetails,

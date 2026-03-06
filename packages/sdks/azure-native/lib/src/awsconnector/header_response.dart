@@ -24,7 +24,7 @@ class HeaderResponse {
   /// [protocol] Property protocol
   /// [source] Property source
   /// [sourcePort] Property sourcePort
-  HeaderResponse({
+  const HeaderResponse({
     this.destination,
     this.destinationPort,
     this.direction,

@@ -53,7 +53,7 @@ class IncidentArgs {
   /// [status] The status of the incident
   /// [title] The title of the incident
   /// [workspaceName] The name of the workspace.
-  IncidentArgs({
+  const IncidentArgs({
     this.classification,
     this.classificationComment,
     this.classificationReason,

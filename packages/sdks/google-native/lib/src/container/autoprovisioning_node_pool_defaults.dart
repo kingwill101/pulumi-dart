@@ -42,7 +42,7 @@ class AutoprovisioningNodePoolDefaults {
   /// [serviceAccount] The Google Cloud Platform Service Account to be used by the node VMs.
   /// [shieldedInstanceConfig] Shielded Instance options.
   /// [upgradeSettings] Specifies the upgrade settings for NAP created node pools
-  AutoprovisioningNodePoolDefaults({
+  const AutoprovisioningNodePoolDefaults({
     this.bootDiskKmsKey,
     this.diskSizeGb,
     this.diskType,

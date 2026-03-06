@@ -11,7 +11,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetri
   /// Creates a new [PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension].
   /// [name] Name of the dimension.
   /// [value] Value of the dimension.
-  PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension({
+  const PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStatMetricDimension({
     required this.name,
     required this.value,
   });

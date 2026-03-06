@@ -23,7 +23,7 @@ class AppSecret {
   /// [keyVaultSecretId] The ID of a Key Vault secret. This can be a versioned or version-less ID.
   /// [name] The secret name.
   /// [value] The value for this secret.
-  AppSecret({
+  const AppSecret({
     this.identity,
     this.keyVaultSecretId,
     required this.name,

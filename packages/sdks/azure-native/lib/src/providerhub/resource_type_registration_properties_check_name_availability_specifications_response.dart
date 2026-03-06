@@ -12,7 +12,7 @@ class ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsRespo
   /// Creates a new [ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse].
   /// [enableDefaultValidation] Whether default validation is enabled.
   /// [resourceTypesWithCustomValidation] The resource types with custom validation.
-  ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse({
+  const ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse({
     this.enableDefaultValidation,
     this.resourceTypesWithCustomValidation,
   });

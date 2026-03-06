@@ -12,7 +12,7 @@ class MonitorDowntimeFrequency {
   /// Creates a new [MonitorDowntimeFrequency].
   /// [daysOfMonths] A numerical list of days of a month on which the Monitor Downtime is scheduled to run.
   /// [daysOfWeek] A list of days of the week on which the Monitor Downtime is scheduled to run.
-  MonitorDowntimeFrequency({
+  const MonitorDowntimeFrequency({
     this.daysOfMonths,
     this.daysOfWeek,
   });

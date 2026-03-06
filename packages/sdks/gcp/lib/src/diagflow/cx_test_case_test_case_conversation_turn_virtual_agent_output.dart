@@ -23,7 +23,7 @@ class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
   /// [sessionParameters] The session parameters available to the bot at this point.
   /// [textResponses] The text responses from the agent for the turn.
   /// [triggeredIntent] The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
-  CxTestCaseTestCaseConversationTurnVirtualAgentOutput({
+  const CxTestCaseTestCaseConversationTurnVirtualAgentOutput({
     this.currentPage,
     this.sessionParameters,
     this.textResponses,

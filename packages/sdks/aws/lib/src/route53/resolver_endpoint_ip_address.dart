@@ -16,7 +16,7 @@ class ResolverEndpointIpAddress {
   /// [ipId] Optional.
   /// [ipv6] IPv6 address in the subnet that you want to use for DNS queries.
   /// [subnetId] ID of the subnet that contains the IP address.
-  ResolverEndpointIpAddress({
+  const ResolverEndpointIpAddress({
     this.ip,
     this.ipId,
     this.ipv6,

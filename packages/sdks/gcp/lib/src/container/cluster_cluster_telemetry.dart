@@ -9,7 +9,7 @@ class ClusterClusterTelemetry {
 
   /// Creates a new [ClusterClusterTelemetry].
   /// [type] Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
-  ClusterClusterTelemetry({
+  const ClusterClusterTelemetry({
     required this.type,
   });
 

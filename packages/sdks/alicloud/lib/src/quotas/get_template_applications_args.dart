@@ -27,7 +27,7 @@ class GetTemplateApplicationsArgs {
   /// [productCode] Cloud service name abbreviation.&gt; For more information about cloud services that support quota centers, see Cloud services that support quota centers.
   /// [quotaActionCode] The quota ID.
   /// [quotaCategory] The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
-  GetTemplateApplicationsArgs({
+  const GetTemplateApplicationsArgs({
     this.batchQuotaApplicationId,
     this.ids,
     this.outputFile,

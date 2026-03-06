@@ -31,7 +31,7 @@ class KmsconfigArgs {
   /// [location] Name of the policy location. CMEK policies apply to the whole region.
   /// [name] Name of the CMEK policy.
   /// [project] The ID of the project in which the resource belongs.
-  KmsconfigArgs({
+  const KmsconfigArgs({
     required this.cryptoKeyName,
     this.description,
     this.labels,

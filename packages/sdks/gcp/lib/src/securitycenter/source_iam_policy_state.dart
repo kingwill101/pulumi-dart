@@ -16,7 +16,7 @@ class SourceIamPolicyState {
   /// [organization] The organization whose Cloud Security Command Center the Source
   /// [policyData] Optional.
   /// [source] Optional.
-  SourceIamPolicyState({
+  const SourceIamPolicyState({
     this.etag,
     this.organization,
     this.policyData,

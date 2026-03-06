@@ -25,7 +25,7 @@ class GetVersionsResult {
   /// [repositoryId] Required.
   /// [versions] A list of all retrieved Artifact Registry versions. Structure is defined below.
   /// [view] Optional.
-  GetVersionsResult({
+  const GetVersionsResult({
     this.filter,
     required this.id,
     required this.location,

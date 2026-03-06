@@ -20,7 +20,7 @@ class ApplicationNasConfig {
   /// [nasId] The ID of the NAS file system.
   /// [nasPath] The directory in the NAS file system.
   /// [readOnly] Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
-  ApplicationNasConfig({
+  const ApplicationNasConfig({
     this.mountDomain,
     this.mountPath,
     this.nasId,

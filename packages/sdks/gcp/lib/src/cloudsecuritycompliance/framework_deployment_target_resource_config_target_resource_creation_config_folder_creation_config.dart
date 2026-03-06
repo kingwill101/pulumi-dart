@@ -12,7 +12,7 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderC
   /// Creates a new [FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig].
   /// [folderDisplayName] Display name of the folder to be created
   /// [parent] The parent of the folder to be created. It can be an organizations/{org} or
-  FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig({
+  const FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfig({
     required this.folderDisplayName,
     required this.parent,
   });

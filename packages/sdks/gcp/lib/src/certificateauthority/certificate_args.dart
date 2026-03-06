@@ -55,7 +55,7 @@ class CertificateArgs {
   /// [pemCsr] Immutable. A pem-encoded X.509 certificate signing request (CSR).
   /// [pool] The name of the CaPool this Certificate belongs to.
   /// [project] The ID of the project in which the resource belongs.
-  CertificateArgs({
+  const CertificateArgs({
     this.certificateAuthority,
     this.certificateTemplate,
     this.config,

@@ -17,7 +17,7 @@ class GetFunctionArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [versionId] Optional.
-  GetFunctionArgs({
+  const GetFunctionArgs({
     required this.functionId,
     required this.location,
     this.project,

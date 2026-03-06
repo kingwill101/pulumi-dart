@@ -13,7 +13,7 @@ class SecurityScanConfigSchedule {
   /// Creates a new [SecurityScanConfigSchedule].
   /// [intervalDurationDays] The duration of time between executions in days
   /// [scheduleTime] A timestamp indicates when the next run will be scheduled. The value is refreshed
-  SecurityScanConfigSchedule({
+  const SecurityScanConfigSchedule({
     required this.intervalDurationDays,
     this.scheduleTime,
   });

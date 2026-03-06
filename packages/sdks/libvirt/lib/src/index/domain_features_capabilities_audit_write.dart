@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesAuditWrite {
 
   /// Creates a new [DomainFeaturesCapabilitiesAuditWrite].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesAuditWrite({
+  const DomainFeaturesCapabilitiesAuditWrite({
     this.state,
   });
 

@@ -10,7 +10,7 @@ class AlertGroupConfiguration {
   /// Creates a new [AlertGroupConfiguration].
   /// [fields] Optional.
   /// [type] Group configuration type, including no_group, labels_auto, custom.
-  AlertGroupConfiguration({
+  const AlertGroupConfiguration({
     this.fields,
     required this.type,
   });

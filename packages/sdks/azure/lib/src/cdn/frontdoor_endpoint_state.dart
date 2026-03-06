@@ -21,7 +21,7 @@ class FrontdoorEndpointState {
   /// [hostName] The host name of the Front Door Endpoint, in the format `{endpointName}.{dnsZone}` (for example, `contoso.azureedge.net`).
   /// [name] The name which should be used for this Front Door Endpoint. Changing this forces a new Front Door Endpoint to be created.
   /// [tags] Specifies a mapping of tags which should be assigned to the Front Door Endpoint.
-  FrontdoorEndpointState({
+  const FrontdoorEndpointState({
     this.cdnFrontdoorProfileId,
     this.enabled,
     this.hostName,

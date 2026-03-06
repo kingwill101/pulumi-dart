@@ -17,7 +17,7 @@ class GetElasticityAssurancesAssuranceAllocatedResource {
   /// [totalAmount] The total number of instances that need to be reserved within an instance type.
   /// [usedAmount] The number of instances that have been used.
   /// [zoneId] The zone ID.
-  GetElasticityAssurancesAssuranceAllocatedResource({
+  const GetElasticityAssurancesAssuranceAllocatedResource({
     required this.instanceType,
     required this.totalAmount,
     required this.usedAmount,

@@ -20,7 +20,7 @@ class DataflowGraphProperties {
   /// [nodeConnections] List of connections between nodes in the dataflow graph.
   /// [nodes] List of nodes in the dataflow graph.
   /// [requestDiskPersistence] Disk persistence mode.
-  DataflowGraphProperties({
+  const DataflowGraphProperties({
     this.mode,
     required this.nodeConnections,
     required this.nodes,

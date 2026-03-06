@@ -15,7 +15,7 @@ class GetNGroupArgs {
   /// Creates a new [GetNGroupArgs].
   /// [ngroupsName] The NGroups name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNGroupArgs({
+  const GetNGroupArgs({
     required this.ngroupsName,
     required this.resourceGroupName,
   });

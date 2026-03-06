@@ -141,7 +141,7 @@ class GetAmiResult {
   /// [uefiData] (Optional) Base64 representation of the non-volatile UEFI variable store.
   /// [usageOperation] Operation of the Amazon EC2 instance and the billing code that is associated with the AMI.
   /// [virtualizationType] Type of virtualization of the AMI (ie: `hvm` or
-  GetAmiResult({
+  const GetAmiResult({
     this.allowUnsafeFilter,
     required this.architecture,
     required this.arn,

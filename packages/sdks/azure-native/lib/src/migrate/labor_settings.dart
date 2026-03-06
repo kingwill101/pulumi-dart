@@ -15,7 +15,7 @@ class LaborSettings {
   /// [hourlyAdminCost] Hourly administrator cost.
   /// [physicalServersPerAdmin] Physical servers per administrator.
   /// [virtualMachinesPerAdmin] Virtual machines per administrator.
-  LaborSettings({
+  const LaborSettings({
     required this.hourlyAdminCost,
     required this.physicalServersPerAdmin,
     required this.virtualMachinesPerAdmin,

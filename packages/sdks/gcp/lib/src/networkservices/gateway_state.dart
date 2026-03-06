@@ -102,7 +102,7 @@ class GatewayState {
   /// [subnetwork] The relative resource name identifying the subnetwork in which this SWG is allocated.
   /// [type] Immutable. The type of the customer managed gateway.
   /// [updateTime] The timestamp when the resource was updated.
-  GatewayState({
+  const GatewayState({
     this.addresses,
     this.certificateUrls,
     this.createTime,

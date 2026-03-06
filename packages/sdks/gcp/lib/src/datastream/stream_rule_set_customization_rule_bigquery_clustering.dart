@@ -8,7 +8,7 @@ class StreamRuleSetCustomizationRuleBigqueryClustering {
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryClustering].
   /// [columns] Column names to set as clustering columns.
-  StreamRuleSetCustomizationRuleBigqueryClustering({
+  const StreamRuleSetCustomizationRuleBigqueryClustering({
     required this.columns,
   });
 

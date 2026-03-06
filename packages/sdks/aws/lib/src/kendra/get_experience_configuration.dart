@@ -13,7 +13,7 @@ class GetExperienceConfiguration {
   /// Creates a new [GetExperienceConfiguration].
   /// [contentSourceConfigurations] The identifiers of your data sources and FAQs. This is the content you want to use for your Amazon Kendra Experience. Documented below.
   /// [userIdentityConfigurations] The AWS SSO field name that contains the identifiers of your users, such as their emails. Documented below.
-  GetExperienceConfiguration({
+  const GetExperienceConfiguration({
     required this.contentSourceConfigurations,
     required this.userIdentityConfigurations,
   });

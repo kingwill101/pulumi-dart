@@ -300,7 +300,7 @@ class GetAutonomousDatabasesAutonomousDatabaseProperty {
   /// [totalAutoBackupStorageSizeGbs] The storage space used by automatic backups of Autonomous Database, in
   /// [usedDataStorageSizeTbs] The storage space used by Autonomous Database, in gigabytes.
   /// [vaultId] The ID of the Oracle Cloud Infrastructure vault.
-  GetAutonomousDatabasesAutonomousDatabaseProperty({
+  const GetAutonomousDatabasesAutonomousDatabaseProperty({
     required this.actualUsedDataStorageSizeTb,
     required this.allocatedStorageSizeTb,
     required this.apexDetails,

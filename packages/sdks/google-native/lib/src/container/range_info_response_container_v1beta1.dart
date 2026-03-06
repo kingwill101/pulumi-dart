@@ -12,7 +12,7 @@ class RangeInfoResponseContainerV1beta1 {
   /// Creates a new [RangeInfoResponseContainerV1beta1].
   /// [rangeName] [Output only] Name of a range.
   /// [utilization] [Output only] The utilization of the range.
-  RangeInfoResponseContainerV1beta1({
+  const RangeInfoResponseContainerV1beta1({
     required this.rangeName,
     required this.utilization,
   });

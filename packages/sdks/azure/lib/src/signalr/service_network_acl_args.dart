@@ -23,7 +23,7 @@ class ServiceNetworkAclArgs {
   /// [privateEndpoints] A `private_endpoint` block as defined below.
   /// [publicNetwork] A `public_network` block as defined below.
   /// [signalrServiceId] The ID of the SignalR service. Changing this forces a new resource to be created.
-  ServiceNetworkAclArgs({
+  const ServiceNetworkAclArgs({
     required this.defaultAction,
     this.privateEndpoints,
     required this.publicNetwork,

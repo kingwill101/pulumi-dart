@@ -33,7 +33,7 @@ class BillingHubExecutionUsageDetailResponse {
   /// [updateType] Optional.
   /// [usedBillableHours] Optional.
   /// [usedFreeHours] Optional.
-  BillingHubExecutionUsageDetailResponse({
+  const BillingHubExecutionUsageDetailResponse({
     this.applicationName,
     this.applicationVersion,
     this.billedCharges,

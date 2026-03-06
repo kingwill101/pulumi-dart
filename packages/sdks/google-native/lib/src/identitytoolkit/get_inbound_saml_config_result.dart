@@ -22,7 +22,7 @@ class GetInboundSamlConfigResult {
   /// [idpConfig] The SAML IdP (Identity Provider) configuration when the project acts as the relying party.
   /// [name] The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests.
   /// [spConfig] The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
-  GetInboundSamlConfigResult({
+  const GetInboundSamlConfigResult({
     required this.displayName,
     required this.enabled,
     required this.idpConfig,

@@ -26,7 +26,7 @@ class TableState {
   /// [name] Specifies the name of the Cosmos DB Table. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Table is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of Table (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual resource destroy-apply.
-  TableState({
+  const TableState({
     this.accountName,
     this.autoscaleSettings,
     this.name,

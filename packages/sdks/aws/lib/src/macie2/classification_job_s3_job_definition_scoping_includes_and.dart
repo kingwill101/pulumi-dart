@@ -13,7 +13,7 @@ class ClassificationJobS3JobDefinitionScopingIncludesAnd {
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludesAnd].
   /// [simpleScopeTerm] A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
   /// [tagScopeTerm] A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. (documented below)
-  ClassificationJobS3JobDefinitionScopingIncludesAnd({
+  const ClassificationJobS3JobDefinitionScopingIncludesAnd({
     this.simpleScopeTerm,
     this.tagScopeTerm,
   });

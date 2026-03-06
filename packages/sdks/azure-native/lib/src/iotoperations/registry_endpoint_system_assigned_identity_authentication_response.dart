@@ -14,7 +14,7 @@ class RegistryEndpointSystemAssignedIdentityAuthenticationResponse {
   /// Creates a new [RegistryEndpointSystemAssignedIdentityAuthenticationResponse].
   /// [method] The authentication method.
   /// [systemAssignedManagedIdentitySettings] System assigned managed identity properties
-  RegistryEndpointSystemAssignedIdentityAuthenticationResponse({
+  const RegistryEndpointSystemAssignedIdentityAuthenticationResponse({
     required this.method,
     required this.systemAssignedManagedIdentitySettings,
   });

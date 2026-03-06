@@ -25,7 +25,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSource {
   /// [dataStoreSources] (Output)
   /// [engine] (Output)
   /// [filter] (Output)
-  AppVersionSnapshotToolDataStoreToolEngineSource({
+  const AppVersionSnapshotToolDataStoreToolEngineSource({
     this.dataStoreSources,
     this.engine,
     this.filter,

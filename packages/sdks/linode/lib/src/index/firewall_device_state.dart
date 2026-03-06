@@ -21,7 +21,7 @@ class FirewallDeviceState {
   /// [entityType] The type of the entity to attach. (default: `linode`)
   /// [firewallId] The unique ID of the target Firewall.
   /// [updated] When the Firewall Device was last updated.
-  FirewallDeviceState({
+  const FirewallDeviceState({
     this.created,
     this.entityId,
     this.entityType,

@@ -35,7 +35,7 @@ class DomainDefaultSpaceSettings {
   /// [kernelGatewayAppSettings] The kernel gateway app settings. See `kernel_gateway_app_settings` Block below.
   /// [securityGroups] The security groups for the Amazon Virtual Private Cloud that the space uses for communication.
   /// [spaceStorageSettings] The storage settings for a private space. See `space_storage_settings` Block below.
-  DomainDefaultSpaceSettings({
+  const DomainDefaultSpaceSettings({
     this.customFileSystemConfigs,
     this.customPosixUserConfig,
     required this.executionRole,

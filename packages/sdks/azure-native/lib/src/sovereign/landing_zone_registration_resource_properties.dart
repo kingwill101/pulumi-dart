@@ -16,7 +16,7 @@ class LandingZoneRegistrationResourceProperties {
   /// [existingLandingZoneConfigurationId] The resource id of the associated landing zone configuration.
   /// [existingTopLevelMgId] The resource id of the top level management group
   /// [managedIdentity] The managed identity to be assigned to this landing zone registration.
-  LandingZoneRegistrationResourceProperties({
+  const LandingZoneRegistrationResourceProperties({
     required this.existingLandingZoneConfigurationId,
     required this.existingTopLevelMgId,
     this.managedIdentity,

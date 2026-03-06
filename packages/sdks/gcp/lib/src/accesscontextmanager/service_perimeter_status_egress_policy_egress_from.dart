@@ -25,7 +25,7 @@ class ServicePerimeterStatusEgressPolicyEgressFrom {
   /// [identityType] Specifies the type of identities that are allowed access to outside the
   /// [sourceRestriction] Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
   /// [sources] Sources that this EgressPolicy authorizes access from.
-  ServicePerimeterStatusEgressPolicyEgressFrom({
+  const ServicePerimeterStatusEgressPolicyEgressFrom({
     this.identities,
     this.identityType,
     this.sourceRestriction,

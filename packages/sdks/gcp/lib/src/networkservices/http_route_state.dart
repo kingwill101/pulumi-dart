@@ -54,7 +54,7 @@ class HttpRouteState {
   /// [rules] Rules that define how traffic is routed and handled.
   /// [selfLink] Server-defined URL of this resource.
   /// [updateTime] Time the HttpRoute was updated in UTC.
-  HttpRouteState({
+  const HttpRouteState({
     this.createTime,
     this.description,
     this.effectiveLabels,

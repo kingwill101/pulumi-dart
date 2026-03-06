@@ -16,7 +16,7 @@ class NSDArtifactProfile {
   /// [artifactName] Artifact name.
   /// [artifactStoreReference] The artifact store resource id
   /// [artifactVersion] Artifact version.
-  NSDArtifactProfile({
+  const NSDArtifactProfile({
     this.artifactName,
     this.artifactStoreReference,
     this.artifactVersion,

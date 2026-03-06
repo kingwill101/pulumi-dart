@@ -15,7 +15,7 @@ class GetSolutionConfigurationArgs {
   /// Creates a new [GetSolutionConfigurationArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [solutionConfiguration] Represent Solution Configuration Resource.
-  GetSolutionConfigurationArgs({
+  const GetSolutionConfigurationArgs({
     required this.resourceUri,
     required this.solutionConfiguration,
   });

@@ -140,7 +140,7 @@ class RegionDiskArgs {
   /// [sourceDisk] The source disk used to create this disk. You can provide this as a partial or full URL to the resource.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption key of the source snapshot. Required
   /// [type] URL of the disk type resource describing which disk type to use to
-  RegionDiskArgs({
+  const RegionDiskArgs({
     this.accessMode,
     this.asyncPrimaryDisk,
     this.createSnapshotBeforeDestroy,

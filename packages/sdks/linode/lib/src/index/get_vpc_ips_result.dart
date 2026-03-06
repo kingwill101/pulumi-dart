@@ -19,7 +19,7 @@ class GetVpcIpsResult {
   /// [ipv6] Optional.
   /// [vpcId] The unique globally general API entity identifier for the VPC.
   /// [vpcIps] Required.
-  GetVpcIpsResult({
+  const GetVpcIpsResult({
     this.filters,
     required this.id,
     this.ipv6,

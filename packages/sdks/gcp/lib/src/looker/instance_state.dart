@@ -149,7 +149,7 @@ class InstanceState {
   /// [reservedRange] Name of a reserved IP address range within the consumer network, to be used for
   /// [updateTime] The time the instance was updated in RFC3339 UTC "Zulu" format,
   /// [userMetadata] Metadata about users for a Looker instance.
-  InstanceState({
+  const InstanceState({
     this.adminSettings,
     this.consumerNetwork,
     this.controlledEgressConfig,

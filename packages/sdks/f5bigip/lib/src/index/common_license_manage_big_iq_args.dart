@@ -57,7 +57,7 @@ class CommonLicenseManageBigIqArgs {
   /// [skukeyword2] An optional offering name. type `string`
   /// [tenant] For an unreachable BIG-IP, you can provide an optional description for the assignment in this field.
   /// [unitOfMeasure] The units used to measure billing. For example, “hourly” or “daily”. Type `string`
-  CommonLicenseManageBigIqArgs({
+  const CommonLicenseManageBigIqArgs({
     required this.assignmentType,
     required this.bigiqAddress,
     this.bigiqLoginRef,

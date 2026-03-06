@@ -17,7 +17,7 @@ class NodeGroupIpAllocationPolicy {
   /// [bondPolicy] Specify the cluster subnet ID based on the bond name See `bond_policy` below.
   /// [machineTypePolicies] Model Assignment Policy See `machine_type_policy` below.
   /// [nodePolicies] Node allocation policy See `node_policy` below.
-  NodeGroupIpAllocationPolicy({
+  const NodeGroupIpAllocationPolicy({
     this.bondPolicy,
     this.machineTypePolicies,
     this.nodePolicies,

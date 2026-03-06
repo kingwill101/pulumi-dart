@@ -51,7 +51,7 @@ class GetSystemGroupsGroup {
   /// [playDomain] The domain name of plan streaming used by the group.
   /// [pushDomain] The domain name of push streaming used by the group.
   /// [stats] The Device statistics of Group.
-  GetSystemGroupsGroup({
+  const GetSystemGroupsGroup({
     required this.app,
     required this.callback,
     required this.createTime,

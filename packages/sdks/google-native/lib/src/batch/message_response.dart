@@ -15,7 +15,7 @@ class MessageResponse {
   /// [newJobState] The new job state.
   /// [newTaskState] The new task state.
   /// [type] The message type.
-  MessageResponse({
+  const MessageResponse({
     required this.newJobState,
     required this.newTaskState,
     required this.type,

@@ -21,7 +21,7 @@ class MetadataEntityResponse {
   /// [resourceName] Resource name of the record
   /// [self] Self lookup url
   /// [updatedAt] Updated Date time
-  MetadataEntityResponse({
+  const MetadataEntityResponse({
     this.createdAt,
     this.deletedAt,
     this.resourceName,

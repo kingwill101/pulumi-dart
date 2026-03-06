@@ -17,7 +17,7 @@ class GetPrivateCloudIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetPrivateCloudIamPolicyArgs({
+  const GetPrivateCloudIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     required this.privateCloudId,

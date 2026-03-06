@@ -34,7 +34,7 @@ class Route53HostedZonePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Route53HostedZonePropertiesResponse({
+  const Route53HostedZonePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

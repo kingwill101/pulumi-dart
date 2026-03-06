@@ -14,7 +14,7 @@ class TopicRuleStepFunction {
   /// [executionNamePrefix] The prefix used to generate, along with a UUID, the unique state machine execution name.
   /// [roleArn] The ARN of the IAM role that grants access to start execution of the state machine.
   /// [stateMachineName] The name of the Step Functions state machine whose execution will be started.
-  TopicRuleStepFunction({
+  const TopicRuleStepFunction({
     this.executionNamePrefix,
     required this.roleArn,
     required this.stateMachineName,

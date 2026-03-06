@@ -14,7 +14,7 @@ class GetVpnServerConfigurationAzureActiveDirectoryAuthentication {
   /// [audience] The Audience which should be used for authentication.
   /// [issuer] The Issuer which should be used for authentication.
   /// [tenant] The Tenant which should be used for authentication.
-  GetVpnServerConfigurationAzureActiveDirectoryAuthentication({
+  const GetVpnServerConfigurationAzureActiveDirectoryAuthentication({
     required this.audience,
     required this.issuer,
     required this.tenant,

@@ -24,7 +24,7 @@ class ScalingConfigurationResponse {
   /// [secondsBeforeTimeout] The amount of time, in seconds, that Aurora Serverless v1 tries to find a scaling point to perform seamless scaling before enforcing the timeout action.The default is 300.
   /// [secondsUntilAutoPause] The time, in seconds, before an Aurora DB cluster in serverless mode is paused.
   /// [timeoutAction] The action to take when the timeout is reached, either ForceApplyCapacityChange or RollbackCapacityChange.ForceApplyCapacityChange sets the capacity to the specified value as soon as possible.RollbackCapacityChange, the default, ignores the capacity change if a scaling point isn't found in the timeout period.For more information, see Autoscaling for Aurora Serverless v1 in the Amazon Aurora User Guide.
-  ScalingConfigurationResponse({
+  const ScalingConfigurationResponse({
     this.autoPause,
     this.maxCapacity,
     this.minCapacity,

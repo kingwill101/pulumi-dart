@@ -52,7 +52,7 @@ class Office365LinkedServiceResponse {
   /// [servicePrincipalTenantId] Specify the tenant information under which your Azure AD web application resides. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  Office365LinkedServiceResponse({
+  const Office365LinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

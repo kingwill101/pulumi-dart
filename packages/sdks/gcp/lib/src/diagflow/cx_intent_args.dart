@@ -64,7 +64,7 @@ class CxIntentArgs {
   /// [parent] The agent to create an intent for.
   /// [priority] The priority of this intent. Higher numbers represent higher priorities.
   /// [trainingPhrases] The collection of training phrases the agent is trained on to identify the intent.
-  CxIntentArgs({
+  const CxIntentArgs({
     this.description,
     required this.displayName,
     this.isDefaultNegativeIntent,

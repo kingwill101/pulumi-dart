@@ -14,7 +14,7 @@ class GetPoolUserAccountLinuxUserConfiguration {
   /// [gid] The user ID of the user account.
   /// [sshPrivateKey] The SSH private key for the user account.
   /// [uid] The group ID for the user account.
-  GetPoolUserAccountLinuxUserConfiguration({
+  const GetPoolUserAccountLinuxUserConfiguration({
     required this.gid,
     required this.sshPrivateKey,
     required this.uid,

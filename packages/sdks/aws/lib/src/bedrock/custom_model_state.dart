@@ -72,7 +72,7 @@ class CustomModelState {
   /// [validationDataConfig] Information about the validation dataset.
   /// [validationMetrics] The loss metric for each validator that you provided.
   /// [vpcConfig] Configuration parameters for the private Virtual Private Cloud (VPC) that contains the resources you are using for this job.
-  CustomModelState({
+  const CustomModelState({
     this.baseModelIdentifier,
     this.customModelArn,
     this.customModelKmsKeyId,

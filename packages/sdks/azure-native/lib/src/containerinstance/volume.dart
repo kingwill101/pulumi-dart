@@ -26,7 +26,7 @@ class Volume {
   /// [name] The name of the volume.
   /// [secret] The secret volume.
   /// [secretReference] The secret reference volume.
-  Volume({
+  const Volume({
     this.azureFile,
     this.emptyDir,
     this.gitRepo,

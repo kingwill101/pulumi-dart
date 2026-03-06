@@ -21,7 +21,7 @@ class ServiceLoadMetricResponse {
   /// [primaryDefaultLoad] Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Primary replica.
   /// [secondaryDefaultLoad] Used only for Stateful services. The default amount of load, as a number, that this service creates for this metric when it is a Secondary replica.
   /// [weight] The service load metric relative weight, compared to other metrics configured for this service, as a number.
-  ServiceLoadMetricResponse({
+  const ServiceLoadMetricResponse({
     this.defaultLoad,
     required this.name,
     this.primaryDefaultLoad,

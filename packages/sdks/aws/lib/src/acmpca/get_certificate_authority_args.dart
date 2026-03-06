@@ -18,7 +18,7 @@ class GetCertificateAuthorityArgs {
   /// [arn] ARN of the certificate authority.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of user-defined tags that are attached to the certificate authority.
-  GetCertificateAuthorityArgs({
+  const GetCertificateAuthorityArgs({
     required this.arn,
     this.region,
     this.tags,

@@ -15,7 +15,7 @@ class DirectoryRoleMemberArgs {
   /// Creates a new [DirectoryRoleMemberArgs].
   /// [memberObjectId] The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   /// [roleObjectId] The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
-  DirectoryRoleMemberArgs({
+  const DirectoryRoleMemberArgs({
     this.memberObjectId,
     this.roleObjectId,
   });

@@ -9,7 +9,7 @@ class WebTestPropertiesResponseConfiguration {
 
   /// Creates a new [WebTestPropertiesResponseConfiguration].
   /// [webTest] The XML specification of a WebTest to run against an application.
-  WebTestPropertiesResponseConfiguration({
+  const WebTestPropertiesResponseConfiguration({
     this.webTest,
   });
 

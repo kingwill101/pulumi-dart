@@ -18,7 +18,7 @@ class DelegatedResourceResponse {
   /// [referralResource] The delegation id of the referral delegation (optional) - internal use only.
   /// [resourceId] The ARM resource id of the delegated resource - internal use only.
   /// [tenantId] The tenant id of the delegated resource - internal use only.
-  DelegatedResourceResponse({
+  const DelegatedResourceResponse({
     this.location,
     this.referralResource,
     this.resourceId,

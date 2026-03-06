@@ -9,7 +9,7 @@ class GetUserAuthenticationMode {
   /// Creates a new [GetUserAuthenticationMode].
   /// [passwordCount] Optional.
   /// [type] Optional.
-  GetUserAuthenticationMode({
+  const GetUserAuthenticationMode({
     this.passwordCount,
     this.type,
   });

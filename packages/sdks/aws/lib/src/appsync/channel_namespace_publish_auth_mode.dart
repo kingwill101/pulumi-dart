@@ -8,7 +8,7 @@ class ChannelNamespacePublishAuthMode {
 
   /// Creates a new [ChannelNamespacePublishAuthMode].
   /// [authType] Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
-  ChannelNamespacePublishAuthMode({
+  const ChannelNamespacePublishAuthMode({
     required this.authType,
   });
 

@@ -7,7 +7,7 @@ class ConnectionSharedAccessSignatureResponse {
 
   /// Creates a new [ConnectionSharedAccessSignatureResponse].
   /// [sas] Optional.
-  ConnectionSharedAccessSignatureResponse({
+  const ConnectionSharedAccessSignatureResponse({
     this.sas,
   });
 

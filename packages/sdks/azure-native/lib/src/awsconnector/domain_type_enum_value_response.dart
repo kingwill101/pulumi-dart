@@ -9,7 +9,7 @@ class DomainTypeEnumValueResponse {
 
   /// Creates a new [DomainTypeEnumValueResponse].
   /// [value] Property value
-  DomainTypeEnumValueResponse({
+  const DomainTypeEnumValueResponse({
     this.value,
   });
 

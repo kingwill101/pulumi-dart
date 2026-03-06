@@ -18,7 +18,7 @@ class UserPasswordValidationPolicySqladminV1beta4 {
   /// [enableFailedAttemptsCheck] If true, failed login attempts check will be enabled.
   /// [enablePasswordVerification] If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
   /// [passwordExpirationDuration] Expiration duration after password is updated.
-  UserPasswordValidationPolicySqladminV1beta4({
+  const UserPasswordValidationPolicySqladminV1beta4({
     this.allowedFailedAttempts,
     this.enableFailedAttemptsCheck,
     this.enablePasswordVerification,

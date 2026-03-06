@@ -21,7 +21,7 @@ class GetPublicConfigurationsResult {
   /// [location] The Azure location of the Public Maintenance Configuration.
   /// [recurEvery] The rate at which a maintenance window is expected to recur.
   /// [scope] Optional.
-  GetPublicConfigurationsResult({
+  const GetPublicConfigurationsResult({
     required this.configs,
     required this.id,
     this.location,

@@ -24,7 +24,7 @@ class GetCapacityPoolSubvolumeArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subvolumeName] The name of the subvolume.
   /// [volumeName] The name of the volume
-  GetCapacityPoolSubvolumeArgs({
+  const GetCapacityPoolSubvolumeArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

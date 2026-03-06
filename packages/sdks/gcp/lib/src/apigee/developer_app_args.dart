@@ -49,7 +49,7 @@ class DeveloperAppArgs {
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [scopes] Scopes to apply to the developer app.
   /// [status] Status of the credential. Valid values include approved or revoked.
-  DeveloperAppArgs({
+  const DeveloperAppArgs({
     this.apiProducts,
     this.appFamily,
     this.attributes,

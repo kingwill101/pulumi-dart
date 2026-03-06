@@ -13,7 +13,7 @@ class NamespaceAssetStatusManagementGroupResponse {
   /// Creates a new [NamespaceAssetStatusManagementGroupResponse].
   /// [actions] Array of action statuses that describe the status of each action.
   /// [name] The name of the management group. Must be unique within the status.managementGroups array. This name is used to correlate between the spec and status event information.
-  NamespaceAssetStatusManagementGroupResponse({
+  const NamespaceAssetStatusManagementGroupResponse({
     required this.actions,
     required this.name,
   });

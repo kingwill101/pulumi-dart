@@ -20,7 +20,7 @@ class BqmlIterationResultResponse {
   /// [index] [Output-only, Beta] Index of the ML training iteration, starting from zero for each training run.
   /// [learnRate] [Output-only, Beta] Learning rate used for this iteration, it varies for different training iterations if learn_rate_strategy option is not constant.
   /// [trainingLoss] [Output-only, Beta] Training loss computed on the training data at the end of the iteration. The training loss function is defined by model type.
-  BqmlIterationResultResponse({
+  const BqmlIterationResultResponse({
     required this.durationMs,
     required this.evalLoss,
     required this.index,

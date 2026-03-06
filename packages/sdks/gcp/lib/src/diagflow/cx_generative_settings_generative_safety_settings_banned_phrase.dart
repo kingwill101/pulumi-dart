@@ -11,7 +11,7 @@ class CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase {
   /// Creates a new [CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase].
   /// [languageCode] Language code of the phrase.
   /// [text] Text input which can be used for prompt or banned phrases.
-  CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase({
+  const CxGenerativeSettingsGenerativeSafetySettingsBannedPhrase({
     required this.languageCode,
     required this.text,
   });

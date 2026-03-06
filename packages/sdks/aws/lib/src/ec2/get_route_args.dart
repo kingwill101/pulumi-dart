@@ -56,7 +56,7 @@ class GetRouteArgs {
   /// [routeTableId] ID of the specific Route Table containing the Route entry.
   /// [transitGatewayId] EC2 Transit Gateway ID of the Route belonging to the Route Table.
   /// [vpcPeeringConnectionId] VPC Peering Connection ID of the Route belonging to the Route Table.
-  GetRouteArgs({
+  const GetRouteArgs({
     this.carrierGatewayId,
     this.coreNetworkArn,
     this.destinationCidrBlock,

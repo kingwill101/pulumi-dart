@@ -15,7 +15,7 @@ class GetLocalRulestackArgs {
   /// Creates a new [GetLocalRulestackArgs].
   /// [name] The name of this Palo Alto Networks Rulestack.
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Networks Rulestack exists.
-  GetLocalRulestackArgs({
+  const GetLocalRulestackArgs({
     required this.name,
     required this.resourceGroupName,
   });

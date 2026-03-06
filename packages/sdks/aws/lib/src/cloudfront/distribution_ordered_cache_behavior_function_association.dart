@@ -11,7 +11,7 @@ class DistributionOrderedCacheBehaviorFunctionAssociation {
   /// Creates a new [DistributionOrderedCacheBehaviorFunctionAssociation].
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request` or `viewer-response`.
   /// [functionArn] ARN of the CloudFront function.
-  DistributionOrderedCacheBehaviorFunctionAssociation({
+  const DistributionOrderedCacheBehaviorFunctionAssociation({
     required this.eventType,
     required this.functionArn,
   });

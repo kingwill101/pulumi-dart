@@ -13,7 +13,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets {
   /// Creates a new [RecordSetRoutingPolicyGeoHealthCheckedTargets].
   /// [externalEndpoints] The list of external endpoint addresses to health check.
   /// [internalLoadBalancers] The list of internal load balancers to health check.
-  RecordSetRoutingPolicyGeoHealthCheckedTargets({
+  const RecordSetRoutingPolicyGeoHealthCheckedTargets({
     this.externalEndpoints,
     this.internalLoadBalancers,
   });

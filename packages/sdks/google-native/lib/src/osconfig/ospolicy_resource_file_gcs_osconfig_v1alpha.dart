@@ -15,7 +15,7 @@ class OSPolicyResourceFileGcsOsconfigV1alpha {
   /// [bucket] Bucket of the Cloud Storage object.
   /// [generation] Generation number of the Cloud Storage object.
   /// [object_] Name of the Cloud Storage object.
-  OSPolicyResourceFileGcsOsconfigV1alpha({
+  const OSPolicyResourceFileGcsOsconfigV1alpha({
     required this.bucket,
     this.generation,
     required this.object_,

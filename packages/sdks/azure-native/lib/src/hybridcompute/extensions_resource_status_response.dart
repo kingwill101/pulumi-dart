@@ -21,7 +21,7 @@ class ExtensionsResourceStatusResponse {
   /// [level] The level code.
   /// [message] The detailed status message, including for alerts and error messages.
   /// [time] The time of the status.
-  ExtensionsResourceStatusResponse({
+  const ExtensionsResourceStatusResponse({
     this.code,
     this.displayStatus,
     this.level,

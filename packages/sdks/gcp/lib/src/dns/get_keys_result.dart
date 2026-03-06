@@ -21,7 +21,7 @@ class GetKeysResult {
   /// [managedZone] Required.
   /// [project] Required.
   /// [zoneSigningKeys] A list of Zone-signing key (ZSK) records. Structure is documented below.
-  GetKeysResult({
+  const GetKeysResult({
     required this.id,
     required this.keySigningKeys,
     required this.managedZone,

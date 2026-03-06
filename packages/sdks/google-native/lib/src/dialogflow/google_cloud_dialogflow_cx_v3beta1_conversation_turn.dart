@@ -14,7 +14,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurn {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ConversationTurn].
   /// [userInput] The user input.
   /// [virtualAgentOutput] The virtual agent output.
-  GoogleCloudDialogflowCxV3beta1ConversationTurn({
+  const GoogleCloudDialogflowCxV3beta1ConversationTurn({
     this.userInput,
     this.virtualAgentOutput,
   });

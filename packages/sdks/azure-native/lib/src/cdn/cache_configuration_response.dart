@@ -21,7 +21,7 @@ class CacheConfigurationResponse {
   /// [isCompressionEnabled] Indicates whether content compression is enabled. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.
   /// [queryParameters] query parameters to include or exclude (comma separated).
   /// [queryStringCachingBehavior] Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
-  CacheConfigurationResponse({
+  const CacheConfigurationResponse({
     this.cacheBehavior,
     this.cacheDuration,
     this.isCompressionEnabled,

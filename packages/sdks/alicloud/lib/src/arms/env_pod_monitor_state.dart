@@ -24,7 +24,7 @@ class EnvPodMonitorState {
   /// [environmentId] Environment id.
   /// [namespace] Resource namespace.
   /// [status] PodMonitor status.
-  EnvPodMonitorState({
+  const EnvPodMonitorState({
     this.aliyunLang,
     this.configYaml,
     this.envPodMonitorName,

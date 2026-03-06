@@ -11,7 +11,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
   /// Creates a new [EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.
   /// [displayName] display_name is a field for users to identify CIDR blocks.
-  EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock({
+  const EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock({
     required this.cidrBlock,
     this.displayName,
   });

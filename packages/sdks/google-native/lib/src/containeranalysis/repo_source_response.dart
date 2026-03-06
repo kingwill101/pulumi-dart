@@ -21,7 +21,7 @@ class RepoSourceResponse {
   /// [project] ID of the project that owns the repo.
   /// [repoName] Name of the repo.
   /// [tagName] Name of the tag to build.
-  RepoSourceResponse({
+  const RepoSourceResponse({
     required this.branchName,
     required this.commitSha,
     required this.project,

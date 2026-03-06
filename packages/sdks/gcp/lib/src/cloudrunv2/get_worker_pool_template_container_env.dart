@@ -15,7 +15,7 @@ class GetWorkerPoolTemplateContainerEnv {
   /// [name] The name of the Cloud Run v2 Worker Pool.
   /// [value] Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
   /// [valueSources] Source for the environment variable's value.
-  GetWorkerPoolTemplateContainerEnv({
+  const GetWorkerPoolTemplateContainerEnv({
     required this.name,
     required this.value,
     required this.valueSources,

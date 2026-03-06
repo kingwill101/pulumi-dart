@@ -15,7 +15,7 @@ class PackageValidationResultResponse {
   /// [errors] Error information.
   /// [isValid] Indicates whether the package passed the validation.
   /// [validationName] Validation name.
-  PackageValidationResultResponse({
+  const PackageValidationResultResponse({
     required this.errors,
     required this.isValid,
     required this.validationName,

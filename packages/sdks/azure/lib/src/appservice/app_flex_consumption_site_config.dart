@@ -107,7 +107,7 @@ class AppFlexConsumptionSiteConfig {
   /// [vnetRouteAllEnabled] Should the Linux Function App route all traffic through the virtual network. Defaults to `false`.
   /// [websocketsEnabled] Should Web Sockets be enabled. Defaults to `false`.
   /// [workerCount] The number of Workers for this Linux Function App.
-  AppFlexConsumptionSiteConfig({
+  const AppFlexConsumptionSiteConfig({
     this.apiDefinitionUrl,
     this.apiManagementApiId,
     this.appCommandLine,

@@ -21,7 +21,7 @@ class GetResourceGroupsArgs {
   /// [groupName] The name of the resource pool, which cannot exceed 64 bytes in length.
   /// [ids] A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetResourceGroupsArgs({
+  const GetResourceGroupsArgs({
     required this.dbClusterId,
     this.groupName,
     this.ids,

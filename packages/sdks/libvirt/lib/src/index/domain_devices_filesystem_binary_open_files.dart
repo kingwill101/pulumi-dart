@@ -8,7 +8,7 @@ class DomainDevicesFilesystemBinaryOpenFiles {
 
   /// Creates a new [DomainDevicesFilesystemBinaryOpenFiles].
   /// [max] Defines the upper limit for the number of open files in the binary filesystem.
-  DomainDevicesFilesystemBinaryOpenFiles({
+  const DomainDevicesFilesystemBinaryOpenFiles({
     required this.max,
   });
 

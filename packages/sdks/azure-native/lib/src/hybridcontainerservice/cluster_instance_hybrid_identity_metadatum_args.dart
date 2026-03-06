@@ -18,7 +18,7 @@ class ClusterInstanceHybridIdentityMetadatumArgs {
   /// [connectedClusterResourceUri] The fully qualified Azure Resource Manager identifier of the connected cluster resource.
   /// [publicKey] Onboarding public key for provisioning the Managed identity for the connected cluster.
   /// [resourceUid] Unique id of the parent provisioned cluster resource.
-  ClusterInstanceHybridIdentityMetadatumArgs({
+  const ClusterInstanceHybridIdentityMetadatumArgs({
     required this.connectedClusterResourceUri,
     this.publicKey,
     this.resourceUid,

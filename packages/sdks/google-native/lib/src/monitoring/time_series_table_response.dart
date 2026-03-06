@@ -17,7 +17,7 @@ class TimeSeriesTableResponse {
   /// [columnSettings] Optional. The list of the persistent column settings for the table.
   /// [dataSets] The data displayed in this table.
   /// [metricVisualization] Optional. Store rendering strategy
-  TimeSeriesTableResponse({
+  const TimeSeriesTableResponse({
     required this.columnSettings,
     required this.dataSets,
     required this.metricVisualization,

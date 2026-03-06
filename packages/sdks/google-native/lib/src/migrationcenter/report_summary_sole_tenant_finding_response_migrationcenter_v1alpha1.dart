@@ -16,7 +16,7 @@ class ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1 {
   /// [allocatedAssetCount] Count of assets which are allocated
   /// [allocatedRegions] Set of regions in which the assets are allocated
   /// [nodeAllocations] Set of per-nodetype allocation records
-  ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1({
+  const ReportSummarySoleTenantFindingResponseMigrationcenterV1alpha1({
     required this.allocatedAssetCount,
     required this.allocatedRegions,
     required this.nodeAllocations,

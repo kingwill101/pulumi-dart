@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionConditionAlertRuleId {
   /// Creates a new [AlertProcessingRuleSuppressionConditionAlertRuleId].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   /// [values] Specifies a list of values to match for a given condition.
-  AlertProcessingRuleSuppressionConditionAlertRuleId({
+  const AlertProcessingRuleSuppressionConditionAlertRuleId({
     required this.operator,
     required this.values,
   });

@@ -9,7 +9,7 @@ class SignalAssignmentResponse {
 
   /// Creates a new [SignalAssignmentResponse].
   /// [signalDefinitions] Signal definitions referenced by their names. All definitions are combined with an AND operator.
-  SignalAssignmentResponse({
+  const SignalAssignmentResponse({
     required this.signalDefinitions,
   });
 

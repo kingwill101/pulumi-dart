@@ -60,7 +60,7 @@ class EntityRecognizerArgs {
   /// [versionNamePrefix] Creates a unique version name beginning with the specified prefix.
   /// [volumeKmsKeyId] ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
   /// [vpcConfig] Configuration parameters for VPC to contain Entity Recognizer resources.
-  EntityRecognizerArgs({
+  const EntityRecognizerArgs({
     required this.dataAccessRoleArn,
     required this.inputDataConfig,
     required this.languageCode,

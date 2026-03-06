@@ -11,7 +11,7 @@ class MonitorDowntimeFrequencyDaysOfWeek {
   /// Creates a new [MonitorDowntimeFrequencyDaysOfWeek].
   /// [ordinalDayOfMonth] An occurrence of the day selected within the month.
   /// [weekDay] The day of the week on which the Monitor Downtime would run.
-  MonitorDowntimeFrequencyDaysOfWeek({
+  const MonitorDowntimeFrequencyDaysOfWeek({
     required this.ordinalDayOfMonth,
     required this.weekDay,
   });

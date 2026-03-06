@@ -22,7 +22,7 @@ class ObjectReplicationState {
   /// [rules] One or more `rules` blocks as defined below.
   /// [sourceObjectReplicationId] The ID of the Object Replication in the source storage account.
   /// [sourceStorageAccountId] The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.
-  ObjectReplicationState({
+  const ObjectReplicationState({
     this.destinationObjectReplicationId,
     this.destinationStorageAccountId,
     this.rules,

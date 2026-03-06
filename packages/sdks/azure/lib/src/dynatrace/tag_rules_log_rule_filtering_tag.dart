@@ -14,7 +14,7 @@ class TagRulesLogRuleFilteringTag {
   /// [action] Action of the filtering tag. Possible values are `Include` and `Exclude`.
   /// [name] Name of the filtering tag.
   /// [value] Value of the filtering tag.
-  TagRulesLogRuleFilteringTag({
+  const TagRulesLogRuleFilteringTag({
     required this.action,
     required this.name,
     required this.value,

@@ -18,7 +18,7 @@ class CacheNodeDriveConfiguration {
   /// [nginxMapping] full binding for corresponding nginx cache drive
   /// [physicalPath] physical path location of the folder used for caching content
   /// [sizeInGb] physical size of the drive used for caching content
-  CacheNodeDriveConfiguration({
+  const CacheNodeDriveConfiguration({
     this.cacheNumber,
     this.nginxMapping,
     this.physicalPath,

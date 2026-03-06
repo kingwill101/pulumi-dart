@@ -23,7 +23,7 @@ class DnsAuthorizationDnsResourceRecord {
   /// [data] (Output)
   /// [name] Name of the resource; provided by the client when the resource is created.
   /// [type] type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
-  DnsAuthorizationDnsResourceRecord({
+  const DnsAuthorizationDnsResourceRecord({
     this.data,
     this.name,
     this.type,

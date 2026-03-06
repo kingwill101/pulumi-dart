@@ -18,7 +18,7 @@ class CustomContainerTemplate {
   /// [containers] List of container definitions for the sessions of the session pool.
   /// [ingress] Session pool ingress configuration.
   /// [registryCredentials] Private container registry credentials for containers used by the sessions of the session pool.
-  CustomContainerTemplate({
+  const CustomContainerTemplate({
     this.containers,
     this.ingress,
     this.registryCredentials,

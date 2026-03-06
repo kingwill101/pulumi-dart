@@ -18,7 +18,7 @@ class GetAgentPoolResult {
   /// [displayName] Specifies the client-specified AgentPool description.
   /// [name] Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
   /// [state] Specifies the state of the AgentPool.
-  GetAgentPoolResult({
+  const GetAgentPoolResult({
     required this.bandwidthLimit,
     required this.displayName,
     required this.name,

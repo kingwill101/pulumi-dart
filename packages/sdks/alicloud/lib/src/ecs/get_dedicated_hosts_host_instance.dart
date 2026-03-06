@@ -17,7 +17,7 @@ class GetDedicatedHostsHostInstance {
   /// [instanceOwnerId] The ID of the ECS instance owner.
   /// [instanceType] The instance type of the ECS instance that was created on the dedicated host.
   /// [socketId] The ID of the socket to which the ECS instance belongs.
-  GetDedicatedHostsHostInstance({
+  const GetDedicatedHostsHostInstance({
     required this.instanceId,
     required this.instanceOwnerId,
     required this.instanceType,

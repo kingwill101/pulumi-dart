@@ -39,7 +39,7 @@ class GetGroupMetricRulesArgs {
   /// [namespace] The namespace of the service.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of Group Metric Rule.
-  GetGroupMetricRulesArgs({
+  const GetGroupMetricRulesArgs({
     this.dimensions,
     this.enableState,
     this.groupId,

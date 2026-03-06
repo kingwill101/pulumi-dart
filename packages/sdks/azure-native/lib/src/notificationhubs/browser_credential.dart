@@ -15,7 +15,7 @@ class BrowserCredential {
   /// [subject] Gets or sets web push subject.
   /// [vapidPrivateKey] Gets or sets VAPID private key.
   /// [vapidPublicKey] Gets or sets VAPID public key.
-  BrowserCredential({
+  const BrowserCredential({
     required this.subject,
     required this.vapidPrivateKey,
     required this.vapidPublicKey,

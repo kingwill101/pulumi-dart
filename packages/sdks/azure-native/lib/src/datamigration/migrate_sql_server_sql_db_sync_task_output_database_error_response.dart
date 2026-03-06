@@ -19,7 +19,7 @@ class MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse {
   /// [events] List of error events.
   /// [id] Result identifier
   /// [resultType] Result type
-  MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse({
+  const MigrateSqlServerSqlDbSyncTaskOutputDatabaseErrorResponse({
     this.errorMessage,
     this.events,
     required this.id,

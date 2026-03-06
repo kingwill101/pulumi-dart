@@ -13,7 +13,7 @@ class ListListTenantConfigurationViolationResult {
   /// Creates a new [ListListTenantConfigurationViolationResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Violation items on this page
-  ListListTenantConfigurationViolationResult({
+  const ListListTenantConfigurationViolationResult({
     this.nextLink,
     required this.value,
   });

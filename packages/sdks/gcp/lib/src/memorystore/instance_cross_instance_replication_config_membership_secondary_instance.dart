@@ -11,7 +11,7 @@ class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
   /// Creates a new [InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance].
   /// [instance] The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
   /// [uid] Output only. System assigned, unique identifier for the instance.
-  InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance({
+  const InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance({
     this.instance,
     this.uid,
   });

@@ -21,7 +21,7 @@ class GetArtifactSourceArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the ArtifactSource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetArtifactSourceArgs({
+  const GetArtifactSourceArgs({
     this.expand,
     required this.labName,
     required this.name,

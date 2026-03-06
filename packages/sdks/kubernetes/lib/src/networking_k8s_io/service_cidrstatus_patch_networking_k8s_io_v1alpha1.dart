@@ -10,7 +10,7 @@ class ServiceCIDRStatusPatchNetworkingK8sIoV1alpha1 {
 
   /// Creates a new [ServiceCIDRStatusPatchNetworkingK8sIoV1alpha1].
   /// [conditions] conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state
-  ServiceCIDRStatusPatchNetworkingK8sIoV1alpha1({
+  const ServiceCIDRStatusPatchNetworkingK8sIoV1alpha1({
     this.conditions,
   });
 

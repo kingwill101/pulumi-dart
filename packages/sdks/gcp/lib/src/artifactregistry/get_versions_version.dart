@@ -24,7 +24,7 @@ class GetVersionsVersion {
   /// [name] The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/version1`. If the package part contains slashes, the slashes are escaped.
   /// [relatedTags] A list of related tags. Will contain up to 100 tags that reference this version.
   /// [updateTime] The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
-  GetVersionsVersion({
+  const GetVersionsVersion({
     required this.annotations,
     required this.createTime,
     required this.description,

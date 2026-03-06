@@ -28,7 +28,7 @@ class SpacesBucketLifecycleRule {
   /// [id] Unique identifier for the rule.
   /// [noncurrentVersionExpiration] Specifies when non-current object versions expire (documented below).
   /// [prefix] Object key prefix identifying one or more objects to which the rule applies.
-  SpacesBucketLifecycleRule({
+  const SpacesBucketLifecycleRule({
     this.abortIncompleteMultipartUploadDays,
     required this.enabled,
     this.expiration,

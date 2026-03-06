@@ -26,7 +26,7 @@ class GetScalingConfigurationsConfigurationInstancePatternInfo {
   /// [instanceFamilyLevel] The instance family level in instancePatternInfo.
   /// [maxPrice] The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
   /// [memory] The memory size that is specified for an instance type in instancePatternInfo.
-  GetScalingConfigurationsConfigurationInstancePatternInfo({
+  const GetScalingConfigurationsConfigurationInstancePatternInfo({
     required this.architectures,
     required this.burstablePerformance,
     required this.cores,

@@ -9,7 +9,7 @@ class WindowsUserConfigurationResponse {
 
   /// Creates a new [WindowsUserConfigurationResponse].
   /// [loginMode] Specifies login mode for the user. The default value is Interactive.
-  WindowsUserConfigurationResponse({
+  const WindowsUserConfigurationResponse({
     this.loginMode,
   });
 

@@ -9,7 +9,7 @@ class PartnerInfo {
 
   /// Creates a new [PartnerInfo].
   /// [id] Resource identifier of the partner server.
-  PartnerInfo({
+  const PartnerInfo({
     required this.id,
   });
 

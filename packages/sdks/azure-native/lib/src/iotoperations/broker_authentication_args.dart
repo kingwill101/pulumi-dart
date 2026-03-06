@@ -29,7 +29,7 @@ class BrokerAuthenticationArgs {
   /// [instanceName] Name of instance.
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  BrokerAuthenticationArgs({
+  const BrokerAuthenticationArgs({
     this.authenticationName,
     required this.brokerName,
     required this.extendedLocation,

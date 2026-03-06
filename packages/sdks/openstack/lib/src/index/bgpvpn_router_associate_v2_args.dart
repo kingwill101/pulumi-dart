@@ -33,7 +33,7 @@ class BgpvpnRouterAssociateV2Args {
   /// [projectId] The ID of the project that owns the BGP VPN router
   /// [region] The region in which to obtain the V2 Networking client.
   /// [routerId] The ID of the router to be associated with the BGP
-  BgpvpnRouterAssociateV2Args({
+  const BgpvpnRouterAssociateV2Args({
     this.advertiseExtraRoutes,
     required this.bgpvpnId,
     this.projectId,

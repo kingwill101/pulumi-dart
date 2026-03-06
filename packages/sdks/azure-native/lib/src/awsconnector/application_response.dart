@@ -18,7 +18,7 @@ class ApplicationResponse {
   /// [args] &lt;p&gt;Arguments for Amazon EMR to pass to the application.&lt;/p&gt;
   /// [name] &lt;p&gt;The name of the application.&lt;/p&gt;
   /// [version] &lt;p&gt;The version of the application.&lt;/p&gt;
-  ApplicationResponse({
+  const ApplicationResponse({
     this.additionalInfo,
     this.args,
     this.name,

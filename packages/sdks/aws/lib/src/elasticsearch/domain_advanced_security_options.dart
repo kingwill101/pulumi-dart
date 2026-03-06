@@ -15,7 +15,7 @@ class DomainAdvancedSecurityOptions {
   /// [enabled] Whether advanced security is enabled.
   /// [internalUserDatabaseEnabled] Whether the internal user database is enabled. If not set, defaults to `false` by the AWS API.
   /// [masterUserOptions] Configuration block for the main user. Detailed below.
-  DomainAdvancedSecurityOptions({
+  const DomainAdvancedSecurityOptions({
     required this.enabled,
     this.internalUserDatabaseEnabled,
     this.masterUserOptions,

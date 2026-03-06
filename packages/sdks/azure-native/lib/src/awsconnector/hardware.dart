@@ -16,7 +16,7 @@ class Hardware {
   /// [cpuCount] CPU count of the Instance.
   /// [disks] Disks attached to the Instance.
   /// [ramSizeInGb] RAM Size of the Instance.
-  Hardware({
+  const Hardware({
     this.cpuCount,
     this.disks,
     this.ramSizeInGb,

@@ -87,7 +87,7 @@ class BotProperties {
   /// [schemaTransformationVersion] The channel schema transformation version for the bot
   /// [storageResourceId] The storage resourceId for the bot
   /// [tenantId] The Tenant Id for the bot
-  BotProperties({
+  const BotProperties({
     this.allSettings,
     this.appPasswordHint,
     this.cmekKeyVaultUrl,

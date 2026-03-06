@@ -25,7 +25,7 @@ class InvitationArgs {
   /// [userDisplayName] The display name of the user being invited.
   /// [userEmailAddress] The email address of the user being invited.
   /// [userType] The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
-  InvitationArgs({
+  const InvitationArgs({
     this.message,
     required this.redirectUrl,
     this.userDisplayName,

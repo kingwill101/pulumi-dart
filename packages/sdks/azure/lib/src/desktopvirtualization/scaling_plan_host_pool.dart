@@ -11,7 +11,7 @@ class ScalingPlanHostPool {
   /// Creates a new [ScalingPlanHostPool].
   /// [hostpoolId] The ID of the HostPool to assign the Scaling Plan to.
   /// [scalingPlanEnabled] Specifies if the scaling plan is enabled or disabled for the HostPool.
-  ScalingPlanHostPool({
+  const ScalingPlanHostPool({
     required this.hostpoolId,
     required this.scalingPlanEnabled,
   });

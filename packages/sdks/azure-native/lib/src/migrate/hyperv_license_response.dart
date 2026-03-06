@@ -12,7 +12,7 @@ class HypervLicenseResponse {
   /// Creates a new [HypervLicenseResponse].
   /// [licenseCost] Cost of a licence.
   /// [licenseType] HyperV licence type.
-  HypervLicenseResponse({
+  const HypervLicenseResponse({
     required this.licenseCost,
     required this.licenseType,
   });

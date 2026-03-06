@@ -11,7 +11,7 @@ class GetStoresStore {
   /// Creates a new [GetStoresStore].
   /// [id] The ID of the store.
   /// [storeName] The name of the store.
-  GetStoresStore({
+  const GetStoresStore({
     required this.id,
     required this.storeName,
   });

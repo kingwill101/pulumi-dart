@@ -24,7 +24,7 @@ class VpcNetworkPerformanceMetricSubscriptionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [source] The source Region or Availability Zone that the metric subscription is enabled for. For example, `us-east-1`.
   /// [statistic] The statistic used for the enabled subscription. Valid values: `p50`. Default: `p50`.
-  VpcNetworkPerformanceMetricSubscriptionArgs({
+  const VpcNetworkPerformanceMetricSubscriptionArgs({
     required this.destination,
     this.metric,
     this.region,

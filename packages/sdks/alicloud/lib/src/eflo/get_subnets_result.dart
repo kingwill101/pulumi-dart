@@ -47,7 +47,7 @@ class GetSubnetsResult {
   /// [type] Eflo subnet usage type.
   /// [vpdId] Eflo VPD ID.
   /// [zoneId] The zone ID of the resource.
-  GetSubnetsResult({
+  const GetSubnetsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

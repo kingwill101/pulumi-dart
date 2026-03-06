@@ -29,7 +29,7 @@ class GetOrganizationNonMasterAccount {
   /// [name] Name of the policy type.
   /// [state] State of the account.
   /// [status] Status of the policy type as it relates to the associated root.
-  GetOrganizationNonMasterAccount({
+  const GetOrganizationNonMasterAccount({
     required this.arn,
     required this.email,
     required this.id,

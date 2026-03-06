@@ -16,7 +16,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetConditions].
   /// [amazonS3BucketConditions] Amazon S3 bucket conditions.
   /// [minAge] Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
-  PreventionDiscoveryConfigTargetOtherCloudTargetConditions({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetConditions({
     this.amazonS3BucketConditions,
     this.minAge,
   });

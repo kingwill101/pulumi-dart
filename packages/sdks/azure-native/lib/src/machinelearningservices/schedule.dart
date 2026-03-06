@@ -29,7 +29,7 @@ class Schedule {
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [trigger] [Required] Specifies the trigger details
-  Schedule({
+  const Schedule({
     required this.action,
     this.description,
     this.displayName,

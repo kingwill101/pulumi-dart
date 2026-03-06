@@ -17,7 +17,7 @@ class GetModelRetailV2alphaArgs {
   /// [location] Required.
   /// [modelId] Required.
   /// [project] Optional.
-  GetModelRetailV2alphaArgs({
+  const GetModelRetailV2alphaArgs({
     required this.catalogId,
     required this.location,
     required this.modelId,

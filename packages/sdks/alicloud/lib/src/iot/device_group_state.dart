@@ -18,7 +18,7 @@ class DeviceGroupState {
   /// [groupName] The GroupName of the device group.
   /// [iotInstanceId] The id of the Iot Instance.
   /// [superGroupId] The id of the SuperGroup.
-  DeviceGroupState({
+  const DeviceGroupState({
     this.groupDesc,
     this.groupName,
     this.iotInstanceId,

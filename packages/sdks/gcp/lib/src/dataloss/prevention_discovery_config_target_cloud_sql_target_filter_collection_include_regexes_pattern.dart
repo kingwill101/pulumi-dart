@@ -17,7 +17,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexe
   /// [databaseResourceNameRegex] Regex to test the database resource's name against. An example of a database resource name is a table's name. Other database resource names like view names could be included in the future. If empty, all database resources match.'
   /// [instanceRegex] Regex to test the instance name against. If empty, all instances match.
   /// [projectIdRegex] For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
-  PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern({
+  const PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPattern({
     this.databaseRegex,
     this.databaseResourceNameRegex,
     this.instanceRegex,

@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DatastoreOptions {
   /// Creates a new [GooglePrivacyDlpV2DatastoreOptions].
   /// [kind] The kind to process.
   /// [partitionId] A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
-  GooglePrivacyDlpV2DatastoreOptions({
+  const GooglePrivacyDlpV2DatastoreOptions({
     this.kind,
     this.partitionId,
   });

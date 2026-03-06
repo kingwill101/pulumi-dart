@@ -12,7 +12,7 @@ class FabricGuidsResponse {
   /// Creates a new [FabricGuidsResponse].
   /// [lakehouseGuid] Fabric one lake house guid.
   /// [workspaceGuid] Fabric one lake workspace guid.
-  FabricGuidsResponse({
+  const FabricGuidsResponse({
     required this.lakehouseGuid,
     required this.workspaceGuid,
   });

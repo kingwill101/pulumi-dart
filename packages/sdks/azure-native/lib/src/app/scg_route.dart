@@ -21,7 +21,7 @@ class ScgRoute {
   /// [order] Order of the route
   /// [predicates] Predicates of the route
   /// [uri] Uri of the route
-  ScgRoute({
+  const ScgRoute({
     this.filters,
     required this.id,
     this.order,

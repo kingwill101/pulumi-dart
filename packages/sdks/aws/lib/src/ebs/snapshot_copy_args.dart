@@ -42,7 +42,7 @@ class SnapshotCopyArgs {
   /// [storageTier] The name of the storage tier. Valid values are `archive` and `standard`. Default value is `standard`.
   /// [tags] A map of tags for the snapshot.
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
-  SnapshotCopyArgs({
+  const SnapshotCopyArgs({
     this.completionDurationMinutes,
     this.description,
     this.encrypted,

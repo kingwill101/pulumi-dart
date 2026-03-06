@@ -25,7 +25,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite {
   /// [hostRewrite] Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
   /// [pathPrefixRewrite] Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
   /// [pathTemplateRewrite] If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
-  RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite({
+  const RegionUrlMapPathMatcherDefaultRouteActionUrlRewrite({
     this.hostRewrite,
     this.pathPrefixRewrite,
     this.pathTemplateRewrite,

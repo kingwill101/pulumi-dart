@@ -9,7 +9,7 @@ class VmwareAutoRepairConfig {
 
   /// Creates a new [VmwareAutoRepairConfig].
   /// [enabled] Whether auto repair is enabled.
-  VmwareAutoRepairConfig({
+  const VmwareAutoRepairConfig({
     this.enabled,
   });
 

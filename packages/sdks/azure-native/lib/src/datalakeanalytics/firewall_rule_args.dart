@@ -24,7 +24,7 @@ class FirewallRuleArgs {
   /// [firewallRuleName] The name of the firewall rule to create or update.
   /// [resourceGroupName] The name of the Azure resource group.
   /// [startIpAddress] The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.accountName,
     required this.endIpAddress,
     this.firewallRuleName,

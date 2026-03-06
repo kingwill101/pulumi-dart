@@ -14,7 +14,7 @@ class SearchEngineSearchEngineConfig {
   /// Creates a new [SearchEngineSearchEngineConfig].
   /// [searchAddOns] The add-on that this search engine enables.
   /// [searchTier] The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
-  SearchEngineSearchEngineConfig({
+  const SearchEngineSearchEngineConfig({
     this.searchAddOns,
     this.searchTier,
   });

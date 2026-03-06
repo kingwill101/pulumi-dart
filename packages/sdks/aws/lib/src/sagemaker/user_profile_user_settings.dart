@@ -72,7 +72,7 @@ class UserProfileUserSettings {
   /// [studioWebPortal] Whether the user can access Studio. If this value is set to `DISABLED`, the user cannot access Studio, even if that is the default experience for the domain. Valid values are `ENABLED` and `DISABLED`.
   /// [studioWebPortalSettings] The Studio Web Portal settings. See `studio_web_portal_settings` Block below.
   /// [tensorBoardAppSettings] The TensorBoard app settings. See TensorBoard App Settings below.
-  UserProfileUserSettings({
+  const UserProfileUserSettings({
     this.autoMountHomeEfs,
     this.canvasAppSettings,
     this.codeEditorAppSettings,

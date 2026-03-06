@@ -24,7 +24,7 @@ class GetNotificationDestinationArgs {
   /// [id] The id of the notification destination in New Relic.
   /// [name] The name of the notification destination.
   /// [secureUrls] The URL in secure format, showing only the `prefix`, as the `secure_suffix` is a secret.
-  GetNotificationDestinationArgs({
+  const GetNotificationDestinationArgs({
     this.accountId,
     this.id,
     this.name,

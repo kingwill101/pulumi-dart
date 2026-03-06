@@ -16,7 +16,7 @@ class QuotaPlanQuota {
   /// Creates a new [QuotaPlanQuota].
   /// [parameter] Level 2 Quota CU configuration See `parameter` below.
   /// [subQuotaInfoLists] Secondary Quota list
-  QuotaPlanQuota({
+  const QuotaPlanQuota({
     this.parameter,
     this.subQuotaInfoLists,
   });

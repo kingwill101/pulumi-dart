@@ -216,7 +216,7 @@ class PolicyRuleAction {
   /// [vlanId] Optional.
   /// [wam] Optional.
   /// [write] Optional.
-  PolicyRuleAction({
+  const PolicyRuleAction({
     this.appService,
     this.application,
     this.asm,

@@ -33,7 +33,7 @@ class GetDispatchRulesRule {
   /// [notifyRules] Sets the notification rule.
   /// [notifyTemplates] (Available since v1.238.0) The notification method.
   /// [status] The resource status of Alert Dispatch Rule.
-  GetDispatchRulesRule({
+  const GetDispatchRulesRule({
     required this.dispatchRuleId,
     required this.dispatchRuleName,
     required this.groupRules,

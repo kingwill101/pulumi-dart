@@ -11,7 +11,7 @@ class GetBucketSoftDeletePolicy {
   /// Creates a new [GetBucketSoftDeletePolicy].
   /// [effectiveTime] Server-determined value that indicates the time from which the policy, or one with a greater retention, was effective. This value is in RFC 3339 format.
   /// [retentionDurationSeconds] The duration in seconds that soft-deleted objects in the bucket will be retained and cannot be permanently deleted. Default value is 604800.
-  GetBucketSoftDeletePolicy({
+  const GetBucketSoftDeletePolicy({
     required this.effectiveTime,
     required this.retentionDurationSeconds,
   });

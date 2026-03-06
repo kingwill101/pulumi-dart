@@ -22,7 +22,7 @@ class DraArgs {
   /// [fabricName] The fabric name.
   /// [properties] Dra model properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DraArgs({
+  const DraArgs({
     this.fabricAgentName,
     required this.fabricName,
     required this.properties,

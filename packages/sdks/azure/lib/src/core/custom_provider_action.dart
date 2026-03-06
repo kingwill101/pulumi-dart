@@ -11,7 +11,7 @@ class CustomProviderAction {
   /// Creates a new [CustomProviderAction].
   /// [endpoint] Specifies the endpoint of the action.
   /// [name] Specifies the name of the action.
-  CustomProviderAction({
+  const CustomProviderAction({
     required this.endpoint,
     required this.name,
   });

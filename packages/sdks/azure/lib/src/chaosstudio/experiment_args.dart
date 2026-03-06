@@ -30,7 +30,7 @@ class ExperimentArgs {
   /// [resourceGroupName] The name of the Resource Group where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
   /// [selectors] One or more `selectors` blocks as defined below.
   /// [steps] One or more `steps` blocks as defined below.
-  ExperimentArgs({
+  const ExperimentArgs({
     this.identity,
     this.location,
     this.name,

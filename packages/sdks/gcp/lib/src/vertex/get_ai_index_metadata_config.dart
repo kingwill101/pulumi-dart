@@ -37,7 +37,7 @@ class GetAiIndexMetadataConfig {
   /// [distanceMeasureType] The distance measure used in nearest neighbor search. The value must be one of the followings:
   /// [featureNormType] Type of normalization to be carried out on each vector. The value must be one of the followings:
   /// [shardSize] Index data is split into equal parts to be processed. These are called "shards".
-  GetAiIndexMetadataConfig({
+  const GetAiIndexMetadataConfig({
     required this.algorithmConfigs,
     required this.approximateNeighborsCount,
     required this.dimensions,

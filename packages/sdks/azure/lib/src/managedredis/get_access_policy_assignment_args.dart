@@ -20,7 +20,7 @@ class GetAccessPolicyAssignmentArgs {
   /// [managedRedisName] The name of the Managed Redis instance.
   /// [objectId] The object ID of the Azure Active Directory user, group, service principal, or managed identity.
   /// [resourceGroupName] The name of the Resource Group where the Managed Redis instance exists.
-  GetAccessPolicyAssignmentArgs({
+  const GetAccessPolicyAssignmentArgs({
     required this.managedRedisName,
     required this.objectId,
     required this.resourceGroupName,

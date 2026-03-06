@@ -17,7 +17,7 @@ class TokenCertificateResponse {
   /// [expiry] The expiry datetime of the certificate.
   /// [name] Optional.
   /// [thumbprint] The thumbprint of the certificate.
-  TokenCertificateResponse({
+  const TokenCertificateResponse({
     this.encodedPemCertificate,
     this.expiry,
     this.name,

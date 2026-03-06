@@ -18,7 +18,7 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfig {
   /// [externalId] External ID for cross-account role assumption.
   /// [regionAndRoutingControls] List of regions and their routing controls. See Region and Routing Controls below.
   /// [timeoutMinutes] Timeout in minutes.
-  PlanWorkflowStepParallelConfigStepArcRoutingControlConfig({
+  const PlanWorkflowStepParallelConfigStepArcRoutingControlConfig({
     this.crossAccountRole,
     this.externalId,
     this.regionAndRoutingControls,

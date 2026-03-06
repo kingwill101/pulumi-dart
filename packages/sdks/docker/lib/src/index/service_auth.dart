@@ -14,7 +14,7 @@ class ServiceAuth {
   /// [password] The password
   /// [serverAddress] The address of the server for the authentication
   /// [username] The username
-  ServiceAuth({
+  const ServiceAuth({
     this.password,
     required this.serverAddress,
     this.username,

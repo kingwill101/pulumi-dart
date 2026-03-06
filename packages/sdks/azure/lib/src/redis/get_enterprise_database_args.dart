@@ -15,7 +15,7 @@ class GetEnterpriseDatabaseArgs {
   /// Creates a new [GetEnterpriseDatabaseArgs].
   /// [clusterId] The resource ID of Redis Enterprise Cluster which hosts the Redis Enterprise Database instance.
   /// [name] The name of the Redis Enterprise Database.
-  GetEnterpriseDatabaseArgs({
+  const GetEnterpriseDatabaseArgs({
     required this.clusterId,
     required this.name,
   });

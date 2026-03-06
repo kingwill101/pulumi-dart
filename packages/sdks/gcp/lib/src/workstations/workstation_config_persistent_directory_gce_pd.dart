@@ -25,7 +25,7 @@ class WorkstationConfigPersistentDirectoryGcePd {
   /// [reclaimPolicy] Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
   /// [sizeGb] The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
   /// [sourceSnapshot] Name of the snapshot to use as the source for the disk.
-  WorkstationConfigPersistentDirectoryGcePd({
+  const WorkstationConfigPersistentDirectoryGcePd({
     this.diskType,
     this.fsType,
     this.reclaimPolicy,

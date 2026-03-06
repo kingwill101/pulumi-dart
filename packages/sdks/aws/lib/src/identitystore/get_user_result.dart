@@ -66,7 +66,7 @@ class GetUserResult {
   /// [userId] Required.
   /// [userName] User's user name value.
   /// [userType] The user type.
-  GetUserResult({
+  const GetUserResult({
     required this.addresses,
     this.alternateIdentifier,
     required this.displayName,

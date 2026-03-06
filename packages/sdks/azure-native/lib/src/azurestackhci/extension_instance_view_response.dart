@@ -19,7 +19,7 @@ class ExtensionInstanceViewResponse {
   /// [status] Instance view status.
   /// [type] Specifies the type of the extension; an example is "MicrosoftMonitoringAgent".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  ExtensionInstanceViewResponse({
+  const ExtensionInstanceViewResponse({
     this.name,
     this.status,
     this.type,

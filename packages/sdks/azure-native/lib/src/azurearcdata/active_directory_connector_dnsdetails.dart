@@ -18,7 +18,7 @@ class ActiveDirectoryConnectorDNSDetails {
   /// [nameserverIPAddresses] List of Active Directory DNS server IP addresses.
   /// [preferK8sDnsForPtrLookups] Flag indicating whether to prefer Kubernetes DNS server response over AD DNS server response for IP address lookups.
   /// [replicas] Replica count for DNS proxy service. Default value is 1.
-  ActiveDirectoryConnectorDNSDetails({
+  const ActiveDirectoryConnectorDNSDetails({
     this.domainName,
     required this.nameserverIPAddresses,
     this.preferK8sDnsForPtrLookups,

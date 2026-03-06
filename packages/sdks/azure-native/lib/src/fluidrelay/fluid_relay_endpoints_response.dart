@@ -15,7 +15,7 @@ class FluidRelayEndpointsResponse {
   /// [ordererEndpoints] The Fluid Relay Orderer endpoints.
   /// [serviceEndpoints] The Fluid Relay service endpoints.
   /// [storageEndpoints] The Fluid Relay storage endpoints.
-  FluidRelayEndpointsResponse({
+  const FluidRelayEndpointsResponse({
     required this.ordererEndpoints,
     required this.serviceEndpoints,
     required this.storageEndpoints,

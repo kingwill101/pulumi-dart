@@ -18,7 +18,7 @@ class ServiceMonitoringAgentProcessState {
   /// [processId] The ID of the process.
   /// [processName] The name of the process.
   /// [processUser] The user who launches the process.
-  ServiceMonitoringAgentProcessState({
+  const ServiceMonitoringAgentProcessState({
     this.instanceId,
     this.processId,
     this.processName,

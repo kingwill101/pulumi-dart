@@ -9,7 +9,7 @@ class PrivateEndpointResponse {
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] The resource identifier.
-  PrivateEndpointResponse({
+  const PrivateEndpointResponse({
     required this.id,
   });
 

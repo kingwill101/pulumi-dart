@@ -13,7 +13,7 @@ class ApkResponse {
   /// Creates a new [ApkResponse].
   /// [location] The path to an APK to be installed on the device before the test begins.
   /// [packageName] The java package for the APK to be installed. Value is determined by examining the application's manifest.
-  ApkResponse({
+  const ApkResponse({
     required this.location,
     required this.packageName,
   });

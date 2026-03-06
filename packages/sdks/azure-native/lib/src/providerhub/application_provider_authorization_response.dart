@@ -11,7 +11,7 @@ class ApplicationProviderAuthorizationResponse {
   /// Creates a new [ApplicationProviderAuthorizationResponse].
   /// [managedByRoleDefinitionId] The managed by role definition ID for the application.
   /// [roleDefinitionId] The role definition ID for the application.
-  ApplicationProviderAuthorizationResponse({
+  const ApplicationProviderAuthorizationResponse({
     this.managedByRoleDefinitionId,
     this.roleDefinitionId,
   });

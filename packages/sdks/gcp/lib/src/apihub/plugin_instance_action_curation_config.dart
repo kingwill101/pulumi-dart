@@ -16,7 +16,7 @@ class PluginInstanceActionCurationConfig {
   /// Creates a new [PluginInstanceActionCurationConfig].
   /// [curationType] Possible values:
   /// [customCuration] Custom curation information for this plugin instance.
-  PluginInstanceActionCurationConfig({
+  const PluginInstanceActionCurationConfig({
     this.curationType,
     this.customCuration,
   });

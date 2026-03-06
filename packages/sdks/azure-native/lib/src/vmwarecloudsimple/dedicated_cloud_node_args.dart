@@ -43,7 +43,7 @@ class DedicatedCloudNodeArgs {
   /// [resourceGroupName] The name of the resource group
   /// [sku] Dedicated Cloud Nodes SKU
   /// [tags] Dedicated Cloud Nodes tags
-  DedicatedCloudNodeArgs({
+  const DedicatedCloudNodeArgs({
     required this.availabilityZoneId,
     this.dedicatedCloudNodeName,
     required this.id,

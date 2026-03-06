@@ -45,7 +45,7 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs {
   /// [globallyEnabled] Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
   /// [name] The name which should be used for this Spring Cloud Application Performance Monitoring resource for App Dynamics. Changing this forces a new resource to be created.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
-  SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs({
+  const SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs({
     required this.agentAccountAccessKey,
     required this.agentAccountName,
     this.agentApplicationName,

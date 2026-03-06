@@ -48,7 +48,7 @@ class AppVersionSnapshotExample {
   /// [messages] (Output)
   /// [name] (Output)
   /// [updateTime] (Output)
-  AppVersionSnapshotExample({
+  const AppVersionSnapshotExample({
     this.createTime,
     this.description,
     this.displayName,

@@ -22,7 +22,7 @@ class ServiceV3State {
   /// [name] The service name.
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [type] The service type.
-  ServiceV3State({
+  const ServiceV3State({
     this.description,
     this.enabled,
     this.name,

@@ -23,7 +23,7 @@ class MaterializedViewDefinitionResponse {
   /// [maxStaleness] [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
   /// [query] [Required] A query whose result is persisted.
   /// [refreshIntervalMs] [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
-  MaterializedViewDefinitionResponse({
+  const MaterializedViewDefinitionResponse({
     required this.allowNonIncrementalDefinition,
     required this.enableRefresh,
     required this.lastRefreshTime,

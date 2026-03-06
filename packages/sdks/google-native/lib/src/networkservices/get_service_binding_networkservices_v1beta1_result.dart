@@ -26,7 +26,7 @@ class GetServiceBindingNetworkservicesV1beta1Result {
   /// [service] The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
   /// [serviceId] The unique identifier of the Service Directory Service against which the Service Binding resource is validated. This is populated when the Service Binding resource is used in another resource (like Backend Service). This is of the UUID4 format.
   /// [updateTime] The timestamp when the resource was updated.
-  GetServiceBindingNetworkservicesV1beta1Result({
+  const GetServiceBindingNetworkservicesV1beta1Result({
     required this.createTime,
     required this.description,
     required this.labels,

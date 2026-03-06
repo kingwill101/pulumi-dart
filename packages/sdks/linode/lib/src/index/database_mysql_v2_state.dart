@@ -186,7 +186,7 @@ class DatabaseMysqlV2State {
   /// [updated] When this Managed Database was last updated.
   /// [updates] Configuration settings for automated patch update maintenance for the Managed Database.
   /// [version] The Managed Database engine version. (e.g. `13.2`)
-  DatabaseMysqlV2State({
+  const DatabaseMysqlV2State({
     this.allowLists,
     this.caCert,
     this.clusterSize,

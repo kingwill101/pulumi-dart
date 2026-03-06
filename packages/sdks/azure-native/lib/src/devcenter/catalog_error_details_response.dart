@@ -12,7 +12,7 @@ class CatalogErrorDetailsResponse {
   /// Creates a new [CatalogErrorDetailsResponse].
   /// [code] An identifier for the error.
   /// [message] A message describing the error.
-  CatalogErrorDetailsResponse({
+  const CatalogErrorDetailsResponse({
     this.code,
     this.message,
   });

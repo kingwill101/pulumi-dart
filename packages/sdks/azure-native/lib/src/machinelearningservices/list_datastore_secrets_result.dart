@@ -8,7 +8,7 @@ class ListDatastoreSecretsResult {
 
   /// Creates a new [ListDatastoreSecretsResult].
   /// [secretsType] [Required] Credential type used to authentication with storage.
-  ListDatastoreSecretsResult({
+  const ListDatastoreSecretsResult({
     required this.secretsType,
   });
 

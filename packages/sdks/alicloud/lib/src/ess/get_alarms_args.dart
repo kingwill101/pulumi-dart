@@ -24,7 +24,7 @@ class GetAlarmsArgs {
   /// [nameRegex] A regex string to filter resulting alarms by name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [scalingGroupId] Scaling group id the alarms belong to.
-  GetAlarmsArgs({
+  const GetAlarmsArgs({
     this.ids,
     this.metricType,
     this.nameRegex,

@@ -22,7 +22,7 @@ class DomainDevicesAudioOss {
   /// [input] Configures the output settings for the OSS audio device.
   /// [output] Configures the output settings for the OSS audio device.
   /// [tryMMap] Enables or disables mmap for the OSS audio device.
-  DomainDevicesAudioOss({
+  const DomainDevicesAudioOss({
     this.dspPolicy,
     this.exclusive,
     this.input,

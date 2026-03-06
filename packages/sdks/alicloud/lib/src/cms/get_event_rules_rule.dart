@@ -30,7 +30,7 @@ class GetEventRulesRule {
   /// [id] The ID of the Event Rule. Its value is same as Event Rule Name.
   /// [silenceTime] The mute period during which new alerts are not sent even if the trigger conditions are met.
   /// [status] The status of the resource.
-  GetEventRulesRule({
+  const GetEventRulesRule({
     required this.description,
     required this.eventPatterns,
     required this.eventRuleName,

@@ -21,7 +21,7 @@ class GetTopicAuthorizationRuleArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topicName] The topic name.
-  GetTopicAuthorizationRuleArgs({
+  const GetTopicAuthorizationRuleArgs({
     required this.authorizationRuleName,
     required this.namespaceName,
     required this.resourceGroupName,

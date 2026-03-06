@@ -11,7 +11,7 @@ class FilterFilterCriteriaFindingType {
   /// Creates a new [FilterFilterCriteriaFindingType].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaFindingType({
+  const FilterFilterCriteriaFindingType({
     required this.comparison,
     required this.value,
   });

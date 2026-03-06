@@ -29,7 +29,7 @@ class GetTrafficPolicyDocumentRuleGeoProximityLocation {
   /// [longitude] Represents the location west (negative) or east (positive) of the prime meridian. Valid values are -180 degrees to 180 degrees.
   /// [region] If your endpoint is an AWS resource, specify the AWS Region that you created the resource in.
   /// [ruleReference] References to a rule.
-  GetTrafficPolicyDocumentRuleGeoProximityLocation({
+  const GetTrafficPolicyDocumentRuleGeoProximityLocation({
     this.bias,
     this.endpointReference,
     this.evaluateTargetHealth,

@@ -37,7 +37,7 @@ class GetVpcEndpointServicesResult {
   /// [status] The state of the endpoint service.
   /// [tags] The tags added to the resource.
   /// [vpcEndpointServiceName] The name of the endpoint service.
-  GetVpcEndpointServicesResult({
+  const GetVpcEndpointServicesResult({
     this.autoAcceptConnection,
     required this.id,
     required this.ids,

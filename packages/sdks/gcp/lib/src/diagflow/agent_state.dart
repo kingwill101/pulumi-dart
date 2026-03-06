@@ -71,7 +71,7 @@ class AgentState {
   /// [supportedLanguageCodes] The list of all languages supported by this agent (except for the defaultLanguageCode).
   /// [tier] The agent tier. If not specified, TIER_STANDARD is assumed.
   /// [timeZone] The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
-  AgentState({
+  const AgentState({
     this.apiVersion,
     this.avatarUri,
     this.avatarUriBackend,

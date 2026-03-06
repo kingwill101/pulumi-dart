@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1IntegrationConfigResponse {
 
   /// Creates a new [GoogleCloudApigeeV1IntegrationConfigResponse].
   /// [enabled] Flag that specifies whether the Integration add-on is enabled.
-  GoogleCloudApigeeV1IntegrationConfigResponse({
+  const GoogleCloudApigeeV1IntegrationConfigResponse({
     required this.enabled,
   });
 

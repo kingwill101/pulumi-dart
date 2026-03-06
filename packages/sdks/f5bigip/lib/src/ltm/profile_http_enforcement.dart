@@ -17,7 +17,7 @@ class ProfileHttpEnforcement {
   /// [maxHeaderCount] Specifies the maximum number of headers allowed in HTTP request/response. The default is 64 headers.If no value is specified while creating, then default value will be assigned by BigIP. If max_header_count is commented (or not passed) during the update call, then no changes would be applied and previous value will persist. In order to put default value, we need to pass "64" explicitly.
   /// [maxHeaderSize] Specifies the maximum header size. The default value is 32768. If no string is specified while creating, then default value will be assigned by BigIP. If max_header_size is commented (or not passed) during the update call, then no changes would be applied and previous value will persist. In order to put default value, we need to pass "32768" explicitly.
   /// [unknownMethod] Specifies whether to allow, reject or switch to pass-through mode when an unknown HTTP method is parsed. Default value is "allow". If no string is specified while creating, then default value will be assigned by BigIP. If unknown_method is commented (or not passed) during the update call, then no changes would be applied and previous value will persist. In order to put default value, we need to pass "allow" explicitly.
-  ProfileHttpEnforcement({
+  const ProfileHttpEnforcement({
     this.knownMethods,
     this.maxHeaderCount,
     this.maxHeaderSize,

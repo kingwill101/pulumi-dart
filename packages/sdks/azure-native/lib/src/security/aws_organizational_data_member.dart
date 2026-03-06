@@ -13,7 +13,7 @@ class AwsOrganizationalDataMember {
   /// Creates a new [AwsOrganizationalDataMember].
   /// [organizationMembershipType] The multi cloud account's membership type in the organization
   /// [parentHierarchyId] If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-  AwsOrganizationalDataMember({
+  const AwsOrganizationalDataMember({
     required this.organizationMembershipType,
     this.parentHierarchyId,
   });

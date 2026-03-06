@@ -8,7 +8,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource].
   /// [knowledgeBases] Knowledge bases to query. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/knowledgeBases/&lt;Knowledge Base ID&gt;.
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigKnowledgeBaseQuerySource({
     required this.knowledgeBases,
   });
 

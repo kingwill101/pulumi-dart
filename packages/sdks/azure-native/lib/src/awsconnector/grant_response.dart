@@ -14,7 +14,7 @@ class GrantResponse {
   /// Creates a new [GrantResponse].
   /// [grantee] &lt;p&gt;The person being granted permissions.&lt;/p&gt;
   /// [permission] &lt;p&gt;Specifies the permission given to the grantee.&lt;/p&gt;
-  GrantResponse({
+  const GrantResponse({
     this.grantee,
     this.permission,
   });

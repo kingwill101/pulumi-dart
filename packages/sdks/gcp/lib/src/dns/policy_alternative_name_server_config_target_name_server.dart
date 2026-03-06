@@ -16,7 +16,7 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Creates a new [PolicyAlternativeNameServerConfigTargetNameServer].
   /// [forwardingPath] Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
   /// [ipv4Address] IPv4 address to forward to.
-  PolicyAlternativeNameServerConfigTargetNameServer({
+  const PolicyAlternativeNameServerConfigTargetNameServer({
     this.forwardingPath,
     required this.ipv4Address,
   });

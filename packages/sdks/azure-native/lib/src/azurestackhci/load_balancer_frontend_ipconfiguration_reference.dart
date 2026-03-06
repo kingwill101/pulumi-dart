@@ -9,7 +9,7 @@ class LoadBalancerFrontendIPConfigurationReference {
 
   /// Creates a new [LoadBalancerFrontendIPConfigurationReference].
   /// [name] name of the frontnedIPConfiguration
-  LoadBalancerFrontendIPConfigurationReference({
+  const LoadBalancerFrontendIPConfigurationReference({
     required this.name,
   });
 

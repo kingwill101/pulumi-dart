@@ -35,7 +35,7 @@ class GetApplicationGroupResult {
   /// [policies] List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  GetApplicationGroupResult({
+  const GetApplicationGroupResult({
     required this.azureApiVersion,
     required this.clientAppGroupIdentifier,
     required this.id,

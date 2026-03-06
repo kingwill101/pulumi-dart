@@ -15,7 +15,7 @@ class ListWebAppPublishingCredentialsArgs {
   /// Creates a new [ListWebAppPublishingCredentialsArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppPublishingCredentialsArgs({
+  const ListWebAppPublishingCredentialsArgs({
     required this.name,
     required this.resourceGroupName,
   });

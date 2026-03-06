@@ -8,7 +8,7 @@ class ClusterApplication {
 
   /// Creates a new [ClusterApplication].
   /// [tag] The tag of the software.
-  ClusterApplication({
+  const ClusterApplication({
     this.tag,
   });
 

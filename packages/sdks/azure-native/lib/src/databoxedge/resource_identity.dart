@@ -9,7 +9,7 @@ class ResourceIdentity {
 
   /// Creates a new [ResourceIdentity].
   /// [type] Identity type
-  ResourceIdentity({
+  const ResourceIdentity({
     this.type,
   });
 

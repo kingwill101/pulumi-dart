@@ -18,7 +18,7 @@ class PrometheusForwarderDataSource {
   /// [labelIncludeFilter] The list of label inclusion filters in the form of label "name-value" pairs.
   /// [name] A friendly name for the data source.
   /// [streams] List of streams that this data source will be sent to.
-  PrometheusForwarderDataSource({
+  const PrometheusForwarderDataSource({
     this.labelIncludeFilter,
     this.name,
     this.streams,

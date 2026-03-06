@@ -46,7 +46,7 @@ class EndpointPolicyNetworkservicesV1beta1Args {
   /// [serverTlsPolicy] Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends. If this field is not set, authentication is disabled(open) for this endpoint.
   /// [trafficPortSelector] Optional. Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// [type] The type of endpoint policy. This is primarily used to validate the configuration.
-  EndpointPolicyNetworkservicesV1beta1Args({
+  const EndpointPolicyNetworkservicesV1beta1Args({
     this.authorizationPolicy,
     this.clientTlsPolicy,
     this.description,

@@ -129,7 +129,7 @@ class DatasetArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceTags] The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
   /// [storageBillingModel] Specifies the storage billing model for the dataset.
-  DatasetArgs({
+  const DatasetArgs({
     this.accesses,
     required this.datasetId,
     this.defaultCollation,

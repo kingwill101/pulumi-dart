@@ -8,7 +8,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm {
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm].
   /// [certificateAuthorityArns] One or more ACM ARNs.
-  VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm({
+  const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustAcm({
     required this.certificateAuthorityArns,
   });
 

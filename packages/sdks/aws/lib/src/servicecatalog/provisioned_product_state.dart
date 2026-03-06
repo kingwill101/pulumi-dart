@@ -92,7 +92,7 @@ class ProvisionedProductState {
   /// [tags] Tags to apply to the provisioned product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] Type of provisioned product. Valid values are `CFN_STACK` and `CFN_STACKSET`.
-  ProvisionedProductState({
+  const ProvisionedProductState({
     this.acceptLanguage,
     this.arn,
     this.cloudwatchDashboardNames,

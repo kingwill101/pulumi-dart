@@ -34,7 +34,7 @@ class IamAccessKeyMetadataPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamAccessKeyMetadataPropertiesResponse({
+  const IamAccessKeyMetadataPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

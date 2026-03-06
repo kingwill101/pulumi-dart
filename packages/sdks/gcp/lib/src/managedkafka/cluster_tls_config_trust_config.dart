@@ -10,7 +10,7 @@ class ClusterTlsConfigTrustConfig {
 
   /// Creates a new [ClusterTlsConfigTrustConfig].
   /// [casConfigs] Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
-  ClusterTlsConfigTrustConfig({
+  const ClusterTlsConfigTrustConfig({
     this.casConfigs,
   });
 

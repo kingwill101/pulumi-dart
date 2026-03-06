@@ -12,7 +12,7 @@ class IamInstanceProfileResponse {
   /// Creates a new [IamInstanceProfileResponse].
   /// [arn] &lt;p&gt;The Amazon Resource Name (ARN) of the instance profile.&lt;/p&gt;
   /// [id] &lt;p&gt;The ID of the instance profile.&lt;/p&gt;
-  IamInstanceProfileResponse({
+  const IamInstanceProfileResponse({
     this.arn,
     this.id,
   });

@@ -17,7 +17,7 @@ class GetRdsParameterGroupsArgs {
   /// [ids] Optional.
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
-  GetRdsParameterGroupsArgs({
+  const GetRdsParameterGroupsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

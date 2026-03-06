@@ -8,7 +8,7 @@ class ServiceModeReplicated {
 
   /// Creates a new [ServiceModeReplicated].
   /// [replicas] The amount of replicas of the service. Defaults to `1`
-  ServiceModeReplicated({
+  const ServiceModeReplicated({
     this.replicas,
   });
 

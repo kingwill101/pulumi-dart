@@ -59,7 +59,7 @@ class ServiceMeshMeshConfig {
   /// [sidecarInjector] Sidecar injector configuration See `sidecar_injector` below.
   /// [telemetry] Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/)
   /// [tracing] Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/)
-  ServiceMeshMeshConfig({
+  const ServiceMeshMeshConfig({
     this.accessLog,
     this.audit,
     this.controlPlaneLog,

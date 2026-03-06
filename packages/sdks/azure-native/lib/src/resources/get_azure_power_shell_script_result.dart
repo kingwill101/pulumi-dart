@@ -85,7 +85,7 @@ class GetAzurePowerShellScriptResult {
   /// [tags] Resource tags.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   /// [type] Type of this resource.
-  GetAzurePowerShellScriptResult({
+  const GetAzurePowerShellScriptResult({
     this.arguments,
     required this.azPowerShellVersion,
     required this.azureApiVersion,

@@ -8,7 +8,7 @@ class GuardrailActionGenerativeAnswer {
 
   /// Creates a new [GuardrailActionGenerativeAnswer].
   /// [prompt] The prompt to use for the generative answer.
-  GuardrailActionGenerativeAnswer({
+  const GuardrailActionGenerativeAnswer({
     required this.prompt,
   });
 

@@ -12,7 +12,7 @@ class ImagePipelineImageScanningConfiguration {
   /// Creates a new [ImagePipelineImageScanningConfiguration].
   /// [ecrConfiguration] Configuration block with ECR configuration for image scanning. Detailed below.
   /// [imageScanningEnabled] Whether image scans are enabled. Defaults to `false`.
-  ImagePipelineImageScanningConfiguration({
+  const ImagePipelineImageScanningConfiguration({
     this.ecrConfiguration,
     this.imageScanningEnabled,
   });

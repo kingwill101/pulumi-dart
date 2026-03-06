@@ -29,7 +29,7 @@ class KeyProperties {
   /// [kty] The type of the key. For valid values, see JsonWebKeyType.
   /// [releasePolicy] Key release policy in response. It will be used for both output and input. Omitted if empty
   /// [rotationPolicy] Key rotation policy in response. It will be used for both output and input. Omitted if empty
-  KeyProperties({
+  const KeyProperties({
     this.attributes,
     this.curveName,
     this.keyOps,

@@ -61,7 +61,7 @@ class GetLoadBalancerBackendAddressPoolResult {
   /// [tunnelInterfaces] An array of gateway load balancer tunnel interfaces.
   /// [type] Type of the resource.
   /// [virtualNetwork] A reference to a virtual network.
-  GetLoadBalancerBackendAddressPoolResult({
+  const GetLoadBalancerBackendAddressPoolResult({
     required this.azureApiVersion,
     required this.backendIPConfigurations,
     this.drainPeriodInSeconds,

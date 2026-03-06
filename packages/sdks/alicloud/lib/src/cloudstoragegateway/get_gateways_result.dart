@@ -30,7 +30,7 @@ class GetGatewaysResult {
   /// [status] Optional.
   /// [storageBundleId] Required.
   /// [totalCount] Required.
-  GetGatewaysResult({
+  const GetGatewaysResult({
     required this.gateways,
     required this.id,
     required this.ids,

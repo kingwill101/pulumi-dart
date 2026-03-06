@@ -22,7 +22,7 @@ class GetTransitRouterRouteTableAssociationsAssociation {
   /// [status] The status of the route table, including `Active`, `Associating`, `Dissociating`.
   /// [transitRouterAttachmentId] The ID of the network instance connection.
   /// [transitRouterRouteTableId] The ID of the route table of the Enterprise Edition transit router.
-  GetTransitRouterRouteTableAssociationsAssociation({
+  const GetTransitRouterRouteTableAssociationsAssociation({
     required this.id,
     required this.resourceId,
     required this.resourceType,

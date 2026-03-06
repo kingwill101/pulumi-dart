@@ -28,7 +28,7 @@ class FolderExclusionArgs {
   /// [filter] The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// [folder] The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
   /// [name] The name of the logging exclusion.
-  FolderExclusionArgs({
+  const FolderExclusionArgs({
     this.description,
     this.disabled,
     required this.filter,

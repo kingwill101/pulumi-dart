@@ -49,7 +49,7 @@ class ClusterMaintenanceEvent {
   /// [type] (Output)
   /// [updateTime] (Output)
   /// [uuid] (Output)
-  ClusterMaintenanceEvent({
+  const ClusterMaintenanceEvent({
     this.createTime,
     this.endTime,
     this.operation,

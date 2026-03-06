@@ -26,7 +26,7 @@ class GetContentTypeResult {
   /// [schema] Content type schema.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Content type version.
-  GetContentTypeResult({
+  const GetContentTypeResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

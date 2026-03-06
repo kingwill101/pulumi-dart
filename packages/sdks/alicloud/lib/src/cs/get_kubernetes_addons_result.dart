@@ -23,7 +23,7 @@ class GetKubernetesAddonsResult {
   /// [ids] Required.
   /// [nameRegex] Optional.
   /// [names] A list of addon names.
-  GetKubernetesAddonsResult({
+  const GetKubernetesAddonsResult({
     required this.addons,
     required this.clusterId,
     required this.id,

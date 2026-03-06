@@ -18,7 +18,7 @@ class NotificationRegistrationArgs {
   /// [notificationRegistrationName] The notification registration.
   /// [properties] Optional.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  NotificationRegistrationArgs({
+  const NotificationRegistrationArgs({
     this.notificationRegistrationName,
     this.properties,
     required this.providerNamespace,

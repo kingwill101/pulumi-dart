@@ -11,7 +11,7 @@ class DnsZonePeeringConfig {
   /// Creates a new [DnsZonePeeringConfig].
   /// [targetNetworkId] The name of the producer VPC network.
   /// [targetProjectId] The ID of the project that contains the producer VPC network.
-  DnsZonePeeringConfig({
+  const DnsZonePeeringConfig({
     required this.targetNetworkId,
     required this.targetProjectId,
   });

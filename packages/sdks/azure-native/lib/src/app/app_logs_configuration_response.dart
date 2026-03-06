@@ -13,7 +13,7 @@ class AppLogsConfigurationResponse {
   /// Creates a new [AppLogsConfigurationResponse].
   /// [destination] Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
   /// [logAnalyticsConfiguration] Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
-  AppLogsConfigurationResponse({
+  const AppLogsConfigurationResponse({
     this.destination,
     this.logAnalyticsConfiguration,
   });

@@ -27,7 +27,7 @@ class GetUsersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policyName] Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
   /// [policyType] Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
-  GetUsersArgs({
+  const GetUsersArgs({
     this.groupName,
     this.ids,
     this.nameRegex,

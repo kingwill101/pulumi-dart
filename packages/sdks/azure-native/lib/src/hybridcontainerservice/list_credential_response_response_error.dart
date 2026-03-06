@@ -9,7 +9,7 @@ class ListCredentialResponseResponseError {
   /// Creates a new [ListCredentialResponseResponseError].
   /// [code] Optional.
   /// [message] Optional.
-  ListCredentialResponseResponseError({
+  const ListCredentialResponseResponseError({
     this.code,
     this.message,
   });

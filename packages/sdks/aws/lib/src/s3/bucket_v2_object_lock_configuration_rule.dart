@@ -9,7 +9,7 @@ class BucketV2ObjectLockConfigurationRule {
 
   /// Creates a new [BucketV2ObjectLockConfigurationRule].
   /// [defaultRetentions] Default retention period that you want to apply to new objects placed in this bucket (documented below).
-  BucketV2ObjectLockConfigurationRule({
+  const BucketV2ObjectLockConfigurationRule({
     required this.defaultRetentions,
   });
 

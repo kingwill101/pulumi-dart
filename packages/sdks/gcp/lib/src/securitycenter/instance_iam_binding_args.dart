@@ -26,7 +26,7 @@ class InstanceIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the Data Fusion instance.
   /// [role] Required.
-  InstanceIamBindingArgs({
+  const InstanceIamBindingArgs({
     this.condition,
     required this.members,
     this.name,

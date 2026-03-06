@@ -18,7 +18,7 @@ class GetStaticSiteCustomDomainArgs {
   /// [domainName] The custom domain name.
   /// [name] Name of the static site resource to search in.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetStaticSiteCustomDomainArgs({
+  const GetStaticSiteCustomDomainArgs({
     required this.domainName,
     required this.name,
     required this.resourceGroupName,

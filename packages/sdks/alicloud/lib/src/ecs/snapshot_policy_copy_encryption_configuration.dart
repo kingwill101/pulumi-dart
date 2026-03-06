@@ -9,7 +9,7 @@ class SnapshotPolicyCopyEncryptionConfiguration {
   /// Creates a new [SnapshotPolicyCopyEncryptionConfiguration].
   /// [encrypted] Optional.
   /// [kmsKeyId] Optional.
-  SnapshotPolicyCopyEncryptionConfiguration({
+  const SnapshotPolicyCopyEncryptionConfiguration({
     this.encrypted,
     this.kmsKeyId,
   });

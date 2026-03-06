@@ -27,7 +27,7 @@ class AccountState {
   /// [characterType] The account Comment Information type. Value:
   /// [instanceId] Instance Id
   /// [status] Account Status
-  AccountState({
+  const AccountState({
     this.accountDescription,
     this.accountName,
     this.accountPassword,

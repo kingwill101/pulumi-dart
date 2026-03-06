@@ -43,7 +43,7 @@ class GetSubnetArgs {
   /// [state] State that the desired subnet must have.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired subnet.
   /// [vpcId] ID of the VPC that the desired subnet belongs to.
-  GetSubnetArgs({
+  const GetSubnetArgs({
     this.availabilityZone,
     this.availabilityZoneId,
     this.cidrBlock,

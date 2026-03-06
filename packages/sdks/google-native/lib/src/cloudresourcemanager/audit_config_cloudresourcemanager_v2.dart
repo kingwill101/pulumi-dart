@@ -13,7 +13,7 @@ class AuditConfigCloudresourcemanagerV2 {
   /// Creates a new [AuditConfigCloudresourcemanagerV2].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigCloudresourcemanagerV2({
+  const AuditConfigCloudresourcemanagerV2({
     this.auditLogConfigs,
     this.service,
   });

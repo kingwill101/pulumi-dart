@@ -33,7 +33,7 @@ class AS2MdnSettingsResponse {
   /// [sendMDNAsynchronously] The value indicating whether to send the asynchronous MDN.
   /// [signMDN] The value indicating whether the MDN needs to be signed or not.
   /// [signOutboundMDNIfOptional] The value indicating whether to sign the outbound MDN if optional.
-  AS2MdnSettingsResponse({
+  const AS2MdnSettingsResponse({
     this.dispositionNotificationTo,
     this.mdnText,
     required this.micHashingAlgorithm,

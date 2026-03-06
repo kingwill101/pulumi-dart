@@ -35,7 +35,7 @@ class GetASCDataConnectorResult {
   /// [subscriptionId] The subscription id to connect to, and get the data from.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetASCDataConnectorResult({
+  const GetASCDataConnectorResult({
     required this.azureApiVersion,
     this.dataTypes,
     this.etag,

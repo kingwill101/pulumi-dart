@@ -20,7 +20,7 @@ class KxClusterCapacityConfiguration {
   /// Creates a new [KxClusterCapacityConfiguration].
   /// [nodeCount] Number of instances running in a cluster. Must be at least 1 and at most 5.
   /// [nodeType] Determines the hardware of the host computer used for your cluster instance. Each node type offers different memory and storage capabilities. Choose a node type based on the requirements of the application or software that you plan to run on your instance.
-  KxClusterCapacityConfiguration({
+  const KxClusterCapacityConfiguration({
     required this.nodeCount,
     required this.nodeType,
   });

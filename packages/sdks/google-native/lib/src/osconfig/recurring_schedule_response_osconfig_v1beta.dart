@@ -37,7 +37,7 @@ class RecurringScheduleResponseOsconfigV1beta {
   /// [timeOfDay] Time of the day to run a recurring deployment.
   /// [timeZone] Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
   /// [weekly] Schedule with weekly executions.
-  RecurringScheduleResponseOsconfigV1beta({
+  const RecurringScheduleResponseOsconfigV1beta({
     required this.endTime,
     required this.frequency,
     required this.lastExecuteTime,

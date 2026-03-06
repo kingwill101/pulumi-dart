@@ -32,7 +32,7 @@ class VmwareAdminClusterVcenter {
   /// [folder] The name of the vCenter folder for the admin cluster.
   /// [resourcePool] The name of the vCenter resource pool for the admin cluster.
   /// [storagePolicyName] The name of the vCenter storage policy for the user cluster.
-  VmwareAdminClusterVcenter({
+  const VmwareAdminClusterVcenter({
     this.address,
     this.caCertData,
     this.cluster,

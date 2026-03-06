@@ -12,7 +12,7 @@ class AmountResponse {
   /// Creates a new [AmountResponse].
   /// [currency] The type of currency being used for the value.
   /// [value] Amount value.
-  AmountResponse({
+  const AmountResponse({
     this.currency,
     this.value,
   });

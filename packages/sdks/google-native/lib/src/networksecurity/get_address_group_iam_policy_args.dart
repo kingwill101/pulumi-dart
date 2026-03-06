@@ -17,7 +17,7 @@ class GetAddressGroupIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAddressGroupIamPolicyArgs({
+  const GetAddressGroupIamPolicyArgs({
     required this.addressGroupId,
     required this.location,
     this.optionsRequestedPolicyVersion,

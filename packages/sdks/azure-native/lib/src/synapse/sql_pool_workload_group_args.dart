@@ -39,7 +39,7 @@ class SqlPoolWorkloadGroupArgs {
   /// [sqlPoolName] SQL pool name
   /// [workloadGroupName] The name of the workload group.
   /// [workspaceName] The name of the workspace.
-  SqlPoolWorkloadGroupArgs({
+  const SqlPoolWorkloadGroupArgs({
     this.importance,
     required this.maxResourcePercent,
     this.maxResourcePercentPerRequest,

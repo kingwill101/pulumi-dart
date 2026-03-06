@@ -11,7 +11,7 @@ class OpenApiImageCacheImageRegistryCredential {
   /// [password] Optional.
   /// [server] Optional.
   /// [userName] Optional.
-  OpenApiImageCacheImageRegistryCredential({
+  const OpenApiImageCacheImageRegistryCredential({
     this.password,
     this.server,
     this.userName,

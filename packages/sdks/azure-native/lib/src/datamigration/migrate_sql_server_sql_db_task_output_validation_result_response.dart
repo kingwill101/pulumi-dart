@@ -22,7 +22,7 @@ class MigrateSqlServerSqlDbTaskOutputValidationResultResponse {
   /// [resultType] Result type
   /// [status] Current status of validation at the migration level. Status from the database validation result status will be aggregated here.
   /// [summaryResults] Validation summary results for each database
-  MigrateSqlServerSqlDbTaskOutputValidationResultResponse({
+  const MigrateSqlServerSqlDbTaskOutputValidationResultResponse({
     required this.id,
     required this.migrationId,
     required this.resultType,

@@ -17,7 +17,7 @@ class GetTriggerRepositoryEventConfigPullRequest {
   /// [branch] Regex of branches to match.
   /// [commentControl] Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
   /// [invertRegex] If true, branches that do NOT match the git_ref will trigger a build.
-  GetTriggerRepositoryEventConfigPullRequest({
+  const GetTriggerRepositoryEventConfigPullRequest({
     required this.branch,
     required this.commentControl,
     required this.invertRegex,

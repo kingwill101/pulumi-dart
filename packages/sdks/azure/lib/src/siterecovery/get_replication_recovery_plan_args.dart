@@ -15,7 +15,7 @@ class GetReplicationRecoveryPlanArgs {
   /// Creates a new [GetReplicationRecoveryPlanArgs].
   /// [name] The name of the Replication Plan.
   /// [recoveryVaultId] The ID of the vault that should be updated.
-  GetReplicationRecoveryPlanArgs({
+  const GetReplicationRecoveryPlanArgs({
     required this.name,
     required this.recoveryVaultId,
   });

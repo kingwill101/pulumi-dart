@@ -14,7 +14,7 @@ class NodePoolTaint {
   /// [effect] The scheduling policy.
   /// [key] The key of a taint.
   /// [value] The value of a taint.
-  NodePoolTaint({
+  const NodePoolTaint({
     this.effect,
     required this.key,
     this.value,

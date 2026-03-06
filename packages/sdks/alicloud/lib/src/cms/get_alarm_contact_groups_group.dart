@@ -20,7 +20,7 @@ class GetAlarmContactGroupsGroup {
   /// [describe] The description of the Alarm Group.
   /// [enableSubscribed] Indicates whether the alarm group subscribes to weekly reports.
   /// [id] The ID of the CMS.
-  GetAlarmContactGroupsGroup({
+  const GetAlarmContactGroupsGroup({
     required this.alarmContactGroupName,
     required this.contacts,
     required this.describe,

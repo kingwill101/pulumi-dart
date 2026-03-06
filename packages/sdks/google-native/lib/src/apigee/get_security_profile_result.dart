@@ -45,7 +45,7 @@ class GetSecurityProfileResult {
   /// [revisionPublishTime] The time when revision was published. Once published, the security profile revision cannot be updated further and can be attached to environments.
   /// [revisionUpdateTime] The time when revision was updated.
   /// [scoringConfigs] List of profile scoring configs in this revision.
-  GetSecurityProfileResult({
+  const GetSecurityProfileResult({
     required this.description,
     required this.displayName,
     required this.environments,

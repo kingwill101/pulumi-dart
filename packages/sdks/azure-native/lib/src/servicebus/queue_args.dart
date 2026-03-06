@@ -67,7 +67,7 @@ class QueueArgs {
   /// [requiresSession] A value that indicates whether the queue supports the concept of sessions.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [status] Enumerates the possible values for the status of a messaging entity.
-  QueueArgs({
+  const QueueArgs({
     this.autoDeleteOnIdle,
     this.deadLetteringOnMessageExpiration,
     this.defaultMessageTimeToLive,

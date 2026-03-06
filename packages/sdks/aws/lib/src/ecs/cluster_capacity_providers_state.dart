@@ -19,7 +19,7 @@ class ClusterCapacityProvidersState {
   /// [clusterName] Name of the ECS cluster to manage capacity providers for.
   /// [defaultCapacityProviderStrategies] Set of capacity provider strategies to use by default for the cluster. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ClusterCapacityProvidersState({
+  const ClusterCapacityProvidersState({
     this.capacityProviders,
     this.clusterName,
     this.defaultCapacityProviderStrategies,

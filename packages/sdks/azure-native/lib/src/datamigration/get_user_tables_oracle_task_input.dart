@@ -13,7 +13,7 @@ class GetUserTablesOracleTaskInput {
   /// Creates a new [GetUserTablesOracleTaskInput].
   /// [connectionInfo] Information for connecting to Oracle source
   /// [selectedSchemas] List of Oracle schemas for which to collect tables
-  GetUserTablesOracleTaskInput({
+  const GetUserTablesOracleTaskInput({
     required this.connectionInfo,
     required this.selectedSchemas,
   });

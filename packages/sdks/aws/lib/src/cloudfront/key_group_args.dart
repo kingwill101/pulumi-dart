@@ -18,7 +18,7 @@ class KeyGroupArgs {
   /// [comment] A comment to describe the key group..
   /// [items] A list of the identifiers of the public keys in the key group.
   /// [name] A name to identify the key group.
-  KeyGroupArgs({
+  const KeyGroupArgs({
     this.comment,
     required this.items,
     this.name,

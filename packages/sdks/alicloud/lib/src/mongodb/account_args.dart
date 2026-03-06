@@ -27,7 +27,7 @@ class AccountArgs {
   /// [accountPassword] Account Password
   /// [characterType] The account Comment Information type. Value:
   /// [instanceId] Instance Id
-  AccountArgs({
+  const AccountArgs({
     this.accountDescription,
     required this.accountName,
     required this.accountPassword,

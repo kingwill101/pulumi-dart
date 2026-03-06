@@ -13,7 +13,7 @@ class GetProjectInheritedSettingsResult {
   /// Creates a new [GetProjectInheritedSettingsResult].
   /// [networkSettings] Network settings that will be enforced on this project.
   /// [projectCatalogSettings] Dev Center settings to be used when associating a project with a catalog.
-  GetProjectInheritedSettingsResult({
+  const GetProjectInheritedSettingsResult({
     required this.networkSettings,
     required this.projectCatalogSettings,
   });

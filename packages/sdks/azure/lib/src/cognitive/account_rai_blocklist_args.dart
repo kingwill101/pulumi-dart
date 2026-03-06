@@ -18,7 +18,7 @@ class AccountRaiBlocklistArgs {
   /// [cognitiveAccountId] The ID of the Cognitive Services Account. Changing this forces a new Cognitive Account Rai Blocklist to be created.
   /// [description] A short description for the Cognitive Account Rai Blocklist.
   /// [name] The name of the Cognitive Account Rai Blocklist. Changing this forces a new Cognitive Account Rai Blocklist to be created.
-  AccountRaiBlocklistArgs({
+  const AccountRaiBlocklistArgs({
     required this.cognitiveAccountId,
     this.description,
     this.name,

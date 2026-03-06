@@ -32,7 +32,7 @@ class CacheReserveInstanceState {
   /// [period] Purchase period (unit: month).
   /// [quotaGb] Cache retention specification (unit: GB).
   /// [status] The status of the cache reserve instance. , it is unavailable.
-  CacheReserveInstanceState({
+  const CacheReserveInstanceState({
     this.autoPay,
     this.autoRenew,
     this.crRegion,

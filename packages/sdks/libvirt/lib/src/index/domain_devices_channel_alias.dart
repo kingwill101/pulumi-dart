@@ -8,7 +8,7 @@ class DomainDevicesChannelAlias {
 
   /// Creates a new [DomainDevicesChannelAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesChannelAlias({
+  const DomainDevicesChannelAlias({
     required this.name,
   });
 

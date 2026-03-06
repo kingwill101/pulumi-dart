@@ -14,7 +14,7 @@ class ScalingRuleStepAdjustment {
   /// [metricIntervalLowerBound] The lower bound of step.
   /// [metricIntervalUpperBound] The upper bound of step.
   /// [scalingAdjustment] The adjust value of step.
-  ScalingRuleStepAdjustment({
+  const ScalingRuleStepAdjustment({
     this.metricIntervalLowerBound,
     this.metricIntervalUpperBound,
     this.scalingAdjustment,

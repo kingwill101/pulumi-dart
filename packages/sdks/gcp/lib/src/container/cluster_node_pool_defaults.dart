@@ -9,7 +9,7 @@ class ClusterNodePoolDefaults {
 
   /// Creates a new [ClusterNodePoolDefaults].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  ClusterNodePoolDefaults({
+  const ClusterNodePoolDefaults({
     this.nodeConfigDefaults,
   });
 

@@ -46,7 +46,7 @@ class GetRoleDefinitionResult {
   /// [type] The role definition type.
   /// [updatedBy] Id of the user who updated the assignment
   /// [updatedOn] Time it was updated
-  GetRoleDefinitionResult({
+  const GetRoleDefinitionResult({
     this.assignableScopes,
     required this.azureApiVersion,
     required this.createdBy,

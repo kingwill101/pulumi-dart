@@ -8,7 +8,7 @@ class AnalyticsApplicationOutputSchema {
 
   /// Creates a new [AnalyticsApplicationOutputSchema].
   /// [recordFormatType] The Format Type of the records on the output stream. Can be `CSV` or `JSON`.
-  AnalyticsApplicationOutputSchema({
+  const AnalyticsApplicationOutputSchema({
     required this.recordFormatType,
   });
 

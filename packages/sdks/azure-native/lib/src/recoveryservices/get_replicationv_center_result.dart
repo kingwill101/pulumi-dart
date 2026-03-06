@@ -24,7 +24,7 @@ class GetReplicationvCenterResult {
   /// [name] Resource Name
   /// [properties] VCenter related data.
   /// [type] Resource Type
-  GetReplicationvCenterResult({
+  const GetReplicationvCenterResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

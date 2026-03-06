@@ -52,7 +52,7 @@ class DataBoxCustomerDiskJobDetails {
   /// [returnToCustomerPackageDetails] Return package shipping details.
   /// [reverseShippingDetails] Optional Reverse Shipping details for order.
   /// [shippingAddress] Shipping address of the customer.
-  DataBoxCustomerDiskJobDetails({
+  const DataBoxCustomerDiskJobDetails({
     required this.contactDetails,
     this.dataExportDetails,
     this.dataImportDetails,

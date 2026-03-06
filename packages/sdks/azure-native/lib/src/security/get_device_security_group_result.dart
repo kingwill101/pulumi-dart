@@ -34,7 +34,7 @@ class GetDeviceSecurityGroupResult {
   /// [thresholdRules] The list of custom alert threshold rules.
   /// [timeWindowRules] The list of custom alert time-window rules.
   /// [type] Resource type
-  GetDeviceSecurityGroupResult({
+  const GetDeviceSecurityGroupResult({
     this.allowlistRules,
     required this.azureApiVersion,
     this.denylistRules,

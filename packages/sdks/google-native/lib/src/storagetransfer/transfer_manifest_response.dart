@@ -9,7 +9,7 @@ class TransferManifestResponse {
 
   /// Creates a new [TransferManifestResponse].
   /// [location] Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
-  TransferManifestResponse({
+  const TransferManifestResponse({
     required this.location,
   });
 

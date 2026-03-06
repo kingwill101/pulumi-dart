@@ -8,7 +8,7 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUser {
 
   /// Creates a new [BareMetalClusterSecurityConfigAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  BareMetalClusterSecurityConfigAuthorizationAdminUser({
+  const BareMetalClusterSecurityConfigAuthorizationAdminUser({
     required this.username,
   });
 

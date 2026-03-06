@@ -21,7 +21,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfi
   /// [rootDirectory] The directory within the Amazon EFS file system to mount as the root directory inside the host.
   /// [transitEncryption] Determines whether to enable encryption for Amazon EFS data in transit between the Amazon ECS host and the Amazon EFS server
   /// [transitEncryptionPort] The port to use when sending encrypted data between the Amazon ECS host and the Amazon EFS server.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeEfsVolumeConfiguration({
     required this.authorizationConfigs,
     required this.fileSystemId,
     required this.rootDirectory,

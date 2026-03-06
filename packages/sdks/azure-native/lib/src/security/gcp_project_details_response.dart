@@ -18,7 +18,7 @@ class GcpProjectDetailsResponse {
   /// [projectName] GCP project name
   /// [projectNumber] The unique GCP Project number
   /// [workloadIdentityPoolId] The GCP workload identity federation pool id
-  GcpProjectDetailsResponse({
+  const GcpProjectDetailsResponse({
     this.projectId,
     required this.projectName,
     this.projectNumber,

@@ -39,7 +39,7 @@ class CcpResponseConfig {
   /// [isGzipCompressed] The value indicating whether the remote server support Gzip and we should expect Gzip response.
   /// [successStatusJsonPath] The value where the status message/code should appear in the response.
   /// [successStatusValue] The status value.
-  CcpResponseConfig({
+  const CcpResponseConfig({
     this.compressionAlgo,
     this.convertChildPropertiesToArray,
     this.csvDelimiter,

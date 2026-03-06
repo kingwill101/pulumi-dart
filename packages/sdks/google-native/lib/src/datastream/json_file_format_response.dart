@@ -12,7 +12,7 @@ class JsonFileFormatResponse {
   /// Creates a new [JsonFileFormatResponse].
   /// [compression] Compression of the loaded JSON file.
   /// [schemaFileFormat] The schema file format along JSON data files.
-  JsonFileFormatResponse({
+  const JsonFileFormatResponse({
     required this.compression,
     required this.schemaFileFormat,
   });

@@ -12,7 +12,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
   /// Creates a new [GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice].
   /// [displayPrice] Optional. Display price of the product.
   /// [originalPrice] Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
-  GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice({
+  const GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice({
     this.displayPrice,
     this.originalPrice,
   });

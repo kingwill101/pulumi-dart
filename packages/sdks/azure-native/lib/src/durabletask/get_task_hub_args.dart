@@ -18,7 +18,7 @@ class GetTaskHubArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schedulerName] The name of the Scheduler
   /// [taskHubName] The name of the TaskHub
-  GetTaskHubArgs({
+  const GetTaskHubArgs({
     required this.resourceGroupName,
     required this.schedulerName,
     required this.taskHubName,

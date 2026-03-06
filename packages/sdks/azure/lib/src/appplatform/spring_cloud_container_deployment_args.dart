@@ -46,7 +46,7 @@ class SpringCloudContainerDeploymentArgs {
   /// [quota] A `quota` block as defined below.
   /// [server] The name of the registry that contains the container image.
   /// [springCloudAppId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Container Deployment to be created.
-  SpringCloudContainerDeploymentArgs({
+  const SpringCloudContainerDeploymentArgs({
     this.addonJson,
     this.applicationPerformanceMonitoringIds,
     this.arguments,

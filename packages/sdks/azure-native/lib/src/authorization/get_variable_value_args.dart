@@ -15,7 +15,7 @@ class GetVariableValueArgs {
   /// Creates a new [GetVariableValueArgs].
   /// [variableName] The name of the variable to operate on.
   /// [variableValueName] The name of the variable value to operate on.
-  GetVariableValueArgs({
+  const GetVariableValueArgs({
     required this.variableName,
     required this.variableValueName,
   });

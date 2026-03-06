@@ -9,7 +9,7 @@ class ManagementAssociationPropertiesResponse {
 
   /// Creates a new [ManagementAssociationPropertiesResponse].
   /// [applicationId] The applicationId of the appliance for this association.
-  ManagementAssociationPropertiesResponse({
+  const ManagementAssociationPropertiesResponse({
     required this.applicationId,
   });
 

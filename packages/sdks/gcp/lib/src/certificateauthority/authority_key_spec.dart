@@ -14,7 +14,7 @@ class AuthorityKeySpec {
   /// Creates a new [AuthorityKeySpec].
   /// [algorithm] The algorithm to use for creating a managed Cloud KMS key for a for a simplified
   /// [cloudKmsKeyVersion] The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-  AuthorityKeySpec({
+  const AuthorityKeySpec({
     this.algorithm,
     this.cloudKmsKeyVersion,
   });

@@ -8,7 +8,7 @@ class SqlContainerAutoscaleSettings {
 
   /// Creates a new [SqlContainerAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the SQL container (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  SqlContainerAutoscaleSettings({
+  const SqlContainerAutoscaleSettings({
     this.maxThroughput,
   });
 

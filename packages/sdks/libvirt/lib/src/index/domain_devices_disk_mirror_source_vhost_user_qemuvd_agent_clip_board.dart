@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard({
+  const DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentClipBoard({
     required this.copyPaste,
   });
 

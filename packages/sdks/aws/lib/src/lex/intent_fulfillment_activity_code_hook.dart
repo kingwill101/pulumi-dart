@@ -13,7 +13,7 @@ class IntentFulfillmentActivityCodeHook {
   /// Creates a new [IntentFulfillmentActivityCodeHook].
   /// [messageVersion] The version of the request-response that you want Amazon Lex to use
   /// [uri] The Amazon Resource Name (ARN) of the Lambda function.
-  IntentFulfillmentActivityCodeHook({
+  const IntentFulfillmentActivityCodeHook({
     required this.messageVersion,
     required this.uri,
   });

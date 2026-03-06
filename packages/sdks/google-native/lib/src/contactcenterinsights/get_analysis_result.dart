@@ -22,7 +22,7 @@ class GetAnalysisResult {
   /// [createTime] The time at which the analysis was created, which occurs when the long-running operation completes.
   /// [name] Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
   /// [requestTime] The time at which the analysis was requested.
-  GetAnalysisResult({
+  const GetAnalysisResult({
     required this.analysisResult,
     required this.annotatorSelector,
     required this.createTime,

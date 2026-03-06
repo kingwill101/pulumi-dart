@@ -17,7 +17,7 @@ class GetExternalAddressArgs {
   /// [location] Required.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetExternalAddressArgs({
+  const GetExternalAddressArgs({
     required this.externalAddressId,
     required this.location,
     required this.privateCloudId,

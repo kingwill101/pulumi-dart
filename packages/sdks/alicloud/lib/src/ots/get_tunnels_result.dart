@@ -29,7 +29,7 @@ class GetTunnelsResult {
   /// [outputFile] Optional.
   /// [tableName] The table name of the OTS which could not be changed.
   /// [tunnels] A list of tunnels. Each element contains the following attributes:
-  GetTunnelsResult({
+  const GetTunnelsResult({
     required this.id,
     required this.ids,
     required this.instanceName,

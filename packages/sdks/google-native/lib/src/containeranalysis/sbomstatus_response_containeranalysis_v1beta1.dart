@@ -12,7 +12,7 @@ class SBOMStatusResponseContaineranalysisV1beta1 {
   /// Creates a new [SBOMStatusResponseContaineranalysisV1beta1].
   /// [error] If there was an error generating an SBOM, this will indicate what that error was.
   /// [sbomState] The progress of the SBOM generation.
-  SBOMStatusResponseContaineranalysisV1beta1({
+  const SBOMStatusResponseContaineranalysisV1beta1({
     required this.error,
     required this.sbomState,
   });

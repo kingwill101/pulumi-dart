@@ -53,7 +53,7 @@ class GetWorkspaceDiagnosticResult {
   /// [sampling] Sampling settings for Diagnostic.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [verbosity] The verbosity level applied to traces emitted by trace policies.
-  GetWorkspaceDiagnosticResult({
+  const GetWorkspaceDiagnosticResult({
     this.alwaysLog,
     required this.azureApiVersion,
     this.backend,

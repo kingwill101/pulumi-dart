@@ -11,7 +11,7 @@ class WindowsFunctionAppStickySettings {
   /// Creates a new [WindowsFunctionAppStickySettings].
   /// [appSettingNames] A list of `app_setting` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
   /// [connectionStringNames] A list of `connection_string` names that the Windows Function App will not swap between Slots when a swap operation is triggered.
-  WindowsFunctionAppStickySettings({
+  const WindowsFunctionAppStickySettings({
     this.appSettingNames,
     this.connectionStringNames,
   });

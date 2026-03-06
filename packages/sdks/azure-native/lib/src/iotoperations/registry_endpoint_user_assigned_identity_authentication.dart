@@ -14,7 +14,7 @@ class RegistryEndpointUserAssignedIdentityAuthentication {
   /// Creates a new [RegistryEndpointUserAssignedIdentityAuthentication].
   /// [method] The authentication method.
   /// [userAssignedManagedIdentitySettings] User assigned managed identity properties
-  RegistryEndpointUserAssignedIdentityAuthentication({
+  const RegistryEndpointUserAssignedIdentityAuthentication({
     required this.method,
     required this.userAssignedManagedIdentitySettings,
   });

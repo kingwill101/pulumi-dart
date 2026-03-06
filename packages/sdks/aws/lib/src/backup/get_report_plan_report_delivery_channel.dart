@@ -14,7 +14,7 @@ class GetReportPlanReportDeliveryChannel {
   /// [formats] List of the format of your reports: CSV, JSON, or both.
   /// [s3BucketName] Unique name of the S3 bucket that receives your reports.
   /// [s3KeyPrefix] Prefix for where Backup Audit Manager delivers your reports to Amazon S3. The prefix is this part of the following path: s3://your-bucket-name/prefix/Backup/us-west-2/year/month/day/report-name.
-  GetReportPlanReportDeliveryChannel({
+  const GetReportPlanReportDeliveryChannel({
     required this.formats,
     required this.s3BucketName,
     required this.s3KeyPrefix,

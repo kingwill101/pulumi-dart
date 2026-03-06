@@ -21,7 +21,7 @@ class UpgradeNoteResponse {
   /// [package] Required for non-Windows OS. The package this Upgrade is for.
   /// [version] Required for non-Windows OS. The version of the package in machine + human readable form.
   /// [windowsUpdate] Required for Windows OS. Represents the metadata about the Windows update.
-  UpgradeNoteResponse({
+  const UpgradeNoteResponse({
     required this.distributions,
     required this.package,
     required this.version,

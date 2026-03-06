@@ -42,7 +42,7 @@ class BucketLifecycleRuleItemCondition {
   /// [matchesSuffix] List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
   /// [noncurrentTimeBefore] A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
   /// [numNewerVersions] Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
-  BucketLifecycleRuleItemCondition({
+  const BucketLifecycleRuleItemCondition({
     this.age,
     this.createdBefore,
     this.customTimeBefore,

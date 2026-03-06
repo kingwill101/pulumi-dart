@@ -37,7 +37,7 @@ class WorkspaceNamedValueArgs {
   /// [tags] A list of tags to be applied to the API Management Workspace Named Value.
   /// [value] The value of this API Management Workspace Named Value.
   /// [valueFromKeyVault] A `value_from_key_vault` block as defined below.
-  WorkspaceNamedValueArgs({
+  const WorkspaceNamedValueArgs({
     required this.apiManagementWorkspaceId,
     required this.displayName,
     this.name,

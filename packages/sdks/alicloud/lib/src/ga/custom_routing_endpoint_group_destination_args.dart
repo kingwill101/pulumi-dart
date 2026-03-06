@@ -21,7 +21,7 @@ class CustomRoutingEndpointGroupDestinationArgs {
   /// [fromPort] The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
   /// [protocols] The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
   /// [toPort] The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
-  CustomRoutingEndpointGroupDestinationArgs({
+  const CustomRoutingEndpointGroupDestinationArgs({
     required this.endpointGroupId,
     required this.fromPort,
     required this.protocols,

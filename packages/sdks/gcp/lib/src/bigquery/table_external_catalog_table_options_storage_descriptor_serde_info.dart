@@ -18,7 +18,7 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
   /// [name] Name of the SerDe. The maximum length is 256 characters.
   /// [parameters] Key-value pairs that define the initialization
   /// [serializationLibrary] Specifies a fully-qualified class name of
-  TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo({
+  const TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo({
     this.name,
     this.parameters,
     required this.serializationLibrary,

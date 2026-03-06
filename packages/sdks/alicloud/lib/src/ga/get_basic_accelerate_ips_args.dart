@@ -27,7 +27,7 @@ class GetBasicAccelerateIpsArgs {
   /// [ipSetId] The ID of the Basic Ip Set.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
-  GetBasicAccelerateIpsArgs({
+  const GetBasicAccelerateIpsArgs({
     this.accelerateIpAddress,
     this.accelerateIpId,
     this.ids,

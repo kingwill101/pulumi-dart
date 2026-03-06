@@ -13,7 +13,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRef {
   /// Creates a new [ServiceTemplateSpecContainerEnvFromConfigMapRef].
   /// [localObjectReference] The ConfigMap to select from.
   /// [optional] Specify whether the ConfigMap must be defined
-  ServiceTemplateSpecContainerEnvFromConfigMapRef({
+  const ServiceTemplateSpecContainerEnvFromConfigMapRef({
     this.localObjectReference,
     this.optional,
   });

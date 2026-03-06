@@ -21,7 +21,7 @@ class AgentDiskDetailsResponse {
   /// [diskName] The disk name.
   /// [isOSDisk] A value indicating whether the disk is the OS disk.
   /// [lunId] The lun of disk.
-  AgentDiskDetailsResponse({
+  const AgentDiskDetailsResponse({
     required this.capacityInBytes,
     required this.diskId,
     required this.diskName,

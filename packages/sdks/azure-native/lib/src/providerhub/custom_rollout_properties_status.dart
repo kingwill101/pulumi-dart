@@ -17,7 +17,7 @@ class CustomRolloutPropertiesStatus {
   /// [completedRegions] The completed regions.
   /// [failedOrSkippedRegions] The failed or skipped regions.
   /// [manifestCheckinStatus] The manifest checkin status.
-  CustomRolloutPropertiesStatus({
+  const CustomRolloutPropertiesStatus({
     this.completedRegions,
     this.failedOrSkippedRegions,
     this.manifestCheckinStatus,

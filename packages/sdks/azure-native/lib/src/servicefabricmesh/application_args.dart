@@ -35,7 +35,7 @@ class ApplicationArgs {
   /// [resourceGroupName] Azure resource group name
   /// [services] Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
   /// [tags] Resource tags.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.applicationResourceName,
     this.debugParams,
     this.description,

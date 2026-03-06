@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2InspectTemplateResponse {
   /// [inspectConfig] The core content of the template. Configuration of the scanning process.
   /// [name] The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
   /// [updateTime] The last update timestamp of an inspectTemplate.
-  GooglePrivacyDlpV2InspectTemplateResponse({
+  const GooglePrivacyDlpV2InspectTemplateResponse({
     required this.createTime,
     required this.description,
     required this.displayName,

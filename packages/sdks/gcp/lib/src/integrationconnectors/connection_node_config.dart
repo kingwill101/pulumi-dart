@@ -11,7 +11,7 @@ class ConnectionNodeConfig {
   /// Creates a new [ConnectionNodeConfig].
   /// [maxNodeCount] Minimum number of nodes in the runtime nodes.
   /// [minNodeCount] Minimum number of nodes in the runtime nodes.
-  ConnectionNodeConfig({
+  const ConnectionNodeConfig({
     this.maxNodeCount,
     this.minNodeCount,
   });

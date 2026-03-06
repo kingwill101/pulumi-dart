@@ -27,7 +27,7 @@ class RefreshScheduleState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [schedule] The [refresh schedule](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_RefreshSchedule.html). See schedule
   /// [scheduleId] The ID of the refresh schedule.
-  RefreshScheduleState({
+  const RefreshScheduleState({
     this.arn,
     this.awsAccountId,
     this.dataSetId,

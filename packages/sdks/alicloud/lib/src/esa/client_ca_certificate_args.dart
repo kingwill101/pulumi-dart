@@ -18,7 +18,7 @@ class ClientCaCertificateArgs {
   /// [certificate] Certificate content.
   /// [clientCaCertName] The certificate name.
   /// [siteId] Site Id
-  ClientCaCertificateArgs({
+  const ClientCaCertificateArgs({
     required this.certificate,
     this.clientCaCertName,
     required this.siteId,

@@ -33,7 +33,7 @@ class OriginPoolOrigin {
   /// [originId] Origin ID.
   /// [type] Source station type:
   /// [weight] Weight, 0-100.
-  OriginPoolOrigin({
+  const OriginPoolOrigin({
     this.address,
     this.authConf,
     this.enabled,

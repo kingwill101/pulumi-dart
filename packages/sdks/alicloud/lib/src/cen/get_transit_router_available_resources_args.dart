@@ -15,7 +15,7 @@ class GetTransitRouterAvailableResourcesArgs {
   /// Creates a new [GetTransitRouterAvailableResourcesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [supportMulticast] Specifies whether to query only the zones in which the multicast feature is supported.
-  GetTransitRouterAvailableResourcesArgs({
+  const GetTransitRouterAvailableResourcesArgs({
     this.outputFile,
     this.supportMulticast,
   });

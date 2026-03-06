@@ -29,7 +29,7 @@ class LicenseProfileMachineInstanceViewEsuPropertiesResponse {
   /// [esuKeys] The list of ESU keys.
   /// [licenseAssignmentState] Describes the license assignment state (Assigned or NotAssigned).
   /// [serverType] The type of the Esu servers.
-  LicenseProfileMachineInstanceViewEsuPropertiesResponse({
+  const LicenseProfileMachineInstanceViewEsuPropertiesResponse({
     this.assignedLicense,
     required this.assignedLicenseImmutableId,
     required this.esuEligibility,

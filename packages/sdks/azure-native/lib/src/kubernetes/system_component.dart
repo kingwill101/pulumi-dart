@@ -15,7 +15,7 @@ class SystemComponent {
   /// [majorVersion] Major Version of the system extension to be installed on the cluster resource.
   /// [type] Type of the system extension
   /// [userSpecifiedVersion] Version of the system extension to be installed on the cluster resource.
-  SystemComponent({
+  const SystemComponent({
     this.majorVersion,
     this.type,
     this.userSpecifiedVersion,

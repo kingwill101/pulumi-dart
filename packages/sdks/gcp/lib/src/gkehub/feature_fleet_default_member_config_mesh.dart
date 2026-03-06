@@ -9,7 +9,7 @@ class FeatureFleetDefaultMemberConfigMesh {
 
   /// Creates a new [FeatureFleetDefaultMemberConfigMesh].
   /// [management] Whether to automatically manage Service Mesh
-  FeatureFleetDefaultMemberConfigMesh({
+  const FeatureFleetDefaultMemberConfigMesh({
     required this.management,
   });
 

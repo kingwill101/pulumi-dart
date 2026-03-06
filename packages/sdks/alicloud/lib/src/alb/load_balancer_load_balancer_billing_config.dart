@@ -8,7 +8,7 @@ class LoadBalancerLoadBalancerBillingConfig {
 
   /// Creates a new [LoadBalancerLoadBalancerBillingConfig].
   /// [payType] Pay Type
-  LoadBalancerLoadBalancerBillingConfig({
+  const LoadBalancerLoadBalancerBillingConfig({
     required this.payType,
   });
 

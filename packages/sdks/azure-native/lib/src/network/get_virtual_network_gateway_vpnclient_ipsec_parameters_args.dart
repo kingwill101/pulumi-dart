@@ -15,7 +15,7 @@ class GetVirtualNetworkGatewayVpnclientIpsecParametersArgs {
   /// Creates a new [GetVirtualNetworkGatewayVpnclientIpsecParametersArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The virtual network gateway name.
-  GetVirtualNetworkGatewayVpnclientIpsecParametersArgs({
+  const GetVirtualNetworkGatewayVpnclientIpsecParametersArgs({
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,
   });

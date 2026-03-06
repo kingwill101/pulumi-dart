@@ -30,7 +30,7 @@ class SqlBackupFileInfoResponse {
   /// [fileName] File name.
   /// [status] Status of the file. (Initial, Uploading, Uploaded, Restoring, Restored or Skipped)
   /// [totalSize] File size in bytes
-  SqlBackupFileInfoResponse({
+  const SqlBackupFileInfoResponse({
     required this.copyDuration,
     required this.copyThroughput,
     required this.dataRead,

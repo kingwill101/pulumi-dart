@@ -12,7 +12,7 @@ class DefenderCspmAwsOfferingResponseCiemOidc {
   /// Creates a new [DefenderCspmAwsOfferingResponseCiemOidc].
   /// [azureActiveDirectoryAppName] the azure active directory app name used of authenticating against AWS
   /// [cloudRoleArn] The cloud role ARN in AWS for Permissions Management used for oidc connection
-  DefenderCspmAwsOfferingResponseCiemOidc({
+  const DefenderCspmAwsOfferingResponseCiemOidc({
     this.azureActiveDirectoryAppName,
     this.cloudRoleArn,
   });

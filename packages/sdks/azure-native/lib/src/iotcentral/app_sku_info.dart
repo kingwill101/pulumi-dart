@@ -9,7 +9,7 @@ class AppSkuInfo {
 
   /// Creates a new [AppSkuInfo].
   /// [name] The name of the SKU.
-  AppSkuInfo({
+  const AppSkuInfo({
     required this.name,
   });
 

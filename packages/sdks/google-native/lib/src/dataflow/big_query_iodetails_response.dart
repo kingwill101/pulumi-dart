@@ -18,7 +18,7 @@ class BigQueryIODetailsResponse {
   /// [project] Project accessed in the connection.
   /// [query] Query used to access data in the connection.
   /// [table] Table accessed in the connection.
-  BigQueryIODetailsResponse({
+  const BigQueryIODetailsResponse({
     required this.dataset,
     required this.project,
     required this.query,

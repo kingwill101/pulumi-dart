@@ -24,7 +24,7 @@ class GetNasBackupPlansResult {
   /// [outputFile] Optional.
   /// [plans] Required.
   /// [vaultId] Optional.
-  GetNasBackupPlansResult({
+  const GetNasBackupPlansResult({
     this.fileSystemId,
     required this.id,
     required this.ids,

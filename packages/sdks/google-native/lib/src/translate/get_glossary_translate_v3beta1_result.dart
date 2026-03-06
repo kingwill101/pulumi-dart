@@ -29,7 +29,7 @@ class GetGlossaryTranslateV3beta1Result {
   /// [languagePair] Used with unidirectional glossaries.
   /// [name] The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   /// [submitTime] When CreateGlossary was called.
-  GetGlossaryTranslateV3beta1Result({
+  const GetGlossaryTranslateV3beta1Result({
     required this.endTime,
     required this.entryCount,
     required this.inputConfig,

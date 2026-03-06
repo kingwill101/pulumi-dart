@@ -34,7 +34,7 @@ class GetPartnerRegistrationResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [tags] Tags of the resource.
   /// [type] Type of the resource.
-  GetPartnerRegistrationResult({
+  const GetPartnerRegistrationResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

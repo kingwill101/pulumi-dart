@@ -62,7 +62,7 @@ class UserArgs {
   /// [username] The username of the user.
   /// [volumeGrants] The volumes the user has permissions access to.
   /// [vpcGrants] The Virtual Private Clouds (VPCs) the user has permissions access to.
-  UserArgs({
+  const UserArgs({
     this.domainGrants,
     required this.email,
     this.firewallGrants,

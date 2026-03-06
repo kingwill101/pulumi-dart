@@ -15,7 +15,7 @@ class GetContextArgs {
   /// Creates a new [GetContextArgs].
   /// [contextName] The name of the Context.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContextArgs({
+  const GetContextArgs({
     required this.contextName,
     required this.resourceGroupName,
   });

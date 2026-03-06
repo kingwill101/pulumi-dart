@@ -41,7 +41,7 @@ class DataflowEndpointMqtt {
   /// [retain] Whether or not to keep the retain setting.
   /// [sessionExpirySeconds] Session expiry in seconds.
   /// [tls] TLS configuration.
-  DataflowEndpointMqtt({
+  const DataflowEndpointMqtt({
     required this.authentication,
     this.clientIdPrefix,
     this.cloudEventAttributes,

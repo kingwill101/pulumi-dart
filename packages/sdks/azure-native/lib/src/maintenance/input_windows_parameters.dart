@@ -18,7 +18,7 @@ class InputWindowsParameters {
   /// [excludeKbsRequiringReboot] Exclude patches which need reboot
   /// [kbNumbersToExclude] Windows KBID to be excluded for patching.
   /// [kbNumbersToInclude] Windows KBID to be included for patching.
-  InputWindowsParameters({
+  const InputWindowsParameters({
     this.classificationsToInclude,
     this.excludeKbsRequiringReboot,
     this.kbNumbersToExclude,

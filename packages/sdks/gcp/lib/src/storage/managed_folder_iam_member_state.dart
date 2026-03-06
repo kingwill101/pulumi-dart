@@ -38,7 +38,7 @@ class ManagedFolderIamMemberState {
   /// [managedFolder] Used to find the parent resource to bind the IAM policy to
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  ManagedFolderIamMemberState({
+  const ManagedFolderIamMemberState({
     this.bucket,
     this.condition,
     this.etag,

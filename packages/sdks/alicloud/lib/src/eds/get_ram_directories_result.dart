@@ -22,7 +22,7 @@ class GetRamDirectoriesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetRamDirectoriesResult({
+  const GetRamDirectoriesResult({
     required this.directories,
     required this.id,
     required this.ids,

@@ -23,7 +23,7 @@ class RegistryCredentialSetState {
   /// [identity] An `identity` block as defined below.
   /// [loginServer] The login server for the Credential Set. Changing this forces a new Container Registry Credential Set to be created.
   /// [name] The name which should be used for this Container Registry Credential Set. Changing this forces a new Container Registry Credential Set to be created.
-  RegistryCredentialSetState({
+  const RegistryCredentialSetState({
     this.authenticationCredentials,
     this.containerRegistryId,
     this.identity,

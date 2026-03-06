@@ -78,7 +78,7 @@ class BackupPlanState {
   /// [state] The State of the BackupPlan.
   /// [stateReason] Detailed description of why BackupPlan is in its current state.
   /// [uid] Server generated, unique identifier of UUID format.
-  BackupPlanState({
+  const BackupPlanState({
     this.backupConfig,
     this.backupSchedule,
     this.cluster,

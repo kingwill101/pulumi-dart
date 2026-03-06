@@ -21,7 +21,7 @@ class GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs {
   /// [environmentDefinitionName] The name of the Environment Definition.
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs({
+  const GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs({
     required this.catalogName,
     required this.environmentDefinitionName,
     required this.projectName,

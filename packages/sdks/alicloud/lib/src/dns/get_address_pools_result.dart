@@ -24,7 +24,7 @@ class GetAddressPoolsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [pools] Required.
-  GetAddressPoolsResult({
+  const GetAddressPoolsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

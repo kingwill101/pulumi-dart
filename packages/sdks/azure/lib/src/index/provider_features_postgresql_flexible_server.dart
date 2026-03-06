@@ -7,7 +7,7 @@ class ProviderFeaturesPostgresqlFlexibleServer {
 
   /// Creates a new [ProviderFeaturesPostgresqlFlexibleServer].
   /// [restartServerOnConfigurationValueChange] Optional.
-  ProviderFeaturesPostgresqlFlexibleServer({
+  const ProviderFeaturesPostgresqlFlexibleServer({
     this.restartServerOnConfigurationValueChange,
   });
 

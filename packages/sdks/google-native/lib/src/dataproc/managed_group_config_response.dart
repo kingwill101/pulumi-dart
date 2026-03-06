@@ -15,7 +15,7 @@ class ManagedGroupConfigResponse {
   /// [instanceGroupManagerName] The name of the Instance Group Manager for this group.
   /// [instanceGroupManagerUri] The partial URI to the instance group manager for this group. E.g. projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
   /// [instanceTemplateName] The name of the Instance Template used for the Managed Instance Group.
-  ManagedGroupConfigResponse({
+  const ManagedGroupConfigResponse({
     required this.instanceGroupManagerName,
     required this.instanceGroupManagerUri,
     required this.instanceTemplateName,

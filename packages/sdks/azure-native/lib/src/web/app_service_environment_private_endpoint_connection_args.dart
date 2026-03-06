@@ -27,7 +27,7 @@ class AppServiceEnvironmentPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] Optional.
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  AppServiceEnvironmentPrivateEndpointConnectionArgs({
+  const AppServiceEnvironmentPrivateEndpointConnectionArgs({
     this.ipAddresses,
     this.kind,
     required this.name,

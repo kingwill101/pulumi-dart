@@ -11,7 +11,7 @@ class SwaggerSpecification {
   /// Creates a new [SwaggerSpecification].
   /// [apiVersions] The api versions.
   /// [swaggerSpecFolderUri] The swagger spec folder uri.
-  SwaggerSpecification({
+  const SwaggerSpecification({
     this.apiVersions,
     this.swaggerSpecFolderUri,
   });

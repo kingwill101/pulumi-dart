@@ -19,7 +19,7 @@ class FileShareConfig {
   /// [name] The name of the file share (must be 16 characters or less).
   /// [nfsExportOptions] Nfs Export Options. There is a limit of 10 export options per file share.
   /// [sourceBackup] The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
-  FileShareConfig({
+  const FileShareConfig({
     this.capacityGb,
     this.name,
     this.nfsExportOptions,

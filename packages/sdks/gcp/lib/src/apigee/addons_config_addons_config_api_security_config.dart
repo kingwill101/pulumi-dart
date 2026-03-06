@@ -12,7 +12,7 @@ class AddonsConfigAddonsConfigApiSecurityConfig {
   /// Creates a new [AddonsConfigAddonsConfigApiSecurityConfig].
   /// [enabled] Flag that specifies whether the API security add-on is enabled.
   /// [expiresAt] (Output)
-  AddonsConfigAddonsConfigApiSecurityConfig({
+  const AddonsConfigAddonsConfigApiSecurityConfig({
     this.enabled,
     this.expiresAt,
   });

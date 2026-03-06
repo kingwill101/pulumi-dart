@@ -23,7 +23,7 @@ class ProfileRewriteUriRulesState {
   /// [ruleName] Specifies the name of the uri rule.
   /// [ruleType] Specifies the type of the uri rule. Valid choices are: `request, response, both`. Default value is: `both`
   /// [servers] Block type. Each request is block type with following arguments.
-  ProfileRewriteUriRulesState({
+  const ProfileRewriteUriRulesState({
     this.clients,
     this.profileName,
     this.ruleName,

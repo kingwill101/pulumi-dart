@@ -27,7 +27,7 @@ class GetCustomPluginResult {
   /// [region] Required.
   /// [state] the state of the custom plugin.
   /// [tags] A map of tags assigned to the resource.
-  GetCustomPluginResult({
+  const GetCustomPluginResult({
     required this.arn,
     required this.description,
     required this.id,

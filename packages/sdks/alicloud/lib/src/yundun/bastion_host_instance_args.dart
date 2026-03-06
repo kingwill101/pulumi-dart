@@ -47,7 +47,7 @@ class BastionHostInstanceArgs {
   /// [storage] Required.
   /// [tags] Optional.
   /// [vswitchId] Required.
-  BastionHostInstanceArgs({
+  const BastionHostInstanceArgs({
     this.adAuthServers,
     required this.bandwidth,
     required this.description,

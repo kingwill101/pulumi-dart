@@ -12,7 +12,7 @@ class BareMetalWorkloadNodeConfigResponse {
   /// Creates a new [BareMetalWorkloadNodeConfigResponse].
   /// [containerRuntime] Specifies which container runtime will be used.
   /// [maxPodsPerNode] The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter.
-  BareMetalWorkloadNodeConfigResponse({
+  const BareMetalWorkloadNodeConfigResponse({
     required this.containerRuntime,
     required this.maxPodsPerNode,
   });

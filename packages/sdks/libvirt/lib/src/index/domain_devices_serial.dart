@@ -32,7 +32,7 @@ class DomainDevicesSerial {
   /// [protocol] Sets the protocol type for the EGD backend.
   /// [source] Defines the source settings for the EGD backend.
   /// [target] Configures the target settings for the serial device, specifying where output is directed.
-  DomainDevicesSerial({
+  const DomainDevicesSerial({
     this.acpi,
     this.address,
     this.alias,

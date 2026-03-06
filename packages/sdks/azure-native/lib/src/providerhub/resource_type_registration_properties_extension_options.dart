@@ -10,7 +10,7 @@ class ResourceTypeRegistrationPropertiesExtensionOptions {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesExtensionOptions].
   /// [resourceCreationBegin] Resource creation begin.
-  ResourceTypeRegistrationPropertiesExtensionOptions({
+  const ResourceTypeRegistrationPropertiesExtensionOptions({
     this.resourceCreationBegin,
   });
 

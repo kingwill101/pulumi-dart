@@ -16,7 +16,7 @@ class RbacPolicy {
   /// [name] Name of the RbacPolicy.
   /// [permissions] The list of permissions.
   /// [principals] The list of principals.
-  RbacPolicy({
+  const RbacPolicy({
     this.name,
     this.permissions,
     this.principals,

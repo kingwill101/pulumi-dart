@@ -23,7 +23,7 @@ class GetWorkspaceResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Machine Learning Workspace.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.id,
     required this.identities,
     required this.location,

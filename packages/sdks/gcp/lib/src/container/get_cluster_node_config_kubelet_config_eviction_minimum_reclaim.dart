@@ -23,7 +23,7 @@ class GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
   /// [nodefsAvailable] Defines percentage of minimum reclaim for nodefs.available.
   /// [nodefsInodesFree] Defines percentage of minimum reclaim for nodefs.inodesFree.
   /// [pidAvailable] Defines percentage of minimum reclaim for pid.available.
-  GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim({
+  const GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim({
     required this.imagefsAvailable,
     required this.imagefsInodesFree,
     required this.memoryAvailable,

@@ -15,7 +15,7 @@ class HadoopClusterRolesWorkerNodeAutoscale {
   /// Creates a new [HadoopClusterRolesWorkerNodeAutoscale].
   /// [capacity] A `capacity` block as defined below.
   /// [recurrence] A `recurrence` block as defined below.
-  HadoopClusterRolesWorkerNodeAutoscale({
+  const HadoopClusterRolesWorkerNodeAutoscale({
     this.capacity,
     this.recurrence,
   });

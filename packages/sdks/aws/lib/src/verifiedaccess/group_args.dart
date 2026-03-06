@@ -30,7 +30,7 @@ class GroupArgs {
   /// [sseConfiguration] Configuration block to use KMS keys for server-side encryption.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [verifiedaccessInstanceId] The id of the verified access instance this group is associated with.
-  GroupArgs({
+  const GroupArgs({
     this.description,
     this.policyDocument,
     this.region,

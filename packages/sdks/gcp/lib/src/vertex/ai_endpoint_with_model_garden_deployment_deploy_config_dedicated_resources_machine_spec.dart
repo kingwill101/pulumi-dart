@@ -52,7 +52,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
   /// [multihostGpuNodeCount] The number of nodes per replica for multihost GPU deployments.
   /// [reservationAffinity] A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
   /// [tpuTopology] The topology of the TPUs. Corresponds to the TPU topologies available from
-  AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec({
+  const AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec({
     this.acceleratorCount,
     this.acceleratorType,
     this.machineType,

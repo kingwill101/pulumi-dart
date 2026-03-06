@@ -12,7 +12,7 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettings {
   /// [channelMappings] Required.
   /// [channelsIn] Optional.
   /// [channelsOut] Optional.
-  ChannelEncoderSettingsAudioDescriptionRemixSettings({
+  const ChannelEncoderSettingsAudioDescriptionRemixSettings({
     required this.channelMappings,
     this.channelsIn,
     this.channelsOut,

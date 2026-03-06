@@ -13,7 +13,7 @@ class WeeklySchedule {
   /// Creates a new [WeeklySchedule].
   /// [scheduleRunDays] Schedule run days.
   /// [scheduleRunTimes] List of times of day this schedule has to be run.
-  WeeklySchedule({
+  const WeeklySchedule({
     this.scheduleRunDays,
     this.scheduleRunTimes,
   });

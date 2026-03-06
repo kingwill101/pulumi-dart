@@ -10,7 +10,7 @@ class AdhocBasedTaggingCriteriaResponse {
 
   /// Creates a new [AdhocBasedTaggingCriteriaResponse].
   /// [tagInfo] Retention tag information
-  AdhocBasedTaggingCriteriaResponse({
+  const AdhocBasedTaggingCriteriaResponse({
     this.tagInfo,
   });
 

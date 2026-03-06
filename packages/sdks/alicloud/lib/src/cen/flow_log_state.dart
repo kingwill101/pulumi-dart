@@ -49,7 +49,7 @@ class FlowLogState {
   /// [tags] The tag of the resource
   /// [transitRouterAttachmentId] Cross-region Connection ID or VBR connection ID.
   /// [transitRouterId] Transit Router ID
-  FlowLogState({
+  const FlowLogState({
     this.cenId,
     this.createTime,
     this.description,

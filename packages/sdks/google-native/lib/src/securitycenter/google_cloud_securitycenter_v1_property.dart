@@ -13,7 +13,7 @@ class GoogleCloudSecuritycenterV1Property {
   /// Creates a new [GoogleCloudSecuritycenterV1Property].
   /// [name] Name of the property for the custom output.
   /// [valueExpression] The CEL expression for the custom output. A resource property can be specified to return the value of the property or a text string enclosed in quotation marks.
-  GoogleCloudSecuritycenterV1Property({
+  const GoogleCloudSecuritycenterV1Property({
     this.name,
     this.valueExpression,
   });

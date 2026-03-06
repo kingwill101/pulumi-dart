@@ -30,7 +30,7 @@ class ClientArgs {
   /// [location] Location in which client needs to be provisioned.
   /// [project] The ID of the project in which the resource belongs.
   /// [runAsServiceAccount] (Optional, Deprecated)
-  ClientArgs({
+  const ClientArgs({
     this.cloudKmsConfig,
     this.createSampleIntegrations,
     required this.location,

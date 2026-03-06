@@ -34,7 +34,7 @@ class GetResourceGuardResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetResourceGuardResult({
+  const GetResourceGuardResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

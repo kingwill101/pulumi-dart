@@ -21,7 +21,7 @@ class GoogleCloudRunV2TrafficTargetStatusResponse {
   /// [tag] Indicates the string used in the URI to exclusively reference this target.
   /// [type] The allocation type for this traffic target.
   /// [uri] Displays the target URI.
-  GoogleCloudRunV2TrafficTargetStatusResponse({
+  const GoogleCloudRunV2TrafficTargetStatusResponse({
     required this.percent,
     required this.revision,
     required this.tag,

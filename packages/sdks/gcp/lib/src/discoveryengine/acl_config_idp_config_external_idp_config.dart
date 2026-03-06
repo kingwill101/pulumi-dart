@@ -8,7 +8,7 @@ class AclConfigIdpConfigExternalIdpConfig {
 
   /// Creates a new [AclConfigIdpConfigExternalIdpConfig].
   /// [workforcePoolName] Workforce pool name: "locations/global/workforcePools/pool_id"
-  AclConfigIdpConfigExternalIdpConfig({
+  const AclConfigIdpConfigExternalIdpConfig({
     this.workforcePoolName,
   });
 

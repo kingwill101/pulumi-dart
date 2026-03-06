@@ -33,7 +33,7 @@ class GetClusterDataprocV1beta2Result {
   /// [project] The Google Cloud Platform project ID that the cluster belongs to.
   /// [status] Cluster status.
   /// [statusHistory] The previous cluster status.
-  GetClusterDataprocV1beta2Result({
+  const GetClusterDataprocV1beta2Result({
     required this.clusterName,
     required this.clusterUuid,
     required this.config,

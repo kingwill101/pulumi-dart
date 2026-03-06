@@ -23,7 +23,7 @@ class RecoveryPlanA2ADetailsResponse {
   /// [primaryZone] The primary zone.
   /// [recoveryExtendedLocation] The recovery extended location.
   /// [recoveryZone] The recovery zone.
-  RecoveryPlanA2ADetailsResponse({
+  const RecoveryPlanA2ADetailsResponse({
     required this.instanceType,
     this.primaryExtendedLocation,
     this.primaryZone,

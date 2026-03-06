@@ -50,7 +50,7 @@ class GetIpamIpamPoolAllocationsAllocation {
   /// [sourceCidr] The source address segment.
   /// [status] The status of the instance. Value:-**Created**: indicates that the creation is complete.
   /// [totalCount] Total number of records.
-  GetIpamIpamPoolAllocationsAllocation({
+  const GetIpamIpamPoolAllocationsAllocation({
     required this.cidr,
     required this.createTime,
     required this.id,

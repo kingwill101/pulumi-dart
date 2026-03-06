@@ -36,7 +36,7 @@ class GetPreRuleCountersResult {
   /// [ruleName] rule name
   /// [ruleStackName] rule Stack Name
   /// [timestamp] timestamp of response
-  GetPreRuleCountersResult({
+  const GetPreRuleCountersResult({
     this.appSeen,
     this.firewallName,
     this.hitCount,

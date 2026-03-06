@@ -11,7 +11,7 @@ class NetworkIpDhcpHostLease {
   /// Creates a new [NetworkIpDhcpHostLease].
   /// [expiry] Configures the expiration time of the DHCP lease for a host.
   /// [unit] Sets the unit of time for the lease expiry, such as seconds or minutes.
-  NetworkIpDhcpHostLease({
+  const NetworkIpDhcpHostLease({
     required this.expiry,
     this.unit,
   });

@@ -17,7 +17,7 @@ class GetManagementGroupArgs {
   /// Creates a new [GetManagementGroupArgs].
   /// [displayName] Specifies the display name of this Management Group.
   /// [name] Specifies the name or UUID of this Management Group.
-  GetManagementGroupArgs({
+  const GetManagementGroupArgs({
     this.displayName,
     this.name,
   });

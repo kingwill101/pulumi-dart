@@ -13,7 +13,7 @@ class BillingHubGetUsageRequestResponse {
   /// [pageIndex] Optional.
   /// [pageSize] Optional.
   /// [startTimeStamp] Required.
-  BillingHubGetUsageRequestResponse({
+  const BillingHubGetUsageRequestResponse({
     required this.endTimeStamp,
     this.pageIndex,
     this.pageSize,

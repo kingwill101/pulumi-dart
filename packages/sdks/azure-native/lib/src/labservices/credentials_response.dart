@@ -9,7 +9,7 @@ class CredentialsResponse {
 
   /// Creates a new [CredentialsResponse].
   /// [username] The username to use when signing in to lab VMs.
-  CredentialsResponse({
+  const CredentialsResponse({
     required this.username,
   });
 

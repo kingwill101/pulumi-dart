@@ -44,7 +44,7 @@ class FlowArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tasks] A Task that Amazon AppFlow performs while transferring the data in the flow run.
   /// [triggerConfig] A Trigger that determine how and when the flow runs.
-  FlowArgs({
+  const FlowArgs({
     this.description,
     required this.destinationFlowConfigs,
     this.kmsArn,

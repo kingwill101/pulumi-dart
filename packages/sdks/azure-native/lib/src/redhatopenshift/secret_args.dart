@@ -21,7 +21,7 @@ class SecretArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
   /// [secretResources] The Secrets Resources.
-  SecretArgs({
+  const SecretArgs({
     this.childResourceName,
     required this.resourceGroupName,
     required this.resourceName,

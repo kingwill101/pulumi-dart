@@ -15,7 +15,7 @@ class GetEvidenceArgs {
   /// Creates a new [GetEvidenceArgs].
   /// [evidenceName] The evidence name.
   /// [reportName] Report Name.
-  GetEvidenceArgs({
+  const GetEvidenceArgs({
     required this.evidenceName,
     required this.reportName,
   });

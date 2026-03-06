@@ -16,7 +16,7 @@ class AutomationActionLogicAppResponse {
   /// [actionType] The type of the action that will be triggered by the Automation
   /// [logicAppResourceId] The triggered Logic App Azure Resource ID. This can also reside on other subscriptions, given that you have permissions to trigger the Logic App
   /// [uri] The Logic App trigger URI endpoint (it will not be included in any response).
-  AutomationActionLogicAppResponse({
+  const AutomationActionLogicAppResponse({
     required this.actionType,
     this.logicAppResourceId,
     this.uri,

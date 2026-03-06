@@ -11,7 +11,7 @@ class GetImagePipelineImageTestsConfiguration {
   /// Creates a new [GetImagePipelineImageTestsConfiguration].
   /// [imageTestsEnabled] Whether image tests are enabled.
   /// [timeoutMinutes] Number of minutes before image tests time out.
-  GetImagePipelineImageTestsConfiguration({
+  const GetImagePipelineImageTestsConfiguration({
     required this.imageTestsEnabled,
     required this.timeoutMinutes,
   });

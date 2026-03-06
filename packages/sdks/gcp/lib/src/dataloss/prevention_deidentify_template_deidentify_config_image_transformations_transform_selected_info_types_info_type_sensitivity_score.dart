@@ -9,7 +9,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore({
+  const PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScore({
     required this.score,
   });
 

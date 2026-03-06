@@ -11,7 +11,7 @@ class NetworkInsightsPathFilterAtSourceSourcePortRange {
   /// Creates a new [NetworkInsightsPathFilterAtSourceSourcePortRange].
   /// [fromPort] The first port in the range.
   /// [toPort] The last port in the range.
-  NetworkInsightsPathFilterAtSourceSourcePortRange({
+  const NetworkInsightsPathFilterAtSourceSourcePortRange({
     this.fromPort,
     this.toPort,
   });

@@ -35,7 +35,7 @@ class DefaultPatchBaselineArgs {
   /// [baselineId] ID of the patch baseline.
   /// [operatingSystem] The operating system the patch baseline applies to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DefaultPatchBaselineArgs({
+  const DefaultPatchBaselineArgs({
     required this.baselineId,
     required this.operatingSystem,
     this.region,

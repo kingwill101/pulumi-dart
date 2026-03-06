@@ -30,7 +30,7 @@ class EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse {
   /// [parameterNameOption] Required.
   /// [subSectionLabel] A user-friendly label for subSection under which the parameter will be displayed.
   /// [uiPlaceholderText] Placeholder text which will appear in the UI input form for this parameter.
-  EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse({
+  const EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse({
     required this.descriptivePhrase,
     required this.helpText,
     required this.hideDefaultValue,

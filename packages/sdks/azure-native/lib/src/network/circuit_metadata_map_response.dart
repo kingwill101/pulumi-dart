@@ -14,7 +14,7 @@ class CircuitMetadataMapResponse {
   /// [link] Link to the Express Route circuit
   /// [location] Peering location of the Express Route Circuit
   /// [name] Express Route Circuit Name
-  CircuitMetadataMapResponse({
+  const CircuitMetadataMapResponse({
     this.link,
     this.location,
     this.name,

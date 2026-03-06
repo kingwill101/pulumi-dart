@@ -11,7 +11,7 @@ class DomainDevicesHostdevSubsysScsiHostSource {
   /// Creates a new [DomainDevicesHostdevSubsysScsiHostSource].
   /// [protocol] Defines the protocol type for the SCSI host source.
   /// [wwpn] Specifies the World Wide Port Name (WWPN) for the SCSI host source.
-  DomainDevicesHostdevSubsysScsiHostSource({
+  const DomainDevicesHostdevSubsysScsiHostSource({
     this.protocol,
     this.wwpn,
   });

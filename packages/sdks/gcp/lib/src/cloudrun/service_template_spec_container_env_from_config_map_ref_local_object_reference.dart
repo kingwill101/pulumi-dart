@@ -8,7 +8,7 @@ class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
 
   /// Creates a new [ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference].
   /// [name] Name of the referent.
-  ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference({
+  const ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference({
     required this.name,
   });
 

@@ -25,7 +25,7 @@ class GetEdgeKubernetesClustersResult {
   /// [nameRegex] Optional.
   /// [names] A list of matched Kubernetes clusters' names.
   /// [outputFile] Optional.
-  GetEdgeKubernetesClustersResult({
+  const GetEdgeKubernetesClustersResult({
     required this.clusters,
     this.enableDetails,
     required this.id,

@@ -25,7 +25,7 @@ class GetLaunchOptionsResult {
   /// [options] (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [productId] Required.
-  GetLaunchOptionsResult({
+  const GetLaunchOptionsResult({
     required this.id,
     required this.ids,
     required this.launchOptions,

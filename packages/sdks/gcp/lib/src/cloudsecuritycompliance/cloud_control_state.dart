@@ -77,7 +77,7 @@ class CloudControlState {
   /// [supportedCloudProviders] cloud providers supported
   /// [supportedEnforcementModes] The supported enforcement mode of the cloud control. Default is DETECTIVE.
   /// [supportedTargetResourceTypes] target resource types supported by the CloudControl.
-  CloudControlState({
+  const CloudControlState({
     this.categories,
     this.cloudControlId,
     this.createTime,

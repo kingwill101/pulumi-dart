@@ -11,7 +11,7 @@ class TopicRuleErrorActionTimestreamTimestamp {
   /// Creates a new [TopicRuleErrorActionTimestreamTimestamp].
   /// [unit] The precision of the timestamp value that results from the expression described in value. Valid values: `SECONDS`, `MILLISECONDS`, `MICROSECONDS`, `NANOSECONDS`.
   /// [value] An expression that returns a long epoch time value.
-  TopicRuleErrorActionTimestreamTimestamp({
+  const TopicRuleErrorActionTimestreamTimestamp({
     required this.unit,
     required this.value,
   });

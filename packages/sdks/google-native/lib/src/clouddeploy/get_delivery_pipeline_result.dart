@@ -40,7 +40,7 @@ class GetDeliveryPipelineResult {
   /// [suspended] When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
   /// [uid] Unique identifier of the `DeliveryPipeline`.
   /// [updateTime] Most recent time at which the pipeline was updated.
-  GetDeliveryPipelineResult({
+  const GetDeliveryPipelineResult({
     required this.annotations,
     required this.condition,
     required this.createTime,

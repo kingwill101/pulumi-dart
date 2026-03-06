@@ -11,7 +11,7 @@ class LinkedServiceAzureFileStorageKeyVaultPassword {
   /// Creates a new [LinkedServiceAzureFileStorageKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores Azure File Storage password.
-  LinkedServiceAzureFileStorageKeyVaultPassword({
+  const LinkedServiceAzureFileStorageKeyVaultPassword({
     required this.linkedServiceName,
     required this.secretName,
   });

@@ -17,7 +17,7 @@ class GetDbServersResult {
   /// [dbServers] A `db_servers` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [resourceGroupName] Required.
-  GetDbServersResult({
+  const GetDbServersResult({
     required this.cloudExadataInfrastructureName,
     required this.dbServers,
     required this.id,

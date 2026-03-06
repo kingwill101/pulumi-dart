@@ -11,7 +11,7 @@ class GetStorageBoxSnapshotStats {
   /// Creates a new [GetStorageBoxSnapshotStats].
   /// [size] Current storage requirements of the Snapshot in bytes.
   /// [sizeFilesystem] Size of the compressed file system contained in the Snapshot in bytes.
-  GetStorageBoxSnapshotStats({
+  const GetStorageBoxSnapshotStats({
     required this.size,
     required this.sizeFilesystem,
   });

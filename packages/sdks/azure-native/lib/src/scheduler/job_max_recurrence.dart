@@ -12,7 +12,7 @@ class JobMaxRecurrence {
   /// Creates a new [JobMaxRecurrence].
   /// [frequency] Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
   /// [interval] Gets or sets the interval between retries.
-  JobMaxRecurrence({
+  const JobMaxRecurrence({
     this.frequency,
     this.interval,
   });

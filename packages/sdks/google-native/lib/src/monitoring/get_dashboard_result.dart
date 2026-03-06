@@ -38,7 +38,7 @@ class GetDashboardResult {
   /// [mosaicLayout] The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
   /// [name] Immutable. The resource name of the dashboard.
   /// [rowLayout] The content is divided into equally spaced rows and the widgets are arranged horizontally.
-  GetDashboardResult({
+  const GetDashboardResult({
     required this.columnLayout,
     required this.dashboardFilters,
     required this.displayName,

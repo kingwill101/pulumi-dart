@@ -32,7 +32,7 @@ class GetSizesSize {
   /// [slug] A human-readable string that is used to uniquely identify each size.
   /// [transfer] The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
   /// [vcpus] The number of CPUs allocated to Droplets of this size.
-  GetSizesSize({
+  const GetSizesSize({
     required this.available,
     required this.disk,
     required this.memory,

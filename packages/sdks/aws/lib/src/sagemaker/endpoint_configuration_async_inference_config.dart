@@ -13,7 +13,7 @@ class EndpointConfigurationAsyncInferenceConfig {
   /// Creates a new [EndpointConfigurationAsyncInferenceConfig].
   /// [clientConfig] Configures the behavior of the client used by SageMaker AI to interact with the model container during asynchronous inference.
   /// [outputConfig] Configuration for asynchronous inference invocation outputs.
-  EndpointConfigurationAsyncInferenceConfig({
+  const EndpointConfigurationAsyncInferenceConfig({
     this.clientConfig,
     required this.outputConfig,
   });

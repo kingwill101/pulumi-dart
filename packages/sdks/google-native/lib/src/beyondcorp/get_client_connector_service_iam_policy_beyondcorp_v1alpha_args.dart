@@ -17,7 +17,7 @@ class GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs({
+  const GetClientConnectorServiceIamPolicyBeyondcorpV1alphaArgs({
     required this.clientConnectorServiceId,
     required this.location,
     this.optionsRequestedPolicyVersion,

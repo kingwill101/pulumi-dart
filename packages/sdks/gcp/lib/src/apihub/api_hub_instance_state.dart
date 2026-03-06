@@ -67,7 +67,7 @@ class ApiHubInstanceState {
   /// [state] Output only. The current state of the ApiHub instance.
   /// [stateMessage] Output only. Extra information about ApiHub instance state. Currently the message
   /// [updateTime] Output only. Last update timestamp.
-  ApiHubInstanceState({
+  const ApiHubInstanceState({
     this.apiHubInstanceId,
     this.config,
     this.createTime,

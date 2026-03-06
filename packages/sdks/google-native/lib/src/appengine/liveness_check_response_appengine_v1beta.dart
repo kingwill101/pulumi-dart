@@ -27,7 +27,7 @@ class LivenessCheckResponseAppengineV1beta {
   /// [path] The request path.
   /// [successThreshold] Number of consecutive successful checks required before considering the VM healthy.
   /// [timeout] Time before the check is considered failed.
-  LivenessCheckResponseAppengineV1beta({
+  const LivenessCheckResponseAppengineV1beta({
     required this.checkInterval,
     required this.failureThreshold,
     required this.host,

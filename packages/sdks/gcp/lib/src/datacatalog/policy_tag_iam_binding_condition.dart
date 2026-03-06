@@ -11,7 +11,7 @@ class PolicyTagIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  PolicyTagIamBindingCondition({
+  const PolicyTagIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

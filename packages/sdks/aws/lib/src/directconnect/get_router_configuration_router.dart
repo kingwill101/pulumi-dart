@@ -39,7 +39,7 @@ class GetRouterConfigurationRouter {
   /// [vendor] Router vendor
   /// [xsltTemplateName] Router XSLT Template Name
   /// [xsltTemplateNameForMacSec] Required.
-  GetRouterConfigurationRouter({
+  const GetRouterConfigurationRouter({
     required this.platform,
     required this.routerTypeIdentifier,
     required this.software,

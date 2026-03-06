@@ -11,7 +11,7 @@ class AppHostingTrafficTargetSplit {
   /// Creates a new [AppHostingTrafficTargetSplit].
   /// [build] The build that traffic is being routed to.
   /// [percent] The percentage of traffic to send to the build. Currently must be 100 or 0.
-  AppHostingTrafficTargetSplit({
+  const AppHostingTrafficTargetSplit({
     required this.build,
     required this.percent,
   });

@@ -22,7 +22,7 @@ class TableExternalCatalogTableOptions {
   /// [connectionId] The connection specifying the credentials to be
   /// [parameters] A map of key value pairs defining the parameters and
   /// [storageDescriptor] A storage descriptor containing information
-  TableExternalCatalogTableOptions({
+  const TableExternalCatalogTableOptions({
     this.connectionId,
     this.parameters,
     this.storageDescriptor,

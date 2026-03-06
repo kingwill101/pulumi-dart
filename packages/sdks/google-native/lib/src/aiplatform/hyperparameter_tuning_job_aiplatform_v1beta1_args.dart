@@ -40,7 +40,7 @@ class HyperparameterTuningJobAiplatformV1beta1Args {
   /// [project] Optional.
   /// [studySpec] Study configuration of the HyperparameterTuningJob.
   /// [trialJobSpec] The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
-  HyperparameterTuningJobAiplatformV1beta1Args({
+  const HyperparameterTuningJobAiplatformV1beta1Args({
     required this.displayName,
     this.encryptionSpec,
     this.labels,

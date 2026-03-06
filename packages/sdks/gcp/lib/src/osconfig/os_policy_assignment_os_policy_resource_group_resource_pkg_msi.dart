@@ -15,7 +15,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi].
   /// [properties] Additional properties to use during installation.
   /// [source] The MSI package. Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi({
     this.properties,
     required this.source,
   });

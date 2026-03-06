@@ -22,7 +22,7 @@ class CustomLineArgs {
   /// [domainName] The Domain name.
   /// [ipSegmentLists] The IP segment list. See `ip_segment_list` below for details.
   /// [lang] The lang.
-  CustomLineArgs({
+  const CustomLineArgs({
     required this.customLineName,
     required this.domainName,
     required this.ipSegmentLists,

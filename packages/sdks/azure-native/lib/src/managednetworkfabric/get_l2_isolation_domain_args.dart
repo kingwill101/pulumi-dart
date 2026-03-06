@@ -15,7 +15,7 @@ class GetL2IsolationDomainArgs {
   /// Creates a new [GetL2IsolationDomainArgs].
   /// [l2IsolationDomainName] Name of the L2 Isolation Domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetL2IsolationDomainArgs({
+  const GetL2IsolationDomainArgs({
     required this.l2IsolationDomainName,
     required this.resourceGroupName,
   });

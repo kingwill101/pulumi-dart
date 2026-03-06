@@ -40,7 +40,7 @@ class TeradataTableDataset {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [table] The table name of Teradata. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  TeradataTableDataset({
+  const TeradataTableDataset({
     this.annotations,
     this.database,
     this.description,

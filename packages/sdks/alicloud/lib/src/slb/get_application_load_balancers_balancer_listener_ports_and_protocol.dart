@@ -20,7 +20,7 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
   /// [listenerForward] The listener forward.
   /// [listenerPort] The listener port.
   /// [listenerProtocol] The listener protocol.
-  GetApplicationLoadBalancersBalancerListenerPortsAndProtocol({
+  const GetApplicationLoadBalancersBalancerListenerPortsAndProtocol({
     required this.description,
     required this.forwardPort,
     required this.listenerForward,

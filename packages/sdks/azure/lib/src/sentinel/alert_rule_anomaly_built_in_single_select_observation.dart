@@ -17,7 +17,7 @@ class AlertRuleAnomalyBuiltInSingleSelectObservation {
   /// [name] The Name of the built-in Anomaly Alert Rule.
   /// [supportedValues] A list of supported values of the single select observation.
   /// [value] The value of the threshold observation.
-  AlertRuleAnomalyBuiltInSingleSelectObservation({
+  const AlertRuleAnomalyBuiltInSingleSelectObservation({
     this.description,
     this.name,
     this.supportedValues,

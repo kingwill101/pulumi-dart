@@ -15,7 +15,7 @@ class GetBudgetArgs {
   /// Creates a new [GetBudgetArgs].
   /// [budgetName] Budget Name.
   /// [scope] The fully qualified Azure Resource manager identifier of the resource.
-  GetBudgetArgs({
+  const GetBudgetArgs({
     required this.budgetName,
     required this.scope,
   });

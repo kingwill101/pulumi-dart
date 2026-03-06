@@ -14,7 +14,7 @@ class GetAutonomousDatabaseBackupArgs {
   /// Creates a new [GetAutonomousDatabaseBackupArgs].
   /// [autonomousDatabaseId] The azureId of the Autonomous Database for we will be listing the backups.
   /// [name] Required.
-  GetAutonomousDatabaseBackupArgs({
+  const GetAutonomousDatabaseBackupArgs({
     required this.autonomousDatabaseId,
     required this.name,
   });

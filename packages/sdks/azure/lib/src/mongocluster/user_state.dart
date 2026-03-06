@@ -22,7 +22,7 @@ class UserState {
   /// [objectId] The Object ID of the Entra ID User or Service Principal. Changing this forces a new resource to be created.
   /// [principalType] The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
   /// [roles] One or more `role` blocks as defined below. Changing this forces a new resource to be created.
-  UserState({
+  const UserState({
     this.identityProviderType,
     this.mongoClusterId,
     this.objectId,

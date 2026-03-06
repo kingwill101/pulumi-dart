@@ -14,7 +14,7 @@ class RuleGroupCustomResponseBody {
   /// [content] The payload of the custom response.
   /// [contentType] The type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
   /// [key] A unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the Custom Response block.
-  RuleGroupCustomResponseBody({
+  const RuleGroupCustomResponseBody({
     required this.content,
     required this.contentType,
     required this.key,

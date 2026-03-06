@@ -39,7 +39,7 @@ class GetModelResult {
   /// [tags] User defined tags which can be used to group/filter models during listing
   /// [tfliteModel] A TFLite Model
   /// [updateTime] Timestamp when this model was updated in Firebase ML.
-  GetModelResult({
+  const GetModelResult({
     required this.activeOperations,
     required this.createTime,
     required this.displayName,

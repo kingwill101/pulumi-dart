@@ -22,7 +22,7 @@ class TestResponse {
   /// [testType] The type of the test.
   /// [validationResultId] Resource identifier of the validation test result.
   /// [validationRunStatus] The status of the validation run of the package.
-  TestResponse({
+  const TestResponse({
     required this.commands,
     this.isActive,
     required this.testType,

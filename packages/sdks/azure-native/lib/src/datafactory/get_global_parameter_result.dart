@@ -25,7 +25,7 @@ class GetGlobalParameterResult {
   /// [name] The resource name.
   /// [properties] Properties of the global parameter.
   /// [type] The resource type.
-  GetGlobalParameterResult({
+  const GetGlobalParameterResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

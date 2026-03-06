@@ -16,7 +16,7 @@ class GetSshKeyResult {
   /// [id] The ID of the ssh key.
   /// [name] Required.
   /// [publicKey] The public key of the ssh key.
-  GetSshKeyResult({
+  const GetSshKeyResult({
     required this.fingerprint,
     required this.id,
     required this.name,

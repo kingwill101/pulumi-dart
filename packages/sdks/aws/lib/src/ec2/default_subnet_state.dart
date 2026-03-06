@@ -64,7 +64,7 @@ class DefaultSubnetState {
   /// [tags] Optional.
   /// [tagsAll] Optional.
   /// [vpcId] The ID of the VPC the subnet is in
-  DefaultSubnetState({
+  const DefaultSubnetState({
     this.arn,
     this.assignIpv6AddressOnCreation,
     this.availabilityZone,

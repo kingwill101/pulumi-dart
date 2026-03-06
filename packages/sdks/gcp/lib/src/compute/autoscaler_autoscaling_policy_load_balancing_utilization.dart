@@ -10,7 +10,7 @@ class AutoscalerAutoscalingPolicyLoadBalancingUtilization {
 
   /// Creates a new [AutoscalerAutoscalingPolicyLoadBalancingUtilization].
   /// [target] Fraction of backend capacity utilization (set in HTTP(s) load
-  AutoscalerAutoscalingPolicyLoadBalancingUtilization({
+  const AutoscalerAutoscalingPolicyLoadBalancingUtilization({
     required this.target,
   });
 

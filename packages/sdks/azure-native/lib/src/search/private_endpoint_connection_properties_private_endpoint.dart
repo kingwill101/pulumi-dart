@@ -9,7 +9,7 @@ class PrivateEndpointConnectionPropertiesPrivateEndpoint {
 
   /// Creates a new [PrivateEndpointConnectionPropertiesPrivateEndpoint].
   /// [id] The resource ID of the private endpoint resource from Microsoft.Network provider.
-  PrivateEndpointConnectionPropertiesPrivateEndpoint({
+  const PrivateEndpointConnectionPropertiesPrivateEndpoint({
     this.id,
   });
 

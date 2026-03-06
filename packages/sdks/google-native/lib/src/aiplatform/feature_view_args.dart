@@ -39,7 +39,7 @@ class FeatureViewArgs {
   /// [project] Optional.
   /// [runSyncImmediately] Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not.
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
-  FeatureViewArgs({
+  const FeatureViewArgs({
     this.bigQuerySource,
     this.etag,
     required this.featureOnlineStoreId,

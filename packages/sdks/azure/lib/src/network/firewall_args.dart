@@ -59,7 +59,7 @@ class FirewallArgs {
   /// [threatIntelMode] The operation mode for threat intelligence-based filtering. Possible values are: `Off`, `Alert` and `Deny`. Defaults to `Alert`.
   /// [virtualHub] A `virtual_hub` block as documented below.
   /// [zones] Specifies a list of Availability Zones in which this Azure Firewall should be located. Changing this forces a new Azure Firewall to be created.
-  FirewallArgs({
+  const FirewallArgs({
     this.dnsProxyEnabled,
     this.dnsServers,
     this.firewallPolicyId,

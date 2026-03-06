@@ -39,7 +39,7 @@ class MonitorState {
   /// [skuName] The name which should be used for this sku.
   /// [tags] A mapping of tags which should be assigned to the Datadog Monitor.
   /// [user] A `user` block as defined below.
-  MonitorState({
+  const MonitorState({
     this.datadogOrganization,
     this.identity,
     this.location,

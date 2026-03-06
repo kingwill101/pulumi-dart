@@ -8,7 +8,7 @@ class ServiceVirtualNetworkConfiguration {
 
   /// Creates a new [ServiceVirtualNetworkConfiguration].
   /// [subnetId] The id of the subnet that will be used for the API Management.
-  ServiceVirtualNetworkConfiguration({
+  const ServiceVirtualNetworkConfiguration({
     required this.subnetId,
   });
 

@@ -14,7 +14,7 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicy {
   /// [maximumExecutionTimeoutInSeconds] Optional.
   /// [terminationWaitInSeconds] Additional waiting time in seconds after the completion of an endpoint deployment before terminating the old endpoint fleet. Default is `0`. Valid values are between `0` and `3600`.
   /// [trafficRoutingConfiguration] Defines the traffic routing strategy to shift traffic from the old fleet to the new fleet during an endpoint deployment. See Traffic Routing Configuration.
-  EndpointDeploymentConfigBlueGreenUpdatePolicy({
+  const EndpointDeploymentConfigBlueGreenUpdatePolicy({
     this.maximumExecutionTimeoutInSeconds,
     this.terminationWaitInSeconds,
     required this.trafficRoutingConfiguration,

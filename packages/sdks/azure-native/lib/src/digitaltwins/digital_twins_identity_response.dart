@@ -21,7 +21,7 @@ class DigitalTwinsIdentityResponse {
   /// [tenantId] The tenant id of the Managed Identity Resource. This will be sent to the RP from ARM via the x-ms-client-tenant-id header in the PUT request if the resource has a systemAssigned(implicit) identity
   /// [type] The type of Managed Identity used by the DigitalTwinsInstance.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  DigitalTwinsIdentityResponse({
+  const DigitalTwinsIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

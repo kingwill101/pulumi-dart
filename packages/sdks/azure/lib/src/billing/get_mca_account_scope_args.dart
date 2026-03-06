@@ -18,7 +18,7 @@ class GetMcaAccountScopeArgs {
   /// [billingAccountName] The Billing Account Name of the MCA account.
   /// [billingProfileName] The Billing Profile Name in the above Billing Account.
   /// [invoiceSectionName] The Invoice Section Name in the above Billing Profile.
-  GetMcaAccountScopeArgs({
+  const GetMcaAccountScopeArgs({
     required this.billingAccountName,
     required this.billingProfileName,
     required this.invoiceSectionName,

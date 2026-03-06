@@ -15,7 +15,7 @@ class AgentAfterModelCallback {
   /// [description] Human-readable description of the callback.
   /// [disabled] Whether the callback is disabled. Disabled callbacks are ignored by the
   /// [pythonCode] The python code to execute for the callback.
-  AgentAfterModelCallback({
+  const AgentAfterModelCallback({
     this.description,
     this.disabled,
     required this.pythonCode,

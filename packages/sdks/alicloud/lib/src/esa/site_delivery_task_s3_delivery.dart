@@ -25,7 +25,7 @@ class SiteDeliveryTaskS3Delivery {
   /// [secretKey] Optional.
   /// [serverSideEncryption] Server-side encryption
   /// [vertifyType] Authentication Type
-  SiteDeliveryTaskS3Delivery({
+  const SiteDeliveryTaskS3Delivery({
     this.accessKey,
     this.bucketPath,
     this.endpoint,

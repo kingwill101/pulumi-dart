@@ -70,7 +70,7 @@ class RegionNetworkFirewallPolicyWithRulesRule {
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule
   /// [targetServiceAccounts] A list of service accounts indicating the sets of
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
-  RegionNetworkFirewallPolicyWithRulesRule({
+  const RegionNetworkFirewallPolicyWithRulesRule({
     required this.action,
     this.description,
     this.direction,

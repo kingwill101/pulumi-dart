@@ -15,7 +15,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
   /// [dropHandoffMessages] If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
   /// [dropIvrMessages] If set to true, all messages from ivr stage are dropped.
   /// [dropVirtualAgentMessages] If set to true, all messages from virtual agent are dropped.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse({
     required this.dropHandoffMessages,
     required this.dropIvrMessages,
     required this.dropVirtualAgentMessages,

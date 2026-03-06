@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse {
   /// Creates a new [GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse].
   /// [disableTypeInference] Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
   /// [encoding] Optional. The character encoding of the data. The default is UTF-8.
-  GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse({
+  const GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse({
     required this.disableTypeInference,
     required this.encoding,
   });

@@ -49,7 +49,7 @@ class UserArgs {
   /// [serviceName] The name of the API Management service.
   /// [state] Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
-  UserArgs({
+  const UserArgs({
     this.appType,
     this.confirmation,
     required this.email,

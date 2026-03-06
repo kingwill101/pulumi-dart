@@ -18,7 +18,7 @@ class GetMetricsConfigurationArgs {
   /// [clusterName] The name of the cluster.
   /// [metricsConfigurationName] The name of the metrics configuration for the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMetricsConfigurationArgs({
+  const GetMetricsConfigurationArgs({
     required this.clusterName,
     required this.metricsConfigurationName,
     required this.resourceGroupName,

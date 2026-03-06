@@ -33,7 +33,7 @@ class GetCapacityPoolSubvolumeResult {
   /// [size] Truncate subvolume to the provided size in bytes
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCapacityPoolSubvolumeResult({
+  const GetCapacityPoolSubvolumeResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

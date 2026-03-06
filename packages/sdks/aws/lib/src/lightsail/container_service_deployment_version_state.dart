@@ -31,7 +31,7 @@ class ContainerServiceDeploymentVersionState {
   /// [serviceName] Name of the container service.
   /// [state] Current state of the container service.
   /// [version] Version number of the deployment.
-  ContainerServiceDeploymentVersionState({
+  const ContainerServiceDeploymentVersionState({
     this.containers,
     this.createdAt,
     this.publicEndpoint,

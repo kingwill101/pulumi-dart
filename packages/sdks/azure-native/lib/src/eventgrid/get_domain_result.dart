@@ -92,7 +92,7 @@ class GetDomainResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [tags] Tags of the resource.
   /// [type] Type of the resource.
-  GetDomainResult({
+  const GetDomainResult({
     this.autoCreateTopicWithFirstSubscription,
     this.autoDeleteTopicWithLastSubscription,
     required this.azureApiVersion,

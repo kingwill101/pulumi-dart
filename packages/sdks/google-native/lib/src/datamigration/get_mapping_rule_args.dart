@@ -17,7 +17,7 @@ class GetMappingRuleArgs {
   /// [location] Required.
   /// [mappingRuleId] Required.
   /// [project] Optional.
-  GetMappingRuleArgs({
+  const GetMappingRuleArgs({
     required this.conversionWorkspaceId,
     required this.location,
     required this.mappingRuleId,

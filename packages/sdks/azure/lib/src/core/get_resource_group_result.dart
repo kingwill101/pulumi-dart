@@ -18,7 +18,7 @@ class GetResourceGroupResult {
   /// [managedBy] Required.
   /// [name] Required.
   /// [tags] A mapping of tags assigned to the Resource Group.
-  GetResourceGroupResult({
+  const GetResourceGroupResult({
     required this.id,
     required this.location,
     required this.managedBy,

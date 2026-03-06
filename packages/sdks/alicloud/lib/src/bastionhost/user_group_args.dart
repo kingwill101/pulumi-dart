@@ -18,7 +18,7 @@ class UserGroupArgs {
   /// [comment] Specify the New Group of Remark Information. Supports up to 500 Characters.
   /// [instanceId] Specify the New Group of the Bastion Host of Instance Id.
   /// [userGroupName] Specify the New Group Name. Supports up to 128 Characters.
-  UserGroupArgs({
+  const UserGroupArgs({
     this.comment,
     required this.instanceId,
     required this.userGroupName,

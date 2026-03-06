@@ -58,7 +58,7 @@ class AiIndexEndpointDeployedIndexArgs {
   /// [indexEndpoint] Identifies the index endpoint. Must be in the format
   /// [region] The region of the index endpoint deployment. eg us-central1
   /// [reservedIpRanges] A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
-  AiIndexEndpointDeployedIndexArgs({
+  const AiIndexEndpointDeployedIndexArgs({
     this.automaticResources,
     this.dedicatedResources,
     this.deployedIndexAuthConfig,

@@ -19,7 +19,7 @@ class GetInstanceNamespaceIamPolicyArgs {
   /// [namespaceId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetInstanceNamespaceIamPolicyArgs({
+  const GetInstanceNamespaceIamPolicyArgs({
     required this.instanceId,
     required this.location,
     required this.namespaceId,

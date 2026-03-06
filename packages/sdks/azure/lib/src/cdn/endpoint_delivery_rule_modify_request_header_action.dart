@@ -14,7 +14,7 @@ class EndpointDeliveryRuleModifyRequestHeaderAction {
   /// [action] Action to be executed on a header value. Valid values are `Append`, `Delete` and `Overwrite`.
   /// [name] The header name.
   /// [value] The value of the header. Only needed when `action` is set to `Append` or `overwrite`.
-  EndpointDeliveryRuleModifyRequestHeaderAction({
+  const EndpointDeliveryRuleModifyRequestHeaderAction({
     required this.action,
     required this.name,
     this.value,

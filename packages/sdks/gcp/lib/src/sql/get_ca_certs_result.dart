@@ -20,7 +20,7 @@ class GetCaCertsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instance] Required.
   /// [project] Required.
-  GetCaCertsResult({
+  const GetCaCertsResult({
     required this.activeVersion,
     required this.certs,
     required this.id,

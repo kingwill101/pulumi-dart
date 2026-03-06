@@ -15,7 +15,7 @@ class ListKeyByAutomationAccountArgs {
   /// Creates a new [ListKeyByAutomationAccountArgs].
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
-  ListKeyByAutomationAccountArgs({
+  const ListKeyByAutomationAccountArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
   });

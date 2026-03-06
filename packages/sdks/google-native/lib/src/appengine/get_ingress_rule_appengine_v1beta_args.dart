@@ -13,7 +13,7 @@ class GetIngressRuleAppengineV1betaArgs {
   /// Creates a new [GetIngressRuleAppengineV1betaArgs].
   /// [appId] Required.
   /// [ingressRuleId] Required.
-  GetIngressRuleAppengineV1betaArgs({
+  const GetIngressRuleAppengineV1betaArgs({
     required this.appId,
     required this.ingressRuleId,
   });

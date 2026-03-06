@@ -18,7 +18,7 @@ class GetFileShareSnapshotArgs {
   /// [name] The name of the FileShareSnapshot
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The resource name of the file share, as seen by the administrator through Azure Resource Manager.
-  GetFileShareSnapshotArgs({
+  const GetFileShareSnapshotArgs({
     required this.name,
     required this.resourceGroupName,
     required this.resourceName,

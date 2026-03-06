@@ -50,7 +50,7 @@ class ZoneState {
   /// [ttl] The time to live (TTL) of the zone.
   /// [type] The type of zone. Can either be `PRIMARY` or `SECONDARY`.
   /// [valueSpecs] Map of additional options. Changing this creates a
-  ZoneState({
+  const ZoneState({
     this.attributes,
     this.description,
     this.disableStatusCheck,

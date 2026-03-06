@@ -14,7 +14,7 @@ class GetPolicyFileshareResult {
   /// [name] Required.
   /// [recoveryVaultName] Required.
   /// [resourceGroupName] Required.
-  GetPolicyFileshareResult({
+  const GetPolicyFileshareResult({
     required this.id,
     required this.name,
     required this.recoveryVaultName,

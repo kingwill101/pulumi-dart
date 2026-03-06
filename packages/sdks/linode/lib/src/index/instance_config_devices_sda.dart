@@ -11,7 +11,7 @@ class InstanceConfigDevicesSda {
   /// Creates a new [InstanceConfigDevicesSda].
   /// [diskId] The Disk ID to map to this `device` slot
   /// [volumeId] The Volume ID to map to this `device` slot.
-  InstanceConfigDevicesSda({
+  const InstanceConfigDevicesSda({
     this.diskId,
     this.volumeId,
   });

@@ -70,7 +70,7 @@ class SlotState {
   /// [siteCredentials] A `site_credential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
   /// [storageAccounts] One or more `storage_account` blocks as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  SlotState({
+  const SlotState({
     this.appServiceName,
     this.appServicePlanId,
     this.appSettings,

@@ -23,7 +23,7 @@ class GetServiceReplicaSet {
   /// [location] The Azure location in which the replica set resides.
   /// [serviceStatus] The current service status for the replica set.
   /// [subnetId] The ID of the subnet in which the replica set resides.
-  GetServiceReplicaSet({
+  const GetServiceReplicaSet({
     required this.domainControllerIpAddresses,
     required this.externalAccessIpAddress,
     required this.id,

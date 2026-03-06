@@ -21,7 +21,7 @@ class GetScalingConfigurationsArgs {
   /// [nameRegex] A regex string to filter resulting scaling configurations by name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [scalingGroupId] Scaling group id the scaling configurations belong to.
-  GetScalingConfigurationsArgs({
+  const GetScalingConfigurationsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

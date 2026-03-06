@@ -8,7 +8,7 @@ class LabelingJobInputConfigDataSourceSnsDataSource {
 
   /// Creates a new [LabelingJobInputConfigDataSourceSnsDataSource].
   /// [snsTopicArn] SNS input topic ARN.
-  LabelingJobInputConfigDataSourceSnsDataSource({
+  const LabelingJobInputConfigDataSourceSnsDataSource({
     required this.snsTopicArn,
   });
 

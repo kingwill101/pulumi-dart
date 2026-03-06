@@ -18,7 +18,7 @@ class GetNetworkInterfaceArgs {
   /// [expand] Expands referenced resources.
   /// [networkInterfaceName] The name of the network interface.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkInterfaceArgs({
+  const GetNetworkInterfaceArgs({
     this.expand,
     required this.networkInterfaceName,
     required this.resourceGroupName,

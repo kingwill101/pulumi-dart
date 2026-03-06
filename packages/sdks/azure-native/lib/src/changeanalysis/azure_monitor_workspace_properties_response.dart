@@ -15,7 +15,7 @@ class AzureMonitorWorkspacePropertiesResponse {
   /// [includeChangeDetails] The mode of includeChangeDetails feature. The flag configures whether to include or exclude content of the change before and after values.
   /// [workspaceId] The Azure Monitor workspace ID - the unique identifier for the Log Analytics workspace.
   /// [workspaceResourceId] The Azure Monitor workspace ARM Resource ID. The resource ID should be in the following format: /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}
-  AzureMonitorWorkspacePropertiesResponse({
+  const AzureMonitorWorkspacePropertiesResponse({
     this.includeChangeDetails,
     this.workspaceId,
     this.workspaceResourceId,

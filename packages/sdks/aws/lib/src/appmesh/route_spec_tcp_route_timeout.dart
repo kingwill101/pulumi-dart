@@ -9,7 +9,7 @@ class RouteSpecTcpRouteTimeout {
 
   /// Creates a new [RouteSpecTcpRouteTimeout].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
-  RouteSpecTcpRouteTimeout({
+  const RouteSpecTcpRouteTimeout({
     this.idle,
   });
 

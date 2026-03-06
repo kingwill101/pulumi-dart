@@ -186,7 +186,7 @@ class TableState {
   /// [timePartitioning] If specified, configures time-based
   /// [type] Describes the table type.
   /// [view] If specified, configures this table as a view.
-  TableState({
+  const TableState({
     this.biglakeConfiguration,
     this.clusterings,
     this.creationTime,

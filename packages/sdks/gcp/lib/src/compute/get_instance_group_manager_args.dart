@@ -21,7 +21,7 @@ class GetInstanceGroupManagerArgs {
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [selfLink] The self link of the instance group. Either `name` or `self_link` must be provided.
   /// [zone] The zone of the instance group. If referencing the instance group by name and `zone` is not provided, the provider zone is used.
-  GetInstanceGroupManagerArgs({
+  const GetInstanceGroupManagerArgs({
     this.name,
     this.project,
     this.selfLink,

@@ -14,7 +14,7 @@ class SelfSubjectAccessReviewSpecPatch {
   /// Creates a new [SelfSubjectAccessReviewSpecPatch].
   /// [nonResourceAttributes] NonResourceAttributes describes information for a non-resource access request
   /// [resourceAttributes] ResourceAuthorizationAttributes describes information for a resource access request
-  SelfSubjectAccessReviewSpecPatch({
+  const SelfSubjectAccessReviewSpecPatch({
     this.nonResourceAttributes,
     this.resourceAttributes,
   });

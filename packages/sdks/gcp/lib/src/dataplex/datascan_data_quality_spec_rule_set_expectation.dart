@@ -8,7 +8,7 @@ class DatascanDataQualitySpecRuleSetExpectation {
 
   /// Creates a new [DatascanDataQualitySpecRuleSetExpectation].
   /// [values] Expected values for the column value.
-  DatascanDataQualitySpecRuleSetExpectation({
+  const DatascanDataQualitySpecRuleSetExpectation({
     required this.values,
   });
 

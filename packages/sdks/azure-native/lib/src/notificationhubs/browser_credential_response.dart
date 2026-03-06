@@ -15,7 +15,7 @@ class BrowserCredentialResponse {
   /// [subject] Gets or sets web push subject.
   /// [vapidPrivateKey] Gets or sets VAPID private key.
   /// [vapidPublicKey] Gets or sets VAPID public key.
-  BrowserCredentialResponse({
+  const BrowserCredentialResponse({
     required this.subject,
     required this.vapidPrivateKey,
     required this.vapidPublicKey,

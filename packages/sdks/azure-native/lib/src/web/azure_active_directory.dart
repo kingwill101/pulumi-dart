@@ -26,7 +26,7 @@ class AzureActiveDirectory {
   /// [login] The configuration settings of the Azure Active Directory login flow.
   /// [registration] The configuration settings of the Azure Active Directory app registration.
   /// [validation] The configuration settings of the Azure Active Directory token validation flow.
-  AzureActiveDirectory({
+  const AzureActiveDirectory({
     this.enabled,
     this.isAutoProvisioned,
     this.login,

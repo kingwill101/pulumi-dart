@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse {
   /// [humanAgentSuggestionConfig] Configuration for agent assistance of human agent participant.
   /// [messageAnalysisConfig] Configuration for message analysis.
   /// [notificationConfig] Pub/Sub topic on which to publish new agent assistant events.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse({
     required this.endUserSuggestionConfig,
     required this.humanAgentSuggestionConfig,
     required this.messageAnalysisConfig,

@@ -15,7 +15,7 @@ class GetCustomerArgs {
   /// [accountId] Required.
   /// [channelPartnerLinkId] Required.
   /// [customerId] Required.
-  GetCustomerArgs({
+  const GetCustomerArgs({
     required this.accountId,
     required this.channelPartnerLinkId,
     required this.customerId,

@@ -74,7 +74,7 @@ class GetIntentDialogflowV2beta1Result {
   /// [rootFollowupIntentName] The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. Format: `projects//agent/intents/`.
   /// [trainingPhrases] Optional. The collection of examples that the agent is trained on.
   /// [webhookState] Optional. Indicates whether webhooks are enabled for the intent.
-  GetIntentDialogflowV2beta1Result({
+  const GetIntentDialogflowV2beta1Result({
     required this.action,
     required this.defaultResponsePlatforms,
     required this.displayName,

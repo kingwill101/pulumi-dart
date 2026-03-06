@@ -24,7 +24,7 @@ class NodeCustomizationScript {
   /// [rebootAfter] Whether the node should reboot after successful script execution.
   /// [script] The script content to be executed in plain text. Do not include secrets.
   /// [scriptType] The runtime environment for the script (e.g. Bash).
-  NodeCustomizationScript({
+  const NodeCustomizationScript({
     required this.executionPoint,
     required this.name,
     this.rebootAfter,

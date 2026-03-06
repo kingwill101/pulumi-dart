@@ -37,7 +37,7 @@ class AttachmentArgs {
   /// [lifecycleHook] Specifies whether to trigger a lifecycle hook for the scaling group to which instances are being added.
   /// [loadBalancerWeights] The weight of ECS instance N or elastic container instance N as a backend server of the associated Server Load Balancer (SLB) instance. Valid values of N: 1 to 20. Valid values of this parameter: 1 to 100.
   /// [scalingGroupId] ID of the scaling group of a scaling configuration.
-  AttachmentArgs({
+  const AttachmentArgs({
     this.entrusted,
     this.force,
     required this.instanceIds,

@@ -19,7 +19,7 @@ class GetInstanceBackupIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetInstanceBackupIamPolicyArgs({
+  const GetInstanceBackupIamPolicyArgs({
     required this.backupId,
     required this.instanceId,
     required this.location,

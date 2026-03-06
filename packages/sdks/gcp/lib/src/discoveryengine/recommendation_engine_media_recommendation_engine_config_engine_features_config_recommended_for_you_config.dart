@@ -14,7 +14,7 @@ class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRec
 
   /// Creates a new [RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig].
   /// [contextEventType] The type of event with which the engine is queried at prediction time.
-  RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig({
+  const RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig({
     this.contextEventType,
   });
 

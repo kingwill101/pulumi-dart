@@ -11,7 +11,7 @@ class GetConfigurationSetTrackingOption {
   /// Creates a new [GetConfigurationSetTrackingOption].
   /// [customRedirectDomain] The domain to use for tracking open and click events.
   /// [httpsPolicy] The https policy to use for tracking open and click events. Valid values are `REQUIRE`, `REQUIRE_OPEN_ONLY` or `OPTIONAL`.
-  GetConfigurationSetTrackingOption({
+  const GetConfigurationSetTrackingOption({
     required this.customRedirectDomain,
     required this.httpsPolicy,
   });

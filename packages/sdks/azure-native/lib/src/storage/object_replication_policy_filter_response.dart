@@ -12,7 +12,7 @@ class ObjectReplicationPolicyFilterResponse {
   /// Creates a new [ObjectReplicationPolicyFilterResponse].
   /// [minCreationTime] Blobs created after the time will be replicated to the destination. It must be in datetime format 'yyyy-MM-ddTHH:mm:ssZ'. Example: 2020-02-19T16:05:00Z
   /// [prefixMatch] Optional. Filters the results to replicate only blobs whose names begin with the specified prefix.
-  ObjectReplicationPolicyFilterResponse({
+  const ObjectReplicationPolicyFilterResponse({
     this.minCreationTime,
     this.prefixMatch,
   });

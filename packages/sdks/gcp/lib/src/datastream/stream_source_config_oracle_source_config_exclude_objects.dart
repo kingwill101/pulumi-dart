@@ -10,7 +10,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjects {
 
   /// Creates a new [StreamSourceConfigOracleSourceConfigExcludeObjects].
   /// [oracleSchemas] Oracle schemas/databases in the database server
-  StreamSourceConfigOracleSourceConfigExcludeObjects({
+  const StreamSourceConfigOracleSourceConfigExcludeObjects({
     required this.oracleSchemas,
   });
 

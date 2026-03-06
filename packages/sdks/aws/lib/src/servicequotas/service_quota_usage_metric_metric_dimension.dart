@@ -13,7 +13,7 @@ class ServiceQuotaUsageMetricMetricDimension {
   /// [resource] Optional.
   /// [service] Optional.
   /// [type] Optional.
-  ServiceQuotaUsageMetricMetricDimension({
+  const ServiceQuotaUsageMetricMetricDimension({
     this.class_,
     this.resource,
     this.service,

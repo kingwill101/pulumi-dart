@@ -9,7 +9,7 @@ class ServiceTemplateSpecContainerStartupProbeTcpSocket {
 
   /// Creates a new [ServiceTemplateSpecContainerStartupProbeTcpSocket].
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
-  ServiceTemplateSpecContainerStartupProbeTcpSocket({
+  const ServiceTemplateSpecContainerStartupProbeTcpSocket({
     this.port,
   });
 

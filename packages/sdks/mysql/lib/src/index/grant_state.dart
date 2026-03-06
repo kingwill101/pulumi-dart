@@ -33,7 +33,7 @@ class GrantState {
   /// [table] Which table to grant `privileges` on. Defaults to `*`, which is all tables.
   /// [tlsOption] An TLS-Option for the `GRANT` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `GRANT ... REQUIRE SSL` statement. See the [MYSQL `GRANT` documentation](https://dev.mysql.com/doc/refman/5.7/en/grant.html) for more. Ignored if MySQL version is under 5.7.0.
   /// [user] The name of the user. Conflicts with `role`.
-  GrantState({
+  const GrantState({
     this.database,
     this.grant,
     this.host,

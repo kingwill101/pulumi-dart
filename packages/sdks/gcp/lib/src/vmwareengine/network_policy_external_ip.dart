@@ -12,7 +12,7 @@ class NetworkPolicyExternalIp {
   /// Creates a new [NetworkPolicyExternalIp].
   /// [enabled] True if the service is enabled; false otherwise.
   /// [state] (Output)
-  NetworkPolicyExternalIp({
+  const NetworkPolicyExternalIp({
     this.enabled,
     this.state,
   });

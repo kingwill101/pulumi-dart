@@ -11,7 +11,7 @@ class AiInstanceAuthConfigList {
   /// Creates a new [AiInstanceAuthConfigList].
   /// [name] The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
   /// [value] The value of the configuration item.
-  AiInstanceAuthConfigList({
+  const AiInstanceAuthConfigList({
     this.name,
     this.value,
   });

@@ -8,7 +8,7 @@ class GetVirtualGatewaySpecLogging {
 
   /// Creates a new [GetVirtualGatewaySpecLogging].
   /// [accessLogs] Required.
-  GetVirtualGatewaySpecLogging({
+  const GetVirtualGatewaySpecLogging({
     required this.accessLogs,
   });
 

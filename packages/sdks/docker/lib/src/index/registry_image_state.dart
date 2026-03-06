@@ -28,7 +28,7 @@ class RegistryImageState {
   /// [name] The name of the Docker image.
   /// [sha256Digest] The sha256 digest of the image.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RegistryImage` resource to be replaced. This can be used to repush a local image
-  RegistryImageState({
+  const RegistryImageState({
     this.authConfig,
     this.build,
     this.insecureSkipVerify,

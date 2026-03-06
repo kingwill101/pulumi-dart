@@ -9,7 +9,7 @@ class WebAclLoggingConfigurationRedactedFields {
 
   /// Creates a new [WebAclLoggingConfigurationRedactedFields].
   /// [fieldToMatches] Set of configuration blocks for fields to redact. Detailed below.
-  WebAclLoggingConfigurationRedactedFields({
+  const WebAclLoggingConfigurationRedactedFields({
     required this.fieldToMatches,
   });
 

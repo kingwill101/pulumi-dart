@@ -15,7 +15,7 @@ class GetVirtualMachineScaleSetArgs {
   /// Creates a new [GetVirtualMachineScaleSetArgs].
   /// [name] The name of this Virtual Machine Scale Set.
   /// [resourceGroupName] The name of the Resource Group where the Virtual Machine Scale Set exists.
-  GetVirtualMachineScaleSetArgs({
+  const GetVirtualMachineScaleSetArgs({
     required this.name,
     required this.resourceGroupName,
   });

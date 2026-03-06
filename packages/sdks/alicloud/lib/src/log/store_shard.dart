@@ -17,7 +17,7 @@ class StoreShard {
   /// [endKey] The end value of the shard range(MD5), not included in shard range.
   /// [id] The ID of the shard.
   /// [status] Shard status, only two status of `readwrite` and `readonly`.
-  StoreShard({
+  const StoreShard({
     this.beginKey,
     this.endKey,
     this.id,

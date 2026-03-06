@@ -11,7 +11,7 @@ class ApplicationAcceleratorInstanceResponse {
   /// Creates a new [ApplicationAcceleratorInstanceResponse].
   /// [name] Name of the Application Accelerator instance.
   /// [status] Status of the Application Accelerator instance. It can be Pending, Running, Succeeded, Failed, Unknown.
-  ApplicationAcceleratorInstanceResponse({
+  const ApplicationAcceleratorInstanceResponse({
     required this.name,
     required this.status,
   });

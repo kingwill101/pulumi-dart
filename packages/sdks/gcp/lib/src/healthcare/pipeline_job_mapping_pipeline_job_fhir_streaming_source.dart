@@ -11,7 +11,7 @@ class PipelineJobMappingPipelineJobFhirStreamingSource {
   /// Creates a new [PipelineJobMappingPipelineJobFhirStreamingSource].
   /// [description] Describes the streaming FHIR data source.
   /// [fhirStore] The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
-  PipelineJobMappingPipelineJobFhirStreamingSource({
+  const PipelineJobMappingPipelineJobFhirStreamingSource({
     this.description,
     required this.fhirStore,
   });

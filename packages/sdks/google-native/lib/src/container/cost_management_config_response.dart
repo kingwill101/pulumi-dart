@@ -9,7 +9,7 @@ class CostManagementConfigResponse {
 
   /// Creates a new [CostManagementConfigResponse].
   /// [enabled] Whether the feature is enabled or not.
-  CostManagementConfigResponse({
+  const CostManagementConfigResponse({
     required this.enabled,
   });
 

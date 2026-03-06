@@ -11,7 +11,7 @@ class VolumeTargetEncryptionSecret {
   /// Creates a new [VolumeTargetEncryptionSecret].
   /// [type] Defines the type of the secret used for encryption purposes.
   /// [uuid] Sets the universally unique identifier (UUID) for the encryption secret.
-  VolumeTargetEncryptionSecret({
+  const VolumeTargetEncryptionSecret({
     required this.type,
     this.uuid,
   });

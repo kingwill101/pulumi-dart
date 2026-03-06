@@ -9,7 +9,7 @@ class ManagedClusterSecurityProfileWorkloadIdentity {
 
   /// Creates a new [ManagedClusterSecurityProfileWorkloadIdentity].
   /// [enabled] Whether to enable workload identity.
-  ManagedClusterSecurityProfileWorkloadIdentity({
+  const ManagedClusterSecurityProfileWorkloadIdentity({
     this.enabled,
   });
 

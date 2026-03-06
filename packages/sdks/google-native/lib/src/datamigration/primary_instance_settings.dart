@@ -19,7 +19,7 @@ class PrimaryInstanceSettings {
   /// [id] The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
   /// [labels] Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
   /// [machineConfig] Configuration for the machines that host the underlying database engine.
-  PrimaryInstanceSettings({
+  const PrimaryInstanceSettings({
     this.databaseFlags,
     required this.id,
     this.labels,

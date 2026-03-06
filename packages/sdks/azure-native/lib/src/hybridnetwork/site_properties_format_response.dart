@@ -17,7 +17,7 @@ class SitePropertiesFormatResponse {
   /// [nfvis] List of NFVIs
   /// [provisioningState] The provisioning state of the site resource. **TODO**: Confirm if this is needed.
   /// [siteNetworkServiceReferences] The list of site network services on the site.
-  SitePropertiesFormatResponse({
+  const SitePropertiesFormatResponse({
     this.nfvis,
     required this.provisioningState,
     required this.siteNetworkServiceReferences,

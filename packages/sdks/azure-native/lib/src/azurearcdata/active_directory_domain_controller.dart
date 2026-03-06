@@ -9,7 +9,7 @@ class ActiveDirectoryDomainController {
 
   /// Creates a new [ActiveDirectoryDomainController].
   /// [hostname] Fully-qualified domain name of a domain controller in the AD domain.
-  ActiveDirectoryDomainController({
+  const ActiveDirectoryDomainController({
     required this.hostname,
   });
 

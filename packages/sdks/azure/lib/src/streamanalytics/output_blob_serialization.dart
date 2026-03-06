@@ -25,7 +25,7 @@ class OutputBlobSerialization {
   /// [fieldDelimiter] The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
   /// [format] Specifies the format of the JSON the output will be written in. Possible values are `Array` and `LineSeparated`.
   /// [type] The serialization format used for outgoing data streams. Possible values are `Avro`, `Csv`, `Json` and `Parquet`.
-  OutputBlobSerialization({
+  const OutputBlobSerialization({
     this.encoding,
     this.fieldDelimiter,
     this.format,

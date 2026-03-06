@@ -8,7 +8,7 @@ class DataSourceSslProperties {
 
   /// Creates a new [DataSourceSslProperties].
   /// [disableSsl] A Boolean option to control whether SSL should be disabled.
-  DataSourceSslProperties({
+  const DataSourceSslProperties({
     required this.disableSsl,
   });
 

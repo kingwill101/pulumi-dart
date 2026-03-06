@@ -18,7 +18,7 @@ class GetEntryGroupResult {
   /// [description] Entry group description. Can consist of several sentences or paragraphs that describe the entry group contents. Default value is an empty string.
   /// [displayName] A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
   /// [name] The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
-  GetEntryGroupResult({
+  const GetEntryGroupResult({
     required this.dataCatalogTimestamps,
     required this.description,
     required this.displayName,

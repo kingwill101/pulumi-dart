@@ -21,7 +21,7 @@ class RegionInstanceTemplateServiceAccount {
   /// Creates a new [RegionInstanceTemplateServiceAccount].
   /// [email] The service account e-mail address. If not given, the
   /// [scopes] A list of service scopes. Both OAuth2 URLs and gcloud
-  RegionInstanceTemplateServiceAccount({
+  const RegionInstanceTemplateServiceAccount({
     this.email,
     required this.scopes,
   });

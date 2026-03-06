@@ -20,7 +20,7 @@ class ProxyProtocolPolicyArgs {
   /// [instancePorts] List of instance ports to which the policy
   /// [loadBalancer] The load balancer to which the policy
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ProxyProtocolPolicyArgs({
+  const ProxyProtocolPolicyArgs({
     required this.instancePorts,
     required this.loadBalancer,
     this.region,

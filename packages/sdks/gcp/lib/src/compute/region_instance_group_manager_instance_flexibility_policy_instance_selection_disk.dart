@@ -77,7 +77,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk {
   /// [sourceSnapshot] , The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot, initializeParams.sourceImage, or disks.source is required except for local SSD.
   /// [sourceSnapshotEncryptionKey] , The customer-supplied encryption key of the source snapshot. Structure is documented below.
   /// [type] , The type of Google Compute Engine disk, can be either "SCRATCH" or "PERSISTENT".
-  RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk({
+  const RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDisk({
     this.architecture,
     this.autoDelete,
     this.boot,

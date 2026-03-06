@@ -11,7 +11,7 @@ class GetWindowsFunctionAppAuthSettingsV2TwitterV2 {
   /// Creates a new [GetWindowsFunctionAppAuthSettingsV2TwitterV2].
   /// [consumerKey] The OAuth 1.0a consumer key of the Twitter application used for sign-in.
   /// [consumerSecretSettingName] The app setting name that contains the OAuth 1.0a consumer secret of the Twitter application used for sign-in.
-  GetWindowsFunctionAppAuthSettingsV2TwitterV2({
+  const GetWindowsFunctionAppAuthSettingsV2TwitterV2({
     required this.consumerKey,
     required this.consumerSecretSettingName,
   });

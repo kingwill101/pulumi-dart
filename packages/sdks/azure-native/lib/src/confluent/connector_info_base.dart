@@ -21,7 +21,7 @@ class ConnectorInfoBase {
   /// [connectorName] Connector Name
   /// [connectorState] Connector Status
   /// [connectorType] Connector Type
-  ConnectorInfoBase({
+  const ConnectorInfoBase({
     this.connectorClass,
     this.connectorId,
     this.connectorName,

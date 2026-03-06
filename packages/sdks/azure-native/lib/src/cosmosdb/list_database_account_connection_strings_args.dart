@@ -15,7 +15,7 @@ class ListDatabaseAccountConnectionStringsArgs {
   /// Creates a new [ListDatabaseAccountConnectionStringsArgs].
   /// [accountName] Cosmos DB database account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListDatabaseAccountConnectionStringsArgs({
+  const ListDatabaseAccountConnectionStringsArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

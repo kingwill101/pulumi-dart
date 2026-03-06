@@ -28,7 +28,7 @@ class SchedulerRuleState {
   /// [ruleName] The name of the rule.
   /// [ruleType] The rule type. Valid values:
   /// [rules] The information about the scheduling rules. See `rules` below.
-  SchedulerRuleState({
+  const SchedulerRuleState({
     this.cname,
     this.param,
     this.resourceGroupId,

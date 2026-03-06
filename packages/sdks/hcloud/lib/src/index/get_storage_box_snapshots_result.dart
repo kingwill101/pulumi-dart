@@ -18,7 +18,7 @@ class GetStorageBoxSnapshotsResult {
   /// [snapshots] Required.
   /// [storageBoxId] ID of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetStorageBoxSnapshotsResult({
+  const GetStorageBoxSnapshotsResult({
     required this.id,
     required this.snapshots,
     required this.storageBoxId,

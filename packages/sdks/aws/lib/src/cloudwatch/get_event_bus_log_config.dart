@@ -11,7 +11,7 @@ class GetEventBusLogConfig {
   /// Creates a new [GetEventBusLogConfig].
   /// [includeDetail] Whether EventBridge include detailed event information in the records it generates.
   /// [level] Level of logging detail to include.
-  GetEventBusLogConfig({
+  const GetEventBusLogConfig({
     required this.includeDetail,
     required this.level,
   });

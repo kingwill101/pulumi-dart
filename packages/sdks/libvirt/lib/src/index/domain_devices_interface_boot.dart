@@ -11,7 +11,7 @@ class DomainDevicesInterfaceBoot {
   /// Creates a new [DomainDevicesInterfaceBoot].
   /// [loadParm] Sets the load parameter for the booting process of the redirected device, influencing how it is activated.
   /// [order] Specifies the boot order for the redirected device, controlling the sequence of device initialization.
-  DomainDevicesInterfaceBoot({
+  const DomainDevicesInterfaceBoot({
     this.loadParm,
     required this.order,
   });

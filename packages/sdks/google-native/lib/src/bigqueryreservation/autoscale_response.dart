@@ -12,7 +12,7 @@ class AutoscaleResponse {
   /// Creates a new [AutoscaleResponse].
   /// [currentSlots] The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
   /// [maxSlots] Number of slots to be scaled when needed.
-  AutoscaleResponse({
+  const AutoscaleResponse({
     required this.currentSlots,
     required this.maxSlots,
   });

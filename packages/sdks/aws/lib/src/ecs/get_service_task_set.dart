@@ -32,7 +32,7 @@ class GetServiceTaskSet {
   /// [status] Task set status
   /// [taskDefinition] Task definition ARN
   /// [updatedAt] Time when task set was last updated (RFC3339 format)
-  GetServiceTaskSet({
+  const GetServiceTaskSet({
     required this.arn,
     required this.createdAt,
     required this.id,

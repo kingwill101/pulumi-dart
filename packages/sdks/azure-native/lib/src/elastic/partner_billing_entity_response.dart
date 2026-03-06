@@ -15,7 +15,7 @@ class PartnerBillingEntityResponse {
   /// [id] The Elastic Organization Id.
   /// [name] The Elastic Organization Name.
   /// [partnerEntityUri] Link to the elastic organization page
-  PartnerBillingEntityResponse({
+  const PartnerBillingEntityResponse({
     this.id,
     this.name,
     this.partnerEntityUri,

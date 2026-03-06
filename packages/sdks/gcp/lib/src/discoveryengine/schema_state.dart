@@ -29,7 +29,7 @@ class SchemaState {
   /// [name] The unique full resource name of the schema. Values are of the format
   /// [project] The ID of the project in which the resource belongs.
   /// [schemaId] The unique id of the schema.
-  SchemaState({
+  const SchemaState({
     this.dataStoreId,
     this.jsonSchema,
     this.location,

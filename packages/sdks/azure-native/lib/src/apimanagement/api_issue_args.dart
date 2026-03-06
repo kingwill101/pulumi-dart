@@ -36,7 +36,7 @@ class ApiIssueArgs {
   /// [state] Status of the issue.
   /// [title] The issue title.
   /// [userId] A resource identifier for the user created the issue.
-  ApiIssueArgs({
+  const ApiIssueArgs({
     required this.apiId,
     this.createdDate,
     required this.description,

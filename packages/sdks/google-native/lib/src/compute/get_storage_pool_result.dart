@@ -60,7 +60,7 @@ class GetStoragePoolResult {
   /// [status] Status information for the storage pool resource.
   /// [storagePoolType] Type of the storage pool.
   /// [zone] URL of the zone where the storage pool resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetStoragePoolResult({
+  const GetStoragePoolResult({
     required this.capacityProvisioningType,
     required this.creationTimestamp,
     required this.description,

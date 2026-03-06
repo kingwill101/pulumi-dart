@@ -63,7 +63,7 @@ class WaitingRoomState {
   /// [waitingRoomId] The waiting room ID, which can be obtained by calling the [ListWaitingRooms](https://help.aliyun.com/document_detail/2850279.html) API.
   /// [waitingRoomName] The name of the waiting room.
   /// [waitingRoomType] Waiting room type, support:
-  WaitingRoomState({
+  const WaitingRoomState({
     this.cookieName,
     this.customPageHtml,
     this.description,

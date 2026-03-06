@@ -20,7 +20,7 @@ class FleetComputeCapacity {
   /// [desiredSessions] Desired number of user sessions for a multi-session fleet. This is not allowed for single-session fleets.
   /// [inUse] Number of instances in use for streaming.
   /// [running] Total number of simultaneous streaming instances that are running.
-  FleetComputeCapacity({
+  const FleetComputeCapacity({
     this.available,
     this.desiredInstances,
     this.desiredSessions,

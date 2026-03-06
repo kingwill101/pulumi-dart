@@ -13,7 +13,7 @@ class DataFlowStagingInfoResponse {
   /// Creates a new [DataFlowStagingInfoResponse].
   /// [folderPath] Folder path for staging blob. Type: string (or Expression with resultType string)
   /// [linkedService] Staging linked service reference.
-  DataFlowStagingInfoResponse({
+  const DataFlowStagingInfoResponse({
     this.folderPath,
     this.linkedService,
   });

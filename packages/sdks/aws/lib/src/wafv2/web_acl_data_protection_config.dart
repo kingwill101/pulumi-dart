@@ -9,7 +9,7 @@ class WebAclDataProtectionConfig {
 
   /// Creates a new [WebAclDataProtectionConfig].
   /// [dataProtections] A block for data protection configurations for specific web request field types. See `data_protection` block for details.
-  WebAclDataProtectionConfig({
+  const WebAclDataProtectionConfig({
     this.dataProtections,
   });
 

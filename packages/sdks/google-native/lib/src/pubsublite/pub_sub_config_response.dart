@@ -9,7 +9,7 @@ class PubSubConfigResponse {
 
   /// Creates a new [PubSubConfigResponse].
   /// [topic] The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
-  PubSubConfigResponse({
+  const PubSubConfigResponse({
     required this.topic,
   });
 

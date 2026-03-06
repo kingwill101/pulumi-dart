@@ -24,7 +24,7 @@ class VMwareClusterValidationCheckStatusResult {
   /// [details] (Output)
   /// [options] (Output)
   /// [reason] (Output)
-  VMwareClusterValidationCheckStatusResult({
+  const VMwareClusterValidationCheckStatusResult({
     this.category,
     this.description,
     this.details,

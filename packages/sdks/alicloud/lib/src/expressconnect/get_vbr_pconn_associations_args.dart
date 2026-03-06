@@ -22,7 +22,7 @@ class GetVbrPconnAssociationsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [vbrId] The ID of the VBR instance.
-  GetVbrPconnAssociationsArgs({
+  const GetVbrPconnAssociationsArgs({
     this.ids,
     this.outputFile,
     this.pageNumber,

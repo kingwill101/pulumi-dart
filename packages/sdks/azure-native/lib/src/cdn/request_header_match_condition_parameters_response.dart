@@ -24,7 +24,7 @@ class RequestHeaderMatchConditionParametersResponse {
   /// [selector] Name of Header to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleRequestHeaderConditionParameters'.
-  RequestHeaderMatchConditionParametersResponse({
+  const RequestHeaderMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

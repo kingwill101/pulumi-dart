@@ -19,7 +19,7 @@ class Schema {
   /// [description] Table description.
   /// [displayName] Table display name.
   /// [name] Table name.
-  Schema({
+  const Schema({
     this.columns,
     this.description,
     this.displayName,

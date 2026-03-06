@@ -11,7 +11,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles {
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles].
   /// [domainName] Unique name of the Amazon Connect Customer Profiles domain.
   /// [objectTypeName] Object specified in the Amazon Connect Customer Profiles flow destination.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesCustomerProfiles({
     required this.domainName,
     this.objectTypeName,
   });

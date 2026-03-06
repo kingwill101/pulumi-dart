@@ -30,7 +30,7 @@ class HanaBackupClientState {
   /// [status] The status of the Hana Backup Client.
   /// [useHttps] Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   /// [vaultId] The ID of the backup vault.
-  HanaBackupClientState({
+  const HanaBackupClientState({
     this.alertSetting,
     this.clientId,
     this.clientInfo,

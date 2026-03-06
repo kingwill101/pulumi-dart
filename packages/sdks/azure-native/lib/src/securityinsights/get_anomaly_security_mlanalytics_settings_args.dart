@@ -18,7 +18,7 @@ class GetAnomalySecurityMLAnalyticsSettingsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [settingsResourceName] Security ML Analytics Settings resource name
   /// [workspaceName] The name of the workspace.
-  GetAnomalySecurityMLAnalyticsSettingsArgs({
+  const GetAnomalySecurityMLAnalyticsSettingsArgs({
     required this.resourceGroupName,
     required this.settingsResourceName,
     required this.workspaceName,

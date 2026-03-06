@@ -7,7 +7,7 @@ class GetPolicyStoreValidationSetting {
 
   /// Creates a new [GetPolicyStoreValidationSetting].
   /// [mode] Required.
-  GetPolicyStoreValidationSetting({
+  const GetPolicyStoreValidationSetting({
     required this.mode,
   });
 

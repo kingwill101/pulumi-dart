@@ -10,7 +10,7 @@ class ScaleProfileResponse {
 
   /// Creates a new [ScaleProfileResponse].
   /// [manual] Specifications on how to scale the VirtualMachines agent pool to a fixed size.
-  ScaleProfileResponse({
+  const ScaleProfileResponse({
     this.manual,
   });
 

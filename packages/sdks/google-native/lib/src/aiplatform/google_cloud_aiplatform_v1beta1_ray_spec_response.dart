@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1beta1RaySpecResponse {
   /// [headNodeResourcePoolId] Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node within that pool). Will use the machine from the first workerpool as the head node by default if this field isn't set.
   /// [imageUri] Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by choosing from [Vertex prebuilt images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray image. Otherwise, use the {@code resource_pool_images} field.
   /// [resourcePoolImages] Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to use different images for different head/worker pools. This map needs to cover all the resource pool ids. Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image" "ray_worker_node_pool2": "another worker image" }
-  GoogleCloudAiplatformV1beta1RaySpecResponse({
+  const GoogleCloudAiplatformV1beta1RaySpecResponse({
     required this.headNodeResourcePoolId,
     required this.imageUri,
     required this.resourcePoolImages,

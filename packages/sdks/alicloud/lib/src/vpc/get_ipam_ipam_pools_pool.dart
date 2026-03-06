@@ -65,7 +65,7 @@ class GetIpamIpamPoolsPool {
   /// [sourceIpamPoolId] The instance ID of the source IPAM address pool.&gt; If this parameter is not entered, the created address pool is the parent address pool.
   /// [status] The status of the resource.
   /// [tags] The tag of the resource.
-  GetIpamIpamPoolsPool({
+  const GetIpamIpamPoolsPool({
     required this.allocationDefaultCidrMask,
     required this.allocationMaxCidrMask,
     required this.allocationMinCidrMask,

@@ -23,7 +23,7 @@ class GetConnectionsConnectionVcoHealthCheck {
   /// [retry] The number of retries for health checks issued.
   /// [sip] The source ip address.
   /// [status] The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
-  GetConnectionsConnectionVcoHealthCheck({
+  const GetConnectionsConnectionVcoHealthCheck({
     this.dip,
     this.enable,
     this.interval,

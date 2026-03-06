@@ -25,7 +25,7 @@ class InstanceDetailsArgs {
   /// [location] Location of the DFP resource.
   /// [resourceGroupName] The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
   /// [tags] Key-value pairs of additional resource provisioning properties.
-  InstanceDetailsArgs({
+  const InstanceDetailsArgs({
     this.administration,
     this.instanceName,
     this.location,

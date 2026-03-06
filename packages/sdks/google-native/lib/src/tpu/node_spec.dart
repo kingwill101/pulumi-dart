@@ -20,7 +20,7 @@ class NodeSpec {
   /// [node] The node.
   /// [nodeId] The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
   /// [parent] The parent resource name.
-  NodeSpec({
+  const NodeSpec({
     this.multiNodeParams,
     required this.node,
     this.nodeId,

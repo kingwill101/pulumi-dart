@@ -9,7 +9,7 @@ class AccessConfigResponse {
 
   /// Creates a new [AccessConfigResponse].
   /// [externalIp] An external IP address associated with the TPU worker.
-  AccessConfigResponse({
+  const AccessConfigResponse({
     required this.externalIp,
   });
 

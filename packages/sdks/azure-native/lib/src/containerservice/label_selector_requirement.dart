@@ -15,7 +15,7 @@ class LabelSelectorRequirement {
   /// [key] key is the label key that the selector applies to.
   /// [operator] operator represents a key's relationship to a set of values. Valid operators are In and NotIn
   /// [values] values is an array of string values, the values array must be non-empty.
-  LabelSelectorRequirement({
+  const LabelSelectorRequirement({
     this.key,
     this.operator,
     this.values,

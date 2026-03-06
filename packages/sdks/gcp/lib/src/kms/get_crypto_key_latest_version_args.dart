@@ -22,7 +22,7 @@ class GetCryptoKeyLatestVersionArgs {
   /// Creates a new [GetCryptoKeyLatestVersionArgs].
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// [filter] The filter argument is used to add a filter query parameter that limits which type of cryptoKeyVersion is retrieved as the latest by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
-  GetCryptoKeyLatestVersionArgs({
+  const GetCryptoKeyLatestVersionArgs({
     required this.cryptoKey,
     this.filter,
   });

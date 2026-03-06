@@ -9,7 +9,7 @@ class SignalRTlsSettings {
 
   /// Creates a new [SignalRTlsSettings].
   /// [clientCertEnabled] Request client certificate during TLS handshake if enabled. Not supported for free tier. Any input will be ignored for free tier.
-  SignalRTlsSettings({
+  const SignalRTlsSettings({
     this.clientCertEnabled,
   });
 

@@ -11,7 +11,7 @@ class GetLoadBalancerHealthCheckLog {
   /// [bucket] Required.
   /// [enabled] Required.
   /// [prefix] Required.
-  GetLoadBalancerHealthCheckLog({
+  const GetLoadBalancerHealthCheckLog({
     required this.bucket,
     required this.enabled,
     required this.prefix,

@@ -15,7 +15,7 @@ class RetentionPolicyResponse {
   /// [days] The number of days to retain an untagged manifest after which it gets purged.
   /// [lastUpdatedTime] The timestamp when the policy was last updated.
   /// [status] The value that indicates whether the policy is enabled or not.
-  RetentionPolicyResponse({
+  const RetentionPolicyResponse({
     this.days,
     required this.lastUpdatedTime,
     this.status,

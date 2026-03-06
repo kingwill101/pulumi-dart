@@ -12,7 +12,7 @@ class EligibleApproverResponse {
   /// Creates a new [EligibleApproverResponse].
   /// [principalId] The identifier of the Azure Active Directory principal.
   /// [principalIdDisplayName] The display name of the Azure Active Directory principal.
-  EligibleApproverResponse({
+  const EligibleApproverResponse({
     required this.principalId,
     this.principalIdDisplayName,
   });

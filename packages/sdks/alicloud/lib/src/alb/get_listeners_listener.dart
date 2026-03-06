@@ -80,7 +80,7 @@ class GetListenersListener {
   /// [securityPolicyId] Security Policy.
   /// [status] The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
   /// [xforwardedForConfigs] xforwardfor Related Attribute Configuration.
-  GetListenersListener({
+  const GetListenersListener({
     required this.accessLogRecordCustomizedHeadersEnabled,
     required this.accessLogTracingConfigs,
     required this.aclConfigs,

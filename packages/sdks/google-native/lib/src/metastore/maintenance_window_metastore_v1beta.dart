@@ -13,7 +13,7 @@ class MaintenanceWindowMetastoreV1beta {
   /// Creates a new [MaintenanceWindowMetastoreV1beta].
   /// [dayOfWeek] The day of week, when the window starts.
   /// [hourOfDay] The hour of day (0-23) when the window starts.
-  MaintenanceWindowMetastoreV1beta({
+  const MaintenanceWindowMetastoreV1beta({
     this.dayOfWeek,
     this.hourOfDay,
   });

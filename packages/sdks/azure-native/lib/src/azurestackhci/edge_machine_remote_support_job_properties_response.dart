@@ -45,7 +45,7 @@ class EdgeMachineRemoteSupportJobPropertiesResponse {
   /// [startTimeUtc] The UTC date and time at which the job started.
   /// [status] Status of Edge device job.
   /// [type] Remote support type.
-  EdgeMachineRemoteSupportJobPropertiesResponse({
+  const EdgeMachineRemoteSupportJobPropertiesResponse({
     required this.accessLevel,
     this.deploymentMode,
     required this.endTimeUtc,

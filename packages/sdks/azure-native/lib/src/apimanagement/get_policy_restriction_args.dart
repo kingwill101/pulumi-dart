@@ -18,7 +18,7 @@ class GetPolicyRestrictionArgs {
   /// [policyRestrictionId] Policy restrictions after an entity level
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetPolicyRestrictionArgs({
+  const GetPolicyRestrictionArgs({
     required this.policyRestrictionId,
     required this.resourceGroupName,
     required this.serviceName,

@@ -21,7 +21,7 @@ class GetContactsRotationRecurrence {
   /// [recurrenceMultiplier] Required.
   /// [shiftCoverages] Required.
   /// [weeklySettings] Required.
-  GetContactsRotationRecurrence({
+  const GetContactsRotationRecurrence({
     required this.dailySettings,
     required this.monthlySettings,
     required this.numberOfOnCalls,

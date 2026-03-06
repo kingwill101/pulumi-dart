@@ -11,7 +11,7 @@ class FirewallVpcFirewallCenLocalVpcEniList {
   /// Creates a new [FirewallVpcFirewallCenLocalVpcEniList].
   /// [eniId] The ID of the instance of the ENI in the VPC.
   /// [eniPrivateIpAddress] The private IP address of the ENI in the VPC.
-  FirewallVpcFirewallCenLocalVpcEniList({
+  const FirewallVpcFirewallCenLocalVpcEniList({
     this.eniId,
     this.eniPrivateIpAddress,
   });

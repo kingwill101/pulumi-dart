@@ -8,7 +8,7 @@ class VirtualMachinePropertiesResponseDataDisks {
 
   /// Creates a new [VirtualMachinePropertiesResponseDataDisks].
   /// [id] Resource ID of the data disk
-  VirtualMachinePropertiesResponseDataDisks({
+  const VirtualMachinePropertiesResponseDataDisks({
     this.id,
   });
 

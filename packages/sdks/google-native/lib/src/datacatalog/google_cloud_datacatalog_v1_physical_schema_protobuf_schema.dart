@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema].
   /// [text] Protocol buffer source of the schema.
-  GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema({
+  const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema({
     this.text,
   });
 

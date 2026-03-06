@@ -33,7 +33,7 @@ class DataSetLogicalTableMapDataTransform {
   /// [renameColumnOperation] An operation that renames a column. See rename_column_operation.
   /// [tagColumnOperation] An operation that tags a column with additional information. See tag_column_operation.
   /// [untagColumnOperation] A transform operation that removes tags associated with a column. See untag_column_operation.
-  DataSetLogicalTableMapDataTransform({
+  const DataSetLogicalTableMapDataTransform({
     this.castColumnTypeOperation,
     this.createColumnsOperation,
     this.filterOperation,

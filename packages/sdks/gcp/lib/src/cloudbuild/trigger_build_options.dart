@@ -66,7 +66,7 @@ class TriggerBuildOptions {
   /// [substitutionOption] Option to specify behavior when there is an error in the substitution checks.
   /// [volumes] Global list of volumes to mount for ALL build steps
   /// [workerPool] Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
-  TriggerBuildOptions({
+  const TriggerBuildOptions({
     this.diskSizeGb,
     this.dynamicSubstitutions,
     this.envs,

@@ -11,7 +11,7 @@ class GetServiceMeshesMeshMeshConfigKiali {
   /// Creates a new [GetServiceMeshesMeshMeshConfigKiali].
   /// [enabled] Whether to enable CNI.
   /// [url] The service address of the Kiali.
-  GetServiceMeshesMeshMeshConfigKiali({
+  const GetServiceMeshesMeshMeshConfigKiali({
     required this.enabled,
     required this.url,
   });

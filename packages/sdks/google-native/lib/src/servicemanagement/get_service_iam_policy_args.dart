@@ -11,7 +11,7 @@ class GetServiceIamPolicyArgs {
 
   /// Creates a new [GetServiceIamPolicyArgs].
   /// [serviceId] Required.
-  GetServiceIamPolicyArgs({
+  const GetServiceIamPolicyArgs({
     required this.serviceId,
   });
 

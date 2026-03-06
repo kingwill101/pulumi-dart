@@ -12,7 +12,7 @@ class ListGlobalRulestackFirewallsArgs {
 
   /// Creates a new [ListGlobalRulestackFirewallsArgs].
   /// [globalRulestackName] GlobalRulestack resource name
-  ListGlobalRulestackFirewallsArgs({
+  const ListGlobalRulestackFirewallsArgs({
     required this.globalRulestackName,
   });
 

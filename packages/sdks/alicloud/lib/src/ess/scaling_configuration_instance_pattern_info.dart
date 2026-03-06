@@ -74,7 +74,7 @@ class ScalingConfigurationInstancePatternInfo {
   /// [minimumInitialCredit] The initial vCPU credits per t5 or t6 burstable instance.
   /// [minimumMemorySize] The minimum memory size per instance. Unit: GiB.
   /// [physicalProcessorModels] Processor model N of the ECS instances. Valid values of N: 1 to 10.
-  ScalingConfigurationInstancePatternInfo({
+  const ScalingConfigurationInstancePatternInfo({
     this.architectures,
     this.burstablePerformance,
     this.cores,

@@ -121,7 +121,7 @@ class GetHostPoolResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationEnvironment] Is validation environment.
   /// [vmTemplate] VM template for sessionhosts configuration within hostpool.
-  GetHostPoolResult({
+  const GetHostPoolResult({
     this.agentUpdate,
     required this.appAttachPackageReferences,
     required this.applicationGroupReferences,

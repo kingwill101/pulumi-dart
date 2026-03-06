@@ -21,7 +21,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform 
   /// [allText] Apply transformation to all text that doesn't match an infoType.
   /// [redactionColor] The color to use when redacting content from an image. If not specified, the default is black.
   /// [selectedInfoTypes] Apply transformation to the selected infoTypes.
-  PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform({
+  const PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform({
     this.allInfoTypes,
     this.allText,
     this.redactionColor,

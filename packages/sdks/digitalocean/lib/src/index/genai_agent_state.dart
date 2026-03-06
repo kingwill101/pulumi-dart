@@ -137,7 +137,7 @@ class GenaiAgentState {
   /// [updatedAt] Timestamp when the Agent was updated
   /// [url] URL for the Agent
   /// [userId] User ID linked with the Agent
-  GenaiAgentState({
+  const GenaiAgentState({
     this.agentGuardrails,
     this.anthropicApiKeys,
     this.anthropicKeyUuid,

@@ -37,7 +37,7 @@ class SourceControlState {
   /// [repositoryUrl] The Repository URL of the source control.
   /// [security] A `security` block as defined below.
   /// [sourceControlType] The source type of Source Control, possible vaules are `VsoGit`, `VsoTfvc` and `GitHub`, and the value is case sensitive.
-  SourceControlState({
+  const SourceControlState({
     this.automaticSync,
     this.automationAccountId,
     this.branch,

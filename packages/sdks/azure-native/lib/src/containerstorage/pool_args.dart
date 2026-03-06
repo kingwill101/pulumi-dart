@@ -39,7 +39,7 @@ class PoolArgs {
   /// [resources] Resources represent the resources the pool should have.
   /// [tags] Resource tags.
   /// [zones] List of availability zones that resources can be created in.
-  PoolArgs({
+  const PoolArgs({
     this.assignments,
     this.location,
     this.poolName,

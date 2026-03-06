@@ -23,7 +23,7 @@ class CryptoKeyVersionArgs {
   /// [cryptoKey] The name of the cryptoKey associated with the CryptoKeyVersions.
   /// [externalProtectionLevelOptions] ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// [state] The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
-  CryptoKeyVersionArgs({
+  const CryptoKeyVersionArgs({
     required this.cryptoKey,
     this.externalProtectionLevelOptions,
     this.state,

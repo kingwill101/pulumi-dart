@@ -17,7 +17,7 @@ class ManagedZoneForwardingConfigNameServerTarget {
   /// [ipv4Address] IPv4 address of a target name server.
   /// [ipv6Address] IPv6 address of a target name server. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022.
   /// [kind] Optional.
-  ManagedZoneForwardingConfigNameServerTarget({
+  const ManagedZoneForwardingConfigNameServerTarget({
     this.forwardingPath,
     this.ipv4Address,
     this.ipv6Address,

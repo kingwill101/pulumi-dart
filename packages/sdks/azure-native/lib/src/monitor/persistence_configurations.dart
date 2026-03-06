@@ -9,7 +9,7 @@ class PersistenceConfigurations {
 
   /// Creates a new [PersistenceConfigurations].
   /// [persistentVolumeName] The name of the mounted persistent volume.
-  PersistenceConfigurations({
+  const PersistenceConfigurations({
     required this.persistentVolumeName,
   });
 

@@ -54,7 +54,7 @@ class ServiceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [template] template holds the latest specification for the Revision to
   /// [traffics] Traffic specifies how to distribute traffic over a collection of Knative Revisions
-  ServiceArgs({
+  const ServiceArgs({
     this.autogenerateRevisionName,
     required this.location,
     this.metadata,

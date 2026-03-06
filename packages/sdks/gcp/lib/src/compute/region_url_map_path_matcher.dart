@@ -60,7 +60,7 @@ class RegionUrlMapPathMatcher {
   /// [name] The name to which this PathMatcher is referred by the HostRule.
   /// [pathRules] The list of path rules. Use this list instead of routeRules when routing based
   /// [routeRules] The list of ordered HTTP route rules. Use this list instead of pathRules when
-  RegionUrlMapPathMatcher({
+  const RegionUrlMapPathMatcher({
     this.defaultRouteAction,
     this.defaultService,
     this.defaultUrlRedirect,

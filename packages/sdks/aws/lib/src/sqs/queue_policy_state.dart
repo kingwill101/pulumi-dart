@@ -15,7 +15,7 @@ class QueuePolicyState {
   /// [policy] JSON policy for the SQS queue. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide. Ensure that `Version = "2012-10-17"` is set in the policy or AWS may hang in creating the queue.
   /// [queueUrl] URL of the SQS Queue to which to attach the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  QueuePolicyState({
+  const QueuePolicyState({
     this.policy,
     this.queueUrl,
     this.region,

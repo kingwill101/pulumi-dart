@@ -9,7 +9,7 @@ class EncryptionConfigResponse {
 
   /// Creates a new [EncryptionConfigResponse].
   /// [kmsKeyName] The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
-  EncryptionConfigResponse({
+  const EncryptionConfigResponse({
     required this.kmsKeyName,
   });
 

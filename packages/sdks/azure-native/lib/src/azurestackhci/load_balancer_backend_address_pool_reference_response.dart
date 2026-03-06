@@ -9,7 +9,7 @@ class LoadBalancerBackendAddressPoolReferenceResponse {
 
   /// Creates a new [LoadBalancerBackendAddressPoolReferenceResponse].
   /// [name] name of the backend address pool
-  LoadBalancerBackendAddressPoolReferenceResponse({
+  const LoadBalancerBackendAddressPoolReferenceResponse({
     required this.name,
   });
 

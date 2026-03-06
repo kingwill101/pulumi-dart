@@ -10,7 +10,7 @@ class GetBucketReplicationConfigurationRuleDestinationReplicationTime {
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationReplicationTime].
   /// [status] Required.
   /// [times] Required.
-  GetBucketReplicationConfigurationRuleDestinationReplicationTime({
+  const GetBucketReplicationConfigurationRuleDestinationReplicationTime({
     required this.status,
     required this.times,
   });

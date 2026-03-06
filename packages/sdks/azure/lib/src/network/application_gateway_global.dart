@@ -11,7 +11,7 @@ class ApplicationGatewayGlobal {
   /// Creates a new [ApplicationGatewayGlobal].
   /// [requestBufferingEnabled] Whether Application Gateway's Request buffer is enabled.
   /// [responseBufferingEnabled] Whether Application Gateway's Response buffer is enabled.
-  ApplicationGatewayGlobal({
+  const ApplicationGatewayGlobal({
     required this.requestBufferingEnabled,
     required this.responseBufferingEnabled,
   });

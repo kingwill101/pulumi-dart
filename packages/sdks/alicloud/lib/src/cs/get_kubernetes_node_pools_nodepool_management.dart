@@ -38,7 +38,7 @@ class GetKubernetesNodePoolsNodepoolManagement {
   /// [maxUnavailable] Maximum number of unavailable nodes. Default value: 1. Value range:\[1,1000\].
   /// [surge] Number of additional nodes. You have to specify one of surge, surge_percentage.
   /// [surgePercentage] Proportion of additional nodes. You have to specify one of surge, surge_percentage.
-  GetKubernetesNodePoolsNodepoolManagement({
+  const GetKubernetesNodePoolsNodepoolManagement({
     required this.autoRepair,
     required this.autoRepairPolicy,
     required this.autoUpgrade,

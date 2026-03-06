@@ -11,7 +11,7 @@ class GetAppServiceSiteConfigCor {
   /// Creates a new [GetAppServiceSiteConfigCor].
   /// [allowedOrigins] A list of origins which are able to make cross-origin calls.
   /// [supportCredentials] Are credentials supported?
-  GetAppServiceSiteConfigCor({
+  const GetAppServiceSiteConfigCor({
     required this.allowedOrigins,
     required this.supportCredentials,
   });

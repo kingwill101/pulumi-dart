@@ -14,7 +14,7 @@ class GetRulesRuleRuleActionRewriteConfig {
   /// [host] The host name of the destination to which requests are redirected within ALB.
   /// [path] The path to which requests are to be redirected within ALB.
   /// [query] The query string of the request to be redirected within ALB.
-  GetRulesRuleRuleActionRewriteConfig({
+  const GetRulesRuleRuleActionRewriteConfig({
     required this.host,
     required this.path,
     required this.query,

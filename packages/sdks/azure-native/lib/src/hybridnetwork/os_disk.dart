@@ -19,7 +19,7 @@ class OsDisk {
   /// [name] The VHD name.
   /// [osType] The OS type.
   /// [vhd] The virtual hard disk.
-  OsDisk({
+  const OsDisk({
     this.diskSizeGB,
     this.name,
     this.osType,

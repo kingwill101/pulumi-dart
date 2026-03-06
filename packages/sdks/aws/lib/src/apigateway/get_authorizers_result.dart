@@ -15,7 +15,7 @@ class GetAuthorizersResult {
   /// [ids] List of Authorizer identifiers.
   /// [region] Required.
   /// [restApiId] Required.
-  GetAuthorizersResult({
+  const GetAuthorizersResult({
     required this.id,
     required this.ids,
     required this.region,

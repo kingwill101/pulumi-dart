@@ -11,7 +11,7 @@ class ListSqlMigrationServiceAuthKeysResult {
   /// Creates a new [ListSqlMigrationServiceAuthKeysResult].
   /// [authKey1] The first authentication key.
   /// [authKey2] The second authentication key.
-  ListSqlMigrationServiceAuthKeysResult({
+  const ListSqlMigrationServiceAuthKeysResult({
     this.authKey1,
     this.authKey2,
   });

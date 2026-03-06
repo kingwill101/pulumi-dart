@@ -18,7 +18,7 @@ class UserFlowAttributeState {
   /// [dataType] The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
   /// [description] The description of the user flow attribute that is shown to the user at the time of sign-up.
   /// [displayName] The display name of the user flow attribute. Changing this forces a new resource to be created.
-  UserFlowAttributeState({
+  const UserFlowAttributeState({
     this.attributeType,
     this.dataType,
     this.description,

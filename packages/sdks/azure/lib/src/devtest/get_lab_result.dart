@@ -39,7 +39,7 @@ class GetLabResult {
   /// [storageType] The type of storage used by the Dev Test Lab.
   /// [tags] A mapping of tags to assign to the resource.
   /// [uniqueIdentifier] The unique immutable identifier of the Dev Test Lab.
-  GetLabResult({
+  const GetLabResult({
     required this.artifactsStorageAccountId,
     required this.defaultPremiumStorageAccountId,
     required this.defaultStorageAccountId,

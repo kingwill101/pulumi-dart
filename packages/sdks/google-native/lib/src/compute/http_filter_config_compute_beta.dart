@@ -15,7 +15,7 @@ class HttpFilterConfigComputeBeta {
   /// [config] The configuration needed to enable the networkservices.HttpFilter resource. The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
   /// [configTypeUrl] The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings, for example: type.googleapis.com/google.protobuf.Struct
   /// [filterName] Name of the networkservices.HttpFilter resource this configuration belongs to. This name must be known to the xDS client. Example: envoy.wasm
-  HttpFilterConfigComputeBeta({
+  const HttpFilterConfigComputeBeta({
     this.config,
     this.configTypeUrl,
     this.filterName,

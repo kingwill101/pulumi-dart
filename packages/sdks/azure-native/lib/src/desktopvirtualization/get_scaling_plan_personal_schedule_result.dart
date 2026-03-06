@@ -100,7 +100,7 @@ class GetScalingPlanPersonalScheduleResult {
   /// [rampUpStartVMOnConnect] The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetScalingPlanPersonalScheduleResult({
+  const GetScalingPlanPersonalScheduleResult({
     required this.azureApiVersion,
     this.daysOfWeek,
     required this.id,

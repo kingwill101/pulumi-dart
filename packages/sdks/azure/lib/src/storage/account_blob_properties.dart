@@ -48,7 +48,7 @@ class AccountBlobProperties {
   /// [lastAccessTimeEnabled] Is the last access time based tracking enabled? Default to `false`.
   /// [restorePolicy] A `restore_policy` block as defined below. This must be used together with `delete_retention_policy` set, `versioning_enabled` and `change_feed_enabled` set to `true`.
   /// [versioningEnabled] Is versioning enabled? Default to `false`.
-  AccountBlobProperties({
+  const AccountBlobProperties({
     this.changeFeedEnabled,
     this.changeFeedRetentionInDays,
     this.containerDeleteRetentionPolicy,

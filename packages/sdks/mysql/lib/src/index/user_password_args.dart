@@ -18,7 +18,7 @@ class UserPasswordArgs {
   /// [host] The source host of the user. Defaults to `localhost`.
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
   /// [user] The IAM user to associate with this access key.
-  UserPasswordArgs({
+  const UserPasswordArgs({
     this.host,
     required this.pgpKey,
     required this.user,

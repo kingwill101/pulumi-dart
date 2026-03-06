@@ -8,7 +8,7 @@ class WatchlistEntityPopulationMechanism {
 
   /// Creates a new [WatchlistEntityPopulationMechanism].
   /// [manual] Entities are added manually.
-  WatchlistEntityPopulationMechanism({
+  const WatchlistEntityPopulationMechanism({
     this.manual,
   });
 

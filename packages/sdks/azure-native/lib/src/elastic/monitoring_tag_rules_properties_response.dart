@@ -13,7 +13,7 @@ class MonitoringTagRulesPropertiesResponse {
   /// Creates a new [MonitoringTagRulesPropertiesResponse].
   /// [logRules] Rules for sending logs.
   /// [provisioningState] Provisioning state of the monitoring tag rules.
-  MonitoringTagRulesPropertiesResponse({
+  const MonitoringTagRulesPropertiesResponse({
     this.logRules,
     this.provisioningState,
   });

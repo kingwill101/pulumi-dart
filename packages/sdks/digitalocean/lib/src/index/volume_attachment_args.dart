@@ -15,7 +15,7 @@ class VolumeAttachmentArgs {
   /// Creates a new [VolumeAttachmentArgs].
   /// [dropletId] ID of the Droplet to attach the volume to.
   /// [volumeId] ID of the Volume to be attached to the Droplet.
-  VolumeAttachmentArgs({
+  const VolumeAttachmentArgs({
     required this.dropletId,
     required this.volumeId,
   });

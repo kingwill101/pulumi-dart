@@ -24,7 +24,7 @@ class GetCertificateResult {
   /// [name] The name of the certificate.
   /// [properties] The description of an X509 CA Certificate.
   /// [type] The resource type.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

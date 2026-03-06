@@ -29,7 +29,7 @@ class OsProfile {
   /// [linuxConfiguration] Specifies the linux configuration for update management.
   /// [osType] Gets or sets the type of the os.
   /// [windowsConfiguration] Specifies the windows configuration for update management.
-  OsProfile({
+  const OsProfile({
     this.adminPassword,
     this.adminUsername,
     this.computerName,

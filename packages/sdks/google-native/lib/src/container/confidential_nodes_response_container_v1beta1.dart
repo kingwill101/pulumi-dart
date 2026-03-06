@@ -9,7 +9,7 @@ class ConfidentialNodesResponseContainerV1beta1 {
 
   /// Creates a new [ConfidentialNodesResponseContainerV1beta1].
   /// [enabled] Whether Confidential Nodes feature is enabled.
-  ConfidentialNodesResponseContainerV1beta1({
+  const ConfidentialNodesResponseContainerV1beta1({
     required this.enabled,
   });
 

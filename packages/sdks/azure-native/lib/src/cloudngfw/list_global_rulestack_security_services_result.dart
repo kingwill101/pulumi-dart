@@ -12,7 +12,7 @@ class ListGlobalRulestackSecurityServicesResult {
   /// Creates a new [ListGlobalRulestackSecurityServicesResult].
   /// [nextLink] next link
   /// [value] response value
-  ListGlobalRulestackSecurityServicesResult({
+  const ListGlobalRulestackSecurityServicesResult({
     this.nextLink,
     required this.value,
   });

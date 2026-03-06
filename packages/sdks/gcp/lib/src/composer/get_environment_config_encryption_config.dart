@@ -8,7 +8,7 @@ class GetEnvironmentConfigEncryptionConfig {
 
   /// Creates a new [GetEnvironmentConfigEncryptionConfig].
   /// [kmsKeyName] Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
-  GetEnvironmentConfigEncryptionConfig({
+  const GetEnvironmentConfigEncryptionConfig({
     required this.kmsKeyName,
   });
 

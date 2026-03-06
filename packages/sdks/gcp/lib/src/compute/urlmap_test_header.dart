@@ -11,7 +11,7 @@ class URLMapTestHeader {
   /// Creates a new [URLMapTestHeader].
   /// [name] Header name.
   /// [value] Header value.
-  URLMapTestHeader({
+  const URLMapTestHeader({
     required this.name,
     required this.value,
   });

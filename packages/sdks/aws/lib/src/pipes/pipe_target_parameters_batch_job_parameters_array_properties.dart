@@ -8,7 +8,7 @@ class PipeTargetParametersBatchJobParametersArrayProperties {
 
   /// Creates a new [PipeTargetParametersBatchJobParametersArrayProperties].
   /// [size] The size of the array, if this is an array batch job. Minimum value of 2. Maximum value of 10,000.
-  PipeTargetParametersBatchJobParametersArrayProperties({
+  const PipeTargetParametersBatchJobParametersArrayProperties({
     this.size,
   });
 

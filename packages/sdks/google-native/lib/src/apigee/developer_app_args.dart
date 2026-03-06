@@ -42,7 +42,7 @@ class DeveloperAppArgs {
   /// [organizationId] Required.
   /// [scopes] Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
   /// [status] Status of the credential. Valid values include `approved` or `revoked`.
-  DeveloperAppArgs({
+  const DeveloperAppArgs({
     this.apiProducts,
     this.appFamily,
     this.appId,

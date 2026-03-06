@@ -17,7 +17,7 @@ class GreyTagRouteScRuleItem {
   /// [operator] Optional.
   /// [type] The compare types. Valid values: `param`, `cookie`, `header`.
   /// [value] Optional.
-  GreyTagRouteScRuleItem({
+  const GreyTagRouteScRuleItem({
     this.cond,
     this.name,
     this.operator,

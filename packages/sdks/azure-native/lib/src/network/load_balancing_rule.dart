@@ -49,7 +49,7 @@ class LoadBalancingRule {
   /// [name] The name of the resource that is unique within the set of load balancing rules used by the load balancer. This name can be used to access the resource.
   /// [probe] The reference to the load balancer probe used by the load balancing rule.
   /// [protocol] The reference to the transport protocol used by the load balancing rule.
-  LoadBalancingRule({
+  const LoadBalancingRule({
     this.backendAddressPool,
     this.backendAddressPools,
     this.backendPort,

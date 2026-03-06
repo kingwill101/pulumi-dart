@@ -19,7 +19,7 @@ class Signature {
   /// [metadata] Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
   /// [signatureTime] Optional. Timestamp of the signature.
   /// [userId] User's UUID provided by the client.
-  Signature({
+  const Signature({
     this.image,
     this.metadata,
     this.signatureTime,

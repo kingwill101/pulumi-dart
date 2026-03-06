@@ -13,7 +13,7 @@ class GetFolderExclusionArgs {
   /// Creates a new [GetFolderExclusionArgs].
   /// [exclusionId] Required.
   /// [folderId] Required.
-  GetFolderExclusionArgs({
+  const GetFolderExclusionArgs({
     required this.exclusionId,
     required this.folderId,
   });

@@ -15,7 +15,7 @@ class GetConnectionProfileArgs {
   /// [connectionProfileId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConnectionProfileArgs({
+  const GetConnectionProfileArgs({
     required this.connectionProfileId,
     required this.location,
     this.project,

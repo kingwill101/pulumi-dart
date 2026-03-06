@@ -17,7 +17,7 @@ class ClusterRestoreToPointInTime {
   /// [restoreType] The type of restore to be performed. Valid values are `full-copy`, `copy-on-write`.
   /// [sourceClusterIdentifier] The identifier of the source DB cluster from which to restore. Must match the identifier of an existing DB cluster.
   /// [useLatestRestorableTime] A boolean value that indicates whether the DB cluster is restored from the latest backup time. Defaults to `false`. Cannot be specified with `restore_to_time`.
-  ClusterRestoreToPointInTime({
+  const ClusterRestoreToPointInTime({
     this.restoreToTime,
     this.restoreType,
     required this.sourceClusterIdentifier,

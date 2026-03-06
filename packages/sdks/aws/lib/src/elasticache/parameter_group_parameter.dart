@@ -11,7 +11,7 @@ class ParameterGroupParameter {
   /// Creates a new [ParameterGroupParameter].
   /// [name] The name of the ElastiCache parameter.
   /// [value] The value of the ElastiCache parameter.
-  ParameterGroupParameter({
+  const ParameterGroupParameter({
     required this.name,
     required this.value,
   });

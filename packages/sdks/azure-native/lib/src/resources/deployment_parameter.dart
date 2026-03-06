@@ -19,7 +19,7 @@ class DeploymentParameter {
   /// [reference] Azure Key Vault parameter reference.
   /// [type] Type of the value.
   /// [value] Input value to the parameter.
-  DeploymentParameter({
+  const DeploymentParameter({
     this.expression,
     this.reference,
     this.type,

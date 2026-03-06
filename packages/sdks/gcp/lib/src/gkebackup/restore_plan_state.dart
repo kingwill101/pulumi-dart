@@ -55,7 +55,7 @@ class RestorePlanState {
   /// [state] The State of the RestorePlan.
   /// [stateReason] Detailed description of why RestorePlan is in its current state.
   /// [uid] Server generated, unique identifier of UUID format.
-  RestorePlanState({
+  const RestorePlanState({
     this.backupPlan,
     this.cluster,
     this.description,

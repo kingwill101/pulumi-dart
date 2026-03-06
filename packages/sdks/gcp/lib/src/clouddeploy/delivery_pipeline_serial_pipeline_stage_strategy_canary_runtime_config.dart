@@ -13,7 +13,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig].
   /// [cloudRun] Cloud Run runtime configuration.
   /// [kubernetes] Kubernetes runtime configuration.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig({
     this.cloudRun,
     this.kubernetes,
   });

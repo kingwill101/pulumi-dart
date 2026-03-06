@@ -8,7 +8,7 @@ class GetRulesRuleRuleConditionSourceIpConfig {
 
   /// Creates a new [GetRulesRuleRuleConditionSourceIpConfig].
   /// [values] Add one or more IP addresses or IP address segments.
-  GetRulesRuleRuleConditionSourceIpConfig({
+  const GetRulesRuleRuleConditionSourceIpConfig({
     required this.values,
   });
 

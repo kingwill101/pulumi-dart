@@ -235,7 +235,7 @@ class GetInstanceTypeResult {
   /// [totalNeuronDeviceMemory] The total size of the memory for the neuron accelerators for the instance type (in MiB).
   /// [validCores] List of the valid number of cores that can be configured for the instance type.
   /// [validThreadsPerCores] List of the valid number of threads per core that can be configured for the instance type.
-  GetInstanceTypeResult({
+  const GetInstanceTypeResult({
     required this.autoRecoverySupported,
     required this.bandwidthWeightings,
     required this.bareMetal,

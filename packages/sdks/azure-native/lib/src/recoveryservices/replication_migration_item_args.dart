@@ -28,7 +28,7 @@ class ReplicationMigrationItemArgs {
   /// [protectionContainerName] Protection container name.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  ReplicationMigrationItemArgs({
+  const ReplicationMigrationItemArgs({
     required this.fabricName,
     this.migrationItemName,
     required this.properties,

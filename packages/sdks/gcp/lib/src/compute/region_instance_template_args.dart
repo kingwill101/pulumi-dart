@@ -140,7 +140,7 @@ class RegionInstanceTemplateArgs {
   /// [serviceAccount] Service account to attach to the instance. Structure is documented below.
   /// [shieldedInstanceConfig] Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
   /// [tags] Tags to attach to the instance.
-  RegionInstanceTemplateArgs({
+  const RegionInstanceTemplateArgs({
     this.advancedMachineFeatures,
     this.canIpForward,
     this.confidentialInstanceConfig,

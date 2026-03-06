@@ -11,7 +11,7 @@ class GetApplicationGatewayWafConfigurationDisabledRuleGroup {
   /// Creates a new [GetApplicationGatewayWafConfigurationDisabledRuleGroup].
   /// [ruleGroupName] The rule group where specific rules are disabled.
   /// [rules] A list of rules which will be disabled in that group.
-  GetApplicationGatewayWafConfigurationDisabledRuleGroup({
+  const GetApplicationGatewayWafConfigurationDisabledRuleGroup({
     required this.ruleGroupName,
     required this.rules,
   });

@@ -12,7 +12,7 @@ class VmwareNodePoolAutoscalingConfig {
   /// Creates a new [VmwareNodePoolAutoscalingConfig].
   /// [maxReplicas] Maximum number of replicas in the NodePool.
   /// [minReplicas] Minimum number of replicas in the NodePool.
-  VmwareNodePoolAutoscalingConfig({
+  const VmwareNodePoolAutoscalingConfig({
     this.maxReplicas,
     this.minReplicas,
   });

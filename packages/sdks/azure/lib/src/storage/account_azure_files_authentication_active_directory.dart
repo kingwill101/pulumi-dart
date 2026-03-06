@@ -23,7 +23,7 @@ class AccountAzureFilesAuthenticationActiveDirectory {
   /// [forestName] Specifies the Active Directory forest. This is required when `directory_type` is set to `AD`.
   /// [netbiosDomainName] Specifies the NetBIOS domain name. This is required when `directory_type` is set to `AD`.
   /// [storageSid] Specifies the security identifier (SID) for Azure Storage. This is required when `directory_type` is set to `AD`.
-  AccountAzureFilesAuthenticationActiveDirectory({
+  const AccountAzureFilesAuthenticationActiveDirectory({
     required this.domainGuid,
     required this.domainName,
     this.domainSid,

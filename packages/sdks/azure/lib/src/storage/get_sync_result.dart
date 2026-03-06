@@ -21,7 +21,7 @@ class GetSyncResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Storage Sync.
-  GetSyncResult({
+  const GetSyncResult({
     required this.id,
     required this.incomingTrafficPolicy,
     required this.location,

@@ -11,7 +11,7 @@ class DbSystemPropertiesDataCollectionOptions {
   /// Creates a new [DbSystemPropertiesDataCollectionOptions].
   /// [isDiagnosticsEventsEnabled] Indicates whether to enable data collection for diagnostics.
   /// [isIncidentLogsEnabled] Indicates whether to enable incident logs and trace collection.
-  DbSystemPropertiesDataCollectionOptions({
+  const DbSystemPropertiesDataCollectionOptions({
     this.isDiagnosticsEventsEnabled,
     this.isIncidentLogsEnabled,
   });

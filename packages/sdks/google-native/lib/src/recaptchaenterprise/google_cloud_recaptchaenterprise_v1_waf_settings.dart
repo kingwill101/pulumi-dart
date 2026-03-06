@@ -14,7 +14,7 @@ class GoogleCloudRecaptchaenterpriseV1WafSettings {
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1WafSettings].
   /// [wafFeature] The WAF feature for which this key is enabled.
   /// [wafService] The WAF service that uses this key.
-  GoogleCloudRecaptchaenterpriseV1WafSettings({
+  const GoogleCloudRecaptchaenterpriseV1WafSettings({
     required this.wafFeature,
     required this.wafService,
   });

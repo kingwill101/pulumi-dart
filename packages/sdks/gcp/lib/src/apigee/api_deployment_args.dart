@@ -21,7 +21,7 @@ class ApiDeploymentArgs {
   /// [orgId] The Apigee Organization associated with the Apigee API deployment.
   /// [proxyId] The Apigee API associated with the Apigee API deployment.
   /// [revision] The revision of the API proxy to be deployed.
-  ApiDeploymentArgs({
+  const ApiDeploymentArgs({
     required this.environment,
     required this.orgId,
     required this.proxyId,

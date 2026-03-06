@@ -11,7 +11,7 @@ class AgentAgentAliasRoutingConfiguration {
   /// Creates a new [AgentAgentAliasRoutingConfiguration].
   /// [agentVersion] Version of the agent with which the alias is associated.
   /// [provisionedThroughput] ARN of the Provisioned Throughput assigned to the agent alias.
-  AgentAgentAliasRoutingConfiguration({
+  const AgentAgentAliasRoutingConfiguration({
     required this.agentVersion,
     required this.provisionedThroughput,
   });

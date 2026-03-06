@@ -8,7 +8,7 @@ class DomainFeaturesPmu {
 
   /// Creates a new [DomainFeaturesPmu].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesPmu({
+  const DomainFeaturesPmu({
     this.state,
   });
 

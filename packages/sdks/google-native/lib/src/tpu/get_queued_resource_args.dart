@@ -15,7 +15,7 @@ class GetQueuedResourceArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [queuedResourceId] Required.
-  GetQueuedResourceArgs({
+  const GetQueuedResourceArgs({
     required this.location,
     this.project,
     required this.queuedResourceId,

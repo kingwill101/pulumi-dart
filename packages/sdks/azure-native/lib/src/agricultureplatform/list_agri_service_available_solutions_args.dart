@@ -15,7 +15,7 @@ class ListAgriServiceAvailableSolutionsArgs {
   /// Creates a new [ListAgriServiceAvailableSolutionsArgs].
   /// [agriServiceResourceName] The name of the AgriService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListAgriServiceAvailableSolutionsArgs({
+  const ListAgriServiceAvailableSolutionsArgs({
     required this.agriServiceResourceName,
     required this.resourceGroupName,
   });

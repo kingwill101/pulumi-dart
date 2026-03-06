@@ -19,7 +19,7 @@ class MaintenancePolicyResponse {
   /// [description] Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
   /// [updateTime] The time when the policy was last updated.
   /// [weeklyMaintenanceWindow] Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
-  MaintenancePolicyResponse({
+  const MaintenancePolicyResponse({
     required this.createTime,
     required this.description,
     required this.updateTime,

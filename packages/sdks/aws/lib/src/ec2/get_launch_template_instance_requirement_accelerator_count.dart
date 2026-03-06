@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementAcceleratorCount {
   /// Creates a new [GetLaunchTemplateInstanceRequirementAcceleratorCount].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementAcceleratorCount({
+  const GetLaunchTemplateInstanceRequirementAcceleratorCount({
     required this.max,
     required this.min,
   });

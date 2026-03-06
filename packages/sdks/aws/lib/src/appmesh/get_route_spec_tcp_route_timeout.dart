@@ -8,7 +8,7 @@ class GetRouteSpecTcpRouteTimeout {
 
   /// Creates a new [GetRouteSpecTcpRouteTimeout].
   /// [idles] Required.
-  GetRouteSpecTcpRouteTimeout({
+  const GetRouteSpecTcpRouteTimeout({
     required this.idles,
   });
 

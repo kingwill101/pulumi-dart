@@ -23,7 +23,7 @@ class ConfigurationState {
   /// [packageData] Specifies the package data for this configuration.
   /// [protectedFiles] One or more `protected_file` blocks with sensitive information as defined below. If specified `config_file` must also be specified.
   /// [rootFile] Specifies the root file path of this Nginx Configuration.
-  ConfigurationState({
+  const ConfigurationState({
     this.configFiles,
     this.nginxDeploymentId,
     this.packageData,

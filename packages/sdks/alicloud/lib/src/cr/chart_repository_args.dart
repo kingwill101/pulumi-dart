@@ -24,7 +24,7 @@ class ChartRepositoryArgs {
   /// [repoNamespaceName] The namespace to which the repository belongs.
   /// [repoType] The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   /// [summary] The summary about the repository.
-  ChartRepositoryArgs({
+  const ChartRepositoryArgs({
     required this.instanceId,
     required this.repoName,
     required this.repoNamespaceName,

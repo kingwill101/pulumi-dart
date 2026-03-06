@@ -9,7 +9,7 @@ class GetDataSetLogicalTableMapDataTransformUntagColumnOperation {
   /// Creates a new [GetDataSetLogicalTableMapDataTransformUntagColumnOperation].
   /// [columnName] Required.
   /// [tagNames] Required.
-  GetDataSetLogicalTableMapDataTransformUntagColumnOperation({
+  const GetDataSetLogicalTableMapDataTransformUntagColumnOperation({
     required this.columnName,
     required this.tagNames,
   });

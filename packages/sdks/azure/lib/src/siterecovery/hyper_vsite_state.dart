@@ -12,7 +12,7 @@ class HyperVSiteState {
   /// Creates a new [HyperVSiteState].
   /// [name] The name which should be used for this Recovery Service. Changing this forces a new Site to be created.
   /// [recoveryVaultId] The ID of the Recovery Services Vault where the Site created. Changing this forces a new Site to be created.
-  HyperVSiteState({
+  const HyperVSiteState({
     this.name,
     this.recoveryVaultId,
   });

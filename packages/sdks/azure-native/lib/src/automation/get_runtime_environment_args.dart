@@ -18,7 +18,7 @@ class GetRuntimeEnvironmentArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
-  GetRuntimeEnvironmentArgs({
+  const GetRuntimeEnvironmentArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.runtimeEnvironmentName,

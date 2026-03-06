@@ -31,7 +31,7 @@ class EksClusterProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EksClusterProperties({
+  const EksClusterProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

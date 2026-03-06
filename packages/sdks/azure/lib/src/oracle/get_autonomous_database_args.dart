@@ -15,7 +15,7 @@ class GetAutonomousDatabaseArgs {
   /// Creates a new [GetAutonomousDatabaseArgs].
   /// [name] The name of this Autonomous Database.
   /// [resourceGroupName] The name of the Resource Group where the Autonomous Database exists.
-  GetAutonomousDatabaseArgs({
+  const GetAutonomousDatabaseArgs({
     required this.name,
     required this.resourceGroupName,
   });

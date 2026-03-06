@@ -21,7 +21,7 @@ class GetRulesArgs {
   /// [ids] A list of Rule IDs.
   /// [nameRegex] A regex string to filter results by Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRulesArgs({
+  const GetRulesArgs({
     this.endpointId,
     this.ids,
     this.nameRegex,

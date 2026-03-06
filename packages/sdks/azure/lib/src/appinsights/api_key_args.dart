@@ -23,7 +23,7 @@ class ApiKeyArgs {
   /// [name] Specifies the name of the Application Insights API key. Changing this forces a new resource to be created.
   /// [readPermissions] Specifies the list of read permissions granted to the API key. Valid values are `agentconfig`, `aggregate`, `api`, `draft`, `extendqueries`, `search`. Please note these values are case sensitive. Changing this forces a new resource to be created.
   /// [writePermissions] Specifies the list of write permissions granted to the API key. Valid values are `annotations`. Please note these values are case sensitive. Changing this forces a new resource to be created.
-  ApiKeyArgs({
+  const ApiKeyArgs({
     required this.applicationInsightsId,
     this.name,
     this.readPermissions,

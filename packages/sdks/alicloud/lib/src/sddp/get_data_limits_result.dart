@@ -23,7 +23,7 @@ class GetDataLimitsResult {
   /// [outputFile] Optional.
   /// [parentId] The ID of the data asset.
   /// [resourceType] The type of the service to which the data asset belongs.
-  GetDataLimitsResult({
+  const GetDataLimitsResult({
     required this.id,
     required this.ids,
     required this.limits,

@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa].
   /// [dev] Specifies the device to be used for the VHostVDPA source in the backing store.
-  DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa({
+  const DomainDevicesDiskMirrorBackingStoreSourceVhostVdpa({
     required this.dev,
   });
 

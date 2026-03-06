@@ -13,7 +13,7 @@ class ScriptSourceResponse {
   /// Creates a new [ScriptSourceResponse].
   /// [parameters] Optional. Any input parameters that needs to passed to the script and are accessed within the script for its execution.
   /// [scriptLink] Required. The link of the source script, it must be a readable storage blob with SAS URI or publicly accessible URI or managed identity enabled.
-  ScriptSourceResponse({
+  const ScriptSourceResponse({
     this.parameters,
     required this.scriptLink,
   });

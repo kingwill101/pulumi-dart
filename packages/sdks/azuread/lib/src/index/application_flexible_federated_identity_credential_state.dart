@@ -27,7 +27,7 @@ class ApplicationFlexibleFederatedIdentityCredentialState {
   /// [description] A description for the federated identity credential.
   /// [displayName] A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   /// [issuer] The URL of the external identity provider, which must match the issuer claim of the external token being exchanged.
-  ApplicationFlexibleFederatedIdentityCredentialState({
+  const ApplicationFlexibleFederatedIdentityCredentialState({
     this.applicationId,
     this.audience,
     this.claimsMatchingExpression,

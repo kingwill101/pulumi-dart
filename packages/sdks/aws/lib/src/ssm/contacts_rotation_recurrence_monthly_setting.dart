@@ -12,7 +12,7 @@ class ContactsRotationRecurrenceMonthlySetting {
   /// Creates a new [ContactsRotationRecurrenceMonthlySetting].
   /// [dayOfMonth] (Required) The day of the month when monthly recurring on-call rotations begin.
   /// [handOffTime] (Required) The hand off time. See Hand Off Time for more details.
-  ContactsRotationRecurrenceMonthlySetting({
+  const ContactsRotationRecurrenceMonthlySetting({
     required this.dayOfMonth,
     this.handOffTime,
   });

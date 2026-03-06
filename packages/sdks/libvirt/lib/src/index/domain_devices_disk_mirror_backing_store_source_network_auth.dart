@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth {
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.
   /// [username] Sets the username for iSCSI authentication.
-  DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth({
+  const DomainDevicesDiskMirrorBackingStoreSourceNetworkAuth({
     this.secret,
     this.username,
   });

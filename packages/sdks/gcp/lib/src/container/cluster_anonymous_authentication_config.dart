@@ -8,7 +8,7 @@ class ClusterAnonymousAuthenticationConfig {
 
   /// Creates a new [ClusterAnonymousAuthenticationConfig].
   /// [mode] Sets or removes authentication restrictions. Available options include `LIMITED` and `ENABLED`.
-  ClusterAnonymousAuthenticationConfig({
+  const ClusterAnonymousAuthenticationConfig({
     required this.mode,
   });
 

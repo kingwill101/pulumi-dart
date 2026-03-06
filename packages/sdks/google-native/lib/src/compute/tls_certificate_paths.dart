@@ -12,7 +12,7 @@ class TlsCertificatePaths {
   /// Creates a new [TlsCertificatePaths].
   /// [certificatePath] The path to the file holding the client or server TLS certificate to use.
   /// [privateKeyPath] The path to the file holding the client or server private key.
-  TlsCertificatePaths({
+  const TlsCertificatePaths({
     this.certificatePath,
     this.privateKeyPath,
   });

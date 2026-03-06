@@ -17,7 +17,7 @@ class AppVersionSnapshotAppModelSetting {
   /// Creates a new [AppVersionSnapshotAppModelSetting].
   /// [model] (Output)
   /// [temperature] (Output)
-  AppVersionSnapshotAppModelSetting({
+  const AppVersionSnapshotAppModelSetting({
     this.model,
     this.temperature,
   });

@@ -18,7 +18,7 @@ class HttpRouteMatch {
   /// [path] match on exact path
   /// [pathSeparatedPrefix] match on all prefix's. Not exact
   /// [prefix] match on all prefix's. Not exact
-  HttpRouteMatch({
+  const HttpRouteMatch({
     this.caseSensitive,
     this.path,
     this.pathSeparatedPrefix,

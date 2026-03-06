@@ -21,7 +21,7 @@ class InstanceGceSetupReservationAffinity {
   /// [consumeReservationType] Specifies the type of reservation from which this instance can consume resources:
   /// [key] Corresponds to the label key of a reservation resource. To target a
   /// [values] Corresponds to the label values of a reservation resource. This can be
-  InstanceGceSetupReservationAffinity({
+  const InstanceGceSetupReservationAffinity({
     this.consumeReservationType,
     this.key,
     this.values,

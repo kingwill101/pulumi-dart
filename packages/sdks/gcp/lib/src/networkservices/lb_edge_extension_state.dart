@@ -47,7 +47,7 @@ class LbEdgeExtensionState {
   /// [name] Name of the LbEdgeExtension resource in the following format: projects/{project}/locations/{location}/lbEdgeExtensions/{lbEdgeExtensions}
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  LbEdgeExtensionState({
+  const LbEdgeExtensionState({
     this.description,
     this.effectiveLabels,
     this.extensionChains,

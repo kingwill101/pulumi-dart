@@ -56,7 +56,7 @@ class ContainerAppArgs {
   /// [tags] Resource tags.
   /// [template] Container App versioned application definition.
   /// [workloadProfileName] Workload profile name to pin for container app execution.
-  ContainerAppArgs({
+  const ContainerAppArgs({
     this.configuration,
     this.containerAppName,
     this.environmentId,

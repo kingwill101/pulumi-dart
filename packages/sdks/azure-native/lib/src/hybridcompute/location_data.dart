@@ -18,7 +18,7 @@ class LocationData {
   /// [countryOrRegion] The country or region where the resource is located
   /// [district] The district, state, or province where the resource is located.
   /// [name] A canonical name for the geographic or physical location.
-  LocationData({
+  const LocationData({
     this.city,
     this.countryOrRegion,
     this.district,

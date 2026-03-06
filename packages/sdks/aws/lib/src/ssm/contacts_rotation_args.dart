@@ -33,7 +33,7 @@ class ContactsRotationArgs {
   /// [startTime] The date and time, in RFC 3339 format, that the rotation goes into effect.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeZoneId] The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
-  ContactsRotationArgs({
+  const ContactsRotationArgs({
     required this.contactIds,
     this.name,
     required this.recurrence,

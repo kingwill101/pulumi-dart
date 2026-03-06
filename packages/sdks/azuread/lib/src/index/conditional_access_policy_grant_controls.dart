@@ -22,7 +22,7 @@ class ConditionalAccessPolicyGrantControls {
   /// [customAuthenticationFactors] List of custom controls IDs required by the policy.
   /// [operator] Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
   /// [termsOfUses] List of terms of use IDs required by the policy.
-  ConditionalAccessPolicyGrantControls({
+  const ConditionalAccessPolicyGrantControls({
     this.authenticationStrengthPolicyId,
     this.builtInControls,
     this.customAuthenticationFactors,

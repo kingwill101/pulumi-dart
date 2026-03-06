@@ -22,7 +22,7 @@ class InsightsConfigError {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  InsightsConfigError({
+  const InsightsConfigError({
     this.code,
     this.details,
     this.message,

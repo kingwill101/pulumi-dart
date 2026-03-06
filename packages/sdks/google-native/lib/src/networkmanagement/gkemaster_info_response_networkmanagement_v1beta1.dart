@@ -18,7 +18,7 @@ class GKEMasterInfoResponseNetworkmanagementV1beta1 {
   /// [clusterUri] URI of a GKE cluster.
   /// [externalIp] External IP address of a GKE cluster master.
   /// [internalIp] Internal IP address of a GKE cluster master.
-  GKEMasterInfoResponseNetworkmanagementV1beta1({
+  const GKEMasterInfoResponseNetworkmanagementV1beta1({
     required this.clusterNetworkUri,
     required this.clusterUri,
     required this.externalIp,

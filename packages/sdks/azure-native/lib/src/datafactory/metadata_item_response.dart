@@ -12,7 +12,7 @@ class MetadataItemResponse {
   /// Creates a new [MetadataItemResponse].
   /// [name] Metadata item key name. Type: string (or Expression with resultType string).
   /// [value] Metadata item value. Type: string (or Expression with resultType string).
-  MetadataItemResponse({
+  const MetadataItemResponse({
     this.name,
     this.value,
   });

@@ -11,7 +11,7 @@ class GetAttachmentsFilter {
   /// Creates a new [GetAttachmentsFilter].
   /// [name] Name of the filter check available value on [official documentation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html)
   /// [values] List of one or more values for the filter.
-  GetAttachmentsFilter({
+  const GetAttachmentsFilter({
     required this.name,
     required this.values,
   });

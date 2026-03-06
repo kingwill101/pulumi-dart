@@ -29,7 +29,7 @@ class GetResolutionLinesArgs {
   /// [lineNames] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userClientIp] The ip of user client.
-  GetResolutionLinesArgs({
+  const GetResolutionLinesArgs({
     this.domainName,
     this.lang,
     this.lineCodes,

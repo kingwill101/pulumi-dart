@@ -17,7 +17,7 @@ class GoogleCloudDataplexV1AssetResourceSpec {
   /// [name] Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
   /// [readAccessMode] Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
   /// [type] Immutable. Type of resource.
-  GoogleCloudDataplexV1AssetResourceSpec({
+  const GoogleCloudDataplexV1AssetResourceSpec({
     this.name,
     this.readAccessMode,
     required this.type,

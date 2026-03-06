@@ -12,7 +12,7 @@ class SchedulePolicy {
   /// Creates a new [SchedulePolicy].
   /// [idleDuration] The idle duration between replication stages.
   /// [skipOsAdaptation] A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
-  SchedulePolicy({
+  const SchedulePolicy({
     this.idleDuration,
     this.skipOsAdaptation,
   });

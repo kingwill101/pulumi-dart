@@ -9,7 +9,7 @@ class ClusterUser {
 
   /// Creates a new [ClusterUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  ClusterUser({
+  const ClusterUser({
     required this.username,
   });
 

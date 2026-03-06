@@ -10,7 +10,7 @@ class MaintenanceWindowTaskTarget {
   /// Creates a new [MaintenanceWindowTaskTarget].
   /// [key] Required.
   /// [values] The array of strings.
-  MaintenanceWindowTaskTarget({
+  const MaintenanceWindowTaskTarget({
     required this.key,
     required this.values,
   });

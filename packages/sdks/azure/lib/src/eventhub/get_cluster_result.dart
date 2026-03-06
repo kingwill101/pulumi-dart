@@ -18,7 +18,7 @@ class GetClusterResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [skuName] SKU name of the EventHub Cluster.
-  GetClusterResult({
+  const GetClusterResult({
     required this.id,
     required this.location,
     required this.name,

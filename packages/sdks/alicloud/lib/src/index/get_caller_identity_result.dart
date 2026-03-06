@@ -17,7 +17,7 @@ class GetCallerIdentityResult {
   /// [arn] The Alibaba Cloud Resource Name (ARN) of the user making the call.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identityType] The type of the princiapal. RAMUser for users.
-  GetCallerIdentityResult({
+  const GetCallerIdentityResult({
     required this.accountId,
     required this.arn,
     required this.id,

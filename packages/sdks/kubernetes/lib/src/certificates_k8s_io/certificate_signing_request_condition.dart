@@ -34,7 +34,7 @@ class CertificateSigningRequestCondition {
   /// [reason] reason indicates a brief reason for the request state
   /// [status] status of the condition, one of True, False, Unknown. Approved, Denied, and Failed conditions may not be "False" or "Unknown".
   /// [type] type of the condition. Known conditions are "Approved", "Denied", and "Failed".
-  CertificateSigningRequestCondition({
+  const CertificateSigningRequestCondition({
     this.lastTransitionTime,
     this.lastUpdateTime,
     this.message,

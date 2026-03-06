@@ -21,7 +21,7 @@ class GetNodeGroupArgs {
   /// [nodeGroupName] Name of the node group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags.
-  GetNodeGroupArgs({
+  const GetNodeGroupArgs({
     required this.clusterName,
     required this.nodeGroupName,
     this.region,

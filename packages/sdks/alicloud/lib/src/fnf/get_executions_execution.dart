@@ -29,7 +29,7 @@ class GetExecutionsExecution {
   /// [startedTime] The started time of the execution.
   /// [status] The status of the resource.
   /// [stoppedTime] The stopped time of the execution.
-  GetExecutionsExecution({
+  const GetExecutionsExecution({
     required this.executionName,
     required this.flowName,
     required this.id,

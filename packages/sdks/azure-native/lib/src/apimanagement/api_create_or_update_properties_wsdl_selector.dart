@@ -12,7 +12,7 @@ class ApiCreateOrUpdatePropertiesWsdlSelector {
   /// Creates a new [ApiCreateOrUpdatePropertiesWsdlSelector].
   /// [wsdlEndpointName] Name of endpoint(port) to import from WSDL
   /// [wsdlServiceName] Name of service to import from WSDL
-  ApiCreateOrUpdatePropertiesWsdlSelector({
+  const ApiCreateOrUpdatePropertiesWsdlSelector({
     this.wsdlEndpointName,
     this.wsdlServiceName,
   });

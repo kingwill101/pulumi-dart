@@ -22,7 +22,7 @@ class TransformSummaryResponse {
   /// [kind] Type of transform.
   /// [name] User provided name for this transform instance.
   /// [outputCollectionName] User names for all collection outputs to this transform.
-  TransformSummaryResponse({
+  const TransformSummaryResponse({
     required this.displayData,
     required this.inputCollectionName,
     required this.kind,

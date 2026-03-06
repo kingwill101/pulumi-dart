@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio {
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessagePlayAudio].
   /// [audioUri] URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-  GoogleCloudDialogflowCxV3ResponseMessagePlayAudio({
+  const GoogleCloudDialogflowCxV3ResponseMessagePlayAudio({
     required this.audioUri,
   });
 

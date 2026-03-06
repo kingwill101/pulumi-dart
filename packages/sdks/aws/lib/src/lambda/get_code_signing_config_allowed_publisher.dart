@@ -8,7 +8,7 @@ class GetCodeSigningConfigAllowedPublisher {
 
   /// Creates a new [GetCodeSigningConfigAllowedPublisher].
   /// [signingProfileVersionArns] Set of ARNs for each of the signing profiles. A signing profile defines a trusted user who can sign a code package.
-  GetCodeSigningConfigAllowedPublisher({
+  const GetCodeSigningConfigAllowedPublisher({
     required this.signingProfileVersionArns,
   });
 

@@ -39,7 +39,7 @@ class ApplicationArgs {
   /// [roleArn] ARN of role for application to use to access AWS resources.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  ApplicationArgs({
+  const ApplicationArgs({
     required this.definition,
     this.description,
     required this.engineType,

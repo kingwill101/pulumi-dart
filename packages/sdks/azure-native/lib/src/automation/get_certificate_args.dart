@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// [automationAccountName] The name of the automation account.
   /// [certificateName] The name of certificate.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.automationAccountName,
     required this.certificateName,
     required this.resourceGroupName,

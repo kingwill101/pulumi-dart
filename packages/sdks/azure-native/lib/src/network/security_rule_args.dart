@@ -73,7 +73,7 @@ class SecurityRuleArgs {
   /// [sourcePortRange] The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   /// [sourcePortRanges] The source port ranges.
   /// [type] The type of the resource.
-  SecurityRuleArgs({
+  const SecurityRuleArgs({
     required this.access,
     this.description,
     this.destinationAddressPrefix,

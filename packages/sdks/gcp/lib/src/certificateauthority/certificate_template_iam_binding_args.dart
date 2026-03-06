@@ -45,7 +45,7 @@ class CertificateTemplateIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  CertificateTemplateIamBindingArgs({
+  const CertificateTemplateIamBindingArgs({
     required this.certificateTemplate,
     this.condition,
     this.location,

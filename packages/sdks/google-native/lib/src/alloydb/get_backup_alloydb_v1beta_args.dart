@@ -15,7 +15,7 @@ class GetBackupAlloydbV1betaArgs {
   /// [backupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBackupAlloydbV1betaArgs({
+  const GetBackupAlloydbV1betaArgs({
     required this.backupId,
     required this.location,
     this.project,

@@ -7,7 +7,7 @@ class KxClusterTickerplantLogConfiguration {
 
   /// Creates a new [KxClusterTickerplantLogConfiguration].
   /// [tickerplantLogVolumes] Required.
-  KxClusterTickerplantLogConfiguration({
+  const KxClusterTickerplantLogConfiguration({
     required this.tickerplantLogVolumes,
   });
 

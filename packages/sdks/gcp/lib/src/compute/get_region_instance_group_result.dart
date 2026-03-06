@@ -25,7 +25,7 @@ class GetRegionInstanceGroupResult {
   /// [region] Required.
   /// [selfLink] Required.
   /// [size] The number of instances in the group.
-  GetRegionInstanceGroupResult({
+  const GetRegionInstanceGroupResult({
     required this.id,
     required this.instances,
     required this.name,

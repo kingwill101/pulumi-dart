@@ -29,7 +29,7 @@ class GetExportResult {
   /// [region] Required.
   /// [restApiId] Required.
   /// [stageName] Required.
-  GetExportResult({
+  const GetExportResult({
     this.accepts,
     required this.body,
     required this.contentDisposition,

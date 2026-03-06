@@ -12,7 +12,7 @@ class FirewallPolicySNAT {
   /// Creates a new [FirewallPolicySNAT].
   /// [autoLearnPrivateRanges] The operation mode for automatically learning private ranges to not be SNAT
   /// [privateRanges] List of private IP addresses/IP address ranges to not be SNAT.
-  FirewallPolicySNAT({
+  const FirewallPolicySNAT({
     this.autoLearnPrivateRanges,
     this.privateRanges,
   });

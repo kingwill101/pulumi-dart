@@ -16,7 +16,7 @@ class HiveTableOptions {
   /// [parameters] Stores user supplied Hive table parameters.
   /// [storageDescriptor] Stores physical storage information of the data.
   /// [tableType] Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
-  HiveTableOptions({
+  const HiveTableOptions({
     this.parameters,
     this.storageDescriptor,
     this.tableType,

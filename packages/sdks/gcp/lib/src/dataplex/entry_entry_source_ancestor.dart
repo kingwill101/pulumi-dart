@@ -11,7 +11,7 @@ class EntryEntrySourceAncestor {
   /// Creates a new [EntryEntrySourceAncestor].
   /// [name] The name of the ancestor resource.
   /// [type] The type of the ancestor resource.
-  EntryEntrySourceAncestor({
+  const EntryEntrySourceAncestor({
     this.name,
     this.type,
   });

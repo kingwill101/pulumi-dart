@@ -15,7 +15,7 @@ class GetRetentionPolicyArgs {
   /// Creates a new [GetRetentionPolicyArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schedulerName] The name of the Scheduler
-  GetRetentionPolicyArgs({
+  const GetRetentionPolicyArgs({
     required this.resourceGroupName,
     required this.schedulerName,
   });

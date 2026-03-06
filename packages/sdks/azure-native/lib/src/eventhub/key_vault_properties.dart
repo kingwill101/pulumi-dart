@@ -18,7 +18,7 @@ class KeyVaultProperties {
   /// [keyName] Name of the Key from KeyVault
   /// [keyVaultUri] Uri of KeyVault
   /// [keyVersion] Key Version
-  KeyVaultProperties({
+  const KeyVaultProperties({
     this.identity,
     this.keyName,
     this.keyVaultUri,

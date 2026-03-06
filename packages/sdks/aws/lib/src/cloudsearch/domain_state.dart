@@ -39,7 +39,7 @@ class DomainState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scalingParameters] Domain scaling parameters. Documented below.
   /// [searchServiceEndpoint] The service endpoint for requesting search results from a search domain.
-  DomainState({
+  const DomainState({
     this.arn,
     this.documentServiceEndpoint,
     this.domainId,

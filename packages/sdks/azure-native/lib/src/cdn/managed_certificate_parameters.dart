@@ -10,7 +10,7 @@ class ManagedCertificateParameters {
 
   /// Creates a new [ManagedCertificateParameters].
   /// [type] The type of the secret resource.
-  ManagedCertificateParameters({
+  const ManagedCertificateParameters({
     required this.type,
   });
 

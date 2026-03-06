@@ -15,7 +15,7 @@ class GetStorageBoxTypeArgs {
   /// Creates a new [GetStorageBoxTypeArgs].
   /// [id] ID of the Storage Box Type.
   /// [name] Name of the Storage Box Type.
-  GetStorageBoxTypeArgs({
+  const GetStorageBoxTypeArgs({
     this.id,
     this.name,
   });

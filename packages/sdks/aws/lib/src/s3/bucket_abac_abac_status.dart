@@ -10,7 +10,7 @@ class BucketAbacAbacStatus {
 
   /// Creates a new [BucketAbacAbacStatus].
   /// [status] ABAC status of the general purpose bucket.
-  BucketAbacAbacStatus({
+  const BucketAbacAbacStatus({
     required this.status,
   });
 

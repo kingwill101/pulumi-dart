@@ -61,7 +61,7 @@ class GetVpcPeeringConnectionResult {
   /// [status] Required.
   /// [tags] Required.
   /// [vpcId] Required.
-  GetVpcPeeringConnectionResult({
+  const GetVpcPeeringConnectionResult({
     required this.accepter,
     required this.cidrBlock,
     required this.cidrBlockSets,

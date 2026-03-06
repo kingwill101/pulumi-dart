@@ -11,7 +11,7 @@ class GetInstanceTypeAddonBackupPrice {
   /// Creates a new [GetInstanceTypeAddonBackupPrice].
   /// [hourly] The cost (in US dollars) per hour to add Backups service.
   /// [monthly] The cost (in US dollars) per month to add Backups service.
-  GetInstanceTypeAddonBackupPrice({
+  const GetInstanceTypeAddonBackupPrice({
     required this.hourly,
     required this.monthly,
   });

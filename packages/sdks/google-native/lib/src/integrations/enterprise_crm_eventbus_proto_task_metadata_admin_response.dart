@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataAdminResponse {
   /// Creates a new [EnterpriseCrmEventbusProtoTaskMetadataAdminResponse].
   /// [googleGroupEmail] Required.
   /// [userEmail] Required.
-  EnterpriseCrmEventbusProtoTaskMetadataAdminResponse({
+  const EnterpriseCrmEventbusProtoTaskMetadataAdminResponse({
     required this.googleGroupEmail,
     required this.userEmail,
   });

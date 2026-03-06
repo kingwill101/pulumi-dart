@@ -19,7 +19,7 @@ class ScaleSetOsProfileWindowsConfig {
   /// [enableAutomaticUpgrades] Indicates whether virtual machines in the scale set are enabled for automatic updates.
   /// [provisionVmAgent] Indicates whether virtual machine agent should be provisioned on the virtual machines in the scale set.
   /// [winrms] A collection of `winrm` blocks as documented below.
-  ScaleSetOsProfileWindowsConfig({
+  const ScaleSetOsProfileWindowsConfig({
     this.additionalUnattendConfigs,
     this.enableAutomaticUpgrades,
     this.provisionVmAgent,

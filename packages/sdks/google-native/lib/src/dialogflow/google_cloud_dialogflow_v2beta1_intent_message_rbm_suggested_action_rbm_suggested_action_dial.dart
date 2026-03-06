@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial].
   /// [phoneNumber] The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial({
     required this.phoneNumber,
   });
 

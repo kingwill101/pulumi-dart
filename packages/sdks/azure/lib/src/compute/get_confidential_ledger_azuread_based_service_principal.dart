@@ -14,7 +14,7 @@ class GetConfidentialLedgerAzureadBasedServicePrincipal {
   /// [ledgerRoleName] The Ledger Role to grant this Certificate Security Principal.
   /// [principalId] The Principal ID of the AzureAD Service Principal.
   /// [tenantId] The Tenant ID for this AzureAD Service Principal.
-  GetConfidentialLedgerAzureadBasedServicePrincipal({
+  const GetConfidentialLedgerAzureadBasedServicePrincipal({
     required this.ledgerRoleName,
     required this.principalId,
     required this.tenantId,

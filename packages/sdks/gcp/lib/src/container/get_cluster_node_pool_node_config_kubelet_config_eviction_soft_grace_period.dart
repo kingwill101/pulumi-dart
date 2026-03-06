@@ -23,7 +23,7 @@ class GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod {
   /// [nodefsAvailable] Defines grace period for the nodefs.available soft eviction threshold.
   /// [nodefsInodesFree] Defines grace period for the nodefs.inodesFree soft eviction threshold.
   /// [pidAvailable] Defines grace period for the pid.available soft eviction threshold.
-  GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod({
+  const GetClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod({
     required this.imagefsAvailable,
     required this.imagefsInodesFree,
     required this.memoryAvailable,

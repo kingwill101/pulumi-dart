@@ -11,7 +11,7 @@ class WorkstationConfigReadinessCheck {
   /// Creates a new [WorkstationConfigReadinessCheck].
   /// [path] Path to which the request should be sent.
   /// [port] Port to which the request should be sent.
-  WorkstationConfigReadinessCheck({
+  const WorkstationConfigReadinessCheck({
     required this.path,
     required this.port,
   });

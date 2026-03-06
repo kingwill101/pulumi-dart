@@ -18,7 +18,7 @@ class GetBackupPlanAssociationsAssociationRulesConfigInfo {
   /// [lastBackupState] State of last backup taken.
   /// [lastSuccessfulBackupConsistencyTime] The point in time when the last successful backup was captured from the source.
   /// [ruleId] Backup Rule id fetched from backup plan.
-  GetBackupPlanAssociationsAssociationRulesConfigInfo({
+  const GetBackupPlanAssociationsAssociationRulesConfigInfo({
     required this.lastBackupErrors,
     required this.lastBackupState,
     required this.lastSuccessfulBackupConsistencyTime,

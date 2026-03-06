@@ -11,7 +11,7 @@ class GetAppServicePlanServerFarmRdpPasswordResult {
   /// Creates a new [GetAppServicePlanServerFarmRdpPasswordResult].
   /// [rdpPassword] The RDP password for the server farm.
   /// [rdpPasswordExpiry] The RDP password expiry date.
-  GetAppServicePlanServerFarmRdpPasswordResult({
+  const GetAppServicePlanServerFarmRdpPasswordResult({
     this.rdpPassword,
     this.rdpPasswordExpiry,
   });

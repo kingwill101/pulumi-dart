@@ -45,7 +45,7 @@ class GetResolverEndpointResult {
   /// [status] Current status of the Resolver Endpoint.
   /// [targetNameServerMetricsEnabled] Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints.
   /// [vpcId] ID of the Host VPC that the Resolver Endpoint resides in.
-  GetResolverEndpointResult({
+  const GetResolverEndpointResult({
     required this.arn,
     required this.direction,
     this.filters,

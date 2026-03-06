@@ -8,7 +8,7 @@ class ThemeConfigurationSheetTileLayoutMargin {
 
   /// Creates a new [ThemeConfigurationSheetTileLayoutMargin].
   /// [show] This Boolean value controls whether to display sheet margins.
-  ThemeConfigurationSheetTileLayoutMargin({
+  const ThemeConfigurationSheetTileLayoutMargin({
     this.show,
   });
 

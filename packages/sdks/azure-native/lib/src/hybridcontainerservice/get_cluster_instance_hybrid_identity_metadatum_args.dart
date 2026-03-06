@@ -12,7 +12,7 @@ class GetClusterInstanceHybridIdentityMetadatumArgs {
 
   /// Creates a new [GetClusterInstanceHybridIdentityMetadatumArgs].
   /// [connectedClusterResourceUri] The fully qualified Azure Resource Manager identifier of the connected cluster resource.
-  GetClusterInstanceHybridIdentityMetadatumArgs({
+  const GetClusterInstanceHybridIdentityMetadatumArgs({
     required this.connectedClusterResourceUri,
   });
 

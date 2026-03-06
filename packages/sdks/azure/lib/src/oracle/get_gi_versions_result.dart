@@ -17,7 +17,7 @@ class GetGiVersionsResult {
   /// [shape] Optional.
   /// [versions] A list of valid GI software versions.
   /// [zone] Optional.
-  GetGiVersionsResult({
+  const GetGiVersionsResult({
     required this.id,
     required this.location,
     this.shape,

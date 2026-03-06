@@ -30,7 +30,7 @@ class WindowsConfigurationResponse {
   /// [provisionVMAgent] Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
   /// [timeZone] Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
   /// [winRM] Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
-  WindowsConfigurationResponse({
+  const WindowsConfigurationResponse({
     this.additionalUnattendContent,
     this.enableAutomaticUpdates,
     required this.enableVMAgentPlatformUpdates,

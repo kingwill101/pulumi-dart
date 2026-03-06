@@ -17,7 +17,7 @@ class GetAccessPointPublicAccessBlockConfiguration {
   /// [blockPublicPolicy] Whether Amazon S3 blocks public bucket policies for buckets in this account.
   /// [ignorePublicAcls] Whether Amazon S3 ignores public ACLs for buckets in this account.
   /// [restrictPublicBuckets] Whether Amazon S3 restricts public bucket policies for buckets in this account.
-  GetAccessPointPublicAccessBlockConfiguration({
+  const GetAccessPointPublicAccessBlockConfiguration({
     required this.blockPublicAcls,
     required this.blockPublicPolicy,
     required this.ignorePublicAcls,

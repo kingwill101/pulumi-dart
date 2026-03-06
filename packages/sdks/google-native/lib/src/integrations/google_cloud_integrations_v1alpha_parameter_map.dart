@@ -18,7 +18,7 @@ class GoogleCloudIntegrationsV1alphaParameterMap {
   /// [entries] A list of parameter map entries.
   /// [keyType] Option to specify key type for all entries of the map. If provided then field types for all entries must conform to this.
   /// [valueType] Option to specify value type for all entries of the map. If provided then field types for all entries must conform to this.
-  GoogleCloudIntegrationsV1alphaParameterMap({
+  const GoogleCloudIntegrationsV1alphaParameterMap({
     this.entries,
     this.keyType,
     this.valueType,

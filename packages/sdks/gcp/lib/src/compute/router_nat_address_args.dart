@@ -30,7 +30,7 @@ class RouterNatAddressArgs {
   /// [region] Region where the NAT service reside.
   /// [router] The name of the Cloud Router in which the referenced NAT service is configured.
   /// [routerNat] The name of the Nat service in which this address will be configured.
-  RouterNatAddressArgs({
+  const RouterNatAddressArgs({
     this.drainNatIps,
     required this.natIps,
     this.project,

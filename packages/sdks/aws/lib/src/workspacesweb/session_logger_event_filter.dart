@@ -11,7 +11,7 @@ class SessionLoggerEventFilter {
   /// Creates a new [SessionLoggerEventFilter].
   /// [all] Block that specifies to monitor all events. Set to `{}` to monitor all events.
   /// [includes] List of specific events to monitor. Valid values include session events like `SessionStart`, `SessionEnd`, etc.
-  SessionLoggerEventFilter({
+  const SessionLoggerEventFilter({
     this.all,
     this.includes,
   });

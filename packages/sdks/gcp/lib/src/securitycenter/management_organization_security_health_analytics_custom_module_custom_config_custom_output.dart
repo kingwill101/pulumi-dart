@@ -10,7 +10,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCusto
 
   /// Creates a new [ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput({
+  const ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput({
     this.properties,
   });
 

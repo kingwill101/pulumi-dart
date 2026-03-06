@@ -12,7 +12,7 @@ class DataflowGraphDestinationSchemaSettings {
   /// Creates a new [DataflowGraphDestinationSchemaSettings].
   /// [schemaRef] Reference to the schema that describes the output of the transformation.
   /// [serializationFormat] The format of the output data.
-  DataflowGraphDestinationSchemaSettings({
+  const DataflowGraphDestinationSchemaSettings({
     this.schemaRef,
     required this.serializationFormat,
   });

@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse].
   /// [table] The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
-  GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse({
+  const GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse({
     required this.table,
   });
 

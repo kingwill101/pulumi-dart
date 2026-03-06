@@ -23,7 +23,7 @@ class GetMaintenancePoliciesMaintenancePolicy {
   /// [notificationPeriodSec] The notification lead time in seconds.
   /// [slug] Unique identifier for this policy
   /// [type] The type of action taken during maintenance.
-  GetMaintenancePoliciesMaintenancePolicy({
+  const GetMaintenancePoliciesMaintenancePolicy({
     required this.description,
     required this.isDefault,
     required this.label,

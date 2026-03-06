@@ -28,7 +28,7 @@ class CacheRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceRepository] Source repository pulled from upstream.
   /// [targetRepository] Target repository specified in docker pull command.
-  CacheRuleArgs({
+  const CacheRuleArgs({
     this.cacheRuleName,
     this.credentialSetResourceId,
     required this.registryName,

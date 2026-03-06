@@ -18,7 +18,7 @@ class CircuitResponse {
   /// [expressRoutePrivatePeeringID] ExpressRoute Circuit private peering identifier
   /// [primarySubnet] CIDR of primary subnet
   /// [secondarySubnet] CIDR of secondary subnet
-  CircuitResponse({
+  const CircuitResponse({
     required this.expressRouteID,
     required this.expressRoutePrivatePeeringID,
     required this.primarySubnet,

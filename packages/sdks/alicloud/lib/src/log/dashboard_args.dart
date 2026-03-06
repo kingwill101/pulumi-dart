@@ -25,7 +25,7 @@ class DashboardArgs {
   /// [dashboardName] The name of the Log Dashboard.
   /// [displayName] Dashboard alias.
   /// [projectName] The name of the log project. It is the only in one Alicloud account.
-  DashboardArgs({
+  const DashboardArgs({
     this.attribute,
     required this.charList,
     required this.dashboardName,

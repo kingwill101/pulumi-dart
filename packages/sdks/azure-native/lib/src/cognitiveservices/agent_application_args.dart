@@ -25,7 +25,7 @@ class AgentApplicationArgs {
   /// [projectName] The name of Cognitive Services account's project.
   /// [properties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AgentApplicationArgs({
+  const AgentApplicationArgs({
     required this.accountName,
     this.name,
     required this.projectName,

@@ -20,7 +20,7 @@ class AwsIntegrationsApiGateway {
   /// [stagePrefixes] Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
   /// [tagKey] Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   /// [tagValue] Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  AwsIntegrationsApiGateway({
+  const AwsIntegrationsApiGateway({
     this.awsRegions,
     this.metricsPollingInterval,
     this.stagePrefixes,

@@ -9,7 +9,7 @@ class SuspensionDetailsResponse {
 
   /// Creates a new [SuspensionDetailsResponse].
   /// [suspensionStartDate] The starting date and time of the suspension state.
-  SuspensionDetailsResponse({
+  const SuspensionDetailsResponse({
     this.suspensionStartDate,
   });
 

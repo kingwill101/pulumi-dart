@@ -21,7 +21,7 @@ class GetReadWriteDatabaseArgs {
   /// [kustoPoolName] The name of the Kusto pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetReadWriteDatabaseArgs({
+  const GetReadWriteDatabaseArgs({
     required this.databaseName,
     required this.kustoPoolName,
     required this.resourceGroupName,

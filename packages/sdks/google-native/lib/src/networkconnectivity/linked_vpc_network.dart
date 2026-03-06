@@ -12,7 +12,7 @@ class LinkedVpcNetwork {
   /// Creates a new [LinkedVpcNetwork].
   /// [excludeExportRanges] Optional. IP ranges encompassing the subnets to be excluded from peering.
   /// [uri] The URI of the VPC network resource.
-  LinkedVpcNetwork({
+  const LinkedVpcNetwork({
     this.excludeExportRanges,
     required this.uri,
   });

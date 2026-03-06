@@ -15,7 +15,7 @@ class ConfigurationProfileAssignmentPropertiesResponse {
   /// [configurationProfile] The Automanage configurationProfile ARM Resource URI.
   /// [status] The status of onboarding, which only appears in the response.
   /// [targetId] The target VM resource URI
-  ConfigurationProfileAssignmentPropertiesResponse({
+  const ConfigurationProfileAssignmentPropertiesResponse({
     this.configurationProfile,
     required this.status,
     required this.targetId,

@@ -20,7 +20,7 @@ class ImportSourceSpecificationResponse {
   /// [inputFormat] The format of the source data. Valid values for ``ImportFormat`` are ``CSV``, ``DYNAMODB_JSON`` or ``ION``.
   /// [inputFormatOptions] Additional properties that specify how the input is formatted, The format options for the data that was imported into the target table. There is one value, CsvOption.
   /// [s3BucketSource] The S3 bucket that provides the source for the import. The S3 bucket that is being imported from.
-  ImportSourceSpecificationResponse({
+  const ImportSourceSpecificationResponse({
     this.inputCompressionType,
     this.inputFormat,
     this.inputFormatOptions,

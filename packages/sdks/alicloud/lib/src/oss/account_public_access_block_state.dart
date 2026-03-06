@@ -9,7 +9,7 @@ class AccountPublicAccessBlockState {
 
   /// Creates a new [AccountPublicAccessBlockState].
   /// [blockPublicAccess] Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
-  AccountPublicAccessBlockState({
+  const AccountPublicAccessBlockState({
     this.blockPublicAccess,
   });
 

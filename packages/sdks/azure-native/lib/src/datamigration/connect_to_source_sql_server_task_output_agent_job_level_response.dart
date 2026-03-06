@@ -36,7 +36,7 @@ class ConnectToSourceSqlServerTaskOutputAgentJobLevelResponse {
   /// [name] Agent Job name
   /// [resultType] Type of result - database level or task level
   /// [validationErrors] Validation errors
-  ConnectToSourceSqlServerTaskOutputAgentJobLevelResponse({
+  const ConnectToSourceSqlServerTaskOutputAgentJobLevelResponse({
     required this.id,
     required this.isEnabled,
     required this.jobCategory,

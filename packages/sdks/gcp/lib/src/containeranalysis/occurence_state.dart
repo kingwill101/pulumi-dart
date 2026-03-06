@@ -49,7 +49,7 @@ class OccurenceState {
   /// [remediation] A description of actions that can be taken to remedy the note.
   /// [resourceUri] Required. Immutable. A URI that represents the resource for which
   /// [updateTime] The time when the repository was last updated.
-  OccurenceState({
+  const OccurenceState({
     this.attestation,
     this.createTime,
     this.kind,

@@ -96,7 +96,7 @@ class RegionHealthCheckState {
   /// [timeoutSec] How long (in seconds) to wait before claiming failure.
   /// [type] The type of the health check. One of HTTP, HTTP2, HTTPS, TCP, or SSL.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many
-  RegionHealthCheckState({
+  const RegionHealthCheckState({
     this.checkIntervalSec,
     this.creationTimestamp,
     this.description,

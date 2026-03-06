@@ -11,7 +11,7 @@ class InstanceFromMachineImageServiceAccount {
   /// Creates a new [InstanceFromMachineImageServiceAccount].
   /// [email] The service account e-mail address.
   /// [scopes] A list of service scopes.
-  InstanceFromMachineImageServiceAccount({
+  const InstanceFromMachineImageServiceAccount({
     this.email,
     required this.scopes,
   });

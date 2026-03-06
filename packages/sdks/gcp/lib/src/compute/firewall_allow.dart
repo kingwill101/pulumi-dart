@@ -19,7 +19,7 @@ class FirewallAllow {
   /// Creates a new [FirewallAllow].
   /// [ports] An optional list of ports to which this rule applies. This field
   /// [protocol] The IP protocol to which this rule applies. The protocol type is
-  FirewallAllow({
+  const FirewallAllow({
     this.ports,
     required this.protocol,
   });

@@ -8,7 +8,7 @@ class AnalysisCompletedResponse {
 
   /// Creates a new [AnalysisCompletedResponse].
   /// [analysisType] Required.
-  AnalysisCompletedResponse({
+  const AnalysisCompletedResponse({
     required this.analysisType,
   });
 

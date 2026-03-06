@@ -24,7 +24,7 @@ class BrowserApplicationArgs {
   /// [distributedTracingEnabled] Configures distributed tracing in browser apps. Defaults to `true`, if not specified.
   /// [loaderType] Determines the browser loader configured. Valid values are `SPA`, `PRO`, and `LITE`. The default is `SPA`. Refer to the [browser agent loader documentation](https://docs.newrelic.com/docs/browser/browser-monitoring/installation/install-browser-monitoring-agent/#agent-types) for more information on valid loader types.
   /// [name] The name of the browser application.
-  BrowserApplicationArgs({
+  const BrowserApplicationArgs({
     this.accountId,
     this.cookiesEnabled,
     this.distributedTracingEnabled,

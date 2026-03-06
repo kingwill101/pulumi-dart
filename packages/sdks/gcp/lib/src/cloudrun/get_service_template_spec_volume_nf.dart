@@ -14,7 +14,7 @@ class GetServiceTemplateSpecVolumeNf {
   /// [path] Path exported by the NFS server
   /// [readOnly] If true, mount the NFS volume as read only in all mounts. Defaults to false.
   /// [server] IP address or hostname of the NFS server
-  GetServiceTemplateSpecVolumeNf({
+  const GetServiceTemplateSpecVolumeNf({
     required this.path,
     required this.readOnly,
     required this.server,

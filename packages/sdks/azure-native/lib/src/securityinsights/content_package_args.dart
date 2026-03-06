@@ -92,7 +92,7 @@ class ContentPackageArgs {
   /// [threatAnalysisTechniques] the techniques the resource covers, these have to be aligned with the tactics being used
   /// [version] the latest version number of the package
   /// [workspaceName] The name of the workspace.
-  ContentPackageArgs({
+  const ContentPackageArgs({
     this.author,
     this.categories,
     required this.contentId,

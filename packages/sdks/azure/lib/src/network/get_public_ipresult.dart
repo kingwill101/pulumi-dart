@@ -54,7 +54,7 @@ class GetPublicIPResult {
   /// [sku] The SKU of the Public IP.
   /// [tags] A mapping of tags to assigned to the resource.
   /// [zones] A list of Availability Zones in which this Public IP is located.
-  GetPublicIPResult({
+  const GetPublicIPResult({
     required this.allocationMethod,
     required this.ddosProtectionMode,
     required this.ddosProtectionPlanId,

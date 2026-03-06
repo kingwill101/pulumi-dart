@@ -11,7 +11,7 @@ class TemplateFilterConfigMaliciousUriFilterSettings {
 
   /// Creates a new [TemplateFilterConfigMaliciousUriFilterSettings].
   /// [filterEnforcement] Tells whether the Malicious URI filter is enabled or disabled.
-  TemplateFilterConfigMaliciousUriFilterSettings({
+  const TemplateFilterConfigMaliciousUriFilterSettings({
     this.filterEnforcement,
   });
 

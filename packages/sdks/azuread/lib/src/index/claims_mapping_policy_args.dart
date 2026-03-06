@@ -15,7 +15,7 @@ class ClaimsMappingPolicyArgs {
   /// Creates a new [ClaimsMappingPolicyArgs].
   /// [definitions] The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
   /// [displayName] The display name for this Claims Mapping Policy.
-  ClaimsMappingPolicyArgs({
+  const ClaimsMappingPolicyArgs({
     required this.definitions,
     required this.displayName,
   });

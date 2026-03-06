@@ -60,7 +60,7 @@ class SessionTemplateState {
   /// [sparkConnectSession] Spark connect configuration for an interactive session.
   /// [updateTime] The time when the session template was updated.
   /// [uuid] A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
-  SessionTemplateState({
+  const SessionTemplateState({
     this.createTime,
     this.creator,
     this.effectiveLabels,

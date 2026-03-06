@@ -12,7 +12,7 @@ class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
   /// Creates a new [GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef].
   /// [key] A Cloud Secret Manager secret version. Must be 'latest' for the latest
   /// [name] The name of the Cloud Run Service.
-  GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef({
+  const GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef({
     required this.key,
     required this.name,
   });

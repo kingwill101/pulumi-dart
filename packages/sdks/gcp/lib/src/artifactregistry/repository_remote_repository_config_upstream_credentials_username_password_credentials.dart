@@ -13,7 +13,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
   /// Creates a new [RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials].
   /// [passwordSecretVersion] The Secret Manager key version that holds the password to access the
   /// [username] The username to access the remote repository.
-  RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials({
+  const RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials({
     this.passwordSecretVersion,
     this.username,
   });

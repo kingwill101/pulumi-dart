@@ -27,7 +27,7 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfig {
   /// [localId] The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the tunnel.
   /// [psk] Optional.
   /// [remoteId] The identifier of the tunnel peer, which is used in Phase 1 negotiations. It can contain at most 100 characters. The default value is the IP address of the customer gateway that is associated with the tunnel.
-  ConnectionTunnelOptionsSpecificationTunnelIkeConfig({
+  const ConnectionTunnelOptionsSpecificationTunnelIkeConfig({
     this.ikeAuthAlg,
     this.ikeEncAlg,
     this.ikeLifetime,

@@ -17,7 +17,7 @@ class GetSQuotaInfosResult {
   /// [parent] Required.
   /// [quotaInfos] (Output) The list of QuotaInfo.
   /// [service] Required.
-  GetSQuotaInfosResult({
+  const GetSQuotaInfosResult({
     required this.id,
     required this.parent,
     required this.quotaInfos,

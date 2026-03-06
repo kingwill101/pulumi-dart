@@ -25,7 +25,7 @@ class AzureRecoveryServiceVaultProtectionIntent {
   /// [protectionIntentItemType] backup protectionIntent type.
   /// [protectionState] Backup state of this backup item.
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  AzureRecoveryServiceVaultProtectionIntent({
+  const AzureRecoveryServiceVaultProtectionIntent({
     this.backupManagementType,
     this.itemId,
     this.policyId,

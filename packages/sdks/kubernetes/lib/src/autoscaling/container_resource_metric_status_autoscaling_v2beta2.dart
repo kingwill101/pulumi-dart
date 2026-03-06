@@ -16,7 +16,7 @@ class ContainerResourceMetricStatusAutoscalingV2beta2 {
   /// [container] Container is the name of the container in the pods of the scaling target
   /// [current] current contains the current value for the given metric
   /// [name] Name is the name of the resource in question.
-  ContainerResourceMetricStatusAutoscalingV2beta2({
+  const ContainerResourceMetricStatusAutoscalingV2beta2({
     required this.container,
     required this.current,
     required this.name,

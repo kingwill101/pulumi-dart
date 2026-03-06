@@ -9,7 +9,7 @@ class MapsAccountPropertiesResponseLocations {
 
   /// Creates a new [MapsAccountPropertiesResponseLocations].
   /// [locationName] The location name.
-  MapsAccountPropertiesResponseLocations({
+  const MapsAccountPropertiesResponseLocations({
     required this.locationName,
   });
 

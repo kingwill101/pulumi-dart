@@ -26,7 +26,7 @@ class GetObjectStorageQuotasQuota {
   /// [quotaName] The name of the Object Storage quota.
   /// [resourceMetric] The specific Object Storage resource for the quota.
   /// [s3Endpoint] The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
-  GetObjectStorageQuotasQuota({
+  const GetObjectStorageQuotasQuota({
     required this.description,
     required this.endpointType,
     required this.quotaId,

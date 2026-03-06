@@ -14,7 +14,7 @@ class EventTargetInputTransformer {
   /// Creates a new [EventTargetInputTransformer].
   /// [inputPaths] Key value pairs specified in the form of JSONPath (for example, time = $.time)
   /// [inputTemplate] Template to customize data sent to the target. Must be valid JSON. To send a string value, the string value must include double quotes.
-  EventTargetInputTransformer({
+  const EventTargetInputTransformer({
     this.inputPaths,
     required this.inputTemplate,
   });

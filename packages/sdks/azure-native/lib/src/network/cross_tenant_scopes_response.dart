@@ -15,7 +15,7 @@ class CrossTenantScopesResponse {
   /// [managementGroups] List of management groups.
   /// [subscriptions] List of subscriptions.
   /// [tenantId] Tenant ID.
-  CrossTenantScopesResponse({
+  const CrossTenantScopesResponse({
     required this.managementGroups,
     required this.subscriptions,
     required this.tenantId,

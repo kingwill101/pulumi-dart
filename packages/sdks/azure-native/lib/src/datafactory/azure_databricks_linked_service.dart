@@ -89,7 +89,7 @@ class AzureDatabricksLinkedService {
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
   /// [workspaceResourceId] Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
-  AzureDatabricksLinkedService({
+  const AzureDatabricksLinkedService({
     this.accessToken,
     this.annotations,
     this.authentication,

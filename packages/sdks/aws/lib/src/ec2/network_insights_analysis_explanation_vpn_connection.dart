@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationVpnConnection {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationVpnConnection({
+  const NetworkInsightsAnalysisExplanationVpnConnection({
     this.arn,
     this.id,
     this.name,

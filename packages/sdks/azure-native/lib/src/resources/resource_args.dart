@@ -58,7 +58,7 @@ class ResourceArgs {
   /// [resourceType] The resource type of the resource to create.
   /// [sku] The SKU of the resource.
   /// [tags] Resource tags
-  ResourceArgs({
+  const ResourceArgs({
     required this.apiVersion,
     this.extendedLocation,
     this.identity,

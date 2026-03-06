@@ -23,7 +23,7 @@ class FleetUpdateRunState {
   /// [managedClusterUpdate] A `managed_cluster_update` block as defined below.
   /// [name] The name which should be used for this Kubernetes Fleet Update Run. Changing this forces a new Kubernetes Fleet Update Run to be created.
   /// [stages] One or more `stage` blocks as defined below. Only one of `stage` or `fleet_update_strategy_id` can be specified.
-  FleetUpdateRunState({
+  const FleetUpdateRunState({
     this.fleetUpdateStrategyId,
     this.kubernetesFleetManagerId,
     this.managedClusterUpdate,

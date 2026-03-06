@@ -30,7 +30,7 @@ class OpenApiImageCacheArgs {
   /// [securityGroupId] Required.
   /// [vswitchId] Required.
   /// [zoneId] Optional.
-  OpenApiImageCacheArgs({
+  const OpenApiImageCacheArgs({
     this.eipInstanceId,
     required this.imageCacheName,
     this.imageCacheSize,

@@ -9,7 +9,7 @@ class ObjectId {
 
   /// Creates a new [ObjectId].
   /// [objectIdPath] The parts of an OID path. The most significant parts of the path come first.
-  ObjectId({
+  const ObjectId({
     required this.objectIdPath,
   });
 

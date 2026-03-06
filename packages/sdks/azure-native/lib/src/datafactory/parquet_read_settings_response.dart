@@ -14,7 +14,7 @@ class ParquetReadSettingsResponse {
   /// Creates a new [ParquetReadSettingsResponse].
   /// [compressionProperties] Compression settings.
   /// [type] The read setting type.
-  ParquetReadSettingsResponse({
+  const ParquetReadSettingsResponse({
     this.compressionProperties,
     required this.type,
   });

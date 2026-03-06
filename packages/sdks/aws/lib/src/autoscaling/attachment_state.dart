@@ -18,7 +18,7 @@ class AttachmentState {
   /// [elb] Name of the ELB.
   /// [lbTargetGroupArn] ARN of a load balancer target group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AttachmentState({
+  const AttachmentState({
     this.autoscalingGroupName,
     this.elb,
     this.lbTargetGroupArn,

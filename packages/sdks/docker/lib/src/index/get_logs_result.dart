@@ -36,7 +36,7 @@ class GetLogsResult {
   /// [tail] Optional.
   /// [timestamps] Optional.
   /// [until] Optional.
-  GetLogsResult({
+  const GetLogsResult({
     this.details,
     this.discardHeaders,
     this.follow,

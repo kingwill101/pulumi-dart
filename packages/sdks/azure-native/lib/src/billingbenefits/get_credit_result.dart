@@ -95,7 +95,7 @@ class GetCreditResult {
   /// [systemId] System identifier
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCreditResult({
+  const GetCreditResult({
     required this.azureApiVersion,
     this.billingAccountResourceId,
     required this.billingProfileResourceId,

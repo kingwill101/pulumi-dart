@@ -15,7 +15,7 @@ class GetGatewayArgs {
   /// Creates a new [GetGatewayArgs].
   /// [gatewayName] The name of the Gateway.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGatewayArgs({
+  const GetGatewayArgs({
     required this.gatewayName,
     required this.resourceGroupName,
   });

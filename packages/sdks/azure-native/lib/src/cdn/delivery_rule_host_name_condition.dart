@@ -14,7 +14,7 @@ class DeliveryRuleHostNameCondition {
   /// Creates a new [DeliveryRuleHostNameCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleHostNameCondition({
+  const DeliveryRuleHostNameCondition({
     required this.name,
     required this.parameters,
   });

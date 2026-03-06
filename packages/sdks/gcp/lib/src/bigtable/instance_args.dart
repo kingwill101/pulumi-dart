@@ -47,7 +47,7 @@ class InstanceArgs {
   /// [labels] A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
   /// [name] The name (also called Instance Id in the Cloud Console) of the Cloud Bigtable instance. Must be 6-33 characters and must only contain hyphens, lowercase letters and numbers.
   /// [project] The ID of the project in which the resource belongs. If it
-  InstanceArgs({
+  const InstanceArgs({
     this.clusters,
     this.deletionProtection,
     this.displayName,

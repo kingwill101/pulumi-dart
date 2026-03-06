@@ -64,7 +64,7 @@ class CatalogTableState {
   /// [targetTable] Configuration block of a target table for resource linking. See `target_table` below.
   /// [viewExpandedText] If the table is a view, the expanded text of the view; otherwise null.
   /// [viewOriginalText] If the table is a view, the original text of the view; otherwise null.
-  CatalogTableState({
+  const CatalogTableState({
     this.arn,
     this.catalogId,
     this.databaseName,

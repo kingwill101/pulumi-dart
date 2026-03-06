@@ -40,7 +40,7 @@ class PeeringState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [status] The current state of this Peering.
   /// [statusMessage] Additional information about the current status of this peering, if available.
-  PeeringState({
+  const PeeringState({
     this.authorizedNetwork,
     this.domainResource,
     this.effectiveLabels,

@@ -31,7 +31,7 @@ class K8sClusterState {
   /// [namespaceId] The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
   /// [networkMode] The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   /// [vpcId] The ID of the Virtual Private Cloud (VPC) for the cluster.
-  K8sClusterState({
+  const K8sClusterState({
     this.clusterImportStatus,
     this.clusterName,
     this.clusterType,

@@ -11,7 +11,7 @@ class GetServiceMeshesMeshMeshConfigPrometheus {
   /// Creates a new [GetServiceMeshesMeshMeshConfigPrometheus].
   /// [externalUrl] The  service addresses of the Prometheus.
   /// [useExternal] Whether to enable external Prometheus.
-  GetServiceMeshesMeshMeshConfigPrometheus({
+  const GetServiceMeshesMeshMeshConfigPrometheus({
     required this.externalUrl,
     required this.useExternal,
   });

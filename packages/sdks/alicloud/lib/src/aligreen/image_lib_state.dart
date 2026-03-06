@@ -21,7 +21,7 @@ class ImageLibState {
   /// [enable] Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
   /// [imageLibName] The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
   /// [scene] The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
-  ImageLibState({
+  const ImageLibState({
     this.bizTypes,
     this.category,
     this.enable,

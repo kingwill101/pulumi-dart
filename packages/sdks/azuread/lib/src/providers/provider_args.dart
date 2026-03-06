@@ -75,7 +75,7 @@ class ProviderArgs {
   /// [useCli] Allow Azure CLI to be used for Authentication
   /// [useMsi] Allow Managed Identity to be used for Authentication
   /// [useOidc] Allow OpenID Connect to be used for authentication
-  ProviderArgs({
+  const ProviderArgs({
     this.adoPipelineServiceConnectionId,
     this.clientCertificate,
     this.clientCertificatePassword,

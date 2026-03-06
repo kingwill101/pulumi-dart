@@ -8,7 +8,7 @@ class TableTtl {
 
   /// Creates a new [TableTtl].
   /// [status] Valid values: `ENABLED`.
-  TableTtl({
+  const TableTtl({
     required this.status,
   });
 

@@ -33,7 +33,7 @@ class VMExtensionResponse {
   /// [settings] JSON formatted public settings for the extension.
   /// [type] The type of the extensions.
   /// [typeHandlerVersion] The version of script handler.
-  VMExtensionResponse({
+  const VMExtensionResponse({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     required this.name,

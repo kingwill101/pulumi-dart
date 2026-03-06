@@ -25,7 +25,7 @@ class AzureFunctionOutputDataSourceResponse {
   /// [maxBatchCount] A property that lets you specify the maximum number of events in each batch that's sent to Azure Functions. The default value is 100.
   /// [maxBatchSize] A property that lets you set the maximum size for each output batch that's sent to your Azure function. The input unit is in bytes. By default, this value is 262,144 bytes (256 KB).
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  AzureFunctionOutputDataSourceResponse({
+  const AzureFunctionOutputDataSourceResponse({
     this.apiKey,
     this.functionAppName,
     this.functionName,

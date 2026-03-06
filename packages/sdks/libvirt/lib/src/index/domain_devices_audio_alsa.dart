@@ -13,7 +13,7 @@ class DomainDevicesAudioAlsa {
   /// Creates a new [DomainDevicesAudioAlsa].
   /// [input] Configures the output settings for the ALSA audio device.
   /// [output] Configures the output settings for the ALSA audio device.
-  DomainDevicesAudioAlsa({
+  const DomainDevicesAudioAlsa({
     this.input,
     this.output,
   });

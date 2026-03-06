@@ -15,7 +15,7 @@ class GetRuntimeVersionsResult {
   /// [id] Name of the AWS region from which runtime versions are fetched.
   /// [region] Required.
   /// [runtimeVersions] List of runtime versions. See `runtime_versions` attribute reference.
-  GetRuntimeVersionsResult({
+  const GetRuntimeVersionsResult({
     required this.id,
     required this.region,
     required this.runtimeVersions,

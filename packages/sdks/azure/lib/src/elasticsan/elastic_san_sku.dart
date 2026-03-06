@@ -13,7 +13,7 @@ class ElasticSanSku {
   /// Creates a new [ElasticSanSku].
   /// [name] The SKU name. Possible values are `Premium_LRS` and `Premium_ZRS`. Changing this forces a new resource to be created.
   /// [tier] The SKU tier. The only possible value is `Premium`. Defaults to `Premium`.
-  ElasticSanSku({
+  const ElasticSanSku({
     required this.name,
     this.tier,
   });

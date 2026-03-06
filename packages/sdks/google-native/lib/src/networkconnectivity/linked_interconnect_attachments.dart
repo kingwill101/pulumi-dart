@@ -12,7 +12,7 @@ class LinkedInterconnectAttachments {
   /// Creates a new [LinkedInterconnectAttachments].
   /// [siteToSiteDataTransfer] A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
   /// [uris] The URIs of linked interconnect attachment resources
-  LinkedInterconnectAttachments({
+  const LinkedInterconnectAttachments({
     this.siteToSiteDataTransfer,
     this.uris,
   });

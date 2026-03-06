@@ -51,7 +51,7 @@ class AlertProcessingRuleActionGroupCondition {
   /// [targetResource] A `target_resource` block as defined below.
   /// [targetResourceGroup] A `target_resource_group` block as defined below.
   /// [targetResourceType] A `target_resource_type` block as defined below.
-  AlertProcessingRuleActionGroupCondition({
+  const AlertProcessingRuleActionGroupCondition({
     this.alertContext,
     this.alertRuleId,
     this.alertRuleName,

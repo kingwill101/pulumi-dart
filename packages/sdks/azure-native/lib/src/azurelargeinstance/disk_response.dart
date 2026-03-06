@@ -17,7 +17,7 @@ class DiskResponse {
   /// [diskSizeGB] Specifies the size of an empty data disk in gigabytes.
   /// [lun] Specifies the logical unit number of the data disk. This value is used to
   /// [name] The disk name.
-  DiskResponse({
+  const DiskResponse({
     this.diskSizeGB,
     required this.lun,
     this.name,

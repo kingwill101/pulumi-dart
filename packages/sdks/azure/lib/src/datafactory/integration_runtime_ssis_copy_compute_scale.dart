@@ -11,7 +11,7 @@ class IntegrationRuntimeSsisCopyComputeScale {
   /// Creates a new [IntegrationRuntimeSsisCopyComputeScale].
   /// [dataIntegrationUnit] Specifies the data integration unit number setting reserved for copy activity execution. Supported values are multiples of `4` in range 4-256.
   /// [timeToLive] Specifies the time to live (in minutes) setting of integration runtime which will execute copy activity. Possible values are at least `5`.
-  IntegrationRuntimeSsisCopyComputeScale({
+  const IntegrationRuntimeSsisCopyComputeScale({
     this.dataIntegrationUnit,
     this.timeToLive,
   });

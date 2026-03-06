@@ -26,7 +26,7 @@ class SearchIndexArgs {
   /// [schemas] The schema of the search index. If changed, a new index would be created. See `schema` below.
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
   /// [timeToLive] The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
-  SearchIndexArgs({
+  const SearchIndexArgs({
     required this.indexName,
     required this.instanceName,
     required this.schemas,

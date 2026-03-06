@@ -18,7 +18,7 @@ class GetFrontdoorOriginGroupArgs {
   /// [name] Specifies the name of the Front Door Origin Group.
   /// [profileName] The name of the Front Door Profile within which Front Door Origin Group exists.
   /// [resourceGroupName] The name of the Resource Group where the Front Door Profile exists.
-  GetFrontdoorOriginGroupArgs({
+  const GetFrontdoorOriginGroupArgs({
     required this.name,
     required this.profileName,
     required this.resourceGroupName,

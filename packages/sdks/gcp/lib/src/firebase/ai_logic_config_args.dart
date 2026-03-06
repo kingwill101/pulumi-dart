@@ -31,7 +31,7 @@ class AiLogicConfigArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   /// [telemetryConfig] Configuration for telemetry.
-  AiLogicConfigArgs({
+  const AiLogicConfigArgs({
     this.generativeLanguageConfig,
     this.location,
     this.project,

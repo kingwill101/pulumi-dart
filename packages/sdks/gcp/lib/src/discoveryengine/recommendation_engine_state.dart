@@ -50,7 +50,7 @@ class RecommendationEngineState {
   /// [name] The unique full resource name of the recommendation engine. Values are of the format
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp the Engine was last updated.
-  RecommendationEngineState({
+  const RecommendationEngineState({
     this.commonConfig,
     this.createTime,
     this.dataStoreIds,

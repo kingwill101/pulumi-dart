@@ -12,7 +12,7 @@ class WafDomainState {
   /// Creates a new [WafDomainState].
   /// [clientIpTag] The client ip tag.
   /// [domainName] The accelerated domain name.
-  WafDomainState({
+  const WafDomainState({
     this.clientIpTag,
     this.domainName,
   });

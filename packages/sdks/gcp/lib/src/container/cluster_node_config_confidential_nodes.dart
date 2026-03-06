@@ -13,7 +13,7 @@ class ClusterNodeConfigConfidentialNodes {
   /// Creates a new [ClusterNodeConfigConfidentialNodes].
   /// [confidentialInstanceType] Defines the type of technology used
   /// [enabled] Enable Confidential GKE Nodes for this cluster, to
-  ClusterNodeConfigConfidentialNodes({
+  const ClusterNodeConfigConfidentialNodes({
     this.confidentialInstanceType,
     required this.enabled,
   });

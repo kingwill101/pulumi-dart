@@ -28,7 +28,7 @@ class VerifierWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   /// [workspaceName] Workspace name.
-  VerifierWorkspaceArgs({
+  const VerifierWorkspaceArgs({
     this.location,
     required this.networkManagerName,
     this.properties,

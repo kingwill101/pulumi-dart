@@ -17,7 +17,7 @@ class GetNetworkAttachmentIamPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetNetworkAttachmentIamPolicyArgs({
+  const GetNetworkAttachmentIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

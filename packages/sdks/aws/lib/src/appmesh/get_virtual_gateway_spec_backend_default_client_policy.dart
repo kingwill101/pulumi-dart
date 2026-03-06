@@ -8,7 +8,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicy {
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicy].
   /// [tls] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicy({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicy({
     required this.tls,
   });
 

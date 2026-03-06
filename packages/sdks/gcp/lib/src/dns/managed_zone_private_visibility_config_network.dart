@@ -10,7 +10,7 @@ class ManagedZonePrivateVisibilityConfigNetwork {
 
   /// Creates a new [ManagedZonePrivateVisibilityConfigNetwork].
   /// [networkUrl] The id or fully qualified URL of the VPC network to bind to.
-  ManagedZonePrivateVisibilityConfigNetwork({
+  const ManagedZonePrivateVisibilityConfigNetwork({
     required this.networkUrl,
   });
 

@@ -14,7 +14,7 @@ class GetClusterGatewaySettingsResult {
   /// [isCredentialEnabled] Indicates whether or not the gateway settings based authorization is enabled.
   /// [password] The gateway settings user password.
   /// [userName] The gateway settings user name.
-  GetClusterGatewaySettingsResult({
+  const GetClusterGatewaySettingsResult({
     required this.isCredentialEnabled,
     required this.password,
     required this.userName,

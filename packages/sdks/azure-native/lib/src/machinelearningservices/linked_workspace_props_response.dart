@@ -12,7 +12,7 @@ class LinkedWorkspacePropsResponse {
   /// Creates a new [LinkedWorkspacePropsResponse].
   /// [linkedWorkspaceResourceId] ResourceId of the link target of the linked workspace.
   /// [userAssignedIdentityResourceId] ResourceId of the user assigned identity for the linked workspace.
-  LinkedWorkspacePropsResponse({
+  const LinkedWorkspacePropsResponse({
     this.linkedWorkspaceResourceId,
     this.userAssignedIdentityResourceId,
   });

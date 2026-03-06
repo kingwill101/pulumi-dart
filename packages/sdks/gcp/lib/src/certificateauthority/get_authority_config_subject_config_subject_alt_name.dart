@@ -17,7 +17,7 @@ class GetAuthorityConfigSubjectConfigSubjectAltName {
   /// [emailAddresses] Contains only valid RFC 2822 E-mail addresses.
   /// [ipAddresses] Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
   /// [uris] Contains only valid RFC 3986 URIs.
-  GetAuthorityConfigSubjectConfigSubjectAltName({
+  const GetAuthorityConfigSubjectConfigSubjectAltName({
     required this.dnsNames,
     required this.emailAddresses,
     required this.ipAddresses,

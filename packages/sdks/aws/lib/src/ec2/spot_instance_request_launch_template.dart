@@ -14,7 +14,7 @@ class SpotInstanceRequestLaunchTemplate {
   /// [id] ID of the launch template. Conflicts with `name`.
   /// [name] Name of the launch template. Conflicts with `id`.
   /// [version] Template version. Can be a specific version number, `$Latest` or `$Default`. The default value is `$Default`.
-  SpotInstanceRequestLaunchTemplate({
+  const SpotInstanceRequestLaunchTemplate({
     this.id,
     this.name,
     this.version,

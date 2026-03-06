@@ -28,7 +28,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
   /// [nullable] Whether or not the column can accept a null value.
   /// [ordinalPosition] The ordinal position of the column in the table.
   /// [primaryKey] Whether or not the column represents a primary key.
-  StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn({
+  const StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn({
     this.collation,
     this.column,
     this.dataType,

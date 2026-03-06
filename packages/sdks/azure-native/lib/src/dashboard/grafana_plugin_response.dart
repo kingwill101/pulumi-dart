@@ -9,7 +9,7 @@ class GrafanaPluginResponse {
 
   /// Creates a new [GrafanaPluginResponse].
   /// [pluginId] Grafana plugin id
-  GrafanaPluginResponse({
+  const GrafanaPluginResponse({
     required this.pluginId,
   });
 

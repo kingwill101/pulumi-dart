@@ -15,7 +15,7 @@ class GetGroupRoleManagementPolicyArgs {
   /// Creates a new [GetGroupRoleManagementPolicyArgs].
   /// [groupId] The ID of the Azure AD group for which the policy applies.
   /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
-  GetGroupRoleManagementPolicyArgs({
+  const GetGroupRoleManagementPolicyArgs({
     required this.groupId,
     required this.roleId,
   });

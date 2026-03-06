@@ -25,7 +25,7 @@ class ContactChannelArgs {
   /// [name] Name of the contact channel. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of the contact channel. One of `SMS`, `VOICE` or `EMAIL`.
-  ContactChannelArgs({
+  const ContactChannelArgs({
     required this.contactId,
     required this.deliveryAddress,
     this.name,

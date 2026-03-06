@@ -17,7 +17,7 @@ class BareMetalClusterLoadBalancerMetalLbConfig {
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfig].
   /// [addressPools] AddressPools is a list of non-overlapping IP pools used by load balancer
   /// [loadBalancerNodePoolConfig] Specifies the load balancer's node pool configuration.
-  BareMetalClusterLoadBalancerMetalLbConfig({
+  const BareMetalClusterLoadBalancerMetalLbConfig({
     required this.addressPools,
     this.loadBalancerNodePoolConfig,
   });

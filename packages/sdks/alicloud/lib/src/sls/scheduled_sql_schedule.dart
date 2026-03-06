@@ -28,7 +28,7 @@ class ScheduledSqlSchedule {
   /// [runImmediately] Specifies whether to run the OSS import job immediately after it is created.
   /// [timeZone] Time zone.
   /// [type] The check frequency type. Log Service checks query and analysis results based on the frequency you configure. Valid values:
-  ScheduledSqlSchedule({
+  const ScheduledSqlSchedule({
     this.cronExpression,
     this.delay,
     this.interval,

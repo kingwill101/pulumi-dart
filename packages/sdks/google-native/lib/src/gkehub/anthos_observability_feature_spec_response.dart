@@ -10,7 +10,7 @@ class AnthosObservabilityFeatureSpecResponse {
 
   /// Creates a new [AnthosObservabilityFeatureSpecResponse].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships
-  AnthosObservabilityFeatureSpecResponse({
+  const AnthosObservabilityFeatureSpecResponse({
     required this.defaultMembershipSpec,
   });
 

@@ -12,7 +12,7 @@ class CapacityReservationPropertiesResponse {
   /// Creates a new [CapacityReservationPropertiesResponse].
   /// [lastSkuUpdate] The last time Sku was updated.
   /// [minCapacity] Minimum CapacityReservation value in Gigabytes.
-  CapacityReservationPropertiesResponse({
+  const CapacityReservationPropertiesResponse({
     required this.lastSkuUpdate,
     required this.minCapacity,
   });

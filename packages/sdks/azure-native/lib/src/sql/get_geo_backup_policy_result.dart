@@ -29,7 +29,7 @@ class GetGeoBackupPolicyResult {
   /// [state] The state of the geo backup policy.
   /// [storageType] The storage type of the geo backup policy.
   /// [type] Resource type.
-  GetGeoBackupPolicyResult({
+  const GetGeoBackupPolicyResult({
     required this.azureApiVersion,
     required this.id,
     required this.kind,

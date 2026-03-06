@@ -14,7 +14,7 @@ class ElasticVolumeDataProtectionProperties {
   /// Creates a new [ElasticVolumeDataProtectionProperties].
   /// [backup] Used to configure backups on an elastic volume.
   /// [snapshot] Used to apply a snapshot policy to a volume.
-  ElasticVolumeDataProtectionProperties({
+  const ElasticVolumeDataProtectionProperties({
     this.backup,
     this.snapshot,
   });

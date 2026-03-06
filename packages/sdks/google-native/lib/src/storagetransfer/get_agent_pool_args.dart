@@ -13,7 +13,7 @@ class GetAgentPoolArgs {
   /// Creates a new [GetAgentPoolArgs].
   /// [agentPoolId] Required.
   /// [project] Optional.
-  GetAgentPoolArgs({
+  const GetAgentPoolArgs({
     required this.agentPoolId,
     this.project,
   });

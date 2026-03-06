@@ -11,7 +11,7 @@ class DomainOsNvRamSourceVhostUserUnixReconnect {
   /// Creates a new [DomainOsNvRamSourceVhostUserUnixReconnect].
   /// [enabled] Enables or disables the automatic reconnection feature for the UNIX domain socket.
   /// [timeout] Sets the timeout duration for reconnections in the UNIX socket settings.
-  DomainOsNvRamSourceVhostUserUnixReconnect({
+  const DomainOsNvRamSourceVhostUserUnixReconnect({
     required this.enabled,
     this.timeout,
   });

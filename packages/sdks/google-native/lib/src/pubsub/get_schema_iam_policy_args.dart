@@ -15,7 +15,7 @@ class GetSchemaIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [schemaId] Required.
-  GetSchemaIamPolicyArgs({
+  const GetSchemaIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.schemaId,

@@ -34,7 +34,7 @@ class V3FunctionCustomContainerConfig {
   /// [image] The container Image address.
   /// [port] The listening port of the HTTP Server when the custom container runs.
   /// [resolvedImageUri] The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
-  V3FunctionCustomContainerConfig({
+  const V3FunctionCustomContainerConfig({
     this.accelerationInfo,
     this.accelerationType,
     this.acrInstanceId,

@@ -18,7 +18,7 @@ class StaticSiteLinkedBackendResponse {
   /// [createdOn] The date and time on which the backend was linked to the static site.
   /// [provisioningState] The provisioning state of the linking process.
   /// [region] The region of the backend linked to the static site
-  StaticSiteLinkedBackendResponse({
+  const StaticSiteLinkedBackendResponse({
     this.backendResourceId,
     required this.createdOn,
     required this.provisioningState,

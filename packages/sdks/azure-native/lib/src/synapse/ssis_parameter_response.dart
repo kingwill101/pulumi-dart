@@ -42,7 +42,7 @@ class SsisParameterResponse {
   /// [valueSet] Parameter value set.
   /// [valueType] Parameter value type.
   /// [variable] Parameter reference variable.
-  SsisParameterResponse({
+  const SsisParameterResponse({
     this.dataType,
     this.defaultValue,
     this.description,

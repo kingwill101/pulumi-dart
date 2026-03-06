@@ -9,7 +9,7 @@ class ClusterControlPlaneRemote {
 
   /// Creates a new [ClusterControlPlaneRemote].
   /// [nodeLocation] Name of the Google Distributed Cloud Edge zones where this node pool
-  ClusterControlPlaneRemote({
+  const ClusterControlPlaneRemote({
     this.nodeLocation,
   });
 

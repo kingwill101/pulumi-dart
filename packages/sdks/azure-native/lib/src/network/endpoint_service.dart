@@ -9,7 +9,7 @@ class EndpointService {
 
   /// Creates a new [EndpointService].
   /// [id] A unique identifier of the service being referenced by the interface endpoint.
-  EndpointService({
+  const EndpointService({
     this.id,
   });
 

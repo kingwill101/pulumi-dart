@@ -14,7 +14,7 @@ class GremlinGraphConflictResolutionPolicy {
   /// [conflictResolutionPath] The conflict resolution path in the case of LastWriterWins mode.
   /// [conflictResolutionProcedure] The procedure to resolve conflicts in the case of custom mode.
   /// [mode] Indicates the conflict resolution mode. Possible values include: `LastWriterWins`, `Custom`.
-  GremlinGraphConflictResolutionPolicy({
+  const GremlinGraphConflictResolutionPolicy({
     this.conflictResolutionPath,
     this.conflictResolutionProcedure,
     required this.mode,

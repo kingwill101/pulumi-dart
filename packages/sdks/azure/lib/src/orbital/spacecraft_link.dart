@@ -22,7 +22,7 @@ class SpacecraftLink {
   /// [direction] Direction if the communication. Possible values are `Uplink` and `Downlink`.
   /// [name] Name of the link.
   /// [polarization] Polarization. Possible values are `RHCP`, `LHCP`, `linearVertical` and `linearHorizontal`.
-  SpacecraftLink({
+  const SpacecraftLink({
     required this.bandwidthMhz,
     required this.centerFrequencyMhz,
     required this.direction,

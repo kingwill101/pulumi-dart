@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2LDiversityConfigResponse {
   /// Creates a new [GooglePrivacyDlpV2LDiversityConfigResponse].
   /// [quasiIds] Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity computation. When multiple fields are specified, they are considered a single composite key.
   /// [sensitiveAttribute] Sensitive field for computing the l-value.
-  GooglePrivacyDlpV2LDiversityConfigResponse({
+  const GooglePrivacyDlpV2LDiversityConfigResponse({
     required this.quasiIds,
     required this.sensitiveAttribute,
   });

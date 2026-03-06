@@ -12,7 +12,7 @@ class ImageRegistryCredential {
   /// Creates a new [ImageRegistryCredential].
   /// [password] The password of the image registry credential
   /// [username] The username of the image registry credential
-  ImageRegistryCredential({
+  const ImageRegistryCredential({
     this.password,
     this.username,
   });

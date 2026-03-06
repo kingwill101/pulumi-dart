@@ -12,7 +12,7 @@ class FixedOrPercentOsconfigV1beta {
   /// Creates a new [FixedOrPercentOsconfigV1beta].
   /// [fixed] Specifies a fixed value.
   /// [percent] Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-  FixedOrPercentOsconfigV1beta({
+  const FixedOrPercentOsconfigV1beta({
     this.fixed,
     this.percent,
   });

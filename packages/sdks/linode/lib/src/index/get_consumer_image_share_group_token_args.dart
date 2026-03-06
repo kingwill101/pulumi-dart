@@ -12,7 +12,7 @@ class GetConsumerImageShareGroupTokenArgs {
 
   /// Creates a new [GetConsumerImageShareGroupTokenArgs].
   /// [tokenUuid] The UUID of the token.
-  GetConsumerImageShareGroupTokenArgs({
+  const GetConsumerImageShareGroupTokenArgs({
     required this.tokenUuid,
   });
 

@@ -49,7 +49,7 @@ class FirehoseDeliveryStreamHttpEndpointConfiguration {
   /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
   /// [secretsManagerConfiguration] The Secret Manager Configuration. See `secrets_manager_configuration` block below for details.
   /// [url] The HTTP endpoint URL to which Kinesis Firehose sends your data.
-  FirehoseDeliveryStreamHttpEndpointConfiguration({
+  const FirehoseDeliveryStreamHttpEndpointConfiguration({
     this.accessKey,
     this.bufferingInterval,
     this.bufferingSize,

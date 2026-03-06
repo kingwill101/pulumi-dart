@@ -17,7 +17,7 @@ class GetInstancesInstanceDisk {
   /// [id] The ID of the Placement Group in the Linode API.
   /// [label] The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
   /// [size] The size of the Disk in MB.
-  GetInstancesInstanceDisk({
+  const GetInstancesInstanceDisk({
     required this.filesystem,
     required this.id,
     required this.label,

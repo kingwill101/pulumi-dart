@@ -17,7 +17,7 @@ class OAuthClientCredentials {
   /// [clientId] ClientId associated with the provider.
   /// [clientSecret] Properties of the key vault.
   /// [kind] Enum for different types of AuthCredentials supported.
-  OAuthClientCredentials({
+  const OAuthClientCredentials({
     required this.clientId,
     required this.clientSecret,
     required this.kind,

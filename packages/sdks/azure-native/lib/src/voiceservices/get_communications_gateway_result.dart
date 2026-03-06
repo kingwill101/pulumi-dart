@@ -94,7 +94,7 @@ class GetCommunicationsGatewayResult {
   /// [tags] Resource tags.
   /// [teamsVoicemailPilotNumber] This number is used in Teams Phone Mobile scenarios for access to the voicemail IVR from the native dialer.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCommunicationsGatewayResult({
+  const GetCommunicationsGatewayResult({
     required this.allocatedMediaAddressPrefixes,
     required this.allocatedSignalingAddressPrefixes,
     this.apiBridge,

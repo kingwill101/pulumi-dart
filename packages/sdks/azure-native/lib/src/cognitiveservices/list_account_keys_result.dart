@@ -11,7 +11,7 @@ class ListAccountKeysResult {
   /// Creates a new [ListAccountKeysResult].
   /// [key1] Gets the value of key 1.
   /// [key2] Gets the value of key 2.
-  ListAccountKeysResult({
+  const ListAccountKeysResult({
     this.key1,
     this.key2,
   });

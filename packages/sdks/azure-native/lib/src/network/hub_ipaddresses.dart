@@ -13,7 +13,7 @@ class HubIPAddresses {
   /// Creates a new [HubIPAddresses].
   /// [privateIPAddress] Private IP Address associated with azure firewall.
   /// [publicIPs] Public IP addresses associated with azure firewall.
-  HubIPAddresses({
+  const HubIPAddresses({
     this.privateIPAddress,
     this.publicIPs,
   });

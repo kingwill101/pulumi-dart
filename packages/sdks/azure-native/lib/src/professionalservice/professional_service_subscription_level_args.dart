@@ -31,7 +31,7 @@ class ProfessionalServiceSubscriptionLevelArgs {
   /// [resourceName] The name of the resource.
   /// [subscriptionId] The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
   /// [tags] the resource tags.
-  ProfessionalServiceSubscriptionLevelArgs({
+  const ProfessionalServiceSubscriptionLevelArgs({
     this.location,
     this.name,
     this.properties,

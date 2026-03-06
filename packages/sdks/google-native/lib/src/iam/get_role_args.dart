@@ -13,7 +13,7 @@ class GetRoleArgs {
   /// Creates a new [GetRoleArgs].
   /// [project] Optional.
   /// [roleId] Required.
-  GetRoleArgs({
+  const GetRoleArgs({
     this.project,
     required this.roleId,
   });

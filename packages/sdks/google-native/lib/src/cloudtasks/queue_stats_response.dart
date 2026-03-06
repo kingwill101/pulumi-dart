@@ -21,7 +21,7 @@ class QueueStatsResponse {
   /// [executedLastMinuteCount] The number of tasks that the queue has dispatched and received a reply for during the last minute. This variable counts both successful and non-successful executions.
   /// [oldestEstimatedArrivalTime] An estimation of the nearest time in the future where a task in the queue is scheduled to be executed.
   /// [tasksCount] An estimation of the number of tasks in the queue, that is, the tasks in the queue that haven't been executed, the tasks in the queue which the queue has dispatched but has not yet received a reply for, and the failed tasks that the queue is retrying.
-  QueueStatsResponse({
+  const QueueStatsResponse({
     required this.concurrentDispatchesCount,
     required this.effectiveExecutionRate,
     required this.executedLastMinuteCount,

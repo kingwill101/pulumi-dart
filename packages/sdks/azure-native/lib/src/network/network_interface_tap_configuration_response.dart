@@ -25,7 +25,7 @@ class NetworkInterfaceTapConfigurationResponse {
   /// [provisioningState] The provisioning state of the network interface tap configuration resource.
   /// [type] Sub Resource type.
   /// [virtualNetworkTap] The reference to the Virtual Network Tap resource.
-  NetworkInterfaceTapConfigurationResponse({
+  const NetworkInterfaceTapConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysTime {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysTime].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysTime({
+  const DomainFeaturesCapabilitiesSysTime({
     this.state,
   });
 

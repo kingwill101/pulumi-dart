@@ -12,7 +12,7 @@ class GetMonitorIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] The type of identity used for the resource.
-  GetMonitorIdentity({
+  const GetMonitorIdentity({
     required this.principalId,
     required this.tenantId,
     required this.type,

@@ -37,7 +37,7 @@ class DatastoreBlobstorageState {
   /// [storageContainerId] The ID of the Storage Account Container. Changing this forces a new Machine Learning DataStore to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   /// [workspaceId] The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
-  DatastoreBlobstorageState({
+  const DatastoreBlobstorageState({
     this.accountKey,
     this.description,
     this.isDefault,

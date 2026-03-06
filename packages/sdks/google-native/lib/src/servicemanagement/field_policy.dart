@@ -15,7 +15,7 @@ class FieldPolicy {
   /// [resourcePermission] Specifies the required permission(s) for the resource referred to by the field. It requires the field contains a valid resource reference, and the request must pass the permission checks to proceed. For example, "resourcemanager.projects.get".
   /// [resourceType] Specifies the resource type for the resource referred to by the field.
   /// [selector] Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is used in proto annotation, the selector must be left as empty. The service config generator will automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
-  FieldPolicy({
+  const FieldPolicy({
     this.resourcePermission,
     this.resourceType,
     this.selector,

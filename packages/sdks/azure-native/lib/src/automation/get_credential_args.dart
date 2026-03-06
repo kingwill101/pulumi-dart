@@ -18,7 +18,7 @@ class GetCredentialArgs {
   /// [automationAccountName] The name of the automation account.
   /// [credentialName] The name of credential.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetCredentialArgs({
+  const GetCredentialArgs({
     required this.automationAccountName,
     required this.credentialName,
     required this.resourceGroupName,

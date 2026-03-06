@@ -11,7 +11,7 @@ class RuntimeTemplateIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  RuntimeTemplateIamBindingCondition({
+  const RuntimeTemplateIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

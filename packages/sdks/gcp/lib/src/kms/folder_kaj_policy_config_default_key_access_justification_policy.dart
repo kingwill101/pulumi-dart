@@ -11,7 +11,7 @@ class FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy {
 
   /// Creates a new [FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy].
   /// [allowedAccessReasons] A KeyAccessJustificationsPolicy specifies zero or more allowed
-  FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy({
+  const FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy({
     this.allowedAccessReasons,
   });
 

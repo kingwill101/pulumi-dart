@@ -21,7 +21,7 @@ class ThingArgs {
   /// [name] The name of the thing.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [thingTypeName] The thing type name.
-  ThingArgs({
+  const ThingArgs({
     this.attributes,
     this.name,
     this.region,

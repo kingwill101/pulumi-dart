@@ -36,7 +36,7 @@ class EcsSnapshotGroupState {
   /// [snapshotGroupName] The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
   /// [status] The status of the resource.
   /// [tags] A mapping of tags to assign to the snapshot group.
-  EcsSnapshotGroupState({
+  const EcsSnapshotGroupState({
     this.description,
     this.diskIds,
     this.excludeDiskIds,

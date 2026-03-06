@@ -11,7 +11,7 @@ class AiEndpointIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AiEndpointIamBindingCondition({
+  const AiEndpointIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -12,7 +12,7 @@ class PodDNSConfigOption {
   /// Creates a new [PodDNSConfigOption].
   /// [name] Name is this DNS resolver option's name. Required.
   /// [value] Value is this DNS resolver option's value.
-  PodDNSConfigOption({
+  const PodDNSConfigOption({
     this.name,
     this.value,
   });

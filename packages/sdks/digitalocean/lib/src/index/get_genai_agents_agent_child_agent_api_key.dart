@@ -8,7 +8,7 @@ class GetGenaiAgentsAgentChildAgentApiKey {
 
   /// Creates a new [GetGenaiAgentsAgentChildAgentApiKey].
   /// [apiKey] API Key value
-  GetGenaiAgentsAgentChildAgentApiKey({
+  const GetGenaiAgentsAgentChildAgentApiKey({
     this.apiKey,
   });
 

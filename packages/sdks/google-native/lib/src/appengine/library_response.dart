@@ -12,7 +12,7 @@ class LibraryResponse {
   /// Creates a new [LibraryResponse].
   /// [name] Name of the library. Example: "django".
   /// [version] Version of the library to select, or "latest".
-  LibraryResponse({
+  const LibraryResponse({
     required this.name,
     required this.version,
   });

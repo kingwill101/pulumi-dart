@@ -10,7 +10,7 @@ class GatewayAPIConfigContainerV1beta1 {
 
   /// Creates a new [GatewayAPIConfigContainerV1beta1].
   /// [channel] The Gateway API release channel to use for Gateway API.
-  GatewayAPIConfigContainerV1beta1({
+  const GatewayAPIConfigContainerV1beta1({
     this.channel,
   });
 

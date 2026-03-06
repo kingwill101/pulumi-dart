@@ -11,7 +11,7 @@ class InterfacePublicIpv4Shared {
   /// Creates a new [InterfacePublicIpv4Shared].
   /// [address] The assigned IPv4 address.
   /// [linodeId] The ID of the Linode to assign this interface to.
-  InterfacePublicIpv4Shared({
+  const InterfacePublicIpv4Shared({
     this.address,
     this.linodeId,
   });

@@ -25,7 +25,7 @@ class ExceptionEntryResponse {
   /// [selectorMatchOperator] When the matchVariable points to a key-value pair (e.g, RequestHeader), this operates on the selector
   /// [valueMatchOperator] Operates on the allowed values for the matchVariable
   /// [values] Allowed values for the matchVariable
-  ExceptionEntryResponse({
+  const ExceptionEntryResponse({
     this.exceptionManagedRuleSets,
     required this.matchVariable,
     this.selector,

@@ -12,7 +12,7 @@ class DatabaseRestoreResourceResponse {
   /// Creates a new [DatabaseRestoreResourceResponse].
   /// [collectionNames] The names of the collections available for restore.
   /// [databaseName] The name of the database available for restore.
-  DatabaseRestoreResourceResponse({
+  const DatabaseRestoreResourceResponse({
     this.collectionNames,
     this.databaseName,
   });

@@ -15,7 +15,7 @@ class Product {
   /// [genericUri] Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   /// [id] Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
   /// [name] Name of the product.
-  Product({
+  const Product({
     this.genericUri,
     this.id,
     this.name,

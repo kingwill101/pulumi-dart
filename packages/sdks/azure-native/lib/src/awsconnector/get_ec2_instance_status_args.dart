@@ -15,7 +15,7 @@ class GetEc2InstanceStatusArgs {
   /// Creates a new [GetEc2InstanceStatusArgs].
   /// [name] Name of Ec2InstanceStatus
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2InstanceStatusArgs({
+  const GetEc2InstanceStatusArgs({
     required this.name,
     required this.resourceGroupName,
   });

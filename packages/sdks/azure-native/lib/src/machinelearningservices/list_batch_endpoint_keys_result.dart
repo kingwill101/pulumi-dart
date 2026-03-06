@@ -11,7 +11,7 @@ class ListBatchEndpointKeysResult {
   /// Creates a new [ListBatchEndpointKeysResult].
   /// [primaryKey] The primary key.
   /// [secondaryKey] The secondary key.
-  ListBatchEndpointKeysResult({
+  const ListBatchEndpointKeysResult({
     this.primaryKey,
     this.secondaryKey,
   });

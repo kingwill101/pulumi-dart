@@ -18,7 +18,7 @@ class GetDomainEventSubscriptionFullUrlArgs {
   /// [domainName] Name of the domain topic.
   /// [eventSubscriptionName] Name of the event subscription.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetDomainEventSubscriptionFullUrlArgs({
+  const GetDomainEventSubscriptionFullUrlArgs({
     required this.domainName,
     required this.eventSubscriptionName,
     required this.resourceGroupName,

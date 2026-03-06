@@ -17,7 +17,7 @@ class InteractiveQueryClusterRoles {
   /// [headNode] A `head_node` block as defined above.
   /// [workerNode] A `worker_node` block as defined below.
   /// [zookeeperNode] A `zookeeper_node` block as defined below.
-  InteractiveQueryClusterRoles({
+  const InteractiveQueryClusterRoles({
     required this.headNode,
     required this.workerNode,
     required this.zookeeperNode,

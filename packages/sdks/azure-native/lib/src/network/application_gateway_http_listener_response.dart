@@ -53,7 +53,7 @@ class ApplicationGatewayHttpListenerResponse {
   /// [sslCertificate] SSL certificate resource of an application gateway.
   /// [sslProfile] SSL profile resource of the application gateway.
   /// [type] Type of the resource.
-  ApplicationGatewayHttpListenerResponse({
+  const ApplicationGatewayHttpListenerResponse({
     this.customErrorConfigurations,
     required this.etag,
     this.firewallPolicy,

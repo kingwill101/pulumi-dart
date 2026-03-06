@@ -18,7 +18,7 @@ class GetSchemaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] Schema name parameter.
   /// [schemaRegistryName] Schema registry name parameter.
-  GetSchemaArgs({
+  const GetSchemaArgs({
     required this.resourceGroupName,
     required this.schemaName,
     required this.schemaRegistryName,

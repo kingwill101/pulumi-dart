@@ -101,7 +101,7 @@ class DbSystemProperties {
   /// [shape] Shape of DB System.
   /// [sshPublicKeys] SSH public keys to be stored with the DbSystem.
   /// [timeZone] Represents a time zone from the
-  DbSystemProperties({
+  const DbSystemProperties({
     required this.computeCount,
     this.computeModel,
     this.dataCollectionOptions,

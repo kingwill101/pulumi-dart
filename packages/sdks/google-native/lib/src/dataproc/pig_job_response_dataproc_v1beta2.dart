@@ -29,7 +29,7 @@ class PigJobResponseDataprocV1beta2 {
   /// [queryFileUri] The HCFS URI of the script that contains the Pig queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
-  PigJobResponseDataprocV1beta2({
+  const PigJobResponseDataprocV1beta2({
     required this.continueOnFailure,
     required this.jarFileUris,
     required this.loggingConfig,

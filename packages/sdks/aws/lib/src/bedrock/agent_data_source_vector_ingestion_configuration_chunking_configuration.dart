@@ -20,7 +20,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   /// [fixedSizeChunkingConfiguration] Configurations for when you choose fixed-size chunking. Requires chunking_strategy as `FIXED_SIZE`. See `fixed_size_chunking_configuration` for details.
   /// [hierarchicalChunkingConfiguration] Configurations for when you choose hierarchical chunking. Requires chunking_strategy as `HIERARCHICAL`. See `hierarchical_chunking_configuration` for details.
   /// [semanticChunkingConfiguration] Configurations for when you choose semantic chunking. Requires chunking_strategy as `SEMANTIC`. See `semantic_chunking_configuration` for details.
-  AgentDataSourceVectorIngestionConfigurationChunkingConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationChunkingConfiguration({
     required this.chunkingStrategy,
     this.fixedSizeChunkingConfiguration,
     this.hierarchicalChunkingConfiguration,

@@ -11,7 +11,7 @@ class GetLinuxWebAppSiteConfigAutoHealSettingAction {
   /// Creates a new [GetLinuxWebAppSiteConfigAutoHealSettingAction].
   /// [actionType] The predefined action to be taken to an Auto Heal trigger.
   /// [minimumProcessExecutionTime] The minimum amount of time in `hh:mm:ss` the Linux Web App must have been running before the defined action will be run in the event of a trigger.
-  GetLinuxWebAppSiteConfigAutoHealSettingAction({
+  const GetLinuxWebAppSiteConfigAutoHealSettingAction({
     required this.actionType,
     required this.minimumProcessExecutionTime,
   });

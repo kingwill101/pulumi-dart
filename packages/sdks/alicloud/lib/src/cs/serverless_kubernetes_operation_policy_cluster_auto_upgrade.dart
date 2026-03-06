@@ -21,7 +21,7 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
   /// Creates a new [ServerlessKubernetesOperationPolicyClusterAutoUpgrade].
   /// [channel] The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
   /// [enabled] Whether the RRSA feature has been enabled.
-  ServerlessKubernetesOperationPolicyClusterAutoUpgrade({
+  const ServerlessKubernetesOperationPolicyClusterAutoUpgrade({
     this.channel,
     this.enabled,
   });

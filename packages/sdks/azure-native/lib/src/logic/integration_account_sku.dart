@@ -9,7 +9,7 @@ class IntegrationAccountSku {
 
   /// Creates a new [IntegrationAccountSku].
   /// [name] The sku name.
-  IntegrationAccountSku({
+  const IntegrationAccountSku({
     required this.name,
   });
 

@@ -31,7 +31,7 @@ class WafWebACLSummaryProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  WafWebACLSummaryProperties({
+  const WafWebACLSummaryProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

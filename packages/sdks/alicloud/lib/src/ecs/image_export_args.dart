@@ -18,7 +18,7 @@ class ImageExportArgs {
   /// [imageId] The source image ID.
   /// [ossBucket] Save the exported OSS bucket.
   /// [ossPrefix] The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
-  ImageExportArgs({
+  const ImageExportArgs({
     required this.imageId,
     required this.ossBucket,
     this.ossPrefix,

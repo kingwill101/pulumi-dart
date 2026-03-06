@@ -45,7 +45,7 @@ class NetworkPolicyArgs {
   /// [name] The ID of the Network Policy.
   /// [project] The ID of the project in which the resource belongs.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
-  NetworkPolicyArgs({
+  const NetworkPolicyArgs({
     this.description,
     required this.edgeServicesCidr,
     this.externalIp,

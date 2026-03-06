@@ -11,7 +11,7 @@ class DomainDevicesRngRate {
   /// Creates a new [DomainDevicesRngRate].
   /// [bytes] Sets the rate of bytes per time unit for the random number generator.
   /// [period] Defines the period duration for the rate settings of the random number generator.
-  DomainDevicesRngRate({
+  const DomainDevicesRngRate({
     required this.bytes,
     this.period,
   });

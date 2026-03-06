@@ -14,7 +14,7 @@ class AuditSinkSpecPatch {
   /// Creates a new [AuditSinkSpecPatch].
   /// [policy] Policy defines the policy for selecting which events should be sent to the webhook required
   /// [webhook] Webhook to send events required
-  AuditSinkSpecPatch({
+  const AuditSinkSpecPatch({
     this.policy,
     this.webhook,
   });

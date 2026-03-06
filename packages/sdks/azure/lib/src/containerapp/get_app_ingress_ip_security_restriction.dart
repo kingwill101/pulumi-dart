@@ -17,7 +17,7 @@ class GetAppIngressIpSecurityRestriction {
   /// [description] Description of the IP restriction rule that is being sent to the container-app.
   /// [ipAddressRange] CIDR notation that matches the incoming IP address.
   /// [name] The name of the Container App.
-  GetAppIngressIpSecurityRestriction({
+  const GetAppIngressIpSecurityRestriction({
     required this.action,
     required this.description,
     required this.ipAddressRange,

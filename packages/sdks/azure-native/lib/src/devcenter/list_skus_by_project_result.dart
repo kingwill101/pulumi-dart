@@ -13,7 +13,7 @@ class ListSkusByProjectResult {
   /// Creates a new [ListSkusByProjectResult].
   /// [nextLink] URL to get the next set of results if there are any.
   /// [value] Current page of results.
-  ListSkusByProjectResult({
+  const ListSkusByProjectResult({
     required this.nextLink,
     required this.value,
   });

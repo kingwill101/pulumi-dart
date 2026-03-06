@@ -8,7 +8,7 @@ class VMwareClusterAutoRepairConfig {
 
   /// Creates a new [VMwareClusterAutoRepairConfig].
   /// [enabled] Whether auto repair is enabled.
-  VMwareClusterAutoRepairConfig({
+  const VMwareClusterAutoRepairConfig({
     required this.enabled,
   });
 

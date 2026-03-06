@@ -32,7 +32,7 @@ class GetGroupsArgs {
   /// [objectIds] The object IDs of the groups.
   /// [returnAll] A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
   /// [securityEnabled] Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
-  GetGroupsArgs({
+  const GetGroupsArgs({
     this.displayNamePrefix,
     this.displayNames,
     this.ignoreMissing,

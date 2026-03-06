@@ -18,7 +18,7 @@ class GetEventSourcesArgs {
   /// [ids] A list of Event Source IDs.
   /// [nameRegex] A regex string to filter results by Event Source name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEventSourcesArgs({
+  const GetEventSourcesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

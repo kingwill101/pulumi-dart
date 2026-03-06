@@ -10,7 +10,7 @@ class IntentConclusionStatement {
   /// Creates a new [IntentConclusionStatement].
   /// [messages] Required.
   /// [responseCard] Optional.
-  IntentConclusionStatement({
+  const IntentConclusionStatement({
     required this.messages,
     this.responseCard,
   });

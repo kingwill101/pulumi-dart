@@ -20,7 +20,7 @@ class GetDatabaseInstanceSettingInsightsConfig {
   /// [queryStringLength] Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. For Enterprise Plus instances, from 1 to 1048576.
   /// [recordApplicationTags] True if Query Insights will record application tags from query when enabled.
   /// [recordClientAddress] True if Query Insights will record client address when enabled.
-  GetDatabaseInstanceSettingInsightsConfig({
+  const GetDatabaseInstanceSettingInsightsConfig({
     required this.queryInsightsEnabled,
     required this.queryPlansPerMinute,
     required this.queryStringLength,

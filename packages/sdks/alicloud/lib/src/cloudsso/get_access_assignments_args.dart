@@ -30,7 +30,7 @@ class GetAccessAssignmentsArgs {
   /// [principalType] Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
   /// [targetId] The ID of the target to create the resource range.
   /// [targetType] The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
-  GetAccessAssignmentsArgs({
+  const GetAccessAssignmentsArgs({
     this.accessConfigurationId,
     required this.directoryId,
     this.ids,

@@ -57,7 +57,7 @@ class GetConversationProfileDialogflowV2beta1Result {
   /// [timeZone] The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
   /// [ttsConfig] Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
   /// [updateTime] Update time of the conversation profile.
-  GetConversationProfileDialogflowV2beta1Result({
+  const GetConversationProfileDialogflowV2beta1Result({
     required this.automatedAgentConfig,
     required this.createTime,
     required this.displayName,

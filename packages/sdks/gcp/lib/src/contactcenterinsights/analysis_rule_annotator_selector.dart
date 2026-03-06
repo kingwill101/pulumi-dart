@@ -57,7 +57,7 @@ class AnalysisRuleAnnotatorSelector {
   /// [runSilenceAnnotator] Whether to run the silence annotator.
   /// [runSummarizationAnnotator] Whether to run the summarization annotator.
   /// [summarizationConfig] Configuration for summarization.
-  AnalysisRuleAnnotatorSelector({
+  const AnalysisRuleAnnotatorSelector({
     this.issueModels,
     this.phraseMatchers,
     this.qaConfig,

@@ -34,7 +34,7 @@ class IamServerCertificatePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamServerCertificatePropertiesResponse({
+  const IamServerCertificatePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

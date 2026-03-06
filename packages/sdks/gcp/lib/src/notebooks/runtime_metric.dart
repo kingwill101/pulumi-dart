@@ -10,7 +10,7 @@ class RuntimeMetric {
 
   /// Creates a new [RuntimeMetric].
   /// [systemMetrics] (Output)
-  RuntimeMetric({
+  const RuntimeMetric({
     this.systemMetrics,
   });
 

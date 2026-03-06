@@ -15,7 +15,7 @@ class ServiceRegistryResourceRequestsResponse {
   /// [cpu] Cpu allocated to each Service Registry instance
   /// [instanceCount] Instance count of the Service Registry
   /// [memory] Memory allocated to each Service Registry instance
-  ServiceRegistryResourceRequestsResponse({
+  const ServiceRegistryResourceRequestsResponse({
     required this.cpu,
     required this.instanceCount,
     required this.memory,

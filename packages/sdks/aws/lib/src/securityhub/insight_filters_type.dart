@@ -9,7 +9,7 @@ class InsightFiltersType {
   /// Creates a new [InsightFiltersType].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersType({
+  const InsightFiltersType({
     required this.comparison,
     required this.value,
   });

@@ -18,7 +18,7 @@ class ServiceHybridDoubleWriteState {
   /// [sourceNamespace] Source Namespace.
   /// [sourceUserId] Source UserId.
   /// [userId] Target UserId.
-  ServiceHybridDoubleWriteState({
+  const ServiceHybridDoubleWriteState({
     this.namespace,
     this.sourceNamespace,
     this.sourceUserId,

@@ -18,7 +18,7 @@ class GetGradientaiModelsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [models] Required.
   /// [sorts] Optional.
-  GetGradientaiModelsResult({
+  const GetGradientaiModelsResult({
     this.filters,
     required this.id,
     required this.models,

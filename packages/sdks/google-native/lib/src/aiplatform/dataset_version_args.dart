@@ -18,7 +18,7 @@ class DatasetVersionArgs {
   /// [etag] Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   /// [location] Optional.
   /// [project] Optional.
-  DatasetVersionArgs({
+  const DatasetVersionArgs({
     required this.datasetId,
     this.etag,
     this.location,

@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlain
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage({
+  const V2modelsIntentConfirmationSettingFailureResponseMessageGroupVariationPlainTextMessage({
     required this.value,
   });
 

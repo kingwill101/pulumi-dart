@@ -27,7 +27,7 @@ class PersistentDiskDefaults {
   /// [encryption] Optional. The encryption to apply to the disk.
   /// [sourceDiskNumber] The ordinal number of the source VM disk.
   /// [vmAttachmentDetails] Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
-  PersistentDiskDefaults({
+  const PersistentDiskDefaults({
     this.additionalLabels,
     this.diskName,
     this.diskType,

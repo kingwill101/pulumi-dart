@@ -11,7 +11,7 @@ class PipelineRunSourcePropertiesResponse {
   /// Creates a new [PipelineRunSourcePropertiesResponse].
   /// [name] The name of the source.
   /// [type] The type of the source.
-  PipelineRunSourcePropertiesResponse({
+  const PipelineRunSourcePropertiesResponse({
     this.name,
     this.type,
   });

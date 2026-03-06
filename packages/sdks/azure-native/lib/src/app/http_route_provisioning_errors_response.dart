@@ -12,7 +12,7 @@ class HttpRouteProvisioningErrorsResponse {
   /// Creates a new [HttpRouteProvisioningErrorsResponse].
   /// [message] Description or error message
   /// [timestamp] Timestamp error occured at
-  HttpRouteProvisioningErrorsResponse({
+  const HttpRouteProvisioningErrorsResponse({
     required this.message,
     required this.timestamp,
   });

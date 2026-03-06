@@ -14,7 +14,7 @@ class ApplicationRequiredResourceAccess {
   /// Creates a new [ApplicationRequiredResourceAccess].
   /// [resourceAccesses] A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
   /// [resourceAppId] The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
-  ApplicationRequiredResourceAccess({
+  const ApplicationRequiredResourceAccess({
     required this.resourceAccesses,
     required this.resourceAppId,
   });

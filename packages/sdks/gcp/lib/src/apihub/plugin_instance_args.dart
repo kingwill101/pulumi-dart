@@ -45,7 +45,7 @@ class PluginInstanceArgs {
   /// [plugin] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [pluginInstanceId] The ID to use for the plugin instance, which will become the final
   /// [project] The ID of the project in which the resource belongs.
-  PluginInstanceArgs({
+  const PluginInstanceArgs({
     this.actions,
     this.authConfig,
     this.disable,

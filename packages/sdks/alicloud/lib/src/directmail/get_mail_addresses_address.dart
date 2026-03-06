@@ -44,7 +44,7 @@ class GetMailAddressesAddress {
   /// [replyStatus] If using STMP address status.
   /// [sendtype] Account type.
   /// [status] Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
-  GetMailAddressesAddress({
+  const GetMailAddressesAddress({
     required this.accountName,
     required this.createTime,
     required this.dailyCount,

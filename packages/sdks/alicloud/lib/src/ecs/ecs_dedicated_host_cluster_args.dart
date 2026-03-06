@@ -24,7 +24,7 @@ class EcsDedicatedHostClusterArgs {
   /// [dryRun] The dry run.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The ID of the zone in which to create the dedicated host cluster.
-  EcsDedicatedHostClusterArgs({
+  const EcsDedicatedHostClusterArgs({
     this.dedicatedHostClusterName,
     this.description,
     this.dryRun,

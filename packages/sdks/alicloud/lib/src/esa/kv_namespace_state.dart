@@ -15,7 +15,7 @@ class KvNamespaceState {
   /// [description] The description of the namespace.
   /// [kvNamespace] The name of the namespace.
   /// [status] The status of the namespace.
-  KvNamespaceState({
+  const KvNamespaceState({
     this.description,
     this.kvNamespace,
     this.status,

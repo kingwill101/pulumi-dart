@@ -26,7 +26,7 @@ class GetARecordResult {
   /// [tags] A mapping of tags assigned to the Private DNS A Record.
   /// [ttl] The Time To Live (TTL) of the Private DNS record in seconds.
   /// [zoneName] Required.
-  GetARecordResult({
+  const GetARecordResult({
     required this.fqdn,
     required this.id,
     required this.name,

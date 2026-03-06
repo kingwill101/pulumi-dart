@@ -32,7 +32,7 @@ class RouterRoutePolicyState {
   /// [router] The name of the Cloud Router in which this route policy will be configured.
   /// [terms] List of terms (the order in the list is not important, they are evaluated in order of priority).
   /// [type] This is policy's type, which is one of IMPORT or EXPORT
-  RouterRoutePolicyState({
+  const RouterRoutePolicyState({
     this.fingerprint,
     this.name,
     this.project,

@@ -18,7 +18,7 @@ class PolicyAssignmentPropertiesResponse {
   /// [policy] Details of the policy
   /// [roleDefinition] Details of role definition
   /// [scope] Details of the resource scope
-  PolicyAssignmentPropertiesResponse({
+  const PolicyAssignmentPropertiesResponse({
     this.policy,
     this.roleDefinition,
     this.scope,

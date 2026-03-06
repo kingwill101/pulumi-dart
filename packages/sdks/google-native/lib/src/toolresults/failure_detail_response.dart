@@ -27,7 +27,7 @@ class FailureDetailResponse {
   /// [otherNativeCrash] If a native process (including any other than the app) crashed.
   /// [timedOut] If the test overran some time limit, and that is why it failed.
   /// [unableToCrawl] If the robo was unable to crawl the app; perhaps because the app did not start.
-  FailureDetailResponse({
+  const FailureDetailResponse({
     required this.crashed,
     required this.deviceOutOfMemory,
     required this.failedRoboscript,

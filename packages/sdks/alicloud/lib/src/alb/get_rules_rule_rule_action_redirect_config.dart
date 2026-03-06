@@ -23,7 +23,7 @@ class GetRulesRuleRuleActionRedirectConfig {
   /// [port] The port of the destination to which requests are redirected.
   /// [protocol] The protocol of the requests to be redirected.
   /// [query] The query string of the request to be redirected within ALB.
-  GetRulesRuleRuleActionRedirectConfig({
+  const GetRulesRuleRuleActionRedirectConfig({
     required this.host,
     required this.httpCode,
     required this.path,

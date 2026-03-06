@@ -21,7 +21,7 @@ class GetCloudVmClusterArgs {
   /// [cloudVmClusterId] The ID of the VM Cluster.
   /// [location] The location of the resource.
   /// [project] The project in which the resource belongs. If it
-  GetCloudVmClusterArgs({
+  const GetCloudVmClusterArgs({
     required this.cloudVmClusterId,
     required this.location,
     this.project,

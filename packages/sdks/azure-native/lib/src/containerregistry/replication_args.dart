@@ -30,7 +30,7 @@ class ReplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   /// [zoneRedundancy] Whether or not zone redundancy is enabled for this container registry replication
-  ReplicationArgs({
+  const ReplicationArgs({
     this.location,
     this.regionEndpointEnabled,
     required this.registryName,

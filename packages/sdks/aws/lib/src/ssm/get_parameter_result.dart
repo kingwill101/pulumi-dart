@@ -30,7 +30,7 @@ class GetParameterResult {
   /// [value] Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`.
   /// [version] Version of the parameter.
   /// [withDecryption] Optional.
-  GetParameterResult({
+  const GetParameterResult({
     required this.arn,
     required this.id,
     required this.insecureValue,

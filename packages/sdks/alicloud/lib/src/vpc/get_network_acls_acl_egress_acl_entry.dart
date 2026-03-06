@@ -23,7 +23,7 @@ class GetNetworkAclsAclEgressAclEntry {
   /// [policy] The  authorization policy.
   /// [port] Destination port range.
   /// [protocol] Transport  layer protocol.
-  GetNetworkAclsAclEgressAclEntry({
+  const GetNetworkAclsAclEgressAclEntry({
     required this.description,
     required this.destinationCidrIp,
     required this.networkAclEntryName,

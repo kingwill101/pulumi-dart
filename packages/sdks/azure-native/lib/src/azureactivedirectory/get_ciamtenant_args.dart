@@ -15,7 +15,7 @@ class GetCIAMTenantArgs {
   /// Creates a new [GetCIAMTenantArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The initial sub domain of the tenant.
-  GetCIAMTenantArgs({
+  const GetCIAMTenantArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

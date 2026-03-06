@@ -21,7 +21,7 @@ class ResourceGroupArgs {
   /// [name] Field `name` has been deprecated from provider version 1.114.0. New field `resource_group_name` instead.
   /// [resourceGroupName] The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
   /// [tags] A mapping of tags to assign to the resource.
-  ResourceGroupArgs({
+  const ResourceGroupArgs({
     required this.displayName,
     this.name,
     this.resourceGroupName,

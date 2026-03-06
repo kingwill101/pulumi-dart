@@ -10,7 +10,7 @@ class ClusterAddonsConfigNetworkPolicyConfig {
 
   /// Creates a new [ClusterAddonsConfigNetworkPolicyConfig].
   /// [disabled] Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
-  ClusterAddonsConfigNetworkPolicyConfig({
+  const ClusterAddonsConfigNetworkPolicyConfig({
     required this.disabled,
   });
 

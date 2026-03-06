@@ -10,7 +10,7 @@ class InstanceGroupManagerStandbyPolicyResponse {
   /// Creates a new [InstanceGroupManagerStandbyPolicyResponse].
   /// [initialDelaySec] Required.
   /// [mode] Defines behaviour of using instances from standby pool to resize MIG.
-  InstanceGroupManagerStandbyPolicyResponse({
+  const InstanceGroupManagerStandbyPolicyResponse({
     required this.initialDelaySec,
     required this.mode,
   });

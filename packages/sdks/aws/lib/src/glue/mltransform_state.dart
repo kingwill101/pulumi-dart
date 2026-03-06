@@ -60,7 +60,7 @@ class MLTransformState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeout] The ML Transform timeout in minutes. The default is 2880 minutes (48 hours).
   /// [workerType] The type of predefined worker that is allocated when an ML Transform runs. Accepts a value of `Standard`, `G.1X`, or `G.2X`. Required with `number_of_workers`.
-  MLTransformState({
+  const MLTransformState({
     this.arn,
     this.description,
     this.glueVersion,

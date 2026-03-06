@@ -32,7 +32,7 @@ class GetManagedHardwareSecurityModuleRoleDefinitionResult {
   /// [resourceManagerId] The ID of the Key Vault Managed Hardware Security Module Role Definition resource without base url.
   /// [roleName] The display name of the Key Vault Managed Hardware Security Module Role Definition.
   /// [roleType] The type of the Key Vault Managed Hardware Security Module Role Definition. Possible values are `AKVBuiltInRole` and `CustomRole`.
-  GetManagedHardwareSecurityModuleRoleDefinitionResult({
+  const GetManagedHardwareSecurityModuleRoleDefinitionResult({
     required this.assignableScopes,
     required this.description,
     required this.id,

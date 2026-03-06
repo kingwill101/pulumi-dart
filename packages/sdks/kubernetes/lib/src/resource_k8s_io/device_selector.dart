@@ -10,7 +10,7 @@ class DeviceSelector {
 
   /// Creates a new [DeviceSelector].
   /// [cel] CEL contains a CEL expression for selecting a device.
-  DeviceSelector({
+  const DeviceSelector({
     this.cel,
   });
 

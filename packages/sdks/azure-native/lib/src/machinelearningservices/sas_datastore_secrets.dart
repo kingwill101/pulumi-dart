@@ -13,7 +13,7 @@ class SasDatastoreSecrets {
   /// Creates a new [SasDatastoreSecrets].
   /// [sasToken] Storage container SAS token.
   /// [secretsType] Enum to determine the datastore secrets type.
-  SasDatastoreSecrets({
+  const SasDatastoreSecrets({
     this.sasToken,
     required this.secretsType,
   });

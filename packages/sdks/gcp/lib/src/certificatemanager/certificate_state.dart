@@ -61,7 +61,7 @@ class CertificateState {
   /// [sanDnsnames] The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
   /// [scope] The scope of the certificate.
   /// [selfManaged] Certificate data for a SelfManaged Certificate.
-  CertificateState({
+  const CertificateState({
     this.description,
     this.effectiveLabels,
     this.labels,

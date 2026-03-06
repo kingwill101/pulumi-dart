@@ -44,7 +44,7 @@ class VvpInstanceArgs {
   /// [vswitchIds] Virtual Switch ID.
   /// [vvpInstanceName] The name of the workspace.
   /// [zoneId] The zone ID of the resource.
-  VvpInstanceArgs({
+  const VvpInstanceArgs({
     this.duration,
     required this.paymentType,
     this.pricingCycle,

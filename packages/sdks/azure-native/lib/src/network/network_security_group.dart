@@ -34,7 +34,7 @@ class NetworkSecurityGroup {
   /// [resourceGuid] The resource GUID property of the network security group resource.
   /// [securityRules] A collection of security rules of the network security group.
   /// [tags] Resource tags.
-  NetworkSecurityGroup({
+  const NetworkSecurityGroup({
     this.defaultSecurityRules,
     this.etag,
     this.flushConnection,

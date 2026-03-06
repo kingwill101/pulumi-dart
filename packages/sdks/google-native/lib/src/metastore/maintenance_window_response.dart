@@ -12,7 +12,7 @@ class MaintenanceWindowResponse {
   /// Creates a new [MaintenanceWindowResponse].
   /// [dayOfWeek] The day of week, when the window starts.
   /// [hourOfDay] The hour of day (0-23) when the window starts.
-  MaintenanceWindowResponse({
+  const MaintenanceWindowResponse({
     required this.dayOfWeek,
     required this.hourOfDay,
   });

@@ -29,7 +29,7 @@ class ChannelTeamsArgs {
   /// [enableCalling] Optional.
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
-  ChannelTeamsArgs({
+  const ChannelTeamsArgs({
     required this.botName,
     this.callingEnabled,
     this.callingWebHook,

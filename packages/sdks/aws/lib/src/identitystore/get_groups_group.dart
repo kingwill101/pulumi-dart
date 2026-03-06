@@ -21,7 +21,7 @@ class GetGroupsGroup {
   /// [externalIds] List of identifiers issued to this resource by an external identity provider.
   /// [groupId] Identifier of the group in the Identity Store.
   /// [identityStoreId] Identity Store ID associated with the Single Sign-On (SSO) Instance.
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.description,
     required this.displayName,
     required this.externalIds,

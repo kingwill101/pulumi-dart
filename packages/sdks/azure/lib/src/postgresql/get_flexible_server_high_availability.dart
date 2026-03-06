@@ -11,7 +11,7 @@ class GetFlexibleServerHighAvailability {
   /// Creates a new [GetFlexibleServerHighAvailability].
   /// [mode] The high availability mode of the PostgreSQL Flexible Server.
   /// [standbyAvailabilityZone] The availability zone of the standby Flexible Server.
-  GetFlexibleServerHighAvailability({
+  const GetFlexibleServerHighAvailability({
     required this.mode,
     required this.standbyAvailabilityZone,
   });

@@ -13,7 +13,7 @@ class ProtectConfigResponse {
   /// Creates a new [ProtectConfigResponse].
   /// [workloadConfig] WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
   /// [workloadVulnerabilityMode] Sets which mode to use for Protect workload vulnerability scanning feature.
-  ProtectConfigResponse({
+  const ProtectConfigResponse({
     required this.workloadConfig,
     required this.workloadVulnerabilityMode,
   });

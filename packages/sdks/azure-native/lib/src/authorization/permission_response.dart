@@ -24,7 +24,7 @@ class PermissionResponse {
   /// [dataActions] Allowed Data actions.
   /// [notActions] Denied actions.
   /// [notDataActions] Denied Data actions.
-  PermissionResponse({
+  const PermissionResponse({
     this.actions,
     required this.condition,
     required this.conditionVersion,

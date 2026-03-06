@@ -22,7 +22,7 @@ class IAMPolicyState {
   /// [etag] (Computed) The etag of the folder's IAM policy.
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
-  IAMPolicyState({
+  const IAMPolicyState({
     this.etag,
     this.folder,
     this.policyData,

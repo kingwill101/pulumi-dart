@@ -38,7 +38,7 @@ class InstancePartitionArgs {
   /// [nodeCount] The number of nodes allocated to this instance partition. One node equals
   /// [processingUnits] The number of processing units allocated to this instance partition.
   /// [project] The ID of the project in which the resource belongs.
-  InstancePartitionArgs({
+  const InstancePartitionArgs({
     required this.config,
     required this.displayName,
     required this.instance,

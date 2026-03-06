@@ -12,7 +12,7 @@ class GetContainerRegistryArgs {
 
   /// Creates a new [GetContainerRegistryArgs].
   /// [name] The name of the container registry.
-  GetContainerRegistryArgs({
+  const GetContainerRegistryArgs({
     required this.name,
   });
 

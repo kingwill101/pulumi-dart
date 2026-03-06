@@ -11,7 +11,7 @@ class InterceptDeploymentGroupConnectedEndpointGroup {
 
   /// Creates a new [InterceptDeploymentGroupConnectedEndpointGroup].
   /// [name] (Output)
-  InterceptDeploymentGroupConnectedEndpointGroup({
+  const InterceptDeploymentGroupConnectedEndpointGroup({
     this.name,
   });
 

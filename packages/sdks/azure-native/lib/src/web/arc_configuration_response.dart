@@ -18,7 +18,7 @@ class ArcConfigurationResponse {
   /// [artifactStorageNodeName] Optional.
   /// [artifactsStorageType] Optional.
   /// [frontEndServiceConfiguration] Optional.
-  ArcConfigurationResponse({
+  const ArcConfigurationResponse({
     this.artifactStorageAccessMode,
     this.artifactStorageClassName,
     this.artifactStorageMountPath,

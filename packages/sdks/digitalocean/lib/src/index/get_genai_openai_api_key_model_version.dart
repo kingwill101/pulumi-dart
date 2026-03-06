@@ -14,7 +14,7 @@ class GetGenaiOpenaiApiKeyModelVersion {
   /// [major] Major version of the model
   /// [minor] Minor version of the model
   /// [patch] Patch version of the model
-  GetGenaiOpenaiApiKeyModelVersion({
+  const GetGenaiOpenaiApiKeyModelVersion({
     this.major,
     this.minor,
     this.patch,

@@ -15,7 +15,7 @@ class AzurePlanResponse {
   /// [productId] The ID that uniquely identifies a product.
   /// [skuDescription] The sku description.
   /// [skuId] The ID that uniquely identifies a sku.
-  AzurePlanResponse({
+  const AzurePlanResponse({
     this.productId,
     this.skuDescription,
     this.skuId,

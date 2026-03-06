@@ -29,7 +29,7 @@ class SecurityContactArgs {
   /// [notificationsSources] A collection of sources types which evaluate the email notification.
   /// [phone] The security contact's phone number
   /// [securityContactName] Name of the security contact object
-  SecurityContactArgs({
+  const SecurityContactArgs({
     this.emails,
     this.isEnabled,
     this.notificationsByRole,

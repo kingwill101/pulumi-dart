@@ -62,7 +62,7 @@ class InterconnectAttachmentState {
   /// [updateTime] The time when the resource was last updated.
   /// [vlanId] VLAN ID provided by user. Must be site-wise unique.
   /// [zone] The name of the target Distributed Cloud Edge zone.
-  InterconnectAttachmentState({
+  const InterconnectAttachmentState({
     this.createTime,
     this.description,
     this.effectiveLabels,

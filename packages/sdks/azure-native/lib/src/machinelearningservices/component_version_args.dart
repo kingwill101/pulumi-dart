@@ -25,7 +25,7 @@ class ComponentVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ComponentVersionArgs({
+  const ComponentVersionArgs({
     required this.componentVersionProperties,
     required this.name,
     required this.resourceGroupName,

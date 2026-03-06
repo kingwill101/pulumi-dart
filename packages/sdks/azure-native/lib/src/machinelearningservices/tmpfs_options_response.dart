@@ -9,7 +9,7 @@ class TmpfsOptionsResponse {
 
   /// Creates a new [TmpfsOptionsResponse].
   /// [size] Mention the Tmpfs size
-  TmpfsOptionsResponse({
+  const TmpfsOptionsResponse({
     this.size,
   });
 

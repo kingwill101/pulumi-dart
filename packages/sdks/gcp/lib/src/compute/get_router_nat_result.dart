@@ -65,7 +65,7 @@ class GetRouterNatResult {
   /// [tcpTransitoryIdleTimeoutSec] Required.
   /// [type] Required.
   /// [udpIdleTimeoutSec] Required.
-  GetRouterNatResult({
+  const GetRouterNatResult({
     required this.autoNetworkTier,
     required this.drainNatIps,
     required this.enableDynamicPortAllocation,

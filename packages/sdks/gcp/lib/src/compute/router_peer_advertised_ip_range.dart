@@ -12,7 +12,7 @@ class RouterPeerAdvertisedIpRange {
   /// Creates a new [RouterPeerAdvertisedIpRange].
   /// [description] User-specified description for the IP range.
   /// [range] The IP range to advertise. The value must be a
-  RouterPeerAdvertisedIpRange({
+  const RouterPeerAdvertisedIpRange({
     this.description,
     required this.range,
   });

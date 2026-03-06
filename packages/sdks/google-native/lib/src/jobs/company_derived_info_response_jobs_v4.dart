@@ -10,7 +10,7 @@ class CompanyDerivedInfoResponseJobsV4 {
 
   /// Creates a new [CompanyDerivedInfoResponseJobsV4].
   /// [headquartersLocation] A structured headquarters location of the company, resolved from Company.headquarters_address if provided.
-  CompanyDerivedInfoResponseJobsV4({
+  const CompanyDerivedInfoResponseJobsV4({
     required this.headquartersLocation,
   });
 

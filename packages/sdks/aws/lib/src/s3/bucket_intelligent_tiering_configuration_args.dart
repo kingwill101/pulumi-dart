@@ -29,7 +29,7 @@ class BucketIntelligentTieringConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Specifies the status of the configuration. Valid values: `Enabled`, `Disabled`.
   /// [tierings] S3 Intelligent-Tiering storage class tiers of the configuration (documented below).
-  BucketIntelligentTieringConfigurationArgs({
+  const BucketIntelligentTieringConfigurationArgs({
     required this.bucket,
     this.filter,
     this.name,

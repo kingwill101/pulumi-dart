@@ -44,7 +44,7 @@ class OperatorApiConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [saasProperties] Details about the SaaS offer purchased from the marketplace.
   /// [tags] Resource tags.
-  OperatorApiConnectionArgs({
+  const OperatorApiConnectionArgs({
     required this.accountType,
     this.appId,
     this.appSecret,

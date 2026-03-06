@@ -42,7 +42,7 @@ class GetGraphQueryResult {
   /// [tags] Resource tags
   /// [timeModified] Date and time in UTC of the last modification that was made to this graph query definition.
   /// [type] Azure resource type
-  GetGraphQueryResult({
+  const GetGraphQueryResult({
     required this.azureApiVersion,
     this.description,
     this.etag,

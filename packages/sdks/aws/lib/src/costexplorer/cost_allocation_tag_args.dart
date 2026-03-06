@@ -15,7 +15,7 @@ class CostAllocationTagArgs {
   /// Creates a new [CostAllocationTagArgs].
   /// [status] The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   /// [tagKey] The key for the cost allocation tag.
-  CostAllocationTagArgs({
+  const CostAllocationTagArgs({
     required this.status,
     required this.tagKey,
   });

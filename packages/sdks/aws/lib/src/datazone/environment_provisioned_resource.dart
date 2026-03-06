@@ -15,7 +15,7 @@ class EnvironmentProvisionedResource {
   /// [provider] Required.
   /// [type] Required.
   /// [value] The value of an environment profile parameter.
-  EnvironmentProvisionedResource({
+  const EnvironmentProvisionedResource({
     required this.name,
     required this.provider,
     required this.type,

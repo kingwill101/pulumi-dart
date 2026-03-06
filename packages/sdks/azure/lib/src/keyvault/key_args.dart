@@ -44,7 +44,7 @@ class KeyArgs {
   /// [notBeforeDate] Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   /// [rotationPolicy] A `rotation_policy` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  KeyArgs({
+  const KeyArgs({
     this.curve,
     this.expirationDate,
     required this.keyOpts,

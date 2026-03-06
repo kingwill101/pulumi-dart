@@ -21,7 +21,7 @@ class GetDynamicSchemaVersionArgs {
   /// [dynamicSchemaVersionName] The name of the DynamicSchemaVersion
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
-  GetDynamicSchemaVersionArgs({
+  const GetDynamicSchemaVersionArgs({
     required this.dynamicSchemaName,
     required this.dynamicSchemaVersionName,
     required this.resourceGroupName,

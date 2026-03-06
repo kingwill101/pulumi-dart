@@ -8,7 +8,7 @@ class InsightsConfigArtifactConfigGoogleArtifactAnalysis {
 
   /// Creates a new [InsightsConfigArtifactConfigGoogleArtifactAnalysis].
   /// [projectId] The project id of the project where the provenance is stored.
-  InsightsConfigArtifactConfigGoogleArtifactAnalysis({
+  const InsightsConfigArtifactConfigGoogleArtifactAnalysis({
     required this.projectId,
   });
 

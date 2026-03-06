@@ -16,7 +16,7 @@ class PolicyAssignmentPropertiesResponsePolicy {
   /// [id] Id of the policy
   /// [lastModifiedBy] The name of the entity last modified it
   /// [lastModifiedDateTime] The last modified date time.
-  PolicyAssignmentPropertiesResponsePolicy({
+  const PolicyAssignmentPropertiesResponsePolicy({
     this.id,
     required this.lastModifiedBy,
     this.lastModifiedDateTime,

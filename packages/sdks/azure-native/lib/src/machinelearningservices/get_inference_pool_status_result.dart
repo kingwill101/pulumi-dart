@@ -17,7 +17,7 @@ class GetInferencePoolStatusResult {
   /// [groupCount] Gets or sets the actual number of groups in the pool.
   /// [requestedCapacity] Gets or sets the requested number of instances for the pool.
   /// [reservedCapacity] Gets or sets the number of instances in the pool reserved by the system.
-  GetInferencePoolStatusResult({
+  const GetInferencePoolStatusResult({
     this.actualCapacity,
     this.groupCount,
     this.requestedCapacity,

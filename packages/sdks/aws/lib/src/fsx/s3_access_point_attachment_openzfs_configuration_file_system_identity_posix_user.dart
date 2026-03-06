@@ -14,7 +14,7 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser {
   /// [gid] GID of the file system user.
   /// [secondaryGids] List of secondary GIDs for the file system user..
   /// [uid] UID of the file system user.
-  S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser({
+  const S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentityPosixUser({
     required this.gid,
     this.secondaryGids,
     required this.uid,

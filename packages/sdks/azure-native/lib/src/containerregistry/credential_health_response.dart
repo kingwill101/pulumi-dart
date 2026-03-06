@@ -15,7 +15,7 @@ class CredentialHealthResponse {
   /// [errorCode] Error code representing the health check error.
   /// [errorMessage] Descriptive message representing the health check error.
   /// [status] The health status of credential.
-  CredentialHealthResponse({
+  const CredentialHealthResponse({
     this.errorCode,
     this.errorMessage,
     this.status,

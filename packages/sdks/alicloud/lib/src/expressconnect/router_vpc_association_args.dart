@@ -25,7 +25,7 @@ class RouterVpcAssociationArgs {
   /// [ecrId] The ECR ID.
   /// [vpcId] The VPC ID.
   /// [vpcOwnerId] The ID of the Alibaba Cloud account that owns the VPC.
-  RouterVpcAssociationArgs({
+  const RouterVpcAssociationArgs({
     this.allowedPrefixes,
     required this.associationRegionId,
     required this.ecrId,

@@ -12,7 +12,7 @@ class InsightFiltersResourceDetailsOther {
   /// [comparison] Required.
   /// [key] The key of the map filter. For example, for `ResourceTags`, `Key` identifies the name of the tag. For `UserDefinedFields`, `Key` is the name of the field.
   /// [value] Required.
-  InsightFiltersResourceDetailsOther({
+  const InsightFiltersResourceDetailsOther({
     required this.comparison,
     required this.key,
     required this.value,

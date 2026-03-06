@@ -16,7 +16,7 @@ class WorkspaceEncryption {
   /// [keyId] The Key Vault URI to access the encryption key.
   /// [keyVaultId] The ID of the keyVault where the customer owned encryption key is present.
   /// [userAssignedIdentityId] The Key Vault URI to access the encryption key.
-  WorkspaceEncryption({
+  const WorkspaceEncryption({
     required this.keyId,
     required this.keyVaultId,
     this.userAssignedIdentityId,

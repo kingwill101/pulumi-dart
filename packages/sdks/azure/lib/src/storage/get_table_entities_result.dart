@@ -19,7 +19,7 @@ class GetTableEntitiesResult {
   /// [items] A list of `items` blocks as defined below.
   /// [selects] Optional.
   /// [storageTableId] Required.
-  GetTableEntitiesResult({
+  const GetTableEntitiesResult({
     required this.filter,
     required this.id,
     required this.items,

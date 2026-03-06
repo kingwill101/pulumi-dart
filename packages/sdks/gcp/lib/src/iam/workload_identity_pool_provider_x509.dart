@@ -13,7 +13,7 @@ class WorkloadIdentityPoolProviderX509 {
 
   /// Creates a new [WorkloadIdentityPoolProviderX509].
   /// [trustStore] A Trust store, use this trust store as a wrapper to config the trust
-  WorkloadIdentityPoolProviderX509({
+  const WorkloadIdentityPoolProviderX509({
     required this.trustStore,
   });
 

@@ -93,7 +93,7 @@ class MdsResourcePropertiesResponse {
   /// [storageProfile] Profile of Storage Created.
   /// [userManagedOpenAIProfile] Profile of User Managed OpenAI Resource.
   /// [version] Mds Resource Version.
-  MdsResourcePropertiesResponse({
+  const MdsResourcePropertiesResponse({
     required this.aadApplicationId,
     required this.adxProfile,
     this.aksAdminGroupId,

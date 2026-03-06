@@ -52,7 +52,7 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse {
   /// [replaceDictionaryConfig] Replace with a value randomly drawn (with replacement) from a dictionary.
   /// [replaceWithInfoTypeConfig] Replace with infotype
   /// [timePartConfig] Time extraction
-  GooglePrivacyDlpV2PrimitiveTransformationResponse({
+  const GooglePrivacyDlpV2PrimitiveTransformationResponse({
     required this.bucketingConfig,
     required this.characterMaskConfig,
     required this.cryptoDeterministicConfig,

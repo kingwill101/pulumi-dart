@@ -8,7 +8,7 @@ class WebAclRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint {
 
   /// Creates a new [WebAclRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint].
   /// [fallbackBehavior] Match status to assign to the web request if there is insufficient TSL Client Hello information to compute the JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  WebAclRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint({
+  const WebAclRuleStatementSqliMatchStatementFieldToMatchJa3Fingerprint({
     required this.fallbackBehavior,
   });
 

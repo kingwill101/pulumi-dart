@@ -12,7 +12,7 @@ class EncryptionWithCmkResponse {
   /// Creates a new [EncryptionWithCmkResponse].
   /// [encryptionComplianceStatus] Returns the status of search service compliance with respect to non-CMK-encrypted objects. If a service has more than one unencrypted object, and enforcement is enabled, the service is marked as noncompliant.
   /// [enforcement] Describes how a search service should enforce compliance if it finds objects that aren't encrypted with the customer-managed key.
-  EncryptionWithCmkResponse({
+  const EncryptionWithCmkResponse({
     required this.encryptionComplianceStatus,
     this.enforcement,
   });

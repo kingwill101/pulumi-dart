@@ -11,7 +11,7 @@ class NetworkManagerConnectivityConfigurationHub {
   /// Creates a new [NetworkManagerConnectivityConfigurationHub].
   /// [resourceId] Specifies the resource ID used as hub in Hub And Spoke topology.
   /// [resourceType] Specifies the resource Type used as hub in Hub And Spoke topology.
-  NetworkManagerConnectivityConfigurationHub({
+  const NetworkManagerConnectivityConfigurationHub({
     required this.resourceId,
     required this.resourceType,
   });

@@ -15,7 +15,7 @@ class GetBackupRunArgs {
   /// [id] Required.
   /// [instance] Required.
   /// [project] Optional.
-  GetBackupRunArgs({
+  const GetBackupRunArgs({
     required this.id,
     required this.instance,
     this.project,

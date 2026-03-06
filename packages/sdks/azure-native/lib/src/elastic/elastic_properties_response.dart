@@ -14,7 +14,7 @@ class ElasticPropertiesResponse {
   /// Creates a new [ElasticPropertiesResponse].
   /// [elasticCloudDeployment] Details of the elastic cloud deployment.
   /// [elasticCloudUser] Details of the user's elastic account.
-  ElasticPropertiesResponse({
+  const ElasticPropertiesResponse({
     this.elasticCloudDeployment,
     this.elasticCloudUser,
   });

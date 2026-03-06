@@ -13,7 +13,7 @@ class RotationPolicy {
   /// Creates a new [RotationPolicy].
   /// [attributes] The attributes of key rotation policy.
   /// [lifetimeActions] The lifetimeActions for key rotation action.
-  RotationPolicy({
+  const RotationPolicy({
     this.attributes,
     this.lifetimeActions,
   });

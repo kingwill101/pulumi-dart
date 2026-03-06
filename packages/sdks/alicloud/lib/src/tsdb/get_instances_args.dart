@@ -33,7 +33,7 @@ class GetInstancesArgs {
   /// [queryStr] The query str.
   /// [status] Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
   /// [statusList] The status list.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.appKey,
     this.enableDetails,
     this.engineType,

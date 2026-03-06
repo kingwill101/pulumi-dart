@@ -18,7 +18,7 @@ class LdapsSettings {
   /// [ldaps] A flag to determine whether or not Secure LDAP is enabled or disabled.
   /// [pfxCertificate] The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
   /// [pfxCertificatePassword] The password to decrypt the provided Secure LDAP certificate pfx file.
-  LdapsSettings({
+  const LdapsSettings({
     this.externalAccess,
     this.ldaps,
     this.pfxCertificate,

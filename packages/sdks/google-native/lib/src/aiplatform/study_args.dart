@@ -20,7 +20,7 @@ class StudyArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [studySpec] Configuration of the Study.
-  StudyArgs({
+  const StudyArgs({
     required this.displayName,
     this.location,
     this.project,

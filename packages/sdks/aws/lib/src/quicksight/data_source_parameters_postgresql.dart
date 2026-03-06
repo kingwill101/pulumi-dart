@@ -14,7 +14,7 @@ class DataSourceParametersPostgresql {
   /// [database] The database to which to connect.
   /// [host] The host to which to connect.
   /// [port] The port to which to connect.
-  DataSourceParametersPostgresql({
+  const DataSourceParametersPostgresql({
     required this.database,
     required this.host,
     required this.port,

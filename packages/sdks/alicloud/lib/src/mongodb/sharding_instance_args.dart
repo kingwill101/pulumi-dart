@@ -171,7 +171,7 @@ class ShardingInstanceArgs {
   /// [vpcId] The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [zoneId] The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-  ShardingInstanceArgs({
+  const ShardingInstanceArgs({
     this.accountPassword,
     this.autoRenew,
     this.autoRenewDuration,

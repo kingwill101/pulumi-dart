@@ -19,7 +19,7 @@ class GetAppConnectionGateway {
   /// [ingressPort] Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
   /// [type] The type of hosting used by the gateway. Refer to
   /// [uri] Server-defined URI for this resource.
-  GetAppConnectionGateway({
+  const GetAppConnectionGateway({
     required this.appGateway,
     required this.ingressPort,
     required this.type,

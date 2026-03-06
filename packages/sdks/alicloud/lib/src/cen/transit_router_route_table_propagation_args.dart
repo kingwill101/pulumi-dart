@@ -20,7 +20,7 @@ class TransitRouterRouteTablePropagationArgs {
   /// [dryRun] The dry run.
   /// [transitRouterAttachmentId] The ID the transit router attachment.
   /// [transitRouterRouteTableId] The ID of the transit router route table.
-  TransitRouterRouteTablePropagationArgs({
+  const TransitRouterRouteTablePropagationArgs({
     this.dryRun,
     required this.transitRouterAttachmentId,
     required this.transitRouterRouteTableId,

@@ -165,7 +165,7 @@ class InstanceFromTemplateState {
   /// [tags] The list of tags attached to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
   /// [zone] The zone that the machine should be created in. If not
-  InstanceFromTemplateState({
+  const InstanceFromTemplateState({
     this.advancedMachineFeatures,
     this.allowStoppingForUpdate,
     this.attachedDisks,

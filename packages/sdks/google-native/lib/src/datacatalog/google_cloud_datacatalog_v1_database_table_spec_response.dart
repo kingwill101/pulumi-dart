@@ -17,7 +17,7 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
   /// [databaseViewSpec] Spec what aplies to tables that are actually views. Not set for "real" tables.
   /// [dataplexTable] Fields specific to a Dataplex table and present only in the Dataplex table entries.
   /// [type] Type of this table.
-  GoogleCloudDatacatalogV1DatabaseTableSpecResponse({
+  const GoogleCloudDatacatalogV1DatabaseTableSpecResponse({
     required this.databaseViewSpec,
     required this.dataplexTable,
     required this.type,

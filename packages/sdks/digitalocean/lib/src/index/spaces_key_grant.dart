@@ -11,7 +11,7 @@ class SpacesKeyGrant {
   /// Creates a new [SpacesKeyGrant].
   /// [bucket] Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
   /// [permission] Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
-  SpacesKeyGrant({
+  const SpacesKeyGrant({
     required this.bucket,
     required this.permission,
   });

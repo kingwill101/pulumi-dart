@@ -10,7 +10,7 @@ class ResponsePolicyGkeCluster {
 
   /// Creates a new [ResponsePolicyGkeCluster].
   /// [gkeClusterName] The resource name of the cluster to bind this ManagedZone to.
-  ResponsePolicyGkeCluster({
+  const ResponsePolicyGkeCluster({
     required this.gkeClusterName,
   });
 

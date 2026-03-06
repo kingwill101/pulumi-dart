@@ -12,7 +12,7 @@ class OriginAccessIdentityArgs {
 
   /// Creates a new [OriginAccessIdentityArgs].
   /// [comment] An optional comment for the origin access identity.
-  OriginAccessIdentityArgs({
+  const OriginAccessIdentityArgs({
     this.comment,
   });
 

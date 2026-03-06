@@ -27,7 +27,7 @@ class SecurityPolicyAdvancedOptionsConfig {
   /// [logLevel] Log level to use. Defaults to `NORMAL`.
   /// [requestBodyInspectionSize] The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
   /// [userIpRequestHeaders] An optional list of case-insensitive request header names to use for resolving the callers client IP address.
-  SecurityPolicyAdvancedOptionsConfig({
+  const SecurityPolicyAdvancedOptionsConfig({
     this.jsonCustomConfig,
     this.jsonParsing,
     this.logLevel,

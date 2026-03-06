@@ -15,7 +15,7 @@ class GetHttpRouteArgs {
   /// [httpRouteId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetHttpRouteArgs({
+  const GetHttpRouteArgs({
     required this.httpRouteId,
     required this.location,
     this.project,

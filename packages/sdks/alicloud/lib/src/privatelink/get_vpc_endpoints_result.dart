@@ -42,7 +42,7 @@ class GetVpcEndpointsResult {
   /// [tags] Tag tags of Vpc Endpoint.
   /// [vpcEndpointName] The name of Vpc Endpoint.
   /// [vpcId] The private network to which the terminal node belongs.
-  GetVpcEndpointsResult({
+  const GetVpcEndpointsResult({
     this.connectionStatus,
     this.enableDetails,
     required this.endpoints,

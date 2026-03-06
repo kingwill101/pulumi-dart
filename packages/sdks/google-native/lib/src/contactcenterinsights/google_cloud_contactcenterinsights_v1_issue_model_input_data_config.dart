@@ -13,7 +13,7 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig].
   /// [filter] A filter to reduce the conversations used for training the model to a specific subset.
   /// [medium] Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
-  GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig({
+  const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig({
     this.filter,
     this.medium,
   });

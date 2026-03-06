@@ -12,7 +12,7 @@ class SchedulePolicyResponseVmmigrationV1alpha1 {
   /// Creates a new [SchedulePolicyResponseVmmigrationV1alpha1].
   /// [idleDuration] The idle duration between replication stages.
   /// [skipOsAdaptation] A flag to indicate whether to skip OS adaptation during the replication sync. OS adaptation is a process where the VM's operating system undergoes changes and adaptations to fully function on Compute Engine.
-  SchedulePolicyResponseVmmigrationV1alpha1({
+  const SchedulePolicyResponseVmmigrationV1alpha1({
     required this.idleDuration,
     required this.skipOsAdaptation,
   });

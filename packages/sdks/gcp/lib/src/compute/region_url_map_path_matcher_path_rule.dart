@@ -37,7 +37,7 @@ class RegionUrlMapPathMatcherPathRule {
   /// [routeAction] In response to a matching path, the load balancer performs advanced routing
   /// [service] The region backend service resource to which traffic is
   /// [urlRedirect] When a path pattern is matched, the request is redirected to a URL specified
-  RegionUrlMapPathMatcherPathRule({
+  const RegionUrlMapPathMatcherPathRule({
     required this.paths,
     this.routeAction,
     this.service,

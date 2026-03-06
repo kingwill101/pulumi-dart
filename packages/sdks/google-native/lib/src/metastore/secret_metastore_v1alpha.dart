@@ -9,7 +9,7 @@ class SecretMetastoreV1alpha {
 
   /// Creates a new [SecretMetastoreV1alpha].
   /// [cloudSecret] The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-  SecretMetastoreV1alpha({
+  const SecretMetastoreV1alpha({
     this.cloudSecret,
   });
 

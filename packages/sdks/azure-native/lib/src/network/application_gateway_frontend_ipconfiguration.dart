@@ -28,7 +28,7 @@ class ApplicationGatewayFrontendIPConfiguration {
   /// [privateLinkConfiguration] Reference to the application gateway private link configuration.
   /// [publicIPAddress] Reference to the PublicIP resource.
   /// [subnet] Reference to the subnet resource.
-  ApplicationGatewayFrontendIPConfiguration({
+  const ApplicationGatewayFrontendIPConfiguration({
     this.id,
     this.name,
     this.privateIPAddress,

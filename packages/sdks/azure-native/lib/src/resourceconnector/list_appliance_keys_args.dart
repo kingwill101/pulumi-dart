@@ -18,7 +18,7 @@ class ListApplianceKeysArgs {
   /// [artifactType] This sets the type of artifact being returned, when empty no artifact endpoint is returned.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Appliances name.
-  ListApplianceKeysArgs({
+  const ListApplianceKeysArgs({
     this.artifactType,
     required this.resourceGroupName,
     required this.resourceName,

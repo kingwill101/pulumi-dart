@@ -21,7 +21,7 @@ class GetInstancesArgs {
   /// [nameRegex] A regex string to filter results by Instance name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

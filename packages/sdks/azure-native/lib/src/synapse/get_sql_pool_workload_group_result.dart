@@ -35,7 +35,7 @@ class GetSqlPoolWorkloadGroupResult {
   /// [name] The name of the resource
   /// [queryExecutionTimeout] The workload group query execution timeout.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSqlPoolWorkloadGroupResult({
+  const GetSqlPoolWorkloadGroupResult({
     required this.azureApiVersion,
     required this.id,
     this.importance,

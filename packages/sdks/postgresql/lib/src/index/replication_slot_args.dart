@@ -18,7 +18,7 @@ class ReplicationSlotArgs {
   /// [database] Which database to create the replication slot on. Defaults to provider database.
   /// [name] The name of the replication slot.
   /// [plugin] Sets the output plugin.
-  ReplicationSlotArgs({
+  const ReplicationSlotArgs({
     this.database,
     this.name,
     required this.plugin,

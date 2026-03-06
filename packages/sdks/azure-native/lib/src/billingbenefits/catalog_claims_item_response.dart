@@ -10,7 +10,7 @@ class CatalogClaimsItemResponse {
   /// Creates a new [CatalogClaimsItemResponse].
   /// [catalogClaimsItemType] Optional.
   /// [value] Optional.
-  CatalogClaimsItemResponse({
+  const CatalogClaimsItemResponse({
     this.catalogClaimsItemType,
     this.value,
   });

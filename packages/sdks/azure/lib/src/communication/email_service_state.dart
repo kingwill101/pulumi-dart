@@ -18,7 +18,7 @@ class EmailServiceState {
   /// [name] The name of the Email Communication Service resource. Changing this forces a new Email Communication Service to be created.
   /// [resourceGroupName] The name of the Resource Group where the Email Communication Service should exist. Changing this forces a new Email Communication Service to be created.
   /// [tags] A mapping of tags which should be assigned to the Email Communication Service.
-  EmailServiceState({
+  const EmailServiceState({
     this.dataLocation,
     this.name,
     this.resourceGroupName,

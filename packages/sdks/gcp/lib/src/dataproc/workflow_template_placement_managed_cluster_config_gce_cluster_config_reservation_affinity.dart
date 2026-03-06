@@ -14,7 +14,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
   /// [consumeReservationType] Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
   /// [key] Corresponds to the label key of reservation resource.
   /// [values] Corresponds to the label values of reservation resource.
-  WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity({
+  const WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity({
     this.consumeReservationType,
     this.key,
     this.values,

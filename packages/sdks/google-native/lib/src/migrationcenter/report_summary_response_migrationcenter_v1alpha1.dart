@@ -14,7 +14,7 @@ class ReportSummaryResponseMigrationcenterV1alpha1 {
   /// Creates a new [ReportSummaryResponseMigrationcenterV1alpha1].
   /// [allAssetsStats] Aggregate statistics for all the assets across all the groups.
   /// [groupFindings] Findings for each Group included in this report.
-  ReportSummaryResponseMigrationcenterV1alpha1({
+  const ReportSummaryResponseMigrationcenterV1alpha1({
     required this.allAssetsStats,
     required this.groupFindings,
   });

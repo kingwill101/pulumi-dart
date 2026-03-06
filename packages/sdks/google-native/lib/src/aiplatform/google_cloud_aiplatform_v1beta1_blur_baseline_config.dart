@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1BlurBaselineConfig {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1BlurBaselineConfig].
   /// [maxBlurSigma] The standard deviation of the blur kernel for the blurred baseline. The same blurring parameter is used for both the height and the width dimension. If not set, the method defaults to the zero (i.e. black for images) baseline.
-  GoogleCloudAiplatformV1beta1BlurBaselineConfig({
+  const GoogleCloudAiplatformV1beta1BlurBaselineConfig({
     this.maxBlurSigma,
   });
 

@@ -41,7 +41,7 @@ class StorageClassArgs {
   /// [provisioner] provisioner indicates the type of the provisioner.
   /// [reclaimPolicy] reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.
   /// [volumeBindingMode] volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
-  StorageClassArgs({
+  const StorageClassArgs({
     this.allowVolumeExpansion,
     this.allowedTopologies,
     this.apiVersion,

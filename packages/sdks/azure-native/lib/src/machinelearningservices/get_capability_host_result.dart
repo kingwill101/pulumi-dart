@@ -25,7 +25,7 @@ class GetCapabilityHostResult {
   /// [name] The name of the resource
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCapabilityHostResult({
+  const GetCapabilityHostResult({
     required this.azureApiVersion,
     required this.capabilityHostProperties,
     required this.id,

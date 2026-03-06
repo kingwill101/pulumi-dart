@@ -11,7 +11,7 @@ class AlertRuleAnomalyBuiltInRequiredDataConnector {
   /// Creates a new [AlertRuleAnomalyBuiltInRequiredDataConnector].
   /// [connectorId] The ID of the required Data Connector.
   /// [dataTypes] A list of data types of the required Data Connector.
-  AlertRuleAnomalyBuiltInRequiredDataConnector({
+  const AlertRuleAnomalyBuiltInRequiredDataConnector({
     this.connectorId,
     this.dataTypes,
   });

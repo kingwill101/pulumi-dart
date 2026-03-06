@@ -31,7 +31,7 @@ class EnvironmentArgs {
   /// [project] Optional.
   /// [state] The current state of the environment.
   /// [storageConfig] Optional. Storage configuration for this environment.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.config,
     this.labels,
     this.location,

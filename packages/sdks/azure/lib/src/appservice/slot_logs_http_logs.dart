@@ -13,7 +13,7 @@ class SlotLogsHttpLogs {
   /// Creates a new [SlotLogsHttpLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
   /// [fileSystem] A `file_system` block as defined below.
-  SlotLogsHttpLogs({
+  const SlotLogsHttpLogs({
     this.azureBlobStorage,
     this.fileSystem,
   });

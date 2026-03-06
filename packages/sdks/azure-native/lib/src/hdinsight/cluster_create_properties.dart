@@ -58,7 +58,7 @@ class ClusterCreateProperties {
   /// [securityProfile] The security profile.
   /// [storageProfile] The storage profile.
   /// [tier] The cluster tier.
-  ClusterCreateProperties({
+  const ClusterCreateProperties({
     this.clusterDefinition,
     this.clusterVersion,
     this.computeIsolationProperties,

@@ -25,7 +25,7 @@ class ManagedClusterSecurityProfile {
   /// [defender] Microsoft Defender settings for the security profile.
   /// [imageCleaner] Image Cleaner settings for the security profile.
   /// [workloadIdentity] Workload identity settings for the security profile. Workload identity enables Kubernetes applications to access Azure cloud resources securely with Azure AD. See https://aka.ms/aks/wi for more details.
-  ManagedClusterSecurityProfile({
+  const ManagedClusterSecurityProfile({
     this.azureKeyVaultKms,
     this.customCATrustCertificates,
     this.defender,

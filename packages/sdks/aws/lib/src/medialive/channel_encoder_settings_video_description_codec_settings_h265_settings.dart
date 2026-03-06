@@ -118,7 +118,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
   /// [timecodeBurninSettings] Apply a burned in timecode. See H265 Timecode Burnin Settings for more details.
   /// [timecodeInsertion] Determines how timecodes should be inserted into the video elementary stream.
   /// [treeblockSize] Sets the size of the treeblock.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings({
     this.adaptiveQuantization,
     this.afdSignaling,
     this.alternativeTransferFunction,

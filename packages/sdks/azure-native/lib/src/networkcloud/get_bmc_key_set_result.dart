@@ -64,7 +64,7 @@ class GetBmcKeySetResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userList] The unique list of permitted users.
   /// [userListStatus] The status evaluation of each user.
-  GetBmcKeySetResult({
+  const GetBmcKeySetResult({
     required this.azureApiVersion,
     required this.azureGroupId,
     required this.detailedStatus,

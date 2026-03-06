@@ -8,7 +8,7 @@ class ChainChainConfigRouterFrom {
 
   /// Creates a new [ChainChainConfigRouterFrom].
   /// [nodeName] The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
-  ChainChainConfigRouterFrom({
+  const ChainChainConfigRouterFrom({
     this.nodeName,
   });
 

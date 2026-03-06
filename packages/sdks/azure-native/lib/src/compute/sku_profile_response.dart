@@ -13,7 +13,7 @@ class SkuProfileResponse {
   /// Creates a new [SkuProfileResponse].
   /// [allocationStrategy] Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.
   /// [vmSizes] Specifies the VM sizes for the virtual machine scale set.
-  SkuProfileResponse({
+  const SkuProfileResponse({
     this.allocationStrategy,
     this.vmSizes,
   });

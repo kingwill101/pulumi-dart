@@ -11,7 +11,7 @@ class SourceControlSlotGithubActionConfigurationCodeConfiguration {
   /// Creates a new [SourceControlSlotGithubActionConfigurationCodeConfiguration].
   /// [runtimeStack] The value to use for the Runtime Stack in the workflow file content for code base apps. Changing this forces a new resource to be created. Possible values are `dotnetcore`, `spring`, `tomcat`, `node` and `python`.
   /// [runtimeVersion] The value to use for the Runtime Version in the workflow file content for code base apps. Changing this forces a new resource to be created.
-  SourceControlSlotGithubActionConfigurationCodeConfiguration({
+  const SourceControlSlotGithubActionConfigurationCodeConfiguration({
     required this.runtimeStack,
     required this.runtimeVersion,
   });

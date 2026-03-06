@@ -45,7 +45,7 @@ class SelfSignedCertArgs {
   /// [subject] The subject for which a certificate is being requested. The acceptable arguments are all optional and their naming is based upon [Issuer Distinguished Names (RFC5280)](https://tools.ietf.org/html/rfc5280#section-4.1.2.4) section.
   /// [uris] List of URIs for which a certificate is being requested (i.e. certificate subjects).
   /// [validityPeriodHours] Number of hours, after initial issuing, that the certificate will remain valid for.
-  SelfSignedCertArgs({
+  const SelfSignedCertArgs({
     required this.allowedUses,
     this.dnsNames,
     this.earlyRenewalHours,

@@ -21,7 +21,7 @@ class SoleTenancyPreferencesMigrationcenterV1alpha1 {
   /// [cpuOvercommitRatio] CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
   /// [hostMaintenancePolicy] Sole Tenancy nodes maintenance policy.
   /// [nodeTypes] A list of sole tenant node types. An empty list means that all possible node types will be considered.
-  SoleTenancyPreferencesMigrationcenterV1alpha1({
+  const SoleTenancyPreferencesMigrationcenterV1alpha1({
     this.commitmentPlan,
     this.cpuOvercommitRatio,
     this.hostMaintenancePolicy,

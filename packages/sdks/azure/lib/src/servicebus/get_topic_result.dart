@@ -52,7 +52,7 @@ class GetTopicResult {
   /// [resourceGroupName] Optional.
   /// [status] The Status of the Service Bus Topic. Acceptable values are Active or Disabled.
   /// [supportOrdering] Boolean flag which controls whether the Topic supports ordering.
-  GetTopicResult({
+  const GetTopicResult({
     required this.autoDeleteOnIdle,
     required this.batchedOperationsEnabled,
     required this.defaultMessageTtl,

@@ -15,7 +15,7 @@ class GetResolverFirewallConfigArgs {
   /// Creates a new [GetResolverFirewallConfigArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the VPC from Amazon VPC that the configuration is for.
-  GetResolverFirewallConfigArgs({
+  const GetResolverFirewallConfigArgs({
     this.region,
     required this.resourceId,
   });

@@ -8,7 +8,7 @@ class EventSourcesConfigEventSourceAmazonCodeGuruProfiler {
 
   /// Creates a new [EventSourcesConfigEventSourceAmazonCodeGuruProfiler].
   /// [status] Status of the CodeGuru Profiler integration. Valid values are `ENABLED` and `DISABLED`.
-  EventSourcesConfigEventSourceAmazonCodeGuruProfiler({
+  const EventSourcesConfigEventSourceAmazonCodeGuruProfiler({
     required this.status,
   });
 

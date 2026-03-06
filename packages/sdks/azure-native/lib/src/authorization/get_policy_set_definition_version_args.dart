@@ -18,7 +18,7 @@ class GetPolicySetDefinitionVersionArgs {
   /// [expand] Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   /// [policyDefinitionVersion] The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
   /// [policySetDefinitionName] The name of the policy set definition.
-  GetPolicySetDefinitionVersionArgs({
+  const GetPolicySetDefinitionVersionArgs({
     this.expand,
     required this.policyDefinitionVersion,
     required this.policySetDefinitionName,

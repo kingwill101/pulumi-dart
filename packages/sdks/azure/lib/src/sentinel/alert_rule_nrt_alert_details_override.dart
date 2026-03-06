@@ -21,7 +21,7 @@ class AlertRuleNrtAlertDetailsOverride {
   /// [dynamicProperties] A list of `dynamic_property` blocks as defined below.
   /// [severityColumnName] The column name to take the alert severity from.
   /// [tacticsColumnName] The column name to take the alert tactics from.
-  AlertRuleNrtAlertDetailsOverride({
+  const AlertRuleNrtAlertDetailsOverride({
     this.descriptionFormat,
     this.displayNameFormat,
     this.dynamicProperties,

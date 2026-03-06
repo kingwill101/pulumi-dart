@@ -94,7 +94,7 @@ class UnitKindState {
   /// [uid] The unique identifier of the resource. UID is unique in the time
   /// [unitKindId] The ID value for the new unit kind.
   /// [updateTime] The timestamp when the resource was last updated. Any
-  UnitKindState({
+  const UnitKindState({
     this.annotations,
     this.createTime,
     this.defaultRelease,

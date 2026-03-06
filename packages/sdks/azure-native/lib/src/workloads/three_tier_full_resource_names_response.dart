@@ -26,7 +26,7 @@ class ThreeTierFullResourceNamesResponse {
   /// [databaseServer] The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
   /// [namingPatternType] The pattern type to be used for resource naming.
   /// [sharedStorage] The resource names object for shared storage.
-  ThreeTierFullResourceNamesResponse({
+  const ThreeTierFullResourceNamesResponse({
     this.applicationServer,
     this.centralServer,
     this.databaseServer,

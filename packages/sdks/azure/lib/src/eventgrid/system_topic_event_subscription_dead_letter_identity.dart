@@ -11,7 +11,7 @@ class SystemTopicEventSubscriptionDeadLetterIdentity {
   /// Creates a new [SystemTopicEventSubscriptionDeadLetterIdentity].
   /// [type] Specifies the type of Managed Service Identity that is used for dead lettering. Allowed value is `SystemAssigned`, `UserAssigned`.
   /// [userAssignedIdentity] The user identity associated with the resource.
-  SystemTopicEventSubscriptionDeadLetterIdentity({
+  const SystemTopicEventSubscriptionDeadLetterIdentity({
     required this.type,
     this.userAssignedIdentity,
   });

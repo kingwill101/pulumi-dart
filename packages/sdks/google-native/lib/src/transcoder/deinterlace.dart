@@ -14,7 +14,7 @@ class Deinterlace {
   /// Creates a new [Deinterlace].
   /// [bwdif] Specifies the Bob Weaver Deinterlacing Filter Configuration.
   /// [yadif] Specifies the Yet Another Deinterlacing Filter Configuration.
-  Deinterlace({
+  const Deinterlace({
     this.bwdif,
     this.yadif,
   });

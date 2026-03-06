@@ -76,7 +76,7 @@ class RegionHealthAggregationPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] URL of the region where the health aggregation policy resides.
   /// [selfLinkWithId] Server-defined URL with id for the resource.
-  RegionHealthAggregationPolicyState({
+  const RegionHealthAggregationPolicyState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

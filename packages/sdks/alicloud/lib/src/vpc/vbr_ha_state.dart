@@ -33,7 +33,7 @@ class VbrHaState {
   /// [status] Status of VBR switching Group
   /// [vbrHaName] VBR switch group name.
   /// [vbrId] The VBR instance ID.
-  VbrHaState({
+  const VbrHaState({
     this.createTime,
     this.description,
     this.dryRun,

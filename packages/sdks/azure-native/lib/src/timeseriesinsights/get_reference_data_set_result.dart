@@ -37,7 +37,7 @@ class GetReferenceDataSetResult {
   /// [provisioningState] Provisioning state of the resource.
   /// [tags] Resource tags
   /// [type] Resource type
-  GetReferenceDataSetResult({
+  const GetReferenceDataSetResult({
     required this.azureApiVersion,
     required this.creationTime,
     this.dataStringComparisonBehavior,

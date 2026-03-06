@@ -14,7 +14,7 @@ class RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActi
   /// [htmlBody] The email HTML body.
   /// [subject] The email subject.
   /// [textBody] The email text body.
-  RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail({
+  const RiskConfigurationAccountTakeoverRiskConfigurationNotifyConfigurationNoActionEmail({
     required this.htmlBody,
     required this.subject,
     required this.textBody,

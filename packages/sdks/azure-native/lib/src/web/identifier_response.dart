@@ -21,7 +21,7 @@ class IdentifierResponse {
   /// [name] Resource Name.
   /// [type] Resource type.
   /// [value] String representation of the identity.
-  IdentifierResponse({
+  const IdentifierResponse({
     required this.id,
     this.kind,
     required this.name,

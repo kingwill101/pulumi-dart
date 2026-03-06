@@ -56,7 +56,7 @@ class GetSubscriptionResult {
   /// [retryPolicies] Required.
   /// [tags] Required.
   /// [topic] Required.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.ackDeadlineSeconds,
     required this.bigqueryConfigs,
     required this.cloudStorageConfigs,

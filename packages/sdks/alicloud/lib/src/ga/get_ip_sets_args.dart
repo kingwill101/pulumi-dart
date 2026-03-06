@@ -21,7 +21,7 @@ class GetIpSetsArgs {
   /// [ids] A list of Ip Set IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
-  GetIpSetsArgs({
+  const GetIpSetsArgs({
     required this.acceleratorId,
     this.ids,
     this.outputFile,

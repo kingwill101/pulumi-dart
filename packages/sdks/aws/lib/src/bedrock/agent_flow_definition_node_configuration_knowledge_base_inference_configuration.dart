@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration].
   /// [text] Optional.
-  AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration({
+  const AgentFlowDefinitionNodeConfigurationKnowledgeBaseInferenceConfiguration({
     this.text,
   });
 

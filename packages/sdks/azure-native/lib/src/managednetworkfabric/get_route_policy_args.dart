@@ -15,7 +15,7 @@ class GetRoutePolicyArgs {
   /// Creates a new [GetRoutePolicyArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [routePolicyName] Name of the Route Policy.
-  GetRoutePolicyArgs({
+  const GetRoutePolicyArgs({
     required this.resourceGroupName,
     required this.routePolicyName,
   });

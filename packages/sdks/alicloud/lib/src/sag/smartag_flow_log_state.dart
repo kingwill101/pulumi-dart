@@ -42,7 +42,7 @@ class SmartagFlowLogState {
   /// [projectName] The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
   /// [slsRegionId] The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
   /// [status] The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
-  SmartagFlowLogState({
+  const SmartagFlowLogState({
     this.activeAging,
     this.description,
     this.flowLogName,

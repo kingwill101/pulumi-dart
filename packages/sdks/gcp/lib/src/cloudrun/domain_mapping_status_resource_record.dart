@@ -17,7 +17,7 @@ class DomainMappingStatusResourceRecord {
   /// [name] Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   /// [rrdata] (Output)
   /// [type] Resource record type. Example: `AAAA`.
-  DomainMappingStatusResourceRecord({
+  const DomainMappingStatusResourceRecord({
     this.name,
     this.rrdata,
     this.type,

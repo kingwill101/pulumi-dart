@@ -22,7 +22,7 @@ class Schedule {
   /// [monthlyOccurrence] Occurrence of the DayOfWeek day within a month to schedule assessment. Takes values: 1,2,3,4 and -1. Use -1 for last DayOfWeek day of the month
   /// [startTime] Time of the day in HH:mm format. Eg. 17:30
   /// [weeklyInterval] Number of weeks to schedule between 2 assessment runs. Takes value from 1-6
-  Schedule({
+  const Schedule({
     this.dayOfWeek,
     this.enable,
     this.monthlyOccurrence,

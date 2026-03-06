@@ -13,7 +13,7 @@ class ListAzureDevOpsOrgAvailableResult {
   /// Creates a new [ListAzureDevOpsOrgAvailableResult].
   /// [nextLink] Gets or sets next link to scroll over the results.
   /// [value] Gets or sets list of resources.
-  ListAzureDevOpsOrgAvailableResult({
+  const ListAzureDevOpsOrgAvailableResult({
     this.nextLink,
     this.value,
   });

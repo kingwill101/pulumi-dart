@@ -11,7 +11,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLi
   /// Creates a new [InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits].
   /// [maxNodes] The maximum number of nodes for this specific replica.
   /// [minNodes] The minimum number of nodes for this specific replica.
-  InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits({
+  const InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits({
     required this.maxNodes,
     required this.minNodes,
   });

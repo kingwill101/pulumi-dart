@@ -12,7 +12,7 @@ class KubernetesClusterLinuxProfile {
   /// Creates a new [KubernetesClusterLinuxProfile].
   /// [adminUsername] The Admin Username for the Cluster. Changing this forces a new resource to be created.
   /// [sshKey] An `ssh_key` block as defined below.
-  KubernetesClusterLinuxProfile({
+  const KubernetesClusterLinuxProfile({
     required this.adminUsername,
     required this.sshKey,
   });

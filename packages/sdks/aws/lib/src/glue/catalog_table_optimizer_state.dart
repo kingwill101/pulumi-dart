@@ -25,7 +25,7 @@ class CatalogTableOptimizerState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] The name of the table.
   /// [type] The type of table optimizer. Valid values are `compaction`, `retention`, and `orphan_file_deletion`.
-  CatalogTableOptimizerState({
+  const CatalogTableOptimizerState({
     this.catalogId,
     this.configuration,
     this.databaseName,

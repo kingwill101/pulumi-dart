@@ -11,7 +11,7 @@ class ListWebAppFunctionSecretsResult {
   /// Creates a new [ListWebAppFunctionSecretsResult].
   /// [key] Secret key.
   /// [triggerUrl] Trigger URL.
-  ListWebAppFunctionSecretsResult({
+  const ListWebAppFunctionSecretsResult({
     this.key,
     this.triggerUrl,
   });

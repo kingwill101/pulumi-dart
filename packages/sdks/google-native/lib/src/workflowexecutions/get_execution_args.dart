@@ -19,7 +19,7 @@ class GetExecutionArgs {
   /// [project] Optional.
   /// [view] Optional.
   /// [workflowId] Required.
-  GetExecutionArgs({
+  const GetExecutionArgs({
     required this.executionId,
     required this.location,
     this.project,

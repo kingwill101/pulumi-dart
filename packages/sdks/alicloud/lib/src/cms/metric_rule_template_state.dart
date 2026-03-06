@@ -42,7 +42,7 @@ class MetricRuleTemplateState {
   /// [restVersion] The version of the alert template.
   /// [silenceTime] The mute period during which notifications are not repeatedly sent for an alert. Unit: seconds. Default value: `86400`. Valid values: `0` to `86400`.
   /// [webhook] The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-  MetricRuleTemplateState({
+  const MetricRuleTemplateState({
     this.alertTemplates,
     this.applyMode,
     this.description,

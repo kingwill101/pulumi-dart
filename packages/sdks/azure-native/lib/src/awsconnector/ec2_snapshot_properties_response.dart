@@ -34,7 +34,7 @@ class Ec2SnapshotPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2SnapshotPropertiesResponse({
+  const Ec2SnapshotPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

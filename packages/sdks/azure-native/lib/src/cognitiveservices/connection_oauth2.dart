@@ -31,7 +31,7 @@ class ConnectionOAuth2 {
   /// [refreshToken] Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
   /// [tenantId] Required by QuickBooks and Xero connection categories
   /// [username] Concur, ServiceNow auth server AccessToken grant type is 'Password'
-  ConnectionOAuth2({
+  const ConnectionOAuth2({
     this.authUrl,
     this.clientId,
     this.clientSecret,

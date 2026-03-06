@@ -9,7 +9,7 @@ class ServicePrincipal {
 
   /// Creates a new [ServicePrincipal].
   /// [type] Service principal type.
-  ServicePrincipal({
+  const ServicePrincipal({
     this.type,
   });
 

@@ -24,7 +24,7 @@ class VpdArgs {
   /// [secondaryCidrBlocks] The additional CIDR block.
   /// [tags] The tag of the resource.
   /// [vpdName] The name of the VPD instance.
-  VpdArgs({
+  const VpdArgs({
     required this.cidr,
     this.resourceGroupId,
     this.secondaryCidrBlocks,

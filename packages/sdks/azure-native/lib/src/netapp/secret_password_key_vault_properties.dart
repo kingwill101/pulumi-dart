@@ -12,7 +12,7 @@ class SecretPasswordKeyVaultProperties {
   /// Creates a new [SecretPasswordKeyVaultProperties].
   /// [keyVaultUri] The Uri of KeyVault.
   /// [secretName] The name of KeyVault password secret.
-  SecretPasswordKeyVaultProperties({
+  const SecretPasswordKeyVaultProperties({
     required this.keyVaultUri,
     required this.secretName,
   });

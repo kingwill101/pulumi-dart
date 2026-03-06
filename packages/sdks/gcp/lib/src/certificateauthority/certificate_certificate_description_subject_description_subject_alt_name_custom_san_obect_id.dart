@@ -9,7 +9,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
 
   /// Creates a new [CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId].
   /// [objectIdPaths] (Output)
-  CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId({
+  const CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId({
     this.objectIdPaths,
   });
 

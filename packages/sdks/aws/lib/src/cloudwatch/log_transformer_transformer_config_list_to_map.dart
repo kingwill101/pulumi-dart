@@ -23,7 +23,7 @@ class LogTransformerTransformerConfigListToMap {
   /// [source] Specifies the key in the log event that has a list of objects that will be converted to a map.
   /// [target] Specifies the key of the field that will hold the generated map.
   /// [valueKey] Specifies the values that will be extracted from the source objects and put into the values of the generated map. If omitted, original objects in the source list will be put into the values of the generated map.
-  LogTransformerTransformerConfigListToMap({
+  const LogTransformerTransformerConfigListToMap({
     this.flatten,
     this.flattenedElement,
     required this.key,

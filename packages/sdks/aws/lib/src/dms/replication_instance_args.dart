@@ -67,7 +67,7 @@ class ReplicationInstanceArgs {
   /// [replicationSubnetGroupId] A subnet group to associate with the replication instance.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSecurityGroupIds] A list of VPC security group IDs to be used with the replication instance. The VPC security groups must work with the VPC containing the replication instance.
-  ReplicationInstanceArgs({
+  const ReplicationInstanceArgs({
     this.allocatedStorage,
     this.allowMajorVersionUpgrade,
     this.applyImmediately,

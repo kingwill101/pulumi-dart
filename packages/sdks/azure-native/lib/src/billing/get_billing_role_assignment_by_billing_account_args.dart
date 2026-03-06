@@ -15,7 +15,7 @@ class GetBillingRoleAssignmentByBillingAccountArgs {
   /// Creates a new [GetBillingRoleAssignmentByBillingAccountArgs].
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [billingRoleAssignmentName] The ID that uniquely identifies a role assignment.
-  GetBillingRoleAssignmentByBillingAccountArgs({
+  const GetBillingRoleAssignmentByBillingAccountArgs({
     required this.billingAccountName,
     required this.billingRoleAssignmentName,
   });

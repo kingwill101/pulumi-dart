@@ -15,7 +15,7 @@ class GetPolicyExemptionArgs {
   /// Creates a new [GetPolicyExemptionArgs].
   /// [policyExemptionName] The name of the policy exemption to delete.
   /// [scope] The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  GetPolicyExemptionArgs({
+  const GetPolicyExemptionArgs({
     required this.policyExemptionName,
     required this.scope,
   });

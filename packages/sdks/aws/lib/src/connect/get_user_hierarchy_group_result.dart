@@ -31,7 +31,7 @@ class GetUserHierarchyGroupResult {
   /// [name] Name of the hierarchy group.
   /// [region] Required.
   /// [tags] Map of tags to assign to the hierarchy group.
-  GetUserHierarchyGroupResult({
+  const GetUserHierarchyGroupResult({
     required this.arn,
     required this.hierarchyGroupId,
     required this.hierarchyPaths,

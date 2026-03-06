@@ -23,7 +23,7 @@ class ListProvisionedClusterInstanceUserKubeconfigResult {
   /// [properties] Required.
   /// [resourceId] ARM Resource Id of the provisioned cluster instance
   /// [status] Provisioning state of the resource
-  ListProvisionedClusterInstanceUserKubeconfigResult({
+  const ListProvisionedClusterInstanceUserKubeconfigResult({
     this.error,
     required this.id,
     required this.name,

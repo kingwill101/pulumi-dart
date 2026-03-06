@@ -26,7 +26,7 @@ class GitHubEventsConfigResponse {
   /// [owner] Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
   /// [pullRequest] filter to match changes in pull requests.
   /// [push] filter to match changes in refs like branches, tags.
-  GitHubEventsConfigResponse({
+  const GitHubEventsConfigResponse({
     required this.enterpriseConfigResourceName,
     required this.installationId,
     required this.name,

@@ -18,7 +18,7 @@ class ExpandedPropertiesResponsePrincipal {
   /// [email] Email id of the principal
   /// [id] Id of the principal
   /// [type] Type of the principal
-  ExpandedPropertiesResponsePrincipal({
+  const ExpandedPropertiesResponsePrincipal({
     this.displayName,
     this.email,
     this.id,

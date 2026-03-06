@@ -44,7 +44,7 @@ class TaxonomyIamMemberState {
   /// [region] Taxonomy location region.
   /// [role] The role that should be applied. Only one
   /// [taxonomy] Used to find the parent resource to bind the IAM policy to
-  TaxonomyIamMemberState({
+  const TaxonomyIamMemberState({
     this.condition,
     this.etag,
     this.member,

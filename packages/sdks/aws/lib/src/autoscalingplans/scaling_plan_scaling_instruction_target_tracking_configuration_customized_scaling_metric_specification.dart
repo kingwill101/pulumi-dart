@@ -20,7 +20,7 @@ class ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingM
   /// [namespace] Namespace of the metric.
   /// [statistic] Statistic of the metric. Valid values: `Average`, `Maximum`, `Minimum`, `SampleCount`, `Sum`.
   /// [unit] Unit of the metric.
-  ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification({
+  const ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification({
     this.dimensions,
     required this.metricName,
     required this.namespace,

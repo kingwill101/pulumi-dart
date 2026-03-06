@@ -11,7 +11,7 @@ class EnvironmentVariableResponse {
   /// Creates a new [EnvironmentVariableResponse].
   /// [name] Environment variable name
   /// [value] Environment variable value
-  EnvironmentVariableResponse({
+  const EnvironmentVariableResponse({
     required this.name,
     required this.value,
   });

@@ -18,7 +18,7 @@ class GetRegistrationAssignmentArgs {
   /// [expandRegistrationDefinition] The flag indicating whether to return the registration definition details along with the registration assignment details.
   /// [registrationAssignmentId] The GUID of the registration assignment.
   /// [scope] The scope of the resource.
-  GetRegistrationAssignmentArgs({
+  const GetRegistrationAssignmentArgs({
     this.expandRegistrationDefinition,
     required this.registrationAssignmentId,
     required this.scope,

@@ -12,7 +12,7 @@ class FirewallPolicyHttpHeaderToInsertResponse {
   /// Creates a new [FirewallPolicyHttpHeaderToInsertResponse].
   /// [headerName] Contains the name of the header
   /// [headerValue] Contains the value of the header
-  FirewallPolicyHttpHeaderToInsertResponse({
+  const FirewallPolicyHttpHeaderToInsertResponse({
     this.headerName,
     this.headerValue,
   });

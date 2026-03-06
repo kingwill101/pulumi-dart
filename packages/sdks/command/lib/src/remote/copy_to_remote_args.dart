@@ -22,7 +22,7 @@ class CopyToRemoteArgs {
   /// [remotePath] The destination path on the remote host. The last element of the path will be created if it doesn't exist but it's an error when additional elements don't exist. When the remote path is an existing directory, the source file or directory will be copied into that directory. When the source is a file and the remote path is an existing file, that file will be overwritten. When the source is a directory and the remote path an existing file, the copy will fail.
   /// [source] An [asset or an archive](https://www.pulumi.com/docs/concepts/assets-archives/) to upload as the source of the copy. It must be a `FileAsset`, `StringAsset`, or a `FileArchive`. The item will be copied as-is; archives like .tgz will not be unpacked. Directories are copied recursively, overwriting existing files.
   /// [triggers] Trigger replacements on changes to this input.
-  CopyToRemoteArgs({
+  const CopyToRemoteArgs({
     required this.connection,
     required this.remotePath,
     required this.source,

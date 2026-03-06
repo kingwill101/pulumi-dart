@@ -30,7 +30,7 @@ class GetLogBackupsArgs {
   /// [pageNumber] Current page number.
   /// [pageSize] Number of records per page.
   /// [startTime] The query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
-  GetLogBackupsArgs({
+  const GetLogBackupsArgs({
     required this.dbInstanceId,
     this.endTime,
     this.ids,

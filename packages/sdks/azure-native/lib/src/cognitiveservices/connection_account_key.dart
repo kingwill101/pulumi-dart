@@ -8,7 +8,7 @@ class ConnectionAccountKey {
 
   /// Creates a new [ConnectionAccountKey].
   /// [key] Optional.
-  ConnectionAccountKey({
+  const ConnectionAccountKey({
     this.key,
   });
 

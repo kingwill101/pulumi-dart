@@ -9,7 +9,7 @@ class AgentPoolProvisioningStatusResponseError {
   /// Creates a new [AgentPoolProvisioningStatusResponseError].
   /// [code] Optional.
   /// [message] Optional.
-  AgentPoolProvisioningStatusResponseError({
+  const AgentPoolProvisioningStatusResponseError({
     this.code,
     this.message,
   });

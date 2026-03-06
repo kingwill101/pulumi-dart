@@ -37,7 +37,7 @@ class InvoiceSectionWithCreateSubPermissionResponse {
   /// [invoiceSectionDisplayName] The name of the invoice section.
   /// [invoiceSectionId] The fully qualified ID that uniquely identifies an invoice section.
   /// [invoiceSectionSystemId] The system generated unique identifier for an invoice section.
-  InvoiceSectionWithCreateSubPermissionResponse({
+  const InvoiceSectionWithCreateSubPermissionResponse({
     required this.billingProfileDisplayName,
     required this.billingProfileId,
     required this.billingProfileSpendingLimit,

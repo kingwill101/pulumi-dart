@@ -43,7 +43,7 @@ class ZoneRecordArgs {
   /// [userClientIp] Optional.
   /// [value] The value of the Private Zone Record.
   /// [zoneId] The name of the Private Zone Record.
-  ZoneRecordArgs({
+  const ZoneRecordArgs({
     this.lang,
     this.priority,
     this.remark,

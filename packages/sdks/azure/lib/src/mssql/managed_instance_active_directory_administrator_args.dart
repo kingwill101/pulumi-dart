@@ -24,7 +24,7 @@ class ManagedInstanceActiveDirectoryAdministratorArgs {
   /// [managedInstanceId] The ID of the Azure SQL Managed Instance for which to set the administrator. Changing this forces a new resource to be created.
   /// [objectId] The Object ID of the principal to set as the Managed Instance Administrator.
   /// [tenantId] The Azure Active Directory Tenant ID.
-  ManagedInstanceActiveDirectoryAdministratorArgs({
+  const ManagedInstanceActiveDirectoryAdministratorArgs({
     this.azureadAuthenticationOnly,
     required this.loginUsername,
     required this.managedInstanceId,

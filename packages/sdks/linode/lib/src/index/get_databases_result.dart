@@ -19,7 +19,7 @@ class GetDatabasesResult {
   /// [id] The ID of the Managed Database.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetDatabasesResult({
+  const GetDatabasesResult({
     required this.databases,
     this.filters,
     required this.id,

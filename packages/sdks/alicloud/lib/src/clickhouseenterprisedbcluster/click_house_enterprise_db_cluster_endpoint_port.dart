@@ -11,7 +11,7 @@ class ClickHouseEnterpriseDbClusterEndpointPort {
   /// Creates a new [ClickHouseEnterpriseDbClusterEndpointPort].
   /// [port] The access port.
   /// [protocol] The protocol type.
-  ClickHouseEnterpriseDbClusterEndpointPort({
+  const ClickHouseEnterpriseDbClusterEndpointPort({
     this.port,
     this.protocol,
   });

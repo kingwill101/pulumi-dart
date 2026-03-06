@@ -13,7 +13,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValue {
   /// Creates a new [CloudControlParameterSpecSubParameterDefaultValueOneofValue].
   /// [name] The name of the parameter.
   /// [parameterValue] The value of the parameter.
-  CloudControlParameterSpecSubParameterDefaultValueOneofValue({
+  const CloudControlParameterSpecSubParameterDefaultValueOneofValue({
     this.name,
     this.parameterValue,
   });

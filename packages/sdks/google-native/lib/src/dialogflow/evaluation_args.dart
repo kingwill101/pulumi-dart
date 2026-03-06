@@ -25,7 +25,7 @@ class EvaluationArgs {
   /// [location] Optional.
   /// [name] The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
   /// [project] Optional.
-  EvaluationArgs({
+  const EvaluationArgs({
     required this.conversationModelId,
     this.displayName,
     this.evaluationConfig,

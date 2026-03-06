@@ -26,7 +26,7 @@ class OptInState {
   /// [principals] Lake Formation principal. Supported principals are IAM users or IAM roles. See Principal for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceDatas] Structure for the resource. See Resource for more details.
-  OptInState({
+  const OptInState({
     this.conditions,
     this.lastModified,
     this.lastUpdatedBy,

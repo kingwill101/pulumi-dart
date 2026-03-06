@@ -18,7 +18,7 @@ class GetBillingRoleAssignmentByDepartmentArgs {
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [billingRoleAssignmentName] The ID that uniquely identifies a role assignment.
   /// [departmentName] The name of the department.
-  GetBillingRoleAssignmentByDepartmentArgs({
+  const GetBillingRoleAssignmentByDepartmentArgs({
     required this.billingAccountName,
     required this.billingRoleAssignmentName,
     required this.departmentName,

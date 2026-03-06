@@ -13,7 +13,7 @@ class BuildTypeResponse {
   /// Creates a new [BuildTypeResponse].
   /// [builderVersion] Version of the builder which produced this Note.
   /// [signature] Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
-  BuildTypeResponse({
+  const BuildTypeResponse({
     required this.builderVersion,
     required this.signature,
   });

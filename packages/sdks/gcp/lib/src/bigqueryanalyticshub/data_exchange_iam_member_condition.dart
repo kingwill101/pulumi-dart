@@ -11,7 +11,7 @@ class DataExchangeIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DataExchangeIamMemberCondition({
+  const DataExchangeIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

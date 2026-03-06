@@ -17,7 +17,7 @@ class ApiEventConfigAuthProviderOpenidConnectConfig {
   /// [clientId] Client ID for the OpenID Connect provider.
   /// [iatTtl] TTL in seconds for the issued at time.
   /// [issuer] Issuer URL for the OpenID Connect provider.
-  ApiEventConfigAuthProviderOpenidConnectConfig({
+  const ApiEventConfigAuthProviderOpenidConnectConfig({
     this.authTtl,
     this.clientId,
     this.iatTtl,

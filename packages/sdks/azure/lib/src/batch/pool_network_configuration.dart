@@ -24,7 +24,7 @@ class PoolNetworkConfiguration {
   /// [publicAddressProvisioningType] Type of public IP address provisioning. Supported values are `BatchManaged`, `UserManaged` and `NoPublicIPAddresses`.
   /// [publicIps] A list of public IP ids that will be allocated to nodes. Changing this forces a new resource to be created.
   /// [subnetId] The ARM resource identifier of the virtual network subnet which the compute nodes of the pool will join. Changing this forces a new resource to be created.
-  PoolNetworkConfiguration({
+  const PoolNetworkConfiguration({
     this.acceleratedNetworkingEnabled,
     this.dynamicVnetAssignmentScope,
     this.endpointConfigurations,

@@ -29,7 +29,7 @@ class CertificateSigningRequest {
   /// [metadata] Optional.
   /// [spec] spec contains the certificate request, and is immutable after creation. Only the request, signerName, expirationSeconds, and usages fields can be set on creation. Other fields are derived by Kubernetes and cannot be modified by users.
   /// [status] status contains information about whether the request is approved or denied, and the certificate issued by the signer, or the failure condition indicating signer failure.
-  CertificateSigningRequest({
+  const CertificateSigningRequest({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -15,7 +15,7 @@ class GetAgentDialogflowV3beta1Args {
   /// [agentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAgentDialogflowV3beta1Args({
+  const GetAgentDialogflowV3beta1Args({
     required this.agentId,
     required this.location,
     this.project,

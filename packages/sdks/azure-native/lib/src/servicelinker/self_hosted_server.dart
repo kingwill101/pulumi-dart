@@ -13,7 +13,7 @@ class SelfHostedServer {
   /// Creates a new [SelfHostedServer].
   /// [endpoint] The endpoint of service.
   /// [type] The target service type.
-  SelfHostedServer({
+  const SelfHostedServer({
     this.endpoint,
     required this.type,
   });

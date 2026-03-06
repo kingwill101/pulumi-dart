@@ -8,7 +8,7 @@ class AgentcoreAgentRuntimeRequestHeaderConfiguration {
 
   /// Creates a new [AgentcoreAgentRuntimeRequestHeaderConfiguration].
   /// [requestHeaderAllowlists] A list of HTTP request headers that are allowed to be passed through to the runtime.
-  AgentcoreAgentRuntimeRequestHeaderConfiguration({
+  const AgentcoreAgentRuntimeRequestHeaderConfiguration({
     this.requestHeaderAllowlists,
   });
 

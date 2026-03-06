@@ -15,7 +15,7 @@ class ReplicaGroupDrillState {
   /// [groupId] The ID of the replication group. You can use the describediskreplicaggroups interface to query the asynchronous replication group list to obtain the value of the replication group ID input parameter.
   /// [replicaGroupDrillId] The first ID of the resource.
   /// [status] Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
-  ReplicaGroupDrillState({
+  const ReplicaGroupDrillState({
     this.groupId,
     this.replicaGroupDrillId,
     this.status,

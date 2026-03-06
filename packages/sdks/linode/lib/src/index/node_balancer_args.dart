@@ -35,7 +35,7 @@ class NodeBalancerArgs {
   /// [region] The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [vpcs] A list of VPCs to be assigned to this NodeBalancer.
-  NodeBalancerArgs({
+  const NodeBalancerArgs({
     this.clientConnThrottle,
     this.clientUdpSessThrottle,
     this.firewallId,

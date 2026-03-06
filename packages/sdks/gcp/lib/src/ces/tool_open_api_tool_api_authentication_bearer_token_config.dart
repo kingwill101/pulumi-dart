@@ -9,7 +9,7 @@ class ToolOpenApiToolApiAuthenticationBearerTokenConfig {
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationBearerTokenConfig].
   /// [token] (Output)
-  ToolOpenApiToolApiAuthenticationBearerTokenConfig({
+  const ToolOpenApiToolApiAuthenticationBearerTokenConfig({
     this.token,
   });
 

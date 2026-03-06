@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1ManualBatchTuningParametersResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1ManualBatchTuningParametersResponse].
   /// [batchSize] Immutable. The number of the records (e.g. instances) of the operation given in each batch to a machine replica. Machine type, and size of a single record should be considered when setting this parameter, higher value speeds up the batch operation's execution, but too high value will result in a whole batch not fitting in a machine's memory, and the whole operation will fail. The default value is 64.
-  GoogleCloudAiplatformV1ManualBatchTuningParametersResponse({
+  const GoogleCloudAiplatformV1ManualBatchTuningParametersResponse({
     required this.batchSize,
   });
 

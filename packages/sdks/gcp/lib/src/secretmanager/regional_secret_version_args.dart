@@ -30,7 +30,7 @@ class RegionalSecretVersionArgs {
   /// [isSecretDataBase64] If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
   /// [secret] Secret Manager regional secret resource.
   /// [secretData] The secret data. Must be no larger than 64KiB.
-  RegionalSecretVersionArgs({
+  const RegionalSecretVersionArgs({
     this.deletionPolicy,
     this.enabled,
     this.isSecretDataBase64,

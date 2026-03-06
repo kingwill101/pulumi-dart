@@ -25,7 +25,7 @@ class EdgeActionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The sku type of the edge action
   /// [tags] Resource tags.
-  EdgeActionArgs({
+  const EdgeActionArgs({
     this.edgeActionName,
     this.location,
     required this.resourceGroupName,

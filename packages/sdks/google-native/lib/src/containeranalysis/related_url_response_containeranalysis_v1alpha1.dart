@@ -12,7 +12,7 @@ class RelatedUrlResponseContaineranalysisV1alpha1 {
   /// Creates a new [RelatedUrlResponseContaineranalysisV1alpha1].
   /// [label] Label to describe usage of the URL
   /// [url] Specific URL to associate with the note
-  RelatedUrlResponseContaineranalysisV1alpha1({
+  const RelatedUrlResponseContaineranalysisV1alpha1({
     required this.label,
     required this.url,
   });

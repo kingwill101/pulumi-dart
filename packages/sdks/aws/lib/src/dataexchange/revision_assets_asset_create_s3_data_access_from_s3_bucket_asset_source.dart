@@ -17,7 +17,7 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource {
   /// [keyPrefixes] List of key prefixes in the S3 bucket.
   /// [keys] List of object keys in the S3 bucket.
   /// [kmsKeysToGrants] Optional.
-  RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource({
+  const RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSource({
     required this.bucket,
     this.keyPrefixes,
     this.keys,

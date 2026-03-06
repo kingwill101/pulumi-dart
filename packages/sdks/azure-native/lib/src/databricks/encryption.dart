@@ -18,7 +18,7 @@ class Encryption {
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
   /// [keyVaultUri] The Uri of KeyVault.
   /// [keyVersion] The version of KeyVault key.
-  Encryption({
+  const Encryption({
     this.keyName,
     this.keySource,
     this.keyVaultUri,

@@ -134,7 +134,7 @@ class HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse {
   /// [targetVmBiosId] Gets or sets the BIOS Id of the target AzStackHCI VM.
   /// [targetVmName] Gets or sets the target VM display name.
   /// [testNetworkId] Gets or sets the target test network Id within AzStackHCI Cluster.
-  HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse({
+  const HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse({
     required this.activeLocation,
     required this.customLocationRegion,
     required this.disksToInclude,

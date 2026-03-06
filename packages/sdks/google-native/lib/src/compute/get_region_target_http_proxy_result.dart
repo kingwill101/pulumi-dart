@@ -41,7 +41,7 @@ class GetRegionTargetHttpProxyResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to the BackendService.
-  GetRegionTargetHttpProxyResult({
+  const GetRegionTargetHttpProxyResult({
     required this.creationTimestamp,
     required this.description,
     required this.fingerprint,

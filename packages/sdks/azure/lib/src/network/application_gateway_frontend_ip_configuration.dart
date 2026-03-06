@@ -29,7 +29,7 @@ class ApplicationGatewayFrontendIpConfiguration {
   /// [privateLinkConfigurationName] The name of the private link configuration to use for this frontend IP configuration.
   /// [publicIpAddressId] The ID of a Public IP Address which the Application Gateway should use. The allocation method for the Public IP Address depends on the `sku` of this Application Gateway. Please refer to the [Azure documentation for public IP addresses](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#application-gateways) for details.
   /// [subnetId] The ID of the Subnet.
-  ApplicationGatewayFrontendIpConfiguration({
+  const ApplicationGatewayFrontendIpConfiguration({
     this.id,
     required this.name,
     this.privateIpAddress,

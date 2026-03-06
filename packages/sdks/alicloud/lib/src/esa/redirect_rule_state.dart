@@ -52,7 +52,7 @@ class RedirectRuleState {
   /// [statusCode] The response code that you want to use to indicate URL redirection. Valid values:
   /// [targetUrl] The destination URL to which requests are redirected.
   /// [type] The redirection type. Value range:
-  RedirectRuleState({
+  const RedirectRuleState({
     this.configId,
     this.reserveQueryString,
     this.rule,

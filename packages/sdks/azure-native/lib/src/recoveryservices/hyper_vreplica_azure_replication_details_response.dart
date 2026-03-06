@@ -125,7 +125,7 @@ class HyperVReplicaAzureReplicationDetailsResponse {
   /// [vmNics] The PE Network details.
   /// [vmProtectionState] The protection state for the vm.
   /// [vmProtectionStateDescription] The protection state description for the vm.
-  HyperVReplicaAzureReplicationDetailsResponse({
+  const HyperVReplicaAzureReplicationDetailsResponse({
     this.allAvailableOSUpgradeConfigurations,
     this.azureVmDiskDetails,
     this.enableRdpOnTargetOption,

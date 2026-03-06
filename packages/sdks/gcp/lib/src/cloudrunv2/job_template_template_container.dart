@@ -51,7 +51,7 @@ class JobTemplateTemplateContainer {
   /// [startupProbe] Startup probe of application within the container.
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
-  JobTemplateTemplateContainer({
+  const JobTemplateTemplateContainer({
     this.args,
     this.commands,
     this.dependsOns,

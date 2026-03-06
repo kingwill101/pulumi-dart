@@ -12,7 +12,7 @@ class EndpointResponse {
   /// Creates a new [EndpointResponse].
   /// [endpoint] The endpoint URL
   /// [name] The name of the endpoint
-  EndpointResponse({
+  const EndpointResponse({
     this.endpoint,
     this.name,
   });

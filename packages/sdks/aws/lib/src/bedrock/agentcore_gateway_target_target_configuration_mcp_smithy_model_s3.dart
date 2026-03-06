@@ -11,7 +11,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3 {
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3].
   /// [bucketOwnerAccountId] Account ID of the S3 bucket owner.
   /// [uri] S3 URI where the schema is stored.
-  AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3({
+  const AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3({
     this.bucketOwnerAccountId,
     this.uri,
   });

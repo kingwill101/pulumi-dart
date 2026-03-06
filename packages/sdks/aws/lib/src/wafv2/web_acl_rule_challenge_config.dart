@@ -9,7 +9,7 @@ class WebAclRuleChallengeConfig {
 
   /// Creates a new [WebAclRuleChallengeConfig].
   /// [immunityTimeProperty] Defines custom immunity time. See `immunity_time_property` below for details.
-  WebAclRuleChallengeConfig({
+  const WebAclRuleChallengeConfig({
     this.immunityTimeProperty,
   });
 

@@ -20,7 +20,7 @@ class SshKeyState {
   /// [serverId] The Server ID of the Transfer Server (e.g., `s-12345678`)
   /// [sshKeyId] Optional.
   /// [userName] The name of the user account that is assigned to one or more servers.
-  SshKeyState({
+  const SshKeyState({
     this.body,
     this.region,
     this.serverId,

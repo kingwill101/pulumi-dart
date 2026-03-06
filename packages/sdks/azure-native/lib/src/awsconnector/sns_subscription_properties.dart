@@ -31,7 +31,7 @@ class SnsSubscriptionProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SnsSubscriptionProperties({
+  const SnsSubscriptionProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

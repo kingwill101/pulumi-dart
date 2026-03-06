@@ -18,7 +18,7 @@ class GetEnterpriseProxiesArgs {
   /// [ids] A list of Proxy IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tid] The ID of the tenant.
-  GetEnterpriseProxiesArgs({
+  const GetEnterpriseProxiesArgs({
     this.ids,
     this.outputFile,
     this.tid,

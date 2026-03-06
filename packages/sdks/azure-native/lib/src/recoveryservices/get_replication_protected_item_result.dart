@@ -24,7 +24,7 @@ class GetReplicationProtectedItemResult {
   /// [name] Resource Name
   /// [properties] The custom data.
   /// [type] Resource Type
-  GetReplicationProtectedItemResult({
+  const GetReplicationProtectedItemResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

@@ -44,7 +44,7 @@ class SessionTemplateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeConfig] Runtime configuration for the session template.
   /// [sparkConnectSession] Spark connect configuration for an interactive session.
-  SessionTemplateArgs({
+  const SessionTemplateArgs({
     this.environmentConfig,
     this.jupyterSession,
     this.labels,

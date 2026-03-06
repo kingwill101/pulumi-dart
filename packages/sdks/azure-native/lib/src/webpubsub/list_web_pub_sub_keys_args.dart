@@ -15,7 +15,7 @@ class ListWebPubSubKeysArgs {
   /// Creates a new [ListWebPubSubKeysArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  ListWebPubSubKeysArgs({
+  const ListWebPubSubKeysArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

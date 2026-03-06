@@ -27,7 +27,7 @@ class SubAccountState {
   /// [masterBillingAccount] The name of the master billing account that the subaccount
   /// [name] The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
   /// [open] `true` if the billing account is open, `false` if the billing account is closed.
-  SubAccountState({
+  const SubAccountState({
     this.billingAccountId,
     this.deletionPolicy,
     this.displayName,

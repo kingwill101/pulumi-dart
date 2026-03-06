@@ -18,7 +18,7 @@ class DeviceAttributeResourceK8sIoV1alpha3 {
   /// [int_] IntValue is a number.
   /// [string_] StringValue is a string. Must not be longer than 64 characters.
   /// [version] VersionValue is a semantic version according to semver.org spec 2.0.0. Must not be longer than 64 characters.
-  DeviceAttributeResourceK8sIoV1alpha3({
+  const DeviceAttributeResourceK8sIoV1alpha3({
     this.bool_,
     this.int_,
     this.string_,

@@ -11,7 +11,7 @@ class OrganizationSinkBigqueryOptions {
 
   /// Creates a new [OrganizationSinkBigqueryOptions].
   /// [usePartitionedTables] Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-  OrganizationSinkBigqueryOptions({
+  const OrganizationSinkBigqueryOptions({
     required this.usePartitionedTables,
   });
 

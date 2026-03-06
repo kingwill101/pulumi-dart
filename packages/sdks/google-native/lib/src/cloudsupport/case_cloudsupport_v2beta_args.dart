@@ -56,7 +56,7 @@ class CaseCloudsupportV2betaArgs {
   /// [timeZone] The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
   /// [v2betaId1] Required.
   /// [v2betumId] Required.
-  CaseCloudsupportV2betaArgs({
+  const CaseCloudsupportV2betaArgs({
     this.classification,
     this.contactEmail,
     this.creator,

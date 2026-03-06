@@ -21,7 +21,7 @@ class GetRegistryEnvironmentVersionArgs {
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier. This is case-sensitive.
-  GetRegistryEnvironmentVersionArgs({
+  const GetRegistryEnvironmentVersionArgs({
     required this.environmentName,
     required this.registryName,
     required this.resourceGroupName,

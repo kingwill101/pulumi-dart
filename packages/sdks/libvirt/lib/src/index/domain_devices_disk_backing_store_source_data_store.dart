@@ -9,7 +9,7 @@ class DomainDevicesDiskBackingStoreSourceDataStore {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceDataStore].
   /// [format] Defines the format of the data store used in the backing store source configuration.
-  DomainDevicesDiskBackingStoreSourceDataStore({
+  const DomainDevicesDiskBackingStoreSourceDataStore({
     this.format,
   });
 

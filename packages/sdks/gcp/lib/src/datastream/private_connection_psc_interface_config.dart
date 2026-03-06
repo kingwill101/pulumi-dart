@@ -13,7 +13,7 @@ class PrivateConnectionPscInterfaceConfig {
 
   /// Creates a new [PrivateConnectionPscInterfaceConfig].
   /// [networkAttachment] Fully qualified name of the network attachment that Datastream will connect to.
-  PrivateConnectionPscInterfaceConfig({
+  const PrivateConnectionPscInterfaceConfig({
     required this.networkAttachment,
   });
 

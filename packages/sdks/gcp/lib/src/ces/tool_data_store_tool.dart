@@ -31,7 +31,7 @@ class ToolDataStoreTool {
   /// [maxResults] Number of search results to return per query.
   /// [modalityConfigs] The modality configs for the data store.
   /// [name] The data store tool name.
-  ToolDataStoreTool({
+  const ToolDataStoreTool({
     this.boostSpecs,
     this.description,
     this.engineSource,

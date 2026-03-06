@@ -122,5 +122,5 @@ class F5bigipConfig {
 
 }
 
-final config = F5bigipConfig();
+const config = F5bigipConfig();
 

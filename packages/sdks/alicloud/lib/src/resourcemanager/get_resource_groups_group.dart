@@ -27,7 +27,7 @@ class GetResourceGroupsGroup {
   /// [regionStatuses] (Available since v1.114.0) The status of the resource group in all regions.
   /// [resourceGroupName] (Available since v1.114.0) The unique identifier of the resource group.
   /// [status] The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
-  GetResourceGroupsGroup({
+  const GetResourceGroupsGroup({
     required this.accountId,
     required this.displayName,
     required this.id,

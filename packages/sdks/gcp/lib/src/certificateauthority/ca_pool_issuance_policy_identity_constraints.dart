@@ -20,7 +20,7 @@ class CaPoolIssuancePolicyIdentityConstraints {
   /// [allowSubjectAltNamesPassthrough] If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.
   /// [allowSubjectPassthrough] If this is set, the Subject field may be copied from a certificate request into the signed certificate.
   /// [celExpression] A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
-  CaPoolIssuancePolicyIdentityConstraints({
+  const CaPoolIssuancePolicyIdentityConstraints({
     required this.allowSubjectAltNamesPassthrough,
     required this.allowSubjectPassthrough,
     this.celExpression,

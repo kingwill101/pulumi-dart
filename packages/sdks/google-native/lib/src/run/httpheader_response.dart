@@ -12,7 +12,7 @@ class HTTPHeaderResponse {
   /// Creates a new [HTTPHeaderResponse].
   /// [name] The header field name
   /// [value] The header field value
-  HTTPHeaderResponse({
+  const HTTPHeaderResponse({
     required this.name,
     required this.value,
   });

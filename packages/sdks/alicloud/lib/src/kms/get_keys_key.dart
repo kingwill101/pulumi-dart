@@ -59,7 +59,7 @@ class GetKeysKey {
   /// [protectionLevel] (Available in 1.123.1+)  The protection level of the CMK.
   /// [rotationInterval] (Available in 1.123.1+)  The period of automatic key rotation.
   /// [status] Filter the results by status of the KMS keys. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
-  GetKeysKey({
+  const GetKeysKey({
     required this.arn,
     required this.automaticRotation,
     required this.creationDate,

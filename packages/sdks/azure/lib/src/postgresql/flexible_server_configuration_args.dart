@@ -20,7 +20,7 @@ class FlexibleServerConfigurationArgs {
   /// [name] Specifies the name of the PostgreSQL Configuration, which needs [to be a valid PostgreSQL configuration name](https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIER). Changing this forces a new resource to be created.
   /// [serverId] The ID of the PostgreSQL Flexible Server where we want to change configuration. Changing this forces a new PostgreSQL Flexible Server Configuration resource.
   /// [value] Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values.
-  FlexibleServerConfigurationArgs({
+  const FlexibleServerConfigurationArgs({
     this.name,
     required this.serverId,
     required this.value,

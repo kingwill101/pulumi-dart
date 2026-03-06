@@ -17,7 +17,7 @@ class GetPeeredDnsDomainArgs {
   /// [network] Required.
   /// [project] Required.
   /// [service] Required.
-  GetPeeredDnsDomainArgs({
+  const GetPeeredDnsDomainArgs({
     required this.name,
     required this.network,
     required this.project,

@@ -49,7 +49,7 @@ class GetSchemaRegistryResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Globally unique, immutable, non-reusable id.
-  GetSchemaRegistryResult({
+  const GetSchemaRegistryResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

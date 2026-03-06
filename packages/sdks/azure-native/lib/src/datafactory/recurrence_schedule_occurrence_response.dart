@@ -12,7 +12,7 @@ class RecurrenceScheduleOccurrenceResponse {
   /// Creates a new [RecurrenceScheduleOccurrenceResponse].
   /// [day] The day of the week.
   /// [occurrence] The occurrence.
-  RecurrenceScheduleOccurrenceResponse({
+  const RecurrenceScheduleOccurrenceResponse({
     this.day,
     this.occurrence,
   });

@@ -23,7 +23,7 @@ class GetPoolNetworkConfiguration {
   /// [publicAddressProvisioningType] Type of public IP address provisioning.
   /// [publicIps] A list of public IP ids that will be allocated to nodes.
   /// [subnetId] The ARM resource identifier of the virtual network subnet which the compute nodes of the pool are joined too.
-  GetPoolNetworkConfiguration({
+  const GetPoolNetworkConfiguration({
     required this.acceleratedNetworkingEnabled,
     required this.dynamicVnetAssignmentScope,
     required this.endpointConfigurations,

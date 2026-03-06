@@ -34,7 +34,7 @@ class TemplateResponse {
   /// [serviceBinds] List of container app services bound to the app
   /// [terminationGracePeriodSeconds] Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
   /// [volumes] List of volume definitions for the Container App.
-  TemplateResponse({
+  const TemplateResponse({
     this.containers,
     this.initContainers,
     this.revisionSuffix,

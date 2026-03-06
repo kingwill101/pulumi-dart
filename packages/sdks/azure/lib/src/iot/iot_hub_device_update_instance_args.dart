@@ -28,7 +28,7 @@ class IotHubDeviceUpdateInstanceArgs {
   /// [iothubId] Specifies the ID of the IoT Hub associated with the IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   /// [name] Specifies the name which should be used for this IoT Hub Device Update Instance. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the IoT Hub Device Update Instance.
-  IotHubDeviceUpdateInstanceArgs({
+  const IotHubDeviceUpdateInstanceArgs({
     required this.deviceUpdateAccountId,
     this.diagnosticEnabled,
     this.diagnosticStorageAccount,

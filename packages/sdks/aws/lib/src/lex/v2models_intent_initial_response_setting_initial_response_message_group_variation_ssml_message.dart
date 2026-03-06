@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationSs
 
   /// Creates a new [V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationSsmlMessage({
+  const V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationSsmlMessage({
     required this.value,
   });
 

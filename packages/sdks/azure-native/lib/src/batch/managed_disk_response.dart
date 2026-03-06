@@ -12,7 +12,7 @@ class ManagedDiskResponse {
   /// Creates a new [ManagedDiskResponse].
   /// [securityProfile] Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
   /// [storageAccountType] The storage account type for use in creating data disks or OS disk.
-  ManagedDiskResponse({
+  const ManagedDiskResponse({
     this.securityProfile,
     this.storageAccountType,
   });

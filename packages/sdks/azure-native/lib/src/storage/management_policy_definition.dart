@@ -14,7 +14,7 @@ class ManagementPolicyDefinition {
   /// Creates a new [ManagementPolicyDefinition].
   /// [actions] An object that defines the action set.
   /// [filters] An object that defines the filter set.
-  ManagementPolicyDefinition({
+  const ManagementPolicyDefinition({
     required this.actions,
     this.filters,
   });

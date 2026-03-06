@@ -11,7 +11,7 @@ class PolicyDefinitionStatic {
   /// Creates a new [PolicyDefinitionStatic].
   /// [description] The description of the static policy.
   /// [statement] The statement of the static policy.
-  PolicyDefinitionStatic({
+  const PolicyDefinitionStatic({
     this.description,
     required this.statement,
   });

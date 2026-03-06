@@ -11,7 +11,7 @@ class NotificationDestinationAuthToken {
   /// Creates a new [NotificationDestinationAuthToken].
   /// [prefix] The prefix of the URL.
   /// [token] Specifies the token for integrating.
-  NotificationDestinationAuthToken({
+  const NotificationDestinationAuthToken({
     this.prefix,
     required this.token,
   });

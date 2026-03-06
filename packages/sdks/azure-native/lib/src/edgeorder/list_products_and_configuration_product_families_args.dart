@@ -23,7 +23,7 @@ class ListProductsAndConfigurationProductFamiliesArgs {
   /// [expand] $expand is supported on configurations parameter for product, which provides details on the configurations for the product.
   /// [filterableProperties] Dictionary of filterable properties on product family.
   /// [skipToken] $skipToken is supported on list of product families, which provides the next page in the list of product families.
-  ListProductsAndConfigurationProductFamiliesArgs({
+  const ListProductsAndConfigurationProductFamiliesArgs({
     this.customerSubscriptionDetails,
     this.expand,
     required this.filterableProperties,

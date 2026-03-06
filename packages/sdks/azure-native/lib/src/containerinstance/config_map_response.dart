@@ -9,7 +9,7 @@ class ConfigMapResponse {
 
   /// Creates a new [ConfigMapResponse].
   /// [keyValuePairs] The key value pairs dictionary in the config map.
-  ConfigMapResponse({
+  const ConfigMapResponse({
     this.keyValuePairs,
   });
 

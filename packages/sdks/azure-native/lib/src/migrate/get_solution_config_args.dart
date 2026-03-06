@@ -18,7 +18,7 @@ class GetSolutionConfigArgs {
   /// [migrateProjectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that migrate project is part of.
   /// [solutionName] Unique name of a migration solution within a migrate project.
-  GetSolutionConfigArgs({
+  const GetSolutionConfigArgs({
     required this.migrateProjectName,
     required this.resourceGroupName,
     required this.solutionName,

@@ -12,7 +12,7 @@ class SecurityGroupMembershipResponse {
   /// Creates a new [SecurityGroupMembershipResponse].
   /// [securityGroupIdentifier] &lt;p&gt;The unique ID for this security group.&lt;/p&gt;
   /// [status] &lt;p&gt;The status of this security group.&lt;/p&gt;
-  SecurityGroupMembershipResponse({
+  const SecurityGroupMembershipResponse({
     this.securityGroupIdentifier,
     this.status,
   });

@@ -18,7 +18,7 @@ class FlowDestinationFlowConfig {
   /// [connectorProfileName] Name of the connector profile. This name must be unique for each connector profile in the AWS account.
   /// [connectorType] Type of connector, such as Salesforce, Amplitude, and so on. Valid values are `Salesforce`, `Singular`, `Slack`, `Redshift`, `S3`, `Marketo`, `Googleanalytics`, `Zendesk`, `Servicenow`, `Datadog`, `Trendmicro`, `Snowflake`, `Dynatrace`, `Infornexus`, `Amplitude`, `Veeva`, `EventBridge`, `LookoutMetrics`, `Upsolver`, `Honeycode`, `CustomerProfiles`, `SAPOData`, and `CustomConnector`.
   /// [destinationConnectorProperties] This stores the information that is required to query a particular connector. See Destination Connector Properties for more information.
-  FlowDestinationFlowConfig({
+  const FlowDestinationFlowConfig({
     this.apiVersion,
     this.connectorProfileName,
     required this.connectorType,

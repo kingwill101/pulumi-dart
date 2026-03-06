@@ -24,7 +24,7 @@ class ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1 {
   /// [metadata] Standard object's metadata.
   /// [roleRef] RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
   /// [subjects] Subjects holds references to the objects the role applies to.
-  ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1({
+  const ClusterRoleBindingPatchRbacAuthorizationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

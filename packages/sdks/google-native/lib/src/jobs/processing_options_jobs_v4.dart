@@ -13,7 +13,7 @@ class ProcessingOptionsJobsV4 {
   /// Creates a new [ProcessingOptionsJobsV4].
   /// [disableStreetAddressResolution] If set to `true`, the service does not attempt to resolve a more precise address for the job.
   /// [htmlSanitization] Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-  ProcessingOptionsJobsV4({
+  const ProcessingOptionsJobsV4({
     this.disableStreetAddressResolution,
     this.htmlSanitization,
   });

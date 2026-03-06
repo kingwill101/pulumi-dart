@@ -15,7 +15,7 @@ class GetEndpointAuthenticationOption {
   /// [samlProviderArn] Required.
   /// [selfServiceSamlProviderArn] Required.
   /// [type] Required.
-  GetEndpointAuthenticationOption({
+  const GetEndpointAuthenticationOption({
     required this.activeDirectoryId,
     required this.rootCertificateChainArn,
     required this.samlProviderArn,

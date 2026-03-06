@@ -13,7 +13,7 @@ class ConnectorMappingErrorManagement {
   /// Creates a new [ConnectorMappingErrorManagement].
   /// [errorLimit] The error limit allowed while importing data.
   /// [errorManagementType] The type of error management to use for the mapping.
-  ConnectorMappingErrorManagement({
+  const ConnectorMappingErrorManagement({
     this.errorLimit,
     required this.errorManagementType,
   });

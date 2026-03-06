@@ -26,7 +26,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] The private link service connection state.
   /// [resourceGroupName] The resource group name.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     required this.accountName,
     this.privateEndpoint,
     this.privateEndpointConnectionName,

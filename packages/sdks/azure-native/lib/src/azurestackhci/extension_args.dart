@@ -45,7 +45,7 @@ class ExtensionArgs {
   /// [settings] Json formatted public settings for the extension.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler. Latest version would be used if not specified.
-  ExtensionArgs({
+  const ExtensionArgs({
     required this.arcSettingName,
     this.autoUpgradeMinorVersion,
     required this.clusterName,

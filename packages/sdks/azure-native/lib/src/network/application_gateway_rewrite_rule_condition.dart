@@ -18,7 +18,7 @@ class ApplicationGatewayRewriteRuleCondition {
   /// [negate] Setting this value as truth will force to check the negation of the condition given by the user.
   /// [pattern] The pattern, either fixed string or regular expression, that evaluates the truthfulness of the condition.
   /// [variable] The condition parameter of the RewriteRuleCondition.
-  ApplicationGatewayRewriteRuleCondition({
+  const ApplicationGatewayRewriteRuleCondition({
     this.ignoreCase,
     this.negate,
     this.pattern,

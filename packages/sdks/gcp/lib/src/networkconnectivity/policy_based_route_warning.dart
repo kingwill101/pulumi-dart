@@ -17,7 +17,7 @@ class PolicyBasedRouteWarning {
   /// [code] (Output)
   /// [data] (Output)
   /// [warningMessage] (Output)
-  PolicyBasedRouteWarning({
+  const PolicyBasedRouteWarning({
     this.code,
     this.data,
     this.warningMessage,

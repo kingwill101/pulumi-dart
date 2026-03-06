@@ -18,7 +18,7 @@ class PolicyAttachmentArgs {
   /// [policyId] The ID of the tag policy.
   /// [targetId] The ID of the object.
   /// [targetType] The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
-  PolicyAttachmentArgs({
+  const PolicyAttachmentArgs({
     required this.policyId,
     required this.targetId,
     required this.targetType,

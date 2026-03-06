@@ -72,7 +72,7 @@ class GetVolumeGroupOracleVolume {
   /// [volumePath] A unique file path for the volume.
   /// [volumeSpecName] Volume spec name.
   /// [zone] Required.
-  GetVolumeGroupOracleVolume({
+  const GetVolumeGroupOracleVolume({
     required this.capacityPoolId,
     required this.dataProtectionReplications,
     required this.dataProtectionSnapshotPolicies,

@@ -8,7 +8,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess({
+  const CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess({
     this.metadata,
   });
 

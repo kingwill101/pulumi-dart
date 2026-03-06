@@ -9,7 +9,7 @@ class InstanceFailoverGroupReadOnlyEndpoint {
 
   /// Creates a new [InstanceFailoverGroupReadOnlyEndpoint].
   /// [failoverPolicy] Failover policy of the read-only endpoint for the failover group.
-  InstanceFailoverGroupReadOnlyEndpoint({
+  const InstanceFailoverGroupReadOnlyEndpoint({
     this.failoverPolicy,
   });
 

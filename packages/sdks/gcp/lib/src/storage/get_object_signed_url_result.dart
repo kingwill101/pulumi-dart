@@ -27,7 +27,7 @@ class GetObjectSignedUrlResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [path] Required.
   /// [signedUrl] The signed URL that can be used to access the storage object without authentication.
-  GetObjectSignedUrlResult({
+  const GetObjectSignedUrlResult({
     required this.bucket,
     this.contentMd5,
     this.contentType,

@@ -15,7 +15,7 @@ class GetSpaceArgs {
   /// Creates a new [GetSpaceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
-  GetSpaceArgs({
+  const GetSpaceArgs({
     required this.resourceGroupName,
     required this.spaceName,
   });

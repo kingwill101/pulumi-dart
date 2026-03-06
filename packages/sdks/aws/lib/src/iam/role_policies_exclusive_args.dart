@@ -15,7 +15,7 @@ class RolePoliciesExclusiveArgs {
   /// Creates a new [RolePoliciesExclusiveArgs].
   /// [policyNames] A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   /// [roleName] IAM role name.
-  RolePoliciesExclusiveArgs({
+  const RolePoliciesExclusiveArgs({
     required this.policyNames,
     required this.roleName,
   });

@@ -15,7 +15,7 @@ class StorageAccountResponse {
   /// [accountName] Storage account name
   /// [id] Resource ID of storage account
   /// [subscriptionId] Subscription Id
-  StorageAccountResponse({
+  const StorageAccountResponse({
     this.accountName,
     this.id,
     this.subscriptionId,

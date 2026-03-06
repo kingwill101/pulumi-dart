@@ -8,7 +8,7 @@ class DataSourceEventBridgeConfig {
 
   /// Creates a new [DataSourceEventBridgeConfig].
   /// [eventBusArn] ARN for the EventBridge bus.
-  DataSourceEventBridgeConfig({
+  const DataSourceEventBridgeConfig({
     required this.eventBusArn,
   });
 

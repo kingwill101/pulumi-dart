@@ -15,7 +15,7 @@ class NodeBalancerVpc {
   /// [ipv4Range] (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
   /// [ipv4RangeAutoAssign] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [subnetId] (Required) The ID of a subnet to assign to this NodeBalancer.
-  NodeBalancerVpc({
+  const NodeBalancerVpc({
     this.ipv4Range,
     this.ipv4RangeAutoAssign,
     required this.subnetId,

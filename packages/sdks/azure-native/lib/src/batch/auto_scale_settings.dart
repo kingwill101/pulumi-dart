@@ -12,7 +12,7 @@ class AutoScaleSettings {
   /// Creates a new [AutoScaleSettings].
   /// [evaluationInterval] If omitted, the default value is 15 minutes (PT15M).
   /// [formula] A formula for the desired number of compute nodes in the pool.
-  AutoScaleSettings({
+  const AutoScaleSettings({
     this.evaluationInterval,
     required this.formula,
   });

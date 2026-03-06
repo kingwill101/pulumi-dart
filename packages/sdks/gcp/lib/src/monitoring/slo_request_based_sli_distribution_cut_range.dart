@@ -15,7 +15,7 @@ class SloRequestBasedSliDistributionCutRange {
   /// Creates a new [SloRequestBasedSliDistributionCutRange].
   /// [max] max value for the range (inclusive). If not given,
   /// [min] Min value for the range (inclusive). If not given,
-  SloRequestBasedSliDistributionCutRange({
+  const SloRequestBasedSliDistributionCutRange({
     this.max,
     this.min,
   });

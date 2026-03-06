@@ -9,7 +9,7 @@ class UserCredential {
 
   /// Creates a new [UserCredential].
   /// [userTokenSecretVersion] A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-  UserCredential({
+  const UserCredential({
     required this.userTokenSecretVersion,
   });
 

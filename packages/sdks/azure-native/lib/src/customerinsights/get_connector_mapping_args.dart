@@ -21,7 +21,7 @@ class GetConnectorMappingArgs {
   /// [hubName] The name of the hub.
   /// [mappingName] The name of the connector mapping.
   /// [resourceGroupName] The name of the resource group.
-  GetConnectorMappingArgs({
+  const GetConnectorMappingArgs({
     required this.connectorName,
     required this.hubName,
     required this.mappingName,

@@ -71,7 +71,7 @@ class GetMachineRunCommandResult {
   /// [tags] Resource tags.
   /// [timeoutInSeconds] The timeout in seconds to execute the run command.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetMachineRunCommandResult({
+  const GetMachineRunCommandResult({
     this.asyncExecution,
     required this.azureApiVersion,
     this.errorBlobManagedIdentity,

@@ -51,7 +51,7 @@ class GetVirtualNetworkResult {
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
-  GetVirtualNetworkResult({
+  const GetVirtualNetworkResult({
     this.allowedSubnets,
     required this.azureApiVersion,
     required this.createdDate,

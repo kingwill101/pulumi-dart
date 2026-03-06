@@ -13,7 +13,7 @@ class DatabaseFirewallState {
   /// Creates a new [DatabaseFirewallState].
   /// [clusterId] The ID of the target database cluster.
   /// [rules] A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-  DatabaseFirewallState({
+  const DatabaseFirewallState({
     this.clusterId,
     this.rules,
   });

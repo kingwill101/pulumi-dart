@@ -21,7 +21,7 @@ class GetRemoteReferenceArgs {
   /// [organization] The name of the organization containing the targeted workspace(s).
   /// [token] The token used to authenticate with the remote backend.
   /// [workspaces] Required.
-  GetRemoteReferenceArgs({
+  const GetRemoteReferenceArgs({
     this.hostname,
     required this.organization,
     this.token,

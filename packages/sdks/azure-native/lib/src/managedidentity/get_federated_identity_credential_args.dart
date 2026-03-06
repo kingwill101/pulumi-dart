@@ -18,7 +18,7 @@ class GetFederatedIdentityCredentialArgs {
   /// [federatedIdentityCredentialResourceName] The name of the federated identity credential resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the identity resource.
-  GetFederatedIdentityCredentialArgs({
+  const GetFederatedIdentityCredentialArgs({
     required this.federatedIdentityCredentialResourceName,
     required this.resourceGroupName,
     required this.resourceName,

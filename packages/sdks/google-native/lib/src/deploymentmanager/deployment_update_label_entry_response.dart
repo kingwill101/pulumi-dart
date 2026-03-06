@@ -12,7 +12,7 @@ class DeploymentUpdateLabelEntryResponse {
   /// Creates a new [DeploymentUpdateLabelEntryResponse].
   /// [key] Key of the label
   /// [value] Value of the label
-  DeploymentUpdateLabelEntryResponse({
+  const DeploymentUpdateLabelEntryResponse({
     required this.key,
     required this.value,
   });

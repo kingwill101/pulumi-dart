@@ -43,7 +43,7 @@ class ChartArgs {
   /// [transformations_] Optional array of transformations to apply to resources that will be created by this chart prior to creation. Allows customization of the chart behaviour without directly modifying the chart itself.
   /// [values] Overrides for chart values.
   /// [version] The version of the chart to deploy. If not provided, the latest version will be deployed.
-  ChartArgs({
+  const ChartArgs({
     this.chart,
     this.fetchOpts,
     this.namespace,

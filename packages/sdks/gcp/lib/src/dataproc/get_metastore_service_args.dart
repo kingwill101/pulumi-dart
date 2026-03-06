@@ -21,7 +21,7 @@ class GetMetastoreServiceArgs {
   /// [location] The location where the metastore service resides.
   /// [project] The project in which the resource belongs. If it
   /// [serviceId] The ID of the metastore service.
-  GetMetastoreServiceArgs({
+  const GetMetastoreServiceArgs({
     required this.location,
     this.project,
     required this.serviceId,

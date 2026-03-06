@@ -56,7 +56,7 @@ class ProjectState {
   /// [tags] The tag of the resource
   /// [threeTierModel] Indicates whether data storage by schema is supported. Valid values:
   /// [type] Project type
-  ProjectState({
+  const ProjectState({
     this.comment,
     this.createTime,
     this.defaultQuota,

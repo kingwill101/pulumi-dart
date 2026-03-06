@@ -11,7 +11,7 @@ class GroupCapacityReservationSpecificationCapacityReservationTarget {
   /// Creates a new [GroupCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationIds] List of On-Demand Capacity Reservation Ids. Conflicts with `capacity_reservation_resource_group_arns`.
   /// [capacityReservationResourceGroupArns] List of On-Demand Capacity Reservation Resource Group Arns. Conflicts with `capacity_reservation_ids`.
-  GroupCapacityReservationSpecificationCapacityReservationTarget({
+  const GroupCapacityReservationSpecificationCapacityReservationTarget({
     this.capacityReservationIds,
     this.capacityReservationResourceGroupArns,
   });

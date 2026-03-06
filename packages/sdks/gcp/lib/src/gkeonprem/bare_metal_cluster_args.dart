@@ -107,7 +107,7 @@ class BareMetalClusterArgs {
   /// [securityConfig] Specifies the security related settings for the Bare Metal User Cluster.
   /// [storage] Specifies the cluster storage configuration.
   /// [upgradePolicy] The cluster upgrade policy.
-  BareMetalClusterArgs({
+  const BareMetalClusterArgs({
     required this.adminClusterMembership,
     this.annotations,
     required this.bareMetalVersion,

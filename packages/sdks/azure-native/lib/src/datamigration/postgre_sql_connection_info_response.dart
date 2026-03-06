@@ -46,7 +46,7 @@ class PostgreSqlConnectionInfoResponse {
   /// [trustServerCertificate] Whether to trust the server certificate
   /// [type] Type of connection info
   /// [userName] User name
-  PostgreSqlConnectionInfoResponse({
+  const PostgreSqlConnectionInfoResponse({
     this.additionalSettings,
     this.authentication,
     this.dataSource,

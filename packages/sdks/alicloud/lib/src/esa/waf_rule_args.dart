@@ -27,7 +27,7 @@ class WafRuleArgs {
   /// [shared] Optional.
   /// [siteId] The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
   /// [siteVersion] Optional.
-  WafRuleArgs({
+  const WafRuleArgs({
     this.config,
     required this.phase,
     this.rulesetId,

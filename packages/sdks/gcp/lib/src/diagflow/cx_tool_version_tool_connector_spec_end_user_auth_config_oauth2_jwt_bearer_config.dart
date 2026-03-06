@@ -14,7 +14,7 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
   /// [clientKey] Client key value or parameter name to pass it through.
   /// [issuer] Issuer value or parameter name to pass it through.
   /// [subject] Subject value or parameter name to pass it through.
-  CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig({
+  const CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig({
     required this.clientKey,
     required this.issuer,
     required this.subject,

@@ -13,7 +13,7 @@ class OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha {
   /// Creates a new [OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha].
   /// [properties] Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
   /// [source] The MSI package.
-  OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha({
     required this.properties,
     required this.source,
   });

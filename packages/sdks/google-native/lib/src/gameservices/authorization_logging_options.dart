@@ -10,7 +10,7 @@ class AuthorizationLoggingOptions {
 
   /// Creates a new [AuthorizationLoggingOptions].
   /// [permissionType] The type of the permission that was checked.
-  AuthorizationLoggingOptions({
+  const AuthorizationLoggingOptions({
     this.permissionType,
   });
 

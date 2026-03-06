@@ -29,7 +29,7 @@ class ConfigManagementConfigSyncResponseGkehubV1alpha {
   /// [oci] OCI repo configuration for the cluster
   /// [preventDrift] Set to true to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
   /// [sourceFormat] Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
-  ConfigManagementConfigSyncResponseGkehubV1alpha({
+  const ConfigManagementConfigSyncResponseGkehubV1alpha({
     required this.allowVerticalScale,
     required this.enabled,
     required this.git,

@@ -15,7 +15,7 @@ class GetIamPasswordPolicyArgs {
   /// Creates a new [GetIamPasswordPolicyArgs].
   /// [name] Name of IamPasswordPolicy
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamPasswordPolicyArgs({
+  const GetIamPasswordPolicyArgs({
     required this.name,
     required this.resourceGroupName,
   });

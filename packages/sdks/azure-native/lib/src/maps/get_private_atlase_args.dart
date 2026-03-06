@@ -18,7 +18,7 @@ class GetPrivateAtlaseArgs {
   /// [accountName] The name of the Maps Account.
   /// [privateAtlasName] The name of the Private Atlas instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateAtlaseArgs({
+  const GetPrivateAtlaseArgs({
     required this.accountName,
     required this.privateAtlasName,
     required this.resourceGroupName,

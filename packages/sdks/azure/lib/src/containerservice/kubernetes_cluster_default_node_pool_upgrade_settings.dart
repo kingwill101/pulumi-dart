@@ -21,7 +21,7 @@ class KubernetesClusterDefaultNodePoolUpgradeSettings {
   /// [maxSurge] The maximum number or percentage of nodes which will be added to the Node Pool size during an upgrade.
   /// [nodeSoakDurationInMinutes] The amount of time in minutes to wait after draining a node and before reimaging and moving on to next node.
   /// [undrainableNodeBehavior] Specifies the action when a node is undrainable during upgrade. Possible values are `Cordon` and `Schedule`. Unsetting this after configuring it will force a new resource to be created.
-  KubernetesClusterDefaultNodePoolUpgradeSettings({
+  const KubernetesClusterDefaultNodePoolUpgradeSettings({
     this.drainTimeoutInMinutes,
     required this.maxSurge,
     this.nodeSoakDurationInMinutes,

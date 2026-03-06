@@ -24,7 +24,7 @@ class AccountPrivilegeState {
   /// [dbNames] List of specified database name.
   /// [instanceId] The Id of instance in which account belongs.
   /// [privilege] The privilege of one account access database. Valid values:
-  AccountPrivilegeState({
+  const AccountPrivilegeState({
     this.accountName,
     this.dbNames,
     this.instanceId,

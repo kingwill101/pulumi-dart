@@ -17,7 +17,7 @@ class UserAlarmConfigContactConfig {
   /// [mobilePhone] The mobile phone number of the contact.
   /// [name] The name of the contact.
   /// [status] The status of the contact configuration. Possible values are: `0` disable, `1` enable.
-  UserAlarmConfigContactConfig({
+  const UserAlarmConfigContactConfig({
     this.email,
     this.mobilePhone,
     this.name,

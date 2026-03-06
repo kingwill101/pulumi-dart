@@ -15,7 +15,7 @@ class EceDeploymentSecretsResponse {
   /// [eceSecretName] Secret name expected for Enterprise Cloud Engine (ECE) deployment.
   /// [secretLocation] Secret URI stored in keyvault.
   /// [secretName] Secret name stored in keyvault.
-  EceDeploymentSecretsResponse({
+  const EceDeploymentSecretsResponse({
     this.eceSecretName,
     this.secretLocation,
     this.secretName,

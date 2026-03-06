@@ -20,7 +20,7 @@ class DiscoveredDataset {
   /// [datasetConfiguration] Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
   /// [name] Name of the dataset.
   /// [topic] Object that describes the topic information for the specific dataset.
-  DiscoveredDataset({
+  const DiscoveredDataset({
     this.dataPoints,
     this.datasetConfiguration,
     required this.name,

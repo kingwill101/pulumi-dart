@@ -20,7 +20,7 @@ class IotHubDpsLinkedHub {
   /// [connectionString] The connection string to connect to the IoT Hub.
   /// [hostname] The IoT Hub hostname.
   /// [location] The location of the IoT hub.
-  IotHubDpsLinkedHub({
+  const IotHubDpsLinkedHub({
     this.allocationWeight,
     this.applyAllocationPolicy,
     required this.connectionString,

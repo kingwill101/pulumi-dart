@@ -21,7 +21,7 @@ class AclAttachmentArgs {
   /// [aclType] The type of the ACL. Valid values:
   /// [dryRun] The dry run.
   /// [listenerId] The ID of the listener.
-  AclAttachmentArgs({
+  const AclAttachmentArgs({
     required this.aclId,
     required this.aclType,
     this.dryRun,

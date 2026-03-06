@@ -18,7 +18,7 @@ class GetServerAzureADOnlyAuthenticationArgs {
   /// [authenticationName] The name of server azure active directory only authentication.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetServerAzureADOnlyAuthenticationArgs({
+  const GetServerAzureADOnlyAuthenticationArgs({
     required this.authenticationName,
     required this.resourceGroupName,
     required this.serverName,

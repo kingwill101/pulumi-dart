@@ -18,7 +18,7 @@ class DatascanExecutionSpecTrigger {
   /// [onDemand] The scan runs once via dataScans.run API.
   /// [oneTime] The scan runs once upon DataScan creation.
   /// [schedule] The scan is scheduled to run periodically.
-  DatascanExecutionSpecTrigger({
+  const DatascanExecutionSpecTrigger({
     this.onDemand,
     this.oneTime,
     this.schedule,

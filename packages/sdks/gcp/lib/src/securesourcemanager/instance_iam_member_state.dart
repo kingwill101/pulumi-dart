@@ -21,7 +21,7 @@ class InstanceIamMemberState {
   /// [member] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  InstanceIamMemberState({
+  const InstanceIamMemberState({
     this.condition,
     this.etag,
     this.instanceId,

@@ -18,7 +18,7 @@ class GetMachineExtensionArgs {
   /// [extensionName] The name of the machine extension.
   /// [machineName] The name of the machine containing the extension.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMachineExtensionArgs({
+  const GetMachineExtensionArgs({
     required this.extensionName,
     required this.machineName,
     required this.resourceGroupName,

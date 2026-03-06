@@ -23,7 +23,7 @@ class ServiceInitialReplicaSet {
   /// [location] The Azure location where the Domain Service exists. Changing this forces a new resource to be created.
   /// [serviceStatus] The current service status for the initial replica set.
   /// [subnetId] The ID of the subnet in which to place the initial replica set. Changing this forces a new resource to be created.
-  ServiceInitialReplicaSet({
+  const ServiceInitialReplicaSet({
     this.domainControllerIpAddresses,
     this.externalAccessIpAddress,
     this.id,

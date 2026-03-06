@@ -16,7 +16,7 @@ class GetRouteSpecGrpcRouteMatch {
   /// [port] Required.
   /// [prefix] Required.
   /// [serviceName] Required.
-  GetRouteSpecGrpcRouteMatch({
+  const GetRouteSpecGrpcRouteMatch({
     required this.metadatas,
     required this.methodName,
     required this.port,

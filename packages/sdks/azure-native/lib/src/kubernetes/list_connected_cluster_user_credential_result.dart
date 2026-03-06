@@ -14,7 +14,7 @@ class ListConnectedClusterUserCredentialResult {
   /// Creates a new [ListConnectedClusterUserCredentialResult].
   /// [hybridConnectionConfig] Contains the REP (rendezvous endpoint) and “Sender” access token.
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListConnectedClusterUserCredentialResult({
+  const ListConnectedClusterUserCredentialResult({
     required this.hybridConnectionConfig,
     required this.kubeconfigs,
   });

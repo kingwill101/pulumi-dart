@@ -56,7 +56,7 @@ class BuildxBuilderKubernetes {
   /// [serviceaccount] Sets the pod's serviceAccountName.
   /// [timeout] Set the timeout limit for pod provisioning.
   /// [tolerations] Configures the pod's taint toleration.
-  BuildxBuilderKubernetes({
+  const BuildxBuilderKubernetes({
     this.annotations,
     this.defaultLoad,
     this.image,

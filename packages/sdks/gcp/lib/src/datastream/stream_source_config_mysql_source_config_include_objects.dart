@@ -10,7 +10,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjects {
 
   /// Creates a new [StreamSourceConfigMysqlSourceConfigIncludeObjects].
   /// [mysqlDatabases] MySQL databases on the server
-  StreamSourceConfigMysqlSourceConfigIncludeObjects({
+  const StreamSourceConfigMysqlSourceConfigIncludeObjects({
     required this.mysqlDatabases,
   });
 

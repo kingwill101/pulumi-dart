@@ -8,7 +8,7 @@ class ModelCardExportJobExportArtifact {
 
   /// Creates a new [ModelCardExportJobExportArtifact].
   /// [s3ExportArtifacts] Amazon S3 URI of the exported model artifacts.
-  ModelCardExportJobExportArtifact({
+  const ModelCardExportJobExportArtifact({
     required this.s3ExportArtifacts,
   });
 

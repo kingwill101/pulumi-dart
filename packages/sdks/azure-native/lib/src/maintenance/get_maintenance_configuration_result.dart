@@ -58,7 +58,7 @@ class GetMaintenanceConfigurationResult {
   /// [timeZone] Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [visibility] Gets or sets the visibility of the configuration. The default value is 'Custom'
-  GetMaintenanceConfigurationResult({
+  const GetMaintenanceConfigurationResult({
     required this.azureApiVersion,
     this.duration,
     this.expirationDateTime,

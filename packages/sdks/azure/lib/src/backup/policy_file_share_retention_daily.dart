@@ -8,7 +8,7 @@ class PolicyFileShareRetentionDaily {
 
   /// Creates a new [PolicyFileShareRetentionDaily].
   /// [count] The number of daily backups to keep. Must be between `1` and `200` (inclusive)
-  PolicyFileShareRetentionDaily({
+  const PolicyFileShareRetentionDaily({
     required this.count,
   });
 

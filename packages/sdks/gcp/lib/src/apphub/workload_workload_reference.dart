@@ -9,7 +9,7 @@ class WorkloadWorkloadReference {
 
   /// Creates a new [WorkloadWorkloadReference].
   /// [uri] (Output)
-  WorkloadWorkloadReference({
+  const WorkloadWorkloadReference({
     this.uri,
   });
 

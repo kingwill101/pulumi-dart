@@ -128,7 +128,7 @@ class ClusterAddonsConfig {
   /// [podSnapshotConfig] The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
   /// [rayOperatorConfigs] . The status of the [Ray Operator
   /// [statefulHaConfig] .
-  ClusterAddonsConfig({
+  const ClusterAddonsConfig({
     this.cloudrunConfig,
     this.configConnectorConfig,
     this.dnsCacheConfig,

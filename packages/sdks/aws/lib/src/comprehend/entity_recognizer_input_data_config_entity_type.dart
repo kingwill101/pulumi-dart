@@ -9,7 +9,7 @@ class EntityRecognizerInputDataConfigEntityType {
 
   /// Creates a new [EntityRecognizerInputDataConfigEntityType].
   /// [type] An entity type to be matched by the Entity Recognizer.
-  EntityRecognizerInputDataConfigEntityType({
+  const EntityRecognizerInputDataConfigEntityType({
     required this.type,
   });
 

@@ -12,7 +12,7 @@ class BucketObjectCustomerEncryption {
   /// Creates a new [BucketObjectCustomerEncryption].
   /// [encryptionAlgorithm] The encryption algorithm.
   /// [keySha256] SHA256 hash value of the encryption key.
-  BucketObjectCustomerEncryption({
+  const BucketObjectCustomerEncryption({
     this.encryptionAlgorithm,
     this.keySha256,
   });

@@ -47,7 +47,7 @@ class GetClusterInstancesInstance {
   /// [privateIp] The emr cluster ecs instance private ip.
   /// [publicIp] The emr cluster ecs instance public ip.
   /// [zoneId] The emr cluster node group zone ID.
-  GetClusterInstancesInstance({
+  const GetClusterInstancesInstance({
     required this.autoRenew,
     required this.autoRenewDuration,
     required this.autoRenewDurationUnit,

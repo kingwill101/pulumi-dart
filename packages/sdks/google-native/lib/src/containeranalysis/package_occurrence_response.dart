@@ -30,7 +30,7 @@ class PackageOccurrenceResponse {
   /// [name] The name of the installed package.
   /// [packageType] The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
   /// [version] The version of the package.
-  PackageOccurrenceResponse({
+  const PackageOccurrenceResponse({
     required this.architecture,
     required this.cpeUri,
     required this.license,

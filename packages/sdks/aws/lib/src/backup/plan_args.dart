@@ -30,7 +30,7 @@ class PlanArgs {
   /// [rules] A rule object that specifies a scheduled task that is used to back up a selection of resources.
   /// [scanSettings] Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   /// [tags] Metadata that you can assign to help organize the plans you create. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  PlanArgs({
+  const PlanArgs({
     this.advancedBackupSettings,
     this.name,
     this.region,

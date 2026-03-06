@@ -34,7 +34,7 @@ class VirtualNetworkLinkArgs {
   /// [tags] Resource tags.
   /// [virtualNetwork] The reference of the virtual network.
   /// [virtualNetworkLinkName] The name of the virtual network link.
-  VirtualNetworkLinkArgs({
+  const VirtualNetworkLinkArgs({
     this.location,
     required this.privateZoneName,
     this.registrationEnabled,

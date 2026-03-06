@@ -9,7 +9,7 @@ class Environment {
 
   /// Creates a new [Environment].
   /// [variables] Environment variable key-value pairs. For more information, see [Using Lambda environment variables](https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
-  Environment({
+  const Environment({
     this.variables,
   });
 

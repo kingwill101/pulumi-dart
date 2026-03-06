@@ -18,7 +18,7 @@ class NGroupContainerGroupProperties {
   /// [containers] Contains information about Container which can be set while creating or updating the NGroups.
   /// [subnetIds] Contains information about Virtual Network Subnet ARM Resource
   /// [volumes] Contains information about the volumes that can be mounted by Containers in the Container Groups.
-  NGroupContainerGroupProperties({
+  const NGroupContainerGroupProperties({
     this.containers,
     this.subnetIds,
     this.volumes,

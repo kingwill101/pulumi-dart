@@ -20,7 +20,7 @@ class SloRequestBasedSliDistributionCut {
   /// Creates a new [SloRequestBasedSliDistributionCut].
   /// [distributionFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// [range] Range of numerical values. The computed good_service
-  SloRequestBasedSliDistributionCut({
+  const SloRequestBasedSliDistributionCut({
     required this.distributionFilter,
     required this.range,
   });

@@ -10,7 +10,7 @@ class ActiveDirectoryInformation {
 
   /// Creates a new [ActiveDirectoryInformation].
   /// [keytabInformation] Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used.
-  ActiveDirectoryInformation({
+  const ActiveDirectoryInformation({
     this.keytabInformation,
   });
 

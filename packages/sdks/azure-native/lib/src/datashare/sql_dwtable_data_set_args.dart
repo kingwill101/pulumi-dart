@@ -37,7 +37,7 @@ class SqlDWTableDataSetArgs {
   /// [shareName] The name of the share to add the data set to.
   /// [sqlServerResourceId] Resource id of SQL server
   /// [tableName] SQL DW table name.
-  SqlDWTableDataSetArgs({
+  const SqlDWTableDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.dataWarehouseName,

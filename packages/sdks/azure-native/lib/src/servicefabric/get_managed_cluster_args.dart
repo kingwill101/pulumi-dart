@@ -15,7 +15,7 @@ class GetManagedClusterArgs {
   /// Creates a new [GetManagedClusterArgs].
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group.
-  GetManagedClusterArgs({
+  const GetManagedClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

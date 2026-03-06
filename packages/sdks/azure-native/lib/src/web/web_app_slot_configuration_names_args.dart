@@ -27,7 +27,7 @@ class WebAppSlotConfigurationNamesArgs {
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppSlotConfigurationNamesArgs({
+  const WebAppSlotConfigurationNamesArgs({
     this.appSettingNames,
     this.azureStorageConfigNames,
     this.connectionStringNames,

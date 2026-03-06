@@ -29,7 +29,7 @@ class GetDiskDiskEncryptionKey {
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
   /// [sha256] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-  GetDiskDiskEncryptionKey({
+  const GetDiskDiskEncryptionKey({
     required this.kmsKeySelfLink,
     required this.kmsKeyServiceAccount,
     required this.rawKey,

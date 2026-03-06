@@ -48,7 +48,7 @@ class GetOsPolicyAssignmentOsconfigV1alphaResult {
   /// [rollout] Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
   /// [rolloutState] OS policy assignment rollout state
   /// [uid] Server generated unique id for the OS policy assignment resource.
-  GetOsPolicyAssignmentOsconfigV1alphaResult({
+  const GetOsPolicyAssignmentOsconfigV1alphaResult({
     required this.baseline,
     required this.deleted,
     required this.description,

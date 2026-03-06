@@ -81,7 +81,7 @@ class PrivateCloudState {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
   /// [vcenters] Details about a vCenter Server management appliance.
-  PrivateCloudState({
+  const PrivateCloudState({
     this.createTime,
     this.deleteTime,
     this.deletionDelayHours,

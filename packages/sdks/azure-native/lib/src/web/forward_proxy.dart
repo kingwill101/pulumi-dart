@@ -16,7 +16,7 @@ class ForwardProxy {
   /// [convention] The convention used to determine the url of the request made.
   /// [customHostHeaderName] The name of the header containing the host of the request.
   /// [customProtoHeaderName] The name of the header containing the scheme of the request.
-  ForwardProxy({
+  const ForwardProxy({
     this.convention,
     this.customHostHeaderName,
     this.customProtoHeaderName,

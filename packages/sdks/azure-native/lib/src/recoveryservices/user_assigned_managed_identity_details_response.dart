@@ -16,7 +16,7 @@ class UserAssignedManagedIdentityDetailsResponse {
   /// [identityArmId] The ARM id of the assigned identity.
   /// [identityName] The name of the assigned identity.
   /// [userAssignedIdentityProperties] User assigned managed identity properties
-  UserAssignedManagedIdentityDetailsResponse({
+  const UserAssignedManagedIdentityDetailsResponse({
     this.identityArmId,
     this.identityName,
     this.userAssignedIdentityProperties,

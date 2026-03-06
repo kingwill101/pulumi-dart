@@ -76,7 +76,7 @@ class VpcArgs {
   /// [subnetStrategy] The strategy to use when allocating subnets for the VPC. Optional. Defaults to `Legacy`.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcEndpointSpecs] A list of VPC Endpoints specs to be deployed as part of the VPC
-  VpcArgs({
+  const VpcArgs({
     this.assignGeneratedIpv6CidrBlock,
     this.availabilityZoneCidrMask,
     this.availabilityZoneNames,

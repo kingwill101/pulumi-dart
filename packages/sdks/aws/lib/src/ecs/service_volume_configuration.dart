@@ -12,7 +12,7 @@ class ServiceVolumeConfiguration {
   /// Creates a new [ServiceVolumeConfiguration].
   /// [managedEbsVolume] Configuration for the Amazon EBS volume that Amazon ECS creates and manages on your behalf. See below.
   /// [name] Name of the volume.
-  ServiceVolumeConfiguration({
+  const ServiceVolumeConfiguration({
     required this.managedEbsVolume,
     required this.name,
   });

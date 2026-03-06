@@ -41,7 +41,7 @@ class TemplateArtifactArgs {
   /// [resourceGroup] If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [template] The Resource Manager template blueprint artifact body.
-  TemplateArtifactArgs({
+  const TemplateArtifactArgs({
     this.artifactName,
     required this.blueprintName,
     this.dependsOn,

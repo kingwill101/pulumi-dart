@@ -53,7 +53,7 @@ class WorkspaceSamlConfigurationState {
   /// [roleAssertion] The role assertion.
   /// [status] The status of the SAML configuration.
   /// [workspaceId] The workspace id.
-  WorkspaceSamlConfigurationState({
+  const WorkspaceSamlConfigurationState({
     this.adminRoleValues,
     this.allowedOrganizations,
     this.editorRoleValues,

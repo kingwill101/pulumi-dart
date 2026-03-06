@@ -10,7 +10,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjects {
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigIncludeObjects].
   /// [databases] MongoDB databases in the cluster.
-  StreamSourceConfigMongodbSourceConfigIncludeObjects({
+  const StreamSourceConfigMongodbSourceConfigIncludeObjects({
     this.databases,
   });
 

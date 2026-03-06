@@ -13,7 +13,7 @@ class GroupRoleManagementPolicyEligibleAssignmentRules {
   /// Creates a new [GroupRoleManagementPolicyEligibleAssignmentRules].
   /// [expirationRequired] Must an assignment have an expiry date. `false` allows permanent assignment.
   /// [expireAfter] The maximum length of time an assignment can be valid, as an ISO8601 duration. Permitted values: `P15D`, `P30D`, `P90D`, `P180D`, or `P365D`.
-  GroupRoleManagementPolicyEligibleAssignmentRules({
+  const GroupRoleManagementPolicyEligibleAssignmentRules({
     this.expirationRequired,
     this.expireAfter,
   });

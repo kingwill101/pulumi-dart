@@ -18,7 +18,7 @@ class FileShareProvisioningConstantsResponse {
   /// [baseThroughputMiBPerSec] Base throughput in MiB per second.
   /// [scalarIOPerSec] Scalar IO per second.
   /// [scalarThroughputMiBPerSec] Scalar throughput in MiB per second.
-  FileShareProvisioningConstantsResponse({
+  const FileShareProvisioningConstantsResponse({
     required this.baseIOPerSec,
     required this.baseThroughputMiBPerSec,
     required this.scalarIOPerSec,

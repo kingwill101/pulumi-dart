@@ -24,7 +24,7 @@ class SyntheticTaskMonitorConfApiHttp {
   /// [requestHeaders] HTTP request header.
   /// [targetUrl] The target URL.
   /// [timeout] TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-  SyntheticTaskMonitorConfApiHttp({
+  const SyntheticTaskMonitorConfApiHttp({
     this.connectTimeout,
     this.method,
     this.requestBody,

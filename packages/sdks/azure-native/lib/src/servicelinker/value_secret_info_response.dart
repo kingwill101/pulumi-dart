@@ -13,7 +13,7 @@ class ValueSecretInfoResponse {
   /// Creates a new [ValueSecretInfoResponse].
   /// [secretType] The secret type.
   /// [value] The actual value of the secret.
-  ValueSecretInfoResponse({
+  const ValueSecretInfoResponse({
     required this.secretType,
     this.value,
   });

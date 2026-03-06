@@ -25,7 +25,7 @@ class FleetOnDemandOptions {
   /// [minTargetCapacity] The minimum target capacity for On-Demand Instances in the fleet. If the minimum target capacity is not reached, the fleet launches no instances. Supported only for fleets of type `instant`.
   /// [singleAvailabilityZone] Indicates that the fleet launches all On-Demand Instances into a single Availability Zone. Supported only for fleets of type `instant`.
   /// [singleInstanceType] Indicates that the fleet uses a single instance type to launch all On-Demand Instances in the fleet. Supported only for fleets of type `instant`.
-  FleetOnDemandOptions({
+  const FleetOnDemandOptions({
     this.allocationStrategy,
     this.capacityReservationOptions,
     this.maxTotalPrice,

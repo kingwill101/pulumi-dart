@@ -10,7 +10,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventParametersResponse {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoEventParametersResponse].
   /// [parameters] Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
-  EnterpriseCrmFrontendsEventbusProtoEventParametersResponse({
+  const EnterpriseCrmFrontendsEventbusProtoEventParametersResponse({
     required this.parameters,
   });
 

@@ -17,7 +17,7 @@ class AdvancedSettings {
   /// [clients] Configurations related to All Clients.
   /// [encryptInternalTraffic] The setting to enable or disable encryption of internal Traffic.
   /// [internalCerts] Certificate rotation and private key configuration.
-  AdvancedSettings({
+  const AdvancedSettings({
     this.clients,
     this.encryptInternalTraffic,
     this.internalCerts,

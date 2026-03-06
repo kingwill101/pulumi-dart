@@ -12,7 +12,7 @@ class StorageConfiguration {
   /// Creates a new [StorageConfiguration].
   /// [fileSystemName] The filesystem name of connected storage account.
   /// [storageResourceId] The resource id of connected storage account.
-  StorageConfiguration({
+  const StorageConfiguration({
     this.fileSystemName,
     this.storageResourceId,
   });

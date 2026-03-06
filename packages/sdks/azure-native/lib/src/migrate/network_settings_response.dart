@@ -12,7 +12,7 @@ class NetworkSettingsResponse {
   /// Creates a new [NetworkSettingsResponse].
   /// [hardwareSoftwareCostPercentage] Network hardware and software cost percentage.
   /// [maintenanceCostPercentage] Network maintenance cost percentage.
-  NetworkSettingsResponse({
+  const NetworkSettingsResponse({
     required this.hardwareSoftwareCostPercentage,
     required this.maintenanceCostPercentage,
   });

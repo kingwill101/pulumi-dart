@@ -9,7 +9,7 @@ class ChangeTrackingConfigurationResponse {
 
   /// Creates a new [ChangeTrackingConfigurationResponse].
   /// [logAnalyticsWorkspaceId] Log analytics workspace resource ID used by the service.
-  ChangeTrackingConfigurationResponse({
+  const ChangeTrackingConfigurationResponse({
     required this.logAnalyticsWorkspaceId,
   });
 

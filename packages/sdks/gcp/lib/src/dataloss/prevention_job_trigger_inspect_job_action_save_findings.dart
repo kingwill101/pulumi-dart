@@ -10,7 +10,7 @@ class PreventionJobTriggerInspectJobActionSaveFindings {
 
   /// Creates a new [PreventionJobTriggerInspectJobActionSaveFindings].
   /// [outputConfig] Information on where to store output
-  PreventionJobTriggerInspectJobActionSaveFindings({
+  const PreventionJobTriggerInspectJobActionSaveFindings({
     required this.outputConfig,
   });
 

@@ -57,7 +57,7 @@ class NodeStatus {
   /// [runtimeHandlers] The available runtime handlers.
   /// [volumesAttached] List of volumes that are attached to the node.
   /// [volumesInUse] List of attachable volumes in use (mounted) by the node.
-  NodeStatus({
+  const NodeStatus({
     this.addresses,
     this.allocatable,
     this.capacity,

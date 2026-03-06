@@ -36,7 +36,7 @@ class GetRestoreJobsArgs {
   /// [targetFileSystemIds] Valid while source_type equals `NAS`. The list of destination File System IDs.
   /// [targetInstanceIds] The ID of target ECS instance.
   /// [vaultIds] The list of backup vault IDs.
-  GetRestoreJobsArgs({
+  const GetRestoreJobsArgs({
     this.outputFile,
     this.restoreIds,
     required this.restoreType,

@@ -35,7 +35,7 @@ class NodeBalancerFirewall {
   /// [status] The status of the firewall. (`enabled`, `disabled`, `deleted`)
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [updated] When this firewall was last updated.
-  NodeBalancerFirewall({
+  const NodeBalancerFirewall({
     required this.created,
     required this.id,
     required this.inboundPolicy,

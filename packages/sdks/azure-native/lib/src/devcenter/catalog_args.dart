@@ -31,7 +31,7 @@ class CatalogArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [syncType] Indicates the type of sync that is configured for the catalog.
   /// [tags] Resource tags.
-  CatalogArgs({
+  const CatalogArgs({
     this.adoGit,
     this.catalogName,
     required this.devCenterName,

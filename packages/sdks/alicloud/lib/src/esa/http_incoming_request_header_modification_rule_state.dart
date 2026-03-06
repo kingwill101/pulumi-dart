@@ -35,7 +35,7 @@ class HttpIncomingRequestHeaderModificationRuleState {
   /// [sequence] Order of rule execution. The smaller the value, the higher the priority for execution.
   /// [siteId] The site ID.
   /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-  HttpIncomingRequestHeaderModificationRuleState({
+  const HttpIncomingRequestHeaderModificationRuleState({
     this.configId,
     this.requestHeaderModifications,
     this.rule,

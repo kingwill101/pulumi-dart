@@ -46,7 +46,7 @@ class SalesforceLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [username] The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SalesforceLinkedServiceResponse({
+  const SalesforceLinkedServiceResponse({
     this.annotations,
     this.apiVersion,
     this.connectVia,

@@ -11,7 +11,7 @@ class GetTableAcl {
   /// Creates a new [GetTableAcl].
   /// [accessPolicies] Required.
   /// [id] The ID of the Storage Table.
-  GetTableAcl({
+  const GetTableAcl({
     required this.accessPolicies,
     required this.id,
   });

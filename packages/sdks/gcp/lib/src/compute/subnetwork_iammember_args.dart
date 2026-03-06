@@ -46,7 +46,7 @@ class SubnetworkIAMMemberArgs {
   /// [region] The GCP region for this subnetwork.
   /// [role] The role that should be applied. Only one
   /// [subnetwork] Used to find the parent resource to bind the IAM policy to
-  SubnetworkIAMMemberArgs({
+  const SubnetworkIAMMemberArgs({
     this.condition,
     required this.member,
     this.project,

@@ -15,7 +15,7 @@ class MetricDimensionResponse {
   /// [name] Name of the dimension.
   /// [operator] the dimension operator. Only 'Include' and 'Exclude' are supported
   /// [values] list of dimension values.
-  MetricDimensionResponse({
+  const MetricDimensionResponse({
     required this.name,
     required this.operator,
     required this.values,

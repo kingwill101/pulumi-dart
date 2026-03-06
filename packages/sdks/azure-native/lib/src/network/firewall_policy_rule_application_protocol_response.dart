@@ -12,7 +12,7 @@ class FirewallPolicyRuleApplicationProtocolResponse {
   /// Creates a new [FirewallPolicyRuleApplicationProtocolResponse].
   /// [port] Port number for the protocol, cannot be greater than 64000.
   /// [protocolType] Protocol type.
-  FirewallPolicyRuleApplicationProtocolResponse({
+  const FirewallPolicyRuleApplicationProtocolResponse({
     this.port,
     this.protocolType,
   });

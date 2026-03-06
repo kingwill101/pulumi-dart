@@ -41,7 +41,7 @@ class GetDisasterRecoveryConfigurationResult {
   /// [role] The role of the current server in the disaster recovery configuration.
   /// [status] The status of the disaster recovery configuration.
   /// [type] Resource type.
-  GetDisasterRecoveryConfigurationResult({
+  const GetDisasterRecoveryConfigurationResult({
     required this.autoFailover,
     required this.azureApiVersion,
     required this.failoverPolicy,

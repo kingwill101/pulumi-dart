@@ -24,7 +24,7 @@ class CronTrigger {
   /// [startTime] Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
   /// [timeZone] Specifies time zone in which the schedule runs.
   /// [triggerType] Expected value is 'Cron'.
-  CronTrigger({
+  const CronTrigger({
     this.endTime,
     required this.expression,
     this.startTime,

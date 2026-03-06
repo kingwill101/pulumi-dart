@@ -21,7 +21,7 @@ class GetNodeTypeFaultSimulationArgs {
   /// [nodeTypeName] The name of the node type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [simulationId] unique identifier for the fault simulation.
-  GetNodeTypeFaultSimulationArgs({
+  const GetNodeTypeFaultSimulationArgs({
     required this.clusterName,
     required this.nodeTypeName,
     required this.resourceGroupName,

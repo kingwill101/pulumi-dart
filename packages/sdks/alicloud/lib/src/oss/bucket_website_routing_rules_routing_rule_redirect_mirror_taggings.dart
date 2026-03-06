@@ -9,7 +9,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
 
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings].
   /// [taggings] Image back-to-source save label rule list See `taggings` below.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings({
     this.taggings,
   });
 

@@ -15,7 +15,7 @@ class GetProjectArgs {
   /// Creates a new [GetProjectArgs].
   /// [name] The name of this Dev Center Project.
   /// [resourceGroupName] The name of the Resource Group where the Dev Center Project exists.
-  GetProjectArgs({
+  const GetProjectArgs({
     required this.name,
     required this.resourceGroupName,
   });

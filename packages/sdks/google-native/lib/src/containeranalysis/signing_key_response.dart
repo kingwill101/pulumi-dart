@@ -18,7 +18,7 @@ class SigningKeyResponse {
   /// [keyScheme] This field contains the corresponding signature scheme. Eg: "rsassa-pss-sha256".
   /// [keyType] This field identifies the specific signing method. Eg: "rsa", "ed25519", and "ecdsa".
   /// [publicKeyValue] This field contains the actual public key.
-  SigningKeyResponse({
+  const SigningKeyResponse({
     required this.keyId,
     required this.keyScheme,
     required this.keyType,

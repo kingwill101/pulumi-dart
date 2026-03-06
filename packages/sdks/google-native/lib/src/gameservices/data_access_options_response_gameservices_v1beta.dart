@@ -8,7 +8,7 @@ class DataAccessOptionsResponseGameservicesV1beta {
 
   /// Creates a new [DataAccessOptionsResponseGameservicesV1beta].
   /// [logMode] Required.
-  DataAccessOptionsResponseGameservicesV1beta({
+  const DataAccessOptionsResponseGameservicesV1beta({
     required this.logMode,
   });
 

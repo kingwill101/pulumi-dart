@@ -18,7 +18,7 @@ class WindowsProfile {
   /// [adminUsername] AdminUsername - Specifies the name of the administrator account. &lt;br&gt;&lt;br&gt; **restriction:** Cannot end in "." &lt;br&gt;&lt;br&gt; **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". &lt;br&gt;&lt;br&gt; **Minimum-length:** 1 character &lt;br&gt;&lt;br&gt; **Max-length:** 20 characters
   /// [enableCsiProxy] EnableCSIProxy - Whether to enable CSI proxy.
   /// [licenseType] LicenseType - The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs. Possible values include: 'None', 'Windows_Server'
-  WindowsProfile({
+  const WindowsProfile({
     this.adminPassword,
     this.adminUsername,
     this.enableCsiProxy,

@@ -24,7 +24,7 @@ class ServerExternalAdministrator {
   /// [principalType] Principal Type of the sever administrator.
   /// [sid] SID (object ID) of the server administrator.
   /// [tenantId] Tenant ID of the administrator.
-  ServerExternalAdministrator({
+  const ServerExternalAdministrator({
     this.administratorType,
     this.azureADOnlyAuthentication,
     this.login,

@@ -8,7 +8,7 @@ class NodePoolAutoMode {
 
   /// Creates a new [NodePoolAutoMode].
   /// [enabled] Whether to enable auto mode. Valid values:
-  NodePoolAutoMode({
+  const NodePoolAutoMode({
     this.enabled,
   });
 

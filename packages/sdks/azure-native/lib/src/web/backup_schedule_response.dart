@@ -24,7 +24,7 @@ class BackupScheduleResponse {
   /// [lastExecutionTime] Last time when this schedule was triggered.
   /// [retentionPeriodInDays] After how many days backups should be deleted.
   /// [startTime] When the schedule should start working.
-  BackupScheduleResponse({
+  const BackupScheduleResponse({
     required this.frequencyInterval,
     required this.frequencyUnit,
     required this.keepAtLeastOneBackup,

@@ -42,7 +42,7 @@ class GetClientResult {
   /// [state] Indicates if the client is enabled or not. Default value is Enabled.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  GetClientResult({
+  const GetClientResult({
     this.attributes,
     this.authenticationName,
     required this.azureApiVersion,

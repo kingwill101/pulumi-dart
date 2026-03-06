@@ -9,7 +9,7 @@ class BastionHostPropertiesFormatNetworkAcls {
 
   /// Creates a new [BastionHostPropertiesFormatNetworkAcls].
   /// [ipRules] Sets the IP ACL rules for Developer Bastion Host.
-  BastionHostPropertiesFormatNetworkAcls({
+  const BastionHostPropertiesFormatNetworkAcls({
     this.ipRules,
   });
 

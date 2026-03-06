@@ -13,7 +13,7 @@ class ListClusterStreamingJobsResult {
   /// Creates a new [ListClusterStreamingJobsResult].
   /// [nextLink] The URL to fetch the next set of streaming jobs.
   /// [value] A list of streaming jobs.
-  ListClusterStreamingJobsResult({
+  const ListClusterStreamingJobsResult({
     required this.nextLink,
     required this.value,
   });

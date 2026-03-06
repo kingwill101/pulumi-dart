@@ -8,7 +8,7 @@ class GetBudgetCalculatedSpend {
 
   /// Creates a new [GetBudgetCalculatedSpend].
   /// [actualSpends] Required.
-  GetBudgetCalculatedSpend({
+  const GetBudgetCalculatedSpend({
     required this.actualSpends,
   });
 

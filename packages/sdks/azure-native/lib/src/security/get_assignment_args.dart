@@ -15,7 +15,7 @@ class GetAssignmentArgs {
   /// Creates a new [GetAssignmentArgs].
   /// [assignmentId] The security assignment key - unique key for the standard assignment
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetAssignmentArgs({
+  const GetAssignmentArgs({
     required this.assignmentId,
     required this.resourceGroupName,
   });

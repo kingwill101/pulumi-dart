@@ -12,7 +12,7 @@ class CommandOutputSettings {
   /// Creates a new [CommandOutputSettings].
   /// [associatedIdentity] The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
   /// [containerUrl] The URL of the storage account container that is to be used by the specified identities.
-  CommandOutputSettings({
+  const CommandOutputSettings({
     this.associatedIdentity,
     this.containerUrl,
   });

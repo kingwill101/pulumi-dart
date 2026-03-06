@@ -11,7 +11,7 @@ class BucketLifecycleConfigurationV2RuleFilterTag {
   /// Creates a new [BucketLifecycleConfigurationV2RuleFilterTag].
   /// [key] Name of the object key.
   /// [value] Value of the tag.
-  BucketLifecycleConfigurationV2RuleFilterTag({
+  const BucketLifecycleConfigurationV2RuleFilterTag({
     required this.key,
     required this.value,
   });

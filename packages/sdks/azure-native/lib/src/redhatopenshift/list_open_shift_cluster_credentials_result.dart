@@ -11,7 +11,7 @@ class ListOpenShiftClusterCredentialsResult {
   /// Creates a new [ListOpenShiftClusterCredentialsResult].
   /// [kubeadminPassword] The password for the kubeadmin user.
   /// [kubeadminUsername] The username for the kubeadmin user.
-  ListOpenShiftClusterCredentialsResult({
+  const ListOpenShiftClusterCredentialsResult({
     this.kubeadminPassword,
     this.kubeadminUsername,
   });

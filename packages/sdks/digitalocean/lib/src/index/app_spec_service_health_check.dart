@@ -26,7 +26,7 @@ class AppSpecServiceHealthCheck {
   /// [port] The health check will be performed on this port instead of component's HTTP port.
   /// [successThreshold] The number of successful health checks before considered healthy.
   /// [timeoutSeconds] The number of seconds after which the check times out.
-  AppSpecServiceHealthCheck({
+  const AppSpecServiceHealthCheck({
     this.failureThreshold,
     this.httpPath,
     this.initialDelaySeconds,

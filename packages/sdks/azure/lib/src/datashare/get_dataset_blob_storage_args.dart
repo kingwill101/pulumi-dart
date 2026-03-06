@@ -15,7 +15,7 @@ class GetDatasetBlobStorageArgs {
   /// Creates a new [GetDatasetBlobStorageArgs].
   /// [dataShareId] The ID of the Data Share in which this Data Share Blob Storage Dataset should be created.
   /// [name] The name of this Data Share Blob Storage Dataset.
-  GetDatasetBlobStorageArgs({
+  const GetDatasetBlobStorageArgs({
     required this.dataShareId,
     required this.name,
   });

@@ -37,7 +37,7 @@ class HoursOfOperationState {
   /// [tags] Tags to apply to the Hours of Operation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeZone] Specifies the time zone of the Hours of Operation.
-  HoursOfOperationState({
+  const HoursOfOperationState({
     this.arn,
     this.configs,
     this.description,

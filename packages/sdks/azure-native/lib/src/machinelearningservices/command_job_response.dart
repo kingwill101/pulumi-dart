@@ -90,7 +90,7 @@ class CommandJobResponse {
   /// [services] List of JobEndpoints.
   /// [status] Status of the job.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  CommandJobResponse({
+  const CommandJobResponse({
     this.codeId,
     required this.command,
     this.componentId,

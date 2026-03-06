@@ -17,7 +17,7 @@ class GetFeatureFleetDefaultMemberConfig {
   /// [configmanagements] Config Management spec
   /// [meshes] Service Mesh spec
   /// [policycontrollers] Policy Controller spec
-  GetFeatureFleetDefaultMemberConfig({
+  const GetFeatureFleetDefaultMemberConfig({
     required this.configmanagements,
     required this.meshes,
     required this.policycontrollers,

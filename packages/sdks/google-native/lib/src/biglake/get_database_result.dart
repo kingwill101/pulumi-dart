@@ -27,7 +27,7 @@ class GetDatabaseResult {
   /// [name] The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}
   /// [type] The database type.
   /// [updateTime] The last modification time of the database.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.createTime,
     required this.deleteTime,
     required this.expireTime,

@@ -12,7 +12,7 @@ class LocalizedMessageResponseVmmigrationV1alpha1 {
   /// Creates a new [LocalizedMessageResponseVmmigrationV1alpha1].
   /// [locale] The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
   /// [message] The localized error message in the above locale.
-  LocalizedMessageResponseVmmigrationV1alpha1({
+  const LocalizedMessageResponseVmmigrationV1alpha1({
     required this.locale,
     required this.message,
   });

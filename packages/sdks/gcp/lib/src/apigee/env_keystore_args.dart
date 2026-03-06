@@ -16,7 +16,7 @@ class EnvKeystoreArgs {
   /// Creates a new [EnvKeystoreArgs].
   /// [envId] The Apigee environment group associated with the Apigee environment,
   /// [name] The name of the newly created keystore.
-  EnvKeystoreArgs({
+  const EnvKeystoreArgs({
     required this.envId,
     this.name,
   });

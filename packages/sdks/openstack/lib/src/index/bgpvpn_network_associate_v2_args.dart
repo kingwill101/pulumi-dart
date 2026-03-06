@@ -29,7 +29,7 @@ class BgpvpnNetworkAssociateV2Args {
   /// [networkId] The ID of the network to be associated with the BGP
   /// [projectId] The ID of the project that owns the BGP VPN network
   /// [region] The region in which to obtain the V2 Networking client.
-  BgpvpnNetworkAssociateV2Args({
+  const BgpvpnNetworkAssociateV2Args({
     required this.bgpvpnId,
     required this.networkId,
     this.projectId,

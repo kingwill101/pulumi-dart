@@ -24,7 +24,7 @@ class GetDeploymentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of Azure API Center service.
   /// [workspaceName] The name of the workspace.
-  GetDeploymentArgs({
+  const GetDeploymentArgs({
     required this.apiName,
     required this.deploymentName,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class DomainDevicesRedirDevSourcePipe {
   /// Creates a new [DomainDevicesRedirDevSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesRedirDevSourcePipe({
+  const DomainDevicesRedirDevSourcePipe({
     required this.path,
     this.secLabels,
   });

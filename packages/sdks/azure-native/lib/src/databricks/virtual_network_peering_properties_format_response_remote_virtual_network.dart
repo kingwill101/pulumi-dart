@@ -9,7 +9,7 @@ class VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork {
 
   /// Creates a new [VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork].
   /// [id] The Id of the remote virtual network.
-  VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork({
+  const VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork({
     this.id,
   });
 

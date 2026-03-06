@@ -15,7 +15,7 @@ class GetDatasetIamPolicyArgs {
 
   /// Creates a new [GetDatasetIamPolicyArgs].
   /// [datasetId] The dataset ID, in the form
-  GetDatasetIamPolicyArgs({
+  const GetDatasetIamPolicyArgs({
     required this.datasetId,
   });
 

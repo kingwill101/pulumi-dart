@@ -19,7 +19,7 @@ class AttemptStatusResponse {
   /// [responseStatus] The response from the target for this attempt. If the task has not been attempted or the task is currently running then the response status is unset.
   /// [responseTime] The time that this attempt response was received. `response_time` will be truncated to the nearest microsecond.
   /// [scheduleTime] The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest microsecond.
-  AttemptStatusResponse({
+  const AttemptStatusResponse({
     required this.dispatchTime,
     required this.responseStatus,
     required this.responseTime,

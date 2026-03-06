@@ -92,7 +92,7 @@ class DataTransferConfigState {
   /// [scheduleOptions] Options customizing the data transfer schedule.
   /// [sensitiveParams] Different parameters are configured primarily using the the `params` field on this
   /// [serviceAccountName] Service account email. If this field is set, transfer config will
-  DataTransferConfigState({
+  const DataTransferConfigState({
     this.dataRefreshWindowDays,
     this.dataSourceId,
     this.destinationDatasetId,

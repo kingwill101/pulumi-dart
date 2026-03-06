@@ -14,7 +14,7 @@ class GetKubernetesClusterMaintenancePolicy {
   /// [day] The day for the service window of the Kubernetes cluster.
   /// [duration] The duration of the operation.
   /// [startTime] The start time of the upgrade operation.
-  GetKubernetesClusterMaintenancePolicy({
+  const GetKubernetesClusterMaintenancePolicy({
     required this.day,
     required this.duration,
     required this.startTime,

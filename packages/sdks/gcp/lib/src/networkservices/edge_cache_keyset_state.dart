@@ -48,7 +48,7 @@ class EdgeCacheKeysetState {
   /// [publicKeys] An ordered list of Ed25519 public keys to use for validating signed requests.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [validationSharedKeys] An ordered list of shared keys to use for validating signed requests.
-  EdgeCacheKeysetState({
+  const EdgeCacheKeysetState({
     this.description,
     this.effectiveLabels,
     this.labels,

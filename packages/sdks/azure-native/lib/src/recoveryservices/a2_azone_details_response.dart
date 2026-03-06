@@ -12,7 +12,7 @@ class A2AZoneDetailsResponse {
   /// Creates a new [A2AZoneDetailsResponse].
   /// [source] Source zone info.
   /// [target] The target zone info.
-  A2AZoneDetailsResponse({
+  const A2AZoneDetailsResponse({
     this.source,
     this.target,
   });

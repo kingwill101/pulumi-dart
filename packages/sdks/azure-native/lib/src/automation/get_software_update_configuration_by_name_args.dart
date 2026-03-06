@@ -18,7 +18,7 @@ class GetSoftwareUpdateConfigurationByNameArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [softwareUpdateConfigurationName] The name of the software update configuration to be created.
-  GetSoftwareUpdateConfigurationByNameArgs({
+  const GetSoftwareUpdateConfigurationByNameArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.softwareUpdateConfigurationName,

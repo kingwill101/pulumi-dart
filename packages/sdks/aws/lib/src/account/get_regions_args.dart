@@ -15,7 +15,7 @@ class GetRegionsArgs {
   /// Creates a new [GetRegionsArgs].
   /// [accountId] AWS account ID. Must be a member account in the same organization.
   /// [regionOptStatusContains] A list of region opt-in statuses to filter the results. Valid values are `ENABLED`, `ENABLING`, `DISABLING`, `DISABLED`, and `ENABLED_BY_DEFAULT`.
-  GetRegionsArgs({
+  const GetRegionsArgs({
     this.accountId,
     this.regionOptStatusContains,
   });

@@ -36,7 +36,7 @@ class RecordSetArgs {
   /// [rrdatas] Optional.
   /// [ttl] The time-to-live of this record set (seconds).
   /// [type] The DNS record set type.
-  RecordSetArgs({
+  const RecordSetArgs({
     required this.managedZone,
     required this.name,
     this.project,

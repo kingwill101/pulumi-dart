@@ -26,7 +26,7 @@ class AkriConnectorTemplateProperties {
   /// [diagnostics] Diagnostics settings for the Connector template.
   /// [mqttConnectionConfiguration] Mqtt connection configuration settings.
   /// [runtimeConfiguration] The runtime configuration for the Connector template.
-  AkriConnectorTemplateProperties({
+  const AkriConnectorTemplateProperties({
     this.aioMetadata,
     required this.deviceInboundEndpointTypes,
     this.diagnostics,

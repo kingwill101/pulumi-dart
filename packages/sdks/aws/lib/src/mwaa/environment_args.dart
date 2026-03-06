@@ -92,7 +92,7 @@ class EnvironmentArgs {
   /// [webserverAccessMode] Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default) and `PUBLIC_ONLY`.
   /// [weeklyMaintenanceWindowStart] Specifies the start date for the weekly maintenance window.
   /// [workerReplacementStrategy] Worker replacement strategy. Valid values: `FORCED`, `GRACEFUL`.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.airflowConfigurationOptions,
     this.airflowVersion,
     required this.dagS3Path,

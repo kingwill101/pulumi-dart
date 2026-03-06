@@ -11,7 +11,7 @@ class DataSourceElasticsearchConfig {
   /// Creates a new [DataSourceElasticsearchConfig].
   /// [endpoint] HTTP endpoint of the Elasticsearch domain.
   /// [region] AWS region of Elasticsearch domain. Defaults to current region.
-  DataSourceElasticsearchConfig({
+  const DataSourceElasticsearchConfig({
     required this.endpoint,
     this.region,
   });

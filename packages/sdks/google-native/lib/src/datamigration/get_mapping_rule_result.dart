@@ -74,7 +74,7 @@ class GetMappingRuleResult {
   /// [singlePackageChange] Optional. Rule to specify how a single package is converted.
   /// [sourceSqlChange] Optional. Rule to change the sql code for an entity, for example, function, procedure.
   /// [state] Optional. The mapping rule state
-  GetMappingRuleResult({
+  const GetMappingRuleResult({
     required this.conditionalColumnSetValue,
     required this.convertRowidColumn,
     required this.displayName,

@@ -23,7 +23,7 @@ class RegistryTaskEncodedStep {
   /// [taskContent] The (optionally base64 encoded) content of the build template.
   /// [valueContent] The (optionally base64 encoded) content of the build parameters.
   /// [values] Specifies a map of values that can be passed when running a task.
-  RegistryTaskEncodedStep({
+  const RegistryTaskEncodedStep({
     this.contextAccessToken,
     this.contextPath,
     this.secretValues,

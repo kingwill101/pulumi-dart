@@ -46,7 +46,7 @@ class GetVirtualNetworkResult {
   /// [type] Resource Type
   /// [uuid] Unique ID of the virtual network.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  GetVirtualNetworkResult({
+  const GetVirtualNetworkResult({
     required this.azureApiVersion,
     required this.extendedLocation,
     required this.id,

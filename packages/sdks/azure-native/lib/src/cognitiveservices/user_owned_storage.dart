@@ -11,7 +11,7 @@ class UserOwnedStorage {
   /// Creates a new [UserOwnedStorage].
   /// [identityClientId] Optional.
   /// [resourceId] Full resource id of a Microsoft.Storage resource.
-  UserOwnedStorage({
+  const UserOwnedStorage({
     this.identityClientId,
     this.resourceId,
   });

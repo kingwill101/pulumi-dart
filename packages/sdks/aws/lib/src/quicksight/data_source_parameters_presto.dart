@@ -14,7 +14,7 @@ class DataSourceParametersPresto {
   /// [catalog] The catalog to which to connect.
   /// [host] The host to which to connect.
   /// [port] The port to which to connect.
-  DataSourceParametersPresto({
+  const DataSourceParametersPresto({
     required this.catalog,
     required this.host,
     required this.port,

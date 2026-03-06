@@ -47,7 +47,7 @@ class GetAttestationProviderResult {
   /// [tpmAttestationAuthentication] The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
   /// [trustModel] Trust model for the attestation provider.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAttestationProviderResult({
+  const GetAttestationProviderResult({
     this.attestUri,
     required this.azureApiVersion,
     required this.id,

@@ -15,7 +15,7 @@ class GetWebApplicationFirewallPolicyArgs {
   /// Creates a new [GetWebApplicationFirewallPolicyArgs].
   /// [policyName] The name of the policy.
   /// [resourceGroupName] The name of the resource group.
-  GetWebApplicationFirewallPolicyArgs({
+  const GetWebApplicationFirewallPolicyArgs({
     required this.policyName,
     required this.resourceGroupName,
   });

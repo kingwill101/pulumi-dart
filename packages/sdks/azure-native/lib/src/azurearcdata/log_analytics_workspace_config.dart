@@ -12,7 +12,7 @@ class LogAnalyticsWorkspaceConfig {
   /// Creates a new [LogAnalyticsWorkspaceConfig].
   /// [primaryKey] Primary key of the workspace
   /// [workspaceId] Azure Log Analytics workspace ID
-  LogAnalyticsWorkspaceConfig({
+  const LogAnalyticsWorkspaceConfig({
     this.primaryKey,
     this.workspaceId,
   });

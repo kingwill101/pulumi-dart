@@ -12,7 +12,7 @@ class DefenderForServersAwsOfferingResponseMdeAutoProvisioning {
   /// Creates a new [DefenderForServersAwsOfferingResponseMdeAutoProvisioning].
   /// [configuration] configuration for Microsoft Defender for Endpoint autoprovisioning
   /// [enabled] Is Microsoft Defender for Endpoint auto provisioning enabled
-  DefenderForServersAwsOfferingResponseMdeAutoProvisioning({
+  const DefenderForServersAwsOfferingResponseMdeAutoProvisioning({
     this.configuration,
     this.enabled,
   });

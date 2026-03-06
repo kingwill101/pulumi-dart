@@ -171,7 +171,7 @@ class ManagedClusterArgs {
   /// [upgradeSettings] Settings for upgrading a cluster.
   /// [windowsProfile] The profile for Windows VMs in the Managed Cluster.
   /// [workloadAutoScalerProfile] Workload Auto-scaler profile for the managed cluster.
-  ManagedClusterArgs({
+  const ManagedClusterArgs({
     this.aadProfile,
     this.addonProfiles,
     this.agentPoolProfiles,

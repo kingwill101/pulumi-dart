@@ -22,7 +22,7 @@ class IPConfiguration {
   /// [privateIPAddress] The IP address.
   /// [privateIPAllocationMethod] The method that private IP address is allocated.
   /// [subnet] The subnet resource id.
-  IPConfiguration({
+  const IPConfiguration({
     required this.name,
     this.primary,
     this.privateIPAddress,

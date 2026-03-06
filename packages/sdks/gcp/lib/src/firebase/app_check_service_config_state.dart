@@ -22,7 +22,7 @@ class AppCheckServiceConfigState {
   /// [name] The fully-qualified resource name of the service enforcement configuration.
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] The identifier of the service to configure enforcement. Currently, the following service IDs are supported:
-  AppCheckServiceConfigState({
+  const AppCheckServiceConfigState({
     this.enforcementMode,
     this.name,
     this.project,

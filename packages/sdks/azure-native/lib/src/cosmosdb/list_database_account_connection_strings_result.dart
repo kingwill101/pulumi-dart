@@ -10,7 +10,7 @@ class ListDatabaseAccountConnectionStringsResult {
 
   /// Creates a new [ListDatabaseAccountConnectionStringsResult].
   /// [connectionStrings] An array that contains the connection strings for the Cosmos DB account.
-  ListDatabaseAccountConnectionStringsResult({
+  const ListDatabaseAccountConnectionStringsResult({
     this.connectionStrings,
   });
 

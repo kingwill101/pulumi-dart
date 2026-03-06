@@ -8,7 +8,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
-  RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig({
+  const RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig({
     this.totalEgressBandwidthTier,
   });
 

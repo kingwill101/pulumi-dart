@@ -24,7 +24,7 @@ class WebAppHybridConnectionArgs {
   /// [relayId] The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   /// [sendKeyName] The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
   /// [webAppId] The ID of the Web App for this Hybrid Connection. Changing this forces a new resource to be created.
-  WebAppHybridConnectionArgs({
+  const WebAppHybridConnectionArgs({
     required this.hostname,
     required this.port,
     required this.relayId,

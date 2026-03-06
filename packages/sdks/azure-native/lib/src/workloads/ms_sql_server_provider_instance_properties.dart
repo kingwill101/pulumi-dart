@@ -34,7 +34,7 @@ class MsSqlServerProviderInstanceProperties {
   /// [sapSid] Gets or sets the SAP System Identifier
   /// [sslCertificateUri] Gets or sets the blob URI to SSL certificate for the SQL Database.
   /// [sslPreference] Gets or sets certificate preference if secure communication is enabled.
-  MsSqlServerProviderInstanceProperties({
+  const MsSqlServerProviderInstanceProperties({
     this.dbPassword,
     this.dbPasswordUri,
     this.dbPort,

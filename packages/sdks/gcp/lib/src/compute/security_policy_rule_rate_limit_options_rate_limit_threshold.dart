@@ -11,7 +11,7 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold {
   /// Creates a new [SecurityPolicyRuleRateLimitOptionsRateLimitThreshold].
   /// [count] Number of HTTP(S) requests for calculating the threshold.
   /// [intervalSec] Interval over which the threshold is computed.
-  SecurityPolicyRuleRateLimitOptionsRateLimitThreshold({
+  const SecurityPolicyRuleRateLimitOptionsRateLimitThreshold({
     this.count,
     this.intervalSec,
   });

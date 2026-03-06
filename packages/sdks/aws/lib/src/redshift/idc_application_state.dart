@@ -45,7 +45,7 @@ class IdcApplicationState {
   /// [serviceIntegration] Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  IdcApplicationState({
+  const IdcApplicationState({
     this.applicationType,
     this.authorizedTokenIssuer,
     this.iamRoleArn,

@@ -12,7 +12,7 @@ class GetServiceGroupArgs {
 
   /// Creates a new [GetServiceGroupArgs].
   /// [serviceGroupName] ServiceGroup Name.
-  GetServiceGroupArgs({
+  const GetServiceGroupArgs({
     required this.serviceGroupName,
   });
 

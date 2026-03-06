@@ -11,7 +11,7 @@ class GetMongoInstancesInstanceMongo {
   /// [class_] Required.
   /// [description] Required.
   /// [nodeId] Required.
-  GetMongoInstancesInstanceMongo({
+  const GetMongoInstancesInstanceMongo({
     required this.class_,
     required this.description,
     required this.nodeId,

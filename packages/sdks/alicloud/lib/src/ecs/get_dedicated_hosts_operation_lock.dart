@@ -8,7 +8,7 @@ class GetDedicatedHostsOperationLock {
 
   /// Creates a new [GetDedicatedHostsOperationLock].
   /// [lockReason] The reason why the dedicated host resource is locked.
-  GetDedicatedHostsOperationLock({
+  const GetDedicatedHostsOperationLock({
     this.lockReason,
   });
 

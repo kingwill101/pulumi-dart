@@ -49,7 +49,7 @@ class VirtualHubState {
   /// [virtualRouterAutoScaleMinCapacity] Minimum instance capacity for the scaling configuration of the Virtual Hub Router. Defaults to `2`.
   /// [virtualRouterIps] The IP addresses of the Virtual Hub BGP router.
   /// [virtualWanId] The ID of a Virtual WAN within which the Virtual Hub should be created. Changing this forces a new resource to be created.
-  VirtualHubState({
+  const VirtualHubState({
     this.addressPrefix,
     this.branchToBranchTrafficEnabled,
     this.defaultRouteTableId,

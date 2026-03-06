@@ -28,7 +28,7 @@ class NetworkInterfaceTapConfigurationArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tapConfigurationName] The name of the tap configuration.
   /// [virtualNetworkTap] The reference to the Virtual Network Tap resource.
-  NetworkInterfaceTapConfigurationArgs({
+  const NetworkInterfaceTapConfigurationArgs({
     this.id,
     this.name,
     required this.networkInterfaceName,

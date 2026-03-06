@@ -29,7 +29,7 @@ class PublisherArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PublisherArgs({
+  const PublisherArgs({
     this.identity,
     this.location,
     this.properties,

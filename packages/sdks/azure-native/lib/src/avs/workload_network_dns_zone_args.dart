@@ -36,7 +36,7 @@ class WorkloadNetworkDnsZoneArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [revision] NSX revision number.
   /// [sourceIp] Source IP of the DNS Zone.
-  WorkloadNetworkDnsZoneArgs({
+  const WorkloadNetworkDnsZoneArgs({
     this.displayName,
     this.dnsServerIps,
     this.dnsServices,

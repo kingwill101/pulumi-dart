@@ -9,7 +9,7 @@ class VpcPeeringConnectionRequester {
 
   /// Creates a new [VpcPeeringConnectionRequester].
   /// [allowRemoteVpcDnsResolution] Allow a local VPC to resolve public DNS hostnames to
-  VpcPeeringConnectionRequester({
+  const VpcPeeringConnectionRequester({
     this.allowRemoteVpcDnsResolution,
   });
 

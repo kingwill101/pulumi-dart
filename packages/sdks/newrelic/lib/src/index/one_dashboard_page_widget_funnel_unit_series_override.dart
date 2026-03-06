@@ -11,7 +11,7 @@ class OneDashboardPageWidgetFunnelUnitSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetFunnelUnitSeriesOverride].
   /// [seriesName] Series name
   /// [unit] (Optional) Choose a unit to customize the unit on your Y axis and in each of your series.
-  OneDashboardPageWidgetFunnelUnitSeriesOverride({
+  const OneDashboardPageWidgetFunnelUnitSeriesOverride({
     this.seriesName,
     this.unit,
   });

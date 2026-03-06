@@ -24,7 +24,7 @@ class WafRuleRateLimit {
   /// [target] The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
   /// [threshold] The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
   /// [ttl] The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
-  WafRuleRateLimit({
+  const WafRuleRateLimit({
     this.interval,
     this.status,
     this.subKey,

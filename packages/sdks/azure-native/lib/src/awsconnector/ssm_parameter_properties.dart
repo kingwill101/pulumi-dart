@@ -31,7 +31,7 @@ class SsmParameterProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SsmParameterProperties({
+  const SsmParameterProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

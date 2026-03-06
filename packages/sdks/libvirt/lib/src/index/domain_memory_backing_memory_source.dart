@@ -8,7 +8,7 @@ class DomainMemoryBackingMemorySource {
 
   /// Creates a new [DomainMemoryBackingMemorySource].
   /// [type] Sets the type of the memory source, determining how the memory backing is fetched.
-  DomainMemoryBackingMemorySource({
+  const DomainMemoryBackingMemorySource({
     this.type,
   });
 

@@ -37,7 +37,7 @@ class CustomDeploymentSetArgs {
   /// [groupCount] Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
   /// [onUnableToRedeployFailedInstance] After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
   /// [strategy] Deployment strategy. Value range:
-  CustomDeploymentSetArgs({
+  const CustomDeploymentSetArgs({
     this.customDeploymentSetName,
     this.description,
     this.groupCount,

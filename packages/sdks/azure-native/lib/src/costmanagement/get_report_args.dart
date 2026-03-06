@@ -12,7 +12,7 @@ class GetReportArgs {
 
   /// Creates a new [GetReportArgs].
   /// [reportName] Report Name.
-  GetReportArgs({
+  const GetReportArgs({
     required this.reportName,
   });
 

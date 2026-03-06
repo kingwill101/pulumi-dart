@@ -23,7 +23,7 @@ class MigrationWarningResponse {
   /// [helpLinks] URL(s) pointing to additional information on handling the current warning.
   /// [warningMessage] The localized warning message.
   /// [warningTime] The time the warning occurred.
-  MigrationWarningResponse({
+  const MigrationWarningResponse({
     required this.actionItem,
     required this.code,
     required this.helpLinks,

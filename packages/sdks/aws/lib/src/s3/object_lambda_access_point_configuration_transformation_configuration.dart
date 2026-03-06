@@ -12,7 +12,7 @@ class ObjectLambdaAccessPointConfigurationTransformationConfiguration {
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfiguration].
   /// [actions] The actions of an Object Lambda Access Point configuration. Valid values: `GetObject`.
   /// [contentTransformation] The content transformation of an Object Lambda Access Point configuration. See Content Transformation below for more details.
-  ObjectLambdaAccessPointConfigurationTransformationConfiguration({
+  const ObjectLambdaAccessPointConfigurationTransformationConfiguration({
     required this.actions,
     required this.contentTransformation,
   });

@@ -12,7 +12,7 @@ class GroupState {
   /// Creates a new [GroupState].
   /// [groupId] GroupId.
   /// [groupName] GroupName.
-  GroupState({
+  const GroupState({
     this.groupId,
     this.groupName,
   });

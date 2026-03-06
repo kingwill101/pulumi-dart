@@ -28,7 +28,7 @@ class ElasticSnapshotPolicyPropertiesResponse {
   /// [policyStatus] Configures if the snapshot policy is enabled on the volumes connected to the policy.
   /// [provisioningState] Azure lifecycle management.
   /// [weeklySchedule] Schedule for weekly snapshots
-  ElasticSnapshotPolicyPropertiesResponse({
+  const ElasticSnapshotPolicyPropertiesResponse({
     this.dailySchedule,
     this.hourlySchedule,
     this.monthlySchedule,

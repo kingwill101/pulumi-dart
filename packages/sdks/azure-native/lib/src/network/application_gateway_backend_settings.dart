@@ -34,7 +34,7 @@ class ApplicationGatewayBackendSettings {
   /// [protocol] The protocol used to communicate with the backend.
   /// [timeout] Connection timeout in seconds. Application Gateway will fail the request if response is not received within ConnectionTimeout. Acceptable values are from 1 second to 86400 seconds.
   /// [trustedRootCertificates] Array of references to application gateway trusted root certificates.
-  ApplicationGatewayBackendSettings({
+  const ApplicationGatewayBackendSettings({
     this.hostName,
     this.id,
     this.name,

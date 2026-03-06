@@ -15,7 +15,7 @@ class GetGalleryImageArgs {
   /// Creates a new [GetGalleryImageArgs].
   /// [galleryImageName] Name of the gallery image
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryImageArgs({
+  const GetGalleryImageArgs({
     required this.galleryImageName,
     required this.resourceGroupName,
   });

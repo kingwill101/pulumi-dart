@@ -8,7 +8,7 @@ class GcpIntegrationsAppEngine {
 
   /// Creates a new [GcpIntegrationsAppEngine].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsAppEngine({
+  const GcpIntegrationsAppEngine({
     this.metricsPollingInterval,
   });
 

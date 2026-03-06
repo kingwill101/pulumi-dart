@@ -9,7 +9,7 @@ class DeadLetterConfig {
 
   /// Creates a new [DeadLetterConfig].
   /// [targetArn] The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
-  DeadLetterConfig({
+  const DeadLetterConfig({
     this.targetArn,
   });
 

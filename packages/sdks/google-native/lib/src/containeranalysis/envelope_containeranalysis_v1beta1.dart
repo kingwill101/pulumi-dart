@@ -13,7 +13,7 @@ class EnvelopeContaineranalysisV1beta1 {
   /// [payload] Optional.
   /// [payloadType] Optional.
   /// [signatures] Optional.
-  EnvelopeContaineranalysisV1beta1({
+  const EnvelopeContaineranalysisV1beta1({
     this.payload,
     this.payloadType,
     this.signatures,

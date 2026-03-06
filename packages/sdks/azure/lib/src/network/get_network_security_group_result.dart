@@ -24,7 +24,7 @@ class GetNetworkSecurityGroupResult {
   /// [resourceGroupName] Required.
   /// [securityRules] One or more `security_rule` blocks as defined below.
   /// [tags] A mapping of tags assigned to the resource.
-  GetNetworkSecurityGroupResult({
+  const GetNetworkSecurityGroupResult({
     required this.id,
     required this.location,
     required this.name,

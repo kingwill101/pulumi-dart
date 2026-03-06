@@ -8,7 +8,7 @@ class TaskSchedule {
 
   /// Creates a new [TaskSchedule].
   /// [scheduleExpression] Specifies the schedule you want your task to use for repeated executions. For more information, see [Schedule Expressions for Rules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html).
-  TaskSchedule({
+  const TaskSchedule({
     required this.scheduleExpression,
   });
 

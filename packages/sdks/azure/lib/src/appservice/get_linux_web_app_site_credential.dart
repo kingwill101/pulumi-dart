@@ -11,7 +11,7 @@ class GetLinuxWebAppSiteCredential {
   /// Creates a new [GetLinuxWebAppSiteCredential].
   /// [name] The name of this Linux Web App.
   /// [password] The Site Credentials Password used for publishing.
-  GetLinuxWebAppSiteCredential({
+  const GetLinuxWebAppSiteCredential({
     required this.name,
     required this.password,
   });

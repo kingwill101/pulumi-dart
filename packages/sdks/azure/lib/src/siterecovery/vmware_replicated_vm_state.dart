@@ -98,7 +98,7 @@ class VmwareReplicatedVmState {
   /// [targetVmSize] Size of the VM that should be created when a failover is done, such as `Standard_F2`. If it's not specified, it will automatically be set by detecting the source VM size.
   /// [targetZone] Specifies the Availability Zone where the Failover VM should exist.
   /// [testNetworkId] The ID of network to use when a test failover is done.
-  VmwareReplicatedVmState({
+  const VmwareReplicatedVmState({
     this.applianceName,
     this.defaultLogStorageAccountId,
     this.defaultRecoveryDiskType,

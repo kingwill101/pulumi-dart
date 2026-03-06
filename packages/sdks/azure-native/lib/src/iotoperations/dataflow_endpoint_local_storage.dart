@@ -9,7 +9,7 @@ class DataflowEndpointLocalStorage {
 
   /// Creates a new [DataflowEndpointLocalStorage].
   /// [persistentVolumeClaimRef] Persistent volume claim name.
-  DataflowEndpointLocalStorage({
+  const DataflowEndpointLocalStorage({
     required this.persistentVolumeClaimRef,
   });
 

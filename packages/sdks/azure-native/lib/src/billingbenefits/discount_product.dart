@@ -33,7 +33,7 @@ class DiscountProduct {
   /// [priceGuaranteeProperties] Set only in price guarantee scenario.
   /// [productFamilyName] Product family for which the discount is given. Validation: Optional
   /// [productId] Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
-  DiscountProduct({
+  const DiscountProduct({
     required this.applyDiscountOn,
     this.conditions,
     this.discountCombinationRule,

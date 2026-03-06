@@ -11,7 +11,7 @@ class RevisionAssetsAssetImportAssetsFromS3AssetSource {
   /// Creates a new [RevisionAssetsAssetImportAssetsFromS3AssetSource].
   /// [bucket] The name of the S3 bucket.
   /// [key] The key of the object in the S3 bucket.
-  RevisionAssetsAssetImportAssetsFromS3AssetSource({
+  const RevisionAssetsAssetImportAssetsFromS3AssetSource({
     required this.bucket,
     required this.key,
   });

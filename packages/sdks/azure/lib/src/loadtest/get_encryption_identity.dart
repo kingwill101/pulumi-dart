@@ -11,7 +11,7 @@ class GetEncryptionIdentity {
   /// Creates a new [GetEncryptionIdentity].
   /// [identityId] The User Assigned Identity ID that is assigned to this Load Test Encryption.
   /// [type] Type of Managed Service Identity that is assigned to this Load Test Encryption.
-  GetEncryptionIdentity({
+  const GetEncryptionIdentity({
     required this.identityId,
     required this.type,
   });

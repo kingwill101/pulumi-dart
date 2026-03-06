@@ -20,7 +20,7 @@ class GetWorkspacePrivateEndpointConnectionConnection {
   /// [name] The name of the Databricks Workspace.
   /// [status] The status of a private endpoint connection. Possible values are `Pending`, `Approved`, `Rejected` or `Disconnected`.
   /// [workspacePrivateEndpointId] The Databricks Workspace resource ID for the private link endpoint.
-  GetWorkspacePrivateEndpointConnectionConnection({
+  const GetWorkspacePrivateEndpointConnectionConnection({
     required this.actionRequired,
     required this.description,
     required this.name,

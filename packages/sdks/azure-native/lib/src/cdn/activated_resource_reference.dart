@@ -9,7 +9,7 @@ class ActivatedResourceReference {
 
   /// Creates a new [ActivatedResourceReference].
   /// [id] Resource ID.
-  ActivatedResourceReference({
+  const ActivatedResourceReference({
     this.id,
   });
 

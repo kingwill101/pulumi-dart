@@ -22,7 +22,7 @@ class GetNetworkArgs {
   /// [name] The name of the network.
   /// [networkProfile] A full or partial URL of the network profile to apply to this network.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetNetworkArgs({
+  const GetNetworkArgs({
     required this.name,
     this.networkProfile,
     this.project,

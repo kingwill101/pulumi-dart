@@ -24,7 +24,7 @@ class ManagedHardwareSecurityModuleRoleAssignmentState {
   /// [resourceId] (Deprecated) The resource id of created assignment resource.
   /// [roleDefinitionId] The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.
   /// [scope] Specifies the scope to create the role assignment. Changing this forces a new Managed Hardware Security Module to be created.
-  ManagedHardwareSecurityModuleRoleAssignmentState({
+  const ManagedHardwareSecurityModuleRoleAssignmentState({
     this.managedHsmId,
     this.name,
     this.principalId,

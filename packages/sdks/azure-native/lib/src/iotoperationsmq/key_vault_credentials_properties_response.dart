@@ -9,7 +9,7 @@ class KeyVaultCredentialsPropertiesResponse {
 
   /// Creates a new [KeyVaultCredentialsPropertiesResponse].
   /// [servicePrincipalLocalSecretName] KeyVault service principal local secret name.
-  KeyVaultCredentialsPropertiesResponse({
+  const KeyVaultCredentialsPropertiesResponse({
     required this.servicePrincipalLocalSecretName,
   });
 

@@ -9,7 +9,7 @@ class CxPageEntryFulfillmentConditionalCase {
 
   /// Creates a new [CxPageEntryFulfillmentConditionalCase].
   /// [cases] A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
-  CxPageEntryFulfillmentConditionalCase({
+  const CxPageEntryFulfillmentConditionalCase({
     this.cases,
   });
 

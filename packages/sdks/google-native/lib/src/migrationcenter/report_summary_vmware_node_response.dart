@@ -9,7 +9,7 @@ class ReportSummaryVMWareNodeResponse {
 
   /// Creates a new [ReportSummaryVMWareNodeResponse].
   /// [code] Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
-  ReportSummaryVMWareNodeResponse({
+  const ReportSummaryVMWareNodeResponse({
     required this.code,
   });
 

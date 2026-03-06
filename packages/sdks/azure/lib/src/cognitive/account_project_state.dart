@@ -34,7 +34,7 @@ class AccountProjectState {
   /// [location] The Azure Region where the Cognitive Account Project should exist. Changing this forces a new resource to be created.
   /// [name] The name of the Cognitive Account Project. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountProjectState({
+  const AccountProjectState({
     this.cognitiveAccountId,
     this.default_,
     this.description,

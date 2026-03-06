@@ -19,7 +19,7 @@ class BareMetalAdminClusterStorage {
   /// Creates a new [BareMetalAdminClusterStorage].
   /// [lvpNodeMountsConfig] Specifies the config for local PersistentVolumes backed
   /// [lvpShareConfig] Specifies the config for local PersistentVolumes backed by
-  BareMetalAdminClusterStorage({
+  const BareMetalAdminClusterStorage({
     required this.lvpNodeMountsConfig,
     required this.lvpShareConfig,
   });

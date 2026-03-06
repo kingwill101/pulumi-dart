@@ -25,7 +25,7 @@ class GetApmResult {
   /// [properties] Properties of an APM
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetApmResult({
+  const GetApmResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -36,7 +36,7 @@ class LinkedServiceSynapseState {
   /// [keyVaultPassword] A `key_vault_password` block as defined below. Use this argument to store Synapse password in an existing Key Vault. It needs an existing Key Vault Data Factory Linked Service.
   /// [name] Specifies the name of the Data Factory Linked Service Synapse. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service Synapse.
-  LinkedServiceSynapseState({
+  const LinkedServiceSynapseState({
     this.additionalProperties,
     this.annotations,
     this.connectionString,

@@ -18,7 +18,7 @@ class GetImportCollectorArgs {
   /// [importCollectorName] Unique name of a Import collector within a project.
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  GetImportCollectorArgs({
+  const GetImportCollectorArgs({
     required this.importCollectorName,
     required this.projectName,
     required this.resourceGroupName,

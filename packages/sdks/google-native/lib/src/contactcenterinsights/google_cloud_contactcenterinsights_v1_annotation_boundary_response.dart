@@ -12,7 +12,7 @@ class GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse].
   /// [transcriptIndex] The index in the sequence of transcribed pieces of the conversation where the boundary is located. This index starts at zero.
   /// [wordIndex] The word index of this boundary with respect to the first word in the transcript piece. This index starts at zero.
-  GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse({
+  const GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse({
     required this.transcriptIndex,
     required this.wordIndex,
   });

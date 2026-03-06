@@ -21,7 +21,7 @@ class PolicyCustomRuleMatchCondition {
   /// [negationCondition] Describes if this is negate condition or not
   /// [operator] Describes operator to be matched. Possible values are `Any`, `IPMatch`, `GeoMatch`, `Equal`, `Contains`, `LessThan`, `GreaterThan`, `LessThanOrEqual`, `GreaterThanOrEqual`, `BeginsWith`, `EndsWith` and `Regex`.
   /// [transforms] A list of transformations to do before the match is attempted. Possible values are `HtmlEntityDecode`, `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `UrlDecode` and `UrlEncode`.
-  PolicyCustomRuleMatchCondition({
+  const PolicyCustomRuleMatchCondition({
     this.matchValues,
     required this.matchVariables,
     this.negationCondition,

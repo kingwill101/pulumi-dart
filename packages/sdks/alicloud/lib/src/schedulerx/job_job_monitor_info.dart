@@ -13,7 +13,7 @@ class JobJobMonitorInfo {
   /// Creates a new [JobJobMonitorInfo].
   /// [contactInfos] Contact information. See `contact_info` below.
   /// [monitorConfig] Alarm switch and threshold configuration. See `monitor_config` below.
-  JobJobMonitorInfo({
+  const JobJobMonitorInfo({
     this.contactInfos,
     this.monitorConfig,
   });

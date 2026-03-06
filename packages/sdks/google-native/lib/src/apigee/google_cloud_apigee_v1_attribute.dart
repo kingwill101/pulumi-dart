@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1Attribute {
   /// Creates a new [GoogleCloudApigeeV1Attribute].
   /// [name] API key of the attribute.
   /// [value] Value of the attribute.
-  GoogleCloudApigeeV1Attribute({
+  const GoogleCloudApigeeV1Attribute({
     this.name,
     this.value,
   });

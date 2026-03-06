@@ -15,7 +15,7 @@ class SessionStateHistoryResponse {
   /// [state] The state of the session at this point in the session history.
   /// [stateMessage] Details about the state at this point in the session history.
   /// [stateStartTime] The time when the session entered the historical state.
-  SessionStateHistoryResponse({
+  const SessionStateHistoryResponse({
     required this.state,
     required this.stateMessage,
     required this.stateStartTime,

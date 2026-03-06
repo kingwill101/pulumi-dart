@@ -20,7 +20,7 @@ class TriggerPredicateCondition {
   /// [jobName] The name of the job to watch. If this is specified, `state` must also be specified. Conflicts with `crawler_name`.
   /// [logicalOperator] A logical operator. Defaults to `EQUALS`.
   /// [state] The condition job state. Currently, the values supported are `SUCCEEDED`, `STOPPED`, `TIMEOUT` and `FAILED`. If this is specified, `job_name` must also be specified. Conflicts with `crawler_state`.
-  TriggerPredicateCondition({
+  const TriggerPredicateCondition({
     this.crawlState,
     this.crawlerName,
     this.jobName,

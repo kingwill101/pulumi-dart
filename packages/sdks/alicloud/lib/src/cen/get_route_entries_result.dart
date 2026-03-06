@@ -24,7 +24,7 @@ class GetRouteEntriesResult {
   /// [instanceId] ID of the CEN child instance.
   /// [outputFile] Optional.
   /// [routeTableId] ID of the route table.
-  GetRouteEntriesResult({
+  const GetRouteEntriesResult({
     this.cidrBlock,
     required this.entries,
     required this.id,

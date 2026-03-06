@@ -12,7 +12,7 @@ class FailoverGroupReadWriteEndpointResponse {
   /// Creates a new [FailoverGroupReadWriteEndpointResponse].
   /// [failoverPolicy] Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
   /// [failoverWithDataLossGracePeriodMinutes] Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
-  FailoverGroupReadWriteEndpointResponse({
+  const FailoverGroupReadWriteEndpointResponse({
     required this.failoverPolicy,
     this.failoverWithDataLossGracePeriodMinutes,
   });

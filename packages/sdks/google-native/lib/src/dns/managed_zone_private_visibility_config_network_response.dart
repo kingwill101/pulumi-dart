@@ -10,7 +10,7 @@ class ManagedZonePrivateVisibilityConfigNetworkResponse {
   /// Creates a new [ManagedZonePrivateVisibilityConfigNetworkResponse].
   /// [kind] Required.
   /// [networkUrl] The fully qualified URL of the VPC network to bind to. Format this URL like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  ManagedZonePrivateVisibilityConfigNetworkResponse({
+  const ManagedZonePrivateVisibilityConfigNetworkResponse({
     required this.kind,
     required this.networkUrl,
   });

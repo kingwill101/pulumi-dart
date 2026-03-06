@@ -19,7 +19,7 @@ class DppIdentityDetailsResponse {
   /// [tenantId] A Globally Unique Identifier (GUID) that represents the Azure AD tenant where the resource is now a member.
   /// [type] The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
   /// [userAssignedIdentities] Gets or sets the user assigned identities.
-  DppIdentityDetailsResponse({
+  const DppIdentityDetailsResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

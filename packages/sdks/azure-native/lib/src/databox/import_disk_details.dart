@@ -15,7 +15,7 @@ class ImportDiskDetails {
   /// [bitLockerKey] BitLocker key used to encrypt the disk.
   /// [manifestFile] The relative path of the manifest file on the disk.
   /// [manifestHash] The Base16-encoded MD5 hash of the manifest file on the disk.
-  ImportDiskDetails({
+  const ImportDiskDetails({
     required this.bitLockerKey,
     required this.manifestFile,
     required this.manifestHash,

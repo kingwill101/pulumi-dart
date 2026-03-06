@@ -50,7 +50,7 @@ class AutomaticScalingResponse {
   /// [networkUtilization] Target scaling by network usage.
   /// [requestUtilization] Target scaling by request utilization.
   /// [standardSchedulerSettings] Scheduler settings for standard environment.
-  AutomaticScalingResponse({
+  const AutomaticScalingResponse({
     required this.coolDownPeriod,
     required this.cpuUtilization,
     required this.diskUtilization,

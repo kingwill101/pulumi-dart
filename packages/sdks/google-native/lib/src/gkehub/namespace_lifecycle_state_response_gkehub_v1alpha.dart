@@ -9,7 +9,7 @@ class NamespaceLifecycleStateResponseGkehubV1alpha {
 
   /// Creates a new [NamespaceLifecycleStateResponseGkehubV1alpha].
   /// [code] The current state of the Namespace resource.
-  NamespaceLifecycleStateResponseGkehubV1alpha({
+  const NamespaceLifecycleStateResponseGkehubV1alpha({
     required this.code,
   });
 

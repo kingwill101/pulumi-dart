@@ -25,7 +25,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow {
   /// [endTime] End time (exclusive). You may use 24:00 for the end of the day.
   /// [startDate] Start date.
   /// [startTime] Start time (inclusive). Use 00:00 for the beginning of the day.
-  DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow({
+  const DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow({
     required this.endDate,
     required this.endTime,
     required this.startDate,

@@ -37,7 +37,7 @@ class DirectConnectionResponse {
   /// [provisionedBandwidthInMbps] The bandwidth that is actually provisioned.
   /// [sessionAddressProvider] The field indicating if Microsoft provides session ip addresses.
   /// [useForPeeringService] The flag that indicates whether or not the connection is used for peering service.
-  DirectConnectionResponse({
+  const DirectConnectionResponse({
     this.bandwidthInMbps,
     this.bgpSession,
     this.connectionIdentifier,

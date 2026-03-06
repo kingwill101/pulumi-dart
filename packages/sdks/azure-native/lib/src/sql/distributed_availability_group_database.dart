@@ -9,7 +9,7 @@ class DistributedAvailabilityGroupDatabase {
 
   /// Creates a new [DistributedAvailabilityGroupDatabase].
   /// [databaseName] The name of the database in link
-  DistributedAvailabilityGroupDatabase({
+  const DistributedAvailabilityGroupDatabase({
     this.databaseName,
   });
 

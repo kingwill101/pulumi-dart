@@ -25,7 +25,7 @@ class GetEntityTypeResult {
   /// [entities] Optional. The collection of entity entries associated with the entity type.
   /// [kind] Indicates the kind of entity type.
   /// [name] The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
-  GetEntityTypeResult({
+  const GetEntityTypeResult({
     required this.autoExpansionMode,
     required this.displayName,
     required this.enableFuzzyExtraction,

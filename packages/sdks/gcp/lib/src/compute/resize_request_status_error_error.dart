@@ -23,7 +23,7 @@ class ResizeRequestStatusErrorError {
   /// [errorDetails] (Output)
   /// [location] (Output)
   /// [message] (Output)
-  ResizeRequestStatusErrorError({
+  const ResizeRequestStatusErrorError({
     this.code,
     this.errorDetails,
     this.location,

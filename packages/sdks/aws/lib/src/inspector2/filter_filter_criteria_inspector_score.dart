@@ -11,7 +11,7 @@ class FilterFilterCriteriaInspectorScore {
   /// Creates a new [FilterFilterCriteriaInspectorScore].
   /// [lowerInclusive] (Optional) Lower bound of the range, inclusive.
   /// [upperInclusive] (Optional) Upper bound of the range, inclusive.
-  FilterFilterCriteriaInspectorScore({
+  const FilterFilterCriteriaInspectorScore({
     required this.lowerInclusive,
     required this.upperInclusive,
   });

@@ -33,7 +33,7 @@ class GetNetworkManagerConnectivityConfigurationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [networkManagerId] Required.
-  GetNetworkManagerConnectivityConfigurationResult({
+  const GetNetworkManagerConnectivityConfigurationResult({
     required this.appliesToGroups,
     required this.connectivityTopology,
     required this.deleteExistingPeeringEnabled,

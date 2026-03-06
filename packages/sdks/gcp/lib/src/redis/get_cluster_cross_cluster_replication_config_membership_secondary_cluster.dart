@@ -11,7 +11,7 @@ class GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster {
   /// Creates a new [GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster].
   /// [cluster] The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
   /// [uid] The unique id of the secondary cluster.
-  GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster({
+  const GetClusterCrossClusterReplicationConfigMembershipSecondaryCluster({
     required this.cluster,
     required this.uid,
   });

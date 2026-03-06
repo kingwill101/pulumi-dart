@@ -13,7 +13,7 @@ class GetHubArgs {
   /// Creates a new [GetHubArgs].
   /// [hubId] Required.
   /// [project] Optional.
-  GetHubArgs({
+  const GetHubArgs({
     required this.hubId,
     this.project,
   });

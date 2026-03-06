@@ -49,7 +49,7 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettings {
   /// [teletextDestinationSettings] Teletext Destination Settings.
   /// [ttmlDestinationSettings] TTML Destination Settings. See TTML Destination Settings for more details.
   /// [webvttDestinationSettings] WebVTT Destination Settings. See WebVTT Destination Settings for more details.
-  ChannelEncoderSettingsCaptionDescriptionDestinationSettings({
+  const ChannelEncoderSettingsCaptionDescriptionDestinationSettings({
     this.aribDestinationSettings,
     this.burnInDestinationSettings,
     this.dvbSubDestinationSettings,

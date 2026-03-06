@@ -31,7 +31,7 @@ class GetPrivateConnectionResult {
   /// [state] The state of the Private Connection.
   /// [updateTime] The update time of the resource.
   /// [vpcPeeringConfig] VPC Peering Config.
-  GetPrivateConnectionResult({
+  const GetPrivateConnectionResult({
     required this.createTime,
     required this.displayName,
     required this.error,

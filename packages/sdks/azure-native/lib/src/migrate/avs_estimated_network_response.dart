@@ -12,7 +12,7 @@ class AvsEstimatedNetworkResponse {
   /// Creates a new [AvsEstimatedNetworkResponse].
   /// [monthlyPrice] Monthly cost for network type.
   /// [networkType] Recommended Network Sku.
-  AvsEstimatedNetworkResponse({
+  const AvsEstimatedNetworkResponse({
     this.monthlyPrice,
     this.networkType,
   });

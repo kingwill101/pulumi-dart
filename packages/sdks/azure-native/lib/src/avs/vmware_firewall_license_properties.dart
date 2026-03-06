@@ -29,7 +29,7 @@ class VmwareFirewallLicenseProperties {
   /// [kind] The kind of license.
   /// [labels] Additional labels passed through for license reporting.
   /// [licenseKey] License key
-  VmwareFirewallLicenseProperties({
+  const VmwareFirewallLicenseProperties({
     this.broadcomContractNumber,
     this.broadcomSiteId,
     required this.cores,

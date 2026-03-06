@@ -39,7 +39,7 @@ class GetRegionalSecretVersionResult {
   /// [secret] Required.
   /// [secretData] The secret data. No larger than 64KiB.
   /// [version] Required.
-  GetRegionalSecretVersionResult({
+  const GetRegionalSecretVersionResult({
     required this.createTime,
     required this.customerManagedEncryptions,
     required this.destroyTime,

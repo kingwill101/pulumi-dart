@@ -15,7 +15,7 @@ class GetArgs {
   /// Creates a new [GetArgs].
   /// [name] The name of the Load Test Service.
   /// [resourceGroupName] The name of the Resource Group in which the Load Test Service exists.
-  GetArgs({
+  const GetArgs({
     required this.name,
     required this.resourceGroupName,
   });

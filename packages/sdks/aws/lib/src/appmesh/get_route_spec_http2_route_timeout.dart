@@ -11,7 +11,7 @@ class GetRouteSpecHttp2RouteTimeout {
   /// Creates a new [GetRouteSpecHttp2RouteTimeout].
   /// [idles] Required.
   /// [perRequests] Required.
-  GetRouteSpecHttp2RouteTimeout({
+  const GetRouteSpecHttp2RouteTimeout({
     required this.idles,
     required this.perRequests,
   });

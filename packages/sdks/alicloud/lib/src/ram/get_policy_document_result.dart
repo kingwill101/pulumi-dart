@@ -19,7 +19,7 @@ class GetPolicyDocumentResult {
   /// [outputFile] Optional.
   /// [statements] Optional.
   /// [version] Optional.
-  GetPolicyDocumentResult({
+  const GetPolicyDocumentResult({
     required this.document,
     required this.id,
     this.outputFile,

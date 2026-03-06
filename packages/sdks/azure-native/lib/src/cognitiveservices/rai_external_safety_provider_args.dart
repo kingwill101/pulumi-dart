@@ -19,7 +19,7 @@ class RaiExternalSafetyProviderArgs {
   /// [properties] Properties of Cognitive Services Rai External Safety provider.
   /// [safetyProviderName] The name of the Rai External Safety Provider associated with the Cognitive Services Account
   /// [tags] Resource tags.
-  RaiExternalSafetyProviderArgs({
+  const RaiExternalSafetyProviderArgs({
     this.properties,
     this.safetyProviderName,
     this.tags,

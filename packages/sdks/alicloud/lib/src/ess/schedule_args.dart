@@ -35,7 +35,7 @@ class ScheduleArgs {
   /// [scheduledAction] Optional.
   /// [scheduledTaskName] Optional.
   /// [taskEnabled] Optional.
-  ScheduleArgs({
+  const ScheduleArgs({
     this.description,
     this.desiredCapacity,
     this.launchExpirationTime,

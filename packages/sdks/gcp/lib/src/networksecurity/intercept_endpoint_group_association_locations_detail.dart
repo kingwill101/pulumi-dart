@@ -16,7 +16,7 @@ class InterceptEndpointGroupAssociationLocationsDetail {
   /// Creates a new [InterceptEndpointGroupAssociationLocationsDetail].
   /// [location] The cloud location of the association, currently restricted to `global`.
   /// [state] (Output)
-  InterceptEndpointGroupAssociationLocationsDetail({
+  const InterceptEndpointGroupAssociationLocationsDetail({
     this.location,
     this.state,
   });

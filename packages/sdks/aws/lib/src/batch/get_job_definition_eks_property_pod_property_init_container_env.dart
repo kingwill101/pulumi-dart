@@ -11,7 +11,7 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainerEnv {
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyInitContainerEnv].
   /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   /// [value] The quantity of the specified resource to reserve for the container.
-  GetJobDefinitionEksPropertyPodPropertyInitContainerEnv({
+  const GetJobDefinitionEksPropertyPodPropertyInitContainerEnv({
     required this.name,
     required this.value,
   });

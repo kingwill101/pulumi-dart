@@ -10,7 +10,7 @@ class QueryContent {
 
   /// Creates a new [QueryContent].
   /// [iamPolicyAnalysisQuery] An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
-  QueryContent({
+  const QueryContent({
     this.iamPolicyAnalysisQuery,
   });
 

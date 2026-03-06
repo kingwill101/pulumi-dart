@@ -18,7 +18,7 @@ class GetSharedImageArgs {
   /// [galleryName] The name of the Shared Image Gallery in which the Shared Image exists.
   /// [name] The name of the Shared Image.
   /// [resourceGroupName] The name of the Resource Group in which the Shared Image Gallery exists.
-  GetSharedImageArgs({
+  const GetSharedImageArgs({
     required this.galleryName,
     required this.name,
     required this.resourceGroupName,

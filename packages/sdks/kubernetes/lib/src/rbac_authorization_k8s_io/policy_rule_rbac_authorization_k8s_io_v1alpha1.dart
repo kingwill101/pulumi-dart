@@ -21,7 +21,7 @@ class PolicyRuleRbacAuthorizationK8sIoV1alpha1 {
   /// [resourceNames] ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
   /// [resources] Resources is a list of resources this rule applies to.  ResourceAll represents all resources.
   /// [verbs] Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds.
-  PolicyRuleRbacAuthorizationK8sIoV1alpha1({
+  const PolicyRuleRbacAuthorizationK8sIoV1alpha1({
     this.apiGroups,
     this.nonResourceURLs,
     this.resourceNames,

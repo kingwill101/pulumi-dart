@@ -22,7 +22,7 @@ class ExecutionWorkflowexecutionsV1betaArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [workflowId] Required.
-  ExecutionWorkflowexecutionsV1betaArgs({
+  const ExecutionWorkflowexecutionsV1betaArgs({
     this.argument,
     this.callLogLevel,
     this.location,

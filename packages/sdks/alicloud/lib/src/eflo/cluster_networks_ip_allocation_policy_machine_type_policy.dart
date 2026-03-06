@@ -11,7 +11,7 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicy {
   /// Creates a new [ClusterNetworksIpAllocationPolicyMachineTypePolicy].
   /// [bonds] Bond information See `bonds` below.
   /// [machineType] Optional.
-  ClusterNetworksIpAllocationPolicyMachineTypePolicy({
+  const ClusterNetworksIpAllocationPolicyMachineTypePolicy({
     this.bonds,
     this.machineType,
   });

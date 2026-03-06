@@ -11,7 +11,7 @@ class PortAllowedAddressPair {
   /// Creates a new [PortAllowedAddressPair].
   /// [ipAddress] The additional IP address.
   /// [macAddress] The additional MAC address.
-  PortAllowedAddressPair({
+  const PortAllowedAddressPair({
     required this.ipAddress,
     this.macAddress,
   });

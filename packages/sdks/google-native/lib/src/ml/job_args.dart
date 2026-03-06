@@ -36,7 +36,7 @@ class JobArgs {
   /// [project] Optional.
   /// [trainingInput] Input parameters to create a training job.
   /// [trainingOutput] The current training job result.
-  JobArgs({
+  const JobArgs({
     this.etag,
     required this.jobId,
     this.labels,

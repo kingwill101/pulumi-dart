@@ -22,7 +22,7 @@ class OSPolicyResourceResponse {
   /// [file] File resource
   /// [pkg] Package resource
   /// [repository] Package repository resource
-  OSPolicyResourceResponse({
+  const OSPolicyResourceResponse({
     required this.exec,
     required this.file,
     required this.pkg,

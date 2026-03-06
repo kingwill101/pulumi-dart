@@ -12,7 +12,7 @@ class PasswordStatusResponse {
   /// Creates a new [PasswordStatusResponse].
   /// [locked] If true, user does not have login privileges.
   /// [passwordExpirationTime] The expiration time of the current password.
-  PasswordStatusResponse({
+  const PasswordStatusResponse({
     required this.locked,
     required this.passwordExpirationTime,
   });

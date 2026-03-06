@@ -50,7 +50,7 @@ class NestServiceInstanceState {
   /// [status] The status of the Service Instance.
   /// [tags] A mapping of tags to assign to the resource.
   /// [templateName] The name of the template.
-  NestServiceInstanceState({
+  const NestServiceInstanceState({
     this.commodity,
     this.enableInstanceOps,
     this.enableUserPrometheus,

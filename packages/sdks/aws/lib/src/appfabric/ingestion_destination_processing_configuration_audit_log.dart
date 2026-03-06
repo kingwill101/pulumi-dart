@@ -11,7 +11,7 @@ class IngestionDestinationProcessingConfigurationAuditLog {
   /// Creates a new [IngestionDestinationProcessingConfigurationAuditLog].
   /// [format] The format in which the audit logs need to be formatted. Valid values: `json`, `parquet`.
   /// [schema] The event schema in which the audit logs need to be formatted. Valid values: `ocsf`, `raw`.
-  IngestionDestinationProcessingConfigurationAuditLog({
+  const IngestionDestinationProcessingConfigurationAuditLog({
     required this.format,
     required this.schema,
   });

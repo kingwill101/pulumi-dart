@@ -45,7 +45,7 @@ class SearchApplicationArgs {
   /// [returnResultThumbnailUrls] With each result we should return the URI for its thumbnail (when applicable)
   /// [scoringConfig] Configuration for ranking results.
   /// [sourceConfig] Configuration for a sources specified in data_source_restrictions.
-  SearchApplicationArgs({
+  const SearchApplicationArgs({
     this.dataSourceRestrictions,
     this.defaultFacetOptions,
     this.defaultSortOptions,

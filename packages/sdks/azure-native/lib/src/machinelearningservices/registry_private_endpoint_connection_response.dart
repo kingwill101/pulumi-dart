@@ -17,7 +17,7 @@ class RegistryPrivateEndpointConnectionResponse {
   /// [id] This is the private endpoint connection name created on SRP
   /// [location] Same as workspace location.
   /// [properties] Properties of the Private Endpoint Connection
-  RegistryPrivateEndpointConnectionResponse({
+  const RegistryPrivateEndpointConnectionResponse({
     this.id,
     this.location,
     this.properties,

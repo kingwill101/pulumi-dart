@@ -55,7 +55,7 @@ class MyWorkbookArgs {
   /// [tags] Resource tags
   /// [type] Azure resource type
   /// [version] This instance's version of the data model. This can change as new features are added that can be marked private workbook.
-  MyWorkbookArgs({
+  const MyWorkbookArgs({
     required this.category,
     required this.displayName,
     this.id,

@@ -9,7 +9,7 @@ class X509ManualCertificateResponse {
 
   /// Creates a new [X509ManualCertificateResponse].
   /// [secretRef] Kubernetes secret containing an X.509 client certificate. This is a reference to the secret through an identifying name, not the secret itself.
-  X509ManualCertificateResponse({
+  const X509ManualCertificateResponse({
     required this.secretRef,
   });
 

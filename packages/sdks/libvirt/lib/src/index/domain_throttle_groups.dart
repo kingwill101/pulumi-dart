@@ -9,7 +9,7 @@ class DomainThrottleGroups {
 
   /// Creates a new [DomainThrottleGroups].
   /// [throttleGroups] Sets individual throttle group configurations.
-  DomainThrottleGroups({
+  const DomainThrottleGroups({
     this.throttleGroups,
   });
 

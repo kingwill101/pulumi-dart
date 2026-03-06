@@ -13,7 +13,7 @@ class BucketLifecycleRule {
   /// Creates a new [BucketLifecycleRule].
   /// [action] The Lifecycle Rule's action configuration. A single block of this type is supported. Structure is documented below.
   /// [condition] The Lifecycle Rule's condition configuration. A single block of this type is supported. Structure is documented below.
-  BucketLifecycleRule({
+  const BucketLifecycleRule({
     required this.action,
     required this.condition,
   });

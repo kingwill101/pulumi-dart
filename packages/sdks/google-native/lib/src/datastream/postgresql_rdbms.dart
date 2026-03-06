@@ -10,7 +10,7 @@ class PostgresqlRdbms {
 
   /// Creates a new [PostgresqlRdbms].
   /// [postgresqlSchemas] PostgreSQL schemas in the database server.
-  PostgresqlRdbms({
+  const PostgresqlRdbms({
     this.postgresqlSchemas,
   });
 

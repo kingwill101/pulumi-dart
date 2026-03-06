@@ -77,7 +77,7 @@ class GetLoadbalancerV2Result {
   /// [vipPortId] The port ID associated with the VIP.
   /// [vipQosPolicyId] The QoS policy ID associated with the VIP, if any.
   /// [vipSubnetId] The subnet ID associated with the VIP.
-  GetLoadbalancerV2Result({
+  const GetLoadbalancerV2Result({
     required this.additionalVips,
     required this.adminStateUp,
     required this.availabilityZone,

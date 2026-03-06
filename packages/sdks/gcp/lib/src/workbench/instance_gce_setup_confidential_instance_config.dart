@@ -9,7 +9,7 @@ class InstanceGceSetupConfidentialInstanceConfig {
 
   /// Creates a new [InstanceGceSetupConfidentialInstanceConfig].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential instance.
-  InstanceGceSetupConfidentialInstanceConfig({
+  const InstanceGceSetupConfidentialInstanceConfig({
     this.confidentialInstanceType,
   });
 

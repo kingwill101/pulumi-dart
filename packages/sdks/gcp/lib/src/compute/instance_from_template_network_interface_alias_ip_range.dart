@@ -11,7 +11,7 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRange {
   /// Creates a new [InstanceFromTemplateNetworkInterfaceAliasIpRange].
   /// [ipCidrRange] The IP CIDR range represented by this alias IP range.
   /// [subnetworkRangeName] The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
-  InstanceFromTemplateNetworkInterfaceAliasIpRange({
+  const InstanceFromTemplateNetworkInterfaceAliasIpRange({
     required this.ipCidrRange,
     this.subnetworkRangeName,
   });

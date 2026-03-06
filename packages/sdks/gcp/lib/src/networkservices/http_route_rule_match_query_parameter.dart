@@ -17,7 +17,7 @@ class HttpRouteRuleMatchQueryParameter {
   /// [presentMatch] Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
   /// [queryParameter] The name of the query parameter to match.
   /// [regexMatch] The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
-  HttpRouteRuleMatchQueryParameter({
+  const HttpRouteRuleMatchQueryParameter({
     this.exactMatch,
     this.presentMatch,
     this.queryParameter,

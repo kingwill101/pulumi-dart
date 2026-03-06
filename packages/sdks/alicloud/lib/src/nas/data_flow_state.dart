@@ -38,7 +38,7 @@ class DataFlowState {
   /// [sourceStorage] The access path of the source store. Format: `&lt;storage type&gt;://&lt;path&gt;`. Among them:
   /// [status] The status of the Data flow. Valid values: `Running`, `Stopped`.
   /// [throughput] The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
-  DataFlowState({
+  const DataFlowState({
     this.dataFlowId,
     this.description,
     this.dryRun,

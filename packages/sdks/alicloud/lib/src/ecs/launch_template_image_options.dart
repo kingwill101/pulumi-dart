@@ -7,7 +7,7 @@ class LaunchTemplateImageOptions {
 
   /// Creates a new [LaunchTemplateImageOptions].
   /// [loginAsNonRoot] Optional.
-  LaunchTemplateImageOptions({
+  const LaunchTemplateImageOptions({
     this.loginAsNonRoot,
   });
 

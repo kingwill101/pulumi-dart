@@ -16,7 +16,7 @@ class PosturePolicySet {
   /// [description] Description of the policy set.
   /// [policies] List of security policy
   /// [policySetId] ID of the policy set.
-  PosturePolicySet({
+  const PosturePolicySet({
     this.description,
     required this.policies,
     required this.policySetId,

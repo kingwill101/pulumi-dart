@@ -37,7 +37,7 @@ class RoutineRouteArgs {
   /// [rule] The rule content.
   /// [sequence] Rule execution order.
   /// [siteId] Site Id
-  RoutineRouteArgs({
+  const RoutineRouteArgs({
     this.bypass,
     this.fallback,
     this.routeEnable,

@@ -12,7 +12,7 @@ class CustomRolloutSpecificationProviderRegistration {
   /// Creates a new [CustomRolloutSpecificationProviderRegistration].
   /// [kind] Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [properties] Optional.
-  CustomRolloutSpecificationProviderRegistration({
+  const CustomRolloutSpecificationProviderRegistration({
     this.kind,
     this.properties,
   });

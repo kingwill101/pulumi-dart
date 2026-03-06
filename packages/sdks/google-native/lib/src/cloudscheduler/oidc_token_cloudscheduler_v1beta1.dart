@@ -12,7 +12,7 @@ class OidcTokenCloudschedulerV1beta1 {
   /// Creates a new [OidcTokenCloudschedulerV1beta1].
   /// [audience] Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   /// [serviceAccountEmail] [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account.
-  OidcTokenCloudschedulerV1beta1({
+  const OidcTokenCloudschedulerV1beta1({
     this.audience,
     this.serviceAccountEmail,
   });

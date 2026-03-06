@@ -40,7 +40,7 @@ class MediaInsightsPipelineConfigurationElement {
   /// [sqsQueueSinkConfiguration] Configuration for SQS Queue sink.
   /// [type] Element type.
   /// [voiceAnalyticsProcessorConfiguration] Configuration for Voice analytics processor.
-  MediaInsightsPipelineConfigurationElement({
+  const MediaInsightsPipelineConfigurationElement({
     this.amazonTranscribeCallAnalyticsProcessorConfiguration,
     this.amazonTranscribeProcessorConfiguration,
     this.kinesisDataStreamSinkConfiguration,

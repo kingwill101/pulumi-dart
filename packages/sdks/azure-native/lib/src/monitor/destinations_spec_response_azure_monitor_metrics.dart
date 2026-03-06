@@ -10,7 +10,7 @@ class DestinationsSpecResponseAzureMonitorMetrics {
 
   /// Creates a new [DestinationsSpecResponseAzureMonitorMetrics].
   /// [name] A friendly name for the destination.
-  DestinationsSpecResponseAzureMonitorMetrics({
+  const DestinationsSpecResponseAzureMonitorMetrics({
     this.name,
   });
 

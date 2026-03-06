@@ -30,7 +30,7 @@ class OpenAIProfile {
   /// [gptModelName] GPT Model Name
   /// [gptModelSkuName] GPT Model SKU Name
   /// [gptModelVersion] GPT Model Version
-  OpenAIProfile({
+  const OpenAIProfile({
     this.embeddingModelCapacity,
     this.embeddingModelName,
     this.embeddingModelSkuName,

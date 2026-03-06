@@ -29,7 +29,7 @@ class GetImagesImage {
   /// [rapidDeploy] Required.
   /// [selector] Optional.
   /// [type] Required.
-  GetImagesImage({
+  const GetImagesImage({
     required this.architecture,
     required this.created,
     required this.deprecated,

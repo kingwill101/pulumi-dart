@@ -11,7 +11,7 @@ class OneDashboardPageWidgetBillboardBillboardSettingsVisual {
   /// Creates a new [OneDashboardPageWidgetBillboardBillboardSettingsVisual].
   /// [alignment] (Optional) Controls the alignment of the billboard content. Accepted values are `inline` or `stacked`.
   /// [display] (Optional) Controls how the billboard content is displayed. Accepted values are `auto`, `all`, `none`, `label` or `value`.
-  OneDashboardPageWidgetBillboardBillboardSettingsVisual({
+  const OneDashboardPageWidgetBillboardBillboardSettingsVisual({
     this.alignment,
     this.display,
   });

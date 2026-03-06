@@ -16,7 +16,7 @@ class QueueScaleRuleResponse {
   /// [auth] Authentication secrets for the queue scale rule.
   /// [queueLength] Queue length.
   /// [queueName] Queue name.
-  QueueScaleRuleResponse({
+  const QueueScaleRuleResponse({
     this.auth,
     this.queueLength,
     this.queueName,

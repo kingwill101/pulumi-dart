@@ -28,7 +28,7 @@ class IpSetState {
   /// [ipVersion] The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ip_version` can be set to `DUAL_STACK`.
   /// [ispType] The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
   /// [status] The status of the acceleration region.
-  IpSetState({
+  const IpSetState({
     this.accelerateRegionId,
     this.acceleratorId,
     this.bandwidth,

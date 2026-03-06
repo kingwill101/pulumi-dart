@@ -27,7 +27,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset {
   /// [gcsSource] The Google Cloud Storage uri of the unmanaged Dataset used to train this Model.
   /// [loggingSamplingStrategy] Strategy to sample data from Training Dataset. If not set, we process the whole dataset.
   /// [targetField] The target field name the model is to predict. This field will be excluded when doing Predict and (or) Explain for the training data.
-  GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset({
+  const GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigTrainingDataset({
     this.bigquerySource,
     this.dataFormat,
     this.dataset,

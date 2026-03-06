@@ -71,7 +71,7 @@ class JobArgs {
   /// [retryConfig] By default, if a job does not complete successfully,
   /// [schedule] Describes the schedule on which the job will be executed.
   /// [timeZone] Specifies the time zone to be used in interpreting schedule.
-  JobArgs({
+  const JobArgs({
     this.appEngineHttpTarget,
     this.attemptDeadline,
     this.description,

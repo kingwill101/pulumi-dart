@@ -14,7 +14,7 @@ class GetBaselinesBaseline {
   /// [baselineId] Baseline ID
   /// [baselineName] Baseline Name.
   /// [description] Baseline Description.
-  GetBaselinesBaseline({
+  const GetBaselinesBaseline({
     required this.baselineId,
     required this.baselineName,
     required this.description,

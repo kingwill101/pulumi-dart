@@ -20,7 +20,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig {
   /// [peerAsn] Peer asn.
   /// [peerBgpIp] Peer bgp ip.
   /// [tunnelCidr] Optional.
-  GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig({
+  const GatewayVpnAttachmentTunnelOptionsSpecificationTunnelBgpConfig({
     this.bgpStatus,
     this.localAsn,
     this.localBgpIp,

@@ -42,7 +42,7 @@ class ContainerAppsAuthConfigArgs {
   /// [login] The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
   /// [platform] The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ContainerAppsAuthConfigArgs({
+  const ContainerAppsAuthConfigArgs({
     this.authConfigName,
     required this.containerAppName,
     this.encryptionSettings,

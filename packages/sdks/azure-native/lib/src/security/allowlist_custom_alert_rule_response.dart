@@ -25,7 +25,7 @@ class AllowlistCustomAlertRuleResponse {
   /// [isEnabled] Status of the custom alert.
   /// [ruleType] The type of the custom alert rule.
   /// [valueType] The value type of the items in the list.
-  AllowlistCustomAlertRuleResponse({
+  const AllowlistCustomAlertRuleResponse({
     required this.allowlistValues,
     required this.description,
     required this.displayName,

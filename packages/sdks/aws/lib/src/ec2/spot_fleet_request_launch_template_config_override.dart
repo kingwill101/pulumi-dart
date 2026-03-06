@@ -27,7 +27,7 @@ class SpotFleetRequestLaunchTemplateConfigOverride {
   /// [spotPrice] The maximum spot bid for this override request.
   /// [subnetId] The subnet in which to launch the requested instance.
   /// [weightedCapacity] The capacity added to the fleet by a fulfilled request.
-  SpotFleetRequestLaunchTemplateConfigOverride({
+  const SpotFleetRequestLaunchTemplateConfigOverride({
     this.availabilityZone,
     this.instanceRequirements,
     this.instanceType,

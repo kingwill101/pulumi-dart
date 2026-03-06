@@ -11,7 +11,7 @@ class SigningJobRevocationRecord {
   /// [reason] Optional.
   /// [revokedAt] Optional.
   /// [revokedBy] Optional.
-  SigningJobRevocationRecord({
+  const SigningJobRevocationRecord({
     this.reason,
     this.revokedAt,
     this.revokedBy,

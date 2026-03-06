@@ -11,7 +11,7 @@ class GetServiceTemplateContainerBuildInfo {
   /// Creates a new [GetServiceTemplateContainerBuildInfo].
   /// [functionTarget] Entry point of the function when the image is a Cloud Run function.
   /// [sourceLocation] Source code location of the image.
-  GetServiceTemplateContainerBuildInfo({
+  const GetServiceTemplateContainerBuildInfo({
     required this.functionTarget,
     required this.sourceLocation,
   });

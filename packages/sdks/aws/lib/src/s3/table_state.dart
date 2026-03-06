@@ -81,7 +81,7 @@ class TableState {
   /// [type] Type of the table.
   /// [versionToken] Identifier for the current version of table data.
   /// [warehouseLocation] S3 URI pointing to the S3 Bucket that contains the table data.
-  TableState({
+  const TableState({
     this.arn,
     this.createdAt,
     this.createdBy,

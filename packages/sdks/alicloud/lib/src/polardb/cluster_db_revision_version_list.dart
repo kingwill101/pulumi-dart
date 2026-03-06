@@ -17,7 +17,7 @@ class ClusterDbRevisionVersionList {
   /// [releaseType] (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
   /// [revisionVersionCode] (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
   /// [revisionVersionName] (Available since v1.216.0) The revision version number of the database engine.
-  ClusterDbRevisionVersionList({
+  const ClusterDbRevisionVersionList({
     this.releaseNote,
     this.releaseType,
     this.revisionVersionCode,

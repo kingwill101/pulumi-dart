@@ -28,7 +28,7 @@ class GetInstancesResult {
   /// [names] The names list of HBase instances
   /// [outputFile] Optional.
   /// [tags] A mapping of tags to assign to the resource.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.availabilityZone,
     required this.id,
     required this.ids,

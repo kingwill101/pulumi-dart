@@ -29,7 +29,7 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfig {
   /// [microsoftOauth2ProviderConfig] Microsoft OAuth provider configuration. See `microsoft` below.
   /// [salesforceOauth2ProviderConfig] Salesforce OAuth provider configuration. See `salesforce` below.
   /// [slackOauth2ProviderConfig] Slack OAuth provider configuration. See `slack` below.
-  AgentcoreOauth2CredentialProviderOauth2ProviderConfig({
+  const AgentcoreOauth2CredentialProviderOauth2ProviderConfig({
     this.customOauth2ProviderConfig,
     this.githubOauth2ProviderConfig,
     this.googleOauth2ProviderConfig,

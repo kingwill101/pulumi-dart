@@ -11,7 +11,7 @@ class GetWorkspaceSharedKeysResult {
   /// Creates a new [GetWorkspaceSharedKeysResult].
   /// [primarySharedKey] The primary shared key of a workspace.
   /// [secondarySharedKey] The secondary shared key of a workspace.
-  GetWorkspaceSharedKeysResult({
+  const GetWorkspaceSharedKeysResult({
     this.primarySharedKey,
     this.secondarySharedKey,
   });

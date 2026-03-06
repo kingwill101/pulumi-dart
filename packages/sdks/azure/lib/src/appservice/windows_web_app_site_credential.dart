@@ -11,7 +11,7 @@ class WindowsWebAppSiteCredential {
   /// Creates a new [WindowsWebAppSiteCredential].
   /// [name] The name which should be used for this Windows Web App. Changing this forces a new Windows Web App to be created.
   /// [password] The Site Credentials Password used for publishing.
-  WindowsWebAppSiteCredential({
+  const WindowsWebAppSiteCredential({
     this.name,
     this.password,
   });

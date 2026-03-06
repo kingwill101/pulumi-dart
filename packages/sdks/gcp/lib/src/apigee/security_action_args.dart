@@ -61,7 +61,7 @@ class SecurityActionArgs {
   /// [securityActionId] The ID to use for the SecurityAction, which will become the final component of the action's resource name.
   /// [state] Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   /// [ttl] The TTL for this SecurityAction.
-  SecurityActionArgs({
+  const SecurityActionArgs({
     this.allow,
     this.apiProxies,
     required this.conditionConfig,

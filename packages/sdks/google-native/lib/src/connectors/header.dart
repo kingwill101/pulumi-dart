@@ -12,7 +12,7 @@ class Header {
   /// Creates a new [Header].
   /// [key] Key of Header.
   /// [value] Value of Header.
-  Header({
+  const Header({
     this.key,
     this.value,
   });

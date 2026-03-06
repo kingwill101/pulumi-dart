@@ -16,7 +16,7 @@ class UrlSigningActionParameters {
   /// [algorithm] Algorithm to use for URL signing
   /// [parameterNameOverride] Defines which query string parameters in the url to be considered for expires, key id etc.
   /// [typeName] Expected value is 'DeliveryRuleUrlSigningActionParameters'.
-  UrlSigningActionParameters({
+  const UrlSigningActionParameters({
     this.algorithm,
     this.parameterNameOverride,
     required this.typeName,

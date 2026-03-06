@@ -15,7 +15,7 @@ class GetPlacementGroupArgs {
   /// Creates a new [GetPlacementGroupArgs].
   /// [name] The name of the Proximity Placement Group.
   /// [resourceGroupName] The name of the resource group in which the Proximity Placement Group exists.
-  GetPlacementGroupArgs({
+  const GetPlacementGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

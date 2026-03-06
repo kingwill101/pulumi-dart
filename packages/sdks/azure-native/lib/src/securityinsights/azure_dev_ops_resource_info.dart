@@ -12,7 +12,7 @@ class AzureDevOpsResourceInfo {
   /// Creates a new [AzureDevOpsResourceInfo].
   /// [pipelineId] Id of the pipeline created for the source-control.
   /// [serviceConnectionId] Id of the service-connection created for the source-control.
-  AzureDevOpsResourceInfo({
+  const AzureDevOpsResourceInfo({
     this.pipelineId,
     this.serviceConnectionId,
   });

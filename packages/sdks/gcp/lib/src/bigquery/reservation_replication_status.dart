@@ -23,7 +23,7 @@ class ReservationReplicationStatus {
   /// [errors] (Output)
   /// [lastErrorTime] (Output)
   /// [lastReplicationTime] (Output)
-  ReservationReplicationStatus({
+  const ReservationReplicationStatus({
     this.errors,
     this.lastErrorTime,
     this.lastReplicationTime,

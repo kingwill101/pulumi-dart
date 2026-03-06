@@ -15,7 +15,7 @@ class RetentionDescription {
   /// [cleanupPolicy] Enumerates the possible values for cleanup policy
   /// [retentionTimeInHours] Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
   /// [tombstoneRetentionTimeInHours] Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
-  RetentionDescription({
+  const RetentionDescription({
     this.cleanupPolicy,
     this.retentionTimeInHours,
     this.tombstoneRetentionTimeInHours,

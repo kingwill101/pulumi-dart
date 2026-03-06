@@ -20,7 +20,7 @@ class FunctionRecursionConfigArgs {
   /// [functionName] Name of the Lambda function.
   /// [recursiveLoop] Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  FunctionRecursionConfigArgs({
+  const FunctionRecursionConfigArgs({
     required this.functionName,
     required this.recursiveLoop,
     this.region,

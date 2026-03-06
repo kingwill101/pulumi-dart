@@ -29,7 +29,7 @@ class CodeToolsSettingArgs {
   /// [labels] Labels as key value pairs.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
-  CodeToolsSettingArgs({
+  const CodeToolsSettingArgs({
     required this.codeToolsSettingId,
     required this.enabledTools,
     this.labels,

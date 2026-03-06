@@ -20,7 +20,7 @@ class GetDicomStoreResult {
   /// [name] Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
   /// [notificationConfig] Notification destination for new DICOM instances. Supplied by the client.
   /// [streamConfigs] Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
-  GetDicomStoreResult({
+  const GetDicomStoreResult({
     required this.labels,
     required this.name,
     required this.notificationConfig,

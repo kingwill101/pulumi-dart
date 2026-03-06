@@ -15,7 +15,7 @@ class GroupConnectivityInformation {
   /// [customerVisibleFqdns] List of customer visible FQDNs.
   /// [privateLinkServiceArmRegion] PrivateLinkService ARM region.
   /// [redirectMapId] Redirect map ID.
-  GroupConnectivityInformation({
+  const GroupConnectivityInformation({
     this.customerVisibleFqdns,
     this.privateLinkServiceArmRegion,
     this.redirectMapId,

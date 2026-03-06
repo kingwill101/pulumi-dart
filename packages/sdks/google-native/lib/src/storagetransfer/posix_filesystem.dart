@@ -9,7 +9,7 @@ class PosixFilesystem {
 
   /// Creates a new [PosixFilesystem].
   /// [rootDirectory] Root directory path to the filesystem.
-  PosixFilesystem({
+  const PosixFilesystem({
     this.rootDirectory,
   });
 

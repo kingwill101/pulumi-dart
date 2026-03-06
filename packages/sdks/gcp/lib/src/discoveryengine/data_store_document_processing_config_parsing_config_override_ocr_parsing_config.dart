@@ -8,7 +8,7 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
 
   /// Creates a new [DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig].
   /// [useNativeText] If true, will use native text instead of OCR text on pages containing native text.
-  DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig({
+  const DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig({
     this.useNativeText,
   });
 

@@ -29,7 +29,7 @@ class X509ParametersResponse {
   /// [keyUsage] Optional. Indicates the intended use for keys that correspond to a certificate.
   /// [nameConstraints] Optional. Describes the X.509 name constraints extension.
   /// [policyIds] Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-  X509ParametersResponse({
+  const X509ParametersResponse({
     required this.additionalExtensions,
     required this.aiaOcspServers,
     required this.caOptions,

@@ -33,7 +33,7 @@ class AppConnectorArgs {
   /// [principalInfo] Principal information about the Identity of the AppConnector.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the AppConnector.
-  AppConnectorArgs({
+  const AppConnectorArgs({
     this.displayName,
     this.labels,
     this.name,

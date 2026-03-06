@@ -27,7 +27,7 @@ class DomainMappingArgs {
   /// [overrideStrategy] Whether the domain creation should override any existing mappings for this domain.
   /// [project] The ID of the project in which the resource belongs.
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-  DomainMappingArgs({
+  const DomainMappingArgs({
     required this.domainName,
     this.overrideStrategy,
     this.project,

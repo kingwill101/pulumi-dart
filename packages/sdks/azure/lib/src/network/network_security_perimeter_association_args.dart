@@ -24,7 +24,7 @@ class NetworkSecurityPerimeterAssociationArgs {
   /// [name] The name which should be used for this Network Security Perimeter Association. Changing this forces a new Network Security Perimeter Association to be created.
   /// [networkSecurityPerimeterProfileId] The ID of the Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Association to be created.
   /// [resourceId] The ID of the associated resource. Changing this forces a new Network Security Perimeter Association to be created.
-  NetworkSecurityPerimeterAssociationArgs({
+  const NetworkSecurityPerimeterAssociationArgs({
     required this.accessMode,
     this.name,
     required this.networkSecurityPerimeterProfileId,

@@ -11,7 +11,7 @@ class LinuxFunctionAppSlotSiteCredential {
   /// Creates a new [LinuxFunctionAppSlotSiteCredential].
   /// [name] The Site Credentials Username used for publishing.
   /// [password] The Site Credentials Password used for publishing.
-  LinuxFunctionAppSlotSiteCredential({
+  const LinuxFunctionAppSlotSiteCredential({
     this.name,
     this.password,
   });

@@ -18,7 +18,7 @@ class GetTxtRecordArgs {
   /// [name] The name of the Private DNS TXT Record.
   /// [resourceGroupName] Specifies the resource group where the Private DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the Private DNS Zone where the resource exists.
-  GetTxtRecordArgs({
+  const GetTxtRecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

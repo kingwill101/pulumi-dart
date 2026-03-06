@@ -36,7 +36,7 @@ class GetPoliciesArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of the policy. Valid values: `System` and `Custom`.
   /// [userName] The name of the RAM user.
-  GetPoliciesArgs({
+  const GetPoliciesArgs({
     this.enableDetails,
     this.groupName,
     this.ids,

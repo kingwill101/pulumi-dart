@@ -8,7 +8,7 @@ class LaunchTemplateHibernationOptions {
 
   /// Creates a new [LaunchTemplateHibernationOptions].
   /// [configured] If set to `true`, the launched EC2 instance will hibernation enabled.
-  LaunchTemplateHibernationOptions({
+  const LaunchTemplateHibernationOptions({
     required this.configured,
   });
 

@@ -42,7 +42,7 @@ class NatPoolArgs {
   /// [protocol] The transport protocol for the external endpoint. Possible values are `All`, `Tcp` and `Udp`.
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   /// [tcpResetEnabled] Is TCP Reset enabled for this Load Balancer Rule?
-  NatPoolArgs({
+  const NatPoolArgs({
     required this.backendPort,
     this.floatingIpEnabled,
     required this.frontendIpConfigurationName,

@@ -45,7 +45,7 @@ class GetExpressRouteGatewayResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [virtualHub] The Virtual Hub where the ExpressRoute gateway is or will be deployed.
-  GetExpressRouteGatewayResult({
+  const GetExpressRouteGatewayResult({
     this.allowNonVirtualWanTraffic,
     this.autoScaleConfiguration,
     required this.azureApiVersion,

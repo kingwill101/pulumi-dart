@@ -16,7 +16,7 @@ class GetMetaTagsResult {
   /// [keyName] Optional.
   /// [outputFile] Optional.
   /// [tags] Required.
-  GetMetaTagsResult({
+  const GetMetaTagsResult({
     required this.id,
     this.keyName,
     this.outputFile,

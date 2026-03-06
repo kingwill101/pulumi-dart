@@ -10,7 +10,7 @@ class ReplicationExtensionModelProperties {
 
   /// Creates a new [ReplicationExtensionModelProperties].
   /// [customProperties] Replication extension model custom properties.
-  ReplicationExtensionModelProperties({
+  const ReplicationExtensionModelProperties({
     required this.customProperties,
   });
 

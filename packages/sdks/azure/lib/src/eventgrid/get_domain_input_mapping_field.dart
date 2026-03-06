@@ -23,7 +23,7 @@ class GetDomainInputMappingField {
   /// [id] Specifies the id of the EventGrid Event associated with the domain.
   /// [subject] Specifies the default subject of the EventGrid Event associated with the domain.
   /// [topic] Specifies the topic of the EventGrid Event associated with the domain.
-  GetDomainInputMappingField({
+  const GetDomainInputMappingField({
     required this.dataVersion,
     required this.eventTime,
     required this.eventType,

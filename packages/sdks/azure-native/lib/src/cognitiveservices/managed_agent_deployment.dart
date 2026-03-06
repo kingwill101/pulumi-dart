@@ -33,7 +33,7 @@ class ManagedAgentDeployment {
   /// [protocols] Gets or sets the supported protocol types and versions exposed by this deployment.
   /// [state] Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ManagedAgentDeployment({
+  const ManagedAgentDeployment({
     this.agents,
     this.deploymentId,
     required this.deploymentType,

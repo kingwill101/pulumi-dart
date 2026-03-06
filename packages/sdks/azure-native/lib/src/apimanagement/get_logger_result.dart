@@ -33,7 +33,7 @@ class GetLoggerResult {
   /// [name] The name of the resource
   /// [resourceId] Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLoggerResult({
+  const GetLoggerResult({
     required this.azureApiVersion,
     this.credentials,
     this.description,

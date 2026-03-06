@@ -32,7 +32,7 @@ class KeyKeyAttributeKeyModesOfUse {
   /// [unwrap] Whether an AWS Payment Cryptography key can be used to unwrap other keys.
   /// [verify] Whether an AWS Payment Cryptography key can be used to verify signatures.
   /// [wrap] Whether an AWS Payment Cryptography key can be used to wrap other keys.
-  KeyKeyAttributeKeyModesOfUse({
+  const KeyKeyAttributeKeyModesOfUse({
     this.decrypt,
     this.deriveKey,
     this.encrypt,

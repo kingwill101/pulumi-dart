@@ -107,7 +107,7 @@ class NetworkState {
   /// [project] The ID of the project in which the resource belongs.
   /// [routingMode] The network-wide routing mode to use. If set to `REGIONAL`, this
   /// [selfLink] The URI of the created resource.
-  NetworkState({
+  const NetworkState({
     this.autoCreateSubnetworks,
     this.bgpAlwaysCompareMed,
     this.bgpBestPathSelectionMode,

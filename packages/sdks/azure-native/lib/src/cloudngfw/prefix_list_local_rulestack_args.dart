@@ -27,7 +27,7 @@ class PrefixListLocalRulestackArgs {
   /// [name] Local Rule priority
   /// [prefixList] prefix list
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrefixListLocalRulestackArgs({
+  const PrefixListLocalRulestackArgs({
     this.auditComment,
     this.description,
     required this.localRulestackName,

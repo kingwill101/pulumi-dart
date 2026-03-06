@@ -21,7 +21,7 @@ class ManagedInstanceAzureADOnlyAuthenticationArgs {
   /// [azureADOnlyAuthentication] Azure Active Directory only Authentication enabled.
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  ManagedInstanceAzureADOnlyAuthenticationArgs({
+  const ManagedInstanceAzureADOnlyAuthenticationArgs({
     this.authenticationName,
     required this.azureADOnlyAuthentication,
     required this.managedInstanceName,

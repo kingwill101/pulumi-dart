@@ -19,7 +19,7 @@ class ManagedInstanceIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this SQL Managed Instance.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this SQL Managed Instance.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this SQL Managed Instance. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned`.
-  ManagedInstanceIdentity({
+  const ManagedInstanceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

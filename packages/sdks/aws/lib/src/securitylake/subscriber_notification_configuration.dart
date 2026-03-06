@@ -13,7 +13,7 @@ class SubscriberNotificationConfiguration {
   /// Creates a new [SubscriberNotificationConfiguration].
   /// [httpsNotificationConfiguration] The configurations for HTTPS subscriber notification.
   /// [sqsNotificationConfiguration] The configurations for SQS subscriber notification.
-  SubscriberNotificationConfiguration({
+  const SubscriberNotificationConfiguration({
     this.httpsNotificationConfiguration,
     this.sqsNotificationConfiguration,
   });

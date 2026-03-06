@@ -9,7 +9,7 @@ class GetListenerDefaultActionForwardTargetGroup {
   /// Creates a new [GetListenerDefaultActionForwardTargetGroup].
   /// [targetGroupIdentifier] Required.
   /// [weight] Required.
-  GetListenerDefaultActionForwardTargetGroup({
+  const GetListenerDefaultActionForwardTargetGroup({
     required this.targetGroupIdentifier,
     required this.weight,
   });

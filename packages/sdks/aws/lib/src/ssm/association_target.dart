@@ -11,7 +11,7 @@ class AssociationTarget {
   /// Creates a new [AssociationTarget].
   /// [key] Either `InstanceIds` or `tag:Tag Name` to specify an EC2 tag.
   /// [values] User-defined criteria that maps to Key. A list of instance IDs or tag values.
-  AssociationTarget({
+  const AssociationTarget({
     required this.key,
     required this.values,
   });

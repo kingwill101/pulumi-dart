@@ -22,7 +22,7 @@ class ScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleProperties] [Required] Additional attributes of the entity.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ScheduleArgs({
+  const ScheduleArgs({
     this.name,
     required this.resourceGroupName,
     required this.scheduleProperties,

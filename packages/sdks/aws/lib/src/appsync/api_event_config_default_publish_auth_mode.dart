@@ -8,7 +8,7 @@ class ApiEventConfigDefaultPublishAuthMode {
 
   /// Creates a new [ApiEventConfigDefaultPublishAuthMode].
   /// [authType] Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
-  ApiEventConfigDefaultPublishAuthMode({
+  const ApiEventConfigDefaultPublishAuthMode({
     required this.authType,
   });
 

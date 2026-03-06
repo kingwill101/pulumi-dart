@@ -39,7 +39,7 @@ class GetAwsServiceDiscoveryResult {
   /// [type] Optional.
   /// [undetectableAction] Optional.
   /// [updateInterval] Optional.
-  GetAwsServiceDiscoveryResult({
+  const GetAwsServiceDiscoveryResult({
     this.addressRealm,
     this.awsAccessKey,
     required this.awsRegion,

@@ -36,7 +36,7 @@ class AccessConfigResponseComputeV1 {
   /// [securityPolicy] The resource URL for the security policy associated with this access config.
   /// [setPublicPtr] Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
   /// [type] The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
-  AccessConfigResponseComputeV1({
+  const AccessConfigResponseComputeV1({
     required this.externalIpv6,
     required this.externalIpv6PrefixLength,
     required this.kind,

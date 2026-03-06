@@ -33,7 +33,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// [interpreter] Required. The script interpreter to use.
   /// [outputFilePath] Only recorded for enforce Exec.
   /// [script] An inline script.
-  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce({
+  const V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce({
     this.args,
     this.file,
     required this.interpreter,

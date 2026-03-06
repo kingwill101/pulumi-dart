@@ -10,7 +10,7 @@ class ProjectCustomModuleCustomConfigCustomOutput {
 
   /// Creates a new [ProjectCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  ProjectCustomModuleCustomConfigCustomOutput({
+  const ProjectCustomModuleCustomConfigCustomOutput({
     this.properties,
   });
 

@@ -19,7 +19,7 @@ class FlexibleAppVersionResources {
   /// [diskGb] Disk size (GB) needed.
   /// [memoryGb] Memory (GB) needed.
   /// [volumes] List of ports, or port pairs, to forward from the virtual machine to the application container.
-  FlexibleAppVersionResources({
+  const FlexibleAppVersionResources({
     this.cpu,
     this.diskGb,
     this.memoryGb,

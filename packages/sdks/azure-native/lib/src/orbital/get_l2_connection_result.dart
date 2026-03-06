@@ -45,7 +45,7 @@ class GetL2ConnectionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vlanId] The VLAN ID for the L2 connection.
-  GetL2ConnectionResult({
+  const GetL2ConnectionResult({
     required this.azureApiVersion,
     required this.circuitId,
     required this.edgeSite,

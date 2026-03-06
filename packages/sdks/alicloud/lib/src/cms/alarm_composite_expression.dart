@@ -21,7 +21,7 @@ class AlarmCompositeExpression {
   /// [expressionRaw] The trigger conditions that are created by using expressions.
   /// [level] The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
   /// [times] The number of consecutive triggers.
-  AlarmCompositeExpression({
+  const AlarmCompositeExpression({
     this.expressionListJoin,
     this.expressionLists,
     this.expressionRaw,

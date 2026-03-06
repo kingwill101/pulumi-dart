@@ -39,7 +39,7 @@ class ServiceVolumeConfigurationManagedEbsVolume {
   /// [throughput] Throughput to provision for a volume, in MiB/s, with a maximum of 1,000 MiB/s.
   /// [volumeInitializationRate] Volume Initialization Rate in MiB/s. You must also specify a `snapshot_id`.
   /// [volumeType] Volume type.
-  ServiceVolumeConfigurationManagedEbsVolume({
+  const ServiceVolumeConfigurationManagedEbsVolume({
     this.encrypted,
     this.fileSystemType,
     this.iops,

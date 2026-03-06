@@ -16,7 +16,7 @@ class GlobalSecondaryIndexKeySchema {
   /// [attributeName] Name of the attribute.
   /// [attributeType] Type of the attribute in the index.
   /// [keyType] Key type.
-  GlobalSecondaryIndexKeySchema({
+  const GlobalSecondaryIndexKeySchema({
     required this.attributeName,
     required this.attributeType,
     required this.keyType,

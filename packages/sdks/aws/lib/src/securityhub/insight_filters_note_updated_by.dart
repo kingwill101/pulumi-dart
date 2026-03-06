@@ -9,7 +9,7 @@ class InsightFiltersNoteUpdatedBy {
   /// Creates a new [InsightFiltersNoteUpdatedBy].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersNoteUpdatedBy({
+  const InsightFiltersNoteUpdatedBy({
     required this.comparison,
     required this.value,
   });

@@ -17,7 +17,7 @@ class SshPublicKeyArgs {
   /// [expirationTimeUsec] An expiration time in microseconds since epoch.
   /// [key] Public key text in SSH format, defined by RFC4253 section 6.6.
   /// [userId] Required.
-  SshPublicKeyArgs({
+  const SshPublicKeyArgs({
     this.expirationTimeUsec,
     this.key,
     required this.userId,

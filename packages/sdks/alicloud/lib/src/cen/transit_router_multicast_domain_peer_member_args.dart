@@ -21,7 +21,7 @@ class TransitRouterMulticastDomainPeerMemberArgs {
   /// [groupIpAddress] The IP address of the multicast group to which the multicast member belongs. Value range: **224.0.0.1** to **239.255.255.254**.If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
   /// [peerTransitRouterMulticastDomainId] The IDs of the inter-region multicast domains.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
-  TransitRouterMulticastDomainPeerMemberArgs({
+  const TransitRouterMulticastDomainPeerMemberArgs({
     this.dryRun,
     required this.groupIpAddress,
     required this.peerTransitRouterMulticastDomainId,

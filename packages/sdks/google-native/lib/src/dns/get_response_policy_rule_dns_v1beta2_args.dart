@@ -17,7 +17,7 @@ class GetResponsePolicyRuleDnsV1beta2Args {
   /// [project] Optional.
   /// [responsePolicy] Required.
   /// [responsePolicyRule] Required.
-  GetResponsePolicyRuleDnsV1beta2Args({
+  const GetResponsePolicyRuleDnsV1beta2Args({
     this.clientOperationId,
     this.project,
     required this.responsePolicy,

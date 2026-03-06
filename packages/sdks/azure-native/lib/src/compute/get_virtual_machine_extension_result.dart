@@ -65,7 +65,7 @@ class GetVirtualMachineExtensionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  GetVirtualMachineExtensionResult({
+  const GetVirtualMachineExtensionResult({
     this.autoUpgradeMinorVersion,
     required this.azureApiVersion,
     this.enableAutomaticUpgrade,

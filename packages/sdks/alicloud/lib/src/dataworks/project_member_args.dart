@@ -19,7 +19,7 @@ class ProjectMemberArgs {
   /// [projectId] Project ID
   /// [roles] List of roles owned by members. See `roles` below.
   /// [userId] The user ID of the member.
-  ProjectMemberArgs({
+  const ProjectMemberArgs({
     required this.projectId,
     this.roles,
     required this.userId,

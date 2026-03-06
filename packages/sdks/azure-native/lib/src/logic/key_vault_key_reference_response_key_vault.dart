@@ -15,7 +15,7 @@ class KeyVaultKeyReferenceResponseKeyVault {
   /// [id] The resource id.
   /// [name] The resource name.
   /// [type] The resource type.
-  KeyVaultKeyReferenceResponseKeyVault({
+  const KeyVaultKeyReferenceResponseKeyVault({
     this.id,
     required this.name,
     required this.type,

@@ -20,7 +20,7 @@ class GetSecretVersionsVersion {
   /// [secretName] The name of the secret.
   /// [versionId] The version number of the secret value.
   /// [versionStages] Stage labels that mark the secret version.
-  GetSecretVersionsVersion({
+  const GetSecretVersionsVersion({
     required this.secretData,
     required this.secretDataType,
     required this.secretName,

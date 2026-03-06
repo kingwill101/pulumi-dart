@@ -24,7 +24,7 @@ class GetHealthCheckTemplatesArgs {
   /// [ids] A list of Health Check Template IDs.
   /// [nameRegex] A regex string to filter results by Health Check Template name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetHealthCheckTemplatesArgs({
+  const GetHealthCheckTemplatesArgs({
     this.healthCheckTemplateIds,
     this.healthCheckTemplateName,
     this.ids,

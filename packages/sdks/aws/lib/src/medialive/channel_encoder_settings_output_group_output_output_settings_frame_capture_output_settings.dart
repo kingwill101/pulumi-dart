@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSet
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings].
   /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsFrameCaptureOutputSettings({
     this.nameModifier,
   });
 

@@ -35,7 +35,7 @@ class GetPolicyDocumentStatement {
   /// [principals] Configuration block for principals. Detailed below.
   /// [resources] List of resource ARNs that this statement applies to. This is required by AWS if used for an IAM policy. Conflicts with `not_resources`.
   /// [sid] Sid (statement ID) is an identifier for a policy statement.
-  GetPolicyDocumentStatement({
+  const GetPolicyDocumentStatement({
     this.actions,
     this.conditions,
     this.effect,

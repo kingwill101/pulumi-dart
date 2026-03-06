@@ -13,7 +13,7 @@ class GetTenantIamPolicyArgs {
   /// Creates a new [GetTenantIamPolicyArgs].
   /// [project] Optional.
   /// [tenantId] Required.
-  GetTenantIamPolicyArgs({
+  const GetTenantIamPolicyArgs({
     this.project,
     required this.tenantId,
   });

@@ -7,7 +7,7 @@ class GetPoolV2Listener {
 
   /// Creates a new [GetPoolV2Listener].
   /// [id] Required.
-  GetPoolV2Listener({
+  const GetPoolV2Listener({
     required this.id,
   });
 

@@ -15,7 +15,7 @@ class DatascanDataQualitySpecPostScanActions {
   /// Creates a new [DatascanDataQualitySpecPostScanActions].
   /// [bigqueryExport] If set, results will be exported to the provided BigQuery table.
   /// [notificationReport] The configuration of notification report post scan action.
-  DatascanDataQualitySpecPostScanActions({
+  const DatascanDataQualitySpecPostScanActions({
     this.bigqueryExport,
     this.notificationReport,
   });

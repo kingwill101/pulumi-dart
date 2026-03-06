@@ -56,7 +56,7 @@ class SqlServerDatabaseResourceProperties {
   /// [sourceDatabaseId] The name of the source database associated with create operation of this database.
   /// [spaceAvailableMB] Space left of the database.
   /// [state] State of the database.
-  SqlServerDatabaseResourceProperties({
+  const SqlServerDatabaseResourceProperties({
     this.backupInformation,
     this.backupPolicy,
     this.collationName,

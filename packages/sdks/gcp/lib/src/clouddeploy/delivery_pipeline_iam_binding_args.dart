@@ -22,7 +22,7 @@ class DeliveryPipelineIamBindingArgs {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Required.
-  DeliveryPipelineIamBindingArgs({
+  const DeliveryPipelineIamBindingArgs({
     this.condition,
     this.location,
     required this.members,

@@ -15,7 +15,7 @@ class FileShareResponse {
   /// [properties] Optional.
   /// [resourceGroupName] Optional.
   /// [storageAccountName] Optional.
-  FileShareResponse({
+  const FileShareResponse({
     this.name,
     this.properties,
     this.resourceGroupName,

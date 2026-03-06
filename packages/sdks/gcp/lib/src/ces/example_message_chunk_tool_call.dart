@@ -26,7 +26,7 @@ class ExampleMessageChunkToolCall {
   /// [id] The unique identifier of the tool call. If populated, the client should
   /// [tool] The name of the tool to execute.
   /// [toolsetTool] A tool that is created from a toolset.
-  ExampleMessageChunkToolCall({
+  const ExampleMessageChunkToolCall({
     this.args,
     this.displayName,
     this.id,

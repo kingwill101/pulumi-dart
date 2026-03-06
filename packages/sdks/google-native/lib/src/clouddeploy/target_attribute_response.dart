@@ -9,7 +9,7 @@ class TargetAttributeResponse {
 
   /// Creates a new [TargetAttributeResponse].
   /// [labels] Target labels.
-  TargetAttributeResponse({
+  const TargetAttributeResponse({
     required this.labels,
   });
 

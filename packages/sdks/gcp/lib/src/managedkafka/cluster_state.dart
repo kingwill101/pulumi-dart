@@ -65,7 +65,7 @@ class ClusterState {
   /// [state] The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
   /// [tlsConfig] TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
   /// [updateTime] The time when the cluster was last updated.
-  ClusterState({
+  const ClusterState({
     this.brokerCapacityConfig,
     this.capacityConfig,
     this.clusterId,

@@ -13,7 +13,7 @@ class EmissionPoliciesPropertiesFormat {
   /// Creates a new [EmissionPoliciesPropertiesFormat].
   /// [emissionDestinations] Emission policy destinations.
   /// [emissionType] Emission format type.
-  EmissionPoliciesPropertiesFormat({
+  const EmissionPoliciesPropertiesFormat({
     this.emissionDestinations,
     this.emissionType,
   });

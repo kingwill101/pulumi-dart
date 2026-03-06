@@ -15,7 +15,7 @@ class SAPSupportedSkuResponse {
   /// [isAppServerCertified] True if the Sku is certified for App server in the SAP system.
   /// [isDatabaseCertified] True if the Sku is certified for Database server in the SAP system.
   /// [vmSku] The VM Sku.
-  SAPSupportedSkuResponse({
+  const SAPSupportedSkuResponse({
     this.isAppServerCertified,
     this.isDatabaseCertified,
     this.vmSku,

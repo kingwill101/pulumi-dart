@@ -18,7 +18,7 @@ class GetPrivateEndpointArgs {
   /// [expand] Expands referenced resources.
   /// [privateEndpointName] The name of the private endpoint.
   /// [resourceGroupName] The name of the resource group.
-  GetPrivateEndpointArgs({
+  const GetPrivateEndpointArgs({
     this.expand,
     required this.privateEndpointName,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class DomainDevicesRngBackendEgdSourceDev {
   /// Creates a new [DomainDevicesRngBackendEgdSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.
   /// [secLabels] Configures the security label settings for the device source in the EGD backend.
-  DomainDevicesRngBackendEgdSourceDev({
+  const DomainDevicesRngBackendEgdSourceDev({
     required this.path,
     this.secLabels,
   });

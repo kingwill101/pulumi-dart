@@ -17,7 +17,7 @@ class GetSupportedDatabaseFlagsResult {
   /// [location] Required.
   /// [project] Optional.
   /// [supportedDatabaseFlags] Contains a list of `flag`, which contains the details about a particular flag.
-  GetSupportedDatabaseFlagsResult({
+  const GetSupportedDatabaseFlagsResult({
     required this.id,
     required this.location,
     this.project,

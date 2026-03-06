@@ -44,7 +44,7 @@ class GetHypervHostControllerResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Gets the timestamp marking last updated on the Hyper-V host.
   /// [version] Gets the version of the Hyper-V host.
-  GetHypervHostControllerResult({
+  const GetHypervHostControllerResult({
     required this.azureApiVersion,
     required this.createdTimestamp,
     required this.errors,

@@ -39,7 +39,7 @@ class AwsMacie2JobSummaryProperties {
   /// [lastRunErrorStatus] &lt;p&gt;Specifies whether any account- or bucket-level access errors occurred when the job ran. For a recurring job, this value indicates the error status of the job's most recent run.&lt;/p&gt;
   /// [name] &lt;p&gt;The custom name of the job.&lt;/p&gt;
   /// [userPausedDetails] &lt;p&gt;If the current status of the job is USER_PAUSED, specifies when the job was paused and when the job or job run will expire and be cancelled if it isn't resumed. This value is present only if the value for jobStatus is USER_PAUSED.&lt;/p&gt;
-  AwsMacie2JobSummaryProperties({
+  const AwsMacie2JobSummaryProperties({
     this.bucketCriteria,
     this.bucketDefinitions,
     this.createdAt,

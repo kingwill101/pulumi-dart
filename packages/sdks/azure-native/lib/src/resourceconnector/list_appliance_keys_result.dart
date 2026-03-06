@@ -18,7 +18,7 @@ class ListApplianceKeysResult {
   /// [artifactProfiles] Map of artifacts that contains a list of ArtifactProfile used to upload artifacts such as logs.
   /// [kubeconfigs] The list of appliance kubeconfigs.
   /// [sshKeys] Map of Customer User Public, Private SSH Keys and Certificate when available.
-  ListApplianceKeysResult({
+  const ListApplianceKeysResult({
     required this.artifactProfiles,
     required this.kubeconfigs,
     required this.sshKeys,

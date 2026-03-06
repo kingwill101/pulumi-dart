@@ -9,7 +9,7 @@ class ResourceProviderManifestPropertiesFeaturesRule {
 
   /// Creates a new [ResourceProviderManifestPropertiesFeaturesRule].
   /// [requiredFeaturesPolicy] The required feature policy.
-  ResourceProviderManifestPropertiesFeaturesRule({
+  const ResourceProviderManifestPropertiesFeaturesRule({
     required this.requiredFeaturesPolicy,
   });
 

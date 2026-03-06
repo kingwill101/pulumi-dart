@@ -14,7 +14,7 @@ class HttpFaultInjection {
   /// Creates a new [HttpFaultInjection].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  HttpFaultInjection({
+  const HttpFaultInjection({
     this.abort,
     this.delay,
   });

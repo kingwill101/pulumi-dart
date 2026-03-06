@@ -21,7 +21,7 @@ class EndpointResponse {
   /// [protocol] Protocol over which communication will happen over this endpoint
   /// [published] Port over which the application is exposed from container.
   /// [target] Application port inside the container.
-  EndpointResponse({
+  const EndpointResponse({
     this.hostIp,
     this.name,
     this.protocol,

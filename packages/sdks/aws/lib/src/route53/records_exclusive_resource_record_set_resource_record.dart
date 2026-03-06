@@ -8,7 +8,7 @@ class RecordsExclusiveResourceRecordSetResourceRecord {
 
   /// Creates a new [RecordsExclusiveResourceRecordSetResourceRecord].
   /// [value] DNS record value.
-  RecordsExclusiveResourceRecordSetResourceRecord({
+  const RecordsExclusiveResourceRecordSetResourceRecord({
     required this.value,
   });
 

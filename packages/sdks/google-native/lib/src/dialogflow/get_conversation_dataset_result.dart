@@ -28,7 +28,7 @@ class GetConversationDatasetResult {
   /// [displayName] The display name of the dataset. Maximum of 64 bytes.
   /// [inputConfig] Input configurations set during conversation data import.
   /// [name] ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
-  GetConversationDatasetResult({
+  const GetConversationDatasetResult({
     required this.conversationCount,
     required this.conversationInfo,
     required this.createTime,

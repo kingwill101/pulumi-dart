@@ -37,7 +37,7 @@ class GetIotConnectorFhirDestinationResult {
   /// [resourceIdentityResolutionType] Determines how resource identity is resolved on the destination.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type.
-  GetIotConnectorFhirDestinationResult({
+  const GetIotConnectorFhirDestinationResult({
     required this.azureApiVersion,
     this.etag,
     required this.fhirMapping,

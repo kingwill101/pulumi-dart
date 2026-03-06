@@ -11,7 +11,7 @@ class InstanceCapacityReservationSpecificationCapacityReservationTarget {
   /// Creates a new [InstanceCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationId] ID of the Capacity Reservation in which to run the instance.
   /// [capacityReservationResourceGroupArn] ARN of the Capacity Reservation resource group in which to run the instance.
-  InstanceCapacityReservationSpecificationCapacityReservationTarget({
+  const InstanceCapacityReservationSpecificationCapacityReservationTarget({
     this.capacityReservationId,
     this.capacityReservationResourceGroupArn,
   });

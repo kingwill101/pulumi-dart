@@ -12,7 +12,7 @@ class TemporaryDisk {
   /// Creates a new [TemporaryDisk].
   /// [mountPath] Mount path of the temporary disk
   /// [sizeInGB] Size of the temporary disk in GB
-  TemporaryDisk({
+  const TemporaryDisk({
     this.mountPath,
     this.sizeInGB,
   });

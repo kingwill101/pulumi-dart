@@ -23,7 +23,7 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse {
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Version of the target server
   /// [validationErrors] Validation errors associated with the task
-  ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse({
+  const ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponse({
     this.databaseSchemaMap,
     required this.databases,
     required this.targetServerBrandVersion,

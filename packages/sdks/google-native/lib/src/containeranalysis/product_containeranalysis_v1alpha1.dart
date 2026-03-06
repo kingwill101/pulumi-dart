@@ -16,7 +16,7 @@ class ProductContaineranalysisV1alpha1 {
   /// [id] Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
   /// [identifierHelper] Helps in identifying the underlying product.
   /// [name] Name of the product.
-  ProductContaineranalysisV1alpha1({
+  const ProductContaineranalysisV1alpha1({
     this.id,
     this.identifierHelper,
     this.name,

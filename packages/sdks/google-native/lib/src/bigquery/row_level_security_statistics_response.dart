@@ -8,7 +8,7 @@ class RowLevelSecurityStatisticsResponse {
 
   /// Creates a new [RowLevelSecurityStatisticsResponse].
   /// [rowLevelSecurityApplied] [Preview] Whether any accessed data was protected by row access policies.
-  RowLevelSecurityStatisticsResponse({
+  const RowLevelSecurityStatisticsResponse({
     required this.rowLevelSecurityApplied,
   });
 

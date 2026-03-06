@@ -15,7 +15,7 @@ class GetRoute53DomainsDomainSummaryArgs {
   /// Creates a new [GetRoute53DomainsDomainSummaryArgs].
   /// [name] Name of Route53DomainsDomainSummary
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRoute53DomainsDomainSummaryArgs({
+  const GetRoute53DomainsDomainSummaryArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -38,7 +38,7 @@ class GetEvaluationJobResult {
   /// [name] After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
   /// [schedule] Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
   /// [state] Describes the current state of the job.
-  GetEvaluationJobResult({
+  const GetEvaluationJobResult({
     required this.annotationSpecSet,
     required this.attempts,
     required this.createTime,

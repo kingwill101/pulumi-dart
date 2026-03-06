@@ -21,7 +21,7 @@ class GalleryScriptVersionPropertiesResponse {
   /// [publishingProfile] The publishing profile of a gallery image version.
   /// [replicationStatus] This is the replication status of the gallery image version.
   /// [safetyProfile] The safety profile of the Gallery Script Version.
-  GalleryScriptVersionPropertiesResponse({
+  const GalleryScriptVersionPropertiesResponse({
     required this.provisioningState,
     required this.publishingProfile,
     required this.replicationStatus,

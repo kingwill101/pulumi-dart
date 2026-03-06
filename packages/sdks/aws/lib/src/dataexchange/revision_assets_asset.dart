@@ -31,7 +31,7 @@ class RevisionAssetsAsset {
   /// [importAssetsFromSignedUrl] A block to import assets from a signed URL. See Import Assets from Signed URL for more details.
   /// [name] Optional.
   /// [updatedAt] The timestamp when the revision was last updated, in RFC3339 format.
-  RevisionAssetsAsset({
+  const RevisionAssetsAsset({
     this.arn,
     this.createS3DataAccessFromS3Bucket,
     this.createdAt,

@@ -102,7 +102,7 @@ class AccountPropertiesResponse {
   /// [scheduledPurgeDate] The scheduled purge date, only available for deleted account.
   /// [skuChangeInfo] Sku change info of account.
   /// [userOwnedStorage] The storage accounts for this resource.
-  AccountPropertiesResponse({
+  const AccountPropertiesResponse({
     required this.abusePenalty,
     this.allowedFqdnList,
     this.amlWorkspace,

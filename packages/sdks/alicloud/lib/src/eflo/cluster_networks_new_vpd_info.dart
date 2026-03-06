@@ -27,7 +27,7 @@ class ClusterNetworksNewVpdInfo {
   /// [monitorVswitchId] Proprietary network switch
   /// [vpdCidr] Cluster network segment
   /// [vpdSubnets] List of cluster subnet ID
-  ClusterNetworksNewVpdInfo({
+  const ClusterNetworksNewVpdInfo({
     this.cenId,
     this.cloudLinkCidr,
     this.cloudLinkId,

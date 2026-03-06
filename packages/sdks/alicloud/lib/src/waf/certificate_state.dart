@@ -24,7 +24,7 @@ class CertificateState {
   /// [domain] The domain that you want to add to WAF.
   /// [instanceId] The ID of the WAF instance.
   /// [privateKey] The private key.
-  CertificateState({
+  const CertificateState({
     this.certificate,
     this.certificateId,
     this.certificateName,

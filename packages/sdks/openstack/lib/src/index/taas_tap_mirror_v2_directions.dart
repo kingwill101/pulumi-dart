@@ -15,7 +15,7 @@ class TaasTapMirrorV2Directions {
   /// Creates a new [TaasTapMirrorV2Directions].
   /// [in_] Declares ingress traffic to the port will be mirrored. The value
   /// [out] Declares egress traffic will be mirrored. The value is the
-  TaasTapMirrorV2Directions({
+  const TaasTapMirrorV2Directions({
     this.in_,
     this.out,
   });

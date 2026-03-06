@@ -32,7 +32,7 @@ class SqlDedicatedGatewayServiceResourcePropertiesResponse {
   /// [serviceType] ServiceType for the service.
   /// [sqlDedicatedGatewayEndpoint] SqlDedicatedGateway endpoint for the service.
   /// [status] Describes the status of a service.
-  SqlDedicatedGatewayServiceResourcePropertiesResponse({
+  const SqlDedicatedGatewayServiceResourcePropertiesResponse({
     required this.creationTime,
     this.dedicatedGatewayType,
     this.instanceCount,

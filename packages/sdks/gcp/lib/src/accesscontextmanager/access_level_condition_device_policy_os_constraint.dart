@@ -14,7 +14,7 @@ class AccessLevelConditionDevicePolicyOsConstraint {
   /// Creates a new [AccessLevelConditionDevicePolicyOsConstraint].
   /// [minimumVersion] The minimum allowed OS version. If not set, any version
   /// [osType] The operating system type of the device.
-  AccessLevelConditionDevicePolicyOsConstraint({
+  const AccessLevelConditionDevicePolicyOsConstraint({
     this.minimumVersion,
     required this.osType,
   });

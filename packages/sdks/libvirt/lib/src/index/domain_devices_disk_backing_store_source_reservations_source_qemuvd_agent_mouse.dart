@@ -8,7 +8,7 @@ class DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse({
+  const DomainDevicesDiskBackingStoreSourceReservationsSourceQemuvdAgentMouse({
     required this.mode,
   });
 

@@ -8,7 +8,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsername
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField].
   /// [identifier] The name of the username field.
-  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField({
+  const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigUsernameField({
     required this.identifier,
   });
 

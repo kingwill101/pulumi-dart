@@ -14,7 +14,7 @@ class DistributionDefaultCacheBehaviorLambdaFunctionAssociation {
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   /// [includeBody] When set to true it exposes the request body to the lambda function. Defaults to false. Valid values: `true`, `false`.
   /// [lambdaArn] ARN of the Lambda function.
-  DistributionDefaultCacheBehaviorLambdaFunctionAssociation({
+  const DistributionDefaultCacheBehaviorLambdaFunctionAssociation({
     required this.eventType,
     this.includeBody,
     required this.lambdaArn,

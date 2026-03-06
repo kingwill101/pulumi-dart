@@ -60,7 +60,7 @@ class GetFlowLogResult {
   /// [targetResourceGuid] Guid of network security group to which flow log will be applied.
   /// [targetResourceId] ID of network security group to which flow log will be applied.
   /// [type] Resource type.
-  GetFlowLogResult({
+  const GetFlowLogResult({
     required this.azureApiVersion,
     this.enabled,
     this.enabledFilteringCriteria,

@@ -13,7 +13,7 @@ class GetOrganizationSourceIamPolicySecuritycenterV1beta1Args {
   /// Creates a new [GetOrganizationSourceIamPolicySecuritycenterV1beta1Args].
   /// [organizationId] Required.
   /// [sourceId] Required.
-  GetOrganizationSourceIamPolicySecuritycenterV1beta1Args({
+  const GetOrganizationSourceIamPolicySecuritycenterV1beta1Args({
     required this.organizationId,
     required this.sourceId,
   });

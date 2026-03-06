@@ -8,7 +8,7 @@ class DomainRuleBasedMatchingMatchingRule {
 
   /// Creates a new [DomainRuleBasedMatchingMatchingRule].
   /// [rules] A single rule level of the `match_rules`. Configures how the rule-based matching process should match profiles.
-  DomainRuleBasedMatchingMatchingRule({
+  const DomainRuleBasedMatchingMatchingRule({
     required this.rules,
   });
 

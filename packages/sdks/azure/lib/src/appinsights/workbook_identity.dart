@@ -17,7 +17,7 @@ class WorkbookIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Workbook.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Workbook.
   /// [type] The type of Managed Service Identity that is configured on this Workbook. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`. Changing this forces a new resource to be created.
-  WorkbookIdentity({
+  const WorkbookIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

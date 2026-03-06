@@ -29,7 +29,7 @@ class InstructionArgs {
   /// [displayName] The display name of the instruction. Maximum of 64 characters.
   /// [pdfInstruction] Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
   /// [project] Optional.
-  InstructionArgs({
+  const InstructionArgs({
     this.csvInstruction,
     required this.dataType,
     this.description,

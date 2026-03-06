@@ -33,7 +33,7 @@ class CxTestCaseArgs {
   /// [tags] Tags are short descriptions that users may apply to test cases for organizational and filtering purposes.
   /// [testCaseConversationTurns] The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// [testConfig] Config for the test case.
-  CxTestCaseArgs({
+  const CxTestCaseArgs({
     required this.displayName,
     this.notes,
     this.parent,

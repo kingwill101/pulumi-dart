@@ -24,7 +24,7 @@ class DeviceSessionArgs {
   /// [name] Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
   /// [project] Optional.
   /// [ttl] Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
-  DeviceSessionArgs({
+  const DeviceSessionArgs({
     required this.androidDevice,
     this.expireTime,
     this.name,

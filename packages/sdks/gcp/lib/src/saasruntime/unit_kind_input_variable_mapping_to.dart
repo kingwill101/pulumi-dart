@@ -14,7 +14,7 @@ class UnitKindInputVariableMappingTo {
   /// [dependency] Alias of the dependency that the inputVariable will pass its value to
   /// [ignoreForLookup] Tells SaaS Runtime if this mapping should be used during lookup or not
   /// [inputVariable] Name of the inputVariable on the dependency
-  UnitKindInputVariableMappingTo({
+  const UnitKindInputVariableMappingTo({
     required this.dependency,
     this.ignoreForLookup,
     required this.inputVariable,

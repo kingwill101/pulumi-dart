@@ -11,7 +11,7 @@ class SparkPoolLibraryRequirement {
   /// Creates a new [SparkPoolLibraryRequirement].
   /// [content] The content of library requirements.
   /// [filename] The name of the library requirements file.
-  SparkPoolLibraryRequirement({
+  const SparkPoolLibraryRequirement({
     required this.content,
     required this.filename,
   });

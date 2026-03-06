@@ -24,7 +24,7 @@ class ApplicationFromTemplateState {
   /// [servicePrincipalId] The resource ID for the service principal.
   /// [servicePrincipalObjectId] The object ID for the service principal.
   /// [templateId] Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
-  ApplicationFromTemplateState({
+  const ApplicationFromTemplateState({
     this.applicationId,
     this.applicationObjectId,
     this.displayName,

@@ -15,7 +15,7 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Args {
   /// [capacityCommitmentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCapacityCommitmentBigqueryreservationV1beta1Args({
+  const GetCapacityCommitmentBigqueryreservationV1beta1Args({
     required this.capacityCommitmentId,
     required this.location,
     this.project,

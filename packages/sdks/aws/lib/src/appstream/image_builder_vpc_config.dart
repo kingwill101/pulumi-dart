@@ -11,7 +11,7 @@ class ImageBuilderVpcConfig {
   /// Creates a new [ImageBuilderVpcConfig].
   /// [securityGroupIds] Identifiers of the security groups for the image builder or image builder.
   /// [subnetIds] Identifier of the subnet to which a network interface is attached from the image builder instance.
-  ImageBuilderVpcConfig({
+  const ImageBuilderVpcConfig({
     this.securityGroupIds,
     this.subnetIds,
   });

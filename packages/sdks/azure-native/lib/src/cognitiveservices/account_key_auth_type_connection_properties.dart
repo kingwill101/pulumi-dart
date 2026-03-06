@@ -36,7 +36,7 @@ class AccountKeyAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  AccountKeyAuthTypeConnectionProperties({
+  const AccountKeyAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

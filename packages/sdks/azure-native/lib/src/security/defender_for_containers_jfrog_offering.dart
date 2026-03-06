@@ -10,7 +10,7 @@ class DefenderForContainersJFrogOffering {
 
   /// Creates a new [DefenderForContainersJFrogOffering].
   /// [offeringType] The type of the security offering.
-  DefenderForContainersJFrogOffering({
+  const DefenderForContainersJFrogOffering({
     required this.offeringType,
   });
 

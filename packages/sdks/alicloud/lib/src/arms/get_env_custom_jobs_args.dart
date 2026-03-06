@@ -21,7 +21,7 @@ class GetEnvCustomJobsArgs {
   /// [ids] A list of ARMS Env Custom Job IDs.
   /// [nameRegex] A regex string to filter results by ARMS Env Custom Job name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnvCustomJobsArgs({
+  const GetEnvCustomJobsArgs({
     required this.environmentId,
     this.ids,
     this.nameRegex,

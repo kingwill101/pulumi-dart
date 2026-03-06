@@ -50,7 +50,7 @@ class GetTestMatrixResult {
   /// [testMatrixId] Unique id set by the service.
   /// [testSpecification] How to run the test.
   /// [timestamp] The time this test matrix was initially created.
-  GetTestMatrixResult({
+  const GetTestMatrixResult({
     required this.clientInfo,
     required this.environmentMatrix,
     required this.failFast,

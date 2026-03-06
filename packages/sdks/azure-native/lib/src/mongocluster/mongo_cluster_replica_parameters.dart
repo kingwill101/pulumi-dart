@@ -12,7 +12,7 @@ class MongoClusterReplicaParameters {
   /// Creates a new [MongoClusterReplicaParameters].
   /// [sourceLocation] The location of the source cluster
   /// [sourceResourceId] The id of the replication source cluster.
-  MongoClusterReplicaParameters({
+  const MongoClusterReplicaParameters({
     required this.sourceLocation,
     required this.sourceResourceId,
   });

@@ -19,7 +19,7 @@ class GetResourcesSearchAllCloudassetResult {
   /// [query] Optional.
   /// [results] A list of search results based on provided inputs. Structure is defined below.
   /// [scope] Required.
-  GetResourcesSearchAllCloudassetResult({
+  const GetResourcesSearchAllCloudassetResult({
     this.assetTypes,
     required this.id,
     this.query,

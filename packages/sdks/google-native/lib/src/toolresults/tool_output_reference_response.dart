@@ -18,7 +18,7 @@ class ToolOutputReferenceResponse {
   /// [creationTime] The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
   /// [output] A FileReference to an output file. - In response: always set - In create/update request: always set
   /// [testCase] The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
-  ToolOutputReferenceResponse({
+  const ToolOutputReferenceResponse({
     required this.creationTime,
     required this.output,
     required this.testCase,

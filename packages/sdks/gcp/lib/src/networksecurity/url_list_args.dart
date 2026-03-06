@@ -26,7 +26,7 @@ class UrlListArgs {
   /// [name] Short name of the UrlList resource to be created.
   /// [project] The ID of the project in which the resource belongs.
   /// [values] FQDNs and URLs.
-  UrlListArgs({
+  const UrlListArgs({
     this.description,
     required this.location,
     this.name,

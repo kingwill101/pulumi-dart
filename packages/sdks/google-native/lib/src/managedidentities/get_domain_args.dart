@@ -13,7 +13,7 @@ class GetDomainArgs {
   /// Creates a new [GetDomainArgs].
   /// [domainId] Required.
   /// [project] Optional.
-  GetDomainArgs({
+  const GetDomainArgs({
     required this.domainId,
     this.project,
   });

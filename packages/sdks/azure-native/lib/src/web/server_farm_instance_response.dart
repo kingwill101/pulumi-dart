@@ -15,7 +15,7 @@ class ServerFarmInstanceResponse {
   /// [instanceName] The instance name.
   /// [ipAddress] The instance IP address.
   /// [status] The instance status.
-  ServerFarmInstanceResponse({
+  const ServerFarmInstanceResponse({
     this.instanceName,
     this.ipAddress,
     this.status,

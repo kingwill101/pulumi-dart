@@ -31,7 +31,7 @@ class ParameterState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The data type of the common parameter. Valid values: `String` and `StringList`.
   /// [value] The value of the common parameter. The value must be `1` to `4096` characters in length.
-  ParameterState({
+  const ParameterState({
     this.constraints,
     this.description,
     this.parameterName,

@@ -12,7 +12,7 @@ class SetTablePrimaryKey {
   /// Creates a new [SetTablePrimaryKey].
   /// [primaryKey] Optional. Name for the primary key
   /// [primaryKeyColumns] List of column names for the primary key
-  SetTablePrimaryKey({
+  const SetTablePrimaryKey({
     this.primaryKey,
     required this.primaryKeyColumns,
   });

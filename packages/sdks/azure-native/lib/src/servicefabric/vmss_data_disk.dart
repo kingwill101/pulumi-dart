@@ -18,7 +18,7 @@ class VmssDataDisk {
   /// [diskSizeGB] Disk size for each vm in the node type in GBs.
   /// [diskType] Managed data disk type. Specifies the storage account type for the managed disk
   /// [lun] Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM. Lun 0 is reserved for the service fabric data disk.
-  VmssDataDisk({
+  const VmssDataDisk({
     required this.diskLetter,
     required this.diskSizeGB,
     required this.diskType,

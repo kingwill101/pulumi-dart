@@ -27,7 +27,7 @@ class ContactArgs {
   /// [reservationEndTime] Reservation end time of the Contact. Changing this forces a new resource to be created.
   /// [reservationStartTime] Reservation start time of the Contact. Changing this forces a new resource to be created.
   /// [spacecraftId] The ID of the spacecraft which the contact will be made to. Changing this forces a new resource to be created.
-  ContactArgs({
+  const ContactArgs({
     required this.contactProfileId,
     required this.groundStationName,
     this.name,

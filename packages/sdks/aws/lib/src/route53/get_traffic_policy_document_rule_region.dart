@@ -20,7 +20,7 @@ class GetTrafficPolicyDocumentRuleRegion {
   /// [healthCheck] If you want to associate a health check with the endpoint or rule.
   /// [region] Region code for the AWS Region that you created the resource in.
   /// [ruleReference] References to a rule.
-  GetTrafficPolicyDocumentRuleRegion({
+  const GetTrafficPolicyDocumentRuleRegion({
     this.endpointReference,
     this.evaluateTargetHealth,
     this.healthCheck,

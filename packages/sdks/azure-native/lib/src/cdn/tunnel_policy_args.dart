@@ -29,7 +29,7 @@ class TunnelPolicyArgs {
   /// [targetGroups] Target Groups referenced by this tunnel policy.
   /// [tunnelPolicyName] Name of the Tunnel Policy under the profile.
   /// [tunnelType] Protocol this tunnel will use for allowing traffic to backends.
-  TunnelPolicyArgs({
+  const TunnelPolicyArgs({
     required this.domains,
     required this.profileName,
     required this.resourceGroupName,

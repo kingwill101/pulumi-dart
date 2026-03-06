@@ -9,7 +9,7 @@ class CutoverForecastResponseVmmigrationV1alpha1 {
 
   /// Creates a new [CutoverForecastResponseVmmigrationV1alpha1].
   /// [estimatedCutoverJobDuration] Estimation of the CutoverJob duration.
-  CutoverForecastResponseVmmigrationV1alpha1({
+  const CutoverForecastResponseVmmigrationV1alpha1({
     required this.estimatedCutoverJobDuration,
   });
 

@@ -31,7 +31,7 @@ class StandaloneGatewayArgs {
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the API Management Standalone Gateway. Changing this forces a new resource to be created.
   /// [virtualNetworkType] Specifies the type of VPN in which API Management gateway needs to be configured. Possible values are `External` and `Internal`. Changing this forces a new resource to be created.
-  StandaloneGatewayArgs({
+  const StandaloneGatewayArgs({
     this.backendSubnetId,
     this.location,
     this.name,

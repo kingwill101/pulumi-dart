@@ -10,7 +10,7 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion {
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion].
   /// [summarySections] Required. All the parts of generated summary.
-  GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion({
+  const GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion({
     required this.summarySections,
   });
 

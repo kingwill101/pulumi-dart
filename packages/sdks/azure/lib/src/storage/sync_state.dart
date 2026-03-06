@@ -24,7 +24,7 @@ class SyncState {
   /// [registeredServers] A list of registered servers owned by this Storage Sync.
   /// [resourceGroupName] The name of the Resource Group where the Storage Sync should exist. Changing this forces a new Storage Sync to be created.
   /// [tags] A mapping of tags which should be assigned to the Storage Sync.
-  SyncState({
+  const SyncState({
     this.incomingTrafficPolicy,
     this.location,
     this.name,

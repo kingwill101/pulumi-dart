@@ -13,7 +13,7 @@ class RiskConfigurationAccountTakeoverRiskConfiguration {
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfiguration].
   /// [actions] Account takeover risk configuration actions. See details below.
   /// [notifyConfiguration] The notify configuration used to construct email notifications. See details below.
-  RiskConfigurationAccountTakeoverRiskConfiguration({
+  const RiskConfigurationAccountTakeoverRiskConfiguration({
     required this.actions,
     this.notifyConfiguration,
   });

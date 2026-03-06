@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// [certificateId] Identifier of the certificate entity. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.certificateId,
     required this.resourceGroupName,
     required this.serviceName,

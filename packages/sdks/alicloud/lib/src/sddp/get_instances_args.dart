@@ -12,7 +12,7 @@ class GetInstancesArgs {
 
   /// Creates a new [GetInstancesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.outputFile,
   });
 

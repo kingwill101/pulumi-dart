@@ -23,7 +23,7 @@ class GeneratorSummarizationContextFewShotExample {
   /// [extraInfo] Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has &lt;"price", "10"&gt;
   /// [output] Required. Example output of the model.
   /// [summarizationSectionList] Summarization sections.
-  GeneratorSummarizationContextFewShotExample({
+  const GeneratorSummarizationContextFewShotExample({
     this.conversationContext,
     this.extraInfo,
     required this.output,

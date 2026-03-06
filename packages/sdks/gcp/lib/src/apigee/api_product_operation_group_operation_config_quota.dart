@@ -14,7 +14,7 @@ class ApiProductOperationGroupOperationConfigQuota {
   /// [interval] Required. Time interval over which the number of request messages is calculated.
   /// [limit] Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
   /// [timeUnit] Time unit defined for the interval. Valid values include second, minute, hour, day, month or year. If limit and interval are valid, the default value is hour; otherwise, the default is null.
-  ApiProductOperationGroupOperationConfigQuota({
+  const ApiProductOperationGroupOperationConfigQuota({
     this.interval,
     this.limit,
     this.timeUnit,

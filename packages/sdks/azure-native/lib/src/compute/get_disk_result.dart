@@ -149,7 +149,7 @@ class GetDiskResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueId] Unique Guid identifying the resource.
   /// [zones] The Logical zone list for Disk.
-  GetDiskResult({
+  const GetDiskResult({
     required this.azureApiVersion,
     this.burstingEnabled,
     required this.burstingEnabledTime,

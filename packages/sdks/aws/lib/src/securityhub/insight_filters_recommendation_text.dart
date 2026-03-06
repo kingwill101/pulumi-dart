@@ -9,7 +9,7 @@ class InsightFiltersRecommendationText {
   /// Creates a new [InsightFiltersRecommendationText].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersRecommendationText({
+  const InsightFiltersRecommendationText({
     required this.comparison,
     required this.value,
   });

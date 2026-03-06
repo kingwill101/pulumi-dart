@@ -9,7 +9,7 @@ class AgentPromptVariantGenAiResource {
 
   /// Creates a new [AgentPromptVariantGenAiResource].
   /// [agent] Specifies an Amazon Bedrock agent with which to use the prompt. See Agent Configuration for more information.
-  AgentPromptVariantGenAiResource({
+  const AgentPromptVariantGenAiResource({
     this.agent,
   });
 

@@ -15,7 +15,7 @@ class GetTargetServerArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   /// [targetserverId] Required.
-  GetTargetServerArgs({
+  const GetTargetServerArgs({
     required this.environmentId,
     required this.organizationId,
     required this.targetserverId,

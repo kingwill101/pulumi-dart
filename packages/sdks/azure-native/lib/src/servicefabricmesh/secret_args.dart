@@ -25,7 +25,7 @@ class SecretArgs {
   /// [resourceGroupName] Azure resource group name
   /// [secretResourceName] The name of the secret resource.
   /// [tags] Resource tags.
-  SecretArgs({
+  const SecretArgs({
     this.location,
     required this.properties,
     required this.resourceGroupName,

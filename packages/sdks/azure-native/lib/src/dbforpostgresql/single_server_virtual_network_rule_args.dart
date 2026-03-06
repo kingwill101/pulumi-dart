@@ -24,7 +24,7 @@ class SingleServerVirtualNetworkRuleArgs {
   /// [serverName] The name of the server.
   /// [virtualNetworkRuleName] The name of the virtual network rule.
   /// [virtualNetworkSubnetId] The ARM resource id of the virtual network subnet.
-  SingleServerVirtualNetworkRuleArgs({
+  const SingleServerVirtualNetworkRuleArgs({
     this.ignoreMissingVnetServiceEndpoint,
     required this.resourceGroupName,
     required this.serverName,

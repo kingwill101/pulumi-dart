@@ -13,7 +13,7 @@ class AuthorizationProviderOAuth2SettingsResponse {
   /// Creates a new [AuthorizationProviderOAuth2SettingsResponse].
   /// [grantTypes] OAuth2 settings
   /// [redirectUrl] Redirect URL to be set in the OAuth application.
-  AuthorizationProviderOAuth2SettingsResponse({
+  const AuthorizationProviderOAuth2SettingsResponse({
     this.grantTypes,
     this.redirectUrl,
   });

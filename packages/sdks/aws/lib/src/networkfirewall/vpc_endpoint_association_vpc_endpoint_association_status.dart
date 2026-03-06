@@ -8,7 +8,7 @@ class VpcEndpointAssociationVpcEndpointAssociationStatus {
 
   /// Creates a new [VpcEndpointAssociationVpcEndpointAssociationStatus].
   /// [associationSyncStates] Required.
-  VpcEndpointAssociationVpcEndpointAssociationStatus({
+  const VpcEndpointAssociationVpcEndpointAssociationStatus({
     required this.associationSyncStates,
   });
 

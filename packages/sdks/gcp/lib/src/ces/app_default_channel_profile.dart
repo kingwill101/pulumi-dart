@@ -36,7 +36,7 @@ class AppDefaultChannelProfile {
   /// [personaProperty] Represents the persona property of a channel.
   /// [profileId] The unique identifier of the channel profile.
   /// [webWidgetConfig] Message for configuration for the web widget.
-  AppDefaultChannelProfile({
+  const AppDefaultChannelProfile({
     this.channelType,
     this.disableBargeInControl,
     this.disableDtmf,

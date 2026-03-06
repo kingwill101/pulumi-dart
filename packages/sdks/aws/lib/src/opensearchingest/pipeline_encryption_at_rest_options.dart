@@ -8,7 +8,7 @@ class PipelineEncryptionAtRestOptions {
 
   /// Creates a new [PipelineEncryptionAtRestOptions].
   /// [kmsKeyArn] The ARN of the KMS key used to encrypt data-at-rest in OpenSearch Ingestion. By default, data is encrypted using an AWS owned key.
-  PipelineEncryptionAtRestOptions({
+  const PipelineEncryptionAtRestOptions({
     required this.kmsKeyArn,
   });
 

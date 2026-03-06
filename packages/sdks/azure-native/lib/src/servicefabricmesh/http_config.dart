@@ -16,7 +16,7 @@ class HttpConfig {
   /// [hosts] description for routing.
   /// [name] http gateway config name.
   /// [port] Specifies the port at which the service endpoint below needs to be exposed.
-  HttpConfig({
+  const HttpConfig({
     required this.hosts,
     required this.name,
     required this.port,

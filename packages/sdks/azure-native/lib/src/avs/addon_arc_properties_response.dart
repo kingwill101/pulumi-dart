@@ -16,7 +16,7 @@ class AddonArcPropertiesResponse {
   /// [addonType] Addon type
   /// [provisioningState] The state of the addon provisioning
   /// [vCenter] The VMware vCenter resource ID
-  AddonArcPropertiesResponse({
+  const AddonArcPropertiesResponse({
     required this.addonType,
     required this.provisioningState,
     this.vCenter,

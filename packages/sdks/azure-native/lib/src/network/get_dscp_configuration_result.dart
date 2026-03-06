@@ -64,7 +64,7 @@ class GetDscpConfigurationResult {
   /// [sourcePortRanges] Sources port ranges.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetDscpConfigurationResult({
+  const GetDscpConfigurationResult({
     required this.associatedNetworkInterfaces,
     required this.azureApiVersion,
     this.destinationIpRanges,

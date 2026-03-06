@@ -26,7 +26,7 @@ class TrialComponentResponse {
   /// [environmentId] [Required] The ARM resource ID of the Environment specification for the job.
   /// [environmentVariables] Environment variables included in the job.
   /// [resources] Compute Resource configuration for the job.
-  TrialComponentResponse({
+  const TrialComponentResponse({
     this.codeId,
     required this.command,
     this.distribution,

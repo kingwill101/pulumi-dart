@@ -11,7 +11,7 @@ class OauthIdpConfigResponseType {
   /// Creates a new [OauthIdpConfigResponseType].
   /// [code] If true, authorization code is returned from IdP's authorization endpoint.
   /// [idToken] If true, ID token is returned from IdP's authorization endpoint.
-  OauthIdpConfigResponseType({
+  const OauthIdpConfigResponseType({
     this.code,
     this.idToken,
   });

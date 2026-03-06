@@ -40,7 +40,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifier {
   /// [salesforceIdentifier] A nested object resource.
   /// [spannerIdentifier] A nested object resource.
   /// [sqlServerIdentifier] A nested object resource.
-  StreamRuleSetObjectFilterSourceObjectIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifier({
     this.mongodbIdentifier,
     this.mysqlIdentifier,
     this.oracleIdentifier,

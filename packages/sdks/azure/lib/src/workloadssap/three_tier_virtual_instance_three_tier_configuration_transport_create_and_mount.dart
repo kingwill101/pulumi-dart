@@ -11,7 +11,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount {
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount].
   /// [resourceGroupId] The ID of the Resource Group of the transport File Share. Changing this forces a new resource to be created.
   /// [storageAccountName] The name of the Storage Account of the File Share. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount({
+  const ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount({
     this.resourceGroupId,
     this.storageAccountName,
   });

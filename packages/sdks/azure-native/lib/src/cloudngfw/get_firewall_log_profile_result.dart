@@ -28,7 +28,7 @@ class GetFirewallLogProfileResult {
   /// [logType] One of possible log type
   /// [threatLogDestination] Threat destination configurations
   /// [trafficLogDestination] Traffic destination configurations
-  GetFirewallLogProfileResult({
+  const GetFirewallLogProfileResult({
     this.applicationInsights,
     this.commonDestination,
     this.decryptLogDestination,

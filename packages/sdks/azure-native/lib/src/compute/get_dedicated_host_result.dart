@@ -61,7 +61,7 @@ class GetDedicatedHostResult {
   /// [timeCreated] Specifies the time at which the Dedicated Host resource was created. Minimum api-version: 2021-11-01.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachines] A list of references to all virtual machines in the Dedicated Host.
-  GetDedicatedHostResult({
+  const GetDedicatedHostResult({
     this.autoReplaceOnFailure,
     required this.azureApiVersion,
     required this.hostId,

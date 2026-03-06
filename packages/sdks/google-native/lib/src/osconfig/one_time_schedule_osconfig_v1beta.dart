@@ -9,7 +9,7 @@ class OneTimeScheduleOsconfigV1beta {
 
   /// Creates a new [OneTimeScheduleOsconfigV1beta].
   /// [executeTime] The desired patch job execution time.
-  OneTimeScheduleOsconfigV1beta({
+  const OneTimeScheduleOsconfigV1beta({
     required this.executeTime,
   });
 

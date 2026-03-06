@@ -9,7 +9,7 @@ class SecurityGatewayApplicationUpstreamNetwork {
 
   /// Creates a new [SecurityGatewayApplicationUpstreamNetwork].
   /// [name] Required. Network name is of the format:
-  SecurityGatewayApplicationUpstreamNetwork({
+  const SecurityGatewayApplicationUpstreamNetwork({
     required this.name,
   });
 

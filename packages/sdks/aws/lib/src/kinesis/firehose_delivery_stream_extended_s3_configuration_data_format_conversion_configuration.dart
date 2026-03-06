@@ -20,7 +20,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
   /// [inputFormatConfiguration] Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. See `input_format_configuration` block below for details.
   /// [outputFormatConfiguration] Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. See `output_format_configuration` block below for details.
   /// [schemaConfiguration] Specifies the AWS Glue Data Catalog table that contains the column information. See `schema_configuration` block below for details.
-  FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration({
+  const FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfiguration({
     this.enabled,
     required this.inputFormatConfiguration,
     required this.outputFormatConfiguration,

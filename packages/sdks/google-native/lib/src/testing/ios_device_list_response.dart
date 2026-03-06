@@ -10,7 +10,7 @@ class IosDeviceListResponse {
 
   /// Creates a new [IosDeviceListResponse].
   /// [iosDevices] A list of iOS devices.
-  IosDeviceListResponse({
+  const IosDeviceListResponse({
     required this.iosDevices,
   });
 

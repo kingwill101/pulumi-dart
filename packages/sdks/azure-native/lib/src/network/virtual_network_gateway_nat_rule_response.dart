@@ -34,7 +34,7 @@ class VirtualNetworkGatewayNatRuleResponse {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the NAT Rule resource.
   /// [type] Resource type.
-  VirtualNetworkGatewayNatRuleResponse({
+  const VirtualNetworkGatewayNatRuleResponse({
     required this.etag,
     this.externalMappings,
     this.id,

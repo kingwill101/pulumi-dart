@@ -9,7 +9,7 @@ class InsightsConfigErrorDetail {
 
   /// Creates a new [InsightsConfigErrorDetail].
   /// [detailMessage] (Output)
-  InsightsConfigErrorDetail({
+  const InsightsConfigErrorDetail({
     this.detailMessage,
   });
 

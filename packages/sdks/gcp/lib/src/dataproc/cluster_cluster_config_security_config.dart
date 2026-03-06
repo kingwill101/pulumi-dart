@@ -15,7 +15,7 @@ class ClusterClusterConfigSecurityConfig {
   /// Creates a new [ClusterClusterConfigSecurityConfig].
   /// [identityConfig] Identity Configuration. At least one of `identity_config`
   /// [kerberosConfig] Kerberos Configuration. At least one of `identity_config`
-  ClusterClusterConfigSecurityConfig({
+  const ClusterClusterConfigSecurityConfig({
     this.identityConfig,
     this.kerberosConfig,
   });

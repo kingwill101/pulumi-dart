@@ -17,7 +17,7 @@ class GrpcServiceConfigResponse {
   /// [callCredentials] The call credentials to access the SDS server.
   /// [channelCredentials] The channel credentials to access the SDS server.
   /// [targetUri] The target URI of the SDS server.
-  GrpcServiceConfigResponse({
+  const GrpcServiceConfigResponse({
     required this.callCredentials,
     required this.channelCredentials,
     required this.targetUri,

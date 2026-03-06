@@ -21,7 +21,7 @@ class GetSqlServerInstanceJobsStatusArgs {
   /// [jobType] The type of the job to retrieve the status for.
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
-  GetSqlServerInstanceJobsStatusArgs({
+  const GetSqlServerInstanceJobsStatusArgs({
     this.featureName,
     this.jobType,
     required this.resourceGroupName,

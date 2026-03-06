@@ -18,7 +18,7 @@ class GetPowerShell72ModuleArgs {
   /// [automationAccountName] The name of the automation account.
   /// [moduleName] The name of module.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPowerShell72ModuleArgs({
+  const GetPowerShell72ModuleArgs({
     required this.automationAccountName,
     required this.moduleName,
     required this.resourceGroupName,

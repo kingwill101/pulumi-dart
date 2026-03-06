@@ -18,7 +18,7 @@ class GetRouteFilterRuleArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [routeFilterName] The name of the route filter.
   /// [ruleName] The name of the rule.
-  GetRouteFilterRuleArgs({
+  const GetRouteFilterRuleArgs({
     required this.resourceGroupName,
     required this.routeFilterName,
     required this.ruleName,

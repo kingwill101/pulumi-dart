@@ -21,7 +21,7 @@ class RequestResponse {
   /// [id] The ID of the request that initiated the event.
   /// [method] The request method that generated the event.
   /// [useragent] The user agent header of the request.
-  RequestResponse({
+  const RequestResponse({
     this.addr,
     this.host,
     this.id,

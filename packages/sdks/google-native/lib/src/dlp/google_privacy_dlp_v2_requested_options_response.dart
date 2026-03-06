@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2RequestedOptionsResponse {
   /// Creates a new [GooglePrivacyDlpV2RequestedOptionsResponse].
   /// [jobConfig] Inspect config.
   /// [snapshotInspectTemplate] If run with an InspectTemplate, a snapshot of its state at the time of this run.
-  GooglePrivacyDlpV2RequestedOptionsResponse({
+  const GooglePrivacyDlpV2RequestedOptionsResponse({
     required this.jobConfig,
     required this.snapshotInspectTemplate,
   });

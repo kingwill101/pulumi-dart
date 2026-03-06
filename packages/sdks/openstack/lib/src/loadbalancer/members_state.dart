@@ -21,7 +21,7 @@ class MembersState {
   /// [members] A set of dictionaries containing member parameters. The
   /// [poolId] The id of the pool that members will be assigned to.
   /// [region] The region in which to obtain the V2 Networking client.
-  MembersState({
+  const MembersState({
     this.members,
     this.poolId,
     this.region,

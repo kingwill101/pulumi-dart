@@ -16,7 +16,7 @@ class CentralServerConfiguration {
   /// [instanceCount] The number of central server VMs.
   /// [subnetId] The subnet id.
   /// [virtualMachineConfiguration] Gets or sets the virtual machine configuration.
-  CentralServerConfiguration({
+  const CentralServerConfiguration({
     required this.instanceCount,
     required this.subnetId,
     required this.virtualMachineConfiguration,

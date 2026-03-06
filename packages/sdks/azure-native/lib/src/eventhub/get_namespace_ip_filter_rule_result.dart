@@ -26,7 +26,7 @@ class GetNamespaceIpFilterRuleResult {
   /// [ipMask] IP Mask
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNamespaceIpFilterRuleResult({
+  const GetNamespaceIpFilterRuleResult({
     this.action,
     required this.azureApiVersion,
     this.filterName,

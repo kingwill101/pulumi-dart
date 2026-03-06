@@ -10,7 +10,7 @@ class FleetObservabilityFeatureSpec {
 
   /// Creates a new [FleetObservabilityFeatureSpec].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
-  FleetObservabilityFeatureSpec({
+  const FleetObservabilityFeatureSpec({
     this.loggingConfig,
   });
 

@@ -62,7 +62,7 @@ class Features {
   /// [templateDeployment] Optional.
   /// [virtualMachine] Optional.
   /// [virtualMachineScaleSet] Optional.
-  Features({
+  const Features({
     this.apiManagement,
     this.appConfiguration,
     this.applicationInsights,

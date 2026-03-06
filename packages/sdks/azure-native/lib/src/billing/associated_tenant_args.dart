@@ -22,7 +22,7 @@ class AssociatedTenantArgs {
   /// [billingAccountName] The ID that uniquely identifies a billing account.
   /// [properties] An associated tenant.
   /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  AssociatedTenantArgs({
+  const AssociatedTenantArgs({
     this.associatedTenantName,
     required this.billingAccountName,
     this.properties,

@@ -20,7 +20,7 @@ class ScaleSetStorageProfileDataDisk {
   /// [diskSizeGb] Specifies the size of the disk in GB. This element is required when creating an empty disk.
   /// [lun] Specifies the Logical Unit Number of the disk in each virtual machine in the scale set.
   /// [managedDiskType] Specifies the type of managed disk to create. Value must be either `Standard_LRS`, `StandardSSD_LRS` or `Premium_LRS`.
-  ScaleSetStorageProfileDataDisk({
+  const ScaleSetStorageProfileDataDisk({
     this.caching,
     required this.createOption,
     this.diskSizeGb,

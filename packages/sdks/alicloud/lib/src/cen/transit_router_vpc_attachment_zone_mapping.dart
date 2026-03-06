@@ -13,7 +13,7 @@ class TransitRouterVpcAttachmentZoneMapping {
   /// Creates a new [TransitRouterVpcAttachmentZoneMapping].
   /// [vswitchId] The ID of the vSwitch that you want to add to the VPC connection.  You can specify at most 10 vSwitches in each call.
   /// [zoneId] The ID of the zone that supports Enterprise Edition transit routers.  You can call the [DescribeZones](https://www.alibabacloud.com/help/en/doc-detail/36064.html) operation to query the most recent zone list.  You can specify at most 10 zones in each call.
-  TransitRouterVpcAttachmentZoneMapping({
+  const TransitRouterVpcAttachmentZoneMapping({
     required this.vswitchId,
     required this.zoneId,
   });

@@ -13,7 +13,7 @@ class GoogleFirestoreAdminV1beta1IndexField {
   /// Creates a new [GoogleFirestoreAdminV1beta1IndexField].
   /// [fieldPath] The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
   /// [mode] The field's mode.
-  GoogleFirestoreAdminV1beta1IndexField({
+  const GoogleFirestoreAdminV1beta1IndexField({
     this.fieldPath,
     this.mode,
   });

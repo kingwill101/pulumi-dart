@@ -27,7 +27,7 @@ class WorkflowStep {
   /// [deleteStepDetails] Details for a step that deletes the file.
   /// [tagStepDetails] Details for a step that creates one or more tags.
   /// [type] Required.
-  WorkflowStep({
+  const WorkflowStep({
     this.copyStepDetails,
     this.customStepDetails,
     this.decryptStepDetails,

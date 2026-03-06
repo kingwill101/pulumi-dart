@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions {
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions].
   /// [minAge] Duration format. The minimum age a table must have before Cloud DLP can profile it. Value greater than 1.
   /// [minRowCount] Minimum number of rows that should be present before Cloud DLP profiles as a table.
-  PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions({
+  const PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditions({
     this.minAge,
     this.minRowCount,
   });

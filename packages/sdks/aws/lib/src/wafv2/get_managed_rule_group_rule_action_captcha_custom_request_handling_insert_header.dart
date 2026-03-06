@@ -10,7 +10,7 @@ class GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader {
   /// Creates a new [GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader].
   /// [name] Managed rule group name.
   /// [value] Required.
-  GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader({
+  const GetManagedRuleGroupRuleActionCaptchaCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
   });

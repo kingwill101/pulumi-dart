@@ -17,7 +17,7 @@ class GetJobTemplatesResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [templates] A list of Ehpc Job Templates. Each element contains the following attributes:
-  GetJobTemplatesResult({
+  const GetJobTemplatesResult({
     required this.id,
     required this.ids,
     this.outputFile,

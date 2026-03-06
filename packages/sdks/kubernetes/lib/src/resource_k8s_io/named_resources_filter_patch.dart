@@ -14,7 +14,7 @@ class NamedResourcesFilterPatch {
 
   /// Creates a new [NamedResourcesFilterPatch].
   /// [selector] Selector is a CEL expression which must evaluate to true if a resource instance is suitable. The language is as defined in https://kubernetes.io/docs/reference/using-api/cel/
-  NamedResourcesFilterPatch({
+  const NamedResourcesFilterPatch({
     this.selector,
   });
 

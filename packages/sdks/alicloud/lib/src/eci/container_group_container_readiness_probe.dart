@@ -34,7 +34,7 @@ class ContainerGroupContainerReadinessProbe {
   /// [successThreshold] The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
   /// [tcpSockets] Health check using TCP socket method. See `tcp_socket` below.
   /// [timeoutSeconds] Check the timeout, the default is 1 second, the minimum is 1 second.
-  ContainerGroupContainerReadinessProbe({
+  const ContainerGroupContainerReadinessProbe({
     this.execs,
     this.failureThreshold,
     this.httpGets,

@@ -25,7 +25,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.groupIds,
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,

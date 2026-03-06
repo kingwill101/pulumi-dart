@@ -85,7 +85,7 @@ class AwsAppSyncGraphqlApiProperties {
   /// [visibility] &lt;p&gt;Sets the value of the GraphQL API to public (&lt;code&gt;GLOBAL&lt;/code&gt;) or private (&lt;code&gt;PRIVATE&lt;/code&gt;). If no value is provided, the visibility will be set to &lt;code&gt;GLOBAL&lt;/code&gt; by default. This value cannot be changed once the API has been created.&lt;/p&gt;
   /// [wafWebAclArn] &lt;p&gt;The ARN of the WAF access control list (ACL) associated with this &lt;code&gt;GraphqlApi&lt;/code&gt;, if one exists.&lt;/p&gt;
   /// [xrayEnabled] &lt;p&gt;A flag indicating whether to use X-Ray tracing for this &lt;code&gt;GraphqlApi&lt;/code&gt;.&lt;/p&gt;
-  AwsAppSyncGraphqlApiProperties({
+  const AwsAppSyncGraphqlApiProperties({
     this.additionalAuthenticationProviders,
     this.apiId,
     this.apiType,

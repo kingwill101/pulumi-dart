@@ -19,7 +19,7 @@ class GetServiceHostnameConfigurationProxy {
   /// [keyVaultCertificateId] The ID of the Key Vault Secret which contains the SSL Certificate.
   /// [keyVaultId] Required.
   /// [negotiateClientCertificate] Is Client Certificate Negotiation enabled?
-  GetServiceHostnameConfigurationProxy({
+  const GetServiceHostnameConfigurationProxy({
     required this.defaultSslBinding,
     required this.hostName,
     required this.keyVaultCertificateId,

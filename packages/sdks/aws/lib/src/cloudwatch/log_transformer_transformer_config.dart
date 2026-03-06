@@ -97,7 +97,7 @@ class LogTransformerTransformerConfig {
   /// [trimStrings] Removes leading and trailing whitespace from a string. See `trim_string` below for details.
   /// [typeConverters] Converts a value type associated with the specified key to the specified type. See `type_converter` below for details.
   /// [upperCaseStrings] Converts a string to uppercase. See `upper_case_string` below for details.
-  LogTransformerTransformerConfig({
+  const LogTransformerTransformerConfig({
     this.addKeys,
     this.copyValue,
     this.csvs,

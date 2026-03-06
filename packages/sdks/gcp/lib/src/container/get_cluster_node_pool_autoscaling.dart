@@ -20,7 +20,7 @@ class GetClusterNodePoolAutoscaling {
   /// [minNodeCount] Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
   /// [totalMaxNodeCount] Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
   /// [totalMinNodeCount] Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
-  GetClusterNodePoolAutoscaling({
+  const GetClusterNodePoolAutoscaling({
     required this.locationPolicy,
     required this.maxNodeCount,
     required this.minNodeCount,

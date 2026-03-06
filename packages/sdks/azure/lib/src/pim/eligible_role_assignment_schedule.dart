@@ -12,7 +12,7 @@ class EligibleRoleAssignmentSchedule {
   /// Creates a new [EligibleRoleAssignmentSchedule].
   /// [expiration] An `expiration` block as defined above.
   /// [startDateTime] The start date/time of the role assignment. Changing this forces a new resource to be created.
-  EligibleRoleAssignmentSchedule({
+  const EligibleRoleAssignmentSchedule({
     this.expiration,
     this.startDateTime,
   });

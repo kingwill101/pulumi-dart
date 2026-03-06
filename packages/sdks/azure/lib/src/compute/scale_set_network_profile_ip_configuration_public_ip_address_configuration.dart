@@ -14,7 +14,7 @@ class ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration {
   /// [domainNameLabel] The domain name label for the DNS settings.
   /// [idleTimeout] The idle timeout in minutes. This value must be between 4 and 30.
   /// [name] The name of the public IP address configuration
-  ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration({
+  const ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration({
     required this.domainNameLabel,
     required this.idleTimeout,
     required this.name,

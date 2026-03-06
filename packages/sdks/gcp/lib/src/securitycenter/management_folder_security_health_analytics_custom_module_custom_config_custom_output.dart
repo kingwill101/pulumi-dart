@@ -10,7 +10,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutpu
 
   /// Creates a new [ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput({
+  const ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput({
     this.properties,
   });
 

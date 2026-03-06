@@ -8,7 +8,7 @@ class DomainFeaturesIoapic {
 
   /// Creates a new [DomainFeaturesIoapic].
   /// [driver] Specifies the driver to be used for the I/O APIC feature.
-  DomainFeaturesIoapic({
+  const DomainFeaturesIoapic({
     this.driver,
   });
 

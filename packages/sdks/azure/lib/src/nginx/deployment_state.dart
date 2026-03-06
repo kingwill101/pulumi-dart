@@ -77,7 +77,7 @@ class DeploymentState {
   /// [sku] Specifies the NGINX Deployment SKU.
   /// [tags] A mapping of tags which should be assigned to the NGINX Deployment.
   /// [webApplicationFirewall] A `web_application_firewall` blocks as defined below.
-  DeploymentState({
+  const DeploymentState({
     this.autoScaleProfiles,
     this.automaticUpgradeChannel,
     this.capacity,

@@ -12,7 +12,7 @@ class PrivateLinkServiceConnectionStateProperty {
   /// Creates a new [PrivateLinkServiceConnectionStateProperty].
   /// [description] The private link service connection description.
   /// [status] The private link service connection status.
-  PrivateLinkServiceConnectionStateProperty({
+  const PrivateLinkServiceConnectionStateProperty({
     this.description,
     this.status,
   });

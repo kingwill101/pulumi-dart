@@ -12,7 +12,7 @@ class BareMetalVipConfigResponse {
   /// Creates a new [BareMetalVipConfigResponse].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster.
   /// [ingressVip] The VIP which you previously set aside for ingress traffic into this bare metal user cluster.
-  BareMetalVipConfigResponse({
+  const BareMetalVipConfigResponse({
     required this.controlPlaneVip,
     required this.ingressVip,
   });

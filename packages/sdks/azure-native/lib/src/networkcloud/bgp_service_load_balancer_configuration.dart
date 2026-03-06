@@ -20,7 +20,7 @@ class BgpServiceLoadBalancerConfiguration {
   /// [bgpPeers] The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
   /// [fabricPeeringEnabled] The indicator to specify if the load balancer peers with the network fabric.
   /// [ipAddressPools] The list of pools of IP addresses that can be allocated to load balancer services.
-  BgpServiceLoadBalancerConfiguration({
+  const BgpServiceLoadBalancerConfiguration({
     this.bgpAdvertisements,
     this.bgpPeers,
     this.fabricPeeringEnabled,

@@ -54,7 +54,7 @@ class IotSecuritySolutionArgs {
   /// [unmaskedIpLoggingStatus] Unmasked IP address logging status
   /// [userDefinedResources] Properties of the IoT Security solution's user defined resources.
   /// [workspace] Workspace resource ID
-  IotSecuritySolutionArgs({
+  const IotSecuritySolutionArgs({
     this.additionalWorkspaces,
     this.disabledDataSources,
     required this.displayName,

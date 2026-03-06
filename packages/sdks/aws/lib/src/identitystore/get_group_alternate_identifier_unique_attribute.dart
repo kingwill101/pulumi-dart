@@ -11,7 +11,7 @@ class GetGroupAlternateIdentifierUniqueAttribute {
   /// Creates a new [GetGroupAlternateIdentifierUniqueAttribute].
   /// [attributePath] Attribute path that is used to specify which attribute name to search. For example: `DisplayName`. Refer to the [Group data type](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html).
   /// [attributeValue] Value for an attribute.
-  GetGroupAlternateIdentifierUniqueAttribute({
+  const GetGroupAlternateIdentifierUniqueAttribute({
     required this.attributePath,
     required this.attributeValue,
   });

@@ -20,7 +20,7 @@ class ActionCustomArgs {
   /// [body] Specifies the JSON Blob defining the Body of this Custom Action.
   /// [logicAppId] Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the HTTP Action to be created within the Logic App Workflow. Changing this forces a new resource to be created.
-  ActionCustomArgs({
+  const ActionCustomArgs({
     required this.body,
     required this.logicAppId,
     this.name,

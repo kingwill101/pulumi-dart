@@ -18,7 +18,7 @@ class DrmSystems {
   /// [fairplay] Fairplay configuration.
   /// [playready] Playready configuration.
   /// [widevine] Widevine configuration.
-  DrmSystems({
+  const DrmSystems({
     this.clearkey,
     this.fairplay,
     this.playready,

@@ -21,7 +21,7 @@ class PrometheusMonitoringState {
   /// [monitoringName] The name of the resource.
   /// [status] Valid values: `stop`, `run`.
   /// [type] Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
-  PrometheusMonitoringState({
+  const PrometheusMonitoringState({
     this.clusterId,
     this.configYaml,
     this.monitoringName,

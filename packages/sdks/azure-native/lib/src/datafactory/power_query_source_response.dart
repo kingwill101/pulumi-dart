@@ -30,7 +30,7 @@ class PowerQuerySourceResponse {
   /// [name] Transformation name.
   /// [schemaLinkedService] Schema linked service reference.
   /// [script] source script.
-  PowerQuerySourceResponse({
+  const PowerQuerySourceResponse({
     this.dataset,
     this.description,
     this.flowlet,

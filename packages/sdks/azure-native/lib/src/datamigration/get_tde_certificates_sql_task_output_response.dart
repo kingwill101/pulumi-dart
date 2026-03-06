@@ -13,7 +13,7 @@ class GetTdeCertificatesSqlTaskOutputResponse {
   /// Creates a new [GetTdeCertificatesSqlTaskOutputResponse].
   /// [base64EncodedCertificates] Mapping from certificate name to base 64 encoded format.
   /// [validationErrors] Validation errors
-  GetTdeCertificatesSqlTaskOutputResponse({
+  const GetTdeCertificatesSqlTaskOutputResponse({
     required this.base64EncodedCertificates,
     required this.validationErrors,
   });

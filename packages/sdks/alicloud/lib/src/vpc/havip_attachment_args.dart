@@ -24,7 +24,7 @@ class HAVipAttachmentArgs {
   /// [havipId] . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
   /// [instanceId] The ID of the ECS instance bound to the HaVip instance.
   /// [instanceType] The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
-  HAVipAttachmentArgs({
+  const HAVipAttachmentArgs({
     this.force,
     this.haVipId,
     this.havipId,

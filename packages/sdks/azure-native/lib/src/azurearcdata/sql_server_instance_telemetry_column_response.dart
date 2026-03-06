@@ -12,7 +12,7 @@ class SqlServerInstanceTelemetryColumnResponse {
   /// Creates a new [SqlServerInstanceTelemetryColumnResponse].
   /// [name] The name of the telemetry column.
   /// [type] The type of the telemetry column.
-  SqlServerInstanceTelemetryColumnResponse({
+  const SqlServerInstanceTelemetryColumnResponse({
     this.name,
     this.type,
   });

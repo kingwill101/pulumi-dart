@@ -21,7 +21,7 @@ class GetConnectorArgs {
   /// [location] The name of Azure region.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subscriptionId] The ID of the target subscription.
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.connectorName,
     required this.location,
     required this.resourceGroupName,

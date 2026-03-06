@@ -10,7 +10,7 @@ class GroupContainerSecurity {
 
   /// Creates a new [GroupContainerSecurity].
   /// [privilegeEnabled] Whether the container's permission is elevated to privileged? Changing this forces a new resource to be created.
-  GroupContainerSecurity({
+  const GroupContainerSecurity({
     required this.privilegeEnabled,
   });
 

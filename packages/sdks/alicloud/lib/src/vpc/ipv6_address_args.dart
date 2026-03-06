@@ -32,7 +32,7 @@ class Ipv6AddressArgs {
   /// [resourceGroupId] The ID of the resource group to which the instance belongs.
   /// [tags] The tags for the resource.
   /// [vswitchId] The VSwitchId of the IPv6 address.
-  Ipv6AddressArgs({
+  const Ipv6AddressArgs({
     this.addressType,
     this.ipv6Address,
     this.ipv6AddressDescription,

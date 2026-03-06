@@ -10,7 +10,7 @@ class VmmToVmmNetworkMappingSettingsResponse {
 
   /// Creates a new [VmmToVmmNetworkMappingSettingsResponse].
   /// [instanceType] Gets the Instance type.
-  VmmToVmmNetworkMappingSettingsResponse({
+  const VmmToVmmNetworkMappingSettingsResponse({
     required this.instanceType,
   });
 

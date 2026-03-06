@@ -80,7 +80,7 @@ class GetBlobContainerResult {
   /// [remainingRetentionDays] Remaining retention days for soft deleted blob container.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version of the deleted blob container.
-  GetBlobContainerResult({
+  const GetBlobContainerResult({
     required this.azureApiVersion,
     this.defaultEncryptionScope,
     required this.deleted,

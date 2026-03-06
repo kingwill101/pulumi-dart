@@ -12,7 +12,7 @@ class GoogleCloudDatalabelingV1beta1GcsSourceResponse {
   /// Creates a new [GoogleCloudDatalabelingV1beta1GcsSourceResponse].
   /// [inputUri] The input URI of source file. This must be a Cloud Storage path (`gs://...`).
   /// [mimeType] The format of the source file. Only "text/csv" is supported.
-  GoogleCloudDatalabelingV1beta1GcsSourceResponse({
+  const GoogleCloudDatalabelingV1beta1GcsSourceResponse({
     required this.inputUri,
     required this.mimeType,
   });

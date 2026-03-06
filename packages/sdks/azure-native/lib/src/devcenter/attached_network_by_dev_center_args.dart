@@ -21,7 +21,7 @@ class AttachedNetworkByDevCenterArgs {
   /// [devCenterName] The name of the devcenter.
   /// [networkConnectionId] The resource ID of the NetworkConnection you want to attach.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AttachedNetworkByDevCenterArgs({
+  const AttachedNetworkByDevCenterArgs({
     this.attachedNetworkConnectionName,
     required this.devCenterName,
     required this.networkConnectionId,

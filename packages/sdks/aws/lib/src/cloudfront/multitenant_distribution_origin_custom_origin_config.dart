@@ -26,7 +26,7 @@ class MultitenantDistributionOriginCustomOriginConfig {
   /// [originProtocolPolicy] Origin protocol policy to apply to your origin. Valid values are `http-only`, `https-only`, and `match-viewer`.
   /// [originReadTimeout] Custom read timeout, in seconds. Default: 30.
   /// [originSslProtocols] List of SSL/TLS protocols that you want CloudFront to use when communicating with your origin over HTTPS.
-  MultitenantDistributionOriginCustomOriginConfig({
+  const MultitenantDistributionOriginCustomOriginConfig({
     required this.httpPort,
     required this.httpsPort,
     this.ipAddressType,

@@ -12,7 +12,7 @@ class ConnectedSubnetResponse {
   /// Creates a new [ConnectedSubnetResponse].
   /// [annotation] Switch configuration description.
   /// [prefix] Prefix of the Connected Subnet.
-  ConnectedSubnetResponse({
+  const ConnectedSubnetResponse({
     this.annotation,
     required this.prefix,
   });

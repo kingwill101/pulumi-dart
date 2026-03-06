@@ -12,7 +12,7 @@ class WebAclLoggingConfiguration {
   /// Creates a new [WebAclLoggingConfiguration].
   /// [logDestination] Amazon Resource Name (ARN) of Kinesis Firehose Delivery Stream
   /// [redactedFields] Configuration block containing parts of the request that you want redacted from the logs. Detailed below.
-  WebAclLoggingConfiguration({
+  const WebAclLoggingConfiguration({
     required this.logDestination,
     this.redactedFields,
   });

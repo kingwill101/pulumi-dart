@@ -9,7 +9,7 @@ class AdditionalFeaturesServerConfigurations {
 
   /// Creates a new [AdditionalFeaturesServerConfigurations].
   /// [isRServicesEnabled] Enable or disable R services (SQL 2016 onwards).
-  AdditionalFeaturesServerConfigurations({
+  const AdditionalFeaturesServerConfigurations({
     this.isRServicesEnabled,
   });
 

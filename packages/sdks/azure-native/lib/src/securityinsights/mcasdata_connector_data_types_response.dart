@@ -13,7 +13,7 @@ class MCASDataConnectorDataTypesResponse {
   /// Creates a new [MCASDataConnectorDataTypesResponse].
   /// [alerts] Alerts data type connection.
   /// [discoveryLogs] Discovery log data type connection.
-  MCASDataConnectorDataTypesResponse({
+  const MCASDataConnectorDataTypesResponse({
     required this.alerts,
     this.discoveryLogs,
   });

@@ -29,7 +29,7 @@ class JobTemplateConfigEncryption {
   /// [mpegCenc] Configuration for MPEG Common Encryption (MPEG-CENC).
   /// [sampleAes] Configuration for SAMPLE-AES encryption.
   /// [secretManagerKeySource] Configuration for secrets stored in Google Secret Manager.
-  JobTemplateConfigEncryption({
+  const JobTemplateConfigEncryption({
     this.aes128,
     this.drmSystems,
     required this.id,

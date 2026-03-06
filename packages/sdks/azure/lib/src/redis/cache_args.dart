@@ -86,7 +86,7 @@ class CacheArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [tenantSettings] A mapping of tenant settings to assign to the resource.
   /// [zones] Specifies a list of Availability Zones in which this Redis Cache should be located. Changing this forces a new Redis Cache to be created.
-  CacheArgs({
+  const CacheArgs({
     this.accessKeysAuthenticationEnabled,
     required this.capacity,
     required this.family,

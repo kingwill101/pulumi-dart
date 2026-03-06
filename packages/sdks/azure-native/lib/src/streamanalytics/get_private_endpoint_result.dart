@@ -28,7 +28,7 @@ class GetPrivateEndpointResult {
   /// [manualPrivateLinkServiceConnections] A list of connections to the remote resource. Immutable after it is set.
   /// [name] The name of the resource
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetPrivateEndpointResult({
+  const GetPrivateEndpointResult({
     required this.azureApiVersion,
     required this.createdDate,
     required this.etag,

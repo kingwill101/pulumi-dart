@@ -9,7 +9,7 @@ class ServerlessClusterClientAuthenticationSasl {
 
   /// Creates a new [ServerlessClusterClientAuthenticationSasl].
   /// [iam] Details for client authentication using IAM. See below.
-  ServerlessClusterClientAuthenticationSasl({
+  const ServerlessClusterClientAuthenticationSasl({
     required this.iam,
   });
 

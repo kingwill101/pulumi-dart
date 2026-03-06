@@ -19,7 +19,7 @@ class ContinuousBackupInfoResponseAlloydbV1beta {
   /// [enabledTime] When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
   /// [encryptionInfo] The encryption information for the WALs and backups required for ContinuousBackup.
   /// [schedule] Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
-  ContinuousBackupInfoResponseAlloydbV1beta({
+  const ContinuousBackupInfoResponseAlloydbV1beta({
     required this.earliestRestorableTime,
     required this.enabledTime,
     required this.encryptionInfo,

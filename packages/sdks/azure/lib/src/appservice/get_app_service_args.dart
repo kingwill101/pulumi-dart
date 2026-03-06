@@ -15,7 +15,7 @@ class GetAppServiceArgs {
   /// Creates a new [GetAppServiceArgs].
   /// [name] The name of the App Service.
   /// [resourceGroupName] The Name of the Resource Group where the App Service exists.
-  GetAppServiceArgs({
+  const GetAppServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

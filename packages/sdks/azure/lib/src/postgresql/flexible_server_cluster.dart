@@ -17,7 +17,7 @@ class FlexibleServerCluster {
   /// Creates a new [FlexibleServerCluster].
   /// [defaultDatabaseName] The default database name to be created. Changing this forces a new PostgreSQL Flexible Server to be created.
   /// [size] The number of nodes in the cluster. Must be at least `1` and no greater than `32`.
-  FlexibleServerCluster({
+  const FlexibleServerCluster({
     this.defaultDatabaseName,
     required this.size,
   });

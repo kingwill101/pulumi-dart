@@ -25,7 +25,7 @@ class GetAddonReleasesResult {
   /// [names] A list of ARMS Addon Release names.
   /// [outputFile] Optional.
   /// [releases] A list of ARMS Addon Releases. Each element contains the following attributes:
-  GetAddonReleasesResult({
+  const GetAddonReleasesResult({
     required this.environmentId,
     required this.id,
     required this.ids,

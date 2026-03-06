@@ -23,7 +23,7 @@ class GetImagesImage {
   /// [imageName] The name of the resource.
   /// [imageType] The type of the image. Valid values: `app`, `custom`, `system`.
   /// [platform] The platform of Plan supported.
-  GetImagesImage({
+  const GetImagesImage({
     required this.description,
     required this.id,
     required this.imageId,

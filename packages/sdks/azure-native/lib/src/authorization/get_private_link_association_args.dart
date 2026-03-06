@@ -15,7 +15,7 @@ class GetPrivateLinkAssociationArgs {
   /// Creates a new [GetPrivateLinkAssociationArgs].
   /// [groupId] The management group ID.
   /// [plaId] The ID of the PLA
-  GetPrivateLinkAssociationArgs({
+  const GetPrivateLinkAssociationArgs({
     required this.groupId,
     required this.plaId,
   });

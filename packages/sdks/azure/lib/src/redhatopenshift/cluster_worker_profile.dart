@@ -25,7 +25,7 @@ class ClusterWorkerProfile {
   /// [nodeCount] The initial number of worker nodes which should exist in the cluster. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet where worker nodes will be hosted. Changing this forces a new resource to be created.
   /// [vmSize] The size of the Virtual Machines for the worker nodes. Changing this forces a new resource to be created.
-  ClusterWorkerProfile({
+  const ClusterWorkerProfile({
     this.diskEncryptionSetId,
     required this.diskSizeGb,
     this.encryptionAtHostEnabled,

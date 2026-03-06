@@ -16,7 +16,7 @@ class GetQuotaV2Args {
   /// Creates a new [GetQuotaV2Args].
   /// [projectId] The id of the project to retrieve the quota.
   /// [region] The region in which to obtain the V2 Network client.
-  GetQuotaV2Args({
+  const GetQuotaV2Args({
     required this.projectId,
     this.region,
   });

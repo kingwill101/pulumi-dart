@@ -12,7 +12,7 @@ class GetPoolStartTaskUserIdentity {
   /// Creates a new [GetPoolStartTaskUserIdentity].
   /// [autoUsers] A `auto_user` block that describes the user identity under which the start task runs.
   /// [userName] The user to use for authentication against the CIFS file system.
-  GetPoolStartTaskUserIdentity({
+  const GetPoolStartTaskUserIdentity({
     required this.autoUsers,
     required this.userName,
   });

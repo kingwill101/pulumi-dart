@@ -25,7 +25,7 @@ class MqArgs {
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  MqArgs({
+  const MqArgs({
     required this.extendedLocation,
     this.location,
     this.mqName,

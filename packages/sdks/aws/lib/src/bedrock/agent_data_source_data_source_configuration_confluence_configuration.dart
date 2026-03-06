@@ -11,7 +11,7 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfiguration].
   /// [crawlerConfiguration] Optional.
   /// [sourceConfiguration] Optional.
-  AgentDataSourceDataSourceConfigurationConfluenceConfiguration({
+  const AgentDataSourceDataSourceConfigurationConfluenceConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,
   });

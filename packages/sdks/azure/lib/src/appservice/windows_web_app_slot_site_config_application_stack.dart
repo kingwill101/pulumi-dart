@@ -60,7 +60,7 @@ class WindowsWebAppSlotSiteConfigApplicationStack {
   /// [phpVersion] The version of PHP to use when `current_stack` is set to `php`. Possible values are `7.1`, `7.4` and `Off`.
   /// [python] The app is a Python app. Defaults to `false`.
   /// [tomcatVersion] The version of Tomcat the Java App should use.
-  WindowsWebAppSlotSiteConfigApplicationStack({
+  const WindowsWebAppSlotSiteConfigApplicationStack({
     this.currentStack,
     this.dockerImageName,
     this.dockerRegistryPassword,

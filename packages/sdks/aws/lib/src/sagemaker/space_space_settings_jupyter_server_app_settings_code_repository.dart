@@ -8,7 +8,7 @@ class SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository {
 
   /// Creates a new [SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository].
   /// [repositoryUrl] The URL of the Git repository.
-  SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository({
+  const SpaceSpaceSettingsJupyterServerAppSettingsCodeRepository({
     required this.repositoryUrl,
   });
 

@@ -18,7 +18,7 @@ class VmwareManualLbConfigResponse {
   /// [ingressHttpNodePort] NodePort for ingress service's http. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 32527).
   /// [ingressHttpsNodePort] NodePort for ingress service's https. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 30139).
   /// [konnectivityServerNodePort] NodePort for konnectivity server service running as a sidecar in each kube-apiserver pod (ex. 30564).
-  VmwareManualLbConfigResponse({
+  const VmwareManualLbConfigResponse({
     required this.controlPlaneNodePort,
     required this.ingressHttpNodePort,
     required this.ingressHttpsNodePort,

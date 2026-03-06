@@ -30,7 +30,7 @@ class CorsPolicy {
   /// [disabled] If true, the setting specifies the CORS policy is disabled. The default value of false, which indicates that the CORS policy is in effect.
   /// [exposeHeaders] Specifies the content for the Access-Control-Expose-Headers header.
   /// [maxAge] Specifies how long results of a preflight request can be cached in seconds. This field translates to the Access-Control-Max-Age header.
-  CorsPolicy({
+  const CorsPolicy({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

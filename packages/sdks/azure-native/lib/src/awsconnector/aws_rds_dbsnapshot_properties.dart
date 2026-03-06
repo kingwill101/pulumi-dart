@@ -116,7 +116,7 @@ class AwsRdsDBSnapshotProperties {
   /// [tdeCredentialArn] &lt;p&gt;The ARN from the key store with which to associate the instance for TDE encryption.&lt;/p&gt;
   /// [timezone] &lt;p&gt;The time zone of the DB snapshot. In most cases, the &lt;code&gt;Timezone&lt;/code&gt; element is empty. &lt;code&gt;Timezone&lt;/code&gt; content appears only for snapshots taken from Microsoft SQL Server DB instances that were created with a time zone specified.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;Provides the VPC ID associated with the DB snapshot.&lt;/p&gt;
-  AwsRdsDBSnapshotProperties({
+  const AwsRdsDBSnapshotProperties({
     this.allocatedStorage,
     this.availabilityZone,
     this.dbInstanceIdentifier,

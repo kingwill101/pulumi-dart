@@ -24,7 +24,7 @@ class GetNasFileSystemsArgs {
   /// [officeSiteId] The ID of office site.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
-  GetNasFileSystemsArgs({
+  const GetNasFileSystemsArgs({
     this.ids,
     this.nameRegex,
     this.officeSiteId,

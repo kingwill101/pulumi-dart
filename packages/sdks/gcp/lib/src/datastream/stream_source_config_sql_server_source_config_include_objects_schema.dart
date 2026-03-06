@@ -13,7 +13,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema {
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema].
   /// [schema] Schema name.
   /// [tables] Tables in the schema.
-  StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema({
+  const StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema({
     required this.schema,
     this.tables,
   });

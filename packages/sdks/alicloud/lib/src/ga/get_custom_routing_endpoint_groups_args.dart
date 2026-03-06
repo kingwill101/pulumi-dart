@@ -34,7 +34,7 @@ class GetCustomRoutingEndpointGroupsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
-  GetCustomRoutingEndpointGroupsArgs({
+  const GetCustomRoutingEndpointGroupsArgs({
     required this.acceleratorId,
     this.endpointGroupId,
     this.ids,

@@ -11,7 +11,7 @@ class StandardSiteCredential {
   /// Creates a new [StandardSiteCredential].
   /// [password] The password associated with the username, which can be used to publish to this App Service.
   /// [username] The username which can be used to publish to this App Service.
-  StandardSiteCredential({
+  const StandardSiteCredential({
     this.password,
     this.username,
   });

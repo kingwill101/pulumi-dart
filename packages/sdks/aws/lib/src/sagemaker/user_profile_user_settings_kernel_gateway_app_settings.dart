@@ -16,7 +16,7 @@ class UserProfileUserSettingsKernelGatewayAppSettings {
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see Custom Image below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  UserProfileUserSettingsKernelGatewayAppSettings({
+  const UserProfileUserSettingsKernelGatewayAppSettings({
     this.customImages,
     this.defaultResourceSpec,
     this.lifecycleConfigArns,

@@ -8,7 +8,7 @@ class LoggingConfigurationDestinationConfigurationFirehose {
 
   /// Creates a new [LoggingConfigurationDestinationConfigurationFirehose].
   /// [deliveryStreamName] Name of the Amazon Kinesis Firehose delivery stream where chat activity will be logged.
-  LoggingConfigurationDestinationConfigurationFirehose({
+  const LoggingConfigurationDestinationConfigurationFirehose({
     required this.deliveryStreamName,
   });
 

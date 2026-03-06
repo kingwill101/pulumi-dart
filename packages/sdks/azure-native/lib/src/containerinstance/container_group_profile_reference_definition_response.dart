@@ -12,7 +12,7 @@ class ContainerGroupProfileReferenceDefinitionResponse {
   /// Creates a new [ContainerGroupProfileReferenceDefinitionResponse].
   /// [id] The container group profile reference id.This will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroupProfiles/{containerGroupProfileName}'.
   /// [revision] The container group profile reference revision.
-  ContainerGroupProfileReferenceDefinitionResponse({
+  const ContainerGroupProfileReferenceDefinitionResponse({
     this.id,
     this.revision,
   });

@@ -11,7 +11,7 @@ class NotebookExecutionDataformRepositorySource {
   /// Creates a new [NotebookExecutionDataformRepositorySource].
   /// [commitSha] The commit SHA to read repository with. If unset, the file will be read at HEAD.
   /// [dataformRepositoryResourceName] The resource name of the Dataform Repository.
-  NotebookExecutionDataformRepositorySource({
+  const NotebookExecutionDataformRepositorySource({
     this.commitSha,
     required this.dataformRepositoryResourceName,
   });

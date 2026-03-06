@@ -18,7 +18,7 @@ class DedicatedHostAccountState {
   /// [accountPassword] The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&*()_+-=`.
   /// [accountType] The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
   /// [dedicatedHostId] The ID of Dedicated the host.
-  DedicatedHostAccountState({
+  const DedicatedHostAccountState({
     this.accountName,
     this.accountPassword,
     this.accountType,

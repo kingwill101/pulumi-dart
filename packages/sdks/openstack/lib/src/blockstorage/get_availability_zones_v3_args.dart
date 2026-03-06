@@ -17,7 +17,7 @@ class GetAvailabilityZonesV3Args {
   /// Creates a new [GetAvailabilityZonesV3Args].
   /// [region] The region in which to obtain the Block Storage client.
   /// [state] The `state` of the availability zones to match. Can
-  GetAvailabilityZonesV3Args({
+  const GetAvailabilityZonesV3Args({
     this.region,
     this.state,
   });

@@ -16,7 +16,7 @@ class DomainDevicesNvram {
   /// [acpi] Specifies ACPI configuration for the persistent storage device, adapting its behavior in power management scenarios.
   /// [address] Specifies the memory address for the persistent storage device in the guest's address space.
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
-  DomainDevicesNvram({
+  const DomainDevicesNvram({
     this.acpi,
     this.address,
     this.alias,

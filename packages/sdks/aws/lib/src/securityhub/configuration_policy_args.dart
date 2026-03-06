@@ -22,7 +22,7 @@ class ConfigurationPolicyArgs {
   /// [description] The description of the configuration policy.
   /// [name] The name of the configuration policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ConfigurationPolicyArgs({
+  const ConfigurationPolicyArgs({
     required this.configurationPolicy,
     this.description,
     this.name,

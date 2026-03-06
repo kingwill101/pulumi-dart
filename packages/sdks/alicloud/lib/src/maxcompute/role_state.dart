@@ -23,7 +23,7 @@ class RoleState {
   /// [projectName] Project name
   /// [roleName] Role Name
   /// [type] Role type Valid values: admin/resource
-  RoleState({
+  const RoleState({
     this.policy,
     this.projectName,
     this.roleName,

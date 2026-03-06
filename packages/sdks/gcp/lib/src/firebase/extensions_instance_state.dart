@@ -58,7 +58,7 @@ class ExtensionsInstanceState {
   /// [serviceAccountEmail] The email of the service account to be used at runtime by compute resources
   /// [state] The processing state of the extension instance.
   /// [updateTime] The time at which the Extension Instance was updated.
-  ExtensionsInstanceState({
+  const ExtensionsInstanceState({
     this.config,
     this.createTime,
     this.errorStatuses,

@@ -30,7 +30,7 @@ class FleetManagedNamespacePropertiesResponse {
   /// [propagationPolicy] The profile of the propagation to create the namespace.
   /// [provisioningState] The status of the last operation.
   /// [status] Status information of the last operation for fleet managed namespace.
-  FleetManagedNamespacePropertiesResponse({
+  const FleetManagedNamespacePropertiesResponse({
     required this.adoptionPolicy,
     required this.deletePolicy,
     this.managedNamespaceProperties,

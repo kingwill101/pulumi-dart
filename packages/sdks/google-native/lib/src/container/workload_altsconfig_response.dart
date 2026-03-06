@@ -9,7 +9,7 @@ class WorkloadALTSConfigResponse {
 
   /// Creates a new [WorkloadALTSConfigResponse].
   /// [enableAlts] enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
-  WorkloadALTSConfigResponse({
+  const WorkloadALTSConfigResponse({
     required this.enableAlts,
   });
 

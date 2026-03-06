@@ -13,7 +13,7 @@ class FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProces
   /// Creates a new [FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameter].
   /// [parameterName] Parameter name. Valid Values: `LambdaArn`, `NumberOfRetries`, `MetadataExtractionQuery`, `JsonParsingEngine`, `RoleArn`, `BufferSizeInMBs`, `BufferIntervalInSeconds`, `SubRecordType`, `Delimiter`, `CompressionFormat`, `DataMessageExtraction`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorParameterName); so values not explicitly listed may also work.
   /// [parameterValue] Parameter value. Must be between 1 and 512 length (inclusive). When providing a Lambda ARN, you should specify the resource version as well.
-  FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameter({
+  const FirehoseDeliveryStreamOpensearchConfigurationProcessingConfigurationProcessorParameter({
     required this.parameterName,
     required this.parameterValue,
   });

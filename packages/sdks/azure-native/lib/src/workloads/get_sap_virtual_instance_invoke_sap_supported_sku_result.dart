@@ -10,7 +10,7 @@ class GetSapVirtualInstanceInvokeSapSupportedSkuResult {
 
   /// Creates a new [GetSapVirtualInstanceInvokeSapSupportedSkuResult].
   /// [supportedSkus] Gets the list of SAP supported SKUs.
-  GetSapVirtualInstanceInvokeSapSupportedSkuResult({
+  const GetSapVirtualInstanceInvokeSapSupportedSkuResult({
     this.supportedSkus,
   });
 

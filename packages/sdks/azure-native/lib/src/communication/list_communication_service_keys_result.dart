@@ -17,7 +17,7 @@ class ListCommunicationServiceKeysResult {
   /// [primaryKey] The primary access key.
   /// [secondaryConnectionString] CommunicationService connection string constructed via the secondaryKey
   /// [secondaryKey] The secondary access key.
-  ListCommunicationServiceKeysResult({
+  const ListCommunicationServiceKeysResult({
     this.primaryConnectionString,
     this.primaryKey,
     this.secondaryConnectionString,

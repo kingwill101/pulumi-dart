@@ -15,7 +15,7 @@ class EnterpriseCrmEventbusProtoTriggerCriteriaResponse {
   /// [condition] Standard filter expression, when true the workflow will be executed. If there's no trigger_criteria_task_implementation_class_name specified, the condition will be validated directly.
   /// [parameters] Optional. To be used in TaskConfig for the implementation class.
   /// [triggerCriteriaTaskImplementationClassName] Optional. Implementation class name. The class should implement the “TypedTask” interface.
-  EnterpriseCrmEventbusProtoTriggerCriteriaResponse({
+  const EnterpriseCrmEventbusProtoTriggerCriteriaResponse({
     required this.condition,
     required this.parameters,
     required this.triggerCriteriaTaskImplementationClassName,

@@ -18,7 +18,7 @@ class EncryptionSpecState {
   /// [encryptionSpec] A nested object resource.
   /// [location] The location in which the encryptionSpec is to be initialized.
   /// [project] The ID of the project in which the resource belongs.
-  EncryptionSpecState({
+  const EncryptionSpecState({
     this.encryptionSpec,
     this.location,
     this.project,

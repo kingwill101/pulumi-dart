@@ -8,7 +8,7 @@ class GdcServiceInstanceGdceCluster {
 
   /// Creates a new [GdcServiceInstanceGdceCluster].
   /// [gdceCluster] Gdce cluster resource id.
-  GdcServiceInstanceGdceCluster({
+  const GdcServiceInstanceGdceCluster({
     required this.gdceCluster,
   });
 

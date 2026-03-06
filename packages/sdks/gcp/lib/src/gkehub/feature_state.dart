@@ -11,7 +11,7 @@ class FeatureState {
 
   /// Creates a new [FeatureState].
   /// [states] (Output)
-  FeatureState({
+  const FeatureState({
     this.states,
   });
 

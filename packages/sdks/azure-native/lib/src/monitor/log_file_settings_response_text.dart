@@ -9,7 +9,7 @@ class LogFileSettingsResponseText {
 
   /// Creates a new [LogFileSettingsResponseText].
   /// [recordStartTimestampFormat] One of the supported timestamp formats
-  LogFileSettingsResponseText({
+  const LogFileSettingsResponseText({
     required this.recordStartTimestampFormat,
   });
 

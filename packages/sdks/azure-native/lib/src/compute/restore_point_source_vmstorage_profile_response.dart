@@ -17,7 +17,7 @@ class RestorePointSourceVMStorageProfileResponse {
   /// [dataDisks] Gets the data disks of the VM captured at the time of the restore point creation.
   /// [diskControllerType] Gets the disk controller type of the VM captured at the time of the restore point creation.
   /// [osDisk] Gets the OS disk of the VM captured at the time of the restore point creation.
-  RestorePointSourceVMStorageProfileResponse({
+  const RestorePointSourceVMStorageProfileResponse({
     this.dataDisks,
     required this.diskControllerType,
     this.osDisk,

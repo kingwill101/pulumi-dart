@@ -7,7 +7,7 @@ class GetInputMediaConnectFlow {
 
   /// Creates a new [GetInputMediaConnectFlow].
   /// [flowArn] Required.
-  GetInputMediaConnectFlow({
+  const GetInputMediaConnectFlow({
     required this.flowArn,
   });
 

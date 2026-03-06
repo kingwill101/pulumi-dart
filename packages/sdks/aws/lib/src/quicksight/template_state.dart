@@ -55,7 +55,7 @@ class TemplateState {
   /// [templateId] Identifier for the template.
   /// [versionDescription] A description of the current template version being created/updated.
   /// [versionNumber] The version number of the template version.
-  TemplateState({
+  const TemplateState({
     this.arn,
     this.awsAccountId,
     this.createdTime,

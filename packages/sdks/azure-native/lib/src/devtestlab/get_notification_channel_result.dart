@@ -49,7 +49,7 @@ class GetNotificationChannelResult {
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [webHookUrl] The webhook URL to send notifications to.
-  GetNotificationChannelResult({
+  const GetNotificationChannelResult({
     required this.azureApiVersion,
     required this.createdDate,
     this.description,

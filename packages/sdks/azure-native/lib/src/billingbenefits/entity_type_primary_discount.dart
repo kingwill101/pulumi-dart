@@ -32,7 +32,7 @@ class EntityTypePrimaryDiscount {
   /// [productCode] This is the catalog UPN for the product.
   /// [startAt] Start date of the discount. Value is the date the discount started or will start in the future.
   /// [systemId] This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
-  EntityTypePrimaryDiscount({
+  const EntityTypePrimaryDiscount({
     this.appliedScopeType,
     this.discountTypeProperties,
     this.displayName,

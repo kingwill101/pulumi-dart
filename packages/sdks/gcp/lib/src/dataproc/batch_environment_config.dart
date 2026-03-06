@@ -15,7 +15,7 @@ class BatchEnvironmentConfig {
   /// Creates a new [BatchEnvironmentConfig].
   /// [executionConfig] Execution configuration for a workload.
   /// [peripheralsConfig] Peripherals configuration that workload has access to.
-  BatchEnvironmentConfig({
+  const BatchEnvironmentConfig({
     this.executionConfig,
     this.peripheralsConfig,
   });

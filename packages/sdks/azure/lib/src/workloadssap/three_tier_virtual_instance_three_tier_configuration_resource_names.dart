@@ -21,7 +21,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNames {
   /// [centralServer] A `central_server` block as defined below. Changing this forces a new resource to be created.
   /// [databaseServer] A `database_server` block as defined below. Changing this forces a new resource to be created.
   /// [sharedStorage] A `shared_storage` block as defined below. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationResourceNames({
+  const ThreeTierVirtualInstanceThreeTierConfigurationResourceNames({
     this.applicationServer,
     this.centralServer,
     this.databaseServer,

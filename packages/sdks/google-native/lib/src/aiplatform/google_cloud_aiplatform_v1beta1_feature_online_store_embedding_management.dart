@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement].
   /// [enabled] Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
-  GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement({
+  const GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagement({
     this.enabled,
   });
 

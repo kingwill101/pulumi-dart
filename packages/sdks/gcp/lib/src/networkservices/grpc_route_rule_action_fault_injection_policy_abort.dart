@@ -11,7 +11,7 @@ class GrpcRouteRuleActionFaultInjectionPolicyAbort {
   /// Creates a new [GrpcRouteRuleActionFaultInjectionPolicyAbort].
   /// [httpStatus] The HTTP status code used to abort the request.
   /// [percentage] The percentage of traffic which will be aborted.
-  GrpcRouteRuleActionFaultInjectionPolicyAbort({
+  const GrpcRouteRuleActionFaultInjectionPolicyAbort({
     this.httpStatus,
     this.percentage,
   });

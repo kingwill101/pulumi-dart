@@ -23,7 +23,7 @@ class RegionResizeRequestStatusLastAttemptErrorError {
   /// [errorDetails] (Output)
   /// [location] (Output)
   /// [message] (Output)
-  RegionResizeRequestStatusLastAttemptErrorError({
+  const RegionResizeRequestStatusLastAttemptErrorError({
     this.code,
     this.errorDetails,
     this.location,

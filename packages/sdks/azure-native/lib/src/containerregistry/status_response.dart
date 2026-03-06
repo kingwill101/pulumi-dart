@@ -15,7 +15,7 @@ class StatusResponse {
   /// [displayStatus] The short label for the status.
   /// [message] The detailed message for the status, including alerts and error messages.
   /// [timestamp] The timestamp when the status was changed to the current value.
-  StatusResponse({
+  const StatusResponse({
     required this.displayStatus,
     required this.message,
     required this.timestamp,

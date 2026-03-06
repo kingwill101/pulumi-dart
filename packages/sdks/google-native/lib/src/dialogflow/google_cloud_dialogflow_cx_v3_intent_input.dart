@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3IntentInput {
 
   /// Creates a new [GoogleCloudDialogflowCxV3IntentInput].
   /// [intent] The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-  GoogleCloudDialogflowCxV3IntentInput({
+  const GoogleCloudDialogflowCxV3IntentInput({
     required this.intent,
   });
 

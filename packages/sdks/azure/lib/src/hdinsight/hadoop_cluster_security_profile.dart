@@ -26,7 +26,7 @@ class HadoopClusterSecurityProfile {
   /// [domainUsername] The username of the Azure Active Directory Domain. Changing this forces a new resource to be created.
   /// [ldapsUrls] A list of the LDAPS URLs to communicate with the Azure Active Directory. Changing this forces a new resource to be created.
   /// [msiResourceId] The User Assigned Identity for the HDInsight Cluster. Changing this forces a new resource to be created.
-  HadoopClusterSecurityProfile({
+  const HadoopClusterSecurityProfile({
     required this.aaddsResourceId,
     this.clusterUsersGroupDns,
     required this.domainName,

@@ -35,7 +35,7 @@ class UserState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sendEmailNotification] Send an email notification.
   /// [userName] Email address of the user.
-  UserState({
+  const UserState({
     this.arn,
     this.authenticationType,
     this.createdTime,

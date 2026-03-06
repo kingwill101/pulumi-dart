@@ -15,7 +15,7 @@ class GetProviderArgs {
   /// Creates a new [GetProviderArgs].
   /// [name] The name of this Attestation Provider.
   /// [resourceGroupName] The name of the Resource Group where the Attestation Provider exists.
-  GetProviderArgs({
+  const GetProviderArgs({
     required this.name,
     required this.resourceGroupName,
   });

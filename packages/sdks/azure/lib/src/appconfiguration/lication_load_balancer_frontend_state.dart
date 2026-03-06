@@ -18,7 +18,7 @@ class LicationLoadBalancerFrontendState {
   /// [fullyQualifiedDomainName] The Fully Qualified Domain Name of the DNS record associated to an Application Gateway for Containers Frontend.
   /// [name] The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
-  LicationLoadBalancerFrontendState({
+  const LicationLoadBalancerFrontendState({
     this.applicationLoadBalancerId,
     this.fullyQualifiedDomainName,
     this.name,

@@ -15,7 +15,7 @@ class GetPluginArgs {
   /// Creates a new [GetPluginArgs].
   /// [alias] The alias of the Docker plugin. If the tag is omitted, `:latest` is complemented to the attribute value.
   /// [id] The ID of the plugin, which has precedence over the `alias` of both are given
-  GetPluginArgs({
+  const GetPluginArgs({
     this.alias,
     this.id,
   });

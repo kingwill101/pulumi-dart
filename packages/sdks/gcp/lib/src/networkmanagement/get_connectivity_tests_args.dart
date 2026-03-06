@@ -15,7 +15,7 @@ class GetConnectivityTestsArgs {
   /// Creates a new [GetConnectivityTestsArgs].
   /// [filter] Lists the ConnectivityTests that match the [filter expression](https://cloud.google.com/network-intelligence-center/docs/reference/networkmanagement/rest/v1/projects.locations.global.connectivityTests/list#query-parameters). A filter expression filters the resources listed in the response.
   /// [project] The ID of the project.
-  GetConnectivityTestsArgs({
+  const GetConnectivityTestsArgs({
     this.filter,
     this.project,
   });

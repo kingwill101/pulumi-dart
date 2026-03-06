@@ -16,7 +16,7 @@ class ArtifactObjectsResponse {
   /// [location] Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
   /// [paths] Path globs used to match files in the build's workspace.
   /// [timing] Stores timing information for pushing all artifact objects.
-  ArtifactObjectsResponse({
+  const ArtifactObjectsResponse({
     required this.location,
     required this.paths,
     required this.timing,

@@ -11,7 +11,7 @@ class EndpointClientLoginBannerOptions {
   /// Creates a new [EndpointClientLoginBannerOptions].
   /// [bannerText] Customizable text that will be displayed in a banner on AWS provided clients when a VPN session is established. UTF-8 encoded characters only. Maximum of 1400 characters.
   /// [enabled] Enable or disable a customizable text banner that will be displayed on AWS provided clients when a VPN session is established. The default is `false` (not enabled).
-  EndpointClientLoginBannerOptions({
+  const EndpointClientLoginBannerOptions({
     this.bannerText,
     this.enabled,
   });

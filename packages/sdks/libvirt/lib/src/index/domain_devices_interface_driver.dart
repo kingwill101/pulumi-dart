@@ -52,7 +52,7 @@ class DomainDevicesInterfaceDriver {
   /// [rxQueueSize] Configures the size of the receive queue for the driver, impacting how packets are buffered during reception.
   /// [txMode] Configures the transmission mode for the network interface driver.
   /// [txQueueSize] Sets the size of the transmit queue for the network interface driver.
-  DomainDevicesInterfaceDriver({
+  const DomainDevicesInterfaceDriver({
     this.ats,
     this.eventIdx,
     this.guest,

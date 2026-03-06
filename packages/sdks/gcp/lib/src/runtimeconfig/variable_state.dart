@@ -33,7 +33,7 @@ class VariableState {
   /// [text] or `value` - (Required) The content to associate with the variable.
   /// [updateTime] (Computed) The timestamp in RFC3339 UTC "Zulu" format,
   /// [value] Optional.
-  VariableState({
+  const VariableState({
     this.name,
     this.parent,
     this.project,

@@ -17,7 +17,7 @@ class ConnectionNetworkParameters {
   /// [securityGroupId] The ID of the security group.
   /// [vpcId] The ID of the VPC.
   /// [vswitcheId] The ID of the VSwitch.
-  ConnectionNetworkParameters({
+  const ConnectionNetworkParameters({
     required this.networkType,
     this.securityGroupId,
     this.vpcId,

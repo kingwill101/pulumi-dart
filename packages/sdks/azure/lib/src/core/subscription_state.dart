@@ -31,7 +31,7 @@ class SubscriptionState {
   /// [tags] A mapping of tags to assign to the Subscription.
   /// [tenantId] The ID of the Tenant to which the subscription belongs.
   /// [workload] The workload type of the Subscription. Possible values are `Production` (default) and `DevTest`. Changing this forces a new Subscription to be created.
-  SubscriptionState({
+  const SubscriptionState({
     this.alias,
     this.billingScopeId,
     this.subscriptionId,

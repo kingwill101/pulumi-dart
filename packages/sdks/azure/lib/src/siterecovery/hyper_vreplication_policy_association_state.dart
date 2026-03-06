@@ -15,7 +15,7 @@ class HyperVReplicationPolicyAssociationState {
   /// [hypervSiteId] The ID of the HyperV site to which the policy should be associated. Changing this forces a new association to be created.
   /// [name] The name of the replication policy association. Changing this forces a new association to be created.
   /// [policyId] The ID of the HyperV replication policy which to be associated. Changing this forces a new association to be created.
-  HyperVReplicationPolicyAssociationState({
+  const HyperVReplicationPolicyAssociationState({
     this.hypervSiteId,
     this.name,
     this.policyId,

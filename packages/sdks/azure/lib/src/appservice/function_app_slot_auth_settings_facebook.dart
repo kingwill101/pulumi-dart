@@ -14,7 +14,7 @@ class FunctionAppSlotAuthSettingsFacebook {
   /// [appId] The App ID of the Facebook app used for login
   /// [appSecret] The App Secret of the Facebook app used for Facebook login.
   /// [oauthScopes] The OAuth 2.0 scopes that will be requested as part of Facebook login authentication. &lt;https://developers.facebook.com/docs/facebook-login&gt;
-  FunctionAppSlotAuthSettingsFacebook({
+  const FunctionAppSlotAuthSettingsFacebook({
     required this.appId,
     required this.appSecret,
     this.oauthScopes,

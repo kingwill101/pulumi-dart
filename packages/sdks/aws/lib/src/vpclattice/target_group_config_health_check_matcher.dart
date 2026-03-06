@@ -8,7 +8,7 @@ class TargetGroupConfigHealthCheckMatcher {
 
   /// Creates a new [TargetGroupConfigHealthCheckMatcher].
   /// [value] The HTTP codes to use when checking for a successful response from a target.
-  TargetGroupConfigHealthCheckMatcher({
+  const TargetGroupConfigHealthCheckMatcher({
     this.value,
   });
 

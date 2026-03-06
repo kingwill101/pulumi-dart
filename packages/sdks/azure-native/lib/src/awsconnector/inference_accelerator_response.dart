@@ -12,7 +12,7 @@ class InferenceAcceleratorResponse {
   /// Creates a new [InferenceAcceleratorResponse].
   /// [deviceName] The Elastic Inference accelerator device name. The ``deviceName`` must also be referenced in a container definition as a [ResourceRequirement](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ResourceRequirement.html).
   /// [deviceType] The Elastic Inference accelerator type to use.
-  InferenceAcceleratorResponse({
+  const InferenceAcceleratorResponse({
     this.deviceName,
     this.deviceType,
   });

@@ -11,7 +11,7 @@ class GoogleCloudApigeeV1AsyncQueryResultResponse {
   /// Creates a new [GoogleCloudApigeeV1AsyncQueryResultResponse].
   /// [expires] Query result will be unaccessable after this time.
   /// [self] Self link of the query results. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
-  GoogleCloudApigeeV1AsyncQueryResultResponse({
+  const GoogleCloudApigeeV1AsyncQueryResultResponse({
     required this.expires,
     required this.self,
   });

@@ -15,7 +15,7 @@ class GetUpdateSummaryArgs {
   /// Creates a new [GetUpdateSummaryArgs].
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetUpdateSummaryArgs({
+  const GetUpdateSummaryArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

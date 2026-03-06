@@ -92,7 +92,7 @@ class CrawlerArgs {
   /// [securityConfiguration] The name of Security Configuration to be used by the crawler
   /// [tablePrefix] The table prefix used for catalog tables that are created.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  CrawlerArgs({
+  const CrawlerArgs({
     this.catalogTargets,
     this.classifiers,
     this.configuration,

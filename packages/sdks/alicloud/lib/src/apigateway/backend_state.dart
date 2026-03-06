@@ -18,7 +18,7 @@ class BackendState {
   /// [backendType] The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
   /// [createEventBridgeServiceLinkedRole] Whether to create an Event bus service association role.
   /// [description] The description of the Backend.
-  BackendState({
+  const BackendState({
     this.backendName,
     this.backendType,
     this.createEventBridgeServiceLinkedRole,

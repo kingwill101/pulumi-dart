@@ -8,7 +8,7 @@ class RocketMQInstanceNetworkInfoVpcInfoVswitch {
 
   /// Creates a new [RocketMQInstanceNetworkInfoVpcInfoVswitch].
   /// [vswitchId] VPC switch id.
-  RocketMQInstanceNetworkInfoVpcInfoVswitch({
+  const RocketMQInstanceNetworkInfoVpcInfoVswitch({
     this.vswitchId,
   });
 

@@ -22,7 +22,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec
   /// [parentCategoricalValues] The spec for matching values from a parent parameter of `CATEGORICAL` type.
   /// [parentDiscreteValues] The spec for matching values from a parent parameter of `DISCRETE` type.
   /// [parentIntValues] The spec for matching values from a parent parameter of `INTEGER` type.
-  GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse({
+  const GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecResponse({
     required this.parameterSpec,
     required this.parentCategoricalValues,
     required this.parentDiscreteValues,

@@ -8,7 +8,7 @@ class PipeTargetParametersStepFunctionStateMachineParameters {
 
   /// Creates a new [PipeTargetParametersStepFunctionStateMachineParameters].
   /// [invocationType] Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
-  PipeTargetParametersStepFunctionStateMachineParameters({
+  const PipeTargetParametersStepFunctionStateMachineParameters({
     required this.invocationType,
   });
 

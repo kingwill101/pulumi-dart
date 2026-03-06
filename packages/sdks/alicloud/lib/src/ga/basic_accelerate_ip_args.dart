@@ -15,7 +15,7 @@ class BasicAccelerateIpArgs {
   /// Creates a new [BasicAccelerateIpArgs].
   /// [acceleratorId] The ID of the Basic GA instance.
   /// [ipSetId] The ID of the Basic Ip Set.
-  BasicAccelerateIpArgs({
+  const BasicAccelerateIpArgs({
     required this.acceleratorId,
     required this.ipSetId,
   });

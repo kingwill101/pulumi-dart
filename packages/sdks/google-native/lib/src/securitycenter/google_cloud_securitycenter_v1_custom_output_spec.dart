@@ -10,7 +10,7 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
 
   /// Creates a new [GoogleCloudSecuritycenterV1CustomOutputSpec].
   /// [properties] A list of custom output properties to add to the finding.
-  GoogleCloudSecuritycenterV1CustomOutputSpec({
+  const GoogleCloudSecuritycenterV1CustomOutputSpec({
     this.properties,
   });
 

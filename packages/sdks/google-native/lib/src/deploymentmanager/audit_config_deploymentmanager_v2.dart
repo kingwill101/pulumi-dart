@@ -13,7 +13,7 @@ class AuditConfigDeploymentmanagerV2 {
   /// Creates a new [AuditConfigDeploymentmanagerV2].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigDeploymentmanagerV2({
+  const AuditConfigDeploymentmanagerV2({
     this.auditLogConfigs,
     this.service,
   });

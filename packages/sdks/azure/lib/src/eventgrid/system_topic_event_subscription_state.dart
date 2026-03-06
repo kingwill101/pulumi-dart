@@ -86,7 +86,7 @@ class SystemTopicEventSubscriptionState {
   /// [subjectFilter] A `subject_filter` block as defined below.
   /// [systemTopic] The System Topic where the Event Subscription should be created in. Changing this forces a new Event Subscription to be created.
   /// [webhookEndpoint] A `webhook_endpoint` block as defined below.
-  SystemTopicEventSubscriptionState({
+  const SystemTopicEventSubscriptionState({
     this.advancedFilter,
     this.advancedFilteringOnArraysEnabled,
     this.azureFunctionEndpoint,

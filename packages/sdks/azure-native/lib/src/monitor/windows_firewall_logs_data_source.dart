@@ -13,7 +13,7 @@ class WindowsFirewallLogsDataSource {
   /// Creates a new [WindowsFirewallLogsDataSource].
   /// [name] A friendly name for the data source.
   /// [streams] Firewall logs streams
-  WindowsFirewallLogsDataSource({
+  const WindowsFirewallLogsDataSource({
     this.name,
     required this.streams,
   });

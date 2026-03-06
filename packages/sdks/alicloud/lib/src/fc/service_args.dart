@@ -46,7 +46,7 @@ class ServiceArgs {
   /// [tags] Map for tagging resources.
   /// [tracingConfig] Provide this to allow your Function Compute to report tracing information. Fields documented below. See [Function Compute Tracing Config](https://help.aliyun.com/document_detail/189805.html). `tracing_config` requires the following: (**NOTE:** If both `type` and `params` are empty, tracing_config is considered to be empty or unset.). See `tracing_config` below.
   /// [vpcConfig] Provide this to allow your Function Compute Service to access your VPC. Fields documented below. See [Function Compute Service in VPC](https://www.alibabacloud.com/help/faq-detail/72959.htm). `vpc_config` requires the following: (**NOTE:** If both `vswitch_ids` and `security_group_id` are empty, vpc_config is considered to be empty or unset.). See `vpc_config` below.
-  ServiceArgs({
+  const ServiceArgs({
     this.description,
     this.internetAccess,
     this.logConfig,

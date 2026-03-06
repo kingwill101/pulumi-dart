@@ -26,7 +26,7 @@ class KeyVaultAccessPolicy {
   /// [secretPermissions] List of secret permissions, must be one or more from the following: `Backup`, `Delete`, `Get`, `List`, `Purge`, `Recover`, `Restore` and `Set`.
   /// [storagePermissions] List of storage permissions, must be one or more from the following: `Backup`, `Delete`, `DeleteSAS`, `Get`, `GetSAS`, `List`, `ListSAS`, `Purge`, `Recover`, `RegenerateKey`, `Restore`, `Set`, `SetSAS` and `Update`.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. Must match the `tenant_id` used above.
-  KeyVaultAccessPolicy({
+  const KeyVaultAccessPolicy({
     this.applicationId,
     this.certificatePermissions,
     this.keyPermissions,

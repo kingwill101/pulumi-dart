@@ -27,7 +27,7 @@ class AwsGuardDutyDetectorProperties {
   /// [findingPublishingFrequency] Property findingPublishingFrequency
   /// [id] Property id
   /// [tags] Property tags
-  AwsGuardDutyDetectorProperties({
+  const AwsGuardDutyDetectorProperties({
     this.dataSources,
     this.enable,
     this.features,

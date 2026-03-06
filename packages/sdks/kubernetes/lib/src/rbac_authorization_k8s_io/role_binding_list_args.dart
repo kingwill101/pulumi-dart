@@ -23,7 +23,7 @@ class RoleBindingListArgs {
   /// [items] Items is a list of RoleBindings
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata.
-  RoleBindingListArgs({
+  const RoleBindingListArgs({
     this.apiVersion,
     required this.items,
     this.kind,

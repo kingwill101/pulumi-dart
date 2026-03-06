@@ -12,7 +12,7 @@ class AzureMonitorAlertSettingsResponse {
   /// [alertsForAllFailoverIssues] Optional.
   /// [alertsForAllJobFailures] Optional.
   /// [alertsForAllReplicationIssues] Optional.
-  AzureMonitorAlertSettingsResponse({
+  const AzureMonitorAlertSettingsResponse({
     this.alertsForAllFailoverIssues,
     this.alertsForAllJobFailures,
     this.alertsForAllReplicationIssues,

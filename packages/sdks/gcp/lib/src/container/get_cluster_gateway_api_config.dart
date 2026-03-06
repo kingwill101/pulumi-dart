@@ -8,7 +8,7 @@ class GetClusterGatewayApiConfig {
 
   /// Creates a new [GetClusterGatewayApiConfig].
   /// [channel] The Gateway API release channel to use for Gateway API.
-  GetClusterGatewayApiConfig({
+  const GetClusterGatewayApiConfig({
     required this.channel,
   });
 

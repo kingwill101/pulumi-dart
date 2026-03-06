@@ -8,7 +8,7 @@ class WorkspaceConfigurationLimitsPerLabelSetLimits {
 
   /// Creates a new [WorkspaceConfigurationLimitsPerLabelSetLimits].
   /// [maxSeries] Maximum number of active time series that can be ingested for metrics matching the label set.
-  WorkspaceConfigurationLimitsPerLabelSetLimits({
+  const WorkspaceConfigurationLimitsPerLabelSetLimits({
     required this.maxSeries,
   });
 

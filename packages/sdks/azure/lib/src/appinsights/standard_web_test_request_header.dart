@@ -11,7 +11,7 @@ class StandardWebTestRequestHeader {
   /// Creates a new [StandardWebTestRequestHeader].
   /// [name] The name which should be used for a header in the request.
   /// [value] The value which should be used for a header in the request.
-  StandardWebTestRequestHeader({
+  const StandardWebTestRequestHeader({
     required this.name,
     required this.value,
   });

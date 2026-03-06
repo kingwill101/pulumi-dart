@@ -37,7 +37,7 @@ class EntityTypeDialogflowV2beta1Args {
   /// [location] Optional.
   /// [name] The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
   /// [project] Optional.
-  EntityTypeDialogflowV2beta1Args({
+  const EntityTypeDialogflowV2beta1Args({
     this.autoExpansionMode,
     required this.displayName,
     this.enableFuzzyExtraction,

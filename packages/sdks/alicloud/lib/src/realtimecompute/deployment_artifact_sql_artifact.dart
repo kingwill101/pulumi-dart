@@ -11,7 +11,7 @@ class DeploymentArtifactSqlArtifact {
   /// Creates a new [DeploymentArtifactSqlArtifact].
   /// [additionalDependencies] Full URL path of additional files. If you need to use dependencies such as UDFs, connectors, or formats that are not registered on the VVP platform, you must add them using this method. Dependencies already registered on the platform do not require this approach.
   /// [sqlScript] Text content of the SQL job
-  DeploymentArtifactSqlArtifact({
+  const DeploymentArtifactSqlArtifact({
     this.additionalDependencies,
     this.sqlScript,
   });

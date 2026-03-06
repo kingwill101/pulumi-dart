@@ -11,7 +11,7 @@ class GetStacksStackParameter {
   /// Creates a new [GetStacksStackParameter].
   /// [parameterKey] The key of parameters.
   /// [parameterValue] The value of parameters.
-  GetStacksStackParameter({
+  const GetStacksStackParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

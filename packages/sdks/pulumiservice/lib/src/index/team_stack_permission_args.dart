@@ -25,7 +25,7 @@ class TeamStackPermissionArgs {
   /// [project] The project name for this stack.
   /// [stack] The name of the stack that the team will be granted permissions to.
   /// [team] The name of the team to grant this stack permissions to. This is not the display name.
-  TeamStackPermissionArgs({
+  const TeamStackPermissionArgs({
     required this.organization,
     required this.permission,
     required this.project,

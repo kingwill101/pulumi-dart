@@ -21,7 +21,7 @@ class GetPoolMount {
   /// [azureFileShares] A `azure_file_share` block defined as below.
   /// [cifsMounts] A `cifs_mount` block defined as below.
   /// [nfsMounts] A `nfs_mount` block defined as below.
-  GetPoolMount({
+  const GetPoolMount({
     this.azureBlobFileSystems,
     this.azureFileShares,
     required this.cifsMounts,

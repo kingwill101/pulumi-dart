@@ -39,7 +39,7 @@ class UserPoolDomainState {
   /// [s3Bucket] The S3 bucket where the static files for this domain are stored.
   /// [userPoolId] The user pool ID.
   /// [version] The app version.
-  UserPoolDomainState({
+  const UserPoolDomainState({
     this.awsAccountId,
     this.certificateArn,
     this.cloudfrontDistribution,

@@ -25,7 +25,7 @@ class ManagementLockAtResourceGroupLevelArgs {
   /// [notes] Notes about the lock. Maximum of 512 characters.
   /// [owners] The owners of the lock.
   /// [resourceGroupName] The name of the resource group to lock.
-  ManagementLockAtResourceGroupLevelArgs({
+  const ManagementLockAtResourceGroupLevelArgs({
     required this.level,
     this.lockName,
     this.notes,

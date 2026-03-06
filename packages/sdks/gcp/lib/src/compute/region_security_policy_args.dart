@@ -54,7 +54,7 @@ class RegionSecurityPolicyArgs {
   /// [rules] The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
   /// [type] The type indicates the intended use of the security policy.
   /// [userDefinedFields] Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
-  RegionSecurityPolicyArgs({
+  const RegionSecurityPolicyArgs({
     this.advancedOptionsConfig,
     this.ddosProtectionConfig,
     this.description,

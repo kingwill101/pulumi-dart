@@ -11,7 +11,7 @@ class CloudVmClusterDataCollectionOptions {
   /// [isDiagnosticsEventsEnabled] Required.
   /// [isHealthMonitoringEnabled] Required.
   /// [isIncidentLogsEnabled] Required.
-  CloudVmClusterDataCollectionOptions({
+  const CloudVmClusterDataCollectionOptions({
     required this.isDiagnosticsEventsEnabled,
     required this.isHealthMonitoringEnabled,
     required this.isIncidentLogsEnabled,

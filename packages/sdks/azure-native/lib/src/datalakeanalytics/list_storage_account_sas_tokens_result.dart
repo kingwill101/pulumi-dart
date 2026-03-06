@@ -13,7 +13,7 @@ class ListStorageAccountSasTokensResult {
   /// Creates a new [ListStorageAccountSasTokensResult].
   /// [nextLink] The link (url) to the next page of results.
   /// [value] The results of the list operation.
-  ListStorageAccountSasTokensResult({
+  const ListStorageAccountSasTokensResult({
     required this.nextLink,
     required this.value,
   });

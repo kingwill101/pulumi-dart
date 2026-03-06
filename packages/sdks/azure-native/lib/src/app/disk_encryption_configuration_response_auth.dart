@@ -9,7 +9,7 @@ class DiskEncryptionConfigurationResponseAuth {
 
   /// Creates a new [DiskEncryptionConfigurationResponseAuth].
   /// [identity] Resource ID of a user-assigned managed identity to authenticate to the Key Vault. The identity must be assigned to the managed environment, in the same tenant as the Key Vault, and it must have the following key permissions on the Key Vault: wrapkey, unwrapkey, get.
-  DiskEncryptionConfigurationResponseAuth({
+  const DiskEncryptionConfigurationResponseAuth({
     this.identity,
   });
 

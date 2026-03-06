@@ -37,7 +37,7 @@ class DedicatedPropreHostEcsClassList {
   /// [sysDiskCapacity] System disk capacity.
   /// [sysDiskType] System disk type, value:
   /// [systemDiskPerformanceLevel] System disk PL level.
-  DedicatedPropreHostEcsClassList({
+  const DedicatedPropreHostEcsClassList({
     this.dataDiskPerformanceLevel,
     this.diskCapacity,
     this.diskCount,

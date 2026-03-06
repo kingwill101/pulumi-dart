@@ -129,7 +129,7 @@ class GetReceivedLicensesFilter {
   /// Creates a new [GetReceivedLicensesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetReceivedLicensesFilter({
+  const GetReceivedLicensesFilter({
     required this.name,
     required this.values,
   });

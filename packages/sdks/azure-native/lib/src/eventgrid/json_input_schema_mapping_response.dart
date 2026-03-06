@@ -30,7 +30,7 @@ class JsonInputSchemaMappingResponse {
   /// [inputSchemaMappingType] Type of the custom mapping
   /// [subject] The mapping information for the Subject property of the Event Grid Event.
   /// [topic] The mapping information for the Topic property of the Event Grid Event.
-  JsonInputSchemaMappingResponse({
+  const JsonInputSchemaMappingResponse({
     this.dataVersion,
     this.eventTime,
     this.eventType,

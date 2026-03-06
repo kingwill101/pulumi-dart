@@ -24,7 +24,7 @@ class DeploymentArgs {
   /// [restApi] REST API identifier.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   /// [variables] Map to set on the related stage.
-  DeploymentArgs({
+  const DeploymentArgs({
     this.description,
     this.region,
     required this.restApi,

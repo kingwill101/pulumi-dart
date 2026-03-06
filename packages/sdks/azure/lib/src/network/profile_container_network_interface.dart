@@ -12,7 +12,7 @@ class ProfileContainerNetworkInterface {
   /// Creates a new [ProfileContainerNetworkInterface].
   /// [ipConfigurations] One or more `ip_configuration` blocks as documented below.
   /// [name] Specifies the name of the IP Configuration.
-  ProfileContainerNetworkInterface({
+  const ProfileContainerNetworkInterface({
     required this.ipConfigurations,
     required this.name,
   });

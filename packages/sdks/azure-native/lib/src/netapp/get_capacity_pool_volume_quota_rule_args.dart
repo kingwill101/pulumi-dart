@@ -24,7 +24,7 @@ class GetCapacityPoolVolumeQuotaRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the volume
   /// [volumeQuotaRuleName] The name of volume quota rule
-  GetCapacityPoolVolumeQuotaRuleArgs({
+  const GetCapacityPoolVolumeQuotaRuleArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

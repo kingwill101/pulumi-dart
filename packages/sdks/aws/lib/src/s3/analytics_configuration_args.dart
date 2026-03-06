@@ -26,7 +26,7 @@ class AnalyticsConfigurationArgs {
   /// [name] Unique identifier of the analytics configuration for the bucket.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [storageClassAnalysis] Configuration for the analytics data export (documented below).
-  AnalyticsConfigurationArgs({
+  const AnalyticsConfigurationArgs({
     required this.bucket,
     this.filter,
     this.name,

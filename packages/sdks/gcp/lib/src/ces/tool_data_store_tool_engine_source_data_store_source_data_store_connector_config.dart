@@ -15,7 +15,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
   /// [collection] Resource name of the collection the data store belongs to.
   /// [collectionDisplayName] Display name of the collection the data store belongs to.
   /// [dataSource] The name of the data source.
-  ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig({
+  const ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig({
     this.collection,
     this.collectionDisplayName,
     this.dataSource,

@@ -25,7 +25,7 @@ class GetScriptResult {
   /// [pythonScript] Python script generated from the DAG when the `language` argument is set to `PYTHON`.
   /// [region] Required.
   /// [scalaCode] Scala code generated from the DAG when the `language` argument is set to `SCALA`.
-  GetScriptResult({
+  const GetScriptResult({
     required this.dagEdges,
     required this.dagNodes,
     required this.id,

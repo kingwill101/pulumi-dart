@@ -21,7 +21,7 @@ class GetInstantSnapshotIamPolicyArgs {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the disk is located. Used to find the parent resource to bind the IAM policy to. If not specified,
-  GetInstantSnapshotIamPolicyArgs({
+  const GetInstantSnapshotIamPolicyArgs({
     required this.name,
     this.project,
     this.zone,

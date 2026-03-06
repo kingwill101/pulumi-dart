@@ -17,7 +17,7 @@ class JobTimeConfig {
   /// [dataOffset] Cron type can choose time offset, unit s.
   /// [timeExpression] Time expressions. Currently, the following types of time expressions are supported:
   /// [timeType] Time configuration type. Currently, the following time types are supported:
-  JobTimeConfig({
+  const JobTimeConfig({
     this.calendar,
     this.dataOffset,
     this.timeExpression,

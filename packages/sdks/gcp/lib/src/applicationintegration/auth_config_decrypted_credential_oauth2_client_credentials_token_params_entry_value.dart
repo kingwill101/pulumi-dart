@@ -10,7 +10,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue 
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue].
   /// [literalValue] Passing a literal value
-  AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue({
+  const AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValue({
     this.literalValue,
   });
 

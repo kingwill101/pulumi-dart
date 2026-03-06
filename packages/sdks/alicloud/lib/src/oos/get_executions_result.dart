@@ -48,7 +48,7 @@ class GetExecutionsResult {
   /// [status] Optional.
   /// [tags] Optional.
   /// [templateName] Optional.
-  GetExecutionsResult({
+  const GetExecutionsResult({
     this.category,
     this.endDate,
     this.endDateAfter,

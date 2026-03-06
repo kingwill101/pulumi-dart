@@ -52,7 +52,7 @@ class ProjectPropertiesResponse {
   /// [publicNetworkAccess] This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
   /// [serviceEndpoint] Endpoint at which the collector agent can call agent REST API.
   /// [updatedTimestamp] Time when this project was last updated. Date-Time represented in ISO-8601 format.
-  ProjectPropertiesResponse({
+  const ProjectPropertiesResponse({
     this.assessmentSolutionId,
     required this.createdTimestamp,
     this.customerStorageAccountArmId,

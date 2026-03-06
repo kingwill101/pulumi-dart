@@ -10,7 +10,7 @@ class DeployPolicyRule {
 
   /// Creates a new [DeployPolicyRule].
   /// [rolloutRestriction] Rollout restrictions.
-  DeployPolicyRule({
+  const DeployPolicyRule({
     this.rolloutRestriction,
   });
 

@@ -9,7 +9,7 @@ class BulkCreationParametersResponse {
 
   /// Creates a new [BulkCreationParametersResponse].
   /// [instanceCount] The number of virtual machine instances to create.
-  BulkCreationParametersResponse({
+  const BulkCreationParametersResponse({
     this.instanceCount,
   });
 

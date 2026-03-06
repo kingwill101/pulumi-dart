@@ -17,7 +17,7 @@ class ListWorkspaceKeysResult {
   /// [notebookAccessKeys] Required.
   /// [userStorageKey] Required.
   /// [userStorageResourceId] Required.
-  ListWorkspaceKeysResult({
+  const ListWorkspaceKeysResult({
     required this.appInsightsInstrumentationKey,
     required this.containerRegistryCredentials,
     required this.notebookAccessKeys,

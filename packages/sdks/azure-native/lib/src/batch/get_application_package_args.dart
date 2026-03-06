@@ -21,7 +21,7 @@ class GetApplicationPackageArgs {
   /// [applicationName] The name of the application. This must be unique within the account.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [versionName] The version of the application.
-  GetApplicationPackageArgs({
+  const GetApplicationPackageArgs({
     required this.accountName,
     required this.applicationName,
     required this.resourceGroupName,

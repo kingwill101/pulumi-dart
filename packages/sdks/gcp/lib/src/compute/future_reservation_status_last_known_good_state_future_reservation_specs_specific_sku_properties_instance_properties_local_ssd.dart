@@ -12,7 +12,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd].
   /// [diskSizeGb] Specifies the size of the disk in base-2 GB.
   /// [interface] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
-  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd({
+  const FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesLocalSsd({
     this.diskSizeGb,
     this.interface,
   });

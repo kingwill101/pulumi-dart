@@ -16,7 +16,7 @@ class WorkloadImpactArgs {
   /// Creates a new [WorkloadImpactArgs].
   /// [properties] The resource-specific properties for this resource.
   /// [workloadImpactName] workloadImpact resource
-  WorkloadImpactArgs({
+  const WorkloadImpactArgs({
     this.properties,
     this.workloadImpactName,
   });

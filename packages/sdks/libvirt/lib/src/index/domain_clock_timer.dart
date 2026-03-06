@@ -27,7 +27,7 @@ class DomainClockTimer {
   /// [present] Indicates the presence of a timer in the domain configuration.
   /// [tickPolicy] Configures the tick policy for the timer, influencing how timekeeping events are managed.
   /// [track] Specifies whether to track the timer's state, affecting timed operations.
-  DomainClockTimer({
+  const DomainClockTimer({
     this.catchUp,
     this.frequency,
     this.mode,

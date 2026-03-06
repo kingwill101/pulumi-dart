@@ -21,7 +21,7 @@ class GetListenerDefaultActionAuthenticateCognito {
   /// [userPoolArn] Required.
   /// [userPoolClientId] Required.
   /// [userPoolDomain] Required.
-  GetListenerDefaultActionAuthenticateCognito({
+  const GetListenerDefaultActionAuthenticateCognito({
     required this.authenticationRequestExtraParams,
     required this.onUnauthenticatedRequest,
     required this.scope,

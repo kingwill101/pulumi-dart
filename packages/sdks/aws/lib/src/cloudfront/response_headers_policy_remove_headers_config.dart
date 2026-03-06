@@ -8,7 +8,7 @@ class ResponseHeadersPolicyRemoveHeadersConfig {
 
   /// Creates a new [ResponseHeadersPolicyRemoveHeadersConfig].
   /// [items] Optional.
-  ResponseHeadersPolicyRemoveHeadersConfig({
+  const ResponseHeadersPolicyRemoveHeadersConfig({
     this.items,
   });
 

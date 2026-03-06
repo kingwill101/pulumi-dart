@@ -12,7 +12,7 @@ class IpRule {
   /// Creates a new [IpRule].
   /// [ipMask] IP mask.
   /// [rights] List of access rights.
-  IpRule({
+  const IpRule({
     required this.ipMask,
     required this.rights,
   });

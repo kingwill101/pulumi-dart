@@ -10,7 +10,7 @@ class PolicyModelProperties {
 
   /// Creates a new [PolicyModelProperties].
   /// [customProperties] Policy model custom properties.
-  PolicyModelProperties({
+  const PolicyModelProperties({
     required this.customProperties,
   });
 

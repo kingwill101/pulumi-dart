@@ -18,7 +18,7 @@ class BasicAccelerateIpState {
   /// [acceleratorId] The ID of the Basic GA instance.
   /// [ipSetId] The ID of the Basic Ip Set.
   /// [status] The status of the Basic Accelerate IP instance.
-  BasicAccelerateIpState({
+  const BasicAccelerateIpState({
     this.accelerateIpAddress,
     this.acceleratorId,
     this.ipSetId,

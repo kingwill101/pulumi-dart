@@ -12,7 +12,7 @@ class GoogleCloudChannelV1PeriodResponse {
   /// Creates a new [GoogleCloudChannelV1PeriodResponse].
   /// [duration] Total duration of Period Type defined.
   /// [periodType] Period Type.
-  GoogleCloudChannelV1PeriodResponse({
+  const GoogleCloudChannelV1PeriodResponse({
     required this.duration,
     required this.periodType,
   });

@@ -15,7 +15,7 @@ class ListOrderDCAccessCodeArgs {
   /// Creates a new [ListOrderDCAccessCodeArgs].
   /// [deviceName] The device name
   /// [resourceGroupName] The resource group name.
-  ListOrderDCAccessCodeArgs({
+  const ListOrderDCAccessCodeArgs({
     required this.deviceName,
     required this.resourceGroupName,
   });

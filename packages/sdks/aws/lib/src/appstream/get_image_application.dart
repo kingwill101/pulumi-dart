@@ -53,7 +53,7 @@ class GetImageApplication {
   /// [name] Name of the image being searched for. Cannot be used with `name_regex` or `arn`.
   /// [platforms] Array of strings describing the platforms on which the application can run.
   /// [workingDirectory] Working directory for the application.
-  GetImageApplication({
+  const GetImageApplication({
     required this.appBlockArn,
     required this.arn,
     required this.createdTime,

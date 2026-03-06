@@ -16,7 +16,7 @@ class BoolEqualsAdvancedFilter {
   /// [key] The field/property in the event based on which you want to filter.
   /// [operatorType] The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// [value] The boolean filter value.
-  BoolEqualsAdvancedFilter({
+  const BoolEqualsAdvancedFilter({
     this.key,
     required this.operatorType,
     this.value,

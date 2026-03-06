@@ -25,7 +25,7 @@ class RegistryCodeVersionArgs {
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier.
-  RegistryCodeVersionArgs({
+  const RegistryCodeVersionArgs({
     required this.codeName,
     required this.codeVersionProperties,
     required this.registryName,

@@ -10,7 +10,7 @@ class WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMa
   /// Creates a new [WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern({
+  const WebAclRuleStatementRegexPatternSetReferenceStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

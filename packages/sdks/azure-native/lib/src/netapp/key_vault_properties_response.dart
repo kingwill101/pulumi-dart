@@ -21,7 +21,7 @@ class KeyVaultPropertiesResponse {
   /// [keyVaultResourceId] The resource ID of KeyVault.
   /// [keyVaultUri] The Uri of KeyVault.
   /// [status] Status of the KeyVault connection.
-  KeyVaultPropertiesResponse({
+  const KeyVaultPropertiesResponse({
     required this.keyName,
     required this.keyVaultId,
     this.keyVaultResourceId,

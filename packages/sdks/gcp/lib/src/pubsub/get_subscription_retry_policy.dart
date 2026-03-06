@@ -13,7 +13,7 @@ class GetSubscriptionRetryPolicy {
   /// Creates a new [GetSubscriptionRetryPolicy].
   /// [maximumBackoff] The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
   /// [minimumBackoff] The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-  GetSubscriptionRetryPolicy({
+  const GetSubscriptionRetryPolicy({
     required this.maximumBackoff,
     required this.minimumBackoff,
   });

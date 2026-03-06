@@ -37,7 +37,7 @@ class ProvisioningTemplateArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [templateBody] The JSON formatted contents of the fleet provisioning template.
   /// [type] The type you define in a provisioning template.
-  ProvisioningTemplateArgs({
+  const ProvisioningTemplateArgs({
     this.description,
     this.enabled,
     this.name,

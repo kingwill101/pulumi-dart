@@ -19,7 +19,7 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
   /// [project] Optional.
   /// [view] Optional.
   /// [workflowId] Required.
-  GetExecutionWorkflowexecutionsV1betaArgs({
+  const GetExecutionWorkflowexecutionsV1betaArgs({
     required this.executionId,
     required this.location,
     this.project,

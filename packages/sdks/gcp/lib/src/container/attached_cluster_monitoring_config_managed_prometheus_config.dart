@@ -8,7 +8,7 @@ class AttachedClusterMonitoringConfigManagedPrometheusConfig {
 
   /// Creates a new [AttachedClusterMonitoringConfigManagedPrometheusConfig].
   /// [enabled] Enable Managed Collection.
-  AttachedClusterMonitoringConfigManagedPrometheusConfig({
+  const AttachedClusterMonitoringConfigManagedPrometheusConfig({
     this.enabled,
   });
 

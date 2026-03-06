@@ -19,7 +19,7 @@ class ManagedServiceIdentityResponse {
   /// [tenantId] ID of the Azure Active Directory.
   /// [type] Type of the managed identity.
   /// [userAssignedIdentities] The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-  ManagedServiceIdentityResponse({
+  const ManagedServiceIdentityResponse({
     this.principalId,
     this.tenantId,
     required this.type,

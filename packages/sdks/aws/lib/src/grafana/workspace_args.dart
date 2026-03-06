@@ -64,7 +64,7 @@ class WorkspaceArgs {
   /// [stackSetName] The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [vpcConfiguration] The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to. See VPC Configuration below.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     required this.accountAccessType,
     required this.authenticationProviders,
     this.configuration,

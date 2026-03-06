@@ -28,7 +28,7 @@ class ClusterArgs {
   /// [name] Specifies the name which should be used for this Arc Kubernetes Cluster. Changing this forces a new Arc Kubernetes Cluster to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Arc Kubernetes Cluster should exist. Changing this forces a new Arc Kubernetes Cluster to be created.
   /// [tags] A mapping of tags which should be assigned to the Arc Kubernetes Cluster.
-  ClusterArgs({
+  const ClusterArgs({
     required this.agentPublicKeyCertificate,
     required this.identity,
     this.location,

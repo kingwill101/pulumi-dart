@@ -17,7 +17,7 @@ class ReservationResourceStatusHealthInfo {
   /// [degradedBlockCount] (Output)
   /// [healthStatus] (Output)
   /// [healthyBlockCount] (Output)
-  ReservationResourceStatusHealthInfo({
+  const ReservationResourceStatusHealthInfo({
     this.degradedBlockCount,
     this.healthStatus,
     this.healthyBlockCount,

@@ -19,7 +19,7 @@ class CustomRolloutArgs {
   /// [properties] Properties of the rollout.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [rolloutName] The rollout name.
-  CustomRolloutArgs({
+  const CustomRolloutArgs({
     required this.properties,
     required this.providerNamespace,
     this.rolloutName,

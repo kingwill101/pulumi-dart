@@ -14,7 +14,7 @@ class AlertProcessingRuleSuppressionScheduleRecurrenceMonthly {
   /// [daysOfMonths] Specifies a list of dayOfMonth to recurrence. Possible values are integers between `1` - `31`.
   /// [endTime] Specifies the recurrence end time (H:M:S).
   /// [startTime] Specifies the recurrence start time (H:M:S).
-  AlertProcessingRuleSuppressionScheduleRecurrenceMonthly({
+  const AlertProcessingRuleSuppressionScheduleRecurrenceMonthly({
     required this.daysOfMonths,
     this.endTime,
     this.startTime,

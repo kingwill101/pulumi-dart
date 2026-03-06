@@ -18,7 +18,7 @@ class WorkflowIssuesFilter {
   /// [name] The name of the filter. The name only serves a cosmetic purpose and can only be seen through Terraform and GraphQL API. It can't be empty.
   /// [predicates] A condition an issue event should satisfy to be processed by the workflow
   /// [type] Type of the filter. Please just set this field to `FILTER`. The field is likely to be deprecated/removed in the near future.
-  WorkflowIssuesFilter({
+  const WorkflowIssuesFilter({
     this.filterId,
     required this.name,
     this.predicates,

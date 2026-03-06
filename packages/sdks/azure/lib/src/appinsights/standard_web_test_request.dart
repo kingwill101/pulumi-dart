@@ -24,7 +24,7 @@ class StandardWebTestRequest {
   /// [httpVerb] Which HTTP verb to use for the call. Options are 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', and 'OPTIONS'. Defaults to `GET`.
   /// [parseDependentRequestsEnabled] Should the parsing of dependend requests be enabled? Defaults to `true`.
   /// [url] The WebTest request URL.
-  StandardWebTestRequest({
+  const StandardWebTestRequest({
     this.body,
     this.followRedirectsEnabled,
     this.headers,

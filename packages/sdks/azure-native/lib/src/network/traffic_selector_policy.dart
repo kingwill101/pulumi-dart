@@ -12,7 +12,7 @@ class TrafficSelectorPolicy {
   /// Creates a new [TrafficSelectorPolicy].
   /// [localAddressRanges] A collection of local address spaces in CIDR format.
   /// [remoteAddressRanges] A collection of remote address spaces in CIDR format.
-  TrafficSelectorPolicy({
+  const TrafficSelectorPolicy({
     required this.localAddressRanges,
     required this.remoteAddressRanges,
   });

@@ -12,7 +12,7 @@ class TopicsInputConfigResponse {
   /// Creates a new [TopicsInputConfigResponse].
   /// [name] Name of the topic input config
   /// [value] Value of the topic input config
-  TopicsInputConfigResponse({
+  const TopicsInputConfigResponse({
     this.name,
     this.value,
   });

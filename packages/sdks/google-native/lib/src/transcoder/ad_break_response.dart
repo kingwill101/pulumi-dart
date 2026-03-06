@@ -9,7 +9,7 @@ class AdBreakResponse {
 
   /// Creates a new [AdBreakResponse].
   /// [startTimeOffset] Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
-  AdBreakResponse({
+  const AdBreakResponse({
     required this.startTimeOffset,
   });
 

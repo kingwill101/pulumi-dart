@@ -12,7 +12,7 @@ class HelpLinkResponse {
   /// Creates a new [HelpLinkResponse].
   /// [description] Describes what the link offers.
   /// [url] The URL of the link.
-  HelpLinkResponse({
+  const HelpLinkResponse({
     required this.description,
     required this.url,
   });

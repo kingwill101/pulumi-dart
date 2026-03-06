@@ -53,7 +53,7 @@ class GetAppResult {
   /// [name] Full path to the Application resource in the API. Example: apps/myapp.
   /// [serviceAccount] The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
   /// [servingStatus] Serving status of this application.
-  GetAppResult({
+  const GetAppResult({
     required this.authDomain,
     required this.codeBucket,
     required this.databaseType,

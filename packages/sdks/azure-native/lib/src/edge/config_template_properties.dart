@@ -9,7 +9,7 @@ class ConfigTemplateProperties {
 
   /// Creates a new [ConfigTemplateProperties].
   /// [description] Description of config template
-  ConfigTemplateProperties({
+  const ConfigTemplateProperties({
     required this.description,
   });
 

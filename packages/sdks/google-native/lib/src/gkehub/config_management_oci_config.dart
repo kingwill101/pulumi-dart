@@ -21,7 +21,7 @@ class ConfigManagementOciConfig {
   /// [secretType] Type of secret configured for access to the Git repo.
   /// [syncRepo] The OCI image repository URL for the package to sync from. e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`.
   /// [syncWaitSecs] Period in seconds between consecutive syncs. Default: 15.
-  ConfigManagementOciConfig({
+  const ConfigManagementOciConfig({
     this.gcpServiceAccountEmail,
     this.policyDir,
     this.secretType,

@@ -10,7 +10,7 @@ class RowLayout {
 
   /// Creates a new [RowLayout].
   /// [rows] The rows of content to display.
-  RowLayout({
+  const RowLayout({
     this.rows,
   });
 

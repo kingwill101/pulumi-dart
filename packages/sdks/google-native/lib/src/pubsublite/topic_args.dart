@@ -31,7 +31,7 @@ class TopicArgs {
   /// [reservationConfig] The settings for this topic's Reservation usage.
   /// [retentionConfig] The settings for this topic's message retention.
   /// [topicId] Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-  TopicArgs({
+  const TopicArgs({
     this.location,
     this.name,
     this.partitionConfig,

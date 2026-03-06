@@ -13,7 +13,7 @@ class GetMembershipArgs {
   /// Creates a new [GetMembershipArgs].
   /// [groupId] Required.
   /// [membershipId] Required.
-  GetMembershipArgs({
+  const GetMembershipArgs({
     required this.groupId,
     required this.membershipId,
   });

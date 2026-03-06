@@ -11,7 +11,7 @@ class RunBookDraftContentLinkHash {
   /// Creates a new [RunBookDraftContentLinkHash].
   /// [algorithm] Specifies the hash algorithm used to hash the content.
   /// [value] Specifies the expected hash value of the content.
-  RunBookDraftContentLinkHash({
+  const RunBookDraftContentLinkHash({
     required this.algorithm,
     required this.value,
   });

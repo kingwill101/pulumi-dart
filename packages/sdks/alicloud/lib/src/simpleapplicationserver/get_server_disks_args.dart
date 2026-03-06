@@ -27,7 +27,7 @@ class GetServerDisksArgs {
   /// [nameRegex] A regex string to filter results by Disk name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
-  GetServerDisksArgs({
+  const GetServerDisksArgs({
     this.diskType,
     this.ids,
     this.instanceId,

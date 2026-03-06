@@ -19,7 +19,7 @@ class GetFeatureArgs {
   /// [location] The location for the GKE Hub Feature.
   /// [name] The name of the feature you want to know the status of.
   /// [project] The ID of the project in which the resource belongs.
-  GetFeatureArgs({
+  const GetFeatureArgs({
     required this.location,
     required this.name,
     this.project,

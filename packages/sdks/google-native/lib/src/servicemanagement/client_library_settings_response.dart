@@ -47,7 +47,7 @@ class ClientLibrarySettingsResponse {
   /// [restNumericEnums] When using transport=rest, the client request will encode enums as numbers rather than strings.
   /// [rubySettings] Settings for Ruby client libraries.
   /// [version] Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
-  ClientLibrarySettingsResponse({
+  const ClientLibrarySettingsResponse({
     required this.cppSettings,
     required this.dotnetSettings,
     required this.goSettings,

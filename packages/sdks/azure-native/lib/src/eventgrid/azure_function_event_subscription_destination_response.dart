@@ -23,7 +23,7 @@ class AzureFunctionEventSubscriptionDestinationResponse {
   /// [maxEventsPerBatch] Maximum number of events per batch.
   /// [preferredBatchSizeInKilobytes] Preferred batch size in Kilobytes.
   /// [resourceId] The Azure Resource Id that represents the endpoint of the Azure Function destination of an event subscription.
-  AzureFunctionEventSubscriptionDestinationResponse({
+  const AzureFunctionEventSubscriptionDestinationResponse({
     this.deliveryAttributeMappings,
     required this.endpointType,
     this.maxEventsPerBatch,

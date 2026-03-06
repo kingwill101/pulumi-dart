@@ -13,7 +13,7 @@ class GetGrafanaIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] Required.
-  GetGrafanaIdentity({
+  const GetGrafanaIdentity({
     this.identityIds,
     required this.principalId,
     required this.tenantId,

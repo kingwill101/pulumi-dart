@@ -21,7 +21,7 @@ class SecretCiphertextArgs {
   /// [additionalAuthenticatedData] The additional authenticated data used for integrity checks during encryption and decryption.
   /// [cryptoKey] The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// [plaintext] The plaintext to be encrypted.
-  SecretCiphertextArgs({
+  const SecretCiphertextArgs({
     this.additionalAuthenticatedData,
     required this.cryptoKey,
     required this.plaintext,

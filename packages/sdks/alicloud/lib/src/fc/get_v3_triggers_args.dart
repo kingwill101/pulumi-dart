@@ -21,7 +21,7 @@ class GetV3TriggersArgs {
   /// [ids] A list of Trigger IDs. The value is formulated as `&lt;function_name&gt;:&lt;trigger_name&gt;`.
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetV3TriggersArgs({
+  const GetV3TriggersArgs({
     required this.functionName,
     this.ids,
     this.nameRegex,

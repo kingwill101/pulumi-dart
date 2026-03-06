@@ -17,7 +17,7 @@ class GetDatabaseMysqlV2Updates {
   /// [duration] The maximum maintenance window time in hours.
   /// [frequency] How frequently maintenance occurs. Currently can only be weekly.
   /// [hourOfDay] The hour of the day (0-23) when maintenance occurs.
-  GetDatabaseMysqlV2Updates({
+  const GetDatabaseMysqlV2Updates({
     required this.dayOfWeek,
     required this.duration,
     required this.frequency,

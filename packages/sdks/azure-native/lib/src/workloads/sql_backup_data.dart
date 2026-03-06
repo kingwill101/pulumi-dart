@@ -18,7 +18,7 @@ class SqlBackupData {
   /// [backupPolicy] Defines the policy properties for database backup.
   /// [backupType] The type of backup, VM, SQL or HANA.
   /// [recoveryServicesVault] The properties of the recovery services vault used for backup.
-  SqlBackupData({
+  const SqlBackupData({
     required this.backupPolicy,
     required this.backupType,
     required this.recoveryServicesVault,

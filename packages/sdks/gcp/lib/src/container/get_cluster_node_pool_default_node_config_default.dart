@@ -19,7 +19,7 @@ class GetClusterNodePoolDefaultNodeConfigDefault {
   /// [gcfsConfigs] GCFS configuration for this node.
   /// [insecureKubeletReadonlyPortEnabled] Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
   /// [loggingVariant] Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
-  GetClusterNodePoolDefaultNodeConfigDefault({
+  const GetClusterNodePoolDefaultNodeConfigDefault({
     required this.containerdConfigs,
     required this.gcfsConfigs,
     required this.insecureKubeletReadonlyPortEnabled,

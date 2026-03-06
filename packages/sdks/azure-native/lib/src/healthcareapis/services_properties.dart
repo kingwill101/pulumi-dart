@@ -41,7 +41,7 @@ class ServicesProperties {
   /// [importConfiguration] The settings for the import operation of the service instance.
   /// [privateEndpointConnections] The list of private endpoint connections that are set up for this resource.
   /// [publicNetworkAccess] Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-  ServicesProperties({
+  const ServicesProperties({
     this.accessPolicies,
     this.acrConfiguration,
     this.authenticationConfiguration,

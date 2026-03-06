@@ -26,7 +26,7 @@ class ServerMicrosoftSupportAuditingPolicyState {
   /// [serverId] The ID of the SQL Server to set the extended auditing policy. Changing this forces a new resource to be created.
   /// [storageAccountAccessKey] The access key to use for the auditing storage account.
   /// [storageAccountSubscriptionId] The ID of the Subscription containing the Storage Account.
-  ServerMicrosoftSupportAuditingPolicyState({
+  const ServerMicrosoftSupportAuditingPolicyState({
     this.blobStorageEndpoint,
     this.enabled,
     this.logMonitoringEnabled,

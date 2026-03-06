@@ -108,7 +108,7 @@ class VMwareClusterArgs {
   /// [upgradePolicy] Specifies upgrade policy for the cluster.
   /// [vcenter] VmwareVCenterConfig specifies vCenter config for the user cluster.
   /// [vmTrackingEnabled] Enable VM tracking.
-  VMwareClusterArgs({
+  const VMwareClusterArgs({
     required this.adminClusterMembership,
     this.annotations,
     this.antiAffinityGroups,

@@ -26,7 +26,7 @@ class DatabaseImport {
   /// [storageKey] Specifies the access key for the storage account.
   /// [storageKeyType] Specifies the type of access key for the storage account. Valid values are `StorageAccessKey` or `SharedAccessKey`.
   /// [storageUri] Specifies the blob URI of the .bacpac file.
-  DatabaseImport({
+  const DatabaseImport({
     required this.administratorLogin,
     required this.administratorLoginPassword,
     required this.authenticationType,

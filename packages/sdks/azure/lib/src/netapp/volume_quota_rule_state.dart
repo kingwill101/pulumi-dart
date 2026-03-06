@@ -28,7 +28,7 @@ class VolumeQuotaRuleState {
   /// [quotaTarget] Quota Target. This can be Unix UID/GID for NFSv3/NFSv4.1 volumes and Windows User SID for CIFS based volumes. Changing this forces a new resource to be created.
   /// [quotaType] Quota type. Possible values are `DefaultGroupQuota`, `DefaultUserQuota`, `IndividualGroupQuota` and `IndividualUserQuota`. Please note that `IndividualGroupQuota` and `DefaultGroupQuota` are not applicable to SMB and dual-protocol volumes. Changing this forces a new resource to be created.
   /// [volumeId] The NetApp volume ID where the Volume Quota Rule is assigned to. Changing this forces a new resource to be created.
-  VolumeQuotaRuleState({
+  const VolumeQuotaRuleState({
     this.location,
     this.name,
     this.quotaSizeInKib,

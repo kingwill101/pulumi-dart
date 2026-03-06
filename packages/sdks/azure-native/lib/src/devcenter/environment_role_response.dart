@@ -12,7 +12,7 @@ class EnvironmentRoleResponse {
   /// Creates a new [EnvironmentRoleResponse].
   /// [description] This is a description of the Role Assignment.
   /// [roleName] The common name of the Role Assignment. This is a descriptive name such as 'AcrPush'.
-  EnvironmentRoleResponse({
+  const EnvironmentRoleResponse({
     required this.description,
     required this.roleName,
   });

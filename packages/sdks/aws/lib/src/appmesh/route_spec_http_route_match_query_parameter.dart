@@ -12,7 +12,7 @@ class RouteSpecHttpRouteMatchQueryParameter {
   /// Creates a new [RouteSpecHttpRouteMatchQueryParameter].
   /// [match] The query parameter to match on.
   /// [name] Name for the query parameter that will be matched on.
-  RouteSpecHttpRouteMatchQueryParameter({
+  const RouteSpecHttpRouteMatchQueryParameter({
     this.match,
     required this.name,
   });

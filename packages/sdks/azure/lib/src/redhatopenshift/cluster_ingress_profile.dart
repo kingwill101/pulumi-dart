@@ -14,7 +14,7 @@ class ClusterIngressProfile {
   /// [ipAddress] The IP Address the Ingress Profile is associated with.
   /// [name] The name of the Azure Red Hat OpenShift Cluster to create. Changing this forces a new resource to be created.
   /// [visibility] Cluster Ingress visibility. Supported values are `Public` and `Private`. Changing this forces a new resource to be created.
-  ClusterIngressProfile({
+  const ClusterIngressProfile({
     this.ipAddress,
     this.name,
     required this.visibility,

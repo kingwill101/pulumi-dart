@@ -13,7 +13,7 @@ class MosaicLayoutResponse {
   /// Creates a new [MosaicLayoutResponse].
   /// [columns] The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
   /// [tiles] The tiles to display.
-  MosaicLayoutResponse({
+  const MosaicLayoutResponse({
     required this.columns,
     required this.tiles,
   });

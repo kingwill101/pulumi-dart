@@ -23,7 +23,7 @@ class GroupIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Container Group. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  GroupIdentity({
+  const GroupIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

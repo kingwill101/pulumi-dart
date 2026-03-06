@@ -17,7 +17,7 @@ class RocketMQInstanceNetworkInfo {
   /// [endpoints] Access point list.
   /// [internetInfo] instance internet info. See `internet_info` below.
   /// [vpcInfo] Proprietary network information. See `vpc_info` below.
-  RocketMQInstanceNetworkInfo({
+  const RocketMQInstanceNetworkInfo({
     this.endpoints,
     required this.internetInfo,
     required this.vpcInfo,

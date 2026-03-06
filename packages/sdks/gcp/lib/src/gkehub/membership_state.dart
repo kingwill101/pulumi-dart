@@ -45,7 +45,7 @@ class MembershipState {
   /// [name] The unique identifier of the membership.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  MembershipState({
+  const MembershipState({
     this.authority,
     this.effectiveLabels,
     this.endpoint,

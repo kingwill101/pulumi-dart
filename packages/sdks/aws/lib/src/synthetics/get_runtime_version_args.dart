@@ -23,7 +23,7 @@ class GetRuntimeVersionArgs {
   /// [prefix] Name prefix of the runtime version (for example, `syn-nodejs-puppeteer`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [version] Version of the runtime to be fetched (for example, `9.0`). Conflicts with `latest`.
-  GetRuntimeVersionArgs({
+  const GetRuntimeVersionArgs({
     this.latest,
     required this.prefix,
     this.region,

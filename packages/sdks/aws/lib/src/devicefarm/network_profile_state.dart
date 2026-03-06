@@ -54,7 +54,7 @@ class NetworkProfileState {
   /// [uplinkDelayMs] Delay time for all packets to destination in milliseconds as an integer from `0` to `2000`.
   /// [uplinkJitterMs] Time variation in the delay of received packets in milliseconds as an integer from `0` to `2000`.
   /// [uplinkLossPercent] Proportion of received packets that fail to arrive from `0` to `100` percent.
-  NetworkProfileState({
+  const NetworkProfileState({
     this.arn,
     this.description,
     this.downlinkBandwidthBits,

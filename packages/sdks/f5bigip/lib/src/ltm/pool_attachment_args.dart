@@ -39,7 +39,7 @@ class PoolAttachmentArgs {
   /// [priorityGroup] Specifies a number representing the priority group for the pool member. The default is 0, meaning that the member has no priority
   /// [ratio] "Specifies the ratio weight to assign to the pool member. Valid values range from 1 through 65535. The default is 1, which means that each pool member has an equal ratio proportion.".
   /// [state] Specifies the state the pool member should be in,value can be `enabled` (or) `disabled` (or) `forced_offline`).
-  PoolAttachmentArgs({
+  const PoolAttachmentArgs({
     this.connectionLimit,
     this.connectionRateLimit,
     this.dynamicRatio,

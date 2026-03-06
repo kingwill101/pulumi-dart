@@ -16,7 +16,7 @@ class HypervVirtualizationManagementSettingsResponse {
   /// [licenseAndSupportList] Licence and support list.
   /// [numberOfPhysicalCoresPerLicense] Number of physical cores per licence.
   /// [softwareAssuranceCost] Software Assurance Cost.
-  HypervVirtualizationManagementSettingsResponse({
+  const HypervVirtualizationManagementSettingsResponse({
     required this.licenseAndSupportList,
     required this.numberOfPhysicalCoresPerLicense,
     required this.softwareAssuranceCost,

@@ -15,7 +15,7 @@ class AuthCredential {
   /// [name] The name of the credential.
   /// [passwordSecretIdentifier] KeyVault Secret URI for accessing the password.
   /// [usernameSecretIdentifier] KeyVault Secret URI for accessing the username.
-  AuthCredential({
+  const AuthCredential({
     this.name,
     this.passwordSecretIdentifier,
     this.usernameSecretIdentifier,

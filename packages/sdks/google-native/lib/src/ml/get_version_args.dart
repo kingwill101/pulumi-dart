@@ -15,7 +15,7 @@ class GetVersionArgs {
   /// [modelId] Required.
   /// [project] Optional.
   /// [versionId] Required.
-  GetVersionArgs({
+  const GetVersionArgs({
     required this.modelId,
     this.project,
     required this.versionId,

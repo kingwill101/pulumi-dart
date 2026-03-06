@@ -43,7 +43,7 @@ class ZoneRecordState {
   /// [userClientIp] Optional.
   /// [value] The value of the Private Zone Record.
   /// [zoneId] The name of the Private Zone Record.
-  ZoneRecordState({
+  const ZoneRecordState({
     this.lang,
     this.priority,
     this.recordId,

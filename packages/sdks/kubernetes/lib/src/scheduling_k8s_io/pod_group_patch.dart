@@ -13,7 +13,7 @@ class PodGroupPatch {
   /// Creates a new [PodGroupPatch].
   /// [name] Name is a unique identifier for the PodGroup within the Workload. It must be a DNS label. This field is immutable.
   /// [policy] Policy defines the scheduling policy for this PodGroup.
-  PodGroupPatch({
+  const PodGroupPatch({
     this.name,
     this.policy,
   });

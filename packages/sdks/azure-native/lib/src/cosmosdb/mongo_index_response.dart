@@ -14,7 +14,7 @@ class MongoIndexResponse {
   /// Creates a new [MongoIndexResponse].
   /// [key] Cosmos DB MongoDB collection index keys
   /// [options] Cosmos DB MongoDB collection index key options
-  MongoIndexResponse({
+  const MongoIndexResponse({
     this.key,
     this.options,
   });

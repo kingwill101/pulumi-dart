@@ -14,7 +14,7 @@ class EntityRecognizerInputDataConfigDocuments {
   /// [inputFormat] Specifies how the input files should be processed.
   /// [s3Uri] Location of training documents.
   /// [testS3Uri] Optional.
-  EntityRecognizerInputDataConfigDocuments({
+  const EntityRecognizerInputDataConfigDocuments({
     this.inputFormat,
     required this.s3Uri,
     this.testS3Uri,

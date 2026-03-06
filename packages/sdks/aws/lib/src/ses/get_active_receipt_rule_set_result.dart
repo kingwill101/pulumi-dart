@@ -16,7 +16,7 @@ class GetActiveReceiptRuleSetResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [ruleSetName] Name of the rule set
-  GetActiveReceiptRuleSetResult({
+  const GetActiveReceiptRuleSetResult({
     required this.arn,
     required this.id,
     required this.region,

@@ -18,7 +18,7 @@ class LocationPreference {
   /// [kind] This is always `sql#locationPreference`.
   /// [secondaryZone] The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). To disable this field, set it to 'no_secondary_zone'.
   /// [zone] The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.). WARNING: Changing this might restart the instance.
-  LocationPreference({
+  const LocationPreference({
     this.followGaeApplication,
     this.kind,
     this.secondaryZone,

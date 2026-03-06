@@ -45,7 +45,7 @@ class FirehoseDeliveryStreamSplunkConfiguration {
   /// [s3BackupMode] Defines how documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
   /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
   /// [secretsManagerConfiguration] Optional.
-  FirehoseDeliveryStreamSplunkConfiguration({
+  const FirehoseDeliveryStreamSplunkConfiguration({
     this.bufferingInterval,
     this.bufferingSize,
     this.cloudwatchLoggingOptions,

@@ -9,7 +9,7 @@ class OrganizationsFeaturesState {
 
   /// Creates a new [OrganizationsFeaturesState].
   /// [enabledFeatures] List of IAM features to enable. Valid values are `RootCredentialsManagement` and `RootSessions`.
-  OrganizationsFeaturesState({
+  const OrganizationsFeaturesState({
     this.enabledFeatures,
   });
 

@@ -13,7 +13,7 @@ class DirectoryVpcSettings {
   /// [availabilityZones] Optional.
   /// [subnetIds] The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
   /// [vpcId] The identifier of the VPC that the directory is in.
-  DirectoryVpcSettings({
+  const DirectoryVpcSettings({
     this.availabilityZones,
     required this.subnetIds,
     required this.vpcId,

@@ -28,7 +28,7 @@ class DeploymentType {
   /// [resourceUri] Resource URI for the artifact being deployed taken from the deployable field with the same name.
   /// [undeployTime] End of the lifetime of this deployment.
   /// [userEmail] Identity of the user that triggered this deployment.
-  DeploymentType({
+  const DeploymentType({
     this.address,
     this.config,
     this.deployTime,

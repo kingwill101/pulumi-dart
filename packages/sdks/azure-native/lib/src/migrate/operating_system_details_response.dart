@@ -13,7 +13,7 @@ class OperatingSystemDetailsResponse {
   /// [osArchitecture] Optional.
   /// [osName] Optional.
   /// [osVersion] Optional.
-  OperatingSystemDetailsResponse({
+  const OperatingSystemDetailsResponse({
     this.os,
     this.osArchitecture,
     this.osName,

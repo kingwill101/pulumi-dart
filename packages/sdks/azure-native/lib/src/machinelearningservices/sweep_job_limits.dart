@@ -21,7 +21,7 @@ class SweepJobLimits {
   /// [maxTotalTrials] Sweep Job max total trials.
   /// [timeout] The max run duration in ISO 8601 format, after which the job will be cancelled. Only supports duration with precision as low as Seconds.
   /// [trialTimeout] Sweep Job Trial timeout value.
-  SweepJobLimits({
+  const SweepJobLimits({
     required this.jobLimitsType,
     this.maxConcurrentTrials,
     this.maxTotalTrials,

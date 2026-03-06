@@ -20,7 +20,7 @@ class GetOtsSnapshotsResult {
   /// [outputFile] Optional.
   /// [snapshots] Required.
   /// [startTime] Optional.
-  GetOtsSnapshotsResult({
+  const GetOtsSnapshotsResult({
     this.endTime,
     required this.id,
     required this.ids,

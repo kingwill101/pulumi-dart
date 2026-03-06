@@ -19,7 +19,7 @@ class GetAmiIdsArgs {
   /// [filters] Filter used to scope the list e.g., by tags. See [related docs](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_Filter.html).
   /// [names] List of autoscaling group names
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAmiIdsArgs({
+  const GetAmiIdsArgs({
     this.filters,
     this.names,
     this.region,

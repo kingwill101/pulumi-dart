@@ -12,7 +12,7 @@ class ExtendedLocationResponse {
   /// Creates a new [ExtendedLocationResponse].
   /// [name] Name of extended location.
   /// [type] Type of extended location.
-  ExtendedLocationResponse({
+  const ExtendedLocationResponse({
     this.name,
     required this.type,
   });

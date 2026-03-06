@@ -12,7 +12,7 @@ class RuleGroupRuleGroupRuleVariablesIpSet {
   /// Creates a new [RuleGroupRuleGroupRuleVariablesIpSet].
   /// [ipSet] A configuration block that defines a set of IP addresses. See IP Set below for details.
   /// [key] A unique alphanumeric string to identify the `ip_set`.
-  RuleGroupRuleGroupRuleVariablesIpSet({
+  const RuleGroupRuleGroupRuleVariablesIpSet({
     required this.ipSet,
     required this.key,
   });

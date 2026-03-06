@@ -9,7 +9,7 @@ class MeshMembershipProperties {
 
   /// Creates a new [MeshMembershipProperties].
   /// [managedMeshID] The ARM resource id for the managed mesh member. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppLink/applinks/{appLinkName}/appLinkMembers/{appLinkMemberName}'. Visit https://aka.ms/applink for more information.
-  MeshMembershipProperties({
+  const MeshMembershipProperties({
     required this.managedMeshID,
   });
 

@@ -42,7 +42,7 @@ class ShippingAddress {
   /// [streetAddress3] Street Address line 3.
   /// [taxIdentificationNumber] Tax Identification Number
   /// [zipExtendedCode] Extended Zip Code.
-  ShippingAddress({
+  const ShippingAddress({
     this.addressType,
     this.city,
     this.companyName,

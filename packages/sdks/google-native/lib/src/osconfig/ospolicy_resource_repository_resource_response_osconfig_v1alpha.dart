@@ -22,7 +22,7 @@ class OSPolicyResourceRepositoryResourceResponseOsconfigV1alpha {
   /// [goo] A Goo Repository.
   /// [yum] A Yum Repository.
   /// [zypper] A Zypper Repository.
-  OSPolicyResourceRepositoryResourceResponseOsconfigV1alpha({
+  const OSPolicyResourceRepositoryResourceResponseOsconfigV1alpha({
     required this.apt,
     required this.goo,
     required this.yum,

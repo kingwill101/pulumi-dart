@@ -21,7 +21,7 @@ class CxAgentGitIntegrationSettingsGithubSettings {
   /// [displayName] The unique repository display name for the GitHub repository.
   /// [repositoryUri] The GitHub repository URI related to the agent.
   /// [trackingBranch] The branch of the GitHub repository tracked for this agent.
-  CxAgentGitIntegrationSettingsGithubSettings({
+  const CxAgentGitIntegrationSettingsGithubSettings({
     this.accessToken,
     this.branches,
     this.displayName,

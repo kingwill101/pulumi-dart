@@ -22,7 +22,7 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicy {
   /// [conditions] A block argument. Detailed Below.
   /// [description] A user-defined description that further helps identify the rule.
   /// [ruleNumber] An integer from `1` to `65535` indicating the rule's order number. Rules are processed in order from the lowest numbered rule to the highest. Rules stop processing when a rule is matched. It's important to make sure that you number your rules in the exact order that you want them processed.
-  GetCoreNetworkPolicyDocumentAttachmentPolicy({
+  const GetCoreNetworkPolicyDocumentAttachmentPolicy({
     required this.action,
     this.conditionLogic,
     required this.conditions,

@@ -9,7 +9,7 @@ class UserSubjectFlowcontrolApiserverK8sIoV1beta3 {
 
   /// Creates a new [UserSubjectFlowcontrolApiserverK8sIoV1beta3].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
-  UserSubjectFlowcontrolApiserverK8sIoV1beta3({
+  const UserSubjectFlowcontrolApiserverK8sIoV1beta3({
     required this.name,
   });
 

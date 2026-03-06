@@ -9,7 +9,7 @@ class AnalyzerConfigurationInternalAccess {
 
   /// Creates a new [AnalyzerConfigurationInternalAccess].
   /// [analysisRule] Information about analysis rules for the internal access analyzer. These rules determine which resources and access patterns will be analyzed. See `analysis_rule` Block for Internal Access Analyzer for details.
-  AnalyzerConfigurationInternalAccess({
+  const AnalyzerConfigurationInternalAccess({
     this.analysisRule,
   });
 

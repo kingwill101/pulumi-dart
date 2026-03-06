@@ -17,7 +17,7 @@ class GetReleaseConfigArgs {
   /// [project] Optional.
   /// [releaseConfigId] Required.
   /// [repositoryId] Required.
-  GetReleaseConfigArgs({
+  const GetReleaseConfigArgs({
     required this.location,
     this.project,
     required this.releaseConfigId,

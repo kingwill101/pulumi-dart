@@ -11,7 +11,7 @@ class EventSubscriptionStorageBlobDeadLetterDestination {
   /// Creates a new [EventSubscriptionStorageBlobDeadLetterDestination].
   /// [storageAccountId] Specifies the id of the storage account id where the storage blob is located.
   /// [storageBlobContainerName] Specifies the name of the Storage blob container that is the destination of the deadletter events.
-  EventSubscriptionStorageBlobDeadLetterDestination({
+  const EventSubscriptionStorageBlobDeadLetterDestination({
     required this.storageAccountId,
     required this.storageBlobContainerName,
   });

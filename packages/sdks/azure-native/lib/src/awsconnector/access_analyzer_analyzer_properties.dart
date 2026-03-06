@@ -31,7 +31,7 @@ class AccessAnalyzerAnalyzerProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  AccessAnalyzerAnalyzerProperties({
+  const AccessAnalyzerAnalyzerProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

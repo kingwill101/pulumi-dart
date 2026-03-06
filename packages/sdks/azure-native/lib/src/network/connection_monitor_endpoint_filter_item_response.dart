@@ -12,7 +12,7 @@ class ConnectionMonitorEndpointFilterItemResponse {
   /// Creates a new [ConnectionMonitorEndpointFilterItemResponse].
   /// [address] The address of the filter item.
   /// [type] The type of item included in the filter. Currently only 'AgentAddress' is supported.
-  ConnectionMonitorEndpointFilterItemResponse({
+  const ConnectionMonitorEndpointFilterItemResponse({
     this.address,
     this.type,
   });

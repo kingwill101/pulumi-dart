@@ -8,7 +8,7 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
 
   /// Creates a new [CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage].
   /// [objectIdPaths] Required. The parts of an OID path. The most significant parts of the path come first.
-  CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage({
+  const CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage({
     required this.objectIdPaths,
   });
 

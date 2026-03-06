@@ -21,7 +21,7 @@ class GalleryImageReference {
   /// [publisher] The publisher of the gallery image.
   /// [sku] The SKU of the gallery image.
   /// [version] The version of the gallery image.
-  GalleryImageReference({
+  const GalleryImageReference({
     this.offer,
     this.osType,
     this.publisher,

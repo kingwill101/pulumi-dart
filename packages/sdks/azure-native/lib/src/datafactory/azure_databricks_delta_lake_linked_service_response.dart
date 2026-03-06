@@ -47,7 +47,7 @@ class AzureDatabricksDeltaLakeLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
   /// [workspaceResourceId] Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
-  AzureDatabricksDeltaLakeLinkedServiceResponse({
+  const AzureDatabricksDeltaLakeLinkedServiceResponse({
     this.accessToken,
     this.annotations,
     this.clusterId,

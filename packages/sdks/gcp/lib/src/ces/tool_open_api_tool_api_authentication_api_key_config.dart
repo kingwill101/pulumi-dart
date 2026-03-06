@@ -25,7 +25,7 @@ class ToolOpenApiToolApiAuthenticationApiKeyConfig {
   /// [apiKeySecretVersion] (Output)
   /// [keyName] (Output)
   /// [requestLocation] (Output)
-  ToolOpenApiToolApiAuthenticationApiKeyConfig({
+  const ToolOpenApiToolApiAuthenticationApiKeyConfig({
     this.apiKeySecretVersion,
     this.keyName,
     this.requestLocation,

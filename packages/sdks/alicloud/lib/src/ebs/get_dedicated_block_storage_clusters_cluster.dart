@@ -55,7 +55,7 @@ class GetDedicatedBlockStorageClustersCluster {
   /// [type] The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
   /// [usedCapacity] The used (created disk) capacity of the current cluster, in GB
   /// [zoneId] The zone ID  of the resource
-  GetDedicatedBlockStorageClustersCluster({
+  const GetDedicatedBlockStorageClustersCluster({
     required this.availableCapacity,
     required this.category,
     required this.createTime,

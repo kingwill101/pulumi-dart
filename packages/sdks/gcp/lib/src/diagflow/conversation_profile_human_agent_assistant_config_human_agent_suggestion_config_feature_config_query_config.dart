@@ -28,7 +28,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   /// [dialogflowQuerySource] Query from Dialogflow agent.
   /// [maxResults] Maximum number of results to return.
   /// [sections] he customized sections chosen to return when requesting a summary of a conversation.
-  ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig({
+  const ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfig({
     this.confidenceThreshold,
     this.contextFilterSettings,
     this.dialogflowQuerySource,

@@ -11,7 +11,7 @@ class GetManagementServerNetwork {
   /// Creates a new [GetManagementServerNetwork].
   /// [network] Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
   /// [peeringMode] Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
-  GetManagementServerNetwork({
+  const GetManagementServerNetwork({
     required this.network,
     required this.peeringMode,
   });

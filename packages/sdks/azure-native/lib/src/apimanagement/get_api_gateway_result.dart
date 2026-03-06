@@ -58,7 +58,7 @@ class GetApiGatewayResult {
   /// [targetProvisioningState] The provisioning state of the API Management gateway, which is targeted by the long running operation started on the gateway.
   /// [type] Resource type for API Management resource is set to Microsoft.ApiManagement.
   /// [virtualNetworkType] The type of VPN in which API Management gateway needs to be configured in.
-  GetApiGatewayResult({
+  const GetApiGatewayResult({
     required this.azureApiVersion,
     this.backend,
     this.configurationApi,

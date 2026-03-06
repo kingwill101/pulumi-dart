@@ -20,7 +20,7 @@ class GetInstanceResult {
   /// [project] The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
   /// [state] The database's lifecycle state. Read-only.
   /// [type] Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.databaseUrl,
     required this.name,
     required this.project,

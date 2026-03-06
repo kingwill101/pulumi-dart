@@ -11,7 +11,7 @@ class VaultMonitoring {
   /// Creates a new [VaultMonitoring].
   /// [alertsForAllJobFailuresEnabled] Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to `true`.
   /// [alertsForCriticalOperationFailuresEnabled] Enabling/Disabling alerts from the older (classic alerts) solution. Defaults to `true`. More details could be found [here](https://learn.microsoft.com/en-us/azure/backup/monitoring-and-alerts-overview).
-  VaultMonitoring({
+  const VaultMonitoring({
     this.alertsForAllJobFailuresEnabled,
     this.alertsForCriticalOperationFailuresEnabled,
   });

@@ -84,7 +84,7 @@ class GetWindowsFileSystemResult {
   /// [throughputCapacity] Throughput (megabytes per second) of the file system in power of 2 increments. Minimum of `8` and maximum of `2048`.
   /// [vpcId] The ID of the primary virtual private cloud (VPC) for the file system.
   /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  GetWindowsFileSystemResult({
+  const GetWindowsFileSystemResult({
     required this.activeDirectoryId,
     required this.aliases,
     required this.arn,

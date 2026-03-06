@@ -36,7 +36,7 @@ class AttestorAttestationAuthorityNotePublicKey {
   /// [comment] A descriptive comment. This field may be updated.
   /// [id] The ID of this public key. Signatures verified by BinAuthz
   /// [pkixPublicKey] A raw PKIX SubjectPublicKeyInfo format public key.
-  AttestorAttestationAuthorityNotePublicKey({
+  const AttestorAttestationAuthorityNotePublicKey({
     this.asciiArmoredPgpPublicKey,
     this.comment,
     this.id,

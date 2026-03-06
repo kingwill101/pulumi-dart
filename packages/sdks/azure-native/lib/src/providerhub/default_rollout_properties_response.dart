@@ -16,7 +16,7 @@ class DefaultRolloutPropertiesResponse {
   /// [provisioningState] The provisioned state of the resource.
   /// [specification] The default rollout specification.
   /// [status] The default rollout status.
-  DefaultRolloutPropertiesResponse({
+  const DefaultRolloutPropertiesResponse({
     required this.provisioningState,
     this.specification,
     this.status,

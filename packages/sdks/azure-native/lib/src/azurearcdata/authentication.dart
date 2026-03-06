@@ -13,7 +13,7 @@ class Authentication {
   /// Creates a new [Authentication].
   /// [mode] Mode of authentication in SqlServer.
   /// [sqlServerEntraIdentity] Entra Authentication configuration for the SQL Server Instance.
-  Authentication({
+  const Authentication({
     this.mode,
     this.sqlServerEntraIdentity,
   });

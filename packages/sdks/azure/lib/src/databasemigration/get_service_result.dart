@@ -24,7 +24,7 @@ class GetServiceResult {
   /// [skuName] The SKU name of database migration service.
   /// [subnetId] The ID of the virtual subnet resource to which the database migration service exists.
   /// [tags] A mapping of tags to assigned to the resource.
-  GetServiceResult({
+  const GetServiceResult({
     required this.id,
     required this.location,
     required this.name,

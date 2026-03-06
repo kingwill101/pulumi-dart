@@ -68,7 +68,7 @@ class ElasticityAssuranceArgs {
   /// [startTime] Flexible guarantee service effective time.
   /// [tags] The tag key-value pair information bound by the elastic guarantee service.
   /// [zoneIds] The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
-  ElasticityAssuranceArgs({
+  const ElasticityAssuranceArgs({
     this.assuranceTimes,
     this.autoRenew,
     this.autoRenewPeriod,

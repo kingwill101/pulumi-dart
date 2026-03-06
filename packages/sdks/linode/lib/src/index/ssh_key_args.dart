@@ -15,7 +15,7 @@ class SshKeyArgs {
   /// Creates a new [SshKeyArgs].
   /// [label] A label for the SSH Key.
   /// [sshKey] The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-  SshKeyArgs({
+  const SshKeyArgs({
     required this.label,
     required this.sshKey,
   });

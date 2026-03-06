@@ -12,7 +12,7 @@ class ModelDefinitionModelOptions {
   /// [labels] Optional.
   /// [lossType] Optional.
   /// [modelType] Optional.
-  ModelDefinitionModelOptions({
+  const ModelDefinitionModelOptions({
     this.labels,
     this.lossType,
     this.modelType,

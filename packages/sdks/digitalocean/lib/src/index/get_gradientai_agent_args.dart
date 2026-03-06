@@ -73,7 +73,7 @@ class GetGradientaiAgentArgs {
   /// [topP] Optional.
   /// [url] Optional.
   /// [userId] Optional.
-  GetGradientaiAgentArgs({
+  const GetGradientaiAgentArgs({
     this.agentGuardrails,
     required this.agentId,
     this.anthropicApiKeys,

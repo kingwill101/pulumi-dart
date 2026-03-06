@@ -14,7 +14,7 @@ class GetAccountDeletionCheckTaskAbandonAbleCheck {
   /// [checkId] The ID of the check item.
   /// [checkName] The name of the cloud service to which the check item belongs.
   /// [description] The description of the check item.
-  GetAccountDeletionCheckTaskAbandonAbleCheck({
+  const GetAccountDeletionCheckTaskAbandonAbleCheck({
     required this.checkId,
     required this.checkName,
     required this.description,

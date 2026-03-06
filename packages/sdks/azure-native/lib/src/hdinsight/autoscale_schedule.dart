@@ -13,7 +13,7 @@ class AutoscaleSchedule {
   /// Creates a new [AutoscaleSchedule].
   /// [days] Days of the week for a schedule-based autoscale rule
   /// [timeAndCapacity] Time and capacity for a schedule-based autoscale rule
-  AutoscaleSchedule({
+  const AutoscaleSchedule({
     this.days,
     this.timeAndCapacity,
   });

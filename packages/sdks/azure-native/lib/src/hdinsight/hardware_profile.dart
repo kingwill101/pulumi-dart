@@ -9,7 +9,7 @@ class HardwareProfile {
 
   /// Creates a new [HardwareProfile].
   /// [vmSize] The size of the VM
-  HardwareProfile({
+  const HardwareProfile({
     this.vmSize,
   });
 

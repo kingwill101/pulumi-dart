@@ -21,7 +21,7 @@ class GetTaskExecutionOverrides {
   /// [executionRoleArn] Amazon Resource Name (ARN) of the task execution role override for the task.
   /// [memory] The memory override for the task.
   /// [taskRoleArn] Amazon Resource Name (ARN) of the role that containers in this task can assume.
-  GetTaskExecutionOverrides({
+  const GetTaskExecutionOverrides({
     this.containerOverrides,
     this.cpu,
     this.executionRoleArn,

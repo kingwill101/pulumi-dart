@@ -9,7 +9,7 @@ class UserAssignedPropertiesResponse {
 
   /// Creates a new [UserAssignedPropertiesResponse].
   /// [resourceId] Arm resource id for user assigned identity to be used to fetch MSI token.
-  UserAssignedPropertiesResponse({
+  const UserAssignedPropertiesResponse({
     this.resourceId,
   });
 

@@ -17,7 +17,7 @@ class GetClustersClusterRelateClusterInfo {
   /// [clusterName] The name of the associated cluster.
   /// [clusterType] The cluster type of the associated cluster.
   /// [status] The status  of the associated cluster.
-  GetClustersClusterRelateClusterInfo({
+  const GetClustersClusterRelateClusterInfo({
     required this.clusterId,
     required this.clusterName,
     required this.clusterType,

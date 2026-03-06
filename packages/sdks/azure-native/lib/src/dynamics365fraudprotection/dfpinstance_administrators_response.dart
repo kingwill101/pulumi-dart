@@ -9,7 +9,7 @@ class DFPInstanceAdministratorsResponse {
 
   /// Creates a new [DFPInstanceAdministratorsResponse].
   /// [members] An array of administrator user identities.
-  DFPInstanceAdministratorsResponse({
+  const DFPInstanceAdministratorsResponse({
     this.members,
   });
 

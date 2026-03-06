@@ -22,7 +22,7 @@ class PrivateEndpointConnectionVaultPropertiesResponse {
   /// [name] The name of the private Endpoint Connection
   /// [properties] Private Endpoint Connection Response Properties.
   /// [type] The type, which will be of the format, Microsoft.RecoveryServices/vaults/privateEndpointConnections
-  PrivateEndpointConnectionVaultPropertiesResponse({
+  const PrivateEndpointConnectionVaultPropertiesResponse({
     required this.id,
     required this.location,
     required this.name,

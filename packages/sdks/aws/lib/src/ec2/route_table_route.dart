@@ -48,7 +48,7 @@ class RouteTableRoute {
   /// [transitGatewayId] Identifier of an EC2 Transit Gateway.
   /// [vpcEndpointId] Identifier of a VPC Endpoint.
   /// [vpcPeeringConnectionId] Identifier of a VPC peering connection.
-  RouteTableRoute({
+  const RouteTableRoute({
     this.carrierGatewayId,
     this.cidrBlock,
     this.coreNetworkArn,

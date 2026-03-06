@@ -22,7 +22,7 @@ class ProxyAgentSettings {
   /// [keyIncarnationId] Increase the value of this property allows users to reset the key used for securing communication channel between guest and host.
   /// [mode] Specifies the mode that ProxyAgent will execute on. Warning: this property has been deprecated, please specify 'mode' under particular hostendpoint setting.
   /// [wireServer] Specifies the Wire Server endpoint settings while creating the virtual machine or virtual machine scale set. Minimum api-version: 2024-03-01.
-  ProxyAgentSettings({
+  const ProxyAgentSettings({
     this.enabled,
     this.imds,
     this.keyIncarnationId,

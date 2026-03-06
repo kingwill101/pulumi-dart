@@ -18,7 +18,7 @@ class GetHealthModelArgs {
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHealthModelArgs({
+  const GetHealthModelArgs({
     required this.azureMonitorWorkspaceName,
     required this.healthModelName,
     required this.resourceGroupName,

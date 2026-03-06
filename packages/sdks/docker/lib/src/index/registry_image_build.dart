@@ -125,7 +125,7 @@ class RegistryImageBuild {
   /// [target] Set the target build stage to build
   /// [ulimits] Configuration for ulimits
   /// [version] Version of the underlying builder to use
-  RegistryImageBuild({
+  const RegistryImageBuild({
     this.additionalContexts,
     this.authConfigs,
     this.buildArgs,

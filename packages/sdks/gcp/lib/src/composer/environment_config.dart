@@ -82,7 +82,7 @@ class EnvironmentConfig {
   /// [webServerConfig] The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   /// [webServerNetworkAccessControl] Network-level access control policy for the Airflow web server.
   /// [workloadsConfig] The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  EnvironmentConfig({
+  const EnvironmentConfig({
     this.airflowUri,
     this.dagGcsPrefix,
     this.dataRetentionConfig,

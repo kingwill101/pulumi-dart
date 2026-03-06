@@ -25,7 +25,7 @@ class AzureCosmosDBSinkConnectorServiceInfo {
   /// [cosmosDatabaseName] Azure Cosmos Database Name
   /// [cosmosIdStrategy] Azure Cosmos Database Id Strategy
   /// [cosmosMasterKey] Azure Cosmos Database Master Key
-  AzureCosmosDBSinkConnectorServiceInfo({
+  const AzureCosmosDBSinkConnectorServiceInfo({
     required this.connectorServiceType,
     this.cosmosConnectionEndpoint,
     this.cosmosContainersTopicMapping,

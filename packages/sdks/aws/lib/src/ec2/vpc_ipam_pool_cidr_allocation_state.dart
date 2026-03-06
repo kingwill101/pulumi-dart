@@ -35,7 +35,7 @@ class VpcIpamPoolCidrAllocationState {
   /// [resourceId] The ID of the resource.
   /// [resourceOwner] The owner of the resource.
   /// [resourceType] The type of the resource.
-  VpcIpamPoolCidrAllocationState({
+  const VpcIpamPoolCidrAllocationState({
     this.cidr,
     this.description,
     this.disallowedCidrs,

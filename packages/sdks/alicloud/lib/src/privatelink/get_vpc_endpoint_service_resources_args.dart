@@ -15,7 +15,7 @@ class GetVpcEndpointServiceResourcesArgs {
   /// Creates a new [GetVpcEndpointServiceResourcesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceId] The ID of Vpc Endpoint Service.
-  GetVpcEndpointServiceResourcesArgs({
+  const GetVpcEndpointServiceResourcesArgs({
     this.outputFile,
     required this.serviceId,
   });

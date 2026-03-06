@@ -15,7 +15,7 @@ class GetL3NetworkArgs {
   /// Creates a new [GetL3NetworkArgs].
   /// [l3NetworkName] The name of the L3 network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetL3NetworkArgs({
+  const GetL3NetworkArgs({
     required this.l3NetworkName,
     required this.resourceGroupName,
   });

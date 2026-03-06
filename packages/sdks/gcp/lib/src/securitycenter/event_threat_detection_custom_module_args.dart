@@ -26,7 +26,7 @@ class EventThreatDetectionCustomModuleArgs {
   /// [enablementState] The state of enablement for the module at the given level of the hierarchy.
   /// [organization] Numerical ID of the parent organization.
   /// [type] Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
-  EventThreatDetectionCustomModuleArgs({
+  const EventThreatDetectionCustomModuleArgs({
     required this.config,
     this.displayName,
     required this.enablementState,

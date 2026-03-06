@@ -12,7 +12,7 @@ class VpcAccessConnectorResponse {
   /// Creates a new [VpcAccessConnectorResponse].
   /// [egressSetting] The egress setting for the connector, controlling what traffic is diverted through it.
   /// [name] Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
-  VpcAccessConnectorResponse({
+  const VpcAccessConnectorResponse({
     required this.egressSetting,
     required this.name,
   });

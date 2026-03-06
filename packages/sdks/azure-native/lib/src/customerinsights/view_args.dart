@@ -27,7 +27,7 @@ class ViewArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [userId] the user ID.
   /// [viewName] The name of the view.
-  ViewArgs({
+  const ViewArgs({
     required this.definition,
     this.displayName,
     required this.hubName,

@@ -34,7 +34,7 @@ class CustomLocationState {
   /// [name] Specifies the name which should be used for this Custom Location. Changing this forces a new Custom Location to be created.
   /// [namespace] Specifies the namespace of the Custom Location. Changing this forces a new Custom Location to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Custom Location should exist. Changing this forces a new Custom Location to be created.
-  CustomLocationState({
+  const CustomLocationState({
     this.authentication,
     this.clusterExtensionIds,
     this.displayName,

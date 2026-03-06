@@ -23,7 +23,7 @@ class GetReportPlanReportSetting {
   /// [organizationUnits] (Optional) Specifies the list of Organizational Units a report covers.
   /// [regions] (Optional) Specifies the list of regions a report covers.
   /// [reportTemplate] Identifies the report template for the report. Reports are built using a report template.
-  GetReportPlanReportSetting({
+  const GetReportPlanReportSetting({
     required this.accounts,
     required this.frameworkArns,
     required this.numberOfFrameworks,

@@ -10,7 +10,7 @@ class CloudControlParameterSpecValidationAllowedValues {
 
   /// Creates a new [CloudControlParameterSpecValidationAllowedValues].
   /// [values] List of allowed values for the parameter.
-  CloudControlParameterSpecValidationAllowedValues({
+  const CloudControlParameterSpecValidationAllowedValues({
     required this.values,
   });
 

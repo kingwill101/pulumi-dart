@@ -106,7 +106,7 @@ class ClusterArgs {
   /// [shardCount] Required. Number of shards for the Redis cluster.
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster.
   /// [zoneDistributionConfig] Immutable. Zone distribution config for Memorystore Redis cluster.
-  ClusterArgs({
+  const ClusterArgs({
     this.authorizationMode,
     this.automatedBackupConfig,
     this.crossClusterReplicationConfig,

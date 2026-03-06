@@ -228,7 +228,7 @@ class AwsIntegrationsState {
   /// [trustedAdvisor] Trusted Advisor integration
   /// [vpc] VPC integration
   /// [xRay] X-Ray integration
-  AwsIntegrationsState({
+  const AwsIntegrationsState({
     this.accountId,
     this.alb,
     this.apiGateway,

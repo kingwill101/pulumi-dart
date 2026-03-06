@@ -21,7 +21,7 @@ class GetDatabaseAccountGremlinGraphArgs {
   /// [databaseName] Cosmos DB database name.
   /// [graphName] Cosmos DB graph name.
   /// [resourceGroupName] Name of an Azure resource group.
-  GetDatabaseAccountGremlinGraphArgs({
+  const GetDatabaseAccountGremlinGraphArgs({
     required this.accountName,
     required this.databaseName,
     required this.graphName,

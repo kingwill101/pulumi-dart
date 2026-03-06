@@ -32,7 +32,7 @@ class GetServiceMetricAlarmRulesResult {
   /// [ruleName] The name of the alert rule.
   /// [rules] A list of Hybrid Double Writes. Each element contains the following attributes:
   /// [status] Indicates whether the alert rule is enabled.
-  GetServiceMetricAlarmRulesResult({
+  const GetServiceMetricAlarmRulesResult({
     this.dimensions,
     required this.id,
     required this.ids,

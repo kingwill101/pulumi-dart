@@ -44,7 +44,7 @@ class InterconnectAttachmentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [vlanId] VLAN ID provided by user. Must be site-wise unique.
   /// [zone] The name of the target Distributed Cloud Edge zone.
-  InterconnectAttachmentArgs({
+  const InterconnectAttachmentArgs({
     this.description,
     required this.interconnect,
     required this.interconnectAttachmentId,

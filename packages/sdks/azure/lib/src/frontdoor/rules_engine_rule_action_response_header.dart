@@ -14,7 +14,7 @@ class RulesEngineRuleActionResponseHeader {
   /// [headerActionType] can be set to `Overwrite`, `Append` or `Delete`.
   /// [headerName] header name (string).
   /// [value] value name (string).
-  RulesEngineRuleActionResponseHeader({
+  const RulesEngineRuleActionResponseHeader({
     this.headerActionType,
     this.headerName,
     this.value,

@@ -20,7 +20,7 @@ class EdgeMachineCollectLogJobReportedPropertiesResponse {
   /// [logCollectionSessionDetails] Details of the log collection session.
   /// [percentComplete] The percentage of the job that is complete.
   /// [validationStatus] Validation status of job.
-  EdgeMachineCollectLogJobReportedPropertiesResponse({
+  const EdgeMachineCollectLogJobReportedPropertiesResponse({
     required this.deploymentStatus,
     required this.logCollectionSessionDetails,
     required this.percentComplete,

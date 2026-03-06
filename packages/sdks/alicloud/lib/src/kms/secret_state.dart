@@ -69,7 +69,7 @@ class SecretState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [versionId] The version number of the initial version.
   /// [versionStages] The stage label that is used to mark the new version.
-  SecretState({
+  const SecretState({
     this.arn,
     this.createTime,
     this.description,

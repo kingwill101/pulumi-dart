@@ -17,7 +17,7 @@ class ProvisionOsJobProperties {
   /// [deploymentMode] Deployment mode to trigger job.
   /// [jobType] Job Type supported.
   /// [provisioningRequest] Os Provisioning request.
-  ProvisionOsJobProperties({
+  const ProvisionOsJobProperties({
     this.deploymentMode,
     required this.jobType,
     required this.provisioningRequest,

@@ -14,7 +14,7 @@ class GetInstancesInstanceConfigDeviceSdc {
   /// [diskId] The Disk ID of the associated `disk_label`, if used
   /// [diskLabel] The `label` of the `disk` to map to this `device` slot.
   /// [volumeId] The Volume ID to map to this `device` slot.
-  GetInstancesInstanceConfigDeviceSdc({
+  const GetInstancesInstanceConfigDeviceSdc({
     required this.diskId,
     this.diskLabel,
     this.volumeId,

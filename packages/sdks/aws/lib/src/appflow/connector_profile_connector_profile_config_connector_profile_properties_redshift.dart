@@ -24,7 +24,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift {
   /// [databaseName] The name of an Amazon Redshift database.
   /// [databaseUrl] The JDBC URL of the Amazon Redshift cluster.
   /// [roleArn] ARN of the IAM role.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesRedshift({
     required this.bucketName,
     this.bucketPrefix,
     this.clusterIdentifier,

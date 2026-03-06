@@ -13,7 +13,7 @@ class GetRegionBackendServiceHaPolicyLeader {
   /// Creates a new [GetRegionBackendServiceHaPolicyLeader].
   /// [backendGroup] A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
   /// [networkEndpoints] The network endpoint within the leader.backendGroup that is designated as the leader.
-  GetRegionBackendServiceHaPolicyLeader({
+  const GetRegionBackendServiceHaPolicyLeader({
     required this.backendGroup,
     required this.networkEndpoints,
   });

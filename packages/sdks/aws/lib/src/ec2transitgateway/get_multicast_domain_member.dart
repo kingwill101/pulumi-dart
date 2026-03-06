@@ -11,7 +11,7 @@ class GetMulticastDomainMember {
   /// Creates a new [GetMulticastDomainMember].
   /// [groupIpAddress] The IP address assigned to the transit gateway multicast group.
   /// [networkInterfaceId] The group members' network interface ID.
-  GetMulticastDomainMember({
+  const GetMulticastDomainMember({
     required this.groupIpAddress,
     required this.networkInterfaceId,
   });

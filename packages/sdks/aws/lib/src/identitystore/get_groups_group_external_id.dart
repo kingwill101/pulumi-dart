@@ -11,7 +11,7 @@ class GetGroupsGroupExternalId {
   /// Creates a new [GetGroupsGroupExternalId].
   /// [id] Identifier issued to this resource by an external identity provider.
   /// [issuer] Issuer for an external identifier.
-  GetGroupsGroupExternalId({
+  const GetGroupsGroupExternalId({
     required this.id,
     required this.issuer,
   });

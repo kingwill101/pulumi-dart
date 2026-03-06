@@ -13,7 +13,7 @@ class EntityTagsState {
   /// Creates a new [EntityTagsState].
   /// [guid] The guid of the entity to tag.
   /// [tags] A nested block that describes an entity tag. See Nested tag blocks below for details.
-  EntityTagsState({
+  const EntityTagsState({
     this.guid,
     this.tags,
   });

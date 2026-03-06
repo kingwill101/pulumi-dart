@@ -15,7 +15,7 @@ class GetCustomerRepricingConfigArgs {
   /// [accountId] Required.
   /// [customerId] Required.
   /// [customerRepricingConfigId] Required.
-  GetCustomerRepricingConfigArgs({
+  const GetCustomerRepricingConfigArgs({
     required this.accountId,
     required this.customerId,
     required this.customerRepricingConfigId,

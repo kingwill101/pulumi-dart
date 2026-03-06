@@ -22,7 +22,7 @@ class PublicIpAddressPoolCidrBlockState {
   /// [createTime] The creation time of the resource.
   /// [publicIpAddressPoolId] The ID of the VPC Public IP address pool.
   /// [status] The status of the VPC Public Ip Address Pool Cidr Block.
-  PublicIpAddressPoolCidrBlockState({
+  const PublicIpAddressPoolCidrBlockState({
     this.cidrBlock,
     this.cidrMask,
     this.createTime,

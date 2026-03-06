@@ -41,7 +41,7 @@ class GetSnapshotsSnapshot {
   /// [sourceDiskSize] The capacity of the source disk. Unit: GiB.
   /// [sourceDiskType] The type of the source disk.
   /// [status] The status of the snapshot.
-  GetSnapshotsSnapshot({
+  const GetSnapshotsSnapshot({
     required this.createTime,
     required this.description,
     required this.desktopId,

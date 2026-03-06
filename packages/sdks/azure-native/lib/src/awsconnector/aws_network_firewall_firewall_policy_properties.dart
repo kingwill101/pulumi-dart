@@ -26,7 +26,7 @@ class AwsNetworkFirewallFirewallPolicyProperties {
   /// [firewallPolicyId] Property firewallPolicyId
   /// [firewallPolicyName] Property firewallPolicyName
   /// [tags] Property tags
-  AwsNetworkFirewallFirewallPolicyProperties({
+  const AwsNetworkFirewallFirewallPolicyProperties({
     this.description,
     this.firewallPolicy,
     this.firewallPolicyArn,

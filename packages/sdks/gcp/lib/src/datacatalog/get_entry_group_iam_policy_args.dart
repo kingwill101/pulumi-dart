@@ -22,7 +22,7 @@ class GetEntryGroupIamPolicyArgs {
   /// [entryGroup] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [region] EntryGroup location region.
-  GetEntryGroupIamPolicyArgs({
+  const GetEntryGroupIamPolicyArgs({
     required this.entryGroup,
     this.project,
     this.region,

@@ -35,7 +35,7 @@ class IPConfigDetailsResponse {
   /// [tfoPublicIPAddressId] Optional.
   /// [tfoStaticIPAddress] Optional.
   /// [tfoSubnetName] Optional.
-  IPConfigDetailsResponse({
+  const IPConfigDetailsResponse({
     this.ipAddressType,
     this.isPrimary,
     this.isSeletedForFailover,

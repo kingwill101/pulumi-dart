@@ -21,7 +21,7 @@ class ListWCFRelayKeysArgs {
   /// [namespaceName] The namespace name
   /// [relayName] The relay name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListWCFRelayKeysArgs({
+  const ListWCFRelayKeysArgs({
     required this.authorizationRuleName,
     required this.namespaceName,
     required this.relayName,

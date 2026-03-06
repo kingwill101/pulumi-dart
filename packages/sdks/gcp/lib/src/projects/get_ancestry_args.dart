@@ -12,7 +12,7 @@ class GetAncestryArgs {
 
   /// Creates a new [GetAncestryArgs].
   /// [project] The ID of the project. If it is not provided, the provider project is used.
-  GetAncestryArgs({
+  const GetAncestryArgs({
     this.project,
   });
 

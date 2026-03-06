@@ -62,7 +62,7 @@ class GetActivityCustomEntityQueryResult {
   /// [templateName] The template id this activity was created from
   /// [title] The entity query title
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetActivityCustomEntityQueryResult({
+  const GetActivityCustomEntityQueryResult({
     required this.azureApiVersion,
     this.content,
     required this.createdTimeUtc,

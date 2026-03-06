@@ -38,7 +38,7 @@ class GetDataLimitsLimit {
   /// [port] The port that is used to connect to the database.
   /// [resourceType] The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
   /// [userName] The name of the user who owns the data asset.
-  GetDataLimitsLimit({
+  const GetDataLimitsLimit({
     required this.auditStatus,
     required this.checkStatus,
     required this.dataLimitId,

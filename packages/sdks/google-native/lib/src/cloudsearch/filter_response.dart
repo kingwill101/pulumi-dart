@@ -12,7 +12,7 @@ class FilterResponse {
   /// Creates a new [FilterResponse].
   /// [compositeFilter] Required.
   /// [valueFilter] Required.
-  FilterResponse({
+  const FilterResponse({
     required this.compositeFilter,
     required this.valueFilter,
   });

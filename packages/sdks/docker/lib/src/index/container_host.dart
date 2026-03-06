@@ -11,7 +11,7 @@ class ContainerHost {
   /// Creates a new [ContainerHost].
   /// [host] Hostname to add
   /// [ip] IP address this hostname should resolve to.
-  ContainerHost({
+  const ContainerHost({
     required this.host,
     required this.ip,
   });

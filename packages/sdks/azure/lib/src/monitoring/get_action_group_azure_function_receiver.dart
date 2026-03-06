@@ -20,7 +20,7 @@ class GetActionGroupAzureFunctionReceiver {
   /// [httpTriggerUrl] The HTTP trigger url where HTTP request sent to.
   /// [name] Specifies the name of the Action Group.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  GetActionGroupAzureFunctionReceiver({
+  const GetActionGroupAzureFunctionReceiver({
     required this.functionAppResourceId,
     required this.functionName,
     required this.httpTriggerUrl,

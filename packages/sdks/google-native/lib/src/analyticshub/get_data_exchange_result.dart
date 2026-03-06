@@ -30,7 +30,7 @@ class GetDataExchangeResult {
   /// [name] The resource name of the data exchange. e.g. `projects/myproject/locations/US/dataExchanges/123`.
   /// [primaryContact] Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
   /// [sharingEnvironmentConfig] Optional. Configurable data sharing environment option for a data exchange.
-  GetDataExchangeResult({
+  const GetDataExchangeResult({
     required this.description,
     required this.displayName,
     required this.documentation,

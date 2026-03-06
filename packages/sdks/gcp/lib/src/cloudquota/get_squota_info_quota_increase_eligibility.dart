@@ -11,7 +11,7 @@ class GetSQuotaInfoQuotaIncreaseEligibility {
   /// Creates a new [GetSQuotaInfoQuotaIncreaseEligibility].
   /// [ineligibilityReason] The enumeration of reasons when it is ineligible to request increase adjustment.
   /// [isEligible] Whether a higher quota value can be requested for the quota.
-  GetSQuotaInfoQuotaIncreaseEligibility({
+  const GetSQuotaInfoQuotaIncreaseEligibility({
     required this.ineligibilityReason,
     required this.isEligible,
   });

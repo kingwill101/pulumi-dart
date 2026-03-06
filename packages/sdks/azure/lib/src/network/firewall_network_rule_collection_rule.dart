@@ -38,7 +38,7 @@ class FirewallNetworkRuleCollectionRule {
   /// [protocols] A list of protocols. Possible values are `Any`, `ICMP`, `TCP` and `UDP`.
   /// [sourceAddresses] A list of source IP addresses and/or IP ranges.
   /// [sourceIpGroups] A list of IP Group IDs for the rule.
-  FirewallNetworkRuleCollectionRule({
+  const FirewallNetworkRuleCollectionRule({
     this.description,
     this.destinationAddresses,
     this.destinationFqdns,

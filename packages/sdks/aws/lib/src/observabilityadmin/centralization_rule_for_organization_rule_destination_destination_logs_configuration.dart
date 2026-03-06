@@ -13,7 +13,7 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration].
   /// [backupConfiguration] Configuration block for backup settings. See `backup_configuration` below.
   /// [logsEncryptionConfiguration] Configuration block for logs encryption settings. See `logs_encryption_configuration` below.
-  CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration({
+  const CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration({
     this.backupConfiguration,
     this.logsEncryptionConfiguration,
   });

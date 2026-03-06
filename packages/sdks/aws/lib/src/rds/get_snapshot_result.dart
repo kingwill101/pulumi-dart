@@ -77,7 +77,7 @@ class GetSnapshotResult {
   /// [storageType] Storage type associated with DB snapshot.
   /// [tags] Required.
   /// [vpcId] ID of the VPC associated with the DB snapshot.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.allocatedStorage,
     required this.availabilityZone,
     this.dbInstanceIdentifier,

@@ -14,7 +14,7 @@ class ScaleSetPlan {
   /// [name] Specifies the name of the image from the marketplace.
   /// [product] Specifies the product of the image from the marketplace.
   /// [publisher] Specifies the publisher of the image.
-  ScaleSetPlan({
+  const ScaleSetPlan({
     required this.name,
     required this.product,
     required this.publisher,

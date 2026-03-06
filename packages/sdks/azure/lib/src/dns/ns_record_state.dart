@@ -27,7 +27,7 @@ class NsRecordState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
-  NsRecordState({
+  const NsRecordState({
     this.fqdn,
     this.name,
     this.records,

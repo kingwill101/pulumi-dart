@@ -8,7 +8,7 @@ class HBaseClusterComponentVersion {
 
   /// Creates a new [HBaseClusterComponentVersion].
   /// [hbase] The version of HBase which should be used for this HDInsight HBase Cluster. Changing this forces a new resource to be created.
-  HBaseClusterComponentVersion({
+  const HBaseClusterComponentVersion({
     required this.hbase,
   });
 

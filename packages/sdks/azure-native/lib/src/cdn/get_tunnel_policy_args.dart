@@ -18,7 +18,7 @@ class GetTunnelPolicyArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [tunnelPolicyName] Name of the Tunnel Policy under the profile.
-  GetTunnelPolicyArgs({
+  const GetTunnelPolicyArgs({
     required this.profileName,
     required this.resourceGroupName,
     required this.tunnelPolicyName,

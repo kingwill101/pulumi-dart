@@ -25,7 +25,7 @@ class ContentSafetyEndpointDeploymentResourceProperties {
   /// [sku] Optional.
   /// [type] Kind of the deployment.
   /// [versionUpgradeOption] Deployment model version upgrade option.
-  ContentSafetyEndpointDeploymentResourceProperties({
+  const ContentSafetyEndpointDeploymentResourceProperties({
     this.failureReason,
     required this.model,
     this.raiPolicyName,

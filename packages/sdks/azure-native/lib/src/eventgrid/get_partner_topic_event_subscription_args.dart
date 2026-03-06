@@ -18,7 +18,7 @@ class GetPartnerTopicEventSubscriptionArgs {
   /// [eventSubscriptionName] Name of the event subscription to be found.
   /// [partnerTopicName] Name of the partner topic.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerTopicEventSubscriptionArgs({
+  const GetPartnerTopicEventSubscriptionArgs({
     required this.eventSubscriptionName,
     required this.partnerTopicName,
     required this.resourceGroupName,

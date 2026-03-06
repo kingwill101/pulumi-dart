@@ -14,7 +14,7 @@ class GatewayHostnameBindingKeyVaultLastStatusResponse {
   /// [code] The last status of the Key Vault certificate fetch process.
   /// [lastSuccessTimeStampUtc] The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   /// [timeStampUtc] The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-  GatewayHostnameBindingKeyVaultLastStatusResponse({
+  const GatewayHostnameBindingKeyVaultLastStatusResponse({
     required this.code,
     required this.lastSuccessTimeStampUtc,
     required this.timeStampUtc,

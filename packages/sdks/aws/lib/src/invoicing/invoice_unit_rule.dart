@@ -8,7 +8,7 @@ class InvoiceUnitRule {
 
   /// Creates a new [InvoiceUnitRule].
   /// [linkedAccounts] Set of AWS account IDs included in this invoice unit.
-  InvoiceUnitRule({
+  const InvoiceUnitRule({
     required this.linkedAccounts,
   });
 

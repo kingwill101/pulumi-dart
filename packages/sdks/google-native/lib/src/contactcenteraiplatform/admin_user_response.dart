@@ -12,7 +12,7 @@ class AdminUserResponse {
   /// Creates a new [AdminUserResponse].
   /// [familyName] Optional. Last/family name of the first admin user.
   /// [givenName] Optional. First/given name of the first admin user.
-  AdminUserResponse({
+  const AdminUserResponse({
     required this.familyName,
     required this.givenName,
   });

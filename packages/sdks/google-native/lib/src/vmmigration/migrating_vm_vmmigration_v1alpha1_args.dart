@@ -52,7 +52,7 @@ class MigratingVmVmmigrationV1alpha1Args {
   /// [sourceId] Required.
   /// [sourceVmId] The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
   /// [targetDefaults] The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
-  MigratingVmVmmigrationV1alpha1Args({
+  const MigratingVmVmmigrationV1alpha1Args({
     this.computeEngineDisksTargetDefaults,
     this.computeEngineTargetDefaults,
     this.computeEngineVmDefaults,

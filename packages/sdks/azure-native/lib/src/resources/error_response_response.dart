@@ -22,7 +22,7 @@ class ErrorResponseResponse {
   /// [details] The error details.
   /// [message] The error message.
   /// [target] The error target.
-  ErrorResponseResponse({
+  const ErrorResponseResponse({
     required this.additionalInfo,
     required this.code,
     required this.details,

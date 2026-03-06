@@ -11,7 +11,7 @@ class GetGenaiAgentsByOpenaiApiKeyArgs {
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyArgs].
   /// [uuid] Required.
-  GetGenaiAgentsByOpenaiApiKeyArgs({
+  const GetGenaiAgentsByOpenaiApiKeyArgs({
     required this.uuid,
   });
 

@@ -45,7 +45,7 @@ class DeviceRequestResourceK8sIoV1alpha3 {
   /// [deviceClassName] DeviceClassName references a specific DeviceClass, which can define additional configuration and selectors to be inherited by this request.
   /// [name] Name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim.
   /// [selectors] Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered.
-  DeviceRequestResourceK8sIoV1alpha3({
+  const DeviceRequestResourceK8sIoV1alpha3({
     this.adminAccess,
     this.allocationMode,
     this.count,

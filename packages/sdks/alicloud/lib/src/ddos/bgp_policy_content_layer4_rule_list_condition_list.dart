@@ -14,7 +14,7 @@ class BgpPolicyContentLayer4RuleListConditionList {
   /// [arg] Matching target character.
   /// [depth] Depth of Matching.
   /// [position] Position to start matching, starting from 0.
-  BgpPolicyContentLayer4RuleListConditionList({
+  const BgpPolicyContentLayer4RuleListConditionList({
     required this.arg,
     required this.depth,
     required this.position,

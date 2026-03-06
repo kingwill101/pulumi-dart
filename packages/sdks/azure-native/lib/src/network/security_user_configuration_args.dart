@@ -21,7 +21,7 @@ class SecurityUserConfigurationArgs {
   /// [description] A description of the security user configuration.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  SecurityUserConfigurationArgs({
+  const SecurityUserConfigurationArgs({
     this.configurationName,
     this.description,
     required this.networkManagerName,

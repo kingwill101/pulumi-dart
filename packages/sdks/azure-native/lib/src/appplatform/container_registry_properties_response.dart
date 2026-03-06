@@ -13,7 +13,7 @@ class ContainerRegistryPropertiesResponse {
   /// Creates a new [ContainerRegistryPropertiesResponse].
   /// [credentials] The credentials of the container registry resource.
   /// [provisioningState] State of the Container Registry.
-  ContainerRegistryPropertiesResponse({
+  const ContainerRegistryPropertiesResponse({
     required this.credentials,
     required this.provisioningState,
   });

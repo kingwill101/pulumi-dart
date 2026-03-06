@@ -24,7 +24,7 @@ class ClusterArgs {
   /// [resourceGroupName] The name of the resource group in which the EventHub Cluster exists. Changing this forces a new resource to be created.
   /// [skuName] The SKU name of the EventHub Cluster. The only supported value at this time is `Dedicated_1`.
   /// [tags] A mapping of tags to assign to the resource.
-  ClusterArgs({
+  const ClusterArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

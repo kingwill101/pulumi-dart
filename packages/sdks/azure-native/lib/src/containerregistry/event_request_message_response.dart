@@ -22,7 +22,7 @@ class EventRequestMessageResponse {
   /// [method] The HTTP method used to send the event request message.
   /// [requestUri] The URI used to send the event request message.
   /// [version] The HTTP message version.
-  EventRequestMessageResponse({
+  const EventRequestMessageResponse({
     this.content,
     this.headers,
     this.method,

@@ -29,7 +29,7 @@ class Webhook {
   /// [payloadUrl] &lt;p&gt;The CodeBuild endpoint where webhook events are sent.&lt;/p&gt;
   /// [secret] &lt;p&gt;The secret token of the associated repository. &lt;/p&gt; &lt;note&gt; &lt;p&gt;A Bitbucket webhook does not support &lt;code&gt;secret&lt;/code&gt;. &lt;/p&gt; &lt;/note&gt;
   /// [url] &lt;p&gt;The URL to the webhook.&lt;/p&gt;
-  Webhook({
+  const Webhook({
     this.branchFilter,
     this.buildType,
     this.filterGroups,

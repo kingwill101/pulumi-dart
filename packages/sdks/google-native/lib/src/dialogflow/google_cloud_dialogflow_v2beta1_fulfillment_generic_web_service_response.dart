@@ -21,7 +21,7 @@ class GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse {
   /// [requestHeaders] The HTTP request headers to send together with fulfillment requests.
   /// [uri] The fulfillment URI for receiving POST requests. It must use https protocol.
   /// [username] The user name for HTTP Basic authentication.
-  GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse({
+  const GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse({
     required this.isCloudFunction,
     required this.password,
     required this.requestHeaders,

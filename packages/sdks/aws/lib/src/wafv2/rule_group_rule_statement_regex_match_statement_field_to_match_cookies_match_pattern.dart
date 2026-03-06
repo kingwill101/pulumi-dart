@@ -12,7 +12,7 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern {
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern({
+  const RuleGroupRuleStatementRegexMatchStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

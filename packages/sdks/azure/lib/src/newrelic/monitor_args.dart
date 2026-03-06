@@ -52,7 +52,7 @@ class MonitorArgs {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Azure Native New Relic Monitor should exist. Changing this forces a new Azure Native New Relic Monitor to be created.
   /// [user] A `user` block as defined below. Changing this forces a new Azure Native New Relic Monitor to be created.
   /// [userId] Specifies the user id. Changing this forces a new Azure Native New Relic Monitor to be created.
-  MonitorArgs({
+  const MonitorArgs({
     this.accountCreationSource,
     this.accountId,
     this.identity,

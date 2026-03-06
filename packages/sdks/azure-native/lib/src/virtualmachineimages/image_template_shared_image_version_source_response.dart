@@ -16,7 +16,7 @@ class ImageTemplateSharedImageVersionSourceResponse {
   /// [exactVersion] Exact ARM resource id of the image version. This readonly field differs from the image version Id in 'imageVersionId' only if the version name specified in 'imageVersionId' field is 'latest'.
   /// [imageVersionId] ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
   /// [type] Specifies the type of source image you want to start with.
-  ImageTemplateSharedImageVersionSourceResponse({
+  const ImageTemplateSharedImageVersionSourceResponse({
     required this.exactVersion,
     required this.imageVersionId,
     required this.type,

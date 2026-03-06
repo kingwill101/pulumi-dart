@@ -19,7 +19,7 @@ class HttpServerLocation {
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [relativeUrl] Specify the relativeUrl of http server. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
-  HttpServerLocation({
+  const HttpServerLocation({
     this.fileName,
     this.folderPath,
     this.relativeUrl,

@@ -55,7 +55,7 @@ class CloudExadataInfrastructureState {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] Various properties of Exadata Infrastructure.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  CloudExadataInfrastructureState({
+  const CloudExadataInfrastructureState({
     this.cloudExadataInfrastructureId,
     this.createTime,
     this.deletionProtection,

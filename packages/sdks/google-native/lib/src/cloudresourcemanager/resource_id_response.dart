@@ -9,7 +9,7 @@ class ResourceIdResponse {
 
   /// Creates a new [ResourceIdResponse].
   /// [type] The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
-  ResourceIdResponse({
+  const ResourceIdResponse({
     required this.type,
   });
 

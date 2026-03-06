@@ -19,7 +19,7 @@ class GoogleCloudDataplexV1TaskNotebookTaskConfigResponse {
   /// [fileUris] Optional. Cloud Storage URIs of files to be placed in the working directory of each executor.
   /// [infrastructureSpec] Optional. Infrastructure specification for the execution.
   /// [notebook] Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-  GoogleCloudDataplexV1TaskNotebookTaskConfigResponse({
+  const GoogleCloudDataplexV1TaskNotebookTaskConfigResponse({
     required this.archiveUris,
     required this.fileUris,
     required this.infrastructureSpec,

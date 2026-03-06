@@ -11,7 +11,7 @@ class LinuxWebAppLogsHttpLogsFileSystem {
   /// Creates a new [LinuxWebAppLogsHttpLogsFileSystem].
   /// [retentionInDays] The retention period in days. A value of `0` means no retention.
   /// [retentionInMb] The maximum size in megabytes that log files can use.
-  LinuxWebAppLogsHttpLogsFileSystem({
+  const LinuxWebAppLogsHttpLogsFileSystem({
     required this.retentionInDays,
     required this.retentionInMb,
   });

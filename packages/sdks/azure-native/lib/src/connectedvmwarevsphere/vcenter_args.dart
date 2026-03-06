@@ -38,7 +38,7 @@ class VCenterArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [tags] Gets or sets the Resource tags.
   /// [vcenterName] Name of the vCenter.
-  VCenterArgs({
+  const VCenterArgs({
     this.credentials,
     this.extendedLocation,
     required this.fqdn,

@@ -36,7 +36,7 @@ class EnrichmentDomainWhoisContactResponse {
   /// [postal] The postal code for this contact
   /// [state] The state for this contact
   /// [street] A list describing the street address for this contact
-  EnrichmentDomainWhoisContactResponse({
+  const EnrichmentDomainWhoisContactResponse({
     this.city,
     this.country,
     this.email,

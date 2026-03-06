@@ -20,7 +20,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse {
   /// [image] Optional. The image to display.
   /// [info] Additional info about the option item.
   /// [title] Title of the carousel item.
-  GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse({
+  const GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse({
     required this.description,
     required this.image,
     required this.info,

@@ -31,7 +31,7 @@ class DaxClusterProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  DaxClusterProperties({
+  const DaxClusterProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

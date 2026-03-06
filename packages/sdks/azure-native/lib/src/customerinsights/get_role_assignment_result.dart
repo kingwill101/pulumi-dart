@@ -80,7 +80,7 @@ class GetRoleAssignmentResult {
   /// [type] Resource type.
   /// [views] Views set for the assignment.
   /// [widgetTypes] Widget types set for the assignment.
-  GetRoleAssignmentResult({
+  const GetRoleAssignmentResult({
     required this.assignmentName,
     required this.azureApiVersion,
     this.conflationPolicies,

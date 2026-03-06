@@ -59,7 +59,7 @@ class AlertPolicyCondition {
   /// [conditionThreshold] A condition that compares a time series against a
   /// [displayName] A short name or phrase used to identify the
   /// [name] (Output)
-  AlertPolicyCondition({
+  const AlertPolicyCondition({
     this.conditionAbsent,
     this.conditionMatchedLog,
     this.conditionMonitoringQueryLanguage,

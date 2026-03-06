@@ -17,7 +17,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader {
   /// [protocol] Required.
   /// [sourceAddresses] Required.
   /// [sourcePortRanges] Required.
-  GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader({
+  const GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader({
     required this.destinationAddresses,
     required this.destinationPortRanges,
     required this.protocol,

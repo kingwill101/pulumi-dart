@@ -13,7 +13,7 @@ class KafkaRemoteBrokerAuthenticationProperties {
   /// Creates a new [KafkaRemoteBrokerAuthenticationProperties].
   /// [authType] The type of authentication to use for Kafka remote broker.
   /// [enabled] If authentication is enabled for Kafka remote broker.
-  KafkaRemoteBrokerAuthenticationProperties({
+  const KafkaRemoteBrokerAuthenticationProperties({
     this.authType,
     required this.enabled,
   });

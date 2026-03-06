@@ -42,7 +42,7 @@ class BusinessProcessArgs {
   /// [spaceName] The name of the space
   /// [tableName] The table name of the business process.
   /// [trackingDataStoreReferenceName] The tracking data store reference name.
-  BusinessProcessArgs({
+  const BusinessProcessArgs({
     required this.applicationName,
     this.businessProcessMapping,
     this.businessProcessName,

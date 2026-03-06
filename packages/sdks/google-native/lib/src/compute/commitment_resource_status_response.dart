@@ -10,7 +10,7 @@ class CommitmentResourceStatusResponse {
 
   /// Creates a new [CommitmentResourceStatusResponse].
   /// [cancellationInformation] An optional, contains all the needed information of cancellation.
-  CommitmentResourceStatusResponse({
+  const CommitmentResourceStatusResponse({
     required this.cancellationInformation,
   });
 

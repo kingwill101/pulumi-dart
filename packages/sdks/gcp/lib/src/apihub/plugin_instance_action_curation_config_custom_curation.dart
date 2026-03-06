@@ -10,7 +10,7 @@ class PluginInstanceActionCurationConfigCustomCuration {
 
   /// Creates a new [PluginInstanceActionCurationConfigCustomCuration].
   /// [curation] The unique name of the curation resource. This will be the name of the
-  PluginInstanceActionCurationConfigCustomCuration({
+  const PluginInstanceActionCurationConfigCustomCuration({
     required this.curation,
   });
 

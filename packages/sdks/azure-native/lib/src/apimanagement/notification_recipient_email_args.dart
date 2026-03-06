@@ -21,7 +21,7 @@ class NotificationRecipientEmailArgs {
   /// [notificationName] Notification Name Identifier.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  NotificationRecipientEmailArgs({
+  const NotificationRecipientEmailArgs({
     this.email,
     required this.notificationName,
     required this.resourceGroupName,

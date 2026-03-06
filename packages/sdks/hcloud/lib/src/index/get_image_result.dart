@@ -49,7 +49,7 @@ class GetImageResult {
   /// [withArchitecture] Optional.
   /// [withSelector] Optional.
   /// [withStatuses] Optional.
-  GetImageResult({
+  const GetImageResult({
     required this.architecture,
     required this.created,
     required this.deprecated,

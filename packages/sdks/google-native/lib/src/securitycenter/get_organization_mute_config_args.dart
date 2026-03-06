@@ -13,7 +13,7 @@ class GetOrganizationMuteConfigArgs {
   /// Creates a new [GetOrganizationMuteConfigArgs].
   /// [muteConfigId] Required.
   /// [organizationId] Required.
-  GetOrganizationMuteConfigArgs({
+  const GetOrganizationMuteConfigArgs({
     required this.muteConfigId,
     required this.organizationId,
   });

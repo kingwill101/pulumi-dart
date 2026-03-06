@@ -9,7 +9,7 @@ class IngressStickySessions {
 
   /// Creates a new [IngressStickySessions].
   /// [affinity] Sticky Session Affinity
-  IngressStickySessions({
+  const IngressStickySessions({
     this.affinity,
   });
 

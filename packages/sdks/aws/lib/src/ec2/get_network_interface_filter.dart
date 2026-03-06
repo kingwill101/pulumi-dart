@@ -9,7 +9,7 @@ class GetNetworkInterfaceFilter {
   /// Creates a new [GetNetworkInterfaceFilter].
   /// [name] Required.
   /// [values] Required.
-  GetNetworkInterfaceFilter({
+  const GetNetworkInterfaceFilter({
     required this.name,
     required this.values,
   });

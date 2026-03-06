@@ -12,7 +12,7 @@ class KeyPropertiesResponse {
   /// Creates a new [KeyPropertiesResponse].
   /// [name] The identifier of the key vault key used to encrypt data.
   /// [version] The version of the identity which will be used to access key vault.
-  KeyPropertiesResponse({
+  const KeyPropertiesResponse({
     this.name,
     this.version,
   });

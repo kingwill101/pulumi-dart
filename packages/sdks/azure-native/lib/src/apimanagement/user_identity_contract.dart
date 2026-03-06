@@ -12,7 +12,7 @@ class UserIdentityContract {
   /// Creates a new [UserIdentityContract].
   /// [id] Identifier value within provider.
   /// [provider] Identity provider name.
-  UserIdentityContract({
+  const UserIdentityContract({
     this.id,
     this.provider,
   });

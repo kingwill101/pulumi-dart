@@ -38,7 +38,7 @@ class GetTargetInstanceResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [zone] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetTargetInstanceResult({
+  const GetTargetInstanceResult({
     required this.creationTimestamp,
     required this.description,
     required this.instance,

@@ -15,7 +15,7 @@ class GetViewsResult {
   /// [billingViewTypes] Optional.
   /// [billingViews] List of billing view objects with the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetViewsResult({
+  const GetViewsResult({
     this.billingViewTypes,
     required this.billingViews,
     required this.id,

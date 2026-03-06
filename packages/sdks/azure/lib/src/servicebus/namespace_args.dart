@@ -56,7 +56,7 @@ class NamespaceArgs {
   /// [resourceGroupName] The name of the resource group in which to Changing this forces a new resource to be created.
   /// [sku] Defines which tier to use. Options are `Basic`, `Standard` or `Premium`. Please note that setting this field to `Premium` will force the creation of a new resource.
   /// [tags] A mapping of tags to assign to the resource.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.capacity,
     this.customerManagedKey,
     this.identity,

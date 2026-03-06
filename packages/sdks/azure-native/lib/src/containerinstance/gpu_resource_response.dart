@@ -12,7 +12,7 @@ class GpuResourceResponse {
   /// Creates a new [GpuResourceResponse].
   /// [count] The count of the GPU resource.
   /// [sku] The SKU of the GPU resource.
-  GpuResourceResponse({
+  const GpuResourceResponse({
     required this.count,
     required this.sku,
   });

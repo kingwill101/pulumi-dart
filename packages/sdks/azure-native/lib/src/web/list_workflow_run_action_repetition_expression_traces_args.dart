@@ -27,7 +27,7 @@ class ListWorkflowRunActionRepetitionExpressionTracesArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [runName] The workflow run name.
   /// [workflowName] The workflow name.
-  ListWorkflowRunActionRepetitionExpressionTracesArgs({
+  const ListWorkflowRunActionRepetitionExpressionTracesArgs({
     required this.actionName,
     required this.name,
     required this.repetitionName,

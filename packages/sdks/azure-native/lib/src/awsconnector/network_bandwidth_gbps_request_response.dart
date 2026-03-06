@@ -12,7 +12,7 @@ class NetworkBandwidthGbpsRequestResponse {
   /// Creates a new [NetworkBandwidthGbpsRequestResponse].
   /// [max] The maximum amount of network bandwidth, in gigabits per second (Gbps).
   /// [min] The minimum amount of network bandwidth, in gigabits per second (Gbps).
-  NetworkBandwidthGbpsRequestResponse({
+  const NetworkBandwidthGbpsRequestResponse({
     this.max,
     this.min,
   });

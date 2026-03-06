@@ -23,7 +23,7 @@ class AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfigu
   /// [hostType] The supported host type, whether online/cloud or server/on-premises. Valid values: `ONLINE`.
   /// [siteUrls] A list of one or more SharePoint site URLs.
   /// [tenantId] The identifier of your Microsoft 365 tenant.
-  AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfiguration({
+  const AgentDataSourceDataSourceConfigurationSharePointConfigurationSourceConfiguration({
     required this.authType,
     required this.credentialsSecretArn,
     required this.domain,

@@ -11,7 +11,7 @@ class GroupPolicyAssignmentResourceSelectorSelector {
   /// [ins] Optional.
   /// [kind] Required.
   /// [notIns] Optional.
-  GroupPolicyAssignmentResourceSelectorSelector({
+  const GroupPolicyAssignmentResourceSelectorSelector({
     this.ins,
     required this.kind,
     this.notIns,

@@ -17,7 +17,7 @@ class DomainDevicesInputSourceEvDev {
   /// [grab] Controls whether the input device source should grab input focus.
   /// [grabToggle] Configures grab toggle settings for the event device source.
   /// [repeat] Sets repeat settings for events from the input device source.
-  DomainDevicesInputSourceEvDev({
+  const DomainDevicesInputSourceEvDev({
     required this.dev,
     this.grab,
     this.grabToggle,

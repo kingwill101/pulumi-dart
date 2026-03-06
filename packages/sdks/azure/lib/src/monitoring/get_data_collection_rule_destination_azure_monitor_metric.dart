@@ -8,7 +8,7 @@ class GetDataCollectionRuleDestinationAzureMonitorMetric {
 
   /// Creates a new [GetDataCollectionRuleDestinationAzureMonitorMetric].
   /// [name] Specifies the name of the Data Collection Rule.
-  GetDataCollectionRuleDestinationAzureMonitorMetric({
+  const GetDataCollectionRuleDestinationAzureMonitorMetric({
     required this.name,
   });
 

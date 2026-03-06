@@ -24,7 +24,7 @@ class NrqlDropRuleState {
   /// [nrql] A NRQL string that specifies what data types to drop.
   /// [pipelineCloudRuleEntityId] The ID (GUID) of the corresponding Pipeline Cloud Rule, (migrated upstream by New Relic, in light of the upcoming EOL, as stated in the Deprecation Warning above). This can be used to import the corresponding Pipeline Cloud Rule as a [`newrelic.PipelineCloudRule`](https://www.terraform.io/providers/newrelic/newrelic/latest/docs/resources/pipeline_cloud_rule) resource, as explained in our Drop Rules EOL Migration Guide.
   /// [ruleId] The id, uniquely identifying the rule.
-  NrqlDropRuleState({
+  const NrqlDropRuleState({
     this.accountId,
     this.action,
     this.description,

@@ -8,7 +8,7 @@ class GetMembershipBindingState {
 
   /// Creates a new [GetMembershipBindingState].
   /// [code] Code describes the state of a MembershipBinding resource.
-  GetMembershipBindingState({
+  const GetMembershipBindingState({
     required this.code,
   });
 

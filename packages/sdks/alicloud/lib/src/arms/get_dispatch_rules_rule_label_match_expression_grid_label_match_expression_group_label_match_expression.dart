@@ -14,7 +14,7 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabel
   /// [key] The key of the tag of the dispatch rule.
   /// [operator] The operator used in the dispatch rule.
   /// [value] The value of the tag.
-  GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression({
+  const GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression({
     required this.key,
     required this.operator,
     required this.value,

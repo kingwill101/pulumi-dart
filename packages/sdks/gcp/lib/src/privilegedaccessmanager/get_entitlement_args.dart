@@ -18,7 +18,7 @@ class GetEntitlementArgs {
   /// [entitlementId] ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
   /// [location] The region of the Entitlement resource.
   /// [parent] The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
-  GetEntitlementArgs({
+  const GetEntitlementArgs({
     this.entitlementId,
     this.location,
     this.parent,

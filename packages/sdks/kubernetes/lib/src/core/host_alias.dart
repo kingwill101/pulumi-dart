@@ -12,7 +12,7 @@ class HostAlias {
   /// Creates a new [HostAlias].
   /// [hostnames] Hostnames for the above IP address.
   /// [ip] IP address of the host file entry.
-  HostAlias({
+  const HostAlias({
     this.hostnames,
     required this.ip,
   });

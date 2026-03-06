@@ -9,7 +9,7 @@ class TrustProviderSseSpecification {
   /// Creates a new [TrustProviderSseSpecification].
   /// [customerManagedKeyEnabled] Optional.
   /// [kmsKeyArn] Optional.
-  TrustProviderSseSpecification({
+  const TrustProviderSseSpecification({
     this.customerManagedKeyEnabled,
     this.kmsKeyArn,
   });

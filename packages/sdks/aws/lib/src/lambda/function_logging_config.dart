@@ -17,7 +17,7 @@ class FunctionLoggingConfig {
   /// [logFormat] Log format. Valid values: `Text`, `JSON`.
   /// [logGroup] CloudWatch log group where logs are sent.
   /// [systemLogLevel] Detail level of Lambda platform logs. Valid values: `DEBUG`, `INFO`, `WARN`.
-  FunctionLoggingConfig({
+  const FunctionLoggingConfig({
     this.applicationLogLevel,
     required this.logFormat,
     this.logGroup,

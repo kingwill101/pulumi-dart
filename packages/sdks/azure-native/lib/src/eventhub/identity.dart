@@ -13,7 +13,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] Type of managed service identity.
   /// [userAssignedIdentities] Properties for User Assigned Identities
-  Identity({
+  const Identity({
     this.type,
     this.userAssignedIdentities,
   });

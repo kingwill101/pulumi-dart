@@ -15,7 +15,7 @@ class GetRouteFilterArgs {
   /// Creates a new [GetRouteFilterArgs].
   /// [name] The Name of this Route Filter.
   /// [resourceGroupName] The name of the Resource Group where the Route Filter exists.
-  GetRouteFilterArgs({
+  const GetRouteFilterArgs({
     required this.name,
     required this.resourceGroupName,
   });

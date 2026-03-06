@@ -15,7 +15,7 @@ class RoutineArgs {
   /// Creates a new [RoutineArgs].
   /// [description] The routine name, which must be unique in the same account.
   /// [name] Routine Name
-  RoutineArgs({
+  const RoutineArgs({
     this.description,
     this.name,
   });

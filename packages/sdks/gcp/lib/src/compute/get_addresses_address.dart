@@ -33,7 +33,7 @@ class GetAddressesAddress {
   /// [region] Region that should be considered to search addresses.
   /// [selfLink] The URI of the created resource.
   /// [status] Indicates if the address is used. Possible values are: RESERVED or IN_USE.
-  GetAddressesAddress({
+  const GetAddressesAddress({
     required this.address,
     required this.addressType,
     required this.description,

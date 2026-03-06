@@ -22,7 +22,7 @@ class EdgeMachineJobArgs {
   /// [jobsName] Name of EdgeMachineJob
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  EdgeMachineJobArgs({
+  const EdgeMachineJobArgs({
     required this.edgeMachineName,
     this.jobsName,
     this.properties,

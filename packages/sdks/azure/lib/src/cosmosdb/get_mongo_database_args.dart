@@ -18,7 +18,7 @@ class GetMongoDatabaseArgs {
   /// [accountName] The name of the Cosmos DB Account where the Mongo Database exists.
   /// [name] The name of this Cosmos DB Mongo Database.
   /// [resourceGroupName] The name of the Resource Group where the Cosmos DB Mongo Database exists.
-  GetMongoDatabaseArgs({
+  const GetMongoDatabaseArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

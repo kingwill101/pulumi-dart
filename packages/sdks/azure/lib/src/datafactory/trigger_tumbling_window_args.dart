@@ -57,7 +57,7 @@ class TriggerTumblingWindowArgs {
   /// [retry] A `retry` block as defined below.
   /// [startTime] Specifies the start time of Tumbling Window, formatted as an RFC3339 string. Changing this forces a new resource.
   /// [triggerDependencies] One or more `trigger_dependency` block as defined below.
-  TriggerTumblingWindowArgs({
+  const TriggerTumblingWindowArgs({
     this.activated,
     this.additionalProperties,
     this.annotations,

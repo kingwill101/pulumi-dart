@@ -29,7 +29,7 @@ class ExpressRouteCircuitConnection {
   /// [ipv6CircuitConnectionConfig] IPv6 Address PrefixProperties of the express route circuit connection.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [peerExpressRouteCircuitPeering] Reference to Express Route Circuit Private Peering Resource of the peered circuit.
-  ExpressRouteCircuitConnection({
+  const ExpressRouteCircuitConnection({
     this.addressPrefix,
     this.authorizationKey,
     this.expressRouteCircuitPeering,

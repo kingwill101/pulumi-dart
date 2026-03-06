@@ -12,7 +12,7 @@ class GetHostedZoneArgs {
 
   /// Creates a new [GetHostedZoneArgs].
   /// [region] Name of the Region whose hosted zone is desired. Defaults to the Region set in the provider configuration.
-  GetHostedZoneArgs({
+  const GetHostedZoneArgs({
     this.region,
   });
 

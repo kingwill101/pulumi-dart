@@ -18,7 +18,7 @@ class ComponentPropertiesResponse {
   /// [name] Name of the component.
   /// [properties] Properties of the component.
   /// [type] Component type.
-  ComponentPropertiesResponse({
+  const ComponentPropertiesResponse({
     this.dependencies,
     required this.name,
     this.properties,

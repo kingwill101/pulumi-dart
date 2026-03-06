@@ -15,7 +15,7 @@ class GetDefaultSupportedIdpConfigArgs {
   /// [defaultSupportedIdpConfigId] Required.
   /// [project] Optional.
   /// [tenantId] Required.
-  GetDefaultSupportedIdpConfigArgs({
+  const GetDefaultSupportedIdpConfigArgs({
     required this.defaultSupportedIdpConfigId,
     this.project,
     required this.tenantId,

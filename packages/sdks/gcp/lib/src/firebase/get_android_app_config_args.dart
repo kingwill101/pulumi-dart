@@ -13,7 +13,7 @@ class GetAndroidAppConfigArgs {
   /// Creates a new [GetAndroidAppConfigArgs].
   /// [appId] Required.
   /// [project] Optional.
-  GetAndroidAppConfigArgs({
+  const GetAndroidAppConfigArgs({
     required this.appId,
     this.project,
   });

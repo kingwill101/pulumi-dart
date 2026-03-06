@@ -23,7 +23,7 @@ class GetIntVariableResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [value] The value of the Automation Variable as a `integer`.
-  GetIntVariableResult({
+  const GetIntVariableResult({
     required this.automationAccountName,
     required this.description,
     required this.encrypted,

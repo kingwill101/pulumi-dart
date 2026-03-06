@@ -9,7 +9,7 @@ class AutomationRulePropertyArrayChangedValuesConditionResponse {
   /// Creates a new [AutomationRulePropertyArrayChangedValuesConditionResponse].
   /// [arrayType] Optional.
   /// [changeType] Optional.
-  AutomationRulePropertyArrayChangedValuesConditionResponse({
+  const AutomationRulePropertyArrayChangedValuesConditionResponse({
     this.arrayType,
     this.changeType,
   });

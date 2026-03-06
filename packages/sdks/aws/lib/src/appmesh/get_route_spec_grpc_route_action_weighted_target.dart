@@ -11,7 +11,7 @@ class GetRouteSpecGrpcRouteActionWeightedTarget {
   /// [port] Required.
   /// [virtualNode] Required.
   /// [weight] Required.
-  GetRouteSpecGrpcRouteActionWeightedTarget({
+  const GetRouteSpecGrpcRouteActionWeightedTarget({
     required this.port,
     required this.virtualNode,
     required this.weight,

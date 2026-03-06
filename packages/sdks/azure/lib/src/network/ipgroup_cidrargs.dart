@@ -19,7 +19,7 @@ class IPGroupCIDRArgs {
   /// Creates a new [IPGroupCIDRArgs].
   /// [cidr] The `CIDR` that should be added to the IP Group.
   /// [ipGroupId] The ID of the destination IP Group.
-  IPGroupCIDRArgs({
+  const IPGroupCIDRArgs({
     required this.cidr,
     required this.ipGroupId,
   });

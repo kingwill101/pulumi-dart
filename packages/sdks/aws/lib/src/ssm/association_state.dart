@@ -70,7 +70,7 @@ class AssociationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targets] A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
   /// [waitForSuccessTimeoutSeconds] The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
-  AssociationState({
+  const AssociationState({
     this.applyOnlyAtCronInterval,
     this.arn,
     this.associationId,

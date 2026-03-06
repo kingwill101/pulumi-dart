@@ -15,7 +15,7 @@ class ScalingConfig {
   /// [desiredSize] Property desiredSize
   /// [maxSize] Property maxSize
   /// [minSize] Property minSize
-  ScalingConfig({
+  const ScalingConfig({
     this.desiredSize,
     this.maxSize,
     this.minSize,

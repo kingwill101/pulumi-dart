@@ -10,7 +10,7 @@ class CryptoKeyKeyAccessJustificationsPolicy {
 
   /// Creates a new [CryptoKeyKeyAccessJustificationsPolicy].
   /// [allowedAccessReasons] The list of allowed reasons for access to this CryptoKey. Zero allowed
-  CryptoKeyKeyAccessJustificationsPolicy({
+  const CryptoKeyKeyAccessJustificationsPolicy({
     this.allowedAccessReasons,
   });
 

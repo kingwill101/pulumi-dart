@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1DataQualityRuleSetExpectation {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleSetExpectation].
   /// [values] Optional. Expected values for the column value.
-  GoogleCloudDataplexV1DataQualityRuleSetExpectation({
+  const GoogleCloudDataplexV1DataQualityRuleSetExpectation({
     this.values,
   });
 

@@ -15,7 +15,7 @@ class FlexibleServerBackupState {
   /// [completedTime] The Time (ISO8601 format) at which the backup was completed.
   /// [name] Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
   /// [serverId] The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
-  FlexibleServerBackupState({
+  const FlexibleServerBackupState({
     this.completedTime,
     this.name,
     this.serverId,

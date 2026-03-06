@@ -18,7 +18,7 @@ class GetServiceEndpointPolicyArgs {
   /// [expand] Expands referenced resources.
   /// [resourceGroupName] The name of the resource group.
   /// [serviceEndpointPolicyName] The name of the service endpoint policy.
-  GetServiceEndpointPolicyArgs({
+  const GetServiceEndpointPolicyArgs({
     this.expand,
     required this.resourceGroupName,
     required this.serviceEndpointPolicyName,

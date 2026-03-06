@@ -10,7 +10,7 @@ class StreamBackfillAllMongodbExcludedObjects {
 
   /// Creates a new [StreamBackfillAllMongodbExcludedObjects].
   /// [databases] MongoDB databases in the cluster.
-  StreamBackfillAllMongodbExcludedObjects({
+  const StreamBackfillAllMongodbExcludedObjects({
     required this.databases,
   });
 

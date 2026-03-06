@@ -78,7 +78,7 @@ class X12EnvelopeSettingsResponse {
   /// [transactionSetControlNumberUpperBound] The transaction set control number upper bound.
   /// [usageIndicator] The usage indicator.
   /// [useControlStandardsIdAsRepetitionCharacter] The value indicating whether to use control standards id as repetition character.
-  X12EnvelopeSettingsResponse({
+  const X12EnvelopeSettingsResponse({
     required this.controlStandardsId,
     required this.controlVersionNumber,
     required this.enableDefaultGroupHeaders,

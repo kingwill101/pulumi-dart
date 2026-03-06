@@ -20,7 +20,7 @@ class UserProfileUserSettingsCodeEditorAppSettingsDefaultResourceSpec {
   /// [sagemakerImageArn] The ARN of the SageMaker AI image that the image version belongs to.
   /// [sagemakerImageVersionAlias] The SageMaker AI Image Version Alias.
   /// [sagemakerImageVersionArn] The ARN of the image version created on the instance.
-  UserProfileUserSettingsCodeEditorAppSettingsDefaultResourceSpec({
+  const UserProfileUserSettingsCodeEditorAppSettingsDefaultResourceSpec({
     this.instanceType,
     this.lifecycleConfigArn,
     this.sagemakerImageArn,

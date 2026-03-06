@@ -11,7 +11,7 @@ class SparkClusterExtension {
   /// Creates a new [SparkClusterExtension].
   /// [logAnalyticsWorkspaceId] The workspace ID of the log analytics extension.
   /// [primaryKey] The workspace key of the log analytics extension.
-  SparkClusterExtension({
+  const SparkClusterExtension({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

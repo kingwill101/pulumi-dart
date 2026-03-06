@@ -14,7 +14,7 @@ class UserAuthenticationMode {
   /// [passwordCount] Number of passwords belonging to the user if `type` is set to `password`.
   /// [passwords] Set of passwords used for authentication if `type` is set to `password`. You can create up to two passwords for each user.
   /// [type] Specifies the authentication type. Valid values are: `password` or `iam`.
-  UserAuthenticationMode({
+  const UserAuthenticationMode({
     this.passwordCount,
     this.passwords,
     required this.type,

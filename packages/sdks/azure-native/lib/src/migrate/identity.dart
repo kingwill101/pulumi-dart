@@ -15,7 +15,7 @@ class Identity {
   /// [principalId] Gets or sets the principal id.
   /// [tenantId] Gets or sets the tenant id.
   /// [type] The type of identity used for the resource mover service.
-  Identity({
+  const Identity({
     this.principalId,
     this.tenantId,
     this.type,

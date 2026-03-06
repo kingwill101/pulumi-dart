@@ -9,7 +9,7 @@ class GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse].
   /// [doubleValues] Double number array.
-  GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse({
+  const GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse({
     required this.doubleValues,
   });
 

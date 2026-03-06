@@ -34,7 +34,7 @@ class DefenderCspmAwsOffering {
   /// [mdcContainersImageAssessment] The Microsoft Defender container image assessment configuration
   /// [offeringType] The type of the security offering.
   /// [vmScanners] The Microsoft Defender for CSPM offering VM scanning configuration
-  DefenderCspmAwsOffering({
+  const DefenderCspmAwsOffering({
     this.ciem,
     this.dataSensitivityDiscovery,
     this.databasesDspm,

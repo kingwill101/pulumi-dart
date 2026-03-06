@@ -13,7 +13,7 @@ class InterconnectGroupPhysicalStructure {
 
   /// Creates a new [InterconnectGroupPhysicalStructure].
   /// [metros] (Output)
-  InterconnectGroupPhysicalStructure({
+  const InterconnectGroupPhysicalStructure({
     this.metros,
   });
 

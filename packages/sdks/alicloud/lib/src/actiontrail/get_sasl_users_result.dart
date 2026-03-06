@@ -24,7 +24,7 @@ class GetSaslUsersResult {
   /// [names] A list of Sasl User names.
   /// [outputFile] Optional.
   /// [users] A list of Sasl Users. Each element contains the following attributes:
-  GetSaslUsersResult({
+  const GetSaslUsersResult({
     required this.id,
     required this.ids,
     required this.instanceId,

@@ -14,7 +14,7 @@ class NfsAttachmentState {
   /// [region] Optional.
   /// [shareId] The ID of the NFS share to attach.
   /// [vpcId] The ID of the vpc to attach the NFS share to.
-  NfsAttachmentState({
+  const NfsAttachmentState({
     this.region,
     this.shareId,
     this.vpcId,

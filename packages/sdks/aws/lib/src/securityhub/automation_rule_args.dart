@@ -37,7 +37,7 @@ class AutomationRuleArgs {
   /// [ruleOrder] An integer ranging from 1 to 1000 that represents the order in which the rule action is applied to findings. Security Hub applies rules with lower values for this parameter first.
   /// [ruleStatus] Whether the rule is active after it is created.
   /// [tags] Optional.
-  AutomationRuleArgs({
+  const AutomationRuleArgs({
     required this.actions,
     required this.criteria,
     required this.description,

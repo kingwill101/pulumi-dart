@@ -15,7 +15,7 @@ class ListWorkspaceNotebookKeysArgs {
   /// Creates a new [ListWorkspaceNotebookKeysArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ListWorkspaceNotebookKeysArgs({
+  const ListWorkspaceNotebookKeysArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

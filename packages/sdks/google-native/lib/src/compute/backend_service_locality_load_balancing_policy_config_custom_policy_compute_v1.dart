@@ -12,7 +12,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1 {
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1].
   /// [data] An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
   /// [name] Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
-  BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1({
+  const BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1({
     this.data,
     this.name,
   });

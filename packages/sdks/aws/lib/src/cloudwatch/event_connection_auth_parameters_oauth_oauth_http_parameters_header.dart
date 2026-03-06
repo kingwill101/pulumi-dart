@@ -14,7 +14,7 @@ class EventConnectionAuthParametersOauthOauthHttpParametersHeader {
   /// [isValueSecret] Specified whether the value is secret.
   /// [key] The key for the parameter.
   /// [value] The value associated with the key. Created and stored in AWS Secrets Manager if is secret.
-  EventConnectionAuthParametersOauthOauthHttpParametersHeader({
+  const EventConnectionAuthParametersOauthOauthHttpParametersHeader({
     this.isValueSecret,
     this.key,
     this.value,

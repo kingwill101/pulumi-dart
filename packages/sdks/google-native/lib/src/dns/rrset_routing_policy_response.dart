@@ -17,7 +17,7 @@ class RRSetRoutingPolicyResponse {
   /// [kind] Required.
   /// [primaryBackup] Required.
   /// [wrr] Required.
-  RRSetRoutingPolicyResponse({
+  const RRSetRoutingPolicyResponse({
     required this.geo,
     required this.kind,
     required this.primaryBackup,

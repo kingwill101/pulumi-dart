@@ -41,7 +41,7 @@ class SecurityAssessmentMetadataPropertiesResponse {
   /// [severity] The severity level of the assessment
   /// [threats] Optional.
   /// [userImpact] The user impact of the assessment
-  SecurityAssessmentMetadataPropertiesResponse({
+  const SecurityAssessmentMetadataPropertiesResponse({
     required this.assessmentType,
     this.categories,
     this.description,

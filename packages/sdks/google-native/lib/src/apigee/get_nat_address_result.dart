@@ -14,7 +14,7 @@ class GetNatAddressResult {
   /// [ipAddress] The static IPV4 address.
   /// [name] Resource ID of the NAT address.
   /// [state] State of the nat address.
-  GetNatAddressResult({
+  const GetNatAddressResult({
     required this.ipAddress,
     required this.name,
     required this.state,

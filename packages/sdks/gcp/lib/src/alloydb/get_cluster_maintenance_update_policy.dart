@@ -9,7 +9,7 @@ class GetClusterMaintenanceUpdatePolicy {
 
   /// Creates a new [GetClusterMaintenanceUpdatePolicy].
   /// [maintenanceWindows] Preferred windows to perform maintenance. Currently limited to 1.
-  GetClusterMaintenanceUpdatePolicy({
+  const GetClusterMaintenanceUpdatePolicy({
     required this.maintenanceWindows,
   });
 

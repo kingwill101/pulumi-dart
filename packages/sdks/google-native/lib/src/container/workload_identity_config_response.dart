@@ -9,7 +9,7 @@ class WorkloadIdentityConfigResponse {
 
   /// Creates a new [WorkloadIdentityConfigResponse].
   /// [workloadPool] The workload pool to attach all Kubernetes service accounts to.
-  WorkloadIdentityConfigResponse({
+  const WorkloadIdentityConfigResponse({
     required this.workloadPool,
   });
 

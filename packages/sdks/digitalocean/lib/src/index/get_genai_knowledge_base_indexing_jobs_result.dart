@@ -17,7 +17,7 @@ class GetGenaiKnowledgeBaseIndexingJobsResult {
   /// [jobs] Required.
   /// [knowledgeBaseUuid] Required.
   /// [metas] Required.
-  GetGenaiKnowledgeBaseIndexingJobsResult({
+  const GetGenaiKnowledgeBaseIndexingJobsResult({
     required this.id,
     required this.jobs,
     required this.knowledgeBaseUuid,

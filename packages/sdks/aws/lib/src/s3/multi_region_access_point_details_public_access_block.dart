@@ -13,7 +13,7 @@ class MultiRegionAccessPointDetailsPublicAccessBlock {
   /// [blockPublicPolicy] Optional.
   /// [ignorePublicAcls] Optional.
   /// [restrictPublicBuckets] Optional.
-  MultiRegionAccessPointDetailsPublicAccessBlock({
+  const MultiRegionAccessPointDetailsPublicAccessBlock({
     this.blockPublicAcls,
     this.blockPublicPolicy,
     this.ignorePublicAcls,

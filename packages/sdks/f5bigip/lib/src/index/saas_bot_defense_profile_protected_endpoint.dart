@@ -23,7 +23,7 @@ class SaasBotDefenseProfileProtectedEndpoint {
   /// [name] Unique name for the protected endpoint
   /// [post] POST field to protect the path when it has a POST method, `enabled` or `disabled`
   /// [put] PUT field to protect the path when it has a PUT method,`enabled` or `disabled`
-  SaasBotDefenseProfileProtectedEndpoint({
+  const SaasBotDefenseProfileProtectedEndpoint({
     this.endpoint,
     this.host,
     this.mitigationAction,

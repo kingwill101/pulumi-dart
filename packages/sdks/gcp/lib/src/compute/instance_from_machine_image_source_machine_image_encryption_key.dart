@@ -15,7 +15,7 @@ class InstanceFromMachineImageSourceMachineImageEncryptionKey {
   /// [rawKey] Optional.
   /// [rsaEncryptedKey] Optional.
   /// [sha256] Optional.
-  InstanceFromMachineImageSourceMachineImageEncryptionKey({
+  const InstanceFromMachineImageSourceMachineImageEncryptionKey({
     this.kmsKeyName,
     this.kmsKeyServiceAccount,
     this.rawKey,

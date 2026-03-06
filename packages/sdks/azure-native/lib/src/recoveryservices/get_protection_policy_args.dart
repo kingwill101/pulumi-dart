@@ -18,7 +18,7 @@ class GetProtectionPolicyArgs {
   /// [policyName] Backup policy information to be fetched.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [vaultName] The name of the recovery services vault.
-  GetProtectionPolicyArgs({
+  const GetProtectionPolicyArgs({
     required this.policyName,
     required this.resourceGroupName,
     required this.vaultName,

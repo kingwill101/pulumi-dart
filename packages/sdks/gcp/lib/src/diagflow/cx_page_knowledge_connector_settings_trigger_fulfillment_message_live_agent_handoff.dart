@@ -8,7 +8,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff 
 
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff({
+  const CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageLiveAgentHandoff({
     this.metadata,
   });
 

@@ -38,7 +38,7 @@ class GetPeerConnectionsConnection {
   /// [peerConnectionName] The name of the resource.
   /// [status] The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
   /// [vpcId] The ID of the requester VPC.
-  GetPeerConnectionsConnection({
+  const GetPeerConnectionsConnection({
     required this.acceptingAliUid,
     required this.acceptingRegionId,
     required this.acceptingVpcId,

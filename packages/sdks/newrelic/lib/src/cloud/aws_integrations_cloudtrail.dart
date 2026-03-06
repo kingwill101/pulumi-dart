@@ -11,7 +11,7 @@ class AwsIntegrationsCloudtrail {
   /// Creates a new [AwsIntegrationsCloudtrail].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsCloudtrail({
+  const AwsIntegrationsCloudtrail({
     this.awsRegions,
     this.metricsPollingInterval,
   });

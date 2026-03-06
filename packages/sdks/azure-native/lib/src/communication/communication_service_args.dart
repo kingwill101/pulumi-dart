@@ -31,7 +31,7 @@ class CommunicationServiceArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  CommunicationServiceArgs({
+  const CommunicationServiceArgs({
     this.communicationServiceName,
     required this.dataLocation,
     this.identity,

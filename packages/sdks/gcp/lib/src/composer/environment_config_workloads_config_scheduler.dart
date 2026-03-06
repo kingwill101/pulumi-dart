@@ -17,7 +17,7 @@ class EnvironmentConfigWorkloadsConfigScheduler {
   /// [cpu] CPU request and limit for a single Airflow scheduler replica
   /// [memoryGb] Memory (GB) request and limit for a single Airflow scheduler replica.
   /// [storageGb] Storage (GB) request and limit for a single Airflow scheduler replica.
-  EnvironmentConfigWorkloadsConfigScheduler({
+  const EnvironmentConfigWorkloadsConfigScheduler({
     this.count,
     this.cpu,
     this.memoryGb,

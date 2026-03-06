@@ -27,7 +27,7 @@ class HealthProbeSettingsModel {
   /// [name] Resource name.
   /// [path] The path to use for the health probe. Default is /
   /// [protocol] Protocol scheme to use for this probe
-  HealthProbeSettingsModel({
+  const HealthProbeSettingsModel({
     this.enabledState,
     this.healthProbeMethod,
     this.id,

@@ -50,7 +50,7 @@ class LocalRulestackArgs {
   /// [scope] Rulestack Type
   /// [securityServices] Security Profile
   /// [tags] Resource tags.
-  LocalRulestackArgs({
+  const LocalRulestackArgs({
     this.associatedSubscriptions,
     this.defaultMode,
     this.description,

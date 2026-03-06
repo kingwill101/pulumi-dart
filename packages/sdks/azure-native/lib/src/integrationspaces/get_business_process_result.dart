@@ -49,7 +49,7 @@ class GetBusinessProcessResult {
   /// [trackingDataStoreReferenceName] The tracking data store reference name.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version of the business process.
-  GetBusinessProcessResult({
+  const GetBusinessProcessResult({
     required this.azureApiVersion,
     this.businessProcessMapping,
     this.businessProcessStages,

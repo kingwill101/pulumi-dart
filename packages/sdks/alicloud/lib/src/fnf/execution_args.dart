@@ -21,7 +21,7 @@ class ExecutionArgs {
   /// [flowName] The name of the flow.
   /// [input] The Input information for this execution.
   /// [status] The status of the resource. Valid values: `Stopped`.
-  ExecutionArgs({
+  const ExecutionArgs({
     required this.executionName,
     required this.flowName,
     this.input,

@@ -23,7 +23,7 @@ class ByoipPrefixArgs {
   /// [prefix] The CIDR notation of the prefix (e.g., "192.0.2.0/24").
   /// [region] The DigitalOcean region where the prefix will be deployed.
   /// [signature] The cryptographic signature proving ownership of the prefix.
-  ByoipPrefixArgs({
+  const ByoipPrefixArgs({
     this.advertised,
     required this.prefix,
     required this.region,

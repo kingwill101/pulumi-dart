@@ -17,7 +17,7 @@ class GetFeaturestoreIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFeaturestoreIamPolicyArgs({
+  const GetFeaturestoreIamPolicyArgs({
     required this.featurestoreId,
     required this.location,
     this.optionsRequestedPolicyVersion,

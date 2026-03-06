@@ -12,7 +12,7 @@ class GoogleCloudDatapipelinesV1ScheduleSpec {
   /// Creates a new [GoogleCloudDatapipelinesV1ScheduleSpec].
   /// [schedule] Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
   /// [timeZone] Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
-  GoogleCloudDatapipelinesV1ScheduleSpec({
+  const GoogleCloudDatapipelinesV1ScheduleSpec({
     this.schedule,
     this.timeZone,
   });

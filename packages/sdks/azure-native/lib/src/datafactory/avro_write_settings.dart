@@ -22,7 +22,7 @@ class AvroWriteSettings {
   /// [recordName] Top level record name in write result, which is required in AVRO spec.
   /// [recordNamespace] Record namespace in the write result.
   /// [type] The write setting type.
-  AvroWriteSettings({
+  const AvroWriteSettings({
     this.fileNamePrefix,
     this.maxRowsPerFile,
     this.recordName,

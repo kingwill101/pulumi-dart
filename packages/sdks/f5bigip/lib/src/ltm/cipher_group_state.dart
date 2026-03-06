@@ -21,7 +21,7 @@ class CipherGroupState {
   /// [name] Name of the Cipher group. Name should be in pattern `partition` + `cipher_group_name`
   /// [ordering] Controls the order of the Cipher String list in the Cipher Audit section. Options are Default, Speed, Strength, FIPS, and Hardware. The rules are processed in the order listed. The default is `default`.
   /// [requires] Specifies the configuration of the restrict groups of ciphers. You can select a cipher rule from the Available Cipher Rules list. To have no restricted ciphers, omit this attribute in the config or set it to an empty set like, `[]`.
-  CipherGroupState({
+  const CipherGroupState({
     this.allows,
     this.description,
     this.name,

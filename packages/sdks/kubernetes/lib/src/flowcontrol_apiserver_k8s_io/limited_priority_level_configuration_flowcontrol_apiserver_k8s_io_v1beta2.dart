@@ -31,7 +31,7 @@ class LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2 {
   /// [borrowingLimitPercent] `borrowingLimitPercent`, if present, configures a limit on how many seats this priority level can borrow from other priority levels. The limit is known as this level's BorrowingConcurrencyLimit (BorrowingCL) and is a limit on the total number of seats that this level may borrow at any one time. This field holds the ratio of that limit to the level's nominal concurrency limit. When this field is non-nil, it must hold a non-negative integer and the limit is calculated as follows.
   /// [lendablePercent] `lendablePercent` prescribes the fraction of the level's NominalCL that can be borrowed by other priority levels. The value of this field must be between 0 and 100, inclusive, and it defaults to 0. The number of seats that other levels can borrow from this level, known as this level's LendableConcurrencyLimit (LendableCL), is defined as follows.
   /// [limitResponse] `limitResponse` indicates what to do with requests that can not be executed right now
-  LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2({
+  const LimitedPriorityLevelConfigurationFlowcontrolApiserverK8sIoV1beta2({
     this.assuredConcurrencyShares,
     this.borrowingLimitPercent,
     this.lendablePercent,

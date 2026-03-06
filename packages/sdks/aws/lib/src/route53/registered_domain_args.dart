@@ -55,7 +55,7 @@ class RegisteredDomainArgs {
   /// [techContact] Details about the domain technical contact. See Contact Blocks for more details.
   /// [techPrivacy] Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
   /// [transferLock] Whether the domain is locked for transfer. Default: `true`.
-  RegisteredDomainArgs({
+  const RegisteredDomainArgs({
     this.adminContact,
     this.adminPrivacy,
     this.autoRenew,

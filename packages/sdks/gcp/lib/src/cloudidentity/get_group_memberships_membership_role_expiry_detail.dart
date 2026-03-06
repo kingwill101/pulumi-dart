@@ -13,7 +13,7 @@ class GetGroupMembershipsMembershipRoleExpiryDetail {
 
   /// Creates a new [GetGroupMembershipsMembershipRoleExpiryDetail].
   /// [expireTime] The time at which the MembershipRole will expire.
-  GetGroupMembershipsMembershipRoleExpiryDetail({
+  const GetGroupMembershipsMembershipRoleExpiryDetail({
     required this.expireTime,
   });
 

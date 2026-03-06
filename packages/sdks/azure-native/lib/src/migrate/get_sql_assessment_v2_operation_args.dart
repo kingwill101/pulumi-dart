@@ -21,7 +21,7 @@ class GetSqlAssessmentV2OperationArgs {
   /// [groupName] Group ARM name
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSqlAssessmentV2OperationArgs({
+  const GetSqlAssessmentV2OperationArgs({
     required this.assessmentName,
     required this.groupName,
     required this.projectName,

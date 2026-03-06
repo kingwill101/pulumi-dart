@@ -62,7 +62,7 @@ class IISAKSWorkloadDeploymentResponse {
   /// [monitoringProperties] Class for app insight monitoring properties.
   /// [requests] Resource Requirements.
   /// [targetPlatformIdentity] Gets or sets the target platform managed identity.
-  IISAKSWorkloadDeploymentResponse({
+  const IISAKSWorkloadDeploymentResponse({
     this.authenticationProperties,
     this.automationArtifactProperties,
     this.bindings,

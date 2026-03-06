@@ -27,7 +27,7 @@ class CompositeTypeDeploymentmanagerV2betaArgs {
   /// [name] Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
   /// [project] Optional.
   /// [templateContents] Files for the template type.
-  CompositeTypeDeploymentmanagerV2betaArgs({
+  const CompositeTypeDeploymentmanagerV2betaArgs({
     this.description,
     this.id,
     this.labels,

@@ -8,7 +8,7 @@ class CxTestCaseLastTestResultConversationTurnUserInputInputEvent {
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnUserInputInputEvent].
   /// [event] Name of the event.
-  CxTestCaseLastTestResultConversationTurnUserInputInputEvent({
+  const CxTestCaseLastTestResultConversationTurnUserInputInputEvent({
     required this.event,
   });
 

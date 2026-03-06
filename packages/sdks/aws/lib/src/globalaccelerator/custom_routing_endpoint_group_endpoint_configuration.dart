@@ -8,7 +8,7 @@ class CustomRoutingEndpointGroupEndpointConfiguration {
 
   /// Creates a new [CustomRoutingEndpointGroupEndpointConfiguration].
   /// [endpointId] An ID for the endpoint. For custom routing accelerators, this is the virtual private cloud (VPC) subnet ID.
-  CustomRoutingEndpointGroupEndpointConfiguration({
+  const CustomRoutingEndpointGroupEndpointConfiguration({
     this.endpointId,
   });
 

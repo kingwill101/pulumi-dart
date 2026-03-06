@@ -18,7 +18,7 @@ class GetAgentPoolArgs {
   /// [agentPoolName] The name of the agent pool.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
-  GetAgentPoolArgs({
+  const GetAgentPoolArgs({
     required this.agentPoolName,
     required this.registryName,
     required this.resourceGroupName,

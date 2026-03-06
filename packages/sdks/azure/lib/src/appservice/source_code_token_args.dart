@@ -18,7 +18,7 @@ class SourceCodeTokenArgs {
   /// [token] The OAuth access token.
   /// [tokenSecret] The OAuth access token secret.
   /// [type] The source control type. Possible values are `BitBucket`, `Dropbox`, `GitHub` and `OneDrive`.
-  SourceCodeTokenArgs({
+  const SourceCodeTokenArgs({
     required this.token,
     this.tokenSecret,
     required this.type,

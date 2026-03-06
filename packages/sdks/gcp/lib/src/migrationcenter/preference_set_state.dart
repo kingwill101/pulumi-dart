@@ -36,7 +36,7 @@ class PreferenceSetState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. The timestamp when the preference set was last updated.
   /// [virtualMachinePreferences] VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
-  PreferenceSetState({
+  const PreferenceSetState({
     this.createTime,
     this.description,
     this.displayName,

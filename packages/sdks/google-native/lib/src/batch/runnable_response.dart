@@ -40,7 +40,7 @@ class RunnableResponse {
   /// [labels] Labels for this Runnable.
   /// [script] Script runnable.
   /// [timeout] Timeout for this Runnable.
-  RunnableResponse({
+  const RunnableResponse({
     required this.alwaysRun,
     required this.background,
     required this.barrier,

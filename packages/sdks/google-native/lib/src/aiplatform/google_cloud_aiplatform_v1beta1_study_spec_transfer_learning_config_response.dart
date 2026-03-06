@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponse].
   /// [disableTransferLearning] Flag to to manually prevent vizier from using transfer learning on a new study. Otherwise, vizier will automatically determine whether or not to use transfer learning.
   /// [priorStudyNames] Names of previously completed studies
-  GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponse({
+  const GoogleCloudAiplatformV1beta1StudySpecTransferLearningConfigResponse({
     required this.disableTransferLearning,
     required this.priorStudyNames,
   });

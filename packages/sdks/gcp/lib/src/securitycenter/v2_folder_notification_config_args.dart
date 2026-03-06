@@ -30,7 +30,7 @@ class V2FolderNotificationConfigArgs {
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  V2FolderNotificationConfigArgs({
+  const V2FolderNotificationConfigArgs({
     required this.configId,
     this.description,
     required this.folder,

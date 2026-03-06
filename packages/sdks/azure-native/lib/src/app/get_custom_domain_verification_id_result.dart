@@ -7,7 +7,7 @@ class GetCustomDomainVerificationIdResult {
 
   /// Creates a new [GetCustomDomainVerificationIdResult].
   /// [value] Optional.
-  GetCustomDomainVerificationIdResult({
+  const GetCustomDomainVerificationIdResult({
     this.value,
   });
 

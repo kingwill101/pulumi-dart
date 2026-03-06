@@ -13,7 +13,7 @@ class BuildServiceAgentPoolPropertiesResponse {
   /// Creates a new [BuildServiceAgentPoolPropertiesResponse].
   /// [poolSize] build service agent pool size properties
   /// [provisioningState] Provisioning state of the build service agent pool
-  BuildServiceAgentPoolPropertiesResponse({
+  const BuildServiceAgentPoolPropertiesResponse({
     this.poolSize,
     required this.provisioningState,
   });

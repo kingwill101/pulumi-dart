@@ -13,7 +13,7 @@ class CustomCopyOptionResponse {
   /// Creates a new [CustomCopyOptionResponse].
   /// [duration] Data copied after given timespan
   /// [objectType] Type of the specific object - used for deserializing
-  CustomCopyOptionResponse({
+  const CustomCopyOptionResponse({
     this.duration,
     required this.objectType,
   });

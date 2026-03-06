@@ -24,7 +24,7 @@ class GetNasBackupPlansArgs {
   /// [nameRegex] A regex string to filter results by NasBackupPlan name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [vaultId] The backup vault ID of the NasBackupPlan used.
-  GetNasBackupPlansArgs({
+  const GetNasBackupPlansArgs({
     this.fileSystemId,
     this.ids,
     this.nameRegex,

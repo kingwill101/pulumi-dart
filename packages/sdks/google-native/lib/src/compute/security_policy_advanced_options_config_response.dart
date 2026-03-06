@@ -16,7 +16,7 @@ class SecurityPolicyAdvancedOptionsConfigResponse {
   /// [jsonParsing] Required.
   /// [logLevel] Required.
   /// [userIpRequestHeaders] An optional list of case-insensitive request header names to use for resolving the callers client IP address.
-  SecurityPolicyAdvancedOptionsConfigResponse({
+  const SecurityPolicyAdvancedOptionsConfigResponse({
     required this.jsonCustomConfig,
     required this.jsonParsing,
     required this.logLevel,

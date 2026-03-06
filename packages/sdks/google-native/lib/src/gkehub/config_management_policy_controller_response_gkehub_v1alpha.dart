@@ -34,7 +34,7 @@ class ConfigManagementPolicyControllerResponseGkehubV1alpha {
   /// [referentialRulesEnabled] Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
   /// [templateLibraryInstalled] Installs the default template library along with Policy Controller.
   /// [updateTime] Last time this membership spec was updated.
-  ConfigManagementPolicyControllerResponseGkehubV1alpha({
+  const ConfigManagementPolicyControllerResponseGkehubV1alpha({
     required this.auditIntervalSeconds,
     required this.enabled,
     required this.exemptableNamespaces,

@@ -14,7 +14,7 @@ class GetTrunkSubPort {
   /// [portId] The ID of the trunk parent port.
   /// [segmentationId] The numeric id of the subport segment.
   /// [segmentationType] The segmenation tecnology used, e.g., "vlan".
-  GetTrunkSubPort({
+  const GetTrunkSubPort({
     required this.portId,
     required this.segmentationId,
     required this.segmentationType,

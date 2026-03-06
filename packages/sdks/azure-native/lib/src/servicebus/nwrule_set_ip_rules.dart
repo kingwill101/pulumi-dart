@@ -12,7 +12,7 @@ class NWRuleSetIpRules {
   /// Creates a new [NWRuleSetIpRules].
   /// [action] The IP Filter Action
   /// [ipMask] IP Mask
-  NWRuleSetIpRules({
+  const NWRuleSetIpRules({
     this.action,
     this.ipMask,
   });

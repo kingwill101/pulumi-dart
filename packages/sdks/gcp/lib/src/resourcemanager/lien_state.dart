@@ -34,7 +34,7 @@ class LienState {
   /// [parent] A reference to the resource this Lien is attached to.
   /// [reason] Concise user-visible strings indicating why an action cannot be performed
   /// [restrictions] The types of operations which should be blocked as a result of this Lien.
-  LienState({
+  const LienState({
     this.createTime,
     this.name,
     this.origin,

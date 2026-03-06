@@ -13,7 +13,7 @@ class GroupExposedPort {
   /// Creates a new [GroupExposedPort].
   /// [port] The port number the container will expose. Changing this forces a new resource to be created.
   /// [protocol] The network protocol associated with port. Possible values are `TCP` & `UDP`. Changing this forces a new resource to be created. Defaults to `TCP`.
-  GroupExposedPort({
+  const GroupExposedPort({
     this.port,
     this.protocol,
   });

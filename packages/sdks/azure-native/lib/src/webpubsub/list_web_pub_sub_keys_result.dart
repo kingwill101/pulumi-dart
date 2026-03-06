@@ -17,7 +17,7 @@ class ListWebPubSubKeysResult {
   /// [primaryKey] The primary access key.
   /// [secondaryConnectionString] Connection string constructed via the secondaryKey
   /// [secondaryKey] The secondary access key.
-  ListWebPubSubKeysResult({
+  const ListWebPubSubKeysResult({
     this.primaryConnectionString,
     this.primaryKey,
     this.secondaryConnectionString,

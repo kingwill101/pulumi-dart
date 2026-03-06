@@ -19,7 +19,7 @@ class GetAddonVersionResult {
   /// [mostRecent] Optional.
   /// [region] Required.
   /// [version] Version of the EKS add-on.
-  GetAddonVersionResult({
+  const GetAddonVersionResult({
     required this.addonName,
     required this.id,
     required this.kubernetesVersion,

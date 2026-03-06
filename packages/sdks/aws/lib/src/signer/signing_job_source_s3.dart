@@ -13,7 +13,7 @@ class SigningJobSourceS3 {
   /// [bucket] Required.
   /// [key] Key name of the object that contains your unsigned code.
   /// [version] Version of your source image in your version enabled S3 bucket.
-  SigningJobSourceS3({
+  const SigningJobSourceS3({
     required this.bucket,
     required this.key,
     required this.version,

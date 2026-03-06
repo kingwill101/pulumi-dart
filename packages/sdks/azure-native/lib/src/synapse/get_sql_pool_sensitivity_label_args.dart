@@ -30,7 +30,7 @@ class GetSqlPoolSensitivityLabelArgs {
   /// [sqlPoolName] SQL pool name
   /// [tableName] The name of the table.
   /// [workspaceName] The name of the workspace.
-  GetSqlPoolSensitivityLabelArgs({
+  const GetSqlPoolSensitivityLabelArgs({
     required this.columnName,
     required this.resourceGroupName,
     required this.schemaName,

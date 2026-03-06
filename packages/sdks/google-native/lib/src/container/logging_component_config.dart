@@ -10,7 +10,7 @@ class LoggingComponentConfig {
 
   /// Creates a new [LoggingComponentConfig].
   /// [enableComponents] Select components to collect logs. An empty set would disable all logging.
-  LoggingComponentConfig({
+  const LoggingComponentConfig({
     this.enableComponents,
   });
 

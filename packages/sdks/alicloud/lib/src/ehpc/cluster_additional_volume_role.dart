@@ -8,7 +8,7 @@ class ClusterAdditionalVolumeRole {
 
   /// Creates a new [ClusterAdditionalVolumeRole].
   /// [name] The type of the nodes to which the additional file system is attached.
-  ClusterAdditionalVolumeRole({
+  const ClusterAdditionalVolumeRole({
     this.name,
   });
 

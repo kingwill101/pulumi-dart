@@ -25,7 +25,7 @@ class PermissionsTableWithColumns {
   /// [excludedColumnNames] Set of column names for the table to exclude. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
   /// [name] Name of the table resource.
   /// [wildcard] Whether to use a column wildcard. If `excluded_column_names` is included, `wildcard` must be set to `true` to avoid the provider reporting a difference.
-  PermissionsTableWithColumns({
+  const PermissionsTableWithColumns({
     this.catalogId,
     this.columnNames,
     required this.databaseName,

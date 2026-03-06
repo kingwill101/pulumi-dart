@@ -50,7 +50,7 @@ class AccountArgs {
   /// [resetPermissionFlag] Optional.
   /// [status] Optional.
   /// [type] Privilege type of account. The SQLServer engine does not support create high privilege accounts.
-  AccountArgs({
+  const AccountArgs({
     this.accountDescription,
     this.accountName,
     this.accountPassword,

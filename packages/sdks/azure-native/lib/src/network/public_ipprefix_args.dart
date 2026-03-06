@@ -53,7 +53,7 @@ class PublicIPPrefixArgs {
   /// [sku] The public IP prefix SKU.
   /// [tags] Resource tags.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  PublicIPPrefixArgs({
+  const PublicIPPrefixArgs({
     this.customIPPrefix,
     this.extendedLocation,
     this.id,

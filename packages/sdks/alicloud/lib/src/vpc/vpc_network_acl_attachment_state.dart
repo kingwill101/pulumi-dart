@@ -18,7 +18,7 @@ class VpcNetworkAclAttachmentState {
   /// [resourceId] The ID of the associated  vswitch instance.
   /// [resourceType] The type of the associated resource. Valid values: `VSwitch`.
   /// [status] The status of the Network Acl Attachment.
-  VpcNetworkAclAttachmentState({
+  const VpcNetworkAclAttachmentState({
     this.networkAclId,
     this.resourceId,
     this.resourceType,

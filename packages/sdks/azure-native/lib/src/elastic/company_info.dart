@@ -21,7 +21,7 @@ class CompanyInfo {
   /// [domain] Domain of the company
   /// [employeesNumber] Number of employees in the company
   /// [state] State of the company location.
-  CompanyInfo({
+  const CompanyInfo({
     this.business,
     this.country,
     this.domain,

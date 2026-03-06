@@ -9,7 +9,7 @@ class SourceVault {
 
   /// Creates a new [SourceVault].
   /// [id] Resource Id
-  SourceVault({
+  const SourceVault({
     this.id,
   });
 

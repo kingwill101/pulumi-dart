@@ -40,7 +40,7 @@ class GoogleCloudDocumentaiV1DocumentEntityResponse {
   /// [redacted] Optional. Whether the entity will be redacted for de-identification purposes.
   /// [textAnchor] Optional. Provenance of the entity. Text anchor indexing into the Document.text.
   /// [type] Entity type from a schema e.g. `Address`.
-  GoogleCloudDocumentaiV1DocumentEntityResponse({
+  const GoogleCloudDocumentaiV1DocumentEntityResponse({
     required this.confidence,
     required this.mentionId,
     required this.mentionText,

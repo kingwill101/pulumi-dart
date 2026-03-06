@@ -24,7 +24,7 @@ class ApiGatewayConfigConnectionArgs {
   /// [hostnames] The hostnames of the data-plane gateway to which requests can be sent.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceId] The link to the API Management service workspace.
-  ApiGatewayConfigConnectionArgs({
+  const ApiGatewayConfigConnectionArgs({
     this.configConnectionName,
     required this.gatewayName,
     this.hostnames,

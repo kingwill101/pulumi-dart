@@ -15,7 +15,7 @@ class GetNodeGroupsArgs {
   /// Creates a new [GetNodeGroupsArgs].
   /// [clusterName] Name of the cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNodeGroupsArgs({
+  const GetNodeGroupsArgs({
     required this.clusterName,
     this.region,
   });

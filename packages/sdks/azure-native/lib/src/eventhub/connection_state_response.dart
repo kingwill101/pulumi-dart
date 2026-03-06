@@ -12,7 +12,7 @@ class ConnectionStateResponse {
   /// Creates a new [ConnectionStateResponse].
   /// [description] Description of the connection state.
   /// [status] Status of the connection.
-  ConnectionStateResponse({
+  const ConnectionStateResponse({
     this.description,
     this.status,
   });

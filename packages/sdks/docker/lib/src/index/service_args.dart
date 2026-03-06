@@ -44,7 +44,7 @@ class ServiceArgs {
   /// [rollbackConfig] Specification for the rollback strategy of the service
   /// [taskSpec] User modifiable task configuration
   /// [updateConfig] Specification for the update strategy of the service
-  ServiceArgs({
+  const ServiceArgs({
     this.auth,
     this.convergeConfig,
     this.endpointSpec,

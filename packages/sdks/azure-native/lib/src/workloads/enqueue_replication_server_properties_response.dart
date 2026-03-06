@@ -27,7 +27,7 @@ class EnqueueReplicationServerPropertiesResponse {
   /// [ipAddress] ERS SAP IP Address.
   /// [kernelPatch] ERS SAP Kernel Patch level.
   /// [kernelVersion] ERS SAP Kernel Version.
-  EnqueueReplicationServerPropertiesResponse({
+  const EnqueueReplicationServerPropertiesResponse({
     required this.ersVersion,
     required this.health,
     required this.hostname,

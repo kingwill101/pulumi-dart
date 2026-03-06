@@ -8,7 +8,7 @@ class DomainDevicesInputSourcePassthrough {
 
   /// Creates a new [DomainDevicesInputSourcePassthrough].
   /// [evDev] Specifies the event device used in passthrough mode for the input device.
-  DomainDevicesInputSourcePassthrough({
+  const DomainDevicesInputSourcePassthrough({
     required this.evDev,
   });
 

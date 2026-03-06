@@ -18,7 +18,7 @@ class GetSapApplicationServerInstanceArgs {
   /// [applicationInstanceName] The name of SAP Application Server instance resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
-  GetSapApplicationServerInstanceArgs({
+  const GetSapApplicationServerInstanceArgs({
     required this.applicationInstanceName,
     required this.resourceGroupName,
     required this.sapVirtualInstanceName,

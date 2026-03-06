@@ -19,7 +19,7 @@ class MonitoredSubscription {
   /// [status] The state of monitoring.
   /// [subscriptionId] The subscriptionId to be monitored.
   /// [tagRules] Definition of the properties for a TagRules resource.
-  MonitoredSubscription({
+  const MonitoredSubscription({
     this.error,
     this.status,
     this.subscriptionId,

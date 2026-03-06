@@ -9,7 +9,7 @@ class AksProfileResponse {
 
   /// Creates a new [AksProfileResponse].
   /// [id] Resource Id of AKS Resource
-  AksProfileResponse({
+  const AksProfileResponse({
     required this.id,
   });
 

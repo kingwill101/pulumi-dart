@@ -30,7 +30,7 @@ class DefaultObjectAccessControlArgs {
   /// [entity] The entity holding the permission, in one of the following forms:
   /// [object_] The name of the object, if applied to an object.
   /// [role] The access permission for the entity.
-  DefaultObjectAccessControlArgs({
+  const DefaultObjectAccessControlArgs({
     required this.bucket,
     required this.entity,
     this.object_,

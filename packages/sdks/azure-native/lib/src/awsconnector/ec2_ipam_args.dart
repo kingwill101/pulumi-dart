@@ -25,7 +25,7 @@ class Ec2IpamArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Ec2IpamArgs({
+  const Ec2IpamArgs({
     this.location,
     this.name,
     this.properties,

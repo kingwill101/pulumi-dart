@@ -15,7 +15,7 @@ class AiReasoningEngineSpecSourceCodeSpec {
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpec].
   /// [inlineSource] Source code is provided directly in the request.
   /// [pythonSpec] Specification for running a Python application from source.
-  AiReasoningEngineSpecSourceCodeSpec({
+  const AiReasoningEngineSpecSourceCodeSpec({
     this.inlineSource,
     this.pythonSpec,
   });

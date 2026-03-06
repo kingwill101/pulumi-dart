@@ -18,7 +18,7 @@ class GoogleCloudDataplexV1AssetResourceStatusResponse {
   /// [message] Additional information about the current state.
   /// [state] The current state of the managed resource.
   /// [updateTime] Last update time of the status.
-  GoogleCloudDataplexV1AssetResourceStatusResponse({
+  const GoogleCloudDataplexV1AssetResourceStatusResponse({
     required this.managedAccessIdentity,
     required this.message,
     required this.state,

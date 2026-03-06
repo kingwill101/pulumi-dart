@@ -32,7 +32,7 @@ class VolumeArgs {
   /// [sizeGiB] Volume size.
   /// [volumeGroupName] The name of the VolumeGroup.
   /// [volumeName] The name of the Volume.
-  VolumeArgs({
+  const VolumeArgs({
     this.creationData,
     required this.elasticSanName,
     this.managedBy,

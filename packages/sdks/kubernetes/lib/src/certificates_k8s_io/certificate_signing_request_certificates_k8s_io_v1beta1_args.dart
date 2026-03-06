@@ -22,7 +22,7 @@ class CertificateSigningRequestCertificatesK8sIoV1beta1Args {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Optional.
   /// [spec] The certificate request itself and any additional information.
-  CertificateSigningRequestCertificatesK8sIoV1beta1Args({
+  const CertificateSigningRequestCertificatesK8sIoV1beta1Args({
     this.apiVersion,
     this.kind,
     this.metadata,

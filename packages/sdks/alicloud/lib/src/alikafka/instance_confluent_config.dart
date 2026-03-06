@@ -59,7 +59,7 @@ class InstanceConfluentConfig {
   /// [zookeeperCu] The number of CPU cores of ZooKeeper.
   /// [zookeeperReplica] The number of replicas of ZooKeeper.
   /// [zookeeperStorage] The disk capacity of ZooKeeper.
-  InstanceConfluentConfig({
+  const InstanceConfluentConfig({
     this.connectCu,
     this.connectReplica,
     this.controlCenterCu,

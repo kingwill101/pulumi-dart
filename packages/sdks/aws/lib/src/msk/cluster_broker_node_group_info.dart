@@ -25,7 +25,7 @@ class ClusterBrokerNodeGroupInfo {
   /// [instanceType] Specify the instance type to use for the kafka brokersE.g., kafka.m5.large. ([Pricing info](https://aws.amazon.com/msk/pricing/))
   /// [securityGroups] A list of the security groups to associate with the elastic network interfaces to control who can communicate with the cluster.
   /// [storageInfo] A block that contains information about storage volumes attached to MSK broker nodes. See broker_node_group_info storage_info Argument Reference below.
-  ClusterBrokerNodeGroupInfo({
+  const ClusterBrokerNodeGroupInfo({
     this.azDistribution,
     required this.clientSubnets,
     this.connectivityInfo,

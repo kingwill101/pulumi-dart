@@ -38,7 +38,7 @@ class GetTrunkArgs {
   /// [status] The status of the trunk.
   /// [tags] The list of trunk tags to filter.
   /// [trunkId] The ID of the trunk.
-  GetTrunkArgs({
+  const GetTrunkArgs({
     this.adminStateUp,
     this.description,
     this.name,

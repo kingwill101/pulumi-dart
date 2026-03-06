@@ -10,7 +10,7 @@ class WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration {
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration].
   /// [enabled] Boolean whether managed log persistence is enabled for the workgroup.
   /// [kmsKey] Optional.
-  WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration({
+  const WorkgroupConfigurationMonitoringConfigurationManagedLoggingConfiguration({
     required this.enabled,
     this.kmsKey,
   });

@@ -10,7 +10,7 @@ class V2QueuedResourceTpu {
 
   /// Creates a new [V2QueuedResourceTpu].
   /// [nodeSpecs] The TPU node(s) being requested.
-  V2QueuedResourceTpu({
+  const V2QueuedResourceTpu({
     this.nodeSpecs,
   });
 

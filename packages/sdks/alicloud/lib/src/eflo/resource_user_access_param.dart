@@ -17,7 +17,7 @@ class ResourceUserAccessParam {
   /// [accessKey] A Secret Key is a Secret credential paired with an access Key to verify a user's identity and protect the security of an interface.
   /// [endpoint] An Endpoint is a network address for accessing a service or API, usually a URL to a specific service instance.
   /// [workspaceId] A Workspace generally refers to a separate space created by a user on a particular computing environment or platform.
-  ResourceUserAccessParam({
+  const ResourceUserAccessParam({
     required this.accessId,
     required this.accessKey,
     required this.endpoint,

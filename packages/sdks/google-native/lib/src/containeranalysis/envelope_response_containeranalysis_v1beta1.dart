@@ -13,7 +13,7 @@ class EnvelopeResponseContaineranalysisV1beta1 {
   /// [payload] Required.
   /// [payloadType] Required.
   /// [signatures] Required.
-  EnvelopeResponseContaineranalysisV1beta1({
+  const EnvelopeResponseContaineranalysisV1beta1({
     required this.payload,
     required this.payloadType,
     required this.signatures,

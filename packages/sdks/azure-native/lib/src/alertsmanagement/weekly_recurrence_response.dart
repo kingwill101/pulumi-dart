@@ -19,7 +19,7 @@ class WeeklyRecurrenceResponse {
   /// [endTime] End time for recurrence.
   /// [recurrenceType] Specifies when the recurrence should be applied.
   /// [startTime] Start time for recurrence.
-  WeeklyRecurrenceResponse({
+  const WeeklyRecurrenceResponse({
     required this.daysOfWeek,
     this.endTime,
     required this.recurrenceType,

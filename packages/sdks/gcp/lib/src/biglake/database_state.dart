@@ -44,7 +44,7 @@ class DatabaseState {
   /// [name] The name of the database.
   /// [type] The database type.
   /// [updateTime] Output only. The last modification time of the database. A timestamp in
-  DatabaseState({
+  const DatabaseState({
     this.catalog,
     this.createTime,
     this.deleteTime,

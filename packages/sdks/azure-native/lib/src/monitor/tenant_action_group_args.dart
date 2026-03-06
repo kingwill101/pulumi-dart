@@ -47,7 +47,7 @@ class TenantActionGroupArgs {
   /// [tenantActionGroupName] The name of the action group.
   /// [voiceReceivers] The list of voice receivers that are part of this tenant action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this tenant action group.
-  TenantActionGroupArgs({
+  const TenantActionGroupArgs({
     this.azureAppPushReceivers,
     this.emailReceivers,
     required this.enabled,

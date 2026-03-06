@@ -22,7 +22,7 @@ class ManagedInstanceStartStopScheduleArgs {
   /// [managedInstanceId] Specifies the ID of the Managed Instance. Changing this forces a new Sql Start Stop Managed Instance Schedule to be created.
   /// [schedules] A `schedule` block as defined below.
   /// [timezoneId] Specifies the time zone of the schedule. Defaults to `UTC`.
-  ManagedInstanceStartStopScheduleArgs({
+  const ManagedInstanceStartStopScheduleArgs({
     this.description,
     required this.managedInstanceId,
     required this.schedules,

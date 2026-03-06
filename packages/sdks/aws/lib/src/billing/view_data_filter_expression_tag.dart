@@ -11,7 +11,7 @@ class ViewDataFilterExpressionTag {
   /// Creates a new [ViewDataFilterExpressionTag].
   /// [key] Key of the tag.
   /// [values] List of values for the tag.
-  ViewDataFilterExpressionTag({
+  const ViewDataFilterExpressionTag({
     required this.key,
     required this.values,
   });

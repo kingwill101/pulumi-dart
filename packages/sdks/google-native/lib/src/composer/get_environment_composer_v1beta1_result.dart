@@ -34,7 +34,7 @@ class GetEnvironmentComposerV1beta1Result {
   /// [storageConfig] Optional. Storage configuration for this environment.
   /// [updateTime] The time at which this environment was last modified.
   /// [uuid] The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-  GetEnvironmentComposerV1beta1Result({
+  const GetEnvironmentComposerV1beta1Result({
     required this.config,
     required this.createTime,
     required this.labels,

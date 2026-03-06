@@ -122,7 +122,7 @@ class VirtualMachineArgs {
   /// [virtualMachineScaleSet] Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
   /// [vmName] The name of the virtual machine.
   /// [zones] The availability zones.
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     this.additionalCapabilities,
     this.applicationProfile,
     this.availabilitySet,

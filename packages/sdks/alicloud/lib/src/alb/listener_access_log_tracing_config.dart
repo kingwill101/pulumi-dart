@@ -18,7 +18,7 @@ class ListenerAccessLogTracingConfig {
   /// [tracingEnabled] Xtrace Function. Valid values: `true`, `false`. Default Value: `false`.
   /// [tracingSample] Xtrace Sampling Rate. Value: 1~10000. `tracingenabled` valued True When Effective.
   /// [tracingType] Xtrace Type Value Is `Zipkin`.
-  ListenerAccessLogTracingConfig({
+  const ListenerAccessLogTracingConfig({
     required this.tracingEnabled,
     this.tracingSample,
     this.tracingType,

@@ -11,7 +11,7 @@ class GetUserPoolLambdaConfigCustomSmsSender {
   /// Creates a new [GetUserPoolLambdaConfigCustomSmsSender].
   /// [lambdaArn] - ARN of the Lambda function.
   /// [lambdaVersion] - Version of the Lambda function.
-  GetUserPoolLambdaConfigCustomSmsSender({
+  const GetUserPoolLambdaConfigCustomSmsSender({
     required this.lambdaArn,
     required this.lambdaVersion,
   });

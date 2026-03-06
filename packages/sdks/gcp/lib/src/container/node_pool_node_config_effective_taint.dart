@@ -14,7 +14,7 @@ class NodePoolNodeConfigEffectiveTaint {
   /// [effect] Effect for taint.
   /// [key] Key for taint.
   /// [value] Value for taint.
-  NodePoolNodeConfigEffectiveTaint({
+  const NodePoolNodeConfigEffectiveTaint({
     this.effect,
     this.key,
     this.value,

@@ -16,7 +16,7 @@ class DeviceAllocationResultPatchResourceK8sIoV1alpha3 {
   /// Creates a new [DeviceAllocationResultPatchResourceK8sIoV1alpha3].
   /// [config] This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.
   /// [results] Results lists all allocated devices.
-  DeviceAllocationResultPatchResourceK8sIoV1alpha3({
+  const DeviceAllocationResultPatchResourceK8sIoV1alpha3({
     this.config,
     this.results,
   });

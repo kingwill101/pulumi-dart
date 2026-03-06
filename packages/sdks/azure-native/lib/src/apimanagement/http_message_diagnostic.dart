@@ -17,7 +17,7 @@ class HttpMessageDiagnostic {
   /// [body] Body logging settings.
   /// [dataMasking] Data masking settings.
   /// [headers] Array of HTTP Headers to log.
-  HttpMessageDiagnostic({
+  const HttpMessageDiagnostic({
     this.body,
     this.dataMasking,
     this.headers,

@@ -15,7 +15,7 @@ class EncryptionIdentityResponse {
   /// [principalId] The principal identifier associated with the encryption.
   /// [tenantId] The tenant identifier associated with the encryption.
   /// [type] The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
-  EncryptionIdentityResponse({
+  const EncryptionIdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

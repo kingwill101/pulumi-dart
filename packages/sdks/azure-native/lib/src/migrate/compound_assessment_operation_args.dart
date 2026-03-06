@@ -22,7 +22,7 @@ class CompoundAssessmentOperationArgs {
   /// [projectName] Assessment Project Name
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  CompoundAssessmentOperationArgs({
+  const CompoundAssessmentOperationArgs({
     this.compoundAssessmentName,
     required this.projectName,
     this.properties,

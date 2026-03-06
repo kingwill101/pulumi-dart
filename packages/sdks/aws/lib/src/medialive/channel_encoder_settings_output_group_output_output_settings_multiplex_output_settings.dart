@@ -9,7 +9,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettin
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings].
   /// [destination] Destination is a multiplex. See Destination for more details.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings({
     required this.destination,
   });
 

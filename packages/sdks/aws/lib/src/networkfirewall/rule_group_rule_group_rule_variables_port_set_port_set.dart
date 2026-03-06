@@ -8,7 +8,7 @@ class RuleGroupRuleGroupRuleVariablesPortSetPortSet {
 
   /// Creates a new [RuleGroupRuleGroupRuleVariablesPortSetPortSet].
   /// [definitions] Set of port ranges.
-  RuleGroupRuleGroupRuleVariablesPortSetPortSet({
+  const RuleGroupRuleGroupRuleVariablesPortSetPortSet({
     required this.definitions,
   });
 

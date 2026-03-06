@@ -15,7 +15,7 @@ class DatastoreNfsDatastore {
   /// Creates a new [DatastoreNfsDatastore].
   /// [googleFileService] Google service file service configuration
   /// [thirdPartyFileService] Third party file service configuration
-  DatastoreNfsDatastore({
+  const DatastoreNfsDatastore({
     this.googleFileService,
     this.thirdPartyFileService,
   });

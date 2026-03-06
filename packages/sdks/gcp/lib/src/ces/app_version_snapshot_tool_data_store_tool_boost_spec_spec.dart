@@ -11,7 +11,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpec {
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpec].
   /// [conditionBoostSpecs] (Output)
-  AppVersionSnapshotToolDataStoreToolBoostSpecSpec({
+  const AppVersionSnapshotToolDataStoreToolBoostSpecSpec({
     this.conditionBoostSpecs,
   });
 

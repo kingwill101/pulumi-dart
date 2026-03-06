@@ -17,7 +17,7 @@ class GetRouteDatastreamV1alpha1Args {
   /// [privateConnectionId] Required.
   /// [project] Optional.
   /// [routeId] Required.
-  GetRouteDatastreamV1alpha1Args({
+  const GetRouteDatastreamV1alpha1Args({
     required this.location,
     required this.privateConnectionId,
     this.project,

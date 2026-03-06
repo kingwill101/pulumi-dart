@@ -33,7 +33,7 @@ class GroupTemplateDeploymentState {
   /// [tags] A mapping of tags which should be assigned to the Template.
   /// [templateContent] The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `template_spec_version_id`.
   /// [templateSpecVersionId] The ID of the Template Spec Version to deploy. Cannot be specified with `template_content`.
-  GroupTemplateDeploymentState({
+  const GroupTemplateDeploymentState({
     this.debugLevel,
     this.location,
     this.managementGroupId,

@@ -24,7 +24,7 @@ class HybridConnectionArgs {
   /// [requiresClientAuthorization] Returns true if client authorization is needed for this hybrid connection; otherwise, false.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userMetadata] The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
-  HybridConnectionArgs({
+  const HybridConnectionArgs({
     this.hybridConnectionName,
     required this.namespaceName,
     this.requiresClientAuthorization,

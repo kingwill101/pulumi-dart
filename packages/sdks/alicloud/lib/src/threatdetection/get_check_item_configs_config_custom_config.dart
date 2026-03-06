@@ -20,7 +20,7 @@ class GetCheckItemConfigsConfigCustomConfig {
   /// [showName] The display name of the custom configuration item for internationalization.
   /// [typeDefine] The type of the custom configuration item. The value is a JSON string.
   /// [value] The content of the description for the check item when the Type parameter is text.
-  GetCheckItemConfigsConfigCustomConfig({
+  const GetCheckItemConfigsConfigCustomConfig({
     required this.defaultValue,
     required this.name,
     required this.showName,

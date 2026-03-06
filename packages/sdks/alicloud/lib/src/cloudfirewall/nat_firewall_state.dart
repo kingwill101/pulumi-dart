@@ -43,7 +43,7 @@ class NatFirewallState {
   /// [vswitchAuto] Whether to use switch automatic mode. Value: **true**: Use automatic mode: **false**: Use manual mode.
   /// [vswitchCidr] The network segment of the virtual switch. Required for Switch automatic mode.
   /// [vswitchId] The switch ID. Required for switch manual mode.
-  NatFirewallState({
+  const NatFirewallState({
     this.firewallSwitch,
     this.lang,
     this.natGatewayId,

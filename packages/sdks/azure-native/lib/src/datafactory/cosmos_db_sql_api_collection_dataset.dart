@@ -37,7 +37,7 @@ class CosmosDbSqlApiCollectionDataset {
   /// [schema] Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [type] Type of dataset.
-  CosmosDbSqlApiCollectionDataset({
+  const CosmosDbSqlApiCollectionDataset({
     this.annotations,
     required this.collectionName,
     this.description,

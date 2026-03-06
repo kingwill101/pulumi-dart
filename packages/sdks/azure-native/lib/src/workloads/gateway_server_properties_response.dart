@@ -12,7 +12,7 @@ class GatewayServerPropertiesResponse {
   /// Creates a new [GatewayServerPropertiesResponse].
   /// [health] Defines the health of SAP Instances.
   /// [port] Gateway Port.
-  GatewayServerPropertiesResponse({
+  const GatewayServerPropertiesResponse({
     required this.health,
     required this.port,
   });

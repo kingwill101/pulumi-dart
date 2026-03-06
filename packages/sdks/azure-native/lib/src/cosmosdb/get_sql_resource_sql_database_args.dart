@@ -18,7 +18,7 @@ class GetSqlResourceSqlDatabaseArgs {
   /// [accountName] Cosmos DB database account name.
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSqlResourceSqlDatabaseArgs({
+  const GetSqlResourceSqlDatabaseArgs({
     required this.accountName,
     required this.databaseName,
     required this.resourceGroupName,

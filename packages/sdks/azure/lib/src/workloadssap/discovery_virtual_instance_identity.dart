@@ -11,7 +11,7 @@ class DiscoveryVirtualInstanceIdentity {
   /// Creates a new [DiscoveryVirtualInstanceIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this SAP Discovery Virtual Instance.
   /// [type] The type of Managed Service Identity that should be configured on this SAP Discovery Virtual Instance. The only possible value is `UserAssigned`.
-  DiscoveryVirtualInstanceIdentity({
+  const DiscoveryVirtualInstanceIdentity({
     required this.identityIds,
     required this.type,
   });

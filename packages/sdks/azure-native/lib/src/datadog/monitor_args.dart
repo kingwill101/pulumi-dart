@@ -29,7 +29,7 @@ class MonitorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] Optional.
   /// [tags] Optional.
-  MonitorArgs({
+  const MonitorArgs({
     this.identity,
     this.location,
     this.monitorName,

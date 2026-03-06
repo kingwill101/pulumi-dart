@@ -16,7 +16,7 @@ class SqlDbMigrationStatusDetailsResponse {
   /// [listOfCopyProgressDetails] Details on progress of ADF copy activities.
   /// [migrationState] Current State of Migration.
   /// [sqlDataCopyErrors] Sql Data Copy errors, if any.
-  SqlDbMigrationStatusDetailsResponse({
+  const SqlDbMigrationStatusDetailsResponse({
     required this.listOfCopyProgressDetails,
     required this.migrationState,
     required this.sqlDataCopyErrors,

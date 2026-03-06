@@ -17,7 +17,7 @@ class GooglePrivacyDlpV2ConditionResponse {
   /// [field] Field within the record this condition is evaluated against.
   /// [operator] Operator used to compare the field or infoType to the value.
   /// [value] Value to compare against. [Mandatory, except for `EXISTS` tests.]
-  GooglePrivacyDlpV2ConditionResponse({
+  const GooglePrivacyDlpV2ConditionResponse({
     required this.field,
     required this.operator,
     required this.value,

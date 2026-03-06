@@ -20,7 +20,7 @@ class DeploymentSettingsOperationContext {
   /// [oidc] OIDC configuration to use during the deployment.
   /// [options] Options to override default behavior during the deployment.
   /// [preRunCommands] Shell commands to run before the Pulumi operation executes.
-  DeploymentSettingsOperationContext({
+  const DeploymentSettingsOperationContext({
     this.environmentVariables,
     this.oidc,
     this.options,

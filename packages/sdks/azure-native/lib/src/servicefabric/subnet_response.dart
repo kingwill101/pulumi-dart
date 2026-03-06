@@ -21,7 +21,7 @@ class SubnetResponse {
   /// [networkSecurityGroupId] Full resource id for the network security group.
   /// [privateEndpointNetworkPolicies] Enable or Disable apply network policies on private end point in the subnet.
   /// [privateLinkServiceNetworkPolicies] Enable or Disable apply network policies on private link service in the subnet.
-  SubnetResponse({
+  const SubnetResponse({
     this.enableIpv6,
     required this.name,
     this.networkSecurityGroupId,

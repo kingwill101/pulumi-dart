@@ -8,7 +8,7 @@ class VirtualClusterContainerProviderInfoEksInfo {
 
   /// Creates a new [VirtualClusterContainerProviderInfoEksInfo].
   /// [namespace] The namespace where the EMR Containers cluster is running
-  VirtualClusterContainerProviderInfoEksInfo({
+  const VirtualClusterContainerProviderInfoEksInfo({
     this.namespace,
   });
 

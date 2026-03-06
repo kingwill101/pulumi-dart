@@ -15,7 +15,7 @@ class GetAiFeaturestoreEntitytypeIamPolicyArgs {
   /// Creates a new [GetAiFeaturestoreEntitytypeIamPolicyArgs].
   /// [entitytype] Used to find the parent resource to bind the IAM policy to
   /// [featurestore] The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-  GetAiFeaturestoreEntitytypeIamPolicyArgs({
+  const GetAiFeaturestoreEntitytypeIamPolicyArgs({
     required this.entitytype,
     required this.featurestore,
   });

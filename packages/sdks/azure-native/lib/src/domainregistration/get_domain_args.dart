@@ -15,7 +15,7 @@ class GetDomainArgs {
   /// Creates a new [GetDomainArgs].
   /// [domainName] Name of the domain.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetDomainArgs({
+  const GetDomainArgs({
     required this.domainName,
     required this.resourceGroupName,
   });

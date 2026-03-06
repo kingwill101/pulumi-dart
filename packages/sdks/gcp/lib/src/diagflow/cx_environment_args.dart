@@ -24,7 +24,7 @@ class CxEnvironmentArgs {
   /// [displayName] The human-readable name of the environment (unique in an agent). Limit of 64 characters.
   /// [parent] The Agent to create an Environment for.
   /// [versionConfigs] A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
-  CxEnvironmentArgs({
+  const CxEnvironmentArgs({
     this.description,
     required this.displayName,
     this.parent,

@@ -12,7 +12,7 @@ class GoogleCloudIntegrationsV1alphaCoordinateResponse {
   /// Creates a new [GoogleCloudIntegrationsV1alphaCoordinateResponse].
   /// [x] X axis of the coordinate
   /// [y] Y axis of the coordinate
-  GoogleCloudIntegrationsV1alphaCoordinateResponse({
+  const GoogleCloudIntegrationsV1alphaCoordinateResponse({
     required this.x,
     required this.y,
   });

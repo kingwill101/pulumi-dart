@@ -10,7 +10,7 @@ class BackendConfigurationResponse {
 
   /// Creates a new [BackendConfigurationResponse].
   /// [subnet] The default hostname of the data-plane gateway to which requests can be sent.
-  BackendConfigurationResponse({
+  const BackendConfigurationResponse({
     this.subnet,
   });
 

@@ -11,7 +11,7 @@ class UserDefinedFunctionResourceUri {
   /// Creates a new [UserDefinedFunctionResourceUri].
   /// [resourceType] The type of the resource. can be one of `JAR`, `FILE`, and `ARCHIVE`.
   /// [uri] The URI for accessing the resource.
-  UserDefinedFunctionResourceUri({
+  const UserDefinedFunctionResourceUri({
     required this.resourceType,
     required this.uri,
   });

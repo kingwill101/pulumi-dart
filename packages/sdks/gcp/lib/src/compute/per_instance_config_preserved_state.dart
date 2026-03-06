@@ -23,7 +23,7 @@ class PerInstanceConfigPreservedState {
   /// [externalIps] Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
   /// [internalIps] Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
   /// [metadata] Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
-  PerInstanceConfigPreservedState({
+  const PerInstanceConfigPreservedState({
     this.disks,
     this.externalIps,
     this.internalIps,

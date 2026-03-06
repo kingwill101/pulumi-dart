@@ -70,7 +70,7 @@ class FlowProperties {
   /// [streamId] The flow stream identifier
   /// [streamLatency] The latency of the stream in milliseconds
   /// [streamProtocol] The protocol of the stream
-  FlowProperties({
+  const FlowProperties({
     this.connection,
     this.customerManagedKeyVaultUri,
     this.dataType,

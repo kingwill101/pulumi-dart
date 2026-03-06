@@ -27,7 +27,7 @@ class UserLoginProfileState {
   /// [passwordResetRequired] Whether the user should be forced to reset the generated password on resource creation. Only applies on resource creation.
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:username`. Only applies on resource creation. Drift detection is not possible with this argument.
   /// [user] The IAM user's name.
-  UserLoginProfileState({
+  const UserLoginProfileState({
     this.encryptedPassword,
     this.keyFingerprint,
     this.password,

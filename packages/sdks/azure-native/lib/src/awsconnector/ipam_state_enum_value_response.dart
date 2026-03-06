@@ -9,7 +9,7 @@ class IpamStateEnumValueResponse {
 
   /// Creates a new [IpamStateEnumValueResponse].
   /// [value] Property value
-  IpamStateEnumValueResponse({
+  const IpamStateEnumValueResponse({
     this.value,
   });
 

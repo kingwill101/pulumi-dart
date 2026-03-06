@@ -15,7 +15,7 @@ class SpringbootsitesPropertiesResponse {
   /// [masterSiteId] The master site ID from Azure Migrate.
   /// [migrateProjectId] The migrate project ID from Azure Migrate.
   /// [provisioningState] The resource provisioning state.
-  SpringbootsitesPropertiesResponse({
+  const SpringbootsitesPropertiesResponse({
     this.masterSiteId,
     this.migrateProjectId,
     this.provisioningState,

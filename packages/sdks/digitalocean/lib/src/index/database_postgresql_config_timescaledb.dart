@@ -7,7 +7,7 @@ class DatabasePostgresqlConfigTimescaledb {
 
   /// Creates a new [DatabasePostgresqlConfigTimescaledb].
   /// [maxBackgroundWorkers] Optional.
-  DatabasePostgresqlConfigTimescaledb({
+  const DatabasePostgresqlConfigTimescaledb({
     this.maxBackgroundWorkers,
   });
 

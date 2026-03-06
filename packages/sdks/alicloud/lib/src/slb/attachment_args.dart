@@ -27,7 +27,7 @@ class AttachmentArgs {
   /// [loadBalancerId] ID of the load balancer.
   /// [serverType] Type of the instances. Valid value ecs, eni. Default to ecs.
   /// [weight] Weight of the instances. Valid value range: [0-100]. Default to 100.
-  AttachmentArgs({
+  const AttachmentArgs({
     this.backendServers,
     this.deleteProtectionValidation,
     required this.instanceIds,

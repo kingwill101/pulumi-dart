@@ -30,7 +30,7 @@ class HypervClusterControllerClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runAsAccountId] Gets or sets Run as account ID of the Hyper-V cluster.
   /// [siteName] Site name
-  HypervClusterControllerClusterArgs({
+  const HypervClusterControllerClusterArgs({
     this.clusterName,
     this.fqdn,
     this.hostFqdnList,

@@ -15,7 +15,7 @@ class LogAnalyticsConfiguration {
   /// [customerId] Log analytics customer id
   /// [dynamicJsonColumns] Boolean indicating whether to parse json string log into dynamic json columns
   /// [sharedKey] Log analytics customer key
-  LogAnalyticsConfiguration({
+  const LogAnalyticsConfiguration({
     this.customerId,
     this.dynamicJsonColumns,
     this.sharedKey,

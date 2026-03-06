@@ -8,7 +8,7 @@ class GetInsightsDatasetConfigExcludeCloudStorageLocation {
 
   /// Creates a new [GetInsightsDatasetConfigExcludeCloudStorageLocation].
   /// [locations] The list of cloud storage locations to exclude in the DatasetConfig.
-  GetInsightsDatasetConfigExcludeCloudStorageLocation({
+  const GetInsightsDatasetConfigExcludeCloudStorageLocation({
     required this.locations,
   });
 

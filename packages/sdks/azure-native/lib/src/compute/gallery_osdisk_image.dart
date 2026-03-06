@@ -14,7 +14,7 @@ class GalleryOSDiskImage {
   /// Creates a new [GalleryOSDiskImage].
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
   /// [source] The source for the disk image.
-  GalleryOSDiskImage({
+  const GalleryOSDiskImage({
     this.hostCaching,
     this.source,
   });

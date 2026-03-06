@@ -8,7 +8,7 @@ class EntryTypeRequiredAspect {
 
   /// Creates a new [EntryTypeRequiredAspect].
   /// [type] Required aspect type for the entry type.
-  EntryTypeRequiredAspect({
+  const EntryTypeRequiredAspect({
     this.type,
   });
 

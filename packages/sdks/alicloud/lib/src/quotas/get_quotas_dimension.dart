@@ -11,7 +11,7 @@ class GetQuotasDimension {
   /// Creates a new [GetQuotasDimension].
   /// [key] The key of dimensions.
   /// [value] The value of dimensions.
-  GetQuotasDimension({
+  const GetQuotasDimension({
     this.key,
     this.value,
   });

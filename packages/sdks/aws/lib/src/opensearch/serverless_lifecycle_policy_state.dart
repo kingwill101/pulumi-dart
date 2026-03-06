@@ -26,7 +26,7 @@ class ServerlessLifecyclePolicyState {
   /// [policyVersion] Version of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of lifecycle policy. Must be `retention`.
-  ServerlessLifecyclePolicyState({
+  const ServerlessLifecyclePolicyState({
     this.description,
     this.name,
     this.policy,

@@ -48,7 +48,7 @@ class DicomStoreState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [selfLink] The fully qualified name of this dataset
   /// [streamConfigs] To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-  DicomStoreState({
+  const DicomStoreState({
     this.dataset,
     this.effectiveLabels,
     this.labels,

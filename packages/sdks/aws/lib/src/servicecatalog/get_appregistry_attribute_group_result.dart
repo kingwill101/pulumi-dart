@@ -22,7 +22,7 @@ class GetAppregistryAttributeGroupResult {
   /// [name] Required.
   /// [region] Required.
   /// [tags] A map of tags assigned to the Attribute Group. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  GetAppregistryAttributeGroupResult({
+  const GetAppregistryAttributeGroupResult({
     required this.arn,
     required this.attributes,
     required this.description,

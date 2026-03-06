@@ -15,7 +15,7 @@ class GetIamInstanceProfileArgs {
   /// Creates a new [GetIamInstanceProfileArgs].
   /// [name] Name of IamInstanceProfile
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamInstanceProfileArgs({
+  const GetIamInstanceProfileArgs({
     required this.name,
     required this.resourceGroupName,
   });

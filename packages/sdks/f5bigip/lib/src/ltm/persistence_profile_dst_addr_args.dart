@@ -41,7 +41,7 @@ class PersistenceProfileDstAddrArgs {
   /// [name] Name of the persistence profile
   /// [overrideConnLimit] To enable _ disable that pool member connection limits are overridden for persisted clients. Per-virtual connection limits remain hard limits and are not overridden.
   /// [timeout] Timeout for persistence of the session
-  PersistenceProfileDstAddrArgs({
+  const PersistenceProfileDstAddrArgs({
     this.appService,
     required this.defaultsFrom,
     this.hashAlgorithm,

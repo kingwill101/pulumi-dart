@@ -11,7 +11,7 @@ class EnvironmentPropertiesProperty {
   /// Creates a new [EnvironmentPropertiesProperty].
   /// [name] The property key.
   /// [value] The property value.
-  EnvironmentPropertiesProperty({
+  const EnvironmentPropertiesProperty({
     this.name,
     this.value,
   });

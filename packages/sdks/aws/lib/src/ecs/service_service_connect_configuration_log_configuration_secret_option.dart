@@ -11,7 +11,7 @@ class ServiceServiceConnectConfigurationLogConfigurationSecretOption {
   /// Creates a new [ServiceServiceConnectConfigurationLogConfigurationSecretOption].
   /// [name] Name of the secret.
   /// [valueFrom] Secret to expose to the container. The supported values are either the full ARN of the AWS Secrets Manager secret or the full ARN of the parameter in the SSM Parameter Store.
-  ServiceServiceConnectConfigurationLogConfigurationSecretOption({
+  const ServiceServiceConnectConfigurationLogConfigurationSecretOption({
     required this.name,
     required this.valueFrom,
   });

@@ -17,7 +17,7 @@ class GetDataScanArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetDataScanArgs({
+  const GetDataScanArgs({
     required this.dataScanId,
     required this.location,
     this.project,

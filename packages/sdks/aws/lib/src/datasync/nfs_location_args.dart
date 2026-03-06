@@ -29,7 +29,7 @@ class NfsLocationArgs {
   /// [serverHostname] Specifies the IP address or DNS name of the NFS server. The DataSync Agent(s) use this to mount the NFS server.
   /// [subdirectory] Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  NfsLocationArgs({
+  const NfsLocationArgs({
     this.mountOptions,
     required this.onPremConfig,
     this.region,

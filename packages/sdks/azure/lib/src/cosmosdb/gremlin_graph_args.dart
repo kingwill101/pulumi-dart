@@ -56,7 +56,7 @@ class GremlinGraphArgs {
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Gremlin Graph is created. Changing this forces a new resource to be created.
   /// [throughput] The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   /// [uniqueKeys] One or more `unique_key` blocks as defined below. Changing this forces a new resource to be created.
-  GremlinGraphArgs({
+  const GremlinGraphArgs({
     required this.accountName,
     this.analyticalStorageTtl,
     this.autoscaleSettings,

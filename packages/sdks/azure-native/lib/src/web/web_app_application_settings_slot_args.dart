@@ -24,7 +24,7 @@ class WebAppApplicationSettingsSlotArgs {
   /// [properties] Settings.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will update the application settings for the production slot.
-  WebAppApplicationSettingsSlotArgs({
+  const WebAppApplicationSettingsSlotArgs({
     this.kind,
     required this.name,
     this.properties,

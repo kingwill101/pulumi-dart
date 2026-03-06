@@ -16,7 +16,7 @@ class InterceptEndpointGroupConnectedDeploymentGroupLocation {
   /// Creates a new [InterceptEndpointGroupConnectedDeploymentGroupLocation].
   /// [location] The cloud location of the endpoint group, currently restricted to `global`.
   /// [state] (Output)
-  InterceptEndpointGroupConnectedDeploymentGroupLocation({
+  const InterceptEndpointGroupConnectedDeploymentGroupLocation({
     this.location,
     this.state,
   });

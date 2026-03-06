@@ -15,7 +15,7 @@ class GetSapVirtualInstanceArgs {
   /// Creates a new [GetSapVirtualInstanceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
-  GetSapVirtualInstanceArgs({
+  const GetSapVirtualInstanceArgs({
     required this.resourceGroupName,
     required this.sapVirtualInstanceName,
   });

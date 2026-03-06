@@ -13,7 +13,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs].
   /// [batchTransformInput] Input object for the batch transform job. Fields are documented below.
   /// [endpointInput] Endpoint for a monitoring job. Fields are documented below.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputs({
     this.batchTransformInput,
     this.endpointInput,
   });

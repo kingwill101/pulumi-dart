@@ -63,7 +63,7 @@ class FhirServiceArgs {
   /// [resourceVersionPolicyConfiguration] Determines tracking of history for resources.
   /// [tags] Resource tags.
   /// [workspaceName] The name of workspace resource.
-  FhirServiceArgs({
+  const FhirServiceArgs({
     this.acrConfiguration,
     this.authenticationConfiguration,
     this.corsConfiguration,

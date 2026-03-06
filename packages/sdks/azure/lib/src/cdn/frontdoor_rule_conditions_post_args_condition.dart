@@ -20,7 +20,7 @@ class FrontdoorRuleConditionsPostArgsCondition {
   /// [operator] A Conditional operator. Possible values include `Any`, `Equal`, `Contains`, `BeginsWith`, `EndsWith`, `LessThan`, `LessThanOrEqual`, `GreaterThan`, `GreaterThanOrEqual` or `RegEx`. Details can be found in the `Condition Operator List` below.
   /// [postArgsName] A string value representing the name of the `POST` argument.
   /// [transforms] A Conditional operator. Possible values include `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `UrlDecode` or `UrlEncode`. Details can be found in the `Condition Transform List` below.
-  FrontdoorRuleConditionsPostArgsCondition({
+  const FrontdoorRuleConditionsPostArgsCondition({
     this.matchValues,
     this.negateCondition,
     required this.operator,

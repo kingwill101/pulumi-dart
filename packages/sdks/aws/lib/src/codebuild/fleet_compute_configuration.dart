@@ -20,7 +20,7 @@ class FleetComputeConfiguration {
   /// [machineType] Machine type of the instance type included in the fleet. Valid values: `GENERAL`, `NVME`. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   /// [memory] Amount of memory of the instance type included in the fleet. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
   /// [vcpu] Number of vCPUs of the instance type included in the fleet. Specify only if `compute_type` is set to `ATTRIBUTE_BASED_COMPUTE`.
-  FleetComputeConfiguration({
+  const FleetComputeConfiguration({
     this.disk,
     this.instanceType,
     this.machineType,

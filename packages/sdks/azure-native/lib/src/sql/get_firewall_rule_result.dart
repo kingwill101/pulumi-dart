@@ -23,7 +23,7 @@ class GetFirewallRuleResult {
   /// [name] Resource name.
   /// [startIpAddress] The start IP address of the firewall rule. Must be IPv4 format. Use value '0.0.0.0' for all Azure-internal IP addresses.
   /// [type] Resource type.
-  GetFirewallRuleResult({
+  const GetFirewallRuleResult({
     required this.azureApiVersion,
     this.endIpAddress,
     required this.id,

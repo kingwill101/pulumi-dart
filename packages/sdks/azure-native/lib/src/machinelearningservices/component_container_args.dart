@@ -22,7 +22,7 @@ class ComponentContainerArgs {
   /// [name] Container name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ComponentContainerArgs({
+  const ComponentContainerArgs({
     required this.componentContainerProperties,
     this.name,
     required this.resourceGroupName,

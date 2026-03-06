@@ -37,7 +37,7 @@ class WebAclRuleGroupAssociationArgs {
   /// [ruleName] Name of the rule to create in the Web ACL that references the rule group. Must be between 1 and 128 characters.
   /// [timeouts] Optional.
   /// [webAclArn] ARN of the Web ACL to associate the Rule Group with.
-  WebAclRuleGroupAssociationArgs({
+  const WebAclRuleGroupAssociationArgs({
     this.managedRuleGroup,
     this.overrideAction,
     required this.priority,

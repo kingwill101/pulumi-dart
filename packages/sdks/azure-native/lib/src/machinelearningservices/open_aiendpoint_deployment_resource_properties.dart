@@ -25,7 +25,7 @@ class OpenAIEndpointDeploymentResourceProperties {
   /// [sku] Optional.
   /// [type] Kind of the deployment.
   /// [versionUpgradeOption] Deployment model version upgrade option.
-  OpenAIEndpointDeploymentResourceProperties({
+  const OpenAIEndpointDeploymentResourceProperties({
     this.failureReason,
     required this.model,
     this.raiPolicyName,

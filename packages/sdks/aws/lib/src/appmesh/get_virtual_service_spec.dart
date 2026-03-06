@@ -8,7 +8,7 @@ class GetVirtualServiceSpec {
 
   /// Creates a new [GetVirtualServiceSpec].
   /// [providers] Required.
-  GetVirtualServiceSpec({
+  const GetVirtualServiceSpec({
     required this.providers,
   });
 

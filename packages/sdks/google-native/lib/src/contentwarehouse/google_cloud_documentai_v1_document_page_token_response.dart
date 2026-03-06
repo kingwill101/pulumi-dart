@@ -26,7 +26,7 @@ class GoogleCloudDocumentaiV1DocumentPageTokenResponse {
   /// [layout] Layout for Token.
   /// [provenance] The history of this annotation.
   /// [styleInfo] Text style attributes.
-  GoogleCloudDocumentaiV1DocumentPageTokenResponse({
+  const GoogleCloudDocumentaiV1DocumentPageTokenResponse({
     required this.detectedBreak,
     required this.detectedLanguages,
     required this.layout,

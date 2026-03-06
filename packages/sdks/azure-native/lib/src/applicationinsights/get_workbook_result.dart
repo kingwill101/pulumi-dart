@@ -67,7 +67,7 @@ class GetWorkbookResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userId] Unique user id of the specific user that owns this workbook.
   /// [version] Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData
-  GetWorkbookResult({
+  const GetWorkbookResult({
     required this.azureApiVersion,
     required this.category,
     this.description,

@@ -12,7 +12,7 @@ class AdvancedDatapathObservabilityConfigResponse {
   /// Creates a new [AdvancedDatapathObservabilityConfigResponse].
   /// [enableMetrics] Expose flow metrics on nodes
   /// [relayMode] Method used to make Relay available
-  AdvancedDatapathObservabilityConfigResponse({
+  const AdvancedDatapathObservabilityConfigResponse({
     required this.enableMetrics,
     required this.relayMode,
   });

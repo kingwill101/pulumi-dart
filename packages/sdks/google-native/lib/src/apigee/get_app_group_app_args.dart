@@ -15,7 +15,7 @@ class GetAppGroupAppArgs {
   /// [appId] Required.
   /// [appgroupId] Required.
   /// [organizationId] Required.
-  GetAppGroupAppArgs({
+  const GetAppGroupAppArgs({
     required this.appId,
     required this.appgroupId,
     required this.organizationId,

@@ -18,7 +18,7 @@ class GetIotDpsResourcePrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection
   /// [resourceGroupName] The name of the resource group that contains the provisioning service.
   /// [resourceName] The name of the provisioning service.
-  GetIotDpsResourcePrivateEndpointConnectionArgs({
+  const GetIotDpsResourcePrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.resourceName,

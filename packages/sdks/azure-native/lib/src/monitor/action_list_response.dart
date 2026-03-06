@@ -10,7 +10,7 @@ class ActionListResponse {
 
   /// Creates a new [ActionListResponse].
   /// [actionGroups] The list of the Action Groups.
-  ActionListResponse({
+  const ActionListResponse({
     this.actionGroups,
   });
 

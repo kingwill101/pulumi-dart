@@ -36,7 +36,7 @@ class PermissionSetState {
   /// [sessionDuration] The length of time that the application user sessions are valid in the ISO-8601 standard. Default: `PT1H`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  PermissionSetState({
+  const PermissionSetState({
     this.arn,
     this.createdDate,
     this.description,

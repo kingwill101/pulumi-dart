@@ -94,7 +94,7 @@ class ServerState {
   /// [sshKeys] SSH key IDs or names which should be injected into the server at creation time. Once the server is created, you can not update the list of SSH Keys. If you do change this, you will be prompted to destroy and recreate the server. You can avoid this by setting lifecycle.ignore_changes to `[ ssh_keys ]`.
   /// [status] (string) The status of the server.
   /// [userData] Cloud-Init user data to use during server creation
-  ServerState({
+  const ServerState({
     this.allowDeprecatedImages,
     this.backupWindow,
     this.backups,

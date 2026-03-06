@@ -29,7 +29,7 @@ class GetGatewayApigatewayV1betaResult {
   /// [name] Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
   /// [state] The current state of the Gateway.
   /// [updateTime] Updated time.
-  GetGatewayApigatewayV1betaResult({
+  const GetGatewayApigatewayV1betaResult({
     required this.apiConfig,
     required this.createTime,
     required this.defaultHostname,

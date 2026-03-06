@@ -12,7 +12,7 @@ class WebAclLoggingConfigurationLoggingFilter {
   /// Creates a new [WebAclLoggingConfigurationLoggingFilter].
   /// [defaultBehavior] Default handling for logs that don't match any of the specified filtering conditions. Valid values for `default_behavior` are `KEEP` or `DROP`.
   /// [filters] Filter(s) that you want to apply to the logs. See Filter below for more details.
-  WebAclLoggingConfigurationLoggingFilter({
+  const WebAclLoggingConfigurationLoggingFilter({
     required this.defaultBehavior,
     required this.filters,
   });

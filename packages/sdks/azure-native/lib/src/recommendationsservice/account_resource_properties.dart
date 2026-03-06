@@ -20,7 +20,7 @@ class AccountResourceProperties {
   /// [cors] The list of CORS details.
   /// [endpointAuthentications] The list of service endpoints authentication details.
   /// [reportsConnectionString] Connection string to write Accounts reports to.
-  AccountResourceProperties({
+  const AccountResourceProperties({
     this.configuration,
     this.cors,
     this.endpointAuthentications,

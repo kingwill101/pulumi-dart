@@ -8,7 +8,7 @@ class PerInstanceConfigPreservedStateExternalIpIpAddress {
 
   /// Creates a new [PerInstanceConfigPreservedStateExternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.
-  PerInstanceConfigPreservedStateExternalIpIpAddress({
+  const PerInstanceConfigPreservedStateExternalIpIpAddress({
     this.address,
   });
 

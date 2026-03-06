@@ -11,7 +11,7 @@ class ProjectDataDeliveryS3Destination {
   /// Creates a new [ProjectDataDeliveryS3Destination].
   /// [bucket] The name of the bucket in which Evidently stores evaluation events.
   /// [prefix] The bucket prefix in which Evidently stores evaluation events.
-  ProjectDataDeliveryS3Destination({
+  const ProjectDataDeliveryS3Destination({
     this.bucket,
     this.prefix,
   });

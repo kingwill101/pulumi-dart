@@ -13,7 +13,7 @@ class EncryptionCustomerManagedKeyEncryption {
   /// Creates a new [EncryptionCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyIdentity] All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
   /// [keyEncryptionKeyUrl] key encryption key Url, versioned or unversioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-  EncryptionCustomerManagedKeyEncryption({
+  const EncryptionCustomerManagedKeyEncryption({
     this.keyEncryptionKeyIdentity,
     this.keyEncryptionKeyUrl,
   });

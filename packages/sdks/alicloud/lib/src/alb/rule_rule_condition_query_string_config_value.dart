@@ -9,7 +9,7 @@ class RuleRuleConditionQueryStringConfigValue {
   /// Creates a new [RuleRuleConditionQueryStringConfigValue].
   /// [key] Optional.
   /// [value] Optional.
-  RuleRuleConditionQueryStringConfigValue({
+  const RuleRuleConditionQueryStringConfigValue({
     this.key,
     this.value,
   });

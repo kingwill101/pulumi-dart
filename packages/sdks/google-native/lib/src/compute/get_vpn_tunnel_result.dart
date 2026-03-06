@@ -74,7 +74,7 @@ class GetVpnTunnelResult {
   /// [targetVpnGateway] URL of the Target VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created.
   /// [vpnGateway] URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High Availability VPN gateway resource is created.
   /// [vpnGatewayInterface] The interface ID of the VPN gateway with which this VPN tunnel is associated. Possible values are: `0`, `1`.
-  GetVpnTunnelResult({
+  const GetVpnTunnelResult({
     required this.creationTimestamp,
     required this.description,
     required this.detailedStatus,

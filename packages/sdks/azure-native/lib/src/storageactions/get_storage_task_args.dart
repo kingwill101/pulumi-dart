@@ -15,7 +15,7 @@ class GetStorageTaskArgs {
   /// Creates a new [GetStorageTaskArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageTaskName] The name of the storage task within the specified resource group. Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
-  GetStorageTaskArgs({
+  const GetStorageTaskArgs({
     required this.resourceGroupName,
     required this.storageTaskName,
   });

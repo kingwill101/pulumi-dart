@@ -15,7 +15,7 @@ class SloWindowsBasedSliMetricSumInRangeRange {
   /// Creates a new [SloWindowsBasedSliMetricSumInRangeRange].
   /// [max] max value for the range (inclusive). If not given,
   /// [min] Min value for the range (inclusive). If not given,
-  SloWindowsBasedSliMetricSumInRangeRange({
+  const SloWindowsBasedSliMetricSumInRangeRange({
     this.max,
     this.min,
   });

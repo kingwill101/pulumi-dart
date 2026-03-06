@@ -29,7 +29,7 @@ class PipelinePropertiesResponse {
   /// [provisioningState] Provisioning state of the pipeline
   /// [remoteCloud] Remote cloud of the data to be transferred or received
   /// [subscribers] Subscribers of this resource
-  PipelinePropertiesResponse({
+  const PipelinePropertiesResponse({
     required this.connections,
     this.displayName,
     this.flowTypes,

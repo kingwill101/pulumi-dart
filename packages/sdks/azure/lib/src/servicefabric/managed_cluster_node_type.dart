@@ -60,7 +60,7 @@ class ManagedClusterNodeType {
   /// [vmInstanceCount] The number of instances this node type will launch.
   /// [vmSecrets] One or more `vm_secrets` blocks as defined below.
   /// [vmSize] The size of the instances in this node type.
-  ManagedClusterNodeType({
+  const ManagedClusterNodeType({
     required this.applicationPortRange,
     this.capacities,
     required this.dataDiskSizeGb,

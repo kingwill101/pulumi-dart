@@ -10,7 +10,7 @@ class NfsFileShareCacheAttributes {
 
   /// Creates a new [NfsFileShareCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  NfsFileShareCacheAttributes({
+  const NfsFileShareCacheAttributes({
     this.cacheStaleTimeoutInSeconds,
   });
 

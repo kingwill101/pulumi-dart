@@ -14,7 +14,7 @@ class OsDisk {
   /// [createOption] The strategy for creating the OS disk.
   /// [deleteOption] The strategy for deleting the OS disk.
   /// [diskSizeGB] The size of the disk. Required if the createOption is Ephemeral. Allocations are measured in gibibytes.
-  OsDisk({
+  const OsDisk({
     this.createOption,
     this.deleteOption,
     required this.diskSizeGB,

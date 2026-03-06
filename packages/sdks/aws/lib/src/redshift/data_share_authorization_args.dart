@@ -23,7 +23,7 @@ class DataShareAuthorizationArgs {
   /// [consumerIdentifier] Identifier of the data consumer that is authorized to access the datashare. This identifier is an AWS account ID or a keyword, such as `ADX`.
   /// [dataShareArn] Amazon Resource Name (ARN) of the datashare that producers are to authorize sharing for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DataShareAuthorizationArgs({
+  const DataShareAuthorizationArgs({
     this.allowWrites,
     required this.consumerIdentifier,
     required this.dataShareArn,

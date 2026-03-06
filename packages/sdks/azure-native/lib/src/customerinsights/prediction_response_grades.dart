@@ -15,7 +15,7 @@ class PredictionResponseGrades {
   /// [gradeName] Name of the grade.
   /// [maxScoreThreshold] Maximum score threshold.
   /// [minScoreThreshold] Minimum score threshold.
-  PredictionResponseGrades({
+  const PredictionResponseGrades({
     this.gradeName,
     this.maxScoreThreshold,
     this.minScoreThreshold,

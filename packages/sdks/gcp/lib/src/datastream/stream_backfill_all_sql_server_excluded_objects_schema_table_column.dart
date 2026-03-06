@@ -37,7 +37,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn {
   /// [precision] (Output)
   /// [primaryKey] (Output)
   /// [scale] (Output)
-  StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn({
+  const StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumn({
     this.column,
     this.dataType,
     this.length,

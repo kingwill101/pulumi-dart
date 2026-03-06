@@ -18,7 +18,7 @@ class GetEmailTemplateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [templateName] Email Template Name Identifier.
-  GetEmailTemplateArgs({
+  const GetEmailTemplateArgs({
     required this.resourceGroupName,
     required this.serviceName,
     required this.templateName,

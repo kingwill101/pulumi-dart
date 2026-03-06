@@ -185,7 +185,7 @@ class ImageArgs {
   /// [ssh] SSH agent socket or keys to expose to the build.
   /// [tags] Name and optionally a tag (format: `name:tag`).
   /// [target] Set the target build stage(s) to build.
-  ImageArgs({
+  const ImageArgs({
     this.addHosts,
     this.buildArgs,
     this.buildOnPreview,

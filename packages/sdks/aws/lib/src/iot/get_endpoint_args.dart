@@ -15,7 +15,7 @@ class GetEndpointArgs {
   /// Creates a new [GetEndpointArgs].
   /// [endpointType] Endpoint type. Valid values: `iot:CredentialProvider`, `iot:Data`, `iot:Data-ATS`, `iot:Jobs`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     this.endpointType,
     this.region,
   });

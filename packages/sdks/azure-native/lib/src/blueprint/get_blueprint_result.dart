@@ -45,7 +45,7 @@ class GetBlueprintResult {
   /// [targetScope] The scope where this blueprint definition can be assigned.
   /// [type] Type of this resource.
   /// [versions] Published versions of this blueprint definition.
-  GetBlueprintResult({
+  const GetBlueprintResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

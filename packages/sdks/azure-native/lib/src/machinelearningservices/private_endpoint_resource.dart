@@ -9,7 +9,7 @@ class PrivateEndpointResource {
 
   /// Creates a new [PrivateEndpointResource].
   /// [subnetArmId] The subnetId that the private endpoint is connected to.
-  PrivateEndpointResource({
+  const PrivateEndpointResource({
     this.subnetArmId,
   });
 

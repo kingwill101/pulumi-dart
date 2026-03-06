@@ -11,7 +11,7 @@ class ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig {
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig].
   /// [enableEntityExtraction] Enable entity extraction in conversation messages on agent assist stage.
   /// [enableSentimentAnalysis] Enable sentiment analysis in conversation messages on agent assist stage. Sentiment analysis inspects user input and identifies the prevailing subjective opinion, especially to determine a user's attitude as positive, negative, or neutral.
-  ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig({
+  const ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig({
     this.enableEntityExtraction,
     this.enableSentimentAnalysis,
   });

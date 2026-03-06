@@ -14,7 +14,7 @@ class ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration {
   /// [cpu] The CPU requirements for every worker instance of the worker type.
   /// [disk] The disk requirements for every worker instance of the worker type.
   /// [memory] The memory requirements for every worker instance of the worker type.
-  ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration({
+  const ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration({
     required this.cpu,
     this.disk,
     required this.memory,

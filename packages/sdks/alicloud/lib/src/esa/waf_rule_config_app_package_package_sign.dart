@@ -10,7 +10,7 @@ class WafRuleConfigAppPackagePackageSign {
   /// Creates a new [WafRuleConfigAppPackagePackageSign].
   /// [name] Optional.
   /// [sign] The digital signature of a legitimate app package.
-  WafRuleConfigAppPackagePackageSign({
+  const WafRuleConfigAppPackagePackageSign({
     this.name,
     this.sign,
   });

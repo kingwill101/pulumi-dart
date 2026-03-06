@@ -25,7 +25,7 @@ class Python3PackageArgs {
   /// [packageName] The name of python package.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [tags] Gets or sets the tags attached to the resource.
-  Python3PackageArgs({
+  const Python3PackageArgs({
     required this.automationAccountName,
     required this.contentLink,
     this.packageName,

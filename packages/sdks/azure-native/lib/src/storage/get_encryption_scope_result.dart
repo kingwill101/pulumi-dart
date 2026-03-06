@@ -36,7 +36,7 @@ class GetEncryptionScopeResult {
   /// [source] The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
   /// [state] The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEncryptionScopeResult({
+  const GetEncryptionScopeResult({
     required this.azureApiVersion,
     required this.creationTime,
     required this.id,

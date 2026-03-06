@@ -11,7 +11,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatCon
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig].
   /// [aggregationType] Whether Amazon AppFlow aggregates the flow records into a single file, or leave them unaggregated. Valid values are `None` and `SingleFile`.
   /// [targetFileSize] The desired file size, in MB, for each output file that Amazon AppFlow writes to the flow destination. Integer value.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfigAggregationConfig({
     this.aggregationType,
     this.targetFileSize,
   });

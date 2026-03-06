@@ -84,7 +84,7 @@ class GetModelDeploymentMonitoringJobResult {
   /// [state] The detailed state of the monitoring job. When the job is still creating, the state will be 'PENDING'. Once the job is successfully created, the state will be 'RUNNING'. Pause the job, the state will be 'PAUSED'. Resume the job, the state will return to 'RUNNING'.
   /// [statsAnomaliesBaseDirectory] Stats anomalies base folder path.
   /// [updateTime] Timestamp when this ModelDeploymentMonitoringJob was updated most recently.
-  GetModelDeploymentMonitoringJobResult({
+  const GetModelDeploymentMonitoringJobResult({
     required this.analysisInstanceSchemaUri,
     required this.bigqueryTables,
     required this.createTime,

@@ -11,7 +11,7 @@ class GetAttachmentsSlbAttachment {
   /// Creates a new [GetAttachmentsSlbAttachment].
   /// [instanceId] ID of the attached ECS instance.
   /// [weight] Weight associated to the ECS instance.
-  GetAttachmentsSlbAttachment({
+  const GetAttachmentsSlbAttachment({
     required this.instanceId,
     required this.weight,
   });

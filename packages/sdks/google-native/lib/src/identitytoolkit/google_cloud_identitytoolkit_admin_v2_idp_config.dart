@@ -19,7 +19,7 @@ class GoogleCloudIdentitytoolkitAdminV2IdpConfig {
   /// [idpEntityId] Unique identifier for all SAML entities.
   /// [signRequest] Indicates if outbounding SAMLRequest should be signed.
   /// [ssoUrl] URL to send Authentication request to.
-  GoogleCloudIdentitytoolkitAdminV2IdpConfig({
+  const GoogleCloudIdentitytoolkitAdminV2IdpConfig({
     this.idpCertificates,
     this.idpEntityId,
     this.signRequest,

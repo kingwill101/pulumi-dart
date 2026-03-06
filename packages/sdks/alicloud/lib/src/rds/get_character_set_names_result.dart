@@ -14,7 +14,7 @@ class GetCharacterSetNamesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetCharacterSetNamesResult({
+  const GetCharacterSetNamesResult({
     required this.engine,
     required this.id,
     required this.names,

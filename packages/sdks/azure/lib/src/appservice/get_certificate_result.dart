@@ -37,7 +37,7 @@ class GetCertificateResult {
   /// [subjectName] The subject name of the certificate.
   /// [tags] Optional.
   /// [thumbprint] The thumbprint for the certificate.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.expirationDate,
     required this.friendlyName,
     required this.hostNames,

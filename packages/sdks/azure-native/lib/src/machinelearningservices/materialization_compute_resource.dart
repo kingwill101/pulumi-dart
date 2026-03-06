@@ -9,7 +9,7 @@ class MaterializationComputeResource {
 
   /// Creates a new [MaterializationComputeResource].
   /// [instanceType] Specifies the instance type
-  MaterializationComputeResource({
+  const MaterializationComputeResource({
     this.instanceType,
   });
 

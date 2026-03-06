@@ -20,7 +20,7 @@ class FhirServiceCors {
   /// [allowedOrigins] A set of origins to be allowed via CORS.
   /// [credentialsAllowed] If credentials are allowed via CORS.
   /// [maxAgeInSeconds] The max age to be allowed via CORS.
-  FhirServiceCors({
+  const FhirServiceCors({
     required this.allowedHeaders,
     required this.allowedMethods,
     required this.allowedOrigins,

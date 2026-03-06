@@ -9,7 +9,7 @@ class ClusterLoggingConfig {
 
   /// Creates a new [ClusterLoggingConfig].
   /// [enableComponents] The GKE components exposing logs. Supported values include:
-  ClusterLoggingConfig({
+  const ClusterLoggingConfig({
     required this.enableComponents,
   });
 

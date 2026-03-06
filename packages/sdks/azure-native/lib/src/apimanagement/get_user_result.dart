@@ -44,7 +44,7 @@ class GetUserResult {
   /// [registrationDate] Date of user registration. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   /// [state] Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetUserResult({
+  const GetUserResult({
     required this.azureApiVersion,
     this.email,
     this.firstName,

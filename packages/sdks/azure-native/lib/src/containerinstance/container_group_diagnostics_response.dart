@@ -10,7 +10,7 @@ class ContainerGroupDiagnosticsResponse {
 
   /// Creates a new [ContainerGroupDiagnosticsResponse].
   /// [logAnalytics] Container group log analytics information.
-  ContainerGroupDiagnosticsResponse({
+  const ContainerGroupDiagnosticsResponse({
     this.logAnalytics,
   });
 

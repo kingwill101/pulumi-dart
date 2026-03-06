@@ -18,7 +18,7 @@ class RoutineRelatedRecordArgs {
   /// [name] The routine name.
   /// [recordName] The record name.
   /// [siteId] The website ID.
-  RoutineRelatedRecordArgs({
+  const RoutineRelatedRecordArgs({
     this.name,
     required this.recordName,
     required this.siteId,

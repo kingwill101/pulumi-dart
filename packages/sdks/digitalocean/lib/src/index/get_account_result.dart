@@ -29,7 +29,7 @@ class GetAccountResult {
   /// [status] This value is one of "active", "warning" or "locked".
   /// [statusMessage] A human-readable message giving more details about the status of the account.
   /// [uuid] The unique universal identifier for the current user.
-  GetAccountResult({
+  const GetAccountResult({
     required this.dropletLimit,
     required this.email,
     required this.emailVerified,

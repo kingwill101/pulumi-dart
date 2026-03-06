@@ -16,7 +16,7 @@ class DeploymentInfoResponse {
   /// [deployment] Deployment information.
   /// [deploymentFetchStatus] Status while fetching the last deployment.
   /// [message] Additional details about the deployment that can be shown to the user.
-  DeploymentInfoResponse({
+  const DeploymentInfoResponse({
     this.deployment,
     this.deploymentFetchStatus,
     this.message,

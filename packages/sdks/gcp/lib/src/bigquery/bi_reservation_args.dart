@@ -24,7 +24,7 @@ class BiReservationArgs {
   /// [preferredTables] Preferred tables to use BI capacity for.
   /// [project] The ID of the project in which the resource belongs.
   /// [size] Size of a reservation, in bytes.
-  BiReservationArgs({
+  const BiReservationArgs({
     required this.location,
     this.preferredTables,
     this.project,

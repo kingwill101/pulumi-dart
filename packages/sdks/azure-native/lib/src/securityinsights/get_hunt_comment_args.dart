@@ -21,7 +21,7 @@ class GetHuntCommentArgs {
   /// [huntId] The hunt id (GUID)
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetHuntCommentArgs({
+  const GetHuntCommentArgs({
     required this.huntCommentId,
     required this.huntId,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class DomainDevicesDiskSourceDataStoreFormat {
   /// Creates a new [DomainDevicesDiskSourceDataStoreFormat].
   /// [metadataCache] Configures the metadata cache settings for the data store format within the backing store source.
   /// [type] Specifies the type of the data store format being used in the backing store source.
-  DomainDevicesDiskSourceDataStoreFormat({
+  const DomainDevicesDiskSourceDataStoreFormat({
     this.metadataCache,
     required this.type,
   });

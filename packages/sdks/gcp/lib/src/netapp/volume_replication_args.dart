@@ -56,7 +56,7 @@ class VolumeReplicationArgs {
   /// [replicationSchedule] Specifies the replication interval.
   /// [volumeName] The name of the existing source volume.
   /// [waitForMirror] Optional.
-  VolumeReplicationArgs({
+  const VolumeReplicationArgs({
     this.deleteDestinationVolume,
     this.description,
     this.destinationVolumeParameters,

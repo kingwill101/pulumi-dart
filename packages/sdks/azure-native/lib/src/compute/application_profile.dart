@@ -10,7 +10,7 @@ class ApplicationProfile {
 
   /// Creates a new [ApplicationProfile].
   /// [galleryApplications] Specifies the gallery applications that should be made available to the VM/VMSS
-  ApplicationProfile({
+  const ApplicationProfile({
     this.galleryApplications,
   });
 

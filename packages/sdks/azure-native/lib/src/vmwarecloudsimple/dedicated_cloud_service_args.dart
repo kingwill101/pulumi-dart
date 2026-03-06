@@ -24,7 +24,7 @@ class DedicatedCloudServiceArgs {
   /// [location] Azure region
   /// [resourceGroupName] The name of the resource group
   /// [tags] The list of tags
-  DedicatedCloudServiceArgs({
+  const DedicatedCloudServiceArgs({
     this.dedicatedCloudServiceName,
     required this.gatewaySubnet,
     this.location,

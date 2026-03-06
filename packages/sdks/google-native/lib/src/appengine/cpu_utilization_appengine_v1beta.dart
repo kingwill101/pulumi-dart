@@ -12,7 +12,7 @@ class CpuUtilizationAppengineV1beta {
   /// Creates a new [CpuUtilizationAppengineV1beta].
   /// [aggregationWindowLength] Period of time over which CPU utilization is calculated.
   /// [targetUtilization] Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
-  CpuUtilizationAppengineV1beta({
+  const CpuUtilizationAppengineV1beta({
     this.aggregationWindowLength,
     this.targetUtilization,
   });

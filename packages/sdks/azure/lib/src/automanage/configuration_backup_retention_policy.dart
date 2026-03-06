@@ -16,7 +16,7 @@ class ConfigurationBackupRetentionPolicy {
   /// [dailySchedule] A `daily_schedule` block as defined below.
   /// [retentionPolicyType] The retention policy type of the backup policy. Possible value is `LongTermRetentionPolicy`. Defaults to `LongTermRetentionPolicy`.
   /// [weeklySchedule] A `weekly_schedule` block as defined below.
-  ConfigurationBackupRetentionPolicy({
+  const ConfigurationBackupRetentionPolicy({
     this.dailySchedule,
     this.retentionPolicyType,
     this.weeklySchedule,

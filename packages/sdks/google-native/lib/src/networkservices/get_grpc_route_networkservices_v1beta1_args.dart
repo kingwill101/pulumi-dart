@@ -15,7 +15,7 @@ class GetGrpcRouteNetworkservicesV1beta1Args {
   /// [grpcRouteId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGrpcRouteNetworkservicesV1beta1Args({
+  const GetGrpcRouteNetworkservicesV1beta1Args({
     required this.grpcRouteId,
     required this.location,
     this.project,

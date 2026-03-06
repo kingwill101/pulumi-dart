@@ -127,7 +127,7 @@ class GetExadataInfrastructureResult {
   /// [timeCreated] The date and time the Cloud Exadata Infrastructure resource was created.
   /// [totalStorageSizeInGbs] The total storage allocated to the Cloud Exadata Infrastructure resource, in gigabytes (GB).
   /// [zones] The Cloud Exadata Infrastructure Azure zones.
-  GetExadataInfrastructureResult({
+  const GetExadataInfrastructureResult({
     required this.activatedStorageCount,
     required this.additionalStorageCount,
     required this.availableStorageSizeInGbs,

@@ -325,7 +325,7 @@ class ClusterArgs {
   /// [version] Desired Kubernetes master / control plane version. If you do not specify a value, the latest available version is used.
   /// [vpcCniOptions] The configuration of the Amazon VPC CNI plugin for this instance. Defaults are described in the documentation for the VpcCniOptions type.
   /// [vpcId] The VPC in which to create the cluster and its worker nodes. If unset, the cluster will be created in the default VPC.
-  ClusterArgs({
+  const ClusterArgs({
     this.accessEntries,
     this.authenticationMode,
     this.autoMode,

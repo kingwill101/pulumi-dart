@@ -13,7 +13,7 @@ class PostBuildDefinition {
   /// Creates a new [PostBuildDefinition].
   /// [substitute] Key/value pairs holding the variables to be substituted in this Kustomization.
   /// [substituteFrom] Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization.
-  PostBuildDefinition({
+  const PostBuildDefinition({
     this.substitute,
     this.substituteFrom,
   });

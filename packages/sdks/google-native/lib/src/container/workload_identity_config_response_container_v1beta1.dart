@@ -15,7 +15,7 @@ class WorkloadIdentityConfigResponseContainerV1beta1 {
   /// [identityNamespace] IAM Identity Namespace to attach all Kubernetes Service Accounts to.
   /// [identityProvider] identity provider is the third party identity provider.
   /// [workloadPool] The workload pool to attach all Kubernetes service accounts to.
-  WorkloadIdentityConfigResponseContainerV1beta1({
+  const WorkloadIdentityConfigResponseContainerV1beta1({
     required this.identityNamespace,
     required this.identityProvider,
     required this.workloadPool,

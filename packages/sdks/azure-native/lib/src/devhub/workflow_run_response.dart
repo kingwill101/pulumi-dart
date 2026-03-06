@@ -17,7 +17,7 @@ class WorkflowRunResponse {
   /// [succeeded] Describes if the workflow run succeeded.
   /// [workflowRunStatus] Describes the status of the workflow run
   /// [workflowRunURL] URL to the run of the workflow.
-  WorkflowRunResponse({
+  const WorkflowRunResponse({
     required this.lastRunAt,
     required this.succeeded,
     this.workflowRunStatus,

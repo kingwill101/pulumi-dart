@@ -18,7 +18,7 @@ class MoveResourceErrorBodyResponse {
   /// [details] A list of additional details about the error.
   /// [message] A message describing the error, intended to be suitable for display in a user interface.
   /// [target] The target of the particular error. For example, the name of the property in error.
-  MoveResourceErrorBodyResponse({
+  const MoveResourceErrorBodyResponse({
     required this.code,
     required this.details,
     required this.message,

@@ -29,7 +29,7 @@ class GetReservedInstanceOfferingResult {
   /// [offeringType] Required.
   /// [productDescription] Required.
   /// [region] Required.
-  GetReservedInstanceOfferingResult({
+  const GetReservedInstanceOfferingResult({
     required this.currencyCode,
     required this.dbInstanceClass,
     required this.duration,

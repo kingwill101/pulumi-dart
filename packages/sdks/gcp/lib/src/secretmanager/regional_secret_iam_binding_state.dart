@@ -46,7 +46,7 @@ class RegionalSecretIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [secretId] Used to find the parent resource to bind the IAM policy to
-  RegionalSecretIamBindingState({
+  const RegionalSecretIamBindingState({
     this.condition,
     this.etag,
     this.location,

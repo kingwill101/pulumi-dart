@@ -33,7 +33,7 @@ class GetTrackerResult {
   /// [trackerArn] ARN for the tracker resource. Used when you need to specify a resource across all AWS.
   /// [trackerName] Required.
   /// [updateTime] Timestamp for when the tracker resource was last updated in ISO 8601 format.
-  GetTrackerResult({
+  const GetTrackerResult({
     required this.createTime,
     required this.description,
     required this.id,

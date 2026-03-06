@@ -26,7 +26,7 @@ class NetworkAclEntriesEgress {
   /// [policy] The policy of the egress entry. It must be `accept` or `drop`.
   /// [port] The port of the egress entry.
   /// [protocol] The protocol of the egress entry.
-  NetworkAclEntriesEgress({
+  const NetworkAclEntriesEgress({
     this.description,
     this.destinationCidrIp,
     this.entryType,

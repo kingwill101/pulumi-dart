@@ -21,7 +21,7 @@ class ListStorageAccountSasTokensArgs {
   /// [containerName] The name of the Azure storage container for which the SAS token is being requested.
   /// [resourceGroupName] The name of the Azure resource group.
   /// [storageAccountName] The name of the Azure storage account for which the SAS token is being requested.
-  ListStorageAccountSasTokensArgs({
+  const ListStorageAccountSasTokensArgs({
     required this.accountName,
     required this.containerName,
     required this.resourceGroupName,

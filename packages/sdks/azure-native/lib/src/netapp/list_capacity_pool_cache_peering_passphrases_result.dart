@@ -14,7 +14,7 @@ class ListCapacityPoolCachePeeringPassphrasesResult {
   /// [clusterPeeringCommand] The cluster peering command.
   /// [clusterPeeringPassphrase] The cluster peering passphrase.
   /// [vserverPeeringCommand] The vserver peering command.
-  ListCapacityPoolCachePeeringPassphrasesResult({
+  const ListCapacityPoolCachePeeringPassphrasesResult({
     required this.clusterPeeringCommand,
     required this.clusterPeeringPassphrase,
     required this.vserverPeeringCommand,

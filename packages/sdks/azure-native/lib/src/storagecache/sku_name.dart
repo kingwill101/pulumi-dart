@@ -9,7 +9,7 @@ class SkuName {
 
   /// Creates a new [SkuName].
   /// [name] SKU name for this resource.
-  SkuName({
+  const SkuName({
     this.name,
   });
 

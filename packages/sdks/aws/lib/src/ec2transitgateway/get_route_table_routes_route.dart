@@ -20,7 +20,7 @@ class GetRouteTableRoutesRoute {
   /// [state] The current state of the route, can be `active`, `deleted`, `pending`, `blackhole`, `deleting`.
   /// [transitGatewayRouteTableAnnouncementId] The id of the transit gateway route table announcement, most of the time it is an empty string.
   /// [type] The type of the route, can be `propagated` or `static`.
-  GetRouteTableRoutesRoute({
+  const GetRouteTableRoutesRoute({
     required this.destinationCidrBlock,
     required this.prefixListId,
     required this.state,

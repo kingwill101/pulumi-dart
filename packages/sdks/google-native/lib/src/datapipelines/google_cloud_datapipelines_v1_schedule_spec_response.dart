@@ -15,7 +15,7 @@ class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
   /// [nextJobTime] When the next Scheduler job is going to run.
   /// [schedule] Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
   /// [timeZone] Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
-  GoogleCloudDatapipelinesV1ScheduleSpecResponse({
+  const GoogleCloudDatapipelinesV1ScheduleSpecResponse({
     required this.nextJobTime,
     required this.schedule,
     required this.timeZone,

@@ -40,7 +40,7 @@ class GetShareNetworkArgs {
   /// [region] The region in which to obtain the V2 Shared File System client.
   /// [securityServiceId] The security service IDs associated with
   /// [segmentationId] The share network segmentation ID.
-  GetShareNetworkArgs({
+  const GetShareNetworkArgs({
     this.description,
     this.ipVersion,
     this.name,

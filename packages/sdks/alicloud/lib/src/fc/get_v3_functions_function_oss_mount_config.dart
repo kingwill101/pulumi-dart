@@ -9,7 +9,7 @@ class GetV3FunctionsFunctionOssMountConfig {
 
   /// Creates a new [GetV3FunctionsFunctionOssMountConfig].
   /// [mountPoints] OSS mount point list.
-  GetV3FunctionsFunctionOssMountConfig({
+  const GetV3FunctionsFunctionOssMountConfig({
     required this.mountPoints,
   });
 

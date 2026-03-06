@@ -15,7 +15,7 @@ class CustomImagePropertiesFromPlan {
   /// [id] The id of the plan, equivalent to name of the plan
   /// [offer] The offer for the plan from the marketplace image the custom image is derived from
   /// [publisher] The publisher for the plan from the marketplace image the custom image is derived from
-  CustomImagePropertiesFromPlan({
+  const CustomImagePropertiesFromPlan({
     this.id,
     this.offer,
     this.publisher,

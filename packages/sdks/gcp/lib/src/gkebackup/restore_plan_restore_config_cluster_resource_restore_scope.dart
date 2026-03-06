@@ -28,7 +28,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScope {
   /// [excludedGroupKinds] A list of cluster-scoped resource group kinds to NOT restore from the backup.
   /// [noGroupKinds] If True, no cluster-scoped resources will be restored.
   /// [selectedGroupKinds] A list of cluster-scoped resource group kinds to restore from the backup.
-  RestorePlanRestoreConfigClusterResourceRestoreScope({
+  const RestorePlanRestoreConfigClusterResourceRestoreScope({
     this.allGroupKinds,
     this.excludedGroupKinds,
     this.noGroupKinds,

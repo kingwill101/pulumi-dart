@@ -21,7 +21,7 @@ class BigQueryConfigResponse {
   /// [table] Optional. The name of the table to which to write data, of the form {projectId}.{datasetId}.{tableId}
   /// [useTopicSchema] Optional. When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
   /// [writeMetadata] Optional. When true, write the subscription name, message_id, publish_time, attributes, and ordering_key to additional columns in the table. The subscription name, message_id, and publish_time fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
-  BigQueryConfigResponse({
+  const BigQueryConfigResponse({
     required this.dropUnknownFields,
     required this.state,
     required this.table,

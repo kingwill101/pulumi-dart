@@ -10,7 +10,7 @@ class SourceScoringConfig {
 
   /// Creates a new [SourceScoringConfig].
   /// [sourceImportance] Importance of the source.
-  SourceScoringConfig({
+  const SourceScoringConfig({
     this.sourceImportance,
   });
 

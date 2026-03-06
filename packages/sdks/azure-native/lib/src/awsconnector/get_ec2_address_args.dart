@@ -15,7 +15,7 @@ class GetEc2AddressArgs {
   /// Creates a new [GetEc2AddressArgs].
   /// [name] Name of Ec2Address
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2AddressArgs({
+  const GetEc2AddressArgs({
     required this.name,
     required this.resourceGroupName,
   });

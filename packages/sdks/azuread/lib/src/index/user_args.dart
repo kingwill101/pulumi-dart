@@ -119,7 +119,7 @@ class UserArgs {
   /// [surname] The user's surname (family name or last name).
   /// [usageLocation] The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
   /// [userPrincipalName] The user principal name (UPN) of the user.
-  UserArgs({
+  const UserArgs({
     this.accountEnabled,
     this.ageGroup,
     this.businessPhones,

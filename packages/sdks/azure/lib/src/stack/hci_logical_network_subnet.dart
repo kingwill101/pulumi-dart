@@ -24,7 +24,7 @@ class HciLogicalNetworkSubnet {
   /// [ipPools] One or more `ip_pool` block as defined above. Changing this forces a new resource to be created.
   /// [routes] A `route` block as defined above. Changing this forces a new resource to be created.
   /// [vlanId] The VLAN ID for the Logical Network. Changing this forces a new resource to be created.
-  HciLogicalNetworkSubnet({
+  const HciLogicalNetworkSubnet({
     this.addressPrefix,
     required this.ipAllocationMethod,
     this.ipPools,

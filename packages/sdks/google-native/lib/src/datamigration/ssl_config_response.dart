@@ -18,7 +18,7 @@ class SslConfigResponse {
   /// [clientCertificate] Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
   /// [clientKey] Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
   /// [type] The ssl config type according to 'client_key', 'client_certificate' and 'ca_certificate'.
-  SslConfigResponse({
+  const SslConfigResponse({
     required this.caCertificate,
     required this.clientCertificate,
     required this.clientKey,

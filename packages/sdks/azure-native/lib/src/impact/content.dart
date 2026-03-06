@@ -12,7 +12,7 @@ class Content {
   /// Creates a new [Content].
   /// [description] Description of the insight
   /// [title] Title of the insight
-  Content({
+  const Content({
     required this.description,
     required this.title,
   });

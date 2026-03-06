@@ -34,7 +34,7 @@ class DefenderForServersGcpOffering {
   /// [subPlan] configuration for the servers offering subPlan
   /// [vaAutoProvisioning] The Vulnerability Assessment autoprovisioning configuration
   /// [vmScanners] The Microsoft Defender for Server VM scanning configuration
-  DefenderForServersGcpOffering({
+  const DefenderForServersGcpOffering({
     this.arcAutoProvisioning,
     this.defenderForServers,
     this.mdeAutoProvisioning,

@@ -15,7 +15,7 @@ class GetAttestorIamPolicyArgs {
   /// [attestorId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAttestorIamPolicyArgs({
+  const GetAttestorIamPolicyArgs({
     required this.attestorId,
     this.optionsRequestedPolicyVersion,
     this.project,

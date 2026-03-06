@@ -15,7 +15,7 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse {
   /// [baseTable] Name of a singular table this view reflects one to one.
   /// [sqlQuery] SQL query used to generate this view.
   /// [viewType] Type of this view.
-  GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse({
+  const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse({
     required this.baseTable,
     required this.sqlQuery,
     required this.viewType,

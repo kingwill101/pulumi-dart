@@ -50,7 +50,7 @@ class GoogleCloudDocumentaiV1Document {
   /// [textChanges] Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
   /// [textStyles] Styles for the Document.text.
   /// [uri] Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. For more information, refer to [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris).
-  GoogleCloudDocumentaiV1Document({
+  const GoogleCloudDocumentaiV1Document({
     this.content,
     this.entities,
     this.entityRelations,

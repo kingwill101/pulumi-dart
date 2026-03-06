@@ -10,7 +10,7 @@ class SdkvoiceGlobalSettingsState {
 
   /// Creates a new [SdkvoiceGlobalSettingsState].
   /// [voiceConnector] The Voice Connector settings. See voice_connector.
-  SdkvoiceGlobalSettingsState({
+  const SdkvoiceGlobalSettingsState({
     this.voiceConnector,
   });
 

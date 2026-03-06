@@ -12,7 +12,7 @@ class LinkResponse {
   /// Creates a new [LinkResponse].
   /// [description] Describes what the link offers.
   /// [url] The URL of the link.
-  LinkResponse({
+  const LinkResponse({
     required this.description,
     required this.url,
   });

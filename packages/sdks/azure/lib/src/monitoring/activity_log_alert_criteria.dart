@@ -89,7 +89,7 @@ class ActivityLogAlertCriteria {
   /// [statuses] A list of status of the event. For example, `Started`, `Failed`, or `Succeeded`.
   /// [subStatus] The sub status of the event.
   /// [subStatuses] A list of sub status of the event.
-  ActivityLogAlertCriteria({
+  const ActivityLogAlertCriteria({
     this.caller,
     required this.category,
     this.level,

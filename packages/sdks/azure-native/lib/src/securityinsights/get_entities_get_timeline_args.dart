@@ -30,7 +30,7 @@ class GetEntitiesGetTimelineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startTime] The start timeline date, so the results returned are after this date.
   /// [workspaceName] The name of the workspace.
-  GetEntitiesGetTimelineArgs({
+  const GetEntitiesGetTimelineArgs({
     required this.endTime,
     required this.entityId,
     this.kinds,

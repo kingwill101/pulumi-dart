@@ -59,7 +59,7 @@ class GetWebAppInstanceFunctionSlotResult {
   /// [testData] Test data used when testing via the Azure Portal.
   /// [testDataHref] Test data URI.
   /// [type] Resource type.
-  GetWebAppInstanceFunctionSlotResult({
+  const GetWebAppInstanceFunctionSlotResult({
     required this.azureApiVersion,
     this.config,
     this.configHref,

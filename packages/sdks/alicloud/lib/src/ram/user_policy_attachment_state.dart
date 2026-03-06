@@ -17,7 +17,7 @@ class UserPolicyAttachmentState {
   /// [policyName] The name of the policy.
   /// [policyType] Permission policy type.
   /// [userName] The name of the RAM user.
-  UserPolicyAttachmentState({
+  const UserPolicyAttachmentState({
     this.policyName,
     this.policyType,
     this.userName,

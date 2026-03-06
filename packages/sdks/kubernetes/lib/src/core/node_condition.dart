@@ -24,7 +24,7 @@ class NodeCondition {
   /// [reason] (brief) reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of node condition.
-  NodeCondition({
+  const NodeCondition({
     this.lastHeartbeatTime,
     this.lastTransitionTime,
     this.message,

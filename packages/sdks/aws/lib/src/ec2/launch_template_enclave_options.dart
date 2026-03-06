@@ -10,7 +10,7 @@ class LaunchTemplateEnclaveOptions {
 
   /// Creates a new [LaunchTemplateEnclaveOptions].
   /// [enabled] If set to `true`, Nitro Enclaves will be enabled on the instance.
-  LaunchTemplateEnclaveOptions({
+  const LaunchTemplateEnclaveOptions({
     this.enabled,
   });
 

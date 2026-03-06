@@ -15,7 +15,7 @@ class DomainAutoTuneOptions {
   /// [desiredState] The Auto-Tune desired state for the domain. Valid values: `ENABLED` or `DISABLED`.
   /// [maintenanceSchedules] Configuration block for Auto-Tune maintenance windows. Can be specified multiple times for each maintenance window. Detailed below.
   /// [rollbackOnDisable] Whether to roll back to default Auto-Tune settings when disabling Auto-Tune. Valid values: `DEFAULT_ROLLBACK` or `NO_ROLLBACK`.
-  DomainAutoTuneOptions({
+  const DomainAutoTuneOptions({
     required this.desiredState,
     this.maintenanceSchedules,
     this.rollbackOnDisable,

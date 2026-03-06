@@ -32,7 +32,7 @@ class FleetDatabaseProperties {
   /// [sourceDatabaseName] Source database name used when CreateMode is Copy or PointInTimeRestore.
   /// [tierName] Name of the tier this database belongs to.
   /// [transparentDataEncryption] Transparent Data Encryption properties
-  FleetDatabaseProperties({
+  const FleetDatabaseProperties({
     this.collation,
     this.createMode,
     this.identity,

@@ -54,7 +54,7 @@ class ToolsetState {
   /// [project] The ID of the project in which the resource belongs.
   /// [toolsetId] The ID to use for the toolset, which will become the final component of
   /// [updateTime] Timestamp when the toolset was last updated.
-  ToolsetState({
+  const ToolsetState({
     this.app,
     this.createTime,
     this.description,

@@ -9,7 +9,7 @@ class ConnectorProperties {
 
   /// Creates a new [ConnectorProperties].
   /// [connectorType] connector type
-  ConnectorProperties({
+  const ConnectorProperties({
     required this.connectorType,
   });
 

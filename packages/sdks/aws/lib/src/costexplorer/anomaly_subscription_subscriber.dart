@@ -11,7 +11,7 @@ class AnomalySubscriptionSubscriber {
   /// Creates a new [AnomalySubscriptionSubscriber].
   /// [address] The address of the subscriber. If type is `SNS`, this will be the arn of the sns topic. If type is `EMAIL`, this will be the destination email address.
   /// [type] The type of subscription. Valid Values: `SNS` | `EMAIL`.
-  AnomalySubscriptionSubscriber({
+  const AnomalySubscriptionSubscriber({
     required this.address,
     required this.type,
   });

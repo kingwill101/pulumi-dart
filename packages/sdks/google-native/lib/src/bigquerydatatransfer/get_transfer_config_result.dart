@@ -63,7 +63,7 @@ class GetTransferConfigResult {
   /// [state] State of the most recently updated transfer run.
   /// [updateTime] Data transfer modification time. Ignored by server on input.
   /// [userId] Deprecated. Unique ID of the user on whose behalf transfer is done.
-  GetTransferConfigResult({
+  const GetTransferConfigResult({
     required this.dataRefreshWindowDays,
     required this.dataSourceId,
     required this.datasetRegion,

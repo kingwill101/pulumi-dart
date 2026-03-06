@@ -17,7 +17,7 @@ class HostVpcConfiguration {
   /// [subnetIds] The ID of the subnet or subnets associated with the Amazon VPC connected to the infrastructure where your provider type is installed.
   /// [tlsCertificate] The value of the Transport Layer Security (TLS) certificate associated with the infrastructure where your provider type is installed.
   /// [vpcId] The ID of the Amazon VPC connected to the infrastructure where your provider type is installed.
-  HostVpcConfiguration({
+  const HostVpcConfiguration({
     required this.securityGroupIds,
     required this.subnetIds,
     this.tlsCertificate,

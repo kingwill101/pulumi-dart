@@ -24,7 +24,7 @@ class RoleBindingRbacAuthorizationK8sIoV1beta1 {
   /// [metadata] Standard object's metadata.
   /// [roleRef] RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.
   /// [subjects] Subjects holds references to the objects the role applies to.
-  RoleBindingRbacAuthorizationK8sIoV1beta1({
+  const RoleBindingRbacAuthorizationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -170,7 +170,7 @@ class GetCloudVmClusterResult {
   /// [vipOds] The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the virtual IP (VIP) addresses associated with the Cloud VM Cluster. The Cluster Ready Services (CRS) creates and maintains one VIP address for each node in the Exadata Cloud Service instance to enable failover. If one node fails, the VIP is reassigned to another active node in the Cluster.
   /// [virtualNetworkId] The ID to an Azure Resource Manager Virtual Network resource.
   /// [zoneId] The [OCID](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm) of the zone the Cloud VM Cluster is associated with.
-  GetCloudVmClusterResult({
+  const GetCloudVmClusterResult({
     required this.backupSubnetCidr,
     required this.cloudExadataInfrastructureId,
     required this.clusterName,

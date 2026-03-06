@@ -8,7 +8,7 @@ class GetEntitlementApprovalWorkflowManualApprovalStepApprover {
 
   /// Creates a new [GetEntitlementApprovalWorkflowManualApprovalStepApprover].
   /// [principals] Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
-  GetEntitlementApprovalWorkflowManualApprovalStepApprover({
+  const GetEntitlementApprovalWorkflowManualApprovalStepApprover({
     required this.principals,
   });
 

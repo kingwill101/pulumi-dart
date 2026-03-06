@@ -22,7 +22,7 @@ class GetProductAsEndUsersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [sortBy] Optional.
   /// [sortOrder] Optional.
-  GetProductAsEndUsersArgs({
+  const GetProductAsEndUsersArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

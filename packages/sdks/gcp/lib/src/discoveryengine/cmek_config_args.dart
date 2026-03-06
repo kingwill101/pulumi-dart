@@ -33,7 +33,7 @@ class CmekConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [setDefault] Set the following CmekConfig as the default to be used for child resources
   /// [singleRegionKeys] Single-regional CMEKs that are required for some VAIS features.
-  CmekConfigArgs({
+  const CmekConfigArgs({
     required this.cmekConfigId,
     required this.kmsKey,
     required this.location,

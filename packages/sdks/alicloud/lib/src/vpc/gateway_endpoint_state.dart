@@ -37,7 +37,7 @@ class GatewayEndpointState {
   /// [status] The status of VPC gateway endpoint.
   /// [tags] The tags of the resource.
   /// [vpcId] The ID of the VPC.
-  GatewayEndpointState({
+  const GatewayEndpointState({
     this.createTime,
     this.gatewayEndpointDescrption,
     this.gatewayEndpointName,

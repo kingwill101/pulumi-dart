@@ -8,7 +8,7 @@ class ThreatIntelligenceIndicatorKillChainPhase {
 
   /// Creates a new [ThreatIntelligenceIndicatorKillChainPhase].
   /// [name] The name which should be used for the Lockheed Martin cyber kill chain phase.
-  ThreatIntelligenceIndicatorKillChainPhase({
+  const ThreatIntelligenceIndicatorKillChainPhase({
     this.name,
   });
 

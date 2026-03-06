@@ -10,7 +10,7 @@ class GoogleCloudContentwarehouseV1DateTimeArray {
 
   /// Creates a new [GoogleCloudContentwarehouseV1DateTimeArray].
   /// [values] List of datetime values. Both OffsetDateTime and ZonedDateTime are supported.
-  GoogleCloudContentwarehouseV1DateTimeArray({
+  const GoogleCloudContentwarehouseV1DateTimeArray({
     this.values,
   });
 

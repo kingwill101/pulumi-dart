@@ -50,7 +50,7 @@ class BackendState {
   /// [title] The title of the backend.
   /// [tls] A `tls` block as documented below.
   /// [url] The backend host URL should be specified in the format `"https://backend.com/api"`, avoiding trailing slashes (/) to minimize misconfiguration risks. Azure API Management instance will append the backend resource name to this URL. This URL typically serves as the `base-url` in the [`set-backend-service`](https://learn.microsoft.com/azure/api-management/set-backend-service-policy) policy, enabling seamless transitions from frontend to backend.
-  BackendState({
+  const BackendState({
     this.apiManagementName,
     this.circuitBreakerRule,
     this.credentials,

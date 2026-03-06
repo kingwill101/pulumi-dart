@@ -11,7 +11,7 @@ class VpnGatewayConnectionTrafficSelectorPolicy {
   /// Creates a new [VpnGatewayConnectionTrafficSelectorPolicy].
   /// [localAddressRanges] A list of local address spaces in CIDR format for this VPN Gateway Connection.
   /// [remoteAddressRanges] A list of remote address spaces in CIDR format for this VPN Gateway Connection.
-  VpnGatewayConnectionTrafficSelectorPolicy({
+  const VpnGatewayConnectionTrafficSelectorPolicy({
     required this.localAddressRanges,
     required this.remoteAddressRanges,
   });

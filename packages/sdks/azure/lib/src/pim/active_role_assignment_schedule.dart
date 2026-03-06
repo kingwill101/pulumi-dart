@@ -12,7 +12,7 @@ class ActiveRoleAssignmentSchedule {
   /// Creates a new [ActiveRoleAssignmentSchedule].
   /// [expiration] An `expiration` block as defined above.
   /// [startDateTime] The start date/time of the role assignment. Changing this forces a new resource to be created.
-  ActiveRoleAssignmentSchedule({
+  const ActiveRoleAssignmentSchedule({
     this.expiration,
     this.startDateTime,
   });

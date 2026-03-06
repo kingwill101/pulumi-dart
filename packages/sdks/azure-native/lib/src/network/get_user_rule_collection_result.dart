@@ -35,7 +35,7 @@ class GetUserRuleCollectionResult {
   /// [provisioningState] The provisioning state of the resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetUserRuleCollectionResult({
+  const GetUserRuleCollectionResult({
     required this.appliesToGroups,
     required this.azureApiVersion,
     this.description,

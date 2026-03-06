@@ -104,7 +104,7 @@ class GetStreamingJobResult {
   /// [tags] Resource tags.
   /// [transformation] Indicates the query and the number of streaming units to use for the streaming job. The name property of the transformation is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetStreamingJobResult({
+  const GetStreamingJobResult({
     required this.azureApiVersion,
     this.cluster,
     this.compatibilityLevel,

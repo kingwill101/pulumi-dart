@@ -84,7 +84,7 @@ class FunctionServiceConfig {
   /// [uri] (Output)
   /// [vpcConnector] The Serverless VPC Access connector that this cloud function can connect to.
   /// [vpcConnectorEgressSettings] Available egress settings.
-  FunctionServiceConfig({
+  const FunctionServiceConfig({
     this.allTrafficOnLatestRevision,
     this.availableCpu,
     this.availableMemory,

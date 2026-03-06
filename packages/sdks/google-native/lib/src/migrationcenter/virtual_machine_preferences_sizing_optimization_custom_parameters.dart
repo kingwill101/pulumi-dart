@@ -19,7 +19,7 @@ class VirtualMachinePreferencesSizingOptimizationCustomParameters {
   /// [cpuUsagePercentage] Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
   /// [memoryUsagePercentage] Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
   /// [storageMultiplier] Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval [1.0, 2.0] (or 0 for default value).
-  VirtualMachinePreferencesSizingOptimizationCustomParameters({
+  const VirtualMachinePreferencesSizingOptimizationCustomParameters({
     this.aggregationMethod,
     this.cpuUsagePercentage,
     this.memoryUsagePercentage,

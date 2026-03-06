@@ -9,7 +9,7 @@ class InstanceClientConnectionConfigSslConfig {
 
   /// Creates a new [InstanceClientConnectionConfigSslConfig].
   /// [sslMode] SSL mode. Specifies client-server SSL/TLS connection behavior.
-  InstanceClientConnectionConfigSslConfig({
+  const InstanceClientConnectionConfigSslConfig({
     this.sslMode,
   });
 

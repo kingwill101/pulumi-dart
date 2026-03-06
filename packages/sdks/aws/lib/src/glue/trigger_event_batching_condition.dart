@@ -11,7 +11,7 @@ class TriggerEventBatchingCondition {
   /// Creates a new [TriggerEventBatchingCondition].
   /// [batchSize] Number of events that must be received from Amazon EventBridge before EventBridge  event trigger fires.
   /// [batchWindow] Window of time in seconds after which EventBridge event trigger fires. Window starts when first event is received. Default value is `900`.
-  TriggerEventBatchingCondition({
+  const TriggerEventBatchingCondition({
     required this.batchSize,
     this.batchWindow,
   });

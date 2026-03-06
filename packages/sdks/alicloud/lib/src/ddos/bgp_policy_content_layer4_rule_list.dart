@@ -27,7 +27,7 @@ class BgpPolicyContentLayer4RuleList {
   /// [method] Char indicates a string match hex match.
   /// [name] Rule Name.
   /// [priority] 1-100, priority, the lower the number, the higher the priority.
-  BgpPolicyContentLayer4RuleList({
+  const BgpPolicyContentLayer4RuleList({
     required this.action,
     required this.conditionLists,
     required this.limited,

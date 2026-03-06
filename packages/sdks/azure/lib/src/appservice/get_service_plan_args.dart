@@ -15,7 +15,7 @@ class GetServicePlanArgs {
   /// Creates a new [GetServicePlanArgs].
   /// [name] The name of this Service Plan.
   /// [resourceGroupName] The name of the Resource Group where the Service Plan exists.
-  GetServicePlanArgs({
+  const GetServicePlanArgs({
     required this.name,
     required this.resourceGroupName,
   });

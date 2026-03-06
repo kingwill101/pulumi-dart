@@ -15,7 +15,7 @@ class GetRedshiftClusterParameterGroupArgs {
   /// Creates a new [GetRedshiftClusterParameterGroupArgs].
   /// [name] Name of RedshiftClusterParameterGroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRedshiftClusterParameterGroupArgs({
+  const GetRedshiftClusterParameterGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

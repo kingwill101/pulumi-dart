@@ -10,7 +10,7 @@ class SasDatastoreCredentialsResponse {
 
   /// Creates a new [SasDatastoreCredentialsResponse].
   /// [credentialsType] Enum to determine the datastore credentials type.
-  SasDatastoreCredentialsResponse({
+  const SasDatastoreCredentialsResponse({
     required this.credentialsType,
   });
 

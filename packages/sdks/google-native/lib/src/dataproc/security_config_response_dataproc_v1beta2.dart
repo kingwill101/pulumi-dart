@@ -10,7 +10,7 @@ class SecurityConfigResponseDataprocV1beta2 {
 
   /// Creates a new [SecurityConfigResponseDataprocV1beta2].
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfigResponseDataprocV1beta2({
+  const SecurityConfigResponseDataprocV1beta2({
     required this.kerberosConfig,
   });
 

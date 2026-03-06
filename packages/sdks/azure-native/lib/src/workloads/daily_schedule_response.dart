@@ -9,7 +9,7 @@ class DailyScheduleResponse {
 
   /// Creates a new [DailyScheduleResponse].
   /// [scheduleRunTimes] List of times of day this schedule has to be run.
-  DailyScheduleResponse({
+  const DailyScheduleResponse({
     this.scheduleRunTimes,
   });
 

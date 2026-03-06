@@ -12,7 +12,7 @@ class CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1 {
   /// Creates a new [CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1].
   /// [certificate] If request was approved, the controller will place the issued certificate here.
   /// [conditions] Conditions applied to the request, such as approval or denial.
-  CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1({
+  const CertificateSigningRequestStatusPatchCertificatesK8sIoV1beta1({
     this.certificate,
     this.conditions,
   });

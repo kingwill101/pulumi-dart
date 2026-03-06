@@ -12,7 +12,7 @@ class ClusterUpgradeGKEUpgradeGkehubV1alpha {
   /// Creates a new [ClusterUpgradeGKEUpgradeGkehubV1alpha].
   /// [name] Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
   /// [version] Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
-  ClusterUpgradeGKEUpgradeGkehubV1alpha({
+  const ClusterUpgradeGKEUpgradeGkehubV1alpha({
     this.name,
     this.version,
   });

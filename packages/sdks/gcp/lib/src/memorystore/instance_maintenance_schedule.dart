@@ -24,7 +24,7 @@ class InstanceMaintenanceSchedule {
   /// [endTime] (Output)
   /// [scheduleDeadlineTime] (Output)
   /// [startTime] (Output)
-  InstanceMaintenanceSchedule({
+  const InstanceMaintenanceSchedule({
     this.endTime,
     this.scheduleDeadlineTime,
     this.startTime,

@@ -15,7 +15,7 @@ class GetBackupPoliciesArgs {
   /// Creates a new [GetBackupPoliciesArgs].
   /// [dbClusterId] The db cluster id.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBackupPoliciesArgs({
+  const GetBackupPoliciesArgs({
     required this.dbClusterId,
     this.outputFile,
   });

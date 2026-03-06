@@ -15,7 +15,7 @@ class GetSshKeysFilter {
   /// [key] Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
   /// [matchBy] Optional.
   /// [values] A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
-  GetSshKeysFilter({
+  const GetSshKeysFilter({
     this.all,
     required this.key,
     this.matchBy,

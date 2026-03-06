@@ -12,7 +12,7 @@ class PolicyInitiativeAssignmentProperties {
   /// Creates a new [PolicyInitiativeAssignmentProperties].
   /// [assignmentParameters] The parameters of the assigned policy initiative.
   /// [policyInitiativeId] The fully qualified id of the policy initiative.
-  PolicyInitiativeAssignmentProperties({
+  const PolicyInitiativeAssignmentProperties({
     required this.assignmentParameters,
     required this.policyInitiativeId,
   });

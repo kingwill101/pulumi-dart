@@ -8,7 +8,7 @@ class GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName {
 
   /// Creates a new [GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName].
   /// [matches] Required.
-  GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName({
+  const GetVirtualNodeSpecListenerTlValidationSubjectAlternativeName({
     required this.matches,
   });
 

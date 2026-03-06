@@ -32,7 +32,7 @@ class GetGlossaryResult {
   /// [languagePair] Used with unidirectional glossaries.
   /// [name] The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   /// [submitTime] When CreateGlossary was called.
-  GetGlossaryResult({
+  const GetGlossaryResult({
     required this.displayName,
     required this.endTime,
     required this.entryCount,

@@ -11,7 +11,7 @@ class GetInstanceTypesInstanceTypeBurstableInstance {
   /// Creates a new [GetInstanceTypesInstanceTypeBurstableInstance].
   /// [baselineCredit] The compute performance benchmark CPU credit of a burstable instance.
   /// [initialCredit] The initial CPU credit of a burstable instance.
-  GetInstanceTypesInstanceTypeBurstableInstance({
+  const GetInstanceTypesInstanceTypeBurstableInstance({
     required this.baselineCredit,
     required this.initialCredit,
   });

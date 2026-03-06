@@ -8,7 +8,7 @@ class ConnectPeerBgpOptions {
 
   /// Creates a new [ConnectPeerBgpOptions].
   /// [peerAsn] Peer ASN. Supports 2-byte and 4-byte ASNs (1 to 4294967295).
-  ConnectPeerBgpOptions({
+  const ConnectPeerBgpOptions({
     this.peerAsn,
   });
 

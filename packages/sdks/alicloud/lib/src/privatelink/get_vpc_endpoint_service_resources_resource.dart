@@ -14,7 +14,7 @@ class GetVpcEndpointServiceResourcesResource {
   /// [id] The ID of the Vpc Endpoint Service Resource.
   /// [resourceId] The ID of Resource.
   /// [resourceType] The type of Resource.
-  GetVpcEndpointServiceResourcesResource({
+  const GetVpcEndpointServiceResourcesResource({
     required this.id,
     required this.resourceId,
     required this.resourceType,

@@ -19,7 +19,7 @@ class GetCertificateMapGclbTarget {
   /// [ipConfigs] An IP configuration where this Certificate Map is serving
   /// [targetHttpsProxy] Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
   /// [targetSslProxy] Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
-  GetCertificateMapGclbTarget({
+  const GetCertificateMapGclbTarget({
     required this.ipConfigs,
     required this.targetHttpsProxy,
     required this.targetSslProxy,

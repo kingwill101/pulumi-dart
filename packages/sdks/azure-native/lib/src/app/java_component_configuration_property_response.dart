@@ -12,7 +12,7 @@ class JavaComponentConfigurationPropertyResponse {
   /// Creates a new [JavaComponentConfigurationPropertyResponse].
   /// [propertyName] The name of the property
   /// [value] The value of the property
-  JavaComponentConfigurationPropertyResponse({
+  const JavaComponentConfigurationPropertyResponse({
     this.propertyName,
     this.value,
   });

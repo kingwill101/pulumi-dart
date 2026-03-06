@@ -19,7 +19,7 @@ class ExternalMetricSourcePatchAutoscalingV2beta1 {
   /// [metricSelector] metricSelector is used to identify a specific time series within a given metric.
   /// [targetAverageValue] targetAverageValue is the target per-pod value of global metric (as a quantity). Mutually exclusive with TargetValue.
   /// [targetValue] targetValue is the target value of the metric (as a quantity). Mutually exclusive with TargetAverageValue.
-  ExternalMetricSourcePatchAutoscalingV2beta1({
+  const ExternalMetricSourcePatchAutoscalingV2beta1({
     this.metricName,
     this.metricSelector,
     this.targetAverageValue,

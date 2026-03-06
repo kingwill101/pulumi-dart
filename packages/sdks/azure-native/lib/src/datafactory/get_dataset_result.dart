@@ -24,7 +24,7 @@ class GetDatasetResult {
   /// [name] The resource name.
   /// [properties] Dataset properties.
   /// [type] The resource type.
-  GetDatasetResult({
+  const GetDatasetResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

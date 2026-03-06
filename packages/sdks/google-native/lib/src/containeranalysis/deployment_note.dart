@@ -9,7 +9,7 @@ class DeploymentNote {
 
   /// Creates a new [DeploymentNote].
   /// [resourceUri] Resource URI for the artifact being deployed.
-  DeploymentNote({
+  const DeploymentNote({
     required this.resourceUri,
   });
 

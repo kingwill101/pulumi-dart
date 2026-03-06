@@ -9,7 +9,7 @@ class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
 
   /// Creates a new [SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
-  SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement({
+  const SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
 

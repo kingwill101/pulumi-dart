@@ -18,7 +18,7 @@ class GetSiteArgs {
   /// [id] Identifier of the Site.
   /// [name] Name of the Site.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetSiteArgs({
+  const GetSiteArgs({
     this.id,
     this.name,
     this.region,

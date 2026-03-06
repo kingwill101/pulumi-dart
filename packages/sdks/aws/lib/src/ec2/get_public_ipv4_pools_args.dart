@@ -22,7 +22,7 @@ class GetPublicIpv4PoolsArgs {
   /// [filters] Custom filter block as described below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired pools.
-  GetPublicIpv4PoolsArgs({
+  const GetPublicIpv4PoolsArgs({
     this.filters,
     this.region,
     this.tags,

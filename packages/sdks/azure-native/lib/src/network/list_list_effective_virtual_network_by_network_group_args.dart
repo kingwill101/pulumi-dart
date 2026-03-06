@@ -21,7 +21,7 @@ class ListListEffectiveVirtualNetworkByNetworkGroupArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
-  ListListEffectiveVirtualNetworkByNetworkGroupArgs({
+  const ListListEffectiveVirtualNetworkByNetworkGroupArgs({
     required this.networkGroupName,
     required this.networkManagerName,
     required this.resourceGroupName,

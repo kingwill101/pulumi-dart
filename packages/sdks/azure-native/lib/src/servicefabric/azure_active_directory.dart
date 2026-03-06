@@ -15,7 +15,7 @@ class AzureActiveDirectory {
   /// [clientApplication] Azure active directory client application id.
   /// [clusterApplication] Azure active directory cluster application id.
   /// [tenantId] Azure active directory tenant id.
-  AzureActiveDirectory({
+  const AzureActiveDirectory({
     this.clientApplication,
     this.clusterApplication,
     this.tenantId,

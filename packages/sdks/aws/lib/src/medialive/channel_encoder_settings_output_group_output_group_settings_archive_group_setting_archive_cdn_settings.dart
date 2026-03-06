@@ -9,7 +9,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArc
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings].
   /// [archiveS3Settings] Archive S3 Settings. See Archive S3 Settings for more details.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings({
     this.archiveS3Settings,
   });
 

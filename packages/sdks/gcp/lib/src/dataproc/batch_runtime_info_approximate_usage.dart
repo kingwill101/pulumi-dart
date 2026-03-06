@@ -21,7 +21,7 @@ class BatchRuntimeInfoApproximateUsage {
   /// [milliAcceleratorSeconds] (Output)
   /// [milliDcuSeconds] (Output)
   /// [shuffleStorageGbSeconds] (Output)
-  BatchRuntimeInfoApproximateUsage({
+  const BatchRuntimeInfoApproximateUsage({
     this.acceleratorType,
     this.milliAcceleratorSeconds,
     this.milliDcuSeconds,

@@ -15,7 +15,7 @@ class GetLinkedSubscriptionArgs {
   /// Creates a new [GetLinkedSubscriptionArgs].
   /// [linkedSubscriptionName] Name of the Linked Subscription resource.
   /// [resourceGroup] Name of the resource group.
-  GetLinkedSubscriptionArgs({
+  const GetLinkedSubscriptionArgs({
     required this.linkedSubscriptionName,
     required this.resourceGroup,
   });

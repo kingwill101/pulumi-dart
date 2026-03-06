@@ -15,7 +15,7 @@ class GetKMSSecretCiphertextResult {
   /// [cryptoKey] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [plaintext] Required.
-  GetKMSSecretCiphertextResult({
+  const GetKMSSecretCiphertextResult({
     required this.ciphertext,
     required this.cryptoKey,
     required this.id,

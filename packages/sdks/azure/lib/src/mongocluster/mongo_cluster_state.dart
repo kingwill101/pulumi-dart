@@ -85,7 +85,7 @@ class MongoClusterState {
   /// [storageType] The storage type for the MongoDB Cluster. Possible values are `PremiumSSD` and `PremiumSSDv2`. Defaults to `PremiumSSD`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the MongoDB Cluster.
   /// [version] The version for the MongoDB Cluster. Possibles values are `5.0`, `6.0`, `7.0` and `8.0`.
-  MongoClusterState({
+  const MongoClusterState({
     this.administratorPassword,
     this.administratorUsername,
     this.authenticationMethods,

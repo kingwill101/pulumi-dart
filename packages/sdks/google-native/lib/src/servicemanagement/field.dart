@@ -39,7 +39,7 @@ class Field {
   /// [options] The protocol buffer options.
   /// [packed] Whether to use alternative packed wire representation.
   /// [typeUrl] The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
-  Field({
+  const Field({
     this.cardinality,
     this.defaultValue,
     this.jsonName,

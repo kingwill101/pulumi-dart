@@ -36,7 +36,7 @@ class LogAnomalyDetectorArgs {
   /// [logGroupArnLists] Array containing the ARN of the log group that this anomaly detector will watch. You can specify only one log group ARN.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
-  LogAnomalyDetectorArgs({
+  const LogAnomalyDetectorArgs({
     this.anomalyVisibilityTime,
     this.detectorName,
     required this.enabled,

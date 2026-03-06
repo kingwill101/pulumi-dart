@@ -137,7 +137,7 @@ class GetInstanceResult {
   /// [tags] The list of tags attached to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
   /// [zone] Optional.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.advancedMachineFeatures,
     required this.allowStoppingForUpdate,
     required this.attachedDisks,

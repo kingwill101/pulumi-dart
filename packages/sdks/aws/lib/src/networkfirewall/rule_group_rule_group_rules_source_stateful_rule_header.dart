@@ -23,7 +23,7 @@ class RuleGroupRuleGroupRulesSourceStatefulRuleHeader {
   /// [protocol] The protocol to inspect. Valid values: `IP`, `TCP`, `UDP`, `ICMP`, `HTTP`, `FTP`, `TLS`, `SMB`, `DNS`, `DCERPC`, `SSH`, `SMTP`, `IMAP`, `MSN`, `KRB5`, `IKEV2`, `TFTP`, `NTP`, `DHCP`.
   /// [source] The source IP address or address range for, in CIDR notation. To match with any address, specify `ANY`.
   /// [sourcePort] The source port to inspect for. To match with any address, specify `ANY`.
-  RuleGroupRuleGroupRulesSourceStatefulRuleHeader({
+  const RuleGroupRuleGroupRulesSourceStatefulRuleHeader({
     required this.destination,
     required this.destinationPort,
     required this.direction,

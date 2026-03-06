@@ -9,7 +9,7 @@ class ActivityEntityQueriesPropertiesResponseQueryDefinitions {
 
   /// Creates a new [ActivityEntityQueriesPropertiesResponseQueryDefinitions].
   /// [query] The Activity query to run on a given entity
-  ActivityEntityQueriesPropertiesResponseQueryDefinitions({
+  const ActivityEntityQueriesPropertiesResponseQueryDefinitions({
     this.query,
   });
 

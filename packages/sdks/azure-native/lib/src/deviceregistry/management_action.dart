@@ -27,7 +27,7 @@ class ManagementAction {
   /// [timeoutInSeconds] Response timeout for the action.
   /// [topic] The MQTT topic path on which a client will receive the request for the action.
   /// [typeRef] URI or type definition ID.
-  ManagementAction({
+  const ManagementAction({
     this.actionConfiguration,
     this.actionType,
     required this.name,

@@ -11,7 +11,7 @@ class ElasticPoolPerDatabaseSettings {
   /// Creates a new [ElasticPoolPerDatabaseSettings].
   /// [maxCapacity] The maximum capacity any one database can consume.
   /// [minCapacity] The minimum capacity all databases are guaranteed.
-  ElasticPoolPerDatabaseSettings({
+  const ElasticPoolPerDatabaseSettings({
     required this.maxCapacity,
     required this.minCapacity,
   });

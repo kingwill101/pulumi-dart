@@ -32,7 +32,7 @@ class OneDashboardRawPageWidget {
   /// [title] (Required) A title for the widget.
   /// [visualizationId] (Required) The visualization ID of the widget
   /// [width] (Optional) Width of the widget. Valid values are `1` to `12` inclusive. Defaults to `4`.
-  OneDashboardRawPageWidget({
+  const OneDashboardRawPageWidget({
     required this.column,
     required this.configuration,
     this.height,

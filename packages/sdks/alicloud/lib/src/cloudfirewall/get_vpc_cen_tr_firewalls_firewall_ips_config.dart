@@ -14,7 +14,7 @@ class GetVpcCenTrFirewallsFirewallIpsConfig {
   /// [basicRules] Basic rule switch. Value:-**1**: On-**0**: Closed state.
   /// [enableAllPatch] Virtual patch switch. Value:-**1**: On-**0**: Closed state.
   /// [runMode] IPS defense mode. Value:-**1**: Intercept mode-**0**: Observation mode.
-  GetVpcCenTrFirewallsFirewallIpsConfig({
+  const GetVpcCenTrFirewallsFirewallIpsConfig({
     required this.basicRules,
     required this.enableAllPatch,
     required this.runMode,

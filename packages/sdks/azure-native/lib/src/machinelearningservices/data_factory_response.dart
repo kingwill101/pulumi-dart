@@ -38,7 +38,7 @@ class DataFactoryResponse {
   /// [provisioningErrors] Errors during provisioning
   /// [provisioningState] The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
   /// [resourceId] ARM resource id of the underlying compute
-  DataFactoryResponse({
+  const DataFactoryResponse({
     this.computeLocation,
     required this.computeType,
     required this.createdOn,

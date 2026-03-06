@@ -26,7 +26,7 @@ class GetInstanceMembersMember {
   /// [memberUid] The UID of the cloud firewall member account.
   /// [modifyTime] The last modification time of the cloud firewall member account.&gt; use second-level timestamp format.
   /// [status] The resource attribute field that represents the resource status.
-  GetInstanceMembersMember({
+  const GetInstanceMembersMember({
     required this.createTime,
     required this.id,
     required this.memberDesc,

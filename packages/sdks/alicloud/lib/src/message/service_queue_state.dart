@@ -37,7 +37,7 @@ class ServiceQueueState {
   /// [queueName] The name of the queue.
   /// [tags] A mapping of tags to assign to the resource.
   /// [visibilityTimeout] The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
-  ServiceQueueState({
+  const ServiceQueueState({
     this.createTime,
     this.delaySeconds,
     this.dlqPolicy,

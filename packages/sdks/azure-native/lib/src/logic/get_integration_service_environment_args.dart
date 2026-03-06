@@ -15,7 +15,7 @@ class GetIntegrationServiceEnvironmentArgs {
   /// Creates a new [GetIntegrationServiceEnvironmentArgs].
   /// [integrationServiceEnvironmentName] The integration service environment name.
   /// [resourceGroup] The resource group.
-  GetIntegrationServiceEnvironmentArgs({
+  const GetIntegrationServiceEnvironmentArgs({
     required this.integrationServiceEnvironmentName,
     required this.resourceGroup,
   });

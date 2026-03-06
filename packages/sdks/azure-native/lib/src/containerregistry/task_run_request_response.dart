@@ -26,7 +26,7 @@ class TaskRunRequestResponse {
   /// [overrideTaskStepProperties] Set of overridable parameters that can be passed when running a Task.
   /// [taskId] The resource ID of task against which run has to be queued.
   /// [type] The type of the run request.
-  TaskRunRequestResponse({
+  const TaskRunRequestResponse({
     this.agentPoolName,
     this.isArchiveEnabled,
     this.logTemplate,

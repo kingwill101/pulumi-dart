@@ -29,7 +29,7 @@ class WorkflowVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [versionName] The name of the workflowVersion.
   /// [workflowName] Name of the workflow
-  WorkflowVersionArgs({
+  const WorkflowVersionArgs({
     required this.contextName,
     this.extendedLocation,
     this.properties,

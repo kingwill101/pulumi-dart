@@ -10,7 +10,7 @@ class DeploymentSettingsSourceContext {
 
   /// Creates a new [DeploymentSettingsSourceContext].
   /// [git] Git source settings for a deployment.
-  DeploymentSettingsSourceContext({
+  const DeploymentSettingsSourceContext({
     this.git,
   });
 

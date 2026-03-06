@@ -31,7 +31,7 @@ class RouterVpcAssociationState {
   /// [status] The deployment state of the associated resource.
   /// [vpcId] The VPC ID.
   /// [vpcOwnerId] The ID of the Alibaba Cloud account that owns the VPC.
-  RouterVpcAssociationState({
+  const RouterVpcAssociationState({
     this.allowedPrefixes,
     this.associationId,
     this.associationRegionId,

@@ -20,7 +20,7 @@ class IAMAuditConfigState {
   /// [etag] (Computed) The etag of the project's IAM policy.
   /// [project] The project id of the target project. This is not
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-  IAMAuditConfigState({
+  const IAMAuditConfigState({
     this.auditLogConfigs,
     this.etag,
     this.project,

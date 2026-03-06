@@ -15,7 +15,7 @@ class GetEndpointRedshiftSetting {
   /// [encryptionMode] Required.
   /// [serverSideEncryptionKmsKeyId] Required.
   /// [serviceAccessRoleArn] Required.
-  GetEndpointRedshiftSetting({
+  const GetEndpointRedshiftSetting({
     required this.bucketFolder,
     required this.bucketName,
     required this.encryptionMode,

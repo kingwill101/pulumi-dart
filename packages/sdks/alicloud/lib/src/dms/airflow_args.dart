@@ -54,7 +54,7 @@ class AirflowArgs {
   /// [workerServerlessReplicas] Worker Node extension
   /// [workspaceId] DMS workspace ID
   /// [zoneId] Zone ID in the region
-  AirflowArgs({
+  const AirflowArgs({
     required this.airflowName,
     required this.appSpec,
     this.dagsDir,

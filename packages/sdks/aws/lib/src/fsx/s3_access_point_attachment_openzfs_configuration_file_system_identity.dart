@@ -12,7 +12,7 @@ class S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity {
   /// Creates a new [S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity].
   /// [posixUser] UID and GIDs of the file system POSIX user. See `posix_user` Block for details.
   /// [type] FSx for OpenZFS user identity type. Valid values: `POSIX`.
-  S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity({
+  const S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity({
     this.posixUser,
     required this.type,
   });

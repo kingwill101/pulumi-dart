@@ -12,7 +12,7 @@ class UserArtifactSourceResponse {
   /// Creates a new [UserArtifactSourceResponse].
   /// [defaultConfigurationLink] Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
   /// [mediaLink] Required. The mediaLink of the artifact, must be a readable storage page blob.
-  UserArtifactSourceResponse({
+  const UserArtifactSourceResponse({
     this.defaultConfigurationLink,
     required this.mediaLink,
   });

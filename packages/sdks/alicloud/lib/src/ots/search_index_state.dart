@@ -35,7 +35,7 @@ class SearchIndexState {
   /// [syncPhase] The search index sync phase. possible values: `Full`, `Incr`.
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
   /// [timeToLive] The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
-  SearchIndexState({
+  const SearchIndexState({
     this.createTime,
     this.currentSyncTimestamp,
     this.indexId,

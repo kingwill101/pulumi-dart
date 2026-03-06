@@ -21,7 +21,7 @@ class GetSessionEntityTypeDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [sessionId] Required.
-  GetSessionEntityTypeDialogflowV3beta1Args({
+  const GetSessionEntityTypeDialogflowV3beta1Args({
     required this.agentId,
     required this.entityTypeId,
     required this.environmentId,

@@ -15,7 +15,7 @@ class GetEcrRepositoryArgs {
   /// Creates a new [GetEcrRepositoryArgs].
   /// [name] Name of EcrRepository
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEcrRepositoryArgs({
+  const GetEcrRepositoryArgs({
     required this.name,
     required this.resourceGroupName,
   });

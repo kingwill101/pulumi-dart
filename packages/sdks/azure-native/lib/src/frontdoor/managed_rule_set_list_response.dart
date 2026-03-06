@@ -10,7 +10,7 @@ class ManagedRuleSetListResponse {
 
   /// Creates a new [ManagedRuleSetListResponse].
   /// [managedRuleSets] List of rule sets.
-  ManagedRuleSetListResponse({
+  const ManagedRuleSetListResponse({
     this.managedRuleSets,
   });
 

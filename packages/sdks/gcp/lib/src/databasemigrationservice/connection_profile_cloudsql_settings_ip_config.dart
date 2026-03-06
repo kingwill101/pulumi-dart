@@ -20,7 +20,7 @@ class ConnectionProfileCloudsqlSettingsIpConfig {
   /// [enableIpv4] Whether the instance should be assigned an IPv4 address or not.
   /// [privateNetwork] The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
   /// [requireSsl] Whether SSL connections over IP should be enforced or not.
-  ConnectionProfileCloudsqlSettingsIpConfig({
+  const ConnectionProfileCloudsqlSettingsIpConfig({
     this.authorizedNetworks,
     this.enableIpv4,
     this.privateNetwork,

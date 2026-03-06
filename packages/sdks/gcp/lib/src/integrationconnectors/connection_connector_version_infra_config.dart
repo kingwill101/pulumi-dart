@@ -9,7 +9,7 @@ class ConnectionConnectorVersionInfraConfig {
 
   /// Creates a new [ConnectionConnectorVersionInfraConfig].
   /// [ratelimitThreshold] (Output)
-  ConnectionConnectorVersionInfraConfig({
+  const ConnectionConnectorVersionInfraConfig({
     this.ratelimitThreshold,
   });
 

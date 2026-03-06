@@ -12,7 +12,7 @@ class ArtifactResponse {
   /// Creates a new [ArtifactResponse].
   /// [checksum] Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
   /// [names] Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
-  ArtifactResponse({
+  const ArtifactResponse({
     required this.checksum,
     required this.names,
   });

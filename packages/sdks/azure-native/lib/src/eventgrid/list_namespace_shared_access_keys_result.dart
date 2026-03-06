@@ -11,7 +11,7 @@ class ListNamespaceSharedAccessKeysResult {
   /// Creates a new [ListNamespaceSharedAccessKeysResult].
   /// [key1] Shared access key1 for the namespace.
   /// [key2] Shared access key2 for the namespace.
-  ListNamespaceSharedAccessKeysResult({
+  const ListNamespaceSharedAccessKeysResult({
     this.key1,
     this.key2,
   });

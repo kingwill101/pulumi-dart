@@ -11,7 +11,7 @@ class GetNetworkManagerConnectivityConfigurationHub {
   /// Creates a new [GetNetworkManagerConnectivityConfigurationHub].
   /// [resourceId] The resource ID used as hub in Hub and Spoke topology.
   /// [resourceType] The resource type used as hub in Hub and Spoke topology.
-  GetNetworkManagerConnectivityConfigurationHub({
+  const GetNetworkManagerConnectivityConfigurationHub({
     required this.resourceId,
     required this.resourceType,
   });

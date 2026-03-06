@@ -12,7 +12,7 @@ class ManagementURIResponse {
   /// Creates a new [ManagementURIResponse].
   /// [api] The ManagementServer AGM/RD API URL.
   /// [webUi] The ManagementServer AGM/RD WebUI URL.
-  ManagementURIResponse({
+  const ManagementURIResponse({
     required this.api,
     required this.webUi,
   });

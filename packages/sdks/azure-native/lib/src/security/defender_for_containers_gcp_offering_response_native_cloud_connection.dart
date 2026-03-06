@@ -12,7 +12,7 @@ class DefenderForContainersGcpOfferingResponseNativeCloudConnection {
   /// Creates a new [DefenderForContainersGcpOfferingResponseNativeCloudConnection].
   /// [serviceAccountEmailAddress] The service account email address in GCP for this offering
   /// [workloadIdentityProviderId] The GCP workload identity provider id for this offering
-  DefenderForContainersGcpOfferingResponseNativeCloudConnection({
+  const DefenderForContainersGcpOfferingResponseNativeCloudConnection({
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,
   });

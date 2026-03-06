@@ -15,7 +15,7 @@ class ExternalDocumentation {
   /// [description] Description of the documentation.
   /// [title] Title of the documentation.
   /// [url] URL pointing to the documentation.
-  ExternalDocumentation({
+  const ExternalDocumentation({
     this.description,
     this.title,
     required this.url,

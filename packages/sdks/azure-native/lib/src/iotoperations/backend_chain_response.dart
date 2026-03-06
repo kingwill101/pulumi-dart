@@ -15,7 +15,7 @@ class BackendChainResponse {
   /// [partitions] The desired number of physical backend partitions.
   /// [redundancyFactor] The desired numbers of backend replicas (pods) in a physical partition.
   /// [workers] Number of logical backend workers per replica (pod).
-  BackendChainResponse({
+  const BackendChainResponse({
     required this.partitions,
     required this.redundancyFactor,
     this.workers,

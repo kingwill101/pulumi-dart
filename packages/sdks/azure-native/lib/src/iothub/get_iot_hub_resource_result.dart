@@ -42,7 +42,7 @@ class GetIotHubResourceResult {
   /// [systemData] The system meta data relating to this resource.
   /// [tags] The resource tags.
   /// [type] The resource type.
-  GetIotHubResourceResult({
+  const GetIotHubResourceResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

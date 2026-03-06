@@ -28,7 +28,7 @@ class GetInstanceProfileResult {
   /// [roleArn] Role ARN associated with this instance profile.
   /// [roleId] Role ID associated with this instance profile.
   /// [roleName] Role name associated with this instance profile.
-  GetInstanceProfileResult({
+  const GetInstanceProfileResult({
     required this.arn,
     required this.createDate,
     required this.id,

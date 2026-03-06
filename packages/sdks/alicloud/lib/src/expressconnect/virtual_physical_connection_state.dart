@@ -89,7 +89,7 @@ class VirtualPhysicalConnectionState {
   /// [virtualPhysicalConnectionStatus] The business status of the shared line. Value:-**Confirmed**: The shared line has been Confirmed to receive.-**UnConfirmed**: The shared line has not been confirmed to be received.-**Deleted**: The shared line has been Deleted.
   /// [vlanId] The VLAN ID of the shared leased line. Valid values: `0` to `2999`.
   /// [vpconnAliUid] The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
-  VirtualPhysicalConnectionState({
+  const VirtualPhysicalConnectionState({
     this.accessPointId,
     this.adLocation,
     this.bandwidth,

@@ -54,7 +54,7 @@ class ProfileFastL4Args {
   /// [partition] name of partition
   /// [receiveWindowsize] Specifies the amount of data the BIG-IP system can accept without acknowledging the server. The default is 0 (zero).
   /// [tcpHandshakeTimeout] Specifies the acceptable duration for a TCP handshake, that is, the maximum idle time between a client synchronization (SYN) and a client acknowledgment (ACK).The default is `5 seconds`.
-  ProfileFastL4Args({
+  const ProfileFastL4Args({
     this.clientTimeout,
     this.defaultsFrom,
     this.explicitflowMigration,

@@ -15,7 +15,7 @@ class CloudCapacityResponse {
   /// [cpuCount] CPUCount specifies the maximum number of CPUs that can be allocated in the cloud.
   /// [memoryMB] MemoryMB specifies a memory usage limit in megabytes.
   /// [vmCount] VMCount gives the max number of VMs that can be deployed in the cloud.
-  CloudCapacityResponse({
+  const CloudCapacityResponse({
     this.cpuCount,
     this.memoryMB,
     this.vmCount,

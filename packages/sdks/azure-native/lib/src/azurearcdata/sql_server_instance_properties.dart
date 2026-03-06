@@ -47,7 +47,7 @@ class SqlServerInstanceProperties {
   /// [serviceType] Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host.
   /// [upgradeLockedUntil] Upgrade Action for this resource is locked until it expires. The Expiration time indicated by this value. It is not locked when it is empty.
   /// [version] SQL Server version.
-  SqlServerInstanceProperties({
+  const SqlServerInstanceProperties({
     this.authentication,
     this.backupPolicy,
     this.clientConnection,

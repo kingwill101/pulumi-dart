@@ -30,7 +30,7 @@ class ToolsetOpenApiToolsetApiAuthentication {
   /// [oauthConfig] Configurations for authentication with OAuth.
   /// [serviceAccountAuthConfig] Configurations for authentication using a custom service account.
   /// [serviceAgentIdTokenAuthConfig] Configurations for authentication with [ID
-  ToolsetOpenApiToolsetApiAuthentication({
+  const ToolsetOpenApiToolsetApiAuthentication({
     this.apiKeyConfig,
     this.bearerTokenConfig,
     this.oauthConfig,

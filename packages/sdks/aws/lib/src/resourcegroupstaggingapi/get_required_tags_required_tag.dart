@@ -14,7 +14,7 @@ class GetRequiredTagsRequiredTag {
   /// [cloudFormationResourceTypes] CloudFormation resource types assigned the required tag keys.
   /// [reportingTagKeys] Tag keys marked as required in the `report_required_tag_for` block of the effective tag policy.
   /// [resourceType] Resource type for the required tag keys.
-  GetRequiredTagsRequiredTag({
+  const GetRequiredTagsRequiredTag({
     required this.cloudFormationResourceTypes,
     required this.reportingTagKeys,
     required this.resourceType,

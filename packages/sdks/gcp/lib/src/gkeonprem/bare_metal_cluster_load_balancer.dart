@@ -30,7 +30,7 @@ class BareMetalClusterLoadBalancer {
   /// [metalLbConfig] A nested object resource.
   /// [portConfig] Specifies the load balancer ports.
   /// [vipConfig] Specified the Bare Metal Load Balancer Config
-  BareMetalClusterLoadBalancer({
+  const BareMetalClusterLoadBalancer({
     this.bgpLbConfig,
     this.manualLbConfig,
     this.metalLbConfig,

@@ -15,7 +15,7 @@ class UserInfo {
   /// [emailAddress] Email of the user used by Datadog for contacting them if needed
   /// [name] Name of the user
   /// [phoneNumber] Phone number of the user used by Datadog for contacting them if needed
-  UserInfo({
+  const UserInfo({
     this.emailAddress,
     this.name,
     this.phoneNumber,

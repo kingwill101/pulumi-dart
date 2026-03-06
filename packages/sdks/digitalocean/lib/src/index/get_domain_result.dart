@@ -19,7 +19,7 @@ class GetDomainResult {
   /// [name] Required.
   /// [ttl] The TTL of the domain.
   /// [zoneFile] The zone file of the domain.
-  GetDomainResult({
+  const GetDomainResult({
     required this.domainUrn,
     required this.id,
     required this.name,

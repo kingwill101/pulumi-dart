@@ -9,7 +9,7 @@ class FunctionBuildConfigOnDeployUpdatePolicy {
 
   /// Creates a new [FunctionBuildConfigOnDeployUpdatePolicy].
   /// [runtimeVersion] (Output)
-  FunctionBuildConfigOnDeployUpdatePolicy({
+  const FunctionBuildConfigOnDeployUpdatePolicy({
     this.runtimeVersion,
   });
 

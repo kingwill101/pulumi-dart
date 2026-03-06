@@ -15,7 +15,7 @@ class ChainChainConfig {
   /// Creates a new [ChainChainConfig].
   /// [nodes] Each node in the delivery chain. See `nodes` below.
   /// [routers] Execution sequence relationship between delivery chain nodes. See `routers` below.
-  ChainChainConfig({
+  const ChainChainConfig({
     this.nodes,
     this.routers,
   });

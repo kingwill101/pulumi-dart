@@ -14,7 +14,7 @@ class ApiEventConfigAuthProviderLambdaAuthorizerConfig {
   /// [authorizerResultTtlInSeconds] TTL in seconds for the authorization result cache.
   /// [authorizerUri] URI of the Lambda function for authorization.
   /// [identityValidationExpression] Regular expression for identity validation.
-  ApiEventConfigAuthProviderLambdaAuthorizerConfig({
+  const ApiEventConfigAuthProviderLambdaAuthorizerConfig({
     this.authorizerResultTtlInSeconds,
     required this.authorizerUri,
     this.identityValidationExpression,

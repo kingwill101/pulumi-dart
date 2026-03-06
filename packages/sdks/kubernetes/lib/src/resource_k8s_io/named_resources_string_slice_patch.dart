@@ -9,7 +9,7 @@ class NamedResourcesStringSlicePatch {
 
   /// Creates a new [NamedResourcesStringSlicePatch].
   /// [strings] Strings is the slice of strings.
-  NamedResourcesStringSlicePatch({
+  const NamedResourcesStringSlicePatch({
     this.strings,
   });
 

@@ -14,7 +14,7 @@ class GetDatabasesDatabaseAccount {
   /// [accountName] Account name.
   /// [accountStatus] Account status.
   /// [privilegeStatus] The privilege status of account.
-  GetDatabasesDatabaseAccount({
+  const GetDatabasesDatabaseAccount({
     required this.accountName,
     required this.accountStatus,
     required this.privilegeStatus,

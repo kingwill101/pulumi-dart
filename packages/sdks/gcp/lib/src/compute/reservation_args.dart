@@ -60,7 +60,7 @@ class ReservationArgs {
   /// [specificReservation] Reservation for instances with specific machine shapes.
   /// [specificReservationRequired] When set to true, only VMs that target this reservation by name can
   /// [zone] The zone where the reservation is made.
-  ReservationArgs({
+  const ReservationArgs({
     this.deleteAfterDuration,
     this.deleteAtTime,
     this.description,

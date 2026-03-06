@@ -17,7 +17,7 @@ class ApplicationOssMountDescsV2 {
   /// [bucketPath] The directory or object in OSS.
   /// [mountPath] The path of the container in SAE.
   /// [readOnly] Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
-  ApplicationOssMountDescsV2({
+  const ApplicationOssMountDescsV2({
     this.bucketName,
     this.bucketPath,
     this.mountPath,

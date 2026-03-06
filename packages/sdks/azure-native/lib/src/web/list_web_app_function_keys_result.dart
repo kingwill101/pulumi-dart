@@ -20,7 +20,7 @@ class ListWebAppFunctionKeysResult {
   /// [name] Resource Name.
   /// [properties] Settings.
   /// [type] Resource type.
-  ListWebAppFunctionKeysResult({
+  const ListWebAppFunctionKeysResult({
     required this.id,
     this.kind,
     required this.name,

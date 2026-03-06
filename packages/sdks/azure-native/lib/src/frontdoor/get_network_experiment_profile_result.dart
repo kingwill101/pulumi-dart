@@ -32,7 +32,7 @@ class GetNetworkExperimentProfileResult {
   /// [resourceState] Resource status.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkExperimentProfileResult({
+  const GetNetworkExperimentProfileResult({
     required this.azureApiVersion,
     this.enabledState,
     this.etag,

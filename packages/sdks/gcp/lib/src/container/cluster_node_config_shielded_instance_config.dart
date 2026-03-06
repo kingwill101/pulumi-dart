@@ -15,7 +15,7 @@ class ClusterNodeConfigShieldedInstanceConfig {
   /// Creates a new [ClusterNodeConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines if the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Defines if the instance has Secure Boot enabled.
-  ClusterNodeConfigShieldedInstanceConfig({
+  const ClusterNodeConfigShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
   });

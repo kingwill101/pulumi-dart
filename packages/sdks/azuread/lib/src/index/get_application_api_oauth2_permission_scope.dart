@@ -29,7 +29,7 @@ class GetApplicationApiOauth2PermissionScope {
   /// [userConsentDescription] Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
   /// [userConsentDisplayName] Display name for the delegated permission that appears in the end user consent experience.
   /// [value] The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-  GetApplicationApiOauth2PermissionScope({
+  const GetApplicationApiOauth2PermissionScope({
     required this.adminConsentDescription,
     required this.adminConsentDisplayName,
     required this.enabled,

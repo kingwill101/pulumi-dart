@@ -12,7 +12,7 @@ class GetTableRangePartitioning {
   /// Creates a new [GetTableRangePartitioning].
   /// [field] The field used to determine how to create a range-based partition.
   /// [ranges] Information required to partition based on ranges. Structure is documented below.
-  GetTableRangePartitioning({
+  const GetTableRangePartitioning({
     required this.field,
     required this.ranges,
   });

@@ -12,7 +12,7 @@ class WorkspaceApplicationGroupAssociationState {
   /// Creates a new [WorkspaceApplicationGroupAssociationState].
   /// [applicationGroupId] The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   /// [workspaceId] The resource ID for the Virtual Desktop Workspace. Changing this forces a new resource to be created.
-  WorkspaceApplicationGroupAssociationState({
+  const WorkspaceApplicationGroupAssociationState({
     this.applicationGroupId,
     this.workspaceId,
   });

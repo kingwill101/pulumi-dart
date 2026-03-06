@@ -38,7 +38,7 @@ class ApplicationInsightsTopologyDiscoveryRulePropertiesResponse {
   /// [entityName] Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
   /// [error] Error details if the last discovery operation failed.
   /// [provisioningState] The status of the last operation.
-  ApplicationInsightsTopologyDiscoveryRulePropertiesResponse({
+  const ApplicationInsightsTopologyDiscoveryRulePropertiesResponse({
     required this.addRecommendedSignals,
     required this.applicationInsightsResourceId,
     required this.authenticationSetting,

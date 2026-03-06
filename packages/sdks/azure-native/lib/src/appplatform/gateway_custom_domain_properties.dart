@@ -9,7 +9,7 @@ class GatewayCustomDomainProperties {
 
   /// Creates a new [GatewayCustomDomainProperties].
   /// [thumbprint] The thumbprint of bound certificate.
-  GatewayCustomDomainProperties({
+  const GatewayCustomDomainProperties({
     this.thumbprint,
   });
 

@@ -11,7 +11,7 @@ class EnvironmentMonitor {
   /// Creates a new [EnvironmentMonitor].
   /// [alarmArn] ARN of the Amazon CloudWatch alarm.
   /// [alarmRoleArn] ARN of an IAM role for AWS AppConfig to monitor `alarm_arn`.
-  EnvironmentMonitor({
+  const EnvironmentMonitor({
     required this.alarmArn,
     this.alarmRoleArn,
   });

@@ -9,7 +9,7 @@ class RoutingRuleLinkResponse {
 
   /// Creates a new [RoutingRuleLinkResponse].
   /// [id] Resource ID.
-  RoutingRuleLinkResponse({
+  const RoutingRuleLinkResponse({
     this.id,
   });
 

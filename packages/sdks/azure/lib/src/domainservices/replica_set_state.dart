@@ -24,7 +24,7 @@ class ReplicaSetState {
   /// [location] The Azure location where this Replica Set should exist. Changing this forces a new resource to be created.
   /// [serviceStatus] The current service status for the replica set.
   /// [subnetId] The ID of the subnet in which to place this Replica Set. Changing this forces a new resource to be created.
-  ReplicaSetState({
+  const ReplicaSetState({
     this.domainControllerIpAddresses,
     this.domainServiceId,
     this.externalAccessIpAddress,

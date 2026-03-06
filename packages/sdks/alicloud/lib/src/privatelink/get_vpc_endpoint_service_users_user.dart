@@ -11,7 +11,7 @@ class GetVpcEndpointServiceUsersUser {
   /// Creates a new [GetVpcEndpointServiceUsersUser].
   /// [id] The ID of the Vpc Endpoint Service User.
   /// [userId] The Id of Ram User.
-  GetVpcEndpointServiceUsersUser({
+  const GetVpcEndpointServiceUsersUser({
     required this.id,
     required this.userId,
   });

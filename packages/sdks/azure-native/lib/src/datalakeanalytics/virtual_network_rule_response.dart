@@ -21,7 +21,7 @@ class VirtualNetworkRuleResponse {
   /// [subnetId] The resource identifier for the subnet
   /// [type] The resource type.
   /// [virtualNetworkRuleState] The current state of the VirtualNetwork Rule
-  VirtualNetworkRuleResponse({
+  const VirtualNetworkRuleResponse({
     required this.id,
     required this.name,
     required this.subnetId,

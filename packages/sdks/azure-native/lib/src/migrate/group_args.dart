@@ -25,7 +25,7 @@ class GroupArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [properties] Properties of the group.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  GroupArgs({
+  const GroupArgs({
     this.eTag,
     this.groupName,
     required this.projectName,

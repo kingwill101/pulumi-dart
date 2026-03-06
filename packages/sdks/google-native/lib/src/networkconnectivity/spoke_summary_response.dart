@@ -18,7 +18,7 @@ class SpokeSummaryResponse {
   /// [spokeStateCounts] Counts the number of spokes that are in each state and associated with a given hub.
   /// [spokeStateReasonCounts] Counts the number of spokes that are inactive for each possible reason and associated with a given hub.
   /// [spokeTypeCounts] Counts the number of spokes of each type that are associated with a specific hub.
-  SpokeSummaryResponse({
+  const SpokeSummaryResponse({
     required this.spokeStateCounts,
     required this.spokeStateReasonCounts,
     required this.spokeTypeCounts,

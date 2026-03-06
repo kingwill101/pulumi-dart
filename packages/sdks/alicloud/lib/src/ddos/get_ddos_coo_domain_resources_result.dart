@@ -22,7 +22,7 @@ class GetDdosCooDomainResourcesResult {
   /// [outputFile] Optional.
   /// [queryDomainPattern] Optional.
   /// [resources] A list of Ddoscoo Domain Resources. Each element contains the following attributes:
-  GetDdosCooDomainResourcesResult({
+  const GetDdosCooDomainResourcesResult({
     required this.id,
     required this.ids,
     this.instanceIds,

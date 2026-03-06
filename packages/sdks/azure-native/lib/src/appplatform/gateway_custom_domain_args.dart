@@ -25,7 +25,7 @@ class GatewayCustomDomainArgs {
   /// [properties] The properties of custom domain for Spring Cloud Gateway
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GatewayCustomDomainArgs({
+  const GatewayCustomDomainArgs({
     this.domainName,
     required this.gatewayName,
     this.properties,

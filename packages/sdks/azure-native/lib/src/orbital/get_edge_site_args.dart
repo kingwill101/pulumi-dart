@@ -15,7 +15,7 @@ class GetEdgeSiteArgs {
   /// Creates a new [GetEdgeSiteArgs].
   /// [edgeSiteName] Edge site name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEdgeSiteArgs({
+  const GetEdgeSiteArgs({
     required this.edgeSiteName,
     required this.resourceGroupName,
   });

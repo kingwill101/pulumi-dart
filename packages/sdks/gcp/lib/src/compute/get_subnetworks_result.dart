@@ -19,7 +19,7 @@ class GetSubnetworksResult {
   /// [project] Optional.
   /// [region] Optional.
   /// [subnetworks] A list of all retrieved GCE subnetworks. Structure is defined below.
-  GetSubnetworksResult({
+  const GetSubnetworksResult({
     this.filter,
     required this.id,
     this.project,

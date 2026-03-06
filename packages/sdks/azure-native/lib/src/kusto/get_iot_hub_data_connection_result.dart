@@ -54,7 +54,7 @@ class GetIotHubDataConnectionResult {
   /// [sharedAccessPolicyName] The name of the share access policy
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetIotHubDataConnectionResult({
+  const GetIotHubDataConnectionResult({
     required this.azureApiVersion,
     required this.consumerGroup,
     this.dataFormat,

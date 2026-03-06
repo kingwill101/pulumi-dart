@@ -36,7 +36,7 @@ class OutputResponse {
   /// [sizeWindow] The size window to constrain a Stream Analytics output to.
   /// [timeWindow] The time frame for filtering Stream Analytics job outputs.
   /// [type] Resource type
-  OutputResponse({
+  const OutputResponse({
     this.datasource,
     required this.diagnostics,
     required this.etag,

@@ -9,7 +9,7 @@ class LoggingConfigResponseDataprocV1beta2 {
 
   /// Creates a new [LoggingConfigResponseDataprocV1beta2].
   /// [driverLogLevels] The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  LoggingConfigResponseDataprocV1beta2({
+  const LoggingConfigResponseDataprocV1beta2({
     required this.driverLogLevels,
   });
 

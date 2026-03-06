@@ -42,7 +42,7 @@ class GetConfigurationProfileResult {
   /// [tags] Map of tags for the resource.
   /// [type] Type of validator. Valid values: JSON_SCHEMA and LAMBDA.
   /// [validators] Nested list of methods for validating the configuration.
-  GetConfigurationProfileResult({
+  const GetConfigurationProfileResult({
     required this.applicationId,
     required this.arn,
     required this.configurationProfileId,

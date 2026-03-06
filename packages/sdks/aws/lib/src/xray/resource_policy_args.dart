@@ -26,7 +26,7 @@ class ResourcePolicyArgs {
   /// [policyName] name of the resource policy. Must be unique within a specific Amazon Web Services account.
   /// [policyRevisionId] Specifies a specific policy revision, to ensure an atomic create operation. By default the resource policy is created if it does not exist, or updated with an incremented revision id. The revision id is unique to each policy in the account. If the policy revision id does not match the latest revision id, the operation will fail with an InvalidPolicyRevisionIdException exception. You can also provide a PolicyRevisionId of 0. In this case, the operation will fail with an InvalidPolicyRevisionIdException exception if a resource policy with the same name already exists.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ResourcePolicyArgs({
+  const ResourcePolicyArgs({
     this.bypassPolicyLockoutCheck,
     required this.policyDocument,
     required this.policyName,

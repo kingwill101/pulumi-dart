@@ -10,7 +10,7 @@ class AutoNCrossValidationsResponse {
 
   /// Creates a new [AutoNCrossValidationsResponse].
   /// [mode] Determines how N-Cross validations value is determined.
-  AutoNCrossValidationsResponse({
+  const AutoNCrossValidationsResponse({
     required this.mode,
   });
 

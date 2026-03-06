@@ -14,7 +14,7 @@ class FrontdoorRuleActionsUrlRewriteAction {
   /// [destination] The destination path to use in the rewrite. The destination path overwrites the source pattern.
   /// [preserveUnmatchedPath] Append the remaining path after the source pattern to the new destination path? Possible values `true` or `false`. Defaults to `false`.
   /// [sourcePattern] The source pattern in the URL path to replace. This uses prefix-based matching. For example, to match all URL paths use a forward slash `"/"` as the source pattern value.
-  FrontdoorRuleActionsUrlRewriteAction({
+  const FrontdoorRuleActionsUrlRewriteAction({
     required this.destination,
     this.preserveUnmatchedPath,
     required this.sourcePattern,

@@ -12,7 +12,7 @@ class VpnLinkProviderProperties {
   /// Creates a new [VpnLinkProviderProperties].
   /// [linkProviderName] Name of the link provider.
   /// [linkSpeedInMbps] Link speed.
-  VpnLinkProviderProperties({
+  const VpnLinkProviderProperties({
     this.linkProviderName,
     this.linkSpeedInMbps,
   });

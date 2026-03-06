@@ -22,7 +22,7 @@ class GetAppTemplatesResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [templates] Required.
-  GetAppTemplatesResult({
+  const GetAppTemplatesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

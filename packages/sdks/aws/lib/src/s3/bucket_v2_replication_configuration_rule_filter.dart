@@ -12,7 +12,7 @@ class BucketV2ReplicationConfigurationRuleFilter {
   /// Creates a new [BucketV2ReplicationConfigurationRuleFilter].
   /// [prefix] Object keyname prefix that identifies subset of objects to which the rule applies. Must be less than or equal to 1024 characters in length.
   /// [tags] A map of tags that identifies subset of objects to which the rule applies.
-  BucketV2ReplicationConfigurationRuleFilter({
+  const BucketV2ReplicationConfigurationRuleFilter({
     this.prefix,
     this.tags,
   });

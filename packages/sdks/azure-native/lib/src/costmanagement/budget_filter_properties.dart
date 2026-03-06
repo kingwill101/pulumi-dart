@@ -23,7 +23,7 @@ class BudgetFilterProperties {
   /// Creates a new [BudgetFilterProperties].
   /// [dimensions] Has comparison expression for a dimension.
   /// [tags] Has comparison expression for a tag.
-  BudgetFilterProperties({
+  const BudgetFilterProperties({
     this.dimensions,
     this.tags,
   });

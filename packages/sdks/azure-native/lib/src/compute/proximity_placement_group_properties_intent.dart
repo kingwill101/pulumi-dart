@@ -9,7 +9,7 @@ class ProximityPlacementGroupPropertiesIntent {
 
   /// Creates a new [ProximityPlacementGroupPropertiesIntent].
   /// [vmSizes] Specifies possible sizes of virtual machines that can be created in the proximity placement group.
-  ProximityPlacementGroupPropertiesIntent({
+  const ProximityPlacementGroupPropertiesIntent({
     this.vmSizes,
   });
 

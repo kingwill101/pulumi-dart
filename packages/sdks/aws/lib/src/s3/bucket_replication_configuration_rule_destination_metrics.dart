@@ -11,7 +11,7 @@ class BucketReplicationConfigurationRuleDestinationMetrics {
   /// Creates a new [BucketReplicationConfigurationRuleDestinationMetrics].
   /// [minutes] Threshold within which objects are to be replicated. The only valid value is `15`.
   /// [status] Status of replication metrics. Either `Enabled` or `Disabled`.
-  BucketReplicationConfigurationRuleDestinationMetrics({
+  const BucketReplicationConfigurationRuleDestinationMetrics({
     this.minutes,
     this.status,
   });

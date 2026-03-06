@@ -11,7 +11,7 @@ class ListenerRuleConditionPathPattern {
   /// Creates a new [ListenerRuleConditionPathPattern].
   /// [regexValues] List of regular expressions to compare against the request URL. The maximum length of each string is 128 characters. Conflicts with `values`.
   /// [values] List of path patterns to compare against the request URL. Maximum size of each pattern is 128 characters. Comparison is case-sensitive. Wildcard characters supported: * (matches 0 or more characters) and ? (matches exactly 1 character). Only one pattern needs to match for the condition to be satisfied. Path pattern is compared only to the path of the URL, not to its query string. To compare against the query string, use a `query_string` condition. Conflicts with `regex_values`.
-  ListenerRuleConditionPathPattern({
+  const ListenerRuleConditionPathPattern({
     this.regexValues,
     this.values,
   });

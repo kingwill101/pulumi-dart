@@ -61,7 +61,7 @@ class GetVolumeResult {
   /// [volumeId] Volume ID (e.g., vol-59fcb34e).
   /// [volumeInitializationRate] EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume.
   /// [volumeType] Type of EBS volume.
-  GetVolumeResult({
+  const GetVolumeResult({
     required this.arn,
     required this.availabilityZone,
     required this.createTime,

@@ -21,7 +21,7 @@ class InsightsConfigResponseSqladminV1beta4 {
   /// [queryStringLength] Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value. Changing query length will restart the database.
   /// [recordApplicationTags] Whether Query Insights will record application tags from query when enabled.
   /// [recordClientAddress] Whether Query Insights will record client address when enabled.
-  InsightsConfigResponseSqladminV1beta4({
+  const InsightsConfigResponseSqladminV1beta4({
     required this.queryInsightsEnabled,
     required this.queryPlansPerMinute,
     required this.queryStringLength,

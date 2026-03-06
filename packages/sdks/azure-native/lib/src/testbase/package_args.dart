@@ -59,7 +59,7 @@ class PackageArgs {
   /// [testBaseAccountName] The resource name of the Test Base Account.
   /// [tests] The detailed test information.
   /// [version] Application version
-  PackageArgs({
+  const PackageArgs({
     required this.applicationName,
     this.blobPath,
     this.draftPackageId,

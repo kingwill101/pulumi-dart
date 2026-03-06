@@ -7,7 +7,7 @@ class FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns {
 
   /// Creates a new [FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns].
   /// [items] Optional.
-  FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns({
+  const FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns({
     this.items,
   });
 

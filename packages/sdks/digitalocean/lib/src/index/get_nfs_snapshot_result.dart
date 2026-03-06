@@ -24,7 +24,7 @@ class GetNfsSnapshotResult {
   /// [size] Required.
   /// [status] Required.
   /// [tags] Required.
-  GetNfsSnapshotResult({
+  const GetNfsSnapshotResult({
     required this.createdAt,
     required this.id,
     this.name,

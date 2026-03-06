@@ -21,7 +21,7 @@ class GetSubnetArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [subnetName] The name of the subnet.
   /// [virtualNetworkName] The name of the virtual network.
-  GetSubnetArgs({
+  const GetSubnetArgs({
     this.expand,
     required this.resourceGroupName,
     required this.subnetName,

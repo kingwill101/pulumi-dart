@@ -41,7 +41,7 @@ class GetClusterResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] The availability zones.
-  GetClusterResult({
+  const GetClusterResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

@@ -15,7 +15,7 @@ class GetJobArgs {
   /// [jobId] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetJobArgs({
+  const GetJobArgs({
     required this.jobId,
     this.project,
     required this.region,

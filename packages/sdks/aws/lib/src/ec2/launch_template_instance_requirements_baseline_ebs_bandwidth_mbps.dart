@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps {
   /// Creates a new [LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps].
   /// [max] Maximum.
   /// [min] Minimum.
-  LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps({
+  const LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps({
     this.max,
     this.min,
   });

@@ -8,7 +8,7 @@ class BucketVersioning {
 
   /// Creates a new [BucketVersioning].
   /// [status] Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-  BucketVersioning({
+  const BucketVersioning({
     required this.status,
   });
 

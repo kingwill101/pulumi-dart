@@ -13,7 +13,7 @@ class AzureTableStorageApplicationLogsConfig {
   /// Creates a new [AzureTableStorageApplicationLogsConfig].
   /// [level] Log level.
   /// [sasUrl] SAS URL to an Azure table with add/query/delete permissions.
-  AzureTableStorageApplicationLogsConfig({
+  const AzureTableStorageApplicationLogsConfig({
     this.level,
     required this.sasUrl,
   });

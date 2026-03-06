@@ -13,7 +13,7 @@ class GridLayout {
   /// Creates a new [GridLayout].
   /// [columns] The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
   /// [widgets] The informational elements that are arranged into the columns row-first.
-  GridLayout({
+  const GridLayout({
     this.columns,
     this.widgets,
   });

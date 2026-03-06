@@ -12,7 +12,7 @@ class ManagedClusterOIDCIssuerProfileResponse {
   /// Creates a new [ManagedClusterOIDCIssuerProfileResponse].
   /// [enabled] Whether the OIDC issuer is enabled.
   /// [issuerURL] The OIDC issuer url of the Managed Cluster.
-  ManagedClusterOIDCIssuerProfileResponse({
+  const ManagedClusterOIDCIssuerProfileResponse({
     this.enabled,
     required this.issuerURL,
   });

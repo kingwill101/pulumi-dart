@@ -10,7 +10,7 @@ class TrustConfigTrustStoreTrustAnchor {
 
   /// Creates a new [TrustConfigTrustStoreTrustAnchor].
   /// [pemCertificate] PEM root certificate of the PKI used for validation.
-  TrustConfigTrustStoreTrustAnchor({
+  const TrustConfigTrustStoreTrustAnchor({
     this.pemCertificate,
   });
 

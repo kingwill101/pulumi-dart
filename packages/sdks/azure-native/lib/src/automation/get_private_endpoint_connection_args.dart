@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [automationAccountName] The name of the automation account.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.automationAccountName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

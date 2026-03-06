@@ -11,7 +11,7 @@ class AuthorizeVpcEndpointAccessAuthorizedPrincipal {
   /// Creates a new [AuthorizeVpcEndpointAccessAuthorizedPrincipal].
   /// [principal] IAM principal that is allowed to access to the domain.
   /// [principalType] Type of principal.
-  AuthorizeVpcEndpointAccessAuthorizedPrincipal({
+  const AuthorizeVpcEndpointAccessAuthorizedPrincipal({
     required this.principal,
     required this.principalType,
   });

@@ -24,7 +24,7 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence {
   /// [schedule] A `schedule` block as documented below.
   /// [startTime] The start time of the schedule, formatted as an RFC3339 string.
   /// [timeZone] The timezone of the start/end time.
-  IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence({
+  const IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence({
     this.endTime,
     required this.frequency,
     required this.interval,

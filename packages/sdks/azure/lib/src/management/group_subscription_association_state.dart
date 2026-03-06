@@ -12,7 +12,7 @@ class GroupSubscriptionAssociationState {
   /// Creates a new [GroupSubscriptionAssociationState].
   /// [managementGroupId] The ID of the Management Group to associate the Subscription with. Changing this forces a new Management to be created.
   /// [subscriptionId] The ID of the Subscription to be associated with the Management Group. Changing this forces a new Management to be created.
-  GroupSubscriptionAssociationState({
+  const GroupSubscriptionAssociationState({
     this.managementGroupId,
     this.subscriptionId,
   });

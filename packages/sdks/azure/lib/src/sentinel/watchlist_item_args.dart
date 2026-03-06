@@ -18,7 +18,7 @@ class WatchlistItemArgs {
   /// [name] The name in UUID format which should be used for this Sentinel Watchlist Item. Changing this forces a new Sentinel Watchlist Item to be created.
   /// [properties] The key value pairs of the Sentinel Watchlist Item.
   /// [watchlistId] The ID of the Sentinel Watchlist that this Item resides in. Changing this forces a new Sentinel Watchlist Item to be created.
-  WatchlistItemArgs({
+  const WatchlistItemArgs({
     this.name,
     required this.properties,
     required this.watchlistId,

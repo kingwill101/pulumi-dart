@@ -21,7 +21,7 @@ class AssessmentStatusResponseResponse {
   /// [description] Human readable description of the assessment status
   /// [firstEvaluationDate] The time that the assessment was created and first evaluated. Returned as UTC time in ISO 8601 format
   /// [statusChangeDate] The time that the status of the assessment last changed. Returned as UTC time in ISO 8601 format
-  AssessmentStatusResponseResponse({
+  const AssessmentStatusResponseResponse({
     this.cause,
     required this.code,
     this.description,

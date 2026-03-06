@@ -18,7 +18,7 @@ class GetCustomImageArgs {
   /// [customImageName] The resource name of the test base custom image.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetCustomImageArgs({
+  const GetCustomImageArgs({
     required this.customImageName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

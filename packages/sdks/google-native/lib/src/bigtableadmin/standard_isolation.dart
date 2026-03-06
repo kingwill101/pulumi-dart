@@ -10,7 +10,7 @@ class StandardIsolation {
 
   /// Creates a new [StandardIsolation].
   /// [priority] The priority of requests sent using this app profile.
-  StandardIsolation({
+  const StandardIsolation({
     this.priority,
   });
 

@@ -14,7 +14,7 @@ class KubernetesClusterOmsAgentOmsAgentIdentity {
   /// [clientId] The Client ID of the user-defined Managed Identity used for Web App Routing.
   /// [objectId] The Object ID of the user-defined Managed Identity used for Web App Routing
   /// [userAssignedIdentityId] The ID of the User Assigned Identity used for Web App Routing.
-  KubernetesClusterOmsAgentOmsAgentIdentity({
+  const KubernetesClusterOmsAgentOmsAgentIdentity({
     this.clientId,
     this.objectId,
     this.userAssignedIdentityId,

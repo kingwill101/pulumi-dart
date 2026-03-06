@@ -9,7 +9,7 @@ class HttpTokensStateEnumValueResponse {
 
   /// Creates a new [HttpTokensStateEnumValueResponse].
   /// [value] Property value
-  HttpTokensStateEnumValueResponse({
+  const HttpTokensStateEnumValueResponse({
     this.value,
   });
 

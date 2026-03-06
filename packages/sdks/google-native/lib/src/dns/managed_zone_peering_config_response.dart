@@ -11,7 +11,7 @@ class ManagedZonePeeringConfigResponse {
   /// Creates a new [ManagedZonePeeringConfigResponse].
   /// [kind] Required.
   /// [targetNetwork] The network with which to peer.
-  ManagedZonePeeringConfigResponse({
+  const ManagedZonePeeringConfigResponse({
     required this.kind,
     required this.targetNetwork,
   });

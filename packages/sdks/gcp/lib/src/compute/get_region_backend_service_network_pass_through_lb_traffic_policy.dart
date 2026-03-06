@@ -9,7 +9,7 @@ class GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy {
 
   /// Creates a new [GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy].
   /// [zonalAffinities] When configured, new connections are load balanced across healthy backend endpoints in the local zone.
-  GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy({
+  const GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy({
     required this.zonalAffinities,
   });
 

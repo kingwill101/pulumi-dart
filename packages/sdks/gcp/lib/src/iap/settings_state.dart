@@ -30,7 +30,7 @@ class SettingsState {
   /// [accessSettings] Top level wrapper for all access related setting in IAP.
   /// [applicationSettings] Top level wrapper for all application related settings in IAP.
   /// [name] The resource name of the IAP protected resource. Name can have below resources:
-  SettingsState({
+  const SettingsState({
     this.accessSettings,
     this.applicationSettings,
     this.name,

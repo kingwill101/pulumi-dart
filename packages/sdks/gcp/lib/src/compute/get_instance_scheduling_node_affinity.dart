@@ -11,7 +11,7 @@ class GetInstanceSchedulingNodeAffinity {
   /// [key] Required.
   /// [operator] Required.
   /// [values] Required.
-  GetInstanceSchedulingNodeAffinity({
+  const GetInstanceSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

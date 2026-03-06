@@ -10,7 +10,7 @@ class ExtensionAksAssignedIdentity {
 
   /// Creates a new [ExtensionAksAssignedIdentity].
   /// [type] The identity type.
-  ExtensionAksAssignedIdentity({
+  const ExtensionAksAssignedIdentity({
     this.type,
   });
 

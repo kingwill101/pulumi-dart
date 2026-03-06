@@ -14,7 +14,7 @@ class GetApplicationGatewayWafConfigurationExclusion {
   /// [matchVariable] Match variable of the exclusion rule.
   /// [selector] String value which will be used for the filter operation.
   /// [selectorMatchOperator] Operator which will be used to search in the variable content.
-  GetApplicationGatewayWafConfigurationExclusion({
+  const GetApplicationGatewayWafConfigurationExclusion({
     required this.matchVariable,
     required this.selector,
     required this.selectorMatchOperator,

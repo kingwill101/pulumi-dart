@@ -18,7 +18,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity {
   /// Creates a new [AppVersionSnapshotGuardrailLlmPromptSecurity].
   /// [customPolicies] (Output)
   /// [defaultSettings] (Output)
-  AppVersionSnapshotGuardrailLlmPromptSecurity({
+  const AppVersionSnapshotGuardrailLlmPromptSecurity({
     this.customPolicies,
     this.defaultSettings,
   });

@@ -23,7 +23,7 @@ class PipeLogConfiguration {
   /// [includeExecutionDatas] String list that specifies whether the execution data (specifically, the `payload`, `awsRequest`, and `awsResponse` fields) is included in the log messages for this pipe. This applies to all log destinations for the pipe. Valid values `ALL`.
   /// [level] The level of logging detail to include. Valid values `OFF`, `ERROR`, `INFO` and `TRACE`.
   /// [s3LogDestination] Amazon S3 logging configuration settings for the pipe. Detailed below.
-  PipeLogConfiguration({
+  const PipeLogConfiguration({
     this.cloudwatchLogsLogDestination,
     this.firehoseLogDestination,
     this.includeExecutionDatas,

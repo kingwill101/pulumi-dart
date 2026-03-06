@@ -8,7 +8,7 @@ class WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
 
   /// Creates a new [WorkstationConfigHostGceInstanceConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Whether the instance has confidential compute enabled.
-  WorkstationConfigHostGceInstanceConfidentialInstanceConfig({
+  const WorkstationConfigHostGceInstanceConfidentialInstanceConfig({
     this.enableConfidentialCompute,
   });
 

@@ -11,7 +11,7 @@ class AgentDataSourceDataSourceConfigurationSalesforceConfiguration {
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfiguration].
   /// [crawlerConfiguration] Optional.
   /// [sourceConfiguration] Optional.
-  AgentDataSourceDataSourceConfigurationSalesforceConfiguration({
+  const AgentDataSourceDataSourceConfigurationSalesforceConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,
   });

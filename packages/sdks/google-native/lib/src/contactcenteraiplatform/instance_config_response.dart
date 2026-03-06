@@ -9,7 +9,7 @@ class InstanceConfigResponse {
 
   /// Creates a new [InstanceConfigResponse].
   /// [instanceSize] The instance size of this the instance configuration.
-  InstanceConfigResponse({
+  const InstanceConfigResponse({
     required this.instanceSize,
   });
 

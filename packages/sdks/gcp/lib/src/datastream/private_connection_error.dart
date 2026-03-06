@@ -11,7 +11,7 @@ class PrivateConnectionError {
   /// Creates a new [PrivateConnectionError].
   /// [details] A list of messages that carry the error details.
   /// [message] A message containing more information about the error that occurred.
-  PrivateConnectionError({
+  const PrivateConnectionError({
     this.details,
     this.message,
   });

@@ -13,7 +13,7 @@ class MaintenanceWindowResponse {
   /// Creates a new [MaintenanceWindowResponse].
   /// [dayOfWeek] Day of the week for this MaintenanceWindow (in UTC).
   /// [startTime] Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes.
-  MaintenanceWindowResponse({
+  const MaintenanceWindowResponse({
     required this.dayOfWeek,
     required this.startTime,
   });

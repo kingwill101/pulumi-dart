@@ -37,7 +37,7 @@ class FirewallInboundRule {
   /// [sourceKubernetesIds] An array containing the IDs of
   /// [sourceLoadBalancerUids] An array containing the IDs
   /// [sourceTags] An array containing the names of Tags
-  FirewallInboundRule({
+  const FirewallInboundRule({
     this.portRange,
     required this.protocol,
     this.sourceAddresses,

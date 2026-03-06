@@ -33,7 +33,7 @@ class GetChannelResult {
   /// [ttl] Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
   /// [updateTime] The time at which the channel was last updated.
   /// [url] The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
-  GetChannelResult({
+  const GetChannelResult({
     required this.createTime,
     required this.expireTime,
     required this.labels,

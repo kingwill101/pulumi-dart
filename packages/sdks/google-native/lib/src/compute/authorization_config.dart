@@ -10,7 +10,7 @@ class AuthorizationConfig {
 
   /// Creates a new [AuthorizationConfig].
   /// [policies] List of RbacPolicies.
-  AuthorizationConfig({
+  const AuthorizationConfig({
     this.policies,
   });
 

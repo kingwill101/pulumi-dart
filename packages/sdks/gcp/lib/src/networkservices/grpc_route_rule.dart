@@ -15,7 +15,7 @@ class GrpcRouteRule {
   /// Creates a new [GrpcRouteRule].
   /// [action] Required. A detailed rule defining how to route traffic.
   /// [matches] Matches define conditions used for matching the rule against incoming gRPC requests.
-  GrpcRouteRule({
+  const GrpcRouteRule({
     this.action,
     this.matches,
   });

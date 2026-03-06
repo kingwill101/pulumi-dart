@@ -28,7 +28,7 @@ class HubState {
   /// [eventListeners] An `event_listener` block as defined below.
   /// [name] The name of the Web Pubsub hub service. Changing this forces a new resource to be created.
   /// [webPubsubId] Specifies the id of the Web Pubsub. Changing this forces a new resource to be created.
-  HubState({
+  const HubState({
     this.anonymousConnectionsEnabled,
     this.eventHandlers,
     this.eventListeners,

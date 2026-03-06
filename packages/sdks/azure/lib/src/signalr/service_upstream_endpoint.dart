@@ -20,7 +20,7 @@ class ServiceUpstreamEndpoint {
   /// [hubPatterns] The hubs to match on, or `*` for all.
   /// [urlTemplate] The upstream URL Template. This can be a url or a template such as `http://host.com/{hub}/api/{category}/{event}`.
   /// [userAssignedIdentityId] Specifies the Managed Identity IDs to be assigned to this signalR upstream setting by using resource uuid as both system assigned and user assigned identity is supported.
-  ServiceUpstreamEndpoint({
+  const ServiceUpstreamEndpoint({
     required this.categoryPatterns,
     required this.eventPatterns,
     required this.hubPatterns,

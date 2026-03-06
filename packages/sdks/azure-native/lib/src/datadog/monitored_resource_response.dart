@@ -21,7 +21,7 @@ class MonitoredResourceResponse {
   /// [reasonForMetricsStatus] Reason for why the resource is sending metrics (or why it is not sending).
   /// [sendingLogs] Flag indicating if resource is sending logs to Datadog.
   /// [sendingMetrics] Flag indicating if resource is sending metrics to Datadog.
-  MonitoredResourceResponse({
+  const MonitoredResourceResponse({
     this.id,
     this.reasonForLogsStatus,
     this.reasonForMetricsStatus,

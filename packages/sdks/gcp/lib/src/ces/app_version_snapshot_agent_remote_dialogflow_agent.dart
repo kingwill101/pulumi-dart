@@ -32,7 +32,7 @@ class AppVersionSnapshotAgentRemoteDialogflowAgent {
   /// [flowId] (Output)
   /// [inputVariableMapping] (Output)
   /// [outputVariableMapping] (Output)
-  AppVersionSnapshotAgentRemoteDialogflowAgent({
+  const AppVersionSnapshotAgentRemoteDialogflowAgent({
     this.agent,
     this.environmentId,
     this.flowId,

@@ -25,7 +25,7 @@ class ElasticBackupArgs {
   /// [backupVaultName] The name of the ElasticBackupVault
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ElasticBackupArgs({
+  const ElasticBackupArgs({
     required this.accountName,
     this.backupName,
     required this.backupVaultName,

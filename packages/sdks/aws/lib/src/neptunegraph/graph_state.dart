@@ -51,7 +51,7 @@ class GraphState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vectorSearchConfiguration] Vector Search Configuration (see below for nested schema of vector_search_configuration)
-  GraphState({
+  const GraphState({
     this.arn,
     this.deletionProtection,
     this.endpoint,

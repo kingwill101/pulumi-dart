@@ -43,7 +43,7 @@ class DiskState {
   /// [snapshotId] The ID of the snapshot used to create the cloud disk.
   /// [status] The status of the disk.
   /// [tags] The label to which the instance is bound.
-  DiskState({
+  const DiskState({
     this.category,
     this.createTime,
     this.diskName,

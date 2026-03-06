@@ -17,7 +17,7 @@ class GetInstanceNetworkingIpv6Global {
   /// [range] The IPv6 range of addresses in this pool.
   /// [region] (Filterable) The Region this address resides in.
   /// [routeTarget] (Nullable) The last address in this block of IPv6 addresses.
-  GetInstanceNetworkingIpv6Global({
+  const GetInstanceNetworkingIpv6Global({
     required this.prefix,
     required this.range,
     required this.region,

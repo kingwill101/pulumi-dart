@@ -38,7 +38,7 @@ class FleetGkehubState {
   /// [states] The state of the fleet resource.
   /// [uid] Google-generated UUID for this resource. This is unique across all
   /// [updateTime] The time the fleet was last updated, in RFC3339 text format.
-  FleetGkehubState({
+  const FleetGkehubState({
     this.createTime,
     this.defaultClusterConfig,
     this.deleteTime,

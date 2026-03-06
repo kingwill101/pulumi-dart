@@ -32,7 +32,7 @@ class GetServerAzureADAdministratorResult {
   /// [sid] SID (object ID) of the server administrator.
   /// [tenantId] Tenant ID of the administrator.
   /// [type] Resource type.
-  GetServerAzureADAdministratorResult({
+  const GetServerAzureADAdministratorResult({
     this.administratorType,
     required this.azureADOnlyAuthentication,
     required this.azureApiVersion,

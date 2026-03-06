@@ -51,7 +51,7 @@ class AgentFlowState {
   /// [timeouts] Optional.
   /// [updatedAt] The time at which the flow was last updated.
   /// [version] The version of the flow.
-  AgentFlowState({
+  const AgentFlowState({
     this.arn,
     this.createdAt,
     this.customerEncryptionKeyArn,

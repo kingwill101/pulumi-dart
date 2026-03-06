@@ -30,7 +30,7 @@ class DataSourceWindowsPerformanceCounterArgs {
   /// [objectName] The object name of the Log Analytics Windows Performance Counter DataSource.
   /// [resourceGroupName] The name of the Resource Group where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
   /// [workspaceName] The name of the Log Analytics Workspace where the Log Analytics Windows Performance Counter DataSource should exist. Changing this forces a new Log Analytics Windows Performance Counter DataSource to be created.
-  DataSourceWindowsPerformanceCounterArgs({
+  const DataSourceWindowsPerformanceCounterArgs({
     required this.counterName,
     required this.instanceName,
     required this.intervalSeconds,

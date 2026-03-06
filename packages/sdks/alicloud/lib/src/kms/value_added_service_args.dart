@@ -31,7 +31,7 @@ class ValueAddedServiceArgs {
   /// [renewPeriod] Automatic renewal period, in years.
   /// [renewStatus] The renewal status of the specified instance. Valid values:
   /// [valueAddedService] value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-  ValueAddedServiceArgs({
+  const ValueAddedServiceArgs({
     required this.paymentType,
     this.period,
     this.renewPeriod,

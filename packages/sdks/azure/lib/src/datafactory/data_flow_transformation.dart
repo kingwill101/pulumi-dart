@@ -23,7 +23,7 @@ class DataFlowTransformation {
   /// [flowlet] A `flowlet` block as defined below.
   /// [linkedService] A `linked_service` block as defined below.
   /// [name] The name for the Data Flow transformation.
-  DataFlowTransformation({
+  const DataFlowTransformation({
     this.dataset,
     this.description,
     this.flowlet,

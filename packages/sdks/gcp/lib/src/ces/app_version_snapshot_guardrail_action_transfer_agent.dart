@@ -12,7 +12,7 @@ class AppVersionSnapshotGuardrailActionTransferAgent {
 
   /// Creates a new [AppVersionSnapshotGuardrailActionTransferAgent].
   /// [agent] (Output)
-  AppVersionSnapshotGuardrailActionTransferAgent({
+  const AppVersionSnapshotGuardrailActionTransferAgent({
     this.agent,
   });
 

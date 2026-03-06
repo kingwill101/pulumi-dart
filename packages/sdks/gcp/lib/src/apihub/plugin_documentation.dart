@@ -8,7 +8,7 @@ class PluginDocumentation {
 
   /// Creates a new [PluginDocumentation].
   /// [externalUri] The uri of the externally hosted documentation.
-  PluginDocumentation({
+  const PluginDocumentation({
     this.externalUri,
   });
 

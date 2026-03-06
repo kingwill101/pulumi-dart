@@ -21,7 +21,7 @@ class TrustProviderNativeApplicationOidcOptions {
   /// [scope] Optional.
   /// [tokenEndpoint] Optional.
   /// [userInfoEndpoint] Optional.
-  TrustProviderNativeApplicationOidcOptions({
+  const TrustProviderNativeApplicationOidcOptions({
     this.authorizationEndpoint,
     this.clientId,
     required this.clientSecret,

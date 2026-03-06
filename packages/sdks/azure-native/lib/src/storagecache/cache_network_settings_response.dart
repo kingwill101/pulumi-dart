@@ -21,7 +21,7 @@ class CacheNetworkSettingsResponse {
   /// [mtu] The IPv4 maximum transmission unit configured for the subnet.
   /// [ntpServer] NTP server IP Address or FQDN for the cache to use. The default is time.windows.com.
   /// [utilityAddresses] Array of additional IP addresses used by this cache.
-  CacheNetworkSettingsResponse({
+  const CacheNetworkSettingsResponse({
     this.dnsSearchDomain,
     this.dnsServers,
     this.mtu,

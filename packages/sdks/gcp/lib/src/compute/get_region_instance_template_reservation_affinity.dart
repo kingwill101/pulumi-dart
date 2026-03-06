@@ -12,7 +12,7 @@ class GetRegionInstanceTemplateReservationAffinity {
   /// Creates a new [GetRegionInstanceTemplateReservationAffinity].
   /// [specificReservations] Specifies the label selector for the reservation to use.
   /// [type] The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-  GetRegionInstanceTemplateReservationAffinity({
+  const GetRegionInstanceTemplateReservationAffinity({
     required this.specificReservations,
     required this.type,
   });

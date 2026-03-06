@@ -15,7 +15,7 @@ class TokenPassword {
   /// [creationTime] The creation datetime of the password.
   /// [expiry] The expiry datetime of the password.
   /// [name] The password name "password1" or "password2"
-  TokenPassword({
+  const TokenPassword({
     this.creationTime,
     this.expiry,
     this.name,

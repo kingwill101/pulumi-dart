@@ -17,7 +17,7 @@ class DiJobResourceSettings {
   /// [offlineResourceSettings] Offline Resource Group configuration See `offline_resource_settings` below.
   /// [realtimeResourceSettings] Real-time Resource Group See `realtime_resource_settings` below.
   /// [scheduleResourceSettings] Scheduling Resource Groups See `schedule_resource_settings` below.
-  DiJobResourceSettings({
+  const DiJobResourceSettings({
     this.offlineResourceSettings,
     this.realtimeResourceSettings,
     this.scheduleResourceSettings,

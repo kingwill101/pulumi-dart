@@ -9,7 +9,7 @@ class BigQueryDestinationResponse {
 
   /// Creates a new [BigQueryDestinationResponse].
   /// [datasetId] The ID of a BigQuery Dataset.
-  BigQueryDestinationResponse({
+  const BigQueryDestinationResponse({
     required this.datasetId,
   });
 

@@ -9,7 +9,7 @@ class TableSchemaResponse {
 
   /// Creates a new [TableSchemaResponse].
   /// [fields] Describes the fields in a table.
-  TableSchemaResponse({
+  const TableSchemaResponse({
     required this.fields,
   });
 

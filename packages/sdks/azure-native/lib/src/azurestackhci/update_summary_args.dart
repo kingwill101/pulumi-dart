@@ -45,7 +45,7 @@ class UpdateSummaryArgs {
   /// [oemFamily] OEM family name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [state] Overall update state of the stamp.
-  UpdateSummaryArgs({
+  const UpdateSummaryArgs({
     required this.clusterName,
     this.currentOemVersion,
     this.currentSbeVersion,

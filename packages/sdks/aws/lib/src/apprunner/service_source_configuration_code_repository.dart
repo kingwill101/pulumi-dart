@@ -19,7 +19,7 @@ class ServiceSourceConfigurationCodeRepository {
   /// [repositoryUrl] Location of the repository that contains the source code.
   /// [sourceCodeVersion] Version that should be used within the source code repository. See Source Code Version below for more details.
   /// [sourceDirectory] The path of the directory that stores source code and configuration files. The build and start commands also execute from here. The path is absolute from root and, if not specified, defaults to the repository root.
-  ServiceSourceConfigurationCodeRepository({
+  const ServiceSourceConfigurationCodeRepository({
     this.codeConfiguration,
     required this.repositoryUrl,
     required this.sourceCodeVersion,

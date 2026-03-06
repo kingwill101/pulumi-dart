@@ -15,7 +15,7 @@ class GetStateMachineVersionsResult {
   /// [region] Required.
   /// [statemachineArn] Required.
   /// [statemachineVersions] ARN List identifying the statemachine versions.
-  GetStateMachineVersionsResult({
+  const GetStateMachineVersionsResult({
     required this.id,
     required this.region,
     required this.statemachineArn,

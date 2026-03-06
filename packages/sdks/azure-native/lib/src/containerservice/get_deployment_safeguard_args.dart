@@ -12,7 +12,7 @@ class GetDeploymentSafeguardArgs {
 
   /// Creates a new [GetDeploymentSafeguardArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetDeploymentSafeguardArgs({
+  const GetDeploymentSafeguardArgs({
     required this.resourceUri,
   });
 

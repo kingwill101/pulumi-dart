@@ -9,7 +9,7 @@ class BucketServerSideEncryptionConfiguration {
 
   /// Creates a new [BucketServerSideEncryptionConfiguration].
   /// [rule] Single object for server-side encryption by default configuration. (documented below)
-  BucketServerSideEncryptionConfiguration({
+  const BucketServerSideEncryptionConfiguration({
     required this.rule,
   });
 

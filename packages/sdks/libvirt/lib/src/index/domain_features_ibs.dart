@@ -8,7 +8,7 @@ class DomainFeaturesIbs {
 
   /// Creates a new [DomainFeaturesIbs].
   /// [value] Sets the value for the Instruction Based Sampling feature's configuration.
-  DomainFeaturesIbs({
+  const DomainFeaturesIbs({
     required this.value,
   });
 

@@ -12,7 +12,7 @@ class AnalysisParametersStringParameter {
   /// Creates a new [AnalysisParametersStringParameter].
   /// [name] Display name for the analysis.
   /// [values] Required.
-  AnalysisParametersStringParameter({
+  const AnalysisParametersStringParameter({
     required this.name,
     required this.values,
   });

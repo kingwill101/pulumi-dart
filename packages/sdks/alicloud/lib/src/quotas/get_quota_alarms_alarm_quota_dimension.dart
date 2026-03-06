@@ -11,7 +11,7 @@ class GetQuotaAlarmsAlarmQuotaDimension {
   /// Creates a new [GetQuotaAlarmsAlarmQuotaDimension].
   /// [key] The key of quota_dimensions.
   /// [value] The value of quota_dimensions.
-  GetQuotaAlarmsAlarmQuotaDimension({
+  const GetQuotaAlarmsAlarmQuotaDimension({
     required this.key,
     required this.value,
   });

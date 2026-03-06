@@ -57,7 +57,7 @@ class AzureBlobDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableRootLocation] The root of blob path. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  AzureBlobDatasetResponse({
+  const AzureBlobDatasetResponse({
     this.annotations,
     this.compression,
     this.description,

@@ -18,7 +18,7 @@ class IPConfigurationBgpPeeringAddressResponse {
   /// [defaultBgpIpAddresses] The list of default BGP peering addresses which belong to IP configuration.
   /// [ipconfigurationId] The ID of IP configuration which belongs to gateway.
   /// [tunnelIpAddresses] The list of tunnel public IP addresses which belong to IP configuration.
-  IPConfigurationBgpPeeringAddressResponse({
+  const IPConfigurationBgpPeeringAddressResponse({
     this.customBgpIpAddresses,
     required this.defaultBgpIpAddresses,
     this.ipconfigurationId,

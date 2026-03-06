@@ -14,7 +14,7 @@ class SecuritySettings {
   /// Creates a new [SecuritySettings].
   /// [immutabilitySettings] Immutability Settings of a vault
   /// [softDeleteSettings] Soft delete Settings of a vault
-  SecuritySettings({
+  const SecuritySettings({
     this.immutabilitySettings,
     this.softDeleteSettings,
   });

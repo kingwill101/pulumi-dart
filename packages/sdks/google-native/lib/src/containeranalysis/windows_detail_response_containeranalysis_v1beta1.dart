@@ -18,7 +18,7 @@ class WindowsDetailResponseContaineranalysisV1beta1 {
   /// [description] The description of the vulnerability.
   /// [fixingKbs] The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
   /// [name] The name of the vulnerability.
-  WindowsDetailResponseContaineranalysisV1beta1({
+  const WindowsDetailResponseContaineranalysisV1beta1({
     required this.cpeUri,
     required this.description,
     required this.fixingKbs,

@@ -16,7 +16,7 @@ class EdgeCacheServiceRoutingPathMatcher {
   /// [description] A human-readable description of the resource.
   /// [name] The name to which this PathMatcher is referred by the HostRule.
   /// [routeRules] The routeRules to match against. routeRules support advanced routing behaviour, and can match on paths, headers and query parameters, as well as status codes and HTTP methods.
-  EdgeCacheServiceRoutingPathMatcher({
+  const EdgeCacheServiceRoutingPathMatcher({
     this.description,
     required this.name,
     required this.routeRules,

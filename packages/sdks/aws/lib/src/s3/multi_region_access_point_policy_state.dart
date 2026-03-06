@@ -22,7 +22,7 @@ class MultiRegionAccessPointPolicyState {
   /// [established] The last established policy for the Multi-Region Access Point.
   /// [proposed] The proposed policy for the Multi-Region Access Point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MultiRegionAccessPointPolicyState({
+  const MultiRegionAccessPointPolicyState({
     this.accountId,
     this.details,
     this.established,

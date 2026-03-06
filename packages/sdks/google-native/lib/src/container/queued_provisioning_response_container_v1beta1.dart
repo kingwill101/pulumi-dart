@@ -9,7 +9,7 @@ class QueuedProvisioningResponseContainerV1beta1 {
 
   /// Creates a new [QueuedProvisioningResponseContainerV1beta1].
   /// [enabled] Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
-  QueuedProvisioningResponseContainerV1beta1({
+  const QueuedProvisioningResponseContainerV1beta1({
     required this.enabled,
   });
 

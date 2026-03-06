@@ -8,7 +8,7 @@ class WorkforceSourceIpConfig {
 
   /// Creates a new [WorkforceSourceIpConfig].
   /// [cidrs] A list of up to 10 CIDR values.
-  WorkforceSourceIpConfig({
+  const WorkforceSourceIpConfig({
     required this.cidrs,
   });
 

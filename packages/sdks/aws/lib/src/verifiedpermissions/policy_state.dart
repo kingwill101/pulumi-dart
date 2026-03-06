@@ -22,7 +22,7 @@ class PolicyState {
   /// [policyId] The Policy ID of the policy.
   /// [policyStoreId] The Policy Store ID of the policy store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PolicyState({
+  const PolicyState({
     this.createdDate,
     this.definition,
     this.policyId,

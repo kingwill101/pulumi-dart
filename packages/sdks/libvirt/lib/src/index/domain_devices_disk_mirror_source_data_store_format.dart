@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorSourceDataStoreFormat {
   /// Creates a new [DomainDevicesDiskMirrorSourceDataStoreFormat].
   /// [metadataCache] Configures the metadata cache settings for the data store format within the backing store source.
   /// [type] Specifies the type of the data store format being used in the backing store source.
-  DomainDevicesDiskMirrorSourceDataStoreFormat({
+  const DomainDevicesDiskMirrorSourceDataStoreFormat({
     this.metadataCache,
     required this.type,
   });

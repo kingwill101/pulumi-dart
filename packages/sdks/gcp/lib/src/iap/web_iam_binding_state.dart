@@ -37,7 +37,7 @@ class WebIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  WebIamBindingState({
+  const WebIamBindingState({
     this.condition,
     this.etag,
     this.members,

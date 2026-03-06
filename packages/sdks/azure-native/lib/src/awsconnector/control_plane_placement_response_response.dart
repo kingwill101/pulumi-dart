@@ -9,7 +9,7 @@ class ControlPlanePlacementResponseResponse {
 
   /// Creates a new [ControlPlanePlacementResponseResponse].
   /// [groupName] &lt;p&gt;The name of the placement group for the Kubernetes control plane instances.&lt;/p&gt;
-  ControlPlanePlacementResponseResponse({
+  const ControlPlanePlacementResponseResponse({
     this.groupName,
   });
 

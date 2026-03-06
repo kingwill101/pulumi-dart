@@ -15,7 +15,7 @@ class ServiceLevelEventsValidEvents {
   /// [from] The event type where NRDB data will be fetched from.
   /// [select] The NRQL SELECT clause to aggregate events.
   /// [where] A filter that specifies all the NRDB events that are considered in this SLI (e.g, those that refer to a particular entity).
-  ServiceLevelEventsValidEvents({
+  const ServiceLevelEventsValidEvents({
     required this.from,
     this.select,
     this.where,

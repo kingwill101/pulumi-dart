@@ -37,7 +37,7 @@ class QuerySuggestionsBlockListState {
   /// [status] Optional.
   /// [tags] Optional.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider's default_tags configuration block.
-  QuerySuggestionsBlockListState({
+  const QuerySuggestionsBlockListState({
     this.arn,
     this.description,
     this.indexId,

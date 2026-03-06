@@ -120,7 +120,7 @@ class SiteMonitorOptionJson {
   /// [responseFormat] HTTP response content format. Value:
   /// [timeout] Timeout time. Unit: milliseconds.
   /// [userName] The username of FTP, SMTP, or pop3.
-  SiteMonitorOptionJson({
+  const SiteMonitorOptionJson({
     this.assertions,
     this.attempts,
     this.cookie,

@@ -17,7 +17,7 @@ class MulticastProducerAssociationState {
 
   /// Creates a new [MulticastProducerAssociationState].
   /// [state] (Output)
-  MulticastProducerAssociationState({
+  const MulticastProducerAssociationState({
     this.state,
   });
 

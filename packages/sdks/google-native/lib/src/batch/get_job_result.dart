@@ -44,7 +44,7 @@ class GetJobResult {
   /// [taskGroups] TaskGroups in the Job. Only one TaskGroup is supported now.
   /// [uid] A system generated unique ID (in UUID4 format) for the Job.
   /// [updateTime] The last time the Job was updated.
-  GetJobResult({
+  const GetJobResult({
     required this.allocationPolicy,
     required this.createTime,
     required this.labels,

@@ -30,7 +30,7 @@ class GetTestResultFileArgs {
   /// [testSuccessfulCriteria] The success state criteria for the webtest result.
   /// [timeStamp] The posix (epoch) time stamp for the webtest result.
   /// [webTestName] The name of the Application Insights webtest resource.
-  GetTestResultFileArgs({
+  const GetTestResultFileArgs({
     this.continuationToken,
     required this.downloadAs,
     required this.geoLocationId,

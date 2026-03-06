@@ -12,7 +12,7 @@ class Onboarding {
   /// Creates a new [Onboarding].
   /// [developerPortalUri] The location of the development portal
   /// [instructions] Onboarding guide.
-  Onboarding({
+  const Onboarding({
     this.developerPortalUri,
     this.instructions,
   });

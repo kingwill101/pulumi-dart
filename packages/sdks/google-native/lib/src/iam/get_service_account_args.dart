@@ -13,7 +13,7 @@ class GetServiceAccountArgs {
   /// Creates a new [GetServiceAccountArgs].
   /// [project] Optional.
   /// [serviceAccountId] Required.
-  GetServiceAccountArgs({
+  const GetServiceAccountArgs({
     this.project,
     required this.serviceAccountId,
   });

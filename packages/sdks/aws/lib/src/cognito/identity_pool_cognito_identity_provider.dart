@@ -14,7 +14,7 @@ class IdentityPoolCognitoIdentityProvider {
   /// [clientId] The client ID for the Amazon Cognito Identity User Pool.
   /// [providerName] The provider name for an Amazon Cognito Identity User Pool.
   /// [serverSideTokenCheck] Whether server-side token validation is enabled for the identity provider’s token or not.
-  IdentityPoolCognitoIdentityProvider({
+  const IdentityPoolCognitoIdentityProvider({
     this.clientId,
     this.providerName,
     this.serverSideTokenCheck,

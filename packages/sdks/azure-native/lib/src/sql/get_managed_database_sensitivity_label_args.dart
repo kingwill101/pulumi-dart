@@ -30,7 +30,7 @@ class GetManagedDatabaseSensitivityLabelArgs {
   /// [schemaName] The name of the schema.
   /// [sensitivityLabelSource] The source of the sensitivity label.
   /// [tableName] The name of the table.
-  GetManagedDatabaseSensitivityLabelArgs({
+  const GetManagedDatabaseSensitivityLabelArgs({
     required this.columnName,
     required this.databaseName,
     required this.managedInstanceName,

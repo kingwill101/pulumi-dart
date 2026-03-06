@@ -11,7 +11,7 @@ class DbClusterDesiredParam {
   /// Creates a new [DbClusterDesiredParam].
   /// [name] Parameter name.
   /// [value] The new value of Parameter.
-  DbClusterDesiredParam({
+  const DbClusterDesiredParam({
     this.name,
     this.value,
   });

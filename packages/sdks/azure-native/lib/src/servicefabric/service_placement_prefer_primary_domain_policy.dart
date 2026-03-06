@@ -20,7 +20,7 @@ class ServicePlacementPreferPrimaryDomainPolicy {
   /// Creates a new [ServicePlacementPreferPrimaryDomainPolicy].
   /// [domainName] The name of the domain that should used for placement as per this policy.
   /// [type] The type of placement policy for a service fabric service. Following are the possible values.
-  ServicePlacementPreferPrimaryDomainPolicy({
+  const ServicePlacementPreferPrimaryDomainPolicy({
     required this.domainName,
     required this.type,
   });

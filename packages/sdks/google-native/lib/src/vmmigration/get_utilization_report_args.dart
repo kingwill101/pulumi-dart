@@ -19,7 +19,7 @@ class GetUtilizationReportArgs {
   /// [sourceId] Required.
   /// [utilizationReportId] Required.
   /// [view] Optional.
-  GetUtilizationReportArgs({
+  const GetUtilizationReportArgs({
     required this.location,
     this.project,
     required this.sourceId,

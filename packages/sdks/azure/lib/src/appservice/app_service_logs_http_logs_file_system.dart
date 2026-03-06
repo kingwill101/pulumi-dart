@@ -11,7 +11,7 @@ class AppServiceLogsHttpLogsFileSystem {
   /// Creates a new [AppServiceLogsHttpLogsFileSystem].
   /// [retentionInDays] The number of days to retain logs for.
   /// [retentionInMb] The maximum size in megabytes that HTTP log files can use before being removed.
-  AppServiceLogsHttpLogsFileSystem({
+  const AppServiceLogsHttpLogsFileSystem({
     required this.retentionInDays,
     required this.retentionInMb,
   });

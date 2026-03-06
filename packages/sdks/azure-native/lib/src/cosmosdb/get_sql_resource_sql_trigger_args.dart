@@ -24,7 +24,7 @@ class GetSqlResourceSqlTriggerArgs {
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [triggerName] Cosmos DB trigger name.
-  GetSqlResourceSqlTriggerArgs({
+  const GetSqlResourceSqlTriggerArgs({
     required this.accountName,
     required this.containerName,
     required this.databaseName,

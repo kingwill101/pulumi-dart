@@ -13,7 +13,7 @@ class DdosSettings {
   /// Creates a new [DdosSettings].
   /// [ddosProtectionPlan] The DDoS protection plan associated with the public IP. Can only be set if ProtectionMode is Enabled
   /// [protectionMode] The DDoS protection mode of the public IP
-  DdosSettings({
+  const DdosSettings({
     this.ddosProtectionPlan,
     this.protectionMode,
   });

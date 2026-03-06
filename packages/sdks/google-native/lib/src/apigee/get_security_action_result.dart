@@ -41,7 +41,7 @@ class GetSecurityActionResult {
   /// [state] Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   /// [ttl] Input only. The TTL for this SecurityAction.
   /// [updateTime] The update time for this SecurityAction. This reflects when this SecurityAction changed states.
-  GetSecurityActionResult({
+  const GetSecurityActionResult({
     required this.allow,
     required this.conditionConfig,
     required this.createTime,

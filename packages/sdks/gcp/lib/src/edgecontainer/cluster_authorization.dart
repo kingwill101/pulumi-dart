@@ -12,7 +12,7 @@ class ClusterAuthorization {
 
   /// Creates a new [ClusterAuthorization].
   /// [adminUsers] User that will be granted the cluster-admin role on the cluster, providing
-  ClusterAuthorization({
+  const ClusterAuthorization({
     required this.adminUsers,
   });
 

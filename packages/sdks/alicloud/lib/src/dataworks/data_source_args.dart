@@ -27,7 +27,7 @@ class DataSourceArgs {
   /// [description] Description of the data source
   /// [projectId] The ID of the project to which the data source belongs.
   /// [type] The type of data source. For a list of data source types, see the values listed in the API documentation.
-  DataSourceArgs({
+  const DataSourceArgs({
     required this.connectionProperties,
     required this.connectionPropertiesMode,
     required this.dataSourceName,

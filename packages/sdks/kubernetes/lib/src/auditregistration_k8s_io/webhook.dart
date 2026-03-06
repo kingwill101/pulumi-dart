@@ -14,7 +14,7 @@ class Webhook {
   /// Creates a new [Webhook].
   /// [clientConfig] ClientConfig holds the connection parameters for the webhook required
   /// [throttle] Throttle holds the options for throttling the webhook
-  Webhook({
+  const Webhook({
     required this.clientConfig,
     this.throttle,
   });

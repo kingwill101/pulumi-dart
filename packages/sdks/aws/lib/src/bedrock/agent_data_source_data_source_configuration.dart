@@ -28,7 +28,7 @@ class AgentDataSourceDataSourceConfiguration {
   /// [sharePointConfiguration] Details about the configuration of the SharePoint data source. See `share_point_data_source_configuration` block for details.
   /// [type] Type of storage for the data source. Valid values: `S3`, `WEB`, `CONFLUENCE`, `SALESFORCE`, `SHAREPOINT`, `CUSTOM`, `REDSHIFT_METADATA`.
   /// [webConfiguration] Details about the configuration of the web data source. See `web_data_source_configuration` block for details.
-  AgentDataSourceDataSourceConfiguration({
+  const AgentDataSourceDataSourceConfiguration({
     this.confluenceConfiguration,
     this.s3Configuration,
     this.salesforceConfiguration,

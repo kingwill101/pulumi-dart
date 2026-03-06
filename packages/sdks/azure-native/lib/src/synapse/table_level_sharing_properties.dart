@@ -24,7 +24,7 @@ class TableLevelSharingProperties {
   /// [materializedViewsToInclude] List of materialized views to include in the follower database
   /// [tablesToExclude] List of tables to exclude from the follower database
   /// [tablesToInclude] List of tables to include in the follower database
-  TableLevelSharingProperties({
+  const TableLevelSharingProperties({
     this.externalTablesToExclude,
     this.externalTablesToInclude,
     this.materializedViewsToExclude,

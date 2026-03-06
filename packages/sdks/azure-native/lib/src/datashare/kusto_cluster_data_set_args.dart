@@ -28,7 +28,7 @@ class KustoClusterDataSetArgs {
   /// [kustoClusterResourceId] Resource id of the kusto cluster.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share to add the data set to.
-  KustoClusterDataSetArgs({
+  const KustoClusterDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.kind,

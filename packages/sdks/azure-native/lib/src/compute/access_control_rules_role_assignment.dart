@@ -12,7 +12,7 @@ class AccessControlRulesRoleAssignment {
   /// Creates a new [AccessControlRulesRoleAssignment].
   /// [identities] A list of identities that can access the privileges defined by the role.
   /// [role] The name of the role.
-  AccessControlRulesRoleAssignment({
+  const AccessControlRulesRoleAssignment({
     required this.identities,
     required this.role,
   });

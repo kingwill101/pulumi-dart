@@ -8,7 +8,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsKendraSettings {
 
   /// Creates a new [DomainDefaultUserSettingsCanvasAppSettingsKendraSettings].
   /// [status] Describes whether the document querying feature is enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  DomainDefaultUserSettingsCanvasAppSettingsKendraSettings({
+  const DomainDefaultUserSettingsCanvasAppSettingsKendraSettings({
     this.status,
   });
 

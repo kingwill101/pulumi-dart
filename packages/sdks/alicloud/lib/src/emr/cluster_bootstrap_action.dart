@@ -23,7 +23,7 @@ class ClusterBootstrapAction {
   /// [executionTarget] bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
   /// [name] The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
   /// [path] bootstrap action path, e.g. "oss://bucket/path".
-  ClusterBootstrapAction({
+  const ClusterBootstrapAction({
     this.arg,
     this.executionFailStrategy,
     this.executionMoment,

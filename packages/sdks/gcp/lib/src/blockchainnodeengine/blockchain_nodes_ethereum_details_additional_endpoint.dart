@@ -14,7 +14,7 @@ class BlockchainNodesEthereumDetailsAdditionalEndpoint {
   /// [beaconApiEndpoint] The assigned URL for the node's Beacon API endpoint.
   /// [beaconPrometheusMetricsApiEndpoint] The assigned URL for the node's Beacon Prometheus metrics endpoint.
   /// [executionClientPrometheusMetricsApiEndpoint] The assigned URL for the node's execution client's Prometheus metrics endpoint.
-  BlockchainNodesEthereumDetailsAdditionalEndpoint({
+  const BlockchainNodesEthereumDetailsAdditionalEndpoint({
     this.beaconApiEndpoint,
     this.beaconPrometheusMetricsApiEndpoint,
     this.executionClientPrometheusMetricsApiEndpoint,

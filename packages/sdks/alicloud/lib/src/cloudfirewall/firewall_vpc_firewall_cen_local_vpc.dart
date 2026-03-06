@@ -58,7 +58,7 @@ class FirewallVpcFirewallCenLocalVpc {
   /// [vpcCidrTableLists] The VPC network segment list.
   /// [vpcId] The ID of the VPC instance.
   /// [vpcName] The instance name of the VPC.
-  FirewallVpcFirewallCenLocalVpc({
+  const FirewallVpcFirewallCenLocalVpc({
     this.attachmentId,
     this.attachmentName,
     this.defendCidrLists,

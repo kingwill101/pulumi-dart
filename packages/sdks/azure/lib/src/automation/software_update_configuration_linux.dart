@@ -17,7 +17,7 @@ class SoftwareUpdateConfigurationLinux {
   /// [excludedPackages] Specifies a list of packages to excluded from the Software Update Configuration.
   /// [includedPackages] Specifies a list of packages to included from the Software Update Configuration.
   /// [reboot] Specifies the reboot settings after software update, possible values are `IfRequired`, `Never`, `RebootOnly` and `Always`. Defaults to `IfRequired`.
-  SoftwareUpdateConfigurationLinux({
+  const SoftwareUpdateConfigurationLinux({
     required this.classificationsIncludeds,
     this.excludedPackages,
     this.includedPackages,

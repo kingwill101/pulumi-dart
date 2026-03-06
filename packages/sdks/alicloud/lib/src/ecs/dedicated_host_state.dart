@@ -70,7 +70,7 @@ class DedicatedHostState {
   /// [status] The status of the dedicated host.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
-  DedicatedHostState({
+  const DedicatedHostState({
     this.actionOnMaintenance,
     this.autoPlacement,
     this.autoReleaseTime,

@@ -69,7 +69,7 @@ class EndpointState {
   /// [querystringCachingBehaviour] Sets query string caching behavior. Allowed values are `IgnoreQueryString`, `BypassCaching` and `UseQueryString`. `NotSet` value can be used for `Premium Verizon` CDN profile. Defaults to `IgnoreQueryString`.
   /// [resourceGroupName] The name of the resource group in which to create the CDN Endpoint. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  EndpointState({
+  const EndpointState({
     this.contentTypesToCompresses,
     this.deliveryRules,
     this.fqdn,

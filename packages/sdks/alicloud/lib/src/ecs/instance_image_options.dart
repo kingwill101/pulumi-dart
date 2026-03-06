@@ -8,7 +8,7 @@ class InstanceImageOptions {
 
   /// Creates a new [InstanceImageOptions].
   /// [loginAsNonRoot] Whether to allow the instance logging in with the ecs-user user.
-  InstanceImageOptions({
+  const InstanceImageOptions({
     this.loginAsNonRoot,
   });
 

@@ -32,7 +32,7 @@ class ImageDataDiskResponse {
   /// [managedDisk] The managedDisk.
   /// [snapshot] The snapshot.
   /// [storageAccountType] Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-  ImageDataDiskResponse({
+  const ImageDataDiskResponse({
     this.blobUri,
     this.caching,
     this.diskEncryptionSet,

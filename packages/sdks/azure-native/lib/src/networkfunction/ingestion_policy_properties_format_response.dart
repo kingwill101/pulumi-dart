@@ -13,7 +13,7 @@ class IngestionPolicyPropertiesFormatResponse {
   /// Creates a new [IngestionPolicyPropertiesFormatResponse].
   /// [ingestionSources] Ingestion Sources.
   /// [ingestionType] The ingestion type.
-  IngestionPolicyPropertiesFormatResponse({
+  const IngestionPolicyPropertiesFormatResponse({
     this.ingestionSources,
     this.ingestionType,
   });

@@ -10,7 +10,7 @@ class ListClusterZonesResult {
 
   /// Creates a new [ListClusterZonesResult].
   /// [zones] Zone and associated hosts info
-  ListClusterZonesResult({
+  const ListClusterZonesResult({
     this.zones,
   });
 

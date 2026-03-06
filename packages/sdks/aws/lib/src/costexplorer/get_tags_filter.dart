@@ -29,7 +29,7 @@ class GetTagsFilter {
   /// [not] Return results that match both `Dimension` object.
   /// [ors] Return results that match both `Dimension` object.
   /// [tags] Tags that match your request.
-  GetTagsFilter({
+  const GetTagsFilter({
     this.ands,
     this.costCategory,
     this.dimension,

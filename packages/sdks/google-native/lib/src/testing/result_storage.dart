@@ -14,7 +14,7 @@ class ResultStorage {
   /// Creates a new [ResultStorage].
   /// [googleCloudStorage] Required.
   /// [toolResultsHistory] The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
-  ResultStorage({
+  const ResultStorage({
     required this.googleCloudStorage,
     this.toolResultsHistory,
   });

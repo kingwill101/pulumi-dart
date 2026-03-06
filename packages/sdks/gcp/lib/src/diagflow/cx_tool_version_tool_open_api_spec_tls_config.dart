@@ -10,7 +10,7 @@ class CxToolVersionToolOpenApiSpecTlsConfig {
 
   /// Creates a new [CxToolVersionToolOpenApiSpecTlsConfig].
   /// [caCerts] Specifies a list of allowed custom CA certificates for HTTPS verification.
-  CxToolVersionToolOpenApiSpecTlsConfig({
+  const CxToolVersionToolOpenApiSpecTlsConfig({
     required this.caCerts,
   });
 

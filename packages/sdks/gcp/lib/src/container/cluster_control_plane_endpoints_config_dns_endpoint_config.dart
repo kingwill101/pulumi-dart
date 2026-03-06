@@ -17,7 +17,7 @@ class ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
   /// [enableK8sCertsViaDns] Controls whether the k8s certs auth is allowed via Dns.
   /// [enableK8sTokensViaDns] Controls whether the k8s token auth is allowed via Dns.
   /// [endpoint] The cluster's DNS endpoint.
-  ClusterControlPlaneEndpointsConfigDnsEndpointConfig({
+  const ClusterControlPlaneEndpointsConfigDnsEndpointConfig({
     this.allowExternalTraffic,
     this.enableK8sCertsViaDns,
     this.enableK8sTokensViaDns,

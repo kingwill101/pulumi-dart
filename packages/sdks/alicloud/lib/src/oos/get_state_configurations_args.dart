@@ -21,7 +21,7 @@ class GetStateConfigurationsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  GetStateConfigurationsArgs({
+  const GetStateConfigurationsArgs({
     this.ids,
     this.outputFile,
     this.resourceGroupId,

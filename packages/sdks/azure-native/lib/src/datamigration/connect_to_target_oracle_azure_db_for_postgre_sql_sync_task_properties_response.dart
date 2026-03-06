@@ -32,7 +32,7 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskPropertiesResponse {
   /// [output] Task output. This is ignored if submitted.
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskPropertiesResponse({
+  const ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

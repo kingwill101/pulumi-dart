@@ -40,7 +40,7 @@ class HostnameConfiguration {
   /// [keyVaultId] Url to the KeyVault Secret containing the Ssl Certificate. If absolute Url containing version is provided, auto-update of ssl certificate will not work. This requires Api Management service to be configured with aka.ms/apimmsi. The secret should be of type *application/x-pkcs12*
   /// [negotiateClientCertificate] Specify true to always negotiate client certificate on the hostname. Default Value is false.
   /// [type] Hostname type.
-  HostnameConfiguration({
+  const HostnameConfiguration({
     this.certificate,
     this.certificatePassword,
     this.certificateSource,

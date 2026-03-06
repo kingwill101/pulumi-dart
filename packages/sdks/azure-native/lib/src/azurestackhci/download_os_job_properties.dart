@@ -17,7 +17,7 @@ class DownloadOsJobProperties {
   /// [deploymentMode] Deployment mode to trigger job.
   /// [downloadRequest] Download OS request.
   /// [jobType] Job Type supported.
-  DownloadOsJobProperties({
+  const DownloadOsJobProperties({
     this.deploymentMode,
     required this.downloadRequest,
     required this.jobType,

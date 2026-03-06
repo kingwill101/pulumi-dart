@@ -8,7 +8,7 @@ class MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration {
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration].
   /// [insightsTarget] Lambda Function to deliver results.
-  MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration({
+  const MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration({
     required this.insightsTarget,
   });
 

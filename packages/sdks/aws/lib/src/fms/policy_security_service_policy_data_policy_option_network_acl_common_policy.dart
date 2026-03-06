@@ -9,7 +9,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy {
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy].
   /// [networkAclEntrySet] Defines NACL entries for Network ACL policy. See the `network_acl_entry_set` block.
-  PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy({
+  const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicy({
     this.networkAclEntrySet,
   });
 

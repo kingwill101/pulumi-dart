@@ -11,7 +11,7 @@ class DomainCertificateConfig {
   /// [privateKey] Optional.
   /// [serverCertificate] Optional.
   /// [serverCertificateStatus] Optional.
-  DomainCertificateConfig({
+  const DomainCertificateConfig({
     this.privateKey,
     this.serverCertificate,
     this.serverCertificateStatus,

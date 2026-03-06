@@ -8,7 +8,7 @@ class ResourceIdListResultResponseValue {
 
   /// Creates a new [ResourceIdListResultResponseValue].
   /// [id] The Azure Resource ID.
-  ResourceIdListResultResponseValue({
+  const ResourceIdListResultResponseValue({
     this.id,
   });
 

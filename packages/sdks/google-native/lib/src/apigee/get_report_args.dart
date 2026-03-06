@@ -13,7 +13,7 @@ class GetReportArgs {
   /// Creates a new [GetReportArgs].
   /// [organizationId] Required.
   /// [reportId] Required.
-  GetReportArgs({
+  const GetReportArgs({
     required this.organizationId,
     required this.reportId,
   });

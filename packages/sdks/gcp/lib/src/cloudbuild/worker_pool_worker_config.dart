@@ -17,7 +17,7 @@ class WorkerPoolWorkerConfig {
   /// [enableNestedVirtualization] Enable nested virtualization on the worker, if supported by the machine type. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will set this to false.
   /// [machineType] Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
   /// [noExternalIp] If true, workers are created without any public address, which prevents network egress to public IPs.
-  WorkerPoolWorkerConfig({
+  const WorkerPoolWorkerConfig({
     this.diskSizeGb,
     this.enableNestedVirtualization,
     this.machineType,

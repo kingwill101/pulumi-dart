@@ -11,7 +11,7 @@ class FileShareResponseProperties {
   /// Creates a new [FileShareResponseProperties].
   /// [shareAccessTier] Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
   /// [shareAccessType] Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
-  FileShareResponseProperties({
+  const FileShareResponseProperties({
     this.shareAccessTier,
     this.shareAccessType,
   });

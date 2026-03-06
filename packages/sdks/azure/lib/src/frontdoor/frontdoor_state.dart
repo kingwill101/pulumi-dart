@@ -71,7 +71,7 @@ class FrontdoorState {
   /// [routingRules] A `routing_rule` block as defined below.
   /// [routingRulesMap] A map/dictionary of Routing Rule Names (key) to the Routing Rule ID (value)
   /// [tags] A mapping of tags to assign to the resource.
-  FrontdoorState({
+  const FrontdoorState({
     this.backendPoolHealthProbes,
     this.backendPoolHealthProbesMap,
     this.backendPoolLoadBalancingSettingsMap,

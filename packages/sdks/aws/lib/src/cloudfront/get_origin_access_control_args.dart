@@ -12,7 +12,7 @@ class GetOriginAccessControlArgs {
 
   /// Creates a new [GetOriginAccessControlArgs].
   /// [id] The identifier for the origin access control settings. For example: `E2T5VTFBZJ3BJB`.
-  GetOriginAccessControlArgs({
+  const GetOriginAccessControlArgs({
     required this.id,
   });
 

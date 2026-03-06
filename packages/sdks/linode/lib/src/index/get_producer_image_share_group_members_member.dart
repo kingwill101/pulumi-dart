@@ -26,7 +26,7 @@ class GetProducerImageShareGroupMembersMember {
   /// [status] The status of the member.
   /// [tokenUuid] The UUID of member's token.
   /// [updated] When the member was last updated.
-  GetProducerImageShareGroupMembersMember({
+  const GetProducerImageShareGroupMembersMember({
     required this.created,
     required this.expiry,
     required this.label,

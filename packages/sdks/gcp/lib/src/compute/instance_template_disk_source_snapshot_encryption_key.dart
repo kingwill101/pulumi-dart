@@ -27,7 +27,7 @@ class InstanceTemplateDiskSourceSnapshotEncryptionKey {
   /// [kmsKeyServiceAccount] The service account being used for the
   /// [rawKey] A 256-bit [customer-supplied encryption key]
   /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit [customer-supplied encryption key]
-  InstanceTemplateDiskSourceSnapshotEncryptionKey({
+  const InstanceTemplateDiskSourceSnapshotEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
     this.rawKey,

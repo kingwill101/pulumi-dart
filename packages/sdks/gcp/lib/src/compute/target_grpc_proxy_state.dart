@@ -57,7 +57,7 @@ class TargetGrpcProxyState {
   /// [selfLinkWithId] Server-defined URL with id for the resource.
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to
   /// [validateForProxyless] If true, indicates that the BackendServices referenced by
-  TargetGrpcProxyState({
+  const TargetGrpcProxyState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

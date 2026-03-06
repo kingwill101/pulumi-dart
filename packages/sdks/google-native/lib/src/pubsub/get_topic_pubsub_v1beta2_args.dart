@@ -13,7 +13,7 @@ class GetTopicPubsubV1beta2Args {
   /// Creates a new [GetTopicPubsubV1beta2Args].
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicPubsubV1beta2Args({
+  const GetTopicPubsubV1beta2Args({
     this.project,
     required this.topicId,
   });

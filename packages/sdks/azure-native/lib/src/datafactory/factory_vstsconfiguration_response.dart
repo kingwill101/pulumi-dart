@@ -34,7 +34,7 @@ class FactoryVSTSConfigurationResponse {
   /// [rootFolder] Root folder.
   /// [tenantId] VSTS tenant id.
   /// [type] Type of repo configuration.
-  FactoryVSTSConfigurationResponse({
+  const FactoryVSTSConfigurationResponse({
     required this.accountName,
     required this.collaborationBranch,
     this.disablePublish,

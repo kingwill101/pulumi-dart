@@ -29,7 +29,7 @@ class GetSequencesArgs {
   /// [notLikeAllPatterns] List of expressions which will be pattern matched against sequence names in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
   /// [regexPattern] Expression which will be pattern matched against sequence names in the query using the PostgreSQL ``~`` (regular expression match) operator.
   /// [schemas] List of PostgreSQL schema(s) which will be queried for sequence names. Queries all schemas in the database by default.
-  GetSequencesArgs({
+  const GetSequencesArgs({
     required this.database,
     this.likeAllPatterns,
     this.likeAnyPatterns,

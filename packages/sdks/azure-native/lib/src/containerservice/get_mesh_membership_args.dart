@@ -18,7 +18,7 @@ class GetMeshMembershipArgs {
   /// [meshMembershipName] The name of the mesh membership.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetMeshMembershipArgs({
+  const GetMeshMembershipArgs({
     required this.meshMembershipName,
     required this.resourceGroupName,
     required this.resourceName,

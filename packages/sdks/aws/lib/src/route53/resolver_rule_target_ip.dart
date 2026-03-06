@@ -17,7 +17,7 @@ class ResolverRuleTargetIp {
   /// [ipv6] One IPv6 address that you want to forward DNS queries to.
   /// [port] Port at `ip` that you want to forward DNS queries to. Default value is `53`.
   /// [protocol] Protocol for the resolver endpoint. Valid values can be found in the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_TargetAddress.html). Default value is `Do53`.
-  ResolverRuleTargetIp({
+  const ResolverRuleTargetIp({
     this.ip,
     this.ipv6,
     this.port,

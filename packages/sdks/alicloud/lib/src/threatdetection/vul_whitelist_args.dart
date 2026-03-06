@@ -18,7 +18,7 @@ class VulWhitelistArgs {
   /// [reason] Reason for adding whitelist.
   /// [targetInfo] Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
   /// [whitelist] Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
-  VulWhitelistArgs({
+  const VulWhitelistArgs({
     this.reason,
     this.targetInfo,
     required this.whitelist,

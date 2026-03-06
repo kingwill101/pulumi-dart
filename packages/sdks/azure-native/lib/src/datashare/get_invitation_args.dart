@@ -21,7 +21,7 @@ class GetInvitationArgs {
   /// [invitationName] The name of the invitation.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share.
-  GetInvitationArgs({
+  const GetInvitationArgs({
     required this.accountName,
     required this.invitationName,
     required this.resourceGroupName,

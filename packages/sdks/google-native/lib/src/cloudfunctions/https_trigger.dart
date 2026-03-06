@@ -10,7 +10,7 @@ class HttpsTrigger {
 
   /// Creates a new [HttpsTrigger].
   /// [securityLevel] The security level for the function.
-  HttpsTrigger({
+  const HttpsTrigger({
     this.securityLevel,
   });
 

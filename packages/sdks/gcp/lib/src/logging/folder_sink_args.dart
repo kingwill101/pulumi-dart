@@ -54,7 +54,7 @@ class FolderSinkArgs {
   /// [includeChildren] Whether or not to include children folders in the sink export. If true, logs
   /// [interceptChildren] Whether or not to intercept logs from child projects. If true, matching logs will not
   /// [name] The name of the logging sink.
-  FolderSinkArgs({
+  const FolderSinkArgs({
     this.bigqueryOptions,
     this.description,
     required this.destination,

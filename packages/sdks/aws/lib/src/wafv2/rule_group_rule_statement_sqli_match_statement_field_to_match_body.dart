@@ -7,7 +7,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody {
 
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody({
+  const RuleGroupRuleStatementSqliMatchStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

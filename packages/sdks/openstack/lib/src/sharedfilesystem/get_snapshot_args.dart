@@ -26,7 +26,7 @@ class GetSnapshotArgs {
   /// [region] The region in which to obtain the V2 Shared File System client.
   /// [shareId] The UUID of the source share that was used to create the snapshot.
   /// [status] A snapshot status filter. A valid value is `available`, `error`,
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     this.description,
     this.name,
     this.region,

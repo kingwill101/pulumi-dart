@@ -34,7 +34,7 @@ class ManagedIdentityAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  ManagedIdentityAuthTypeConnectionProperties({
+  const ManagedIdentityAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

@@ -11,7 +11,7 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate {
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate].
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate({
+  const GetVirtualNodeSpecBackendDefaultClientPolicyTlCertificate({
     required this.files,
     required this.sds,
   });

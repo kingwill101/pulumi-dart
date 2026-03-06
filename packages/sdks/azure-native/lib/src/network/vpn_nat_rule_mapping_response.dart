@@ -12,7 +12,7 @@ class VpnNatRuleMappingResponse {
   /// Creates a new [VpnNatRuleMappingResponse].
   /// [addressSpace] Address space for Vpn NatRule mapping.
   /// [portRange] Port range for Vpn NatRule mapping.
-  VpnNatRuleMappingResponse({
+  const VpnNatRuleMappingResponse({
     this.addressSpace,
     this.portRange,
   });

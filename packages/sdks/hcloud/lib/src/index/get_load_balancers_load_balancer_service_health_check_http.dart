@@ -15,7 +15,7 @@ class GetLoadBalancersLoadBalancerServiceHealthCheckHttp {
   /// [response] Required.
   /// [statusCodes] Required.
   /// [tls] Required.
-  GetLoadBalancersLoadBalancerServiceHealthCheckHttp({
+  const GetLoadBalancersLoadBalancerServiceHealthCheckHttp({
     required this.domain,
     required this.path,
     required this.response,

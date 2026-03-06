@@ -9,7 +9,7 @@ class ApplicationAttributesCriticality {
 
   /// Creates a new [ApplicationAttributesCriticality].
   /// [type] Criticality type.
-  ApplicationAttributesCriticality({
+  const ApplicationAttributesCriticality({
     required this.type,
   });
 

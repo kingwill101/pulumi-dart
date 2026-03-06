@@ -11,7 +11,7 @@ class ClusterConfigurationManagedStorageConfiguration {
   /// Creates a new [ClusterConfigurationManagedStorageConfiguration].
   /// [fargateEphemeralStorageKmsKeyId] AWS Key Management Service key ARN for the Fargate ephemeral storage.
   /// [kmsKeyId] AWS Key Management Service key ARN to encrypt the managed storage.
-  ClusterConfigurationManagedStorageConfiguration({
+  const ClusterConfigurationManagedStorageConfiguration({
     this.fargateEphemeralStorageKmsKeyId,
     this.kmsKeyId,
   });

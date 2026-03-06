@@ -77,7 +77,7 @@ class CommonBandwithPackageArgs {
   /// [securityProtectionTypes] The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
   /// [tags] The tag of the resource
   /// [zone] The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
-  CommonBandwithPackageArgs({
+  const CommonBandwithPackageArgs({
     required this.bandwidth,
     this.bandwidthPackageName,
     this.deletionProtection,

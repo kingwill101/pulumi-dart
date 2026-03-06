@@ -54,7 +54,7 @@ class GetMulticastDomainResult {
   /// [transitGatewayAttachmentId] The ID of the transit gateway attachment.
   /// [transitGatewayId] EC2 Transit Gateway identifier.
   /// [transitGatewayMulticastDomainId] Required.
-  GetMulticastDomainResult({
+  const GetMulticastDomainResult({
     required this.arn,
     required this.associations,
     required this.autoAcceptSharedAssociations,

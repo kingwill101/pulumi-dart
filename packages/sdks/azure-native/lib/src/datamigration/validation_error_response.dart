@@ -12,7 +12,7 @@ class ValidationErrorResponse {
   /// Creates a new [ValidationErrorResponse].
   /// [severity] Severity of the error
   /// [text] Error Text
-  ValidationErrorResponse({
+  const ValidationErrorResponse({
     this.severity,
     this.text,
   });

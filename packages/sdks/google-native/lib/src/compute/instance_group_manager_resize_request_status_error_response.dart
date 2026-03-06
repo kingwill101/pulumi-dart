@@ -10,7 +10,7 @@ class InstanceGroupManagerResizeRequestStatusErrorResponse {
 
   /// Creates a new [InstanceGroupManagerResizeRequestStatusErrorResponse].
   /// [errors] The array of errors encountered while processing this operation.
-  InstanceGroupManagerResizeRequestStatusErrorResponse({
+  const InstanceGroupManagerResizeRequestStatusErrorResponse({
     required this.errors,
   });
 

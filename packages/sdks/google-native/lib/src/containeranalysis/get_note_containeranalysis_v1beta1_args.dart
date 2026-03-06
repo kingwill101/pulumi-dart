@@ -13,7 +13,7 @@ class GetNoteContaineranalysisV1beta1Args {
   /// Creates a new [GetNoteContaineranalysisV1beta1Args].
   /// [noteId] Required.
   /// [project] Optional.
-  GetNoteContaineranalysisV1beta1Args({
+  const GetNoteContaineranalysisV1beta1Args({
     required this.noteId,
     this.project,
   });

@@ -7,7 +7,7 @@ class GetKubeconfigContainerV1beta1Result {
 
   /// Creates a new [GetKubeconfigContainerV1beta1Result].
   /// [kubeconfig] Required.
-  GetKubeconfigContainerV1beta1Result({
+  const GetKubeconfigContainerV1beta1Result({
     required this.kubeconfig,
   });
 

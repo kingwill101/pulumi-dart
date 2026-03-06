@@ -16,7 +16,7 @@ class ServiceConnectTlsConfigurationResponse {
   /// [issuerCertificateAuthority] The signer certificate authority. An object that represents the AWS Private Certificate Authority certificate.
   /// [kmsKey] The AWS Key Management Service key.
   /// [roleArn] The Amazon Resource Name (ARN) of the IAM role that's associated with the Service Connect TLS.
-  ServiceConnectTlsConfigurationResponse({
+  const ServiceConnectTlsConfigurationResponse({
     this.issuerCertificateAuthority,
     this.kmsKey,
     this.roleArn,

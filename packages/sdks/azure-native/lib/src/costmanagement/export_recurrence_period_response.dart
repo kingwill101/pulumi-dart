@@ -12,7 +12,7 @@ class ExportRecurrencePeriodResponse {
   /// Creates a new [ExportRecurrencePeriodResponse].
   /// [from] The start date of recurrence.
   /// [to] The end date of recurrence.
-  ExportRecurrencePeriodResponse({
+  const ExportRecurrencePeriodResponse({
     required this.from,
     this.to,
   });

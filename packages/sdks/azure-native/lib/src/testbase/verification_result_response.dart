@@ -15,7 +15,7 @@ class VerificationResultResponse {
   /// [message] Message for clarification.
   /// [result] Indicates if the validation or rule checking is passed.
   /// [verificationName] The name of the verification rule.
-  VerificationResultResponse({
+  const VerificationResultResponse({
     this.message,
     required this.result,
     this.verificationName,

@@ -14,7 +14,7 @@ class UserHierarchyGroupHierarchyPathLevelThree {
   /// [arn] The Amazon Resource Name (ARN) of the hierarchy group.
   /// [id] The identifier of the hierarchy group.
   /// [name] The name of the user hierarchy group. Must not be more than 100 characters.
-  UserHierarchyGroupHierarchyPathLevelThree({
+  const UserHierarchyGroupHierarchyPathLevelThree({
     this.arn,
     this.id,
     this.name,

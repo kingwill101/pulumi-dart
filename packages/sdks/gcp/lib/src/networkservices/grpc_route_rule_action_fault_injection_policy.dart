@@ -15,7 +15,7 @@ class GrpcRouteRuleActionFaultInjectionPolicy {
   /// Creates a new [GrpcRouteRuleActionFaultInjectionPolicy].
   /// [abort] Specification of how client requests are aborted as part of fault injection before being sent to a destination.
   /// [delay] Specification of how client requests are delayed as part of fault injection before being sent to a destination.
-  GrpcRouteRuleActionFaultInjectionPolicy({
+  const GrpcRouteRuleActionFaultInjectionPolicy({
     this.abort,
     this.delay,
   });

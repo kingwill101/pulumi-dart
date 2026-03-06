@@ -9,7 +9,7 @@ class Monitoring {
 
   /// Creates a new [Monitoring].
   /// [enabled] Indicates if monitoring is enabled for this SQL Server instance.
-  Monitoring({
+  const Monitoring({
     this.enabled,
   });
 

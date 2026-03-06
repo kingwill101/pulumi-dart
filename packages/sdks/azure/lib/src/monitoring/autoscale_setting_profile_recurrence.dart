@@ -17,7 +17,7 @@ class AutoscaleSettingProfileRecurrence {
   /// [hours] A list containing a single item, which specifies the Hour interval at which this recurrence should be triggered (in 24-hour time). Possible values are from `0` to `23`.
   /// [minutes] A list containing a single item which specifies the Minute interval at which this recurrence should be triggered.
   /// [timezone] The Time Zone used for the `hours` field. A list of possible values can be found here). Defaults to `UTC`.
-  AutoscaleSettingProfileRecurrence({
+  const AutoscaleSettingProfileRecurrence({
     required this.days,
     required this.hours,
     required this.minutes,

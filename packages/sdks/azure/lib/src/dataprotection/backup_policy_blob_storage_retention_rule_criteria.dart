@@ -25,7 +25,7 @@ class BackupPolicyBlobStorageRetentionRuleCriteria {
   /// [monthsOfYears] Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`. Changing this forces a new Backup Policy Blob Storage to be created. When this property is specified, exactly one of the following must also be set: `days_of_month`, `days_of_week`
   /// [scheduledBackupTimes] Specifies a list of backup times for backup in the `RFC3339` format. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [weeksOfMonths] Possible values are `First`, `Second`, `Third`, `Fourth` and `Last`. Changing this forces a new Backup Policy Blob Storage to be created. When this property is specified, exactly one of the following must also be set: `days_of_month`, `days_of_week`
-  BackupPolicyBlobStorageRetentionRuleCriteria({
+  const BackupPolicyBlobStorageRetentionRuleCriteria({
     this.absoluteCriteria,
     this.daysOfMonths,
     this.daysOfWeeks,

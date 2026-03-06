@@ -11,7 +11,7 @@ class GetV3FunctionsFunctionInstanceLifecycleConfigPreStop {
   /// Creates a new [GetV3FunctionsFunctionInstanceLifecycleConfigPreStop].
   /// [handler] The execution entry of the callback method, which is similar to the request handler.
   /// [timeout] The maximum running time of the function, in seconds.
-  GetV3FunctionsFunctionInstanceLifecycleConfigPreStop({
+  const GetV3FunctionsFunctionInstanceLifecycleConfigPreStop({
     required this.handler,
     required this.timeout,
   });

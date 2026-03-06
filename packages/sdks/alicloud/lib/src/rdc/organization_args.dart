@@ -21,7 +21,7 @@ class OrganizationArgs {
   /// [organizationName] Company name.
   /// [realPk] User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
   /// [source] This is organization source information
-  OrganizationArgs({
+  const OrganizationArgs({
     this.desiredMemberCount,
     required this.organizationName,
     this.realPk,

@@ -11,7 +11,7 @@ class EntitlementRequesterJustificationConfig {
   /// Creates a new [EntitlementRequesterJustificationConfig].
   /// [notMandatory] The justification is not mandatory but can be provided in any of the supported formats.
   /// [unstructured] The requester has to provide a justification in the form of free flowing text.
-  EntitlementRequesterJustificationConfig({
+  const EntitlementRequesterJustificationConfig({
     this.notMandatory,
     this.unstructured,
   });

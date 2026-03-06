@@ -31,7 +31,7 @@ class Ec2VPCEndpointProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2VPCEndpointProperties({
+  const Ec2VPCEndpointProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

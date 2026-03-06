@@ -105,7 +105,7 @@ class BackupState {
   /// [type] The backup type, which suggests the trigger for the backup.
   /// [uid] Output only. The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
   /// [updateTime] Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  BackupState({
+  const BackupState({
     this.annotations,
     this.backupId,
     this.clusterName,

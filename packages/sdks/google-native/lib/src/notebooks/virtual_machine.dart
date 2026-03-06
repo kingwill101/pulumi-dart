@@ -10,7 +10,7 @@ class VirtualMachine {
 
   /// Creates a new [VirtualMachine].
   /// [virtualMachineConfig] Virtual Machine configuration settings.
-  VirtualMachine({
+  const VirtualMachine({
     this.virtualMachineConfig,
   });
 

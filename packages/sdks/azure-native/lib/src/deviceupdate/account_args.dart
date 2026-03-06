@@ -40,7 +40,7 @@ class AccountArgs {
   /// [resourceGroupName] The resource group name.
   /// [sku] Device Update Sku
   /// [tags] Resource tags.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.encryption,
     this.identity,

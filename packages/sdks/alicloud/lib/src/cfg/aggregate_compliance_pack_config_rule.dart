@@ -12,7 +12,7 @@ class AggregateCompliancePackConfigRule {
   /// Creates a new [AggregateCompliancePackConfigRule].
   /// [configRuleParameters] A list of parameter rules. See `config_rule_parameters` below.
   /// [managedRuleIdentifier] The Managed Rule Identifier.
-  AggregateCompliancePackConfigRule({
+  const AggregateCompliancePackConfigRule({
     this.configRuleParameters,
     required this.managedRuleIdentifier,
   });

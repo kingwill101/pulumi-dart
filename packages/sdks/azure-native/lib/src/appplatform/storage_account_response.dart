@@ -13,7 +13,7 @@ class StorageAccountResponse {
   /// Creates a new [StorageAccountResponse].
   /// [accountName] The account name of the Azure Storage Account.
   /// [storageType] The type of the storage.
-  StorageAccountResponse({
+  const StorageAccountResponse({
     required this.accountName,
     required this.storageType,
   });

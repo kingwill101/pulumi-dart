@@ -13,7 +13,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageText {
   /// Creates a new [CxFlowTransitionRouteTriggerFulfillmentMessageText].
   /// [allowPlaybackInterruption] (Output)
   /// [texts] A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-  CxFlowTransitionRouteTriggerFulfillmentMessageText({
+  const CxFlowTransitionRouteTriggerFulfillmentMessageText({
     this.allowPlaybackInterruption,
     this.texts,
   });

@@ -25,7 +25,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
   /// [compressionMode] Setting the compression mode to automatic enables dynamic compression for every eligible response.
   /// [corsPolicy] CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
   /// [urlRewrite] The URL rewrite configuration for requests that match this route.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction({
     this.cdnPolicy,
     this.compressionMode,
     this.corsPolicy,

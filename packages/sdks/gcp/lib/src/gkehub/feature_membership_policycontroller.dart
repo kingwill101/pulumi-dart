@@ -12,7 +12,7 @@ class FeatureMembershipPolicycontroller {
   /// Creates a new [FeatureMembershipPolicycontroller].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster. Structure is documented below.
   /// [version] Version of Policy Controller to install. Defaults to the latest version.
-  FeatureMembershipPolicycontroller({
+  const FeatureMembershipPolicycontroller({
     required this.policyControllerHubConfig,
     this.version,
   });

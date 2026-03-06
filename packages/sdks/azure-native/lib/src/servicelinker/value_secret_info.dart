@@ -13,7 +13,7 @@ class ValueSecretInfo {
   /// Creates a new [ValueSecretInfo].
   /// [secretType] The secret type.
   /// [value] The actual value of the secret.
-  ValueSecretInfo({
+  const ValueSecretInfo({
     required this.secretType,
     this.value,
   });

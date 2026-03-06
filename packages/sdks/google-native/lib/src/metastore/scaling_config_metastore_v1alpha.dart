@@ -13,7 +13,7 @@ class ScalingConfigMetastoreV1alpha {
   /// Creates a new [ScalingConfigMetastoreV1alpha].
   /// [instanceSize] An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
   /// [scalingFactor] Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
-  ScalingConfigMetastoreV1alpha({
+  const ScalingConfigMetastoreV1alpha({
     this.instanceSize,
     this.scalingFactor,
   });

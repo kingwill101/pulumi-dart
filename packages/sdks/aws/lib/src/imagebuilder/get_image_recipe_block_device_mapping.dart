@@ -18,7 +18,7 @@ class GetImageRecipeBlockDeviceMapping {
   /// [ebs] Single list of object with Elastic Block Storage (EBS) block device mapping settings.
   /// [noDevice] Whether to remove a mapping from the parent image.
   /// [virtualName] Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
-  GetImageRecipeBlockDeviceMapping({
+  const GetImageRecipeBlockDeviceMapping({
     required this.deviceName,
     required this.ebs,
     required this.noDevice,

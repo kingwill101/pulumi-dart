@@ -26,7 +26,7 @@ class NetworkSettingsArgs {
   /// [subnetIds] The subnets in which network interfaces are created to connect streaming instances to your VPC. At least two subnet ids must be specified.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The VPC that streaming instances will connect to.
-  NetworkSettingsArgs({
+  const NetworkSettingsArgs({
     this.region,
     required this.securityGroupIds,
     required this.subnetIds,

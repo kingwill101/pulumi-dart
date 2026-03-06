@@ -35,7 +35,7 @@ class DistributionConfigurationDistribution {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3ExportConfiguration] Configuration block with S3 export settings. Detailed below.
   /// [ssmParameterConfigurations] Configuration block with SSM parameter configuration to use as AMI id output. Detailed below.
-  DistributionConfigurationDistribution({
+  const DistributionConfigurationDistribution({
     this.amiDistributionConfiguration,
     this.containerDistributionConfiguration,
     this.fastLaunchConfigurations,

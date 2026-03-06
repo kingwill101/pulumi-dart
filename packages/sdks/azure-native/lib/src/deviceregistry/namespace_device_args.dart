@@ -56,7 +56,7 @@ class NamespaceDeviceArgs {
   /// [operatingSystemVersion] Device operating system version.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NamespaceDeviceArgs({
+  const NamespaceDeviceArgs({
     this.attributes,
     this.deviceName,
     this.discoveredDeviceRef,

@@ -11,7 +11,7 @@ class GetInstanceTypeOfferingsFilter {
   /// Creates a new [GetInstanceTypeOfferingsFilter].
   /// [name] Name of the filter. The `location` filter depends on the top-level `location_type` argument and if not specified, defaults to the current region.
   /// [values] List of one or more values for the filter.
-  GetInstanceTypeOfferingsFilter({
+  const GetInstanceTypeOfferingsFilter({
     required this.name,
     required this.values,
   });

@@ -12,7 +12,7 @@ class GetEc2InstanceArgs {
 
   /// Creates a new [GetEc2InstanceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetEc2InstanceArgs({
+  const GetEc2InstanceArgs({
     required this.resourceUri,
   });
 

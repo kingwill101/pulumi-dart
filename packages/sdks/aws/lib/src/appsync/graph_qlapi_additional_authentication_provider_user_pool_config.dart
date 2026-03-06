@@ -14,7 +14,7 @@ class GraphQLApiAdditionalAuthenticationProviderUserPoolConfig {
   /// [appIdClientRegex] Regular expression for validating the incoming Amazon Cognito User Pool app client ID.
   /// [awsRegion] AWS region in which the user pool was created.
   /// [userPoolId] User pool ID.
-  GraphQLApiAdditionalAuthenticationProviderUserPoolConfig({
+  const GraphQLApiAdditionalAuthenticationProviderUserPoolConfig({
     this.appIdClientRegex,
     this.awsRegion,
     required this.userPoolId,

@@ -20,7 +20,7 @@ class LockState {
   /// [name] Specifies the name of the Management Lock. Changing this forces a new resource to be created.
   /// [notes] Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
   /// [scope] Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
-  LockState({
+  const LockState({
     this.lockLevel,
     this.name,
     this.notes,

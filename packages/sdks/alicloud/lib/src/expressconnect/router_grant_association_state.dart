@@ -26,7 +26,7 @@ class RouterGrantAssociationState {
   /// [instanceRegionId] The ID of the region where the authorized network instance is located.
   /// [instanceType] The type of the network instance. Value:
   /// [status] The status of the resource
-  RouterGrantAssociationState({
+  const RouterGrantAssociationState({
     this.ecrId,
     this.ecrOwnerAliUid,
     this.instanceId,

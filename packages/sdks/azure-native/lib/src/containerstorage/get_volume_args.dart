@@ -18,7 +18,7 @@ class GetVolumeArgs {
   /// [poolName] Pool Object
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] Volume Resource
-  GetVolumeArgs({
+  const GetVolumeArgs({
     required this.poolName,
     required this.resourceGroupName,
     required this.volumeName,

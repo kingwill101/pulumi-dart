@@ -14,7 +14,7 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageDetectedBarcode].
   /// [barcode] Detailed barcode information of the DetectedBarcode.
   /// [layout] Layout for DetectedBarcode.
-  GoogleCloudDocumentaiV1DocumentPageDetectedBarcode({
+  const GoogleCloudDocumentaiV1DocumentPageDetectedBarcode({
     this.barcode,
     this.layout,
   });

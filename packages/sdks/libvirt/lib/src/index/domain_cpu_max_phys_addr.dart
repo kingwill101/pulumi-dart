@@ -14,7 +14,7 @@ class DomainCpuMaxPhysAddr {
   /// [bits] Defines the number of bits that represent the maximum physical address.
   /// [limit] Sets an upper limit on the maximum physical address that can be used by the domain.
   /// [mode] Specifies the addressing mode that applies to the maximum physical address.
-  DomainCpuMaxPhysAddr({
+  const DomainCpuMaxPhysAddr({
     this.bits,
     this.limit,
     required this.mode,

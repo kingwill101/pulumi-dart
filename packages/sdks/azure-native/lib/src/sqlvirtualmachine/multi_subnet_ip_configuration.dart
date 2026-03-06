@@ -13,7 +13,7 @@ class MultiSubnetIpConfiguration {
   /// Creates a new [MultiSubnetIpConfiguration].
   /// [privateIpAddress] Private IP address.
   /// [sqlVirtualMachineInstance] SQL virtual machine instance resource id that are enrolled into the availability group listener.
-  MultiSubnetIpConfiguration({
+  const MultiSubnetIpConfiguration({
     required this.privateIpAddress,
     required this.sqlVirtualMachineInstance,
   });

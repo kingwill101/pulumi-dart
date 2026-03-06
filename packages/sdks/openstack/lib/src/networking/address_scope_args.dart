@@ -33,7 +33,7 @@ class AddressScopeArgs {
   /// [projectId] The owner of the address-scope. Required if admin
   /// [region] The region in which to obtain the V2 Networking client.
   /// [shared] Indicates whether this address-scope is shared across
-  AddressScopeArgs({
+  const AddressScopeArgs({
     this.ipVersion,
     this.name,
     this.projectId,

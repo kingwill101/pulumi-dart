@@ -13,7 +13,7 @@ class GetImageArgs {
   /// Creates a new [GetImageArgs].
   /// [image] Required.
   /// [project] Optional.
-  GetImageArgs({
+  const GetImageArgs({
     required this.image,
     this.project,
   });

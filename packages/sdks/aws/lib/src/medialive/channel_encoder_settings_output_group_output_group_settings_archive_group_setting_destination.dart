@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDes
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination({
     required this.destinationRefId,
   });
 

@@ -15,7 +15,7 @@ class GetActionGroupArgs {
   /// Creates a new [GetActionGroupArgs].
   /// [name] Specifies the name of the Action Group.
   /// [resourceGroupName] Specifies the name of the resource group the Action Group is located in.
-  GetActionGroupArgs({
+  const GetActionGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

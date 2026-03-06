@@ -17,7 +17,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [name] The name of the cluster.
   /// [region] The region in which to obtain the V1 Container Infra
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.name,
     this.region,
   });

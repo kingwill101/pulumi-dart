@@ -36,7 +36,7 @@ class GetSubscriptionResult {
   /// [state] The state of this Subscription.
   /// [subscriptionId] Required.
   /// [userId] The ID of the User assigned to this Subscription.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.allowTracing,
     required this.apiId,
     required this.apiManagementId,

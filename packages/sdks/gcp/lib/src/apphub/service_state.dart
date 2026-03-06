@@ -60,7 +60,7 @@ class ServiceState {
   /// [state] Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
   /// [uid] Output only. A universally unique identifier (UUID) for the `Service` in the UUID4
   /// [updateTime] Output only. Update time.
-  ServiceState({
+  const ServiceState({
     this.applicationId,
     this.attributes,
     this.createTime,

@@ -9,7 +9,7 @@ class MutualTlsResponse {
 
   /// Creates a new [MutualTlsResponse].
   /// [mode] Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
-  MutualTlsResponse({
+  const MutualTlsResponse({
     required this.mode,
   });
 

@@ -8,7 +8,7 @@ class EndpointConfigurationAsyncInferenceConfigClientConfig {
 
   /// Creates a new [EndpointConfigurationAsyncInferenceConfigClientConfig].
   /// [maxConcurrentInvocationsPerInstance] Maximum number of concurrent requests sent by the SageMaker AI client to the model container. If no value is provided, SageMaker AI will choose an optimal value for you.
-  EndpointConfigurationAsyncInferenceConfigClientConfig({
+  const EndpointConfigurationAsyncInferenceConfigClientConfig({
     this.maxConcurrentInvocationsPerInstance,
   });
 

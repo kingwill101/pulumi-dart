@@ -11,7 +11,7 @@ class GetDdosCooDomainResourcesResourceProxyType {
   /// Creates a new [GetDdosCooDomainResourcesResourceProxyType].
   /// [proxyPorts] The forwarding port.
   /// [proxyType] Protocol type.
-  GetDdosCooDomainResourcesResourceProxyType({
+  const GetDdosCooDomainResourcesResourceProxyType({
     required this.proxyPorts,
     required this.proxyType,
   });

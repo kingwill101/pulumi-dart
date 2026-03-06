@@ -25,7 +25,7 @@ class ProviderResponse {
   /// [registrationPolicy] The registration policy of the resource provider.
   /// [registrationState] The registration state of the resource provider.
   /// [resourceTypes] The collection of provider resource types.
-  ProviderResponse({
+  const ProviderResponse({
     required this.id,
     this.namespace,
     this.providerAuthorizationConsentState,

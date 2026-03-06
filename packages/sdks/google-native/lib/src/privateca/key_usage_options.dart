@@ -33,7 +33,7 @@ class KeyUsageOptions {
   /// [encipherOnly] The key may be used to encipher only.
   /// [keyAgreement] The key may be used in a key agreement protocol.
   /// [keyEncipherment] The key may be used to encipher other keys.
-  KeyUsageOptions({
+  const KeyUsageOptions({
     this.certSign,
     this.contentCommitment,
     this.crlSign,

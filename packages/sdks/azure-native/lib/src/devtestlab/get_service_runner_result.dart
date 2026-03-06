@@ -27,7 +27,7 @@ class GetServiceRunnerResult {
   /// [name] The name of the resource.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
-  GetServiceRunnerResult({
+  const GetServiceRunnerResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

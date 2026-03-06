@@ -19,7 +19,7 @@ class ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse {
   /// [elasticOrganizationId] The Elastic Organization Id.
   /// [elasticOrganizationName] The Elastic Organization Name.
   /// [marketplaceSaasInfo] Marketplace SaaS Info of the resource.
-  ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse({
+  const ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse({
     this.billedAzureSubscriptionId,
     this.elasticOrganizationId,
     this.elasticOrganizationName,

@@ -9,7 +9,7 @@ class SystemAssignedServiceIdentity {
 
   /// Creates a new [SystemAssignedServiceIdentity].
   /// [type] Type of managed service identity (either system assigned, or none).
-  SystemAssignedServiceIdentity({
+  const SystemAssignedServiceIdentity({
     required this.type,
   });
 

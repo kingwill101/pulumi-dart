@@ -39,7 +39,7 @@ class FirewallPolicyFirewallPolicy {
   /// [statelessFragmentDefaultActions] Set of actions to take on a fragmented packet if it does not match any of the stateless rules in the policy. You must specify one of the standard actions including: `aws:drop`, `aws:pass`, or `aws:forward_to_sfe`.
   /// [statelessRuleGroupReferences] Set of configuration blocks containing references to the stateless rule groups that are used in the policy. See Stateless Rule Group Reference below for details.
   /// [tlsInspectionConfigurationArn] The (ARN) of the TLS Inspection policy to attach to the FW Policy.  This must be added at creation of the resource per AWS documentation. "You can only add a TLS inspection configuration to a new policy, not to an existing policy."  This cannot be removed from a FW Policy.
-  FirewallPolicyFirewallPolicy({
+  const FirewallPolicyFirewallPolicy({
     this.policyVariables,
     this.statefulDefaultActions,
     this.statefulEngineOptions,

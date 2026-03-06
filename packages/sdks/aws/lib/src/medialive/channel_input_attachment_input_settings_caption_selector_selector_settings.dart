@@ -32,7 +32,7 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings {
   /// [scte20SourceSettings] SCTE20 Source Settings. See SCTE 20 Source Settings for more details.
   /// [scte27SourceSettings] SCTE27 Source Settings. See SCTE 27 Source Settings for more details.
   /// [teletextSourceSettings] Teletext Source Settings. See Teletext Source Settings for more details.
-  ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings({
+  const ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings({
     this.ancillarySourceSettings,
     this.aribSourceSettings,
     this.dvbSubSourceSettings,

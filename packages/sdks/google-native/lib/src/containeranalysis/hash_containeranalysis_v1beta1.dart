@@ -13,7 +13,7 @@ class HashContaineranalysisV1beta1 {
   /// Creates a new [HashContaineranalysisV1beta1].
   /// [type] The type of hash that was performed.
   /// [value] The hash value.
-  HashContaineranalysisV1beta1({
+  const HashContaineranalysisV1beta1({
     required this.type,
     required this.value,
   });

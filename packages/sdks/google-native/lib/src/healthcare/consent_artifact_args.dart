@@ -43,7 +43,7 @@ class ConsentArtifactArgs {
   /// [userId] User's UUID provided by the client.
   /// [userSignature] Optional. User's signature.
   /// [witnessSignature] Optional. A signature from a witness.
-  ConsentArtifactArgs({
+  const ConsentArtifactArgs({
     this.consentContentScreenshots,
     this.consentContentVersion,
     required this.consentStoreId,

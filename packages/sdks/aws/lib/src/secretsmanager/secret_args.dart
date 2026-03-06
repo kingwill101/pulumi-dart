@@ -40,7 +40,7 @@ class SecretArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicas] Configuration block to support secret replication. See details below.
   /// [tags] Key-value map of user-defined tags that are attached to the secret. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  SecretArgs({
+  const SecretArgs({
     this.description,
     this.forceOverwriteReplicaSecret,
     this.kmsKeyId,

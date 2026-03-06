@@ -32,7 +32,7 @@ class GetModelsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetModelsResult({
+  const GetModelsResult({
     required this.groupId,
     required this.id,
     required this.ids,

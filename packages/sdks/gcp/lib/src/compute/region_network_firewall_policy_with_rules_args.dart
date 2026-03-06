@@ -38,7 +38,7 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of this resource.
   /// [rules] A list of firewall policy rules.
-  RegionNetworkFirewallPolicyWithRulesArgs({
+  const RegionNetworkFirewallPolicyWithRulesArgs({
     this.description,
     this.name,
     this.policyType,

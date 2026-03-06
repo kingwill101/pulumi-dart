@@ -9,7 +9,7 @@ class DeploymentStatusEnumValueResponse {
 
   /// Creates a new [DeploymentStatusEnumValueResponse].
   /// [value] Property value
-  DeploymentStatusEnumValueResponse({
+  const DeploymentStatusEnumValueResponse({
     this.value,
   });
 

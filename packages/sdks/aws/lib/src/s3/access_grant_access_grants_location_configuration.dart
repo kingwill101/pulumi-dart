@@ -8,7 +8,7 @@ class AccessGrantAccessGrantsLocationConfiguration {
 
   /// Creates a new [AccessGrantAccessGrantsLocationConfiguration].
   /// [s3SubPrefix] Sub-prefix.
-  AccessGrantAccessGrantsLocationConfiguration({
+  const AccessGrantAccessGrantsLocationConfiguration({
     this.s3SubPrefix,
   });
 

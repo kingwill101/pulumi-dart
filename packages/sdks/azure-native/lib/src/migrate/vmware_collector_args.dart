@@ -23,7 +23,7 @@ class VMwareCollectorArgs {
   /// [properties] Optional.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [vmWareCollectorName] Unique name of a VMware collector within a project.
-  VMwareCollectorArgs({
+  const VMwareCollectorArgs({
     this.eTag,
     required this.projectName,
     this.properties,

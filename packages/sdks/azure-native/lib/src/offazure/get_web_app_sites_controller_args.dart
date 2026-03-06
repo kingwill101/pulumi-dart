@@ -18,7 +18,7 @@ class GetWebAppSitesControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
   /// [webAppSiteName] Web app site name.
-  GetWebAppSitesControllerArgs({
+  const GetWebAppSitesControllerArgs({
     required this.resourceGroupName,
     required this.siteName,
     required this.webAppSiteName,

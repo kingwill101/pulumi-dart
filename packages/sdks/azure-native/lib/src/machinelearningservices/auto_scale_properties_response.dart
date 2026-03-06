@@ -12,7 +12,7 @@ class AutoScalePropertiesResponse {
   /// [enabled] Optional.
   /// [maxNodeCount] Optional.
   /// [minNodeCount] Optional.
-  AutoScalePropertiesResponse({
+  const AutoScalePropertiesResponse({
     this.enabled,
     this.maxNodeCount,
     this.minNodeCount,

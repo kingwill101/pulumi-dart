@@ -74,7 +74,7 @@ class ServiceArgs {
   /// [semanticSearchSku] Specifies the Semantic Search SKU which should be used for this Search Service. Possible values include `free` and `standard`.
   /// [sku] The SKU which should be used for this Search Service. Possible values include `basic`, `free`, `standard`, `standard2`, `standard3`, `storage_optimized_l1` and `storage_optimized_l2`.
   /// [tags] Specifies a mapping of tags which should be assigned to this Search Service.
-  ServiceArgs({
+  const ServiceArgs({
     this.allowedIps,
     this.authenticationFailureMode,
     this.customerManagedKeyEnforcementEnabled,

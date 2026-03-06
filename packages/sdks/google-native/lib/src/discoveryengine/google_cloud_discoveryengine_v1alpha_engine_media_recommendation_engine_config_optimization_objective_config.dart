@@ -12,7 +12,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOpti
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig].
   /// [targetField] The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
   /// [targetFieldValueFloat] The threshold to be applied to the target (e.g., 0.5).
-  GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig({
+  const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfig({
     required this.targetField,
     required this.targetFieldValueFloat,
   });

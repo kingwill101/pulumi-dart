@@ -16,7 +16,7 @@ class GetInstanceTypeNeuronDevice {
   /// [count] Required.
   /// [memorySize] Size of the instance memory, in MiB.
   /// [name] Required.
-  GetInstanceTypeNeuronDevice({
+  const GetInstanceTypeNeuronDevice({
     required this.coreCount,
     required this.coreVersion,
     required this.count,

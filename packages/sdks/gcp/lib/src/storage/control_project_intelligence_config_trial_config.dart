@@ -9,7 +9,7 @@ class ControlProjectIntelligenceConfigTrialConfig {
 
   /// Creates a new [ControlProjectIntelligenceConfigTrialConfig].
   /// [expireTime] (Output)
-  ControlProjectIntelligenceConfigTrialConfig({
+  const ControlProjectIntelligenceConfigTrialConfig({
     this.expireTime,
   });
 

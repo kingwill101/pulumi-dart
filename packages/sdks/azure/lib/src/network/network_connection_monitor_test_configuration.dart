@@ -33,7 +33,7 @@ class NetworkConnectionMonitorTestConfiguration {
   /// [successThreshold] A `success_threshold` block as defined below.
   /// [tcpConfiguration] A `tcp_configuration` block as defined below.
   /// [testFrequencyInSeconds] The time interval in seconds at which the test evaluation will happen. Defaults to `60`.
-  NetworkConnectionMonitorTestConfiguration({
+  const NetworkConnectionMonitorTestConfiguration({
     this.httpConfiguration,
     this.icmpConfiguration,
     required this.name,

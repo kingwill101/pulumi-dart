@@ -16,7 +16,7 @@ class LiteralJobInputResponse {
   /// [description] Description for the input.
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [value] [Required] Literal value for the input.
-  LiteralJobInputResponse({
+  const LiteralJobInputResponse({
     this.description,
     required this.jobInputType,
     required this.value,

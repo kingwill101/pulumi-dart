@@ -18,7 +18,7 @@ class GetLandingZoneConfigurationOperationArgs {
   /// [landingZoneAccountName] The landing zone account.
   /// [landingZoneConfigurationName] The landing zone configuration name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLandingZoneConfigurationOperationArgs({
+  const GetLandingZoneConfigurationOperationArgs({
     required this.landingZoneAccountName,
     required this.landingZoneConfigurationName,
     required this.resourceGroupName,

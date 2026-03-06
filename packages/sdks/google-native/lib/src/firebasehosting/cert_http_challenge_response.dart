@@ -12,7 +12,7 @@ class CertHttpChallengeResponse {
   /// Creates a new [CertHttpChallengeResponse].
   /// [path] The URL path on which to serve the specified token to satisfy the certificate challenge.
   /// [token] The token to serve at the specified URL path to satisfy the certificate challenge.
-  CertHttpChallengeResponse({
+  const CertHttpChallengeResponse({
     required this.path,
     required this.token,
   });

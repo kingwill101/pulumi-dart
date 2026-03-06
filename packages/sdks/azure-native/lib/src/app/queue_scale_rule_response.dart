@@ -22,7 +22,7 @@ class QueueScaleRuleResponse {
   /// [identity] The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
   /// [queueLength] Queue length.
   /// [queueName] Queue name.
-  QueueScaleRuleResponse({
+  const QueueScaleRuleResponse({
     this.accountName,
     this.auth,
     this.identity,

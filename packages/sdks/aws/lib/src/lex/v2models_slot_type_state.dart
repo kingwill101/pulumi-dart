@@ -59,7 +59,7 @@ class V2modelsSlotTypeState {
   /// [slotTypeValues] List of SlotTypeValue objects that defines the values that the slot type can take.
   /// [timeouts] Optional.
   /// [valueSelectionSetting] Determines the strategy that Amazon Lex uses to select a value from the list of possible values.
-  V2modelsSlotTypeState({
+  const V2modelsSlotTypeState({
     this.botId,
     this.botVersion,
     this.compositeSlotTypeSettings,

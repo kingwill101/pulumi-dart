@@ -11,7 +11,7 @@ class ServerlessOfferResponse {
   /// Creates a new [ServerlessOfferResponse].
   /// [offerName] [Required] The name of the Serverless Offer
   /// [publisher] [Required] Publisher name of the Serverless Offer
-  ServerlessOfferResponse({
+  const ServerlessOfferResponse({
     required this.offerName,
     required this.publisher,
   });

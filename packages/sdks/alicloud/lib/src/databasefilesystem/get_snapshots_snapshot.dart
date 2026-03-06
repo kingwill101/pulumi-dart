@@ -47,7 +47,7 @@ class GetSnapshotsSnapshot {
   /// [snapshotType] The creation of the snapshot.
   /// [sourceFsSize] Source database file system capacity.
   /// [status] The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
-  GetSnapshotsSnapshot({
+  const GetSnapshotsSnapshot({
     required this.category,
     required this.createTime,
     required this.description,

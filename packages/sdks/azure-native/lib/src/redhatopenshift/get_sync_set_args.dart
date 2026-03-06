@@ -18,7 +18,7 @@ class GetSyncSetArgs {
   /// [childResourceName] The name of the SyncSet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
-  GetSyncSetArgs({
+  const GetSyncSetArgs({
     required this.childResourceName,
     required this.resourceGroupName,
     required this.resourceName,

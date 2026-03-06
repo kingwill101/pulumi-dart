@@ -36,7 +36,7 @@ class AutomationRuleActionFindingFieldsUpdate {
   /// [userDefinedFields] The rule action updates the `UserDefinedFields` field of a finding.
   /// [verificationState] The rule action updates the `VerificationState` field of a finding. The allowed values are the following `UNKNOWN`, `TRUE_POSITIVE`, `FALSE_POSITIVE` and `BENIGN_POSITIVE`.
   /// [workflow] A resource block that is used to update information about the investigation into the finding. Documented below.
-  AutomationRuleActionFindingFieldsUpdate({
+  const AutomationRuleActionFindingFieldsUpdate({
     this.confidence,
     this.criticality,
     this.note,

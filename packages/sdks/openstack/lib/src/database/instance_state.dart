@@ -53,7 +53,7 @@ class InstanceState {
   /// [size] Specifies the volume size in GB. Changing this creates new instance.
   /// [users] An array of username, password, host and databases. The user
   /// [volumeType] Specifies the volume type to use. If you want to
-  InstanceState({
+  const InstanceState({
     this.addresses,
     this.configurationId,
     this.databases,

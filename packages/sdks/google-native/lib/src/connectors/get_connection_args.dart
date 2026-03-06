@@ -17,7 +17,7 @@ class GetConnectionArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetConnectionArgs({
+  const GetConnectionArgs({
     required this.connectionId,
     required this.location,
     this.project,

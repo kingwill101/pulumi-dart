@@ -22,7 +22,7 @@ class ProfileResponse {
   /// [diagnosticSettingsVersion] Current diagnostic settings version
   /// [enabledLogCategories] List of log categories
   /// [name] Name of the profile
-  ProfileResponse({
+  const ProfileResponse({
     this.accessRules,
     this.accessRulesVersion,
     this.diagnosticSettingsVersion,

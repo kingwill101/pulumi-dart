@@ -24,7 +24,7 @@ class GetFluxConfigurationArgs {
   /// [clusterRp] The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   /// [fluxConfigurationName] Name of the Flux Configuration.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFluxConfigurationArgs({
+  const GetFluxConfigurationArgs({
     required this.clusterName,
     required this.clusterResourceName,
     required this.clusterRp,

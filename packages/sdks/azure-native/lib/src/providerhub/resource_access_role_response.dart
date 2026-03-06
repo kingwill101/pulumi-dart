@@ -11,7 +11,7 @@ class ResourceAccessRoleResponse {
   /// Creates a new [ResourceAccessRoleResponse].
   /// [actions] The actions.
   /// [allowedGroupClaims] The allowed group claims.
-  ResourceAccessRoleResponse({
+  const ResourceAccessRoleResponse({
     this.actions,
     this.allowedGroupClaims,
   });

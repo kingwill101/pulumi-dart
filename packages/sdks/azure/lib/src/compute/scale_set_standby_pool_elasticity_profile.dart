@@ -13,7 +13,7 @@ class ScaleSetStandbyPoolElasticityProfile {
   /// Creates a new [ScaleSetStandbyPoolElasticityProfile].
   /// [maxReadyCapacity] Specifies the maximum number of virtual machines in the standby pool.
   /// [minReadyCapacity] Specifies the desired minimum number of virtual machines in the standby pool.
-  ScaleSetStandbyPoolElasticityProfile({
+  const ScaleSetStandbyPoolElasticityProfile({
     required this.maxReadyCapacity,
     required this.minReadyCapacity,
   });

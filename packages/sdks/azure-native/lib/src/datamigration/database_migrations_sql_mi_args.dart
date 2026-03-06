@@ -21,7 +21,7 @@ class DatabaseMigrationsSqlMiArgs {
   /// [properties] Database Migration Resource properties for SQL Managed Instance.
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [targetDbName] The name of the target database.
-  DatabaseMigrationsSqlMiArgs({
+  const DatabaseMigrationsSqlMiArgs({
     required this.managedInstanceName,
     this.properties,
     required this.resourceGroupName,

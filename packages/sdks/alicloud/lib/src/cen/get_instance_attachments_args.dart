@@ -24,7 +24,7 @@ class GetInstanceAttachmentsArgs {
   /// [instanceId] The ID of the CEN instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
-  GetInstanceAttachmentsArgs({
+  const GetInstanceAttachmentsArgs({
     this.childInstanceRegionId,
     this.childInstanceType,
     required this.instanceId,

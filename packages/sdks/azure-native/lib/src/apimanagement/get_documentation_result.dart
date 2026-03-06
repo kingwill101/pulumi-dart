@@ -23,7 +23,7 @@ class GetDocumentationResult {
   /// [name] The name of the resource
   /// [title] documentation title.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDocumentationResult({
+  const GetDocumentationResult({
     required this.azureApiVersion,
     this.content,
     required this.id,

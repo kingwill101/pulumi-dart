@@ -23,7 +23,7 @@ class FederatedIdentityCredentialState {
   /// [parentId] Specifies parent ID of User Assigned Identity for this Federated Identity Credential. Changing this forces a new Federated Identity Credential to be created.
   /// [resourceGroupName] Optional.
   /// [subject] Specifies the subject for this Federated Identity Credential.
-  FederatedIdentityCredentialState({
+  const FederatedIdentityCredentialState({
     this.audience,
     this.issuer,
     this.name,

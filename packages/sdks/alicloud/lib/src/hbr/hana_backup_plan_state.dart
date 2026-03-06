@@ -39,7 +39,7 @@ class HanaBackupPlanState {
   /// [schedule] The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
   /// [status] The status of the resource. Valid values: `Enabled`, `Disabled`.
   /// [vaultId] The ID of the backup vault.
-  HanaBackupPlanState({
+  const HanaBackupPlanState({
     this.backupPrefix,
     this.backupType,
     this.clusterId,

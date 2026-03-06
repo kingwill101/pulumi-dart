@@ -89,7 +89,7 @@ class VpcEndpointState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcEndpointType] The VPC endpoint type, `Gateway`, `GatewayLoadBalancer`,`Interface`, `Resource` or `ServiceNetwork`. Defaults to `Gateway`.
   /// [vpcId] The ID of the VPC in which the endpoint will be used.
-  VpcEndpointState({
+  const VpcEndpointState({
     this.arn,
     this.autoAccept,
     this.cidrBlocks,

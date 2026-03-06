@@ -23,7 +23,7 @@ class GetAccessConnectorResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Databricks Access Connector.
-  GetAccessConnectorResult({
+  const GetAccessConnectorResult({
     required this.id,
     required this.identities,
     required this.location,

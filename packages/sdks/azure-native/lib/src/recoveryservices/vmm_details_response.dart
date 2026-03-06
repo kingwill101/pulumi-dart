@@ -10,7 +10,7 @@ class VmmDetailsResponse {
 
   /// Creates a new [VmmDetailsResponse].
   /// [instanceType] Gets the class type. Overridden in derived classes.
-  VmmDetailsResponse({
+  const VmmDetailsResponse({
     required this.instanceType,
   });
 

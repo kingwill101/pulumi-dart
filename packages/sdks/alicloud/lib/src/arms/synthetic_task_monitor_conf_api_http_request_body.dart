@@ -10,7 +10,7 @@ class SyntheticTaskMonitorConfApiHttpRequestBody {
   /// Creates a new [SyntheticTaskMonitorConfApiHttpRequestBody].
   /// [content] The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
   /// [type] Optional.
-  SyntheticTaskMonitorConfApiHttpRequestBody({
+  const SyntheticTaskMonitorConfApiHttpRequestBody({
     this.content,
     this.type,
   });

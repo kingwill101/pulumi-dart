@@ -37,7 +37,7 @@ class VmwareAdminClusterNetworkConfig {
   /// [serviceAddressCidrBlocks] All services in the cluster are assigned an RFC1918 IPv4 address
   /// [staticIpConfig] Configuration settings for a static IP configuration.
   /// [vcenterNetwork] vcenter_network specifies vCenter network name.
-  VmwareAdminClusterNetworkConfig({
+  const VmwareAdminClusterNetworkConfig({
     this.dhcpIpConfig,
     this.haControlPlaneConfig,
     this.hostConfig,

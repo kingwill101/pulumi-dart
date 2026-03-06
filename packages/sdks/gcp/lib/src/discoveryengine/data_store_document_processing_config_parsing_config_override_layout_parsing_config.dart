@@ -23,7 +23,7 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig 
   /// [excludeHtmlElements] List of HTML elements to exclude from the parsed content.
   /// [excludeHtmlIds] List of HTML ids to exclude from the parsed content.
   /// [structuredContentTypes] Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
-  DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig({
+  const DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig({
     this.enableImageAnnotation,
     this.enableTableAnnotation,
     this.excludeHtmlClasses,

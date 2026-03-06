@@ -25,7 +25,7 @@ class IpamIpamArgs {
   /// [operatingRegionLists] List of IPAM effective regions.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  IpamIpamArgs({
+  const IpamIpamArgs({
     this.ipamDescription,
     this.ipamName,
     required this.operatingRegionLists,

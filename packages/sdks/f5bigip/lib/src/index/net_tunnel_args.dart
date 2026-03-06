@@ -60,7 +60,7 @@ class NetTunnelArgs {
   /// [trafficGroup] Specifies a traffic-group for use with the tunnel
   /// [transparent] Enables or disables the tunnel to be transparent
   /// [usePmtu] Enables or disables the tunnel to use the PMTU (Path MTU) information provided by ICMP NeedFrag error messages
-  NetTunnelArgs({
+  const NetTunnelArgs({
     this.appService,
     this.autoLastHop,
     this.description,

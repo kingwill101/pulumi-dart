@@ -34,7 +34,7 @@ class GetFleetResult {
   /// [state] State of the namespace resource.
   /// [uid] Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet resource is deleted and another resource with the same name is created, it gets a different uid.
   /// [updateTime] When the Fleet was last updated.
-  GetFleetResult({
+  const GetFleetResult({
     required this.createTime,
     required this.defaultClusterConfig,
     required this.deleteTime,

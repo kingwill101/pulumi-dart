@@ -34,7 +34,7 @@ class PreferenceSetVirtualMachinePreferences {
   /// [soleTenancyPreferences] Preferences concerning Sole Tenancy nodes and VMs.
   /// [targetProduct] Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
   /// [vmwareEnginePreferences] The user preferences relating to Google Cloud VMware Engine target platform.
-  PreferenceSetVirtualMachinePreferences({
+  const PreferenceSetVirtualMachinePreferences({
     this.commitmentPlan,
     this.computeEnginePreferences,
     this.regionPreferences,

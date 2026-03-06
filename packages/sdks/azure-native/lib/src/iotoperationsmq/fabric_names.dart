@@ -12,7 +12,7 @@ class FabricNames {
   /// Creates a new [FabricNames].
   /// [lakehouseName] Fabric one lake house name.
   /// [workspaceName] Fabric one lake workspace name.
-  FabricNames({
+  const FabricNames({
     required this.lakehouseName,
     required this.workspaceName,
   });

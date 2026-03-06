@@ -25,7 +25,7 @@ class AccessPolicyAssociationArgs {
   /// [policyArn] The ARN of the access policy that you're associating.
   /// [principalArn] The IAM Principal ARN which requires Authentication access to the EKS cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AccessPolicyAssociationArgs({
+  const AccessPolicyAssociationArgs({
     required this.accessScope,
     required this.clusterName,
     required this.policyArn,

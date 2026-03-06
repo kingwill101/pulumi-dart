@@ -42,7 +42,7 @@ class EcsSnapshotArgs {
   /// [retentionDays] The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
   /// [snapshotName] The name of the snapshot.
   /// [tags] A mapping of tags to assign to the resource.
-  EcsSnapshotArgs({
+  const EcsSnapshotArgs({
     this.category,
     this.description,
     required this.diskId,

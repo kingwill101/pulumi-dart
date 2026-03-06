@@ -12,7 +12,7 @@ class SqlServerUserDetailsSqladminV1beta4 {
   /// Creates a new [SqlServerUserDetailsSqladminV1beta4].
   /// [disabled] If the user has been disabled
   /// [serverRoles] The server roles for this user
-  SqlServerUserDetailsSqladminV1beta4({
+  const SqlServerUserDetailsSqladminV1beta4({
     this.disabled,
     this.serverRoles,
   });

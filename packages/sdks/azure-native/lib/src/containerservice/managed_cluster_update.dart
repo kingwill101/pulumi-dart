@@ -14,7 +14,7 @@ class ManagedClusterUpdate {
   /// Creates a new [ManagedClusterUpdate].
   /// [nodeImageSelection] The node image upgrade to be applied to the target nodes in update run.
   /// [upgrade] The upgrade to apply to the ManagedClusters.
-  ManagedClusterUpdate({
+  const ManagedClusterUpdate({
     this.nodeImageSelection,
     required this.upgrade,
   });

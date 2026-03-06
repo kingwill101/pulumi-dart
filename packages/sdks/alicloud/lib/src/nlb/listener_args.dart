@@ -97,7 +97,7 @@ class ListenerArgs {
   /// [startPort] The first port in the listener port range. Valid values: `0` to `65535`.
   /// [status] The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
   /// [tags] The tag of the resource
-  ListenerArgs({
+  const ListenerArgs({
     this.alpnEnabled,
     this.alpnPolicy,
     this.caCertificateIds,

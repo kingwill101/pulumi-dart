@@ -32,7 +32,7 @@ class AutomationRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [triggeringLogic] Describes automation rule triggering logic.
   /// [workspaceName] The name of the workspace.
-  AutomationRuleArgs({
+  const AutomationRuleArgs({
     required this.actions,
     this.automationRuleId,
     required this.displayName,

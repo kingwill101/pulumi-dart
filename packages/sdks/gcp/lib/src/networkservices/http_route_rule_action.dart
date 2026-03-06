@@ -53,7 +53,7 @@ class HttpRouteRuleAction {
   /// [retryPolicy] Specifies the retry policy associated with this route.
   /// [timeout] Specifies the timeout for selected route.
   /// [urlRewrite] The specification for rewrite URL before forwarding requests to the destination.
-  HttpRouteRuleAction({
+  const HttpRouteRuleAction({
     this.corsPolicy,
     this.destinations,
     this.faultInjectionPolicy,

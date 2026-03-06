@@ -42,7 +42,7 @@ class InferenceGroupArgs {
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  InferenceGroupArgs({
+  const InferenceGroupArgs({
     this.groupName,
     this.identity,
     required this.inferenceGroupProperties,

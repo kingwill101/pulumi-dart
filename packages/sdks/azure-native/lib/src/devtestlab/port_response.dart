@@ -12,7 +12,7 @@ class PortResponse {
   /// Creates a new [PortResponse].
   /// [backendPort] Backend port of the target virtual machine.
   /// [transportProtocol] Protocol type of the port.
-  PortResponse({
+  const PortResponse({
     this.backendPort,
     this.transportProtocol,
   });

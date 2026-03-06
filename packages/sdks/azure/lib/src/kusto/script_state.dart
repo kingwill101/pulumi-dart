@@ -33,7 +33,7 @@ class ScriptState {
   /// [scriptContent] The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with `url` and `sas_token` properties. Changing this forces a new resource to be created.
   /// [scriptLevel] The type of script commands. Possible values are `Database` or `Cluster`. Defaults to `Database`. Changing this forces a new resource to be created.
   /// [url] The url to the KQL script blob file. Must not be used together with scriptContent property. Please reference [this documentation](https://docs.microsoft.com/azure/data-explorer/database-script) that describes the commands that are allowed in the script.
-  ScriptState({
+  const ScriptState({
     this.continueOnErrorsEnabled,
     this.databaseId,
     this.forceAnUpdateWhenValueChanged,

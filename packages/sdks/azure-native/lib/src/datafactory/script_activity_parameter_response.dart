@@ -21,7 +21,7 @@ class ScriptActivityParameterResponse {
   /// [size] The size of the output direction parameter.
   /// [type] The type of the parameter.
   /// [value] The value of the parameter. Type: string (or Expression with resultType string).
-  ScriptActivityParameterResponse({
+  const ScriptActivityParameterResponse({
     this.direction,
     this.name,
     this.size,

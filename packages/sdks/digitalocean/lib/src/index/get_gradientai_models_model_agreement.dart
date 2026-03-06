@@ -17,7 +17,7 @@ class GetGradientaiModelsModelAgreement {
   /// [name] Name of the agreement
   /// [url] URL of the agreement
   /// [uuid] UUID of the agreement
-  GetGradientaiModelsModelAgreement({
+  const GetGradientaiModelsModelAgreement({
     this.description,
     this.name,
     this.url,

@@ -14,7 +14,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
   /// [consumeAllocationType] Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
   /// [key] (Optional)
   /// [values] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity({
+  const RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity({
     this.consumeAllocationType,
     this.key,
     this.values,

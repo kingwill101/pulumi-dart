@@ -56,7 +56,7 @@ class NetworkInterfaceArgs {
   /// [name] The name of the Network Interface. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  NetworkInterfaceArgs({
+  const NetworkInterfaceArgs({
     this.acceleratedNetworkingEnabled,
     this.auxiliaryMode,
     this.auxiliarySku,

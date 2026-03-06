@@ -40,7 +40,7 @@ class DefenseTemplateState {
   /// [status] The status of the protection rule template. Valid values:
   /// [templateOrigin] The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
   /// [templateType] The type of the protection rule template. Valid values:
-  DefenseTemplateState({
+  const DefenseTemplateState({
     this.defenseScene,
     this.defenseTemplateId,
     this.defenseTemplateName,

@@ -70,7 +70,7 @@ class ODataLinkedService {
   /// [url] The URL of the OData service endpoint. Type: string (or Expression with resultType string).
   /// [userName] User name of the OData service. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  ODataLinkedService({
+  const ODataLinkedService({
     this.aadResourceId,
     this.aadServicePrincipalCredentialType,
     this.annotations,

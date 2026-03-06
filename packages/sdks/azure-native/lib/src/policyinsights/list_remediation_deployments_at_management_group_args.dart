@@ -21,7 +21,7 @@ class ListRemediationDeploymentsAtManagementGroupArgs {
   /// [managementGroupsNamespace] The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
   /// [remediationName] The name of the remediation.
   /// [top] Maximum number of records to return.
-  ListRemediationDeploymentsAtManagementGroupArgs({
+  const ListRemediationDeploymentsAtManagementGroupArgs({
     required this.managementGroupId,
     required this.managementGroupsNamespace,
     required this.remediationName,

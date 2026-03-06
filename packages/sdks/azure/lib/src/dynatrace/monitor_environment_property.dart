@@ -9,7 +9,7 @@ class MonitorEnvironmentProperty {
 
   /// Creates a new [MonitorEnvironmentProperty].
   /// [environmentInfos] Information about the Dynatrace environment. An `environment_info` block as defined below.
-  MonitorEnvironmentProperty({
+  const MonitorEnvironmentProperty({
     required this.environmentInfos,
   });
 

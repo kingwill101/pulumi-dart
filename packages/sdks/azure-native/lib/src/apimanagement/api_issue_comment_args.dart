@@ -33,7 +33,7 @@ class ApiIssueCommentArgs {
   /// [serviceName] The name of the API Management service.
   /// [text] Comment text.
   /// [userId] A resource identifier for the user who left the comment.
-  ApiIssueCommentArgs({
+  const ApiIssueCommentArgs({
     required this.apiId,
     this.commentId,
     this.createdDate,

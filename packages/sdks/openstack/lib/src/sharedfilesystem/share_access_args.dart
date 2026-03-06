@@ -29,7 +29,7 @@ class ShareAccessArgs {
   /// [accessType] The access rule type. Can either be an ip, user,
   /// [region] The region in which to obtain the V2 Shared File System
   /// [shareId] The UUID of the share to which you are granted access.
-  ShareAccessArgs({
+  const ShareAccessArgs({
     required this.accessLevel,
     required this.accessTo,
     required this.accessType,

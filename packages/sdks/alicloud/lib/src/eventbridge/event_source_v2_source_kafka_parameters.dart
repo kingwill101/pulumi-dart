@@ -32,7 +32,7 @@ class EventSourceV2SourceKafkaParameters {
   /// [topic] The topic name.
   /// [vpcId] The VPC ID.
   /// [vswitchIds] The vSwitch ID.
-  EventSourceV2SourceKafkaParameters({
+  const EventSourceV2SourceKafkaParameters({
     this.consumerGroup,
     this.instanceId,
     this.network,

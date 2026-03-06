@@ -27,7 +27,7 @@ class GetFeatureOnlineStoreResult {
   /// [name] Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}`
   /// [state] State of the featureOnlineStore.
   /// [updateTime] Timestamp when this FeatureOnlineStore was last updated.
-  GetFeatureOnlineStoreResult({
+  const GetFeatureOnlineStoreResult({
     required this.bigtable,
     required this.createTime,
     required this.etag,

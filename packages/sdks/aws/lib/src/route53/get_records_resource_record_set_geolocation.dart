@@ -14,7 +14,7 @@ class GetRecordsResourceRecordSetGeolocation {
   /// [continentCode] The two-letter code for the continent.
   /// [countryCode] The two-letter code for a country.
   /// [subdivisionCode] The two-letter code for a state of the United States.
-  GetRecordsResourceRecordSetGeolocation({
+  const GetRecordsResourceRecordSetGeolocation({
     required this.continentCode,
     required this.countryCode,
     required this.subdivisionCode,

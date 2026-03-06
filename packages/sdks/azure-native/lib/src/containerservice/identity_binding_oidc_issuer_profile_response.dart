@@ -9,7 +9,7 @@ class IdentityBindingOidcIssuerProfileResponse {
 
   /// Creates a new [IdentityBindingOidcIssuerProfileResponse].
   /// [oidcIssuerUrl] The OIDC issuer URL of the IdentityBinding.
-  IdentityBindingOidcIssuerProfileResponse({
+  const IdentityBindingOidcIssuerProfileResponse({
     required this.oidcIssuerUrl,
   });
 

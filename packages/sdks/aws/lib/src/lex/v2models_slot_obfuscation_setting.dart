@@ -8,7 +8,7 @@ class V2modelsSlotObfuscationSetting {
 
   /// Creates a new [V2modelsSlotObfuscationSetting].
   /// [obfuscationSettingType] Whether Amazon Lex obscures slot values in conversation logs. Valid values are `DefaultObfuscation` and `None`.
-  V2modelsSlotObfuscationSetting({
+  const V2modelsSlotObfuscationSetting({
     required this.obfuscationSettingType,
   });
 

@@ -33,7 +33,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
   /// [images] Optional. Product images for the catalog item.
   /// [priceRange] Optional. The product price range.
   /// [stockState] Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-  GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse({
+  const GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse({
     required this.availableQuantity,
     required this.canonicalProductUri,
     required this.costs,

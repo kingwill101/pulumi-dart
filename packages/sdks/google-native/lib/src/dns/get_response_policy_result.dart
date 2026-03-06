@@ -25,7 +25,7 @@ class GetResponsePolicyResult {
   /// [labels] User labels.
   /// [networks] List of network names specifying networks to which this policy is applied.
   /// [responsePolicyName] User assigned name for this Response Policy.
-  GetResponsePolicyResult({
+  const GetResponsePolicyResult({
     required this.description,
     required this.gkeClusters,
     required this.kind,

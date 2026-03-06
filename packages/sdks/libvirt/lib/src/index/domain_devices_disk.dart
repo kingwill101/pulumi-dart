@@ -105,7 +105,7 @@ class DomainDevicesDisk {
   /// [transient] Controls whether the disk device is defined as a transient resource.
   /// [vendor] Specifies the vendor name associated with the disk device.
   /// [wwn] Configures the World Wide Name (WWN) for the disk device to uniquely identify it.
-  DomainDevicesDisk({
+  const DomainDevicesDisk({
     this.acpi,
     this.address,
     this.alias,

@@ -38,7 +38,7 @@ class EventDestinationState {
   /// [name] The name of the event destination
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snsDestination] Send the events to an SNS Topic destination
-  EventDestinationState({
+  const EventDestinationState({
     this.arn,
     this.cloudwatchDestinations,
     this.configurationSetName,

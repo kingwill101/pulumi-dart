@@ -18,7 +18,7 @@ class GetNetworkWatcherResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the resource.
-  GetNetworkWatcherResult({
+  const GetNetworkWatcherResult({
     required this.id,
     required this.location,
     required this.name,

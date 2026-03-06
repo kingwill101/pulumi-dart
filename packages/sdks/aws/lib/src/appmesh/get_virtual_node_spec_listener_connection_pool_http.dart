@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerConnectionPoolHttp {
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolHttp].
   /// [maxConnections] Required.
   /// [maxPendingRequests] Required.
-  GetVirtualNodeSpecListenerConnectionPoolHttp({
+  const GetVirtualNodeSpecListenerConnectionPoolHttp({
     required this.maxConnections,
     required this.maxPendingRequests,
   });

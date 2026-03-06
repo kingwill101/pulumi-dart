@@ -31,7 +31,7 @@ class Route53ResourceRecordSetProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Route53ResourceRecordSetProperties({
+  const Route53ResourceRecordSetProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

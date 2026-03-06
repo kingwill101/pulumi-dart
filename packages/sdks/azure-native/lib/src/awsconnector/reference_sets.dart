@@ -10,7 +10,7 @@ class ReferenceSets {
 
   /// Creates a new [ReferenceSets].
   /// [ipSetReferences] Property ipSetReferences
-  ReferenceSets({
+  const ReferenceSets({
     this.ipSetReferences,
   });
 

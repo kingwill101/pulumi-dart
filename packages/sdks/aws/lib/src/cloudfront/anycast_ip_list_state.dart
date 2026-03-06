@@ -32,7 +32,7 @@ class AnycastIpListState {
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
-  AnycastIpListState({
+  const AnycastIpListState({
     this.anycastIps,
     this.arn,
     this.etag,

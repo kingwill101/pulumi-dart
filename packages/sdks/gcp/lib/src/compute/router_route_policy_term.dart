@@ -18,7 +18,7 @@ class RouterRoutePolicyTerm {
   /// [actions] 'CEL expressions to evaluate to modify a route when this term matches.'\
   /// [match] CEL expression evaluated against a route to determine if this term applies (see Policy Language).
   /// [priority] The evaluation priority for this term, which must be between 0 (inclusive) and 231 (exclusive), and unique within the list.
-  RouterRoutePolicyTerm({
+  const RouterRoutePolicyTerm({
     this.actions,
     required this.match,
     required this.priority,

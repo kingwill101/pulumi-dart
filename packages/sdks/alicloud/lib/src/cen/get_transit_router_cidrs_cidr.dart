@@ -29,7 +29,7 @@ class GetTransitRouterCidrsCidr {
   /// [transitRouterCidrId] The ID of the transit router cidr.
   /// [transitRouterCidrName] The name of the transit router.
   /// [transitRouterId] The ID of the transit router.
-  GetTransitRouterCidrsCidr({
+  const GetTransitRouterCidrsCidr({
     required this.cidr,
     required this.description,
     required this.family,

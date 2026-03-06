@@ -31,7 +31,7 @@ class VirtualMachinePreferencesResponse {
   /// [soleTenancyPreferences] Preferences concerning Sole Tenant nodes and virtual machines.
   /// [targetProduct] Target product for assets using this preference set. Specify either target product or business goal, but not both.
   /// [vmwareEnginePreferences] Preferences concerning insights and recommendations for Google Cloud VMware Engine.
-  VirtualMachinePreferencesResponse({
+  const VirtualMachinePreferencesResponse({
     required this.commitmentPlan,
     required this.computeEnginePreferences,
     required this.regionPreferences,

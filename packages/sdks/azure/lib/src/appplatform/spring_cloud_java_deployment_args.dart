@@ -31,7 +31,7 @@ class SpringCloudJavaDeploymentArgs {
   /// [quota] A `quota` block as defined below.
   /// [runtimeVersion] Specifies the runtime version of the Spring Cloud Deployment. Possible Values are `Java_8`, `Java_11` and `Java_17`. Defaults to `Java_8`.
   /// [springCloudAppId] Specifies the id of the Spring Cloud Application in which to create the Deployment. Changing this forces a new resource to be created.
-  SpringCloudJavaDeploymentArgs({
+  const SpringCloudJavaDeploymentArgs({
     this.environmentVariables,
     this.instanceCount,
     this.jvmOptions,

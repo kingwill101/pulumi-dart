@@ -11,7 +11,7 @@ class AccessHomeDirectoryMapping {
   /// Creates a new [AccessHomeDirectoryMapping].
   /// [entry] Represents an entry and a target.
   /// [target] Represents the map target.
-  AccessHomeDirectoryMapping({
+  const AccessHomeDirectoryMapping({
     required this.entry,
     required this.target,
   });

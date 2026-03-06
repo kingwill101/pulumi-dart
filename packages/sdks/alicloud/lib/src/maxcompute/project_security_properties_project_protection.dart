@@ -11,7 +11,7 @@ class ProjectSecurityPropertiesProjectProtection {
   /// Creates a new [ProjectSecurityPropertiesProjectProtection].
   /// [exceptionPolicy] Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
   /// [protected] Whether enabled, value:(true/false)
-  ProjectSecurityPropertiesProjectProtection({
+  const ProjectSecurityPropertiesProjectProtection({
     this.exceptionPolicy,
     this.protected,
   });

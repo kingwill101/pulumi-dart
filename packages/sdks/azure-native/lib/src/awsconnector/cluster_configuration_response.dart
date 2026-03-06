@@ -10,7 +10,7 @@ class ClusterConfigurationResponse {
 
   /// Creates a new [ClusterConfigurationResponse].
   /// [executeCommandConfiguration] The details of the execute command configuration. The details of the execute command configuration.
-  ClusterConfigurationResponse({
+  const ClusterConfigurationResponse({
     this.executeCommandConfiguration,
   });
 

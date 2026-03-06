@@ -15,7 +15,7 @@ class KeyVaultMetaInfoResponse {
   /// [encryptionKeyName] The name of the user managed encryption key.
   /// [encryptionKeyVersion] The version of the user managed encryption key.
   /// [keyVaultResourceId] The resource identifier for the user managed Key Vault being used to encrypt.
-  KeyVaultMetaInfoResponse({
+  const KeyVaultMetaInfoResponse({
     required this.encryptionKeyName,
     required this.encryptionKeyVersion,
     required this.keyVaultResourceId,

@@ -32,7 +32,7 @@ class LogMetaState {
   /// Creates a new [LogMetaState].
   /// [logMetaName] The name of the exclusive Logstore where logs are stored. Value:
   /// [status] The status of the resource
-  LogMetaState({
+  const LogMetaState({
     this.logMetaName,
     this.status,
   });

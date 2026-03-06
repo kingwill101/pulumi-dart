@@ -27,7 +27,7 @@ class GetIntegrationAccountBatchConfigurationResult {
   /// [properties] The batch configuration properties.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountBatchConfigurationResult({
+  const GetIntegrationAccountBatchConfigurationResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

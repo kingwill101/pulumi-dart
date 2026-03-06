@@ -14,7 +14,7 @@ class AnalyticsApplicationCloudwatchLoggingOptions {
   /// [id] The ARN of the Kinesis Analytics Application.
   /// [logStreamArn] The ARN of the CloudWatch Log Stream.
   /// [roleArn] The ARN of the IAM Role used to send application messages.
-  AnalyticsApplicationCloudwatchLoggingOptions({
+  const AnalyticsApplicationCloudwatchLoggingOptions({
     this.id,
     required this.logStreamArn,
     required this.roleArn,

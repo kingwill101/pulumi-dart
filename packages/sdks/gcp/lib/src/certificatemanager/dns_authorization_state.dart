@@ -54,7 +54,7 @@ class DnsAuthorizationState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [type] type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
-  DnsAuthorizationState({
+  const DnsAuthorizationState({
     this.description,
     this.dnsResourceRecords,
     this.domain,

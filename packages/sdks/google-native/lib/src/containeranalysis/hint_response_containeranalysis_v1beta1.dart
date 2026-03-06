@@ -9,7 +9,7 @@ class HintResponseContaineranalysisV1beta1 {
 
   /// Creates a new [HintResponseContaineranalysisV1beta1].
   /// [humanReadableName] The human readable name of this attestation authority, for example "qa".
-  HintResponseContaineranalysisV1beta1({
+  const HintResponseContaineranalysisV1beta1({
     required this.humanReadableName,
   });
 

@@ -87,7 +87,7 @@ class ScalingRuleArgs {
   /// [scalingRuleType] The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
   /// [stepAdjustments] Steps for StepScalingRule. See `step_adjustment` below.
   /// [targetValue] The target value for the metric.
-  ScalingRuleArgs({
+  const ScalingRuleArgs({
     this.adjustmentType,
     this.adjustmentValue,
     this.alarmDimension,

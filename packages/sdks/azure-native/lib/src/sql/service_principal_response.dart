@@ -18,7 +18,7 @@ class ServicePrincipalResponse {
   /// [principalId] The Azure Active Directory application object id.
   /// [tenantId] The Azure Active Directory tenant id.
   /// [type] Service principal type.
-  ServicePrincipalResponse({
+  const ServicePrincipalResponse({
     required this.clientId,
     required this.principalId,
     required this.tenantId,

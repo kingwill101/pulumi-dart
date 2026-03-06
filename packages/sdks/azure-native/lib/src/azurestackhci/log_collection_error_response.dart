@@ -12,7 +12,7 @@ class LogCollectionErrorResponse {
   /// Creates a new [LogCollectionErrorResponse].
   /// [errorCode] Error Code of the log collection
   /// [errorMessage] Error Message of the log collection
-  LogCollectionErrorResponse({
+  const LogCollectionErrorResponse({
     required this.errorCode,
     required this.errorMessage,
   });

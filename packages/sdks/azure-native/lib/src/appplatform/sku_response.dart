@@ -15,7 +15,7 @@ class SkuResponse {
   /// [capacity] Current capacity of the target resource
   /// [name] Name of the Sku
   /// [tier] Tier of the Sku
-  SkuResponse({
+  const SkuResponse({
     this.capacity,
     this.name,
     this.tier,

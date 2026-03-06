@@ -7,7 +7,7 @@ class ContainerGroupContainerEnvironmentVarFieldRef {
 
   /// Creates a new [ContainerGroupContainerEnvironmentVarFieldRef].
   /// [fieldPath] Optional.
-  ContainerGroupContainerEnvironmentVarFieldRef({
+  const ContainerGroupContainerEnvironmentVarFieldRef({
     this.fieldPath,
   });
 

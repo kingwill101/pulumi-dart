@@ -29,7 +29,7 @@ class TelephonyChannelPropertiesResponse {
   /// [isEnabled] Whether the channel is enabled
   /// [phoneNumbers] The list of Telephony phone numbers
   /// [premiumSKU] The premium SKU applied to the channel
-  TelephonyChannelPropertiesResponse({
+  const TelephonyChannelPropertiesResponse({
     this.apiConfigurations,
     this.cognitiveServiceRegion,
     this.cognitiveServiceSubscriptionKey,

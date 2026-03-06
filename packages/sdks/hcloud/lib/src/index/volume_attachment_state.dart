@@ -15,7 +15,7 @@ class VolumeAttachmentState {
   /// [automount] Automount the volume upon attaching it.
   /// [serverId] Server to attach the Volume to.
   /// [volumeId] ID of the Volume.
-  VolumeAttachmentState({
+  const VolumeAttachmentState({
     this.automount,
     this.serverId,
     this.volumeId,

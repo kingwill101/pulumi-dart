@@ -34,7 +34,7 @@ class PolicySettingsResponse {
   /// [requestBodyCheck] Describes if policy managed rules will inspect the request body content.
   /// [scrubbingRules] List of log scrubbing rules applied to the Web Application Firewall logs.
   /// [state] State of the log scrubbing config. Default value is Enabled.
-  PolicySettingsResponse({
+  const PolicySettingsResponse({
     this.customBlockResponseBody,
     this.customBlockResponseStatusCode,
     this.enabledState,

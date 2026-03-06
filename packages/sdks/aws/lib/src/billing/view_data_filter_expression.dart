@@ -17,7 +17,7 @@ class ViewDataFilterExpression {
   /// [dimensions] Dimension to use for `expression`. Refer to #dimensions for more details.
   /// [tags] List of key value map specifying tags associated to the billing view being created.
   /// [timeRange] Time range to use for `expression`. Refer to #time-range for more details.
-  ViewDataFilterExpression({
+  const ViewDataFilterExpression({
     this.dimensions,
     this.tags,
     this.timeRange,

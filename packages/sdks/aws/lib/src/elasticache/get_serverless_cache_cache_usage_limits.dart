@@ -13,7 +13,7 @@ class GetServerlessCacheCacheUsageLimits {
   /// Creates a new [GetServerlessCacheCacheUsageLimits].
   /// [dataStorage] The maximum data storage limit in the cache, expressed in Gigabytes. See `data_storage` Block for details.
   /// [ecpuPerSecond] The configured number of ElastiCache Processing Units (ECPU) the cache can consume per second. See `ecpu_per_second` Block for details.
-  GetServerlessCacheCacheUsageLimits({
+  const GetServerlessCacheCacheUsageLimits({
     required this.dataStorage,
     required this.ecpuPerSecond,
   });

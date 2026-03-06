@@ -13,7 +13,7 @@ class InstanceBlockDeviceMapping {
   /// Creates a new [InstanceBlockDeviceMapping].
   /// [deviceName] &lt;p&gt;The device name (for example, &lt;code&gt;/dev/sdh&lt;/code&gt; or &lt;code&gt;xvdh&lt;/code&gt;).&lt;/p&gt;
   /// [ebs] &lt;p&gt;Parameters used to automatically set up EBS volumes when the instance is launched.&lt;/p&gt;
-  InstanceBlockDeviceMapping({
+  const InstanceBlockDeviceMapping({
     this.deviceName,
     this.ebs,
   });

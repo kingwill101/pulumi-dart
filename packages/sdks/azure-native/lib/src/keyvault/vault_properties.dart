@@ -50,7 +50,7 @@ class VaultProperties {
   /// [sku] SKU details
   /// [softDeleteRetentionInDays] softDelete data retention days. It accepts &gt;=7 and &lt;=90.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
-  VaultProperties({
+  const VaultProperties({
     this.accessPolicies,
     this.createMode,
     this.enablePurgeProtection,

@@ -29,7 +29,7 @@ class GetElasticIpArgs {
   /// [publicIp] Public IP of the specific EIP to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired Elastic IP.
-  GetElasticIpArgs({
+  const GetElasticIpArgs({
     this.filters,
     this.id,
     this.publicIp,

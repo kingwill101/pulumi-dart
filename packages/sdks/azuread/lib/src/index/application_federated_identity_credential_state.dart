@@ -27,7 +27,7 @@ class ApplicationFederatedIdentityCredentialState {
   /// [displayName] A unique display name for the federated identity credential. Changing this forces a new resource to be created.
   /// [issuer] The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
   /// [subject] The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
-  ApplicationFederatedIdentityCredentialState({
+  const ApplicationFederatedIdentityCredentialState({
     this.applicationId,
     this.audiences,
     this.credentialId,

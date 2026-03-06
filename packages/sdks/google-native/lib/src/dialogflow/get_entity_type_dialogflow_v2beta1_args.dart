@@ -17,7 +17,7 @@ class GetEntityTypeDialogflowV2beta1Args {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetEntityTypeDialogflowV2beta1Args({
+  const GetEntityTypeDialogflowV2beta1Args({
     required this.entityTypeId,
     this.languageCode,
     required this.location,

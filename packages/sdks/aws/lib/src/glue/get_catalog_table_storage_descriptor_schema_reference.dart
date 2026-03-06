@@ -15,7 +15,7 @@ class GetCatalogTableStorageDescriptorSchemaReference {
   /// [schemaIds] Configuration block that contains schema identity fields. See `schema_id` below.
   /// [schemaVersionId] Unique ID assigned to a version of the schema.
   /// [schemaVersionNumber] Version number of the schema.
-  GetCatalogTableStorageDescriptorSchemaReference({
+  const GetCatalogTableStorageDescriptorSchemaReference({
     required this.schemaIds,
     required this.schemaVersionId,
     required this.schemaVersionNumber,

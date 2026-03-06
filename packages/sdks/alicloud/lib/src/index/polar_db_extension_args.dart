@@ -24,7 +24,7 @@ class PolarDbExtensionArgs {
   /// [dbName] PolarDB cluster database name.
   /// [extensionName] Information about the installed plug-ins under the specified database.
   /// [installedVersion] Installed version, only supports upgrading to the default version.
-  PolarDbExtensionArgs({
+  const PolarDbExtensionArgs({
     required this.accountName,
     required this.dbClusterId,
     required this.dbName,

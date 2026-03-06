@@ -31,7 +31,7 @@ class ConnectionAzure {
   /// [identity] (Output)
   /// [objectId] (Output)
   /// [redirectUri] (Output)
-  ConnectionAzure({
+  const ConnectionAzure({
     this.application,
     this.clientId,
     required this.customerTenantId,

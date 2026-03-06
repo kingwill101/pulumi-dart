@@ -14,7 +14,7 @@ class GoogleCloudContentwarehouseV1AccessControlAction {
   /// Creates a new [GoogleCloudContentwarehouseV1AccessControlAction].
   /// [operationType] Identifies the type of operation.
   /// [policy] Represents the new policy from which bindings are added, removed or replaced based on the type of the operation. the policy is limited to a few 10s of KB.
-  GoogleCloudContentwarehouseV1AccessControlAction({
+  const GoogleCloudContentwarehouseV1AccessControlAction({
     this.operationType,
     this.policy,
   });

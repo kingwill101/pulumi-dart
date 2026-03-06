@@ -72,7 +72,7 @@ class GetPredictionResult {
   /// [systemGeneratedEntities] System generated entities.
   /// [tenantId] The hub name.
   /// [type] Resource type.
-  GetPredictionResult({
+  const GetPredictionResult({
     required this.autoAnalyze,
     required this.azureApiVersion,
     this.description,

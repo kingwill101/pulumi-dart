@@ -30,7 +30,7 @@ class GetRegistryEnterpriseSyncRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [repoName] Name of Container Registry Enterprise Edition local repo.
   /// [targetInstanceId] ID of Container Registry Enterprise Edition target instance.
-  GetRegistryEnterpriseSyncRulesArgs({
+  const GetRegistryEnterpriseSyncRulesArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

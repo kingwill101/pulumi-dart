@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse].
   /// [text] Thrift IDL source of the schema.
-  GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse({
+  const GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse({
     required this.text,
   });
 

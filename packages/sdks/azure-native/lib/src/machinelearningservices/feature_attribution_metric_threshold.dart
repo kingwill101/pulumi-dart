@@ -12,7 +12,7 @@ class FeatureAttributionMetricThreshold {
   /// Creates a new [FeatureAttributionMetricThreshold].
   /// [metric] [Required] The feature attribution metric to calculate.
   /// [threshold] The threshold value. If null, a default value will be set depending on the selected metric.
-  FeatureAttributionMetricThreshold({
+  const FeatureAttributionMetricThreshold({
     required this.metric,
     this.threshold,
   });

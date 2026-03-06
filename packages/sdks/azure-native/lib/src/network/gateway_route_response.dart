@@ -27,7 +27,7 @@ class GatewayRouteResponse {
   /// [origin] The source this route was learned from.
   /// [sourcePeer] The peer this route was learned from.
   /// [weight] The route's weight.
-  GatewayRouteResponse({
+  const GatewayRouteResponse({
     required this.asPath,
     required this.localAddress,
     required this.network,

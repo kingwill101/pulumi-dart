@@ -26,7 +26,7 @@ class SnapshotCopyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionPeriod] Number of days to retain automated snapshots in the destination region after they are copied from the source region.
   /// [snapshotCopyGrantName] Name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
-  SnapshotCopyState({
+  const SnapshotCopyState({
     this.clusterIdentifier,
     this.destinationRegion,
     this.manualSnapshotRetentionPeriod,

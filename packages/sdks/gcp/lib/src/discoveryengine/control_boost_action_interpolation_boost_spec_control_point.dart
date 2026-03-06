@@ -12,7 +12,7 @@ class ControlBoostActionInterpolationBoostSpecControlPoint {
   /// Creates a new [ControlBoostActionInterpolationBoostSpecControlPoint].
   /// [attributeValue] The attribute value of the control point.
   /// [boostAmount] The value between -1 to 1 by which to boost the score if the attributeValue
-  ControlBoostActionInterpolationBoostSpecControlPoint({
+  const ControlBoostActionInterpolationBoostSpecControlPoint({
     this.attributeValue,
     this.boostAmount,
   });

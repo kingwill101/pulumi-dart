@@ -11,7 +11,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier {
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier].
   /// [database] The database name.
   /// [table] The table name.
-  StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifier({
     required this.database,
     required this.table,
   });

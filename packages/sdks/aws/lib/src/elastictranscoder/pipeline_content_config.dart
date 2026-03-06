@@ -11,7 +11,7 @@ class PipelineContentConfig {
   /// Creates a new [PipelineContentConfig].
   /// [bucket] The Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists.
   /// [storageClass] The Amazon S3 storage class, `Standard` or `ReducedRedundancy`, that you want Elastic Transcoder to assign to the files and playlists that it stores in your Amazon S3 bucket.
-  PipelineContentConfig({
+  const PipelineContentConfig({
     this.bucket,
     this.storageClass,
   });

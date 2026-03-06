@@ -15,7 +15,7 @@ class ThreatIntelligenceSwitchState {
   /// [action] Rule action. Value:
   /// [categoryId] The threat intelligence classification ID.
   /// [enableStatus] Switch status. Value:
-  ThreatIntelligenceSwitchState({
+  const ThreatIntelligenceSwitchState({
     this.action,
     this.categoryId,
     this.enableStatus,

@@ -8,7 +8,7 @@ class AuthoritySubordinateConfigPemIssuerChain {
 
   /// Creates a new [AuthoritySubordinateConfigPemIssuerChain].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.
-  AuthoritySubordinateConfigPemIssuerChain({
+  const AuthoritySubordinateConfigPemIssuerChain({
     this.pemCertificates,
   });
 

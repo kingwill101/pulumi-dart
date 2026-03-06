@@ -50,7 +50,7 @@ class GetGatewayNetworkservicesV1beta1Result {
   /// [subnetwork] Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
   /// [type] Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
   /// [updateTime] The timestamp when the resource was updated.
-  GetGatewayNetworkservicesV1beta1Result({
+  const GetGatewayNetworkservicesV1beta1Result({
     required this.addresses,
     required this.certificateUrls,
     required this.createTime,

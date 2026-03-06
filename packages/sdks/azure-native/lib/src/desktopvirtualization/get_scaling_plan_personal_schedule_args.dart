@@ -18,7 +18,7 @@ class GetScalingPlanPersonalScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scalingPlanName] The name of the scaling plan.
   /// [scalingPlanScheduleName] The name of the ScalingPlanSchedule
-  GetScalingPlanPersonalScheduleArgs({
+  const GetScalingPlanPersonalScheduleArgs({
     required this.resourceGroupName,
     required this.scalingPlanName,
     required this.scalingPlanScheduleName,

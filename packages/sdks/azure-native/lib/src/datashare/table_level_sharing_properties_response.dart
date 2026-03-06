@@ -24,7 +24,7 @@ class TableLevelSharingPropertiesResponse {
   /// [materializedViewsToInclude] Materialized views to be included in the data set
   /// [tablesToExclude] Tables to be excluded in the data set
   /// [tablesToInclude] Tables to be included in the data set
-  TableLevelSharingPropertiesResponse({
+  const TableLevelSharingPropertiesResponse({
     this.externalTablesToExclude,
     this.externalTablesToInclude,
     this.materializedViewsToExclude,

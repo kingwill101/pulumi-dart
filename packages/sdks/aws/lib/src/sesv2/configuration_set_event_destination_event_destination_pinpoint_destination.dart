@@ -7,7 +7,7 @@ class ConfigurationSetEventDestinationEventDestinationPinpointDestination {
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationPinpointDestination].
   /// [applicationArn] Required.
-  ConfigurationSetEventDestinationEventDestinationPinpointDestination({
+  const ConfigurationSetEventDestinationEventDestinationPinpointDestination({
     required this.applicationArn,
   });
 

@@ -8,7 +8,7 @@ class FluxConfigurationBlobStorageManagedIdentity {
 
   /// Creates a new [FluxConfigurationBlobStorageManagedIdentity].
   /// [clientId] Specifies the client ID for authenticating a Managed Identity.
-  FluxConfigurationBlobStorageManagedIdentity({
+  const FluxConfigurationBlobStorageManagedIdentity({
     required this.clientId,
   });
 

@@ -26,7 +26,7 @@ class GetKeyPairsPair {
   /// [keyPairName] Required.
   /// [resourceGroupId] The Id of resource group which the key pair belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  GetKeyPairsPair({
+  const GetKeyPairsPair({
     required this.fingerPrint,
     required this.id,
     required this.instances,

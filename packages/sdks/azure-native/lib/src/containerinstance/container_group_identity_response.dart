@@ -19,7 +19,7 @@ class ContainerGroupIdentityResponse {
   /// [tenantId] The tenant id associated with the container group. This property will only be provided for a system assigned identity.
   /// [type] The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
   /// [userAssignedIdentities] The list of user identities associated with the container group.
-  ContainerGroupIdentityResponse({
+  const ContainerGroupIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

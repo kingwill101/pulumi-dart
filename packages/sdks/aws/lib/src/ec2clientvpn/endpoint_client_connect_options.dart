@@ -11,7 +11,7 @@ class EndpointClientConnectOptions {
   /// Creates a new [EndpointClientConnectOptions].
   /// [enabled] Indicates whether client connect options are enabled. The default is `false` (not enabled).
   /// [lambdaFunctionArn] The Amazon Resource Name (ARN) of the Lambda function used for connection authorization.
-  EndpointClientConnectOptions({
+  const EndpointClientConnectOptions({
     this.enabled,
     this.lambdaFunctionArn,
   });

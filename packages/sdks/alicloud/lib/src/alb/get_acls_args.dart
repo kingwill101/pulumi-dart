@@ -33,7 +33,7 @@ class GetAclsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] Resource Group to Which the Number.
   /// [status] The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
-  GetAclsArgs({
+  const GetAclsArgs({
     this.aclIds,
     this.aclName,
     this.enableDetails,

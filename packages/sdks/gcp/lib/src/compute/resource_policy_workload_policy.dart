@@ -18,7 +18,7 @@ class ResourcePolicyWorkloadPolicy {
   /// [acceleratorTopology] The accelerator topology. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// [maxTopologyDistance] The maximum topology distance. This field can be set only when the workload policy type is HIGH_THROUGHPUT
   /// [type] The type of workload policy.
-  ResourcePolicyWorkloadPolicy({
+  const ResourcePolicyWorkloadPolicy({
     this.acceleratorTopology,
     this.maxTopologyDistance,
     required this.type,

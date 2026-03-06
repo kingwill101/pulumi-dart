@@ -15,7 +15,7 @@ class GetRouterComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [router] Required.
-  GetRouterComputeV1Args({
+  const GetRouterComputeV1Args({
     this.project,
     required this.region,
     required this.router,

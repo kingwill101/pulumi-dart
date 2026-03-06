@@ -18,7 +18,7 @@ class GetNamespaceDiscoveredAssetArgs {
   /// [discoveredAssetName] The name of the discovered asset.
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNamespaceDiscoveredAssetArgs({
+  const GetNamespaceDiscoveredAssetArgs({
     required this.discoveredAssetName,
     required this.namespaceName,
     required this.resourceGroupName,

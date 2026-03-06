@@ -30,7 +30,7 @@ class IndustrialPidLoopState {
   /// [pidLoopType] The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
   /// [pidProjectId] The pid project id.
   /// [status] The status of Pid Loop.
-  IndustrialPidLoopState({
+  const IndustrialPidLoopState({
     this.pidLoopConfiguration,
     this.pidLoopDcsType,
     this.pidLoopDesc,

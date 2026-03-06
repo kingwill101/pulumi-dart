@@ -46,7 +46,7 @@ class GetTemplateApplicationsApplication {
   /// [quotaActionCode] The quota ID.
   /// [quotaCategory] The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
   /// [reason] Reason for quota application.&gt; The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
-  GetTemplateApplicationsApplication({
+  const GetTemplateApplicationsApplication({
     required this.aliyunUids,
     required this.applyTime,
     required this.auditStatusVos,

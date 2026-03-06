@@ -52,7 +52,7 @@ class InstancePscAutoConnection {
   /// [pscConnectionId] (Output)
   /// [pscConnectionStatus] (Output)
   /// [serviceAttachment] (Output)
-  InstancePscAutoConnection({
+  const InstancePscAutoConnection({
     this.connectionType,
     this.forwardingRule,
     this.ipAddress,

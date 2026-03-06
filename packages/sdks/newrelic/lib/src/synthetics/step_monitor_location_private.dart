@@ -11,7 +11,7 @@ class StepMonitorLocationPrivate {
   /// Creates a new [StepMonitorLocationPrivate].
   /// [guid] The unique identifier for the Synthetics private location in New Relic.
   /// [vsePassword] The location's Verified Script Execution password, only necessary if Verified Script Execution is enabled for the location.
-  StepMonitorLocationPrivate({
+  const StepMonitorLocationPrivate({
     required this.guid,
     this.vsePassword,
   });

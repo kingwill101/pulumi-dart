@@ -10,7 +10,7 @@ class GetInstanceAutomatedBackupConfigFixedFrequencySchedule {
 
   /// Creates a new [GetInstanceAutomatedBackupConfigFixedFrequencySchedule].
   /// [startTimes] The start time of every automated backup in UTC.
-  GetInstanceAutomatedBackupConfigFixedFrequencySchedule({
+  const GetInstanceAutomatedBackupConfigFixedFrequencySchedule({
     required this.startTimes,
   });
 

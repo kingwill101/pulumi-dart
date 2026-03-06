@@ -15,7 +15,7 @@ class GetResolverFirewallRuleGroupArgs {
   /// Creates a new [GetResolverFirewallRuleGroupArgs].
   /// [firewallRuleGroupId] The ID of the rule group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetResolverFirewallRuleGroupArgs({
+  const GetResolverFirewallRuleGroupArgs({
     required this.firewallRuleGroupId,
     this.region,
   });

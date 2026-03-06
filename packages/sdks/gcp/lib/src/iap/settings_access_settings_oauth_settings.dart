@@ -16,7 +16,7 @@ class SettingsAccessSettingsOauthSettings {
   /// Creates a new [SettingsAccessSettingsOauthSettings].
   /// [loginHint] Domain hint to send as hd=? parameter in OAuth request flow.
   /// [programmaticClients] List of client ids allowed to use IAP programmatically.
-  SettingsAccessSettingsOauthSettings({
+  const SettingsAccessSettingsOauthSettings({
     this.loginHint,
     this.programmaticClients,
   });

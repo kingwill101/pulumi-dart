@@ -19,7 +19,7 @@ class ServiceIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Web PubSub. Possible values are `SystemAssigned`, `UserAssigned`.
-  ServiceIdentity({
+  const ServiceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

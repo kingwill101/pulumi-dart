@@ -9,7 +9,7 @@ class NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile {
 
   /// Creates a new [NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile].
   /// [networkInterfaceConfigurations] Optional.
-  NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile({
+  const NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile({
     this.networkInterfaceConfigurations,
   });
 

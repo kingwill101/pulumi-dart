@@ -33,7 +33,7 @@ class ManagedLoginBrandingState {
   /// [settingsAll] Settings including Amazon Cognito defaults.
   /// [useCognitoProvidedValues] When `true`, applies the default branding style options.
   /// [userPoolId] User pool the client belongs to.
-  ManagedLoginBrandingState({
+  const ManagedLoginBrandingState({
     this.assets,
     this.clientId,
     this.managedLoginBrandingId,

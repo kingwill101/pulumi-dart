@@ -23,7 +23,7 @@ class SecretPolicyArgs {
   /// [policy] Valid JSON document representing a [resource policy](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html). Unlike `aws.secretsmanager.Secret`, where `policy` can be set to `"{}"` to delete the policy, `"{}"` is not a valid policy since `policy` is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] Secret ARN.
-  SecretPolicyArgs({
+  const SecretPolicyArgs({
     this.blockPublicPolicy,
     required this.policy,
     this.region,

@@ -15,7 +15,7 @@ class GetHostedZoneIdArgs {
   /// Creates a new [GetHostedZoneIdArgs].
   /// [loadBalancerType] Type of load balancer to create. Possible values are `application` or `network`. The default value is `application`.
   /// [region] Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.
-  GetHostedZoneIdArgs({
+  const GetHostedZoneIdArgs({
     this.loadBalancerType,
     this.region,
   });

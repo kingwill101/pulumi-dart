@@ -15,7 +15,7 @@ class GetConnectionArgs {
   /// Creates a new [GetConnectionArgs].
   /// [connectionName] The name for the connection that is to be requested.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConnectionArgs({
+  const GetConnectionArgs({
     required this.connectionName,
     required this.resourceGroupName,
   });

@@ -18,7 +18,7 @@ class KeyKeyAttribute {
   /// [keyClass] Type of AWS Payment Cryptography key to create.
   /// [keyModesOfUses] List of cryptographic operations that you can perform using the key.
   /// [keyUsage] Cryptographic usage of an AWS Payment Cryptography key as defined in section A.5.2 of the TR-31 spec.
-  KeyKeyAttribute({
+  const KeyKeyAttribute({
     required this.keyAlgorithm,
     required this.keyClass,
     this.keyModesOfUses,

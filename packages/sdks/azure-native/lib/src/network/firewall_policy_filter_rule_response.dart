@@ -24,7 +24,7 @@ class FirewallPolicyFilterRuleResponse {
   /// [priority] Priority of the Firewall Policy Rule resource.
   /// [ruleConditions] Collection of rule conditions used by a rule.
   /// [ruleType] The type of the rule.
-  FirewallPolicyFilterRuleResponse({
+  const FirewallPolicyFilterRuleResponse({
     this.action,
     this.name,
     this.priority,

@@ -62,7 +62,7 @@ class AzurePostgreSqlSectionResponse {
   /// [thumbprint] The thumbprint of the certificate above.
   /// [userId] The Azure SQL user id.
   /// [userPassword] The Azure SQL user password.
-  AzurePostgreSqlSectionResponse({
+  const AzurePostgreSqlSectionResponse({
     this.authorityUrl,
     this.certificate,
     this.clientId,

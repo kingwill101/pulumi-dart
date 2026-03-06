@@ -8,7 +8,7 @@ class FunctionOnDeployUpdatePolicy {
 
   /// Creates a new [FunctionOnDeployUpdatePolicy].
   /// [runtimeVersion] The runtime version which was used during latest function deployment.
-  FunctionOnDeployUpdatePolicy({
+  const FunctionOnDeployUpdatePolicy({
     this.runtimeVersion,
   });
 

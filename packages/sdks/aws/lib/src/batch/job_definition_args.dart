@@ -59,7 +59,7 @@ class JobDefinitionArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeout] Timeout for jobs so that if a job runs longer, AWS Batch terminates the job. Maximum number of `timeout` is `1`. Defined below.
   /// [type] Type of job definition. Must be `container` or `multinode`.
-  JobDefinitionArgs({
+  const JobDefinitionArgs({
     this.containerProperties,
     this.deregisterOnNewRevision,
     this.ecsProperties,

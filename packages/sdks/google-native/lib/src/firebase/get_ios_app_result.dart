@@ -38,7 +38,7 @@ class GetIosAppResult {
   /// [project] Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
   /// [state] The lifecycle state of the App.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
-  GetIosAppResult({
+  const GetIosAppResult({
     required this.apiKeyId,
     required this.appId,
     required this.appStoreId,

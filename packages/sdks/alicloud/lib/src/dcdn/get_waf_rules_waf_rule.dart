@@ -64,7 +64,7 @@ class GetWafRulesWafRule {
   /// [status] The information about the HTTP status code.
   /// [wafGroupIds] The id of the waf rule group.
   /// [wafRuleId] The first ID of the resource
-  GetWafRulesWafRule({
+  const GetWafRulesWafRule({
     required this.action,
     required this.ccStatus,
     required this.cnRegionList,

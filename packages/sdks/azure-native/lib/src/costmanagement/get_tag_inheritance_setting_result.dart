@@ -25,7 +25,7 @@ class GetTagInheritanceSettingResult {
   /// [name] The name of the resource
   /// [properties] The properties of the tag inheritance setting.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTagInheritanceSettingResult({
+  const GetTagInheritanceSettingResult({
     required this.azureApiVersion,
     required this.id,
     required this.kind,

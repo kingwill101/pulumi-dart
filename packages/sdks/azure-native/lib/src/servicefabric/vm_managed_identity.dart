@@ -9,7 +9,7 @@ class VmManagedIdentity {
 
   /// Creates a new [VmManagedIdentity].
   /// [userAssignedIdentities] The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  VmManagedIdentity({
+  const VmManagedIdentity({
     this.userAssignedIdentities,
   });
 

@@ -12,7 +12,7 @@ class EventHubDirectDestinationResponse {
   /// Creates a new [EventHubDirectDestinationResponse].
   /// [eventHubResourceId] The resource ID of the event hub.
   /// [name] A friendly name for the destination.
-  EventHubDirectDestinationResponse({
+  const EventHubDirectDestinationResponse({
     this.eventHubResourceId,
     this.name,
   });

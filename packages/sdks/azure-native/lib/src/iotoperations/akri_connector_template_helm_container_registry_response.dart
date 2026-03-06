@@ -14,7 +14,7 @@ class AkriConnectorTemplateHelmContainerRegistryResponse {
   /// Creates a new [AkriConnectorTemplateHelmContainerRegistryResponse].
   /// [containerRegistrySettings] The registry settings for the container registry.
   /// [registrySettingsType] AkriConnectorTemplateHelmRegistrySettingsType values.
-  AkriConnectorTemplateHelmContainerRegistryResponse({
+  const AkriConnectorTemplateHelmContainerRegistryResponse({
     required this.containerRegistrySettings,
     required this.registrySettingsType,
   });

@@ -37,7 +37,7 @@ class AutoscalingPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [secondaryWorkerConfig] Describes how the autoscaler will operate for secondary workers.
   /// [workerConfig] Describes how the autoscaler will operate for primary workers.
-  AutoscalingPolicyArgs({
+  const AutoscalingPolicyArgs({
     this.basicAlgorithm,
     this.location,
     required this.policyId,

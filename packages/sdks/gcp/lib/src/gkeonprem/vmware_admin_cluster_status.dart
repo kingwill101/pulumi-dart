@@ -19,7 +19,7 @@ class VmwareAdminClusterStatus {
   /// Creates a new [VmwareAdminClusterStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  VmwareAdminClusterStatus({
+  const VmwareAdminClusterStatus({
     this.conditions,
     this.errorMessage,
   });

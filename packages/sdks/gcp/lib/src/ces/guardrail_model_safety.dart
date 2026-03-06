@@ -10,7 +10,7 @@ class GuardrailModelSafety {
 
   /// Creates a new [GuardrailModelSafety].
   /// [safetySettings] List of safety settings.
-  GuardrailModelSafety({
+  const GuardrailModelSafety({
     required this.safetySettings,
   });
 

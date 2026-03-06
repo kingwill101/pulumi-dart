@@ -15,7 +15,7 @@ class VaultResourceGuardAssociationArgs {
   /// Creates a new [VaultResourceGuardAssociationArgs].
   /// [resourceGuardId] ID of the Resource Guard which should be associated with. Changing this forces a new resource to be created.
   /// [vaultId] ID of the Recovery Services Vault which should be associated with. Changing this forces a new resource to be created.
-  VaultResourceGuardAssociationArgs({
+  const VaultResourceGuardAssociationArgs({
     required this.resourceGuardId,
     required this.vaultId,
   });

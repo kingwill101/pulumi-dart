@@ -35,7 +35,7 @@ class EventHub {
   /// [endpointUri] The URL of the EventHub namespace for identity-based authentication. It must include the protocol 'sb://'.
   /// [entityPath] The EventHub name in the EventHub namespace for identity-based authentication.
   /// [identity] Managed identity properties for the endpoint.
-  EventHub({
+  const EventHub({
     this.authenticationType,
     this.connectionStringPrimaryKey,
     this.connectionStringSecondaryKey,

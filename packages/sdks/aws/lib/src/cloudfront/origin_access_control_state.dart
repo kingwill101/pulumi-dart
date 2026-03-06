@@ -27,7 +27,7 @@ class OriginAccessControlState {
   /// [originAccessControlOriginType] The type of origin that this Origin Access Control is for. Valid values are `lambda`, `mediapackagev2`, `mediastore`, and `s3`.
   /// [signingBehavior] Specifies which requests CloudFront signs. Specify `always` for the most common use case. Allowed values: `always`, `never`, and `no-override`.
   /// [signingProtocol] Determines how CloudFront signs (authenticates) requests. The only valid value is `sigv4`.
-  OriginAccessControlState({
+  const OriginAccessControlState({
     this.arn,
     this.description,
     this.etag,

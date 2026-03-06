@@ -15,7 +15,7 @@ class GetIndexEndpointArgs {
   /// [indexEndpointId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetIndexEndpointArgs({
+  const GetIndexEndpointArgs({
     required this.indexEndpointId,
     required this.location,
     this.project,

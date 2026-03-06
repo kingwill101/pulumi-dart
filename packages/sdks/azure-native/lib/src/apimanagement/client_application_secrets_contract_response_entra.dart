@@ -12,7 +12,7 @@ class ClientApplicationSecretsContractResponseEntra {
   /// Creates a new [ClientApplicationSecretsContractResponseEntra].
   /// [clientSecret] EntraID client application secret
   /// [expiresAt] EntraID client application secret expiration date.
-  ClientApplicationSecretsContractResponseEntra({
+  const ClientApplicationSecretsContractResponseEntra({
     this.clientSecret,
     required this.expiresAt,
   });

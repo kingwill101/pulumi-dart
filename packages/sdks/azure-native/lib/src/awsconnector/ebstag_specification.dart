@@ -16,7 +16,7 @@ class EBSTagSpecification {
   /// [propagateTags] Determines whether to propagate the tags from the task definition to the Amazon EBS volume. Tags can only propagate to a ``SERVICE`` specified in ``ServiceVolumeConfiguration``. If no value is specified, the tags aren't propagated.
   /// [resourceType] The type of volume resource.
   /// [tags] The tags applied to this Amazon EBS volume. ``AmazonECSCreated`` and ``AmazonECSManaged`` are reserved tags that can't be used.
-  EBSTagSpecification({
+  const EBSTagSpecification({
     this.propagateTags,
     this.resourceType,
     this.tags,

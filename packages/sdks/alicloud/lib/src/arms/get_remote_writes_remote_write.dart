@@ -17,7 +17,7 @@ class GetRemoteWritesRemoteWrite {
   /// [id] The ID of the Remote Write. It formats as `&lt;cluster_id&gt;:&lt;remote_write_name&gt;`.
   /// [remoteWriteName] The name of the Remote Write configuration item.
   /// [remoteWriteYaml] The details of the Remote Write configuration item. The value is in the YAML format.
-  GetRemoteWritesRemoteWrite({
+  const GetRemoteWritesRemoteWrite({
     required this.clusterId,
     required this.id,
     required this.remoteWriteName,

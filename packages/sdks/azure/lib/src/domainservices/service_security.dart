@@ -26,7 +26,7 @@ class ServiceSecurity {
   /// [syncNtlmPasswords] Whether to synchronize NTLM password hashes to the managed domain. Defaults to `false`.
   /// [syncOnPremPasswords] Whether to synchronize on-premises password hashes to the managed domain. Defaults to `false`.
   /// [tlsV1Enabled] Whether to enable legacy TLS v1 support. Defaults to `false`.
-  ServiceSecurity({
+  const ServiceSecurity({
     this.kerberosArmoringEnabled,
     this.kerberosRc4EncryptionEnabled,
     this.ntlmV1Enabled,

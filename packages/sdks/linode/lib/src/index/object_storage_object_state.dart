@@ -73,7 +73,7 @@ class ObjectStorageObjectState {
   /// [source] The path to a file that will be read and uploaded as raw bytes for the object content. The path must either be relative to the root module or absolute.
   /// [versionId] A unique version ID value for the object.
   /// [websiteRedirect] Specifies a target URL for website redirect.
-  ObjectStorageObjectState({
+  const ObjectStorageObjectState({
     this.accessKey,
     this.acl,
     this.bucket,

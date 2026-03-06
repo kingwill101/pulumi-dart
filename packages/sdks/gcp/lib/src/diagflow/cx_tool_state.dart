@@ -47,7 +47,7 @@ class CxToolState {
   /// [openApiSpec] OpenAPI specification of the Tool.
   /// [parent] The agent to create a Tool for.
   /// [toolType] The tool type.
-  CxToolState({
+  const CxToolState({
     this.connectorSpec,
     this.dataStoreSpec,
     this.description,

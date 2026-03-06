@@ -11,7 +11,7 @@ class GetFolderArgs {
 
   /// Creates a new [GetFolderArgs].
   /// [folderId] Required.
-  GetFolderArgs({
+  const GetFolderArgs({
     required this.folderId,
   });
 

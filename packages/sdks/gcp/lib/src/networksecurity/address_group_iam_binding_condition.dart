@@ -11,7 +11,7 @@ class AddressGroupIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AddressGroupIamBindingCondition({
+  const AddressGroupIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

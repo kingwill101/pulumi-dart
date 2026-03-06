@@ -15,7 +15,7 @@ class HyperVSiteArgs {
   /// Creates a new [HyperVSiteArgs].
   /// [name] The name which should be used for this Recovery Service. Changing this forces a new Site to be created.
   /// [recoveryVaultId] The ID of the Recovery Services Vault where the Site created. Changing this forces a new Site to be created.
-  HyperVSiteArgs({
+  const HyperVSiteArgs({
     this.name,
     required this.recoveryVaultId,
   });

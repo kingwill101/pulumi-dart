@@ -18,7 +18,7 @@ class GetSingleServerDatabaseArgs {
   /// [databaseName] The name of the database.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetSingleServerDatabaseArgs({
+  const GetSingleServerDatabaseArgs({
     required this.databaseName,
     required this.resourceGroupName,
     required this.serverName,

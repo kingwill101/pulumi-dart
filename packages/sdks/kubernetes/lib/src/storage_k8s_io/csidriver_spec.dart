@@ -92,7 +92,7 @@ class CSIDriverSpec {
   /// [storageCapacity] storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information, if set to true.
   /// [tokenRequests] tokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: "csi.storage.k8s.io/serviceAccount.tokens": {
   /// [volumeLifecycleModes] volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is "Persistent", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism.
-  CSIDriverSpec({
+  const CSIDriverSpec({
     this.attachRequired,
     this.fsGroupPolicy,
     this.nodeAllocatableUpdatePeriodSeconds,

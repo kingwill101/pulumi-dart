@@ -12,7 +12,7 @@ class UserCredentialResponse {
   /// Creates a new [UserCredentialResponse].
   /// [userTokenSecretVersion] A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   /// [username] The username associated to this token.
-  UserCredentialResponse({
+  const UserCredentialResponse({
     required this.userTokenSecretVersion,
     required this.username,
   });

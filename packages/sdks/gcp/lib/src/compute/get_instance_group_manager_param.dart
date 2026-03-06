@@ -8,7 +8,7 @@ class GetInstanceGroupManagerParam {
 
   /// Creates a new [GetInstanceGroupManagerParam].
   /// [resourceManagerTags] Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
-  GetInstanceGroupManagerParam({
+  const GetInstanceGroupManagerParam({
     required this.resourceManagerTags,
   });
 

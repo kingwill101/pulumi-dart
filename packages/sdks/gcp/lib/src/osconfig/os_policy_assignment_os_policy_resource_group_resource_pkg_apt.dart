@@ -8,7 +8,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt].
   /// [name] Package name.
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt({
     required this.name,
   });
 

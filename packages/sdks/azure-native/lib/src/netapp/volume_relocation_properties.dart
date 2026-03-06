@@ -9,7 +9,7 @@ class VolumeRelocationProperties {
 
   /// Creates a new [VolumeRelocationProperties].
   /// [relocationRequested] Has relocation been requested for this volume
-  VolumeRelocationProperties({
+  const VolumeRelocationProperties({
     this.relocationRequested,
   });
 

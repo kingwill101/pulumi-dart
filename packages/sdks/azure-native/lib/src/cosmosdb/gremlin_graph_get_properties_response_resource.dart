@@ -46,7 +46,7 @@ class GremlinGraphGetPropertiesResponseResource {
   /// [rid] A system generated property. A unique identifier.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
   /// [uniqueKeyPolicy] The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
-  GremlinGraphGetPropertiesResponseResource({
+  const GremlinGraphGetPropertiesResponseResource({
     this.analyticalStorageTtl,
     this.conflictResolutionPolicy,
     this.createMode,

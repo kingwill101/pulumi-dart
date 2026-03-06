@@ -13,7 +13,7 @@ class AvailableUpdatesResponse {
   /// Creates a new [AvailableUpdatesResponse].
   /// [inPlaceUpdate] The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
   /// [newDeployableAppliance] The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
-  AvailableUpdatesResponse({
+  const AvailableUpdatesResponse({
     required this.inPlaceUpdate,
     required this.newDeployableAppliance,
   });

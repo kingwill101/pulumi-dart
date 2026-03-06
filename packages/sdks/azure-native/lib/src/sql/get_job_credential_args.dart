@@ -21,7 +21,7 @@ class GetJobCredentialArgs {
   /// [jobAgentName] The name of the job agent.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetJobCredentialArgs({
+  const GetJobCredentialArgs({
     required this.credentialName,
     required this.jobAgentName,
     required this.resourceGroupName,

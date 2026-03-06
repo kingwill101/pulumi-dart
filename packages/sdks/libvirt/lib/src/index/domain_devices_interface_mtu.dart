@@ -8,7 +8,7 @@ class DomainDevicesInterfaceMtu {
 
   /// Creates a new [DomainDevicesInterfaceMtu].
   /// [size] Sets the specific MTU size for network communication.
-  DomainDevicesInterfaceMtu({
+  const DomainDevicesInterfaceMtu({
     required this.size,
   });
 

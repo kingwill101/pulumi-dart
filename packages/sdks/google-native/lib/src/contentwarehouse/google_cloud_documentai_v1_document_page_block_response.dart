@@ -18,7 +18,7 @@ class GoogleCloudDocumentaiV1DocumentPageBlockResponse {
   /// [detectedLanguages] A list of detected languages together with confidence.
   /// [layout] Layout for Block.
   /// [provenance] The history of this annotation.
-  GoogleCloudDocumentaiV1DocumentPageBlockResponse({
+  const GoogleCloudDocumentaiV1DocumentPageBlockResponse({
     required this.detectedLanguages,
     required this.layout,
     required this.provenance,

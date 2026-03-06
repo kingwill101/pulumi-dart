@@ -14,7 +14,7 @@ class MetricBucketOptionsExponentialBuckets {
   /// [growthFactor] Must be greater than 1.
   /// [numFiniteBuckets] Must be greater than 0.
   /// [scale] Must be greater than 0.
-  MetricBucketOptionsExponentialBuckets({
+  const MetricBucketOptionsExponentialBuckets({
     required this.growthFactor,
     required this.numFiniteBuckets,
     required this.scale,

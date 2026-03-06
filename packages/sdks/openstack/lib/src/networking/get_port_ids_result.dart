@@ -44,7 +44,7 @@ class GetPortIdsResult {
   /// [status] Optional.
   /// [tags] Optional.
   /// [tenantId] Optional.
-  GetPortIdsResult({
+  const GetPortIdsResult({
     this.adminStateUp,
     this.description,
     this.deviceId,

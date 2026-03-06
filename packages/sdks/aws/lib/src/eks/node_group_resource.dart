@@ -12,7 +12,7 @@ class NodeGroupResource {
   /// Creates a new [NodeGroupResource].
   /// [autoscalingGroups] List of objects containing information about AutoScaling Groups.
   /// [remoteAccessSecurityGroupId] Identifier of the remote access EC2 Security Group.
-  NodeGroupResource({
+  const NodeGroupResource({
     this.autoscalingGroups,
     this.remoteAccessSecurityGroupId,
   });

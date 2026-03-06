@@ -27,7 +27,7 @@ class HardwareProfileResponse {
   /// [isHighlyAvailable] Gets highly available property.
   /// [limitCpuForMigration] Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
   /// [memoryMB] MemoryMB is the size of a virtual machine's memory, in MB.
-  HardwareProfileResponse({
+  const HardwareProfileResponse({
     this.cpuCount,
     this.dynamicMemoryEnabled,
     this.dynamicMemoryMaxMB,

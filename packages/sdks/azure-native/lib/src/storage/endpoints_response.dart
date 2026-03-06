@@ -32,7 +32,7 @@ class EndpointsResponse {
   /// [queue] Gets the queue endpoint.
   /// [table] Gets the table endpoint.
   /// [web] Gets the web endpoint.
-  EndpointsResponse({
+  const EndpointsResponse({
     required this.blob,
     required this.dfs,
     required this.file,

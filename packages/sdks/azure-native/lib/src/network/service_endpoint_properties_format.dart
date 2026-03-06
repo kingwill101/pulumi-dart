@@ -19,7 +19,7 @@ class ServiceEndpointPropertiesFormat {
   /// [networkIdentifier] SubResource as network identifier.
   /// [provisioningState] The provisioning state of the resource.
   /// [service] The type of the endpoint service.
-  ServiceEndpointPropertiesFormat({
+  const ServiceEndpointPropertiesFormat({
     this.locations,
     this.networkIdentifier,
     this.provisioningState,

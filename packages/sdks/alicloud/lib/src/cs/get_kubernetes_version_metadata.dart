@@ -12,7 +12,7 @@ class GetKubernetesVersionMetadata {
   /// Creates a new [GetKubernetesVersionMetadata].
   /// [runtimes] The list of supported runtime.
   /// [version] The runtime version.
-  GetKubernetesVersionMetadata({
+  const GetKubernetesVersionMetadata({
     required this.runtimes,
     required this.version,
   });

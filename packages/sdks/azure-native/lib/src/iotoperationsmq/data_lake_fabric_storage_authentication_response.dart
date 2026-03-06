@@ -10,7 +10,7 @@ class DataLakeFabricStorageAuthenticationResponse {
 
   /// Creates a new [DataLakeFabricStorageAuthenticationResponse].
   /// [systemAssignedManagedIdentity] Configuration for managed identity authentication.
-  DataLakeFabricStorageAuthenticationResponse({
+  const DataLakeFabricStorageAuthenticationResponse({
     required this.systemAssignedManagedIdentity,
   });
 

@@ -20,7 +20,7 @@ class ControlOrganizationIntelligenceConfigArgs {
   /// [editionConfig] Edition configuration of the Storage Intelligence resource. Valid values are INHERIT, DISABLED, TRIAL and STANDARD.
   /// [filter] Filter over location and bucket using include or exclude semantics. Resources that match the include or exclude filter are exclusively included or excluded from the Storage Intelligence plan.
   /// [name] Identifier of the GCP Organization. For GCP org, this field should be organization number.
-  ControlOrganizationIntelligenceConfigArgs({
+  const ControlOrganizationIntelligenceConfigArgs({
     this.editionConfig,
     this.filter,
     this.name,

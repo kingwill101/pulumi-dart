@@ -23,7 +23,7 @@ class CertificateSigningRequestCertificatesK8sIoV1beta1 {
   /// [metadata] Optional.
   /// [spec] The certificate request itself and any additional information.
   /// [status] Derived information about the request.
-  CertificateSigningRequestCertificatesK8sIoV1beta1({
+  const CertificateSigningRequestCertificatesK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

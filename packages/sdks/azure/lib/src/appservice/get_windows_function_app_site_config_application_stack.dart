@@ -22,7 +22,7 @@ class GetWindowsFunctionAppSiteConfigApplicationStack {
   /// [powershellCoreVersion] The version of PowerShell Core to use.
   /// [useCustomRuntime] Is the Windows Function App using a custom runtime?.
   /// [useDotnetIsolatedRuntime] Required.
-  GetWindowsFunctionAppSiteConfigApplicationStack({
+  const GetWindowsFunctionAppSiteConfigApplicationStack({
     required this.dotnetVersion,
     required this.javaVersion,
     required this.nodeVersion,

@@ -17,7 +17,7 @@ class LicenseResponse {
   /// [identifier] SPDX license information for the API. The identifier field is mutually
   /// [name] Name of the license.
   /// [url] URL pointing to the license details. The URL field is mutually exclusive of the
-  LicenseResponse({
+  const LicenseResponse({
     this.identifier,
     this.name,
     this.url,

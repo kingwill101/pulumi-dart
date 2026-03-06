@@ -15,7 +15,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkCo
   /// [enableInterContainerTrafficEncryption] Whether to encrypt all communications between distributed processing jobs.
   /// [enableNetworkIsolation] Whether to allow inbound and outbound network calls to and from the containers used for the processing job.
   /// [vpcConfig] VPC that SageMaker jobs, hosted models, and compute resources have access to. Fields are documented below.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionNetworkConfig({
     this.enableInterContainerTrafficEncryption,
     this.enableNetworkIsolation,
     this.vpcConfig,

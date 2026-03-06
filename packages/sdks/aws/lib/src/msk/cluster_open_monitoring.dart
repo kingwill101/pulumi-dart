@@ -9,7 +9,7 @@ class ClusterOpenMonitoring {
 
   /// Creates a new [ClusterOpenMonitoring].
   /// [prometheus] Configuration block for Prometheus settings for open monitoring. See open_monitoring prometheus Argument Reference below.
-  ClusterOpenMonitoring({
+  const ClusterOpenMonitoring({
     required this.prometheus,
   });
 

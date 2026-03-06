@@ -24,7 +24,7 @@ class WorkspaceFeaturesResponse {
   /// [enableLogAccessUsingOnlyResourcePermissions] Flag that indicate which permission to use - resource or workspace or both.
   /// [immediatePurgeDataOn30Days] Flag that describes if we want to remove the data after 30 days.
   /// [unifiedSentinelBillingOnly] An indication if the specify workspace is limited to sentinel's unified billing model only.
-  WorkspaceFeaturesResponse({
+  const WorkspaceFeaturesResponse({
     this.clusterResourceId,
     this.disableLocalAuth,
     this.enableDataExport,

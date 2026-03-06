@@ -14,7 +14,7 @@ class FilterFilterCriteriaResourceTag {
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [key] (Required) The key to filter on.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaResourceTag({
+  const FilterFilterCriteriaResourceTag({
     required this.comparison,
     required this.key,
     required this.value,

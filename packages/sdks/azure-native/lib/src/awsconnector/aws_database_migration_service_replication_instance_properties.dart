@@ -84,7 +84,7 @@ class AwsDatabaseMigrationServiceReplicationInstanceProperties {
   /// [replicationSubnetGroup] &lt;p&gt;The subnet group for the replication instance.&lt;/p&gt;
   /// [secondaryAvailabilityZone] &lt;p&gt;The Availability Zone of the standby replication instance in a Multi-AZ deployment.&lt;/p&gt;
   /// [vpcSecurityGroups] &lt;p&gt;The VPC security group for the instance.&lt;/p&gt;
-  AwsDatabaseMigrationServiceReplicationInstanceProperties({
+  const AwsDatabaseMigrationServiceReplicationInstanceProperties({
     this.allocatedStorage,
     this.autoMinorVersionUpgrade,
     this.availabilityZone,

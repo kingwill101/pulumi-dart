@@ -26,7 +26,7 @@ class LogMetricFilterState {
   /// [name] A name for the metric filter.
   /// [pattern] A valid [CloudWatch Logs filter pattern](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/FilterAndPatternSyntax.html)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogMetricFilterState({
+  const LogMetricFilterState({
     this.applyOnTransformedLogs,
     this.logGroupName,
     this.metricTransformation,

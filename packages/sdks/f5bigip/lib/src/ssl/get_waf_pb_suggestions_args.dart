@@ -21,7 +21,7 @@ class GetWafPbSuggestionsArgs {
   /// [partition] Partition on which WAF policy is located.
   /// [policyId] System generated id of the WAF policy
   /// [policyName] WAF policy name from which PB suggestions should be exported.
-  GetWafPbSuggestionsArgs({
+  const GetWafPbSuggestionsArgs({
     required this.minimumLearningScore,
     required this.partition,
     this.policyId,

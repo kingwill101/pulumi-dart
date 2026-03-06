@@ -17,7 +17,7 @@ class AppVersionSnapshotAppLoggingSettingBigqueryExportSetting {
   /// [dataset] (Output)
   /// [enabled] (Output)
   /// [project] The ID of the project in which the resource belongs.
-  AppVersionSnapshotAppLoggingSettingBigqueryExportSetting({
+  const AppVersionSnapshotAppLoggingSettingBigqueryExportSetting({
     this.dataset,
     this.enabled,
     this.project,

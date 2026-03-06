@@ -33,7 +33,7 @@ class TlsInspectionConfigurationArgs {
   /// [tags] Optional.
   /// [timeouts] Optional.
   /// [tlsInspectionConfiguration] TLS inspection configuration block. Detailed below.
-  TlsInspectionConfigurationArgs({
+  const TlsInspectionConfigurationArgs({
     this.description,
     this.encryptionConfigurations,
     this.name,

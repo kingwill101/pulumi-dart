@@ -11,7 +11,7 @@ class GetVpcIpamPoolFilter {
   /// Creates a new [GetVpcIpamPoolFilter].
   /// [name] The name of the filter. Filter names are case-sensitive.
   /// [values] The filter values. Filter values are case-sensitive.
-  GetVpcIpamPoolFilter({
+  const GetVpcIpamPoolFilter({
     required this.name,
     required this.values,
   });

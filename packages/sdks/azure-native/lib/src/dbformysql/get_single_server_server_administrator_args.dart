@@ -15,7 +15,7 @@ class GetSingleServerServerAdministratorArgs {
   /// Creates a new [GetSingleServerServerAdministratorArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetSingleServerServerAdministratorArgs({
+  const GetSingleServerServerAdministratorArgs({
     required this.resourceGroupName,
     required this.serverName,
   });

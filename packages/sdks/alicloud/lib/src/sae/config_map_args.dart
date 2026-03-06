@@ -21,7 +21,7 @@ class ConfigMapArgs {
   /// [description] The Description of ConfigMap.
   /// [name] ConfigMap instance name.
   /// [namespaceId] The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
-  ConfigMapArgs({
+  const ConfigMapArgs({
     required this.data,
     this.description,
     this.name,

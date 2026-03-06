@@ -15,7 +15,7 @@ class BreakOutCategoryPolicies {
   /// [allow] Flag to control breakout of o365 allow category.
   /// [default_] Flag to control breakout of o365 default category.
   /// [optimize] Flag to control breakout of o365 optimize category.
-  BreakOutCategoryPolicies({
+  const BreakOutCategoryPolicies({
     this.allow,
     this.default_,
     this.optimize,

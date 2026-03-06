@@ -57,7 +57,7 @@ class GetCapacityPoolResult {
   /// [totalThroughputMibps] Total throughput of pool in MiB/s
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [utilizedThroughputMibps] Utilized throughput of pool in MiB/s
-  GetCapacityPoolResult({
+  const GetCapacityPoolResult({
     required this.azureApiVersion,
     this.coolAccess,
     this.encryptionType,

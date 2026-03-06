@@ -18,7 +18,7 @@ class ProfileScrubbingRules {
   /// [selector] When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
   /// [selectorMatchOperator] When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
   /// [state] Defines the state of a log scrubbing rule. Default value is enabled.
-  ProfileScrubbingRules({
+  const ProfileScrubbingRules({
     required this.matchVariable,
     this.selector,
     required this.selectorMatchOperator,

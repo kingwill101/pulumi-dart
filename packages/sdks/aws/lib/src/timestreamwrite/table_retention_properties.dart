@@ -11,7 +11,7 @@ class TableRetentionProperties {
   /// Creates a new [TableRetentionProperties].
   /// [magneticStoreRetentionPeriodInDays] The duration for which data must be stored in the magnetic store. Minimum value of 1. Maximum value of 73000.
   /// [memoryStoreRetentionPeriodInHours] The duration for which data must be stored in the memory store. Minimum value of 1. Maximum value of 8766.
-  TableRetentionProperties({
+  const TableRetentionProperties({
     required this.magneticStoreRetentionPeriodInDays,
     required this.memoryStoreRetentionPeriodInHours,
   });

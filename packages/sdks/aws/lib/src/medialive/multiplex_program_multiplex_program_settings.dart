@@ -19,7 +19,7 @@ class MultiplexProgramMultiplexProgramSettings {
   /// [programNumber] Unique program number.
   /// [serviceDescriptor] Service Descriptor. See Service Descriptor for more details.
   /// [videoSettings] Video settings. See Video Settings for more details.
-  MultiplexProgramMultiplexProgramSettings({
+  const MultiplexProgramMultiplexProgramSettings({
     required this.preferredChannelPipeline,
     required this.programNumber,
     this.serviceDescriptor,

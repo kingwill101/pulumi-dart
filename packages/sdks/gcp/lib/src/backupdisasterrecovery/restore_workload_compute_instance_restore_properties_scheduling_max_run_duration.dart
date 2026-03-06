@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration].
   /// [nanos] (Optional)
   /// [seconds] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration({
+  const RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration({
     this.nanos,
     this.seconds,
   });

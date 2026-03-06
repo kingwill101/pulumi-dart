@@ -22,7 +22,7 @@ class ProjectFileSystemLocation {
   /// [mountOptions] &lt;p&gt; The mount options for a file system created by Amazon EFS. The default mount options used by CodeBuild are &lt;code&gt;nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2&lt;/code&gt;. For more information, see &lt;a href='https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-nfs-mount-settings.html'&gt;Recommended NFS Mount Options&lt;/a&gt;. &lt;/p&gt;
   /// [mountPoint] &lt;p&gt;The location in the container where you mount the file system. &lt;/p&gt;
   /// [type] &lt;p&gt; The type of the file system. The one supported type is &lt;code&gt;EFS&lt;/code&gt;. &lt;/p&gt;
-  ProjectFileSystemLocation({
+  const ProjectFileSystemLocation({
     this.identifier,
     this.location,
     this.mountOptions,

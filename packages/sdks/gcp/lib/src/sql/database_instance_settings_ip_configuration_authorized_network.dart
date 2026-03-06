@@ -17,7 +17,7 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
   /// [expirationTime] The [RFC 3339](https://tools.ietf.org/html/rfc3339)
   /// [name] A name for this whitelist entry.
   /// [value] A CIDR notation IPv4 or IPv6 address that is allowed to
-  DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork({
+  const DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork({
     this.expirationTime,
     this.name,
     required this.value,

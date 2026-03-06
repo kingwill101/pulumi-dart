@@ -12,7 +12,7 @@ class NetworkPolicyResponseContainerV1beta1 {
   /// Creates a new [NetworkPolicyResponseContainerV1beta1].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider.
-  NetworkPolicyResponseContainerV1beta1({
+  const NetworkPolicyResponseContainerV1beta1({
     required this.enabled,
     required this.provider,
   });

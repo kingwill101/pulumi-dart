@@ -45,7 +45,7 @@ class BackendBucketCdnPolicyResponseComputeV1 {
   /// [serveWhileStale] Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache. This setting defines the default "max-stale" duration for any cached responses that do not specify a max-stale directive. Stale responses that exceed the TTL configured here will not be served. The default limit (max-stale) is 86400s (1 day), which will allow stale content to be served up to this limit beyond the max-age (or s-max-age) of a cached response. The maximum allowed value is 604800 (1 week). Set this to zero (0) to disable serve-while-stale.
   /// [signedUrlCacheMaxAgeSec] Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. Defaults to 1hr (3600s). When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
   /// [signedUrlKeyNames] Names of the keys for signing request URLs.
-  BackendBucketCdnPolicyResponseComputeV1({
+  const BackendBucketCdnPolicyResponseComputeV1({
     required this.bypassCacheOnRequestHeaders,
     required this.cacheKeyPolicy,
     required this.cacheMode,

@@ -8,7 +8,7 @@ class ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
 
   /// Creates a new [ConnectionGithubEnterpriseConfigServiceDirectoryConfig].
   /// [service] Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  ConnectionGithubEnterpriseConfigServiceDirectoryConfig({
+  const ConnectionGithubEnterpriseConfigServiceDirectoryConfig({
     required this.service,
   });
 

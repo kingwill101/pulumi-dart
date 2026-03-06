@@ -62,7 +62,7 @@ class DomainMappingMetadata {
   /// [resourceVersion] (Output)
   /// [selfLink] (Output)
   /// [uid] (Output)
-  DomainMappingMetadata({
+  const DomainMappingMetadata({
     this.annotations,
     this.effectiveAnnotations,
     this.effectiveLabels,

@@ -42,7 +42,7 @@ class GetUserArgs {
   /// [username] The unique username of this User.
   /// [volumeGrants] Optional.
   /// [vpcGrants] Optional.
-  GetUserArgs({
+  const GetUserArgs({
     this.databaseGrants,
     this.domainGrants,
     this.firewallGrants,

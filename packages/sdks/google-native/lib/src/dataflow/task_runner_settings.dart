@@ -64,7 +64,7 @@ class TaskRunnerSettings {
   /// [tempStoragePrefix] The prefix of the resources the taskrunner should use for temporary storage. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
   /// [vmId] The ID string of the VM.
   /// [workflowFileName] The file to store the workflow in.
-  TaskRunnerSettings({
+  const TaskRunnerSettings({
     this.alsologtostderr,
     this.baseTaskDir,
     this.baseUrl,

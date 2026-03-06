@@ -9,7 +9,7 @@ class FieldTtlConfig {
 
   /// Creates a new [FieldTtlConfig].
   /// [state] (Output)
-  FieldTtlConfig({
+  const FieldTtlConfig({
     this.state,
   });
 

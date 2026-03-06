@@ -9,7 +9,7 @@ class CloudFunctionEndpoint {
 
   /// Creates a new [CloudFunctionEndpoint].
   /// [uri] A [Cloud Function](https://cloud.google.com/functions) name.
-  CloudFunctionEndpoint({
+  const CloudFunctionEndpoint({
     this.uri,
   });
 

@@ -9,7 +9,7 @@ class AppVNetAddons {
 
   /// Creates a new [AppVNetAddons].
   /// [publicEndpoint] Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
-  AppVNetAddons({
+  const AppVNetAddons({
     this.publicEndpoint,
   });
 

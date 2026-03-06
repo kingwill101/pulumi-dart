@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysResource {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysResource].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysResource({
+  const DomainFeaturesCapabilitiesSysResource({
     this.state,
   });
 

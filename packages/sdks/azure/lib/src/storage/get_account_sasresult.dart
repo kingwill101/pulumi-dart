@@ -32,7 +32,7 @@ class GetAccountSASResult {
   /// [services] Required.
   /// [signedVersion] Optional.
   /// [start] Required.
-  GetAccountSASResult({
+  const GetAccountSASResult({
     required this.connectionString,
     required this.expiry,
     this.httpsOnly,

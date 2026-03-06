@@ -113,7 +113,7 @@ class ConfigArgs {
   /// [title] The product title for this service, it is the name displayed in Google Cloud Console.
   /// [types] A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
   /// [usage] Configuration controlling usage of this service.
-  ConfigArgs({
+  const ConfigArgs({
     this.apis,
     this.authentication,
     this.backend,

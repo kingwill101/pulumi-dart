@@ -11,7 +11,7 @@ class GetStackGroupsGroupParameter {
   /// Creates a new [GetStackGroupsGroupParameter].
   /// [parameterKey] The parameter key.
   /// [parameterValue] The parameter value.
-  GetStackGroupsGroupParameter({
+  const GetStackGroupsGroupParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

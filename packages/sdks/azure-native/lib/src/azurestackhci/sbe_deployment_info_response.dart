@@ -21,7 +21,7 @@ class SbeDeploymentInfoResponse {
   /// [sbeManifestCreationDate] SBE Manifest Creation Date.
   /// [sbeManifestSource] SBE Manifest Source.
   /// [version] SBE package version.
-  SbeDeploymentInfoResponse({
+  const SbeDeploymentInfoResponse({
     this.family,
     this.publisher,
     this.sbeManifestCreationDate,

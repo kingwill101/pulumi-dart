@@ -15,7 +15,7 @@ class GetDeploymentAtScopeArgs {
   /// Creates a new [GetDeploymentAtScopeArgs].
   /// [deploymentName] The name of the deployment.
   /// [scope] The resource scope.
-  GetDeploymentAtScopeArgs({
+  const GetDeploymentAtScopeArgs({
     required this.deploymentName,
     required this.scope,
   });

@@ -22,7 +22,7 @@ class GetPolicySetDefinitionPolicyDefinitionGroup {
   /// [description] The description of this policy definition group.
   /// [displayName] Specifies the display name of the Policy Set Definition. Conflicts with `name`.
   /// [name] Specifies the name of the Policy Set Definition. Conflicts with `display_name`.
-  GetPolicySetDefinitionPolicyDefinitionGroup({
+  const GetPolicySetDefinitionPolicyDefinitionGroup({
     required this.additionalMetadataResourceId,
     required this.category,
     required this.description,

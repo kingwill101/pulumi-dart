@@ -38,7 +38,7 @@ class ForwardEntryArgs {
   /// [ipProtocol] The ip protocol, valid value is tcp|udp|any.
   /// [name] Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
   /// [portBreak] Specifies whether to remove limits on the port range. Default value is `false`.
-  ForwardEntryArgs({
+  const ForwardEntryArgs({
     required this.externalIp,
     required this.externalPort,
     this.forwardEntryName,

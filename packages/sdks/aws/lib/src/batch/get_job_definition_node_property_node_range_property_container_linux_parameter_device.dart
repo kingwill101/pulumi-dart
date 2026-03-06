@@ -14,7 +14,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice
   /// [containerPath] The absolute file path in the container where the tmpfs volume is mounted.
   /// [hostPath] The path for the device on the host container instance.
   /// [permissions] The explicit permissions to provide to the container for the device.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice({
     required this.containerPath,
     required this.hostPath,
     required this.permissions,

@@ -35,7 +35,7 @@ class MigrateProjectPropertiesResponse {
   /// [serviceEndpoint] Service endpoint.
   /// [summary] Project summary.
   /// [utilityStorageAccountId] Utility storage account id.
-  MigrateProjectPropertiesResponse({
+  const MigrateProjectPropertiesResponse({
     required this.lastSummaryRefreshedTime,
     required this.privateEndpointConnections,
     this.provisioningState,

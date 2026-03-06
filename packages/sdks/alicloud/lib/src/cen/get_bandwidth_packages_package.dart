@@ -70,7 +70,7 @@ class GetBandwidthPackagesPackage {
   /// [reservationInternetChargeType] The billing method after the configuration change.
   /// [reservationOrderType] The type of the configuration change.
   /// [status] Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
-  GetBandwidthPackagesPackage({
+  const GetBandwidthPackagesPackage({
     required this.bandwidth,
     required this.bandwidthPackageChargeType,
     required this.businessStatus,

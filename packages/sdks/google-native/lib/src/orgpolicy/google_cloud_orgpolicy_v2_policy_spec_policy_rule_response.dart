@@ -23,7 +23,7 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse {
   /// [denyAll] Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
   /// [enforce] If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be set only in policies for boolean constraints.
   /// [values] List of values to be used for this policy rule. This field can be set only in policies for list constraints.
-  GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse({
+  const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse({
     required this.allowAll,
     required this.condition,
     required this.denyAll,

@@ -7,7 +7,7 @@ class IAppTableRow {
 
   /// Creates a new [IAppTableRow].
   /// [rows] Optional.
-  IAppTableRow({
+  const IAppTableRow({
     this.rows,
   });
 

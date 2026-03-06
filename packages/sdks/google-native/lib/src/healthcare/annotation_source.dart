@@ -10,7 +10,7 @@ class AnnotationSource {
 
   /// Creates a new [AnnotationSource].
   /// [cloudHealthcareSource] Cloud Healthcare API resource.
-  AnnotationSource({
+  const AnnotationSource({
     this.cloudHealthcareSource,
   });
 

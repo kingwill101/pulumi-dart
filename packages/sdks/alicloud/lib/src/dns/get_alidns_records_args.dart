@@ -60,7 +60,7 @@ class GetAlidnsRecordsArgs {
   /// [typeKeyWord] Analyze type keywords, search by full match, not case sensitive.
   /// [valueKeyWord] The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
   /// [valueRegex] Host record value regex.
-  GetAlidnsRecordsArgs({
+  const GetAlidnsRecordsArgs({
     this.direction,
     required this.domainName,
     this.groupId,

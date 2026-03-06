@@ -41,7 +41,7 @@ class ProjectBucketConfigState {
   /// [name] The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
   /// [project] The parent resource that contains the logging bucket.
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
-  ProjectBucketConfigState({
+  const ProjectBucketConfigState({
     this.bucketId,
     this.cmekSettings,
     this.description,

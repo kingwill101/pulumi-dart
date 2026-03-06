@@ -14,7 +14,7 @@ class PlanSku {
   /// [capacity] Specifies the number of workers associated with this App Service Plan.
   /// [size] Specifies the plan's instance size.
   /// [tier] Specifies the plan's pricing tier.
-  PlanSku({
+  const PlanSku({
     this.capacity,
     required this.size,
     required this.tier,

@@ -17,7 +17,7 @@ class KeyVaultNetworkAcls {
   /// [defaultAction] The Default Action to use when no rules match from `ip_rules` / `virtual_network_subnet_ids`. Possible values are `Allow` and `Deny`.
   /// [ipRules] One or more IP Addresses, or CIDR Blocks which should be able to access the Key Vault.
   /// [virtualNetworkSubnetIds] One or more Subnet IDs which should be able to access this Key Vault.
-  KeyVaultNetworkAcls({
+  const KeyVaultNetworkAcls({
     required this.bypass,
     required this.defaultAction,
     this.ipRules,

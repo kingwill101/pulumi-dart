@@ -25,7 +25,7 @@ class StaticCidrArgs {
   /// [properties] Properties of static CIDR resource.
   /// [resourceGroupName] The name of the resource group.
   /// [staticCidrName] Static Cidr allocation name.
-  StaticCidrArgs({
+  const StaticCidrArgs({
     required this.networkManagerName,
     required this.poolName,
     this.properties,

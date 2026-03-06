@@ -15,7 +15,7 @@ class GetGenaiOpenaiApiKeysArgs {
   /// Creates a new [GetGenaiOpenaiApiKeysArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGenaiOpenaiApiKeysArgs({
+  const GetGenaiOpenaiApiKeysArgs({
     this.filters,
     this.sorts,
   });

@@ -9,7 +9,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition {
 
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition].
   /// [partitioningTimeGranularity] Partition granularity.
-  StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition({
+  const StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartition({
     this.partitioningTimeGranularity,
   });
 

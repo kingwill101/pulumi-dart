@@ -17,7 +17,7 @@ class GetListingArgs {
   /// [listingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetListingArgs({
+  const GetListingArgs({
     required this.dataExchangeId,
     required this.listingId,
     required this.location,

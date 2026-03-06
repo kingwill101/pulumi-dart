@@ -12,7 +12,7 @@ class ClusterCrossClusterReplicationConfigMembershipPrimaryCluster {
   /// Creates a new [ClusterCrossClusterReplicationConfigMembershipPrimaryCluster].
   /// [cluster] The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
   /// [uid] (Output)
-  ClusterCrossClusterReplicationConfigMembershipPrimaryCluster({
+  const ClusterCrossClusterReplicationConfigMembershipPrimaryCluster({
     this.cluster,
     this.uid,
   });

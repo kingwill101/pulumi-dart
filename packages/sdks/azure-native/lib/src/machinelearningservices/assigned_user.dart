@@ -12,7 +12,7 @@ class AssignedUser {
   /// Creates a new [AssignedUser].
   /// [objectId] User’s AAD Object Id.
   /// [tenantId] User’s AAD Tenant Id.
-  AssignedUser({
+  const AssignedUser({
     required this.objectId,
     required this.tenantId,
   });

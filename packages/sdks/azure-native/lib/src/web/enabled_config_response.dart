@@ -9,7 +9,7 @@ class EnabledConfigResponse {
 
   /// Creates a new [EnabledConfigResponse].
   /// [enabled] True if configuration is enabled, false if it is disabled and null if configuration is not set.
-  EnabledConfigResponse({
+  const EnabledConfigResponse({
     this.enabled,
   });
 

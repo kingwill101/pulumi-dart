@@ -13,7 +13,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject {
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject].
   /// [fields] Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
   /// [objectName] Name of object in Salesforce Org.
-  StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject({
+  const StreamSourceConfigSalesforceSourceConfigExcludeObjectsObject({
     this.fields,
     this.objectName,
   });

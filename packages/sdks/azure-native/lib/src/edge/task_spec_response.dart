@@ -15,7 +15,7 @@ class TaskSpecResponse {
   /// [name] Name of Task
   /// [specification] Task specification
   /// [targetId] Target ARM id
-  TaskSpecResponse({
+  const TaskSpecResponse({
     required this.name,
     required this.specification,
     this.targetId,

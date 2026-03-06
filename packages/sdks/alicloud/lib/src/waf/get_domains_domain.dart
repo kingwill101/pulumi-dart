@@ -63,7 +63,7 @@ class GetDomainsDomain {
   /// [sourceIps] List of the IP address or domain of the origin server to which the specified domain points.
   /// [version] The system data identifier that is used to control optimistic locking.
   /// [writeTime] The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.clusterType,
     required this.cname,
     required this.connectionTime,

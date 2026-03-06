@@ -51,7 +51,7 @@ class FolderFeedArgs {
   /// [feedId] This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   /// [feedOutputConfig] Output configuration for asset feed destination.
   /// [folder] The folder this feed should be created in.
-  FolderFeedArgs({
+  const FolderFeedArgs({
     this.assetNames,
     this.assetTypes,
     required this.billingProject,

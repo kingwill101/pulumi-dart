@@ -9,7 +9,7 @@ class BareMetalAdminVipConfig {
 
   /// Creates a new [BareMetalAdminVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster.
-  BareMetalAdminVipConfig({
+  const BareMetalAdminVipConfig({
     this.controlPlaneVip,
   });
 

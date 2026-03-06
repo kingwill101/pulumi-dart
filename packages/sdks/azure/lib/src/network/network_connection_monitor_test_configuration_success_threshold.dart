@@ -11,7 +11,7 @@ class NetworkConnectionMonitorTestConfigurationSuccessThreshold {
   /// Creates a new [NetworkConnectionMonitorTestConfigurationSuccessThreshold].
   /// [checksFailedPercent] The maximum percentage of failed checks permitted for a test to be successful.
   /// [roundTripTimeMs] The maximum round-trip time in milliseconds permitted for a test to be successful.
-  NetworkConnectionMonitorTestConfigurationSuccessThreshold({
+  const NetworkConnectionMonitorTestConfigurationSuccessThreshold({
     this.checksFailedPercent,
     this.roundTripTimeMs,
   });

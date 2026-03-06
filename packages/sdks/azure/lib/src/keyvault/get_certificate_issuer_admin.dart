@@ -17,7 +17,7 @@ class GetCertificateIssuerAdmin {
   /// [firstName] First name of the admin.
   /// [lastName] Last name of the admin.
   /// [phone] Phone number of the admin.
-  GetCertificateIssuerAdmin({
+  const GetCertificateIssuerAdmin({
     required this.emailAddress,
     required this.firstName,
     required this.lastName,

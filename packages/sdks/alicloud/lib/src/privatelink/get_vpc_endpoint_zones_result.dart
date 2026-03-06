@@ -23,7 +23,7 @@ class GetVpcEndpointZonesResult {
   /// [outputFile] Optional.
   /// [status] The Status of Vpc Endpoint Zone..
   /// [zones] A list of Privatelink Vpc Endpoint Zones. Each element contains the following attributes:
-  GetVpcEndpointZonesResult({
+  const GetVpcEndpointZonesResult({
     required this.endpointId,
     required this.id,
     required this.ids,

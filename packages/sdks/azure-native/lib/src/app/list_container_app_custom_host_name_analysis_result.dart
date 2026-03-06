@@ -42,7 +42,7 @@ class ListContainerAppCustomHostNameAnalysisResult {
   /// [hostName] Host name that was analyzed
   /// [isHostnameAlreadyVerified] &lt;code&gt;true&lt;/code&gt; if hostname is already verified; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [txtRecords] TXT records visible for this hostname.
-  ListContainerAppCustomHostNameAnalysisResult({
+  const ListContainerAppCustomHostNameAnalysisResult({
     this.aRecords,
     this.alternateCNameRecords,
     this.alternateTxtRecords,

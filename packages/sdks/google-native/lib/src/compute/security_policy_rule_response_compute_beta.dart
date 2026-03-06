@@ -63,7 +63,7 @@ class SecurityPolicyRuleResponseComputeBeta {
   /// [ruleTupleCount] Calculation of the complexity of a single firewall security policy rule.
   /// [targetResources] A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
   /// [targetServiceAccounts] A list of service accounts indicating the sets of instances that are applied with this rule.
-  SecurityPolicyRuleResponseComputeBeta({
+  const SecurityPolicyRuleResponseComputeBeta({
     required this.action,
     required this.description,
     required this.direction,

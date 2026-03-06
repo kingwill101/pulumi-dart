@@ -15,7 +15,7 @@ class HyperVHostDetailsResponse {
   /// [id] The Hyper-V host Id.
   /// [marsAgentVersion] The Mars agent version.
   /// [name] The Hyper-V host name.
-  HyperVHostDetailsResponse({
+  const HyperVHostDetailsResponse({
     required this.id,
     required this.marsAgentVersion,
     required this.name,

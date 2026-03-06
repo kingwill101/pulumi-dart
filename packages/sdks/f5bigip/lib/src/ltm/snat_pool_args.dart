@@ -15,7 +15,7 @@ class SnatPoolArgs {
   /// Creates a new [SnatPoolArgs].
   /// [members] Specifies a translation address to add to or delete from a SNAT pool (at least one address is required)
   /// [name] Name of the snatpool
-  SnatPoolArgs({
+  const SnatPoolArgs({
     required this.members,
     required this.name,
   });

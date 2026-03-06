@@ -28,7 +28,7 @@ class AccountMergeInfoResponse {
   /// [deprovisioned] The deprovisioned status of the account.
   /// [mergeStatus] The status of the merge operation.
   /// [typeOfAccount] The account's type for the merge operation.
-  AccountMergeInfoResponse({
+  const AccountMergeInfoResponse({
     required this.accountLocation,
     required this.accountName,
     required this.accountResourceGroupName,

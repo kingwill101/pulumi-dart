@@ -18,7 +18,7 @@ class StorageProfileResponse {
   /// [dataDisks] Specifies the parameters that are used to add a data disk to a virtual machine.
   /// [imageReference] The image reference properties.
   /// [osDisk] Specifies information about the operating system disk used by the virtual machine.
-  StorageProfileResponse({
+  const StorageProfileResponse({
     this.dataDisks,
     this.imageReference,
     this.osDisk,

@@ -28,7 +28,7 @@ class ApiOAuthSettings {
   /// [properties] Read only properties for this oauth setting.
   /// [redirectUrl] Url
   /// [scopes] OAuth scopes
-  ApiOAuthSettings({
+  const ApiOAuthSettings({
     this.clientId,
     this.clientSecret,
     this.customParameters,

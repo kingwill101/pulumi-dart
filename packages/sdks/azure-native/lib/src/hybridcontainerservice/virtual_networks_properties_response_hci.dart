@@ -15,7 +15,7 @@ class VirtualNetworksPropertiesResponseHci {
   /// [mocGroup] Resource group in MOC(Microsoft On-premises Cloud)
   /// [mocLocation] Location in MOC(Microsoft On-premises Cloud)
   /// [mocVnetName] Virtual Network name in MOC(Microsoft On-premises Cloud)
-  VirtualNetworksPropertiesResponseHci({
+  const VirtualNetworksPropertiesResponseHci({
     this.mocGroup,
     this.mocLocation,
     this.mocVnetName,

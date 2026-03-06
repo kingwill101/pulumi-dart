@@ -15,7 +15,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   /// [description] A description for the flow.
   /// [inputSchema] The input schema of the tool. See Tool Input Schema for more information.
   /// [name] A name for the flow.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolToolSpec({
     this.description,
     this.inputSchema,
     required this.name,

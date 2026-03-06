@@ -29,7 +29,7 @@ class ExecutionConfigResponse {
   /// [serviceAccount] Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
   /// [usages] Usages when this configuration should be applied.
   /// [workerPool] Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
-  ExecutionConfigResponse({
+  const ExecutionConfigResponse({
     required this.artifactStorage,
     required this.defaultPool,
     required this.executionTimeout,

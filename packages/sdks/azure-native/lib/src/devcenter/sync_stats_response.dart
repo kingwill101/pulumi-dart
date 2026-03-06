@@ -27,7 +27,7 @@ class SyncStatsResponse {
   /// [unchanged] Count of catalog items that were unchanged during synchronization.
   /// [updated] Count of catalog items updated during synchronization.
   /// [validationErrors] Count of catalog items that had validation errors during synchronization.
-  SyncStatsResponse({
+  const SyncStatsResponse({
     required this.added,
     required this.removed,
     this.syncedCatalogItemTypes,

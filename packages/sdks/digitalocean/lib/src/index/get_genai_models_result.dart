@@ -18,7 +18,7 @@ class GetGenaiModelsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [models] Required.
   /// [sorts] Optional.
-  GetGenaiModelsResult({
+  const GetGenaiModelsResult({
     this.filters,
     required this.id,
     required this.models,

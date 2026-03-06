@@ -14,7 +14,7 @@ class ScaleUnitsResponse {
   /// Creates a new [ScaleUnitsResponse].
   /// [deploymentData] Deployment Data to deploy AzureStackHCI Cluster.
   /// [sbePartnerInfo] Solution builder extension (SBE) partner properties
-  ScaleUnitsResponse({
+  const ScaleUnitsResponse({
     required this.deploymentData,
     this.sbePartnerInfo,
   });

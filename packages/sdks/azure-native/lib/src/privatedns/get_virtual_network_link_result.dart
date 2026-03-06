@@ -46,7 +46,7 @@ class GetVirtualNetworkLinkResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetwork] The reference of the virtual network.
   /// [virtualNetworkLinkState] The status of the virtual network link to the Private DNS zone. Possible values are 'InProgress' and 'Done'. This is a read-only property and any attempt to set this value will be ignored.
-  GetVirtualNetworkLinkResult({
+  const GetVirtualNetworkLinkResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

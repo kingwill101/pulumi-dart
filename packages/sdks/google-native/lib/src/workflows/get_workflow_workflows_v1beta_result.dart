@@ -35,7 +35,7 @@ class GetWorkflowWorkflowsV1betaResult {
   /// [sourceContents] Workflow code to be executed. The size limit is 128KB.
   /// [state] State of the workflow deployment.
   /// [updateTime] The last update timestamp of the workflow.
-  GetWorkflowWorkflowsV1betaResult({
+  const GetWorkflowWorkflowsV1betaResult({
     required this.createTime,
     required this.description,
     required this.labels,

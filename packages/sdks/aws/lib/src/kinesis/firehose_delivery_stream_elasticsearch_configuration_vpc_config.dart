@@ -16,7 +16,7 @@ class FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig {
   /// [securityGroupIds] A list of security group IDs to associate with Kinesis Firehose.
   /// [subnetIds] A list of subnet IDs to associate with Kinesis Firehose.
   /// [vpcId] Optional.
-  FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig({
+  const FirehoseDeliveryStreamElasticsearchConfigurationVpcConfig({
     required this.roleArn,
     required this.securityGroupIds,
     required this.subnetIds,

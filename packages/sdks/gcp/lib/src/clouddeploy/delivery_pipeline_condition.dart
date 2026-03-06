@@ -17,7 +17,7 @@ class DeliveryPipelineCondition {
   /// [pipelineReadyConditions] Details around the Pipeline's overall status.
   /// [targetsPresentConditions] Details around targets enumerated in the pipeline.
   /// [targetsTypeConditions] Details on the whether the targets enumerated in the pipeline are of the same type.
-  DeliveryPipelineCondition({
+  const DeliveryPipelineCondition({
     this.pipelineReadyConditions,
     this.targetsPresentConditions,
     this.targetsTypeConditions,

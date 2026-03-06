@@ -113,7 +113,7 @@ class InstanceArgs {
   /// [tags] Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
   /// [upgradeHistory] The upgrade history of this instance.
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.acceleratorConfig,
     this.bootDiskSizeGb,
     this.bootDiskType,

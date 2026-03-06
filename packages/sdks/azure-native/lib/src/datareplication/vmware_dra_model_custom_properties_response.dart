@@ -17,7 +17,7 @@ class VMwareDraModelCustomPropertiesResponse {
   /// [biosId] Gets or sets the BIOS Id of the DRA machine.
   /// [instanceType] Gets or sets the instance type.
   /// [marsAuthenticationIdentity] Identity model.
-  VMwareDraModelCustomPropertiesResponse({
+  const VMwareDraModelCustomPropertiesResponse({
     required this.biosId,
     required this.instanceType,
     required this.marsAuthenticationIdentity,

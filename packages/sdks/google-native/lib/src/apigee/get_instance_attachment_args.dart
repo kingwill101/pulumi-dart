@@ -15,7 +15,7 @@ class GetInstanceAttachmentArgs {
   /// [attachmentId] Required.
   /// [instanceId] Required.
   /// [organizationId] Required.
-  GetInstanceAttachmentArgs({
+  const GetInstanceAttachmentArgs({
     required this.attachmentId,
     required this.instanceId,
     required this.organizationId,

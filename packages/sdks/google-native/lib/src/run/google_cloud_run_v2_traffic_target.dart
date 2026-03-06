@@ -19,7 +19,7 @@ class GoogleCloudRunV2TrafficTarget {
   /// [revision] Revision to which to send this portion of traffic, if traffic allocation is by revision.
   /// [tag] Indicates a string to be part of the URI to exclusively reference this target.
   /// [type] The allocation type for this traffic target.
-  GoogleCloudRunV2TrafficTarget({
+  const GoogleCloudRunV2TrafficTarget({
     this.percent,
     this.revision,
     this.tag,

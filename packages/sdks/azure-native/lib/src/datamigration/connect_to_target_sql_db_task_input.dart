@@ -13,7 +13,7 @@ class ConnectToTargetSqlDbTaskInput {
   /// Creates a new [ConnectToTargetSqlDbTaskInput].
   /// [queryObjectCounts] Boolean flag indicating whether to query object counts for each database on the target server
   /// [targetConnectionInfo] Connection information for target SQL DB
-  ConnectToTargetSqlDbTaskInput({
+  const ConnectToTargetSqlDbTaskInput({
     this.queryObjectCounts,
     required this.targetConnectionInfo,
   });

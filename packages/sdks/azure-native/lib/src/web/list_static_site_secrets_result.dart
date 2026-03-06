@@ -20,7 +20,7 @@ class ListStaticSiteSecretsResult {
   /// [name] Resource Name.
   /// [properties] Settings.
   /// [type] Resource type.
-  ListStaticSiteSecretsResult({
+  const ListStaticSiteSecretsResult({
     required this.id,
     this.kind,
     required this.name,

@@ -13,7 +13,7 @@ class OsSapConfiguration {
   /// Creates a new [OsSapConfiguration].
   /// [deployerVmPackages] The url and storage account ID where deployer VM packages are uploaded
   /// [sapFqdn] The FQDN to set for the SAP system
-  OsSapConfiguration({
+  const OsSapConfiguration({
     this.deployerVmPackages,
     this.sapFqdn,
   });

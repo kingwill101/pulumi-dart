@@ -9,7 +9,7 @@ class PathOverride {
 
   /// Creates a new [PathOverride].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  PathOverride({
+  const PathOverride({
     this.path,
   });
 

@@ -45,7 +45,7 @@ class RelationshipArgs {
   /// [relatedProfileType] Related profile being referenced.
   /// [relationshipName] The name of the Relationship.
   /// [resourceGroupName] The name of the resource group.
-  RelationshipArgs({
+  const RelationshipArgs({
     this.cardinality,
     this.description,
     this.displayName,

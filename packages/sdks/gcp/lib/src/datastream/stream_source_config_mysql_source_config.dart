@@ -29,7 +29,7 @@ class StreamSourceConfigMysqlSourceConfig {
   /// [includeObjects] MySQL objects to retrieve from the source.
   /// [maxConcurrentBackfillTasks] Maximum number of concurrent backfill tasks. The number should be non negative.
   /// [maxConcurrentCdcTasks] Maximum number of concurrent CDC tasks. The number should be non negative.
-  StreamSourceConfigMysqlSourceConfig({
+  const StreamSourceConfigMysqlSourceConfig({
     this.binaryLogPosition,
     this.excludeObjects,
     this.gtid,

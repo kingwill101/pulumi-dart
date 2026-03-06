@@ -15,7 +15,7 @@ class AutomationRulePropertyArrayValuesConditionResponse {
   /// [arrayConditionType] Describes an array condition evaluation type.
   /// [arrayType] Describes an array condition evaluated array type.
   /// [itemConditions] Optional.
-  AutomationRulePropertyArrayValuesConditionResponse({
+  const AutomationRulePropertyArrayValuesConditionResponse({
     this.arrayConditionType,
     this.arrayType,
     this.itemConditions,

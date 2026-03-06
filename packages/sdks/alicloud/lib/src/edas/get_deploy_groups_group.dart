@@ -32,7 +32,7 @@ class GetDeployGroupsGroup {
   /// [groupType] The type of the instance group. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
   /// [packageVersionId] The version of the deployment package for the instance group that was created.
   /// [updateTime] The time when the instance group was updated.
-  GetDeployGroupsGroup({
+  const GetDeployGroupsGroup({
     required this.appId,
     required this.appVersionId,
     required this.clusterId,

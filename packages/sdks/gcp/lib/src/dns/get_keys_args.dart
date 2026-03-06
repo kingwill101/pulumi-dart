@@ -15,7 +15,7 @@ class GetKeysArgs {
   /// Creates a new [GetKeysArgs].
   /// [managedZone] The name or id of the Cloud DNS managed zone.
   /// [project] The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
-  GetKeysArgs({
+  const GetKeysArgs({
     required this.managedZone,
     this.project,
   });

@@ -43,7 +43,7 @@ class GetResourcePolicyComputeV1Result {
   /// [selfLink] Server-defined fully-qualified URL for this resource.
   /// [snapshotSchedulePolicy] Resource policy for persistent disks for creating snapshots.
   /// [status] The status of resource policy creation.
-  GetResourcePolicyComputeV1Result({
+  const GetResourcePolicyComputeV1Result({
     required this.creationTimestamp,
     required this.description,
     required this.diskConsistencyGroupPolicy,

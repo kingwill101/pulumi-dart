@@ -9,7 +9,7 @@ class ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
 
   /// Creates a new [ConnectionAuthConfigOauth2ClientCredentialsClientSecret].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionAuthConfigOauth2ClientCredentialsClientSecret({
+  const ConnectionAuthConfigOauth2ClientCredentialsClientSecret({
     required this.secretVersion,
   });
 

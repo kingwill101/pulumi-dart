@@ -11,7 +11,7 @@ class ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup {
   /// Creates a new [ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup].
   /// [propertyGroupId] The key of the application execution property key-value map.
   /// [propertyMap] Application execution property key-value map.
-  ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup({
+  const ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup({
     required this.propertyGroupId,
     required this.propertyMap,
   });

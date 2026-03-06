@@ -15,7 +15,7 @@ class EnterprisePolicyIdentityResponse {
   /// [systemAssignedIdentityPrincipalId] The principal id of EnterprisePolicy identity.
   /// [tenantId] The tenant id associated with the EnterprisePolicy.
   /// [type] The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
-  EnterprisePolicyIdentityResponse({
+  const EnterprisePolicyIdentityResponse({
     required this.systemAssignedIdentityPrincipalId,
     required this.tenantId,
     this.type,

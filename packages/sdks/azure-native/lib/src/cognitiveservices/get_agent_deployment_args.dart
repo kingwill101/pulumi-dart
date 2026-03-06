@@ -24,7 +24,7 @@ class GetAgentDeploymentArgs {
   /// [deploymentName] The name of the deployment associated with the Cognitive Services Account
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAgentDeploymentArgs({
+  const GetAgentDeploymentArgs({
     required this.accountName,
     required this.appName,
     required this.deploymentName,

@@ -16,7 +16,7 @@ class DomainAssociationCertificateSettings {
   /// [certificateVerificationDnsRecord] DNS records for certificate verification in a space-delimited format (`&lt;record&gt; CNAME &lt;target&gt;`).
   /// [customCertificateArn] The Amazon resource name (ARN) for the custom certificate.
   /// [type] The certificate type.
-  DomainAssociationCertificateSettings({
+  const DomainAssociationCertificateSettings({
     this.certificateVerificationDnsRecord,
     this.customCertificateArn,
     required this.type,

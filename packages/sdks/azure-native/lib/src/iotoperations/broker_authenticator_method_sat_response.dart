@@ -9,7 +9,7 @@ class BrokerAuthenticatorMethodSatResponse {
 
   /// Creates a new [BrokerAuthenticatorMethodSatResponse].
   /// [audiences] List of allowed audience.
-  BrokerAuthenticatorMethodSatResponse({
+  const BrokerAuthenticatorMethodSatResponse({
     required this.audiences,
   });
 

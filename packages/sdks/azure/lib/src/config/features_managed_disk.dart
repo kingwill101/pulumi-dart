@@ -7,7 +7,7 @@ class FeaturesManagedDisk {
 
   /// Creates a new [FeaturesManagedDisk].
   /// [expandWithoutDowntime] Optional.
-  FeaturesManagedDisk({
+  const FeaturesManagedDisk({
     this.expandWithoutDowntime,
   });
 

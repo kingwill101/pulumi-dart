@@ -29,7 +29,7 @@ class DatabaseState {
   /// [defaultCharacterSet] The default character set to use when
   /// [defaultCollation] The default collation to use when a table
   /// [name] The name of the database. This must be unique within
-  DatabaseState({
+  const DatabaseState({
     this.defaultCharacterSet,
     this.defaultCollation,
     this.name,

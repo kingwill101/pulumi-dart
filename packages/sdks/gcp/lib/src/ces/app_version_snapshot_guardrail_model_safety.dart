@@ -11,7 +11,7 @@ class AppVersionSnapshotGuardrailModelSafety {
 
   /// Creates a new [AppVersionSnapshotGuardrailModelSafety].
   /// [safetySettings] (Output)
-  AppVersionSnapshotGuardrailModelSafety({
+  const AppVersionSnapshotGuardrailModelSafety({
     this.safetySettings,
   });
 

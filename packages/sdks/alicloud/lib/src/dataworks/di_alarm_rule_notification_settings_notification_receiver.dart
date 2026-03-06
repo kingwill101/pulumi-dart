@@ -11,7 +11,7 @@ class DiAlarmRuleNotificationSettingsNotificationReceiver {
   /// Creates a new [DiAlarmRuleNotificationSettingsNotificationReceiver].
   /// [receiverType] The type of the receiver. Valid values: AliyunUid/DingToken/FeishuToken/WebHookUrl.
   /// [receiverValues] Receiver Value List
-  DiAlarmRuleNotificationSettingsNotificationReceiver({
+  const DiAlarmRuleNotificationSettingsNotificationReceiver({
     this.receiverType,
     this.receiverValues,
   });

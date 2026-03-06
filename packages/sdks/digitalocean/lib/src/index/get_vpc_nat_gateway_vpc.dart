@@ -14,7 +14,7 @@ class GetVpcNatGatewayVpc {
   /// [defaultGateway] Indicates if this is the default VPC NAT Gateway in the VPC
   /// [gatewayIp] Gateway IP of the VPC NAT Gateway
   /// [vpcUuid] ID of the ingress VPC
-  GetVpcNatGatewayVpc({
+  const GetVpcNatGatewayVpc({
     required this.defaultGateway,
     required this.gatewayIp,
     required this.vpcUuid,

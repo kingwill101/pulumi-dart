@@ -53,7 +53,7 @@ class GetPoolResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] List of availability zones that resources can be created in.
-  GetPoolResult({
+  const GetPoolResult({
     this.assignments,
     required this.azureApiVersion,
     required this.id,

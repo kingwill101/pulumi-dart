@@ -17,7 +17,7 @@ class GetInstanceTypesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceTypes] List of EC2 Instance Types.
   /// [region] Required.
-  GetInstanceTypesResult({
+  const GetInstanceTypesResult({
     this.filters,
     required this.id,
     required this.instanceTypes,

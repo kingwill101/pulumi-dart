@@ -11,7 +11,7 @@ class TaskIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TaskIamMemberCondition({
+  const TaskIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

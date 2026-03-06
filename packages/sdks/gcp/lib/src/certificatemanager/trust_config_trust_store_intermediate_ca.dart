@@ -10,7 +10,7 @@ class TrustConfigTrustStoreIntermediateCa {
 
   /// Creates a new [TrustConfigTrustStoreIntermediateCa].
   /// [pemCertificate] PEM intermediate certificate used for building up paths for validation.
-  TrustConfigTrustStoreIntermediateCa({
+  const TrustConfigTrustStoreIntermediateCa({
     this.pemCertificate,
   });
 

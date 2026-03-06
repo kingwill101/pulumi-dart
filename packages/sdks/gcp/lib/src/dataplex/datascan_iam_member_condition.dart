@@ -11,7 +11,7 @@ class DatascanIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DatascanIamMemberCondition({
+  const DatascanIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

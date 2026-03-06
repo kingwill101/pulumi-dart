@@ -11,7 +11,7 @@ class SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1 {
   /// Creates a new [SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1].
   /// [name] Name of the user-defined field, as given in the definition.
   /// [values] Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
-  SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1({
+  const SecurityPolicyRuleNetworkMatcherUserDefinedFieldMatchResponseComputeV1({
     required this.name,
     required this.values,
   });

@@ -14,7 +14,7 @@ class ReleaseConditionResponse {
   /// Creates a new [ReleaseConditionResponse].
   /// [releaseReadyCondition] Details around the Releases's overall status.
   /// [skaffoldSupportedCondition] Details around the support state of the release's skaffold version.
-  ReleaseConditionResponse({
+  const ReleaseConditionResponse({
     required this.releaseReadyCondition,
     required this.skaffoldSupportedCondition,
   });

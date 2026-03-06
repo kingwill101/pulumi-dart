@@ -12,7 +12,7 @@ class GetDeploymentAtTenantScopeArgs {
 
   /// Creates a new [GetDeploymentAtTenantScopeArgs].
   /// [deploymentName] The name of the deployment.
-  GetDeploymentAtTenantScopeArgs({
+  const GetDeploymentAtTenantScopeArgs({
     required this.deploymentName,
   });
 

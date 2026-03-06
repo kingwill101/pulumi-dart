@@ -9,7 +9,7 @@ class AutomationRuleCriteriaNoteUpdatedBy {
   /// Creates a new [AutomationRuleCriteriaNoteUpdatedBy].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaNoteUpdatedBy({
+  const AutomationRuleCriteriaNoteUpdatedBy({
     required this.comparison,
     required this.value,
   });

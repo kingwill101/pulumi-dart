@@ -63,7 +63,7 @@ class GetAndroidMAMPolicyByNameResult {
   /// [screenCapture] Optional.
   /// [tags] Resource Tags
   /// [type] Resource type
-  GetAndroidMAMPolicyByNameResult({
+  const GetAndroidMAMPolicyByNameResult({
     this.accessRecheckOfflineTimeout,
     this.accessRecheckOnlineTimeout,
     this.appSharingFromLevel,

@@ -49,7 +49,7 @@ class NetworkInsightsAnalysisReturnPathComponent {
   /// [transitGatewayRouteTableRoutes] Optional.
   /// [transitGateways] Optional.
   /// [vpcs] Optional.
-  NetworkInsightsAnalysisReturnPathComponent({
+  const NetworkInsightsAnalysisReturnPathComponent({
     this.aclRules,
     this.additionalDetails,
     this.attachedTos,

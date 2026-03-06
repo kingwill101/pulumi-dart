@@ -21,7 +21,7 @@ class DockerVolumeConfigurationResponse {
   /// [driverOpts] A map of Docker driver-specific options passed through. This parameter maps to ``DriverOpts`` in the [Create a volume](https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``xxopt`` option to [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/).
   /// [labels] Custom metadata to add to your Docker volume. This parameter maps to ``Labels`` in the [Create a volume](https://docs.docker.com/engine/api/v1.35/#operation/VolumeCreate) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``xxlabel`` option to [docker volume create](https://docs.docker.com/engine/reference/commandline/volume_create/).
   /// [scope] The scope for the Docker volume that determines its lifecycle. Docker volumes that are scoped to a ``task`` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are scoped as ``shared`` persist after the task stops.
-  DockerVolumeConfigurationResponse({
+  const DockerVolumeConfigurationResponse({
     this.autoprovision,
     this.driver,
     this.driverOpts,

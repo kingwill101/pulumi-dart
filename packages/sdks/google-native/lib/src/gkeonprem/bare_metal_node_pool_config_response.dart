@@ -24,7 +24,7 @@ class BareMetalNodePoolConfigResponse {
   /// [nodeConfigs] The list of machine addresses in the bare metal node pool.
   /// [operatingSystem] Specifies the nodes operating system (default: LINUX).
   /// [taints] The initial taints assigned to nodes of this node pool.
-  BareMetalNodePoolConfigResponse({
+  const BareMetalNodePoolConfigResponse({
     required this.kubeletConfig,
     required this.labels,
     required this.nodeConfigs,

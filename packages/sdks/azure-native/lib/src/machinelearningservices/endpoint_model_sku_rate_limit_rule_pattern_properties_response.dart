@@ -9,7 +9,7 @@ class EndpointModelSkuRateLimitRulePatternPropertiesResponse {
   /// Creates a new [EndpointModelSkuRateLimitRulePatternPropertiesResponse].
   /// [method] Optional.
   /// [path] Optional.
-  EndpointModelSkuRateLimitRulePatternPropertiesResponse({
+  const EndpointModelSkuRateLimitRulePatternPropertiesResponse({
     this.method,
     this.path,
   });

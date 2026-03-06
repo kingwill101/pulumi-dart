@@ -12,7 +12,7 @@ class UefiKey {
   /// Creates a new [UefiKey].
   /// [type] The type of key signature.
   /// [value] The value of the key signature.
-  UefiKey({
+  const UefiKey({
     this.type,
     this.value,
   });

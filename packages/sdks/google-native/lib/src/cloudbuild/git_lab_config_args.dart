@@ -34,7 +34,7 @@ class GitLabConfigArgs {
   /// [project] Optional.
   /// [secrets] Secret Manager secrets needed by the config.
   /// [username] Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
-  GitLabConfigArgs({
+  const GitLabConfigArgs({
     this.connectedRepositories,
     this.enterpriseConfig,
     this.gitlabConfigId,

@@ -24,7 +24,7 @@ class GetControlOrganizationIntelligenceConfigResult {
   /// [name] Required.
   /// [trialConfigs] Required.
   /// [updateTime] Required.
-  GetControlOrganizationIntelligenceConfigResult({
+  const GetControlOrganizationIntelligenceConfigResult({
     required this.editionConfig,
     required this.effectiveIntelligenceConfigs,
     required this.filters,

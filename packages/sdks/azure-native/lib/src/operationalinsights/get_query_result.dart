@@ -49,7 +49,7 @@ class GetQueryResult {
   /// [timeCreated] Creation Date for the Log Analytics Query, in ISO 8601 format.
   /// [timeModified] Last modified date of the Log Analytics Query, in ISO 8601 format.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetQueryResult({
+  const GetQueryResult({
     required this.author,
     required this.azureApiVersion,
     required this.body,

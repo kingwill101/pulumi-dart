@@ -36,7 +36,7 @@ class SafetyRuleArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetControls] Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
   /// [waitPeriodMs] Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
-  SafetyRuleArgs({
+  const SafetyRuleArgs({
     this.assertedControls,
     required this.controlPanelArn,
     this.gatingControls,

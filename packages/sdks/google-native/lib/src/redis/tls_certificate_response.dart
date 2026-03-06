@@ -21,7 +21,7 @@ class TlsCertificateResponse {
   /// [expireTime] The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
   /// [serialNumber] Serial number, as extracted from the certificate.
   /// [sha1Fingerprint] Sha1 Fingerprint of the certificate.
-  TlsCertificateResponse({
+  const TlsCertificateResponse({
     required this.cert,
     required this.createTime,
     required this.expireTime,

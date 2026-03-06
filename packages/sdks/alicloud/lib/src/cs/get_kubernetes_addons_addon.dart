@@ -20,7 +20,7 @@ class GetKubernetesAddonsAddon {
   /// [name] The name of addon.
   /// [nextVersion] The next version of this addon can be upgraded to.
   /// [required] Whether the addon is a system addon.
-  GetKubernetesAddonsAddon({
+  const GetKubernetesAddonsAddon({
     required this.currentConfig,
     required this.currentVersion,
     required this.name,

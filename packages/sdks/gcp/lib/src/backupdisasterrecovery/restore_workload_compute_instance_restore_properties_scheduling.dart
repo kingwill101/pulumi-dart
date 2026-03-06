@@ -40,7 +40,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
   /// [preemptible] (Optional)
   /// [provisioningModel] Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
   /// [terminationTime] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesScheduling({
+  const RestoreWorkloadComputeInstanceRestorePropertiesScheduling({
     this.automaticRestart,
     this.instanceTerminationAction,
     this.localSsdRecoveryTimeout,

@@ -19,7 +19,7 @@ class GetNodebalancersResult {
   /// [nodebalancers] Required.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetNodebalancersResult({
+  const GetNodebalancersResult({
     this.filters,
     required this.id,
     required this.nodebalancers,

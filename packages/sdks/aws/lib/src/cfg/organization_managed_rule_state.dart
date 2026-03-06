@@ -42,7 +42,7 @@ class OrganizationManagedRuleState {
   /// [ruleIdentifier] Identifier of an available AWS Config Managed Rule to call. For available values, see the [List of AWS Config Managed Rules](https://docs.aws.amazon.com/config/latest/developerguide/managed-rules-by-aws-config.html) documentation
   /// [tagKeyScope] Tag key of AWS resources to evaluate
   /// [tagValueScope] Tag value of AWS resources to evaluate
-  OrganizationManagedRuleState({
+  const OrganizationManagedRuleState({
     this.arn,
     this.description,
     this.excludedAccounts,

@@ -15,7 +15,7 @@ class JobStatusResponse {
   /// [errorResult] Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
   /// [errors] The first errors encountered during the running of the job. The final message includes the number of errors that caused the process to stop. Errors here do not necessarily mean that the job has completed or was unsuccessful.
   /// [state] Running state of the job.
-  JobStatusResponse({
+  const JobStatusResponse({
     required this.errorResult,
     required this.errors,
     required this.state,

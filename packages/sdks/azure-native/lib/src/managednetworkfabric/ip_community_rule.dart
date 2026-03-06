@@ -18,7 +18,7 @@ class IpCommunityRule {
   /// [communityMembers] List the community members of IP Community.
   /// [sequenceNumber] Sequence to insert to/delete from existing route. Prefix lists are evaluated starting with the lowest sequence number and continue down the list until a match is made. Once a match is made, the permit or deny statement is applied to that network and the rest of the list is ignored.
   /// [wellKnownCommunities] Supported well known Community List.
-  IpCommunityRule({
+  const IpCommunityRule({
     required this.action,
     required this.communityMembers,
     required this.sequenceNumber,

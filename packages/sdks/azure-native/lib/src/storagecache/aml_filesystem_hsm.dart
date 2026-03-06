@@ -10,7 +10,7 @@ class AmlFilesystemHsm {
 
   /// Creates a new [AmlFilesystemHsm].
   /// [settings] Specifies HSM settings of the AML file system.
-  AmlFilesystemHsm({
+  const AmlFilesystemHsm({
     this.settings,
   });
 

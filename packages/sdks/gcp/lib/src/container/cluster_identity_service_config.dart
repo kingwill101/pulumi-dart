@@ -8,7 +8,7 @@ class ClusterIdentityServiceConfig {
 
   /// Creates a new [ClusterIdentityServiceConfig].
   /// [enabled] Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
-  ClusterIdentityServiceConfig({
+  const ClusterIdentityServiceConfig({
     this.enabled,
   });
 

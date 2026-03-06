@@ -15,7 +15,7 @@ class GetRepositoryArtifactregistryV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetRepositoryArtifactregistryV1beta1Args({
+  const GetRepositoryArtifactregistryV1beta1Args({
     required this.location,
     this.project,
     required this.repositoryId,

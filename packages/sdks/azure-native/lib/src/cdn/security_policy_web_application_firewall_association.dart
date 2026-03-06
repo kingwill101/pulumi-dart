@@ -13,7 +13,7 @@ class SecurityPolicyWebApplicationFirewallAssociation {
   /// Creates a new [SecurityPolicyWebApplicationFirewallAssociation].
   /// [domains] List of domains.
   /// [patternsToMatch] List of paths
-  SecurityPolicyWebApplicationFirewallAssociation({
+  const SecurityPolicyWebApplicationFirewallAssociation({
     this.domains,
     this.patternsToMatch,
   });

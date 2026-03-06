@@ -13,7 +13,7 @@ class BucketLifecycleRuleItemResponse {
   /// Creates a new [BucketLifecycleRuleItemResponse].
   /// [action] The action to take.
   /// [condition] The condition(s) under which the action will be taken.
-  BucketLifecycleRuleItemResponse({
+  const BucketLifecycleRuleItemResponse({
     required this.action,
     required this.condition,
   });

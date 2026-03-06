@@ -51,7 +51,7 @@ class SiteMonitorState {
   /// [taskState] (Deprecated since v1.262.0) Field `task_state` has been deprecated from provider version 1.262.0. New field `status` instead.
   /// [taskType] The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
   /// [updateTime] (Deprecated since v1.262.0) Field `update_time` has been deprecated from provider version 1.262.0.
-  SiteMonitorState({
+  const SiteMonitorState({
     this.address,
     this.agentGroup,
     this.alertIds,

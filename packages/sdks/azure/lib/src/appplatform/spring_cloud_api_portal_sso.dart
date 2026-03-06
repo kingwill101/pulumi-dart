@@ -17,7 +17,7 @@ class SpringCloudApiPortalSso {
   /// [clientSecret] The secret known only to the application and the authorization server.
   /// [issuerUri] The URI of Issuer Identifier.
   /// [scopes] It defines the specific actions applications can be allowed to do on a user's behalf.
-  SpringCloudApiPortalSso({
+  const SpringCloudApiPortalSso({
     this.clientId,
     this.clientSecret,
     this.issuerUri,

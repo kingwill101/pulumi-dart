@@ -8,7 +8,7 @@ class GetListenersListenerCertificate {
 
   /// Creates a new [GetListenersListenerCertificate].
   /// [certificateId] The ID of the Certificate.
-  GetListenersListenerCertificate({
+  const GetListenersListenerCertificate({
     required this.certificateId,
   });
 

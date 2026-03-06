@@ -33,7 +33,7 @@ class DigitalTwinArgs {
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
   /// [tags] The resource tags.
-  DigitalTwinArgs({
+  const DigitalTwinArgs({
     this.identity,
     this.location,
     this.privateEndpointConnections,

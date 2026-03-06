@@ -13,7 +13,7 @@ class DefenderForContainersJFrogOfferingResponse {
   /// Creates a new [DefenderForContainersJFrogOfferingResponse].
   /// [description] The offering description.
   /// [offeringType] The type of the security offering.
-  DefenderForContainersJFrogOfferingResponse({
+  const DefenderForContainersJFrogOfferingResponse({
     required this.description,
     required this.offeringType,
   });

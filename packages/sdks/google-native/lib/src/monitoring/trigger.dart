@@ -12,7 +12,7 @@ class Trigger {
   /// Creates a new [Trigger].
   /// [count] The absolute number of time series that must fail the predicate for the condition to be triggered.
   /// [percent] The percentage of time series that must fail the predicate for the condition to be triggered.
-  Trigger({
+  const Trigger({
     this.count,
     this.percent,
   });

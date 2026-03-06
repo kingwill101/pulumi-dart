@@ -13,7 +13,7 @@ class HttpScaleRuleResponse {
   /// Creates a new [HttpScaleRuleResponse].
   /// [auth] Authentication secrets for the custom scale rule.
   /// [metadata] Metadata properties to describe http scale rule.
-  HttpScaleRuleResponse({
+  const HttpScaleRuleResponse({
     this.auth,
     this.metadata,
   });

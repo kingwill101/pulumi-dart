@@ -41,7 +41,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
   /// [parameters] The parameters for the RUN_COMMAND task execution. Documented below.
   /// [serviceRoleArn] The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
   /// [timeoutSeconds] If this time is reached and the command has not already started executing, it doesn't run.
-  MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters({
+  const MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters({
     this.cloudwatchConfig,
     this.comment,
     this.documentHash,

@@ -11,7 +11,7 @@ class ListServerlessEndpointKeysResult {
   /// Creates a new [ListServerlessEndpointKeysResult].
   /// [primaryKey] The primary key.
   /// [secondaryKey] The secondary key.
-  ListServerlessEndpointKeysResult({
+  const ListServerlessEndpointKeysResult({
     this.primaryKey,
     this.secondaryKey,
   });

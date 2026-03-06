@@ -58,7 +58,7 @@ class GetFileSystemResult {
   /// [sizeInBytes] Current byte count used by the file system.
   /// [tags] A map of tags to assign to the file system.
   /// [throughputMode] Throughput mode for the file system.
-  GetFileSystemResult({
+  const GetFileSystemResult({
     required this.arn,
     required this.availabilityZoneId,
     required this.availabilityZoneName,

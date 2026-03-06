@@ -161,7 +161,7 @@ class InstanceState {
   /// [vpcId] The VPC ID of the instance.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  InstanceState({
+  const InstanceState({
     this.arbiterVswitchId,
     this.arbiterZoneId,
     this.archVersion,

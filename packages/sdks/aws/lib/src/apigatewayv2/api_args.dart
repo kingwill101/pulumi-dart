@@ -65,7 +65,7 @@ class ApiArgs {
   /// [tags] Map of tags to assign to the API. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [target] Part of _quick create_. Quick create produces an API with an integration, a default catch-all route, and a default stage which is configured to automatically deploy changes.
   /// [version] Version identifier for the API. Must be between 1 and 64 characters in length.
-  ApiArgs({
+  const ApiArgs({
     this.apiKeySelectionExpression,
     this.body,
     this.corsConfiguration,

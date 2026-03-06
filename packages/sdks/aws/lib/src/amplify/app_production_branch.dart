@@ -17,7 +17,7 @@ class AppProductionBranch {
   /// [lastDeployTime] Last deploy time of the production branch.
   /// [status] Status of the production branch.
   /// [thumbnailUrl] Thumbnail URL for the production branch.
-  AppProductionBranch({
+  const AppProductionBranch({
     this.branchName,
     this.lastDeployTime,
     this.status,

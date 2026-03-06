@@ -12,7 +12,7 @@ class SourceIamMemberCondition {
   /// [description] The description of the source (max of 1024 characters).
   /// [expression] Required.
   /// [title] Required.
-  SourceIamMemberCondition({
+  const SourceIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

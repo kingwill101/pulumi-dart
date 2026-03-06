@@ -71,7 +71,7 @@ class InstanceArgs {
   /// [type] Instance type.
   /// [version] Current version of the Data Fusion. Only specifiable in Update.
   /// [zone] Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
-  InstanceArgs({
+  const InstanceArgs({
     this.cryptoKeyConfig,
     this.dataprocServiceAccount,
     this.description,

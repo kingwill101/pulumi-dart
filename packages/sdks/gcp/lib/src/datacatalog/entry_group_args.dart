@@ -26,7 +26,7 @@ class EntryGroupArgs {
   /// [entryGroupId] The id of the entry group to create. The id must begin with a letter or underscore,
   /// [project] The ID of the project in which the resource belongs.
   /// [region] EntryGroup location region.
-  EntryGroupArgs({
+  const EntryGroupArgs({
     this.description,
     this.displayName,
     required this.entryGroupId,

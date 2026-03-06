@@ -60,7 +60,7 @@ class NodeGroupState {
   /// [shareSettings] Share settings for the node group.
   /// [size] The total number of nodes in the node group.
   /// [zone] Zone where this node group is located
-  NodeGroupState({
+  const NodeGroupState({
     this.autoscalingPolicy,
     this.creationTimestamp,
     this.description,

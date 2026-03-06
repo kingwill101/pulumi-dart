@@ -29,7 +29,7 @@ class GetPolicyDocumentArgs {
   /// [sourcePolicyDocuments] List of IAM policy documents that are merged together into the exported document. Statements defined in `source_policy_documents` must have unique `sid`s. Statements with the same `sid` from `override_policy_documents` will override source statements.
   /// [statements] Configuration block for a policy statement. Detailed below.
   /// [version] IAM policy document version. Valid values are `2008-10-17` and `2012-10-17`. Defaults to `2012-10-17`. For more information, see the [AWS IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_version.html).
-  GetPolicyDocumentArgs({
+  const GetPolicyDocumentArgs({
     this.overrideJson,
     this.overridePolicyDocuments,
     this.policyId,

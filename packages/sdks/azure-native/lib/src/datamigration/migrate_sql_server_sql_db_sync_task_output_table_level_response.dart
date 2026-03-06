@@ -51,7 +51,7 @@ class MigrateSqlServerSqlDbSyncTaskOutputTableLevelResponse {
   /// [state] Current state of the table migration
   /// [tableName] Name of the table
   /// [totalChangesApplied] Total number of applied changes
-  MigrateSqlServerSqlDbSyncTaskOutputTableLevelResponse({
+  const MigrateSqlServerSqlDbSyncTaskOutputTableLevelResponse({
     required this.cdcDeleteCounter,
     required this.cdcInsertCounter,
     required this.cdcUpdateCounter,

@@ -20,7 +20,7 @@ class ManagedKubernetesUpgradePolicy {
 
   /// Creates a new [ManagedKubernetesUpgradePolicy].
   /// [controlPlaneOnly] Whether to upgrade only the control plane without upgrading worker nodes. Valid values: `true`, `false`. When set to `true`, only the cluster control plane components will be upgraded, and worker nodes will remain at their current version. Default is `false`.
-  ManagedKubernetesUpgradePolicy({
+  const ManagedKubernetesUpgradePolicy({
     this.controlPlaneOnly,
   });
 

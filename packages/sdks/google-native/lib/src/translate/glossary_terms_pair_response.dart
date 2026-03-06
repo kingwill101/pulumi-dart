@@ -13,7 +13,7 @@ class GlossaryTermsPairResponse {
   /// Creates a new [GlossaryTermsPairResponse].
   /// [sourceTerm] The source term is the term that will get match in the text,
   /// [targetTerm] The term that will replace the match source term.
-  GlossaryTermsPairResponse({
+  const GlossaryTermsPairResponse({
     required this.sourceTerm,
     required this.targetTerm,
   });

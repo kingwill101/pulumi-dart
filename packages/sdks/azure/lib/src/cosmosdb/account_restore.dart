@@ -24,7 +24,7 @@ class AccountRestore {
   /// [restoreTimestampInUtc] The creation time of the database or the collection (Datetime Format `RFC 3339`). Changing this forces a new resource to be created.
   /// [sourceCosmosdbAccountId] The resource ID of the restorable database account from which the restore has to be initiated. The example is `/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}`. Changing this forces a new resource to be created.
   /// [tablesToRestores] A list of specific tables available for restore. Changing this forces a new resource to be created.
-  AccountRestore({
+  const AccountRestore({
     this.databases,
     this.gremlinDatabases,
     required this.restoreTimestampInUtc,

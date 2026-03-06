@@ -17,7 +17,7 @@ class GetGradientaiKnowledgeBaseIndexingJobsResult {
   /// [jobs] Required.
   /// [knowledgeBaseUuid] Required.
   /// [metas] Required.
-  GetGradientaiKnowledgeBaseIndexingJobsResult({
+  const GetGradientaiKnowledgeBaseIndexingJobsResult({
     required this.id,
     required this.jobs,
     required this.knowledgeBaseUuid,

@@ -38,7 +38,7 @@ class GetAccessAssignmentsAssignment {
   /// [targetName] Task target name.
   /// [targetPathName] The path name of the task target in the resource directory.
   /// [targetType] The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
-  GetAccessAssignmentsAssignment({
+  const GetAccessAssignmentsAssignment({
     required this.accessConfigurationId,
     required this.accessConfigurationName,
     required this.directoryId,

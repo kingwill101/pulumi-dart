@@ -22,7 +22,7 @@ class ProxyDefaultTargetGroupState {
   /// [dbProxyName] Name of the RDS DB Proxy.
   /// [name] The name of the default target group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ProxyDefaultTargetGroupState({
+  const ProxyDefaultTargetGroupState({
     this.arn,
     this.connectionPoolConfig,
     this.dbProxyName,

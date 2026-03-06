@@ -15,7 +15,7 @@ class WindowsServerLicensingSettings {
   /// [licenseCost] Licence Cost.
   /// [licensesPerCore] Licenses per core.
   /// [softwareAssuranceCost] Software assurance (SA) cost.
-  WindowsServerLicensingSettings({
+  const WindowsServerLicensingSettings({
     required this.licenseCost,
     required this.licensesPerCore,
     required this.softwareAssuranceCost,

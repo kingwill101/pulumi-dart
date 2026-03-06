@@ -9,7 +9,7 @@ class RemediationPropertiesResponseFailureThreshold {
 
   /// Creates a new [RemediationPropertiesResponseFailureThreshold].
   /// [percentage] A number between 0.0 to 1.0 representing the percentage failure threshold. The remediation will fail if the percentage of failed remediation operations (i.e. failed deployments) exceeds this threshold.
-  RemediationPropertiesResponseFailureThreshold({
+  const RemediationPropertiesResponseFailureThreshold({
     this.percentage,
   });
 

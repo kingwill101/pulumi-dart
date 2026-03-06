@@ -25,7 +25,7 @@ class DocumentArgs {
   /// [documentId] The client-assigned document ID to use for this document during creation.
   /// [fields] The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
   /// [project] The ID of the project in which the resource belongs.
-  DocumentArgs({
+  const DocumentArgs({
     required this.collection,
     this.database,
     required this.documentId,

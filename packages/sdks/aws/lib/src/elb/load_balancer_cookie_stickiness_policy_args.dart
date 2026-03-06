@@ -28,7 +28,7 @@ class LoadBalancerCookieStickinessPolicyArgs {
   /// [loadBalancer] The load balancer to which the policy
   /// [name] The name of the stickiness policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LoadBalancerCookieStickinessPolicyArgs({
+  const LoadBalancerCookieStickinessPolicyArgs({
     this.cookieExpirationPeriod,
     required this.lbPort,
     required this.loadBalancer,

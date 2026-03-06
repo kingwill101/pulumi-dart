@@ -13,7 +13,7 @@ class DomainPm {
   /// Creates a new [DomainPm].
   /// [suspendToDisk] Configures the suspend to disk feature for power management.
   /// [suspendToMem] Configures the suspend to disk feature for power management.
-  DomainPm({
+  const DomainPm({
     this.suspendToDisk,
     this.suspendToMem,
   });

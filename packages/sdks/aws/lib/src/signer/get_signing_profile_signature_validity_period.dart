@@ -9,7 +9,7 @@ class GetSigningProfileSignatureValidityPeriod {
   /// Creates a new [GetSigningProfileSignatureValidityPeriod].
   /// [type] Required.
   /// [value] Required.
-  GetSigningProfileSignatureValidityPeriod({
+  const GetSigningProfileSignatureValidityPeriod({
     required this.type,
     required this.value,
   });

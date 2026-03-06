@@ -55,7 +55,7 @@ class GetRecordsResourceRecordSet {
   /// [ttl] The resource record cache time to live (TTL), in seconds.
   /// [type] The DNS record type.
   /// [weight] Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set.
-  GetRecordsResourceRecordSet({
+  const GetRecordsResourceRecordSet({
     required this.aliasTarget,
     required this.cidrRoutingConfig,
     required this.failover,

@@ -30,7 +30,7 @@ class DeviceArgs {
   /// [lastSyncTime] Most recent time when device synced with this service.
   /// [serialNumber] Serial Number of device. Example: HT82V1A01076.
   /// [wifiMacAddresses] WiFi MAC addresses of device.
-  DeviceArgs({
+  const DeviceArgs({
     this.assetTag,
     this.customer,
     this.deviceId,

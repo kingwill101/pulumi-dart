@@ -37,7 +37,7 @@ class RoutePolicyArgs {
   /// [routePolicyName] Name of the Route Policy.
   /// [statements] Route Policy statements.
   /// [tags] Resource tags.
-  RoutePolicyArgs({
+  const RoutePolicyArgs({
     this.addressFamilyType,
     this.annotation,
     this.defaultAction,

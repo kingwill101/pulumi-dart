@@ -44,7 +44,7 @@ class GetTransitRouterVpcAttachmentsAttachment {
   /// [vpcId] The ID of the VPC.
   /// [vpcOwnerId] The Owner ID of the VPC.
   /// [zoneMappings] The list of zone mapping of the VPC.
-  GetTransitRouterVpcAttachmentsAttachment({
+  const GetTransitRouterVpcAttachmentsAttachment({
     required this.autoPublishRouteEnabled,
     required this.cenId,
     required this.id,

@@ -37,7 +37,7 @@ class GoogleCloudIntegrationsV1alphaValueType {
   /// [jsonValue] Json.
   /// [stringArray] String Array.
   /// [stringValue] String.
-  GoogleCloudIntegrationsV1alphaValueType({
+  const GoogleCloudIntegrationsV1alphaValueType({
     this.booleanArray,
     this.booleanValue,
     this.doubleArray,

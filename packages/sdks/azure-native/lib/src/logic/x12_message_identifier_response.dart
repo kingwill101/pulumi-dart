@@ -9,7 +9,7 @@ class X12MessageIdentifierResponse {
 
   /// Creates a new [X12MessageIdentifierResponse].
   /// [messageId] The message id.
-  X12MessageIdentifierResponse({
+  const X12MessageIdentifierResponse({
     required this.messageId,
   });
 

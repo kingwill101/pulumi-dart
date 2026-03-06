@@ -75,7 +75,7 @@ class NetworkFirewallPolicyRuleState {
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule applies to.
   /// [targetServiceAccounts] A list of service accounts indicating the sets of instances that are applied with this rule.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
-  NetworkFirewallPolicyRuleState({
+  const NetworkFirewallPolicyRuleState({
     this.action,
     this.creationTimestamp,
     this.description,

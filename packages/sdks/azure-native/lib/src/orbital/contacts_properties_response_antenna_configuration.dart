@@ -12,7 +12,7 @@ class ContactsPropertiesResponseAntennaConfiguration {
   /// Creates a new [ContactsPropertiesResponseAntennaConfiguration].
   /// [destinationIp] The destination IP a packet can be sent to. This would for example be the TCP endpoint you would send data to.
   /// [sourceIps] List of Source IP
-  ContactsPropertiesResponseAntennaConfiguration({
+  const ContactsPropertiesResponseAntennaConfiguration({
     this.destinationIp,
     this.sourceIps,
   });

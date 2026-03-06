@@ -32,7 +32,7 @@ class GetApiTagDescriptionResult {
   /// [name] The name of the resource
   /// [tagId] Identifier of the tag in the form of /tags/{tagId}
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiTagDescriptionResult({
+  const GetApiTagDescriptionResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

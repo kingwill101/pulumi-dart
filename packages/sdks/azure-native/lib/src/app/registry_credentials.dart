@@ -18,7 +18,7 @@ class RegistryCredentials {
   /// [passwordSecretRef] The name of the Secret that contains the registry login password
   /// [server] Container Registry Server
   /// [username] Container Registry Username
-  RegistryCredentials({
+  const RegistryCredentials({
     this.identity,
     this.passwordSecretRef,
     this.server,

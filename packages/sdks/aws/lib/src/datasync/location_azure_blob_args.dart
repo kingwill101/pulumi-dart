@@ -37,7 +37,7 @@ class LocationAzureBlobArgs {
   /// [sasConfiguration] The SAS configuration that allows DataSync to access your Azure Blob Storage. See configuration below.
   /// [subdirectory] Path segments if you want to limit your transfer to a virtual directory in the container.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LocationAzureBlobArgs({
+  const LocationAzureBlobArgs({
     this.accessTier,
     required this.agentArns,
     required this.authenticationType,

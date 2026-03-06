@@ -86,7 +86,7 @@ class V2PolicyOrchestratorForFolderState {
   /// [reconciling] Set to true, if the there are ongoing changes being applied by the
   /// [state] State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// [updateTime] Timestamp when the policy orchestrator resource was last modified.
-  V2PolicyOrchestratorForFolderState({
+  const V2PolicyOrchestratorForFolderState({
     this.action,
     this.createTime,
     this.description,

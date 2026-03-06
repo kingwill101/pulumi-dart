@@ -15,7 +15,7 @@ class ImageBlockPublicAccessArgs {
   /// Creates a new [ImageBlockPublicAccessArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] The state of block public access for AMIs at the account level in the configured AWS Region. Valid values: `unblocked` and `block-new-sharing`.
-  ImageBlockPublicAccessArgs({
+  const ImageBlockPublicAccessArgs({
     this.region,
     required this.state,
   });

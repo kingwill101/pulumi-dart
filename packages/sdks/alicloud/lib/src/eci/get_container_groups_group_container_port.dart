@@ -11,7 +11,7 @@ class GetContainerGroupsGroupContainerPort {
   /// Creates a new [GetContainerGroupsGroupContainerPort].
   /// [port] The port number. Valid values: 1 to 65535.
   /// [protocol] Valid values: `TCP` and `UDP`.
-  GetContainerGroupsGroupContainerPort({
+  const GetContainerGroupsGroupContainerPort({
     required this.port,
     required this.protocol,
   });

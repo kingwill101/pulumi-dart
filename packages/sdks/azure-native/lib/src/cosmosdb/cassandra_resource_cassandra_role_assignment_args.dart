@@ -27,7 +27,7 @@ class CassandraResourceCassandraRoleAssignmentArgs {
   /// [roleAssignmentId] The GUID for the Role Assignment.
   /// [roleDefinitionId] The unique identifier for the associated Role Definition.
   /// [scope] The data plane resource path for which access is being granted through this Cassandra Role Assignment.
-  CassandraResourceCassandraRoleAssignmentArgs({
+  const CassandraResourceCassandraRoleAssignmentArgs({
     required this.accountName,
     this.principalId,
     required this.resourceGroupName,

@@ -18,7 +18,7 @@ class IntegrationExporterState {
   /// [instanceId] The ID of the Integration Exporter instance.
   /// [integrationType] The type of prometheus integration.
   /// [param] Exporter configuration parameter json string.
-  IntegrationExporterState({
+  const IntegrationExporterState({
     this.clusterId,
     this.instanceId,
     this.integrationType,

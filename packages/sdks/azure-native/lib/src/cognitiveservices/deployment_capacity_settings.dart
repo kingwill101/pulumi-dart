@@ -12,7 +12,7 @@ class DeploymentCapacitySettings {
   /// Creates a new [DeploymentCapacitySettings].
   /// [designatedCapacity] The designated capacity.
   /// [priority] The priority of this capacity setting.
-  DeploymentCapacitySettings({
+  const DeploymentCapacitySettings({
     this.designatedCapacity,
     this.priority,
   });

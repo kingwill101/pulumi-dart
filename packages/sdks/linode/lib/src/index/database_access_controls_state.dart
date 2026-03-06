@@ -15,7 +15,7 @@ class DatabaseAccessControlsState {
   /// [allowLists] A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
   /// [databaseId] The unique ID of the target database.
   /// [databaseType] The unique type of the target database. (`mysql`, `postgresql`)
-  DatabaseAccessControlsState({
+  const DatabaseAccessControlsState({
     this.allowLists,
     this.databaseId,
     this.databaseType,

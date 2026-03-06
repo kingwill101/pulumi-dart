@@ -39,7 +39,7 @@ class CertificateArgs {
   /// [region] Region. This parameter is required if the type is CAS.
   /// [siteId] The site ID, which can be obtained by calling the ListSites interface.
   /// [type] Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
-  CertificateArgs({
+  const CertificateArgs({
     this.casId,
     this.certId,
     this.certName,

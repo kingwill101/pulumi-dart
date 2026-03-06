@@ -36,7 +36,7 @@ class AppVersionSnapshotAppAudioProcessingConfig {
   /// [bargeInConfigs] (Output)
   /// [inactivityTimeout] (Output)
   /// [synthesizeSpeechConfigs] (Output)
-  AppVersionSnapshotAppAudioProcessingConfig({
+  const AppVersionSnapshotAppAudioProcessingConfig({
     this.ambientSoundConfigs,
     this.bargeInConfigs,
     this.inactivityTimeout,

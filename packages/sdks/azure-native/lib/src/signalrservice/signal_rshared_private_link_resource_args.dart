@@ -27,7 +27,7 @@ class SignalRSharedPrivateLinkResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource.
-  SignalRSharedPrivateLinkResourceArgs({
+  const SignalRSharedPrivateLinkResourceArgs({
     required this.groupId,
     required this.privateLinkResourceId,
     this.requestMessage,

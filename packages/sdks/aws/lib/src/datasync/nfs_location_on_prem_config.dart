@@ -8,7 +8,7 @@ class NfsLocationOnPremConfig {
 
   /// Creates a new [NfsLocationOnPremConfig].
   /// [agentArns] List of Amazon Resource Names (ARNs) of the DataSync Agents used to connect to the NFS server.
-  NfsLocationOnPremConfig({
+  const NfsLocationOnPremConfig({
     required this.agentArns,
   });
 

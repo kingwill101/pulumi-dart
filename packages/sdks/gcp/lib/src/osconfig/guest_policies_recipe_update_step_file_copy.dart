@@ -23,7 +23,7 @@ class GuestPoliciesRecipeUpdateStepFileCopy {
   /// [destination] The absolute path on the instance to put the file.
   /// [overwrite] Whether to allow this step to overwrite existing files.If this is false and the file already exists the file
   /// [permissions] Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users
-  GuestPoliciesRecipeUpdateStepFileCopy({
+  const GuestPoliciesRecipeUpdateStepFileCopy({
     required this.artifactId,
     required this.destination,
     this.overwrite,

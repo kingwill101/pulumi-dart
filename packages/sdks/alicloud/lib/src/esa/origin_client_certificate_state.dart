@@ -30,7 +30,7 @@ class OriginClientCertificateState {
   /// [privateKey] The private key of the certificate.
   /// [siteId] Site ID.
   /// [status] The status of the certificate.
-  OriginClientCertificateState({
+  const OriginClientCertificateState({
     this.certificate,
     this.createTime,
     this.hostnames,

@@ -17,7 +17,7 @@ class GoogleCloudAiplatformV1PipelineJobDetailResponse {
   /// [pipelineContext] The context of the pipeline.
   /// [pipelineRunContext] The context of the current pipeline run.
   /// [taskDetails] The runtime details of the tasks under the pipeline.
-  GoogleCloudAiplatformV1PipelineJobDetailResponse({
+  const GoogleCloudAiplatformV1PipelineJobDetailResponse({
     required this.pipelineContext,
     required this.pipelineRunContext,
     required this.taskDetails,

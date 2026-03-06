@@ -10,7 +10,7 @@ class DownwardAPIProjectionPatch {
 
   /// Creates a new [DownwardAPIProjectionPatch].
   /// [items] Items is a list of DownwardAPIVolume file
-  DownwardAPIProjectionPatch({
+  const DownwardAPIProjectionPatch({
     this.items,
   });
 

@@ -21,7 +21,7 @@ class GetChartRepositoriesArgs {
   /// [instanceId] InstanceId.
   /// [nameRegex] A regex string to filter results by repository name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetChartRepositoriesArgs({
+  const GetChartRepositoriesArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

@@ -24,7 +24,7 @@ class DatabaseArgs {
   /// [name] Specifies the name of the PostgreSQL Database, which needs [to be a valid PostgreSQL identifier](https://www.postgresql.org/docs/current/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS). Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
-  DatabaseArgs({
+  const DatabaseArgs({
     required this.charset,
     required this.collation,
     this.name,

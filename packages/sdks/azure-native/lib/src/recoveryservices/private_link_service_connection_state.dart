@@ -15,7 +15,7 @@ class PrivateLinkServiceConnectionState {
   /// [actionsRequired] Gets or sets actions required
   /// [description] Gets or sets description
   /// [status] Gets or sets the status
-  PrivateLinkServiceConnectionState({
+  const PrivateLinkServiceConnectionState({
     this.actionsRequired,
     this.description,
     this.status,

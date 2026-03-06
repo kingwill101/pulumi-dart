@@ -33,7 +33,7 @@ class HciNetworkInterfaceState {
   /// [name] The name which should be used for this Azure Stack HCI Network Interface. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Azure Stack HCI Network Interface should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Network Interface.
-  HciNetworkInterfaceState({
+  const HciNetworkInterfaceState({
     this.customLocationId,
     this.dnsServers,
     this.ipConfiguration,

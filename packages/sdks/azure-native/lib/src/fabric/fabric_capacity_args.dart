@@ -29,7 +29,7 @@ class FabricCapacityArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU details
   /// [tags] Resource tags.
-  FabricCapacityArgs({
+  const FabricCapacityArgs({
     required this.administration,
     this.capacityName,
     this.location,

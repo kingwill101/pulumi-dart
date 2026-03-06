@@ -13,7 +13,7 @@ class LoginServerPropertiesResponse {
   /// Creates a new [LoginServerPropertiesResponse].
   /// [host] The host of the connected registry. Can be FQDN or IP.
   /// [tls] The TLS properties of the connected registry login server.
-  LoginServerPropertiesResponse({
+  const LoginServerPropertiesResponse({
     required this.host,
     required this.tls,
   });

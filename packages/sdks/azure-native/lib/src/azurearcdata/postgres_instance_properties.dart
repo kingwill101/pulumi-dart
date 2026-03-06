@@ -22,7 +22,7 @@ class PostgresInstanceProperties {
   /// [dataControllerId] The data controller id
   /// [k8sRaw] The raw kubernetes information
   /// [lastUploadedDate] Last uploaded date from Kubernetes cluster. Defaults to current date time
-  PostgresInstanceProperties({
+  const PostgresInstanceProperties({
     this.admin,
     this.basicLoginInformation,
     this.dataControllerId,

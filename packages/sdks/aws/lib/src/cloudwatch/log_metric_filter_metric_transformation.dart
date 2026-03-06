@@ -23,7 +23,7 @@ class LogMetricFilterMetricTransformation {
   /// [namespace] The destination namespace of the CloudWatch metric.
   /// [unit] The unit to assign to the metric. If you omit this, the unit is set as `None`.
   /// [value] What to publish to the metric. For example, if you're counting the occurrences of a particular term like "Error", the value will be "1" for each occurrence. If you're counting the bytes transferred the published value will be the value in the log event.
-  LogMetricFilterMetricTransformation({
+  const LogMetricFilterMetricTransformation({
     this.defaultValue,
     this.dimensions,
     required this.name,

@@ -16,7 +16,7 @@ class GetSecretIamPolicyArgs {
   /// Creates a new [GetSecretIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [secretId] Used to find the parent resource to bind the IAM policy to
-  GetSecretIamPolicyArgs({
+  const GetSecretIamPolicyArgs({
     this.project,
     required this.secretId,
   });

@@ -21,7 +21,7 @@ class GetInstanceStorageConfigArgs {
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceType] A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `SCHEDULED_REPORTS` |  `SCREEN_RECORDINGS`.
-  GetInstanceStorageConfigArgs({
+  const GetInstanceStorageConfigArgs({
     required this.associationId,
     required this.instanceId,
     this.region,

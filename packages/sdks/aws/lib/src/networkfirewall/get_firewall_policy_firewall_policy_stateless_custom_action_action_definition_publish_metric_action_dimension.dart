@@ -7,7 +7,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublis
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension].
   /// [value] Required.
-  GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension({
+  const GetFirewallPolicyFirewallPolicyStatelessCustomActionActionDefinitionPublishMetricActionDimension({
     required this.value,
   });
 

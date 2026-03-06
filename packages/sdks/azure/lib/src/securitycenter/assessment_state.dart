@@ -19,7 +19,7 @@ class AssessmentState {
   /// [assessmentPolicyId] The ID of the security Assessment policy to apply to this resource. Changing this forces a new security Assessment to be created.
   /// [status] A `status` block as defined below.
   /// [targetResourceId] The ID of the target resource. Changing this forces a new security Assessment to be created.
-  AssessmentState({
+  const AssessmentState({
     this.additionalData,
     this.assessmentPolicyId,
     this.status,

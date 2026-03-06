@@ -7,7 +7,7 @@ class WafRuleSharedMatchCriteriaCriteriaCriteria {
 
   /// Creates a new [WafRuleSharedMatchCriteriaCriteriaCriteria].
   /// [matchType] Optional.
-  WafRuleSharedMatchCriteriaCriteriaCriteria({
+  const WafRuleSharedMatchCriteriaCriteriaCriteria({
     this.matchType,
   });
 

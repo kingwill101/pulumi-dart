@@ -13,7 +13,7 @@ class ListIotHubResourceKeysResult {
   /// Creates a new [ListIotHubResourceKeysResult].
   /// [nextLink] The next link.
   /// [value] The list of shared access policies.
-  ListIotHubResourceKeysResult({
+  const ListIotHubResourceKeysResult({
     required this.nextLink,
     this.value,
   });

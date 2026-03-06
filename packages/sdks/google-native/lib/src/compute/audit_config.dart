@@ -16,7 +16,7 @@ class AuditConfig {
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [exemptedMembers] This is deprecated and has no effect. Do not use.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfig({
+  const AuditConfig({
     this.auditLogConfigs,
     this.exemptedMembers,
     this.service,

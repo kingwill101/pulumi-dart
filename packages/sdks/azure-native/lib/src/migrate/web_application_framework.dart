@@ -12,7 +12,7 @@ class WebApplicationFramework {
   /// Creates a new [WebApplicationFramework].
   /// [name] Gets or sets Name of the framework.
   /// [version] Gets or sets Version of the framework.
-  WebApplicationFramework({
+  const WebApplicationFramework({
     this.name,
     this.version,
   });

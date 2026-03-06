@@ -14,7 +14,7 @@ class PlanWorkflowStepEcsCapacityIncreaseConfigService {
   /// [crossAccountRole] Optional.
   /// [externalId] Optional.
   /// [serviceArn] ARN of the ECS service.
-  PlanWorkflowStepEcsCapacityIncreaseConfigService({
+  const PlanWorkflowStepEcsCapacityIncreaseConfigService({
     required this.clusterArn,
     this.crossAccountRole,
     this.externalId,

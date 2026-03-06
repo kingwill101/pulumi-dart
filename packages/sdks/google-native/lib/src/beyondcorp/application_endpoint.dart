@@ -12,7 +12,7 @@ class ApplicationEndpoint {
   /// Creates a new [ApplicationEndpoint].
   /// [host] Hostname or IP address of the remote application endpoint.
   /// [port] Port of the remote application endpoint.
-  ApplicationEndpoint({
+  const ApplicationEndpoint({
     required this.host,
     required this.port,
   });

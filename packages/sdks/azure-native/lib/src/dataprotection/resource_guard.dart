@@ -8,7 +8,7 @@ class ResourceGuard {
 
   /// Creates a new [ResourceGuard].
   /// [vaultCriticalOperationExclusionList] List of critical operations which are not protected by this resourceGuard
-  ResourceGuard({
+  const ResourceGuard({
     this.vaultCriticalOperationExclusionList,
   });
 

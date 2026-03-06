@@ -10,7 +10,7 @@ class ManualResourcePredictionsProfile {
 
   /// Creates a new [ManualResourcePredictionsProfile].
   /// [kind] Determines how the stand-by scheme should be provided.
-  ManualResourcePredictionsProfile({
+  const ManualResourcePredictionsProfile({
     required this.kind,
   });
 

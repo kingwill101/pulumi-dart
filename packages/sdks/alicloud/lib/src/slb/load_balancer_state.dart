@@ -82,7 +82,7 @@ class LoadBalancerState {
   /// [status] The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
   /// [tags] A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
   /// [vswitchId] The vSwitch ID to launch in. If `address_type` is internet, it will be ignore.
-  LoadBalancerState({
+  const LoadBalancerState({
     this.address,
     this.addressIpVersion,
     this.addressType,

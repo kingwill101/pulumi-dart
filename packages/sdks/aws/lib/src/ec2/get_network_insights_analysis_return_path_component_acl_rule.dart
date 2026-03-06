@@ -18,7 +18,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentAclRule {
   /// [protocol] Required.
   /// [ruleAction] Required.
   /// [ruleNumber] Required.
-  GetNetworkInsightsAnalysisReturnPathComponentAclRule({
+  const GetNetworkInsightsAnalysisReturnPathComponentAclRule({
     required this.cidr,
     required this.egress,
     required this.portRanges,

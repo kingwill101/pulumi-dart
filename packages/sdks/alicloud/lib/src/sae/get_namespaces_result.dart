@@ -20,7 +20,7 @@ class GetNamespacesResult {
   /// [names] Required.
   /// [namespaces] Required.
   /// [outputFile] Optional.
-  GetNamespacesResult({
+  const GetNamespacesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

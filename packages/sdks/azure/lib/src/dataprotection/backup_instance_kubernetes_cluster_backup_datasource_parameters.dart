@@ -26,7 +26,7 @@ class BackupInstanceKubernetesClusterBackupDatasourceParameters {
   /// [includedResourceTypes] Specifies the resource types to be included during backup. Changing this forces a new resource to be created.
   /// [labelSelectors] Specifies the resources with such label selectors to be included during backup. Changing this forces a new resource to be created.
   /// [volumeSnapshotEnabled] Whether to take volume snapshots during backup. Default to `false`. Changing this forces a new resource to be created.
-  BackupInstanceKubernetesClusterBackupDatasourceParameters({
+  const BackupInstanceKubernetesClusterBackupDatasourceParameters({
     this.clusterScopedResourcesEnabled,
     this.excludedNamespaces,
     this.excludedResourceTypes,

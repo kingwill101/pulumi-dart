@@ -11,7 +11,7 @@ class ResourceGroupPolicyAssignmentOverrideSelector {
   /// [ins] Optional.
   /// [kind] Optional.
   /// [notIns] Optional.
-  ResourceGroupPolicyAssignmentOverrideSelector({
+  const ResourceGroupPolicyAssignmentOverrideSelector({
     this.ins,
     this.kind,
     this.notIns,

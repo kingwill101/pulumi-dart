@@ -15,7 +15,7 @@ class GetVpnTunnelComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [vpnTunnel] Required.
-  GetVpnTunnelComputeBetaArgs({
+  const GetVpnTunnelComputeBetaArgs({
     this.project,
     required this.region,
     required this.vpnTunnel,

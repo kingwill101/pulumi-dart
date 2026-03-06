@@ -12,7 +12,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions].
   /// [identifyingFields] The columns that are the primary keys for table objects included in ContentItem. A copy of this
-  PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions({
+  const PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions({
     this.identifyingFields,
   });
 

@@ -25,7 +25,7 @@ class GetInstancesArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [renewStatus] The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.instanceId,
     this.outputFile,

@@ -32,7 +32,7 @@ class NamespaceNetworkRuleSetArgs {
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [trustedServiceAccessEnabled] Value that indicates whether Trusted Service Access is Enabled or not.
   /// [virtualNetworkRules] List VirtualNetwork Rules
-  NamespaceNetworkRuleSetArgs({
+  const NamespaceNetworkRuleSetArgs({
     this.defaultAction,
     this.ipRules,
     required this.namespaceName,

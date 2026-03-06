@@ -40,7 +40,7 @@ class GooglePrivacyDlpV2InspectConfig {
   /// [minLikelihood] Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
   /// [minLikelihoodPerInfoType] Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood. The system only returns a finding if its likelihood is above this threshold. If this field is not set, the system uses the InspectConfig min_likelihood.
   /// [ruleSet] Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
-  GooglePrivacyDlpV2InspectConfig({
+  const GooglePrivacyDlpV2InspectConfig({
     this.contentOptions,
     this.customInfoTypes,
     this.excludeInfoTypes,

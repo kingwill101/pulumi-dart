@@ -120,7 +120,7 @@ class GetKubernetesClustersCluster {
   /// [workerNumbers] The ECS instance node number in the current container cluster.
   /// [workerPeriod] Worker payment period.
   /// [workerPeriodUnit] Worker payment period unit.
-  GetKubernetesClustersCluster({
+  const GetKubernetesClustersCluster({
     required this.availabilityZone,
     required this.clusterNetworkType,
     required this.connections,

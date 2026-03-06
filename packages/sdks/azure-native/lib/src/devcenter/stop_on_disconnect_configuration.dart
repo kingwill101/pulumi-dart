@@ -12,7 +12,7 @@ class StopOnDisconnectConfiguration {
   /// Creates a new [StopOnDisconnectConfiguration].
   /// [gracePeriodMinutes] The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
   /// [status] Whether the feature to stop the Dev Box on disconnect once the grace period has lapsed is enabled.
-  StopOnDisconnectConfiguration({
+  const StopOnDisconnectConfiguration({
     this.gracePeriodMinutes,
     this.status,
   });

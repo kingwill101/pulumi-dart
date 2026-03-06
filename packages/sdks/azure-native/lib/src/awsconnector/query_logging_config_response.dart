@@ -9,7 +9,7 @@ class QueryLoggingConfigResponse {
 
   /// Creates a new [QueryLoggingConfigResponse].
   /// [cloudWatchLogsLogGroupArn] The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.
-  QueryLoggingConfigResponse({
+  const QueryLoggingConfigResponse({
     this.cloudWatchLogsLogGroupArn,
   });
 

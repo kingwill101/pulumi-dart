@@ -34,7 +34,7 @@ class GetAppGatewayResult {
   /// [state] Required.
   /// [type] Required.
   /// [uri] Required.
-  GetAppGatewayResult({
+  const GetAppGatewayResult({
     required this.allocatedConnections,
     required this.displayName,
     required this.effectiveLabels,

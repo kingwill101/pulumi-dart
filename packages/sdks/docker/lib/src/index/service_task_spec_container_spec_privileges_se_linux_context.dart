@@ -20,7 +20,7 @@ class ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext {
   /// [role] SELinux role label
   /// [type] SELinux type label
   /// [user] SELinux user label
-  ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext({
+  const ServiceTaskSpecContainerSpecPrivilegesSeLinuxContext({
     this.disable,
     this.level,
     this.role,

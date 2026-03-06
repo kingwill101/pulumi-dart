@@ -11,7 +11,7 @@ class RunCommandErrorBlobManagedIdentity {
   /// Creates a new [RunCommandErrorBlobManagedIdentity].
   /// [clientId] The client ID of the managed identity.
   /// [objectId] The object ID of the managed identity.
-  RunCommandErrorBlobManagedIdentity({
+  const RunCommandErrorBlobManagedIdentity({
     this.clientId,
     this.objectId,
   });

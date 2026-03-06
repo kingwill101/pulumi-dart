@@ -14,7 +14,7 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestination {
   /// [host] Host
   /// [port] port number
   /// [serviceAttachment] Service Attachment
-  ConnectionEventingConfigRegistrationDestinationConfigDestination({
+  const ConnectionEventingConfigRegistrationDestinationConfigDestination({
     this.host,
     this.port,
     this.serviceAttachment,

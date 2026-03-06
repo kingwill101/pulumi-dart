@@ -14,7 +14,7 @@ class GetRegionInstanceTemplateSchedulingNodeAffinity {
   /// [key] The key for the node affinity label.
   /// [operator] The operator. Can be `IN` for node-affinities
   /// [values] Required.
-  GetRegionInstanceTemplateSchedulingNodeAffinity({
+  const GetRegionInstanceTemplateSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

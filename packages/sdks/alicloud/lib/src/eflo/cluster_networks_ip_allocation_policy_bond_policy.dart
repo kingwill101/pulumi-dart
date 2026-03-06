@@ -12,7 +12,7 @@ class ClusterNetworksIpAllocationPolicyBondPolicy {
   /// Creates a new [ClusterNetworksIpAllocationPolicyBondPolicy].
   /// [bondDefaultSubnet] Default bond cluster subnet
   /// [bonds] Bond information See `bonds` below.
-  ClusterNetworksIpAllocationPolicyBondPolicy({
+  const ClusterNetworksIpAllocationPolicyBondPolicy({
     this.bondDefaultSubnet,
     this.bonds,
   });

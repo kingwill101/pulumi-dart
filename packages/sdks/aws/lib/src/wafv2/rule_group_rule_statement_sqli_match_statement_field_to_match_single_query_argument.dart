@@ -8,7 +8,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
 
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument({
+  const RuleGroupRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
 

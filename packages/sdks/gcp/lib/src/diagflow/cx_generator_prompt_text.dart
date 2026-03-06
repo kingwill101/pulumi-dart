@@ -8,7 +8,7 @@ class CxGeneratorPromptText {
 
   /// Creates a new [CxGeneratorPromptText].
   /// [text] Text input which can be used for prompt or banned phrases.
-  CxGeneratorPromptText({
+  const CxGeneratorPromptText({
     this.text,
   });
 

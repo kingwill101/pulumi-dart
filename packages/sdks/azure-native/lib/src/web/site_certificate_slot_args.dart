@@ -54,7 +54,7 @@ class SiteCertificateSlotArgs {
   /// [serverFarmId] Resource ID of the associated App Service plan.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
   /// [tags] Resource tags.
-  SiteCertificateSlotArgs({
+  const SiteCertificateSlotArgs({
     this.canonicalName,
     this.certificateName,
     this.domainValidationMethod,

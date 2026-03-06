@@ -145,7 +145,7 @@ class GetManagedInstanceResult {
   /// [vCores] The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
   /// [virtualClusterId] Virtual cluster resource id for the Managed Instance.
   /// [zoneRedundant] Whether or not the multi-az is enabled.
-  GetManagedInstanceResult({
+  const GetManagedInstanceResult({
     this.administratorLogin,
     this.administrators,
     this.authenticationMetadata,

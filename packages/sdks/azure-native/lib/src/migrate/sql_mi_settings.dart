@@ -12,7 +12,7 @@ class SqlMiSettings {
   /// Creates a new [SqlMiSettings].
   /// [azureSqlInstanceType] Gets or sets the azure PAAS SQL instance type.
   /// [azureSqlServiceTier] Gets or sets the azure SQL service tier.
-  SqlMiSettings({
+  const SqlMiSettings({
     this.azureSqlInstanceType,
     this.azureSqlServiceTier,
   });

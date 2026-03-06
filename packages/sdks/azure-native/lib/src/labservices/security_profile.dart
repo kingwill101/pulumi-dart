@@ -10,7 +10,7 @@ class SecurityProfile {
 
   /// Creates a new [SecurityProfile].
   /// [openAccess] Whether any user or only specified users can register to a lab.
-  SecurityProfile({
+  const SecurityProfile({
     this.openAccess,
   });
 

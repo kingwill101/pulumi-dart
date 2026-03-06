@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionChallengeCustomRequestHandling {
 
   /// Creates a new [GetManagedRuleGroupRuleActionChallengeCustomRequestHandling].
   /// [insertHeaders] Required.
-  GetManagedRuleGroupRuleActionChallengeCustomRequestHandling({
+  const GetManagedRuleGroupRuleActionChallengeCustomRequestHandling({
     required this.insertHeaders,
   });
 

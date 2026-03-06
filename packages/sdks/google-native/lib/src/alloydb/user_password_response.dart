@@ -12,7 +12,7 @@ class UserPasswordResponse {
   /// Creates a new [UserPasswordResponse].
   /// [password] The initial password for the user.
   /// [user] The database username.
-  UserPasswordResponse({
+  const UserPasswordResponse({
     required this.password,
     required this.user,
   });

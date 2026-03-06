@@ -8,7 +8,7 @@ class StreamProcessorNotificationChannel {
 
   /// Creates a new [StreamProcessorNotificationChannel].
   /// [snsTopicArn] The Amazon Resource Number (ARN) of the Amazon Amazon Simple Notification Service topic to which Amazon Rekognition posts the completion status.
-  StreamProcessorNotificationChannel({
+  const StreamProcessorNotificationChannel({
     this.snsTopicArn,
   });
 

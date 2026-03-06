@@ -29,7 +29,7 @@ class VirtualNetworkPropertiesSubnets {
   /// [name] Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [routeTable] RouteTable for the subnet
   /// [vlan] Vlan to use for the subnet
-  VirtualNetworkPropertiesSubnets({
+  const VirtualNetworkPropertiesSubnets({
     this.addressPrefix,
     this.addressPrefixes,
     this.ipAllocationMethod,

@@ -130,7 +130,7 @@ class ServiceArgs {
   /// [volumeConfiguration] Configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume. See below.
   /// [vpcLatticeConfigurations] The VPC Lattice configuration for your service that allows Lattice to connect, secure, and monitor your service across multiple accounts and VPCs. See below.
   /// [waitForSteadyState] If `true`, this provider will wait for the service to reach a steady state (like [`aws ecs wait services-stable`](https://docs.aws.amazon.com/cli/latest/reference/ecs/wait/services-stable.html)) before continuing. Default `false`.
-  ServiceArgs({
+  const ServiceArgs({
     this.alarms,
     this.availabilityZoneRebalancing,
     this.capacityProviderStrategies,

@@ -9,7 +9,7 @@ class NamedResourcesStringSlice {
 
   /// Creates a new [NamedResourcesStringSlice].
   /// [strings] Strings is the slice of strings.
-  NamedResourcesStringSlice({
+  const NamedResourcesStringSlice({
     required this.strings,
   });
 

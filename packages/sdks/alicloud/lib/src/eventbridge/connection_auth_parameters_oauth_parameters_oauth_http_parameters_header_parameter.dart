@@ -14,7 +14,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter 
   /// [isValueSecret] Specifies whether to enable authentication.
   /// [key] The key of the request path.
   /// [value] The key of the request path.
-  ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter({
+  const ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter({
     this.isValueSecret,
     this.key,
     this.value,

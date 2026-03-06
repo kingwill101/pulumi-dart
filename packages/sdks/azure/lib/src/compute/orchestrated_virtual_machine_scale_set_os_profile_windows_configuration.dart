@@ -50,7 +50,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration {
   /// [secrets] One or more `secret` blocks as defined below.
   /// [timezone] Specifies the time zone of the virtual machine, the possible values are defined [here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   /// [winrmListeners] One or more `winrm_listener` blocks as defined below. Changing this forces a new resource to be created.
-  OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration({
+  const OrchestratedVirtualMachineScaleSetOsProfileWindowsConfiguration({
     this.additionalUnattendContents,
     required this.adminPassword,
     required this.adminUsername,

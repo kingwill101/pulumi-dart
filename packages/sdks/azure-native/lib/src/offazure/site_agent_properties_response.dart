@@ -21,7 +21,7 @@ class SiteAgentPropertiesResponse {
   /// [keyVaultUri] Gets or sets the key vault URI.
   /// [lastHeartBeatUtc] Gets the last heartbeat time of the agent in UTC.
   /// [version] Gets the version of the agent.
-  SiteAgentPropertiesResponse({
+  const SiteAgentPropertiesResponse({
     required this.id,
     this.keyVaultId,
     this.keyVaultUri,

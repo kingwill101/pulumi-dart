@@ -24,7 +24,7 @@ class ContactProfileLinkChannel {
   /// [endPoints] Customer End point to store/retrieve data during a contact. An `end_point` block as defined below.
   /// [modulationConfiguration] Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
   /// [name] Name of the channel.
-  ContactProfileLinkChannel({
+  const ContactProfileLinkChannel({
     required this.bandwidthMhz,
     required this.centerFrequencyMhz,
     this.demodulationConfiguration,

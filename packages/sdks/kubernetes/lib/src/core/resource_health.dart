@@ -20,7 +20,7 @@ class ResourceHealth {
   /// Creates a new [ResourceHealth].
   /// [health] Health of the resource. can be one of:
   /// [resourceID] ResourceID is the unique identifier of the resource. See the ResourceID type for more information.
-  ResourceHealth({
+  const ResourceHealth({
     this.health,
     required this.resourceID,
   });

@@ -15,7 +15,7 @@ class GatewaySmbUserState {
   /// [gatewayId] The Gateway ID of the Gateway SMB User.
   /// [password] The password of the Gateway SMB User.
   /// [username] The username of the Gateway SMB User.
-  GatewaySmbUserState({
+  const GatewaySmbUserState({
     this.gatewayId,
     this.password,
     this.username,

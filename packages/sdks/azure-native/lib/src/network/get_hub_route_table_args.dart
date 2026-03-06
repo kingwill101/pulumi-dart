@@ -18,7 +18,7 @@ class GetHubRouteTableArgs {
   /// [resourceGroupName] The resource group name of the VirtualHub.
   /// [routeTableName] The name of the RouteTable.
   /// [virtualHubName] The name of the VirtualHub.
-  GetHubRouteTableArgs({
+  const GetHubRouteTableArgs({
     required this.resourceGroupName,
     required this.routeTableName,
     required this.virtualHubName,

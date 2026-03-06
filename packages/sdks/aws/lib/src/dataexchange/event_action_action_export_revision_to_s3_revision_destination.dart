@@ -12,7 +12,7 @@ class EventActionActionExportRevisionToS3RevisionDestination {
   /// Creates a new [EventActionActionExportRevisionToS3RevisionDestination].
   /// [bucket] The S3 bucket where the revision will be exported.
   /// [keyPattern] Pattern for naming revisions in the S3 bucket.
-  EventActionActionExportRevisionToS3RevisionDestination({
+  const EventActionActionExportRevisionToS3RevisionDestination({
     required this.bucket,
     this.keyPattern,
   });

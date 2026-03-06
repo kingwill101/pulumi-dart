@@ -12,7 +12,7 @@ class GetDbNodesArgs {
 
   /// Creates a new [GetDbNodesArgs].
   /// [cloudVmClusterId] The id of the Cloud VM cluster.
-  GetDbNodesArgs({
+  const GetDbNodesArgs({
     required this.cloudVmClusterId,
   });
 

@@ -10,7 +10,7 @@ class TableMetadataIcebergSchema {
 
   /// Creates a new [TableMetadataIcebergSchema].
   /// [fields] List of schema fields for the Iceberg table. Each field defines a column in the table schema.
-  TableMetadataIcebergSchema({
+  const TableMetadataIcebergSchema({
     required this.fields,
   });
 

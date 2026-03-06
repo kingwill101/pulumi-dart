@@ -11,7 +11,7 @@ class JobScheduling {
   /// Creates a new [JobScheduling].
   /// [maxFailuresPerHour] Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
   /// [maxFailuresTotal] Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
-  JobScheduling({
+  const JobScheduling({
     required this.maxFailuresPerHour,
     required this.maxFailuresTotal,
   });

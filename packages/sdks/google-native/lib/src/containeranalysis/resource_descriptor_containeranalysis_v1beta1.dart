@@ -19,7 +19,7 @@ class ResourceDescriptorContaineranalysisV1beta1 {
   /// [mediaType] Optional.
   /// [name] Optional.
   /// [uri] Optional.
-  ResourceDescriptorContaineranalysisV1beta1({
+  const ResourceDescriptorContaineranalysisV1beta1({
     this.annotations,
     this.content,
     this.digest,

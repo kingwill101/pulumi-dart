@@ -33,7 +33,7 @@ class DelimitedTextSource {
   /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [storeSettings] DelimitedText store settings.
   /// [type] Copy source type.
-  DelimitedTextSource({
+  const DelimitedTextSource({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.formatSettings,

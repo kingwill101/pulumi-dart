@@ -8,7 +8,7 @@ class DataCollectionRuleDestinationsAzureMonitorMetrics {
 
   /// Creates a new [DataCollectionRuleDestinationsAzureMonitorMetrics].
   /// [name] The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
-  DataCollectionRuleDestinationsAzureMonitorMetrics({
+  const DataCollectionRuleDestinationsAzureMonitorMetrics({
     required this.name,
   });
 

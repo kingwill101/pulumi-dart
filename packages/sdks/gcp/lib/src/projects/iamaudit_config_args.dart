@@ -20,7 +20,7 @@ class IAMAuditConfigArgs {
   /// [auditLogConfigs] The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
   /// [project] The project id of the target project. This is not
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-  IAMAuditConfigArgs({
+  const IAMAuditConfigArgs({
     required this.auditLogConfigs,
     required this.project,
     required this.service,

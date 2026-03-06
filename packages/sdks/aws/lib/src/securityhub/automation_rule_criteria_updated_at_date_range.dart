@@ -11,7 +11,7 @@ class AutomationRuleCriteriaUpdatedAtDateRange {
   /// Creates a new [AutomationRuleCriteriaUpdatedAtDateRange].
   /// [unit] A date range unit for the date filter. Valid values: `DAYS`.
   /// [value] A date range value for the date filter, provided as an Integer.
-  AutomationRuleCriteriaUpdatedAtDateRange({
+  const AutomationRuleCriteriaUpdatedAtDateRange({
     required this.unit,
     required this.value,
   });

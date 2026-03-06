@@ -33,7 +33,7 @@ class GetWebAppPrivateEndpointConnectionSlotResult {
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [provisioningState] Required.
   /// [type] Resource type.
-  GetWebAppPrivateEndpointConnectionSlotResult({
+  const GetWebAppPrivateEndpointConnectionSlotResult({
     required this.azureApiVersion,
     required this.id,
     this.ipAddresses,

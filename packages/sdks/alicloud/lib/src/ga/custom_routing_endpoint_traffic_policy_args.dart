@@ -19,7 +19,7 @@ class CustomRoutingEndpointTrafficPolicyArgs {
   /// [address] The IP address of the destination to which traffic is allowed.
   /// [endpointId] The ID of the Custom Routing Endpoint.
   /// [portRanges] Port rangeSee the following. See `port_ranges` below.
-  CustomRoutingEndpointTrafficPolicyArgs({
+  const CustomRoutingEndpointTrafficPolicyArgs({
     required this.address,
     required this.endpointId,
     this.portRanges,

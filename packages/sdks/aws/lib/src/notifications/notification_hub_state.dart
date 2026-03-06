@@ -12,7 +12,7 @@ class NotificationHubState {
   /// Creates a new [NotificationHubState].
   /// [notificationHubRegion] Notification Hub region.
   /// [timeouts] Optional.
-  NotificationHubState({
+  const NotificationHubState({
     this.notificationHubRegion,
     this.timeouts,
   });

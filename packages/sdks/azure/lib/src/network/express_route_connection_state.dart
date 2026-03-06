@@ -33,7 +33,7 @@ class ExpressRouteConnectionState {
   /// [privateLinkFastPathEnabled] Optional.
   /// [routing] A `routing` block as defined below.
   /// [routingWeight] The routing weight associated to the Express Route Connection. Possible value is between `0` and `32000`. Defaults to `0`.
-  ExpressRouteConnectionState({
+  const ExpressRouteConnectionState({
     this.authorizationKey,
     this.enableInternetSecurity,
     this.expressRouteCircuitPeeringId,

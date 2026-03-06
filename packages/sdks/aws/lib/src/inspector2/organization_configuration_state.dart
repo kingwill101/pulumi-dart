@@ -16,7 +16,7 @@ class OrganizationConfigurationState {
   /// [autoEnable] Configuration block for auto enabling. See below.
   /// [maxAccountLimitReached] Whether your configuration reached the max account limit.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationConfigurationState({
+  const OrganizationConfigurationState({
     this.autoEnable,
     this.maxAccountLimitReached,
     this.region,

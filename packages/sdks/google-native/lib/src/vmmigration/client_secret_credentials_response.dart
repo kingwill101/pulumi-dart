@@ -15,7 +15,7 @@ class ClientSecretCredentialsResponse {
   /// [clientId] Azure client ID.
   /// [clientSecret] Input only. Azure client secret.
   /// [tenantId] Azure tenant ID.
-  ClientSecretCredentialsResponse({
+  const ClientSecretCredentialsResponse({
     required this.clientId,
     required this.clientSecret,
     required this.tenantId,

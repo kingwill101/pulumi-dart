@@ -17,7 +17,7 @@ class ClusterDiscoveryEndpoint {
   /// [address] Output only. The IP allocated on the consumer network for the PSC forwarding rule.
   /// [port] Output only. The port number of the exposed Redis endpoint.
   /// [pscConfig] Output only. Customer configuration for where the endpoint
-  ClusterDiscoveryEndpoint({
+  const ClusterDiscoveryEndpoint({
     this.address,
     this.port,
     this.pscConfig,

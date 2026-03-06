@@ -23,7 +23,7 @@ class GetRouteEntriesEntry {
   /// [routeTableId] The ID of the router table to which the route entry belongs.
   /// [status] The status of the route entry.
   /// [type] The type of the route entry.
-  GetRouteEntriesEntry({
+  const GetRouteEntriesEntry({
     required this.cidrBlock,
     required this.instanceId,
     required this.nextHopType,

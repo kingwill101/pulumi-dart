@@ -67,7 +67,7 @@ class GetPipelineJobResult {
   /// [templateMetadata] Pipeline template metadata. Will fill up fields if PipelineJob.template_uri is from supported template registry.
   /// [templateUri] A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
   /// [updateTime] Timestamp when this PipelineJob was most recently updated.
-  GetPipelineJobResult({
+  const GetPipelineJobResult({
     required this.createTime,
     required this.displayName,
     required this.encryptionSpec,

@@ -29,7 +29,7 @@ class GetCacheResult {
   /// [resourceId] Original uri of entity in external system cache points to
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [useFromLocation] Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
-  GetCacheResult({
+  const GetCacheResult({
     required this.azureApiVersion,
     required this.connectionString,
     this.description,

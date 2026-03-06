@@ -18,7 +18,7 @@ class KeyVaultPropertiesResponse {
   /// [keyRsaSize] Selected key minimum required size.
   /// [keyVaultUri] The Key Vault uri which holds they key associated with the Log Analytics cluster.
   /// [keyVersion] The version of the key associated with the Log Analytics cluster.
-  KeyVaultPropertiesResponse({
+  const KeyVaultPropertiesResponse({
     this.keyName,
     this.keyRsaSize,
     this.keyVaultUri,

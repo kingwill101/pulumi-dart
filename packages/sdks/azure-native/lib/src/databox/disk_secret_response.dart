@@ -12,7 +12,7 @@ class DiskSecretResponse {
   /// Creates a new [DiskSecretResponse].
   /// [bitLockerKey] Bit Locker key of the disk which can be used to unlock the disk to copy data.
   /// [diskSerialNumber] Serial number of the assigned disk.
-  DiskSecretResponse({
+  const DiskSecretResponse({
     required this.bitLockerKey,
     required this.diskSerialNumber,
   });

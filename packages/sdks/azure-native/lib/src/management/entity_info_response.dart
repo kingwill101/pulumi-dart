@@ -46,7 +46,7 @@ class EntityInfoResponse {
   /// [permissions] The users specific permissions to this item.
   /// [tenantId] The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000
   /// [type] The type of the resource. For example, Microsoft.Management/managementGroups
-  EntityInfoResponse({
+  const EntityInfoResponse({
     this.displayName,
     required this.id,
     this.inheritedPermissions,

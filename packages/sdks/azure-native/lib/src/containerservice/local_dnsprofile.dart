@@ -16,7 +16,7 @@ class LocalDNSProfile {
   /// [kubeDNSOverrides] KubeDNS overrides apply to DNS traffic from pods with dnsPolicy:ClusterFirst (referred to as KubeDNS traffic).
   /// [mode] Mode of enablement for localDNS.
   /// [vnetDNSOverrides] VnetDNS overrides apply to DNS traffic from pods with dnsPolicy:default or kubelet (referred to as VnetDNS traffic).
-  LocalDNSProfile({
+  const LocalDNSProfile({
     this.kubeDNSOverrides,
     this.mode,
     this.vnetDNSOverrides,

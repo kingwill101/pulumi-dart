@@ -28,7 +28,7 @@ class AclState {
   /// [resourceGroupId] The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   /// [status] The status of the resource.
   /// [tags] A mapping of tags to assign to the resource.
-  AclState({
+  const AclState({
     this.aclEntries,
     this.aclName,
     this.addressIpVersion,

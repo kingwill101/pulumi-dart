@@ -16,7 +16,7 @@ class GetInstancesInstanceAllowedList {
   /// [deployType] The deployed type of the instance.
   /// [internetLists] The internet list of the instance.
   /// [vpcLists] The vpc list of the instance.
-  GetInstancesInstanceAllowedList({
+  const GetInstancesInstanceAllowedList({
     required this.deployType,
     required this.internetLists,
     required this.vpcLists,

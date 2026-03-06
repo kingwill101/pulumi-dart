@@ -20,7 +20,7 @@ class JWTAuthenticatorClaimMappingsResponse {
   /// [groups] The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
   /// [uid] The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
   /// [username] The expression to extract username attribute from the token claims.
-  JWTAuthenticatorClaimMappingsResponse({
+  const JWTAuthenticatorClaimMappingsResponse({
     this.extra,
     this.groups,
     this.uid,

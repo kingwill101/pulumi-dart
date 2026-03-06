@@ -13,7 +13,7 @@ class WorkteamMemberDefinition {
   /// Creates a new [WorkteamMemberDefinition].
   /// [cognitoMemberDefinition] The Amazon Cognito user group that is part of the work team. See Cognito Member Definition details below.
   /// [oidcMemberDefinition] A list user groups that exist in your OIDC Identity Provider (IdP). One to ten groups can be used to create a single private work team. See Cognito Member Definition details below.
-  WorkteamMemberDefinition({
+  const WorkteamMemberDefinition({
     this.cognitoMemberDefinition,
     this.oidcMemberDefinition,
   });

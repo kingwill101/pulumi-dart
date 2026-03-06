@@ -36,7 +36,7 @@ class ProviderArgs {
   /// [nerdgraphApiUrl] Optional.
   /// [region] The data center for which your New Relic account is configured. Only one region per provider block is permitted.
   /// [syntheticsApiUrl] Optional.
-  ProviderArgs({
+  const ProviderArgs({
     this.accountId,
     this.adminApiKey,
     this.apiKey,

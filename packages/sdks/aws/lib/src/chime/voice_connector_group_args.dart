@@ -19,7 +19,7 @@ class VoiceConnectorGroupArgs {
   /// [connectors] The Amazon Chime Voice Connectors to route inbound calls to.
   /// [name] The name of the Amazon Chime Voice Connector group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  VoiceConnectorGroupArgs({
+  const VoiceConnectorGroupArgs({
     this.connectors,
     this.name,
     this.region,

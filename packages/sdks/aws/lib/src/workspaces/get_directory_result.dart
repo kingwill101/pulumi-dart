@@ -83,7 +83,7 @@ class GetDirectoryResult {
   /// [workspaceDirectoryName] The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   /// [workspaceSecurityGroupId] The identifier of the security group that is assigned to new WorkSpaces.
   /// [workspaceType] The type of WorkSpaces directory.
-  GetDirectoryResult({
+  const GetDirectoryResult({
     required this.activeDirectoryConfigs,
     required this.alias,
     required this.certificateBasedAuthProperties,

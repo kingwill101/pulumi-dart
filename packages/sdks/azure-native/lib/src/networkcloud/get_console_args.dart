@@ -18,7 +18,7 @@ class GetConsoleArgs {
   /// [consoleName] The name of the virtual machine console.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualMachineName] The name of the virtual machine.
-  GetConsoleArgs({
+  const GetConsoleArgs({
     required this.consoleName,
     required this.resourceGroupName,
     required this.virtualMachineName,

@@ -44,7 +44,7 @@ class CapacityProviderState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcConfig] Configuration block for VPC settings. See VPC Config below.
-  CapacityProviderState({
+  const CapacityProviderState({
     this.arn,
     this.capacityProviderScalingConfigs,
     this.instanceRequirements,

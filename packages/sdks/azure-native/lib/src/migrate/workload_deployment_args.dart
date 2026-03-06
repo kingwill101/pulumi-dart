@@ -28,7 +28,7 @@ class WorkloadDeploymentArgs {
   /// [subscriptionId] Azure Subscription Id in which project was created.
   /// [tags] Gets or sets the resource tags.
   /// [workloadDeploymentName] Workload deployment name.
-  WorkloadDeploymentArgs({
+  const WorkloadDeploymentArgs({
     required this.modernizeProjectName,
     this.properties,
     required this.resourceGroupName,

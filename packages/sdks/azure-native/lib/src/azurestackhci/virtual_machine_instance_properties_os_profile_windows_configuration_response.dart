@@ -22,7 +22,7 @@ class VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse {
   /// [provisionVMConfigAgent] Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
   /// [ssh] Specifies the ssh key configuration for Windows OS.
   /// [timeZone] TimeZone for the virtual machine instance
-  VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse({
+  const VirtualMachineInstancePropertiesOsProfileWindowsConfigurationResponse({
     this.enableAutomaticUpdates,
     this.provisionVMAgent,
     this.provisionVMConfigAgent,

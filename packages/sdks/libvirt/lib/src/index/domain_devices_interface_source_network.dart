@@ -17,7 +17,7 @@ class DomainDevicesInterfaceSourceNetwork {
   /// [network] Sets the name of the virtual network to which the network interface connects.
   /// [portGroup] Configures the port group for the network interface, categorizing it within network management frameworks.
   /// [portId] Defines the identifier for the port within the network configuration, aiding in managing network traffic.
-  DomainDevicesInterfaceSourceNetwork({
+  const DomainDevicesInterfaceSourceNetwork({
     this.bridge,
     this.network,
     this.portGroup,

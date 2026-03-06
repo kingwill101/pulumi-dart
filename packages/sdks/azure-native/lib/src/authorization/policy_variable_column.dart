@@ -9,7 +9,7 @@ class PolicyVariableColumn {
 
   /// Creates a new [PolicyVariableColumn].
   /// [columnName] The name of this policy variable column.
-  PolicyVariableColumn({
+  const PolicyVariableColumn({
     required this.columnName,
   });
 

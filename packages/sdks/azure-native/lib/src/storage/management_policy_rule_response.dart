@@ -19,7 +19,7 @@ class ManagementPolicyRuleResponse {
   /// [enabled] Rule is enabled if set to true.
   /// [name] A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
   /// [type] The valid value is Lifecycle
-  ManagementPolicyRuleResponse({
+  const ManagementPolicyRuleResponse({
     required this.definition,
     this.enabled,
     required this.name,

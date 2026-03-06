@@ -15,7 +15,7 @@ class GetLoadBalancerArgs {
   /// Creates a new [GetLoadBalancerArgs].
   /// [loadBalancerName] The name of the LoadBalancer
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetLoadBalancerArgs({
+  const GetLoadBalancerArgs({
     required this.loadBalancerName,
     required this.resourceUri,
   });

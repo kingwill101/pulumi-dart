@@ -31,7 +31,7 @@ class CosmosDbSqlApiSinkResponse {
   /// [writeBatchSize] Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   /// [writeBatchTimeout] Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [writeBehavior] Describes how to write data to Azure Cosmos DB. Type: string (or Expression with resultType string). Allowed values: insert and upsert.
-  CosmosDbSqlApiSinkResponse({
+  const CosmosDbSqlApiSinkResponse({
     this.disableMetricsCollection,
     this.maxConcurrentConnections,
     this.sinkRetryCount,

@@ -8,7 +8,7 @@ class InstanceSchedulingOnInstanceStopAction {
 
   /// Creates a new [InstanceSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] Whether to discard local SSDs attached to the VM while terminating using `max_run_duration`. Only supports `true` at this point.
-  InstanceSchedulingOnInstanceStopAction({
+  const InstanceSchedulingOnInstanceStopAction({
     this.discardLocalSsd,
   });
 

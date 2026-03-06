@@ -22,7 +22,7 @@ class CloudHsmClusterPrivateEndpointConnectionArgs {
   /// [peConnectionName] Name of the private endpoint connection associated with the Cloud HSM Cluster.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  CloudHsmClusterPrivateEndpointConnectionArgs({
+  const CloudHsmClusterPrivateEndpointConnectionArgs({
     required this.cloudHsmClusterName,
     this.peConnectionName,
     required this.privateLinkServiceConnectionState,

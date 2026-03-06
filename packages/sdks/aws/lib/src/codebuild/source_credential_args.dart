@@ -29,7 +29,7 @@ class SourceCredentialArgs {
   /// [serverType] The source provider used for this project.
   /// [token] For a GitHub and GitHub Enterprise, this is the personal access token. For Bitbucket, this is the
   /// [userName] The Bitbucket username when the authType is `BASIC_AUTH`. This parameter is not valid for
-  SourceCredentialArgs({
+  const SourceCredentialArgs({
     required this.authType,
     this.region,
     required this.serverType,

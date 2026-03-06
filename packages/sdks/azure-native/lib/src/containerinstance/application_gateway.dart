@@ -13,7 +13,7 @@ class ApplicationGateway {
   /// Creates a new [ApplicationGateway].
   /// [backendAddressPools] List of Application Gateway Backend Address Pools.
   /// [resource] The Application Gateway ARM resource Id.
-  ApplicationGateway({
+  const ApplicationGateway({
     this.backendAddressPools,
     this.resource,
   });

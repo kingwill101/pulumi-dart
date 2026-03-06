@@ -14,7 +14,7 @@ class WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration {
   /// [enabled] Boolean whether Amazon S3 logging is enabled for the workgroup.
   /// [kmsKey] KMS key ARN to encrypt the logs published to the given Amazon S3 destination.
   /// [logLocation] Amazon S3 destination URI (`s3://bucket/prefix`) for log publishing.
-  WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration({
+  const WorkgroupConfigurationMonitoringConfigurationS3LoggingConfiguration({
     required this.enabled,
     this.kmsKey,
     this.logLocation,

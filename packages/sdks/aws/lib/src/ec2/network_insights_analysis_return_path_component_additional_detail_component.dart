@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent({
+  const NetworkInsightsAnalysisReturnPathComponentAdditionalDetailComponent({
     this.arn,
     this.id,
     this.name,

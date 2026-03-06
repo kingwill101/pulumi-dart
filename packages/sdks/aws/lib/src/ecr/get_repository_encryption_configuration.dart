@@ -11,7 +11,7 @@ class GetRepositoryEncryptionConfiguration {
   /// Creates a new [GetRepositoryEncryptionConfiguration].
   /// [encryptionType] Encryption type to use for the repository, either `AES256` or `KMS`.
   /// [kmsKey] If `encryption_type` is `KMS`, the ARN of the KMS key used.
-  GetRepositoryEncryptionConfiguration({
+  const GetRepositoryEncryptionConfiguration({
     required this.encryptionType,
     required this.kmsKey,
   });

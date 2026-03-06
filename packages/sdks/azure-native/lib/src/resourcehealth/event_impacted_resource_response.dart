@@ -32,7 +32,7 @@ class EventImpactedResourceResponse {
   /// [targetResourceId] Identity for resource within Microsoft cloud.
   /// [targetResourceType] Resource type within Microsoft cloud.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  EventImpactedResourceResponse({
+  const EventImpactedResourceResponse({
     required this.id,
     this.info,
     required this.name,

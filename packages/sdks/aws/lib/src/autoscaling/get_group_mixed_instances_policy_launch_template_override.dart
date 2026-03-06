@@ -20,7 +20,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverride {
   /// [instanceType] Overriding instance type.
   /// [launchTemplateSpecifications] List of overriding launch template specification objects.
   /// [weightedCapacity] Number of capacity units, which gives the instance type a proportional weight to other instance types.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverride({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverride({
     required this.instanceRequirements,
     required this.instanceType,
     required this.launchTemplateSpecifications,

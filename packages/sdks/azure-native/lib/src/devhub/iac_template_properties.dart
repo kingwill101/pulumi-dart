@@ -24,7 +24,7 @@ class IacTemplateProperties {
   /// [sourceResourceId] the source store of the template
   /// [templateDetails] Optional.
   /// [templateName] Template Name
-  IacTemplateProperties({
+  const IacTemplateProperties({
     this.instanceName,
     this.instanceStage,
     this.quickStartTemplateType,

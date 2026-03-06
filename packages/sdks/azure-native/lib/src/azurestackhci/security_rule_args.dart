@@ -49,7 +49,7 @@ class SecurityRuleArgs {
   /// [securityRuleName] Name of the security rule.
   /// [sourceAddressPrefixes] The CIDR or source IP ranges.
   /// [sourcePortRanges] The source port ranges. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
-  SecurityRuleArgs({
+  const SecurityRuleArgs({
     required this.access,
     this.description,
     this.destinationAddressPrefixes,

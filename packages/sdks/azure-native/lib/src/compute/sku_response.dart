@@ -15,7 +15,7 @@ class SkuResponse {
   /// [capacity] Specifies the number of virtual machines in the scale set.
   /// [name] The sku name.
   /// [tier] Specifies the tier of virtual machines in a scale set.&lt;br /&gt;&lt;br /&gt; Possible Values:&lt;br /&gt;&lt;br /&gt; **Standard**&lt;br /&gt;&lt;br /&gt; **Basic**
-  SkuResponse({
+  const SkuResponse({
     this.capacity,
     this.name,
     this.tier,

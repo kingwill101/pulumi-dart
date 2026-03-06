@@ -13,7 +13,7 @@ class DataLakeConfigurationLifecycleConfiguration {
   /// Creates a new [DataLakeConfigurationLifecycleConfiguration].
   /// [expiration] Provides data expiration details of Amazon Security Lake object.
   /// [transitions] Provides data storage transition details of Amazon Security Lake object.
-  DataLakeConfigurationLifecycleConfiguration({
+  const DataLakeConfigurationLifecycleConfiguration({
     this.expiration,
     this.transitions,
   });

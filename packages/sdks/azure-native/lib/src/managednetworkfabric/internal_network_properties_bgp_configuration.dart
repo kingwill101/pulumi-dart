@@ -38,7 +38,7 @@ class InternalNetworkPropertiesBgpConfiguration {
   /// [ipv6ListenRangePrefixes] List of BGP IPv6 Listen Ranges prefixes.
   /// [ipv6NeighborAddress] List with stringified IPv6 Neighbor Address.
   /// [peerASN] Peer ASN. Example: 65047.
-  InternalNetworkPropertiesBgpConfiguration({
+  const InternalNetworkPropertiesBgpConfiguration({
     this.allowAS,
     this.allowASOverride,
     this.annotation,

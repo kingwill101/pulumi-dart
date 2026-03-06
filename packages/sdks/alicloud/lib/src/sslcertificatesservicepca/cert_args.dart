@@ -114,7 +114,7 @@ class CertArgs {
   /// [tags] Information about the queried instances and their associated tags.
   /// [uploadFlag] Indicates whether the certificate has been uploaded to the SSL certificate management platform.
   /// [years] The duration for which the certificate is purchased, in years.
-  CertArgs({
+  const CertArgs({
     this.afterTime,
     this.algorithm,
     this.aliasName,

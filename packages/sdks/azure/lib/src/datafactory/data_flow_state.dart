@@ -39,7 +39,7 @@ class DataFlowState {
   /// [sinks] One or more `sink` blocks as defined below.
   /// [sources] One or more `source` blocks as defined below.
   /// [transformations_] One or more `transformation` blocks as defined below.
-  DataFlowState({
+  const DataFlowState({
     this.annotations,
     this.dataFactoryId,
     this.description,

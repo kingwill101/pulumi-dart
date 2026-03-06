@@ -15,7 +15,7 @@ class GetWebAppSlotConfigurationNamesArgs {
   /// Creates a new [GetWebAppSlotConfigurationNamesArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppSlotConfigurationNamesArgs({
+  const GetWebAppSlotConfigurationNamesArgs({
     required this.name,
     required this.resourceGroupName,
   });

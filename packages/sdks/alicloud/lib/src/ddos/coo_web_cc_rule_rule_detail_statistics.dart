@@ -14,7 +14,7 @@ class CooWebCcRuleRuleDetailStatistics {
   /// [field] The statistic source. Valid values:
   /// [headerName] Set this parameter only when the statistic source is `header`.
   /// [mode] The deduplication mode. Valid values:
-  CooWebCcRuleRuleDetailStatistics({
+  const CooWebCcRuleRuleDetailStatistics({
     required this.field,
     this.headerName,
     required this.mode,

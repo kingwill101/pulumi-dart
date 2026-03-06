@@ -46,7 +46,7 @@ class EntityTypeDialogflowV3beta1Args {
   /// [name] The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
   /// [project] Optional.
   /// [redact] Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.
-  EntityTypeDialogflowV3beta1Args({
+  const EntityTypeDialogflowV3beta1Args({
     required this.agentId,
     this.autoExpansionMode,
     required this.displayName,

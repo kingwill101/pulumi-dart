@@ -25,7 +25,7 @@ class GetAliasResult {
   /// [properties] Subscription Alias response properties.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Resource type, Microsoft.Subscription/aliases.
-  GetAliasResult({
+  const GetAliasResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

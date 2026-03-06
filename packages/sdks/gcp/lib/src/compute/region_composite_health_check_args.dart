@@ -44,7 +44,7 @@ class RegionCompositeHealthCheckArgs {
   /// [name] Name of the resource. Provided by the client when the resource is created.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] URL of the region where the composite health check resides.
-  RegionCompositeHealthCheckArgs({
+  const RegionCompositeHealthCheckArgs({
     this.description,
     required this.healthDestination,
     this.healthSources,

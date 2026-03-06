@@ -13,7 +13,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] The identity type.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  Identity({
+  const Identity({
     this.type,
     this.userAssignedIdentities,
   });

@@ -16,7 +16,7 @@ class AzureKeyVaultSmbCredentialsResponse {
   /// [passwordUri] The Azure Key Vault secret URI which stores the password. Use empty string to clean-up existing value.
   /// [type] The Credentials type.
   /// [usernameUri] The Azure Key Vault secret URI which stores the username. Use empty string to clean-up existing value.
-  AzureKeyVaultSmbCredentialsResponse({
+  const AzureKeyVaultSmbCredentialsResponse({
     this.passwordUri,
     required this.type,
     this.usernameUri,

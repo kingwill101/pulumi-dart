@@ -13,7 +13,7 @@ class EdgeCacheKeysetValidationSharedKey {
 
   /// Creates a new [EdgeCacheKeysetValidationSharedKey].
   /// [secretVersion] The name of the secret version in Secret Manager.
-  EdgeCacheKeysetValidationSharedKey({
+  const EdgeCacheKeysetValidationSharedKey({
     required this.secretVersion,
   });
 

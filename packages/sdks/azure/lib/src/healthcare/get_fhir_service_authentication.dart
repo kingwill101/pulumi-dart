@@ -14,7 +14,7 @@ class GetFhirServiceAuthentication {
   /// [audience] The intended audience to receive authentication tokens for the service. The default value is `https://&lt;name&gt;.fhir.azurehealthcareapis.com`.
   /// [authority] The Azure Active Directory (tenant) that serves as the authentication authority to access the service. The default authority is the Directory defined in the authentication scheme in use when running Terraform.
   /// [smartProxyEnabled] Required.
-  GetFhirServiceAuthentication({
+  const GetFhirServiceAuthentication({
     required this.audience,
     required this.authority,
     required this.smartProxyEnabled,

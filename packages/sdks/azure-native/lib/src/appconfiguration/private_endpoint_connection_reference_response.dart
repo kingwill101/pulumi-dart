@@ -26,7 +26,7 @@ class PrivateEndpointConnectionReferenceResponse {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [provisioningState] The provisioning status of the private endpoint connection.
   /// [type] The type of the resource.
-  PrivateEndpointConnectionReferenceResponse({
+  const PrivateEndpointConnectionReferenceResponse({
     required this.id,
     required this.name,
     this.privateEndpoint,

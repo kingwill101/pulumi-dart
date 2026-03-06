@@ -21,7 +21,7 @@ class GetWorkspaceTagArgs {
   /// [serviceName] The name of the API Management service.
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  GetWorkspaceTagArgs({
+  const GetWorkspaceTagArgs({
     required this.resourceGroupName,
     required this.serviceName,
     required this.tagId,

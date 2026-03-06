@@ -18,7 +18,7 @@ class KubernetesRoleResourcesResponse {
   /// [compute] Kubernetes role compute resource
   /// [network] Kubernetes role network resource
   /// [storage] Kubernetes role storage resource
-  KubernetesRoleResourcesResponse({
+  const KubernetesRoleResourcesResponse({
     required this.compute,
     required this.network,
     this.storage,

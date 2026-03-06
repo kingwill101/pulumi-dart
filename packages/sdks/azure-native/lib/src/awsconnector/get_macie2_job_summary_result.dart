@@ -31,7 +31,7 @@ class GetMacie2JobSummaryResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetMacie2JobSummaryResult({
+  const GetMacie2JobSummaryResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

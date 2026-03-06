@@ -15,7 +15,7 @@ class EncryptionConfigResponse {
   /// [kmsKeyName] Name of the CMEK key in KMS (input parameter).
   /// [kmsKeyNameVersion] Full name and version of the CMEK key currently in use to encrypt Looker data. Format: `projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. Empty if CMEK is not configured in this instance.
   /// [kmsKeyState] Status of the CMEK key.
-  EncryptionConfigResponse({
+  const EncryptionConfigResponse({
     required this.kmsKeyName,
     required this.kmsKeyNameVersion,
     required this.kmsKeyState,

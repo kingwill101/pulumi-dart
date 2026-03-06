@@ -26,7 +26,7 @@ class GetInstancesArgs {
   /// [instanceStateNames] List of instance states that should be applicable to the desired instances. The permitted values are: `pending, running, shutting-down, stopped, stopping, terminated`. The default value is `running`.
   /// [instanceTags] Map of tags, each pair of which must
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.filters,
     this.instanceStateNames,
     this.instanceTags,

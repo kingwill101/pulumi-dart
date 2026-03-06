@@ -25,7 +25,7 @@ class FacebookChannelPropertiesResponse {
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [pages] The list of Facebook pages
   /// [verifyToken] Verify token. Value only returned through POST to the action Channel List API, otherwise empty.
-  FacebookChannelPropertiesResponse({
+  const FacebookChannelPropertiesResponse({
     required this.appId,
     this.appSecret,
     required this.callbackUrl,

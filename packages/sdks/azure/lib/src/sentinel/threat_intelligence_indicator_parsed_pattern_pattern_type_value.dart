@@ -11,7 +11,7 @@ class ThreatIntelligenceIndicatorParsedPatternPatternTypeValue {
   /// Creates a new [ThreatIntelligenceIndicatorParsedPatternPatternTypeValue].
   /// [value] The value of the parsed pattern type.
   /// [valueType] The type of the value of the parsed pattern type value.
-  ThreatIntelligenceIndicatorParsedPatternPatternTypeValue({
+  const ThreatIntelligenceIndicatorParsedPatternPatternTypeValue({
     this.value,
     this.valueType,
   });

@@ -66,7 +66,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfig {
   /// [tgtLifetimeHours] The lifetime of the ticket granting ticket, in hours.
   /// [truststorePasswordUri] The Cloud Storage URI of a KMS encrypted file
   /// [truststoreUri] The Cloud Storage URI of the truststore file used for
-  ClusterClusterConfigSecurityConfigKerberosConfig({
+  const ClusterClusterConfigSecurityConfigKerberosConfig({
     this.crossRealmTrustAdminServer,
     this.crossRealmTrustKdc,
     this.crossRealmTrustRealm,

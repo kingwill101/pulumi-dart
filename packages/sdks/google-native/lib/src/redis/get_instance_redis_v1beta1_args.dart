@@ -15,7 +15,7 @@ class GetInstanceRedisV1beta1Args {
   /// [instanceId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInstanceRedisV1beta1Args({
+  const GetInstanceRedisV1beta1Args({
     required this.instanceId,
     required this.location,
     this.project,

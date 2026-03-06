@@ -16,7 +16,7 @@ class GuestPoliciesRecipeUpdateStepScriptRun {
   /// [allowedExitCodes] Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
   /// [interpreter] The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
   /// [script] The shell script to be executed.
-  GuestPoliciesRecipeUpdateStepScriptRun({
+  const GuestPoliciesRecipeUpdateStepScriptRun({
     this.allowedExitCodes,
     this.interpreter,
     required this.script,

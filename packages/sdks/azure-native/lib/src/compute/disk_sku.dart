@@ -9,7 +9,7 @@ class DiskSku {
 
   /// Creates a new [DiskSku].
   /// [name] The sku name.
-  DiskSku({
+  const DiskSku({
     this.name,
   });
 

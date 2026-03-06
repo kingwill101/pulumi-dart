@@ -24,7 +24,7 @@ class CacheAccessPolicyAssignmentArgs {
   /// [objectId] The principal ID to be assigned the Access Policy. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   /// [objectIdAlias] The alias of the principal ID. User-friendly name for object ID. Also represents username for token based authentication. Changing this forces a new Redis Cache Access Policy Assignment to be created.
   /// [redisCacheId] The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy Assignment to be created.
-  CacheAccessPolicyAssignmentArgs({
+  const CacheAccessPolicyAssignmentArgs({
     required this.accessPolicyName,
     this.name,
     required this.objectId,

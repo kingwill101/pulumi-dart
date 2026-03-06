@@ -22,7 +22,7 @@ class GetOpenApiProductsProduct {
   /// [productName] Product name.
   /// [productType] Type of product.
   /// [subscriptionType] Subscription type. Value:
-  GetOpenApiProductsProduct({
+  const GetOpenApiProductsProduct({
     required this.id,
     required this.productCode,
     required this.productName,

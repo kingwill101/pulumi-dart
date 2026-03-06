@@ -11,7 +11,7 @@ class GetApplicationGatewayProbeMatch {
   /// Creates a new [GetApplicationGatewayProbeMatch].
   /// [body] A snippet from the Response Body which must be present in the Response.
   /// [statusCodes] Status code of the application gateway custom error.
-  GetApplicationGatewayProbeMatch({
+  const GetApplicationGatewayProbeMatch({
     required this.body,
     required this.statusCodes,
   });

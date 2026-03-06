@@ -11,7 +11,7 @@ class GetGroupsGroup {
   /// Creates a new [GetGroupsGroup].
   /// [comments] Comments of the group.
   /// [name] Name of the group.
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.comments,
     required this.name,
   });

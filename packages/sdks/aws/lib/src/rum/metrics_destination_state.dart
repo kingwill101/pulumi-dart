@@ -21,7 +21,7 @@ class MetricsDestinationState {
   /// [destinationArn] Use this parameter only if Destination is Evidently. This parameter specifies the ARN of the Evidently experiment that will receive the extended metrics.
   /// [iamRoleArn] This parameter is required if Destination is Evidently. If Destination is CloudWatch, do not use this parameter.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MetricsDestinationState({
+  const MetricsDestinationState({
     this.appMonitorName,
     this.destination,
     this.destinationArn,

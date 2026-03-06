@@ -53,7 +53,7 @@ class SecuritySolutionRecommendationsEnabled {
   /// [privilegedDockerOptions] Is high level permissions are needed for the module? Defaults to `true`.
   /// [sharedCredentials] Is any credentials shared among devices? Defaults to `true`.
   /// [vulnerableTlsCipherSuite] Does TLS cipher suite need to be updated? Defaults to `true`.
-  SecuritySolutionRecommendationsEnabled({
+  const SecuritySolutionRecommendationsEnabled({
     this.acrAuthentication,
     this.agentSendUnutilizedMsg,
     this.baseline,

@@ -14,7 +14,7 @@ class ValidationThreshold {
   /// [grouping] Selection of how the type evaluation is applied to the cluster calculation.
   /// [type] Selection of how the threshold should be evaluated.
   /// [value] The numeric threshold value.
-  ValidationThreshold({
+  const ValidationThreshold({
     required this.grouping,
     required this.type,
     required this.value,

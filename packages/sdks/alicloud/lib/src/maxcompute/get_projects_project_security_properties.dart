@@ -27,7 +27,7 @@ class GetProjectsProjectSecurityProperties {
   /// [projectProtection] Project protection.
   /// [usingAcl] Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
   /// [usingPolicy] Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
-  GetProjectsProjectSecurityProperties({
+  const GetProjectsProjectSecurityProperties({
     required this.enableDownloadPrivilege,
     required this.labelSecurity,
     required this.objectCreatorHasAccessPermission,

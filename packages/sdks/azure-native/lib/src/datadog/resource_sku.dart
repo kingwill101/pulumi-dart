@@ -8,7 +8,7 @@ class ResourceSku {
 
   /// Creates a new [ResourceSku].
   /// [name] Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
-  ResourceSku({
+  const ResourceSku({
     required this.name,
   });
 

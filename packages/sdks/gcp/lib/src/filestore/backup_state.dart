@@ -71,7 +71,7 @@ class BackupState {
   /// [state] The backup state.
   /// [storageBytes] The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
   /// [tags] A map of resource manager tags.
-  BackupState({
+  const BackupState({
     this.capacityGb,
     this.createTime,
     this.description,

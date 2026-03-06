@@ -9,7 +9,7 @@ class NetworkConfig {
 
   /// Creates a new [NetworkConfig].
   /// [networkAttachment] Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
-  NetworkConfig({
+  const NetworkConfig({
     required this.networkAttachment,
   });
 

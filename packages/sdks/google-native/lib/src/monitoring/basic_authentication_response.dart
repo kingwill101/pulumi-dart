@@ -12,7 +12,7 @@ class BasicAuthenticationResponse {
   /// Creates a new [BasicAuthenticationResponse].
   /// [password] The password to use when authenticating with the HTTP server.
   /// [username] The username to use when authenticating with the HTTP server.
-  BasicAuthenticationResponse({
+  const BasicAuthenticationResponse({
     required this.password,
     required this.username,
   });

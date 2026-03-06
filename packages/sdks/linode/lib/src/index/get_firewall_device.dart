@@ -20,7 +20,7 @@ class GetFirewallDevice {
   /// [label] The label of the underlying entity this device references.
   /// [type] The type of Firewall Device.
   /// [url] The URL of the underlying entity this device references.
-  GetFirewallDevice({
+  const GetFirewallDevice({
     required this.entityId,
     required this.id,
     required this.label,

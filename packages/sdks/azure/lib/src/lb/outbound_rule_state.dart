@@ -33,7 +33,7 @@ class OutboundRuleState {
   /// [name] Specifies the name of the Outbound Rule. Changing this forces a new resource to be created.
   /// [protocol] The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
   /// [tcpResetEnabled] Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-  OutboundRuleState({
+  const OutboundRuleState({
     this.allocatedOutboundPorts,
     this.backendAddressPoolId,
     this.enableTcpReset,

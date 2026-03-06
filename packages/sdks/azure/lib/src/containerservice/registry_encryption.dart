@@ -11,7 +11,7 @@ class RegistryEncryption {
   /// Creates a new [RegistryEncryption].
   /// [identityClientId] The client ID of the managed identity associated with the encryption key.
   /// [keyVaultKeyId] The ID of the Key Vault Key.
-  RegistryEncryption({
+  const RegistryEncryption({
     required this.identityClientId,
     required this.keyVaultKeyId,
   });

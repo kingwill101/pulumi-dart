@@ -40,7 +40,7 @@ class GetSpokeNetworkconnectivityV1alpha1Result {
   /// [state] The current lifecycle state of this Hub.
   /// [uniqueId] Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
   /// [updateTime] The time when the Spoke was updated.
-  GetSpokeNetworkconnectivityV1alpha1Result({
+  const GetSpokeNetworkconnectivityV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.hub,

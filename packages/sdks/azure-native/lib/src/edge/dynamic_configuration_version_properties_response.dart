@@ -15,7 +15,7 @@ class DynamicConfigurationVersionPropertiesResponse {
   /// [provisioningState] Provisioning state of resource
   /// [schemaId] Schema Id for configuration
   /// [values] Values of configuration version
-  DynamicConfigurationVersionPropertiesResponse({
+  const DynamicConfigurationVersionPropertiesResponse({
     required this.provisioningState,
     required this.schemaId,
     required this.values,

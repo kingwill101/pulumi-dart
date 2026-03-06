@@ -18,7 +18,7 @@ class GetSecurityRuleArgs {
   /// [networkSecurityGroupName] Name of the network security group
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityRuleName] Name of the security rule.
-  GetSecurityRuleArgs({
+  const GetSecurityRuleArgs({
     required this.networkSecurityGroupName,
     required this.resourceGroupName,
     required this.securityRuleName,

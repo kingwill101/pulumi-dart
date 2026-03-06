@@ -12,7 +12,7 @@ class GetNodeGroupResource {
   /// Creates a new [GetNodeGroupResource].
   /// [autoscalingGroups] List of objects containing information about AutoScaling Groups.
   /// [remoteAccessSecurityGroupId] Identifier of the remote access EC2 Security Group.
-  GetNodeGroupResource({
+  const GetNodeGroupResource({
     required this.autoscalingGroups,
     required this.remoteAccessSecurityGroupId,
   });

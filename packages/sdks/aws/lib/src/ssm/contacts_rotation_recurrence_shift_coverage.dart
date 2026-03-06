@@ -11,7 +11,7 @@ class ContactsRotationRecurrenceShiftCoverage {
   /// Creates a new [ContactsRotationRecurrenceShiftCoverage].
   /// [coverageTimes] (Required) Information about when an on-call shift begins and ends. See Coverage Times for more details.
   /// [mapBlockKey] Required.
-  ContactsRotationRecurrenceShiftCoverage({
+  const ContactsRotationRecurrenceShiftCoverage({
     required this.coverageTimes,
     required this.mapBlockKey,
   });

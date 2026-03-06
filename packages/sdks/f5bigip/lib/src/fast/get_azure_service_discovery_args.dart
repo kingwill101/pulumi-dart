@@ -41,7 +41,7 @@ class GetAzureServiceDiscoveryArgs {
   /// [type] Optional.
   /// [undetectableAction] Action to take when node cannot be detected,default `remove`.
   /// [updateInterval] Update interval for service discovery.
-  GetAzureServiceDiscoveryArgs({
+  const GetAzureServiceDiscoveryArgs({
     this.addressRealm,
     this.credentialUpdate,
     this.minimumMonitors,

@@ -17,7 +17,7 @@ class SpringCloudServiceContainerRegistry {
   /// [password] Specifies the password of the container registry.
   /// [server] Specifies the login server of the container registry.
   /// [username] Specifies the username of the container registry.
-  SpringCloudServiceContainerRegistry({
+  const SpringCloudServiceContainerRegistry({
     required this.name,
     required this.password,
     required this.server,

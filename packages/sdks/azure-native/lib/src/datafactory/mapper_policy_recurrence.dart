@@ -12,7 +12,7 @@ class MapperPolicyRecurrence {
   /// Creates a new [MapperPolicyRecurrence].
   /// [frequency] Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
   /// [interval] Actual interval value as per chosen frequency.
-  MapperPolicyRecurrence({
+  const MapperPolicyRecurrence({
     this.frequency,
     this.interval,
   });

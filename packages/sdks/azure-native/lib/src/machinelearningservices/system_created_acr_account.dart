@@ -15,7 +15,7 @@ class SystemCreatedAcrAccount {
   /// [acrAccountName] Name of the ACR account
   /// [acrAccountSku] SKU of the ACR account
   /// [armResourceId] This is populated once the ACR account is created.
-  SystemCreatedAcrAccount({
+  const SystemCreatedAcrAccount({
     this.acrAccountName,
     this.acrAccountSku,
     this.armResourceId,

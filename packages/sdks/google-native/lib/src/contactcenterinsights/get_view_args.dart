@@ -15,7 +15,7 @@ class GetViewArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [viewId] Required.
-  GetViewArgs({
+  const GetViewArgs({
     required this.location,
     this.project,
     required this.viewId,

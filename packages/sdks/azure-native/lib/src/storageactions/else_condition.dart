@@ -10,7 +10,7 @@ class ElseCondition {
 
   /// Creates a new [ElseCondition].
   /// [operations] List of operations to execute in the else block
-  ElseCondition({
+  const ElseCondition({
     required this.operations,
   });
 

@@ -27,7 +27,7 @@ class GetRegistryEnterpriseReposArgs {
   /// [nameRegex] A regex string to filter results by Repository name.
   /// [namespace] The name of the namespace to which the Repository belongs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRegistryEnterpriseReposArgs({
+  const GetRegistryEnterpriseReposArgs({
     this.enableDetails,
     this.ids,
     required this.instanceId,

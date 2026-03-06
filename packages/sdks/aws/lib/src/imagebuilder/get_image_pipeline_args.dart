@@ -18,7 +18,7 @@ class GetImagePipelineArgs {
   /// [arn] ARN of the image pipeline.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the image pipeline.
-  GetImagePipelineArgs({
+  const GetImagePipelineArgs({
     required this.arn,
     this.region,
     this.tags,

@@ -21,7 +21,7 @@ class ScalingGroupLaunchTemplateOverride {
   /// [instanceType] The instance type in launchTemplateOverride.
   /// [spotPriceLimit] The maximum bid price of instance type in launchTemplateOverride.
   /// [weightedCapacity] The weight of the instance type in launchTemplateOverride.
-  ScalingGroupLaunchTemplateOverride({
+  const ScalingGroupLaunchTemplateOverride({
     this.instanceType,
     this.spotPriceLimit,
     this.weightedCapacity,

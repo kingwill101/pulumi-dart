@@ -28,7 +28,7 @@ class GetRegionInstanceTemplateArgs {
   /// [name] The name of the instance template. One of `name` or `filter` must be provided.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the resource belongs.
-  GetRegionInstanceTemplateArgs({
+  const GetRegionInstanceTemplateArgs({
     this.filter,
     this.mostRecent,
     this.name,

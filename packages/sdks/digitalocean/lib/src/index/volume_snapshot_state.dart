@@ -27,7 +27,7 @@ class VolumeSnapshotState {
   /// [size] The billable size of the volume snapshot in gigabytes.
   /// [tags] A list of the tags to be applied to this volume snapshot.
   /// [volumeId] The ID of the volume from which the volume snapshot originated.
-  VolumeSnapshotState({
+  const VolumeSnapshotState({
     this.createdAt,
     this.minDiskSize,
     this.name,

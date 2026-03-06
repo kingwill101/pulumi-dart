@@ -8,7 +8,7 @@ class DomainDevicesGraphicSdlGl {
 
   /// Creates a new [DomainDevicesGraphicSdlGl].
   /// [enable] Configures whether OpenGL support is enabled in SDL graphics settings.
-  DomainDevicesGraphicSdlGl({
+  const DomainDevicesGraphicSdlGl({
     this.enable,
   });
 

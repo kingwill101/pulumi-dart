@@ -35,7 +35,7 @@ class NetworkManagerConnectivityConfigurationArgs {
   /// [hub] A `hub` block as defined below.
   /// [name] Specifies the name which should be used for this Network Manager Connectivity Configuration. Changing this forces a new Network Manager Connectivity Configuration to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager. Changing this forces a new Network Manager Connectivity Configuration to be created.
-  NetworkManagerConnectivityConfigurationArgs({
+  const NetworkManagerConnectivityConfigurationArgs({
     required this.appliesToGroups,
     required this.connectivityTopology,
     this.deleteExistingPeeringEnabled,

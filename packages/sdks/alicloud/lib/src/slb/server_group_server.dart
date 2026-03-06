@@ -17,7 +17,7 @@ class ServerGroupServer {
   /// [serverIds] The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
   /// [type] Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
   /// [weight] Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
-  ServerGroupServer({
+  const ServerGroupServer({
     required this.port,
     required this.serverIds,
     this.type,

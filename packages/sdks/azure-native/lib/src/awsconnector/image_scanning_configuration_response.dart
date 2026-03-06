@@ -9,7 +9,7 @@ class ImageScanningConfigurationResponse {
 
   /// Creates a new [ImageScanningConfigurationResponse].
   /// [scanOnPush] The setting that determines whether images are scanned after being pushed to a repository. If set to ``true``, images will be scanned after being pushed. If this parameter is not specified, it will default to ``false`` and images will not be scanned unless a scan is manually started. The setting that determines whether images are scanned after being pushed to a repository.
-  ImageScanningConfigurationResponse({
+  const ImageScanningConfigurationResponse({
     this.scanOnPush,
   });
 

@@ -83,7 +83,7 @@ class GetInstanceResult {
   /// [state] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.activationPolicy,
     required this.annotations,
     required this.availabilityType,

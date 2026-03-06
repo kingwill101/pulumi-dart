@@ -9,7 +9,7 @@ class GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage {
   /// Creates a new [GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage].
   /// [revisionDatetime] Required.
   /// [version] Required.
-  GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage({
+  const GetDeploymentWebApplicationFirewallStatusAttackSignaturesPackage({
     required this.revisionDatetime,
     required this.version,
   });

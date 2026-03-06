@@ -27,7 +27,7 @@ class GetClustersResult {
   /// [names] A list of Cluster names.
   /// [outputFile] Optional.
   /// [status] The status of the resource.
-  GetClustersResult({
+  const GetClustersResult({
     required this.clusters,
     this.enableDetails,
     required this.id,

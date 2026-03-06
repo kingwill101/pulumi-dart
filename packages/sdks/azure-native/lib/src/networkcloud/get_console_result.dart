@@ -59,7 +59,7 @@ class GetConsoleResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachineAccessId] The unique identifier for the virtual machine that is used to access the console.
-  GetConsoleResult({
+  const GetConsoleResult({
     required this.azureApiVersion,
     required this.detailedStatus,
     required this.detailedStatusMessage,

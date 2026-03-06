@@ -17,7 +17,7 @@ class GetObjectIamPolicyArgs {
   /// [generation] Optional.
   /// [object_] Required.
   /// [userProject] Optional.
-  GetObjectIamPolicyArgs({
+  const GetObjectIamPolicyArgs({
     required this.bucket,
     this.generation,
     required this.object_,

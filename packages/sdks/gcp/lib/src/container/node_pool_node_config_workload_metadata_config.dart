@@ -8,7 +8,7 @@ class NodePoolNodeConfigWorkloadMetadataConfig {
 
   /// Creates a new [NodePoolNodeConfigWorkloadMetadataConfig].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node.
-  NodePoolNodeConfigWorkloadMetadataConfig({
+  const NodePoolNodeConfigWorkloadMetadataConfig({
     required this.mode,
   });
 

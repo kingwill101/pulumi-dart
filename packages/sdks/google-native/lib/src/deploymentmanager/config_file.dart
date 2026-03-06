@@ -8,7 +8,7 @@ class ConfigFile {
 
   /// Creates a new [ConfigFile].
   /// [content] The contents of the file.
-  ConfigFile({
+  const ConfigFile({
     this.content,
   });
 

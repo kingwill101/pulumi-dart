@@ -19,7 +19,7 @@ class AiLogicPromptTemplateLockArgs {
   /// [location] The location of the prompt template.
   /// [project] The ID of the project in which the resource belongs.
   /// [templateId] The ID of the prompt template.
-  AiLogicPromptTemplateLockArgs({
+  const AiLogicPromptTemplateLockArgs({
     required this.location,
     this.project,
     required this.templateId,

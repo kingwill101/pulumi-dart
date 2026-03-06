@@ -8,7 +8,7 @@ class PipelineInputPayloadFormatAvro {
 
   /// Creates a new [PipelineInputPayloadFormatAvro].
   /// [schemaDefinition] The entire schema definition is stored in this field.
-  PipelineInputPayloadFormatAvro({
+  const PipelineInputPayloadFormatAvro({
     this.schemaDefinition,
   });
 

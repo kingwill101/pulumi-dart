@@ -8,7 +8,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
 
   /// Creates a new [InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse].
   /// [allEffective] A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
-  InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse({
+  const InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse({
     required this.allEffective,
   });
 

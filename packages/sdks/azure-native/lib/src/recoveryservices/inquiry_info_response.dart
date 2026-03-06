@@ -19,7 +19,7 @@ class InquiryInfoResponse {
   /// [errorDetail] Error Details if the Status is non-success.
   /// [inquiryDetails] Inquiry Details which will have workload specific details.
   /// [status] Inquiry Status for this container such as
-  InquiryInfoResponse({
+  const InquiryInfoResponse({
     this.errorDetail,
     this.inquiryDetails,
     this.status,

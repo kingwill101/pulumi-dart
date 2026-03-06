@@ -20,7 +20,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforc
   /// [oauth2GrantType] Optional.
   /// [oauthRequest] Optional.
   /// [refreshToken] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSalesforce({
     this.accessToken,
     this.clientCredentialsArn,
     this.jwtToken,

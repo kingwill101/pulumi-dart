@@ -16,7 +16,7 @@ class InMageRcmFailbackPolicyCreationInput {
   /// [appConsistentFrequencyInMinutes] The app consistent snapshot frequency (in minutes).
   /// [crashConsistentFrequencyInMinutes] The crash consistent snapshot frequency (in minutes).
   /// [instanceType] The class type.
-  InMageRcmFailbackPolicyCreationInput({
+  const InMageRcmFailbackPolicyCreationInput({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

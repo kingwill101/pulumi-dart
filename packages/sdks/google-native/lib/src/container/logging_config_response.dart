@@ -10,7 +10,7 @@ class LoggingConfigResponse {
 
   /// Creates a new [LoggingConfigResponse].
   /// [componentConfig] Logging components configuration
-  LoggingConfigResponse({
+  const LoggingConfigResponse({
     required this.componentConfig,
   });
 

@@ -46,7 +46,7 @@ class V2modelsBotArgs {
   /// [testBotAliasTags] List of tags to add to the test alias for a bot. You can only add tags when you create a bot.
   /// [timeouts] Optional.
   /// [type] Type of a bot to create. Possible values are `"Bot"` and `"BotNetwork"`.
-  V2modelsBotArgs({
+  const V2modelsBotArgs({
     required this.dataPrivacies,
     this.description,
     required this.idleSessionTtlInSeconds,

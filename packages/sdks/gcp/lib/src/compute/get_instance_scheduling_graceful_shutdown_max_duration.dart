@@ -15,7 +15,7 @@ class GetInstanceSchedulingGracefulShutdownMaxDuration {
   /// Creates a new [GetInstanceSchedulingGracefulShutdownMaxDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  GetInstanceSchedulingGracefulShutdownMaxDuration({
+  const GetInstanceSchedulingGracefulShutdownMaxDuration({
     required this.nanos,
     required this.seconds,
   });

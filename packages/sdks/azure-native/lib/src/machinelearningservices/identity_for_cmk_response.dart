@@ -9,7 +9,7 @@ class IdentityForCmkResponse {
 
   /// Creates a new [IdentityForCmkResponse].
   /// [userAssignedIdentity] The ArmId of the user assigned identity that will be used to access the customer managed key vault
-  IdentityForCmkResponse({
+  const IdentityForCmkResponse({
     this.userAssignedIdentity,
   });
 

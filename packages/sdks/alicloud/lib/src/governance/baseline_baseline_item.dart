@@ -14,7 +14,7 @@ class BaselineBaselineItem {
   /// [config] Baseline item configuration. The format is a JSON string.
   /// [name] The baseline item name.
   /// [version] The baseline item version.
-  BaselineBaselineItem({
+  const BaselineBaselineItem({
     this.config,
     this.name,
     this.version,

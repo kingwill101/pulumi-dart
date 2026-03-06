@@ -18,7 +18,7 @@ class NsxResponse {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] The state of the appliance.
   /// [version] Version of the appliance.
-  NsxResponse({
+  const NsxResponse({
     required this.fqdn,
     required this.internalIp,
     required this.state,

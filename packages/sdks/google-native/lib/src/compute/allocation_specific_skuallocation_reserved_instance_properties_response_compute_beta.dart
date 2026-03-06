@@ -29,7 +29,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBe
   /// [maintenanceFreezeDurationHours] Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
   /// [maintenanceInterval] Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
   /// [minCpuPlatform] Minimum cpu platform the reservation.
-  AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta({
+  const AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta({
     required this.guestAccelerators,
     required this.localSsds,
     required this.locationHint,

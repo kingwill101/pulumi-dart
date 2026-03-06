@@ -11,7 +11,7 @@ class AzureClusterFleet {
   /// Creates a new [AzureClusterFleet].
   /// [membership] The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
   /// [project] The number of the Fleet host project where this cluster will be registered.
-  AzureClusterFleet({
+  const AzureClusterFleet({
     this.membership,
     this.project,
   });

@@ -11,7 +11,7 @@ class GetLocationZoneMapping {
   /// Creates a new [GetLocationZoneMapping].
   /// [logicalZone] The logical zone id for the availability zone
   /// [physicalZone] The fully qualified physical zone id of availability zone to which logical zone id is mapped to
-  GetLocationZoneMapping({
+  const GetLocationZoneMapping({
     required this.logicalZone,
     required this.physicalZone,
   });

@@ -8,7 +8,7 @@ class GetClusterWorkloadIdentityConfig {
 
   /// Creates a new [GetClusterWorkloadIdentityConfig].
   /// [workloadPool] The workload pool to attach all Kubernetes service accounts to.
-  GetClusterWorkloadIdentityConfig({
+  const GetClusterWorkloadIdentityConfig({
     required this.workloadPool,
   });
 

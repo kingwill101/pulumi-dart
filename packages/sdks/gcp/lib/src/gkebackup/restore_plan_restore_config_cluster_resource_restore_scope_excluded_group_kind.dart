@@ -14,7 +14,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
   /// Creates a new [RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind].
   /// [resourceGroup] API Group string of a Kubernetes resource, e.g.
   /// [resourceKind] Kind of a Kubernetes resource, e.g.
-  RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind({
+  const RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind({
     this.resourceGroup,
     this.resourceKind,
   });

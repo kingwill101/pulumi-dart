@@ -42,7 +42,7 @@ class GitRepositoryLinkArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
   /// [parentConnection] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
   /// [project] The ID of the project in which the resource belongs.
-  GitRepositoryLinkArgs({
+  const GitRepositoryLinkArgs({
     this.annotations,
     required this.cloneUri,
     this.etag,

@@ -19,7 +19,7 @@ class AzureServersSettingArgs {
   /// [kind] The kind of the server vulnerability assessments setting
   /// [selectedProvider] The selected vulnerability assessments provider on Azure servers in the defined scope.
   /// [settingKind] The kind of the server vulnerability assessments setting
-  AzureServersSettingArgs({
+  const AzureServersSettingArgs({
     required this.kind,
     required this.selectedProvider,
     this.settingKind,

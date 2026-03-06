@@ -13,7 +13,7 @@ class AliasContext {
   /// Creates a new [AliasContext].
   /// [kind] The alias kind.
   /// [name] The alias name.
-  AliasContext({
+  const AliasContext({
     this.kind,
     this.name,
   });

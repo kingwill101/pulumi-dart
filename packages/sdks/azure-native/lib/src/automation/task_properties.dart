@@ -12,7 +12,7 @@ class TaskProperties {
   /// Creates a new [TaskProperties].
   /// [parameters] Gets or sets the parameters of the task.
   /// [source] Gets or sets the name of the runbook.
-  TaskProperties({
+  const TaskProperties({
     this.parameters,
     this.source,
   });

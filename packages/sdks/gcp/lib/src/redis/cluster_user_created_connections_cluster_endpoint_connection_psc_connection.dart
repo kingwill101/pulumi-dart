@@ -42,7 +42,7 @@ class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
   /// [pscConnectionId] The PSC connection id of the forwarding rule connected to the
   /// [pscConnectionStatus] (Output)
   /// [serviceAttachment] The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection({
+  const ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection({
     required this.address,
     this.connectionType,
     required this.forwardingRule,

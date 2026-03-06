@@ -17,7 +17,7 @@ class GetInstancesInstancePlacementGroup {
   /// [label] The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
   /// [placementGroupPolicy] Whether Linodes must be able to become compliant during assignment. (Default `strict`)
   /// [placementGroupType] The placement group type to use when placing Linodes in this group.
-  GetInstancesInstancePlacementGroup({
+  const GetInstancesInstancePlacementGroup({
     required this.id,
     required this.label,
     required this.placementGroupPolicy,

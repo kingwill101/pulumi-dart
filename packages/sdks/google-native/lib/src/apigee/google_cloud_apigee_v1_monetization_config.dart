@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1MonetizationConfig {
 
   /// Creates a new [GoogleCloudApigeeV1MonetizationConfig].
   /// [enabled] Flag that specifies whether the Monetization add-on is enabled.
-  GoogleCloudApigeeV1MonetizationConfig({
+  const GoogleCloudApigeeV1MonetizationConfig({
     this.enabled,
   });
 

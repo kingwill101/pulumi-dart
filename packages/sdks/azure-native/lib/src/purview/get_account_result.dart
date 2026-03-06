@@ -97,7 +97,7 @@ class GetAccountResult {
   /// [tags] Tags on the azure resource.
   /// [tenantEndpointState] Gets or sets the state of tenant endpoint.
   /// [type] Gets or sets the type.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accountStatus,
     required this.azureApiVersion,
     this.cloudConnectors,

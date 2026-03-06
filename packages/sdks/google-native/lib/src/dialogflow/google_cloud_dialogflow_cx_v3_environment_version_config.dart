@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
 
   /// Creates a new [GoogleCloudDialogflowCxV3EnvironmentVersionConfig].
   /// [version] Format: projects//locations//agents//flows//versions/.
-  GoogleCloudDialogflowCxV3EnvironmentVersionConfig({
+  const GoogleCloudDialogflowCxV3EnvironmentVersionConfig({
     required this.version,
   });
 

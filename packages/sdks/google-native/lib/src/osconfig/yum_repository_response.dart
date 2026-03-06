@@ -15,7 +15,7 @@ class YumRepositoryResponse {
   /// [baseUrl] The location of the repository directory.
   /// [displayName] The display name of the repository.
   /// [gpgKeys] URIs of GPG keys.
-  YumRepositoryResponse({
+  const YumRepositoryResponse({
     required this.baseUrl,
     required this.displayName,
     required this.gpgKeys,

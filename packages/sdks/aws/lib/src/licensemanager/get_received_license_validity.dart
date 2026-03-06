@@ -11,7 +11,7 @@ class GetReceivedLicenseValidity {
   /// Creates a new [GetReceivedLicenseValidity].
   /// [begin] Start of the validity time range.
   /// [end] End of the validity time range.
-  GetReceivedLicenseValidity({
+  const GetReceivedLicenseValidity({
     required this.begin,
     required this.end,
   });

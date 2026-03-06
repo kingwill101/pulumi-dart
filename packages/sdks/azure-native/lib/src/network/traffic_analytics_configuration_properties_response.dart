@@ -21,7 +21,7 @@ class TrafficAnalyticsConfigurationPropertiesResponse {
   /// [workspaceId] The resource guid of the attached workspace.
   /// [workspaceRegion] The location of the attached workspace.
   /// [workspaceResourceId] Resource Id of the attached workspace.
-  TrafficAnalyticsConfigurationPropertiesResponse({
+  const TrafficAnalyticsConfigurationPropertiesResponse({
     this.enabled,
     this.trafficAnalyticsInterval,
     this.workspaceId,

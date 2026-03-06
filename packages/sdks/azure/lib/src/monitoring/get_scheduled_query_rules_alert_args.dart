@@ -15,7 +15,7 @@ class GetScheduledQueryRulesAlertArgs {
   /// Creates a new [GetScheduledQueryRulesAlertArgs].
   /// [name] Specifies the name of the scheduled query rule.
   /// [resourceGroupName] Specifies the name of the resource group where the scheduled query rule is located.
-  GetScheduledQueryRulesAlertArgs({
+  const GetScheduledQueryRulesAlertArgs({
     required this.name,
     required this.resourceGroupName,
   });

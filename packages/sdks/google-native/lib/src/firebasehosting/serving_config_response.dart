@@ -31,7 +31,7 @@ class ServingConfigResponse {
   /// [redirects] An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
   /// [rewrites] An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
   /// [trailingSlashBehavior] Defines how to handle a trailing slash in the URL path.
-  ServingConfigResponse({
+  const ServingConfigResponse({
     required this.appAssociation,
     required this.cleanUrls,
     required this.headers,

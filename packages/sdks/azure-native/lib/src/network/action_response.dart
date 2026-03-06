@@ -13,7 +13,7 @@ class ActionResponse {
   /// Creates a new [ActionResponse].
   /// [parameters] List of parameters relevant to the action.For instance if type is drop then parameters has list of prefixes to be dropped.If type is add, parameters would have list of ASN numbers to be added
   /// [type] Type of action to be taken. Supported types are 'Remove', 'Add', 'Replace', and 'Drop.'
-  ActionResponse({
+  const ActionResponse({
     this.parameters,
     this.type,
   });

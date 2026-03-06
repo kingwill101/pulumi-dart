@@ -17,7 +17,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferen
   /// [databaseResource] Required. Name of a database resource, for example, a table within the database.
   /// [instance] Required. The instance where this resource is located. For example: Cloud SQL instance ID.
   /// [projectId] Required. If within a project-level config, then this must match the config's project ID.
-  PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference({
+  const PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReference({
     required this.database,
     required this.databaseResource,
     required this.instance,

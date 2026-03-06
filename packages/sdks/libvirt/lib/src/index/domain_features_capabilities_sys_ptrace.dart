@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysPTrace {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysPTrace].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysPTrace({
+  const DomainFeaturesCapabilitiesSysPTrace({
     this.state,
   });
 

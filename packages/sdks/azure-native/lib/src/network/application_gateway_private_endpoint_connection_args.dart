@@ -28,7 +28,7 @@ class ApplicationGatewayPrivateEndpointConnectionArgs {
   /// [name] Name of the private endpoint connection on an application gateway.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group.
-  ApplicationGatewayPrivateEndpointConnectionArgs({
+  const ApplicationGatewayPrivateEndpointConnectionArgs({
     required this.applicationGatewayName,
     this.connectionName,
     this.id,

@@ -23,7 +23,7 @@ class GetLaunchTemplateBlockDeviceMappingEb {
   /// [volumeInitializationRate] Required.
   /// [volumeSize] Required.
   /// [volumeType] Required.
-  GetLaunchTemplateBlockDeviceMappingEb({
+  const GetLaunchTemplateBlockDeviceMappingEb({
     required this.deleteOnTermination,
     required this.encrypted,
     required this.iops,

@@ -17,7 +17,7 @@ class FhirFieldConfigResponse {
   /// [fieldMetadataList] Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata `action` is passed through to the output dataset unmodified. All extensions will be processed according to keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action` option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
   /// [options] Specifies additional options, overriding the base ProfileType.
   /// [profileType] Base profile type for handling FHIR fields.
-  FhirFieldConfigResponse({
+  const FhirFieldConfigResponse({
     required this.fieldMetadataList,
     required this.options,
     required this.profileType,

@@ -18,7 +18,7 @@ class GetServerKeyArgs {
   /// [keyName] The name of the server key to be retrieved.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetServerKeyArgs({
+  const GetServerKeyArgs({
     required this.keyName,
     required this.resourceGroupName,
     required this.serverName,

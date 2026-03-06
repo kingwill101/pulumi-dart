@@ -11,7 +11,7 @@ class StandaloneGatewaySku {
   /// Creates a new [StandaloneGatewaySku].
   /// [capacity] The number of deployed units of the SKU. Defaults to `1`.
   /// [name] The name of the SKU. The only possible value is `WorkspaceGatewayPremium`.
-  StandaloneGatewaySku({
+  const StandaloneGatewaySku({
     this.capacity,
     required this.name,
   });

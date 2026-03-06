@@ -12,7 +12,7 @@ class BucketV2ServerSideEncryptionConfigurationRule {
   /// Creates a new [BucketV2ServerSideEncryptionConfigurationRule].
   /// [applyServerSideEncryptionByDefaults] Single object for setting server-side encryption by default. (documented below)
   /// [bucketKeyEnabled] Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
-  BucketV2ServerSideEncryptionConfigurationRule({
+  const BucketV2ServerSideEncryptionConfigurationRule({
     required this.applyServerSideEncryptionByDefaults,
     this.bucketKeyEnabled,
   });

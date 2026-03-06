@@ -14,7 +14,7 @@ class MachineAssessmentV2Properties {
   /// Creates a new [MachineAssessmentV2Properties].
   /// [scope] Gets or sets the scope of assessment.
   /// [settings] Gets or sets the settings for the assessment.
-  MachineAssessmentV2Properties({
+  const MachineAssessmentV2Properties({
     this.scope,
     this.settings,
   });

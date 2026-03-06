@@ -9,7 +9,7 @@ class MigrationAssessment {
 
   /// Creates a new [MigrationAssessment].
   /// [enabled] Indicates if migration assessment is enabled for this SQL Server instance.
-  MigrationAssessment({
+  const MigrationAssessment({
     this.enabled,
   });
 

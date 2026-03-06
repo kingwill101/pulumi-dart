@@ -62,7 +62,7 @@ class GetReservationBlockResult {
   /// [status] Status of the reservation block.
   /// [subBlockNames] A List of all block sub-block names in the parent block.
   /// [zone] Optional.
-  GetReservationBlockResult({
+  const GetReservationBlockResult({
     required this.blockCount,
     required this.creationTimestamp,
     required this.healthInfos,

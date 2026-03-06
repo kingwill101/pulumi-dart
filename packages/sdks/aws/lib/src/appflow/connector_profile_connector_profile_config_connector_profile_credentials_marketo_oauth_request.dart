@@ -11,7 +11,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOa
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest].
   /// [authCode] The code provided by the connector when it has been authenticated via the connected app.
   /// [redirectUri] The URL to which the authentication server redirects the browser after authorization has been granted.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsMarketoOauthRequest({
     this.authCode,
     this.redirectUri,
   });

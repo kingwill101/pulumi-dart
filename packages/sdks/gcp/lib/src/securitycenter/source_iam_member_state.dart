@@ -21,7 +21,7 @@ class SourceIamMemberState {
   /// [organization] The organization whose Cloud Security Command Center the Source
   /// [role] Optional.
   /// [source] Optional.
-  SourceIamMemberState({
+  const SourceIamMemberState({
     this.condition,
     this.etag,
     this.member,

@@ -29,7 +29,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
   /// [outputSchema] Schema used for writing the findings for Inspect jobs. This field is only used for
   /// [storagePath] Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
   /// [table] Information on the location of the target BigQuery Table.
-  PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig({
+  const PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig({
     this.outputSchema,
     this.storagePath,
     this.table,

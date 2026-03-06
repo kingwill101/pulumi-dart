@@ -129,7 +129,7 @@ class GetClusterResult {
   /// [virtualNetworkConfiguration] Virtual network definition.
   /// [zoneStatus] Indicates whether the cluster is zonal or non-zonal.
   /// [zones] The availability zones of the cluster.
-  GetClusterResult({
+  const GetClusterResult({
     this.acceptedAudiences,
     this.allowedFqdnList,
     this.allowedIpRangeList,

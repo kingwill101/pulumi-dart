@@ -8,7 +8,7 @@ class GuardrailCrossRegionConfig {
 
   /// Creates a new [GuardrailCrossRegionConfig].
   /// [guardrailProfileIdentifier] Guardrail profile ARN.
-  GuardrailCrossRegionConfig({
+  const GuardrailCrossRegionConfig({
     required this.guardrailProfileIdentifier,
   });
 

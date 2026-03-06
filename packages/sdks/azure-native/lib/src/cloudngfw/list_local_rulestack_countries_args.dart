@@ -19,7 +19,7 @@ class ListLocalRulestackCountriesArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [skip] Optional.
   /// [top] Optional.
-  ListLocalRulestackCountriesArgs({
+  const ListLocalRulestackCountriesArgs({
     required this.localRulestackName,
     required this.resourceGroupName,
     this.skip,

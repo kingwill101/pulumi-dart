@@ -10,7 +10,7 @@ class SqlManagedInstanceK8sRaw {
 
   /// Creates a new [SqlManagedInstanceK8sRaw].
   /// [spec] The kubernetes spec information.
-  SqlManagedInstanceK8sRaw({
+  const SqlManagedInstanceK8sRaw({
     this.spec,
   });
 

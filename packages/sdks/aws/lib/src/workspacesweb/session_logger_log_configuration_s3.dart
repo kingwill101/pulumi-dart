@@ -20,7 +20,7 @@ class SessionLoggerLogConfigurationS3 {
   /// [folderStructure] Folder structure that defines the organizational structure for log files in S3. Valid values: `FlatStructure`, `DateBasedStructure`.
   /// [keyPrefix] S3 path prefix that determines where log files are stored.
   /// [logFileFormat] Format of the log file written to S3. Valid values: `Json`, `Parquet`.
-  SessionLoggerLogConfigurationS3({
+  const SessionLoggerLogConfigurationS3({
     required this.bucket,
     this.bucketOwner,
     required this.folderStructure,

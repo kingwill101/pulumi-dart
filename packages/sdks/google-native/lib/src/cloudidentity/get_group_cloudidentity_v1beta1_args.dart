@@ -11,7 +11,7 @@ class GetGroupCloudidentityV1beta1Args {
 
   /// Creates a new [GetGroupCloudidentityV1beta1Args].
   /// [groupId] Required.
-  GetGroupCloudidentityV1beta1Args({
+  const GetGroupCloudidentityV1beta1Args({
     required this.groupId,
   });
 

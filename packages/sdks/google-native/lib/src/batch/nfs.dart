@@ -12,7 +12,7 @@ class NFS {
   /// Creates a new [NFS].
   /// [remotePath] Remote source path exported from the NFS, e.g., "/share".
   /// [server] The IP address of the NFS.
-  NFS({
+  const NFS({
     this.remotePath,
     this.server,
   });

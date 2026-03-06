@@ -13,7 +13,7 @@ class CloudServiceVaultAndSecretReferenceResponse {
   /// Creates a new [CloudServiceVaultAndSecretReferenceResponse].
   /// [secretUrl] Secret URL which contains the protected settings of the extension
   /// [sourceVault] The ARM Resource ID of the Key Vault
-  CloudServiceVaultAndSecretReferenceResponse({
+  const CloudServiceVaultAndSecretReferenceResponse({
     this.secretUrl,
     this.sourceVault,
   });

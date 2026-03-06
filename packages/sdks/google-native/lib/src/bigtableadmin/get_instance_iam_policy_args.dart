@@ -13,7 +13,7 @@ class GetInstanceIamPolicyArgs {
   /// Creates a new [GetInstanceIamPolicyArgs].
   /// [instanceId] Required.
   /// [project] Optional.
-  GetInstanceIamPolicyArgs({
+  const GetInstanceIamPolicyArgs({
     required this.instanceId,
     this.project,
   });

@@ -12,7 +12,7 @@ class PipelineDestinationNetworkConfig {
 
   /// Creates a new [PipelineDestinationNetworkConfig].
   /// [networkAttachment] Name of the NetworkAttachment that allows access to the consumer VPC.
-  PipelineDestinationNetworkConfig({
+  const PipelineDestinationNetworkConfig({
     this.networkAttachment,
   });
 

@@ -22,7 +22,7 @@ class PrivateClusterConfigContainerV1beta1 {
   /// [masterGlobalAccessConfig] Controls master global access settings.
   /// [masterIpv4CidrBlock] The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
   /// [privateEndpointSubnetwork] Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
-  PrivateClusterConfigContainerV1beta1({
+  const PrivateClusterConfigContainerV1beta1({
     this.enablePrivateEndpoint,
     this.enablePrivateNodes,
     this.masterGlobalAccessConfig,

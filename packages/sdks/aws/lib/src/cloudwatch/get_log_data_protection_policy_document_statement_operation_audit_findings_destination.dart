@@ -17,7 +17,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
   /// [cloudwatchLogs] Configures CloudWatch Logs as a findings destination.
   /// [firehose] Configures Kinesis Firehose as a findings destination.
   /// [s3] Configures S3 as a findings destination.
-  GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination({
+  const GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestination({
     this.cloudwatchLogs,
     this.firehose,
     this.s3,

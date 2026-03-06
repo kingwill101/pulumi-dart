@@ -29,7 +29,7 @@ class GetNetworkSecurityPerimeterProfileResult {
   /// [name] Resource name.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkSecurityPerimeterProfileResult({
+  const GetNetworkSecurityPerimeterProfileResult({
     required this.accessRulesVersion,
     required this.azureApiVersion,
     required this.diagnosticSettingsVersion,

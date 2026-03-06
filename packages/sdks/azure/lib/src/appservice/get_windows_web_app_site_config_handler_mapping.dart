@@ -14,7 +14,7 @@ class GetWindowsWebAppSiteConfigHandlerMapping {
   /// [arguments] The command-line arguments to be passed to the script processor.
   /// [extension] The extension to be handled by the specified FastCGI application.
   /// [scriptProcessorPath] The absolute path to the FastCGI application.
-  GetWindowsWebAppSiteConfigHandlerMapping({
+  const GetWindowsWebAppSiteConfigHandlerMapping({
     required this.arguments,
     required this.extension,
     required this.scriptProcessorPath,

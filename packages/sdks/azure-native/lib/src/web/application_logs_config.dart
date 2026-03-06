@@ -18,7 +18,7 @@ class ApplicationLogsConfig {
   /// [azureBlobStorage] Application logs to blob storage configuration.
   /// [azureTableStorage] Application logs to azure table storage configuration.
   /// [fileSystem] Application logs to file system configuration.
-  ApplicationLogsConfig({
+  const ApplicationLogsConfig({
     this.azureBlobStorage,
     this.azureTableStorage,
     this.fileSystem,

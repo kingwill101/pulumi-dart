@@ -11,7 +11,7 @@ class DeploymentLocalVariable {
   /// Creates a new [DeploymentLocalVariable].
   /// [name] Job variable name
   /// [value] Job variable value
-  DeploymentLocalVariable({
+  const DeploymentLocalVariable({
     this.name,
     this.value,
   });

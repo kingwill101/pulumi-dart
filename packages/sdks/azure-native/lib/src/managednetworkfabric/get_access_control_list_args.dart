@@ -15,7 +15,7 @@ class GetAccessControlListArgs {
   /// Creates a new [GetAccessControlListArgs].
   /// [accessControlListName] Name of the Access Control List.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccessControlListArgs({
+  const GetAccessControlListArgs({
     required this.accessControlListName,
     required this.resourceGroupName,
   });

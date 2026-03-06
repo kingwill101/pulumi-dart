@@ -22,7 +22,7 @@ class RouterNatSubnetwork {
   /// [name] Self-link of the subnetwork resource that will use NAT64
   /// [secondaryIpRangeNames] List of the secondary ranges of the subnetwork that are allowed
   /// [sourceIpRangesToNats] List of options for which source IPs in the subnetwork
-  RouterNatSubnetwork({
+  const RouterNatSubnetwork({
     required this.name,
     this.secondaryIpRangeNames,
     required this.sourceIpRangesToNats,

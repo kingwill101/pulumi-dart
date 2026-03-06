@@ -23,7 +23,7 @@ class CertificateSigningRequestConditionCertificatesK8sIoV1beta1 {
   /// [reason] brief reason for the request state
   /// [status] Status of the condition, one of True, False, Unknown. Approved, Denied, and Failed conditions may not be "False" or "Unknown". Defaults to "True". If unset, should be treated as "True".
   /// [type] request approval state, currently Approved or Denied.
-  CertificateSigningRequestConditionCertificatesK8sIoV1beta1({
+  const CertificateSigningRequestConditionCertificatesK8sIoV1beta1({
     this.lastTransitionTime,
     this.lastUpdateTime,
     this.message,

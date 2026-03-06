@@ -9,7 +9,7 @@ class KeyVaultKeyReferenceResponseSourceVault {
 
   /// Creates a new [KeyVaultKeyReferenceResponseSourceVault].
   /// [id] Resource Id.
-  KeyVaultKeyReferenceResponseSourceVault({
+  const KeyVaultKeyReferenceResponseSourceVault({
     this.id,
   });
 

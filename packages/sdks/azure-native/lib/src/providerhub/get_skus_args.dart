@@ -18,7 +18,7 @@ class GetSkusArgs {
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
   /// [sku] The SKU.
-  GetSkusArgs({
+  const GetSkusArgs({
     required this.providerNamespace,
     required this.resourceType,
     required this.sku,

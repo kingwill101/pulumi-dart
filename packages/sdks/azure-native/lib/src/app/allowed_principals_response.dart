@@ -12,7 +12,7 @@ class AllowedPrincipalsResponse {
   /// Creates a new [AllowedPrincipalsResponse].
   /// [groups] The list of the allowed groups.
   /// [identities] The list of the allowed identities.
-  AllowedPrincipalsResponse({
+  const AllowedPrincipalsResponse({
     this.groups,
     this.identities,
   });

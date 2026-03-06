@@ -63,7 +63,7 @@ class EndpointArgs {
   /// [sseSpecification] The options in use for server side encryption.
   /// [tags] Key-value tags for the Verified Access Endpoint. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [verifiedAccessGroupId] The ID of the Verified Access group to associate the endpoint with.
-  EndpointArgs({
+  const EndpointArgs({
     this.applicationDomain,
     required this.attachmentType,
     this.cidrOptions,

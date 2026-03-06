@@ -47,7 +47,7 @@ class ServerState {
   /// [storageEndpoints] An array of storage endpoints for this Fluid Relay Server. This will be deprecated in future version of fluid relay server and will always be empty, [more details](https://learn.microsoft.com/en-us/azure/azure-fluid-relay/concepts/version-compatibility).
   /// [storageSku] Sku of the storage associated with the resource, Possible values are `standard` and `basic`. Changing this forces a new Fluid Relay Server to be created.
   /// [tags] A mapping of tags which should be assigned to the Fluid Relay Server.
-  ServerState({
+  const ServerState({
     this.customerManagedKey,
     this.frsTenantId,
     this.identity,

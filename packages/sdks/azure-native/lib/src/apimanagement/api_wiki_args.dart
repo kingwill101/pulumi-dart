@@ -22,7 +22,7 @@ class ApiWikiArgs {
   /// [documents] Collection wiki documents included into this wiki.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  ApiWikiArgs({
+  const ApiWikiArgs({
     required this.apiId,
     this.documents,
     required this.resourceGroupName,

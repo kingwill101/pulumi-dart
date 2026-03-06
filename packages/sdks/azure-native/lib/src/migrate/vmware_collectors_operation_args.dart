@@ -28,7 +28,7 @@ class VmwareCollectorsOperationArgs {
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmWareCollectorName] VMware collector ARM name
-  VmwareCollectorsOperationArgs({
+  const VmwareCollectorsOperationArgs({
     this.agentProperties,
     this.discoverySiteId,
     required this.projectName,

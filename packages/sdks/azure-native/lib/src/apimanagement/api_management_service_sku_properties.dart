@@ -12,7 +12,7 @@ class ApiManagementServiceSkuProperties {
   /// Creates a new [ApiManagementServiceSkuProperties].
   /// [capacity] Capacity of the SKU (number of deployed units of the SKU). For Consumption SKU capacity must be specified as 0.
   /// [name] Name of the Sku.
-  ApiManagementServiceSkuProperties({
+  const ApiManagementServiceSkuProperties({
     required this.capacity,
     required this.name,
   });

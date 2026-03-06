@@ -11,7 +11,7 @@ class ConsumersIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ConsumersIamBindingCondition({
+  const ConsumersIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

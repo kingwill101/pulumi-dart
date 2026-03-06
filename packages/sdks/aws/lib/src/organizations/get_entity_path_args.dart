@@ -12,7 +12,7 @@ class GetEntityPathArgs {
 
   /// Creates a new [GetEntityPathArgs].
   /// [entityId] Entity ID. Must be an organizational unit (OU) or AWS account ID.
-  GetEntityPathArgs({
+  const GetEntityPathArgs({
     required this.entityId,
   });
 

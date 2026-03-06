@@ -21,7 +21,7 @@ class CustomRegistryCredentialsResponse {
   /// [identity] Indicates the managed identity assigned to the custom credential. If a user-assigned identity
   /// [password] The password for logging into the custom registry. The password is a secret
   /// [userName] The username for logging into the custom registry.
-  CustomRegistryCredentialsResponse({
+  const CustomRegistryCredentialsResponse({
     this.identity,
     this.password,
     this.userName,

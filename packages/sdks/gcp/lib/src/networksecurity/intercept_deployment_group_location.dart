@@ -16,7 +16,7 @@ class InterceptDeploymentGroupLocation {
   /// Creates a new [InterceptDeploymentGroupLocation].
   /// [location] The cloud location of the deployment group, currently restricted to `global`.
   /// [state] (Output)
-  InterceptDeploymentGroupLocation({
+  const InterceptDeploymentGroupLocation({
     this.location,
     this.state,
   });

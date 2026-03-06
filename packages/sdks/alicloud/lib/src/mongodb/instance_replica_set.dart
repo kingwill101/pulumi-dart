@@ -30,7 +30,7 @@ class InstanceReplicaSet {
   /// [vpcCloudInstanceId] VPC instance ID.
   /// [vpcId] The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
-  InstanceReplicaSet({
+  const InstanceReplicaSet({
     this.connectionDomain,
     this.connectionPort,
     this.networkType,

@@ -22,7 +22,7 @@ class BucketLifecycleConfigurationV2RuleFilter {
   /// [objectSizeLessThan] Maximum object size (in bytes) to which the rule applies.
   /// [prefix] Prefix identifying one or more objects to which the rule applies. Defaults to an empty string (`""`) if not specified.
   /// [tag] Configuration block for specifying a tag key and value. See below.
-  BucketLifecycleConfigurationV2RuleFilter({
+  const BucketLifecycleConfigurationV2RuleFilter({
     this.and,
     this.objectSizeGreaterThan,
     this.objectSizeLessThan,

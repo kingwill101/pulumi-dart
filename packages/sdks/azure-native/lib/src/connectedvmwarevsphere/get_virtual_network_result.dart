@@ -60,7 +60,7 @@ class GetVirtualNetworkResult {
   /// [type] Gets or sets the type of the resource.
   /// [uuid] Gets or sets a unique identifier for this resource.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this template resides.
-  GetVirtualNetworkResult({
+  const GetVirtualNetworkResult({
     required this.azureApiVersion,
     required this.customResourceName,
     this.extendedLocation,

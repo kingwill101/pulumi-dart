@@ -9,7 +9,7 @@ class GetGatewayRouteSpecGrpcRouteMatch {
   /// Creates a new [GetGatewayRouteSpecGrpcRouteMatch].
   /// [port] Required.
   /// [serviceName] Required.
-  GetGatewayRouteSpecGrpcRouteMatch({
+  const GetGatewayRouteSpecGrpcRouteMatch({
     required this.port,
     required this.serviceName,
   });

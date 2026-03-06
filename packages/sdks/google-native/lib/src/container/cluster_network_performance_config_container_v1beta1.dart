@@ -10,7 +10,7 @@ class ClusterNetworkPerformanceConfigContainerV1beta1 {
 
   /// Creates a new [ClusterNetworkPerformanceConfigContainerV1beta1].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.
-  ClusterNetworkPerformanceConfigContainerV1beta1({
+  const ClusterNetworkPerformanceConfigContainerV1beta1({
     this.totalEgressBandwidthTier,
   });
 

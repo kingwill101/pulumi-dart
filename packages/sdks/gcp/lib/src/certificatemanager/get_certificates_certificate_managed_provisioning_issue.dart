@@ -13,7 +13,7 @@ class GetCertificatesCertificateManagedProvisioningIssue {
   /// Creates a new [GetCertificatesCertificateManagedProvisioningIssue].
   /// [details] Human readable explanation about the issue. Provided to help address
   /// [reason] Reason for provisioning failures.
-  GetCertificatesCertificateManagedProvisioningIssue({
+  const GetCertificatesCertificateManagedProvisioningIssue({
     required this.details,
     required this.reason,
   });

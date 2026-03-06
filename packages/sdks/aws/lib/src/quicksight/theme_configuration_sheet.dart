@@ -13,7 +13,7 @@ class ThemeConfigurationSheet {
   /// Creates a new [ThemeConfigurationSheet].
   /// [tile] The display options for tiles. See tile.
   /// [tileLayout] The layout options for tiles. See tile_layout.
-  ThemeConfigurationSheet({
+  const ThemeConfigurationSheet({
     this.tile,
     this.tileLayout,
   });

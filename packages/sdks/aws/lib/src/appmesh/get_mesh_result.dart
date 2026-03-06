@@ -34,7 +34,7 @@ class GetMeshResult {
   /// [resourceOwner] Resource owner's AWS account ID.
   /// [specs] Service mesh specification. See the `aws.appmesh.Mesh` resource for details.
   /// [tags] Map of tags.
-  GetMeshResult({
+  const GetMeshResult({
     required this.arn,
     required this.createdDate,
     required this.id,

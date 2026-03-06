@@ -15,7 +15,7 @@ class ShieldedInstanceConfigResponseComputeBeta {
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled. Enabled by default.
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled. Disabled by default.
   /// [enableVtpm] Defines whether the instance has the vTPM enabled. Enabled by default.
-  ShieldedInstanceConfigResponseComputeBeta({
+  const ShieldedInstanceConfigResponseComputeBeta({
     required this.enableIntegrityMonitoring,
     required this.enableSecureBoot,
     required this.enableVtpm,

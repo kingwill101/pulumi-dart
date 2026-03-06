@@ -12,7 +12,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata {
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata].
   /// [internalTenantId] Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
   /// [partnerTenantId] Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
-  GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata({
     this.internalTenantId,
     this.partnerTenantId,
   });

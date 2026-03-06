@@ -32,7 +32,7 @@ class MaintenanceWindowTargetArgs {
   /// [resourceType] The type of target being registered with the Maintenance Window. Possible values are `INSTANCE` and `RESOURCE_GROUP`.
   /// [targets] The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see
   /// [windowId] The Id of the maintenance window to register the target with.
-  MaintenanceWindowTargetArgs({
+  const MaintenanceWindowTargetArgs({
     this.description,
     this.name,
     this.ownerInformation,

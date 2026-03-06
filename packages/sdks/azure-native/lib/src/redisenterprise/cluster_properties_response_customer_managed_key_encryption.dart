@@ -13,7 +13,7 @@ class ClusterPropertiesResponseCustomerManagedKeyEncryption {
   /// Creates a new [ClusterPropertiesResponseCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyIdentity] All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
   /// [keyEncryptionKeyUrl] Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
-  ClusterPropertiesResponseCustomerManagedKeyEncryption({
+  const ClusterPropertiesResponseCustomerManagedKeyEncryption({
     this.keyEncryptionKeyIdentity,
     this.keyEncryptionKeyUrl,
   });

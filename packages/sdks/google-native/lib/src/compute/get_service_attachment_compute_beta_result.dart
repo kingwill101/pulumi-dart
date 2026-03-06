@@ -67,7 +67,7 @@ class GetServiceAttachmentComputeBetaResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [targetService] The URL of a service serving the endpoint identified by this service attachment.
   /// [tunnelingConfig] When a tunneling config is set on this service attachment it will encapsulate traffic between consumer and producer. When tunneling is enabled: - nat_subnets must be unset - enable_proxy_protocol must be false - producer_forwarding_rule must be a L4 ILB. -
-  GetServiceAttachmentComputeBetaResult({
+  const GetServiceAttachmentComputeBetaResult({
     required this.connectedEndpoints,
     required this.connectionPreference,
     required this.consumerAcceptLists,

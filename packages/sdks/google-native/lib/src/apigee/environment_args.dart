@@ -45,7 +45,7 @@ class EnvironmentArgs {
   /// [organizationId] Required.
   /// [properties] Optional. Key-value pairs that may be used for customizing the environment.
   /// [type] Optional. EnvironmentType selected for the environment.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.apiProxyType,
     this.deploymentType,
     this.description,

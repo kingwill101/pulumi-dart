@@ -15,7 +15,7 @@ class GetAzureFirewallArgs {
   /// Creates a new [GetAzureFirewallArgs].
   /// [azureFirewallName] The name of the Azure Firewall.
   /// [resourceGroupName] The name of the resource group.
-  GetAzureFirewallArgs({
+  const GetAzureFirewallArgs({
     required this.azureFirewallName,
     required this.resourceGroupName,
   });

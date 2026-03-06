@@ -40,7 +40,7 @@ class AssessmentsMetadataSubscriptionArgs {
   /// [severity] The severity level of the assessment
   /// [threats] Optional.
   /// [userImpact] The user impact of the assessment
-  AssessmentsMetadataSubscriptionArgs({
+  const AssessmentsMetadataSubscriptionArgs({
     this.assessmentMetadataName,
     required this.assessmentType,
     this.categories,

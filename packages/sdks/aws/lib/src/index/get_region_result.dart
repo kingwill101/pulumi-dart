@@ -17,7 +17,7 @@ class GetRegionResult {
   /// [id] Region's name (e.g. `us-east-1`).
   /// [name] Required.
   /// [region] Required.
-  GetRegionResult({
+  const GetRegionResult({
     required this.description,
     required this.endpoint,
     required this.id,

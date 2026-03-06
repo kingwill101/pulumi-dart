@@ -23,7 +23,7 @@ class GetMetastoreServiceIamPolicyArgs {
   /// [location] The location where the metastore service should reside.
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
-  GetMetastoreServiceIamPolicyArgs({
+  const GetMetastoreServiceIamPolicyArgs({
     this.location,
     this.project,
     required this.serviceId,

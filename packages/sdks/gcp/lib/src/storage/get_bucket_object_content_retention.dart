@@ -11,7 +11,7 @@ class GetBucketObjectContentRetention {
   /// Creates a new [GetBucketObjectContentRetention].
   /// [mode] The object retention mode. Supported values include: "Unlocked", "Locked".
   /// [retainUntilTime] Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
-  GetBucketObjectContentRetention({
+  const GetBucketObjectContentRetention({
     required this.mode,
     required this.retainUntilTime,
   });

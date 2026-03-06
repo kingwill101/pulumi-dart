@@ -15,7 +15,7 @@ class KeyRotationPolicy {
   /// [automatic] An `automatic` block as defined below.
   /// [expireAfter] Expire a Key Vault Key after given duration as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
   /// [notifyBeforeExpiry] Notify at a given duration before expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  KeyRotationPolicy({
+  const KeyRotationPolicy({
     this.automatic,
     this.expireAfter,
     this.notifyBeforeExpiry,

@@ -57,7 +57,7 @@ class DataCenterResourceResponseProperties {
   /// [provisioningState] The status of the resource at the time the operation was called.
   /// [seedNodes] IP addresses for seed nodes in this data center. This is for reference. Generally you will want to use the seedNodes property on the cluster, which aggregates the seed nodes from all data centers in the cluster.
   /// [sku] Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2
-  DataCenterResourceResponseProperties({
+  const DataCenterResourceResponseProperties({
     this.authenticationMethodLdapProperties,
     this.availabilityZone,
     this.backupStorageCustomerKeyUri,

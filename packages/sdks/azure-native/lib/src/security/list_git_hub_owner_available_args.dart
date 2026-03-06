@@ -15,7 +15,7 @@ class ListGitHubOwnerAvailableArgs {
   /// Creates a new [ListGitHubOwnerAvailableArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  ListGitHubOwnerAvailableArgs({
+  const ListGitHubOwnerAvailableArgs({
     required this.resourceGroupName,
     required this.securityConnectorName,
   });

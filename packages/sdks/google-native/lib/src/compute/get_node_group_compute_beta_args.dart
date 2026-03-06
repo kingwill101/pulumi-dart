@@ -15,7 +15,7 @@ class GetNodeGroupComputeBetaArgs {
   /// [nodeGroup] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetNodeGroupComputeBetaArgs({
+  const GetNodeGroupComputeBetaArgs({
     required this.nodeGroup,
     this.project,
     required this.zone,

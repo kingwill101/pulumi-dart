@@ -26,7 +26,7 @@ class EndpointMongodbSettings {
   /// [extractDocId] Document ID. Use this setting when `nesting_level` is set to `none`. Default is `false`.
   /// [nestingLevel] Specifies either document or table mode. Default is `none`. Valid values are `one` (table mode) and `none` (document mode).
   /// [useUpdateLookup] If `true`, DMS retrieves the entire document from the MongoDB source during migration. Default is `false`.
-  EndpointMongodbSettings({
+  const EndpointMongodbSettings({
     this.authMechanism,
     this.authSource,
     this.authType,

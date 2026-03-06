@@ -16,7 +16,7 @@ class LinuxWebAppLogsApplicationLogsAzureBlobStorage {
   /// [level] The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `http_logs`
   /// [retentionInDays] The time in days after which to remove blobs. A value of `0` means no retention.
   /// [sasUrl] SAS url to an Azure blob container with read/write/list/delete permissions.
-  LinuxWebAppLogsApplicationLogsAzureBlobStorage({
+  const LinuxWebAppLogsApplicationLogsAzureBlobStorage({
     required this.level,
     required this.retentionInDays,
     required this.sasUrl,

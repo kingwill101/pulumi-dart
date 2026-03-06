@@ -7,7 +7,7 @@ class GetServergroupV2Rule {
 
   /// Creates a new [GetServergroupV2Rule].
   /// [maxServerPerHost] Required.
-  GetServergroupV2Rule({
+  const GetServergroupV2Rule({
     required this.maxServerPerHost,
   });
 

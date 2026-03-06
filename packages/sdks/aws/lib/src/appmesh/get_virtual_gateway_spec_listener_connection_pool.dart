@@ -14,7 +14,7 @@ class GetVirtualGatewaySpecListenerConnectionPool {
   /// [grpcs] Required.
   /// [http2s] Required.
   /// [https] Required.
-  GetVirtualGatewaySpecListenerConnectionPool({
+  const GetVirtualGatewaySpecListenerConnectionPool({
     required this.grpcs,
     required this.http2s,
     required this.https,

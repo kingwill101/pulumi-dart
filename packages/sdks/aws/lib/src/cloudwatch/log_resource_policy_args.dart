@@ -18,7 +18,7 @@ class LogResourcePolicyArgs {
   /// [policyDocument] Details of the resource policy, including the identity of the principal that is enabled to put logs to this account. This is formatted as a JSON string. Maximum length of 5120 characters.
   /// [policyName] Name of the resource policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogResourcePolicyArgs({
+  const LogResourcePolicyArgs({
     required this.policyDocument,
     required this.policyName,
     this.region,

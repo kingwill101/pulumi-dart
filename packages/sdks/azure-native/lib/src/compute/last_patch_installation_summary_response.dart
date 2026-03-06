@@ -40,7 +40,7 @@ class LastPatchInstallationSummaryResponse {
   /// [pendingPatchCount] The number of all available patches expected to be installed over the course of the patch installation operation.
   /// [startTime] The UTC timestamp when the operation began.
   /// [status] The overall success or failure status of the operation. It remains "InProgress" until the operation completes. At that point it will become "Unknown", "Failed", "Succeeded", or "CompletedWithWarnings."
-  LastPatchInstallationSummaryResponse({
+  const LastPatchInstallationSummaryResponse({
     required this.error,
     required this.excludedPatchCount,
     required this.failedPatchCount,

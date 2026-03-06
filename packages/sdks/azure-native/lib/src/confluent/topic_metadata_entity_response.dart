@@ -12,7 +12,7 @@ class TopicMetadataEntityResponse {
   /// Creates a new [TopicMetadataEntityResponse].
   /// [resourceName] Resource name of the record
   /// [self] Self lookup url
-  TopicMetadataEntityResponse({
+  const TopicMetadataEntityResponse({
     this.resourceName,
     this.self,
   });

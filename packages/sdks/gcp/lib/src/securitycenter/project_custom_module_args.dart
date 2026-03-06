@@ -29,7 +29,7 @@ class ProjectCustomModuleArgs {
   /// [displayName] The display name of the Security Health Analytics custom module. This
   /// [enablementState] The enablement state of the custom module.
   /// [project] The ID of the project in which the resource belongs.
-  ProjectCustomModuleArgs({
+  const ProjectCustomModuleArgs({
     required this.customConfig,
     required this.displayName,
     required this.enablementState,

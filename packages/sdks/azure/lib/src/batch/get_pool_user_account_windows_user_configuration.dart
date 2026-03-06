@@ -8,7 +8,7 @@ class GetPoolUserAccountWindowsUserConfiguration {
 
   /// Creates a new [GetPoolUserAccountWindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user.
-  GetPoolUserAccountWindowsUserConfiguration({
+  const GetPoolUserAccountWindowsUserConfiguration({
     required this.loginMode,
   });
 

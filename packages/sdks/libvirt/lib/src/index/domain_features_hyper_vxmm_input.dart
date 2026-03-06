@@ -8,7 +8,7 @@ class DomainFeaturesHyperVXmmInput {
 
   /// Creates a new [DomainFeaturesHyperVXmmInput].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVXmmInput({
+  const DomainFeaturesHyperVXmmInput({
     this.state,
   });
 

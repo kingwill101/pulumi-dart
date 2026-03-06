@@ -12,7 +12,7 @@ class GetDomainClusterConfigNodeOption {
   /// Creates a new [GetDomainClusterConfigNodeOption].
   /// [nodeConfigs] Sizing of a node type.
   /// [nodeType] Type of node this configuration describes.
-  GetDomainClusterConfigNodeOption({
+  const GetDomainClusterConfigNodeOption({
     required this.nodeConfigs,
     required this.nodeType,
   });

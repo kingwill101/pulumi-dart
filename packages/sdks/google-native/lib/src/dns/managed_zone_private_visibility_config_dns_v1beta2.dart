@@ -15,7 +15,7 @@ class ManagedZonePrivateVisibilityConfigDnsV1beta2 {
   /// [gkeClusters] The list of Google Kubernetes Engine clusters that can see this zone.
   /// [kind] Optional.
   /// [networks] The list of VPC networks that can see this zone.
-  ManagedZonePrivateVisibilityConfigDnsV1beta2({
+  const ManagedZonePrivateVisibilityConfigDnsV1beta2({
     this.gkeClusters,
     this.kind,
     this.networks,

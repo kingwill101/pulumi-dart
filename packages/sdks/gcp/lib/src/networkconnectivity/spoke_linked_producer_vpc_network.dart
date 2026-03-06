@@ -21,7 +21,7 @@ class SpokeLinkedProducerVpcNetwork {
   /// [network] The URI of the Service Consumer VPC that the Producer VPC is peered with.
   /// [peering] The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
   /// [producerNetwork] (Output)
-  SpokeLinkedProducerVpcNetwork({
+  const SpokeLinkedProducerVpcNetwork({
     this.excludeExportRanges,
     this.includeExportRanges,
     required this.network,

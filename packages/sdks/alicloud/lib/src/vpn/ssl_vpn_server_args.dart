@@ -36,7 +36,7 @@ class SslVpnServerArgs {
   /// [port] The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
   /// [protocol] The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
   /// [vpnGatewayId] The ID of the VPN gateway.
-  SslVpnServerArgs({
+  const SslVpnServerArgs({
     this.cipher,
     required this.clientIpPool,
     this.compress,

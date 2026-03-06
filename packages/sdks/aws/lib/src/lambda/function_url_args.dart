@@ -30,7 +30,7 @@ class FunctionUrlArgs {
   /// [invokeMode] How the Lambda function responds to an invocation. Valid values are `BUFFERED` (default) and `RESPONSE_STREAM`.
   /// [qualifier] Alias name or `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  FunctionUrlArgs({
+  const FunctionUrlArgs({
     required this.authorizationType,
     this.cors,
     required this.functionName,

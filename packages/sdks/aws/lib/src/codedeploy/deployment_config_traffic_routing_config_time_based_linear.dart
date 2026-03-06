@@ -11,7 +11,7 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedLinear {
   /// Creates a new [DeploymentConfigTrafficRoutingConfigTimeBasedLinear].
   /// [interval] The number of minutes between each incremental traffic shift of a `TimeBasedLinear` deployment.
   /// [percentage] The percentage of traffic that is shifted at the start of each increment of a `TimeBasedLinear` deployment.
-  DeploymentConfigTrafficRoutingConfigTimeBasedLinear({
+  const DeploymentConfigTrafficRoutingConfigTimeBasedLinear({
     this.interval,
     this.percentage,
   });

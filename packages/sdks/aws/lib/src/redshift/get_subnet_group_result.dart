@@ -24,7 +24,7 @@ class GetSubnetGroupResult {
   /// [region] Required.
   /// [subnetIds] An array of VPC subnet IDs.
   /// [tags] Tags associated to the Subnet Group
-  GetSubnetGroupResult({
+  const GetSubnetGroupResult({
     required this.arn,
     required this.description,
     required this.id,

@@ -8,7 +8,7 @@ class GcpIntegrationsDataStore {
 
   /// Creates a new [GcpIntegrationsDataStore].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsDataStore({
+  const GcpIntegrationsDataStore({
     this.metricsPollingInterval,
   });
 

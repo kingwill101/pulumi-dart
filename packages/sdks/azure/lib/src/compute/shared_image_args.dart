@@ -99,7 +99,7 @@ class SharedImageArgs {
   /// [tags] A mapping of tags to assign to the Shared Image.
   /// [trustedLaunchEnabled] Specifies if Trusted Launch has to be enabled for the Virtual Machine created from the Shared Image. Changing this forces a new resource to be created.
   /// [trustedLaunchSupported] Specifies if supports creation of both Trusted Launch virtual machines and Gen2 virtual machines with standard security created from the Shared Image. Changing this forces a new resource to be created.
-  SharedImageArgs({
+  const SharedImageArgs({
     this.acceleratedNetworkSupportEnabled,
     this.architecture,
     this.confidentialVmEnabled,

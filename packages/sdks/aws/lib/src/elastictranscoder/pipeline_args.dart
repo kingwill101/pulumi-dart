@@ -56,7 +56,7 @@ class PipelineArgs {
   /// [role] The IAM Amazon Resource Name (ARN) for the role that you want Elastic Transcoder to use to transcode jobs for this pipeline.
   /// [thumbnailConfig] The ThumbnailConfig object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail files. (documented below)
   /// [thumbnailConfigPermissions] The permissions for the `thumbnail_config` object. (documented below)
-  PipelineArgs({
+  const PipelineArgs({
     this.awsKmsKeyArn,
     this.contentConfig,
     this.contentConfigPermissions,

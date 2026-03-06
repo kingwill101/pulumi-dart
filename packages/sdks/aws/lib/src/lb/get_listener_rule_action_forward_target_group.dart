@@ -12,7 +12,7 @@ class GetListenerRuleActionForwardTargetGroup {
   /// Creates a new [GetListenerRuleActionForwardTargetGroup].
   /// [arn] ARN of the Listener Rule.
   /// [weight] Weight of the target group.
-  GetListenerRuleActionForwardTargetGroup({
+  const GetListenerRuleActionForwardTargetGroup({
     required this.arn,
     required this.weight,
   });

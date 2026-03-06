@@ -44,7 +44,7 @@ class MoveResourcePropertiesResponse {
   /// [sourceId] Gets or sets the Source ARM Id of the resource.
   /// [sourceResourceSettings] Gets or sets the source resource settings.
   /// [targetId] Gets or sets the Target ARM Id of the resource.
-  MoveResourcePropertiesResponse({
+  const MoveResourcePropertiesResponse({
     required this.dependsOn,
     this.dependsOnOverrides,
     required this.errors,

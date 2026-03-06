@@ -12,7 +12,7 @@ class NetworkPolicyResponse {
   /// Creates a new [NetworkPolicyResponse].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider.
-  NetworkPolicyResponse({
+  const NetworkPolicyResponse({
     required this.enabled,
     required this.provider,
   });

@@ -14,7 +14,7 @@ class GetTaskDefinitionProxyConfiguration {
   /// [containerName] Name of the container that will serve as the App Mesh proxy.
   /// [properties] Set of network configuration parameters to provide the Container Network Interface (CNI) plugin, specified a key-value mapping.
   /// [type] Proxy type. The default value is `APPMESH`. The only supported value is `APPMESH`.
-  GetTaskDefinitionProxyConfiguration({
+  const GetTaskDefinitionProxyConfiguration({
     required this.containerName,
     required this.properties,
     required this.type,

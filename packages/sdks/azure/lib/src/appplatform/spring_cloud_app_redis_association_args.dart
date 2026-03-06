@@ -24,7 +24,7 @@ class SpringCloudAppRedisAssociationArgs {
   /// [redisCacheId] Specifies the Redis Cache resource ID. Changing this forces a new resource to be created.
   /// [springCloudAppId] Specifies the Spring Cloud Application resource ID in which the Association is created. Changing this forces a new resource to be created.
   /// [sslEnabled] Should SSL be used when connecting to Redis? Defaults to `true`.
-  SpringCloudAppRedisAssociationArgs({
+  const SpringCloudAppRedisAssociationArgs({
     this.name,
     required this.redisAccessKey,
     required this.redisCacheId,

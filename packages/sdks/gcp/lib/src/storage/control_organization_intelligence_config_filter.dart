@@ -25,7 +25,7 @@ class ControlOrganizationIntelligenceConfigFilter {
   /// [excludedCloudStorageLocations] Locations to exclude from the Storage Intelligence plan.
   /// [includedCloudStorageBuckets] Buckets to include in the Storage Intelligence plan.
   /// [includedCloudStorageLocations] Locations to include in the Storage Intelligence plan.
-  ControlOrganizationIntelligenceConfigFilter({
+  const ControlOrganizationIntelligenceConfigFilter({
     this.excludedCloudStorageBuckets,
     this.excludedCloudStorageLocations,
     this.includedCloudStorageBuckets,

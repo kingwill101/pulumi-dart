@@ -17,7 +17,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration 
   /// [sizeInGb] The size of the Disk in GB. Changing this forces a new resource to be created.
   /// [skuName] The name of the Disk SKU. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
   /// [volumeName] Specifies the volumn name of the database disk. Possible values are `backup`, `hana/data`, `hana/log`, `hana/shared`, `os` and `usr/sap`. Changing this forces a new resource to be created.
-  SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration({
+  const SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration({
     required this.numberOfDisks,
     required this.sizeInGb,
     required this.skuName,

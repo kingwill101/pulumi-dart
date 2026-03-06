@@ -21,7 +21,7 @@ class GetEnterpriseDatabasesArgs {
   /// [instanceId] The instance ID of the target database.
   /// [nameRegex] A regex string to filter the results by the database Schema Name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnterpriseDatabasesArgs({
+  const GetEnterpriseDatabasesArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

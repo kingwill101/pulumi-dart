@@ -33,7 +33,7 @@ class ScheduledQueryRulesAlertV2Criteria {
   /// [resourceIdColumn] Specifies the column containing the resource ID. The content of the column must be an uri formatted as resource ID.
   /// [threshold] Specifies the criteria threshold value that activates the alert.
   /// [timeAggregationMethod] The type of aggregation to apply to the data points in aggregation granularity. Possible values are `Average`, `Count`, `Maximum`, `Minimum`,and `Total`.
-  ScheduledQueryRulesAlertV2Criteria({
+  const ScheduledQueryRulesAlertV2Criteria({
     this.dimensions,
     this.failingPeriods,
     this.metricMeasureColumn,

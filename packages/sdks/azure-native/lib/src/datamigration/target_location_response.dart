@@ -12,7 +12,7 @@ class TargetLocationResponse {
   /// Creates a new [TargetLocationResponse].
   /// [accountKey] Storage Account Key.
   /// [storageAccountResourceId] Resource Id of the storage account copying backups.
-  TargetLocationResponse({
+  const TargetLocationResponse({
     this.accountKey,
     this.storageAccountResourceId,
   });

@@ -17,7 +17,7 @@ class GetServiceMetricAlarmRulesRuleEscalations {
   /// [critical] The conditions for triggering Critical-level alerts.
   /// [info] The conditions for triggering Info-level alerts.
   /// [warn] The conditions for triggering Warn-level alerts.
-  GetServiceMetricAlarmRulesRuleEscalations({
+  const GetServiceMetricAlarmRulesRuleEscalations({
     required this.critical,
     required this.info,
     required this.warn,

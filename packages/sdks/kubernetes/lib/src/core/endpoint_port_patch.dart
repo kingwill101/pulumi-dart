@@ -27,7 +27,7 @@ class EndpointPortPatch {
   /// [name] The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
   /// [port] The port number of the endpoint.
   /// [protocol] The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
-  EndpointPortPatch({
+  const EndpointPortPatch({
     this.appProtocol,
     this.name,
     this.port,

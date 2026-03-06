@@ -13,7 +13,7 @@ class GetBackendServiceCustomMetric {
   /// Creates a new [GetBackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
   /// [name] The name of the Backend Service.
-  GetBackendServiceCustomMetric({
+  const GetBackendServiceCustomMetric({
     required this.dryRun,
     required this.name,
   });

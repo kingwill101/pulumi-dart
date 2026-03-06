@@ -27,7 +27,7 @@ class CodeContainerResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the code container.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  CodeContainerResponse({
+  const CodeContainerResponse({
     this.description,
     this.isArchived,
     required this.latestVersion,

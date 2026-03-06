@@ -15,7 +15,7 @@ class GetDedicatedCloudNodeArgs {
   /// Creates a new [GetDedicatedCloudNodeArgs].
   /// [dedicatedCloudNodeName] dedicated cloud node name
   /// [resourceGroupName] The name of the resource group
-  GetDedicatedCloudNodeArgs({
+  const GetDedicatedCloudNodeArgs({
     required this.dedicatedCloudNodeName,
     required this.resourceGroupName,
   });

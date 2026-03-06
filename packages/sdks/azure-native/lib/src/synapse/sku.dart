@@ -15,7 +15,7 @@ class Sku {
   /// [capacity] If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
   /// [name] The SKU name
   /// [tier] The service tier
-  Sku({
+  const Sku({
     this.capacity,
     this.name,
     this.tier,

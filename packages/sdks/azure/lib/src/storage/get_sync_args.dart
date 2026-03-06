@@ -15,7 +15,7 @@ class GetSyncArgs {
   /// Creates a new [GetSyncArgs].
   /// [name] The name of this Storage Sync.
   /// [resourceGroupName] The name of the Resource Group where the Storage Sync exists.
-  GetSyncArgs({
+  const GetSyncArgs({
     required this.name,
     required this.resourceGroupName,
   });

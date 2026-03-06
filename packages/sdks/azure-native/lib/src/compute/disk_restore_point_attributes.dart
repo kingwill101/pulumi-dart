@@ -14,7 +14,7 @@ class DiskRestorePointAttributes {
   /// Creates a new [DiskRestorePointAttributes].
   /// [encryption] Encryption at rest settings for disk restore point. It is an optional property that can be specified in the input while creating a restore point.
   /// [sourceDiskRestorePoint] Resource Id of the source disk restore point.
-  DiskRestorePointAttributes({
+  const DiskRestorePointAttributes({
     this.encryption,
     this.sourceDiskRestorePoint,
   });

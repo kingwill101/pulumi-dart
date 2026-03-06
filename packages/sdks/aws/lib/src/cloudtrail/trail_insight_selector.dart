@@ -8,7 +8,7 @@ class TrailInsightSelector {
 
   /// Creates a new [TrailInsightSelector].
   /// [insightType] Type of insights to log on a trail. Valid values are: `ApiCallRateInsight` and `ApiErrorRateInsight`.
-  TrailInsightSelector({
+  const TrailInsightSelector({
     required this.insightType,
   });
 

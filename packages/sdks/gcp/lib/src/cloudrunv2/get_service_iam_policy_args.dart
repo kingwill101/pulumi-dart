@@ -21,7 +21,7 @@ class GetServiceIamPolicyArgs {
   /// [location] The location of the cloud run service Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetServiceIamPolicyArgs({
+  const GetServiceIamPolicyArgs({
     this.location,
     required this.name,
     this.project,

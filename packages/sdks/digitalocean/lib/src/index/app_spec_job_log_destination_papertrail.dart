@@ -8,7 +8,7 @@ class AppSpecJobLogDestinationPapertrail {
 
   /// Creates a new [AppSpecJobLogDestinationPapertrail].
   /// [endpoint] Papertrail syslog endpoint.
-  AppSpecJobLogDestinationPapertrail({
+  const AppSpecJobLogDestinationPapertrail({
     required this.endpoint,
   });
 

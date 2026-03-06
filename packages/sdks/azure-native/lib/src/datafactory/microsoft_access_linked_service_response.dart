@@ -46,7 +46,7 @@ class MicrosoftAccessLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userName] User name for Basic authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  MicrosoftAccessLinkedServiceResponse({
+  const MicrosoftAccessLinkedServiceResponse({
     this.annotations,
     this.authenticationType,
     this.connectVia,

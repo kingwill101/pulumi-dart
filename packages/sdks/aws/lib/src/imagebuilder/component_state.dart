@@ -64,7 +64,7 @@ class ComponentState {
   /// [type] Type of the component.
   /// [uri] S3 URI with data of the component. Exactly one of `data` and `uri` can be specified.
   /// [version] Version of the component.
-  ComponentState({
+  const ComponentState({
     this.arn,
     this.changeDescription,
     this.data,

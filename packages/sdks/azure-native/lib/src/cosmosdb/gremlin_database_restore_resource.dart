@@ -12,7 +12,7 @@ class GremlinDatabaseRestoreResource {
   /// Creates a new [GremlinDatabaseRestoreResource].
   /// [databaseName] The name of the gremlin database available for restore.
   /// [graphNames] The names of the graphs available for restore.
-  GremlinDatabaseRestoreResource({
+  const GremlinDatabaseRestoreResource({
     this.databaseName,
     this.graphNames,
   });

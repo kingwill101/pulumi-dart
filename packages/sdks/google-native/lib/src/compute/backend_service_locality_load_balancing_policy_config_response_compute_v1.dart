@@ -12,7 +12,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1 {
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1].
   /// [customPolicy] Required.
   /// [policy] Required.
-  BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1({
+  const BackendServiceLocalityLoadBalancingPolicyConfigResponseComputeV1({
     required this.customPolicy,
     required this.policy,
   });

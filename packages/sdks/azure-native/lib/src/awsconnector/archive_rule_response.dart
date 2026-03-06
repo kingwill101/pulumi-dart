@@ -13,7 +13,7 @@ class ArchiveRuleResponse {
   /// Creates a new [ArchiveRuleResponse].
   /// [filter] Property filter
   /// [ruleName] The archive rule name
-  ArchiveRuleResponse({
+  const ArchiveRuleResponse({
     this.filter,
     this.ruleName,
   });

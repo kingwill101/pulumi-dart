@@ -27,7 +27,7 @@ class AkriConnectorTemplateHelmConfigurationSettings {
   /// [repositoryName] The name of the repository
   /// [values] A map of values to pass to the helm chart.
   /// [version] The version of the Helm chart.
-  AkriConnectorTemplateHelmConfigurationSettings({
+  const AkriConnectorTemplateHelmConfigurationSettings({
     this.advancedConfiguration,
     this.registrySettings,
     required this.releaseName,

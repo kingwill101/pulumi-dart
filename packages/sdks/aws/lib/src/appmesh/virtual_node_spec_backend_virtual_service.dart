@@ -12,7 +12,7 @@ class VirtualNodeSpecBackendVirtualService {
   /// Creates a new [VirtualNodeSpecBackendVirtualService].
   /// [clientPolicy] Client policy for the backend.
   /// [virtualServiceName] Name of the virtual service that is acting as a virtual node backend. Must be between 1 and 255 characters in length.
-  VirtualNodeSpecBackendVirtualService({
+  const VirtualNodeSpecBackendVirtualService({
     this.clientPolicy,
     required this.virtualServiceName,
   });

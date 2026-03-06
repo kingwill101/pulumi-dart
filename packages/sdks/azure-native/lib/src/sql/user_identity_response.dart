@@ -12,7 +12,7 @@ class UserIdentityResponse {
   /// Creates a new [UserIdentityResponse].
   /// [clientId] The Azure Active Directory client id.
   /// [principalId] The Azure Active Directory principal id.
-  UserIdentityResponse({
+  const UserIdentityResponse({
     required this.clientId,
     required this.principalId,
   });

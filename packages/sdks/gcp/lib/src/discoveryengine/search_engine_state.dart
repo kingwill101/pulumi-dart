@@ -66,7 +66,7 @@ class SearchEngineState {
   /// [project] The ID of the project in which the resource belongs.
   /// [searchEngineConfig] Configurations for a Search Engine.
   /// [updateTime] Timestamp the Engine was last updated.
-  SearchEngineState({
+  const SearchEngineState({
     this.appType,
     this.collectionId,
     this.commonConfig,

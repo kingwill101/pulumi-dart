@@ -11,7 +11,7 @@ class AvailableUpgradeResponse {
   /// Creates a new [AvailableUpgradeResponse].
   /// [availabilityLifecycle] The version lifecycle indicator.
   /// [version] The version available for upgrading.
-  AvailableUpgradeResponse({
+  const AvailableUpgradeResponse({
     required this.availabilityLifecycle,
     required this.version,
   });

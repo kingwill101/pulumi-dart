@@ -44,7 +44,7 @@ class GatewayIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the gateway for the API.
   /// [role] The role that should be applied. Only one
-  GatewayIamBindingState({
+  const GatewayIamBindingState({
     this.condition,
     this.etag,
     this.gateway,

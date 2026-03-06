@@ -8,7 +8,7 @@ class ConnectorCapacityAutoscalingScaleInPolicy {
 
   /// Creates a new [ConnectorCapacityAutoscalingScaleInPolicy].
   /// [cpuUtilizationPercentage] Specifies the CPU utilization percentage threshold at which you want connector scale in to be triggered.
-  ConnectorCapacityAutoscalingScaleInPolicy({
+  const ConnectorCapacityAutoscalingScaleInPolicy({
     this.cpuUtilizationPercentage,
   });
 

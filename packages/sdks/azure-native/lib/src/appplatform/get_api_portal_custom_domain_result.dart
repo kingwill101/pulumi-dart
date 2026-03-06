@@ -25,7 +25,7 @@ class GetApiPortalCustomDomainResult {
   /// [properties] The properties of custom domain for API portal
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetApiPortalCustomDomainResult({
+  const GetApiPortalCustomDomainResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

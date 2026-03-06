@@ -40,7 +40,7 @@ class FeatureGroupFeatureArgs {
   /// [project] Optional.
   /// [valueType] Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
   /// [versionColumnName] Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
-  FeatureGroupFeatureArgs({
+  const FeatureGroupFeatureArgs({
     this.description,
     this.disableMonitoring,
     this.etag,

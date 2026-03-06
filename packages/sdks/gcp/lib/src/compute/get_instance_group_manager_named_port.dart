@@ -11,7 +11,7 @@ class GetInstanceGroupManagerNamedPort {
   /// Creates a new [GetInstanceGroupManagerNamedPort].
   /// [name] The name of the instance group. Either `name` or `self_link` must be provided.
   /// [port] The port number.
-  GetInstanceGroupManagerNamedPort({
+  const GetInstanceGroupManagerNamedPort({
     required this.name,
     required this.port,
   });

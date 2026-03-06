@@ -45,7 +45,7 @@ class FolderSccBigQueryExportArgs {
   /// [description] The description of the export (max of 1024 characters).
   /// [filter] Expression that defines the filter to apply across create/update
   /// [folder] The folder where Cloud Security Command Center Big Query Export
-  FolderSccBigQueryExportArgs({
+  const FolderSccBigQueryExportArgs({
     required this.bigQueryExportId,
     required this.dataset,
     required this.description,

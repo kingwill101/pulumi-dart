@@ -35,7 +35,7 @@ class FluidRelayServerArgs {
   /// [resourceGroup] The resource group containing the resource.
   /// [storagesku] Sku of the storage associated with the resource
   /// [tags] Resource tags.
-  FluidRelayServerArgs({
+  const FluidRelayServerArgs({
     this.encryption,
     this.fluidRelayServerName,
     this.identity,

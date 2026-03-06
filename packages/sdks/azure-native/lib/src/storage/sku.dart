@@ -9,7 +9,7 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
-  Sku({
+  const Sku({
     required this.name,
   });
 

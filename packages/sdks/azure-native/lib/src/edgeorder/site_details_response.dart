@@ -9,7 +9,7 @@ class SiteDetailsResponse {
 
   /// Creates a new [SiteDetailsResponse].
   /// [siteId] Unique Id, Identifying A Site.
-  SiteDetailsResponse({
+  const SiteDetailsResponse({
     required this.siteId,
   });
 

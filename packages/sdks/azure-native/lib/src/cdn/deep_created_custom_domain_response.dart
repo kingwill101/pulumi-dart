@@ -15,7 +15,7 @@ class DeepCreatedCustomDomainResponse {
   /// [hostName] The host name of the custom domain. Must be a domain name.
   /// [name] Custom domain name.
   /// [validationData] Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
-  DeepCreatedCustomDomainResponse({
+  const DeepCreatedCustomDomainResponse({
     required this.hostName,
     required this.name,
     this.validationData,

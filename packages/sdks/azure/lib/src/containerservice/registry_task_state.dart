@@ -72,7 +72,7 @@ class RegistryTaskState {
   /// [tags] Optional.
   /// [timeoutInSeconds] Optional.
   /// [timerTriggers] One or more `timer_trigger` blocks as defined below.
-  RegistryTaskState({
+  const RegistryTaskState({
     this.agentPoolName,
     this.agentSetting,
     this.baseImageTrigger,

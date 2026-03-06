@@ -21,7 +21,7 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
   /// [skipToken] Continuation token
-  ListShareSubscriptionSourceShareSynchronizationSettingsArgs({
+  const ListShareSubscriptionSourceShareSynchronizationSettingsArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.shareSubscriptionName,

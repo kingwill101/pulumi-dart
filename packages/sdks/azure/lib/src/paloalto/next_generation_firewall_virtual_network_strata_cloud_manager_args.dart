@@ -46,7 +46,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerArgs {
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager to be created.
   /// [strataCloudManagerTenantName] Strata Cloud Manager name which is intended to manage the policy for this firewall.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall Virtual Network Strata Cloud Manager.
-  NextGenerationFirewallVirtualNetworkStrataCloudManagerArgs({
+  const NextGenerationFirewallVirtualNetworkStrataCloudManagerArgs({
     this.destinationNats,
     this.dnsSettings,
     this.identity,

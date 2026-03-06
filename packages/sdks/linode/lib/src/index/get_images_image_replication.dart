@@ -11,7 +11,7 @@ class GetImagesImageReplication {
   /// Creates a new [GetImagesImageReplication].
   /// [region] The region of an image replica.
   /// [status] The status of an image replica.
-  GetImagesImageReplication({
+  const GetImagesImageReplication({
     required this.region,
     required this.status,
   });

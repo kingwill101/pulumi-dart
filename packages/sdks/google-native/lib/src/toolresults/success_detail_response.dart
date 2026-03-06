@@ -9,7 +9,7 @@ class SuccessDetailResponse {
 
   /// Creates a new [SuccessDetailResponse].
   /// [otherNativeCrash] If a native process other than the app crashed.
-  SuccessDetailResponse({
+  const SuccessDetailResponse({
     required this.otherNativeCrash,
   });
 

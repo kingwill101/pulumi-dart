@@ -17,7 +17,7 @@ class GetCertificatesArgs {
   /// Creates a new [GetCertificatesArgs].
   /// [includePending] Specifies whether to include certificates which are not completely provisioned. Defaults to true.
   /// [keyVaultId] Specifies the ID of the Key Vault instance to fetch certificate names from, available on the `azure.keyvault.KeyVault` Data Source / Resource.
-  GetCertificatesArgs({
+  const GetCertificatesArgs({
     this.includePending,
     required this.keyVaultId,
   });

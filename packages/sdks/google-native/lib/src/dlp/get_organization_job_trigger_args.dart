@@ -15,7 +15,7 @@ class GetOrganizationJobTriggerArgs {
   /// [jobTriggerId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationJobTriggerArgs({
+  const GetOrganizationJobTriggerArgs({
     required this.jobTriggerId,
     required this.location,
     required this.organizationId,

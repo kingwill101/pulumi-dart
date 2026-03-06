@@ -36,7 +36,7 @@ class DeploymentStatus {
   /// [terminatingReplicas] Total number of terminating pods targeted by this deployment. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.
   /// [unavailableReplicas] Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.
   /// [updatedReplicas] Total number of non-terminating pods targeted by this deployment that have the desired template spec.
-  DeploymentStatus({
+  const DeploymentStatus({
     this.availableReplicas,
     this.collisionCount,
     this.conditions,

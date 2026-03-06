@@ -49,7 +49,7 @@ class PerInstanceConfigState {
   /// [removeInstanceOnDestroy] When true, deleting this config will immediately remove the underlying instance.
   /// [removeInstanceStateOnDestroy] When true, deleting this config will immediately remove any specified state from the underlying instance.
   /// [zone] Zone where the containing instance group manager is located
-  PerInstanceConfigState({
+  const PerInstanceConfigState({
     this.instanceGroupManager,
     this.minimalAction,
     this.mostDisruptiveAllowedAction,

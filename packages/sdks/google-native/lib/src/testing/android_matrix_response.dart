@@ -18,7 +18,7 @@ class AndroidMatrixResponse {
   /// [androidVersionIds] The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   /// [locales] The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
   /// [orientations] The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
-  AndroidMatrixResponse({
+  const AndroidMatrixResponse({
     required this.androidModelIds,
     required this.androidVersionIds,
     required this.locales,

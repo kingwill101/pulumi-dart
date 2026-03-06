@@ -30,7 +30,7 @@ class GetServiceMetricAlarmRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [ruleName] The name of the alert rule.
   /// [status] Specifies whether to query enabled or disabled alert rules. Valid values: `true`, `false`.
-  GetServiceMetricAlarmRulesArgs({
+  const GetServiceMetricAlarmRulesArgs({
     this.dimensions,
     this.ids,
     this.metricName,

@@ -33,7 +33,7 @@ class ResolverQueryLogConfigState {
   /// [shareStatus] An indication of whether the query logging configuration is shared with other AWS accounts, or was shared with the current account by another AWS account.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ResolverQueryLogConfigState({
+  const ResolverQueryLogConfigState({
     this.arn,
     this.destinationArn,
     this.name,

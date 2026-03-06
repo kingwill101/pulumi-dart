@@ -11,7 +11,7 @@ class GetAgentExtensionsBlockList {
   /// Creates a new [GetAgentExtensionsBlockList].
   /// [publisher] Publisher of the extension.
   /// [type] The identity type.
-  GetAgentExtensionsBlockList({
+  const GetAgentExtensionsBlockList({
     required this.publisher,
     required this.type,
   });

@@ -11,7 +11,7 @@ class CxIntentTrainingPhrasePart {
   /// Creates a new [CxIntentTrainingPhrasePart].
   /// [parameterId] The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
   /// [text] The text for this part.
-  CxIntentTrainingPhrasePart({
+  const CxIntentTrainingPhrasePart({
     this.parameterId,
     required this.text,
   });

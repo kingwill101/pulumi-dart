@@ -21,7 +21,7 @@ class GetInvocationResult {
   /// [region] Required.
   /// [result] String result of the Lambda function invocation.
   /// [tenantId] Optional.
-  GetInvocationResult({
+  const GetInvocationResult({
     required this.functionName,
     required this.id,
     required this.input,

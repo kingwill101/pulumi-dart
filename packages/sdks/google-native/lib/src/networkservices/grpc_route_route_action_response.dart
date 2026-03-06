@@ -25,7 +25,7 @@ class GrpcRouteRouteActionResponse {
   /// [retryPolicy] Optional. Specifies the retry policy associated with this route.
   /// [statefulSessionAffinity] Optional. Specifies cookie-based stateful session affinity.
   /// [timeout] Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
-  GrpcRouteRouteActionResponse({
+  const GrpcRouteRouteActionResponse({
     required this.destinations,
     required this.faultInjectionPolicy,
     required this.retryPolicy,

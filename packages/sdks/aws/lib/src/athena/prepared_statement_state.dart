@@ -21,7 +21,7 @@ class PreparedStatementState {
   /// [queryStatement] The query string for the prepared statement.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroup] The name of the workgroup to which the prepared statement belongs.
-  PreparedStatementState({
+  const PreparedStatementState({
     this.description,
     this.name,
     this.queryStatement,

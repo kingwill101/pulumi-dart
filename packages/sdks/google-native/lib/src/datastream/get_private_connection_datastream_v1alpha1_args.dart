@@ -15,7 +15,7 @@ class GetPrivateConnectionDatastreamV1alpha1Args {
   /// [location] Required.
   /// [privateConnectionId] Required.
   /// [project] Optional.
-  GetPrivateConnectionDatastreamV1alpha1Args({
+  const GetPrivateConnectionDatastreamV1alpha1Args({
     required this.location,
     required this.privateConnectionId,
     this.project,

@@ -42,7 +42,7 @@ class DefenderForContainersGcpOfferingResponse {
   /// [nativeCloudConnection] The native cloud connection configuration
   /// [offeringType] The type of the security offering.
   /// [vmScanners] The Microsoft Defender for Container K8s VM host scanning configuration
-  DefenderForContainersGcpOfferingResponse({
+  const DefenderForContainersGcpOfferingResponse({
     this.dataPipelineNativeCloudConnection,
     required this.description,
     this.enableAuditLogsAutoProvisioning,

@@ -9,7 +9,7 @@ class L2ConnectionsPropertiesResponseGroundStation {
 
   /// Creates a new [L2ConnectionsPropertiesResponseGroundStation].
   /// [id] Resource ID.
-  L2ConnectionsPropertiesResponseGroundStation({
+  const L2ConnectionsPropertiesResponseGroundStation({
     required this.id,
   });
 

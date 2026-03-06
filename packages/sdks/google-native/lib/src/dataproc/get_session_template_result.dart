@@ -38,7 +38,7 @@ class GetSessionTemplateResult {
   /// [runtimeConfig] Optional. Runtime configuration for session execution.
   /// [updateTime] The time the template was last updated.
   /// [uuid] A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
-  GetSessionTemplateResult({
+  const GetSessionTemplateResult({
     required this.createTime,
     required this.creator,
     required this.description,

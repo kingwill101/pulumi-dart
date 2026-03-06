@@ -26,7 +26,7 @@ class ConversationProfileHumanAgentAssistantConfig {
   /// [humanAgentSuggestionConfig] Configuration for agent assistance of human agent participant.
   /// [messageAnalysisConfig] desc
   /// [notificationConfig] Pub/Sub topic on which to publish new agent assistant events.
-  ConversationProfileHumanAgentAssistantConfig({
+  const ConversationProfileHumanAgentAssistantConfig({
     this.endUserSuggestionConfig,
     this.humanAgentSuggestionConfig,
     this.messageAnalysisConfig,

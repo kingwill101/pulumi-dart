@@ -12,7 +12,7 @@ class GetPolicyArgs {
 
   /// Creates a new [GetPolicyArgs].
   /// [name] The resource name of the policy to retrieve. Format: `policies/{policy_id}`.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.name,
   });
 

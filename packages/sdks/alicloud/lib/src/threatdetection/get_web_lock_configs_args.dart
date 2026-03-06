@@ -31,7 +31,7 @@ class GetWebLockConfigsArgs {
   /// [remark] The string that allows you to search for servers in fuzzy match mode. You can enter a server name or IP address.
   /// [sourceIp] The source IP address of the request.
   /// [status] The protection status of the server that you want to query. Valid values: `on`, `off`.
-  GetWebLockConfigsArgs({
+  const GetWebLockConfigsArgs({
     this.ids,
     this.lang,
     this.outputFile,

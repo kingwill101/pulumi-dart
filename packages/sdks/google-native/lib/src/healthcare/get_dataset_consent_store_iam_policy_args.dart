@@ -19,7 +19,7 @@ class GetDatasetConsentStoreIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetConsentStoreIamPolicyArgs({
+  const GetDatasetConsentStoreIamPolicyArgs({
     required this.consentStoreId,
     required this.datasetId,
     required this.location,

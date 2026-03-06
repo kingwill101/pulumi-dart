@@ -9,7 +9,7 @@ class DefenderForContainersAwsOfferingKinesisToS3 {
 
   /// Creates a new [DefenderForContainersAwsOfferingKinesisToS3].
   /// [cloudRoleArn] The cloud role ARN in AWS used by Kinesis to transfer data into S3
-  DefenderForContainersAwsOfferingKinesisToS3({
+  const DefenderForContainersAwsOfferingKinesisToS3({
     this.cloudRoleArn,
   });
 

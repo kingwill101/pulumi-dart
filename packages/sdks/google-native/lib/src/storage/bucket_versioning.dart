@@ -9,7 +9,7 @@ class BucketVersioning {
 
   /// Creates a new [BucketVersioning].
   /// [enabled] While set to true, versioning is fully enabled for this bucket.
-  BucketVersioning({
+  const BucketVersioning({
     this.enabled,
   });
 

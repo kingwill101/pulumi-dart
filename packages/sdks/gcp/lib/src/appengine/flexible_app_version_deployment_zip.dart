@@ -11,7 +11,7 @@ class FlexibleAppVersionDeploymentZip {
   /// Creates a new [FlexibleAppVersionDeploymentZip].
   /// [filesCount] files count
   /// [sourceUrl] Source URL
-  FlexibleAppVersionDeploymentZip({
+  const FlexibleAppVersionDeploymentZip({
     this.filesCount,
     required this.sourceUrl,
   });

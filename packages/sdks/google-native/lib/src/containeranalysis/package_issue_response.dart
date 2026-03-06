@@ -38,7 +38,7 @@ class PackageIssueResponse {
   /// [fixedPackage] The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
   /// [fixedVersion] The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available.
   /// [packageType] The type of package (e.g. OS, MAVEN, GO).
-  PackageIssueResponse({
+  const PackageIssueResponse({
     required this.affectedCpeUri,
     required this.affectedPackage,
     required this.affectedVersion,

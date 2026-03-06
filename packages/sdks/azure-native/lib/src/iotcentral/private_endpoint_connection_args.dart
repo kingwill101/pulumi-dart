@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group that contains the IoT Central application.
   /// [resourceName] The ARM resource name of the IoT Central application.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,
     required this.resourceGroupName,

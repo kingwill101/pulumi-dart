@@ -30,7 +30,7 @@ class GetBindingGkehubV1betaResult {
   /// [state] State of the membership binding resource.
   /// [uid] Google-generated UUID for this resource. This is unique across all membershipbinding resources. If a membershipbinding resource is deleted and another resource with the same name is created, it gets a different uid.
   /// [updateTime] When the membership binding was last updated.
-  GetBindingGkehubV1betaResult({
+  const GetBindingGkehubV1betaResult({
     required this.createTime,
     required this.deleteTime,
     required this.labels,

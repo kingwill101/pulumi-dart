@@ -81,7 +81,7 @@ class InternalRangeState {
   /// [targetCidrRanges] Optional. Can be set to narrow down or pick a different address space while searching for a free range.
   /// [usage] The type of usage set for this InternalRange.
   /// [users] Output only. The list of resources that refer to this internal range.
-  InternalRangeState({
+  const InternalRangeState({
     this.allocationOptions,
     this.description,
     this.effectiveLabels,

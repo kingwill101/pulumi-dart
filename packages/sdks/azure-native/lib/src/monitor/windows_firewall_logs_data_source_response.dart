@@ -13,7 +13,7 @@ class WindowsFirewallLogsDataSourceResponse {
   /// Creates a new [WindowsFirewallLogsDataSourceResponse].
   /// [name] A friendly name for the data source.
   /// [streams] Firewall logs streams
-  WindowsFirewallLogsDataSourceResponse({
+  const WindowsFirewallLogsDataSourceResponse({
     this.name,
     required this.streams,
   });

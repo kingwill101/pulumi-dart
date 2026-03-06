@@ -8,7 +8,7 @@ class InferenceProfileModelSource {
 
   /// Creates a new [InferenceProfileModelSource].
   /// [copyFrom] The Amazon Resource Name (ARN) of the model.
-  InferenceProfileModelSource({
+  const InferenceProfileModelSource({
     required this.copyFrom,
   });
 

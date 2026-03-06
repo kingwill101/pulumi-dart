@@ -35,7 +35,7 @@ class DefaultSupportedIdpConfigState {
   /// [idpId] ID of the IDP. Possible values include:
   /// [name] The name of the DefaultSupportedIdpConfig resource
   /// [project] The ID of the project in which the resource belongs.
-  DefaultSupportedIdpConfigState({
+  const DefaultSupportedIdpConfigState({
     this.clientId,
     this.clientSecret,
     this.enabled,

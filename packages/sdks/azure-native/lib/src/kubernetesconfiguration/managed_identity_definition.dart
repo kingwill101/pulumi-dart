@@ -9,7 +9,7 @@ class ManagedIdentityDefinition {
 
   /// Creates a new [ManagedIdentityDefinition].
   /// [clientId] The client Id for authenticating a Managed Identity.
-  ManagedIdentityDefinition({
+  const ManagedIdentityDefinition({
     this.clientId,
   });
 

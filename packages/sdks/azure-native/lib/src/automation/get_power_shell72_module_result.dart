@@ -57,7 +57,7 @@ class GetPowerShell72ModuleResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource.
   /// [version] Gets the version of the module.
-  GetPowerShell72ModuleResult({
+  const GetPowerShell72ModuleResult({
     this.activityCount,
     required this.azureApiVersion,
     this.creationTime,

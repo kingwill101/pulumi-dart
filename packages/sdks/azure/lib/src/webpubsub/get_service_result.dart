@@ -54,7 +54,7 @@ class GetServiceResult {
   /// [tags] Required.
   /// [tlsClientCertEnabled] Required.
   /// [version] Required.
-  GetServiceResult({
+  const GetServiceResult({
     required this.aadAuthEnabled,
     required this.capacity,
     required this.externalIp,

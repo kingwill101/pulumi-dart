@@ -14,7 +14,7 @@ class TrafficManagerNestedEndpointSubnet {
   /// [first] The first IP Address in this subnet.
   /// [last] The last IP Address in this subnet.
   /// [scope] The block size (number of leading bits in the subnet mask).
-  TrafficManagerNestedEndpointSubnet({
+  const TrafficManagerNestedEndpointSubnet({
     required this.first,
     this.last,
     this.scope,

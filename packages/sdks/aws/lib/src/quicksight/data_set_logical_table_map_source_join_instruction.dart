@@ -25,7 +25,7 @@ class DataSetLogicalTableMapSourceJoinInstruction {
   /// [rightJoinKeyProperties] Join key properties of the right operand. See right_join_key_properties.
   /// [rightOperand] Operand on the right side of a join.
   /// [type] Type of join. Valid values are `INNER`, `OUTER`, `LEFT`, and `RIGHT`.
-  DataSetLogicalTableMapSourceJoinInstruction({
+  const DataSetLogicalTableMapSourceJoinInstruction({
     this.leftJoinKeyProperties,
     required this.leftOperand,
     required this.onClause,

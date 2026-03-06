@@ -9,7 +9,7 @@ class AkriConnectorsDiagnosticsLogs {
 
   /// Creates a new [AkriConnectorsDiagnosticsLogs].
   /// [level] The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  AkriConnectorsDiagnosticsLogs({
+  const AkriConnectorsDiagnosticsLogs({
     this.level,
   });
 

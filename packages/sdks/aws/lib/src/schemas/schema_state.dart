@@ -42,7 +42,7 @@ class SchemaState {
   /// [type] The type of the schema. Valid values: `OpenApi3` or `JSONSchemaDraft4`.
   /// [version] The version of the schema.
   /// [versionCreatedDate] The created date of the version of the schema.
-  SchemaState({
+  const SchemaState({
     this.arn,
     this.content,
     this.description,

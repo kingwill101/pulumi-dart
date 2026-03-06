@@ -18,7 +18,7 @@ class SsisEnvironmentReferenceResponse {
   /// [environmentName] Environment name.
   /// [id] Environment reference id.
   /// [referenceType] Reference type
-  SsisEnvironmentReferenceResponse({
+  const SsisEnvironmentReferenceResponse({
     this.environmentFolderName,
     this.environmentName,
     this.id,

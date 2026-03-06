@@ -49,7 +49,7 @@ class ClusterArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rebalanceConfig] Defines rebalancing behavior of a Kafka cluster.
   /// [tlsConfig] TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tls_config` block.
-  ClusterArgs({
+  const ClusterArgs({
     this.brokerCapacityConfig,
     required this.capacityConfig,
     required this.clusterId,

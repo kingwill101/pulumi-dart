@@ -52,7 +52,7 @@ class ClusterSnapshotState {
   /// [status] The status of this DB Cluster Snapshot.
   /// [storageEncrypted] Specifies whether the DB cluster snapshot is encrypted.
   /// [vpcId] The VPC ID associated with the DB cluster snapshot.
-  ClusterSnapshotState({
+  const ClusterSnapshotState({
     this.allocatedStorage,
     this.availabilityZones,
     this.dbClusterIdentifier,

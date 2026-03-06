@@ -13,7 +13,7 @@ class MetricsResponse {
   /// Creates a new [MetricsResponse].
   /// [eventThreshold] A container specifying the time threshold for emitting the ``s3:Replication:OperationMissedThreshold`` event. A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics ``EventThreshold``.
   /// [status] Specifies whether the replication metrics are enabled.
-  MetricsResponse({
+  const MetricsResponse({
     this.eventThreshold,
     this.status,
   });

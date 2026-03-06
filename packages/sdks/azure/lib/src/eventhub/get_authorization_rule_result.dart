@@ -40,7 +40,7 @@ class GetAuthorizationRuleResult {
   /// [secondaryConnectionStringAlias] The alias of the Secondary Connection String for the Event Hubs Authorization Rule.
   /// [secondaryKey] The Secondary Key for the Event Hubs Authorization Rule.
   /// [send] Optional.
-  GetAuthorizationRuleResult({
+  const GetAuthorizationRuleResult({
     required this.eventhubName,
     required this.id,
     this.listen,

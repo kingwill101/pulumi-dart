@@ -30,7 +30,7 @@ class GooglePrivacyDlpV2PrivacyMetricResponse {
   /// [kMapEstimationConfig] k-map
   /// [lDiversityConfig] l-diversity
   /// [numericalStatsConfig] Numerical stats
-  GooglePrivacyDlpV2PrivacyMetricResponse({
+  const GooglePrivacyDlpV2PrivacyMetricResponse({
     required this.categoricalStatsConfig,
     required this.deltaPresenceEstimationConfig,
     required this.kAnonymityConfig,

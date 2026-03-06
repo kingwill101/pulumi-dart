@@ -22,7 +22,7 @@ class SiteProperties {
   /// [displayName] displayName of Site resource
   /// [labels] Key-value pairs for labeling the site resource.
   /// [siteAddress] Physical address of the site
-  SiteProperties({
+  const SiteProperties({
     this.addressResourceId,
     this.description,
     this.displayName,

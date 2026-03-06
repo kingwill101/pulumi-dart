@@ -73,7 +73,7 @@ class GetElasticPoolResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zoneRedundant] Whether or not this elastic pool is zone redundant, which means the replicas of this elastic pool will be spread across multiple availability zones.
-  GetElasticPoolResult({
+  const GetElasticPoolResult({
     this.autoPauseDelay,
     this.availabilityZone,
     required this.azureApiVersion,

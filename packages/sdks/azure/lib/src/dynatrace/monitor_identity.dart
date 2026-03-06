@@ -12,7 +12,7 @@ class MonitorIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of identity used for the resource. Only possible value is `SystemAssigned`.
-  MonitorIdentity({
+  const MonitorIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

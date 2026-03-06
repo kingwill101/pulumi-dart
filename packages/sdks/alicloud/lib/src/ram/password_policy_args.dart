@@ -63,7 +63,7 @@ class PasswordPolicyArgs {
   /// [requireNumbers] Specifies whether the password must contain digits. Valid values:
   /// [requireSymbols] Specifies whether the password must contain special characters. Valid values:
   /// [requireUppercaseCharacters] Specifies whether the password must contain uppercase letters. Valid values:
-  PasswordPolicyArgs({
+  const PasswordPolicyArgs({
     this.hardExpiry,
     this.maxLoginAttemps,
     this.maxPasswordAge,

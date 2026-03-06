@@ -11,7 +11,7 @@ class AppImageConfigKernelGatewayImageConfigKernelSpec {
   /// Creates a new [AppImageConfigKernelGatewayImageConfigKernelSpec].
   /// [displayName] The display name of the kernel.
   /// [name] The name of the kernel.
-  AppImageConfigKernelGatewayImageConfigKernelSpec({
+  const AppImageConfigKernelGatewayImageConfigKernelSpec({
     this.displayName,
     required this.name,
   });

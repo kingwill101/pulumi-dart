@@ -60,7 +60,7 @@ class EdgeCacheServiceArgs {
   /// [requireTls] Require TLS (HTTPS) for all clients connecting to this service.
   /// [routing] Defines how requests are routed, modified, cached and/or which origin content is filled from.
   /// [sslPolicy] URL of the SslPolicy resource that will be associated with the EdgeCacheService.
-  EdgeCacheServiceArgs({
+  const EdgeCacheServiceArgs({
     this.description,
     this.disableHttp2,
     this.disableQuic,

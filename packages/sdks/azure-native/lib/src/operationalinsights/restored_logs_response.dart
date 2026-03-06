@@ -18,7 +18,7 @@ class RestoredLogsResponse {
   /// [endRestoreTime] The timestamp to end the restore by (UTC).
   /// [sourceTable] The table to restore data from.
   /// [startRestoreTime] The timestamp to start the restore from (UTC).
-  RestoredLogsResponse({
+  const RestoredLogsResponse({
     required this.azureAsyncOperationId,
     this.endRestoreTime,
     this.sourceTable,

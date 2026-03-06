@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonymResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1SynonymSetSynonymResponse].
   /// [words] For example: sale, invoice, bill, order
-  GoogleCloudContentwarehouseV1SynonymSetSynonymResponse({
+  const GoogleCloudContentwarehouseV1SynonymSetSynonymResponse({
     required this.words,
   });
 

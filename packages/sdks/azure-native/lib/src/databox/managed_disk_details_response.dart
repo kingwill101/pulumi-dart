@@ -16,7 +16,7 @@ class ManagedDiskDetailsResponse {
   /// [dataAccountType] Account Type of the data to be transferred.
   /// [resourceGroupId] Resource Group Id of the compute disks.
   /// [stagingStorageAccountId] Resource Id of the storage account that can be used to copy the vhd for staging.
-  ManagedDiskDetailsResponse({
+  const ManagedDiskDetailsResponse({
     required this.dataAccountType,
     required this.resourceGroupId,
     required this.stagingStorageAccountId,

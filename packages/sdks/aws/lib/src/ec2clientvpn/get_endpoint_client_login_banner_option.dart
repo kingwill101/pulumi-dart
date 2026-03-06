@@ -9,7 +9,7 @@ class GetEndpointClientLoginBannerOption {
   /// Creates a new [GetEndpointClientLoginBannerOption].
   /// [bannerText] Required.
   /// [enabled] Required.
-  GetEndpointClientLoginBannerOption({
+  const GetEndpointClientLoginBannerOption({
     required this.bannerText,
     required this.enabled,
   });

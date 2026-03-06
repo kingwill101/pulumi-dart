@@ -11,7 +11,7 @@ class IndexIndexStatisticTextDocumentStatistic {
   /// Creates a new [IndexIndexStatisticTextDocumentStatistic].
   /// [indexedTextBytes] The total size, in bytes, of the indexed documents.
   /// [indexedTextDocumentsCount] The number of text documents indexed.
-  IndexIndexStatisticTextDocumentStatistic({
+  const IndexIndexStatisticTextDocumentStatistic({
     this.indexedTextBytes,
     this.indexedTextDocumentsCount,
   });

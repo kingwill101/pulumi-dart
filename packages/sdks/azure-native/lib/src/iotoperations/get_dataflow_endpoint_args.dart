@@ -18,7 +18,7 @@ class GetDataflowEndpointArgs {
   /// [dataflowEndpointName] Name of Instance dataflowEndpoint resource
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDataflowEndpointArgs({
+  const GetDataflowEndpointArgs({
     required this.dataflowEndpointName,
     required this.instanceName,
     required this.resourceGroupName,

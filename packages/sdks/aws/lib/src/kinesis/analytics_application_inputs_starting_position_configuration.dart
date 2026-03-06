@@ -8,7 +8,7 @@ class AnalyticsApplicationInputsStartingPositionConfiguration {
 
   /// Creates a new [AnalyticsApplicationInputsStartingPositionConfiguration].
   /// [startingPosition] The starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
-  AnalyticsApplicationInputsStartingPositionConfiguration({
+  const AnalyticsApplicationInputsStartingPositionConfiguration({
     this.startingPosition,
   });
 

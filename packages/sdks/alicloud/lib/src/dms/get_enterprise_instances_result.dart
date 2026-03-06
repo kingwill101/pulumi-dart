@@ -43,7 +43,7 @@ class GetEnterpriseInstancesResult {
   /// [searchKey] Optional.
   /// [status] The status of the database instance.
   /// [tid] Optional.
-  GetEnterpriseInstancesResult({
+  const GetEnterpriseInstancesResult({
     this.envType,
     required this.id,
     required this.ids,

@@ -11,7 +11,7 @@ class GetCustomPropertiesPropertyPropertyValue {
   /// Creates a new [GetCustomPropertiesPropertyPropertyValue].
   /// [propertyValue] The value of an attribute.
   /// [propertyValueId] The value of an attribute id.
-  GetCustomPropertiesPropertyPropertyValue({
+  const GetCustomPropertiesPropertyPropertyValue({
     required this.propertyValue,
     required this.propertyValueId,
   });

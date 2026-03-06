@@ -20,7 +20,7 @@ class RoleManagementPolicyEnablementRuleResponse {
   /// [id] The id of the rule.
   /// [ruleType] The type of rule
   /// [target] The target of the current rule.
-  RoleManagementPolicyEnablementRuleResponse({
+  const RoleManagementPolicyEnablementRuleResponse({
     this.enabledRules,
     this.id,
     required this.ruleType,

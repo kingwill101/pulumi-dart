@@ -15,7 +15,7 @@ class ServicesResourceResponseIdentity {
   /// [principalId] The principal ID of the resource identity.
   /// [tenantId] The tenant ID of the resource.
   /// [type] Type of identity being specified, currently SystemAssigned and None are allowed.
-  ServicesResourceResponseIdentity({
+  const ServicesResourceResponseIdentity({
     required this.principalId,
     required this.tenantId,
     this.type,

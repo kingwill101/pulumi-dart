@@ -10,7 +10,7 @@ class DeviceClassConfiguration {
 
   /// Creates a new [DeviceClassConfiguration].
   /// [opaque] Opaque provides driver-specific configuration parameters.
-  DeviceClassConfiguration({
+  const DeviceClassConfiguration({
     this.opaque,
   });
 

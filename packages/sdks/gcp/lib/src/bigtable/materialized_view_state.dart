@@ -25,7 +25,7 @@ class MaterializedViewState {
   /// [name] The unique name of the requested materialized view. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/materializedViews/&lt;materializedViewId&gt;`.
   /// [project] The ID of the project in which the resource belongs.
   /// [query] The materialized view's select query.
-  MaterializedViewState({
+  const MaterializedViewState({
     this.deletionProtection,
     this.instance,
     this.materializedViewId,

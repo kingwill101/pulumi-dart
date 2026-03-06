@@ -8,7 +8,7 @@ class OrganizationCustomModuleCustomConfigResourceSelector {
 
   /// Creates a new [OrganizationCustomModuleCustomConfigResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
-  OrganizationCustomModuleCustomConfigResourceSelector({
+  const OrganizationCustomModuleCustomConfigResourceSelector({
     required this.resourceTypes,
   });
 

@@ -12,7 +12,7 @@ class GetImageImageScanningConfiguration {
   /// Creates a new [GetImageImageScanningConfiguration].
   /// [ecrConfigurations] Configuration block with ECR configuration.
   /// [imageScanningEnabled] Indicates whether Image Builder keeps a snapshot of the vulnerability scans that Amazon Inspector runs against the build instance when you create a new image.
-  GetImageImageScanningConfiguration({
+  const GetImageImageScanningConfiguration({
     required this.ecrConfigurations,
     required this.imageScanningEnabled,
   });

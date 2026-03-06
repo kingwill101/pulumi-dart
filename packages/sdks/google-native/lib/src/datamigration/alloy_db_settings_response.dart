@@ -26,7 +26,7 @@ class AlloyDbSettingsResponse {
   /// [labels] Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
   /// [primaryInstanceSettings] Required.
   /// [vpcNetwork] The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
-  AlloyDbSettingsResponse({
+  const AlloyDbSettingsResponse({
     required this.databaseVersion,
     required this.encryptionConfig,
     required this.initialUser,

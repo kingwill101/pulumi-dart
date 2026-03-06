@@ -33,7 +33,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
   /// [gcsOutputUri] The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
   /// [notebookRuntimeTemplateResourceName] The NotebookRuntimeTemplate to source compute configuration from.
   /// [serviceAccount] The service account to run the execution as.
-  ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob({
+  const ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob({
     this.dataformRepositorySource,
     required this.displayName,
     this.executionTimeout,

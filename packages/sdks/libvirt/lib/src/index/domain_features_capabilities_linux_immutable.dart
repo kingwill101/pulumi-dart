@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesLinuxImmutable {
 
   /// Creates a new [DomainFeaturesCapabilitiesLinuxImmutable].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesLinuxImmutable({
+  const DomainFeaturesCapabilitiesLinuxImmutable({
     this.state,
   });
 

@@ -19,7 +19,7 @@ class Pav2MeterDetailsResponse {
   /// [chargingType] Charging type.
   /// [meterGuid] Validation status of requested data center and transport.
   /// [multiplier] Billing unit applicable for Pav2 billing.
-  Pav2MeterDetailsResponse({
+  const Pav2MeterDetailsResponse({
     required this.billingType,
     required this.chargingType,
     required this.meterGuid,

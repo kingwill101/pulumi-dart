@@ -29,7 +29,7 @@ class GetDbClustersClusterParam {
   /// [optional] The value range of the parameter.
   /// [paramCategory] The category of the parameter.
   /// [value] The new value of Parameter.
-  GetDbClustersClusterParam({
+  const GetDbClustersClusterParam({
     required this.comment,
     required this.defaultValue,
     required this.isDynamic,

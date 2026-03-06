@@ -24,7 +24,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
   /// [groupInfo] Group info configuration.
   /// [outputType] Default output type for all enabled headers.
   /// [userInfo] User info configuration.
-  SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders({
+  const SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders({
     this.deviceInfo,
     this.groupInfo,
     this.outputType,

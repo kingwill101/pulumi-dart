@@ -9,7 +9,7 @@ class NetworkManagerRoutingGroupItemResponse {
 
   /// Creates a new [NetworkManagerRoutingGroupItemResponse].
   /// [networkGroupId] Network manager group Id.
-  NetworkManagerRoutingGroupItemResponse({
+  const NetworkManagerRoutingGroupItemResponse({
     required this.networkGroupId,
   });
 

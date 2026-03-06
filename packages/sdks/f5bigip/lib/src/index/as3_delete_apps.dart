@@ -13,7 +13,7 @@ class As3DeleteApps {
   /// Creates a new [As3DeleteApps].
   /// [apps] List of application names to delete from the specified tenant.
   /// [tenantName] Name of the tenant containing the apps to delete.
-  As3DeleteApps({
+  const As3DeleteApps({
     required this.apps,
     required this.tenantName,
   });

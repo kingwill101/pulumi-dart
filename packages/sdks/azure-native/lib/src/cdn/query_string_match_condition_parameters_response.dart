@@ -21,7 +21,7 @@ class QueryStringMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleQueryStringConditionParameters'.
-  QueryStringMatchConditionParametersResponse({
+  const QueryStringMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

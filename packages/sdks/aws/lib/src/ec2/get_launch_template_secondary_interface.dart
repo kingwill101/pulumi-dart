@@ -19,7 +19,7 @@ class GetLaunchTemplateSecondaryInterface {
   /// [privateIpAddressCount] Required.
   /// [privateIpAddresses] Required.
   /// [secondarySubnetId] Required.
-  GetLaunchTemplateSecondaryInterface({
+  const GetLaunchTemplateSecondaryInterface({
     required this.deleteOnTermination,
     required this.deviceIndex,
     required this.interfaceType,

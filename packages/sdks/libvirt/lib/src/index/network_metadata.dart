@@ -8,7 +8,7 @@ class NetworkMetadata {
 
   /// Creates a new [NetworkMetadata].
   /// [xml] Configures XML-based metadata for the network.
-  NetworkMetadata({
+  const NetworkMetadata({
     required this.xml,
   });
 

@@ -15,7 +15,7 @@ class ListMongoClusterConnectionStringsArgs {
   /// Creates a new [ListMongoClusterConnectionStringsArgs].
   /// [mongoClusterName] The name of the mongo cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListMongoClusterConnectionStringsArgs({
+  const ListMongoClusterConnectionStringsArgs({
     required this.mongoClusterName,
     required this.resourceGroupName,
   });

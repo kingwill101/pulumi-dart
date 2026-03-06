@@ -21,7 +21,7 @@ class RunbookDraftResponse {
   /// [lastModifiedTime] Gets or sets the last modified time of the runbook draft.
   /// [outputTypes] Gets or sets the runbook output types.
   /// [parameters] Gets or sets the runbook draft parameters.
-  RunbookDraftResponse({
+  const RunbookDraftResponse({
     this.creationTime,
     this.inEdit,
     this.lastModifiedTime,

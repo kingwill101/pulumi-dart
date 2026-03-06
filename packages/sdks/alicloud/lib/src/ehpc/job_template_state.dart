@@ -57,7 +57,7 @@ class JobTemplateState {
   /// [task] A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
   /// [thread] A Single Task and the Number of Required Threads.
   /// [variables] The Job of the Environment Variable.
-  JobTemplateState({
+  const JobTemplateState({
     this.arrayRequest,
     this.clockTime,
     this.commandLine,

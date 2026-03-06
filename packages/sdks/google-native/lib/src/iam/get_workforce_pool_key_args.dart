@@ -17,7 +17,7 @@ class GetWorkforcePoolKeyArgs {
   /// [location] Required.
   /// [providerId] Required.
   /// [workforcePoolId] Required.
-  GetWorkforcePoolKeyArgs({
+  const GetWorkforcePoolKeyArgs({
     required this.keyId,
     required this.location,
     required this.providerId,

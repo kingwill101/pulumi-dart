@@ -18,7 +18,7 @@ class AlertResourceArgs {
   /// [lang] The lang of alert center resource when type is user.
   /// [project] The project of alert resource when type is project.
   /// [type] The type of alert resources, must be user or project, 'user' for init aliyuncloud account's alert center resource, including project named sls-alert-{uid}-{region} and some dashboards; 'project' for init project's alert resource, including logstore named internal-alert-history and alert dashboard.
-  AlertResourceArgs({
+  const AlertResourceArgs({
     this.lang,
     this.project,
     required this.type,

@@ -12,7 +12,7 @@ class PrivateClusterConfigComposerV1beta1 {
   /// Creates a new [PrivateClusterConfigComposerV1beta1].
   /// [enablePrivateEndpoint] Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
   /// [masterIpv4CidrBlock] Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If left blank, the default value of '172.16.0.0/23' is used.
-  PrivateClusterConfigComposerV1beta1({
+  const PrivateClusterConfigComposerV1beta1({
     this.enablePrivateEndpoint,
     this.masterIpv4CidrBlock,
   });

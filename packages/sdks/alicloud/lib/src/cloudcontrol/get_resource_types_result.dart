@@ -21,7 +21,7 @@ class GetResourceTypesResult {
   /// [outputFile] Optional.
   /// [product] Product Code.
   /// [types] A list of Resource Type Entries. Each element contains the following attributes:
-  GetResourceTypesResult({
+  const GetResourceTypesResult({
     required this.id,
     required this.ids,
     this.outputFile,

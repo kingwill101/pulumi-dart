@@ -23,7 +23,7 @@ class DataflowGraphPropertiesResponse {
   /// [nodes] List of nodes in the dataflow graph.
   /// [provisioningState] The provisioning state of the dataflow graph.
   /// [requestDiskPersistence] Disk persistence mode.
-  DataflowGraphPropertiesResponse({
+  const DataflowGraphPropertiesResponse({
     this.mode,
     required this.nodeConnections,
     required this.nodes,

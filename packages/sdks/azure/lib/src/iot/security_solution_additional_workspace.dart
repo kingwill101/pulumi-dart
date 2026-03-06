@@ -11,7 +11,7 @@ class SecuritySolutionAdditionalWorkspace {
   /// Creates a new [SecuritySolutionAdditionalWorkspace].
   /// [dataTypes] A list of data types which sent to workspace. Possible values are `Alerts` and `RawEvents`.
   /// [workspaceId] The resource ID of the Log Analytics Workspace.
-  SecuritySolutionAdditionalWorkspace({
+  const SecuritySolutionAdditionalWorkspace({
     required this.dataTypes,
     required this.workspaceId,
   });

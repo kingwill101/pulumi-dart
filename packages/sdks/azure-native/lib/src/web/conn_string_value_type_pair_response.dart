@@ -12,7 +12,7 @@ class ConnStringValueTypePairResponse {
   /// Creates a new [ConnStringValueTypePairResponse].
   /// [type] Type of database.
   /// [value] Value of pair.
-  ConnStringValueTypePairResponse({
+  const ConnStringValueTypePairResponse({
     required this.type,
     required this.value,
   });

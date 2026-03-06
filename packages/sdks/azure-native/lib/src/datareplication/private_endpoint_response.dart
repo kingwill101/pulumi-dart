@@ -9,7 +9,7 @@ class PrivateEndpointResponse {
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] Gets or sets the id.
-  PrivateEndpointResponse({
+  const PrivateEndpointResponse({
     this.id,
   });
 

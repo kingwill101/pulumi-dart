@@ -14,7 +14,7 @@ class RepositoryMavenConfig {
   /// Creates a new [RepositoryMavenConfig].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same
   /// [versionPolicy] Version policy defines the versions that the registry will accept.
-  RepositoryMavenConfig({
+  const RepositoryMavenConfig({
     this.allowSnapshotOverwrites,
     this.versionPolicy,
   });

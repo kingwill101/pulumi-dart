@@ -26,7 +26,7 @@ class NamespaceAssetStatusResponse {
   /// [events] Array of event statuses that describe the status of each event.
   /// [managementGroups] Array of management group statuses that describe the status of each management group.
   /// [streams] Array of stream statuses that describe the status of each stream.
-  NamespaceAssetStatusResponse({
+  const NamespaceAssetStatusResponse({
     required this.config,
     required this.datasets,
     required this.events,

@@ -24,7 +24,7 @@ class AlternativeContactState {
   /// [name] Name of the alternate contact.
   /// [phoneNumber] Phone number for the alternate contact.
   /// [title] Title for the alternate contact.
-  AlternativeContactState({
+  const AlternativeContactState({
     this.accountId,
     this.alternateContactType,
     this.emailAddress,

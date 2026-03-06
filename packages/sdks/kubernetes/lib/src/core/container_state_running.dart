@@ -9,7 +9,7 @@ class ContainerStateRunning {
 
   /// Creates a new [ContainerStateRunning].
   /// [startedAt] Time at which the container was last (re-)started
-  ContainerStateRunning({
+  const ContainerStateRunning({
     this.startedAt,
   });
 

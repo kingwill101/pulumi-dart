@@ -9,7 +9,7 @@ class TLSSecurityPolicyEnumValueResponse {
 
   /// Creates a new [TLSSecurityPolicyEnumValueResponse].
   /// [value] Property value
-  TLSSecurityPolicyEnumValueResponse({
+  const TLSSecurityPolicyEnumValueResponse({
     this.value,
   });
 

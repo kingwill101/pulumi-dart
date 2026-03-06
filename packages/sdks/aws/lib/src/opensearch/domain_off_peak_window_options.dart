@@ -11,7 +11,7 @@ class DomainOffPeakWindowOptions {
   /// Creates a new [DomainOffPeakWindowOptions].
   /// [enabled] Enabled disabled toggle for off-peak update window.
   /// [offPeakWindow] Optional.
-  DomainOffPeakWindowOptions({
+  const DomainOffPeakWindowOptions({
     this.enabled,
     this.offPeakWindow,
   });

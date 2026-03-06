@@ -7,7 +7,7 @@ class GetMembershipAuthority {
 
   /// Creates a new [GetMembershipAuthority].
   /// [issuer] Required.
-  GetMembershipAuthority({
+  const GetMembershipAuthority({
     required this.issuer,
   });
 

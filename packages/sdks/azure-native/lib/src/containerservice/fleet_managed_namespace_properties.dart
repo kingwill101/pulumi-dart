@@ -20,7 +20,7 @@ class FleetManagedNamespaceProperties {
   /// [deletePolicy] Delete options of a fleet managed namespace. Default is Keep.
   /// [managedNamespaceProperties] The namespace properties for the fleet managed namespace.
   /// [propagationPolicy] The profile of the propagation to create the namespace.
-  FleetManagedNamespaceProperties({
+  const FleetManagedNamespaceProperties({
     required this.adoptionPolicy,
     required this.deletePolicy,
     this.managedNamespaceProperties,

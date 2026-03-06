@@ -19,7 +19,7 @@ class GetFloatingIpResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipAddress] Required.
   /// [region] The region that the floating IP is reserved to.
-  GetFloatingIpResult({
+  const GetFloatingIpResult({
     required this.dropletId,
     required this.floatingIpUrn,
     required this.id,

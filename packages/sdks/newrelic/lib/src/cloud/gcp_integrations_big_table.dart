@@ -8,7 +8,7 @@ class GcpIntegrationsBigTable {
 
   /// Creates a new [GcpIntegrationsBigTable].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsBigTable({
+  const GcpIntegrationsBigTable({
     this.metricsPollingInterval,
   });
 

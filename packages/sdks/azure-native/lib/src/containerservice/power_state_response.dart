@@ -9,7 +9,7 @@ class PowerStateResponse {
 
   /// Creates a new [PowerStateResponse].
   /// [code] Tells whether the cluster is Running or Stopped
-  PowerStateResponse({
+  const PowerStateResponse({
     this.code,
   });
 

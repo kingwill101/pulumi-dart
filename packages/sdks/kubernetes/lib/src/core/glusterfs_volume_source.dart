@@ -15,7 +15,7 @@ class GlusterfsVolumeSource {
   /// [endpoints] endpoints is the endpoint name that details Glusterfs topology.
   /// [path] path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
   /// [readOnly] readOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
-  GlusterfsVolumeSource({
+  const GlusterfsVolumeSource({
     required this.endpoints,
     required this.path,
     this.readOnly,

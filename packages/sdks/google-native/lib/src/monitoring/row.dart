@@ -13,7 +13,7 @@ class Row {
   /// Creates a new [Row].
   /// [weight] The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
   /// [widgets] The display widgets arranged horizontally in this row.
-  Row({
+  const Row({
     this.weight,
     this.widgets,
   });

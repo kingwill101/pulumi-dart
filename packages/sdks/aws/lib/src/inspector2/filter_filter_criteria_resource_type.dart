@@ -11,7 +11,7 @@ class FilterFilterCriteriaResourceType {
   /// Creates a new [FilterFilterCriteriaResourceType].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaResourceType({
+  const FilterFilterCriteriaResourceType({
     required this.comparison,
     required this.value,
   });

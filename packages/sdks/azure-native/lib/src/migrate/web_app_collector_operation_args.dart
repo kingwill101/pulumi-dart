@@ -25,7 +25,7 @@ class WebAppCollectorOperationArgs {
   /// [discoverySiteId] Gets the discovery site id.
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  WebAppCollectorOperationArgs({
+  const WebAppCollectorOperationArgs({
     this.agentProperties,
     this.collectorName,
     this.discoverySiteId,

@@ -42,7 +42,7 @@ class GetDiskAccessResult {
   /// [tags] Resource tags.
   /// [timeCreated] The time when the disk access was created.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDiskAccessResult({
+  const GetDiskAccessResult({
     required this.azureApiVersion,
     this.extendedLocation,
     required this.id,

@@ -32,7 +32,7 @@ class GetRolesRole {
   /// [name] The name of the RAM role.
   /// [tags] A mapping of tags to assign to the resource.
   /// [updateDate] The update time.
-  GetRolesRole({
+  const GetRolesRole({
     required this.arn,
     required this.assumeRolePolicyDocument,
     required this.createDate,

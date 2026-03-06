@@ -19,7 +19,7 @@ class AzureBlobStorageLocationResponse {
   /// [fileName] Specify the file name of dataset. Type: string (or Expression with resultType string).
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
-  AzureBlobStorageLocationResponse({
+  const AzureBlobStorageLocationResponse({
     this.container,
     this.fileName,
     this.folderPath,

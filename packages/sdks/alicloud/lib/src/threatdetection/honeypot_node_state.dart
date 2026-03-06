@@ -24,7 +24,7 @@ class HoneypotNodeState {
   /// [nodeName] Management node name.
   /// [securityGroupProbeIpLists] Release the collection of network segments.
   /// [status] The status of the resource
-  HoneypotNodeState({
+  const HoneypotNodeState({
     this.allowHoneypotAccessInternet,
     this.availableProbeNum,
     this.createTime,

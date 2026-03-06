@@ -15,7 +15,7 @@ class GetP2sVpnGatewayP2sVpnConnectionHealthArgs {
   /// Creates a new [GetP2sVpnGatewayP2sVpnConnectionHealthArgs].
   /// [gatewayName] The name of the P2SVpnGateway.
   /// [resourceGroupName] The name of the resource group.
-  GetP2sVpnGatewayP2sVpnConnectionHealthArgs({
+  const GetP2sVpnGatewayP2sVpnConnectionHealthArgs({
     required this.gatewayName,
     required this.resourceGroupName,
   });

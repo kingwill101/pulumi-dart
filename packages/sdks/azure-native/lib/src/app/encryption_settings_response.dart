@@ -12,7 +12,7 @@ class EncryptionSettingsResponse {
   /// Creates a new [EncryptionSettingsResponse].
   /// [containerAppAuthEncryptionSecretName] The secret name which is referenced for EncryptionKey.
   /// [containerAppAuthSigningSecretName] The secret name which is referenced for SigningKey.
-  EncryptionSettingsResponse({
+  const EncryptionSettingsResponse({
     this.containerAppAuthEncryptionSecretName,
     this.containerAppAuthSigningSecretName,
   });

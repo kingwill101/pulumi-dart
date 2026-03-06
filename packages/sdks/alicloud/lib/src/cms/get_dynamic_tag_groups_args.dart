@@ -21,7 +21,7 @@ class GetDynamicTagGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `RUNNING`, `FINISH`.
   /// [tagKey] The tag key of the tag.
-  GetDynamicTagGroupsArgs({
+  const GetDynamicTagGroupsArgs({
     this.ids,
     this.outputFile,
     this.status,

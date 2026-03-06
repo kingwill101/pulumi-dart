@@ -8,7 +8,7 @@ class WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition {
 
   /// Creates a new [WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition].
   /// [action] Action setting that a log record must contain in order to meet the condition. Valid values for `action` are `ALLOW`, `BLOCK`, `COUNT`, `CAPTCHA`, `CHALLENGE` and `EXCLUDED_AS_COUNT`.
-  WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition({
+  const WebAclLoggingConfigurationLoggingFilterFilterConditionActionCondition({
     required this.action,
   });
 

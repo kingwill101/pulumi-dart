@@ -29,7 +29,7 @@ class GetAclsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Resource group ID.
   /// [tags] A mapping of tags to assign to the resource.
-  GetAclsResult({
+  const GetAclsResult({
     required this.acls,
     required this.id,
     required this.ids,

@@ -67,7 +67,7 @@ class ActiveSecurityUserRuleResponse {
   /// [ruleGroups] Effective configuration groups.
   /// [sourcePortRanges] The source port ranges.
   /// [sources] The CIDR or source IP ranges.
-  ActiveSecurityUserRuleResponse({
+  const ActiveSecurityUserRuleResponse({
     this.commitTime,
     this.configurationDescription,
     this.configurationDisplayName,

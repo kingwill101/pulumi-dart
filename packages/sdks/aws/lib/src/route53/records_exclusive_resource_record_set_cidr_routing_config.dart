@@ -15,7 +15,7 @@ class RecordsExclusiveResourceRecordSetCidrRoutingConfig {
   /// Creates a new [RecordsExclusiveResourceRecordSetCidrRoutingConfig].
   /// [collectionId] CIDR collection ID.
   /// [locationName] CIDR collection location name.
-  RecordsExclusiveResourceRecordSetCidrRoutingConfig({
+  const RecordsExclusiveResourceRecordSetCidrRoutingConfig({
     required this.collectionId,
     required this.locationName,
   });

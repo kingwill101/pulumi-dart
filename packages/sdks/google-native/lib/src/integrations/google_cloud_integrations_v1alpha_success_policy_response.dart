@@ -9,7 +9,7 @@ class GoogleCloudIntegrationsV1alphaSuccessPolicyResponse {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaSuccessPolicyResponse].
   /// [finalState] State to which the execution snapshot status will be set if the task succeeds.
-  GoogleCloudIntegrationsV1alphaSuccessPolicyResponse({
+  const GoogleCloudIntegrationsV1alphaSuccessPolicyResponse({
     required this.finalState,
   });
 

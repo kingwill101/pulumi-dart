@@ -68,7 +68,7 @@ class LayerVersionState {
   /// [sourceCodeHash] Virtual attribute used to trigger replacement when source code changes. Must be set to a base64-encoded SHA256 hash of the package file specified with either `filename` or `s3_key`. The usual way to set this is `filebase64sha256("file.zip")` or `base64sha256(file("file.zip"))`, where "file.zip" is the local filename of the lambda layer source archive.
   /// [sourceCodeSize] Size in bytes of the function .zip file.
   /// [version] Lambda Layer version.
-  LayerVersionState({
+  const LayerVersionState({
     this.arn,
     this.code,
     this.codeSha256,

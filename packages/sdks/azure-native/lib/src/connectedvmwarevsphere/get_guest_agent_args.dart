@@ -18,7 +18,7 @@ class GetGuestAgentArgs {
   /// [name] Name of the GuestAgent.
   /// [resourceGroupName] The Resource Group Name.
   /// [virtualMachineName] Name of the vm.
-  GetGuestAgentArgs({
+  const GetGuestAgentArgs({
     required this.name,
     required this.resourceGroupName,
     required this.virtualMachineName,

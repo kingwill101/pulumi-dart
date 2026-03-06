@@ -13,7 +13,7 @@ class GlobalForwardingRuleMetadataFilterFilterLabel {
   /// Creates a new [GlobalForwardingRuleMetadataFilterFilterLabel].
   /// [name] Name of the metadata label. The length must be between
   /// [value] The value that the label must match. The value has a maximum
-  GlobalForwardingRuleMetadataFilterFilterLabel({
+  const GlobalForwardingRuleMetadataFilterFilterLabel({
     required this.name,
     required this.value,
   });

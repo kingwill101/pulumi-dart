@@ -54,7 +54,7 @@ class GetQuotaApplicationsApplication {
   /// [quotaUnit] The quota unit.
   /// [reason] The reason of the quota application.
   /// [status] The status of the quota application.
-  GetQuotaApplicationsApplication({
+  const GetQuotaApplicationsApplication({
     required this.applicationId,
     required this.approveValue,
     required this.auditReason,

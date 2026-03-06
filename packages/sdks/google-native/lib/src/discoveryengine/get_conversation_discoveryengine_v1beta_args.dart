@@ -19,7 +19,7 @@ class GetConversationDiscoveryengineV1betaArgs {
   /// [dataStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConversationDiscoveryengineV1betaArgs({
+  const GetConversationDiscoveryengineV1betaArgs({
     required this.collectionId,
     required this.conversationId,
     required this.dataStoreId,

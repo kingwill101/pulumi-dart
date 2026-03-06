@@ -24,7 +24,7 @@ class SparkBatchResponse {
   /// [jarFileUris] Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   /// [mainClass] Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
   /// [mainJarFileUri] Optional. The HCFS URI of the jar file that contains the main class.
-  SparkBatchResponse({
+  const SparkBatchResponse({
     required this.archiveUris,
     required this.args,
     required this.fileUris,

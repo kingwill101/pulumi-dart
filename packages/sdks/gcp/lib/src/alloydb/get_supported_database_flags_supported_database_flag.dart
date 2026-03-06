@@ -31,7 +31,7 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
   /// [stringRestrictions] Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
   /// [supportedDbVersions] Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
   /// [valueType] ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
-  GetSupportedDatabaseFlagsSupportedDatabaseFlag({
+  const GetSupportedDatabaseFlagsSupportedDatabaseFlag({
     required this.acceptsMultipleValues,
     required this.flagName,
     required this.integerRestrictions,

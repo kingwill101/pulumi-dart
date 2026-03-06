@@ -24,7 +24,7 @@ class WorkspaceConfigurationState {
   /// [retentionPeriodInDays] Number of days to retain metric data in the workspace.
   /// [timeouts] Optional.
   /// [workspaceId] ID of the workspace to configure.
-  WorkspaceConfigurationState({
+  const WorkspaceConfigurationState({
     this.limitsPerLabelSets,
     this.region,
     this.retentionPeriodInDays,

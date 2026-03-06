@@ -9,7 +9,7 @@ class WebhookBuildTypeEnumValue {
 
   /// Creates a new [WebhookBuildTypeEnumValue].
   /// [value] Property value
-  WebhookBuildTypeEnumValue({
+  const WebhookBuildTypeEnumValue({
     this.value,
   });
 

@@ -27,7 +27,7 @@ class RandomIdState {
   /// [hex] The generated id presented in padded hexadecimal digits. This result will always be twice as long as the requested byte length.
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [prefix] Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
-  RandomIdState({
+  const RandomIdState({
     this.b64Std,
     this.b64Url,
     this.byteLength,

@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [properties] The private endpoint connection properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.properties,
     required this.resourceGroupName,

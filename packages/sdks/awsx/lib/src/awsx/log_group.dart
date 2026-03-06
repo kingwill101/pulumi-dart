@@ -37,7 +37,7 @@ class LogGroup {
   /// [retentionInDays] Specifies the number of days
   /// [skipDestroy] Set to true if you do not wish the log group (and any logs it may contain) to be deleted at destroy time, and instead just remove the log group from the state.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LogGroup({
+  const LogGroup({
     this.deletionProtectionEnabled,
     this.kmsKeyId,
     this.logGroupClass,

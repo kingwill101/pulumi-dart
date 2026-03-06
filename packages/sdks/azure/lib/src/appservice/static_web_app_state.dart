@@ -61,7 +61,7 @@ class StaticWebAppState {
   /// [skuSize] Specifies the SKU size of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   /// [skuTier] Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
   /// [tags] A mapping of tags to assign to the resource.
-  StaticWebAppState({
+  const StaticWebAppState({
     this.apiKey,
     this.appSettings,
     this.basicAuth,

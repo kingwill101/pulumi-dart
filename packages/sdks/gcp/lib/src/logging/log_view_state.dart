@@ -30,7 +30,7 @@ class LogViewState {
   /// [name] The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
   /// [parent] The parent of the resource.
   /// [updateTime] Output only. The last update timestamp of the view.
-  LogViewState({
+  const LogViewState({
     this.bucket,
     this.createTime,
     this.description,

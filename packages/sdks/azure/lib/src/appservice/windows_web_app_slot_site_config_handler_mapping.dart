@@ -14,7 +14,7 @@ class WindowsWebAppSlotSiteConfigHandlerMapping {
   /// [arguments] Specify the command-line arguments to be passed to the script processor.
   /// [extension] Specify which extension to be handled by the specified FastCGI application.
   /// [scriptProcessorPath] Specify the absolute path to the FastCGI application.
-  WindowsWebAppSlotSiteConfigHandlerMapping({
+  const WindowsWebAppSlotSiteConfigHandlerMapping({
     this.arguments,
     required this.extension,
     required this.scriptProcessorPath,

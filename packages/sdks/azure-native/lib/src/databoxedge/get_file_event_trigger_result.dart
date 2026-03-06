@@ -36,7 +36,7 @@ class GetFileEventTriggerResult {
   /// [sourceInfo] File event source details.
   /// [systemData] Metadata pertaining to creation and last modification of Trigger
   /// [type] The hierarchical type of the object.
-  GetFileEventTriggerResult({
+  const GetFileEventTriggerResult({
     required this.azureApiVersion,
     this.customContextTag,
     required this.id,

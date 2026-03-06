@@ -56,7 +56,7 @@ class ResourceProviderManifestPropertiesManagement {
   /// [resourceAccessRoles] The resource access roles.
   /// [schemaOwners] The schema owners.
   /// [serviceTreeInfos] The service tree infos.
-  ResourceProviderManifestPropertiesManagement({
+  const ResourceProviderManifestPropertiesManagement({
     this.authorizationOwners,
     this.canaryManifestOwners,
     this.errorResponseMessageOptions,

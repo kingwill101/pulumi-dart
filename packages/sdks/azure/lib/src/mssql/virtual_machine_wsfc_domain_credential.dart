@@ -14,7 +14,7 @@ class VirtualMachineWsfcDomainCredential {
   /// [clusterBootstrapAccountPassword] The account password used for creating cluster.
   /// [clusterOperatorAccountPassword] The account password used for operating cluster.
   /// [sqlServiceAccountPassword] The account password under which SQL service will run on all participating SQL virtual machines in the cluster.
-  VirtualMachineWsfcDomainCredential({
+  const VirtualMachineWsfcDomainCredential({
     required this.clusterBootstrapAccountPassword,
     required this.clusterOperatorAccountPassword,
     required this.sqlServiceAccountPassword,

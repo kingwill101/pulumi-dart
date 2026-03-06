@@ -16,7 +16,7 @@ class DefenderForContainersAwsOfferingVmScanners {
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [configuration] Configuration for VM scanning
   /// [enabled] Is VM scanning enabled
-  DefenderForContainersAwsOfferingVmScanners({
+  const DefenderForContainersAwsOfferingVmScanners({
     this.cloudRoleArn,
     this.configuration,
     this.enabled,

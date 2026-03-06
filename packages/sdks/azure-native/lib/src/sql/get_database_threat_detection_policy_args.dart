@@ -21,7 +21,7 @@ class GetDatabaseThreatDetectionPolicyArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [securityAlertPolicyName] The name of the security alert policy.
   /// [serverName] The name of the server.
-  GetDatabaseThreatDetectionPolicyArgs({
+  const GetDatabaseThreatDetectionPolicyArgs({
     required this.databaseName,
     required this.resourceGroupName,
     required this.securityAlertPolicyName,

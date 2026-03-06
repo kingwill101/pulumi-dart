@@ -26,7 +26,7 @@ class InboundNatPool {
   /// [name] The name must be unique within a Batch pool, can contain letters, numbers, underscores, periods, and hyphens. Names must start with a letter or number, must end with a letter, number, or underscore, and cannot exceed 77 characters.  If any invalid values are provided the request fails with HTTP status code 400.
   /// [networkSecurityGroupRules] The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
   /// [protocol] The protocol of the endpoint.
-  InboundNatPool({
+  const InboundNatPool({
     required this.backendPort,
     required this.frontendPortRangeEnd,
     required this.frontendPortRangeStart,

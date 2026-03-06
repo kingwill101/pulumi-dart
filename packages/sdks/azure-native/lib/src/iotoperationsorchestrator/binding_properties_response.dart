@@ -15,7 +15,7 @@ class BindingPropertiesResponse {
   /// [config] Configuration values for the binding.
   /// [provider] Name of the provider.
   /// [role] Role that the provider binds to with the component.
-  BindingPropertiesResponse({
+  const BindingPropertiesResponse({
     required this.config,
     required this.provider,
     required this.role,

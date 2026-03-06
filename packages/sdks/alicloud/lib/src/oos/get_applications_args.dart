@@ -21,7 +21,7 @@ class GetApplicationsArgs {
   /// [nameRegex] A regex string to filter results by Application name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A mapping of tags to assign to the resource.
-  GetApplicationsArgs({
+  const GetApplicationsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

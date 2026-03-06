@@ -12,7 +12,7 @@ class ConnectorSubnet {
   /// Creates a new [ConnectorSubnet].
   /// [name] Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is
   /// [projectId] Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-  ConnectorSubnet({
+  const ConnectorSubnet({
     this.name,
     this.projectId,
   });

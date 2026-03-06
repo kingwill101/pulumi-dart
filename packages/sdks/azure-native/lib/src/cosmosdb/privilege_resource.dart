@@ -12,7 +12,7 @@ class PrivilegeResource {
   /// Creates a new [PrivilegeResource].
   /// [collection] The collection name the role is applied.
   /// [db] The database name the role is applied.
-  PrivilegeResource({
+  const PrivilegeResource({
     this.collection,
     this.db,
   });

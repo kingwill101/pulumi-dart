@@ -13,7 +13,7 @@ class UptimeCheckConfigSyntheticMonitor {
 
   /// Creates a new [UptimeCheckConfigSyntheticMonitor].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 Instance
-  UptimeCheckConfigSyntheticMonitor({
+  const UptimeCheckConfigSyntheticMonitor({
     required this.cloudFunctionV2,
   });
 

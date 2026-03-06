@@ -14,7 +14,7 @@ class CommitmentResponse {
   /// [amount] Optional.
   /// [currencyCode] The ISO 4217 3-letter currency code for the currency used by this purchase record.
   /// [grain] The grain of the commitment.
-  CommitmentResponse({
+  const CommitmentResponse({
     this.amount,
     this.currencyCode,
     this.grain,

@@ -9,7 +9,7 @@ class InstanceGroupManagerResizeRequestStatusResponseComputeBeta {
 
   /// Creates a new [InstanceGroupManagerResizeRequestStatusResponseComputeBeta].
   /// [error] Errors encountered during the queueing or provisioning phases of the ResizeRequest.
-  InstanceGroupManagerResizeRequestStatusResponseComputeBeta({
+  const InstanceGroupManagerResizeRequestStatusResponseComputeBeta({
     required this.error,
   });
 

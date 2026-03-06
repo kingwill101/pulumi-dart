@@ -8,7 +8,7 @@ class GetJobDefinitionEksPropertyPodPropertyMetadata {
 
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyMetadata].
   /// [labels] Key-value pairs used to identify, sort, and organize cube resources.
-  GetJobDefinitionEksPropertyPodPropertyMetadata({
+  const GetJobDefinitionEksPropertyPodPropertyMetadata({
     required this.labels,
   });
 

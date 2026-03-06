@@ -11,7 +11,7 @@ class RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates {
   /// Creates a new [RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates].
   /// [latitude] A coordinate of the north–south position of a geographic point on the surface of the Earth (`-90` - `90`).
   /// [longitude] A coordinate of the east–west position of a geographic point on the surface of the Earth (`-180` - `180`).
-  RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates({
+  const RecordsExclusiveResourceRecordSetGeoproximityLocationCoordinates({
     required this.latitude,
     required this.longitude,
   });

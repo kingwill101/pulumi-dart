@@ -24,7 +24,7 @@ class BackupPolicyArgs {
   /// [policyRegionId] The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
   /// [policyVersion] Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
   /// [uuidLists] Specify the Protection of Server UUID List.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     required this.backupPolicyName,
     required this.policy,
     this.policyRegionId,

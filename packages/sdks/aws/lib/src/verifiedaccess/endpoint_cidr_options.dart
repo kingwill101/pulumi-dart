@@ -14,7 +14,7 @@ class EndpointCidrOptions {
   /// [portRanges] Required.
   /// [protocol] Optional.
   /// [subnetIds] Optional.
-  EndpointCidrOptions({
+  const EndpointCidrOptions({
     required this.cidr,
     required this.portRanges,
     this.protocol,

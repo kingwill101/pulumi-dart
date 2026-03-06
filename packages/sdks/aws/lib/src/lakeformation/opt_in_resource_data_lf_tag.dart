@@ -12,7 +12,7 @@ class OptInResourceDataLfTag {
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [key] Required.
   /// [value] Required.
-  OptInResourceDataLfTag({
+  const OptInResourceDataLfTag({
     this.catalogId,
     required this.key,
     required this.value,

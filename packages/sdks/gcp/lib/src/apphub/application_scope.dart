@@ -12,7 +12,7 @@ class ApplicationScope {
 
   /// Creates a new [ApplicationScope].
   /// [type] Required. Scope Type.
-  ApplicationScope({
+  const ApplicationScope({
     required this.type,
   });
 

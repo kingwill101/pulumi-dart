@@ -29,7 +29,7 @@ class DbInstancePlanPlanConfig {
   /// [scaleIn] Scale In instance plan config. See `scale_in` below.
   /// [scaleOut] Scale out instance plan config. See `scale_out` below.
   /// [scaleUp] Scale up instance plan config. See `scale_up` below.
-  DbInstancePlanPlanConfig({
+  const DbInstancePlanPlanConfig({
     this.pause,
     this.resume,
     this.scaleDown,

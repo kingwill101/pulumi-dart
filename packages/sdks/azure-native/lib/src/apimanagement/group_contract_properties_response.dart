@@ -21,7 +21,7 @@ class GroupContractPropertiesResponse {
   /// [displayName] Group name.
   /// [externalId] For external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://&lt;tenant&gt;.onmicrosoft.com/groups/&lt;group object id&gt;`; otherwise the value is null.
   /// [type] Group type.
-  GroupContractPropertiesResponse({
+  const GroupContractPropertiesResponse({
     required this.builtIn,
     this.description,
     required this.displayName,

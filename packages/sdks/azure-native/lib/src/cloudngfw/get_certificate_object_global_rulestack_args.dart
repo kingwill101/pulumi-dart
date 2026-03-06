@@ -15,7 +15,7 @@ class GetCertificateObjectGlobalRulestackArgs {
   /// Creates a new [GetCertificateObjectGlobalRulestackArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] certificate name
-  GetCertificateObjectGlobalRulestackArgs({
+  const GetCertificateObjectGlobalRulestackArgs({
     required this.globalRulestackName,
     required this.name,
   });

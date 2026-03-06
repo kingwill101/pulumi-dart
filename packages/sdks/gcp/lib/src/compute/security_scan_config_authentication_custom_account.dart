@@ -16,7 +16,7 @@ class SecurityScanConfigAuthenticationCustomAccount {
   /// [loginUrl] The login form URL of the website.
   /// [password] The password of the custom account. The credential is stored encrypted
   /// [username] The user name of the custom account.
-  SecurityScanConfigAuthenticationCustomAccount({
+  const SecurityScanConfigAuthenticationCustomAccount({
     required this.loginUrl,
     required this.password,
     required this.username,

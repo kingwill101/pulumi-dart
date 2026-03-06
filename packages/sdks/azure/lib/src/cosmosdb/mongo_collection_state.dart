@@ -44,7 +44,7 @@ class MongoCollectionState {
   /// [shardKey] The name of the key to partition on for sharding. There must not be any other unique index keys. Changing this forces a new resource to be created.
   /// [systemIndexes] One or more `system_indexes` blocks as defined below.
   /// [throughput] The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
-  MongoCollectionState({
+  const MongoCollectionState({
     this.accountName,
     this.analyticalStorageTtl,
     this.autoscaleSettings,

@@ -11,7 +11,7 @@ class FilterFilterCriteriaEcrImageHash {
   /// Creates a new [FilterFilterCriteriaEcrImageHash].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaEcrImageHash({
+  const FilterFilterCriteriaEcrImageHash({
     required this.comparison,
     required this.value,
   });

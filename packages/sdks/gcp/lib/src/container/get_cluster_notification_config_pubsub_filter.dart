@@ -8,7 +8,7 @@ class GetClusterNotificationConfigPubsubFilter {
 
   /// Creates a new [GetClusterNotificationConfigPubsubFilter].
   /// [eventTypes] Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT, SECURITY_BULLETIN_EVENT, and UPGRADE_INFO_EVENT
-  GetClusterNotificationConfigPubsubFilter({
+  const GetClusterNotificationConfigPubsubFilter({
     required this.eventTypes,
   });
 

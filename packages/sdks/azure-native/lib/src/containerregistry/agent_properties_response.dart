@@ -9,7 +9,7 @@ class AgentPropertiesResponse {
 
   /// Creates a new [AgentPropertiesResponse].
   /// [cpu] The CPU configuration in terms of number of cores required for the run.
-  AgentPropertiesResponse({
+  const AgentPropertiesResponse({
     this.cpu,
   });
 

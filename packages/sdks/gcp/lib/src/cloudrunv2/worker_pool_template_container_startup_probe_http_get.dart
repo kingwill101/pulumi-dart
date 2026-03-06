@@ -16,7 +16,7 @@ class WorkerPoolTemplateContainerStartupProbeHttpGet {
   /// [httpHeaders] Optional. Custom headers to set in the request. HTTP allows repeated headers.
   /// [path] Optional. Path to access on the HTTP server. Defaults to '/'.
   /// [port] Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  WorkerPoolTemplateContainerStartupProbeHttpGet({
+  const WorkerPoolTemplateContainerStartupProbeHttpGet({
     this.httpHeaders,
     this.path,
     this.port,

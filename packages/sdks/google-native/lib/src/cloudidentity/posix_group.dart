@@ -15,7 +15,7 @@ class PosixGroup {
   /// [gid] GID of the POSIX group.
   /// [name] Name of the POSIX group.
   /// [systemId] System identifier for which group name and gid apply to. If not specified it will default to empty value.
-  PosixGroup({
+  const PosixGroup({
     this.gid,
     this.name,
     this.systemId,

@@ -9,7 +9,7 @@ class GetDataSetDataSetUsageConfiguration {
   /// Creates a new [GetDataSetDataSetUsageConfiguration].
   /// [disableUseAsDirectQuerySource] Required.
   /// [disableUseAsImportedSource] Required.
-  GetDataSetDataSetUsageConfiguration({
+  const GetDataSetDataSetUsageConfiguration({
     required this.disableUseAsDirectQuerySource,
     required this.disableUseAsImportedSource,
   });

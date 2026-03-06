@@ -13,7 +13,7 @@ class DomainDevicesAudioCoreAudio {
   /// Creates a new [DomainDevicesAudioCoreAudio].
   /// [input] Configures the output settings for the CoreAudio audio device.
   /// [output] Configures the output settings for the CoreAudio audio device.
-  DomainDevicesAudioCoreAudio({
+  const DomainDevicesAudioCoreAudio({
     this.input,
     this.output,
   });

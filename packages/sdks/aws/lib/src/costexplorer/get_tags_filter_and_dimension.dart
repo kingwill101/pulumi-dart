@@ -14,7 +14,7 @@ class GetTagsFilterAndDimension {
   /// [key] Unique name of the Cost Category.
   /// [matchOptions] Match options that you can use to filter your results. MatchOptions is only applicable for actions related to cost category. The default values for MatchOptions is `EQUALS` and `CASE_SENSITIVE`. Valid values are: `EQUALS`,  `ABSENT`, `STARTS_WITH`, `ENDS_WITH`, `CONTAINS`, `CASE_SENSITIVE`, `CASE_INSENSITIVE`.
   /// [values] Specific value of the Cost Category.
-  GetTagsFilterAndDimension({
+  const GetTagsFilterAndDimension({
     this.key,
     this.matchOptions,
     this.values,

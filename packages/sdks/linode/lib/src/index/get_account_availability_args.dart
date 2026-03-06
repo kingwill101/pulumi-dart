@@ -12,7 +12,7 @@ class GetAccountAvailabilityArgs {
 
   /// Creates a new [GetAccountAvailabilityArgs].
   /// [region] The region ID.
-  GetAccountAvailabilityArgs({
+  const GetAccountAvailabilityArgs({
     required this.region,
   });
 

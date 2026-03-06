@@ -15,7 +15,7 @@ class IoTHubSku {
   /// Creates a new [IoTHubSku].
   /// [capacity] The number of provisioned IoT Hub units.
   /// [name] The name of the sku. Possible values are `B1`, `B2`, `B3`, `F1`, `S1`, `S2`, and `S3`.
-  IoTHubSku({
+  const IoTHubSku({
     required this.capacity,
     required this.name,
   });

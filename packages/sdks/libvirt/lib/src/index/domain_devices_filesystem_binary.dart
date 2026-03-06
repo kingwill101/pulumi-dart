@@ -31,7 +31,7 @@ class DomainDevicesFilesystemBinary {
   /// [sandbox] Controls whether the binary filesystem operates in sandbox mode.
   /// [threadPool] Configures the usage of a thread pool for handling operations in the binary filesystem.
   /// [xattr] Configures extended attributes for the binary filesystem.
-  DomainDevicesFilesystemBinary({
+  const DomainDevicesFilesystemBinary({
     this.cache,
     this.lock,
     this.openFiles,

@@ -15,7 +15,7 @@ class GetReportDefinitionArgs {
   /// Creates a new [GetReportDefinitionArgs].
   /// [reportName] Name of the report definition to match.
   /// [tags] Map of key-value pairs assigned to the resource.
-  GetReportDefinitionArgs({
+  const GetReportDefinitionArgs({
     required this.reportName,
     this.tags,
   });

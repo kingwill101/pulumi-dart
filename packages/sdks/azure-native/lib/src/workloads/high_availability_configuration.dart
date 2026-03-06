@@ -9,7 +9,7 @@ class HighAvailabilityConfiguration {
 
   /// Creates a new [HighAvailabilityConfiguration].
   /// [highAvailabilityType] The high availability type.
-  HighAvailabilityConfiguration({
+  const HighAvailabilityConfiguration({
     required this.highAvailabilityType,
   });
 

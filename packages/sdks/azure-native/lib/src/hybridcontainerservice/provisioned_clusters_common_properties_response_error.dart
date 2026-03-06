@@ -9,7 +9,7 @@ class ProvisionedClustersCommonPropertiesResponseError {
   /// Creates a new [ProvisionedClustersCommonPropertiesResponseError].
   /// [code] Optional.
   /// [message] Optional.
-  ProvisionedClustersCommonPropertiesResponseError({
+  const ProvisionedClustersCommonPropertiesResponseError({
     this.code,
     this.message,
   });

@@ -44,7 +44,7 @@ class GetApplicationGatewayBackendHealthOnDemandArgs {
   /// [protocol] The protocol used for the probe.
   /// [resourceGroupName] The name of the resource group.
   /// [timeout] The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
-  GetApplicationGatewayBackendHealthOnDemandArgs({
+  const GetApplicationGatewayBackendHealthOnDemandArgs({
     required this.applicationGatewayName,
     this.backendAddressPool,
     this.backendHttpSettings,

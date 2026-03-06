@@ -20,7 +20,7 @@ class KeyVaultSecretStorePropertiesResponse {
   /// [secretStoreId] Optional.
   /// [subscriptionId] Optional.
   /// [tenantId] Optional.
-  KeyVaultSecretStorePropertiesResponse({
+  const KeyVaultSecretStorePropertiesResponse({
     required this.inputType,
     this.keyvaultName,
     this.managedIdentityProperties,

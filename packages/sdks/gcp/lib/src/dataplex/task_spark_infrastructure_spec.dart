@@ -20,7 +20,7 @@ class TaskSparkInfrastructureSpec {
   /// [batch] Compute resources needed for a Task when using Dataproc Serverless.
   /// [containerImage] Container Image Runtime Configuration.
   /// [vpcNetwork] Vpc network.
-  TaskSparkInfrastructureSpec({
+  const TaskSparkInfrastructureSpec({
     this.batch,
     this.containerImage,
     this.vpcNetwork,

@@ -9,7 +9,7 @@ class VpcPeeringConnectivityDatamigrationV1beta1 {
 
   /// Creates a new [VpcPeeringConnectivityDatamigrationV1beta1].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.
-  VpcPeeringConnectivityDatamigrationV1beta1({
+  const VpcPeeringConnectivityDatamigrationV1beta1({
     this.vpc,
   });
 

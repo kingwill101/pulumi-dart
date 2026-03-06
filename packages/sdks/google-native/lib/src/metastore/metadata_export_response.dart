@@ -21,7 +21,7 @@ class MetadataExportResponse {
   /// [endTime] The time when the export ended.
   /// [startTime] The time when the export started.
   /// [state] The current state of the export.
-  MetadataExportResponse({
+  const MetadataExportResponse({
     required this.databaseDumpType,
     required this.destinationGcsUri,
     required this.endTime,

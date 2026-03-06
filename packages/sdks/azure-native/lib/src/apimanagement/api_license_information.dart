@@ -12,7 +12,7 @@ class ApiLicenseInformation {
   /// Creates a new [ApiLicenseInformation].
   /// [name] The license name used for the API
   /// [url] A URL to the license used for the API. MUST be in the format of a URL
-  ApiLicenseInformation({
+  const ApiLicenseInformation({
     this.name,
     this.url,
   });

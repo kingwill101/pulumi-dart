@@ -25,7 +25,7 @@ class NewNotificationsResponse {
   /// [messageCode] Gets or sets the notification message id
   /// [offerId] Gets offer id
   /// [plans] Gets or sets removed plans notifications
-  NewNotificationsResponse({
+  const NewNotificationsResponse({
     this.displayName,
     this.icon,
     this.isFuturePlansEnabled,

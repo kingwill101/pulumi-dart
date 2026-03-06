@@ -16,7 +16,7 @@ class PipelineTriggerGitConfigurationPullRequest {
   /// [branches] The field that specifies to filter on branches for the pull request trigger configuration. A `branches` block is documented below.
   /// [events] A list that specifies which pull request events to filter on (opened, updated, closed) for the trigger configuration. Possible values are `OPEN`, `UPDATED ` and `CLOSED`.
   /// [filePaths] The field that specifies to filter on file paths for the pull request trigger configuration. A `file_paths` block is documented below.
-  PipelineTriggerGitConfigurationPullRequest({
+  const PipelineTriggerGitConfigurationPullRequest({
     this.branches,
     this.events,
     this.filePaths,

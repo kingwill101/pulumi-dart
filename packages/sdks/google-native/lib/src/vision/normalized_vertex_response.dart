@@ -12,7 +12,7 @@ class NormalizedVertexResponse {
   /// Creates a new [NormalizedVertexResponse].
   /// [x] X coordinate.
   /// [y] Y coordinate.
-  NormalizedVertexResponse({
+  const NormalizedVertexResponse({
     required this.x,
     required this.y,
   });

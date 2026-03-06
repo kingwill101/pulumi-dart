@@ -9,7 +9,7 @@ class GetQuicksightAnalysisPermission {
   /// Creates a new [GetQuicksightAnalysisPermission].
   /// [actions] Required.
   /// [principal] Required.
-  GetQuicksightAnalysisPermission({
+  const GetQuicksightAnalysisPermission({
     required this.actions,
     required this.principal,
   });

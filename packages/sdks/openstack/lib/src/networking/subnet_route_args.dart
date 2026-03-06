@@ -27,7 +27,7 @@ class SubnetRouteArgs {
   /// [nextHop] IP address of the next hop gateway.  Changing
   /// [region] The region in which to obtain the V2 networking client.
   /// [subnetId] ID of the subnet this routing entry belongs to. Changing
-  SubnetRouteArgs({
+  const SubnetRouteArgs({
     required this.destinationCidr,
     required this.nextHop,
     this.region,

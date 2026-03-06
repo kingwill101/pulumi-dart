@@ -11,7 +11,7 @@ class FileSystemEncryptionKey {
   /// Creates a new [FileSystemEncryptionKey].
   /// [keyUrl] The URL to the Key Vault Key used as the Encryption Key. This can be found as `id` on the `azure.keyvault.Key` resource.
   /// [sourceVaultId] The ID of the source Key Vault. This can be found as `id` on the `azure.keyvault.KeyVault` resource.
-  FileSystemEncryptionKey({
+  const FileSystemEncryptionKey({
     required this.keyUrl,
     required this.sourceVaultId,
   });

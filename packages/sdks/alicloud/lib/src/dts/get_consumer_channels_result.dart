@@ -18,7 +18,7 @@ class GetConsumerChannelsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Required.
   /// [outputFile] Optional.
-  GetConsumerChannelsResult({
+  const GetConsumerChannelsResult({
     required this.channels,
     required this.dtsInstanceId,
     required this.id,

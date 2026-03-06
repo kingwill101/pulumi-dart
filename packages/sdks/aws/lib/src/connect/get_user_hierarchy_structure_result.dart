@@ -17,7 +17,7 @@ class GetUserHierarchyStructureResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Required.
   /// [region] Required.
-  GetUserHierarchyStructureResult({
+  const GetUserHierarchyStructureResult({
     required this.hierarchyStructures,
     required this.id,
     required this.instanceId,

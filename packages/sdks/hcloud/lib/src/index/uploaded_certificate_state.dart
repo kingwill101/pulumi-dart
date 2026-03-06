@@ -36,7 +36,7 @@ class UploadedCertificateState {
   /// [notValidBefore] (string) Point in time when the Certificate becomes valid (in ISO-8601 format).
   /// [privateKey] PEM encoded private key belonging to the certificate.
   /// [type] Optional.
-  UploadedCertificateState({
+  const UploadedCertificateState({
     this.certificate,
     this.created,
     this.domainNames,

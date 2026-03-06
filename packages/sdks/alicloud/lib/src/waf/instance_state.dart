@@ -63,7 +63,7 @@ class InstanceState {
   /// [status] The status of the instance.
   /// [subscriptionType] Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
   /// [wafLog] Specify whether Log service is supported. Valid values: ["true", "false"]
-  InstanceState({
+  const InstanceState({
     this.bigScreen,
     this.exclusiveIpPackage,
     this.extBandwidth,

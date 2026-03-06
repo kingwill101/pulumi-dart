@@ -21,7 +21,7 @@ class EncryptionScopeState {
   /// [name] The name which should be used for this Storage Encryption Scope. Changing this forces a new Storage Encryption Scope to be created.
   /// [source] The source of the Storage Encryption Scope. Possible values are `Microsoft.KeyVault` and `Microsoft.Storage`.
   /// [storageAccountId] The ID of the Storage Account where this Storage Encryption Scope is created. Changing this forces a new Storage Encryption Scope to be created.
-  EncryptionScopeState({
+  const EncryptionScopeState({
     this.infrastructureEncryptionRequired,
     this.keyVaultKeyId,
     this.name,

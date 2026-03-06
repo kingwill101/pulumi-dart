@@ -15,7 +15,7 @@ class SourceCodeTokenState {
   /// [token] The OAuth access token.
   /// [tokenSecret] The OAuth access token secret.
   /// [type] The source control type. Possible values are `BitBucket`, `Dropbox`, `GitHub` and `OneDrive`.
-  SourceCodeTokenState({
+  const SourceCodeTokenState({
     this.token,
     this.tokenSecret,
     this.type,

@@ -17,7 +17,7 @@ class CooWebCcRuleRuleDetailCondition {
   /// [field] The statistic source. Valid values:
   /// [headerName] Set this parameter only when the statistic source is `header`.
   /// [matchMethod] Matching method.
-  CooWebCcRuleRuleDetailCondition({
+  const CooWebCcRuleRuleDetailCondition({
     required this.content,
     required this.field,
     this.headerName,

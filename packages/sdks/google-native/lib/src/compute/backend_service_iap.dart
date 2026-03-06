@@ -19,7 +19,7 @@ class BackendServiceIAP {
   /// [oauth2ClientId] OAuth2 client ID to use for the authentication flow.
   /// [oauth2ClientInfo] [Input Only] OAuth client info required to generate client id to be used for IAP.
   /// [oauth2ClientSecret] OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field. @InputOnly
-  BackendServiceIAP({
+  const BackendServiceIAP({
     this.enabled,
     this.oauth2ClientId,
     this.oauth2ClientInfo,

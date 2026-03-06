@@ -29,7 +29,7 @@ class AuthorityConfigX509Config {
   /// [keyUsage] Indicates the intended use for keys that correspond to a certificate.
   /// [nameConstraints] Describes the X.509 name constraints extension.
   /// [policyIds] Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-  AuthorityConfigX509Config({
+  const AuthorityConfigX509Config({
     this.additionalExtensions,
     this.aiaOcspServers,
     required this.caOptions,

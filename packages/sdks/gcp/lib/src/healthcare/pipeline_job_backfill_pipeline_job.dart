@@ -9,7 +9,7 @@ class PipelineJobBackfillPipelineJob {
 
   /// Creates a new [PipelineJobBackfillPipelineJob].
   /// [mappingPipelineJob] Specifies the mapping pipeline job to backfill, the name format
-  PipelineJobBackfillPipelineJob({
+  const PipelineJobBackfillPipelineJob({
     this.mappingPipelineJob,
   });
 

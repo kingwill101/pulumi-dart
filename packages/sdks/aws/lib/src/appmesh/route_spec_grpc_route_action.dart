@@ -10,7 +10,7 @@ class RouteSpecGrpcRouteAction {
 
   /// Creates a new [RouteSpecGrpcRouteAction].
   /// [weightedTargets] Targets that traffic is routed to when a request matches the route.
-  RouteSpecGrpcRouteAction({
+  const RouteSpecGrpcRouteAction({
     required this.weightedTargets,
   });
 

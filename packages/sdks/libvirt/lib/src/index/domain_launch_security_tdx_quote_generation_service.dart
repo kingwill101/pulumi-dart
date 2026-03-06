@@ -8,7 +8,7 @@ class DomainLaunchSecurityTdxQuoteGenerationService {
 
   /// Creates a new [DomainLaunchSecurityTdxQuoteGenerationService].
   /// [path] Sets the path for the quote generation service used in TDX.
-  DomainLaunchSecurityTdxQuoteGenerationService({
+  const DomainLaunchSecurityTdxQuoteGenerationService({
     this.path,
   });
 

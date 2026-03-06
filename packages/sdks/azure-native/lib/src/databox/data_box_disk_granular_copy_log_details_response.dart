@@ -22,7 +22,7 @@ class DataBoxDiskGranularCopyLogDetailsResponse {
   /// [errorLogLink] Link for copy error logs.
   /// [serialNumber] Disk Serial Number.
   /// [verboseLogLink] Link for copy verbose logs.
-  DataBoxDiskGranularCopyLogDetailsResponse({
+  const DataBoxDiskGranularCopyLogDetailsResponse({
     required this.accountId,
     required this.copyLogDetailsType,
     required this.errorLogLink,

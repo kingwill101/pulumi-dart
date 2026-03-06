@@ -17,7 +17,7 @@ class FolderReplayArgs {
   /// [config] The configuration used for the `Replay`.
   /// [folderId] Required.
   /// [location] Optional.
-  FolderReplayArgs({
+  const FolderReplayArgs({
     required this.config,
     required this.folderId,
     this.location,

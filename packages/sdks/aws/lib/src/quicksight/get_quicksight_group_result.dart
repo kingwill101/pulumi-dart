@@ -25,7 +25,7 @@ class GetQuicksightGroupResult {
   /// [namespace] Optional.
   /// [principalId] The principal ID of the group.
   /// [region] Required.
-  GetQuicksightGroupResult({
+  const GetQuicksightGroupResult({
     required this.arn,
     required this.awsAccountId,
     required this.description,

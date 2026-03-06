@@ -35,7 +35,7 @@ class RegistrationDefinitionPropertiesResponse {
   /// [manageeTenantName] The name of the managed tenant.
   /// [provisioningState] The current provisioning state of the registration definition.
   /// [registrationDefinitionName] The name of the registration definition.
-  RegistrationDefinitionPropertiesResponse({
+  const RegistrationDefinitionPropertiesResponse({
     required this.authorizations,
     this.description,
     this.eligibleAuthorizations,

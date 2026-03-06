@@ -34,7 +34,7 @@ class ContentCertificatePropertiesResponse {
   /// [subjectName] The subject name of certificate.
   /// [thumbprint] The thumbprint of certificate.
   /// [type] The type of the certificate source.
-  ContentCertificatePropertiesResponse({
+  const ContentCertificatePropertiesResponse({
     required this.activateDate,
     required this.dnsNames,
     required this.expirationDate,

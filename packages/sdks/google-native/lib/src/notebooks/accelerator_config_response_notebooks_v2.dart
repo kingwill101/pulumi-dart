@@ -12,7 +12,7 @@ class AcceleratorConfigResponseNotebooksV2 {
   /// Creates a new [AcceleratorConfigResponseNotebooksV2].
   /// [coreCount] Optional. Count of cores of this accelerator.
   /// [type] Optional. Type of this accelerator.
-  AcceleratorConfigResponseNotebooksV2({
+  const AcceleratorConfigResponseNotebooksV2({
     required this.coreCount,
     required this.type,
   });

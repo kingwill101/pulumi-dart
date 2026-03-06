@@ -41,7 +41,7 @@ class ClusterManagerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [vmSize] Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The size of the Azure virtual machines to use for hosting the cluster manager resource.
-  ClusterManagerArgs({
+  const ClusterManagerArgs({
     this.analyticsWorkspaceId,
     this.availabilityZones,
     this.clusterManagerName,

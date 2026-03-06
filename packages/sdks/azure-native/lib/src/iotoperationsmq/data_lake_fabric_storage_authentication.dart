@@ -10,7 +10,7 @@ class DataLakeFabricStorageAuthentication {
 
   /// Creates a new [DataLakeFabricStorageAuthentication].
   /// [systemAssignedManagedIdentity] Configuration for managed identity authentication.
-  DataLakeFabricStorageAuthentication({
+  const DataLakeFabricStorageAuthentication({
     required this.systemAssignedManagedIdentity,
   });
 

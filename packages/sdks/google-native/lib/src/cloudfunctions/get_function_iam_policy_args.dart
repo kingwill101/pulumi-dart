@@ -17,7 +17,7 @@ class GetFunctionIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFunctionIamPolicyArgs({
+  const GetFunctionIamPolicyArgs({
     required this.functionId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -8,7 +8,7 @@ class DomainDevicesSerialSourceSpicePort {
 
   /// Creates a new [DomainDevicesSerialSourceSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesSerialSourceSpicePort({
+  const DomainDevicesSerialSourceSpicePort({
     required this.channel,
   });
 

@@ -11,7 +11,7 @@ class StackInstanceParameterOverride {
   /// Creates a new [StackInstanceParameterOverride].
   /// [parameterKey] The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
   /// [parameterValue] The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-  StackInstanceParameterOverride({
+  const StackInstanceParameterOverride({
     this.parameterKey,
     this.parameterValue,
   });

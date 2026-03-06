@@ -20,7 +20,7 @@ class MonitorTagRuleLog {
   /// [filters] A `filter` block as defined below.
   /// [resourceLogEnabled] Whether Azure resource logs should be sent for the Monitor resource?
   /// [subscriptionLogEnabled] Whether Azure subscription logs should be sent for the Monitor resource?
-  MonitorTagRuleLog({
+  const MonitorTagRuleLog({
     this.aadLogEnabled,
     this.filters,
     this.resourceLogEnabled,

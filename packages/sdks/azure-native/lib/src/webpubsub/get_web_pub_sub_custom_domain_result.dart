@@ -31,7 +31,7 @@ class GetWebPubSubCustomDomainResult {
   /// [provisioningState] Provisioning state of the resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWebPubSubCustomDomainResult({
+  const GetWebPubSubCustomDomainResult({
     required this.azureApiVersion,
     required this.customCertificate,
     required this.domainName,

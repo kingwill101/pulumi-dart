@@ -17,7 +17,7 @@ class GetBudgetSubscriptionFilter {
   /// [dimensions] A `dimension` block as defined above.
   /// [nots] A `not` block as defined below.
   /// [tags] A `tag` block as defined below.
-  GetBudgetSubscriptionFilter({
+  const GetBudgetSubscriptionFilter({
     required this.dimensions,
     required this.nots,
     required this.tags,

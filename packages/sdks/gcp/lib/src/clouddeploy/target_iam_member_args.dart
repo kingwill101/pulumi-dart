@@ -22,7 +22,7 @@ class TargetIamMemberArgs {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Required.
-  TargetIamMemberArgs({
+  const TargetIamMemberArgs({
     this.condition,
     this.location,
     required this.member,

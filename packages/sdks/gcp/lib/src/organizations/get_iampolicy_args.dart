@@ -22,7 +22,7 @@ class GetIAMPolicyArgs {
   /// Creates a new [GetIAMPolicyArgs].
   /// [auditConfigs] A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
   /// [bindings] A nested configuration block (described below)
-  GetIAMPolicyArgs({
+  const GetIAMPolicyArgs({
     this.auditConfigs,
     this.bindings,
   });

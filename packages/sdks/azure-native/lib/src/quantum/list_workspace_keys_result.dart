@@ -21,7 +21,7 @@ class ListWorkspaceKeysResult {
   /// [primaryKey] The quantum workspace primary api key.
   /// [secondaryConnectionString] The connection string of the secondary api key.
   /// [secondaryKey] The quantum workspace secondary api key.
-  ListWorkspaceKeysResult({
+  const ListWorkspaceKeysResult({
     this.apiKeyEnabled,
     required this.primaryConnectionString,
     this.primaryKey,

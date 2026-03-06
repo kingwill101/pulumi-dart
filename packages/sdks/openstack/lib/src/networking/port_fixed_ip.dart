@@ -16,7 +16,7 @@ class PortFixedIp {
   /// Creates a new [PortFixedIp].
   /// [ipAddress] IP address desired in the subnet for this port. If
   /// [subnetId] Subnet in which to allocate IP address for
-  PortFixedIp({
+  const PortFixedIp({
     this.ipAddress,
     this.subnetId,
   });

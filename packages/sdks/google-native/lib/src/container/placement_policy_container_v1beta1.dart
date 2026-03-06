@@ -16,7 +16,7 @@ class PlacementPolicyContainerV1beta1 {
   /// [policyName] If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
   /// [tpuTopology] TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
   /// [type] The type of placement.
-  PlacementPolicyContainerV1beta1({
+  const PlacementPolicyContainerV1beta1({
     this.policyName,
     this.tpuTopology,
     this.type,

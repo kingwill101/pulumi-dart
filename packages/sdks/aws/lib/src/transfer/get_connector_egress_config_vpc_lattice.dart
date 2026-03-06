@@ -11,7 +11,7 @@ class GetConnectorEgressConfigVpcLattice {
   /// Creates a new [GetConnectorEgressConfigVpcLattice].
   /// [portNumber] Port number for connecting to the SFTP server through VPC Lattice.
   /// [resourceConfigurationArn] ARN of the VPC Lattice Resource Configuration.
-  GetConnectorEgressConfigVpcLattice({
+  const GetConnectorEgressConfigVpcLattice({
     required this.portNumber,
     required this.resourceConfigurationArn,
   });

@@ -18,7 +18,7 @@ class AccessKeyArgs {
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`, for use in the `encrypted_secret` output attribute. If providing a base-64 encoded PGP public key, make sure to provide the "raw" version and not the "armored" one (e.g. avoid passing the `-a` option to `gpg --export`).
   /// [status] Access key status to apply. Defaults to `Active`. Valid values are `Active` and `Inactive`.
   /// [user] IAM user to associate with this access key.
-  AccessKeyArgs({
+  const AccessKeyArgs({
     this.pgpKey,
     this.status,
     required this.user,

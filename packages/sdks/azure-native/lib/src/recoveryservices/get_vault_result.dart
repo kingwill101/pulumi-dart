@@ -42,7 +42,7 @@ class GetVaultResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetVaultResult({
+  const GetVaultResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

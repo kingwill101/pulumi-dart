@@ -18,7 +18,7 @@ class WorkflowParameter {
   /// [metadata] The metadata.
   /// [type] The type.
   /// [value] The value.
-  WorkflowParameter({
+  const WorkflowParameter({
     this.description,
     this.metadata,
     this.type,

@@ -18,7 +18,7 @@ class GetCustomerSubscriptionArgs {
   /// [customerSubscriptionName] Name of the product.
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
-  GetCustomerSubscriptionArgs({
+  const GetCustomerSubscriptionArgs({
     required this.customerSubscriptionName,
     required this.registrationName,
     required this.resourceGroup,

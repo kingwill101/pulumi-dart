@@ -12,7 +12,7 @@ class NetworkInterfaceResponse {
   /// Creates a new [NetworkInterfaceResponse].
   /// [privateIpAddress] Private Ip address of the interface
   /// [resourceId] The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-  NetworkInterfaceResponse({
+  const NetworkInterfaceResponse({
     this.privateIpAddress,
     required this.resourceId,
   });

@@ -64,7 +64,7 @@ class GetActionGroupResult {
   /// [smsReceivers] One or more `sms_receiver` blocks as defined below.
   /// [voiceReceivers] One or more `voice_receiver` blocks as defined below.
   /// [webhookReceivers] One or more `webhook_receiver` blocks as defined below.
-  GetActionGroupResult({
+  const GetActionGroupResult({
     required this.armRoleReceivers,
     required this.automationRunbookReceivers,
     required this.azureAppPushReceivers,

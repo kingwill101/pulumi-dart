@@ -10,7 +10,7 @@ class IosDeviceList {
 
   /// Creates a new [IosDeviceList].
   /// [iosDevices] A list of iOS devices.
-  IosDeviceList({
+  const IosDeviceList({
     required this.iosDevices,
   });
 

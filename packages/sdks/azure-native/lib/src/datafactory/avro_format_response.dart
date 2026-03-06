@@ -16,7 +16,7 @@ class AvroFormatResponse {
   /// [deserializer] Deserializer. Type: string (or Expression with resultType string).
   /// [serializer] Serializer. Type: string (or Expression with resultType string).
   /// [type] Type of dataset storage format.
-  AvroFormatResponse({
+  const AvroFormatResponse({
     this.deserializer,
     this.serializer,
     required this.type,

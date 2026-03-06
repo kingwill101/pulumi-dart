@@ -12,7 +12,7 @@ class ProvenanceBuilder {
   /// [builderDependencies] Optional.
   /// [id] Optional.
   /// [version] Optional.
-  ProvenanceBuilder({
+  const ProvenanceBuilder({
     this.builderDependencies,
     this.id,
     this.version,

@@ -14,7 +14,7 @@ class Runtime {
   /// Creates a new [Runtime].
   /// [dotnet] .NET app configuration
   /// [java] Java app configuration
-  Runtime({
+  const Runtime({
     this.dotnet,
     this.java,
   });

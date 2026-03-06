@@ -37,7 +37,7 @@ class CertificateArgs {
   /// [project] Optional.
   /// [scope] Immutable. The scope of the certificate.
   /// [selfManaged] If set, defines data of a self-managed certificate.
-  CertificateArgs({
+  const CertificateArgs({
     required this.certificateId,
     this.description,
     this.labels,

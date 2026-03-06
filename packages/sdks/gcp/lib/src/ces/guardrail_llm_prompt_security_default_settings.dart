@@ -11,7 +11,7 @@ class GuardrailLlmPromptSecurityDefaultSettings {
 
   /// Creates a new [GuardrailLlmPromptSecurityDefaultSettings].
   /// [defaultPromptTemplate] (Output)
-  GuardrailLlmPromptSecurityDefaultSettings({
+  const GuardrailLlmPromptSecurityDefaultSettings({
     this.defaultPromptTemplate,
   });
 

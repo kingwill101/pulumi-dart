@@ -30,7 +30,7 @@ class GetCredentialResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCredentialResult({
+  const GetCredentialResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

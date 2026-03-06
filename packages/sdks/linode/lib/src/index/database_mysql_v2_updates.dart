@@ -17,7 +17,7 @@ class DatabaseMysqlV2Updates {
   /// [duration] The maximum maintenance window time in hours.
   /// [frequency] How frequently maintenance occurs. Currently can only be weekly.
   /// [hourOfDay] How frequently maintenance occurs. Currently can only be weekly.
-  DatabaseMysqlV2Updates({
+  const DatabaseMysqlV2Updates({
     this.dayOfWeek,
     this.duration,
     this.frequency,

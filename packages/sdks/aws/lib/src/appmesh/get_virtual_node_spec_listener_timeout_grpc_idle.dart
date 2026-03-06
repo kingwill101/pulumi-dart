@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerTimeoutGrpcIdle {
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutGrpcIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetVirtualNodeSpecListenerTimeoutGrpcIdle({
+  const GetVirtualNodeSpecListenerTimeoutGrpcIdle({
     required this.unit,
     required this.value,
   });

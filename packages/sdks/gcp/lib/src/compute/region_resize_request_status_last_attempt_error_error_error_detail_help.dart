@@ -11,7 +11,7 @@ class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
 
   /// Creates a new [RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp].
   /// [links] (Output)
-  RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp({
+  const RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp({
     this.links,
   });
 

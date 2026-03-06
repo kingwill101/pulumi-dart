@@ -35,7 +35,7 @@ class ListWebAppBackupConfigurationSlotResult {
   /// [name] Resource Name.
   /// [storageAccountUrl] SAS URL to the container.
   /// [type] Resource type.
-  ListWebAppBackupConfigurationSlotResult({
+  const ListWebAppBackupConfigurationSlotResult({
     this.backupName,
     this.backupSchedule,
     this.databases,

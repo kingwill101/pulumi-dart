@@ -57,7 +57,7 @@ class UnitArgs {
   /// [tenant] Reference to the Saas Tenant resource this unit belongs to. This for
   /// [unitId] The ID value for the new unit.
   /// [unitKind] Reference to the UnitKind this Unit belongs to. Immutable once set.
-  UnitArgs({
+  const UnitArgs({
     this.annotations,
     this.labels,
     required this.location,

@@ -18,7 +18,7 @@ class GetUsersArgs {
   /// [ids] A list of User IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Unlocked`, `Locked`.
-  GetUsersArgs({
+  const GetUsersArgs({
     this.ids,
     this.outputFile,
     this.status,

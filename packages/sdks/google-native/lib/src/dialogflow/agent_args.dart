@@ -73,7 +73,7 @@ class AgentArgs {
   /// [supportedLanguageCodes] The list of all languages supported by the agent (except for the `default_language_code`).
   /// [textToSpeechSettings] Settings on instructing the speech synthesizer on how to generate the output audio content.
   /// [timeZone] The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-  AgentArgs({
+  const AgentArgs({
     this.advancedSettings,
     this.answerFeedbackSettings,
     this.avatarUri,

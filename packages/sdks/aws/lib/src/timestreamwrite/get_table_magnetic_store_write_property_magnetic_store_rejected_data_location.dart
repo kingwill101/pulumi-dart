@@ -9,7 +9,7 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation {
 
   /// Creates a new [GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation].
   /// [s3Configurations] Object containing the following attributes to describe the configuration of an s3 location to write error reports for records rejected.
-  GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation({
+  const GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocation({
     required this.s3Configurations,
   });
 

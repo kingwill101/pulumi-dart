@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionAllow {
 
   /// Creates a new [GetManagedRuleGroupRuleActionAllow].
   /// [customRequestHandlings] Required.
-  GetManagedRuleGroupRuleActionAllow({
+  const GetManagedRuleGroupRuleActionAllow({
     required this.customRequestHandlings,
   });
 

@@ -19,7 +19,7 @@ class GoogleCloudDatacatalogV1DataSourceResponse {
   /// [service] Service that physically stores the data.
   /// [sourceEntry] Data Catalog entry name, if applicable.
   /// [storageProperties] Detailed properties of the underlying storage.
-  GoogleCloudDatacatalogV1DataSourceResponse({
+  const GoogleCloudDatacatalogV1DataSourceResponse({
     required this.resource,
     required this.service,
     required this.sourceEntry,

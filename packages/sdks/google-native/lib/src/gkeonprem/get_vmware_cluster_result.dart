@@ -111,7 +111,7 @@ class GetVmwareClusterResult {
   /// [validationCheck] ValidationCheck represents the result of the preflight check job.
   /// [vcenter] VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the admin cluster.
   /// [vmTrackingEnabled] Enable VM tracking.
-  GetVmwareClusterResult({
+  const GetVmwareClusterResult({
     required this.adminClusterMembership,
     required this.adminClusterName,
     required this.annotations,

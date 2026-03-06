@@ -7,7 +7,7 @@ class OriginRequestPolicyHeadersConfigHeaders {
 
   /// Creates a new [OriginRequestPolicyHeadersConfigHeaders].
   /// [items] Optional.
-  OriginRequestPolicyHeadersConfigHeaders({
+  const OriginRequestPolicyHeadersConfigHeaders({
     this.items,
   });
 

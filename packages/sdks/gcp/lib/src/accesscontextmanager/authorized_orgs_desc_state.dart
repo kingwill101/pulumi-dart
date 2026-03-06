@@ -54,7 +54,7 @@ class AuthorizedOrgsDescState {
   /// [orgs] The list of organization ids in this AuthorizedOrgsDesc.
   /// [parent] Required. Resource name for the access policy which owns this `AuthorizedOrgsDesc`.
   /// [updateTime] Time the AuthorizedOrgsDesc was updated in UTC.
-  AuthorizedOrgsDescState({
+  const AuthorizedOrgsDescState({
     this.assetType,
     this.authorizationDirection,
     this.authorizationType,

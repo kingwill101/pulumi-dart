@@ -37,7 +37,7 @@ class QueuedResourceStateResponse {
   /// [stateInitiator] The initiator of the QueuedResources's current state.
   /// [suspendedData] Further data for the suspended state.
   /// [suspendingData] Further data for the suspending state.
-  QueuedResourceStateResponse({
+  const QueuedResourceStateResponse({
     required this.acceptedData,
     required this.activeData,
     required this.creatingData,

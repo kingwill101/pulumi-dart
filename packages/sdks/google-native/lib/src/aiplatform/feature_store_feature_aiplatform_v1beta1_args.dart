@@ -46,7 +46,7 @@ class FeatureStoreFeatureAiplatformV1beta1Args {
   /// [project] Optional.
   /// [valueType] Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
   /// [versionColumnName] Only applicable for Vertex AI Feature Store. The name of the BigQuery Table/View columnn hosting data for this version. If no value is provided, will use feature_id.
-  FeatureStoreFeatureAiplatformV1beta1Args({
+  const FeatureStoreFeatureAiplatformV1beta1Args({
     this.description,
     this.disableMonitoring,
     required this.entityTypeId,

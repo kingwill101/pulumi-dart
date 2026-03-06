@@ -21,7 +21,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServ
   /// [networkInterfaceNames] A list of full names for the Network Interface of the Virtual Machine. Changing this forces a new resource to be created.
   /// [osDiskName] The full name of the OS Disk attached to the Virtual Machine. Changing this forces a new resource to be created.
   /// [virtualMachineName] The full name of the Virtual Machine in a single server SAP system. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine({
+  const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServerVirtualMachine({
     this.dataDisks,
     this.hostName,
     this.networkInterfaceNames,

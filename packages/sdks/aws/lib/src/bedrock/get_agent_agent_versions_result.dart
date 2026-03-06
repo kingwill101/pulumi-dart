@@ -17,7 +17,7 @@ class GetAgentAgentVersionsResult {
   /// [agentVersionSummaries] List of objects, each of which contains information about a version of the agent. See Agent Version Summaries
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetAgentAgentVersionsResult({
+  const GetAgentAgentVersionsResult({
     required this.agentId,
     this.agentVersionSummaries,
     required this.id,

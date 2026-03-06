@@ -15,7 +15,7 @@ class AgentFlowDefinitionNodeInput {
   /// [expression] Required.
   /// [name] A name for the flow.
   /// [type] Required.
-  AgentFlowDefinitionNodeInput({
+  const AgentFlowDefinitionNodeInput({
     this.category,
     required this.expression,
     required this.name,

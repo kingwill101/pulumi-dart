@@ -27,7 +27,7 @@ class ModelArgs {
   /// [name] Name of the model. Must be alphanumeric. Must be between 1 and 128 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [schema] Schema for the model. This should be a [JSON schema draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04) model. Must be less than or equal to 32768 characters in length.
-  ModelArgs({
+  const ModelArgs({
     required this.apiId,
     required this.contentType,
     this.description,

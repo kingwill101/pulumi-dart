@@ -21,7 +21,7 @@ class TeamAccessTokenArgs {
   /// [name] The name for the token. This must be unique amongst all machine tokens within your organization.
   /// [organizationName] The organization's name.
   /// [teamName] The team name.
-  TeamAccessTokenArgs({
+  const TeamAccessTokenArgs({
     this.description,
     required this.name,
     required this.organizationName,

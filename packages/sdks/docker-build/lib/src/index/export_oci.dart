@@ -30,7 +30,7 @@ class ExportOCI {
   /// [names] Specify images names to export. This is overridden if tags are already specified.
   /// [ociMediaTypes] Use OCI media types in exporter manifests.
   /// [tar] Bundle the output into a tarball layout.
-  ExportOCI({
+  const ExportOCI({
     this.annotations,
     this.compression,
     this.compressionLevel,

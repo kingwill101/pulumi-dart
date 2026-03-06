@@ -30,7 +30,7 @@ class EdgeCacheOriginTimeout {
   /// [maxAttemptsTimeout] The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 504 will be returned if the timeout is reached before a response is returned.
   /// [readTimeout] The maximum duration to wait between reads of a single HTTP connection/stream.
   /// [responseTimeout] The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
-  EdgeCacheOriginTimeout({
+  const EdgeCacheOriginTimeout({
     this.connectTimeout,
     this.maxAttemptsTimeout,
     this.readTimeout,

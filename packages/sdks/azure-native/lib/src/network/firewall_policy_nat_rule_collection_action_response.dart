@@ -9,7 +9,7 @@ class FirewallPolicyNatRuleCollectionActionResponse {
 
   /// Creates a new [FirewallPolicyNatRuleCollectionActionResponse].
   /// [type] The type of action.
-  FirewallPolicyNatRuleCollectionActionResponse({
+  const FirewallPolicyNatRuleCollectionActionResponse({
     this.type,
   });
 

@@ -26,7 +26,7 @@ class GetEcsLaunchTemplatesTemplateSystemDisk {
   /// [name] System disk name.
   /// [performanceLevel] The performance level of the ESSD used as the system disk.
   /// [size] Size of the system disk, measured in GB.
-  GetEcsLaunchTemplatesTemplateSystemDisk({
+  const GetEcsLaunchTemplatesTemplateSystemDisk({
     required this.category,
     required this.deleteWithInstance,
     required this.description,

@@ -13,7 +13,7 @@ class GetTypeProviderDeploymentmanagerV2betaArgs {
   /// Creates a new [GetTypeProviderDeploymentmanagerV2betaArgs].
   /// [project] Optional.
   /// [typeProvider] Required.
-  GetTypeProviderDeploymentmanagerV2betaArgs({
+  const GetTypeProviderDeploymentmanagerV2betaArgs({
     this.project,
     required this.typeProvider,
   });

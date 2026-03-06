@@ -18,7 +18,7 @@ class JobLatestCreatedExecution {
   /// [completionTime] (Output)
   /// [createTime] (Output)
   /// [name] Name of the Job.
-  JobLatestCreatedExecution({
+  const JobLatestCreatedExecution({
     this.completionTime,
     this.createTime,
     this.name,

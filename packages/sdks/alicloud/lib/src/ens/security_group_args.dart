@@ -15,7 +15,7 @@ class SecurityGroupArgs {
   /// Creates a new [SecurityGroupArgs].
   /// [description] Security group description informationIt must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
   /// [securityGroupName] Security group nameThe security group name. The length is 2~128 English or Chinese characters. It must start with an uppercase or lowcase letter or a Chinese character and cannot start with `http://` or `https`. Can contain digits, colons (:), underscores (_), or hyphens (-).
-  SecurityGroupArgs({
+  const SecurityGroupArgs({
     this.description,
     this.securityGroupName,
   });

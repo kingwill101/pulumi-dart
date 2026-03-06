@@ -44,7 +44,7 @@ class EnterpriseCrmEventbusProtoTaskAlertConfigResponse {
   /// [thresholdType] The threshold type for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
   /// [thresholdValue] The metric value, above or below which the alert should be triggered.
   /// [warningEnumList] Required.
-  EnterpriseCrmEventbusProtoTaskAlertConfigResponse({
+  const EnterpriseCrmEventbusProtoTaskAlertConfigResponse({
     required this.aggregationPeriod,
     required this.alertDisabled,
     required this.alertName,

@@ -74,7 +74,7 @@ class GetCacheResult {
   /// [subnetId] Required.
   /// [tags] Required.
   /// [zones] A list of Availability Zones in which this Redis Cache is located.
-  GetCacheResult({
+  const GetCacheResult({
     required this.accessKeysAuthenticationEnabled,
     required this.capacity,
     required this.family,

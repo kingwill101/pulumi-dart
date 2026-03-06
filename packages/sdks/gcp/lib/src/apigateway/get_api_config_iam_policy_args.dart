@@ -20,7 +20,7 @@ class GetApiConfigIamPolicyArgs {
   /// [api] The API to attach the config to.
   /// [apiConfig] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetApiConfigIamPolicyArgs({
+  const GetApiConfigIamPolicyArgs({
     required this.api,
     required this.apiConfig,
     this.project,

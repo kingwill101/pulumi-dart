@@ -31,7 +31,7 @@ class DomainMappingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [spec] The spec for this DomainMapping.
   /// [statuses] (Output)
-  DomainMappingState({
+  const DomainMappingState({
     this.location,
     this.metadata,
     this.name,

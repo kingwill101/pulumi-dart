@@ -15,7 +15,7 @@ class ResourceRecordResponseAppengineV1alpha {
   /// [name] Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
   /// [rrdata] Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
   /// [type] Resource record type. Example: AAAA.
-  ResourceRecordResponseAppengineV1alpha({
+  const ResourceRecordResponseAppengineV1alpha({
     required this.name,
     required this.rrdata,
     required this.type,

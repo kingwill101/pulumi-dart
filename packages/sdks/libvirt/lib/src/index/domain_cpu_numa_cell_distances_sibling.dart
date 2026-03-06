@@ -11,7 +11,7 @@ class DomainCpuNumaCellDistancesSibling {
   /// Creates a new [DomainCpuNumaCellDistancesSibling].
   /// [id] Sets the identifier for the sibling CPU, accommodating specific access configurations.
   /// [value] Specifies the value for the distance metric of sibling CPUs within the NUMA cell.
-  DomainCpuNumaCellDistancesSibling({
+  const DomainCpuNumaCellDistancesSibling({
     this.id,
     required this.value,
   });

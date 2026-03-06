@@ -8,7 +8,7 @@ class SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings 
 
   /// Creates a new [SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings].
   /// [idleTimeoutInMinutes] The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
-  SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings({
+  const SpaceSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings({
     this.idleTimeoutInMinutes,
   });
 

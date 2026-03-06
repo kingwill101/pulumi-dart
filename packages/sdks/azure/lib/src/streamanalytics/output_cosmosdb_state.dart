@@ -30,7 +30,7 @@ class OutputCosmosdbState {
   /// [name] The name of the Stream Analytics Output. Changing this forces a new resource to be created.
   /// [partitionKey] The name of the field in output events used to specify the key for partitioning output across collections. If `container_name` contains `{partition}` token, this property is required to be specified.
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
-  OutputCosmosdbState({
+  const OutputCosmosdbState({
     this.authenticationMode,
     this.containerName,
     this.cosmosdbAccountKey,

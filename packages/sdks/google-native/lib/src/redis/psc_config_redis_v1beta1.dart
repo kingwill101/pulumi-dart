@@ -8,7 +8,7 @@ class PscConfigRedisV1beta1 {
 
   /// Creates a new [PscConfigRedisV1beta1].
   /// [network] The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
-  PscConfigRedisV1beta1({
+  const PscConfigRedisV1beta1({
     required this.network,
   });
 

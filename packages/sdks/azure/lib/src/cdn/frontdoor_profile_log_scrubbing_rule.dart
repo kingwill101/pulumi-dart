@@ -10,7 +10,7 @@ class FrontdoorProfileLogScrubbingRule {
 
   /// Creates a new [FrontdoorProfileLogScrubbingRule].
   /// [matchVariable] The variable to be scrubbed from the logs. Possible values are `QueryStringArgNames`, `RequestIPAddress`, and `RequestUri`.
-  FrontdoorProfileLogScrubbingRule({
+  const FrontdoorProfileLogScrubbingRule({
     required this.matchVariable,
   });
 

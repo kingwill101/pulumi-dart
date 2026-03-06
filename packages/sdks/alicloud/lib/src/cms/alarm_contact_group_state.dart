@@ -18,7 +18,7 @@ class AlarmContactGroupState {
   /// [contacts] The name of the alert contact.
   /// [describe] The description of the alert group.
   /// [enableSubscribed] Whether to open weekly subscription.
-  AlarmContactGroupState({
+  const AlarmContactGroupState({
     this.alarmContactGroupName,
     this.contacts,
     this.describe,

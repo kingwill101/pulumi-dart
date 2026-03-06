@@ -24,7 +24,7 @@ class VolumeArgs {
   /// [poolName] Pool Object
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] Volume Resource
-  VolumeArgs({
+  const VolumeArgs({
     required this.capacityGiB,
     required this.labels,
     required this.poolName,

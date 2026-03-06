@@ -15,7 +15,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTrigger {
   /// Creates a new [AlertPolicyConditionConditionMonitoringQueryLanguageTrigger].
   /// [count] The absolute number of time series
   /// [percent] The percentage of time series that
-  AlertPolicyConditionConditionMonitoringQueryLanguageTrigger({
+  const AlertPolicyConditionConditionMonitoringQueryLanguageTrigger({
     this.count,
     this.percent,
   });

@@ -10,7 +10,7 @@ class GrafeasV1beta1PackageDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1PackageDetailsResponse].
   /// [installation] Where the package was installed.
-  GrafeasV1beta1PackageDetailsResponse({
+  const GrafeasV1beta1PackageDetailsResponse({
     required this.installation,
   });
 

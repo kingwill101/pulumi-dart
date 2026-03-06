@@ -16,7 +16,7 @@ class StorageSpacesPropertiesResponseProvisioningStatus {
   /// [operationId] Optional.
   /// [phase] Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
   /// [status] Optional.
-  StorageSpacesPropertiesResponseProvisioningStatus({
+  const StorageSpacesPropertiesResponseProvisioningStatus({
     this.error,
     this.operationId,
     this.phase,

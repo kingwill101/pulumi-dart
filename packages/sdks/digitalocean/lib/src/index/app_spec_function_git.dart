@@ -11,7 +11,7 @@ class AppSpecFunctionGit {
   /// Creates a new [AppSpecFunctionGit].
   /// [branch] The name of the branch to use.
   /// [repoCloneUrl] The clone URL of the repo.
-  AppSpecFunctionGit({
+  const AppSpecFunctionGit({
     this.branch,
     this.repoCloneUrl,
   });

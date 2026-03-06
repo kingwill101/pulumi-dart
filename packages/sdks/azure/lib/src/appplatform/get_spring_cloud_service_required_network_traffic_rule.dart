@@ -20,7 +20,7 @@ class GetSpringCloudServiceRequiredNetworkTrafficRule {
   /// [ipAddresses] The IP list of required traffic.
   /// [port] The port of required traffic.
   /// [protocol] The protocol of required traffic.
-  GetSpringCloudServiceRequiredNetworkTrafficRule({
+  const GetSpringCloudServiceRequiredNetworkTrafficRule({
     required this.direction,
     required this.fqdns,
     required this.ipAddresses,

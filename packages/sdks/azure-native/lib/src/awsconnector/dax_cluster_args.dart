@@ -25,7 +25,7 @@ class DaxClusterArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DaxClusterArgs({
+  const DaxClusterArgs({
     this.location,
     this.name,
     this.properties,

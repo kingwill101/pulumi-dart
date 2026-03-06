@@ -18,7 +18,7 @@ class GetAuthPolicyResult {
   /// [region] Required.
   /// [resourceIdentifier] Required.
   /// [state] The state of the auth policy. The auth policy is only active when the auth type is set to AWS_IAM. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is NONE, then, any auth policy you provide will remain inactive.
-  GetAuthPolicyResult({
+  const GetAuthPolicyResult({
     required this.id,
     this.policy,
     required this.region,

@@ -18,7 +18,7 @@ class GroupMetricRuleTarget {
   /// [id] The ID of the resource for which alerts are triggered.
   /// [jsonParams] The parameters of the alert callback. The parameters are in the JSON format.
   /// [level] The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
-  GroupMetricRuleTarget({
+  const GroupMetricRuleTarget({
     this.arn,
     this.id,
     this.jsonParams,

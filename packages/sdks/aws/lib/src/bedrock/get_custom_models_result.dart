@@ -14,7 +14,7 @@ class GetCustomModelsResult {
   /// [id] Required.
   /// [modelSummaries] Model summaries.
   /// [region] Required.
-  GetCustomModelsResult({
+  const GetCustomModelsResult({
     required this.id,
     required this.modelSummaries,
     required this.region,

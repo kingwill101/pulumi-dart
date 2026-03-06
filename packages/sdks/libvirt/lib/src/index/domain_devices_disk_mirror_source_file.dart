@@ -15,7 +15,7 @@ class DomainDevicesDiskMirrorSourceFile {
   /// [fdGroup] Sets the file descriptor group for the file specified in the backing store source.
   /// [file] Specifies the actual file referenced in the backing store source configuration.
   /// [secLabels] Configures the security label associated with the file in the backing store source.
-  DomainDevicesDiskMirrorSourceFile({
+  const DomainDevicesDiskMirrorSourceFile({
     this.fdGroup,
     this.file,
     this.secLabels,

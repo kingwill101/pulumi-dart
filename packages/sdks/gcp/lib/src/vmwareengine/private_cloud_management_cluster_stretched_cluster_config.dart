@@ -13,7 +13,7 @@ class PrivateCloudManagementClusterStretchedClusterConfig {
   /// Creates a new [PrivateCloudManagementClusterStretchedClusterConfig].
   /// [preferredLocation] Zone that will remain operational when connection between the two zones is lost.
   /// [secondaryLocation] Additional zone for a higher level of availability and load balancing.
-  PrivateCloudManagementClusterStretchedClusterConfig({
+  const PrivateCloudManagementClusterStretchedClusterConfig({
     this.preferredLocation,
     this.secondaryLocation,
   });

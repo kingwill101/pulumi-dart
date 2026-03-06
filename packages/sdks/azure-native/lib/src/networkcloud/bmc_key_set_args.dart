@@ -41,7 +41,7 @@ class BmcKeySetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [userList] The unique list of permitted users.
-  BmcKeySetArgs({
+  const BmcKeySetArgs({
     required this.azureGroupId,
     this.bmcKeySetName,
     required this.clusterName,

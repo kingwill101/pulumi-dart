@@ -13,7 +13,7 @@ class EntityAlerts {
   /// Creates a new [EntityAlerts].
   /// [degraded] Alert to be triggered on state change to degraded
   /// [unhealthy] Alert to be triggered on state change to unhealthy
-  EntityAlerts({
+  const EntityAlerts({
     this.degraded,
     this.unhealthy,
   });

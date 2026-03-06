@@ -26,7 +26,7 @@ class GetIpv6GatewaysResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [vpcId] Optional.
-  GetIpv6GatewaysResult({
+  const GetIpv6GatewaysResult({
     required this.gateways,
     required this.id,
     required this.ids,

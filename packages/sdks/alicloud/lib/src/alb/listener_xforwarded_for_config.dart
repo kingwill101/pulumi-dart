@@ -56,7 +56,7 @@ class ListenerXForwardedForConfig {
   /// [xForwardedForProtoEnabled] Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
   /// [xForwardedForSlbIdEnabled] Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id
   /// [xForwardedForSlbPortEnabled] Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port
-  ListenerXForwardedForConfig({
+  const ListenerXForwardedForConfig({
     this.xForwardedForClientCertClientVerifyAlias,
     this.xForwardedForClientCertClientVerifyEnabled,
     this.xForwardedForClientCertFingerPrintAlias,

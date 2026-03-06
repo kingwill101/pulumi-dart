@@ -28,7 +28,7 @@ class OpenAIEndpointDeploymentResourcePropertiesResponse {
   /// [sku] Optional.
   /// [type] Kind of the deployment.
   /// [versionUpgradeOption] Deployment model version upgrade option.
-  OpenAIEndpointDeploymentResourcePropertiesResponse({
+  const OpenAIEndpointDeploymentResourcePropertiesResponse({
     this.failureReason,
     required this.model,
     required this.provisioningState,

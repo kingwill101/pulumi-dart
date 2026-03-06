@@ -32,7 +32,7 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig {
   /// [localId] The local Id.
   /// [psk] Preshared secret key.
   /// [remoteId] Remote ID.
-  GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig({
+  const GetConnectionsConnectionTunnelOptionsSpecificationTunnelIkeConfig({
     required this.ikeAuthAlg,
     required this.ikeEncAlg,
     required this.ikeLifetime,

@@ -31,7 +31,7 @@ class AccessLevelConditionDevicePolicy {
   /// [requireAdminApproval] Whether the device needs to be approved by the customer admin.
   /// [requireCorpOwned] Whether the device needs to be corp owned.
   /// [requireScreenLock] Whether or not screenlock is required for the DevicePolicy
-  AccessLevelConditionDevicePolicy({
+  const AccessLevelConditionDevicePolicy({
     this.allowedDeviceManagementLevels,
     this.allowedEncryptionStatuses,
     this.osConstraints,

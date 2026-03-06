@@ -15,7 +15,7 @@ class BotAbortStatementMessage {
   /// [content] The text of the message.
   /// [contentType] The content type of the message string.
   /// [groupNumber] Identifies the message group that the message belongs to. When a group
-  BotAbortStatementMessage({
+  const BotAbortStatementMessage({
     required this.content,
     required this.contentType,
     this.groupNumber,

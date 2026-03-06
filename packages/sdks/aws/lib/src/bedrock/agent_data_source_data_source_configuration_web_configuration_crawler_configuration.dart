@@ -21,7 +21,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
   /// [inclusionFilters] List of one or more inclusion regular expression patterns to include certain object types that adhere to the pattern.
   /// [scope] Scope of what is crawled for your URLs.
   /// [userAgent] String used for identifying the crawler or a bot when it accesses a web server. Default value is `bedrockbot_UUID`.
-  AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration({
+  const AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration({
     this.crawlerLimits,
     this.exclusionFilters,
     this.inclusionFilters,

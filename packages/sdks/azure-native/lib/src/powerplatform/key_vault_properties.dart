@@ -13,7 +13,7 @@ class KeyVaultProperties {
   /// Creates a new [KeyVaultProperties].
   /// [id] Uri of KeyVault
   /// [key] Identity of the secret that includes name and version.
-  KeyVaultProperties({
+  const KeyVaultProperties({
     this.id,
     this.key,
   });

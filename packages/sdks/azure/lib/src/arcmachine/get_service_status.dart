@@ -13,7 +13,7 @@ class GetServiceStatus {
   /// Creates a new [GetServiceStatus].
   /// [extensionServices] A `extension_service` block as defined above.
   /// [guestConfigurationServices] A `guest_configuration_service` block as defined above.
-  GetServiceStatus({
+  const GetServiceStatus({
     required this.extensionServices,
     required this.guestConfigurationServices,
   });

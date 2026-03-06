@@ -86,7 +86,7 @@ class GetDiscoveredAssetResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] An integer that is incremented each time the resource is modified.
-  GetDiscoveredAssetResult({
+  const GetDiscoveredAssetResult({
     required this.assetEndpointProfileRef,
     required this.azureApiVersion,
     this.datasets,

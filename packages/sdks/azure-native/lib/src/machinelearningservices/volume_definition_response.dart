@@ -33,7 +33,7 @@ class VolumeDefinitionResponse {
   /// [tmpfs] tmpfs option of the mount
   /// [type] Type of Volume Definition. Possible Values: bind,volume,tmpfs,npipe
   /// [volume] Volume Options of the mount
-  VolumeDefinitionResponse({
+  const VolumeDefinitionResponse({
     this.bind,
     this.consistency,
     this.readOnly,

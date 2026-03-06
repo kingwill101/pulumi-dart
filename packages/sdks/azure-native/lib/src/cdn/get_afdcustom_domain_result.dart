@@ -53,7 +53,7 @@ class GetAFDCustomDomainResult {
   /// [tlsSettings] The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationProperties] Values the customer needs to validate domain ownership
-  GetAFDCustomDomainResult({
+  const GetAFDCustomDomainResult({
     required this.azureApiVersion,
     this.azureDnsZone,
     required this.deploymentStatus,

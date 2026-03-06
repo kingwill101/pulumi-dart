@@ -11,7 +11,7 @@ class MonitorTag {
   /// Creates a new [MonitorTag].
   /// [key] Name of the tag key.
   /// [values] Values associated with the tag key.
-  MonitorTag({
+  const MonitorTag({
     required this.key,
     required this.values,
   });

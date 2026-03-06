@@ -21,7 +21,7 @@ class AkriConnectorTemplateHelmInstallConfiguration {
   /// [timeout] Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
   /// [wait] If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
   /// [waitForJobs] If set, the operation will wait for jobs to complete before marking the release as successful.
-  AkriConnectorTemplateHelmInstallConfiguration({
+  const AkriConnectorTemplateHelmInstallConfiguration({
     this.atomic,
     this.disableHooks,
     this.timeout,

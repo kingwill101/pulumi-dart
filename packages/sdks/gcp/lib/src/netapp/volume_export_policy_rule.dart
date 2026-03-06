@@ -48,7 +48,7 @@ class VolumeExportPolicyRule {
   /// [nfsv3] Enable to apply the export rule to NFSV3 clients.
   /// [nfsv4] Enable to apply the export rule to NFSV4.1 clients.
   /// [squashMode] SquashMode defines how remote user privileges are restricted when accessing an NFS export. It controls how the user identities (like root) are mapped to anonymous users to limit access and enforce security.
-  VolumeExportPolicyRule({
+  const VolumeExportPolicyRule({
     this.accessType,
     this.allowedClients,
     this.anonUid,

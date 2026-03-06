@@ -10,7 +10,7 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern {
   /// Creates a new [RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const RuleGroupRuleStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

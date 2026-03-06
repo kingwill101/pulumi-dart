@@ -30,7 +30,7 @@ class BucketReplicationConfigurationRuleDestination {
   /// [replicaKmsKeyId] Destination KMS encryption key ARN for SSE-KMS replication. Must be used in conjunction with
   /// [replicationTime] Enables S3 Replication Time Control (S3 RTC) (documented below).
   /// [storageClass] The [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Destination.html#AmazonS3-Type-Destination-StorageClass) used to store the object. By default, Amazon S3 uses the storage class of the source object to create the object replica.
-  BucketReplicationConfigurationRuleDestination({
+  const BucketReplicationConfigurationRuleDestination({
     this.accessControlTranslation,
     this.accountId,
     required this.bucket,

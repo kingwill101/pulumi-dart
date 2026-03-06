@@ -13,7 +13,7 @@ class GetOrganizationEventThreatDetectionSettingCustomModuleArgs {
   /// Creates a new [GetOrganizationEventThreatDetectionSettingCustomModuleArgs].
   /// [customModuleId] Required.
   /// [organizationId] Required.
-  GetOrganizationEventThreatDetectionSettingCustomModuleArgs({
+  const GetOrganizationEventThreatDetectionSettingCustomModuleArgs({
     required this.customModuleId,
     required this.organizationId,
   });

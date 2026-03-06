@@ -38,7 +38,7 @@ class SecurityConnectorArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   /// [tags] A list of key value pairs that describe the resource.
-  SecurityConnectorArgs({
+  const SecurityConnectorArgs({
     this.environmentData,
     this.environmentName,
     this.hierarchyIdentifier,

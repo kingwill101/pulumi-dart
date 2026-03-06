@@ -70,7 +70,7 @@ class AlertRuleNrtState {
   /// [suppressionEnabled] Should the Sentinel NRT Alert Rulea stop running query after alert is generated? Defaults to `false`.
   /// [tactics] A list of categories of attacks by which to classify the rule. Possible values are `Collection`, `CommandAndControl`, `CredentialAccess`, `DefenseEvasion`, `Discovery`, `Execution`, `Exfiltration`, `Impact`, `ImpairProcessControl`, `InhibitResponseFunction`, `InitialAccess`, `LateralMovement`, `Persistence`, `PreAttack`, `PrivilegeEscalation`, `Reconnaissance` and `ResourceDevelopment`.
   /// [techniques] A list of techniques of attacks by which to classify the rule.
-  AlertRuleNrtState({
+  const AlertRuleNrtState({
     this.alertDetailsOverrides,
     this.alertRuleTemplateGuid,
     this.alertRuleTemplateVersion,

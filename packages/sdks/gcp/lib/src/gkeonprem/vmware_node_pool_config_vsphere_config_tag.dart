@@ -11,7 +11,7 @@ class VMwareNodePoolConfigVsphereConfigTag {
   /// Creates a new [VMwareNodePoolConfigVsphereConfigTag].
   /// [category] The Vsphere tag category.
   /// [tag] The Vsphere tag name.
-  VMwareNodePoolConfigVsphereConfigTag({
+  const VMwareNodePoolConfigVsphereConfigTag({
     this.category,
     this.tag,
   });

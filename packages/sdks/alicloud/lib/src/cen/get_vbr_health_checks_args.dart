@@ -24,7 +24,7 @@ class GetVbrHealthChecksArgs {
   /// [vbrInstanceId] The ID of the VBR instance.
   /// [vbrInstanceOwnerId] The User ID (UID) of the account to which the VBR instance belongs.
   /// [vbrInstanceRegionId] The ID of the region where the VBR instance is deployed.
-  GetVbrHealthChecksArgs({
+  const GetVbrHealthChecksArgs({
     this.cenId,
     this.outputFile,
     this.vbrInstanceId,

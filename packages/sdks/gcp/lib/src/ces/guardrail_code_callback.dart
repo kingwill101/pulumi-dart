@@ -29,7 +29,7 @@ class GuardrailCodeCallback {
   /// [afterModelCallback] A callback defines the custom logic to be executed at various stages of
   /// [beforeAgentCallback] A callback defines the custom logic to be executed at various stages of
   /// [beforeModelCallback] A callback defines the custom logic to be executed at various stages of
-  GuardrailCodeCallback({
+  const GuardrailCodeCallback({
     this.afterAgentCallback,
     this.afterModelCallback,
     this.beforeAgentCallback,

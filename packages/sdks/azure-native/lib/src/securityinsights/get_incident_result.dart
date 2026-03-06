@@ -85,7 +85,7 @@ class GetIncidentResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [title] The title of the incident
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetIncidentResult({
+  const GetIncidentResult({
     required this.additionalData,
     required this.azureApiVersion,
     this.classification,

@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2BigQueryField {
   /// Creates a new [GooglePrivacyDlpV2BigQueryField].
   /// [field] Designated field in the BigQuery table.
   /// [table] Source table of the field.
-  GooglePrivacyDlpV2BigQueryField({
+  const GooglePrivacyDlpV2BigQueryField({
     this.field,
     this.table,
   });

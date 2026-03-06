@@ -30,7 +30,7 @@ class ControlFolderIntelligenceConfigState {
   /// [name] Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
   /// [trialConfigs] The trial configuration of the Storage Intelligence resource.
   /// [updateTime] The time at which the Storage Intelligence Config resource is last updated.
-  ControlFolderIntelligenceConfigState({
+  const ControlFolderIntelligenceConfigState({
     this.editionConfig,
     this.effectiveIntelligenceConfigs,
     this.filter,

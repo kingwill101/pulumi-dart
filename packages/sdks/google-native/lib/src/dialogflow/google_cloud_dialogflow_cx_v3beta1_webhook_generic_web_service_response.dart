@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse {
   /// [uri] The webhook URI for receiving POST requests. It must use https protocol.
   /// [username] The user name for HTTP Basic authentication.
   /// [webhookType] Optional. Type of the webhook.
-  GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse({
+  const GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse({
     required this.allowedCaCerts,
     required this.httpMethod,
     required this.parameterMapping,

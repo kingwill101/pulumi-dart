@@ -42,7 +42,7 @@ class ComputeInstanceProperties {
   /// [sshSettings] Specifies policy and settings for SSH access.
   /// [subnet] Virtual network subnet resource ID the compute nodes belong to.
   /// [vmSize] Virtual Machine Size
-  ComputeInstanceProperties({
+  const ComputeInstanceProperties({
     this.applicationSharingPolicy,
     this.computeInstanceAuthorizationType,
     this.customServices,

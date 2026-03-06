@@ -29,7 +29,7 @@ class GlossaryEntryArgs {
   /// [project] Optional.
   /// [termsPair] Used for an unidirectional glossary.
   /// [termsSet] Used for an equivalent term sets glossary.
-  GlossaryEntryArgs({
+  const GlossaryEntryArgs({
     this.description,
     required this.glossaryId,
     this.location,

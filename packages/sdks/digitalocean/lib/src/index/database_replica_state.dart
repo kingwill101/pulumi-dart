@@ -53,7 +53,7 @@ class DatabaseReplicaState {
   /// [uri] The full URI for connecting to the database replica.
   /// [user] Username for the replica's default user.
   /// [uuid] The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
-  DatabaseReplicaState({
+  const DatabaseReplicaState({
     this.clusterId,
     this.database,
     this.host,

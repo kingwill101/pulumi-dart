@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudBigtableInstanceSpec].
   /// [cloudBigtableClusterSpecs] The list of clusters for the Instance.
-  GoogleCloudDatacatalogV1CloudBigtableInstanceSpec({
+  const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec({
     this.cloudBigtableClusterSpecs,
   });
 

@@ -24,7 +24,7 @@ class GetHostShareKeysArgs {
   /// [instanceId] The ID of the Bastion instance.
   /// [nameRegex] A regex string to filter results by Host Share Key name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetHostShareKeysArgs({
+  const GetHostShareKeysArgs({
     this.enableDetails,
     this.ids,
     required this.instanceId,

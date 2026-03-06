@@ -15,7 +15,7 @@ class GetConnectedEnvironmentArgs {
   /// Creates a new [GetConnectedEnvironmentArgs].
   /// [connectedEnvironmentName] Name of the connectedEnvironment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConnectedEnvironmentArgs({
+  const GetConnectedEnvironmentArgs({
     required this.connectedEnvironmentName,
     required this.resourceGroupName,
   });

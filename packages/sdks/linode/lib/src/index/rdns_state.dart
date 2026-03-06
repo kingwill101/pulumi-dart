@@ -18,7 +18,7 @@ class RdnsState {
   /// [rdns] The name of the RDNS address.
   /// [timeouts] Optional.
   /// [waitForAvailable] If true, the RDNS assignment will be retried within the operation timeout period.
-  RdnsState({
+  const RdnsState({
     this.address,
     this.rdns,
     this.timeouts,

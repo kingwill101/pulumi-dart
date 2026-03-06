@@ -15,7 +15,7 @@ class ListDeviceRegistrationKeyArgs {
   /// Creates a new [ListDeviceRegistrationKeyArgs].
   /// [deviceName] The name of the device resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListDeviceRegistrationKeyArgs({
+  const ListDeviceRegistrationKeyArgs({
     required this.deviceName,
     required this.resourceGroupName,
   });

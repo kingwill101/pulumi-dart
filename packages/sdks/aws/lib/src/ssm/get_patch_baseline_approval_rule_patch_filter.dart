@@ -11,7 +11,7 @@ class GetPatchBaselineApprovalRulePatchFilter {
   /// Creates a new [GetPatchBaselineApprovalRulePatchFilter].
   /// [key] Key for the filter.
   /// [values] Value for the filter.
-  GetPatchBaselineApprovalRulePatchFilter({
+  const GetPatchBaselineApprovalRulePatchFilter({
     required this.key,
     required this.values,
   });

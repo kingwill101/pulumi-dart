@@ -11,7 +11,7 @@ class GetKubernetesNodePoolsNodepoolSpotPriceLimit {
   /// Creates a new [GetKubernetesNodePoolsNodepoolSpotPriceLimit].
   /// [instanceType] The type of the preemptible instance.
   /// [priceLimit] The maximum price of a single instance.
-  GetKubernetesNodePoolsNodepoolSpotPriceLimit({
+  const GetKubernetesNodePoolsNodepoolSpotPriceLimit({
     required this.instanceType,
     required this.priceLimit,
   });

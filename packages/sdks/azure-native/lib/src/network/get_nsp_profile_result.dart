@@ -29,7 +29,7 @@ class GetNspProfileResult {
   /// [name] Resource name.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNspProfileResult({
+  const GetNspProfileResult({
     required this.accessRulesVersion,
     required this.azureApiVersion,
     required this.diagnosticSettingsVersion,

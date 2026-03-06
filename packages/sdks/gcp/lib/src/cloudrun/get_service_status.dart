@@ -36,7 +36,7 @@ class GetServiceStatus {
   /// [observedGeneration] ObservedGeneration is the 'Generation' of the Route that was last processed by the
   /// [traffics] Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// [url] From RouteStatus. URL holds the url that will distribute traffic over the provided traffic
-  GetServiceStatus({
+  const GetServiceStatus({
     required this.conditions,
     required this.latestCreatedRevisionName,
     required this.latestReadyRevisionName,

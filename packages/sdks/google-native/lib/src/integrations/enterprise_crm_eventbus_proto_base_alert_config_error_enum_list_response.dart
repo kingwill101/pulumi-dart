@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse {
   /// Creates a new [EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse].
   /// [enumStrings] Required.
   /// [filterType] Required.
-  EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse({
+  const EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse({
     required this.enumStrings,
     required this.filterType,
   });

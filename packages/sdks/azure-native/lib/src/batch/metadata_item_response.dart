@@ -12,7 +12,7 @@ class MetadataItemResponse {
   /// Creates a new [MetadataItemResponse].
   /// [name] The name of the metadata item.
   /// [value] The value of the metadata item.
-  MetadataItemResponse({
+  const MetadataItemResponse({
     required this.name,
     required this.value,
   });

@@ -21,7 +21,7 @@ class LogDeliveryConfigurationArgs {
   /// [logConfigurations] Configuration block for log delivery. At least one configuration block is required. See Log Configurations below.
   /// [region] The AWS region.
   /// [userPoolId] The ID of the user pool for which to configure log delivery.
-  LogDeliveryConfigurationArgs({
+  const LogDeliveryConfigurationArgs({
     required this.logConfigurations,
     this.region,
     required this.userPoolId,

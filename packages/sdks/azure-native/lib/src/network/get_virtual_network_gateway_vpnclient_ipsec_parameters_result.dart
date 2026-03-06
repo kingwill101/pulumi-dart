@@ -29,7 +29,7 @@ class GetVirtualNetworkGatewayVpnclientIpsecParametersResult {
   /// [pfsGroup] The Pfs Group used in IKE Phase 2 for new child SA.
   /// [saDataSizeKilobytes] The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for P2S client..
   /// [saLifeTimeSeconds] The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for P2S client.
-  GetVirtualNetworkGatewayVpnclientIpsecParametersResult({
+  const GetVirtualNetworkGatewayVpnclientIpsecParametersResult({
     required this.dhGroup,
     required this.ikeEncryption,
     required this.ikeIntegrity,

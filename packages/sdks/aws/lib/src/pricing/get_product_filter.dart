@@ -11,7 +11,7 @@ class GetProductFilter {
   /// Creates a new [GetProductFilter].
   /// [field] Product attribute name that you want to filter on.
   /// [value] Product attribute value that you want to filter on.
-  GetProductFilter({
+  const GetProductFilter({
     required this.field,
     required this.value,
   });

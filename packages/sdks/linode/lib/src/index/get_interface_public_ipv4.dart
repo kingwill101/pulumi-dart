@@ -13,7 +13,7 @@ class GetInterfacePublicIpv4 {
   /// Creates a new [GetInterfacePublicIpv4].
   /// [addresses] IPv4 addresses assigned to this interface.
   /// [shareds] IPv4 addresses shared with other Linodes.
-  GetInterfacePublicIpv4({
+  const GetInterfacePublicIpv4({
     required this.addresses,
     required this.shareds,
   });

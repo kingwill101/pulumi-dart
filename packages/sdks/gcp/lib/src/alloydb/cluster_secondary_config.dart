@@ -9,7 +9,7 @@ class ClusterSecondaryConfig {
 
   /// Creates a new [ClusterSecondaryConfig].
   /// [primaryClusterName] Name of the primary cluster must be in the format
-  ClusterSecondaryConfig({
+  const ClusterSecondaryConfig({
     required this.primaryClusterName,
   });
 

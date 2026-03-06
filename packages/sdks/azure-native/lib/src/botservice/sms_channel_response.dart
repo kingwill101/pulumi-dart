@@ -23,7 +23,7 @@ class SmsChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Sms channel resource
   /// [provisioningState] Provisioning state of the resource
-  SmsChannelResponse({
+  const SmsChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

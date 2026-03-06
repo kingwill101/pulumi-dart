@@ -15,7 +15,7 @@ class DomainControllerPropertiesResponse {
   /// [dnsServer] IP address of DNS server
   /// [domainName] Fully qualified domain name
   /// [ouPath] Organizational Unit path in which the SCOM servers will be present
-  DomainControllerPropertiesResponse({
+  const DomainControllerPropertiesResponse({
     this.dnsServer,
     this.domainName,
     this.ouPath,

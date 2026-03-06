@@ -10,7 +10,7 @@ class ClusterMaintenancePolicyWindow {
 
   /// Creates a new [ClusterMaintenancePolicyWindow].
   /// [recurringWindow] Represents an arbitrary window of time that recurs.
-  ClusterMaintenancePolicyWindow({
+  const ClusterMaintenancePolicyWindow({
     required this.recurringWindow,
   });
 

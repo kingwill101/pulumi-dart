@@ -18,7 +18,7 @@ class ScimServerCredentialArgs {
   /// [credentialSecretFile] The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
   /// [directoryId] The ID of the Directory.
   /// [status] The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
-  ScimServerCredentialArgs({
+  const ScimServerCredentialArgs({
     this.credentialSecretFile,
     required this.directoryId,
     this.status,

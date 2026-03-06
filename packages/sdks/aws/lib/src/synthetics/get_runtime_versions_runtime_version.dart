@@ -18,7 +18,7 @@ class GetRuntimeVersionsRuntimeVersion {
   /// [description] Description of the runtime version, created by Amazon.
   /// [releaseDate] Date that the runtime version was released.
   /// [versionName] Name of the runtime version.
-  GetRuntimeVersionsRuntimeVersion({
+  const GetRuntimeVersionsRuntimeVersion({
     required this.deprecationDate,
     required this.description,
     required this.releaseDate,

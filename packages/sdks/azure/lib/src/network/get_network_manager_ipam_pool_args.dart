@@ -15,7 +15,7 @@ class GetNetworkManagerIpamPoolArgs {
   /// Creates a new [GetNetworkManagerIpamPoolArgs].
   /// [name] The name of this Network Manager IPAM Pool.
   /// [networkManagerId] The ID of the parent Network Manager.
-  GetNetworkManagerIpamPoolArgs({
+  const GetNetworkManagerIpamPoolArgs({
     required this.name,
     required this.networkManagerId,
   });

@@ -18,7 +18,7 @@ class GetFhirServiceArgs {
   /// [fhirServiceName] The name of FHIR Service resource.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  GetFhirServiceArgs({
+  const GetFhirServiceArgs({
     required this.fhirServiceName,
     required this.resourceGroupName,
     required this.workspaceName,

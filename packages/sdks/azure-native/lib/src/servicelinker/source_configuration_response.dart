@@ -21,7 +21,7 @@ class SourceConfigurationResponse {
   /// [keyVaultReferenceIdentity] The identity for key vault reference, system or user-assigned managed identity ID
   /// [name] The name of setting.
   /// [value] The value of setting
-  SourceConfigurationResponse({
+  const SourceConfigurationResponse({
     required this.configType,
     this.description,
     this.keyVaultReferenceIdentity,

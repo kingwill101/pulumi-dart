@@ -9,7 +9,7 @@ class ManagedClusterNodeResourceGroupProfileResponse {
 
   /// Creates a new [ManagedClusterNodeResourceGroupProfileResponse].
   /// [restrictionLevel] The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-  ManagedClusterNodeResourceGroupProfileResponse({
+  const ManagedClusterNodeResourceGroupProfileResponse({
     this.restrictionLevel,
   });
 

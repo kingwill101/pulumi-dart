@@ -14,7 +14,7 @@ class WebhookPatch {
   /// Creates a new [WebhookPatch].
   /// [clientConfig] ClientConfig holds the connection parameters for the webhook required
   /// [throttle] Throttle holds the options for throttling the webhook
-  WebhookPatch({
+  const WebhookPatch({
     this.clientConfig,
     this.throttle,
   });

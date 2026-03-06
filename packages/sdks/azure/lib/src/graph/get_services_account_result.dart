@@ -21,7 +21,7 @@ class GetServicesAccountResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Graph Services Account.
-  GetServicesAccountResult({
+  const GetServicesAccountResult({
     required this.applicationId,
     required this.billingPlanId,
     required this.id,

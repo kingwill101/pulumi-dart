@@ -72,7 +72,7 @@ class GetInstanceTemplateScheduling {
   /// [provisioningModel] Describe the type of preemptible VM.
   /// [skipGuestOsShutdown] Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   /// [terminationTime] Specifies the timestamp, when the instance will be terminated,
-  GetInstanceTemplateScheduling({
+  const GetInstanceTemplateScheduling({
     required this.automaticRestart,
     required this.availabilityDomain,
     required this.gracefulShutdowns,

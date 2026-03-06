@@ -45,7 +45,7 @@ class CycleTaskArgs {
   /// [targetStartTime] Task start time (hours).
   /// [taskName] The task name.
   /// [taskType] The task type.
-  CycleTaskArgs({
+  const CycleTaskArgs({
     required this.enable,
     required this.firstDateStr,
     required this.intervalPeriod,

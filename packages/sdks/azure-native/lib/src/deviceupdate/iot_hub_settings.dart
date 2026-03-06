@@ -9,7 +9,7 @@ class IotHubSettings {
 
   /// Creates a new [IotHubSettings].
   /// [resourceId] IoTHub resource ID
-  IotHubSettings({
+  const IotHubSettings({
     required this.resourceId,
   });
 

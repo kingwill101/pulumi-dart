@@ -18,7 +18,7 @@ class GetEventHubArgs {
   /// [eventHubName] The Event Hub name
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetEventHubArgs({
+  const GetEventHubArgs({
     required this.eventHubName,
     required this.namespaceName,
     required this.resourceGroupName,

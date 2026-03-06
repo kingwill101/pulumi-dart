@@ -14,7 +14,7 @@ class PortExtraDhcpOption {
   /// [ipVersion] IP protocol version. Defaults to 4.
   /// [name] Name of the DHCP option.
   /// [value] Value of the DHCP option.
-  PortExtraDhcpOption({
+  const PortExtraDhcpOption({
     this.ipVersion,
     required this.name,
     required this.value,

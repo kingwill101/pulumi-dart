@@ -17,7 +17,7 @@ class GetNodeGroupArgs {
   /// [nodeGroupId] Required.
   /// [project] Optional.
   /// [regionId] Required.
-  GetNodeGroupArgs({
+  const GetNodeGroupArgs({
     required this.clusterId,
     required this.nodeGroupId,
     this.project,

@@ -30,7 +30,7 @@ class PhoneNumberArgs {
   /// [tags] Tags to apply to the Phone Number. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetArn] The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   /// [type] The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
-  PhoneNumberArgs({
+  const PhoneNumberArgs({
     required this.countryCode,
     this.description,
     this.prefix,

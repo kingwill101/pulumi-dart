@@ -17,7 +17,7 @@ class GoogleCloudContentwarehouseV1UpdateOptions {
   /// [mergeFieldsOptions] Options for merging.
   /// [updateMask] Field mask for merging Document fields. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
   /// [updateType] Type for update.
-  GoogleCloudContentwarehouseV1UpdateOptions({
+  const GoogleCloudContentwarehouseV1UpdateOptions({
     this.mergeFieldsOptions,
     this.updateMask,
     this.updateType,

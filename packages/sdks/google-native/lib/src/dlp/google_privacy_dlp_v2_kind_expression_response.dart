@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2KindExpressionResponse {
 
   /// Creates a new [GooglePrivacyDlpV2KindExpressionResponse].
   /// [name] The name of the kind.
-  GooglePrivacyDlpV2KindExpressionResponse({
+  const GooglePrivacyDlpV2KindExpressionResponse({
     required this.name,
   });
 

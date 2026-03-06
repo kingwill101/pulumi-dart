@@ -36,7 +36,7 @@ class CxGenerativeSettingsArgs {
   /// [languageCode] Language for this settings.
   /// [llmModelSettings] LLM model settings.
   /// [parent] The agent to create a flow for.
-  CxGenerativeSettingsArgs({
+  const CxGenerativeSettingsArgs({
     this.fallbackSettings,
     this.generativeSafetySettings,
     this.knowledgeConnectorSettings,

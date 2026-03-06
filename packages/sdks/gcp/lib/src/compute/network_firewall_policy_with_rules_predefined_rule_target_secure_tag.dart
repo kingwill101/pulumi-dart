@@ -15,7 +15,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag {
   /// Creates a new [NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] (Output)
-  NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag({
+  const NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag({
     this.name,
     this.state,
   });

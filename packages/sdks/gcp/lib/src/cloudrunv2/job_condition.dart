@@ -38,7 +38,7 @@ class JobCondition {
   /// [severity] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  JobCondition({
+  const JobCondition({
     this.executionReason,
     this.lastTransitionTime,
     this.message,

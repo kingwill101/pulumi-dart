@@ -17,7 +17,7 @@ class MulticastConsumerAssociationState {
 
   /// Creates a new [MulticastConsumerAssociationState].
   /// [state] (Output)
-  MulticastConsumerAssociationState({
+  const MulticastConsumerAssociationState({
     this.state,
   });
 

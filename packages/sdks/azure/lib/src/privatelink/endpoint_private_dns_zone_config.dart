@@ -18,7 +18,7 @@ class EndpointPrivateDnsZoneConfig {
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   /// [privateDnsZoneId] The ID of the Private DNS Zone that the config belongs to.
   /// [recordSets] A `record_sets` block as defined below.
-  EndpointPrivateDnsZoneConfig({
+  const EndpointPrivateDnsZoneConfig({
     this.id,
     this.name,
     this.privateDnsZoneId,

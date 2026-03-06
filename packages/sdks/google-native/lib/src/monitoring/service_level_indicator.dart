@@ -18,7 +18,7 @@ class ServiceLevelIndicator {
   /// [basicSli] Basic SLI on a well-known service type.
   /// [requestBased] Request-based SLIs
   /// [windowsBased] Windows-based SLIs
-  ServiceLevelIndicator({
+  const ServiceLevelIndicator({
     this.basicSli,
     this.requestBased,
     this.windowsBased,

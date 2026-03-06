@@ -17,7 +17,7 @@ class GetDatastoreArgs {
   /// [location] either regional or zonal location of the resource.
   /// [name] Name of the resource.
   /// [project] Optional.
-  GetDatastoreArgs({
+  const GetDatastoreArgs({
     required this.location,
     required this.name,
     this.project,

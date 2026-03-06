@@ -11,7 +11,7 @@ class EncryptionControlResourceExclusionsEgressOnlyInternetGateway {
   /// Creates a new [EncryptionControlResourceExclusionsEgressOnlyInternetGateway].
   /// [state] The current state of the VPC Encryption Control.
   /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
-  EncryptionControlResourceExclusionsEgressOnlyInternetGateway({
+  const EncryptionControlResourceExclusionsEgressOnlyInternetGateway({
     required this.state,
     required this.stateMessage,
   });

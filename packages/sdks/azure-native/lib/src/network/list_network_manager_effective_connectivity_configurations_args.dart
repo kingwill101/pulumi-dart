@@ -21,7 +21,7 @@ class ListNetworkManagerEffectiveConnectivityConfigurationsArgs {
   /// [skipToken] When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
   /// [top] An optional query parameter which specifies the maximum number of records to be returned by the server.
   /// [virtualNetworkName] The name of the virtual network.
-  ListNetworkManagerEffectiveConnectivityConfigurationsArgs({
+  const ListNetworkManagerEffectiveConnectivityConfigurationsArgs({
     required this.resourceGroupName,
     this.skipToken,
     this.top,

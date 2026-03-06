@@ -15,7 +15,7 @@ class GetNetworkFunctionArgs {
   /// Creates a new [GetNetworkFunctionArgs].
   /// [networkFunctionName] The name of the network function resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkFunctionArgs({
+  const GetNetworkFunctionArgs({
     required this.networkFunctionName,
     required this.resourceGroupName,
   });

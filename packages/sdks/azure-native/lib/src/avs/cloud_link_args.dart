@@ -21,7 +21,7 @@ class CloudLinkArgs {
   /// [linkedCloud] Identifier of the other private cloud participating in the link.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  CloudLinkArgs({
+  const CloudLinkArgs({
     this.cloudLinkName,
     this.linkedCloud,
     required this.privateCloudName,

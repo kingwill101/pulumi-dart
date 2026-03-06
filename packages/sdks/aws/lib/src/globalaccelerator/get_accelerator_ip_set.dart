@@ -9,7 +9,7 @@ class GetAcceleratorIpSet {
   /// Creates a new [GetAcceleratorIpSet].
   /// [ipAddresses] Required.
   /// [ipFamily] Required.
-  GetAcceleratorIpSet({
+  const GetAcceleratorIpSet({
     required this.ipAddresses,
     required this.ipFamily,
   });

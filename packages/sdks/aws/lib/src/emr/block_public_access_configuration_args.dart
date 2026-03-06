@@ -21,7 +21,7 @@ class BlockPublicAccessConfigurationArgs {
   /// [blockPublicSecurityGroupRules] Enable or disable EMR Block Public Access.
   /// [permittedPublicSecurityGroupRuleRanges] Configuration block for defining permitted public security group rule port ranges. Can be defined multiple times per resource. Only valid if `block_public_security_group_rules` is set to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BlockPublicAccessConfigurationArgs({
+  const BlockPublicAccessConfigurationArgs({
     required this.blockPublicSecurityGroupRules,
     this.permittedPublicSecurityGroupRuleRanges,
     this.region,

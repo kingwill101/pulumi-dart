@@ -27,7 +27,7 @@ class BasePathMappingArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApi] ID of the API to connect.
   /// [stageName] Name of a specific deployment stage to expose at the given path. If omitted, callers may select any stage by including its name as a path element after the base path.
-  BasePathMappingArgs({
+  const BasePathMappingArgs({
     this.basePath,
     required this.domainName,
     this.domainNameId,

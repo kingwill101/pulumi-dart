@@ -14,7 +14,7 @@ class DomainClusterConfigNodeOptionNodeConfig {
   /// [count] Number of nodes of a particular node type in the cluster.
   /// [enabled] Whether a particular node type is enabled.
   /// [type] The instance type of a particular node type in the cluster.
-  DomainClusterConfigNodeOptionNodeConfig({
+  const DomainClusterConfigNodeOptionNodeConfig({
     this.count,
     this.enabled,
     this.type,

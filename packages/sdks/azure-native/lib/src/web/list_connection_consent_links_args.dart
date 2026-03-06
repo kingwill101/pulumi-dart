@@ -22,7 +22,7 @@ class ListConnectionConsentLinksArgs {
   /// [parameters] Collection of resources
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
-  ListConnectionConsentLinksArgs({
+  const ListConnectionConsentLinksArgs({
     required this.connectionName,
     this.parameters,
     required this.resourceGroupName,

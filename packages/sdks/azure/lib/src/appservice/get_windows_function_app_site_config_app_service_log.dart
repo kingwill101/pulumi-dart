@@ -11,7 +11,7 @@ class GetWindowsFunctionAppSiteConfigAppServiceLog {
   /// Creates a new [GetWindowsFunctionAppSiteConfigAppServiceLog].
   /// [diskQuotaMb] The amount of disk space to use for logs.
   /// [retentionPeriodDays] After how many days backups is deleted.
-  GetWindowsFunctionAppSiteConfigAppServiceLog({
+  const GetWindowsFunctionAppSiteConfigAppServiceLog({
     required this.diskQuotaMb,
     required this.retentionPeriodDays,
   });

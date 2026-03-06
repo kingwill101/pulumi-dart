@@ -8,7 +8,7 @@ class AwsClusterLoggingConfigComponentConfig {
 
   /// Creates a new [AwsClusterLoggingConfigComponentConfig].
   /// [enableComponents] Components of the logging configuration to be enabled.
-  AwsClusterLoggingConfigComponentConfig({
+  const AwsClusterLoggingConfigComponentConfig({
     this.enableComponents,
   });
 

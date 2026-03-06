@@ -24,7 +24,7 @@ class GetAlidnsInstancesArgs {
   /// [lang] Language.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [userClientIp] The IP address of the client.
-  GetAlidnsInstancesArgs({
+  const GetAlidnsInstancesArgs({
     this.domainType,
     this.ids,
     this.lang,

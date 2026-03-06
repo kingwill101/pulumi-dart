@@ -22,7 +22,7 @@ class PrivateEndpointConnectionControllerArgs {
   /// [privateLinkServiceConnectionState] private endpoints connection state
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
-  PrivateEndpointConnectionControllerArgs({
+  const PrivateEndpointConnectionControllerArgs({
     this.peConnectionName,
     this.privateLinkServiceConnectionState,
     required this.resourceGroupName,

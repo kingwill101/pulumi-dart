@@ -25,7 +25,7 @@ class KeyVaultCertificateProperties {
   /// [keyVaultCertName] The certificate name of key vault.
   /// [type] The type of the certificate source.
   /// [vaultUri] The vault uri of user key vault.
-  KeyVaultCertificateProperties({
+  const KeyVaultCertificateProperties({
     this.autoSync,
     this.certVersion,
     this.excludePrivateKey,

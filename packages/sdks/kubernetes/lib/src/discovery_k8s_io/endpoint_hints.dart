@@ -14,7 +14,7 @@ class EndpointHints {
   /// Creates a new [EndpointHints].
   /// [forNodes] forNodes indicates the node(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries.
   /// [forZones] forZones indicates the zone(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries.
-  EndpointHints({
+  const EndpointHints({
     this.forNodes,
     this.forZones,
   });

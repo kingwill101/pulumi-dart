@@ -12,7 +12,7 @@ class GetRepositoryRemoteRepositoryConfigDockerRepository {
   /// Creates a new [GetRepositoryRemoteRepositoryConfigDockerRepository].
   /// [customRepositories] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// [publicRepository] Address of the remote repository. Possible values: ["DOCKER_HUB"]
-  GetRepositoryRemoteRepositoryConfigDockerRepository({
+  const GetRepositoryRemoteRepositoryConfigDockerRepository({
     required this.customRepositories,
     required this.publicRepository,
   });

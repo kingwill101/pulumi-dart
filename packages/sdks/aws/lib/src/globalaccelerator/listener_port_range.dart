@@ -11,7 +11,7 @@ class ListenerPortRange {
   /// Creates a new [ListenerPortRange].
   /// [fromPort] The first port in the range of ports, inclusive.
   /// [toPort] The last port in the range of ports, inclusive.
-  ListenerPortRange({
+  const ListenerPortRange({
     this.fromPort,
     this.toPort,
   });

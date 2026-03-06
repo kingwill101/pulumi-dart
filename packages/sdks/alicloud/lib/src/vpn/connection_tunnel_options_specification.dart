@@ -44,7 +44,7 @@ class ConnectionTunnelOptionsSpecification {
   /// [tunnelIkeConfig] The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
   /// [tunnelIpsecConfig] IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
   /// [zoneNo] The zoneNo of tunnel.
-  ConnectionTunnelOptionsSpecification({
+  const ConnectionTunnelOptionsSpecification({
     this.customerGatewayId,
     this.enableDpd,
     this.enableNatTraversal,

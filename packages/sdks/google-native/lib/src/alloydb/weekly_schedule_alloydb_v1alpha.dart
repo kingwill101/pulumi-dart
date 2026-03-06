@@ -14,7 +14,7 @@ class WeeklyScheduleAlloydbV1alpha {
   /// Creates a new [WeeklyScheduleAlloydbV1alpha].
   /// [daysOfWeek] The days of the week to perform a backup. If this field is left empty, the default of every day of the week is used.
   /// [startTimes] The times during the day to start a backup. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00). If no start times are provided, a single fixed start time is chosen arbitrarily.
-  WeeklyScheduleAlloydbV1alpha({
+  const WeeklyScheduleAlloydbV1alpha({
     this.daysOfWeek,
     this.startTimes,
   });

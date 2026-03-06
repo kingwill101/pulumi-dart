@@ -10,7 +10,7 @@ class TrustAnchorSourceSourceData {
   /// Creates a new [TrustAnchorSourceSourceData].
   /// [acmPcaArn] The ARN of an ACM Private Certificate Authority.
   /// [x509CertificateData] Optional.
-  TrustAnchorSourceSourceData({
+  const TrustAnchorSourceSourceData({
     this.acmPcaArn,
     this.x509CertificateData,
   });

@@ -17,7 +17,7 @@ class OperationContextOIDC {
   /// [aws] AWS-specific OIDC configuration.
   /// [azure] Azure-specific OIDC configuration.
   /// [gcp] GCP-specific OIDC configuration.
-  OperationContextOIDC({
+  const OperationContextOIDC({
     this.aws,
     this.azure,
     this.gcp,

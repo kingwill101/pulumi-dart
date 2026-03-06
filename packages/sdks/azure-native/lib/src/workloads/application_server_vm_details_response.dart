@@ -16,7 +16,7 @@ class ApplicationServerVmDetailsResponse {
   /// [storageDetails] Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
   /// [type] Defines the type of application server VM.
   /// [virtualMachineId] The virtual machine id.
-  ApplicationServerVmDetailsResponse({
+  const ApplicationServerVmDetailsResponse({
     required this.storageDetails,
     required this.type,
     required this.virtualMachineId,

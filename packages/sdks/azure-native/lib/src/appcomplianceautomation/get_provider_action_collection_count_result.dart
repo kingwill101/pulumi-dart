@@ -8,7 +8,7 @@ class GetProviderActionCollectionCountResult {
 
   /// Creates a new [GetProviderActionCollectionCountResult].
   /// [count] The count of the specified resource.
-  GetProviderActionCollectionCountResult({
+  const GetProviderActionCollectionCountResult({
     this.count,
   });
 

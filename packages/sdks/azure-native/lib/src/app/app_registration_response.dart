@@ -12,7 +12,7 @@ class AppRegistrationResponse {
   /// Creates a new [AppRegistrationResponse].
   /// [appId] The App ID of the app used for login.
   /// [appSecretSettingName] The app setting name that contains the app secret.
-  AppRegistrationResponse({
+  const AppRegistrationResponse({
     this.appId,
     this.appSecretSettingName,
   });

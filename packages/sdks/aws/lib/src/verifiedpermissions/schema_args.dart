@@ -19,7 +19,7 @@ class SchemaArgs {
   /// [definition] The definition of the schema.
   /// [policyStoreId] The ID of the Policy Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  SchemaArgs({
+  const SchemaArgs({
     required this.definition,
     required this.policyStoreId,
     this.region,

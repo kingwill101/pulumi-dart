@@ -24,7 +24,7 @@ class GetSecretArgs {
   /// [name] The name of the Secret
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
-  GetSecretArgs({
+  const GetSecretArgs({
     this.expand,
     required this.labName,
     required this.name,

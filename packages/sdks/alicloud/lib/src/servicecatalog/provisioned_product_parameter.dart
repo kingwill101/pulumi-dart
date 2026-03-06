@@ -11,7 +11,7 @@ class ProvisionedProductParameter {
   /// Creates a new [ProvisionedProductParameter].
   /// [parameterKey] The name of the parameter defined in the template.
   /// [parameterValue] The Template parameter value entered by the user.
-  ProvisionedProductParameter({
+  const ProvisionedProductParameter({
     this.parameterKey,
     this.parameterValue,
   });

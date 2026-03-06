@@ -25,7 +25,7 @@ class AppHostingDefaultDomainArgs {
   /// [domainId] Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
   /// [location] The location of the Backend that this Domain is associated with
   /// [project] The ID of the project in which the resource belongs.
-  AppHostingDefaultDomainArgs({
+  const AppHostingDefaultDomainArgs({
     required this.backend,
     this.disabled,
     required this.domainId,

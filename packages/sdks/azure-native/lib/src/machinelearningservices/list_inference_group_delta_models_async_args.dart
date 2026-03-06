@@ -30,7 +30,7 @@ class ListInferenceGroupDeltaModelsAsyncArgs {
   /// [skipToken] Gets or sets skip token for paginated response.
   /// [targetBaseModel] Gets or sets target base model.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ListInferenceGroupDeltaModelsAsyncArgs({
+  const ListInferenceGroupDeltaModelsAsyncArgs({
     this.count,
     required this.groupName,
     required this.poolName,

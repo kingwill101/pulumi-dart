@@ -21,7 +21,7 @@ class ApiKeyState {
   /// [name] The name of the NGINX Dataplane API Key. Changing this forces a new resource to be created.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the API key is associated with. Changing this forces a new resource to be created.
   /// [secretText] The value used as the Dataplane API Key. The API key requirements can be found in the [NGINXaaS Documentation](https://docs.nginx.com/nginxaas/azure/quickstart/loadbalancer-kubernetes/#create-an-nginxaas-data-plane-api-key).
-  ApiKeyState({
+  const ApiKeyState({
     this.endDateTime,
     this.hint,
     this.name,

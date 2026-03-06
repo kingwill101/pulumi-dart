@@ -15,7 +15,7 @@ class ListAccountChannelTypesArgs {
   /// Creates a new [ListAccountChannelTypesArgs].
   /// [accountName] Account Name
   /// [resourceGroupName] Resource Group Name
-  ListAccountChannelTypesArgs({
+  const ListAccountChannelTypesArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

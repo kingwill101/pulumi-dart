@@ -65,7 +65,7 @@ class WorkloadIdentityPoolArgs {
   /// [mode] The mode for the pool is operating in. Pools with an unspecified mode will operate as if they
   /// [project] The ID of the project in which the resource belongs.
   /// [workloadIdentityPoolId] The ID to use for the pool, which becomes the final component of the resource name. This
-  WorkloadIdentityPoolArgs({
+  const WorkloadIdentityPoolArgs({
     this.description,
     this.disabled,
     this.displayName,

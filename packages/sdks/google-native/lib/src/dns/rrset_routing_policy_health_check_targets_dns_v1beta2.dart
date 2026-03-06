@@ -9,7 +9,7 @@ class RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2 {
 
   /// Creates a new [RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2].
   /// [internalLoadBalancers] Optional.
-  RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2({
+  const RRSetRoutingPolicyHealthCheckTargetsDnsV1beta2({
     this.internalLoadBalancers,
   });
 

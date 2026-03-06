@@ -42,7 +42,7 @@ class ExchangeArgs {
   /// [internal] Specifies whether the exchange is an internal exchange. Valid values:
   /// [virtualHostName] The name of the vhost to which the exchange that you want to create belongs.
   /// [xDelayedType] RabbitMQ supports the x-delayed-message Exchange. By declaring this type of Exchange, you can customize the x-delay header attribute to specify the delay period for message delivery, measured in milliseconds. The message will be delivered to the corresponding Queue after the period defined in x-delay. The routing rules are determined by the type of Exchange specified in x-delayed-type.
-  ExchangeArgs({
+  const ExchangeArgs({
     this.alternateExchange,
     required this.autoDeleteState,
     required this.exchangeName,

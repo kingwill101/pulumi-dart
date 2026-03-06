@@ -16,7 +16,7 @@ class GetSpotDatafeedSubscriptionResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [prefix] The prefix for the data feed files.
   /// [region] Required.
-  GetSpotDatafeedSubscriptionResult({
+  const GetSpotDatafeedSubscriptionResult({
     required this.bucket,
     required this.id,
     required this.prefix,

@@ -16,7 +16,7 @@ class GetListenerRuleTransform {
   /// [hostHeaderRewriteConfigs] Block for host header rewrite. Detailed below.
   /// [type] Type of transform.
   /// [urlRewriteConfigs] Block for URL rewrite. Detailed below.
-  GetListenerRuleTransform({
+  const GetListenerRuleTransform({
     this.hostHeaderRewriteConfigs,
     required this.type,
     this.urlRewriteConfigs,

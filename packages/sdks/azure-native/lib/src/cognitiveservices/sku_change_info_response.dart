@@ -15,7 +15,7 @@ class SkuChangeInfoResponse {
   /// [countOfDowngrades] Gets the count of downgrades.
   /// [countOfUpgradesAfterDowngrades] Gets the count of upgrades after downgrades.
   /// [lastChangeDate] Gets the last change date.
-  SkuChangeInfoResponse({
+  const SkuChangeInfoResponse({
     this.countOfDowngrades,
     this.countOfUpgradesAfterDowngrades,
     this.lastChangeDate,

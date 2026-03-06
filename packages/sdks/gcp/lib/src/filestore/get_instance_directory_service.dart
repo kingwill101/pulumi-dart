@@ -9,7 +9,7 @@ class GetInstanceDirectoryService {
 
   /// Creates a new [GetInstanceDirectoryService].
   /// [ldaps] Configuration for LDAP servers.
-  GetInstanceDirectoryService({
+  const GetInstanceDirectoryService({
     required this.ldaps,
   });
 

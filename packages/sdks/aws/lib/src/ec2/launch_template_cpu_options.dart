@@ -21,7 +21,7 @@ class LaunchTemplateCpuOptions {
   /// [coreCount] The number of CPU cores for the instance.
   /// [nestedVirtualization] Indicates whether to enable the instance for nested virtualization. Nested virtualization is supported on 8th generation Intel-based instance types (C8i, M8i, R8i, and their flex variants) only. When nested virtualization is enabled, Virtual Secure Mode (VSM) is automatically disabled for the instance. Valid values are `enabled` and `disabled`.
   /// [threadsPerCore] The number of threads per CPU core.
-  LaunchTemplateCpuOptions({
+  const LaunchTemplateCpuOptions({
     this.amdSevSnp,
     this.coreCount,
     this.nestedVirtualization,

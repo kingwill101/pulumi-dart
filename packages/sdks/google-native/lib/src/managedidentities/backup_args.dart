@@ -19,7 +19,7 @@ class BackupArgs {
   /// [domainId] Required.
   /// [labels] Optional. Resource labels to represent user provided metadata.
   /// [project] Optional.
-  BackupArgs({
+  const BackupArgs({
     required this.backupId,
     required this.domainId,
     this.labels,

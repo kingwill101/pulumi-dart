@@ -21,7 +21,7 @@ class NetworkFunctionDefinitionResourceElementTemplateDetails {
   /// [dependsOnProfile] The depends on profile.
   /// [name] Name of the resource element template.
   /// [resourceElementType] The resource element template type.
-  NetworkFunctionDefinitionResourceElementTemplateDetails({
+  const NetworkFunctionDefinitionResourceElementTemplateDetails({
     this.configuration,
     this.dependsOnProfile,
     this.name,

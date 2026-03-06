@@ -11,7 +11,7 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCa
   /// Creates a new [EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize].
   /// [type] Specifies the endpoint capacity type. Valid values are: `INSTANCE_COUNT`, or `CAPACITY_PERCENT`.
   /// [value] Defines the capacity size, either as a number of instances or a capacity percentage.
-  EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize({
+  const EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize({
     required this.type,
     required this.value,
   });

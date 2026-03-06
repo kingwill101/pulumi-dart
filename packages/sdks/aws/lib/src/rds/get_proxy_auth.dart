@@ -17,7 +17,7 @@ class GetProxyAuth {
   /// [iamAuth] Required.
   /// [secretArn] Required.
   /// [username] Required.
-  GetProxyAuth({
+  const GetProxyAuth({
     required this.authScheme,
     required this.clientPasswordAuthType,
     required this.description,

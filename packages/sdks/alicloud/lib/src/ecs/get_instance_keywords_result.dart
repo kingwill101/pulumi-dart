@@ -18,7 +18,7 @@ class GetInstanceKeywordsResult {
   /// [key] Required.
   /// [keywords] An array that consists of reserved keywords.
   /// [outputFile] Optional.
-  GetInstanceKeywordsResult({
+  const GetInstanceKeywordsResult({
     required this.id,
     required this.ids,
     required this.key,

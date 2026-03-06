@@ -36,7 +36,7 @@ class GetFunctionResult {
   /// [runtime] Identifier of the function's runtime.
   /// [stage] Required.
   /// [status] Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
-  GetFunctionResult({
+  const GetFunctionResult({
     required this.arn,
     required this.code,
     required this.comment,

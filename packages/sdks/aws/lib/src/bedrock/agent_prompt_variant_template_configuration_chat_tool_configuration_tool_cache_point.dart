@@ -8,7 +8,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint].
   /// [type] Indicates that the CachePointBlock is of the default type. Valid values: `default`.
-  AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint({
+  const AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint({
     required this.type,
   });
 

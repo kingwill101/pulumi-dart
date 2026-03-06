@@ -11,7 +11,7 @@ class EdgeCacheOriginOriginOverrideActionUrlRewrite {
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionUrlRewrite].
   /// [hostRewrite] Prior to forwarding the request to the selected
-  EdgeCacheOriginOriginOverrideActionUrlRewrite({
+  const EdgeCacheOriginOriginOverrideActionUrlRewrite({
     this.hostRewrite,
   });
 

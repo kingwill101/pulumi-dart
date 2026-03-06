@@ -18,7 +18,7 @@ class PipelineDestinationOutputPayloadFormat {
   /// [avro] The format of an AVRO message payload.
   /// [json] The format of a JSON message payload.
   /// [protobuf] The format of a Protobuf message payload.
-  PipelineDestinationOutputPayloadFormat({
+  const PipelineDestinationOutputPayloadFormat({
     this.avro,
     this.json,
     this.protobuf,

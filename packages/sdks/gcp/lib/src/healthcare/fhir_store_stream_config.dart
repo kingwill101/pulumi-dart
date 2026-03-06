@@ -19,7 +19,7 @@ class FhirStoreStreamConfig {
   /// Creates a new [FhirStoreStreamConfig].
   /// [bigqueryDestination] The destination BigQuery structure that contains both the dataset location and corresponding schema config.
   /// [resourceTypes] Supply a FHIR resource type (such as "Patient" or "Observation"). See
-  FhirStoreStreamConfig({
+  const FhirStoreStreamConfig({
     required this.bigqueryDestination,
     this.resourceTypes,
   });

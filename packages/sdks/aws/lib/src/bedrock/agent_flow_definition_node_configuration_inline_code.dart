@@ -11,7 +11,7 @@ class AgentFlowDefinitionNodeConfigurationInlineCode {
   /// Creates a new [AgentFlowDefinitionNodeConfigurationInlineCode].
   /// [code] The code that's executed in your inline code node.
   /// [language] The programming language used by your inline code node.
-  AgentFlowDefinitionNodeConfigurationInlineCode({
+  const AgentFlowDefinitionNodeConfigurationInlineCode({
     required this.code,
     required this.language,
   });

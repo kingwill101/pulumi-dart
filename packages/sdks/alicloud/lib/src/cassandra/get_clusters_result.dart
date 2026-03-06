@@ -26,7 +26,7 @@ class GetClustersResult {
   /// [names] The name list of Cassandra clusters.
   /// [outputFile] Optional.
   /// [tags] A mapping of tags to assign to the resource.
-  GetClustersResult({
+  const GetClustersResult({
     required this.clusters,
     required this.id,
     required this.ids,

@@ -15,7 +15,7 @@ class MscSubWebhookArgs {
   /// Creates a new [MscSubWebhookArgs].
   /// [serverUrl] The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
   /// [webhookName] The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
-  MscSubWebhookArgs({
+  const MscSubWebhookArgs({
     required this.serverUrl,
     required this.webhookName,
   });

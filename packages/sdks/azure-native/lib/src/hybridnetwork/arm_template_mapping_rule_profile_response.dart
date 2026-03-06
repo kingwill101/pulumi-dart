@@ -9,7 +9,7 @@ class ArmTemplateMappingRuleProfileResponse {
 
   /// Creates a new [ArmTemplateMappingRuleProfileResponse].
   /// [templateParameters] List of template parameters.
-  ArmTemplateMappingRuleProfileResponse({
+  const ArmTemplateMappingRuleProfileResponse({
     this.templateParameters,
   });
 

@@ -29,7 +29,7 @@ class NetworkAclArgs {
   /// [subnetIds] A list of Subnet IDs to apply the ACL to
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The ID of the associated VPC.
-  NetworkAclArgs({
+  const NetworkAclArgs({
     this.egress,
     this.ingress,
     this.region,

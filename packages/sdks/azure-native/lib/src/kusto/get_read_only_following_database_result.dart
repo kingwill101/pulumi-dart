@@ -60,7 +60,7 @@ class GetReadOnlyFollowingDatabaseResult {
   /// [suspensionDetails] The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
   /// [tableLevelSharingProperties] Table level sharing specifications
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetReadOnlyFollowingDatabaseResult({
+  const GetReadOnlyFollowingDatabaseResult({
     required this.attachedDatabaseConfigurationName,
     required this.azureApiVersion,
     required this.databaseShareOrigin,

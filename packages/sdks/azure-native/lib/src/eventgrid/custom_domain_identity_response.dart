@@ -12,7 +12,7 @@ class CustomDomainIdentityResponse {
   /// Creates a new [CustomDomainIdentityResponse].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
   /// [userAssignedIdentity] The user identity associated with the resource.
-  CustomDomainIdentityResponse({
+  const CustomDomainIdentityResponse({
     this.type,
     this.userAssignedIdentity,
   });

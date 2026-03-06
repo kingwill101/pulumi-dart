@@ -15,7 +15,7 @@ class MpnsCredentialResponse {
   /// [certificateKey] Gets or sets the certificate key for this credential.
   /// [mpnsCertificate] Gets or sets the MPNS certificate.
   /// [thumbprint] Gets or sets the MPNS certificate Thumbprint
-  MpnsCredentialResponse({
+  const MpnsCredentialResponse({
     required this.certificateKey,
     required this.mpnsCertificate,
     required this.thumbprint,

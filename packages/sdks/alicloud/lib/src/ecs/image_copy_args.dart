@@ -39,7 +39,7 @@ class ImageCopyArgs {
   /// [sourceImageId] The source image ID.
   /// [sourceRegionId] The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
   /// [tags] The tag value of an image. The value of N ranges from 1 to 20.
-  ImageCopyArgs({
+  const ImageCopyArgs({
     this.deleteAutoSnapshot,
     this.description,
     this.encrypted,

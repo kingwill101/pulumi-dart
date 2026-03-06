@@ -31,7 +31,7 @@ class HttpReadSettings {
   /// [requestMethod] The HTTP method used to call the RESTful API. The default is GET. Type: string (or Expression with resultType string).
   /// [requestTimeout] Specifies the timeout for a HTTP client to get HTTP response from HTTP server. Type: string (or Expression with resultType string).
   /// [type] The read setting type.
-  HttpReadSettings({
+  const HttpReadSettings({
     this.additionalColumns,
     this.additionalHeaders,
     this.disableMetricsCollection,

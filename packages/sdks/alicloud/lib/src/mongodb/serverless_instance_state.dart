@@ -66,7 +66,7 @@ class ServerlessInstanceState {
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The of the vswitch.
   /// [zoneId] The ID of the zone. Use this parameter to specify the zone created by the instance.
-  ServerlessInstanceState({
+  const ServerlessInstanceState({
     this.accountPassword,
     this.autoRenew,
     this.capacityUnit,

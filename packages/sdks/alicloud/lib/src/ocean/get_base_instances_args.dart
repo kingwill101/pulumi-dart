@@ -39,7 +39,7 @@ class GetBaseInstancesArgs {
   /// [resourceGroupId] The ID of the enterprise resource group to which the instance resides.
   /// [searchKey] The filter keyword for the query list.
   /// [status] The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
-  GetBaseInstancesArgs({
+  const GetBaseInstancesArgs({
     this.enableDetails,
     this.ids,
     this.instanceId,

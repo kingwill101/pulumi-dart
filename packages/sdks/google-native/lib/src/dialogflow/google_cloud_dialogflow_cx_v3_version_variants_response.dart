@@ -10,7 +10,7 @@ class GoogleCloudDialogflowCxV3VersionVariantsResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3VersionVariantsResponse].
   /// [variants] A list of flow version variants.
-  GoogleCloudDialogflowCxV3VersionVariantsResponse({
+  const GoogleCloudDialogflowCxV3VersionVariantsResponse({
     required this.variants,
   });
 

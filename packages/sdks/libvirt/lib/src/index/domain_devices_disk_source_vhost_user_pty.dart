@@ -12,7 +12,7 @@ class DomainDevicesDiskSourceVhostUserPty {
   /// Creates a new [DomainDevicesDiskSourceVhostUserPty].
   /// [path] Sets the path for the PTY source in the EGD backend.
   /// [secLabels] This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  DomainDevicesDiskSourceVhostUserPty({
+  const DomainDevicesDiskSourceVhostUserPty({
     required this.path,
     this.secLabels,
   });

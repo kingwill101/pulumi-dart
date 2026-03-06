@@ -15,7 +15,7 @@ class GetNetworkPacketBrokerArgs {
   /// Creates a new [GetNetworkPacketBrokerArgs].
   /// [networkPacketBrokerName] Name of the Network Packet Broker.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkPacketBrokerArgs({
+  const GetNetworkPacketBrokerArgs({
     required this.networkPacketBrokerName,
     required this.resourceGroupName,
   });

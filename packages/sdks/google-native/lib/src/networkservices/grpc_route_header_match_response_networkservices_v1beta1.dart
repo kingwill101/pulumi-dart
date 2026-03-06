@@ -15,7 +15,7 @@ class GrpcRouteHeaderMatchResponseNetworkservicesV1beta1 {
   /// [key] The key of the header.
   /// [type] Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
   /// [value] The value of the header.
-  GrpcRouteHeaderMatchResponseNetworkservicesV1beta1({
+  const GrpcRouteHeaderMatchResponseNetworkservicesV1beta1({
     required this.key,
     required this.type,
     required this.value,

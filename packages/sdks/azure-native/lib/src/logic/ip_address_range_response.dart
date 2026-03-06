@@ -9,7 +9,7 @@ class IpAddressRangeResponse {
 
   /// Creates a new [IpAddressRangeResponse].
   /// [addressRange] The IP address range.
-  IpAddressRangeResponse({
+  const IpAddressRangeResponse({
     this.addressRange,
   });
 

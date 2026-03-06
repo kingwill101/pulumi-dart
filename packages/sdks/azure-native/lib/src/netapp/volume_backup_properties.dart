@@ -15,7 +15,7 @@ class VolumeBackupProperties {
   /// [backupPolicyId] Backup Policy Resource ID
   /// [backupVaultId] Backup Vault Resource ID
   /// [policyEnforced] Policy Enforced
-  VolumeBackupProperties({
+  const VolumeBackupProperties({
     this.backupPolicyId,
     this.backupVaultId,
     this.policyEnforced,

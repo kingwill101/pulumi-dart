@@ -47,7 +47,7 @@ class CustomLocationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Custom Locations name.
   /// [tags] Resource tags.
-  CustomLocationArgs({
+  const CustomLocationArgs({
     this.authentication,
     this.clusterExtensionIds,
     this.displayName,

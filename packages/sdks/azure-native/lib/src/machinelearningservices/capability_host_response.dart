@@ -35,7 +35,7 @@ class CapabilityHostResponse {
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [threadStorageConnections] List of Thread storage connections.
   /// [vectorStoreConnections] List of VectorStore connections.
-  CapabilityHostResponse({
+  const CapabilityHostResponse({
     this.aiServicesConnections,
     this.capabilityHostKind,
     this.customerSubnet,

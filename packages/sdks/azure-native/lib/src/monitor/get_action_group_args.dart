@@ -15,7 +15,7 @@ class GetActionGroupArgs {
   /// Creates a new [GetActionGroupArgs].
   /// [actionGroupName] The name of the action group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetActionGroupArgs({
+  const GetActionGroupArgs({
     required this.actionGroupName,
     required this.resourceGroupName,
   });

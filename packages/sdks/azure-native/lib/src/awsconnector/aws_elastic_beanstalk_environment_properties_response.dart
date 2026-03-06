@@ -48,7 +48,7 @@ class AwsElasticBeanstalkEnvironmentPropertiesResponse {
   /// [templateName] The name of the Elastic Beanstalk configuration template to use with the environment.
   /// [tier] Specifies the tier to use in creating this environment. The environment tier that you choose determines whether Elastic Beanstalk provisions resources to support a web application that handles HTTP(S) requests or a web application that handles background-processing tasks.
   /// [versionLabel] The name of the application version to deploy.
-  AwsElasticBeanstalkEnvironmentPropertiesResponse({
+  const AwsElasticBeanstalkEnvironmentPropertiesResponse({
     this.applicationName,
     this.cnamePrefix,
     this.description,

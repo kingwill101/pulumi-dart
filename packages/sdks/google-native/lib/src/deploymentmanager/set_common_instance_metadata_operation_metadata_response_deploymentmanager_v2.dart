@@ -11,7 +11,7 @@ class SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2 {
   /// Creates a new [SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2].
   /// [clientOperationId] The client operation id.
   /// [perLocationOperations] Status information per location (location name is key). Example key: zones/us-central1-a
-  SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2({
+  const SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2({
     required this.clientOperationId,
     required this.perLocationOperations,
   });

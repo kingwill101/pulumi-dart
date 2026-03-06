@@ -30,7 +30,7 @@ class ProtectionGroupState {
   /// [resourceType] The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ProtectionGroupState({
+  const ProtectionGroupState({
     this.aggregation,
     this.members,
     this.pattern,

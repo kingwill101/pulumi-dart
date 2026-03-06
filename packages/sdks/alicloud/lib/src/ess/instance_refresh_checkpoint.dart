@@ -8,7 +8,7 @@ class InstanceRefreshCheckpoint {
 
   /// Creates a new [InstanceRefreshCheckpoint].
   /// [percentage] The percentage of new instances out of the total instances in the scaling group. The task automatically pauses when this percentage is reached.
-  InstanceRefreshCheckpoint({
+  const InstanceRefreshCheckpoint({
     this.percentage,
   });
 

@@ -8,7 +8,7 @@ class CustomProviderValidation {
 
   /// Creates a new [CustomProviderValidation].
   /// [specification] The endpoint where the validation specification is located.
-  CustomProviderValidation({
+  const CustomProviderValidation({
     required this.specification,
   });
 

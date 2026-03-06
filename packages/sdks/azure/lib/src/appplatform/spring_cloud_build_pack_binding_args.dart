@@ -22,7 +22,7 @@ class SpringCloudBuildPackBindingArgs {
   /// [launch] A `launch` block as defined below.
   /// [name] The name which should be used for this Spring Cloud Build Pack Binding. Changing this forces a new Spring Cloud Build Pack Binding to be created.
   /// [springCloudBuilderId] The ID of the Spring Cloud Builder. Changing this forces a new Spring Cloud Build Pack Binding to be created.
-  SpringCloudBuildPackBindingArgs({
+  const SpringCloudBuildPackBindingArgs({
     this.bindingType,
     this.launch,
     this.name,

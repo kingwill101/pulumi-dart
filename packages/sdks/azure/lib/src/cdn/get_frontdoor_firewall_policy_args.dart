@@ -15,7 +15,7 @@ class GetFrontdoorFirewallPolicyArgs {
   /// Creates a new [GetFrontdoorFirewallPolicyArgs].
   /// [name] The name of the Front Door Firewall Policy.
   /// [resourceGroupName] The name of the resource group.
-  GetFrontdoorFirewallPolicyArgs({
+  const GetFrontdoorFirewallPolicyArgs({
     required this.name,
     required this.resourceGroupName,
   });

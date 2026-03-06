@@ -11,7 +11,7 @@ class MilvusInstanceVswitchId {
   /// Creates a new [MilvusInstanceVswitchId].
   /// [vswId] VSwitch id, which must correspond to the zone id.
   /// [zoneId] The availability zone must correspond to the vswId.
-  MilvusInstanceVswitchId({
+  const MilvusInstanceVswitchId({
     this.vswId,
     this.zoneId,
   });

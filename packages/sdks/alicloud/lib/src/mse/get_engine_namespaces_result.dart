@@ -23,7 +23,7 @@ class GetEngineNamespacesResult {
   /// [instanceId] Optional.
   /// [namespaces] A list of Mse Engine Namespaces. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetEngineNamespacesResult({
+  const GetEngineNamespacesResult({
     this.acceptLanguage,
     this.clusterId,
     required this.id,

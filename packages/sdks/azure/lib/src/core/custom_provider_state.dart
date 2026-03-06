@@ -30,7 +30,7 @@ class CustomProviderState {
   /// [resourceTypes] Any number of `resource_type` block as defined below. One of `resource_type` or `action` must be specified.
   /// [tags] A mapping of tags to assign to the resource. Changing this forces a new resource to be created.
   /// [validations] Any number of `validation` block as defined below.
-  CustomProviderState({
+  const CustomProviderState({
     this.actions,
     this.location,
     this.name,

@@ -17,7 +17,7 @@ class GetTemplatesResult {
   /// [id] Required.
   /// [region] AWS Region to which the template applies.
   /// [templates] A list of quota increase templates for specified region. See `templates`.
-  GetTemplatesResult({
+  const GetTemplatesResult({
     this.awsRegion,
     required this.id,
     this.region,

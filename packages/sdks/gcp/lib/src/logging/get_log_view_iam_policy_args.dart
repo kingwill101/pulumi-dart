@@ -23,7 +23,7 @@ class GetLogViewIamPolicyArgs {
   /// [location] The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [parent] The parent of the resource. Used to find the parent resource to bind the IAM policy to
-  GetLogViewIamPolicyArgs({
+  const GetLogViewIamPolicyArgs({
     required this.bucket,
     this.location,
     required this.name,

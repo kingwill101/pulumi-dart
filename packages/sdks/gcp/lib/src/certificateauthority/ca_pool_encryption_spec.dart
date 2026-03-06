@@ -9,7 +9,7 @@ class CaPoolEncryptionSpec {
 
   /// Creates a new [CaPoolEncryptionSpec].
   /// [cloudKmsKey] The resource name for an existing Cloud KMS key in the format
-  CaPoolEncryptionSpec({
+  const CaPoolEncryptionSpec({
     this.cloudKmsKey,
   });
 

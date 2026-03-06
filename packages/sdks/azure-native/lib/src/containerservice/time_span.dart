@@ -12,7 +12,7 @@ class TimeSpan {
   /// Creates a new [TimeSpan].
   /// [end] The end of a time span
   /// [start] The start of a time span
-  TimeSpan({
+  const TimeSpan({
     this.end,
     this.start,
   });

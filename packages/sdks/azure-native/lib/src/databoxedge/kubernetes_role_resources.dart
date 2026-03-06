@@ -14,7 +14,7 @@ class KubernetesRoleResources {
   /// Creates a new [KubernetesRoleResources].
   /// [compute] Kubernetes role compute resource
   /// [storage] Kubernetes role storage resource
-  KubernetesRoleResources({
+  const KubernetesRoleResources({
     required this.compute,
     this.storage,
   });

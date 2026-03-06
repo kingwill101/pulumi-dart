@@ -29,7 +29,7 @@ class AwsMacieAllowListProperties {
   /// [name] Name of AllowList.
   /// [status] AllowList status. The status for the AllowList
   /// [tags] A collection of tags associated with a resource
-  AwsMacieAllowListProperties({
+  const AwsMacieAllowListProperties({
     this.arn,
     this.criteria,
     this.description,

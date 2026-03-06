@@ -15,7 +15,7 @@ class AlertConfiguration {
   /// [actionGroupIds] Optional list of action group resource IDs to be notified when the alert is triggered.
   /// [description] The alert rule description.
   /// [severity] The severity of triggered alert.
-  AlertConfiguration({
+  const AlertConfiguration({
     this.actionGroupIds,
     this.description,
     required this.severity,

@@ -13,7 +13,7 @@ class LoadBalancerBackendAddress {
   /// Creates a new [LoadBalancerBackendAddress].
   /// [name] name of the backend address
   /// [properties] backend address properties
-  LoadBalancerBackendAddress({
+  const LoadBalancerBackendAddress({
     required this.name,
     required this.properties,
   });

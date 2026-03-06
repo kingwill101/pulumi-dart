@@ -24,7 +24,7 @@ class VirtualHubIpState {
   /// [publicIpAddressId] The ID of the Public IP Address. This option is required since September 1st 2021. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet that the IP will reside. Changing this forces a new resource to be created.
   /// [virtualHubId] The ID of the Virtual Hub within which this IP configuration should be created. Changing this forces a new resource to be created.
-  VirtualHubIpState({
+  const VirtualHubIpState({
     this.name,
     this.privateIpAddress,
     this.privateIpAllocationMethod,

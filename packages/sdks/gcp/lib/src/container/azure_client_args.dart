@@ -28,7 +28,7 @@ class AzureClientArgs {
   /// [name] The name of this resource.
   /// [project] The project for the resource
   /// [tenantId] The Azure Active Directory Tenant ID.
-  AzureClientArgs({
+  const AzureClientArgs({
     required this.applicationId,
     required this.location,
     this.name,

@@ -17,7 +17,7 @@ class ReplicationConfigurationResponse {
   /// [destinations] An array of destination objects. Only one destination object is supported.
   /// [role] The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
   /// [rules] A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-  ReplicationConfigurationResponse({
+  const ReplicationConfigurationResponse({
     this.destinations,
     this.role,
     this.rules,

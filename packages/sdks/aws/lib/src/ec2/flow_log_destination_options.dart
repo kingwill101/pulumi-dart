@@ -14,7 +14,7 @@ class FlowLogDestinationOptions {
   /// [fileFormat] File format for the flow log. Default value: `plain-text`. Valid values: `plain-text`, `parquet`.
   /// [hiveCompatiblePartitions] Indicates whether to use Hive-compatible prefixes for flow logs stored in Amazon S3. Default value: `false`.
   /// [perHourPartition] Indicates whether to partition the flow log per hour. This reduces the cost and response time for queries. Default value: `false`.
-  FlowLogDestinationOptions({
+  const FlowLogDestinationOptions({
     this.fileFormat,
     this.hiveCompatiblePartitions,
     this.perHourPartition,

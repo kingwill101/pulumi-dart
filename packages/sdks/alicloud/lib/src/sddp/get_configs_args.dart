@@ -17,7 +17,7 @@ class GetConfigsArgs {
   /// [ids] A list of Config IDs.
   /// [lang] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConfigsArgs({
+  const GetConfigsArgs({
     this.ids,
     this.lang,
     this.outputFile,

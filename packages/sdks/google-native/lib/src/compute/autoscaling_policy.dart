@@ -40,7 +40,7 @@ class AutoscalingPolicy {
   /// [scaleDownControl] Optional.
   /// [scaleInControl] Optional.
   /// [scalingSchedules] Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-  AutoscalingPolicy({
+  const AutoscalingPolicy({
     this.coolDownPeriodSec,
     this.cpuUtilization,
     this.customMetricUtilizations,

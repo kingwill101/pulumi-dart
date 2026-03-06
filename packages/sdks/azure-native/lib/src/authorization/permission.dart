@@ -18,7 +18,7 @@ class Permission {
   /// [dataActions] Allowed Data actions.
   /// [notActions] Denied actions.
   /// [notDataActions] Denied Data actions.
-  Permission({
+  const Permission({
     this.actions,
     this.dataActions,
     this.notActions,

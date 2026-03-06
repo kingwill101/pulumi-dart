@@ -46,7 +46,7 @@ class ClusterSnapshotState {
   /// [status] The status of this DocumentDB Cluster Snapshot.
   /// [storageEncrypted] Specifies whether the DocumentDB cluster snapshot is encrypted.
   /// [vpcId] The VPC ID associated with the DocumentDB cluster snapshot.
-  ClusterSnapshotState({
+  const ClusterSnapshotState({
     this.availabilityZones,
     this.dbClusterIdentifier,
     this.dbClusterSnapshotArn,

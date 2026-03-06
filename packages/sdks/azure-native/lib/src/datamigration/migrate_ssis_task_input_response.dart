@@ -17,7 +17,7 @@ class MigrateSsisTaskInputResponse {
   /// [sourceConnectionInfo] Information for connecting to source
   /// [ssisMigrationInfo] SSIS package migration information.
   /// [targetConnectionInfo] Information for connecting to target
-  MigrateSsisTaskInputResponse({
+  const MigrateSsisTaskInputResponse({
     required this.sourceConnectionInfo,
     required this.ssisMigrationInfo,
     required this.targetConnectionInfo,

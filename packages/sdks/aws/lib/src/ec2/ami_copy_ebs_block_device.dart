@@ -40,7 +40,7 @@ class AmiCopyEbsBlockDevice {
   /// [throughput] Throughput that the EBS volume supports, in MiB/s. Only valid for `volume_type` of `gp3`.
   /// [volumeSize] Size of created volumes in GiB.
   /// [volumeType] Type of EBS volume to create. Can be `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1` or `st1` (Default: `standard`).
-  AmiCopyEbsBlockDevice({
+  const AmiCopyEbsBlockDevice({
     this.deleteOnTermination,
     this.deviceName,
     this.encrypted,

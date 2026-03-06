@@ -8,7 +8,7 @@ class GetFirewallGlobalRulestackResult {
 
   /// Creates a new [GetFirewallGlobalRulestackResult].
   /// [azureId] rulestack description
-  GetFirewallGlobalRulestackResult({
+  const GetFirewallGlobalRulestackResult({
     required this.azureId,
   });
 

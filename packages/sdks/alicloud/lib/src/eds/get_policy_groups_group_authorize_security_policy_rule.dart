@@ -26,7 +26,7 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRule {
   /// [portRange] The port range of security rules.
   /// [priority] The priority of security rules.
   /// [type] The type of security rules.
-  GetPolicyGroupsGroupAuthorizeSecurityPolicyRule({
+  const GetPolicyGroupsGroupAuthorizeSecurityPolicyRule({
     required this.cidrIp,
     required this.description,
     required this.ipProtocol,

@@ -24,7 +24,7 @@ class ConditionComputeV1 {
   /// [svc] This is deprecated and has no effect. Do not use.
   /// [sys] This is deprecated and has no effect. Do not use.
   /// [values] This is deprecated and has no effect. Do not use.
-  ConditionComputeV1({
+  const ConditionComputeV1({
     this.iam,
     this.op,
     this.svc,

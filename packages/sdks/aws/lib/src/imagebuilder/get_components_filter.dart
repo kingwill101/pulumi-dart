@@ -11,7 +11,7 @@ class GetComponentsFilter {
   /// Creates a new [GetComponentsFilter].
   /// [name] Name of the filter field. Valid values can be found in the [Image Builder ListComponents API Reference](https://docs.aws.amazon.com/imagebuilder/latest/APIReference/API_ListComponents.html).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetComponentsFilter({
+  const GetComponentsFilter({
     required this.name,
     required this.values,
   });

@@ -15,7 +15,7 @@ class GetAcmCertificateSummaryArgs {
   /// Creates a new [GetAcmCertificateSummaryArgs].
   /// [name] Name of AcmCertificateSummary
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAcmCertificateSummaryArgs({
+  const GetAcmCertificateSummaryArgs({
     required this.name,
     required this.resourceGroupName,
   });

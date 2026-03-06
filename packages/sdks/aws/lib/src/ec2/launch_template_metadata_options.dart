@@ -22,7 +22,7 @@ class LaunchTemplateMetadataOptions {
   /// [httpPutResponseHopLimit] The desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Can be an integer from `1` to `64`. (Default: `1`).
   /// [httpTokens] Whether or not the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2 (IMDSv2)_. Can be `"optional"` or `"required"`. (Default: `"optional"`).
   /// [instanceMetadataTags] Enables or disables access to instance tags from the instance metadata service. Can be `"enabled"` or `"disabled"`.
-  LaunchTemplateMetadataOptions({
+  const LaunchTemplateMetadataOptions({
     this.httpEndpoint,
     this.httpProtocolIpv6,
     this.httpPutResponseHopLimit,

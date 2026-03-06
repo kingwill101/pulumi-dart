@@ -8,7 +8,7 @@ class VpcIpamResourceDiscoveryOperatingRegion {
 
   /// Creates a new [VpcIpamResourceDiscoveryOperatingRegion].
   /// [regionName] The name of the Region you want to add to the IPAM.
-  VpcIpamResourceDiscoveryOperatingRegion({
+  const VpcIpamResourceDiscoveryOperatingRegion({
     required this.regionName,
   });
 

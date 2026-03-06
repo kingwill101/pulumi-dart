@@ -78,7 +78,7 @@ class GetServerResult {
   /// [type] Resource type.
   /// [version] The version of the server.
   /// [workspaceFeature] Whether or not existing server has a workspace created and if it allows connection from workspace
-  GetServerResult({
+  const GetServerResult({
     this.administratorLogin,
     this.administrators,
     required this.azureApiVersion,

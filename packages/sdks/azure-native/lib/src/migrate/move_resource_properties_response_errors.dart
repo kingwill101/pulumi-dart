@@ -10,7 +10,7 @@ class MoveResourcePropertiesResponseErrors {
 
   /// Creates a new [MoveResourcePropertiesResponseErrors].
   /// [properties] The move resource error body.
-  MoveResourcePropertiesResponseErrors({
+  const MoveResourcePropertiesResponseErrors({
     this.properties,
   });
 

@@ -15,7 +15,7 @@ class GetNetworkPolicyArgs {
   /// [location] Required.
   /// [networkPolicyId] Required.
   /// [project] Optional.
-  GetNetworkPolicyArgs({
+  const GetNetworkPolicyArgs({
     required this.location,
     required this.networkPolicyId,
     this.project,

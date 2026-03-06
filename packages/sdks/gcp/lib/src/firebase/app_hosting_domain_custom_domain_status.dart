@@ -52,7 +52,7 @@ class AppHostingDomainCustomDomainStatus {
   /// [issues] (Output)
   /// [ownershipState] (Output)
   /// [requiredDnsUpdates] (Output)
-  AppHostingDomainCustomDomainStatus({
+  const AppHostingDomainCustomDomainStatus({
     this.certState,
     this.hostState,
     this.issues,

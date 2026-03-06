@@ -7,7 +7,7 @@ class FeaturesCognitiveAccount {
 
   /// Creates a new [FeaturesCognitiveAccount].
   /// [purgeSoftDeleteOnDestroy] Optional.
-  FeaturesCognitiveAccount({
+  const FeaturesCognitiveAccount({
     this.purgeSoftDeleteOnDestroy,
   });
 

@@ -9,7 +9,7 @@ class AddressSpace {
 
   /// Creates a new [AddressSpace].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
-  AddressSpace({
+  const AddressSpace({
     this.addressPrefixes,
   });
 

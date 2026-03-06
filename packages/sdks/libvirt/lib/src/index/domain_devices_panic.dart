@@ -19,7 +19,7 @@ class DomainDevicesPanic {
   /// [address] Specifies the memory address for the persistent storage device in the guest's address space.
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   /// [model] Sets the model type for the panic device configuration.
-  DomainDevicesPanic({
+  const DomainDevicesPanic({
     this.acpi,
     this.address,
     this.alias,

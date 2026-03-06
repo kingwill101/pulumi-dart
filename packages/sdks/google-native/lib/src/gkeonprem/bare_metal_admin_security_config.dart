@@ -10,7 +10,7 @@ class BareMetalAdminSecurityConfig {
 
   /// Creates a new [BareMetalAdminSecurityConfig].
   /// [authorization] Configures user access to the admin cluster.
-  BareMetalAdminSecurityConfig({
+  const BareMetalAdminSecurityConfig({
     this.authorization,
   });
 

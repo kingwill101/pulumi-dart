@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationCondition {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationCondition].
   /// [conditions] Optional.
-  AgentFlowDefinitionNodeConfigurationCondition({
+  const AgentFlowDefinitionNodeConfigurationCondition({
     this.conditions,
   });
 

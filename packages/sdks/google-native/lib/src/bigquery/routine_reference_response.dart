@@ -14,7 +14,7 @@ class RoutineReferenceResponse {
   /// [datasetId] The ID of the dataset containing this routine.
   /// [project] The ID of the project containing this routine.
   /// [routineId] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-  RoutineReferenceResponse({
+  const RoutineReferenceResponse({
     required this.datasetId,
     required this.project,
     required this.routineId,

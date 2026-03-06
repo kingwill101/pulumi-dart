@@ -23,7 +23,7 @@ class WebAppFtpAllowedSlotArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Required.
-  WebAppFtpAllowedSlotArgs({
+  const WebAppFtpAllowedSlotArgs({
     required this.allow,
     this.kind,
     required this.name,

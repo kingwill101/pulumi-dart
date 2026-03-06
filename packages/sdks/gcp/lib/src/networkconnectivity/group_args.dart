@@ -33,7 +33,7 @@ class GroupArgs {
   /// [labels] Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// [name] The name of the group. Group names must be unique.
   /// [project] The ID of the project in which the resource belongs.
-  GroupArgs({
+  const GroupArgs({
     this.autoAccept,
     this.description,
     required this.hub,

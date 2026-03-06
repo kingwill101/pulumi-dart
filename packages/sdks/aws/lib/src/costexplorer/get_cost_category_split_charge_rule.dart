@@ -18,7 +18,7 @@ class GetCostCategorySplitChargeRule {
   /// [parameters] Configuration block for the parameters for a split charge method. This is only required for the `FIXED` method. See below.
   /// [source] Cost Category value that you want to split.
   /// [targets] Cost Category values that you want to split costs across. These values can't be used as a source in other split charge rules.
-  GetCostCategorySplitChargeRule({
+  const GetCostCategorySplitChargeRule({
     required this.method,
     required this.parameters,
     required this.source,

@@ -9,7 +9,7 @@ class EndpointConfig {
 
   /// Creates a new [EndpointConfig].
   /// [enableHttpPortAccess] Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
-  EndpointConfig({
+  const EndpointConfig({
     this.enableHttpPortAccess,
   });
 

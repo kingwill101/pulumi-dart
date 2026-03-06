@@ -17,7 +17,7 @@ class RegistryTaskRegistryCredentialCustom {
   /// [loginServer] The login server of the custom Container Registry.
   /// [password] The password for logging into the custom Container Registry. It can be either a plain text of password, or a Keyvault Secret ID.
   /// [username] The username for logging into the custom Container Registry. It can be either a plain text of username, or a Keyvault Secret ID.
-  RegistryTaskRegistryCredentialCustom({
+  const RegistryTaskRegistryCredentialCustom({
     this.identity,
     required this.loginServer,
     this.password,

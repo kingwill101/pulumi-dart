@@ -11,7 +11,7 @@ class DomainDevicesInterfaceTarget {
   /// Creates a new [DomainDevicesInterfaceTarget].
   /// [dev] Specifies the device associated with the target interface.
   /// [managed] Controls whether the target interface is managed by the virtual network.
-  DomainDevicesInterfaceTarget({
+  const DomainDevicesInterfaceTarget({
     required this.dev,
     this.managed,
   });

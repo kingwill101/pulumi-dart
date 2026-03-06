@@ -11,7 +11,7 @@ class GetDefaultTagsArgs {
 
   /// Creates a new [GetDefaultTagsArgs].
   /// [id] Optional.
-  GetDefaultTagsArgs({
+  const GetDefaultTagsArgs({
     this.id,
   });
 

@@ -8,7 +8,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestin
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination].
   /// [destinationRefId] Reference ID for the destination.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsDestination({
     required this.destinationRefId,
   });
 

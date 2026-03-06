@@ -24,7 +24,7 @@ class GetAlertPolicyResult {
   /// [incidentPreference] The rollup strategy for the policy, which can have one of the following values:
   /// [name] Required.
   /// [updatedAt] The time the policy was last updated.
-  GetAlertPolicyResult({
+  const GetAlertPolicyResult({
     required this.accountId,
     required this.createdAt,
     required this.id,

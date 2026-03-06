@@ -27,7 +27,7 @@ class GroupsOperationArgs {
   /// [provisioningState] The status of the last operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [supportedAssessmentTypes] List of assessment types supported on this group.
-  GroupsOperationArgs({
+  const GroupsOperationArgs({
     this.groupName,
     this.groupType,
     required this.projectName,

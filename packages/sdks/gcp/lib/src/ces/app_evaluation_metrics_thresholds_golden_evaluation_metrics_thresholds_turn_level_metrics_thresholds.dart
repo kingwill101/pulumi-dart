@@ -13,7 +13,7 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMe
   /// Creates a new [AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds].
   /// [overallToolInvocationCorrectnessThreshold] The success threshold for overall tool invocation correctness. Must be
   /// [semanticSimilaritySuccessThreshold] The success threshold for semantic similarity. Must be an integer
-  AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds({
+  const AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds({
     this.overallToolInvocationCorrectnessThreshold,
     this.semanticSimilaritySuccessThreshold,
   });

@@ -8,7 +8,7 @@ class SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
 
   /// Creates a new [SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku].
   /// [category] Optional.
-  SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku({
+  const SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku({
     this.category,
   });
 

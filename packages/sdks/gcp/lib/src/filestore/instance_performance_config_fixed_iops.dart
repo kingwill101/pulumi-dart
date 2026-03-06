@@ -9,7 +9,7 @@ class InstancePerformanceConfigFixedIops {
 
   /// Creates a new [InstancePerformanceConfigFixedIops].
   /// [maxIops] The number of IOPS to provision for the instance.
-  InstancePerformanceConfigFixedIops({
+  const InstancePerformanceConfigFixedIops({
     this.maxIops,
   });
 

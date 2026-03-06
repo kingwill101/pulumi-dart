@@ -9,7 +9,7 @@ class ServiceExternalIPsConfigContainerV1beta1 {
 
   /// Creates a new [ServiceExternalIPsConfigContainerV1beta1].
   /// [enabled] Whether Services with ExternalIPs field are allowed or not.
-  ServiceExternalIPsConfigContainerV1beta1({
+  const ServiceExternalIPsConfigContainerV1beta1({
     this.enabled,
   });
 

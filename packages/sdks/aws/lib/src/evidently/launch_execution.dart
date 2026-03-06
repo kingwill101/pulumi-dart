@@ -11,7 +11,7 @@ class LaunchExecution {
   /// Creates a new [LaunchExecution].
   /// [endedTime] The date and time that the launch ended.
   /// [startedTime] The date and time that the launch started.
-  LaunchExecution({
+  const LaunchExecution({
     this.endedTime,
     this.startedTime,
   });

@@ -32,7 +32,7 @@ class EnvironmentArgs {
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [region] The location or Compute Engine region for the environment.
   /// [storageConfig] Configuration options for storage used by Composer environment.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.config,
     this.labels,
     this.name,

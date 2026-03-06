@@ -55,7 +55,7 @@ class GetThesaurusResult {
   /// [termCount] Number of unique terms in the Thesaurus file. For example, the synonyms `a,b,c` and `a=&gt;d`, the term count would be 4.
   /// [thesaurusId] Required.
   /// [updatedAt] Date and time that the Thesaurus was last updated.
-  GetThesaurusResult({
+  const GetThesaurusResult({
     required this.arn,
     required this.createdAt,
     required this.description,

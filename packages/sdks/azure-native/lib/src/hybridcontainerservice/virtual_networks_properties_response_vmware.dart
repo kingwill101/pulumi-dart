@@ -9,7 +9,7 @@ class VirtualNetworksPropertiesResponseVmware {
 
   /// Creates a new [VirtualNetworksPropertiesResponseVmware].
   /// [segmentName] Name of the network segment in VSphere
-  VirtualNetworksPropertiesResponseVmware({
+  const VirtualNetworksPropertiesResponseVmware({
     this.segmentName,
   });
 

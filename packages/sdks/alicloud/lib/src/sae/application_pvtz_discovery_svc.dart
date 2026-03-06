@@ -18,7 +18,7 @@ class ApplicationPvtzDiscoverySvc {
   /// [namespaceId] The ID of the namespace.
   /// [portProtocols] The port number and protocol. See `port_protocols` below.
   /// [serviceName] The name of the Service.
-  ApplicationPvtzDiscoverySvc({
+  const ApplicationPvtzDiscoverySvc({
     this.enable,
     this.namespaceId,
     this.portProtocols,

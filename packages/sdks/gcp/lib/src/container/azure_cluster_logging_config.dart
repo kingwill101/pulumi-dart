@@ -9,7 +9,7 @@ class AzureClusterLoggingConfig {
 
   /// Creates a new [AzureClusterLoggingConfig].
   /// [componentConfig] Configuration of the logging components.
-  AzureClusterLoggingConfig({
+  const AzureClusterLoggingConfig({
     this.componentConfig,
   });
 

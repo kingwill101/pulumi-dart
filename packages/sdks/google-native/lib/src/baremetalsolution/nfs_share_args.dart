@@ -33,7 +33,7 @@ class NfsShareArgs {
   /// [project] Optional.
   /// [requestedSizeGib] The requested size, in GiB.
   /// [storageType] Immutable. The storage type of the underlying volume.
-  NfsShareArgs({
+  const NfsShareArgs({
     this.allowedClients,
     this.labels,
     this.location,

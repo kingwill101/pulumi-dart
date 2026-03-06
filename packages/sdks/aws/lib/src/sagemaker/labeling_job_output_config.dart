@@ -14,7 +14,7 @@ class LabelingJobOutputConfig {
   /// [kmsKeyId] ID of the key used to encrypt the output data.
   /// [s3OutputPath] S3 location to write output data.
   /// [snsTopicArn] SNS output topic ARN.
-  LabelingJobOutputConfig({
+  const LabelingJobOutputConfig({
     this.kmsKeyId,
     required this.s3OutputPath,
     this.snsTopicArn,

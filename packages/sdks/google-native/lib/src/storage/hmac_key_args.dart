@@ -17,7 +17,7 @@ class HmacKeyArgs {
   /// [project] Optional.
   /// [serviceAccountEmail] Email address of the service account.
   /// [userProject] The project to be billed for this request.
-  HmacKeyArgs({
+  const HmacKeyArgs({
     this.project,
     required this.serviceAccountEmail,
     this.userProject,

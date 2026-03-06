@@ -72,7 +72,7 @@ class GetScalingPlanResult {
   /// [tags] Resource tags.
   /// [timeZone] Timezone of the scaling plan.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetScalingPlanResult({
+  const GetScalingPlanResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

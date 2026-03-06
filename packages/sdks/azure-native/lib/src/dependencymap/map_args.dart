@@ -21,7 +21,7 @@ class MapArgs {
   /// [mapName] Maps resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  MapArgs({
+  const MapArgs({
     this.location,
     this.mapName,
     required this.resourceGroupName,

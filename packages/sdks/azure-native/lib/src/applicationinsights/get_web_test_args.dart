@@ -15,7 +15,7 @@ class GetWebTestArgs {
   /// Creates a new [GetWebTestArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webTestName] The name of the Application Insights WebTest resource.
-  GetWebTestArgs({
+  const GetWebTestArgs({
     required this.resourceGroupName,
     required this.webTestName,
   });

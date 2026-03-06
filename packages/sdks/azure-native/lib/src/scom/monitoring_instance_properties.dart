@@ -29,7 +29,7 @@ class MonitoringInstanceProperties {
   /// [domainUserCredentials] Domain user which will be used to join VMs to domain and login to VMs.
   /// [gmsaDetails] Gmsa Details for load balancer and vmss
   /// [vNetSubnetId] Virtual Network subnet id on which Aquila instance will be provisioned
-  MonitoringInstanceProperties({
+  const MonitoringInstanceProperties({
     this.azureHybridBenefit,
     this.databaseInstance,
     this.domainController,

@@ -17,7 +17,7 @@ class AccessControlListState {
   /// [accessControlListName] Access control list name.
   /// [aclEntrys] Information list of access control policies. You can add at most 50 IP addresses or CIDR blocks to an ACL in each call. If the IP address or CIDR block that you want to add to an ACL already exists, the IP address or CIDR block is not added. The entries that you add must be CIDR blocks. See `acl_entrys` below.
   /// [addressIpVersion] The IP version. Valid values: ipv4 and ipv6.
-  AccessControlListState({
+  const AccessControlListState({
     this.accessControlListName,
     this.aclEntrys,
     this.addressIpVersion,

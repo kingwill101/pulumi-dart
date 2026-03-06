@@ -11,7 +11,7 @@ class GetWindowsFileSystemAuditLogConfiguration {
   /// [auditLogDestination] Required.
   /// [fileAccessAuditLogLevel] Required.
   /// [fileShareAccessAuditLogLevel] Required.
-  GetWindowsFileSystemAuditLogConfiguration({
+  const GetWindowsFileSystemAuditLogConfiguration({
     required this.auditLogDestination,
     required this.fileAccessAuditLogLevel,
     required this.fileShareAccessAuditLogLevel,

@@ -24,7 +24,7 @@ class GetProfessionalServiceSubscriptionLevelResult {
   /// [properties] professionalService properties
   /// [tags] the resource tags.
   /// [type] Resource type.
-  GetProfessionalServiceSubscriptionLevelResult({
+  const GetProfessionalServiceSubscriptionLevelResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

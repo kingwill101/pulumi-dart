@@ -14,7 +14,7 @@ class GetJobDefinitionEksPropertyPodPropertyContainerVolumeMount {
   /// [mountPath] The path on the container where the volume is mounted.
   /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   /// [readOnly] If this value is true, the container has read-only access to the volume.
-  GetJobDefinitionEksPropertyPodPropertyContainerVolumeMount({
+  const GetJobDefinitionEksPropertyPodPropertyContainerVolumeMount({
     required this.mountPath,
     required this.name,
     required this.readOnly,

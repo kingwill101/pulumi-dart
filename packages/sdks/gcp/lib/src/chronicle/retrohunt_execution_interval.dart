@@ -15,7 +15,7 @@ class RetrohuntExecutionInterval {
   /// Creates a new [RetrohuntExecutionInterval].
   /// [endTime] Optional. Exclusive end of the interval.
   /// [startTime] Optional. Inclusive start of the interval.
-  RetrohuntExecutionInterval({
+  const RetrohuntExecutionInterval({
     this.endTime,
     this.startTime,
   });

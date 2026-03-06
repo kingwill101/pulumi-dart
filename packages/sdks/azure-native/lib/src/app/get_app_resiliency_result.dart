@@ -45,7 +45,7 @@ class GetAppResiliencyResult {
   /// [tcpRetryPolicy] Policy that defines tcp request retry conditions
   /// [timeoutPolicy] Policy to set request timeouts
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAppResiliencyResult({
+  const GetAppResiliencyResult({
     required this.azureApiVersion,
     this.circuitBreakerPolicy,
     this.httpConnectionPool,

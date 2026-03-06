@@ -42,7 +42,7 @@ class VpcPeeringConnectionArgs {
   /// [requester] A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] The ID of the requester VPC.
-  VpcPeeringConnectionArgs({
+  const VpcPeeringConnectionArgs({
     this.accepter,
     this.autoAccept,
     this.peerOwnerId,

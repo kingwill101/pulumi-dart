@@ -31,7 +31,7 @@ class AutoScaleVCoreArgs {
   /// [sku] The SKU of the auto scale v-core resource.
   /// [tags] Resource tags.
   /// [vcoreName] The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
-  AutoScaleVCoreArgs({
+  const AutoScaleVCoreArgs({
     this.capacityLimit,
     this.capacityObjectId,
     this.location,

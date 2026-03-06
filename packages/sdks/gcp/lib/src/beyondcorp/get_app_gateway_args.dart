@@ -22,7 +22,7 @@ class GetAppGatewayArgs {
   /// [name] The name of the App Gateway.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetAppGatewayArgs({
+  const GetAppGatewayArgs({
     required this.name,
     this.project,
     this.region,

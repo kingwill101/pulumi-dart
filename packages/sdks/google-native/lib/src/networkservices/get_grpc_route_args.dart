@@ -15,7 +15,7 @@ class GetGrpcRouteArgs {
   /// [grpcRouteId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGrpcRouteArgs({
+  const GetGrpcRouteArgs({
     required this.grpcRouteId,
     required this.location,
     this.project,

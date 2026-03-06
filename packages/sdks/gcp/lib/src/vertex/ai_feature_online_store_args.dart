@@ -52,7 +52,7 @@ class AiFeatureOnlineStoreArgs {
   /// [optimized] Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature online store. eg us-central1
-  AiFeatureOnlineStoreArgs({
+  const AiFeatureOnlineStoreArgs({
     this.bigtable,
     this.dedicatedServingEndpoint,
     this.embeddingManagement,

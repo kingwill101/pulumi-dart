@@ -23,7 +23,7 @@ class ManagedClusterIdentityResponse {
   /// [tenantId] The tenant id of the system assigned identity which is used by master components.
   /// [type] The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
   /// [userAssignedIdentities] The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  ManagedClusterIdentityResponse({
+  const ManagedClusterIdentityResponse({
     this.delegatedResources,
     required this.principalId,
     required this.tenantId,

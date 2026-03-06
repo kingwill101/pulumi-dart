@@ -18,7 +18,7 @@ class GetPartnerAttachmentArgs {
   /// [id] Optional.
   /// [name] Optional.
   /// [redundancyZone] Optional.
-  GetPartnerAttachmentArgs({
+  const GetPartnerAttachmentArgs({
     this.bgp,
     this.id,
     this.name,

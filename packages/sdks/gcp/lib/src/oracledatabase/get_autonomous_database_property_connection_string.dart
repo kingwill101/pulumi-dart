@@ -31,7 +31,7 @@ class GetAutonomousDatabasePropertyConnectionString {
   /// [low] The database service provides the least level of resources to each SQL
   /// [medium] The database service provides a lower level of resources to each SQL
   /// [profiles] A list of connection string profiles to allow clients to group, filter, and
-  GetAutonomousDatabasePropertyConnectionString({
+  const GetAutonomousDatabasePropertyConnectionString({
     required this.allConnectionStrings,
     required this.dedicated,
     required this.high,

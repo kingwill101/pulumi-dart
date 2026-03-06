@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketCon
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions].
   /// [bucketTypes] Bucket types that should be profiled. Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified. Possible values: ["TYPE_ALL_SUPPORTED", "TYPE_GENERAL_PURPOSE"]
   /// [objectStorageClasses] Object classes that should be profiled. Optional. Defaults to ALL_SUPPORTED_CLASSES if unspecified. Possible values: ["ALL_SUPPORTED_CLASSES", "STANDARD", "STANDARD_INFREQUENT_ACCESS", "GLACIER_INSTANT_RETRIEVAL", "INTELLIGENT_TIERING"]
-  PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions({
     this.bucketTypes,
     this.objectStorageClasses,
   });

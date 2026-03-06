@@ -15,7 +15,7 @@ class GetManagedEnvironmentArgs {
   /// Creates a new [GetManagedEnvironmentArgs].
   /// [environmentName] Name of the Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManagedEnvironmentArgs({
+  const GetManagedEnvironmentArgs({
     required this.environmentName,
     required this.resourceGroupName,
   });

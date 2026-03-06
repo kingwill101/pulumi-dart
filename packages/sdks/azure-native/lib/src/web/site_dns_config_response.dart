@@ -23,7 +23,7 @@ class SiteDnsConfigResponse {
   /// [dnsRetryAttemptCount] Total number of retries for dns lookup. Allowed range: 1-5. Default is 3.
   /// [dnsRetryAttemptTimeout] Timeout for a single dns lookup in seconds. Allowed range: 1-30. Default is 3.
   /// [dnsServers] List of custom DNS servers to be used by an app for lookups. Maximum 5 dns servers can be set.
-  SiteDnsConfigResponse({
+  const SiteDnsConfigResponse({
     this.dnsAltServer,
     required this.dnsLegacySortOrder,
     this.dnsMaxCacheTimeout,

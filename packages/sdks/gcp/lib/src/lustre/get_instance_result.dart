@@ -54,7 +54,7 @@ class GetInstanceResult {
   /// [stateReason] Required.
   /// [updateTime] Required.
   /// [zone] Optional.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.accessRulesOptions,
     required this.capacityGib,
     required this.createTime,

@@ -18,7 +18,7 @@ class ClientInfo {
   /// [name] The name of the client.
   /// [objectId] The object id of the client.
   /// [userPrincipalName] The user principal name of the client.
-  ClientInfo({
+  const ClientInfo({
     this.email,
     this.name,
     this.objectId,

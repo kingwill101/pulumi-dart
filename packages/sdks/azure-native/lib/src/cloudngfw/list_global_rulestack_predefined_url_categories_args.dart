@@ -16,7 +16,7 @@ class ListGlobalRulestackPredefinedUrlCategoriesArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [skip] Optional.
   /// [top] Optional.
-  ListGlobalRulestackPredefinedUrlCategoriesArgs({
+  const ListGlobalRulestackPredefinedUrlCategoriesArgs({
     required this.globalRulestackName,
     this.skip,
     this.top,

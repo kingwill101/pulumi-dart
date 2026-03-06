@@ -36,7 +36,7 @@ class GetNestServiceInstancesServiceInstanceService {
   /// [supplierUrl] The url of the supplier.
   /// [version] The version of the service.
   /// [versionName] The version name of the service.
-  GetNestServiceInstancesServiceInstanceService({
+  const GetNestServiceInstancesServiceInstanceService({
     required this.deployType,
     required this.publishTime,
     required this.serviceId,

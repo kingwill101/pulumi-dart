@@ -387,7 +387,7 @@ class AccountState {
   /// [staticWebsite] A `static_website` block as defined below.
   /// [tableEncryptionKeyType] The encryption type of the table service. Possible values are `Service` and `Account`. Changing this forces a new resource to be created. Default value is `Service`.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountState({
+  const AccountState({
     this.accessTier,
     this.accountKind,
     this.accountReplicationType,

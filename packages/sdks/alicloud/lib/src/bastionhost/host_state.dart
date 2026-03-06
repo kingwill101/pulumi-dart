@@ -42,7 +42,7 @@ class HostState {
   /// [osType] Specify the new create the host's operating system. Valid values: `Linux`,`Windows`.
   /// [source] Specify the new create a host of source. Valid values:
   /// [sourceInstanceId] Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
-  HostState({
+  const HostState({
     this.activeAddressType,
     this.comment,
     this.hostId,

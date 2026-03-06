@@ -20,7 +20,7 @@ class ReplicationConfigurationTemplatePitPolicy {
   /// [retentionDuration] Duration to retain a snapshot for, in the chosen `units`.
   /// [ruleId] ID of the rule. Valid values are integers.
   /// [units] Units used to measure the `interval` and `retention_duration`. Valid values are `MINUTE`, `HOUR`, and `DAY`.
-  ReplicationConfigurationTemplatePitPolicy({
+  const ReplicationConfigurationTemplatePitPolicy({
     this.enabled,
     required this.interval,
     required this.retentionDuration,

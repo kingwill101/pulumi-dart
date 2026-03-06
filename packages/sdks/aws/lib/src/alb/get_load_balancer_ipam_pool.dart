@@ -7,7 +7,7 @@ class GetLoadBalancerIpamPool {
 
   /// Creates a new [GetLoadBalancerIpamPool].
   /// [ipv4IpamPoolId] Required.
-  GetLoadBalancerIpamPool({
+  const GetLoadBalancerIpamPool({
     required this.ipv4IpamPoolId,
   });
 

@@ -98,7 +98,7 @@ class GetSnapshotComputeV1Result {
   /// [storageBytes] A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
   /// [storageBytesStatus] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
-  GetSnapshotComputeV1Result({
+  const GetSnapshotComputeV1Result({
     required this.architecture,
     required this.autoCreated,
     required this.chainName,

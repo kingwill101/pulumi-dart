@@ -15,7 +15,7 @@ class NamespaceState {
   /// [description] Namespace description.
   /// [namespaceName] Namespace name.
   /// [namespaceUid] namespace uid
-  NamespaceState({
+  const NamespaceState({
     this.description,
     this.namespaceName,
     this.namespaceUid,

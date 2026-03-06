@@ -12,7 +12,7 @@ class FrontdoorRuleSetState {
   /// Creates a new [FrontdoorRuleSetState].
   /// [cdnFrontdoorProfileId] The ID of the Front Door Profile. Changing this forces a new Front Door Rule Set to be created.
   /// [name] The name which should be used for this Front Door Rule Set. Changing this forces a new Front Door Rule Set to be created.
-  FrontdoorRuleSetState({
+  const FrontdoorRuleSetState({
     this.cdnFrontdoorProfileId,
     this.name,
   });

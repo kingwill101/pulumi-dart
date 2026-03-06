@@ -32,7 +32,7 @@ class CIAMTenantArgs {
   /// [sku] SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
   /// [tags] Resource Tags
   /// [tenantId] An identifier of the Azure AD for customers tenant.
-  CIAMTenantArgs({
+  const CIAMTenantArgs({
     required this.createTenantProperties,
     this.location,
     required this.resourceGroupName,

@@ -38,7 +38,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// [id] The id of the OS policy with the following restrictions:
   /// [mode] Policy mode
   /// [resourceGroups] List of resource groups for the policy.
-  V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy({
+  const V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy({
     this.allowNoResourceGroupMatch,
     this.description,
     required this.id,

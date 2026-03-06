@@ -24,7 +24,7 @@ class RequestValidatorArgs {
   /// [restApi] ID of the associated Rest API
   /// [validateRequestBody] Boolean whether to validate request body. Defaults to `false`.
   /// [validateRequestParameters] Boolean whether to validate request parameters. Defaults to `false`.
-  RequestValidatorArgs({
+  const RequestValidatorArgs({
     this.name,
     this.region,
     required this.restApi,

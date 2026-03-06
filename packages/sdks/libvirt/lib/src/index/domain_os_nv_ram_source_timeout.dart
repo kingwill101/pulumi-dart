@@ -8,7 +8,7 @@ class DomainOsNvRamSourceTimeout {
 
   /// Creates a new [DomainOsNvRamSourceTimeout].
   /// [seconds] Specifies the duration in seconds for the timeout configuration in disk mirroring.
-  DomainOsNvRamSourceTimeout({
+  const DomainOsNvRamSourceTimeout({
     required this.seconds,
   });
 

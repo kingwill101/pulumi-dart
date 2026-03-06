@@ -32,7 +32,7 @@ class EnvironmentBlueprintConfigurationArgs {
   /// [provisioningRoleArn] ARN of the provisioning role with which this blueprint is created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [regionalParameters] Parameters for each region in which the blueprint is enabled
-  EnvironmentBlueprintConfigurationArgs({
+  const EnvironmentBlueprintConfigurationArgs({
     required this.domainId,
     required this.enabledRegions,
     required this.environmentBlueprintId,

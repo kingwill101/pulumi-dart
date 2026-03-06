@@ -15,7 +15,7 @@ class GetFirewallPolicyDraftArgs {
   /// Creates a new [GetFirewallPolicyDraftArgs].
   /// [firewallPolicyName] The name of the Firewall Policy.
   /// [resourceGroupName] The name of the resource group.
-  GetFirewallPolicyDraftArgs({
+  const GetFirewallPolicyDraftArgs({
     required this.firewallPolicyName,
     required this.resourceGroupName,
   });

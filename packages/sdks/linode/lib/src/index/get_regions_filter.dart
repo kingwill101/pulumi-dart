@@ -14,7 +14,7 @@ class GetRegionsFilter {
   /// [matchBy] The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
   /// [name] The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
   /// [values] A list of values for the filter to allow. These values should all be in string form.
-  GetRegionsFilter({
+  const GetRegionsFilter({
     this.matchBy,
     required this.name,
     required this.values,

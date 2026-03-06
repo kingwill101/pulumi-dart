@@ -43,7 +43,7 @@ class FunctionIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
-  FunctionIamBindingState({
+  const FunctionIamBindingState({
     this.cloudFunction,
     this.condition,
     this.etag,

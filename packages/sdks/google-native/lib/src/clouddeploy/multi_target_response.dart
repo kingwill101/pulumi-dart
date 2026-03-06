@@ -9,7 +9,7 @@ class MultiTargetResponse {
 
   /// Creates a new [MultiTargetResponse].
   /// [targetIds] The target_ids of this multiTarget.
-  MultiTargetResponse({
+  const MultiTargetResponse({
     required this.targetIds,
   });
 

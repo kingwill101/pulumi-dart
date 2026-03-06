@@ -24,7 +24,7 @@ class PolicyState {
   /// [permissions] Allowed permissions (RBAC)Optional values:"RbacPermission/Template/CryptoServiceKeyUser" and "RbacPermission/Template/CryptoServiceSecretUser".
   /// [policyName] Policy Name.
   /// [resources] The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
-  PolicyState({
+  const PolicyState({
     this.accessControlRules,
     this.description,
     this.kmsInstanceId,

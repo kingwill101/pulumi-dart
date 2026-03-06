@@ -12,7 +12,7 @@ class CustomTargetRollingWindowSize {
   /// Creates a new [CustomTargetRollingWindowSize].
   /// [mode] Target rolling windows size mode.
   /// [value] [Required] TargetRollingWindowSize value.
-  CustomTargetRollingWindowSize({
+  const CustomTargetRollingWindowSize({
     required this.mode,
     required this.value,
   });

@@ -35,7 +35,7 @@ class BundleState {
   /// [rootDiskSizeGib] The root disk size gib.
   /// [userDiskPerformanceLevel] The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
   /// [userDiskSizeGibs] The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
-  BundleState({
+  const BundleState({
     this.bundleName,
     this.description,
     this.desktopType,

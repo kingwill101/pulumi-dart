@@ -15,7 +15,7 @@ class GetPrimaryIpsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [primaryIps] (list) List of all matching primary ips. See `data.hcloud_primary_ip` for schema.
   /// [withSelector] Optional.
-  GetPrimaryIpsResult({
+  const GetPrimaryIpsResult({
     required this.id,
     required this.primaryIps,
     this.withSelector,

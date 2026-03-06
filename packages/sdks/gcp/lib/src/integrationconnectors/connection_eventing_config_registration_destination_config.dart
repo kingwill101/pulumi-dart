@@ -13,7 +13,7 @@ class ConnectionEventingConfigRegistrationDestinationConfig {
   /// Creates a new [ConnectionEventingConfigRegistrationDestinationConfig].
   /// [destinations] destinations for the connection
   /// [key] Key for the connection
-  ConnectionEventingConfigRegistrationDestinationConfig({
+  const ConnectionEventingConfigRegistrationDestinationConfig({
     this.destinations,
     this.key,
   });

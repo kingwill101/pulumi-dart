@@ -16,7 +16,7 @@ class GetIamPolicyResult {
   /// [folder] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
-  GetIamPolicyResult({
+  const GetIamPolicyResult({
     required this.etag,
     required this.folder,
     required this.id,

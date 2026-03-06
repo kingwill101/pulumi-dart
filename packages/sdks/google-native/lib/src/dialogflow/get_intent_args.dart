@@ -19,7 +19,7 @@ class GetIntentArgs {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetIntentArgs({
+  const GetIntentArgs({
     required this.intentId,
     this.intentView,
     this.languageCode,

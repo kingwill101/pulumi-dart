@@ -12,7 +12,7 @@ class ContainerImageResponseNotebooksV2 {
   /// Creates a new [ContainerImageResponseNotebooksV2].
   /// [repository] The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
   /// [tag] Optional. The tag of the container image. If not specified, this defaults to the latest tag.
-  ContainerImageResponseNotebooksV2({
+  const ContainerImageResponseNotebooksV2({
     required this.repository,
     required this.tag,
   });

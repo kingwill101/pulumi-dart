@@ -69,7 +69,7 @@ class GetInstanceFileV1beta1Result {
   /// [statusMessage] Additional information about the instance state, if available.
   /// [suspensionReasons] Field indicates all the reasons the instance is in "SUSPENDED" state.
   /// [tier] The service tier of the instance.
-  GetInstanceFileV1beta1Result({
+  const GetInstanceFileV1beta1Result({
     required this.capacityGb,
     required this.capacityStepSizeGb,
     required this.createTime,

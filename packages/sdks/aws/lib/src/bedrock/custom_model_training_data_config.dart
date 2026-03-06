@@ -8,7 +8,7 @@ class CustomModelTrainingDataConfig {
 
   /// Creates a new [CustomModelTrainingDataConfig].
   /// [s3Uri] The S3 URI where the training data is stored.
-  CustomModelTrainingDataConfig({
+  const CustomModelTrainingDataConfig({
     required this.s3Uri,
   });
 

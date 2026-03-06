@@ -12,7 +12,7 @@ class GetJobDefinitionNodePropertyNodeRangeProperty {
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangeProperty].
   /// [containers] The container details for the node range.
   /// [targetNodes] The range of nodes, using node index values. A range of 0:3 indicates nodes with index values of 0 through 3. I
-  GetJobDefinitionNodePropertyNodeRangeProperty({
+  const GetJobDefinitionNodePropertyNodeRangeProperty({
     required this.containers,
     required this.targetNodes,
   });

@@ -12,7 +12,7 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse].
   /// [disabledUserDeletion] When true, end users cannot delete their account on the associated project through any of our API methods
   /// [disabledUserSignup] When true, end users cannot sign up for a new account on the associated project through any of our API methods
-  GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse({
+  const GoogleCloudIdentitytoolkitAdminV2ClientPermissionsResponse({
     required this.disabledUserDeletion,
     required this.disabledUserSignup,
   });

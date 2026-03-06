@@ -27,7 +27,7 @@ class SmsChannelState {
   /// [senderId] Identifier of the sender for your messages.
   /// [shortCode] Short Code registered with the phone provider.
   /// [transactionalMessagesPerSecond] Maximum number of transactional messages per second that can be sent.
-  SmsChannelState({
+  const SmsChannelState({
     this.applicationId,
     this.enabled,
     this.promotionalMessagesPerSecond,

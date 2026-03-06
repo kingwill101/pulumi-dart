@@ -35,7 +35,7 @@ class RemediationAtSubscriptionArgs {
   /// [remediationName] The name of the remediation.
   /// [resourceCount] Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   /// [resourceDiscoveryMode] The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
-  RemediationAtSubscriptionArgs({
+  const RemediationAtSubscriptionArgs({
     this.failureThreshold,
     this.filters,
     this.parallelDeployments,

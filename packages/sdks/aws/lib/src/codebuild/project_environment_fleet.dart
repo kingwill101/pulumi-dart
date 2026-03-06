@@ -8,7 +8,7 @@ class ProjectEnvironmentFleet {
 
   /// Creates a new [ProjectEnvironmentFleet].
   /// [fleetArn] Compute fleet ARN for the build project.
-  ProjectEnvironmentFleet({
+  const ProjectEnvironmentFleet({
     this.fleetArn,
   });
 

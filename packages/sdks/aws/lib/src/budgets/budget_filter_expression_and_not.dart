@@ -17,7 +17,7 @@ class BudgetFilterExpressionAndNot {
   /// [costCategories] (Optional) A Cost Category Filter block.
   /// [dimensions] (Optional) A Dimension Filter block.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  BudgetFilterExpressionAndNot({
+  const BudgetFilterExpressionAndNot({
     this.costCategories,
     this.dimensions,
     this.tags,

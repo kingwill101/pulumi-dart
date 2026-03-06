@@ -41,7 +41,7 @@ class GetServiceResult {
   /// [startDate] Windows IoT Device Service start date,
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetServiceResult({
+  const GetServiceResult({
     this.adminDomainName,
     required this.azureApiVersion,
     this.billingDomainName,

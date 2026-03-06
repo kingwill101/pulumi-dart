@@ -21,7 +21,7 @@ class RepositoryIamBindingState {
   /// [region] Optional.
   /// [repository] Optional.
   /// [role] Optional.
-  RepositoryIamBindingState({
+  const RepositoryIamBindingState({
     this.condition,
     this.etag,
     this.members,

@@ -9,7 +9,7 @@ class MachineConfig {
 
   /// Creates a new [MachineConfig].
   /// [cpuCount] The number of CPU's in the VM instance.
-  MachineConfig({
+  const MachineConfig({
     this.cpuCount,
   });
 

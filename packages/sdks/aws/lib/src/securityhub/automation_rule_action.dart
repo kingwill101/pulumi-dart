@@ -12,7 +12,7 @@ class AutomationRuleAction {
   /// Creates a new [AutomationRuleAction].
   /// [findingFieldsUpdate] A block that specifies that the automation rule action is an update to a finding field.  Documented below.
   /// [type] Specifies that the rule action should update the `Types` finding field. The `Types` finding field classifies findings in the format of namespace/category/classifier.
-  AutomationRuleAction({
+  const AutomationRuleAction({
     this.findingFieldsUpdate,
     this.type,
   });

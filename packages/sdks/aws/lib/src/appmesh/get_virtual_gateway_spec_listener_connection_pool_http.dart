@@ -9,7 +9,7 @@ class GetVirtualGatewaySpecListenerConnectionPoolHttp {
   /// Creates a new [GetVirtualGatewaySpecListenerConnectionPoolHttp].
   /// [maxConnections] Required.
   /// [maxPendingRequests] Required.
-  GetVirtualGatewaySpecListenerConnectionPoolHttp({
+  const GetVirtualGatewaySpecListenerConnectionPoolHttp({
     required this.maxConnections,
     required this.maxPendingRequests,
   });

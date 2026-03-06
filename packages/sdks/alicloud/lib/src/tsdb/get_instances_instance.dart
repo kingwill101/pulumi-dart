@@ -59,7 +59,7 @@ class GetInstancesInstance {
   /// [vpcId] The ID of the virtual private cloud (VPC) that is connected to the instance.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.autoRenew,
     required this.cpuNumber,
     required this.diskCategory,

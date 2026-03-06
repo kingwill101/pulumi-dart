@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceYUMOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceYUMOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceYUMOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceYUMOsconfigV1alpha({
     required this.name,
   });
 

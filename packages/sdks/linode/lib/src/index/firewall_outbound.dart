@@ -26,7 +26,7 @@ class FirewallOutbound {
   /// [label] This Firewall's unique label.
   /// [ports] A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
   /// [protocol] The network protocol this rule controls.
-  FirewallOutbound({
+  const FirewallOutbound({
     required this.action,
     this.description,
     this.ipv4s,

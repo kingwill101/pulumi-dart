@@ -21,7 +21,7 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
   /// [metadataPath] Metadata path.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetIntegrationRuntimeObjectMetadatumArgs({
+  const GetIntegrationRuntimeObjectMetadatumArgs({
     required this.integrationRuntimeName,
     this.metadataPath,
     required this.resourceGroupName,

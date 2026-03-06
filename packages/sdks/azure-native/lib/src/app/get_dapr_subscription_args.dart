@@ -18,7 +18,7 @@ class GetDaprSubscriptionArgs {
   /// [environmentName] Name of the Managed Environment.
   /// [name] Name of the Dapr subscription.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDaprSubscriptionArgs({
+  const GetDaprSubscriptionArgs({
     required this.environmentName,
     required this.name,
     required this.resourceGroupName,

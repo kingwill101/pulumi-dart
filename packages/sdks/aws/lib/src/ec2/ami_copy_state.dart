@@ -119,7 +119,7 @@ class AmiCopyState {
   /// [uefiData] Base64 representation of the non-volatile UEFI variable store.
   /// [usageOperation] Optional.
   /// [virtualizationType] Keyword to choose what virtualization mode created instances
-  AmiCopyState({
+  const AmiCopyState({
     this.architecture,
     this.arn,
     this.bootMode,

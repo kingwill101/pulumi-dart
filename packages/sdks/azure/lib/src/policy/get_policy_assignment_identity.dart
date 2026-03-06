@@ -17,7 +17,7 @@ class GetPolicyAssignmentIdentity {
   /// [principalId] The Principal ID of the Policy Assignment for this Resource.
   /// [tenantId] The Tenant ID of the Policy Assignment for this Resource.
   /// [type] The Type of Managed Identity which is added to this Policy Assignment.
-  GetPolicyAssignmentIdentity({
+  const GetPolicyAssignmentIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

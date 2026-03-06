@@ -21,7 +21,7 @@ class GetPlacementPolicyArgs {
   /// [placementPolicyName] Name of the placement policy.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPlacementPolicyArgs({
+  const GetPlacementPolicyArgs({
     required this.clusterName,
     required this.placementPolicyName,
     required this.privateCloudName,

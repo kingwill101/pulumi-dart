@@ -12,7 +12,7 @@ class GetUserPoolUserPoolAddOn {
   /// Creates a new [GetUserPoolUserPoolAddOn].
   /// [advancedSecurityAdditionalFlows] A block of the threat protection configuration options for additional authentication types in your user pool, including custom authentication. Detailed below.
   /// [advancedSecurityMode] Mode for advanced security.
-  GetUserPoolUserPoolAddOn({
+  const GetUserPoolUserPoolAddOn({
     required this.advancedSecurityAdditionalFlows,
     required this.advancedSecurityMode,
   });

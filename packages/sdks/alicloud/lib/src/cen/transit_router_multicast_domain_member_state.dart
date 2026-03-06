@@ -24,7 +24,7 @@ class TransitRouterMulticastDomainMemberState {
   /// [status] The status of the Transit Router Multicast Domain Member.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
   /// [vpcId] The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
-  TransitRouterMulticastDomainMemberState({
+  const TransitRouterMulticastDomainMemberState({
     this.dryRun,
     this.groupIpAddress,
     this.networkInterfaceId,

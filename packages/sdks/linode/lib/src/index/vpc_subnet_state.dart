@@ -31,7 +31,7 @@ class VpcSubnetState {
   /// [linodes] A list of Linode that added to this subnet.
   /// [updated] The date and time when the VPC was last updated.
   /// [vpcId] The id of the parent VPC for this VPC subnet.
-  VpcSubnetState({
+  const VpcSubnetState({
     this.created,
     this.ipv4,
     this.ipv6s,

@@ -22,7 +22,7 @@ class WorkflowWorkflowV2Args {
   /// [namespace] The namespace of the workflow.
   /// [projectId] The id of the project to retrieve the workflow.
   /// [region] The region in which to obtain the V2 Workflow client.
-  WorkflowWorkflowV2Args({
+  const WorkflowWorkflowV2Args({
     this.name,
     this.namespace,
     this.projectId,

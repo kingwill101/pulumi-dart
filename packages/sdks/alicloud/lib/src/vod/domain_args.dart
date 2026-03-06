@@ -30,7 +30,7 @@ class DomainArgs {
   /// [sources] The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [topLevelDomain] The top-level domain name.
-  DomainArgs({
+  const DomainArgs({
     this.checkUrl,
     required this.domainName,
     this.scope,

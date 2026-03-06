@@ -34,7 +34,7 @@ class GetCloudServiceResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zones] List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.
-  GetCloudServiceResult({
+  const GetCloudServiceResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

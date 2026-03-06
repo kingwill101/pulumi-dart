@@ -30,7 +30,7 @@ class LoggingConfigResponse {
   /// [successFeedbackRoleArn] Property successFeedbackRoleArn
   /// [successFeedbackSampleRate] Property successFeedbackSampleRate
   /// [systemLogLevel] Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
-  LoggingConfigResponse({
+  const LoggingConfigResponse({
     this.applicationLogLevel,
     this.failureFeedbackRoleArn,
     this.logFormat,

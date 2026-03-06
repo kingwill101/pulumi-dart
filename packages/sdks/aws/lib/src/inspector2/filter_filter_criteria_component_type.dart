@@ -11,7 +11,7 @@ class FilterFilterCriteriaComponentType {
   /// Creates a new [FilterFilterCriteriaComponentType].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaComponentType({
+  const FilterFilterCriteriaComponentType({
     required this.comparison,
     required this.value,
   });

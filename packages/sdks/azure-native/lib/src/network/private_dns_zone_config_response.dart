@@ -16,7 +16,7 @@ class PrivateDnsZoneConfigResponse {
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [privateDnsZoneId] The resource id of the private dns zone.
   /// [recordSets] A collection of information regarding a recordSet, holding information to identify private resources.
-  PrivateDnsZoneConfigResponse({
+  const PrivateDnsZoneConfigResponse({
     this.name,
     this.privateDnsZoneId,
     required this.recordSets,

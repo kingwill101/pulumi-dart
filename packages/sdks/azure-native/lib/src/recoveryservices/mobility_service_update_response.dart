@@ -15,7 +15,7 @@ class MobilityServiceUpdateResponse {
   /// [osType] The OS type.
   /// [rebootStatus] The reboot status of the update - whether it is required or not.
   /// [version] The version of the latest update.
-  MobilityServiceUpdateResponse({
+  const MobilityServiceUpdateResponse({
     this.osType,
     this.rebootStatus,
     this.version,

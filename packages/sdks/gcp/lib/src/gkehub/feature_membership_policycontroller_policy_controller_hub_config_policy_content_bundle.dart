@@ -11,7 +11,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBun
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle].
   /// [bundleName] The name of the bundle.
   /// [exemptedNamespaces] The set of namespaces to be exempted from the bundle.
-  FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle({
+  const FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle({
     required this.bundleName,
     this.exemptedNamespaces,
   });

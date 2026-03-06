@@ -38,7 +38,7 @@ class GetSecurityGatewayResult {
   /// [serviceDiscoveries] Required.
   /// [state] Required.
   /// [updateTime] Required.
-  GetSecurityGatewayResult({
+  const GetSecurityGatewayResult({
     required this.createTime,
     required this.delegatingServiceAccount,
     required this.displayName,

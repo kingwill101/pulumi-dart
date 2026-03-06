@@ -9,7 +9,7 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRule {
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleArchiveRule].
   /// [archiveRetainRule] Information about the retention period for the snapshot archiving rule. See the `archive_retain_rule` block.
-  LifecyclePolicyPolicyDetailsScheduleArchiveRule({
+  const LifecyclePolicyPolicyDetailsScheduleArchiveRule({
     required this.archiveRetainRule,
   });
 

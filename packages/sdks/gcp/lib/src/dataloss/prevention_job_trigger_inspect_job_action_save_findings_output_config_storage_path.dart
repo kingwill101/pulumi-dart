@@ -9,7 +9,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath {
 
   /// Creates a new [PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath].
   /// [path] A URL representing a file or path (no wildcards) in Cloud Storage.
-  PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath({
+  const PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath({
     required this.path,
   });
 

@@ -17,7 +17,7 @@ class GetZonesZonePrimaryNameserver {
   /// [port] Port of the primary nameserver.
   /// [tsigAlgorithm] Transaction signature (TSIG) algorithm used to generate the TSIG key.
   /// [tsigKey] Transaction signature (TSIG) key
-  GetZonesZonePrimaryNameserver({
+  const GetZonesZonePrimaryNameserver({
     required this.address,
     required this.port,
     required this.tsigAlgorithm,

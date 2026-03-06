@@ -27,7 +27,7 @@ class ImageDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityType] Custom image security type.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  ImageDefinitionArgs({
+  const ImageDefinitionArgs({
     required this.architecture,
     this.imageDefinitionName,
     required this.osState,

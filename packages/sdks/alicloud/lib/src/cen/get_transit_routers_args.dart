@@ -30,7 +30,7 @@ class GetTransitRoutersArgs {
   /// [status] The status of the resource. Valid values `Active`, `Creating`, `Deleting` and `Updating`.
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterIds] A list of ID of the transit router.
-  GetTransitRoutersArgs({
+  const GetTransitRoutersArgs({
     required this.cenId,
     this.ids,
     this.nameRegex,

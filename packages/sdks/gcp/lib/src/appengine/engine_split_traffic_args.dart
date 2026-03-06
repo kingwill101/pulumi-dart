@@ -24,7 +24,7 @@ class EngineSplitTrafficArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The name of the service these settings apply to.
   /// [split] Mapping that defines fractional HTTP traffic diversion to different versions within the service.
-  EngineSplitTrafficArgs({
+  const EngineSplitTrafficArgs({
     this.migrateTraffic,
     this.project,
     required this.service,

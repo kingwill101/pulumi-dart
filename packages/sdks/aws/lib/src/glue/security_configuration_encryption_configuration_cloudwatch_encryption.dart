@@ -11,7 +11,7 @@ class SecurityConfigurationEncryptionConfigurationCloudwatchEncryption {
   /// Creates a new [SecurityConfigurationEncryptionConfigurationCloudwatchEncryption].
   /// [cloudwatchEncryptionMode] Encryption mode to use for CloudWatch data. Valid values: `DISABLED`, `SSE-KMS`. Default value: `DISABLED`.
   /// [kmsKeyArn] Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-  SecurityConfigurationEncryptionConfigurationCloudwatchEncryption({
+  const SecurityConfigurationEncryptionConfigurationCloudwatchEncryption({
     this.cloudwatchEncryptionMode,
     this.kmsKeyArn,
   });

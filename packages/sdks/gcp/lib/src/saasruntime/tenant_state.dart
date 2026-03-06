@@ -70,7 +70,7 @@ class TenantState {
   /// [tenantId] The ID value for the new tenant.
   /// [uid] The unique identifier of the resource. UID is unique in the time
   /// [updateTime] The timestamp when the resource was last updated. Any
-  TenantState({
+  const TenantState({
     this.annotations,
     this.consumerResource,
     this.createTime,

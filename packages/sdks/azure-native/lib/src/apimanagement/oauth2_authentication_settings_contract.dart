@@ -12,7 +12,7 @@ class OAuth2AuthenticationSettingsContract {
   /// Creates a new [OAuth2AuthenticationSettingsContract].
   /// [authorizationServerId] OAuth authorization server identifier.
   /// [scope] operations scope.
-  OAuth2AuthenticationSettingsContract({
+  const OAuth2AuthenticationSettingsContract({
     this.authorizationServerId,
     this.scope,
   });

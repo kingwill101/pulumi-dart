@@ -19,7 +19,7 @@ class GetDataSetLogicalTableMapSourceJoinInstruction {
   /// [rightJoinKeyProperties] Required.
   /// [rightOperand] Required.
   /// [type] Required.
-  GetDataSetLogicalTableMapSourceJoinInstruction({
+  const GetDataSetLogicalTableMapSourceJoinInstruction({
     required this.leftJoinKeyProperties,
     required this.leftOperand,
     required this.onClause,

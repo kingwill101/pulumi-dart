@@ -34,7 +34,7 @@ class OnPremiseSettings {
   /// [networkSettings] Network settings.
   /// [securitySettings] Security settings.
   /// [storageSettings] Storage settings.
-  OnPremiseSettings({
+  const OnPremiseSettings({
     required this.computeSettings,
     required this.facilitySettings,
     required this.laborSettings,

@@ -9,7 +9,7 @@ class ResourceIdResponse {
 
   /// Creates a new [ResourceIdResponse].
   /// [id] id name
-  ResourceIdResponse({
+  const ResourceIdResponse({
     required this.id,
   });
 

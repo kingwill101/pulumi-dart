@@ -13,7 +13,7 @@ class BrokerAuthenticatorMethodUsernamePassword {
   /// Creates a new [BrokerAuthenticatorMethodUsernamePassword].
   /// [keyVault] Keyvault username password secret properties.
   /// [secretName] Secret where username and password are stored.
-  BrokerAuthenticatorMethodUsernamePassword({
+  const BrokerAuthenticatorMethodUsernamePassword({
     this.keyVault,
     this.secretName,
   });

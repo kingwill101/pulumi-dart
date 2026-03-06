@@ -11,7 +11,7 @@ class JobIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  JobIamBindingCondition({
+  const JobIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

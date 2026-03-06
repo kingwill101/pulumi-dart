@@ -35,7 +35,7 @@ class EndpointArgs {
   /// [port] Optional. Service Directory rejects values outside of `[0, 65535]`.
   /// [project] Optional.
   /// [serviceId] Required.
-  EndpointArgs({
+  const EndpointArgs({
     this.address,
     this.annotations,
     required this.endpointId,

@@ -13,7 +13,7 @@ class AttackPathSensitiveAssetConfigArgs {
 
   /// Creates a new [AttackPathSensitiveAssetConfigArgs].
   /// [attackPathAssetLists] The attack path sensitive asset configuration list. See `attack_path_asset_list` below.
-  AttackPathSensitiveAssetConfigArgs({
+  const AttackPathSensitiveAssetConfigArgs({
     required this.attackPathAssetLists,
   });
 

@@ -25,7 +25,7 @@ class UserHierarchyGroupHierarchyPath {
   /// [levelOnes] A block that defines the details of level one. The level block is documented below.
   /// [levelThrees] A block that defines the details of level three. The level block is documented below.
   /// [levelTwos] A block that defines the details of level two. The level block is documented below.
-  UserHierarchyGroupHierarchyPath({
+  const UserHierarchyGroupHierarchyPath({
     this.levelFives,
     this.levelFours,
     this.levelOnes,

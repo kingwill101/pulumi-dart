@@ -50,7 +50,7 @@ class MountTargetState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityGroups] A list of up to 5 VPC security group IDs (that must
   /// [subnetId] The ID of the subnet to add the mount target in.
-  MountTargetState({
+  const MountTargetState({
     this.availabilityZoneId,
     this.availabilityZoneName,
     this.dnsName,

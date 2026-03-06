@@ -61,7 +61,7 @@ class VolumeAttachState {
   /// [volumeId] The ID of the Volume to attach to an Instance.
   /// [wwnn] A wwnn name. Used for Fibre Channel connections.
   /// [wwpns] An array of wwpn strings. Used for Fibre Channel
-  VolumeAttachState({
+  const VolumeAttachState({
     this.attachMode,
     this.data,
     this.device,

@@ -18,7 +18,7 @@ class GetVpnConnectionArgs {
   /// [connectionName] The name of the vpn connection.
   /// [gatewayName] The name of the gateway.
   /// [resourceGroupName] The resource group name of the VpnGateway.
-  GetVpnConnectionArgs({
+  const GetVpnConnectionArgs({
     required this.connectionName,
     required this.gatewayName,
     required this.resourceGroupName,

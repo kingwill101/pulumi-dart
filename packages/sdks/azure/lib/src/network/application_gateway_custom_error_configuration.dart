@@ -14,7 +14,7 @@ class ApplicationGatewayCustomErrorConfiguration {
   /// [customErrorPageUrl] Error page URL of the application gateway customer error.
   /// [id] The ID of the Rewrite Rule Set
   /// [statusCode] Status code of the application gateway customer error. Possible values are `HttpStatus400`, `HttpStatus403`, `HttpStatus404`, `HttpStatus405`, `HttpStatus408`, `HttpStatus500`, `HttpStatus502`, `HttpStatus503` and `HttpStatus504`
-  ApplicationGatewayCustomErrorConfiguration({
+  const ApplicationGatewayCustomErrorConfiguration({
     required this.customErrorPageUrl,
     this.id,
     required this.statusCode,

@@ -32,7 +32,7 @@ class AccessEntryArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Defaults to STANDARD which provides the standard workflow. EC2_LINUX, EC2_WINDOWS, FARGATE_LINUX types disallow users to input a username or groups, and prevent associations.
   /// [userName] Defaults to principal ARN if user is principal else defaults to assume-role/session-name is role is used.
-  AccessEntryArgs({
+  const AccessEntryArgs({
     required this.clusterName,
     this.kubernetesGroups,
     required this.principalArn,

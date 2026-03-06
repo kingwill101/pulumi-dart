@@ -13,7 +13,7 @@ class DatabaseEncryption {
   /// Creates a new [DatabaseEncryption].
   /// [keyName] Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   /// [state] The desired state of etcd encryption.
-  DatabaseEncryption({
+  const DatabaseEncryption({
     this.keyName,
     this.state,
   });

@@ -9,7 +9,7 @@ class TableReplicationRule {
 
   /// Creates a new [TableReplicationRule].
   /// [destinations] Replication destination. See Destination below for more details.
-  TableReplicationRule({
+  const TableReplicationRule({
     required this.destinations,
   });
 

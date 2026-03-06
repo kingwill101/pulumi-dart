@@ -14,7 +14,7 @@ class GetInstanceTypesInstanceTypeLocalStorage {
   /// [amount] The number of local storage devices that an instance has been attached to.
   /// [capacity] The capacity of a local storage in GB.
   /// [category] The category of local storage that an instance has been attached to.
-  GetInstanceTypesInstanceTypeLocalStorage({
+  const GetInstanceTypesInstanceTypeLocalStorage({
     required this.amount,
     required this.capacity,
     required this.category,

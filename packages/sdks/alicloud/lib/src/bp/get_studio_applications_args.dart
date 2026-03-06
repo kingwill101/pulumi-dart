@@ -32,7 +32,7 @@ class GetStudioApplicationsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the Application. Valid values: `success`, `release`.
-  GetStudioApplicationsArgs({
+  const GetStudioApplicationsArgs({
     this.ids,
     this.keyword,
     this.maxResults,

@@ -17,7 +17,7 @@ class GetServiceArgs {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.location,
     required this.namespaceId,
     this.project,

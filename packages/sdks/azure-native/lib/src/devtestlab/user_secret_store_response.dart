@@ -12,7 +12,7 @@ class UserSecretStoreResponse {
   /// Creates a new [UserSecretStoreResponse].
   /// [keyVaultId] The ID of the user's Key vault.
   /// [keyVaultUri] The URI of the user's Key vault.
-  UserSecretStoreResponse({
+  const UserSecretStoreResponse({
     this.keyVaultId,
     this.keyVaultUri,
   });

@@ -38,7 +38,7 @@ class ManagedHardwareSecurityModuleKeyArgs {
   /// [name] Specifies the name of the Key Vault Managed Hardware Security Module Key. Changing this forces a new resource to be created.
   /// [notBeforeDate] Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
   /// [tags] A mapping of tags to assign to the resource.
-  ManagedHardwareSecurityModuleKeyArgs({
+  const ManagedHardwareSecurityModuleKeyArgs({
     this.curve,
     this.expirationDate,
     required this.keyOpts,

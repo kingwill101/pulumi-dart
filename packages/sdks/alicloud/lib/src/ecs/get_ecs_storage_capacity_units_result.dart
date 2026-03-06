@@ -22,7 +22,7 @@ class GetEcsStorageCapacityUnitsResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [units] Required.
-  GetEcsStorageCapacityUnitsResult({
+  const GetEcsStorageCapacityUnitsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

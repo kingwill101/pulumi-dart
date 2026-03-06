@@ -47,7 +47,7 @@ class GetRulesArgs {
   /// [ruleType] Rule Type.
   /// [status] Sensitive Data Identification Rules Detection State of.
   /// [warnLevel] The Level of Risk. Valid values:
-  GetRulesArgs({
+  const GetRulesArgs({
     this.category,
     this.contentCategory,
     this.customType,

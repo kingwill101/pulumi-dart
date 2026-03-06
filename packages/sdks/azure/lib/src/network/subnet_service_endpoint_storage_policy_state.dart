@@ -22,7 +22,7 @@ class SubnetServiceEndpointStoragePolicyState {
   /// [name] The name which should be used for this Subnet Service Endpoint Storage Policy. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
   /// [resourceGroupName] The name of the Resource Group where the Subnet Service Endpoint Storage Policy should exist. Changing this forces a new Subnet Service Endpoint Storage Policy to be created.
   /// [tags] A mapping of tags which should be assigned to the Subnet Service Endpoint Storage Policy.
-  SubnetServiceEndpointStoragePolicyState({
+  const SubnetServiceEndpointStoragePolicyState({
     this.definitions,
     this.location,
     this.name,

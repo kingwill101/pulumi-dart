@@ -19,7 +19,7 @@ class ExperimentTemplateExperimentReportConfiguration {
   /// [outputs] The outputs for the experiment report. See below.
   /// [postExperimentDuration] The duration of the post-experiment period. Defaults to `PT20M`.
   /// [preExperimentDuration] The duration of the pre-experiment period. Defaults to `PT20M`.
-  ExperimentTemplateExperimentReportConfiguration({
+  const ExperimentTemplateExperimentReportConfiguration({
     this.dataSources,
     this.outputs,
     this.postExperimentDuration,

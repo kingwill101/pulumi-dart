@@ -15,7 +15,7 @@ class GetTopicIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicIamPolicyArgs({
+  const GetTopicIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.topicId,

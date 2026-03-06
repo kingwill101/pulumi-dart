@@ -26,7 +26,7 @@ class CacheDirectoryActiveDirectory {
   /// [domainNetbiosName] The Active Directory domain's NetBIOS name.
   /// [password] The password of the Active Directory domain administrator.
   /// [username] The username of the Active Directory domain administrator.
-  CacheDirectoryActiveDirectory({
+  const CacheDirectoryActiveDirectory({
     required this.cacheNetbiosName,
     required this.dnsPrimaryIp,
     this.dnsSecondaryIp,

@@ -33,7 +33,7 @@ class VpcConfigResponse {
   /// [subnetIds] A list of VPC subnet IDs.
   /// [subnets] &lt;p&gt;A list of one or more subnet IDs in your Amazon VPC.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The VPC associated with your cluster.&lt;/p&gt;
-  VpcConfigResponse({
+  const VpcConfigResponse({
     this.clusterSecurityGroupId,
     this.endpointPrivateAccess,
     this.endpointPublicAccess,

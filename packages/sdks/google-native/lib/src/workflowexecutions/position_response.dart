@@ -15,7 +15,7 @@ class PositionResponse {
   /// [column] The source code column position (of the line) the current instruction was generated from.
   /// [length] The number of bytes of source code making up this stack trace element.
   /// [line] The source code line number the current instruction was generated from.
-  PositionResponse({
+  const PositionResponse({
     required this.column,
     required this.length,
     required this.line,

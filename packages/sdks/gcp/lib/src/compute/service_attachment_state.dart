@@ -99,7 +99,7 @@ class ServiceAttachmentState {
   /// [showNatIps] If true, show NAT IPs of all connected endpoints.
   /// [targetService] The URL of a service serving the endpoint identified by this service attachment.
   /// [tunnelingConfig] Tunneling configuration for this service attachment.
-  ServiceAttachmentState({
+  const ServiceAttachmentState({
     this.connectedEndpoints,
     this.connectionPreference,
     this.consumerAcceptLists,

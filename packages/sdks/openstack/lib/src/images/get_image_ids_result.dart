@@ -40,7 +40,7 @@ class GetImageIdsResult {
   /// [tag] Optional.
   /// [tags] Optional.
   /// [visibility] Optional.
-  GetImageIdsResult({
+  const GetImageIdsResult({
     this.containerFormat,
     this.diskFormat,
     this.hidden,

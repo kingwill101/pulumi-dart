@@ -43,7 +43,7 @@ class TopicState {
   /// [status] (Available since v1.262.1) The status of the service.
   /// [tags] A mapping of tags to assign to the resource.
   /// [topic] The topic name.
-  TopicState({
+  const TopicState({
     this.compactTopic,
     this.configs,
     this.createTime,

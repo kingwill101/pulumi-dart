@@ -72,7 +72,7 @@ class AwsLightsailInstancePropertiesResponse {
   /// [tags] An array of key-value pairs to apply to this resource.
   /// [userData] A launch script you can create that configures a server with additional user data. For example, you might want to run apt-get -y update.
   /// [userName] Username of the  Lightsail instance.
-  AwsLightsailInstancePropertiesResponse({
+  const AwsLightsailInstancePropertiesResponse({
     this.addOns,
     this.availabilityZone,
     this.blueprintId,

@@ -28,7 +28,7 @@ class JitNetworkAccessPolicyArgs {
   /// [requests] Optional.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [virtualMachines] Configurations for Microsoft.Compute/virtualMachines resource type.
-  JitNetworkAccessPolicyArgs({
+  const JitNetworkAccessPolicyArgs({
     required this.ascLocation,
     this.jitNetworkAccessPolicyName,
     this.kind,

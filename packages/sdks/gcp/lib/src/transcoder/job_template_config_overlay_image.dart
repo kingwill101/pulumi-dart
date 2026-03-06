@@ -8,7 +8,7 @@ class JobTemplateConfigOverlayImage {
 
   /// Creates a new [JobTemplateConfigOverlayImage].
   /// [uri] URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
-  JobTemplateConfigOverlayImage({
+  const JobTemplateConfigOverlayImage({
     required this.uri,
   });
 

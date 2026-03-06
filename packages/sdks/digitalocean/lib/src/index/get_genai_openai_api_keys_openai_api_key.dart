@@ -27,7 +27,7 @@ class GetGenaiOpenaiApiKeysOpenaiApiKey {
   /// [name] Name of the API Key
   /// [updatedAt] Updated At timestamp for the API Key
   /// [uuid] OpenAI API Key Uuid
-  GetGenaiOpenaiApiKeysOpenaiApiKey({
+  const GetGenaiOpenaiApiKeysOpenaiApiKey({
     required this.createdAt,
     required this.createdBy,
     required this.deletedAt,

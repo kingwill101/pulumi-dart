@@ -12,7 +12,7 @@ class GetProjectArgs {
 
   /// Creates a new [GetProjectArgs].
   /// [projectId] The project ID. If it is not provided, the provider project is used.
-  GetProjectArgs({
+  const GetProjectArgs({
     this.projectId,
   });
 

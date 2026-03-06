@@ -10,7 +10,7 @@ class ListConnectionConsentLinksResult {
 
   /// Creates a new [ListConnectionConsentLinksResult].
   /// [value] Collection of resources
-  ListConnectionConsentLinksResult({
+  const ListConnectionConsentLinksResult({
     this.value,
   });
 

@@ -23,7 +23,7 @@ class GetDatabaseMysqlBackupsResult {
   /// [latest] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetDatabaseMysqlBackupsResult({
+  const GetDatabaseMysqlBackupsResult({
     required this.backups,
     required this.databaseId,
     this.filters,

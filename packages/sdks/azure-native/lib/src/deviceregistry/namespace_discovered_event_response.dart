@@ -29,7 +29,7 @@ class NamespaceDiscoveredEventResponse {
   /// [lastUpdatedOn] UTC timestamp indicating when the event was added or modified.
   /// [name] The name of the event.
   /// [typeRef] URI or type definition ID.
-  NamespaceDiscoveredEventResponse({
+  const NamespaceDiscoveredEventResponse({
     this.dataPoints,
     this.destinations,
     this.eventConfiguration,

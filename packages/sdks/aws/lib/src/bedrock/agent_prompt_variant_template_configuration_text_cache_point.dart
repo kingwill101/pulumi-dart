@@ -8,7 +8,7 @@ class AgentPromptVariantTemplateConfigurationTextCachePoint {
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationTextCachePoint].
   /// [type] Indicates that the CachePointBlock is of the default type. Valid values: `default`.
-  AgentPromptVariantTemplateConfigurationTextCachePoint({
+  const AgentPromptVariantTemplateConfigurationTextCachePoint({
     required this.type,
   });
 

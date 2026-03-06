@@ -63,7 +63,7 @@ class EntityRecognizerState {
   /// [versionNamePrefix] Creates a unique version name beginning with the specified prefix.
   /// [volumeKmsKeyId] ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
   /// [vpcConfig] Configuration parameters for VPC to contain Entity Recognizer resources.
-  EntityRecognizerState({
+  const EntityRecognizerState({
     this.arn,
     this.dataAccessRoleArn,
     this.inputDataConfig,

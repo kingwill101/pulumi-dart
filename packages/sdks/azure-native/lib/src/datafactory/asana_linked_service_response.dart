@@ -34,7 +34,7 @@ class AsanaLinkedServiceResponse {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AsanaLinkedServiceResponse({
+  const AsanaLinkedServiceResponse({
     this.annotations,
     required this.apiToken,
     this.connectVia,

@@ -15,7 +15,7 @@ class BackupPolicyState {
   /// [backupPeriods] Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday.
   /// [backupTime] Backup time, in the format of HH:mmZ- HH:mm Z.
   /// [instanceId] The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
-  BackupPolicyState({
+  const BackupPolicyState({
     this.backupPeriods,
     this.backupTime,
     this.instanceId,

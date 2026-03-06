@@ -32,7 +32,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings {
   /// [sampleRate] Sample rate in Hz.
   /// [spec] Use MPEG-2 AAC audio instead of MPEG-4 AAC audio for raw or MPEG-2 Transport Stream containers.
   /// [vbrQuality] VBR Quality Level - Only used if rateControlMode is VBR.
-  ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings({
+  const ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings({
     this.bitrate,
     this.codingMode,
     this.inputType,

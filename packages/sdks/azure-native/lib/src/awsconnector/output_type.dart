@@ -18,7 +18,7 @@ class OutputType {
   /// [exportName] Property exportName
   /// [outputKey] Property outputKey
   /// [outputValue] Property outputValue
-  OutputType({
+  const OutputType({
     this.description,
     this.exportName,
     this.outputKey,

@@ -45,7 +45,7 @@ class PrimaryContactState {
   /// [postalCode] The postal code of the primary contact address.
   /// [stateOrRegion] The state or region of the primary contact address. This field is required in selected countries.
   /// [websiteUrl] The URL of the website associated with the primary contact information, if any.
-  PrimaryContactState({
+  const PrimaryContactState({
     this.accountId,
     this.addressLine1,
     this.addressLine2,

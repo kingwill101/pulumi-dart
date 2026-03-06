@@ -40,7 +40,7 @@ class AzurePostgreSqlTableDataset {
   /// [table] The table name of the Azure PostgreSQL database. Type: string (or Expression with resultType string).
   /// [tableName] The table name of the Azure PostgreSQL database which includes both schema and table. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  AzurePostgreSqlTableDataset({
+  const AzurePostgreSqlTableDataset({
     this.annotations,
     this.description,
     this.folder,

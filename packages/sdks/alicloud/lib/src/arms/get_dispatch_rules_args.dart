@@ -24,7 +24,7 @@ class GetDispatchRulesArgs {
   /// [ids] A list of dispatch rule id.
   /// [nameRegex] A regex string to filter results by Dispatch Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetDispatchRulesArgs({
+  const GetDispatchRulesArgs({
     this.dispatchRuleName,
     this.enableDetails,
     this.ids,

@@ -97,7 +97,7 @@ class ServerGroupClusterArgs {
   /// [sourceLocation] The Azure region of source cluster for read replica clusters.
   /// [sourceResourceId] The resource id of source cluster for read replica clusters.
   /// [tags] Resource tags.
-  ServerGroupClusterArgs({
+  const ServerGroupClusterArgs({
     this.administratorLoginPassword,
     this.authConfig,
     this.citusVersion,

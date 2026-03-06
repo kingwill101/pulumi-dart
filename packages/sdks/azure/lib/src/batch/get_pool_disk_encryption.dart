@@ -8,7 +8,7 @@ class GetPoolDiskEncryption {
 
   /// Creates a new [GetPoolDiskEncryption].
   /// [diskEncryptionTarget] On Linux pool, only `TemporaryDisk` is supported; on Windows pool, `OsDisk` and `TemporaryDisk` must be specified.
-  GetPoolDiskEncryption({
+  const GetPoolDiskEncryption({
     required this.diskEncryptionTarget,
   });
 

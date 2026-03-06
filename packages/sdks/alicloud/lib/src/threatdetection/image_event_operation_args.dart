@@ -33,7 +33,7 @@ class ImageEventOperationArgs {
   /// [operationCode] The operation code.
   /// [scenarios] The application scope of the rule.
   /// [source] The source of the whitelist. Valid values:
-  ImageEventOperationArgs({
+  const ImageEventOperationArgs({
     required this.conditions,
     this.eventKey,
     this.eventName,

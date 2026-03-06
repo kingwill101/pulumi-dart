@@ -8,7 +8,7 @@ class RegionPerInstanceConfigPreservedStateExternalIpIpAddress {
 
   /// Creates a new [RegionPerInstanceConfigPreservedStateExternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.
-  RegionPerInstanceConfigPreservedStateExternalIpIpAddress({
+  const RegionPerInstanceConfigPreservedStateExternalIpIpAddress({
     this.address,
   });
 

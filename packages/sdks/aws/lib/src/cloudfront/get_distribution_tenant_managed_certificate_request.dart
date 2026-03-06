@@ -11,7 +11,7 @@ class GetDistributionTenantManagedCertificateRequest {
   /// [certificateTransparencyLoggingPreference] Required.
   /// [primaryDomainName] Required.
   /// [validationTokenHost] Required.
-  GetDistributionTenantManagedCertificateRequest({
+  const GetDistributionTenantManagedCertificateRequest({
     required this.certificateTransparencyLoggingPreference,
     required this.primaryDomainName,
     required this.validationTokenHost,

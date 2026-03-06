@@ -9,7 +9,7 @@ class EventSourceMappingDestinationConfig {
 
   /// Creates a new [EventSourceMappingDestinationConfig].
   /// [onFailure] Destination configuration for failed invocations. See below.
-  EventSourceMappingDestinationConfig({
+  const EventSourceMappingDestinationConfig({
     this.onFailure,
   });
 

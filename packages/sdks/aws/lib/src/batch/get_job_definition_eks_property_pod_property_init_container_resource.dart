@@ -11,7 +11,7 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainerResource {
   /// Creates a new [GetJobDefinitionEksPropertyPodPropertyInitContainerResource].
   /// [limits] The type and quantity of the resources to reserve for the container.
   /// [requests] The type and quantity of the resources to request for the container.
-  GetJobDefinitionEksPropertyPodPropertyInitContainerResource({
+  const GetJobDefinitionEksPropertyPodPropertyInitContainerResource({
     required this.limits,
     required this.requests,
   });

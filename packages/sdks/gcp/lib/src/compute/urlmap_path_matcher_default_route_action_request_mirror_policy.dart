@@ -12,7 +12,7 @@ class URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
   /// Creates a new [URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy].
   /// [backendService] The full or partial URL to the BackendService resource being mirrored to.
   /// [mirrorPercent] The percentage of requests to be mirrored to backendService.
-  URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy({
+  const URLMapPathMatcherDefaultRouteActionRequestMirrorPolicy({
     required this.backendService,
     this.mirrorPercent,
   });

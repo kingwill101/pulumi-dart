@@ -8,7 +8,7 @@ class ClusterNodeConfigGcfsConfig {
 
   /// Creates a new [ClusterNodeConfigGcfsConfig].
   /// [enabled] Whether or not the Google Container Filesystem (GCFS) is enabled
-  ClusterNodeConfigGcfsConfig({
+  const ClusterNodeConfigGcfsConfig({
     required this.enabled,
   });
 

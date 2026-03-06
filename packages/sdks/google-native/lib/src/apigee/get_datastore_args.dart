@@ -13,7 +13,7 @@ class GetDatastoreArgs {
   /// Creates a new [GetDatastoreArgs].
   /// [datastoreId] Required.
   /// [organizationId] Required.
-  GetDatastoreArgs({
+  const GetDatastoreArgs({
     required this.datastoreId,
     required this.organizationId,
   });

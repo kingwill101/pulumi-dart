@@ -13,7 +13,7 @@ class VirtualApplianceIPConfigurationResponse {
   /// Creates a new [VirtualApplianceIPConfigurationResponse].
   /// [name] Name of the IP configuration.
   /// [properties] Represents a single IP configuration properties.
-  VirtualApplianceIPConfigurationResponse({
+  const VirtualApplianceIPConfigurationResponse({
     this.name,
     this.properties,
   });

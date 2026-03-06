@@ -47,7 +47,7 @@ class AccountState {
   /// [skuName] The SKU of the Azure Maps Account. Possible values are `S0`, `S1` and `G2`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Azure Maps Account.
   /// [xMsClientId] A unique identifier for the Maps Account.
-  AccountState({
+  const AccountState({
     this.cors,
     this.dataStores,
     this.identity,

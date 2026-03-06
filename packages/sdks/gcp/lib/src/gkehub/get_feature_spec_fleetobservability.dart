@@ -9,7 +9,7 @@ class GetFeatureSpecFleetobservability {
 
   /// Creates a new [GetFeatureSpecFleetobservability].
   /// [loggingConfigs] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
-  GetFeatureSpecFleetobservability({
+  const GetFeatureSpecFleetobservability({
     required this.loggingConfigs,
   });
 

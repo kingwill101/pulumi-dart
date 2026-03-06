@@ -27,7 +27,7 @@ class AzureMachineLearningWebServiceFunctionBindingResponse {
   /// [inputs] The inputs for the Azure Machine Learning web service endpoint.
   /// [outputs] A list of outputs from the Azure Machine Learning web service endpoint execution.
   /// [type] Indicates the function binding type.
-  AzureMachineLearningWebServiceFunctionBindingResponse({
+  const AzureMachineLearningWebServiceFunctionBindingResponse({
     this.apiKey,
     this.batchSize,
     this.endpoint,

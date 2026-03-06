@@ -11,7 +11,7 @@ class WorkspaceNamedValueValueFromKeyVault {
   /// Creates a new [WorkspaceNamedValueValueFromKeyVault].
   /// [identityClientId] The client ID of the User Assigned Identity, for the API Management Service, which will be used to access the key vault secret. The System Assigned Identity will be used if not specified.
   /// [secretId] The resource ID of the Key Vault Secret.
-  WorkspaceNamedValueValueFromKeyVault({
+  const WorkspaceNamedValueValueFromKeyVault({
     this.identityClientId,
     required this.secretId,
   });

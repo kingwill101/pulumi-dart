@@ -18,7 +18,7 @@ class HostAttachmentArgs {
   /// [hostGroupId] Specifies the added to the host group ID.
   /// [hostId] Specified to be part of a host group of host ID.
   /// [instanceId] The bastion host instance id.
-  HostAttachmentArgs({
+  const HostAttachmentArgs({
     required this.hostGroupId,
     required this.hostId,
     required this.instanceId,

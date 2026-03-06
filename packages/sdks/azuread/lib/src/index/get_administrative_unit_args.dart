@@ -17,7 +17,7 @@ class GetAdministrativeUnitArgs {
   /// Creates a new [GetAdministrativeUnitArgs].
   /// [displayName] Specifies the display name of the administrative unit.
   /// [objectId] Specifies the object ID of the administrative unit.
-  GetAdministrativeUnitArgs({
+  const GetAdministrativeUnitArgs({
     this.displayName,
     this.objectId,
   });

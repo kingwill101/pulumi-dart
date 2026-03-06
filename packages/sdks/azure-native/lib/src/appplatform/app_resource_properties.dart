@@ -52,7 +52,7 @@ class AppResourceProperties {
   /// [testEndpointAuthState] State of test endpoint auth.
   /// [vnetAddons] Additional App settings in vnet injection instance
   /// [workloadProfileName] The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  AppResourceProperties({
+  const AppResourceProperties({
     this.addonConfigs,
     this.customPersistentDisks,
     this.enableEndToEndTLS,

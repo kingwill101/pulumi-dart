@@ -69,7 +69,7 @@ class GetFirewallResult {
   /// [transitGatewayOwnerAccountId] The AWS account ID that owns the transit gateway.
   /// [updateToken] String token used when updating a firewall.
   /// [vpcId] Unique identifier of the VPC where AWS Network Firewall should create the firewall.
-  GetFirewallResult({
+  const GetFirewallResult({
     required this.arn,
     required this.availabilityZoneChangeProtection,
     required this.availabilityZoneMappings,

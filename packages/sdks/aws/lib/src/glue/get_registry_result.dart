@@ -18,7 +18,7 @@ class GetRegistryResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetRegistryResult({
+  const GetRegistryResult({
     required this.arn,
     required this.description,
     required this.id,

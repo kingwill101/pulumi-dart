@@ -9,7 +9,7 @@ class HciValidationFailureDetailResponse {
 
   /// Creates a new [HciValidationFailureDetailResponse].
   /// [exception] Exception details while installing extension.
-  HciValidationFailureDetailResponse({
+  const HciValidationFailureDetailResponse({
     required this.exception,
   });
 

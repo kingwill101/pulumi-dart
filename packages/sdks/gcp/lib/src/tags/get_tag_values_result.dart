@@ -15,7 +15,7 @@ class GetTagValuesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [parent] The resource name of the new TagValue's parent TagKey. Must be of the form tagKeys/{tag_key_id}.
   /// [values] Required.
-  GetTagValuesResult({
+  const GetTagValuesResult({
     required this.id,
     required this.parent,
     required this.values,

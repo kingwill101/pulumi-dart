@@ -13,7 +13,7 @@ class EntityMappingResponse {
   /// Creates a new [EntityMappingResponse].
   /// [entityType] The V3 type of the mapped entity
   /// [fieldMappings] array of field mappings for the given entity mapping
-  EntityMappingResponse({
+  const EntityMappingResponse({
     this.entityType,
     this.fieldMappings,
   });

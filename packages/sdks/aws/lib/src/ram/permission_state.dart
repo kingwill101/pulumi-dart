@@ -39,7 +39,7 @@ class PermissionState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [version] The version of the permission associated with this resource share.
-  PermissionState({
+  const PermissionState({
     this.arn,
     this.defaultVersion,
     this.name,

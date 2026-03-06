@@ -32,7 +32,7 @@ class GetDatabaseResult {
   /// [project] Optional.
   /// [state] Required.
   /// [versionRetentionPeriod] Required.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.databaseDialect,
     required this.ddls,
     required this.defaultTimeZone,

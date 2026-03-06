@@ -29,7 +29,7 @@ class V3ProvisionConfigTargetTrackingPolicy {
   /// [name] Policy Name
   /// [startTime] Policy Effective Time
   /// [timeZone] Time zone.
-  V3ProvisionConfigTargetTrackingPolicy({
+  const V3ProvisionConfigTargetTrackingPolicy({
     this.endTime,
     this.maxCapacity,
     this.metricTarget,

@@ -31,7 +31,7 @@ class SummaryLogArgs {
   /// [ruleType] SummaryRules rule type: User.
   /// [summaryLogsName] The name of the summary logs. Must not contain '/'.
   /// [workspaceName] The name of the workspace.
-  SummaryLogArgs({
+  const SummaryLogArgs({
     this.description,
     this.displayName,
     required this.resourceGroupName,

@@ -14,7 +14,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   /// [audioOnlyImage] Optional.
   /// [audioTrackType] Optional.
   /// [segmentType] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings({
     this.audioGroupId,
     this.audioOnlyImage,
     this.audioTrackType,

@@ -9,7 +9,7 @@ class FleetState {
 
   /// Creates a new [FleetState].
   /// [code] (Output)
-  FleetState({
+  const FleetState({
     this.code,
   });
 

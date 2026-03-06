@@ -53,7 +53,7 @@ class TrustConfigState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [trustStores] Set of trust stores to perform validation against.
   /// [updateTime] The last update timestamp of a TrustConfig.
-  TrustConfigState({
+  const TrustConfigState({
     this.allowlistedCertificates,
     this.createTime,
     this.description,

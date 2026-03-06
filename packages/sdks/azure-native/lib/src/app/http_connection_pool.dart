@@ -12,7 +12,7 @@ class HttpConnectionPool {
   /// Creates a new [HttpConnectionPool].
   /// [http1MaxPendingRequests] Maximum number of pending http1 requests allowed
   /// [http2MaxRequests] Maximum number of http2 requests allowed
-  HttpConnectionPool({
+  const HttpConnectionPool({
     this.http1MaxPendingRequests,
     this.http2MaxRequests,
   });

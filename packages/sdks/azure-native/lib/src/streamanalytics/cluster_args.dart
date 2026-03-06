@@ -25,7 +25,7 @@ class ClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
   /// [tags] Resource tags.
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterName,
     this.location,
     required this.resourceGroupName,

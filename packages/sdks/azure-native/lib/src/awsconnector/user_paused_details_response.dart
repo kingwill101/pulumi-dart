@@ -15,7 +15,7 @@ class UserPausedDetailsResponse {
   /// [jobExpiresAt] &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.&lt;/p&gt;
   /// [jobImminentExpirationHealthEventArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.&lt;/p&gt;
   /// [jobPausedAt] &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when you paused the job.&lt;/p&gt;
-  UserPausedDetailsResponse({
+  const UserPausedDetailsResponse({
     this.jobExpiresAt,
     this.jobImminentExpirationHealthEventArn,
     this.jobPausedAt,

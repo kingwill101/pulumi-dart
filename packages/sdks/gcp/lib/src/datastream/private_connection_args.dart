@@ -42,7 +42,7 @@ class PrivateConnectionArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [pscInterfaceConfig] The PSC Interface configuration is used to create PSC Interface
   /// [vpcPeeringConfig] The VPC Peering configuration is used to create VPC peering
-  PrivateConnectionArgs({
+  const PrivateConnectionArgs({
     this.createWithoutValidation,
     required this.displayName,
     this.labels,

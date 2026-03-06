@@ -17,7 +17,7 @@ class GetReservationIamPolicyComputeV1Args {
   /// [project] Optional.
   /// [resource] Required.
   /// [zone] Required.
-  GetReservationIamPolicyComputeV1Args({
+  const GetReservationIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

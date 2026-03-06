@@ -53,7 +53,7 @@ class RegistryEnterpriseSyncRuleArgs {
   /// [targetRegionId] The region ID of the destination instance.
   /// [targetRepoName] The image repository name of the destination instance.
   /// [targetUserId] The UID of the account to which the target instance belongs.
-  RegistryEnterpriseSyncRuleArgs({
+  const RegistryEnterpriseSyncRuleArgs({
     required this.instanceId,
     this.name,
     required this.namespaceName,

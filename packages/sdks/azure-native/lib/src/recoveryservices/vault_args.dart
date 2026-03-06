@@ -33,7 +33,7 @@ class VaultArgs {
   /// [sku] Identifies the unique system identifier for each Azure resource.
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
-  VaultArgs({
+  const VaultArgs({
     this.identity,
     this.location,
     this.properties,

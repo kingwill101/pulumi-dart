@@ -22,7 +22,7 @@ class GetRegionSslCertificateArgs {
   /// [name] The name of the certificate.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetRegionSslCertificateArgs({
+  const GetRegionSslCertificateArgs({
     required this.name,
     this.project,
     this.region,

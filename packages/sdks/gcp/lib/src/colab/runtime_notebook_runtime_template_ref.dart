@@ -8,7 +8,7 @@ class RuntimeNotebookRuntimeTemplateRef {
 
   /// Creates a new [RuntimeNotebookRuntimeTemplateRef].
   /// [notebookRuntimeTemplate] The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
-  RuntimeNotebookRuntimeTemplateRef({
+  const RuntimeNotebookRuntimeTemplateRef({
     required this.notebookRuntimeTemplate,
   });
 

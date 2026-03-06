@@ -32,7 +32,7 @@ class GetTransitRouterMulticastDomainPeerMembersArgs {
   /// [resourceType] The type of the multicast resource. Valid values:
   /// [transitRouterAttachmentId] The ID of the network instance connection.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
-  GetTransitRouterMulticastDomainPeerMembersArgs({
+  const GetTransitRouterMulticastDomainPeerMembersArgs({
     this.ids,
     this.outputFile,
     this.peerTransitRouterMulticastDomains,

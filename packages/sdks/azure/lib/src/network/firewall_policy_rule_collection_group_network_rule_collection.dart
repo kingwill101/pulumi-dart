@@ -18,7 +18,7 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollection {
   /// [name] The name which should be used for this network rule collection.
   /// [priority] The priority of the network rule collection. The range is `100` - `65000`.
   /// [rules] One or more `network_rule` blocks as defined below.
-  FirewallPolicyRuleCollectionGroupNetworkRuleCollection({
+  const FirewallPolicyRuleCollectionGroupNetworkRuleCollection({
     required this.action,
     required this.name,
     required this.priority,

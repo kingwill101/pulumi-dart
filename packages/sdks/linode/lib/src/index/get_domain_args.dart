@@ -15,7 +15,7 @@ class GetDomainArgs {
   /// Creates a new [GetDomainArgs].
   /// [domain] The unique domain name of the Domain record to query.
   /// [id] The unique numeric ID of the Domain record to query.
-  GetDomainArgs({
+  const GetDomainArgs({
     this.domain,
     this.id,
   });

@@ -7,7 +7,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier {
 
   /// Creates a new [GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier].
   /// [chatbotId] Required.
-  GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier({
+  const GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier({
     required this.chatbotId,
   });
 

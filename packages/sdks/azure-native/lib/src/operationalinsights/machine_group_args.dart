@@ -35,7 +35,7 @@ class MachineGroupArgs {
   /// [machines] References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
   /// [resourceGroupName] Resource group name within the specified subscriptionId.
   /// [workspaceName] OMS workspace containing the resources of interest.
-  MachineGroupArgs({
+  const MachineGroupArgs({
     this.count,
     required this.displayName,
     this.groupType,

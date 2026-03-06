@@ -17,7 +17,7 @@ class SocketioIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of Managed Identity for this Web PubSub Service. Possible Values are `SystemAssigned` and `UserAssigned`.
-  SocketioIdentity({
+  const SocketioIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

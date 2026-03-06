@@ -13,7 +13,7 @@ class ArcConnectivityProperties {
   /// Creates a new [ArcConnectivityProperties].
   /// [enabled] True indicates ARC connectivity is enabled
   /// [serviceConfigurations] Service configurations associated with the connectivity resource. They are only processed by the server if 'enabled' property is set to 'true'.
-  ArcConnectivityProperties({
+  const ArcConnectivityProperties({
     this.enabled,
     this.serviceConfigurations,
   });

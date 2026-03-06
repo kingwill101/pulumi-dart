@@ -11,7 +11,7 @@ class SolutionInstanceParameter {
   /// Creates a new [SolutionInstanceParameter].
   /// [parameterKey] Create parameter Key.
   /// [parameterValue] Create parameter Value.
-  SolutionInstanceParameter({
+  const SolutionInstanceParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

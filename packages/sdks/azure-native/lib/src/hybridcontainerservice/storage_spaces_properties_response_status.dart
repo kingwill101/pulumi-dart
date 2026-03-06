@@ -10,7 +10,7 @@ class StorageSpacesPropertiesResponseStatus {
 
   /// Creates a new [StorageSpacesPropertiesResponseStatus].
   /// [provisioningStatus] Contains Provisioning errors
-  StorageSpacesPropertiesResponseStatus({
+  const StorageSpacesPropertiesResponseStatus({
     this.provisioningStatus,
   });
 

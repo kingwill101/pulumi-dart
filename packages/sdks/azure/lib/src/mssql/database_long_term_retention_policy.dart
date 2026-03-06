@@ -20,7 +20,7 @@ class DatabaseLongTermRetentionPolicy {
   /// [weekOfYear] The week of year to take the yearly backup. Value has to be between `1` and `52`.
   /// [weeklyRetention] The weekly retention policy for an LTR backup in an ISO 8601 format. Valid value is between 1 to 520 weeks. e.g. `P1Y`, `P1M`, `P1W` or `P7D`. Defaults to `PT0S`.
   /// [yearlyRetention] The yearly retention policy for an LTR backup in an ISO 8601 format. Valid value is between 1 to 10 years. e.g. `P1Y`, `P12M`, `P52W` or `P365D`. Defaults to `PT0S`.
-  DatabaseLongTermRetentionPolicy({
+  const DatabaseLongTermRetentionPolicy({
     this.immutableBackupsEnabled,
     this.monthlyRetention,
     this.weekOfYear,

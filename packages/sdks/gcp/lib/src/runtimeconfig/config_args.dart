@@ -22,7 +22,7 @@ class ConfigArgs {
   /// [description] The description to associate with the runtime
   /// [name] The name of the runtime config.
   /// [project] The ID of the project in which the resource belongs. If it
-  ConfigArgs({
+  const ConfigArgs({
     this.description,
     this.name,
     this.project,

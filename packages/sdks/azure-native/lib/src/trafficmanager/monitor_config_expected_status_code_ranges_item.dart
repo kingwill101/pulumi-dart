@@ -12,7 +12,7 @@ class MonitorConfigExpectedStatusCodeRangesItem {
   /// Creates a new [MonitorConfigExpectedStatusCodeRangesItem].
   /// [max] Max status code.
   /// [min] Min status code.
-  MonitorConfigExpectedStatusCodeRangesItem({
+  const MonitorConfigExpectedStatusCodeRangesItem({
     this.max,
     this.min,
   });

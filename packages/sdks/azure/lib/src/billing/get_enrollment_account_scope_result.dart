@@ -12,7 +12,7 @@ class GetEnrollmentAccountScopeResult {
   /// [billingAccountName] Required.
   /// [enrollmentAccountName] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetEnrollmentAccountScopeResult({
+  const GetEnrollmentAccountScopeResult({
     required this.billingAccountName,
     required this.enrollmentAccountName,
     required this.id,

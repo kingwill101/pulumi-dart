@@ -11,7 +11,7 @@ class GetScalingConfigurationsConfigurationSpotPriceLimit {
   /// Creates a new [GetScalingConfigurationsConfigurationSpotPriceLimit].
   /// [instanceType] Resource type of an ECS instance.
   /// [priceLimit] Price limit hourly of instance type.
-  GetScalingConfigurationsConfigurationSpotPriceLimit({
+  const GetScalingConfigurationsConfigurationSpotPriceLimit({
     required this.instanceType,
     required this.priceLimit,
   });

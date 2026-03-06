@@ -32,7 +32,7 @@ class GetDatabaseSqladminV1beta4Result {
   /// [project] The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
   /// [selfLink] The URI of this resource.
   /// [sqlserverDatabaseDetails] Required.
-  GetDatabaseSqladminV1beta4Result({
+  const GetDatabaseSqladminV1beta4Result({
     required this.charset,
     required this.collation,
     required this.etag,

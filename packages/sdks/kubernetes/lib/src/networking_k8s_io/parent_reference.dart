@@ -18,7 +18,7 @@ class ParentReference {
   /// [name] Name is the name of the object being referenced.
   /// [namespace] Namespace is the namespace of the object being referenced.
   /// [resource] Resource is the resource of the object being referenced.
-  ParentReference({
+  const ParentReference({
     this.group,
     required this.name,
     this.namespace,

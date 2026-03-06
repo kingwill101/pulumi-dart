@@ -13,7 +13,7 @@ class ShareSettingsComputeV1 {
   /// Creates a new [ShareSettingsComputeV1].
   /// [projectMap] A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   /// [shareType] Type of sharing for this shared-reservation
-  ShareSettingsComputeV1({
+  const ShareSettingsComputeV1({
     this.projectMap,
     this.shareType,
   });

@@ -22,7 +22,7 @@ class URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule {
   /// [matchResponseCodes] Valid values include:
   /// [overrideResponseCode] The HTTP status code returned with the response containing the custom error content.
   /// [path] The full path to a file within backendBucket. For example: /errors/defaultError.html
-  URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule({
+  const URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule({
     this.matchResponseCodes,
     this.overrideResponseCode,
     this.path,

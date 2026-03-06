@@ -8,7 +8,7 @@ class StatefulPolicyComputeV1 {
 
   /// Creates a new [StatefulPolicyComputeV1].
   /// [preservedState] Optional.
-  StatefulPolicyComputeV1({
+  const StatefulPolicyComputeV1({
     this.preservedState,
   });
 

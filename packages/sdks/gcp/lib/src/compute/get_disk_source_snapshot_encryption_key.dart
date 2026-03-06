@@ -24,7 +24,7 @@ class GetDiskSourceSnapshotEncryptionKey {
   /// [kmsKeyServiceAccount] The service account used for the encryption request for the given KMS key.
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [sha256] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-  GetDiskSourceSnapshotEncryptionKey({
+  const GetDiskSourceSnapshotEncryptionKey({
     required this.kmsKeySelfLink,
     required this.kmsKeyServiceAccount,
     required this.rawKey,

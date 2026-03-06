@@ -21,7 +21,7 @@ class ConditionalColumnSetValueResponse {
   /// [sourceNumericFilter] Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as NUMERIC/NUMBER data types.
   /// [sourceTextFilter] Optional. Optional filter on source column length. Used for text based data types like varchar.
   /// [valueTransformation] Description of data transformation during migration.
-  ConditionalColumnSetValueResponse({
+  const ConditionalColumnSetValueResponse({
     required this.customFeatures,
     required this.sourceNumericFilter,
     required this.sourceTextFilter,

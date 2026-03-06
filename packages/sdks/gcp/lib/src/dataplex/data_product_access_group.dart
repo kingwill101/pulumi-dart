@@ -22,7 +22,7 @@ class DataProductAccessGroup {
   /// [groupId] Unique identifier of the access group.
   /// [id] The identifier for this object. Format specified above.
   /// [principal] The principal entity.
-  DataProductAccessGroup({
+  const DataProductAccessGroup({
     this.description,
     required this.displayName,
     required this.groupId,

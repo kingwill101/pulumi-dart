@@ -37,7 +37,7 @@ class GetZoneRecordsRecord {
   /// [ttl] The time to live (TTL) of the Private Zone Record.
   /// [type] The type of the Private Zone Record.
   /// [value] The value of the Private Zone Record.
-  GetZoneRecordsRecord({
+  const GetZoneRecordsRecord({
     required this.id,
     required this.priority,
     required this.recordId,

@@ -20,7 +20,7 @@ class BucketWebsiteConfigurationRoutingRuleRedirect {
   /// [protocol] Protocol to use when redirecting requests. The default is the protocol that is used in the original request. Valid values: `http`, `https`.
   /// [replaceKeyPrefixWith] Object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix `docs/` (objects in the `docs/` folder) to `documents/`, you can set a `condition` block with `key_prefix_equals` set to `docs/` and in the `redirect` set `replace_key_prefix_with` to `/documents`.
   /// [replaceKeyWith] Specific object key to use in the redirect request. For example, redirect request to `error.html`.
-  BucketWebsiteConfigurationRoutingRuleRedirect({
+  const BucketWebsiteConfigurationRoutingRuleRedirect({
     this.hostName,
     this.httpRedirectCode,
     this.protocol,

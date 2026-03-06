@@ -13,7 +13,7 @@ class CloudRunConfig {
   /// Creates a new [CloudRunConfig].
   /// [disabled] Whether Cloud Run addon is enabled for this cluster.
   /// [loadBalancerType] Which load balancer type is installed for Cloud Run.
-  CloudRunConfig({
+  const CloudRunConfig({
     this.disabled,
     this.loadBalancerType,
   });

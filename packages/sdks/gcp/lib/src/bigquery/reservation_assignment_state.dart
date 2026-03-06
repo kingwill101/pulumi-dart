@@ -29,7 +29,7 @@ class ReservationAssignmentState {
   /// [project] The ID of the project in which the resource belongs.
   /// [reservation] The reservation for the resource
   /// [state] Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
-  ReservationAssignmentState({
+  const ReservationAssignmentState({
     this.assignee,
     this.jobType,
     this.location,

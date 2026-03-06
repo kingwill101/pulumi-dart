@@ -18,7 +18,7 @@ class PortCondition {
   /// [portGroupNames] List of the port Group Names that need to be matched.
   /// [portType] Port type that needs to be matched.
   /// [ports] List of the Ports that need to be matched.
-  PortCondition({
+  const PortCondition({
     required this.layer4Protocol,
     this.portGroupNames,
     this.portType,

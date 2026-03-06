@@ -46,7 +46,7 @@ class FileServerReadSettingsResponse {
   /// [type] The read setting type.
   /// [wildcardFileName] FileServer wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] FileServer wildcardFolderPath. Type: string (or Expression with resultType string).
-  FileServerReadSettingsResponse({
+  const FileServerReadSettingsResponse({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

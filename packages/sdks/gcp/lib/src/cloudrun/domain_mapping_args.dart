@@ -29,7 +29,7 @@ class DomainMappingArgs {
   /// [name] Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   /// [project] The ID of the project in which the resource belongs.
   /// [spec] The spec for this DomainMapping.
-  DomainMappingArgs({
+  const DomainMappingArgs({
     required this.location,
     this.metadata,
     this.name,

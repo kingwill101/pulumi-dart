@@ -13,7 +13,7 @@ class DnsResourceReferenceResponse {
   /// Creates a new [DnsResourceReferenceResponse].
   /// [dnsResources] A list of dns Records
   /// [targetResource] A reference to an azure resource from where the dns resource value is taken.
-  DnsResourceReferenceResponse({
+  const DnsResourceReferenceResponse({
     this.dnsResources,
     this.targetResource,
   });

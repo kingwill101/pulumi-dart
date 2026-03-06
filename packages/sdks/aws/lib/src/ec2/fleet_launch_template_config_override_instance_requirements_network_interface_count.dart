@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount].
   /// [max] The maximum number of network interfaces. To specify no maximum limit, omit this parameter.
   /// [min] The minimum number of network interfaces. To specify no minimum limit, omit this parameter.
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount({
     this.max,
     this.min,
   });

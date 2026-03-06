@@ -17,7 +17,7 @@ class Cron {
   /// [expression] [Required] Specifies cron expression of schedule.
   /// [startTime] The start time in yyyy-MM-ddTHH:mm:ss format.
   /// [timeZone] Specifies time zone in which the schedule runs.
-  Cron({
+  const Cron({
     this.expression,
     this.startTime,
     this.timeZone,

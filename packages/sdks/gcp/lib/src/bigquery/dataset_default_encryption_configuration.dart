@@ -10,7 +10,7 @@ class DatasetDefaultEncryptionConfiguration {
 
   /// Creates a new [DatasetDefaultEncryptionConfiguration].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination
-  DatasetDefaultEncryptionConfiguration({
+  const DatasetDefaultEncryptionConfiguration({
     required this.kmsKeyName,
   });
 

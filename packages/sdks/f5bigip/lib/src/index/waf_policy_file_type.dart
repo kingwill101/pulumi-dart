@@ -16,7 +16,7 @@ class WafPolicyFileType {
   /// [allowed] Determines whether the file type is allowed or disallowed. In either of these cases the VIOL_FILETYPE violation is issued (if enabled) for an incoming request-
   /// [name] Specifies the file type name as appearing in the URL extension.
   /// [type] Determines the type of the name attribute. Only when setting the type to `wildcard` will the special wildcard characters in the name be interpreted as such
-  WafPolicyFileType({
+  const WafPolicyFileType({
     this.allowed,
     this.name,
     this.type,

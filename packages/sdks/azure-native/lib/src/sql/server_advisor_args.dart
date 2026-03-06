@@ -22,7 +22,7 @@ class ServerAdvisorArgs {
   /// [autoExecuteStatus] Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  ServerAdvisorArgs({
+  const ServerAdvisorArgs({
     this.advisorName,
     required this.autoExecuteStatus,
     required this.resourceGroupName,

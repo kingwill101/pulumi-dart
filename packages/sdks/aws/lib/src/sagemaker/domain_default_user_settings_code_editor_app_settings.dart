@@ -23,7 +23,7 @@ class DomainDefaultUserSettingsCodeEditorAppSettings {
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a CodeEditor app. see `custom_image` Block below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  DomainDefaultUserSettingsCodeEditorAppSettings({
+  const DomainDefaultUserSettingsCodeEditorAppSettings({
     this.appLifecycleManagement,
     this.builtInLifecycleConfigArn,
     this.customImages,

@@ -17,7 +17,7 @@ class GetNetworkManagerConnectivityConfigurationAppliesToGroup {
   /// [groupConnectivity] The group connectivity type.
   /// [networkGroupId] The ID of the Network Manager Network Group.
   /// [useHubGateway] Whether hub gateway is used.
-  GetNetworkManagerConnectivityConfigurationAppliesToGroup({
+  const GetNetworkManagerConnectivityConfigurationAppliesToGroup({
     required this.globalMeshEnabled,
     required this.groupConnectivity,
     required this.networkGroupId,

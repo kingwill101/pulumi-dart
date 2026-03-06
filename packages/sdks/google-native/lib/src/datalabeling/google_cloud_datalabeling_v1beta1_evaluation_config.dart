@@ -10,7 +10,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationConfig {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1EvaluationConfig].
   /// [boundingBoxEvaluationOptions] Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
-  GoogleCloudDatalabelingV1beta1EvaluationConfig({
+  const GoogleCloudDatalabelingV1beta1EvaluationConfig({
     this.boundingBoxEvaluationOptions,
   });
 

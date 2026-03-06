@@ -55,7 +55,7 @@ class GuestPoliciesArgs {
   /// [packages] The software packages to be managed by this policy.
   /// [project] The ID of the project in which the resource belongs.
   /// [recipes] A list of Recipes to install on the VM instance.
-  GuestPoliciesArgs({
+  const GuestPoliciesArgs({
     required this.assignment,
     this.description,
     this.etag,

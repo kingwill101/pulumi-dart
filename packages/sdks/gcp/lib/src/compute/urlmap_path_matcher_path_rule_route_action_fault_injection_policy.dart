@@ -15,7 +15,7 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy {
   /// Creates a new [URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy({
+  const URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicy({
     this.abort,
     this.delay,
   });

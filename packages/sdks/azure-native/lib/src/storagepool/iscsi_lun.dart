@@ -12,7 +12,7 @@ class IscsiLun {
   /// Creates a new [IscsiLun].
   /// [managedDiskAzureResourceId] Azure Resource ID of the Managed Disk.
   /// [name] User defined name for iSCSI LUN; example: "lun0"
-  IscsiLun({
+  const IscsiLun({
     required this.managedDiskAzureResourceId,
     required this.name,
   });

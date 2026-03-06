@@ -32,7 +32,7 @@ class GetAccountResult {
   /// [name] The fully-qualified name of the service account.
   /// [project] Optional.
   /// [uniqueId] The unique id of the service account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accountId,
     required this.disabled,
     required this.displayName,

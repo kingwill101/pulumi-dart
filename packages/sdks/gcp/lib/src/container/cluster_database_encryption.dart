@@ -13,7 +13,7 @@ class ClusterDatabaseEncryption {
   /// Creates a new [ClusterDatabaseEncryption].
   /// [keyName] the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
   /// [state] `ENCRYPTED` or `DECRYPTED`
-  ClusterDatabaseEncryption({
+  const ClusterDatabaseEncryption({
     this.keyName,
     required this.state,
   });

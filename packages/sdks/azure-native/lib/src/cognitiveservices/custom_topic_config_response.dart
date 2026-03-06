@@ -15,7 +15,7 @@ class CustomTopicConfigResponse {
   /// [blocking] If blocking would occur.
   /// [source] Content source to apply the Content Filters.
   /// [topicName] Name of RAI topic.
-  CustomTopicConfigResponse({
+  const CustomTopicConfigResponse({
     this.blocking,
     this.source,
     this.topicName,

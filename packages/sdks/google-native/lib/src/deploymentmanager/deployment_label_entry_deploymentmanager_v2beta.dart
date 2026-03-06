@@ -12,7 +12,7 @@ class DeploymentLabelEntryDeploymentmanagerV2beta {
   /// Creates a new [DeploymentLabelEntryDeploymentmanagerV2beta].
   /// [key] Key of the label
   /// [value] Value of the label
-  DeploymentLabelEntryDeploymentmanagerV2beta({
+  const DeploymentLabelEntryDeploymentmanagerV2beta({
     this.key,
     this.value,
   });

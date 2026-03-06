@@ -21,7 +21,7 @@ class GkeServiceResponse {
   /// [namespaceName] The name of the parent namespace.
   /// [project] The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
   /// [serviceName] The name of this service.
-  GkeServiceResponse({
+  const GkeServiceResponse({
     required this.clusterName,
     required this.location,
     required this.namespaceName,

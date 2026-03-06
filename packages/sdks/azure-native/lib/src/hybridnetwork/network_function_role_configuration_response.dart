@@ -37,7 +37,7 @@ class NetworkFunctionRoleConfigurationResponse {
   /// [userDataParameters] The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.
   /// [userDataTemplate] The user data template for customers. This is a json schema template describing the format and data type of user data parameters.
   /// [virtualMachineSize] The size of the virtual machine.
-  NetworkFunctionRoleConfigurationResponse({
+  const NetworkFunctionRoleConfigurationResponse({
     this.customProfile,
     this.networkInterfaces,
     this.osProfile,

@@ -11,7 +11,7 @@ class GetBillingHubServiceFreeHourBalanceResult {
   /// Creates a new [GetBillingHubServiceFreeHourBalanceResult].
   /// [incrementEntries] Optional.
   /// [totalRemainingFreeHours] Optional.
-  GetBillingHubServiceFreeHourBalanceResult({
+  const GetBillingHubServiceFreeHourBalanceResult({
     this.incrementEntries,
     this.totalRemainingFreeHours,
   });

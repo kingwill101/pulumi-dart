@@ -16,7 +16,7 @@ class Ec2InstanceArgs {
   /// Creates a new [Ec2InstanceArgs].
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  Ec2InstanceArgs({
+  const Ec2InstanceArgs({
     this.properties,
     required this.resourceUri,
   });

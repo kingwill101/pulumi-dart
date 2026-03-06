@@ -125,7 +125,7 @@ class BaseInstanceArgs {
   /// [series] Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
   /// [upgradeSpecNative] Valid values:
   /// [zones] Information about the zone where the cluster is deployed.
-  BaseInstanceArgs({
+  const BaseInstanceArgs({
     this.autoRenew,
     this.autoRenewPeriod,
     this.backupRetainMode,

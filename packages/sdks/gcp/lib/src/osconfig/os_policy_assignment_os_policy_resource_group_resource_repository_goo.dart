@@ -11,7 +11,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo].
   /// [name] The name of the repository.
   /// [url] The url of the repository.
-  OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo({
     required this.name,
     required this.url,
   });

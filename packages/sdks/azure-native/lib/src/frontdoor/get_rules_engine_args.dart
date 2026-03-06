@@ -18,7 +18,7 @@ class GetRulesEngineArgs {
   /// [frontDoorName] Name of the Front Door which is globally unique.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [rulesEngineName] Name of the Rules Engine which is unique within the Front Door.
-  GetRulesEngineArgs({
+  const GetRulesEngineArgs({
     required this.frontDoorName,
     required this.resourceGroupName,
     required this.rulesEngineName,

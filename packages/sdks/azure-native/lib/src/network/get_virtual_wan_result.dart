@@ -49,7 +49,7 @@ class GetVirtualWanResult {
   /// [type] Resource type.
   /// [virtualHubs] List of VirtualHubs in the VirtualWAN.
   /// [vpnSites] List of VpnSites in the VirtualWAN.
-  GetVirtualWanResult({
+  const GetVirtualWanResult({
     this.allowBranchToBranchTraffic,
     this.allowVnetToVnetTraffic,
     required this.azureApiVersion,

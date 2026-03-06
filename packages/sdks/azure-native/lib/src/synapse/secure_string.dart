@@ -13,7 +13,7 @@ class SecureString {
   /// Creates a new [SecureString].
   /// [type] Type of the secret.
   /// [value] Value of secure string.
-  SecureString({
+  const SecureString({
     required this.type,
     required this.value,
   });

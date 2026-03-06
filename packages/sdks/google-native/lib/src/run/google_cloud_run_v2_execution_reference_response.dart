@@ -15,7 +15,7 @@ class GoogleCloudRunV2ExecutionReferenceResponse {
   /// [completionTime] Creation timestamp of the execution.
   /// [createTime] Creation timestamp of the execution.
   /// [name] Name of the execution.
-  GoogleCloudRunV2ExecutionReferenceResponse({
+  const GoogleCloudRunV2ExecutionReferenceResponse({
     required this.completionTime,
     required this.createTime,
     required this.name,

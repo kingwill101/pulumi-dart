@@ -29,7 +29,7 @@ class GetVirtualMachineScaleSetResult {
   /// [name] The name of the public IP address configuration
   /// [networkInterfaces] A list of `network_interface` blocks as defined below.
   /// [resourceGroupName] Required.
-  GetVirtualMachineScaleSetResult({
+  const GetVirtualMachineScaleSetResult({
     required this.id,
     required this.identities,
     required this.instances,

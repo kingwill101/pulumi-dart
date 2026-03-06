@@ -18,7 +18,7 @@ class GetApplicationGatewayPrivateEndpointConnectionArgs {
   /// [applicationGatewayName] The name of the application gateway.
   /// [connectionName] The name of the application gateway private endpoint connection.
   /// [resourceGroupName] The name of the resource group.
-  GetApplicationGatewayPrivateEndpointConnectionArgs({
+  const GetApplicationGatewayPrivateEndpointConnectionArgs({
     required this.applicationGatewayName,
     required this.connectionName,
     required this.resourceGroupName,

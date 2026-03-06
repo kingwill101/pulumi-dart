@@ -8,7 +8,7 @@ class ServiceTemplateNodeSelector {
 
   /// Creates a new [ServiceTemplateNodeSelector].
   /// [accelerator] The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-  ServiceTemplateNodeSelector({
+  const ServiceTemplateNodeSelector({
     required this.accelerator,
   });
 

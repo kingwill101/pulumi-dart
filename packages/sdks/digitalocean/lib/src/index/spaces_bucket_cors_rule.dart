@@ -17,7 +17,7 @@ class SpacesBucketCorsRule {
   /// [allowedMethods] A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
   /// [allowedOrigins] A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
   /// [maxAgeSeconds] The time in seconds that browser can cache the response for a preflight request.
-  SpacesBucketCorsRule({
+  const SpacesBucketCorsRule({
     this.allowedHeaders,
     required this.allowedMethods,
     required this.allowedOrigins,

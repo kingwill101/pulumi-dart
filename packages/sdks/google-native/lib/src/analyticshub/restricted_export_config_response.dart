@@ -15,7 +15,7 @@ class RestrictedExportConfigResponse {
   /// [enabled] Optional. If true, enable restricted export.
   /// [restrictDirectTableAccess] If true, restrict direct table access(read api/tabledata.list) on linked table.
   /// [restrictQueryResult] Optional. If true, restrict export of query result derived from restricted linked dataset table.
-  RestrictedExportConfigResponse({
+  const RestrictedExportConfigResponse({
     required this.enabled,
     required this.restrictDirectTableAccess,
     required this.restrictQueryResult,

@@ -29,7 +29,7 @@ class GetManagedZoneResult {
   /// [targetProject] The name of the Target Project
   /// [targetVpc] The name of the Target Project VPC Network
   /// [updateTime] Updated time.
-  GetManagedZoneResult({
+  const GetManagedZoneResult({
     required this.createTime,
     required this.description,
     required this.dns,

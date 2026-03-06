@@ -9,7 +9,7 @@ class OriginAuthenticationMethodResponse {
 
   /// Creates a new [OriginAuthenticationMethodResponse].
   /// [jwt] Required.
-  OriginAuthenticationMethodResponse({
+  const OriginAuthenticationMethodResponse({
     required this.jwt,
   });
 

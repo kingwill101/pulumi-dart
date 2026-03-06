@@ -33,7 +33,7 @@ class GetThroughputPoolAccountResult {
   /// [provisioningState] A provisioning state of the ThroughputPool Account.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetThroughputPoolAccountResult({
+  const GetThroughputPoolAccountResult({
     required this.accountInstanceId,
     this.accountLocation,
     this.accountResourceIdentifier,

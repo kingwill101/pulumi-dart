@@ -8,7 +8,7 @@ class GcpIntegrationsRedis {
 
   /// Creates a new [GcpIntegrationsRedis].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsRedis({
+  const GcpIntegrationsRedis({
     this.metricsPollingInterval,
   });
 

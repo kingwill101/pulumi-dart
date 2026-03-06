@@ -14,7 +14,7 @@ class DestinationsConfigurationResponse {
   /// Creates a new [DestinationsConfigurationResponse].
   /// [dataDogConfiguration] Open telemetry datadog destination configuration
   /// [otlpConfigurations] Open telemetry otlp configurations
-  DestinationsConfigurationResponse({
+  const DestinationsConfigurationResponse({
     this.dataDogConfiguration,
     this.otlpConfigurations,
   });

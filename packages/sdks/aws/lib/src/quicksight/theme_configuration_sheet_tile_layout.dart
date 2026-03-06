@@ -13,7 +13,7 @@ class ThemeConfigurationSheetTileLayout {
   /// Creates a new [ThemeConfigurationSheetTileLayout].
   /// [gutter] The gutter settings that apply between tiles. See gutter.
   /// [margin] The margin settings that apply around the outside edge of sheets. See margin.
-  ThemeConfigurationSheetTileLayout({
+  const ThemeConfigurationSheetTileLayout({
     this.gutter,
     this.margin,
   });

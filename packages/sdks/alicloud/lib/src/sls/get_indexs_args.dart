@@ -21,7 +21,7 @@ class GetIndexsArgs {
   /// [logstoreName] Logstore name
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project name
-  GetIndexsArgs({
+  const GetIndexsArgs({
     this.ids,
     required this.logstoreName,
     this.outputFile,

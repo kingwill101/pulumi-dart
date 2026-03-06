@@ -11,7 +11,7 @@ class ServiceAttributesBusinessOwner {
   /// Creates a new [ServiceAttributesBusinessOwner].
   /// [displayName] Contact's name.
   /// [email] Required. Email address of the contacts.
-  ServiceAttributesBusinessOwner({
+  const ServiceAttributesBusinessOwner({
     this.displayName,
     required this.email,
   });

@@ -9,7 +9,7 @@ class DataflowEndpointAuthenticationServiceAccountTokenResponse {
 
   /// Creates a new [DataflowEndpointAuthenticationServiceAccountTokenResponse].
   /// [audience] Audience of the service account. Optional, defaults to the broker internal service account audience.
-  DataflowEndpointAuthenticationServiceAccountTokenResponse({
+  const DataflowEndpointAuthenticationServiceAccountTokenResponse({
     required this.audience,
   });
 

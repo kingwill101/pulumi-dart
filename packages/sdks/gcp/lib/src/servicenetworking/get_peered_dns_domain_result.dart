@@ -20,7 +20,7 @@ class GetPeeredDnsDomainResult {
   /// [parent] Required.
   /// [project] Required.
   /// [service] Required.
-  GetPeeredDnsDomainResult({
+  const GetPeeredDnsDomainResult({
     required this.dnsSuffix,
     required this.id,
     required this.name,

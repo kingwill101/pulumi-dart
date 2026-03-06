@@ -31,7 +31,7 @@ class StudioApplicationArgs {
   /// [resourceGroupId] The id of the resource group.
   /// [templateId] The id of the template.
   /// [variables] The variables of the application.
-  StudioApplicationArgs({
+  const StudioApplicationArgs({
     required this.applicationName,
     this.areaId,
     this.configuration,

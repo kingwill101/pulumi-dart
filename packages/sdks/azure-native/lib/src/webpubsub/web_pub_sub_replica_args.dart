@@ -37,7 +37,7 @@ class WebPubSubReplicaArgs {
   /// [resourceStopped] Stop or start the resource.  Default to "false".
   /// [sku] The billing information of the resource.
   /// [tags] Resource tags.
-  WebPubSubReplicaArgs({
+  const WebPubSubReplicaArgs({
     this.location,
     this.regionEndpointEnabled,
     this.replicaName,

@@ -24,7 +24,7 @@ class SecurityProfileV2Args {
   /// [orgId] The Apigee Organization associated with the Apigee Security Profile V2,
   /// [profileAssessmentConfigs] A map of the assessment name and the assessment config.
   /// [profileId] Resource ID of the security profile.
-  SecurityProfileV2Args({
+  const SecurityProfileV2Args({
     this.description,
     required this.orgId,
     required this.profileAssessmentConfigs,

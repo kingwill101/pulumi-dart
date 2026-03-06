@@ -16,7 +16,7 @@ class VmwareIpBlockResponse {
   /// [gateway] The network gateway used by the VMware user cluster.
   /// [ips] The node's network configurations used by the VMware user cluster.
   /// [netmask] The netmask used by the VMware user cluster.
-  VmwareIpBlockResponse({
+  const VmwareIpBlockResponse({
     required this.gateway,
     required this.ips,
     required this.netmask,

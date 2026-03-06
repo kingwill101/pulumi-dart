@@ -12,7 +12,7 @@ class LoggingProperties {
   /// Creates a new [LoggingProperties].
   /// [bucketName] Property bucketName
   /// [s3KeyPrefix] Property s3KeyPrefix
-  LoggingProperties({
+  const LoggingProperties({
     this.bucketName,
     this.s3KeyPrefix,
   });

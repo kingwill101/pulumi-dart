@@ -29,7 +29,7 @@ class StorageConfigurationSettings {
   /// [sqlSystemDbOnDataDisk] SQL Server SystemDb Storage on DataPool if true.
   /// [sqlTempDbSettings] SQL Server TempDb Storage Settings.
   /// [storageWorkloadType] Storage workload type.
-  StorageConfigurationSettings({
+  const StorageConfigurationSettings({
     this.diskConfigurationType,
     this.enableStorageConfigBlade,
     this.sqlDataSettings,

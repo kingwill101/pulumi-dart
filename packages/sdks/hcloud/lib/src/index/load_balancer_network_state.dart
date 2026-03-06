@@ -21,7 +21,7 @@ class LoadBalancerNetworkState {
   /// [loadBalancerId] ID of the Load Balancer.
   /// [networkId] ID of the Network to attach the Load Balancer to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ip_range`).
   /// [subnetId] ID of the Subnet to attach the Load Balancer to. Required if `network_id` is not set.
-  LoadBalancerNetworkState({
+  const LoadBalancerNetworkState({
     this.enablePublicInterface,
     this.ip,
     this.loadBalancerId,

@@ -34,7 +34,7 @@ class GetJobScheduleResult {
   /// [runbook] Gets or sets the runbook.
   /// [schedule] Gets or sets the schedule.
   /// [type] Resource type
-  GetJobScheduleResult({
+  const GetJobScheduleResult({
     required this.azureApiVersion,
     required this.id,
     this.jobScheduleId,

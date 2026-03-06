@@ -8,7 +8,7 @@ class GetInterfaceVpcIpv4Range {
 
   /// Creates a new [GetInterfaceVpcIpv4Range].
   /// [range] The VPC IPv4 range.
-  GetInterfaceVpcIpv4Range({
+  const GetInterfaceVpcIpv4Range({
     required this.range,
   });
 

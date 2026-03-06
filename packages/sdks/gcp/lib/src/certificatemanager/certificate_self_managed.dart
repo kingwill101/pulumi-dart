@@ -29,7 +29,7 @@ class CertificateSelfManaged {
   /// [pemCertificate] The certificate chain in PEM-encoded form.
   /// [pemPrivateKey] The private key of the leaf certificate in PEM-encoded form.
   /// [privateKeyPem] (Optional, Deprecated)
-  CertificateSelfManaged({
+  const CertificateSelfManaged({
     this.certificatePem,
     this.pemCertificate,
     this.pemPrivateKey,

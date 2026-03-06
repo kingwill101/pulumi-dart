@@ -17,7 +17,7 @@ class GetVlansVlan {
   /// [label] The unique label of the VLAN.
   /// [linodes] The running Linodes currently attached to the VLAN.
   /// [region] The region the VLAN is located in. See all regions [here](https://api.linode.com/v4/regions).
-  GetVlansVlan({
+  const GetVlansVlan({
     required this.created,
     required this.label,
     required this.linodes,

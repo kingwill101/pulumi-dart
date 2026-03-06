@@ -14,7 +14,7 @@ class UserArtifactManageResponse {
   /// [install] Required. The path and arguments to install the gallery application. This is limited to 4096 characters.
   /// [remove] Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
   /// [update] Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
-  UserArtifactManageResponse({
+  const UserArtifactManageResponse({
     required this.install,
     required this.remove,
     this.update,

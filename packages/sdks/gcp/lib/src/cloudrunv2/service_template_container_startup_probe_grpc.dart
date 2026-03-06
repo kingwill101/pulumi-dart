@@ -16,7 +16,7 @@ class ServiceTemplateContainerStartupProbeGrpc {
   /// Creates a new [ServiceTemplateContainerStartupProbeGrpc].
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
   /// [service] The name of the service to place in the gRPC HealthCheckRequest
-  ServiceTemplateContainerStartupProbeGrpc({
+  const ServiceTemplateContainerStartupProbeGrpc({
     this.port,
     this.service,
   });

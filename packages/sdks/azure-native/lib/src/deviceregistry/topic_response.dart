@@ -12,7 +12,7 @@ class TopicResponse {
   /// Creates a new [TopicResponse].
   /// [path] The topic path for messages published to an MQTT broker.
   /// [retain] When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
-  TopicResponse({
+  const TopicResponse({
     required this.path,
     this.retain,
   });

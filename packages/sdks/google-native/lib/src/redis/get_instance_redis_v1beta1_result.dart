@@ -119,7 +119,7 @@ class GetInstanceRedisV1beta1Result {
   /// [suspensionReasons] Optional. reasons that causes instance in "SUSPENDED" state.
   /// [tier] The service tier of the instance.
   /// [transitEncryptionMode] Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
-  GetInstanceRedisV1beta1Result({
+  const GetInstanceRedisV1beta1Result({
     required this.alternativeLocationId,
     required this.authEnabled,
     required this.authorizedNetwork,

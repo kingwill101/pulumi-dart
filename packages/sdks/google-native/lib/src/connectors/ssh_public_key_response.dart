@@ -19,7 +19,7 @@ class SshPublicKeyResponse {
   /// [sshClientCert] SSH Client Cert. It should contain both public and private key.
   /// [sshClientCertPass] Password (passphrase) for ssh client certificate if it has one.
   /// [username] The user account used to authenticate.
-  SshPublicKeyResponse({
+  const SshPublicKeyResponse({
     required this.certType,
     required this.sshClientCert,
     required this.sshClientCertPass,

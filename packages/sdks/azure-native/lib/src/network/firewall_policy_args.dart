@@ -71,7 +71,7 @@ class FirewallPolicyArgs {
   /// [threatIntelMode] The operation mode for Threat Intelligence.
   /// [threatIntelWhitelist] ThreatIntel Whitelist for Firewall Policy.
   /// [transportSecurity] TLS Configuration definition.
-  FirewallPolicyArgs({
+  const FirewallPolicyArgs({
     this.basePolicy,
     this.dnsSettings,
     this.explicitProxy,

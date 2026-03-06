@@ -18,7 +18,7 @@ class GetSapInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapDiscoverySiteName] The name of the discovery site resource for SAP Migration.
   /// [sapInstanceName] The name of SAP Instance resource for SAP Migration.
-  GetSapInstanceArgs({
+  const GetSapInstanceArgs({
     required this.resourceGroupName,
     required this.sapDiscoverySiteName,
     required this.sapInstanceName,

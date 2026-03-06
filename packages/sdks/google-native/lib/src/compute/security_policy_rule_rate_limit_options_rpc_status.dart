@@ -12,7 +12,7 @@ class SecurityPolicyRuleRateLimitOptionsRpcStatus {
   /// Creates a new [SecurityPolicyRuleRateLimitOptionsRpcStatus].
   /// [code] The status code, which should be an enum value of google.rpc.Code.
   /// [message] A developer-facing error message, which should be in English.
-  SecurityPolicyRuleRateLimitOptionsRpcStatus({
+  const SecurityPolicyRuleRateLimitOptionsRpcStatus({
     this.code,
     this.message,
   });

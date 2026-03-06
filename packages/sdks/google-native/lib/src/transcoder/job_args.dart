@@ -46,7 +46,7 @@ class JobArgs {
   /// [project] Optional.
   /// [templateId] Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
   /// [ttlAfterCompletionDays] Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
-  JobArgs({
+  const JobArgs({
     this.batchModePriority,
     this.config,
     this.inputUri,

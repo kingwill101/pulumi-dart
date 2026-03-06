@@ -10,7 +10,7 @@ class BucketWebsiteConfigurationIndexDocument {
 
   /// Creates a new [BucketWebsiteConfigurationIndexDocument].
   /// [suffix] Suffix that is appended to a request that is for a directory on the website endpoint.
-  BucketWebsiteConfigurationIndexDocument({
+  const BucketWebsiteConfigurationIndexDocument({
     required this.suffix,
   });
 

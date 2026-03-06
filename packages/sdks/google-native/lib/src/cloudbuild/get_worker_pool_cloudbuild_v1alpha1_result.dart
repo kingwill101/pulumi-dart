@@ -36,7 +36,7 @@ class GetWorkerPoolCloudbuildV1alpha1Result {
   /// [updateTime] Time at which the request to update the `WorkerPool` was received.
   /// [workerConfig] Configuration to be used for a creating workers in the `WorkerPool`.
   /// [workerCount] Total number of workers to be created across all requested regions.
-  GetWorkerPoolCloudbuildV1alpha1Result({
+  const GetWorkerPoolCloudbuildV1alpha1Result({
     required this.createTime,
     required this.deleteTime,
     required this.name,

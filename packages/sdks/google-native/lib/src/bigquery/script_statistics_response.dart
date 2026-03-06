@@ -12,7 +12,7 @@ class ScriptStatisticsResponse {
   /// Creates a new [ScriptStatisticsResponse].
   /// [evaluationKind] Whether this child job was a statement or expression.
   /// [stackFrames] Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty.
-  ScriptStatisticsResponse({
+  const ScriptStatisticsResponse({
     required this.evaluationKind,
     required this.stackFrames,
   });

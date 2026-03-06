@@ -8,7 +8,7 @@ class SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined {
 
   /// Creates a new [SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-  SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined({
+  const SystemTopicEventSubscriptionAdvancedFilterIsNullOrUndefined({
     required this.key,
   });
 

@@ -19,7 +19,7 @@ class TaskSetLoadBalancer {
   /// [containerPort] The port on the container to associate with the load balancer. Defaults to `0` if not specified.
   /// [loadBalancerName] The name of the ELB (Classic) to associate with the service.
   /// [targetGroupArn] The ARN of the Load Balancer target group to associate with the service.
-  TaskSetLoadBalancer({
+  const TaskSetLoadBalancer({
     required this.containerName,
     this.containerPort,
     this.loadBalancerName,

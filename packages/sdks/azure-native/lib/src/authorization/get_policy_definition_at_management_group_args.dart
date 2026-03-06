@@ -15,7 +15,7 @@ class GetPolicyDefinitionAtManagementGroupArgs {
   /// Creates a new [GetPolicyDefinitionAtManagementGroupArgs].
   /// [managementGroupId] The ID of the management group.
   /// [policyDefinitionName] The name of the policy definition to get.
-  GetPolicyDefinitionAtManagementGroupArgs({
+  const GetPolicyDefinitionAtManagementGroupArgs({
     required this.managementGroupId,
     required this.policyDefinitionName,
   });

@@ -11,7 +11,7 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLi
   /// Creates a new [EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize].
   /// [type] Specifies the endpoint capacity type. Valid values are: `INSTANCE_COUNT`, or `CAPACITY_PERCENT`.
   /// [value] Defines the capacity size, either as a number of instances or a capacity percentage.
-  EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize({
+  const EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize({
     required this.type,
     required this.value,
   });

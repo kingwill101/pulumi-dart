@@ -29,7 +29,7 @@ class IAMBindingArgs {
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [members] An array of identities that will be granted the privilege in the `role`.
   /// [role] The role that should be applied. Only one
-  IAMBindingArgs({
+  const IAMBindingArgs({
     this.condition,
     required this.folder,
     required this.members,

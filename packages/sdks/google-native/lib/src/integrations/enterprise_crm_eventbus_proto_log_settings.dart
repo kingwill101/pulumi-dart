@@ -23,7 +23,7 @@ class EnterpriseCrmEventbusProtoLogSettings {
   /// [seedPeriod] Optional.
   /// [seedScope] Optional.
   /// [shorteningLimits] Contains the field limits for shortening, such as max string length and max array length.
-  EnterpriseCrmEventbusProtoLogSettings({
+  const EnterpriseCrmEventbusProtoLogSettings({
     this.logFieldName,
     this.sanitizeOptions,
     this.seedPeriod,

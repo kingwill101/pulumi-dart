@@ -24,7 +24,7 @@ class VpcLinkArgs {
   /// [securityGroupIds] Security group IDs for the VPC Link.
   /// [subnetIds] Subnet IDs for the VPC Link.
   /// [tags] Map of tags to assign to the VPC Link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  VpcLinkArgs({
+  const VpcLinkArgs({
     this.name,
     this.region,
     required this.securityGroupIds,

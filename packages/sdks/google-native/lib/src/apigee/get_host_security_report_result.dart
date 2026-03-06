@@ -46,7 +46,7 @@ class GetHostSecurityReportResult {
   /// [self] Self link of the query. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
   /// [state] Query state could be "enqueued", "running", "completed", "expired" and "failed".
   /// [updated] Last updated timestamp for the query.
-  GetHostSecurityReportResult({
+  const GetHostSecurityReportResult({
     required this.created,
     required this.displayName,
     required this.envgroupHostname,

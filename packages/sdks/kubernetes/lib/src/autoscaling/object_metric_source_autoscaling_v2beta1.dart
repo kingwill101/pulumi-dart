@@ -23,7 +23,7 @@ class ObjectMetricSourceAutoscalingV2beta1 {
   /// [selector] selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping When unset, just the metricName will be used to gather metrics.
   /// [target] target is the described Kubernetes object.
   /// [targetValue] targetValue is the target value of the metric (as a quantity).
-  ObjectMetricSourceAutoscalingV2beta1({
+  const ObjectMetricSourceAutoscalingV2beta1({
     this.averageValue,
     required this.metricName,
     this.selector,

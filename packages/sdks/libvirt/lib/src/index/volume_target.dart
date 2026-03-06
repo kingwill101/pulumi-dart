@@ -36,7 +36,7 @@ class VolumeTarget {
   /// [path] Volume path on the host filesystem
   /// [permissions] Configures the permissions for the backing store of the storage volume.
   /// [timestamps] Records the timestamp information for the storage volume target.
-  VolumeTarget({
+  const VolumeTarget({
     this.clusterSize,
     this.clusterSizeUnit,
     this.compat,

@@ -26,7 +26,7 @@ class RegistryEndpointArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [registryEndpointName] Name of RegistryEndpoint resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  RegistryEndpointArgs({
+  const RegistryEndpointArgs({
     this.extendedLocation,
     required this.instanceName,
     this.properties,

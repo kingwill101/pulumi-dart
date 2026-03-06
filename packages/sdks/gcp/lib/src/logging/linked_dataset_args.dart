@@ -31,7 +31,7 @@ class LinkedDatasetArgs {
   /// [linkId] The id of the linked dataset.
   /// [location] The location of the linked dataset.
   /// [parent] The parent of the linked dataset.
-  LinkedDatasetArgs({
+  const LinkedDatasetArgs({
     this.bigqueryDatasets,
     required this.bucket,
     this.description,

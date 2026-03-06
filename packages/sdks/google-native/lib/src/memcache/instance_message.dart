@@ -12,7 +12,7 @@ class InstanceMessage {
   /// Creates a new [InstanceMessage].
   /// [code] A code that correspond to one type of user-facing message.
   /// [message] Message on memcached instance which will be exposed to users.
-  InstanceMessage({
+  const InstanceMessage({
     this.code,
     this.message,
   });

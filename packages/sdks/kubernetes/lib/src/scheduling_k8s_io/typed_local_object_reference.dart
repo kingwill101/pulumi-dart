@@ -15,7 +15,7 @@ class TypedLocalObjectReference {
   /// [apiGroup] APIGroup is the group for the resource being referenced. If APIGroup is empty, the specified Kind must be in the core API group. For any other third-party types, setting APIGroup is required. It must be a DNS subdomain.
   /// [kind] Kind is the type of resource being referenced. It must be a path segment name.
   /// [name] Name is the name of resource being referenced. It must be a path segment name.
-  TypedLocalObjectReference({
+  const TypedLocalObjectReference({
     this.apiGroup,
     required this.kind,
     required this.name,

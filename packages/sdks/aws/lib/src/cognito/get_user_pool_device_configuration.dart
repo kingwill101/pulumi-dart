@@ -11,7 +11,7 @@ class GetUserPoolDeviceConfiguration {
   /// Creates a new [GetUserPoolDeviceConfiguration].
   /// [challengeRequiredOnNewDevice] - Whether a challenge is required on new devices.
   /// [deviceOnlyRememberedOnUserPrompt] - Whether devices are only remembered if the user prompts it.
-  GetUserPoolDeviceConfiguration({
+  const GetUserPoolDeviceConfiguration({
     required this.challengeRequiredOnNewDevice,
     required this.deviceOnlyRememberedOnUserPrompt,
   });

@@ -16,7 +16,7 @@ class InstanceBlueGreenUpdate {
 
   /// Creates a new [InstanceBlueGreenUpdate].
   /// [enabled] Enables low-downtime updates when `true`.
-  InstanceBlueGreenUpdate({
+  const InstanceBlueGreenUpdate({
     this.enabled,
   });
 

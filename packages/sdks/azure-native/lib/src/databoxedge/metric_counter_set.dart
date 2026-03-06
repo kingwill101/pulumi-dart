@@ -10,7 +10,7 @@ class MetricCounterSet {
 
   /// Creates a new [MetricCounterSet].
   /// [counters] The counters that should be collected in this set.
-  MetricCounterSet({
+  const MetricCounterSet({
     required this.counters,
   });
 

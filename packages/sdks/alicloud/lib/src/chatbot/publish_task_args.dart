@@ -18,7 +18,7 @@ class PublishTaskArgs {
   /// [agentKey] The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
   /// [bizType] The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
   /// [dataIdLists] Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
-  PublishTaskArgs({
+  const PublishTaskArgs({
     this.agentKey,
     required this.bizType,
     this.dataIdLists,

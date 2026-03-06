@@ -22,7 +22,7 @@ class GitRemoteSettingsResponse {
   /// [sshAuthenticationConfig] Optional. Authentication fields for remote uris using SSH protocol.
   /// [tokenStatus] Deprecated: The field does not contain any token status information. Instead use https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
   /// [url] The Git remote's URL.
-  GitRemoteSettingsResponse({
+  const GitRemoteSettingsResponse({
     required this.authenticationTokenSecretVersion,
     required this.defaultBranch,
     required this.sshAuthenticationConfig,

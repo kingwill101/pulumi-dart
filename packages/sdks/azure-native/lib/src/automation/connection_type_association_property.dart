@@ -9,7 +9,7 @@ class ConnectionTypeAssociationProperty {
 
   /// Creates a new [ConnectionTypeAssociationProperty].
   /// [name] Gets or sets the name of the connection type.
-  ConnectionTypeAssociationProperty({
+  const ConnectionTypeAssociationProperty({
     this.name,
   });
 

@@ -8,7 +8,7 @@ class DomainDevicesPstoreAlias {
 
   /// Creates a new [DomainDevicesPstoreAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesPstoreAlias({
+  const DomainDevicesPstoreAlias({
     required this.name,
   });
 

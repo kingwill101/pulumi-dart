@@ -67,7 +67,7 @@ class InMageRcmFabricSpecificDetailsResponse {
   /// [serviceResourceId] The service resource Id.
   /// [sourceAgentIdentityDetails] The source agent identity details.
   /// [vmwareSiteId] The ARM Id of the VMware site.
-  InMageRcmFabricSpecificDetailsResponse({
+  const InMageRcmFabricSpecificDetailsResponse({
     required this.agentDetails,
     required this.controlPlaneUri,
     required this.dataPlaneUri,

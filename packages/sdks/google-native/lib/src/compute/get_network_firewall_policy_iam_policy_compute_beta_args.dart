@@ -15,7 +15,7 @@ class GetNetworkFirewallPolicyIamPolicyComputeBetaArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetNetworkFirewallPolicyIamPolicyComputeBetaArgs({
+  const GetNetworkFirewallPolicyIamPolicyComputeBetaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

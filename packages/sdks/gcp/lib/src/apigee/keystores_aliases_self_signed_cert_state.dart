@@ -47,7 +47,7 @@ class KeystoresAliasesSelfSignedCertState {
   /// [subject] Subject details.
   /// [subjectAlternativeDnsNames] List of alternative host names. Maximum length is 255 characters for each value.
   /// [type] Optional.Type of Alias
-  KeystoresAliasesSelfSignedCertState({
+  const KeystoresAliasesSelfSignedCertState({
     this.alias,
     this.certValidityInDays,
     this.certsInfos,

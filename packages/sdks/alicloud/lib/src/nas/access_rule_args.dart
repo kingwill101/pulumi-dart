@@ -30,7 +30,7 @@ class AccessRuleArgs {
   /// [rwAccessType] RWAccess.
   /// [sourceCidrIp] SourceCidrIp.
   /// [userAccessType] UserAccess.
-  AccessRuleArgs({
+  const AccessRuleArgs({
     required this.accessGroupName,
     this.fileSystemType,
     this.ipv6SourceCidrIp,

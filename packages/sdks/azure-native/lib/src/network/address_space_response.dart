@@ -13,7 +13,7 @@ class AddressSpaceResponse {
   /// Creates a new [AddressSpaceResponse].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
   /// [ipamPoolPrefixAllocations] A list of IPAM Pools allocating IP address prefixes.
-  AddressSpaceResponse({
+  const AddressSpaceResponse({
     this.addressPrefixes,
     this.ipamPoolPrefixAllocations,
   });

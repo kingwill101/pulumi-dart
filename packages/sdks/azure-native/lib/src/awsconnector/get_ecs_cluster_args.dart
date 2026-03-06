@@ -15,7 +15,7 @@ class GetEcsClusterArgs {
   /// Creates a new [GetEcsClusterArgs].
   /// [name] Name of EcsCluster
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEcsClusterArgs({
+  const GetEcsClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

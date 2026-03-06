@@ -22,7 +22,7 @@ class GetPolicyDocumentStatement {
   /// [effect] This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`. Default value is `Allow`. If you want to create a RAM role policy document, it must be `Allow`.
   /// [principals] Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
   /// [resources] List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
-  GetPolicyDocumentStatement({
+  const GetPolicyDocumentStatement({
     required this.actions,
     this.conditions,
     this.effect,

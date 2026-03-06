@@ -9,7 +9,7 @@ class TransportPreferencesResponse {
 
   /// Creates a new [TransportPreferencesResponse].
   /// [preferredShipmentType] Indicates Shipment Logistics type that the customer preferred.
-  TransportPreferencesResponse({
+  const TransportPreferencesResponse({
     required this.preferredShipmentType,
   });
 

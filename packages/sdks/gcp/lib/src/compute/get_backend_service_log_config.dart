@@ -24,7 +24,7 @@ class GetBackendServiceLogConfig {
   /// [optionalFields] This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode"
   /// [optionalMode] Specifies the optional logging mode for the load balancer traffic.
   /// [sampleRate] This field can only be specified if logging is enabled for this backend service. The value of
-  GetBackendServiceLogConfig({
+  const GetBackendServiceLogConfig({
     required this.enable,
     required this.optionalFields,
     required this.optionalMode,

@@ -129,7 +129,7 @@ class EdifactEnvelopeSettings {
   /// [transactionSetControlNumberPrefix] The transaction set control number prefix.
   /// [transactionSetControlNumberSuffix] The transaction set control number suffix.
   /// [transactionSetControlNumberUpperBound] The transaction set control number upper bound.
-  EdifactEnvelopeSettings({
+  const EdifactEnvelopeSettings({
     this.applicationReferenceId,
     required this.applyDelimiterStringAdvice,
     this.communicationAgreementId,

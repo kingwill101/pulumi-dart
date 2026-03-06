@@ -24,7 +24,7 @@ class BareMetalClusterStatusCondition {
   /// [reason] (Output)
   /// [state] (Output)
   /// [type] Type of the condition.
-  BareMetalClusterStatusCondition({
+  const BareMetalClusterStatusCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

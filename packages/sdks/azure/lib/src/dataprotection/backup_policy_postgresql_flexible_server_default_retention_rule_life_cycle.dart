@@ -11,7 +11,7 @@ class BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle {
   /// Creates a new [BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle].
   /// [dataStoreType] The type of data store. The only possible value is `VaultStore`. Changing this forces a new resource to be created.
   /// [duration] The retention duration up to which the backups are to be retained in the data stores. It should follow `ISO 8601` duration format. Changing this forces a new resource to be created.
-  BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle({
+  const BackupPolicyPostgresqlFlexibleServerDefaultRetentionRuleLifeCycle({
     required this.dataStoreType,
     required this.duration,
   });

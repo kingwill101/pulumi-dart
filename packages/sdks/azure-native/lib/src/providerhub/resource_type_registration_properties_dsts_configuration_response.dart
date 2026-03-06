@@ -12,7 +12,7 @@ class ResourceTypeRegistrationPropertiesDstsConfigurationResponse {
   /// Creates a new [ResourceTypeRegistrationPropertiesDstsConfigurationResponse].
   /// [serviceDnsName] This is a URI property.
   /// [serviceName] The service name.
-  ResourceTypeRegistrationPropertiesDstsConfigurationResponse({
+  const ResourceTypeRegistrationPropertiesDstsConfigurationResponse({
     this.serviceDnsName,
     required this.serviceName,
   });

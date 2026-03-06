@@ -10,7 +10,7 @@ class VirtualMachinePropertiesResponseNetworkProfile {
 
   /// Creates a new [VirtualMachinePropertiesResponseNetworkProfile].
   /// [networkInterfaces] NetworkInterfaces - list of network interfaces to be attached to the virtual machine
-  VirtualMachinePropertiesResponseNetworkProfile({
+  const VirtualMachinePropertiesResponseNetworkProfile({
     this.networkInterfaces,
   });
 

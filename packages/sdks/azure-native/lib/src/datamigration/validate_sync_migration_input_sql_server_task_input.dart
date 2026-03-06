@@ -17,7 +17,7 @@ class ValidateSyncMigrationInputSqlServerTaskInput {
   /// [selectedDatabases] Databases to migrate
   /// [sourceConnectionInfo] Information for connecting to source SQL server
   /// [targetConnectionInfo] Information for connecting to target
-  ValidateSyncMigrationInputSqlServerTaskInput({
+  const ValidateSyncMigrationInputSqlServerTaskInput({
     required this.selectedDatabases,
     required this.sourceConnectionInfo,
     required this.targetConnectionInfo,

@@ -44,7 +44,7 @@ class SlackChannelConfigurationArgs {
   /// [tags] Map of tags assigned to the resource.
   /// [timeouts] Optional.
   /// [userAuthorizationRequired] Enables use of a user role requirement in your chat configuration.
-  SlackChannelConfigurationArgs({
+  const SlackChannelConfigurationArgs({
     required this.configurationName,
     this.guardrailPolicyArns,
     required this.iamRoleArn,

@@ -30,7 +30,7 @@ class GetTransitRouterPeerAttachmentsArgs {
   /// [status] The status of CEN Transit Router peer attachment. Valid values `Attached`, `Attaching` and `Detaching`.
   /// [transitRouterAttachmentId] The ID of CEN Transit Router peer attachments.
   /// [transitRouterId] The ID of transit router.
-  GetTransitRouterPeerAttachmentsArgs({
+  const GetTransitRouterPeerAttachmentsArgs({
     required this.cenId,
     this.ids,
     this.nameRegex,

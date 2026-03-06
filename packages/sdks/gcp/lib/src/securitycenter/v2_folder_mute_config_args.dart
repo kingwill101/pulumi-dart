@@ -32,7 +32,7 @@ class V2FolderMuteConfigArgs {
   /// [location] location Id is provided by folder. If not provided, Use global as default.
   /// [muteConfigId] Unique identifier provided by the client within the parent scope.
   /// [type] The type of the mute config.
-  V2FolderMuteConfigArgs({
+  const V2FolderMuteConfigArgs({
     this.description,
     required this.filter,
     required this.folder,

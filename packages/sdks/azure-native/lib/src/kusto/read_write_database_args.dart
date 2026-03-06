@@ -38,7 +38,7 @@ class ReadWriteDatabaseArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [softDeletePeriod] The time the data should be kept before it stops being accessible to queries in TimeSpan.
-  ReadWriteDatabaseArgs({
+  const ReadWriteDatabaseArgs({
     this.callerRole,
     required this.clusterName,
     this.databaseName,

@@ -7,7 +7,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageS
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage].
   /// [value] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage({
     required this.value,
   });
 

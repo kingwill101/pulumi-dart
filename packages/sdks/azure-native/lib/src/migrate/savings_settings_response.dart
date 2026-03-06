@@ -12,7 +12,7 @@ class SavingsSettingsResponse {
   /// Creates a new [SavingsSettingsResponse].
   /// [azureOfferCode] Gets or sets the Azure offer code.
   /// [savingsOptions] Gets or sets the savings options.
-  SavingsSettingsResponse({
+  const SavingsSettingsResponse({
     this.azureOfferCode,
     this.savingsOptions,
   });

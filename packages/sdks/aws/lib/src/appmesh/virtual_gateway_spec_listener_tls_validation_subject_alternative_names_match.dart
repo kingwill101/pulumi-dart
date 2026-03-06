@@ -8,7 +8,7 @@ class VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch {
 
   /// Creates a new [VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch].
   /// [exacts] Values sent must match the specified values exactly.
-  VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch({
+  const VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNamesMatch({
     required this.exacts,
   });
 

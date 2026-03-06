@@ -37,7 +37,7 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifi
   /// [grantExpired] Notification mode for grant expired.
   /// [grantExternallyModified] Notification mode for grant externally modified.
   /// [grantRevoked] Notification mode for grant revoked.
-  SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications({
+  const SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications({
     this.entitlementAssigned,
     this.grantActivated,
     this.grantActivationFailed,

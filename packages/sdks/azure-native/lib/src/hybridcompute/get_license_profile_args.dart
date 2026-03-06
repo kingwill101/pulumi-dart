@@ -18,7 +18,7 @@ class GetLicenseProfileArgs {
   /// [licenseProfileName] The name of the license profile.
   /// [machineName] The name of the hybrid machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLicenseProfileArgs({
+  const GetLicenseProfileArgs({
     required this.licenseProfileName,
     required this.machineName,
     required this.resourceGroupName,

@@ -44,7 +44,7 @@ class SecretArgs {
   /// [topics] Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
   /// [ttl] Input only. The TTL for the Secret.
   /// [versionAliases] Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and AccessSecretVersion.
-  SecretArgs({
+  const SecretArgs({
     this.annotations,
     this.etag,
     this.expireTime,

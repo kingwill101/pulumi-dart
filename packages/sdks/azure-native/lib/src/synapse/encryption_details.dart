@@ -10,7 +10,7 @@ class EncryptionDetails {
 
   /// Creates a new [EncryptionDetails].
   /// [cmk] Customer Managed Key Details
-  EncryptionDetails({
+  const EncryptionDetails({
     this.cmk,
   });
 

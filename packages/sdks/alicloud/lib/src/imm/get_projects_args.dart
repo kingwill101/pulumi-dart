@@ -15,7 +15,7 @@ class GetProjectsArgs {
   /// Creates a new [GetProjectsArgs].
   /// [ids] A list of Project IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetProjectsArgs({
+  const GetProjectsArgs({
     this.ids,
     this.outputFile,
   });

@@ -25,7 +25,7 @@ class InstanceFleetInstanceTypeConfig {
   /// [ebsConfigs] Configuration block(s) for EBS volumes attached to each instance in the instance group. Detailed below.
   /// [instanceType] An EC2 instance type, such as m4.xlarge.
   /// [weightedCapacity] The number of units that a provisioned instance of this type provides toward fulfilling the target capacities defined in `aws.emr.InstanceFleet`.
-  InstanceFleetInstanceTypeConfig({
+  const InstanceFleetInstanceTypeConfig({
     this.bidPrice,
     this.bidPriceAsPercentageOfOnDemandPrice,
     this.configurations,

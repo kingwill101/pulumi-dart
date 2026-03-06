@@ -9,7 +9,7 @@ class AzureMonitorTableConfigurationResponse {
 
   /// Creates a new [AzureMonitorTableConfigurationResponse].
   /// [name] The name.
-  AzureMonitorTableConfigurationResponse({
+  const AzureMonitorTableConfigurationResponse({
     this.name,
   });
 

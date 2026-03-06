@@ -39,7 +39,7 @@ class ActionGroupResponse {
   /// [scope] scope on which action rule will apply
   /// [status] Indicates if the given action rule is enabled or disabled
   /// [type] Indicates type of action rule
-  ActionGroupResponse({
+  const ActionGroupResponse({
     required this.actionGroupId,
     this.conditions,
     required this.createdAt,

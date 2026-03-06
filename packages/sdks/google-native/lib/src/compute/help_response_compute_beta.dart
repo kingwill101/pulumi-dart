@@ -10,7 +10,7 @@ class HelpResponseComputeBeta {
 
   /// Creates a new [HelpResponseComputeBeta].
   /// [links] URL(s) pointing to additional information on handling the current error.
-  HelpResponseComputeBeta({
+  const HelpResponseComputeBeta({
     required this.links,
   });
 

@@ -22,7 +22,7 @@ class GetDelegatedAdministratorsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [servicePrincipal] The identification of the trusted service.
-  GetDelegatedAdministratorsArgs({
+  const GetDelegatedAdministratorsArgs({
     this.ids,
     this.outputFile,
     this.pageNumber,

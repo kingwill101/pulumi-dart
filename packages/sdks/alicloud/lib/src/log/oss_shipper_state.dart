@@ -70,7 +70,7 @@ class OssShipperState {
   /// [projectName] The name of the log project. It is the only in one Alicloud account.
   /// [roleArn] Used for access control, the OSS Bucket owner creates the role mark, such as `acs:ram::13234:role/logrole`
   /// [shipperName] Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
-  OssShipperState({
+  const OssShipperState({
     this.bufferInterval,
     this.bufferSize,
     this.compressType,

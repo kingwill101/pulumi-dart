@@ -21,7 +21,7 @@ class BatchConfigurationPropertiesResponse {
   /// [createdTime] The artifact creation time.
   /// [metadata] Optional.
   /// [releaseCriteria] The batch release criteria.
-  BatchConfigurationPropertiesResponse({
+  const BatchConfigurationPropertiesResponse({
     required this.batchGroupName,
     this.changedTime,
     this.createdTime,

@@ -30,7 +30,7 @@ class ObjectStatusDefinitionResponse {
   /// [name] Name of the applied object
   /// [namespace] Namespace of the applied object
   /// [statusConditions] List of Kubernetes object status conditions present on the cluster
-  ObjectStatusDefinitionResponse({
+  const ObjectStatusDefinitionResponse({
     this.appliedBy,
     this.complianceState,
     this.helmReleaseProperties,

@@ -15,7 +15,7 @@ class GetBackupManagedidentitiesV1alpha1Args {
   /// [backupId] Required.
   /// [domainId] Required.
   /// [project] Optional.
-  GetBackupManagedidentitiesV1alpha1Args({
+  const GetBackupManagedidentitiesV1alpha1Args({
     required this.backupId,
     required this.domainId,
     this.project,

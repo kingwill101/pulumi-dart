@@ -34,7 +34,7 @@ class WorkspaceNamedValueState {
   /// [tags] A list of tags to be applied to the API Management Workspace Named Value.
   /// [value] The value of this API Management Workspace Named Value.
   /// [valueFromKeyVault] A `value_from_key_vault` block as defined below.
-  WorkspaceNamedValueState({
+  const WorkspaceNamedValueState({
     this.apiManagementWorkspaceId,
     this.displayName,
     this.name,

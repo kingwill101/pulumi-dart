@@ -33,7 +33,7 @@ class ManagedFolderArgs {
   /// [name] The name of the managed folder. Required if not specified by URL parameter.
   /// [selfLink] The link to this managed folder.
   /// [updateTime] The last update time of the managed folder metadata in RFC 3339 format.
-  ManagedFolderArgs({
+  const ManagedFolderArgs({
     required this.bucket,
     this.createTime,
     this.id,

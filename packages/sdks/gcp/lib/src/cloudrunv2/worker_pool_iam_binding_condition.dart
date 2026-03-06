@@ -11,7 +11,7 @@ class WorkerPoolIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  WorkerPoolIamBindingCondition({
+  const WorkerPoolIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

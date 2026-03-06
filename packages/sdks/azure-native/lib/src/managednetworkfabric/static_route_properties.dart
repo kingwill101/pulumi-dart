@@ -12,7 +12,7 @@ class StaticRouteProperties {
   /// Creates a new [StaticRouteProperties].
   /// [nextHop] List of next hop addresses.
   /// [prefix] Prefix of the route.
-  StaticRouteProperties({
+  const StaticRouteProperties({
     required this.nextHop,
     required this.prefix,
   });

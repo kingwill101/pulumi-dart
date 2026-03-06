@@ -14,7 +14,7 @@ class ServiceMeshMembershipSpec {
   /// Creates a new [ServiceMeshMembershipSpec].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
   /// [management] Enables automatic Service Mesh management.
-  ServiceMeshMembershipSpec({
+  const ServiceMeshMembershipSpec({
     this.controlPlane,
     this.management,
   });

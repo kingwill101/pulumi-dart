@@ -23,7 +23,7 @@ class SlackChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Slack channel resource
   /// [provisioningState] Provisioning state of the resource
-  SlackChannelResponse({
+  const SlackChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

@@ -33,7 +33,7 @@ class GetServergroupV2Result {
   /// [region] Required.
   /// [rules] Rules which are applied to specified policy.
   /// [userId] User ID of the server group.
-  GetServergroupV2Result({
+  const GetServergroupV2Result({
     required this.id,
     required this.members,
     required this.metadata,

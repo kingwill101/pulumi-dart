@@ -8,7 +8,7 @@ class DomainFeaturesMsrs {
 
   /// Creates a new [DomainFeaturesMsrs].
   /// [unknown] Indicates whether unknown MSRs are allowed to be accessed by the guest.
-  DomainFeaturesMsrs({
+  const DomainFeaturesMsrs({
     required this.unknown,
   });
 

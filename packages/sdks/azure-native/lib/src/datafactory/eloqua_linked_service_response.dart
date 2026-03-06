@@ -49,7 +49,7 @@ class EloquaLinkedServiceResponse {
   /// [usePeerVerification] Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
   /// [username] The site name and user name of your Eloqua account in the form: sitename/username. (i.e. Eloqua/Alice)
   /// [version] Version of the linked service.
-  EloquaLinkedServiceResponse({
+  const EloquaLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

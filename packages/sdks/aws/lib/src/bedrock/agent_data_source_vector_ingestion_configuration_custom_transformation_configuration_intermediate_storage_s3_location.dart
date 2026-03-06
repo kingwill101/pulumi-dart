@@ -8,7 +8,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location].
   /// [uri] S3 URI for intermediate storage.
-  AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location({
+  const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationIntermediateStorageS3Location({
     required this.uri,
   });
 

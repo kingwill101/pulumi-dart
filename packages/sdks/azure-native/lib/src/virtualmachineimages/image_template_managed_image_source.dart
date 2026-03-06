@@ -13,7 +13,7 @@ class ImageTemplateManagedImageSource {
   /// Creates a new [ImageTemplateManagedImageSource].
   /// [imageId] ARM resource id of the managed image in customer subscription
   /// [type] Specifies the type of source image you want to start with.
-  ImageTemplateManagedImageSource({
+  const ImageTemplateManagedImageSource({
     required this.imageId,
     required this.type,
   });

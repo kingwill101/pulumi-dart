@@ -17,7 +17,7 @@ class RulesEngineActionResponse {
   /// [requestHeaderActions] A list of header actions to apply from the request from AFD to the origin.
   /// [responseHeaderActions] A list of header actions to apply from the response from AFD to the client.
   /// [routeConfigurationOverride] Override the route configuration.
-  RulesEngineActionResponse({
+  const RulesEngineActionResponse({
     this.requestHeaderActions,
     this.responseHeaderActions,
     this.routeConfigurationOverride,

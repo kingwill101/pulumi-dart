@@ -9,7 +9,7 @@ class GetWindowsFileSystemDiskIopsConfiguration {
   /// Creates a new [GetWindowsFileSystemDiskIopsConfiguration].
   /// [iops] Required.
   /// [mode] Required.
-  GetWindowsFileSystemDiskIopsConfiguration({
+  const GetWindowsFileSystemDiskIopsConfiguration({
     required this.iops,
     required this.mode,
   });

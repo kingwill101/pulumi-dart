@@ -24,7 +24,7 @@ class TopicRuleErrorActionKafka {
   /// [key] The Kafka message key.
   /// [partition] The Kafka message partition.
   /// [topic] The Kafka topic for messages to be sent to the Kafka broker.
-  TopicRuleErrorActionKafka({
+  const TopicRuleErrorActionKafka({
     required this.clientProperties,
     required this.destinationArn,
     this.headers,

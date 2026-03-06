@@ -8,7 +8,7 @@ class CapacityProviderPermissionsConfig {
 
   /// Creates a new [CapacityProviderPermissionsConfig].
   /// [capacityProviderOperatorRoleArn] The ARN of the IAM role that allows Lambda to manage the Capacity Provider.
-  CapacityProviderPermissionsConfig({
+  const CapacityProviderPermissionsConfig({
     required this.capacityProviderOperatorRoleArn,
   });
 

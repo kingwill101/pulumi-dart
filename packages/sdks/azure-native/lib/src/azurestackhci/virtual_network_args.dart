@@ -39,7 +39,7 @@ class VirtualNetworkArgs {
   /// [tags] Resource tags.
   /// [virtualNetworkName] Name of the virtual network
   /// [vmSwitchName] name of the network switch to be used for VMs
-  VirtualNetworkArgs({
+  const VirtualNetworkArgs({
     this.dhcpOptions,
     this.extendedLocation,
     this.location,

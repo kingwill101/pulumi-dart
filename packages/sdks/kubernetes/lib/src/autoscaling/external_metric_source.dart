@@ -14,7 +14,7 @@ class ExternalMetricSource {
   /// Creates a new [ExternalMetricSource].
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  ExternalMetricSource({
+  const ExternalMetricSource({
     required this.metric,
     required this.target,
   });

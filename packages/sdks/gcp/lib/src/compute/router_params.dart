@@ -10,7 +10,7 @@ class RouterParams {
 
   /// Creates a new [RouterParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the router. Tag keys and values have the
-  RouterParams({
+  const RouterParams({
     this.resourceManagerTags,
   });
 

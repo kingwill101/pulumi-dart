@@ -62,7 +62,7 @@ class GetJobTemplatesTemplate {
   /// [task] A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
   /// [thread] A Single Task and the Number of Required Threads.Possible Values: 1~20000.
   /// [variables] The Job of the Environment Variable.
-  GetJobTemplatesTemplate({
+  const GetJobTemplatesTemplate({
     required this.arrayRequest,
     required this.clockTime,
     required this.commandLine,

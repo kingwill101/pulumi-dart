@@ -43,7 +43,7 @@ class ApplicationInfoState {
   /// [quotaUnit] Optional.
   /// [reason] Optional.
   /// [status] Optional.
-  ApplicationInfoState({
+  const ApplicationInfoState({
     this.approveValue,
     this.auditMode,
     this.auditReason,

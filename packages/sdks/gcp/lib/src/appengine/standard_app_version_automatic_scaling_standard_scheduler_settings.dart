@@ -18,7 +18,7 @@ class StandardAppVersionAutomaticScalingStandardSchedulerSettings {
   /// [minInstances] Minimum number of instances to run for this version. Set to zero to disable minInstances configuration.
   /// [targetCpuUtilization] Target CPU utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
   /// [targetThroughputUtilization] Target throughput utilization ratio to maintain when scaling. Should be a value in the range [0.50, 0.95], zero, or a negative value.
-  StandardAppVersionAutomaticScalingStandardSchedulerSettings({
+  const StandardAppVersionAutomaticScalingStandardSchedulerSettings({
     this.maxInstances,
     this.minInstances,
     this.targetCpuUtilization,

@@ -37,7 +37,7 @@ class MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse {
   /// [stage] Current stage of migration
   /// [startedOn] Migration start time
   /// [state] Current state of migration
-  MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse({
+  const MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse({
     required this.databaseName,
     required this.endedOn,
     required this.exceptionsAndWarnings,

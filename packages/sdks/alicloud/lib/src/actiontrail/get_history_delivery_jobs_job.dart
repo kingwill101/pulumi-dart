@@ -35,7 +35,7 @@ class GetHistoryDeliveryJobsJob {
   /// [status] The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
   /// [trailName] The name of the trail.
   /// [updatedTime] The time when the task was updated.
-  GetHistoryDeliveryJobsJob({
+  const GetHistoryDeliveryJobsJob({
     required this.createTime,
     required this.endTime,
     required this.historyDeliveryJobId,

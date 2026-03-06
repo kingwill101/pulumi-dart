@@ -16,7 +16,7 @@ class VolumeAttachmentSpec {
   /// [attacher] attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
   /// [nodeName] nodeName represents the node that the volume should be attached to.
   /// [source] source represents the volume that should be attached.
-  VolumeAttachmentSpec({
+  const VolumeAttachmentSpec({
     required this.attacher,
     required this.nodeName,
     required this.source,

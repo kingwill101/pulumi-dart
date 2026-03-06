@@ -12,7 +12,7 @@ class FunctionsRuntime {
   /// Creates a new [FunctionsRuntime].
   /// [name] Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   /// [version] Function app runtime version. Example: 8 (for dotnet-isolated)
-  FunctionsRuntime({
+  const FunctionsRuntime({
     this.name,
     this.version,
   });

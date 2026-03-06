@@ -10,7 +10,7 @@ class DeviceClassConfigurationPatch {
 
   /// Creates a new [DeviceClassConfigurationPatch].
   /// [opaque] Opaque provides driver-specific configuration parameters.
-  DeviceClassConfigurationPatch({
+  const DeviceClassConfigurationPatch({
     this.opaque,
   });
 

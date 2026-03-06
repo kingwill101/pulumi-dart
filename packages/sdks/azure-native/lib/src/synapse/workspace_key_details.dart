@@ -12,7 +12,7 @@ class WorkspaceKeyDetails {
   /// Creates a new [WorkspaceKeyDetails].
   /// [keyVaultUrl] Workspace Key sub-resource key vault url
   /// [name] Workspace Key sub-resource name
-  WorkspaceKeyDetails({
+  const WorkspaceKeyDetails({
     this.keyVaultUrl,
     this.name,
   });

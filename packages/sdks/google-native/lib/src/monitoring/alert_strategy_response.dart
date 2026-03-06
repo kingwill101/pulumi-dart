@@ -17,7 +17,7 @@ class AlertStrategyResponse {
   /// [autoClose] If an alert policy that was active has no data for this long, any open incidents will close
   /// [notificationChannelStrategy] Control how notifications will be sent out, on a per-channel basis.
   /// [notificationRateLimit] Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
-  AlertStrategyResponse({
+  const AlertStrategyResponse({
     required this.autoClose,
     required this.notificationChannelStrategy,
     required this.notificationRateLimit,

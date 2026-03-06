@@ -17,7 +17,7 @@ class CanaryTimeline {
   /// [lastModified] Date and time the canary was most recently modified.
   /// [lastStarted] Date and time that the canary's most recent run started.
   /// [lastStopped] Date and time that the canary's most recent run ended.
-  CanaryTimeline({
+  const CanaryTimeline({
     this.created,
     this.lastModified,
     this.lastStarted,

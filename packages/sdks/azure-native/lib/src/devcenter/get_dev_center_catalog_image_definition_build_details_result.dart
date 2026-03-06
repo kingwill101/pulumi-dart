@@ -40,7 +40,7 @@ class GetDevCenterCatalogImageDefinitionBuildDetailsResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [taskGroups] The list of task groups executed during the image definition build.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDevCenterCatalogImageDefinitionBuildDetailsResult({
+  const GetDevCenterCatalogImageDefinitionBuildDetailsResult({
     required this.endTime,
     required this.errorDetails,
     required this.id,

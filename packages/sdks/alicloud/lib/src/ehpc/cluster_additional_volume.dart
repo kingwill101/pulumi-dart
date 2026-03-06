@@ -36,7 +36,7 @@ class ClusterAdditionalVolume {
   /// [volumeMountpoint] The mount target of the additional file system.
   /// [volumeProtocol] The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
   /// [volumeType] The type of the additional shared storage. Only NAS file systems are supported.
-  ClusterAdditionalVolume({
+  const ClusterAdditionalVolume({
     this.jobQueue,
     this.localDirectory,
     this.location,

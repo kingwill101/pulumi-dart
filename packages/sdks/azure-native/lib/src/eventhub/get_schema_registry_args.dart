@@ -18,7 +18,7 @@ class GetSchemaRegistryArgs {
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
   /// [schemaGroupName] The Schema Group name
-  GetSchemaRegistryArgs({
+  const GetSchemaRegistryArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     required this.schemaGroupName,

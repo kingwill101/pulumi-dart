@@ -12,7 +12,7 @@ class LoadBalancerConfigResponse {
   /// Creates a new [LoadBalancerConfigResponse].
   /// [type] Load balancer type
   /// [version] Load balancer version
-  LoadBalancerConfigResponse({
+  const LoadBalancerConfigResponse({
     required this.type,
     required this.version,
   });

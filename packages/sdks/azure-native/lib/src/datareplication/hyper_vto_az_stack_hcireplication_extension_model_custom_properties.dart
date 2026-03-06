@@ -22,7 +22,7 @@ class HyperVToAzStackHCIReplicationExtensionModelCustomProperties {
   /// [instanceType] Gets or sets the instance type.
   /// [storageAccountId] Gets or sets the storage account Id.
   /// [storageAccountSasSecretName] Gets or sets the Sas Secret of storage account.
-  HyperVToAzStackHCIReplicationExtensionModelCustomProperties({
+  const HyperVToAzStackHCIReplicationExtensionModelCustomProperties({
     required this.azStackHciFabricArmId,
     required this.hyperVFabricArmId,
     required this.instanceType,

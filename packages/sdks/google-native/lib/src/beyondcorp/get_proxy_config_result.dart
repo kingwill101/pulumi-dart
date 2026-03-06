@@ -32,7 +32,7 @@ class GetProxyConfigResult {
   /// [routingInfo] Routing info to direct traffic to the proxy server.
   /// [transportInfo] Transport layer information to verify for the proxy server.
   /// [updateTime] Timestamp when the resource was last modified.
-  GetProxyConfigResult({
+  const GetProxyConfigResult({
     required this.createTime,
     required this.displayName,
     required this.encryptionInfo,

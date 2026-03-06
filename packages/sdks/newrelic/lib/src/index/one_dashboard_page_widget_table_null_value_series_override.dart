@@ -11,7 +11,7 @@ class OneDashboardPageWidgetTableNullValueSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetTableNullValueSeriesOverride].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesName] Series name
-  OneDashboardPageWidgetTableNullValueSeriesOverride({
+  const OneDashboardPageWidgetTableNullValueSeriesOverride({
     this.nullValue,
     this.seriesName,
   });

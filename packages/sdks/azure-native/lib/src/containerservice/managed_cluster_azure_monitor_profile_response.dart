@@ -10,7 +10,7 @@ class ManagedClusterAzureMonitorProfileResponse {
 
   /// Creates a new [ManagedClusterAzureMonitorProfileResponse].
   /// [metrics] Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview.
-  ManagedClusterAzureMonitorProfileResponse({
+  const ManagedClusterAzureMonitorProfileResponse({
     this.metrics,
   });
 

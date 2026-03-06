@@ -44,7 +44,7 @@ class DomainArgs {
   /// [skipDeletionCheck] Whether to skip the deletion check for the Domain.
   /// [tags] Optional.
   /// [timeouts] Optional.
-  DomainArgs({
+  const DomainArgs({
     this.description,
     required this.domainExecutionRole,
     this.domainVersion,

@@ -8,7 +8,7 @@ class LocationAzureBlobSasConfiguration {
 
   /// Creates a new [LocationAzureBlobSasConfiguration].
   /// [token] A SAS token that provides permissions to access your Azure Blob Storage.
-  LocationAzureBlobSasConfiguration({
+  const LocationAzureBlobSasConfiguration({
     required this.token,
   });
 

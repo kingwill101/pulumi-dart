@@ -35,7 +35,7 @@ class CertificateArgs {
   /// [project] Optional.
   /// [rawCertificate] Input only. Raw client certificate which would be registered with trawler
   /// [requestorId] Immutable. Requestor ID to be used to register certificate with trawler
-  CertificateArgs({
+  const CertificateArgs({
     this.certificateStatus,
     this.credentialId,
     this.description,

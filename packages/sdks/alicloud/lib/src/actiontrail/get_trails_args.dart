@@ -27,7 +27,7 @@ class GetTrailsArgs {
   /// [nameRegex] A regex string to filter results by trail name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
-  GetTrailsArgs({
+  const GetTrailsArgs({
     this.ids,
     this.includeOrganizationTrail,
     this.includeShadowTrails,

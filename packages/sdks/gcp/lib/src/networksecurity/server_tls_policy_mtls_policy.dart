@@ -21,7 +21,7 @@ class ServerTlsPolicyMtlsPolicy {
   /// [clientValidationCas] Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
   /// [clientValidationMode] When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
   /// [clientValidationTrustConfig] Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
-  ServerTlsPolicyMtlsPolicy({
+  const ServerTlsPolicyMtlsPolicy({
     this.clientValidationCas,
     this.clientValidationMode,
     this.clientValidationTrustConfig,

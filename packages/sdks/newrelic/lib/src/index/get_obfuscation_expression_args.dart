@@ -15,7 +15,7 @@ class GetObfuscationExpressionArgs {
   /// Creates a new [GetObfuscationExpressionArgs].
   /// [accountId] The account id associated with the obfuscation expression. If left empty will default to account ID specified in provider level configuration.
   /// [name] Name of expression.
-  GetObfuscationExpressionArgs({
+  const GetObfuscationExpressionArgs({
     this.accountId,
     required this.name,
   });

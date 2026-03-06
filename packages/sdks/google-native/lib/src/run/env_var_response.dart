@@ -16,7 +16,7 @@ class EnvVarResponse {
   /// [name] Name of the environment variable.
   /// [value] Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
   /// [valueFrom] Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
-  EnvVarResponse({
+  const EnvVarResponse({
     required this.name,
     required this.value,
     required this.valueFrom,

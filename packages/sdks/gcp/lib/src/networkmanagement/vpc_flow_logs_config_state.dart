@@ -91,7 +91,7 @@ class VpcFlowLogsConfigState {
   /// [updateTime] Output only. The time the config was updated.
   /// [vpcFlowLogsConfigId] Required. ID of the `VpcFlowLogsConfig`.
   /// [vpnTunnel] Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
-  VpcFlowLogsConfigState({
+  const VpcFlowLogsConfigState({
     this.aggregationInterval,
     this.createTime,
     this.description,

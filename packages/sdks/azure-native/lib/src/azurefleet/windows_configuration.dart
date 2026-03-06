@@ -42,7 +42,7 @@ class WindowsConfiguration {
   /// [provisionVMAgent] Indicates whether virtual machine agent should be provisioned on the virtual
   /// [timeZone] Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
   /// [winRM] Specifies the Windows Remote Management listeners. This enables remote Windows
-  WindowsConfiguration({
+  const WindowsConfiguration({
     this.additionalUnattendContent,
     this.enableAutomaticUpdates,
     this.enableVMAgentPlatformUpdates,

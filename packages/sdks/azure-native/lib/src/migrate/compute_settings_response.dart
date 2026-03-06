@@ -31,7 +31,7 @@ class ComputeSettingsResponse {
   /// [suseLinuxServerLicensing] Linux Suse Server licensing settings.
   /// [virtualizationSoftwareSettings] Virtualization software settings.
   /// [windowsServerLicensing] Windows Server licensing settings.
-  ComputeSettingsResponse({
+  const ComputeSettingsResponse({
     required this.hyperthreadCoreToMemoryRatio,
     required this.price,
     required this.rhelLinuxServerLicensing,

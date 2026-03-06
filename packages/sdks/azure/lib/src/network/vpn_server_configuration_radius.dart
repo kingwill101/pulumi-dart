@@ -17,7 +17,7 @@ class VpnServerConfigurationRadius {
   /// [clientRootCertificates] One or more `client_root_certificate` blocks as defined below.
   /// [serverRootCertificates] One or more `server_root_certificate` blocks as defined below.
   /// [servers] One or more `server` blocks as defined below.
-  VpnServerConfigurationRadius({
+  const VpnServerConfigurationRadius({
     this.clientRootCertificates,
     this.serverRootCertificates,
     this.servers,

@@ -37,7 +37,7 @@ class InstanceFleetState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetOnDemandCapacity] The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision.
   /// [targetSpotCapacity] The target capacity of Spot units for the instance fleet, which determines how many Spot instances to provision.
-  InstanceFleetState({
+  const InstanceFleetState({
     this.clusterId,
     this.instanceTypeConfigs,
     this.launchSpecifications,

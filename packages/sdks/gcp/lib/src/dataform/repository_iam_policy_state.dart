@@ -16,7 +16,7 @@ class RepositoryIamPolicyState {
   /// [project] Optional.
   /// [region] Optional.
   /// [repository] Optional.
-  RepositoryIamPolicyState({
+  const RepositoryIamPolicyState({
     this.etag,
     this.policyData,
     this.project,

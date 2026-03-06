@@ -78,7 +78,7 @@ class BotState {
   /// [status] When you send a request to create or update a bot, Amazon Lex sets the status response
   /// [version] The version of the bot.
   /// [voiceId] The Amazon Polly voice ID that you want Amazon Lex to use for voice interactions with the user. The locale configured for the voice must match the locale of the bot. For more information, see [Available Voices](http://docs.aws.amazon.com/polly/latest/dg/voicelist.html) in the Amazon Polly Developer Guide.
-  BotState({
+  const BotState({
     this.abortStatement,
     this.arn,
     this.checksum,

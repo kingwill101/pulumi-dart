@@ -13,7 +13,7 @@ class ListWebhookEventsResult {
   /// Creates a new [ListWebhookEventsResult].
   /// [nextLink] The URI that can be used to request the next list of events.
   /// [value] The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events.
-  ListWebhookEventsResult({
+  const ListWebhookEventsResult({
     this.nextLink,
     this.value,
   });

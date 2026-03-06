@@ -24,7 +24,7 @@ class GetFlavorprofileV2Args {
   /// [name] The name of the flavorprofile. Conflicts with `flavorprofile_id`.
   /// [providerName] The name of the provider that the flavorprofile uses. Conflicts
   /// [region] The region in which to obtain the V2 Load Balancer client.
-  GetFlavorprofileV2Args({
+  const GetFlavorprofileV2Args({
     this.flavorprofileId,
     this.name,
     this.providerName,

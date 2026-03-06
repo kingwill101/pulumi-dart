@@ -25,7 +25,7 @@ class DeploymentAtManagementGroupScopeArgs {
   /// [location] The location to store the deployment data.
   /// [properties] The deployment properties.
   /// [tags] Deployment tags
-  DeploymentAtManagementGroupScopeArgs({
+  const DeploymentAtManagementGroupScopeArgs({
     this.deploymentName,
     required this.groupId,
     this.location,

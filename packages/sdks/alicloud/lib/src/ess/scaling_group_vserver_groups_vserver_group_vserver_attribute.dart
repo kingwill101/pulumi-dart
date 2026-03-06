@@ -14,7 +14,7 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute {
   /// [port] The port will be used for VServer Group backend server.
   /// [vserverGroupId] ID of VServer Group.
   /// [weight] The weight of an ECS instance attached to the VServer Group.
-  ScalingGroupVServerGroupsVserverGroupVserverAttribute({
+  const ScalingGroupVServerGroupsVserverGroupVserverAttribute({
     required this.port,
     required this.vserverGroupId,
     required this.weight,

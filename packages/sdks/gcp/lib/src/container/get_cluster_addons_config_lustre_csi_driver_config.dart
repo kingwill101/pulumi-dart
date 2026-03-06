@@ -12,7 +12,7 @@ class GetClusterAddonsConfigLustreCsiDriverConfig {
   /// Creates a new [GetClusterAddonsConfigLustreCsiDriverConfig].
   /// [enableLegacyLustrePort] If set to true, the Lustre CSI driver will initialize LNet (the virtual network layer for Lustre kernel module) using port 6988.
   /// [enabled] Whether the Lustre CSI driver is enabled for this cluster.
-  GetClusterAddonsConfigLustreCsiDriverConfig({
+  const GetClusterAddonsConfigLustreCsiDriverConfig({
     required this.enableLegacyLustrePort,
     required this.enabled,
   });

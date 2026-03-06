@@ -9,7 +9,7 @@ class CostManagementConfig {
 
   /// Creates a new [CostManagementConfig].
   /// [enabled] Whether the feature is enabled or not.
-  CostManagementConfig({
+  const CostManagementConfig({
     this.enabled,
   });
 

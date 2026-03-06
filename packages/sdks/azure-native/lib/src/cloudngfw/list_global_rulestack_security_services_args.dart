@@ -18,7 +18,7 @@ class ListGlobalRulestackSecurityServicesArgs {
   /// [skip] Optional.
   /// [top] Optional.
   /// [type] Required.
-  ListGlobalRulestackSecurityServicesArgs({
+  const ListGlobalRulestackSecurityServicesArgs({
     required this.globalRulestackName,
     this.skip,
     this.top,

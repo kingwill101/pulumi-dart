@@ -13,7 +13,7 @@ class GetTablesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] A list of all the DynamoDB table names found.
   /// [region] Required.
-  GetTablesResult({
+  const GetTablesResult({
     required this.id,
     required this.names,
     required this.region,

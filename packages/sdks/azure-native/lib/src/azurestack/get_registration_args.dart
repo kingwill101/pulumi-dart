@@ -15,7 +15,7 @@ class GetRegistrationArgs {
   /// Creates a new [GetRegistrationArgs].
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
-  GetRegistrationArgs({
+  const GetRegistrationArgs({
     required this.registrationName,
     required this.resourceGroup,
   });

@@ -64,7 +64,7 @@ class GetClusterSnapshotResult {
   /// [storageEncrypted] Whether the DB cluster snapshot is encrypted.
   /// [tags] Map of tags for the resource.
   /// [vpcId] VPC ID associated with the DB cluster snapshot.
-  GetClusterSnapshotResult({
+  const GetClusterSnapshotResult({
     required this.allocatedStorage,
     required this.availabilityZones,
     this.dbClusterIdentifier,

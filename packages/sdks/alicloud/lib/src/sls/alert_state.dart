@@ -32,7 +32,7 @@ class AlertState {
   /// [projectName] Project Name.
   /// [schedule] Check the frequency-dependent configuration. See `schedule` below.
   /// [status] Resource attribute field representing alarm status.
-  AlertState({
+  const AlertState({
     this.alertName,
     this.configuration,
     this.createTime,

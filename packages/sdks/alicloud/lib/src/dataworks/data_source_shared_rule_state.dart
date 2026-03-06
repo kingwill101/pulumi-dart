@@ -24,7 +24,7 @@ class DataSourceSharedRuleState {
   /// [envType] The environment type of the data source shared to the target project, such as Dev (Development Environment) and Prod (production environment).
   /// [sharedUser] The target user of the data source permission policy, which is null to share to the project.
   /// [targetProjectId] The ID of the project to which the data source is shared.
-  DataSourceSharedRuleState({
+  const DataSourceSharedRuleState({
     this.createTime,
     this.dataSourceId,
     this.dataSourceSharedRuleId,

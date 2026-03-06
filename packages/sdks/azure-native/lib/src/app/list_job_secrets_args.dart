@@ -15,7 +15,7 @@ class ListJobSecretsArgs {
   /// Creates a new [ListJobSecretsArgs].
   /// [jobName] Job Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListJobSecretsArgs({
+  const ListJobSecretsArgs({
     required this.jobName,
     required this.resourceGroupName,
   });

@@ -14,7 +14,7 @@ class AutoscalerAutoscalingPolicyScaleDownControl {
   /// Creates a new [AutoscalerAutoscalingPolicyScaleDownControl].
   /// [maxScaledDownReplicas] A nested object resource.
   /// [timeWindowSec] How long back autoscaling should look when computing recommendations
-  AutoscalerAutoscalingPolicyScaleDownControl({
+  const AutoscalerAutoscalingPolicyScaleDownControl({
     this.maxScaledDownReplicas,
     this.timeWindowSec,
   });

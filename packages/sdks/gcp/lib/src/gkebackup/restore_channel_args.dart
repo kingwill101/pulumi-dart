@@ -35,7 +35,7 @@ class RestoreChannelArgs {
   /// [location] The region of the Restore Channel.
   /// [name] The full name of the RestoreChannel Resource.
   /// [project] The ID of the project in which the resource belongs.
-  RestoreChannelArgs({
+  const RestoreChannelArgs({
     this.description,
     required this.destinationProject,
     this.labels,

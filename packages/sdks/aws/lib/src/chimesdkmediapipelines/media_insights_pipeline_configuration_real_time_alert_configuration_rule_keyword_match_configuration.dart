@@ -14,7 +14,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMat
   /// [keywords] Collection of keywords to match.
   /// [negate] Negate the rule.
   /// [ruleName] Rule name.
-  MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration({
+  const MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleKeywordMatchConfiguration({
     required this.keywords,
     this.negate,
     required this.ruleName,

@@ -13,7 +13,7 @@ class BuildType {
   /// Creates a new [BuildType].
   /// [builderVersion] Version of the builder which produced this Note.
   /// [signature] Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
-  BuildType({
+  const BuildType({
     this.builderVersion,
     this.signature,
   });

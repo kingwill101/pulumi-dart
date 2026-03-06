@@ -37,7 +37,7 @@ class NodeGroupAttachmentArgs {
   /// [userData] User-defined data
   /// [vpcId] Vpc id
   /// [vswitchId] vswitch id
-  NodeGroupAttachmentArgs({
+  const NodeGroupAttachmentArgs({
     this.clusterId,
     this.dataDisks,
     required this.hostname,

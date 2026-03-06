@@ -39,7 +39,7 @@ class AutoImportJobArgs {
   /// [maximumErrors] Total non-conflict-oriented errors (e.g., OS errors) Import will tolerate before exiting with failure. -1 means infinite. 0 means exit immediately on any error.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  AutoImportJobArgs({
+  const AutoImportJobArgs({
     this.adminStatus,
     required this.amlFilesystemName,
     this.autoImportJobName,

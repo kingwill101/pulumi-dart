@@ -9,7 +9,7 @@ class ResponsePlanAction {
 
   /// Creates a new [ResponsePlanAction].
   /// [ssmAutomations] The Systems Manager automation document to start as the runbook at the beginning of the incident. The following values are supported:
-  ResponsePlanAction({
+  const ResponsePlanAction({
     this.ssmAutomations,
   });
 

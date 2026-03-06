@@ -16,7 +16,7 @@ class StringNotEndsWithFilter {
   /// [key] The field/property in the event based on which you want to filter.
   /// [operatorType] The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// [values] The set of filter values.
-  StringNotEndsWithFilter({
+  const StringNotEndsWithFilter({
     this.key,
     required this.operatorType,
     this.values,

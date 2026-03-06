@@ -17,7 +17,7 @@ class GetDomainBackupIamPolicyManagedidentitiesV1beta1Args {
   /// [domainId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDomainBackupIamPolicyManagedidentitiesV1beta1Args({
+  const GetDomainBackupIamPolicyManagedidentitiesV1beta1Args({
     required this.backupId,
     required this.domainId,
     this.optionsRequestedPolicyVersion,

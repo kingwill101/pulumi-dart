@@ -22,7 +22,7 @@ class FirewallPolicyAssociationState {
   /// [firewallPolicy] The firewall policy of the resource.
   /// [name] The name for an association.
   /// [shortName] The short name of the firewall policy of the association.
-  FirewallPolicyAssociationState({
+  const FirewallPolicyAssociationState({
     this.attachmentTarget,
     this.firewallPolicy,
     this.name,

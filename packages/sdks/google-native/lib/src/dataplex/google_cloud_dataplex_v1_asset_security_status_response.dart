@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1AssetSecurityStatusResponse {
   /// [message] Additional information about the current state.
   /// [state] The current state of the security policy applied to the attached resource.
   /// [updateTime] Last update time of the status.
-  GoogleCloudDataplexV1AssetSecurityStatusResponse({
+  const GoogleCloudDataplexV1AssetSecurityStatusResponse({
     required this.message,
     required this.state,
     required this.updateTime,

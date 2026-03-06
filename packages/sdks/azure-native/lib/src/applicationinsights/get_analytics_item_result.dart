@@ -36,7 +36,7 @@ class GetAnalyticsItemResult {
   /// [timeModified] Date and time in UTC of the last modification that was made to this item.
   /// [type] Enum indicating the type of the Analytics item.
   /// [version] This instance's version of the data model. This can change as new features are added.
-  GetAnalyticsItemResult({
+  const GetAnalyticsItemResult({
     required this.azureApiVersion,
     this.content,
     this.id,

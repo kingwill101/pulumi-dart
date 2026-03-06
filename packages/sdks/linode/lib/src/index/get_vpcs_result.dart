@@ -15,7 +15,7 @@ class GetVpcsResult {
   /// [filters] Optional.
   /// [id] The unique id of this VPC.
   /// [vpcs] Required.
-  GetVpcsResult({
+  const GetVpcsResult({
     this.filters,
     required this.id,
     required this.vpcs,

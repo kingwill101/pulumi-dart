@@ -18,7 +18,7 @@ class FqdnOutboundRule {
   /// [destination] Optional.
   /// [status] Type of a managed network Outbound Rule of a cognitive services account.
   /// [type] Type of a managed network Outbound Rule of a cognitive services account.
-  FqdnOutboundRule({
+  const FqdnOutboundRule({
     this.category,
     this.destination,
     this.status,

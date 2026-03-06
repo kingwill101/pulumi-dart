@@ -27,7 +27,7 @@ class VpcState {
   /// [name] A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
   /// [region] The DigitalOcean region slug for the VPC's location.
   /// [vpcUrn] The uniform resource name (URN) for the VPC.
-  VpcState({
+  const VpcState({
     this.createdAt,
     this.default_,
     this.description,

@@ -19,7 +19,7 @@ class VirtualMachineAssessmentSchedule {
   /// [monthlyOccurrence] How many months between assessment runs. Valid values are between `1` and `5`.
   /// [startTime] What time the assessment will be run. Must be in the format `HH:mm`.
   /// [weeklyInterval] How many weeks between assessment runs. Valid values are between `1` and `6`.
-  VirtualMachineAssessmentSchedule({
+  const VirtualMachineAssessmentSchedule({
     required this.dayOfWeek,
     this.monthlyOccurrence,
     required this.startTime,

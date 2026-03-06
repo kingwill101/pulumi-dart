@@ -14,7 +14,7 @@ class NotebookResourceInfoResponse {
   /// [fqdn] Optional.
   /// [notebookPreparationError] The error that occurs when preparing notebook.
   /// [resourceId] the data plane resourceId that used to initialize notebook component
-  NotebookResourceInfoResponse({
+  const NotebookResourceInfoResponse({
     this.fqdn,
     this.notebookPreparationError,
     this.resourceId,

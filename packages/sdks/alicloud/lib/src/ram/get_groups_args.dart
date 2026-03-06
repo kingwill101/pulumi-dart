@@ -24,7 +24,7 @@ class GetGroupsArgs {
   /// [policyName] Filter the results by a specific policy name. If you set this parameter without setting `policy_type`, it will be automatically set to `System`.
   /// [policyType] Filter the results by a specific policy type. Valid items are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
   /// [userName] Filter the results by a specific the user name.
-  GetGroupsArgs({
+  const GetGroupsArgs({
     this.nameRegex,
     this.outputFile,
     this.policyName,

@@ -18,7 +18,7 @@ class GetDisasterRecoveryConfigArgs {
   /// [alias] The Disaster Recovery configuration name
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDisasterRecoveryConfigArgs({
+  const GetDisasterRecoveryConfigArgs({
     required this.alias,
     required this.namespaceName,
     required this.resourceGroupName,

@@ -11,7 +11,7 @@ class IAppList {
   /// Creates a new [IAppList].
   /// [encrypted] Name of origin
   /// [value] Name of origin
-  IAppList({
+  const IAppList({
     this.encrypted,
     this.value,
   });

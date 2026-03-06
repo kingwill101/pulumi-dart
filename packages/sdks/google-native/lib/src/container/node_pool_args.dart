@@ -78,7 +78,7 @@ class NodePoolArgs {
   /// [upgradeSettings] Upgrade settings control disruption and speed of the upgrade.
   /// [version] The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
   /// [zone] Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-  NodePoolArgs({
+  const NodePoolArgs({
     this.autoscaling,
     this.bestEffortProvisioning,
     required this.clusterId,

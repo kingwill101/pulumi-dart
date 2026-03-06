@@ -14,7 +14,7 @@ class CertificateConfigurationResponse {
   /// Creates a new [CertificateConfigurationResponse].
   /// [certificateAuthorityConfiguration] The configuration to set up an ICA.
   /// [leafCertificateConfiguration] The leaf certificate configuration.
-  CertificateConfigurationResponse({
+  const CertificateConfigurationResponse({
     required this.certificateAuthorityConfiguration,
     required this.leafCertificateConfiguration,
   });

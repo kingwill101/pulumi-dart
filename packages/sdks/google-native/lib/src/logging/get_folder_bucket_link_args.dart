@@ -17,7 +17,7 @@ class GetFolderBucketLinkArgs {
   /// [folderId] Required.
   /// [linkId] Required.
   /// [location] Required.
-  GetFolderBucketLinkArgs({
+  const GetFolderBucketLinkArgs({
     required this.bucketId,
     required this.folderId,
     required this.linkId,

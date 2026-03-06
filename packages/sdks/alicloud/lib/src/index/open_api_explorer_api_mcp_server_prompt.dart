@@ -18,7 +18,7 @@ class OpenApiExplorerApiMcpServerPrompt {
   /// [content] Full content of the prompt, supporting dynamic parameters. Parameters must be defined in Arguments, using the format {{ARG}}, where ARG supports English characters. Example: My name is: {{name}}.
   /// [description] Description of the prompt parameter.
   /// [name] Name of the prompt parameter.
-  OpenApiExplorerApiMcpServerPrompt({
+  const OpenApiExplorerApiMcpServerPrompt({
     this.arguments,
     this.content,
     this.description,

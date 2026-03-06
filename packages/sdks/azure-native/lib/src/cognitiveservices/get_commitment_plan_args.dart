@@ -18,7 +18,7 @@ class GetCommitmentPlanArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [commitmentPlanName] The name of the commitmentPlan associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCommitmentPlanArgs({
+  const GetCommitmentPlanArgs({
     required this.accountName,
     required this.commitmentPlanName,
     required this.resourceGroupName,

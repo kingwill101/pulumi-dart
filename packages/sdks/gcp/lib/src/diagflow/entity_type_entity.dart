@@ -19,7 +19,7 @@ class EntityTypeEntity {
   /// Creates a new [EntityTypeEntity].
   /// [synonyms] A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym
   /// [value] The primary value associated with this entity entry. For example, if the entity type is vegetable, the value
-  EntityTypeEntity({
+  const EntityTypeEntity({
     required this.synonyms,
     required this.value,
   });

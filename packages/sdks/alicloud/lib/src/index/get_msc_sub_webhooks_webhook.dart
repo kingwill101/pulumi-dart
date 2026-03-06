@@ -17,7 +17,7 @@ class GetMscSubWebhooksWebhook {
   /// [serverUrl] The serverUrl of the Subscription.
   /// [webhookId] The first ID of the resource.
   /// [webhookName] The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
-  GetMscSubWebhooksWebhook({
+  const GetMscSubWebhooksWebhook({
     required this.id,
     required this.serverUrl,
     required this.webhookId,

@@ -15,7 +15,7 @@ class GetDatabasePostgresqlUpdate {
   /// [frequency] Required.
   /// [hourOfDay] Required.
   /// [weekOfMonth] Required.
-  GetDatabasePostgresqlUpdate({
+  const GetDatabasePostgresqlUpdate({
     required this.dayOfWeek,
     required this.duration,
     required this.frequency,

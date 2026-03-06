@@ -17,7 +17,7 @@ class ShardingInstanceMongoList {
   /// [nodeClass] The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
   /// [nodeId] The ID of the Config Server node.
   /// [port] The connection port of the Config Server node.
-  ShardingInstanceMongoList({
+  const ShardingInstanceMongoList({
     this.connectString,
     required this.nodeClass,
     this.nodeId,

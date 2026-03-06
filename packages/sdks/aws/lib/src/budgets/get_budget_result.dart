@@ -66,7 +66,7 @@ class GetBudgetResult {
   /// [timePeriodEnd] The end of the time period covered by the budget. There are no restrictions on the end date. Format: `2017-01-01_12:00`.
   /// [timePeriodStart] The start of the time period covered by the budget. If you don't specify a start date, AWS defaults to the start of your chosen time period. The start date must come before the end date. Format: `2017-01-01_12:00`.
   /// [timeUnit] The length of time until a budget resets the actual and forecasted spend. Valid values: `MONTHLY`, `QUARTERLY`, `ANNUALLY`, and `DAILY`.
-  GetBudgetResult({
+  const GetBudgetResult({
     required this.accountId,
     required this.arn,
     required this.autoAdjustDatas,

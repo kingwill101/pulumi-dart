@@ -33,7 +33,7 @@ class CapacityCommitmentBigqueryreservationV1beta1Args {
   /// [project] Optional.
   /// [renewalPlan] The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
   /// [slotCount] Number of slots in this commitment.
-  CapacityCommitmentBigqueryreservationV1beta1Args({
+  const CapacityCommitmentBigqueryreservationV1beta1Args({
     this.capacityCommitmentId,
     this.enforceSingleAdminProjectPerOrg,
     this.location,

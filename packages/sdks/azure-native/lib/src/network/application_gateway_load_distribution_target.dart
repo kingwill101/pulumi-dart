@@ -19,7 +19,7 @@ class ApplicationGatewayLoadDistributionTarget {
   /// [id] Resource ID.
   /// [name] Name of the load distribution policy that is unique within an Application Gateway.
   /// [weightPerServer] Weight per server. Range between 1 and 100.
-  ApplicationGatewayLoadDistributionTarget({
+  const ApplicationGatewayLoadDistributionTarget({
     this.backendAddressPool,
     this.id,
     this.name,

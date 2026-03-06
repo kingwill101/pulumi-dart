@@ -63,7 +63,7 @@ class ScanConfigWebsecurityscannerV1betaArgs {
   /// [staticIpScan] Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
   /// [targetPlatforms] Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
   /// [userAgent] The user agent used during scanning.
-  ScanConfigWebsecurityscannerV1betaArgs({
+  const ScanConfigWebsecurityscannerV1betaArgs({
     this.authentication,
     this.blacklistPatterns,
     required this.displayName,

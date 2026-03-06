@@ -15,7 +15,7 @@ class TagBindingArgs {
   /// Creates a new [TagBindingArgs].
   /// [parent] The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
   /// [tagValue] The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
-  TagBindingArgs({
+  const TagBindingArgs({
     required this.parent,
     required this.tagValue,
   });

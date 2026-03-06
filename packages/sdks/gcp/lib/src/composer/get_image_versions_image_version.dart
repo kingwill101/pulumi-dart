@@ -11,7 +11,7 @@ class GetImageVersionsImageVersion {
   /// Creates a new [GetImageVersionsImageVersion].
   /// [imageVersionId] The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b.c"
   /// [supportedPythonVersions] Supported python versions for this image version
-  GetImageVersionsImageVersion({
+  const GetImageVersionsImageVersion({
     required this.imageVersionId,
     required this.supportedPythonVersions,
   });

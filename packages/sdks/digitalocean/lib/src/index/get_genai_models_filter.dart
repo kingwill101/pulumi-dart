@@ -13,7 +13,7 @@ class GetGenaiModelsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGenaiModelsFilter({
+  const GetGenaiModelsFilter({
     this.all,
     required this.key,
     this.matchBy,

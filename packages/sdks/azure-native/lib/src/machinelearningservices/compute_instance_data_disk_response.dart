@@ -18,7 +18,7 @@ class ComputeInstanceDataDiskResponse {
   /// [diskSizeGB] The initial disk size in gigabytes.
   /// [lun] The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun.
   /// [storageAccountType] type of this storage account.
-  ComputeInstanceDataDiskResponse({
+  const ComputeInstanceDataDiskResponse({
     this.caching,
     this.diskSizeGB,
     this.lun,

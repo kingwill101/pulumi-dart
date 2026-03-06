@@ -15,7 +15,7 @@ class MembershipStateResponseGkehubV1beta1 {
   /// [code] The current state of the Membership resource.
   /// [description] This field is never set by the Hub Service.
   /// [updateTime] This field is never set by the Hub Service.
-  MembershipStateResponseGkehubV1beta1({
+  const MembershipStateResponseGkehubV1beta1({
     required this.code,
     required this.description,
     required this.updateTime,

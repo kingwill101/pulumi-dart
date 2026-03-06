@@ -18,7 +18,7 @@ class SsoPropertiesResponse {
   /// [clientSecret] The secret known only to the application and the authorization server
   /// [issuerUri] The URI of Issuer Identifier
   /// [scope] It defines the specific actions applications can be allowed to do on a user's behalf
-  SsoPropertiesResponse({
+  const SsoPropertiesResponse({
     this.clientId,
     this.clientSecret,
     this.issuerUri,

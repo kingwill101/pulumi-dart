@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2ConditionsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ConditionsResponse].
   /// [conditions] A collection of conditions.
-  GooglePrivacyDlpV2ConditionsResponse({
+  const GooglePrivacyDlpV2ConditionsResponse({
     required this.conditions,
   });
 

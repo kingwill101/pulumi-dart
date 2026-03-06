@@ -45,7 +45,7 @@ class GetDatabaseSecurityAlertPolicyResult {
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
   /// [systemData] SystemData of SecurityAlertPolicyResource.
   /// [type] Resource type.
-  GetDatabaseSecurityAlertPolicyResult({
+  const GetDatabaseSecurityAlertPolicyResult({
     required this.azureApiVersion,
     required this.creationTime,
     this.disabledAlerts,

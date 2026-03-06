@@ -12,7 +12,7 @@ class FingerprintContaineranalysisV1beta1 {
   /// Creates a new [FingerprintContaineranalysisV1beta1].
   /// [v1Name] The layer ID of the final layer in the Docker image's v1 representation.
   /// [v2Blob] The ordered list of v2 blobs that represent a given image.
-  FingerprintContaineranalysisV1beta1({
+  const FingerprintContaineranalysisV1beta1({
     required this.v1Name,
     required this.v2Blob,
   });

@@ -40,7 +40,7 @@ class EndpointServicebusTopicArgs {
   /// [name] The name of the endpoint. The name must be unique across endpoint types. The following names are reserved: `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the Service Bus Topic has been created. Changing this forces a new resource to be created.
   /// [subscriptionId] The subscription ID for the endpoint.
-  EndpointServicebusTopicArgs({
+  const EndpointServicebusTopicArgs({
     this.authenticationType,
     this.connectionString,
     this.endpointUri,

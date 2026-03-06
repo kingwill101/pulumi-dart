@@ -38,7 +38,7 @@ class FirewallPolicyState {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [shortName] User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
-  FirewallPolicyState({
+  const FirewallPolicyState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

@@ -24,7 +24,7 @@ class GetUserGroupsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [userGroupName] Optional.
-  GetUserGroupsResult({
+  const GetUserGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

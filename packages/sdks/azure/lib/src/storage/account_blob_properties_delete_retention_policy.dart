@@ -13,7 +13,7 @@ class AccountBlobPropertiesDeleteRetentionPolicy {
   /// Creates a new [AccountBlobPropertiesDeleteRetentionPolicy].
   /// [days] Specifies the number of days that the blob should be retained, between `1` and `365` days. Defaults to `7`.
   /// [permanentDeleteEnabled] Indicates whether permanent deletion of the soft deleted blob versions and snapshots is allowed. Defaults to `false`.
-  AccountBlobPropertiesDeleteRetentionPolicy({
+  const AccountBlobPropertiesDeleteRetentionPolicy({
     this.days,
     this.permanentDeleteEnabled,
   });

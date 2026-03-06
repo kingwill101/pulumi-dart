@@ -22,7 +22,7 @@ class WorkflowArgs {
   /// [extendedLocation] The complex type of the extended location.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workflowName] Name of the workflow
-  WorkflowArgs({
+  const WorkflowArgs({
     required this.contextName,
     this.extendedLocation,
     required this.resourceGroupName,

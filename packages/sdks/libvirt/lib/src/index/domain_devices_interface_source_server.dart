@@ -15,7 +15,7 @@ class DomainDevicesInterfaceSourceServer {
   /// [address] Sets the address of the server that the network interface will connect to.
   /// [local] Controls local UDP settings for the network interface, managing configurations for local UDP traffic.
   /// [port] Sets the port number used by the network interface to connect to the specified server.
-  DomainDevicesInterfaceSourceServer({
+  const DomainDevicesInterfaceSourceServer({
     this.address,
     this.local,
     this.port,

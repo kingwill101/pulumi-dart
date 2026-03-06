@@ -17,7 +17,7 @@ class MirroringEndpointGroupConnectedDeploymentGroup {
   /// Creates a new [MirroringEndpointGroupConnectedDeploymentGroup].
   /// [locations] (Output)
   /// [name] (Output)
-  MirroringEndpointGroupConnectedDeploymentGroup({
+  const MirroringEndpointGroupConnectedDeploymentGroup({
     this.locations,
     this.name,
   });

@@ -15,7 +15,7 @@ class TextMappingResponse {
   /// [atomKey] The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
   /// [inputKey] The Input.key that identifies the input file.
   /// [inputTrack] The zero-based index of the track in the input file.
-  TextMappingResponse({
+  const TextMappingResponse({
     required this.atomKey,
     required this.inputKey,
     required this.inputTrack,

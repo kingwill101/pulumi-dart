@@ -12,7 +12,7 @@ class GetGeographicalLocationArgs {
 
   /// Creates a new [GetGeographicalLocationArgs].
   /// [name] Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
-  GetGeographicalLocationArgs({
+  const GetGeographicalLocationArgs({
     required this.name,
   });
 

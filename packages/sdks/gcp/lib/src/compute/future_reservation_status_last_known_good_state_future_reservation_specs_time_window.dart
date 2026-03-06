@@ -16,7 +16,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow 
   /// [duration] Duration of the future reservation
   /// [endTime] End time of the future reservation in RFC3339 format.
   /// [startTime] Start time of the future reservation in RFC3339 format.
-  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow({
+  const FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow({
     this.duration,
     this.endTime,
     this.startTime,

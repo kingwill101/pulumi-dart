@@ -11,7 +11,7 @@ class GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
   /// Creates a new [GetClusterNodeConfigLinuxNodeConfigHugepagesConfig].
   /// [hugepageSize1g] Amount of 1G hugepages.
   /// [hugepageSize2m] Amount of 2M hugepages.
-  GetClusterNodeConfigLinuxNodeConfigHugepagesConfig({
+  const GetClusterNodeConfigLinuxNodeConfigHugepagesConfig({
     required this.hugepageSize1g,
     required this.hugepageSize2m,
   });

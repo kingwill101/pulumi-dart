@@ -15,7 +15,7 @@ class FrontdoorExplicitResourceOrder {
   /// [backendPoolLoadBalancingIds] Optional.
   /// [frontendEndpointIds] Optional.
   /// [routingRuleIds] Optional.
-  FrontdoorExplicitResourceOrder({
+  const FrontdoorExplicitResourceOrder({
     this.backendPoolHealthProbeIds,
     this.backendPoolIds,
     this.backendPoolLoadBalancingIds,

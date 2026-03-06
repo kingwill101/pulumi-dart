@@ -14,7 +14,7 @@ class GetActionGroupEmailReceiver {
   /// [emailAddress] The email address of this receiver.
   /// [name] Specifies the name of the Action Group.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  GetActionGroupEmailReceiver({
+  const GetActionGroupEmailReceiver({
     required this.emailAddress,
     required this.name,
     required this.useCommonAlertSchema,

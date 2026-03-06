@@ -21,7 +21,7 @@ class GetStaticCidrArgs {
   /// [poolName] Pool resource name.
   /// [resourceGroupName] The name of the resource group.
   /// [staticCidrName] StaticCidr resource name to retrieve.
-  GetStaticCidrArgs({
+  const GetStaticCidrArgs({
     required this.networkManagerName,
     required this.poolName,
     required this.resourceGroupName,

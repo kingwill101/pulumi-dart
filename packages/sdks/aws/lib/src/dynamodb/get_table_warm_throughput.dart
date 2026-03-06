@@ -9,7 +9,7 @@ class GetTableWarmThroughput {
   /// Creates a new [GetTableWarmThroughput].
   /// [readUnitsPerSecond] Required.
   /// [writeUnitsPerSecond] Required.
-  GetTableWarmThroughput({
+  const GetTableWarmThroughput({
     required this.readUnitsPerSecond,
     required this.writeUnitsPerSecond,
   });

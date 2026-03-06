@@ -21,7 +21,7 @@ class ExtensionInstanceViewResponseStatus {
   /// [level] The level code.
   /// [message] The detailed status message, including for alerts and error messages.
   /// [time] The time of the status.
-  ExtensionInstanceViewResponseStatus({
+  const ExtensionInstanceViewResponseStatus({
     this.code,
     this.displayStatus,
     this.level,

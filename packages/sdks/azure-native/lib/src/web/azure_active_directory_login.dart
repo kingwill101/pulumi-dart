@@ -13,7 +13,7 @@ class AzureActiveDirectoryLogin {
   /// Creates a new [AzureActiveDirectoryLogin].
   /// [disableWWWAuthenticate] &lt;code&gt;true&lt;/code&gt; if the www-authenticate provider should be omitted from the request; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [loginParameters] Login parameters to send to the OpenID Connect authorization endpoint when
-  AzureActiveDirectoryLogin({
+  const AzureActiveDirectoryLogin({
     this.disableWWWAuthenticate,
     this.loginParameters,
   });

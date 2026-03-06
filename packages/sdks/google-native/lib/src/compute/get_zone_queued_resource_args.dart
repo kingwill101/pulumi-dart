@@ -15,7 +15,7 @@ class GetZoneQueuedResourceArgs {
   /// [project] Optional.
   /// [queuedResource] Required.
   /// [zone] Required.
-  GetZoneQueuedResourceArgs({
+  const GetZoneQueuedResourceArgs({
     this.project,
     required this.queuedResource,
     required this.zone,

@@ -88,7 +88,7 @@ class GetJobResult {
   /// [statusHistory] The previous job status.
   /// [trinoJob] Optional. Job is a Trino job.
   /// [yarnApplications] The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It might be changed before final release.
-  GetJobResult({
+  const GetJobResult({
     required this.done,
     required this.driverControlFilesUri,
     required this.driverOutputResourceUri,

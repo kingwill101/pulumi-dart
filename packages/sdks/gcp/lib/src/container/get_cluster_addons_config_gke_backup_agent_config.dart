@@ -7,7 +7,7 @@ class GetClusterAddonsConfigGkeBackupAgentConfig {
 
   /// Creates a new [GetClusterAddonsConfigGkeBackupAgentConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigGkeBackupAgentConfig({
+  const GetClusterAddonsConfigGkeBackupAgentConfig({
     required this.enabled,
   });
 

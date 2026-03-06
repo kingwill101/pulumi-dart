@@ -38,7 +38,7 @@ class InterconnectGroupArgs {
   /// [interconnects] Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be
   /// [project] The ID of the project in which the resource belongs.
-  InterconnectGroupArgs({
+  const InterconnectGroupArgs({
     this.description,
     required this.intent,
     this.interconnects,

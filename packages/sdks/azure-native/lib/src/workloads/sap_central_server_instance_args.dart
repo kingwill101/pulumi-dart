@@ -24,7 +24,7 @@ class SapCentralServerInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
   /// [tags] Resource tags.
-  SapCentralServerInstanceArgs({
+  const SapCentralServerInstanceArgs({
     this.centralInstanceName,
     this.location,
     required this.resourceGroupName,

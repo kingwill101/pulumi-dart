@@ -14,7 +14,7 @@ class LinuxWebAppConnectionString {
   /// [name] The name of the Connection String.
   /// [type] Type of database. Possible values include: `MySQL`, `SQLServer`, `SQLAzure`, `Custom`, `NotificationHub`, `ServiceBus`, `EventHub`, `APIHub`, `DocDb`, `RedisCache`, and `PostgreSQL`.
   /// [value] The connection string value.
-  LinuxWebAppConnectionString({
+  const LinuxWebAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

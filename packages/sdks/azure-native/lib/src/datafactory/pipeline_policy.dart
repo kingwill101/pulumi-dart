@@ -10,7 +10,7 @@ class PipelinePolicy {
 
   /// Creates a new [PipelinePolicy].
   /// [elapsedTimeMetric] Pipeline ElapsedTime Metric Policy.
-  PipelinePolicy({
+  const PipelinePolicy({
     this.elapsedTimeMetric,
   });
 

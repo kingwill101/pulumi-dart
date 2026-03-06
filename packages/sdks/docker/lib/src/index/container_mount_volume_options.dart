@@ -21,7 +21,7 @@ class ContainerMountVolumeOptions {
   /// [labels] User-defined key/value metadata.
   /// [noCopy] Populate volume with data from the target.
   /// [subpath] Path within the volume to mount. Requires docker server version 1.45 or higher.
-  ContainerMountVolumeOptions({
+  const ContainerMountVolumeOptions({
     this.driverName,
     this.driverOptions,
     this.labels,

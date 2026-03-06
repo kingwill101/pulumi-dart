@@ -19,7 +19,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint].
   /// [attributeValue] (Output)
   /// [boostAmount] (Output)
-  AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint({
+  const AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint({
     this.attributeValue,
     this.boostAmount,
   });

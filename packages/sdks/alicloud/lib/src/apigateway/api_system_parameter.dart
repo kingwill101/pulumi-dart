@@ -14,7 +14,7 @@ class ApiSystemParameter {
   /// [in_] System parameter location; values: 'HEAD' and 'QUERY'.
   /// [name] System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
   /// [nameService] Backend service's parameter name.
-  ApiSystemParameter({
+  const ApiSystemParameter({
     required this.in_,
     required this.name,
     required this.nameService,

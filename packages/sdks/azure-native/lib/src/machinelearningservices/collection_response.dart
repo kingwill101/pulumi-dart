@@ -17,7 +17,7 @@ class CollectionResponse {
   /// [dataCollectionMode] Enable or disable data collection.
   /// [dataId] The data asset arm resource id. Client side will ensure data asset is pointing to the blob storage, and backend will collect data to the blob storage.
   /// [samplingRate] The sampling rate for collection. Sampling rate 1.0 means we collect 100% of data by default.
-  CollectionResponse({
+  const CollectionResponse({
     this.clientId,
     this.dataCollectionMode,
     this.dataId,

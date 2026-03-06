@@ -12,7 +12,7 @@ class BucketAccessControlProjectTeam {
   /// Creates a new [BucketAccessControlProjectTeam].
   /// [projectNumber] The project number.
   /// [team] The team.
-  BucketAccessControlProjectTeam({
+  const BucketAccessControlProjectTeam({
     this.projectNumber,
     this.team,
   });

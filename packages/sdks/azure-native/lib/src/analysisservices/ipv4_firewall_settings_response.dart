@@ -13,7 +13,7 @@ class IPv4FirewallSettingsResponse {
   /// Creates a new [IPv4FirewallSettingsResponse].
   /// [enablePowerBIService] The indicator of enabling PBI service.
   /// [firewallRules] An array of firewall rules.
-  IPv4FirewallSettingsResponse({
+  const IPv4FirewallSettingsResponse({
     this.enablePowerBIService,
     this.firewallRules,
   });

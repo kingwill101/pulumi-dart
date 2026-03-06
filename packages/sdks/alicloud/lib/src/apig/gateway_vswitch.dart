@@ -11,7 +11,7 @@ class GatewayVswitch {
   /// Creates a new [GatewayVswitch].
   /// [name] The zone name.
   /// [vswitchId] The ID of the virtual switch.
-  GatewayVswitch({
+  const GatewayVswitch({
     this.name,
     this.vswitchId,
   });

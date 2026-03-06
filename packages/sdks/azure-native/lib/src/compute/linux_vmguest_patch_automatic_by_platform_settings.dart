@@ -12,7 +12,7 @@ class LinuxVMGuestPatchAutomaticByPlatformSettings {
   /// Creates a new [LinuxVMGuestPatchAutomaticByPlatformSettings].
   /// [bypassPlatformSafetyChecksOnUserSchedule] Enables customer to schedule patching without accidental upgrades
   /// [rebootSetting] Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
-  LinuxVMGuestPatchAutomaticByPlatformSettings({
+  const LinuxVMGuestPatchAutomaticByPlatformSettings({
     this.bypassPlatformSafetyChecksOnUserSchedule,
     this.rebootSetting,
   });

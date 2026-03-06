@@ -9,7 +9,7 @@ class EnvironmentConfigRecoveryConfig {
 
   /// Creates a new [EnvironmentConfigRecoveryConfig].
   /// [scheduledSnapshotsConfig] The configuration settings for scheduled snapshots.
-  EnvironmentConfigRecoveryConfig({
+  const EnvironmentConfigRecoveryConfig({
     this.scheduledSnapshotsConfig,
   });
 

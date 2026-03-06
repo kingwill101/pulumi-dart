@@ -11,7 +11,7 @@ class GetVirtualNodeSpecListenerTimeoutHttp {
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutHttp].
   /// [idles] Required.
   /// [perRequests] Required.
-  GetVirtualNodeSpecListenerTimeoutHttp({
+  const GetVirtualNodeSpecListenerTimeoutHttp({
     required this.idles,
     required this.perRequests,
   });

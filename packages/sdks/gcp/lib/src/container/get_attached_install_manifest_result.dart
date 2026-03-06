@@ -19,7 +19,7 @@ class GetAttachedInstallManifestResult {
   /// [manifest] A string with the YAML manifest that needs to be applied to the cluster.
   /// [platformVersion] Required.
   /// [project] Required.
-  GetAttachedInstallManifestResult({
+  const GetAttachedInstallManifestResult({
     required this.clusterId,
     required this.id,
     required this.location,

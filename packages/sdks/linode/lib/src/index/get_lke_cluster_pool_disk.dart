@@ -11,7 +11,7 @@ class GetLkeClusterPoolDisk {
   /// Creates a new [GetLkeClusterPoolDisk].
   /// [size] The size of this custom disk partition in MB.
   /// [type] The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
-  GetLkeClusterPoolDisk({
+  const GetLkeClusterPoolDisk({
     required this.size,
     required this.type,
   });

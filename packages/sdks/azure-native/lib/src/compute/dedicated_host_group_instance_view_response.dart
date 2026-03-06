@@ -9,7 +9,7 @@ class DedicatedHostGroupInstanceViewResponse {
 
   /// Creates a new [DedicatedHostGroupInstanceViewResponse].
   /// [hosts] List of instance view of the dedicated hosts under the dedicated host group.
-  DedicatedHostGroupInstanceViewResponse({
+  const DedicatedHostGroupInstanceViewResponse({
     this.hosts,
   });
 

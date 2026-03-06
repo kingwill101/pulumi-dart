@@ -12,7 +12,7 @@ class KpiExtractResponse {
   /// Creates a new [KpiExtractResponse].
   /// [expression] The expression.
   /// [extractName] KPI extract name.
-  KpiExtractResponse({
+  const KpiExtractResponse({
     required this.expression,
     required this.extractName,
   });

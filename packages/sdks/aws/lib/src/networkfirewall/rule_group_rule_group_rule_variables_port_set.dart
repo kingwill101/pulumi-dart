@@ -12,7 +12,7 @@ class RuleGroupRuleGroupRuleVariablesPortSet {
   /// Creates a new [RuleGroupRuleGroupRuleVariablesPortSet].
   /// [key] An unique alphanumeric string to identify the `port_set`.
   /// [portSet] A configuration block that defines a set of port ranges. See Port Set below for details.
-  RuleGroupRuleGroupRuleVariablesPortSet({
+  const RuleGroupRuleGroupRuleVariablesPortSet({
     required this.key,
     required this.portSet,
   });

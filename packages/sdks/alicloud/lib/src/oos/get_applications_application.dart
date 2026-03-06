@@ -26,7 +26,7 @@ class GetApplicationsApplication {
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
   /// [updateTime] The Updated time of the application.
-  GetApplicationsApplication({
+  const GetApplicationsApplication({
     required this.applicationName,
     required this.createTime,
     required this.description,

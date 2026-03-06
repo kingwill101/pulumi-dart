@@ -9,7 +9,7 @@ class ListCredentialResponseResponseProperties {
 
   /// Creates a new [ListCredentialResponseResponseProperties].
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListCredentialResponseResponseProperties({
+  const ListCredentialResponseResponseProperties({
     required this.kubeconfigs,
   });
 

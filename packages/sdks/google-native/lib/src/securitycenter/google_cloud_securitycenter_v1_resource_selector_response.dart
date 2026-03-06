@@ -9,7 +9,7 @@ class GoogleCloudSecuritycenterV1ResourceSelectorResponse {
 
   /// Creates a new [GoogleCloudSecuritycenterV1ResourceSelectorResponse].
   /// [resourceTypes] The resource types to run the detector on.
-  GoogleCloudSecuritycenterV1ResourceSelectorResponse({
+  const GoogleCloudSecuritycenterV1ResourceSelectorResponse({
     required this.resourceTypes,
   });
 

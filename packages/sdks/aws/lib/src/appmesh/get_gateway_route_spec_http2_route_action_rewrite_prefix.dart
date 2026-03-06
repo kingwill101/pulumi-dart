@@ -9,7 +9,7 @@ class GetGatewayRouteSpecHttp2RouteActionRewritePrefix {
   /// Creates a new [GetGatewayRouteSpecHttp2RouteActionRewritePrefix].
   /// [defaultPrefix] Required.
   /// [value] Required.
-  GetGatewayRouteSpecHttp2RouteActionRewritePrefix({
+  const GetGatewayRouteSpecHttp2RouteActionRewritePrefix({
     required this.defaultPrefix,
     required this.value,
   });

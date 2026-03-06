@@ -33,7 +33,7 @@ class ResizeRequestArgs {
   /// [requestedRunDuration] Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
   /// [resizeBy] The number of instances to be created by this resize request. The group's target size will be increased by this number.
   /// [zone] The reference of the compute zone scoping this request. If it is not provided, the provider zone is used.
-  ResizeRequestArgs({
+  const ResizeRequestArgs({
     this.description,
     required this.instanceGroupManager,
     this.name,

@@ -14,7 +14,7 @@ class GetClusterNodePoolNodeConfigReservationAffinity {
   /// [consumeReservationType] Corresponds to the type of reservation consumption.
   /// [key] The label key of a reservation resource.
   /// [values] The label values of the reservation resource.
-  GetClusterNodePoolNodeConfigReservationAffinity({
+  const GetClusterNodePoolNodeConfigReservationAffinity({
     required this.consumeReservationType,
     required this.key,
     required this.values,

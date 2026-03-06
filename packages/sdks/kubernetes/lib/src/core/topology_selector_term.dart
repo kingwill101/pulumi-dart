@@ -10,7 +10,7 @@ class TopologySelectorTerm {
 
   /// Creates a new [TopologySelectorTerm].
   /// [matchLabelExpressions] A list of topology selector requirements by labels.
-  TopologySelectorTerm({
+  const TopologySelectorTerm({
     this.matchLabelExpressions,
   });
 

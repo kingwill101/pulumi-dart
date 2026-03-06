@@ -61,7 +61,7 @@ class CloudFormationTypeState {
   /// [typeName] CloudFormation Type name. For example, `ExampleCompany::ExampleService::ExampleResource`.
   /// [versionId] (Optional) Identifier of the CloudFormation Type version.
   /// [visibility] Scope of the CloudFormation Type.
-  CloudFormationTypeState({
+  const CloudFormationTypeState({
     this.arn,
     this.defaultVersionId,
     this.deprecatedStatus,

@@ -11,7 +11,7 @@ class GetTaskExecutionOverridesContainerOverrideEnvironment {
   /// Creates a new [GetTaskExecutionOverridesContainerOverrideEnvironment].
   /// [key] The name of the key-value pair. For environment variables, this is the name of the environment variable.
   /// [value] The value of the key-value pair. For environment variables, this is the value of the environment variable.
-  GetTaskExecutionOverridesContainerOverrideEnvironment({
+  const GetTaskExecutionOverridesContainerOverrideEnvironment({
     required this.key,
     required this.value,
   });

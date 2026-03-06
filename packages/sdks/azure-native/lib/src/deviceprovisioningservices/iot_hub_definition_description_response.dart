@@ -21,7 +21,7 @@ class IotHubDefinitionDescriptionResponse {
   /// [connectionString] Connection string of the IoT hub.
   /// [location] ARM region of the IoT hub.
   /// [name] Host name of the IoT hub.
-  IotHubDefinitionDescriptionResponse({
+  const IotHubDefinitionDescriptionResponse({
     this.allocationWeight,
     this.applyAllocationPolicy,
     required this.connectionString,

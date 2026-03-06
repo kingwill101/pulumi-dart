@@ -16,7 +16,7 @@ class AccessPolicyAssociation {
   /// Creates a new [AccessPolicyAssociation].
   /// [accessScope] The scope of the access policy association. This controls whether the access policy is scoped to the cluster or to a particular namespace.
   /// [policyArn] The ARN of the access policy to associate with the principal
-  AccessPolicyAssociation({
+  const AccessPolicyAssociation({
     required this.accessScope,
     required this.policyArn,
   });

@@ -7,7 +7,7 @@ class GetGatewayRouteSpecGrpcRouteActionTargetVirtualService {
 
   /// Creates a new [GetGatewayRouteSpecGrpcRouteActionTargetVirtualService].
   /// [virtualServiceName] Required.
-  GetGatewayRouteSpecGrpcRouteActionTargetVirtualService({
+  const GetGatewayRouteSpecGrpcRouteActionTargetVirtualService({
     required this.virtualServiceName,
   });
 

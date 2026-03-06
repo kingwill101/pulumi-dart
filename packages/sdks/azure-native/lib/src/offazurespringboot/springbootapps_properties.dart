@@ -91,7 +91,7 @@ class SpringbootappsProperties {
   /// [servers] The server list the app installed
   /// [springBootVersion] The spring boot version.
   /// [staticContentLocations] The static content location list.
-  SpringbootappsProperties({
+  const SpringbootappsProperties({
     this.appName,
     this.appPort,
     this.appType,

@@ -51,7 +51,7 @@ class GetConnectorResult {
   /// [status] Connector status
   /// [tags] Resource tags.
   /// [type] Connector type
-  GetConnectorResult({
+  const GetConnectorResult({
     required this.azureApiVersion,
     required this.collection,
     required this.createdOn,

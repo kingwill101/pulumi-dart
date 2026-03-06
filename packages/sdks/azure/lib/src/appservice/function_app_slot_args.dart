@@ -78,7 +78,7 @@ class FunctionAppSlotArgs {
   /// [storageAccountName] The backend storage account name which will be used by the Function App (such as the dashboard, logs). Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [version] The runtime version associated with the Function App. Defaults to `~1`.
-  FunctionAppSlotArgs({
+  const FunctionAppSlotArgs({
     required this.appServicePlanId,
     this.appSettings,
     this.authSettings,

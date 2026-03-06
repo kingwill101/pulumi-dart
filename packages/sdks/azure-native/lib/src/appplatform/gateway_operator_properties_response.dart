@@ -14,7 +14,7 @@ class GatewayOperatorPropertiesResponse {
   /// Creates a new [GatewayOperatorPropertiesResponse].
   /// [instances] Collection of instances belong to Spring Cloud Gateway operator.
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
-  GatewayOperatorPropertiesResponse({
+  const GatewayOperatorPropertiesResponse({
     required this.instances,
     required this.resourceRequests,
   });

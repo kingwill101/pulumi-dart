@@ -31,7 +31,7 @@ class SecretsManagerSecretProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SecretsManagerSecretProperties({
+  const SecretsManagerSecretProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

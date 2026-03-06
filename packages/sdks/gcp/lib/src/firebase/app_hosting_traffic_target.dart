@@ -10,7 +10,7 @@ class AppHostingTrafficTarget {
 
   /// Creates a new [AppHostingTrafficTarget].
   /// [splits] A list of traffic splits that together represent where traffic is being routed.
-  AppHostingTrafficTarget({
+  const AppHostingTrafficTarget({
     required this.splits,
   });
 

@@ -19,7 +19,7 @@ class GetNetworkTransferPricesResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [types] Required.
-  GetNetworkTransferPricesResult({
+  const GetNetworkTransferPricesResult({
     this.filters,
     required this.id,
     this.order,

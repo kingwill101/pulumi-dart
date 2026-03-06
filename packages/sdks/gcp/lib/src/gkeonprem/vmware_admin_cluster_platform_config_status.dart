@@ -19,7 +19,7 @@ class VmwareAdminClusterPlatformConfigStatus {
   /// Creates a new [VmwareAdminClusterPlatformConfigStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  VmwareAdminClusterPlatformConfigStatus({
+  const VmwareAdminClusterPlatformConfigStatus({
     this.conditions,
     this.errorMessage,
   });

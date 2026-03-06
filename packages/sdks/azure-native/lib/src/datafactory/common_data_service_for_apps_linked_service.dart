@@ -67,7 +67,7 @@ class CommonDataServiceForAppsLinkedService {
   /// [type] Type of linked service.
   /// [username] User name to access the Common Data Service for Apps instance. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  CommonDataServiceForAppsLinkedService({
+  const CommonDataServiceForAppsLinkedService({
     this.annotations,
     required this.authenticationType,
     this.connectVia,

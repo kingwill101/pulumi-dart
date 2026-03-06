@@ -43,7 +43,7 @@ class MigrationEntityProperties {
   /// [partnerResourceArmId] ARM Resource Identifier for the partner resource.
   /// [target] Target of the Migration Entity.
   /// [targetAzureResourceArmId] target Azure Resource ARM Id.
-  MigrationEntityProperties({
+  const MigrationEntityProperties({
     this.assessedEntityArmId,
     this.associatedAssessmentId,
     required this.associatedInventoryResourceId,

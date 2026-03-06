@@ -33,7 +33,7 @@ class UrlListState {
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. Time when the security policy was updated.
   /// [values] FQDNs and URLs.
-  UrlListState({
+  const UrlListState({
     this.createTime,
     this.description,
     this.location,

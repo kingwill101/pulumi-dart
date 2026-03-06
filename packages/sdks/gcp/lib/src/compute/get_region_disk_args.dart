@@ -21,7 +21,7 @@ class GetRegionDiskArgs {
   /// [name] The name of a specific disk.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region where the disk resides.
-  GetRegionDiskArgs({
+  const GetRegionDiskArgs({
     required this.name,
     this.project,
     this.region,

@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3TextInputResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3TextInputResponse].
   /// [text] The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
-  GoogleCloudDialogflowCxV3TextInputResponse({
+  const GoogleCloudDialogflowCxV3TextInputResponse({
     required this.text,
   });
 

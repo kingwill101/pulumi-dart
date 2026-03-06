@@ -24,7 +24,7 @@ class GoogleCloudAiplatformV1beta1ResourcePool {
   /// [id] Immutable. The unique ID in a PersistentResource for referring to this resource pool. User can specify it if necessary. Otherwise, it's generated automatically.
   /// [machineSpec] Immutable. The specification of a single machine.
   /// [replicaCount] Optional. The total number of machines to use for this resource pool.
-  GoogleCloudAiplatformV1beta1ResourcePool({
+  const GoogleCloudAiplatformV1beta1ResourcePool({
     this.autoscalingSpec,
     this.diskSpec,
     this.id,

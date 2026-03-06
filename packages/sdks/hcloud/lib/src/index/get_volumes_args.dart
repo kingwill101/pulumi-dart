@@ -15,7 +15,7 @@ class GetVolumesArgs {
   /// Creates a new [GetVolumesArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   /// [withStatuses] List only volumes with the specified status, could contain `creating` or `available`.
-  GetVolumesArgs({
+  const GetVolumesArgs({
     this.withSelector,
     this.withStatuses,
   });

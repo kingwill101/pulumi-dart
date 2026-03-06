@@ -18,7 +18,7 @@ class IdentityProperties {
   /// [principalId] The principal id of resource identity.
   /// [tenantId] The tenant identifier of resource.
   /// [type] Managed identity.
-  IdentityProperties({
+  const IdentityProperties({
     this.clientSecretUrl,
     this.principalId,
     this.tenantId,

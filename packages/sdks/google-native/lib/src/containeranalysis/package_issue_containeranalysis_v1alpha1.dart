@@ -18,7 +18,7 @@ class PackageIssueContaineranalysisV1alpha1 {
   /// [fixedLocation] The location of the available fix for vulnerability.
   /// [packageType] The type of package (e.g. OS, MAVEN, GO).
   /// [severityName] Optional.
-  PackageIssueContaineranalysisV1alpha1({
+  const PackageIssueContaineranalysisV1alpha1({
     this.affectedLocation,
     this.fixedLocation,
     this.packageType,

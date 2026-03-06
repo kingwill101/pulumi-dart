@@ -33,7 +33,7 @@ class ResponsePolicyArgs {
   /// [networks] List of network names specifying networks to which this policy is applied.
   /// [project] Optional.
   /// [responsePolicyName] User assigned name for this Response Policy.
-  ResponsePolicyArgs({
+  const ResponsePolicyArgs({
     this.clientOperationId,
     this.description,
     this.gkeClusters,

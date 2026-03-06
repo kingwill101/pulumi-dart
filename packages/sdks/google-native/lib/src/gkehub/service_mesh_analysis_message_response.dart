@@ -19,7 +19,7 @@ class ServiceMeshAnalysisMessageResponse {
   /// [description] A human readable description of what the error means. It is suitable for non-internationalize display purposes.
   /// [messageBase] Details common to all types of Istio and ServiceMesh analysis messages.
   /// [resourcePaths] A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster
-  ServiceMeshAnalysisMessageResponse({
+  const ServiceMeshAnalysisMessageResponse({
     required this.args,
     required this.description,
     required this.messageBase,

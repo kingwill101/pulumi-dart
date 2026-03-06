@@ -26,7 +26,7 @@ class UserState {
   /// [plaintextPassword] The password for the user. This must be provided in plain text, so the data source for it must be secured. An _unsalted_ hash of the provided password is stored in state. Conflicts with `auth_plugin`.
   /// [tlsOption] An TLS-Option for the `CREATE USER` or `ALTER USER` statement. The value is suffixed to `REQUIRE`. A value of 'SSL' will generate a `CREATE USER ... REQUIRE SSL` statement. See the [MYSQL `CREATE USER` documentation](https://dev.mysql.com/doc/refman/5.7/en/create-user.html) for more. Ignored if MySQL version is under 5.7.0.
   /// [user] The name of the user.
-  UserState({
+  const UserState({
     this.authPlugin,
     this.host,
     this.password,

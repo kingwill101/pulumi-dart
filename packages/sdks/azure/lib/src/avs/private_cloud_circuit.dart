@@ -17,7 +17,7 @@ class PrivateCloudCircuit {
   /// [expressRoutePrivatePeeringId] The ID of the ExpressRoute Circuit private peering.
   /// [primarySubnetCidr] The CIDR of the primary subnet.
   /// [secondarySubnetCidr] The CIDR of the secondary subnet.
-  PrivateCloudCircuit({
+  const PrivateCloudCircuit({
     this.expressRouteId,
     this.expressRoutePrivatePeeringId,
     this.primarySubnetCidr,

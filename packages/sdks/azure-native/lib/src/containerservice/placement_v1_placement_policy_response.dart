@@ -20,7 +20,7 @@ class PlacementV1PlacementPolicyResponse {
   /// [clusterNames] ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is "PickFixed"
   /// [placementType] Type of placement. Can be "PickAll", "PickN" or "PickFixed". Default is PickAll.
   /// [tolerations] If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature.
-  PlacementV1PlacementPolicyResponse({
+  const PlacementV1PlacementPolicyResponse({
     this.affinity,
     this.clusterNames,
     this.placementType,

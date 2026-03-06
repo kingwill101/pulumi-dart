@@ -12,7 +12,7 @@ class ImportErrorResponse {
   /// Creates a new [ImportErrorResponse].
   /// [errorDetails] The error information.
   /// [severity] The severity of the error.
-  ImportErrorResponse({
+  const ImportErrorResponse({
     required this.errorDetails,
     required this.severity,
   });

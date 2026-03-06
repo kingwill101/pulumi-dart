@@ -20,7 +20,7 @@ class LaunchMetricMonitorMetricDefinition {
   /// [name] Specifies the name for the metric.
   /// [unitLabel] Specifies a label for the units that the metric is measuring.
   /// [valueKey] Specifies the value that is tracked to produce the metric.
-  LaunchMetricMonitorMetricDefinition({
+  const LaunchMetricMonitorMetricDefinition({
     required this.entityIdKey,
     this.eventPattern,
     required this.name,

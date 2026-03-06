@@ -81,7 +81,7 @@ class GetPolicyAssignmentResult {
   /// [scope] The scope for the policy assignment.
   /// [systemData] The system metadata relating to this resource.
   /// [type] The type of the policy assignment.
-  GetPolicyAssignmentResult({
+  const GetPolicyAssignmentResult({
     this.assignmentType,
     required this.azureApiVersion,
     this.definitionVersion,

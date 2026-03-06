@@ -22,7 +22,7 @@ class Resources {
   /// [kmsKeyReference] The name of the encryption key that is stored in Google Cloud KMS. Only should be used by Cloud Composer to encrypt the vm disk
   /// [memoryGb] Memory (GB) needed.
   /// [volumes] User specified volumes.
-  Resources({
+  const Resources({
     this.cpu,
     this.diskGb,
     this.kmsKeyReference,

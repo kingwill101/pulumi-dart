@@ -12,7 +12,7 @@ class PipelineStageBeforeEntryCondition {
   /// Creates a new [PipelineStageBeforeEntryCondition].
   /// [result] The action to be done when the condition is met. For example, rolling back an execution for a failure condition. Possible values are `ROLLBACK`, `FAIL`, `RETRY` and `SKIP`.
   /// [rules] The rules that make up the condition. Defined as a `rule` block below.
-  PipelineStageBeforeEntryCondition({
+  const PipelineStageBeforeEntryCondition({
     this.result,
     required this.rules,
   });

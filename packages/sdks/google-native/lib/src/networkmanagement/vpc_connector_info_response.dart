@@ -15,7 +15,7 @@ class VpcConnectorInfoResponse {
   /// [displayName] Name of a VPC connector.
   /// [location] Location in which the VPC connector is deployed.
   /// [uri] URI of a VPC connector.
-  VpcConnectorInfoResponse({
+  const VpcConnectorInfoResponse({
     required this.displayName,
     required this.location,
     required this.uri,

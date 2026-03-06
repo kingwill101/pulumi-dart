@@ -15,7 +15,7 @@ class ListEdgeSiteL2ConnectionsArgs {
   /// Creates a new [ListEdgeSiteL2ConnectionsArgs].
   /// [edgeSiteName] Edge site name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListEdgeSiteL2ConnectionsArgs({
+  const ListEdgeSiteL2ConnectionsArgs({
     required this.edgeSiteName,
     required this.resourceGroupName,
   });

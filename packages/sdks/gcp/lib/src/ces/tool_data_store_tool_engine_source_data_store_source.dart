@@ -15,7 +15,7 @@ class ToolDataStoreToolEngineSourceDataStoreSource {
   /// Creates a new [ToolDataStoreToolEngineSourceDataStoreSource].
   /// [dataStore] A DataStore resource in Vertex AI Search.
   /// [filter] Filter specification for the DataStore.
-  ToolDataStoreToolEngineSourceDataStoreSource({
+  const ToolDataStoreToolEngineSourceDataStoreSource({
     this.dataStore,
     this.filter,
   });

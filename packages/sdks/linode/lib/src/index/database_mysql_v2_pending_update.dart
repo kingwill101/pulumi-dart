@@ -14,7 +14,7 @@ class DatabaseMysqlV2PendingUpdate {
   /// [deadline] The time when a mandatory update needs to be applied.
   /// [description] A description of the update.
   /// [plannedFor] The date and time a maintenance update will be applied.
-  DatabaseMysqlV2PendingUpdate({
+  const DatabaseMysqlV2PendingUpdate({
     this.deadline,
     this.description,
     this.plannedFor,

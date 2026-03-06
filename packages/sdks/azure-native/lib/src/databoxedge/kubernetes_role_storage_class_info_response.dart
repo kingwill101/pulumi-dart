@@ -15,7 +15,7 @@ class KubernetesRoleStorageClassInfoResponse {
   /// [name] Storage class name.
   /// [posixCompliant] If provisioned storage is posix compliant.
   /// [type] Storage class type.
-  KubernetesRoleStorageClassInfoResponse({
+  const KubernetesRoleStorageClassInfoResponse({
     required this.name,
     required this.posixCompliant,
     required this.type,

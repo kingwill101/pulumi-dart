@@ -90,7 +90,7 @@ class InstanceArgs {
   /// [network] Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
   /// [project] The ID of the project in which the resource belongs.
   /// [reservedIpRange] Immutable. Contains the id of the allocated IP address range
-  InstanceArgs({
+  const InstanceArgs({
     required this.capacityGib,
     this.deploymentType,
     this.description,

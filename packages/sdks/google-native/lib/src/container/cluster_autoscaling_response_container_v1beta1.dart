@@ -23,7 +23,7 @@ class ClusterAutoscalingResponseContainerV1beta1 {
   /// [autoscalingProfile] Defines autoscaling behaviour.
   /// [enableNodeAutoprovisioning] Enables automatic node pool creation and deletion.
   /// [resourceLimits] Contains global constraints regarding minimum and maximum amount of resources in the cluster.
-  ClusterAutoscalingResponseContainerV1beta1({
+  const ClusterAutoscalingResponseContainerV1beta1({
     required this.autoprovisioningLocations,
     required this.autoprovisioningNodePoolDefaults,
     required this.autoscalingProfile,

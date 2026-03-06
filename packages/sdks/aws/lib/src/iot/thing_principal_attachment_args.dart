@@ -21,7 +21,7 @@ class ThingPrincipalAttachmentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [thing] The name of the thing.
   /// [thingPrincipalType] The type of relationship to specify when attaching a principal to a thing. Valid values are `EXCLUSIVE_THING` (the thing will be the only one attached to the principal) or `NON_EXCLUSIVE_THING` (multiple things can be attached to the principal). Defaults to `NON_EXCLUSIVE_THING`.
-  ThingPrincipalAttachmentArgs({
+  const ThingPrincipalAttachmentArgs({
     required this.principal,
     this.region,
     required this.thing,

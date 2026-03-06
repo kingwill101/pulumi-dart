@@ -22,7 +22,7 @@ class OnPremiseResourceDetails {
   /// [sourceComputerId] The oms agent Id installed on the machine
   /// [vmuuid] The unique Id of the machine
   /// [workspaceId] Azure resource Id of the workspace the machine is attached to
-  OnPremiseResourceDetails({
+  const OnPremiseResourceDetails({
     required this.machineName,
     required this.source,
     required this.sourceComputerId,

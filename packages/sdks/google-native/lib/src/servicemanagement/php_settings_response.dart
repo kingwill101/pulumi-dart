@@ -10,7 +10,7 @@ class PhpSettingsResponse {
 
   /// Creates a new [PhpSettingsResponse].
   /// [common] Some settings.
-  PhpSettingsResponse({
+  const PhpSettingsResponse({
     required this.common,
   });
 

@@ -39,7 +39,7 @@ class V2modelsBotLocaleArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   /// [voiceSettings] Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. See `voice_settings`.
-  V2modelsBotLocaleArgs({
+  const V2modelsBotLocaleArgs({
     required this.botId,
     required this.botVersion,
     this.description,

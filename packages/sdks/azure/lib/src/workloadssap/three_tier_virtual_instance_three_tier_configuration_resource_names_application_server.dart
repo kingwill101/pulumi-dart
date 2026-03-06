@@ -12,7 +12,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServ
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer].
   /// [availabilitySetName] The full name for the availability set. Changing this forces a new resource to be created.
   /// [virtualMachines] One or more `virtual_machine` blocks as defined below. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer({
+  const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesApplicationServer({
     this.availabilitySetName,
     this.virtualMachines,
   });

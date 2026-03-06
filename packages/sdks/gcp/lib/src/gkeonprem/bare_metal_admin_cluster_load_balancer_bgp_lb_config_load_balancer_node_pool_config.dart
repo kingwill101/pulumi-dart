@@ -10,7 +10,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] A nested object resource.
-  BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig({
     this.nodePoolConfig,
   });
 

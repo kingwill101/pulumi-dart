@@ -18,7 +18,7 @@ class ResourceAzStatusResponse {
   /// [isZoneResilient] VM Size name.
   /// [resourceName] VM Size properties.
   /// [resourceType] VM Size id.
-  ResourceAzStatusResponse({
+  const ResourceAzStatusResponse({
     required this.details,
     required this.isZoneResilient,
     required this.resourceName,

@@ -12,7 +12,7 @@ class ElasticSnapshotPolicyHourlySchedule {
   /// Creates a new [ElasticSnapshotPolicyHourlySchedule].
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Hourly snapshot count to keep
-  ElasticSnapshotPolicyHourlySchedule({
+  const ElasticSnapshotPolicyHourlySchedule({
     this.minute,
     this.snapshotsToKeep,
   });

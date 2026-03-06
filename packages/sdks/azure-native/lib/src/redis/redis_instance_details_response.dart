@@ -24,7 +24,7 @@ class RedisInstanceDetailsResponse {
   /// [shardId] If clustering is enabled, the Shard ID of Redis Instance
   /// [sslPort] Redis instance SSL port.
   /// [zone] If the Cache uses availability zones, specifies availability zone where this instance is located.
-  RedisInstanceDetailsResponse({
+  const RedisInstanceDetailsResponse({
     required this.isMaster,
     required this.isPrimary,
     required this.nonSslPort,

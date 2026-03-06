@@ -18,7 +18,7 @@ class PartnerRegistrationState {
   /// [partnerRegistrationId] The immutable id of the corresponding partner registration.
   /// [resourceGroupName] The name of the Resource Group where the EventGrid Partner Registration should exist. Changing this forces a new EventGrid Partner Registration to be created.
   /// [tags] A mapping of tags which should be assigned to the EventGrid Partner Registration.
-  PartnerRegistrationState({
+  const PartnerRegistrationState({
     this.name,
     this.partnerRegistrationId,
     this.resourceGroupName,

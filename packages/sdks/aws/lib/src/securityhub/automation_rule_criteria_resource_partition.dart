@@ -9,7 +9,7 @@ class AutomationRuleCriteriaResourcePartition {
   /// Creates a new [AutomationRuleCriteriaResourcePartition].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaResourcePartition({
+  const AutomationRuleCriteriaResourcePartition({
     required this.comparison,
     required this.value,
   });

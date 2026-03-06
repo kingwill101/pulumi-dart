@@ -16,7 +16,7 @@ class EnvelopeContaineranalysisV1alpha1 {
   /// [payload] The bytes being signed
   /// [payloadType] The type of payload being signed
   /// [signatures] The signatures over the payload
-  EnvelopeContaineranalysisV1alpha1({
+  const EnvelopeContaineranalysisV1alpha1({
     this.payload,
     this.payloadType,
     this.signatures,

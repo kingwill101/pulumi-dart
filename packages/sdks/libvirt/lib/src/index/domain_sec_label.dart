@@ -23,7 +23,7 @@ class DomainSecLabel {
   /// [model] Configures the model for the domain's security label.
   /// [relabel] Controls if the domain's security label should be relabeled.
   /// [type] Sets the type of the security label for the domain.
-  DomainSecLabel({
+  const DomainSecLabel({
     this.baseLabel,
     this.imageLabel,
     this.label,

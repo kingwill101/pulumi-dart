@@ -18,7 +18,7 @@ class GetFirewallArgs {
   /// [dnsProxyEnabled] Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when it is `true`.
   /// [name] The name of the Azure Firewall.
   /// [resourceGroupName] The name of the Resource Group in which the Azure Firewall exists.
-  GetFirewallArgs({
+  const GetFirewallArgs({
     this.dnsProxyEnabled,
     required this.name,
     required this.resourceGroupName,

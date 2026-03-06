@@ -8,7 +8,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
 
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier].
   /// [objectName] The Salesforce object name.
-  StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier({
     required this.objectName,
   });
 

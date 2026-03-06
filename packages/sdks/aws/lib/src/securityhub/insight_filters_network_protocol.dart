@@ -9,7 +9,7 @@ class InsightFiltersNetworkProtocol {
   /// Creates a new [InsightFiltersNetworkProtocol].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersNetworkProtocol({
+  const InsightFiltersNetworkProtocol({
     required this.comparison,
     required this.value,
   });

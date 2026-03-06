@@ -34,7 +34,7 @@ class GetApplicationGatewayPrivateEndpointConnectionResult {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [provisioningState] The provisioning state of the application gateway private endpoint connection resource.
   /// [type] Type of the resource.
-  GetApplicationGatewayPrivateEndpointConnectionResult({
+  const GetApplicationGatewayPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

@@ -9,7 +9,7 @@ class ResourceIdResponseCloudresourcemanagerV1beta1 {
 
   /// Creates a new [ResourceIdResponseCloudresourcemanagerV1beta1].
   /// [type] Required field representing the resource type this id is for. At present, the valid types are "project", "folder", and "organization".
-  ResourceIdResponseCloudresourcemanagerV1beta1({
+  const ResourceIdResponseCloudresourcemanagerV1beta1({
     required this.type,
   });
 

@@ -34,7 +34,7 @@ class GetNfsShareResult {
   /// [state] The state of the NFS share.
   /// [storageType] Immutable. The storage type of the underlying volume.
   /// [volume] The underlying volume of the share. Created automatically during provisioning.
-  GetNfsShareResult({
+  const GetNfsShareResult({
     required this.allowedClients,
     required this.labels,
     required this.name,

@@ -64,7 +64,7 @@ class GetTopicEventSubscriptionResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [topic] Name of the topic of the event subscription.
   /// [type] Type of the resource.
-  GetTopicEventSubscriptionResult({
+  const GetTopicEventSubscriptionResult({
     required this.azureApiVersion,
     this.deadLetterDestination,
     this.deadLetterWithResourceIdentity,

@@ -14,7 +14,7 @@ class ActivityLogAlertCriteriaServiceHealth {
   /// [events] Events this alert will monitor Possible values are `Incident`, `Maintenance`, `Informational`, `ActionRequired` and `Security`.
   /// [locations] Locations this alert will monitor. For example, `West Europe`.
   /// [services] Services this alert will monitor. For example, `Activity Logs & Alerts`, `Action Groups`. Defaults to all Services.
-  ActivityLogAlertCriteriaServiceHealth({
+  const ActivityLogAlertCriteriaServiceHealth({
     this.events,
     this.locations,
     this.services,

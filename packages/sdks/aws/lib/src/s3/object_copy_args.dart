@@ -134,7 +134,7 @@ class ObjectCopyArgs {
   /// [taggingDirective] Specifies whether the object tag-set are copied from the source object or replaced with tag-set provided in the request. Valid values are `COPY` and `REPLACE`.
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [websiteRedirect] Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
-  ObjectCopyArgs({
+  const ObjectCopyArgs({
     this.acl,
     required this.bucket,
     this.bucketKeyEnabled,

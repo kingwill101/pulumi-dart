@@ -13,7 +13,7 @@ class SchedulingGracefulShutdownResponse {
   /// Creates a new [SchedulingGracefulShutdownResponse].
   /// [enabled] Opts-in for graceful shutdown.
   /// [maxDuration] Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
-  SchedulingGracefulShutdownResponse({
+  const SchedulingGracefulShutdownResponse({
     required this.enabled,
     required this.maxDuration,
   });

@@ -38,7 +38,7 @@ class UserHierarchyGroupState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the hierarchy group. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  UserHierarchyGroupState({
+  const UserHierarchyGroupState({
     this.arn,
     this.hierarchyGroupId,
     this.hierarchyPaths,

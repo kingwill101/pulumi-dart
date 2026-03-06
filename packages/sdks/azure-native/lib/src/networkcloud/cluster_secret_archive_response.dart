@@ -11,7 +11,7 @@ class ClusterSecretArchiveResponse {
   /// Creates a new [ClusterSecretArchiveResponse].
   /// [keyVaultId] The resource ID of the key vault to archive the secrets of the cluster.
   /// [useKeyVault] The indicator if the specified key vault should be used to archive the secrets of the cluster.
-  ClusterSecretArchiveResponse({
+  const ClusterSecretArchiveResponse({
     required this.keyVaultId,
     this.useKeyVault,
   });

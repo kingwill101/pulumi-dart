@@ -47,7 +47,7 @@ class ToolOpenApiTool {
   /// [serviceDirectoryConfigs] (Output)
   /// [tlsConfigs] (Output)
   /// [url] (Output)
-  ToolOpenApiTool({
+  const ToolOpenApiTool({
     this.apiAuthentications,
     this.description,
     this.ignoreUnknownFields,

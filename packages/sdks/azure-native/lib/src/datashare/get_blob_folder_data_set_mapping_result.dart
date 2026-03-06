@@ -49,7 +49,7 @@ class GetBlobFolderDataSetMappingResult {
   /// [subscriptionId] Subscription id of storage account.
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetBlobFolderDataSetMappingResult({
+  const GetBlobFolderDataSetMappingResult({
     required this.azureApiVersion,
     required this.containerName,
     required this.dataSetId,

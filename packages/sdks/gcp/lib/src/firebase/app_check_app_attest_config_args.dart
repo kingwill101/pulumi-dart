@@ -22,7 +22,7 @@ class AppCheckAppAttestConfigArgs {
   /// [appId] The ID of an
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid.
-  AppCheckAppAttestConfigArgs({
+  const AppCheckAppAttestConfigArgs({
     required this.appId,
     this.project,
     this.tokenTtl,

@@ -24,7 +24,7 @@ class LoadTestProfileMappingArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [sourceResourceId] Mapped source resource Id.
   /// [testProfileId] Mapped Azure Load Test resource test-profile-id.
-  LoadTestProfileMappingArgs({
+  const LoadTestProfileMappingArgs({
     this.azureLoadTestingResourceId,
     this.loadTestProfileMappingName,
     required this.resourceUri,

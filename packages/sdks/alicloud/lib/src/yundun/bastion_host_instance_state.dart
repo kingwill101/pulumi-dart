@@ -44,7 +44,7 @@ class BastionHostInstanceState {
   /// [storage] Optional.
   /// [tags] Optional.
   /// [vswitchId] Optional.
-  BastionHostInstanceState({
+  const BastionHostInstanceState({
     this.adAuthServers,
     this.bandwidth,
     this.description,

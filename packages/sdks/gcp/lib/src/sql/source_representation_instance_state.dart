@@ -46,7 +46,7 @@ class SourceRepresentationInstanceState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created instance should reside.
   /// [username] The replication user account on the external server.
-  SourceRepresentationInstanceState({
+  const SourceRepresentationInstanceState({
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,

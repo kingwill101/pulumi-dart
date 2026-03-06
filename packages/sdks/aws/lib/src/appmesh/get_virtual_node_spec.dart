@@ -20,7 +20,7 @@ class GetVirtualNodeSpec {
   /// [listeners] Required.
   /// [loggings] Required.
   /// [serviceDiscoveries] Required.
-  GetVirtualNodeSpec({
+  const GetVirtualNodeSpec({
     required this.backendDefaults,
     required this.backends,
     required this.listeners,

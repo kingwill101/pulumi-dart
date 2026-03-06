@@ -13,7 +13,7 @@ class EnvironmentConfigDataRetentionConfig {
   /// Creates a new [EnvironmentConfigDataRetentionConfig].
   /// [airflowMetadataRetentionConfigs] Optional. The policy for airflow metadata database retention.
   /// [taskLogsRetentionConfigs] Optional. The configuration setting for Task Logs.
-  EnvironmentConfigDataRetentionConfig({
+  const EnvironmentConfigDataRetentionConfig({
     this.airflowMetadataRetentionConfigs,
     this.taskLogsRetentionConfigs,
   });

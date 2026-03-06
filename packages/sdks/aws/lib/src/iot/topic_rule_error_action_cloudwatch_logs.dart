@@ -14,7 +14,7 @@ class TopicRuleErrorActionCloudwatchLogs {
   /// [batchMode] The payload that contains a JSON array of records will be sent to CloudWatch via a batch call.
   /// [logGroupName] The CloudWatch log group name.
   /// [roleArn] The IAM role ARN that allows access to the CloudWatch alarm.
-  TopicRuleErrorActionCloudwatchLogs({
+  const TopicRuleErrorActionCloudwatchLogs({
     this.batchMode,
     required this.logGroupName,
     required this.roleArn,

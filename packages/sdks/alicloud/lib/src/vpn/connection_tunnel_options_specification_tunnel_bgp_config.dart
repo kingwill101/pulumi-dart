@@ -20,7 +20,7 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
   /// [peerAsn] Peer asn.
   /// [peerBgpIp] Peer bgp ip.
   /// [tunnelCidr] Optional.
-  ConnectionTunnelOptionsSpecificationTunnelBgpConfig({
+  const ConnectionTunnelOptionsSpecificationTunnelBgpConfig({
     this.bgpStatus,
     this.localAsn,
     this.localBgpIp,

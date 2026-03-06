@@ -8,7 +8,7 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
 
   /// Creates a new [FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue].
   /// [values] The strings in the list.
-  FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue({
+  const FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValue({
     required this.values,
   });
 

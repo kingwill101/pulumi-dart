@@ -8,7 +8,7 @@ class ThirdPartyExtensionResponse {
 
   /// Creates a new [ThirdPartyExtensionResponse].
   /// [name] Name of third party extension.
-  ThirdPartyExtensionResponse({
+  const ThirdPartyExtensionResponse({
     this.name,
   });
 

@@ -19,7 +19,7 @@ class ManagementPolicyRule {
   /// [enabled] Boolean to specify whether the rule is enabled.
   /// [filters] A `filters` block as documented below.
   /// [name] The name of the rule. Rule name is case-sensitive. It must be unique within a policy.
-  ManagementPolicyRule({
+  const ManagementPolicyRule({
     required this.actions,
     required this.enabled,
     required this.filters,

@@ -29,7 +29,7 @@ class GetHubResult {
   /// [namespaceName] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags to assign to the resource.
-  GetHubResult({
+  const GetHubResult({
     required this.apnsCredentials,
     required this.gcmCredentials,
     required this.id,

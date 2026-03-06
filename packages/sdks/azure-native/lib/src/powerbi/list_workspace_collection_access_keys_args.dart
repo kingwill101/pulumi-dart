@@ -15,7 +15,7 @@ class ListWorkspaceCollectionAccessKeysArgs {
   /// Creates a new [ListWorkspaceCollectionAccessKeysArgs].
   /// [resourceGroupName] Azure resource group
   /// [workspaceCollectionName] Power BI Embedded Workspace Collection name
-  ListWorkspaceCollectionAccessKeysArgs({
+  const ListWorkspaceCollectionAccessKeysArgs({
     required this.resourceGroupName,
     required this.workspaceCollectionName,
   });

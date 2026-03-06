@@ -10,7 +10,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition].
   /// [expressions] An expression, consisting of an operator and conditions.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition({
     this.expressions,
   });
 

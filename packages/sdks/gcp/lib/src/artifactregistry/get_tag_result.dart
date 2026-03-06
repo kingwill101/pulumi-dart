@@ -24,7 +24,7 @@ class GetTagResult {
   /// [repositoryId] Required.
   /// [tagName] Required.
   /// [version] The version of the tag.
-  GetTagResult({
+  const GetTagResult({
     required this.id,
     required this.location,
     required this.name,

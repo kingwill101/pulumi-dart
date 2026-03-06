@@ -36,7 +36,7 @@ class GetNatFirewallsFirewall {
   /// [proxyName] NAT firewall name
   /// [strictMode] Whether strict mode is enabled1-Enable strict mode0-Disable strict mode
   /// [vpcId] The ID of the VPC instance.
-  GetNatFirewallsFirewall({
+  const GetNatFirewallsFirewall({
     required this.aliUid,
     required this.id,
     required this.memberUid,

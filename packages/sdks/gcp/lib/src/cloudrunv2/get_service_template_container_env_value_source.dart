@@ -9,7 +9,7 @@ class GetServiceTemplateContainerEnvValueSource {
 
   /// Creates a new [GetServiceTemplateContainerEnvValueSource].
   /// [secretKeyReves] Selects a secret and a specific version from Cloud Secret Manager.
-  GetServiceTemplateContainerEnvValueSource({
+  const GetServiceTemplateContainerEnvValueSource({
     required this.secretKeyReves,
   });
 

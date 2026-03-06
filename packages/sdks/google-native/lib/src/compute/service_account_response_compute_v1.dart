@@ -12,7 +12,7 @@ class ServiceAccountResponseComputeV1 {
   /// Creates a new [ServiceAccountResponseComputeV1].
   /// [email] Email address of the service account.
   /// [scopes] The list of scopes to be made available for this service account.
-  ServiceAccountResponseComputeV1({
+  const ServiceAccountResponseComputeV1({
     required this.email,
     required this.scopes,
   });

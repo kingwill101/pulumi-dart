@@ -8,7 +8,7 @@ class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading].
   /// [policy] The policy for kernel module loading.
-  NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
+  const NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
     this.policy,
   });
 

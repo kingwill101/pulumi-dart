@@ -18,7 +18,7 @@ class GetAddonArgs {
   /// [addonName] Name of the addon.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAddonArgs({
+  const GetAddonArgs({
     required this.addonName,
     required this.privateCloudName,
     required this.resourceGroupName,

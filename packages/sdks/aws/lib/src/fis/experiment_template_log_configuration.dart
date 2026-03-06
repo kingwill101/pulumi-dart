@@ -16,7 +16,7 @@ class ExperimentTemplateLogConfiguration {
   /// [cloudwatchLogsConfiguration] The configuration for experiment logging to Amazon CloudWatch Logs. See below.
   /// [logSchemaVersion] The schema version. See [documentation](https://docs.aws.amazon.com/fis/latest/userguide/monitoring-logging.html#experiment-log-schema) for the list of schema versions.
   /// [s3Configuration] The configuration for experiment logging to Amazon S3. See below.
-  ExperimentTemplateLogConfiguration({
+  const ExperimentTemplateLogConfiguration({
     this.cloudwatchLogsConfiguration,
     required this.logSchemaVersion,
     this.s3Configuration,

@@ -11,7 +11,7 @@ class EventHubNamespaceNetworkRulesetsVirtualNetworkRule {
   /// Creates a new [EventHubNamespaceNetworkRulesetsVirtualNetworkRule].
   /// [ignoreMissingVirtualNetworkServiceEndpoint] Are missing virtual network service endpoints ignored?
   /// [subnetId] The id of the subnet to match on.
-  EventHubNamespaceNetworkRulesetsVirtualNetworkRule({
+  const EventHubNamespaceNetworkRulesetsVirtualNetworkRule({
     this.ignoreMissingVirtualNetworkServiceEndpoint,
     required this.subnetId,
   });

@@ -7,7 +7,7 @@ class RecorderRecordingGroupRecordingStrategy {
 
   /// Creates a new [RecorderRecordingGroupRecordingStrategy].
   /// [useOnly] Optional.
-  RecorderRecordingGroupRecordingStrategy({
+  const RecorderRecordingGroupRecordingStrategy({
     this.useOnly,
   });
 

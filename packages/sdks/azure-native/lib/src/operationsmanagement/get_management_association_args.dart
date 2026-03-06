@@ -24,7 +24,7 @@ class GetManagementAssociationArgs {
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
   /// [resourceName] Parent resource name.
   /// [resourceType] Resource type for the parent resource
-  GetManagementAssociationArgs({
+  const GetManagementAssociationArgs({
     required this.managementAssociationName,
     required this.providerName,
     required this.resourceGroupName,

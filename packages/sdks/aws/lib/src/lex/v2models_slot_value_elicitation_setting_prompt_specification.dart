@@ -17,7 +17,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecification {
   /// [messageGroups] Optional.
   /// [messageSelectionStrategy] Optional.
   /// [promptAttemptsSpecifications] Optional.
-  V2modelsSlotValueElicitationSettingPromptSpecification({
+  const V2modelsSlotValueElicitationSettingPromptSpecification({
     this.allowInterrupt,
     required this.maxRetries,
     this.messageGroups,

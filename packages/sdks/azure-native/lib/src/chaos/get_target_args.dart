@@ -24,7 +24,7 @@ class GetTargetArgs {
   /// [parentResourceType] String that represents a resource type.
   /// [resourceGroupName] String that represents an Azure resource group.
   /// [targetName] String that represents a Target resource name.
-  GetTargetArgs({
+  const GetTargetArgs({
     required this.parentProviderNamespace,
     required this.parentResourceName,
     required this.parentResourceType,

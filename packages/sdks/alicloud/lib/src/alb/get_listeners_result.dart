@@ -26,7 +26,7 @@ class GetListenersResult {
   /// [loadBalancerIds] Optional.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetListenersResult({
+  const GetListenersResult({
     this.enableDetails,
     required this.id,
     required this.ids,

@@ -28,7 +28,7 @@ class OracleProfile {
   /// [password] Password for the Oracle connection.
   /// [port] Port for the Oracle connection, default value is 1521.
   /// [username] Username for the Oracle connection.
-  OracleProfile({
+  const OracleProfile({
     this.connectionAttributes,
     required this.databaseService,
     required this.hostname,

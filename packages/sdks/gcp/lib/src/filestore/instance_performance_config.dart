@@ -18,7 +18,7 @@ class InstancePerformanceConfig {
   /// Creates a new [InstancePerformanceConfig].
   /// [fixedIops] The instance will have a fixed provisioned IOPS value,
   /// [iopsPerTb] The instance provisioned IOPS will change dynamically
-  InstancePerformanceConfig({
+  const InstancePerformanceConfig({
     this.fixedIops,
     this.iopsPerTb,
   });

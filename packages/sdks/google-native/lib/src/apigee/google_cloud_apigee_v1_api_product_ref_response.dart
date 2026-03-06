@@ -11,7 +11,7 @@ class GoogleCloudApigeeV1ApiProductRefResponse {
   /// Creates a new [GoogleCloudApigeeV1ApiProductRefResponse].
   /// [apiproduct] Name of the API product.
   /// [status] Status of the API product. Valid values are `approved` or `revoked`.
-  GoogleCloudApigeeV1ApiProductRefResponse({
+  const GoogleCloudApigeeV1ApiProductRefResponse({
     required this.apiproduct,
     required this.status,
   });

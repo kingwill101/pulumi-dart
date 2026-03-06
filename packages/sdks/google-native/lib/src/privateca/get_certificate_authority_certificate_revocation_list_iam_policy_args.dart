@@ -19,7 +19,7 @@ class GetCertificateAuthorityCertificateRevocationListIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetCertificateAuthorityCertificateRevocationListIamPolicyArgs({
+  const GetCertificateAuthorityCertificateRevocationListIamPolicyArgs({
     required this.certificateAuthorityId,
     required this.certificateRevocationListId,
     required this.location,

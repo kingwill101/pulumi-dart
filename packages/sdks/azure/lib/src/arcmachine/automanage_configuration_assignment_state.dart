@@ -14,7 +14,7 @@ class AutomanageConfigurationAssignmentState {
   /// Creates a new [AutomanageConfigurationAssignmentState].
   /// [arcMachineId] The ARM resource ID of the Arc Machine to assign the Automanage Configuration to. Changing this forces a new resource to be created.
   /// [configurationId] The ARM resource ID of the Automanage Configuration to assign to the Virtual Machine. Changing this forces a new resource to be created.
-  AutomanageConfigurationAssignmentState({
+  const AutomanageConfigurationAssignmentState({
     this.arcMachineId,
     this.configurationId,
   });

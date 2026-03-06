@@ -23,7 +23,7 @@ class GroupV3Args {
   /// [domainId] The domain the group belongs to.
   /// [name] The name of the group.
   /// [region] The region in which to obtain the V3 Keystone client.
-  GroupV3Args({
+  const GroupV3Args({
     this.description,
     this.domainId,
     this.name,

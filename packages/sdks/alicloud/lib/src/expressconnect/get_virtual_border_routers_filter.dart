@@ -12,7 +12,7 @@ class GetVirtualBorderRoutersFilter {
   /// Creates a new [GetVirtualBorderRoutersFilter].
   /// [key] The key of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetVirtualBorderRoutersFilter({
+  const GetVirtualBorderRoutersFilter({
     this.key,
     this.values,
   });

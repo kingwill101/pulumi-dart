@@ -12,7 +12,7 @@ class VpnServerConfigRadiusClientRootCertificateResponse {
   /// Creates a new [VpnServerConfigRadiusClientRootCertificateResponse].
   /// [name] The certificate name.
   /// [thumbprint] The Radius client root certificate thumbprint.
-  VpnServerConfigRadiusClientRootCertificateResponse({
+  const VpnServerConfigRadiusClientRootCertificateResponse({
     this.name,
     this.thumbprint,
   });

@@ -24,7 +24,7 @@ class SqlRoleAssignmentState {
   /// [resourceGroupName] The name of the Resource Group in which the Cosmos DB SQL Role Assignment is created. Changing this forces a new resource to be created.
   /// [roleDefinitionId] The resource ID of the Cosmos DB SQL Role Definition.
   /// [scope] The data plane resource path for which access is being granted through this Cosmos DB SQL Role Assignment. Changing this forces a new resource to be created.
-  SqlRoleAssignmentState({
+  const SqlRoleAssignmentState({
     this.accountName,
     this.name,
     this.principalId,

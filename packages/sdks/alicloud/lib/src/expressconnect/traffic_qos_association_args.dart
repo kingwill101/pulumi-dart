@@ -18,7 +18,7 @@ class TrafficQosAssociationArgs {
   /// [instanceId] The ID of the associated instance.
   /// [instanceType] The type of the associated instance. Value: **physical connection** physical connection.
   /// [qosId] The QoS policy ID.
-  TrafficQosAssociationArgs({
+  const TrafficQosAssociationArgs({
     this.instanceId,
     this.instanceType,
     required this.qosId,

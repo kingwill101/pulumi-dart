@@ -18,7 +18,7 @@ class GetInstanceArgs {
   /// [instanceId] The instance id of the Lustre instance.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [zone] The ID of the zone in which the resource belongs. If it is not provided, the provider zone is used.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.instanceId,
     this.project,
     this.zone,

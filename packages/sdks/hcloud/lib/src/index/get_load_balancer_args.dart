@@ -18,7 +18,7 @@ class GetLoadBalancerArgs {
   /// [id] ID of the Load Balancer.
   /// [name] Name of the Load Balancer.
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  GetLoadBalancerArgs({
+  const GetLoadBalancerArgs({
     this.id,
     this.name,
     this.withSelector,

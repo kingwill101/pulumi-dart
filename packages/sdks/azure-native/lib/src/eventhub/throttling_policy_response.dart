@@ -19,7 +19,7 @@ class ThrottlingPolicyResponse {
   /// [name] The Name of this policy
   /// [rateLimitThreshold] The Threshold limit above which the application group will be throttled.Rate limit is always per second.
   /// [type] Application Group Policy types
-  ThrottlingPolicyResponse({
+  const ThrottlingPolicyResponse({
     required this.metricId,
     required this.name,
     required this.rateLimitThreshold,

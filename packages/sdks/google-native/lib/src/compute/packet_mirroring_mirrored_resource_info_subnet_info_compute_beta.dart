@@ -8,7 +8,7 @@ class PacketMirroringMirroredResourceInfoSubnetInfoComputeBeta {
 
   /// Creates a new [PacketMirroringMirroredResourceInfoSubnetInfoComputeBeta].
   /// [url] Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
-  PacketMirroringMirroredResourceInfoSubnetInfoComputeBeta({
+  const PacketMirroringMirroredResourceInfoSubnetInfoComputeBeta({
     this.url,
   });
 

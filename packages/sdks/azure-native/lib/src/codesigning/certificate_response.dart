@@ -42,7 +42,7 @@ class CertificateResponse {
   /// [status] Status of the certificate.
   /// [subjectName] Subject name of the certificate.
   /// [thumbprint] Thumbprint of the certificate.
-  CertificateResponse({
+  const CertificateResponse({
     this.createdDate,
     this.effectiveAt,
     this.enhancedKeyUsage,

@@ -17,7 +17,7 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
   /// [operator] Valid values include: `equals`, `not-equals`, `contains`, `begins-with`.
   /// [type] Must be `routing-policy-label`.
   /// [value] Routing policy label to match.
-  GetCoreNetworkPolicyDocumentAttachmentPolicyCondition({
+  const GetCoreNetworkPolicyDocumentAttachmentPolicyCondition({
     this.key,
     this.operator,
     required this.type,

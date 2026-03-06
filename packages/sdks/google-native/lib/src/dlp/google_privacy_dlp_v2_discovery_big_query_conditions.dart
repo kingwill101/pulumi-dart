@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   /// [orConditions] At least one of the conditions must be true for a table to be scanned.
   /// [typeCollection] Restrict discovery to categories of table types.
   /// [types] Restrict discovery to specific table types.
-  GooglePrivacyDlpV2DiscoveryBigQueryConditions({
+  const GooglePrivacyDlpV2DiscoveryBigQueryConditions({
     this.createdAfter,
     this.orConditions,
     this.typeCollection,

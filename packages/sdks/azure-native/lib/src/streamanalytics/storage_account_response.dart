@@ -12,7 +12,7 @@ class StorageAccountResponse {
   /// Creates a new [StorageAccountResponse].
   /// [accountKey] The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
   /// [accountName] The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
-  StorageAccountResponse({
+  const StorageAccountResponse({
     this.accountKey,
     this.accountName,
   });

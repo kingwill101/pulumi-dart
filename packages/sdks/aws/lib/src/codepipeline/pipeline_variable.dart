@@ -14,7 +14,7 @@ class PipelineVariable {
   /// [defaultValue] The default value of a pipeline-level variable.
   /// [description] The description of a pipeline-level variable.
   /// [name] The name of a pipeline-level variable.
-  PipelineVariable({
+  const PipelineVariable({
     this.defaultValue,
     this.description,
     required this.name,

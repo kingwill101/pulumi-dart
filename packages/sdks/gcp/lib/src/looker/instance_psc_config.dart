@@ -17,7 +17,7 @@ class InstancePscConfig {
   /// [allowedVpcs] List of VPCs that are allowed ingress into the Looker instance.
   /// [lookerServiceAttachmentUri] (Output)
   /// [serviceAttachments] List of egress service attachment configurations.
-  InstancePscConfig({
+  const InstancePscConfig({
     this.allowedVpcs,
     this.lookerServiceAttachmentUri,
     this.serviceAttachments,

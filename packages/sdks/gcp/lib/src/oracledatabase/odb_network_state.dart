@@ -60,7 +60,7 @@ class OdbNetworkState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] State of the ODB Network.
-  OdbNetworkState({
+  const OdbNetworkState({
     this.createTime,
     this.deletionProtection,
     this.effectiveLabels,

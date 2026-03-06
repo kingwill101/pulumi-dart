@@ -17,7 +17,7 @@ class GetAgentsAgent {
   /// [agentKey] Service space signature, which is used when PAAS interface specifies the service space.
   /// [agentName] The name of the agent.
   /// [id] ID of the agent.
-  GetAgentsAgent({
+  const GetAgentsAgent({
     required this.agentId,
     required this.agentKey,
     required this.agentName,

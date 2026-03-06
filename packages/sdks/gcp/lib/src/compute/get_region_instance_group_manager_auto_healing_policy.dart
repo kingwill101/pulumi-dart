@@ -11,7 +11,7 @@ class GetRegionInstanceGroupManagerAutoHealingPolicy {
   /// Creates a new [GetRegionInstanceGroupManagerAutoHealingPolicy].
   /// [healthCheck] The health check resource that signals autohealing.
   /// [initialDelaySec] The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
-  GetRegionInstanceGroupManagerAutoHealingPolicy({
+  const GetRegionInstanceGroupManagerAutoHealingPolicy({
     required this.healthCheck,
     required this.initialDelaySec,
   });

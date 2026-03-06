@@ -12,7 +12,7 @@ class FileSystemConfigResponse {
   /// Creates a new [FileSystemConfigResponse].
   /// [arn] The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file system.
   /// [localMountPath] The path where the function can access the file system, starting with ``/mnt/``.
-  FileSystemConfigResponse({
+  const FileSystemConfigResponse({
     this.arn,
     this.localMountPath,
   });

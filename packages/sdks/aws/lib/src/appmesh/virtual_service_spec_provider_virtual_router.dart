@@ -8,7 +8,7 @@ class VirtualServiceSpecProviderVirtualRouter {
 
   /// Creates a new [VirtualServiceSpecProviderVirtualRouter].
   /// [virtualRouterName] Name of the virtual router that is acting as a service provider. Must be between 1 and 255 characters in length.
-  VirtualServiceSpecProviderVirtualRouter({
+  const VirtualServiceSpecProviderVirtualRouter({
     required this.virtualRouterName,
   });
 

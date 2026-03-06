@@ -16,7 +16,7 @@ class GetPlacementGroupsArgs {
   /// [filters] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetPlacementGroupsArgs({
+  const GetPlacementGroupsArgs({
     this.filters,
     this.order,
     this.orderBy,

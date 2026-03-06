@@ -18,7 +18,7 @@ class IndexUnusedReasonResponse {
   /// [code] Specifies the high-level reason for the scenario when no search index was used.
   /// [indexName] Specifies the name of the unused search index, if available.
   /// [message] Free form human-readable reason for the scenario when no search index was used.
-  IndexUnusedReasonResponse({
+  const IndexUnusedReasonResponse({
     required this.baseTable,
     required this.code,
     required this.indexName,

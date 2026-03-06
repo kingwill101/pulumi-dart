@@ -29,7 +29,7 @@ class AutoscalingPolicyArgs {
   /// [project] Optional.
   /// [secondaryWorkerConfig] Optional. Describes how the autoscaler will operate for secondary workers.
   /// [workerConfig] Describes how the autoscaler will operate for primary workers.
-  AutoscalingPolicyArgs({
+  const AutoscalingPolicyArgs({
     this.basicAlgorithm,
     required this.id,
     this.labels,

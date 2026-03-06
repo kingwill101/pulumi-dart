@@ -24,7 +24,7 @@ class GetMetastoreDatabaseIamPolicyArgs {
   /// [location] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
-  GetMetastoreDatabaseIamPolicyArgs({
+  const GetMetastoreDatabaseIamPolicyArgs({
     required this.database,
     this.location,
     this.project,

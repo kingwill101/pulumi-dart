@@ -34,7 +34,7 @@ class GetServiceLevelAlertHelperResult {
   /// [sloTarget] Required.
   /// [threshold] (Computed) The computed threshold given the provided arguments.
   /// [toleratedBudgetConsumption] (Computed) For non `custom` alert_type, this is the recommended for that type of alert. For `custom` alert_type it has the same value as `custom_tolerated_budget_consumption`.
-  GetServiceLevelAlertHelperResult({
+  const GetServiceLevelAlertHelperResult({
     required this.alertType,
     this.customEvaluationPeriod,
     this.customToleratedBudgetConsumption,

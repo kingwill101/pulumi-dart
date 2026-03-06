@@ -9,7 +9,7 @@ class AccountKeyMetadataResponse {
 
   /// Creates a new [AccountKeyMetadataResponse].
   /// [generationTime] Generation time in UTC of the key in ISO-8601 format. If the value is missing from the object, it means that the last key regeneration was triggered before 2022-06-18.
-  AccountKeyMetadataResponse({
+  const AccountKeyMetadataResponse({
     required this.generationTime,
   });
 

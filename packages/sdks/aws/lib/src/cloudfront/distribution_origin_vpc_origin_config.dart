@@ -15,7 +15,7 @@ class DistributionOriginVpcOriginConfig {
   /// [originReadTimeout] Optional.
   /// [ownerAccountId] The AWS account ID that owns the VPC origin. Required when referencing a VPC origin from a different AWS account for cross-account VPC origin access.
   /// [vpcOriginId] The VPC origin ID.
-  DistributionOriginVpcOriginConfig({
+  const DistributionOriginVpcOriginConfig({
     this.originKeepaliveTimeout,
     this.originReadTimeout,
     this.ownerAccountId,

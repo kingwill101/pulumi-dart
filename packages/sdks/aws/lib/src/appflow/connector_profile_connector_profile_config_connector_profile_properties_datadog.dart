@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog {
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog({
     required this.instanceUrl,
   });
 

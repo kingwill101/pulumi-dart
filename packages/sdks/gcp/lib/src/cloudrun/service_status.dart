@@ -42,7 +42,7 @@ class ServiceStatus {
   /// [observedGeneration] (Output)
   /// [traffics] Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// [url] (Output)
-  ServiceStatus({
+  const ServiceStatus({
     this.conditions,
     this.latestCreatedRevisionName,
     this.latestReadyRevisionName,

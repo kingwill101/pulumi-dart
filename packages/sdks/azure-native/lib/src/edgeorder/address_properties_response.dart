@@ -23,7 +23,7 @@ class AddressPropertiesResponse {
   /// [contactDetails] Contact details for the address.
   /// [provisioningState] Provisioning state
   /// [shippingAddress] Shipping details for the address.
-  AddressPropertiesResponse({
+  const AddressPropertiesResponse({
     this.addressClassification,
     required this.addressValidationStatus,
     this.contactDetails,

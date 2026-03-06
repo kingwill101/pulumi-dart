@@ -77,7 +77,7 @@ class DatasetDelimitedTextState {
   /// [quoteCharacter] The quote character. Defaults to `"`.
   /// [rowDelimiter] The row delimiter. Defaults to any of the following values on read: `\r\n`, `\r`, `\n`, and `\n` or `\r\n` on write by mapping data flow and Copy activity respectively.
   /// [schemaColumns] A `schema_column` block as defined below.
-  DatasetDelimitedTextState({
+  const DatasetDelimitedTextState({
     this.additionalProperties,
     this.annotations,
     this.azureBlobFsLocation,

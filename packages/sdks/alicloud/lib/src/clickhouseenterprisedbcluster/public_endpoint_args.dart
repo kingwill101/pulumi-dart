@@ -19,7 +19,7 @@ class PublicEndpointArgs {
   /// [connectionStringPrefix] The public network connection string prefix of the instance.
   /// [dbInstanceId] The cluster ID.
   /// [netType] Network type of the connection address. Valid values:
-  PublicEndpointArgs({
+  const PublicEndpointArgs({
     required this.connectionStringPrefix,
     required this.dbInstanceId,
     required this.netType,

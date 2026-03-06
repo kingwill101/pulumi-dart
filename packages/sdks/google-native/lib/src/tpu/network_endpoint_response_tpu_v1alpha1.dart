@@ -12,7 +12,7 @@ class NetworkEndpointResponseTpuV1alpha1 {
   /// Creates a new [NetworkEndpointResponseTpuV1alpha1].
   /// [ipAddress] The IP address of this network endpoint.
   /// [port] The port of this network endpoint.
-  NetworkEndpointResponseTpuV1alpha1({
+  const NetworkEndpointResponseTpuV1alpha1({
     required this.ipAddress,
     required this.port,
   });

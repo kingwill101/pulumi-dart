@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesNetRaw {
 
   /// Creates a new [DomainFeaturesCapabilitiesNetRaw].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesNetRaw({
+  const DomainFeaturesCapabilitiesNetRaw({
     this.state,
   });
 

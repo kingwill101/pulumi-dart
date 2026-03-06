@@ -26,7 +26,7 @@ class InstanceNetworkConfig {
   /// [ipAllocation] The IP range in CIDR notation to use for the managed Data Fusion instance
   /// [network] Name of the network in the project with which the tenant project
   /// [privateServiceConnectConfig] Optional. Configuration for Private Service Connect.
-  InstanceNetworkConfig({
+  const InstanceNetworkConfig({
     this.connectionType,
     this.ipAllocation,
     this.network,

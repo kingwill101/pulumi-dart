@@ -21,7 +21,7 @@ class GetContextDialogflowV2beta1Args {
   /// [project] Optional.
   /// [sessionId] Required.
   /// [userId] Required.
-  GetContextDialogflowV2beta1Args({
+  const GetContextDialogflowV2beta1Args({
     required this.contextId,
     required this.environmentId,
     required this.location,

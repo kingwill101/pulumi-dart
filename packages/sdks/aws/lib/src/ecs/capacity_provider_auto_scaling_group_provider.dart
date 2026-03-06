@@ -18,7 +18,7 @@ class CapacityProviderAutoScalingGroupProvider {
   /// [managedDraining] Enables or disables a graceful shutdown of instances without disturbing workloads. Valid values are `ENABLED` and `DISABLED`. The default value is `ENABLED` when a capacity provider is created.
   /// [managedScaling] Configuration block defining the parameters of the auto scaling. Detailed below.
   /// [managedTerminationProtection] Enables or disables container-aware termination of instances in the auto scaling group when scale-in happens. Valid values are `ENABLED` and `DISABLED`.
-  CapacityProviderAutoScalingGroupProvider({
+  const CapacityProviderAutoScalingGroupProvider({
     required this.autoScalingGroupArn,
     this.managedDraining,
     this.managedScaling,

@@ -15,7 +15,7 @@ class GetFreeServiceArgs {
   /// Creates a new [GetFreeServiceArgs].
   /// [freeServiceName] Name of the free service
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFreeServiceArgs({
+  const GetFreeServiceArgs({
     required this.freeServiceName,
     required this.resourceGroupName,
   });

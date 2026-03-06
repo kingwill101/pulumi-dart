@@ -11,7 +11,7 @@ class DatasetAccessEntryResponse {
   /// Creates a new [DatasetAccessEntryResponse].
   /// [dataset] [Required] The dataset this entry applies to.
   /// [targetTypes] Required.
-  DatasetAccessEntryResponse({
+  const DatasetAccessEntryResponse({
     required this.dataset,
     required this.targetTypes,
   });

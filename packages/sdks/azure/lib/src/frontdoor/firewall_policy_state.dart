@@ -44,7 +44,7 @@ class FirewallPolicyState {
   /// [redirectUrl] If action type is redirect, this field represents redirect URL for the client.
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Web Application Firewall Policy.
-  FirewallPolicyState({
+  const FirewallPolicyState({
     this.customBlockResponseBody,
     this.customBlockResponseStatusCode,
     this.customRules,

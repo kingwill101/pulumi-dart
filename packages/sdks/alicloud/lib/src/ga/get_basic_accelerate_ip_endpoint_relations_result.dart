@@ -29,7 +29,7 @@ class GetBasicAccelerateIpEndpointRelationsResult {
   /// [outputFile] Optional.
   /// [relations] A list of Global Accelerator Basic Accelerate Ip Endpoint Relations. Each element contains the following attributes:
   /// [status] The status of the Basic Accelerate Ip Endpoint Relation.
-  GetBasicAccelerateIpEndpointRelationsResult({
+  const GetBasicAccelerateIpEndpointRelationsResult({
     this.accelerateIpId,
     required this.acceleratorId,
     this.endpointId,

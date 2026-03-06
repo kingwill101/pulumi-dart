@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsVisualAxisSortOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsVisualAxisSortOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsVisualAxisSortOption({
+  const DashboardDashboardPublishOptionsVisualAxisSortOption({
     this.availabilityStatus,
   });
 

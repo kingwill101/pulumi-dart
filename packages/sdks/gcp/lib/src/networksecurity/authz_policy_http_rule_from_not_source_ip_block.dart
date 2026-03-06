@@ -11,7 +11,7 @@ class AuthzPolicyHttpRuleFromNotSourceIpBlock {
   /// Creates a new [AuthzPolicyHttpRuleFromNotSourceIpBlock].
   /// [length] The length of the address range.
   /// [prefix] The address prefix.
-  AuthzPolicyHttpRuleFromNotSourceIpBlock({
+  const AuthzPolicyHttpRuleFromNotSourceIpBlock({
     required this.length,
     required this.prefix,
   });

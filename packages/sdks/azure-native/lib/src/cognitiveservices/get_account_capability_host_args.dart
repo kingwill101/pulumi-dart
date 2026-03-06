@@ -18,7 +18,7 @@ class GetAccountCapabilityHostArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [capabilityHostName] The name of the capability host associated with the Cognitive Services Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccountCapabilityHostArgs({
+  const GetAccountCapabilityHostArgs({
     required this.accountName,
     required this.capabilityHostName,
     required this.resourceGroupName,

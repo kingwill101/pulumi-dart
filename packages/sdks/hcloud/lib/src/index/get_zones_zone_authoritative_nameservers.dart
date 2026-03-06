@@ -8,7 +8,7 @@ class GetZonesZoneAuthoritativeNameservers {
 
   /// Creates a new [GetZonesZoneAuthoritativeNameservers].
   /// [assigneds] Authoritative Hetzner nameservers assigned to the Zone.
-  GetZonesZoneAuthoritativeNameservers({
+  const GetZonesZoneAuthoritativeNameservers({
     required this.assigneds,
   });
 

@@ -11,7 +11,7 @@ class DomainDevicesMemorydevTargetLabel {
   /// Creates a new [DomainDevicesMemorydevTargetLabel].
   /// [size] Defines the size of the memory device label.
   /// [sizeUnit] Specifies the unit of measurement for the size of the memory device label.
-  DomainDevicesMemorydevTargetLabel({
+  const DomainDevicesMemorydevTargetLabel({
     this.size,
     this.sizeUnit,
   });

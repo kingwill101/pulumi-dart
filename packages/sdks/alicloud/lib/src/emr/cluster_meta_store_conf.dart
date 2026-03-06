@@ -14,7 +14,7 @@ class ClusterMetaStoreConf {
   /// [dbPassword] Custom rds database password.
   /// [dbUrl] Custom rds database connection url.
   /// [dbUserName] Custom rds database user name.
-  ClusterMetaStoreConf({
+  const ClusterMetaStoreConf({
     required this.dbPassword,
     required this.dbUrl,
     required this.dbUserName,

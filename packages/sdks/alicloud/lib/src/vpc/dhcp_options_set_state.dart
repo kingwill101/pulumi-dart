@@ -50,7 +50,7 @@ class DhcpOptionsSetState {
   /// [resourceGroupId] The ID of the resource group to which the DHCP options set belongs.
   /// [status] The status of the resource.
   /// [tags] Tags of the current resource.
-  DhcpOptionsSetState({
+  const DhcpOptionsSetState({
     this.associateVpcs,
     this.dhcpOptionsSetDescription,
     this.dhcpOptionsSetName,

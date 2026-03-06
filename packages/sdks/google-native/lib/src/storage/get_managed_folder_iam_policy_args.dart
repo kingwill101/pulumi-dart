@@ -17,7 +17,7 @@ class GetManagedFolderIamPolicyArgs {
   /// [managedFolder] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [userProject] Optional.
-  GetManagedFolderIamPolicyArgs({
+  const GetManagedFolderIamPolicyArgs({
     required this.bucket,
     required this.managedFolder,
     this.optionsRequestedPolicyVersion,

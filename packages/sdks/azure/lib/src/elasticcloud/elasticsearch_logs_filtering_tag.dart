@@ -14,7 +14,7 @@ class ElasticsearchLogsFilteringTag {
   /// [action] Specifies the type of action which should be taken when the Tag matches the `name` and `value`. Possible values are `Exclude` and `Include`.
   /// [name] Specifies the name (key) of the Tag which should be filtered.
   /// [value] Specifies the value of the Tag which should be filtered.
-  ElasticsearchLogsFilteringTag({
+  const ElasticsearchLogsFilteringTag({
     required this.action,
     required this.name,
     required this.value,

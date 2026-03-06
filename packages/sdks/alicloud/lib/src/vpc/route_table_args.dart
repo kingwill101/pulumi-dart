@@ -34,7 +34,7 @@ class RouteTableArgs {
   /// [routeTableName] The name of the routing table.
   /// [tags] The tag
   /// [vpcId] The ID of VPC.
-  RouteTableArgs({
+  const RouteTableArgs({
     this.associateType,
     this.description,
     this.name,

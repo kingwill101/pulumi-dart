@@ -48,7 +48,7 @@ class DaprComponentArgs {
   /// [secrets] Collection of secrets used by a Dapr component
   /// [serviceComponentBind] List of container app services that are bound to the Dapr component
   /// [version] Component version
-  DaprComponentArgs({
+  const DaprComponentArgs({
     this.componentName,
     this.componentType,
     required this.environmentName,

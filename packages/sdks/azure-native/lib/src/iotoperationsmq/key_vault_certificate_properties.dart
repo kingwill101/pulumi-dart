@@ -17,7 +17,7 @@ class KeyVaultCertificateProperties {
   /// [vault] KeyVault properties.
   /// [vaultCaChainSecret] KeyVault CA chain secret details.
   /// [vaultCert] KeyVault Cert secret details.
-  KeyVaultCertificateProperties({
+  const KeyVaultCertificateProperties({
     required this.vault,
     this.vaultCaChainSecret,
     required this.vaultCert,

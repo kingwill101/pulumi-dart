@@ -9,7 +9,7 @@ class SoftwareRecipeStepInstallRpm {
 
   /// Creates a new [SoftwareRecipeStepInstallRpm].
   /// [artifactId] The id of the relevant artifact in the recipe.
-  SoftwareRecipeStepInstallRpm({
+  const SoftwareRecipeStepInstallRpm({
     required this.artifactId,
   });
 

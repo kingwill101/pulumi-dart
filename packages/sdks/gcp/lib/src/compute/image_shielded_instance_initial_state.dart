@@ -25,7 +25,7 @@ class ImageShieldedInstanceInitialState {
   /// [dbxs] The forbidden key database (dbx).
   /// [keks] The Key Exchange Key (KEK).
   /// [pk] The Platform Key (PK).
-  ImageShieldedInstanceInitialState({
+  const ImageShieldedInstanceInitialState({
     this.dbs,
     this.dbxs,
     this.keks,

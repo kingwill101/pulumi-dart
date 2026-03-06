@@ -20,7 +20,7 @@ class GetWorkspaceTagProductLinkResult {
   /// [name] The name of the resource
   /// [productId] Full resource Id of a product.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceTagProductLinkResult({
+  const GetWorkspaceTagProductLinkResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

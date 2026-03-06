@@ -121,7 +121,7 @@ class WindowsWebAppSlotSiteConfig {
   /// [websocketsEnabled] Should Web Sockets be enabled. Defaults to `false`.
   /// [windowsFxVersion] Optional.
   /// [workerCount] The number of Workers for this Windows App Service Slot.
-  WindowsWebAppSlotSiteConfig({
+  const WindowsWebAppSlotSiteConfig({
     this.alwaysOn,
     this.apiDefinitionUrl,
     this.apiManagementApiId,

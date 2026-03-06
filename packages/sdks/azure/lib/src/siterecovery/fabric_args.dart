@@ -21,7 +21,7 @@ class FabricArgs {
   /// [name] The name of the network mapping. Changing this forces a new resource to be created.
   /// [recoveryVaultName] The name of the vault that should be updated. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
-  FabricArgs({
+  const FabricArgs({
     this.location,
     this.name,
     required this.recoveryVaultName,

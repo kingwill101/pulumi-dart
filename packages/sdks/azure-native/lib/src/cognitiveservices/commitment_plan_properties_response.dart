@@ -34,7 +34,7 @@ class CommitmentPlanPropertiesResponse {
   /// [planType] Commitment plan type.
   /// [provisioningIssues] The list of ProvisioningIssue.
   /// [provisioningState] Gets the status of the resource at the time the operation was called.
-  CommitmentPlanPropertiesResponse({
+  const CommitmentPlanPropertiesResponse({
     this.autoRenew,
     this.commitmentPlanGuid,
     this.current,

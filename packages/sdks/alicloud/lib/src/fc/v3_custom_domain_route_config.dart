@@ -9,7 +9,7 @@ class V3CustomDomainRouteConfig {
 
   /// Creates a new [V3CustomDomainRouteConfig].
   /// [routes] Routing Configuration List See `routes` below.
-  V3CustomDomainRouteConfig({
+  const V3CustomDomainRouteConfig({
     this.routes,
   });
 

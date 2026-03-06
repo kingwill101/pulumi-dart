@@ -11,7 +11,7 @@ class JobQueueComputeEnvironmentOrder {
   /// Creates a new [JobQueueComputeEnvironmentOrder].
   /// [computeEnvironment] The Amazon Resource Name (ARN) of the compute environment.
   /// [order] The order of the compute environment. Compute environments are tried in ascending order. For example, if two compute environments are associated with a job queue, the compute environment with a lower order integer value is tried for job placement first.
-  JobQueueComputeEnvironmentOrder({
+  const JobQueueComputeEnvironmentOrder({
     required this.computeEnvironment,
     required this.order,
   });

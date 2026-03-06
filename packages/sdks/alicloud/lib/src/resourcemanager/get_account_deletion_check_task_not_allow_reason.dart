@@ -14,7 +14,7 @@ class GetAccountDeletionCheckTaskNotAllowReason {
   /// [checkId] The ID of the check item.
   /// [checkName] The name of the cloud service to which the check item belongs.
   /// [description] The description of the check item.
-  GetAccountDeletionCheckTaskNotAllowReason({
+  const GetAccountDeletionCheckTaskNotAllowReason({
     required this.checkId,
     required this.checkName,
     required this.description,

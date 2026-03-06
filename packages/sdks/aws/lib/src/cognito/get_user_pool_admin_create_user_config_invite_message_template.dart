@@ -14,7 +14,7 @@ class GetUserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// [emailMessage] - Email message content.
   /// [emailSubject] - Email message subject.
   /// [smsMessage] - SMS message content.
-  GetUserPoolAdminCreateUserConfigInviteMessageTemplate({
+  const GetUserPoolAdminCreateUserConfigInviteMessageTemplate({
     required this.emailMessage,
     required this.emailSubject,
     required this.smsMessage,

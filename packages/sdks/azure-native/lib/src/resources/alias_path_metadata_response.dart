@@ -11,7 +11,7 @@ class AliasPathMetadataResponse {
   /// Creates a new [AliasPathMetadataResponse].
   /// [attributes] The attributes of the token that the alias path is referring to.
   /// [type] The type of the token that the alias path is referring to.
-  AliasPathMetadataResponse({
+  const AliasPathMetadataResponse({
     required this.attributes,
     required this.type,
   });

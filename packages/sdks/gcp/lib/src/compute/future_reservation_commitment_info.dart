@@ -16,7 +16,7 @@ class FutureReservationCommitmentInfo {
   /// [commitmentName] name of the commitment where capacity is being delivered to.
   /// [commitmentPlan] Indicates if a Commitment needs to be created as part of FR delivery. If this field is not present, then no commitment needs to be created.
   /// [previousCommitmentTerms] Only applicable if FR is delivering to the same reservation. If set, all parent commitments will be extended to match the end date of the plan for this commitment.
-  FutureReservationCommitmentInfo({
+  const FutureReservationCommitmentInfo({
     this.commitmentName,
     this.commitmentPlan,
     this.previousCommitmentTerms,

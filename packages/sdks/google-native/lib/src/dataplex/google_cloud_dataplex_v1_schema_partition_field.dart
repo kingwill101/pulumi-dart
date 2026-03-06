@@ -13,7 +13,7 @@ class GoogleCloudDataplexV1SchemaPartitionField {
   /// Creates a new [GoogleCloudDataplexV1SchemaPartitionField].
   /// [name] Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
   /// [type] Immutable. The type of field.
-  GoogleCloudDataplexV1SchemaPartitionField({
+  const GoogleCloudDataplexV1SchemaPartitionField({
     required this.name,
     required this.type,
   });

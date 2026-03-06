@@ -18,7 +18,7 @@ class GetClusterArgs {
   /// [clusterName] Name of the ECS Cluster
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterName,
     this.region,
     this.tags,

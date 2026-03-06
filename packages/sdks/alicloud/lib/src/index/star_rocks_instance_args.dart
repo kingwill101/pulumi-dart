@@ -86,7 +86,7 @@ class StarRocksInstanceArgs {
   /// [version] The version of the instance.
   /// [vpcId] The VPC ID of the instance.
   /// [vswitches] The VSwitches info of the instance. See `vswitches` below.
-  StarRocksInstanceArgs({
+  const StarRocksInstanceArgs({
     required this.adminPassword,
     this.autoRenew,
     this.backendNodeGroups,

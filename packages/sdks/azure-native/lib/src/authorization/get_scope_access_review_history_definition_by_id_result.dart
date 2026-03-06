@@ -63,7 +63,7 @@ class GetScopeAccessReviewHistoryDefinitionByIdResult {
   /// [status] This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
   /// [type] The resource type.
   /// [userPrincipalName] The user principal name(if valid)
-  GetScopeAccessReviewHistoryDefinitionByIdResult({
+  const GetScopeAccessReviewHistoryDefinitionByIdResult({
     required this.azureApiVersion,
     required this.createdDateTime,
     this.decisions,

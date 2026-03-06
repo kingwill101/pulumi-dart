@@ -63,7 +63,7 @@ class DbSystemPropertiesDbHomeDatabase {
   /// [opsInsightsStatus] (Output)
   /// [properties] The properties of a Database.
   /// [tdeWalletPassword] The TDE wallet password for the database.
-  DbSystemPropertiesDbHomeDatabase({
+  const DbSystemPropertiesDbHomeDatabase({
     required this.adminPassword,
     this.characterSet,
     this.createTime,

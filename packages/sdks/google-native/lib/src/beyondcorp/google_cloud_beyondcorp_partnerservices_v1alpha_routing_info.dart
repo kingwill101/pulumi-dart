@@ -9,7 +9,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo {
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo].
   /// [pacUri] Proxy Auto-Configuration (PAC) URI.
-  GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo({
     required this.pacUri,
   });
 

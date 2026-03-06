@@ -202,5 +202,5 @@ class AzureadConfig {
 
 }
 
-final config = AzureadConfig();
+const config = AzureadConfig();
 

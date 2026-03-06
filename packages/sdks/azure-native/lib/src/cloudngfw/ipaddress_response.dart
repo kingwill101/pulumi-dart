@@ -12,7 +12,7 @@ class IPAddressResponse {
   /// Creates a new [IPAddressResponse].
   /// [address] Address value
   /// [resourceId] Resource Id
-  IPAddressResponse({
+  const IPAddressResponse({
     this.address,
     this.resourceId,
   });

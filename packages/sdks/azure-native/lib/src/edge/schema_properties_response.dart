@@ -12,7 +12,7 @@ class SchemaPropertiesResponse {
   /// Creates a new [SchemaPropertiesResponse].
   /// [currentVersion] Current Version of schema
   /// [provisioningState] Provisioning state of resource
-  SchemaPropertiesResponse({
+  const SchemaPropertiesResponse({
     required this.currentVersion,
     required this.provisioningState,
   });

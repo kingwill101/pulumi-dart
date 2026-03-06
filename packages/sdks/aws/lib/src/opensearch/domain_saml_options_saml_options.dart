@@ -27,7 +27,7 @@ class DomainSamlOptionsSamlOptions {
   /// [rolesKey] Element of the SAML assertion to use for backend roles. Default is roles.
   /// [sessionTimeoutMinutes] Duration of a session in minutes after a user logs in. Default is 60. Maximum value is 1,440.
   /// [subjectKey] Element of the SAML assertion to use for username. Default is NameID.
-  DomainSamlOptionsSamlOptions({
+  const DomainSamlOptionsSamlOptions({
     this.enabled,
     this.idp,
     this.masterBackendRole,

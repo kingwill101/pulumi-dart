@@ -18,7 +18,7 @@ class FirewallPolicyRuleCollectionGroupNatRuleCollection {
   /// [name] The name which should be used for this NAT rule collection.
   /// [priority] The priority of the NAT rule collection. The range is `100` - `65000`.
   /// [rules] A `nat_rule` block as defined below.
-  FirewallPolicyRuleCollectionGroupNatRuleCollection({
+  const FirewallPolicyRuleCollectionGroupNatRuleCollection({
     required this.action,
     required this.name,
     required this.priority,

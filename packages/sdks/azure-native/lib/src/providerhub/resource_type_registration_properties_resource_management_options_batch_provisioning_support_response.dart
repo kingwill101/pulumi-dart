@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioni
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse].
   /// [supportedOperations] Supported operations.
-  ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse({
+  const ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse({
     this.supportedOperations,
   });
 

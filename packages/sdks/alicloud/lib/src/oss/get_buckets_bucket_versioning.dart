@@ -8,7 +8,7 @@ class GetBucketsBucketVersioning {
 
   /// Creates a new [GetBucketsBucketVersioning].
   /// [status] A bucket versioning state. Possible values:`Enabled` and `Suspended`.
-  GetBucketsBucketVersioning({
+  const GetBucketsBucketVersioning({
     required this.status,
   });
 

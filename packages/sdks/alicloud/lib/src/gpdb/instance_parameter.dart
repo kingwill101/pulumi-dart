@@ -26,7 +26,7 @@ class InstanceParameter {
   /// [optionalRange] (Available since v1.231.0) The optional range of the parameter.
   /// [parameterDescription] (Available since v1.231.0) The description of the parameter.
   /// [value] The value of the parameter.
-  InstanceParameter({
+  const InstanceParameter({
     this.defaultValue,
     this.forceRestartInstance,
     this.isChangeableConfig,

@@ -14,7 +14,7 @@ class DmlStatisticsResponse {
   /// [deletedRowCount] Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements.
   /// [insertedRowCount] Number of inserted Rows. Populated by DML INSERT and MERGE statements.
   /// [updatedRowCount] Number of updated Rows. Populated by DML UPDATE and MERGE statements.
-  DmlStatisticsResponse({
+  const DmlStatisticsResponse({
     required this.deletedRowCount,
     required this.insertedRowCount,
     required this.updatedRowCount,

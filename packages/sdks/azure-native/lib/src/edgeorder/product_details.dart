@@ -18,7 +18,7 @@ class ProductDetails {
   /// [hierarchyInformation] Hierarchy of the product which uniquely identifies the product.
   /// [optInAdditionalConfigurations] List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
   /// [parentProvisioningDetails] Device Provisioning Details for Parent.
-  ProductDetails({
+  const ProductDetails({
     required this.hierarchyInformation,
     this.optInAdditionalConfigurations,
     this.parentProvisioningDetails,

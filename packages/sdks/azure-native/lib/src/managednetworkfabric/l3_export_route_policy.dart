@@ -12,7 +12,7 @@ class L3ExportRoutePolicy {
   /// Creates a new [L3ExportRoutePolicy].
   /// [exportIpv4RoutePolicyId] ARM Resource ID of the RoutePolicy.
   /// [exportIpv6RoutePolicyId] ARM Resource ID of the RoutePolicy.
-  L3ExportRoutePolicy({
+  const L3ExportRoutePolicy({
     this.exportIpv4RoutePolicyId,
     this.exportIpv6RoutePolicyId,
   });

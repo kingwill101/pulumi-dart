@@ -19,7 +19,7 @@ class AzStackHCIClusterPropertiesResponse {
   /// [resourceName] Gets or sets the AzStackHCICluster resource name.
   /// [storageAccountName] Gets or sets the Storage account name.
   /// [storageContainers] Gets or sets the list of AzStackHCICluster Storage Container.
-  AzStackHCIClusterPropertiesResponse({
+  const AzStackHCIClusterPropertiesResponse({
     required this.clusterName,
     required this.resourceName,
     required this.storageAccountName,

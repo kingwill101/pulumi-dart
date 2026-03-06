@@ -25,7 +25,7 @@ class SolutionProperties {
   /// [purpose] Gets or sets the purpose of the solution.
   /// [status] Gets or sets the current status of the solution.
   /// [tool] Gets or sets the tool being used in the solution.
-  SolutionProperties({
+  const SolutionProperties({
     this.cleanupState,
     this.details,
     this.goal,

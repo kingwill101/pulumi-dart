@@ -28,7 +28,7 @@ class GetSqlRoleDefinitionResult {
   /// [resourceGroupName] Required.
   /// [roleDefinitionId] Required.
   /// [type] The type of the Cosmos DB SQL Role Definition.
-  GetSqlRoleDefinitionResult({
+  const GetSqlRoleDefinitionResult({
     required this.accountName,
     required this.assignableScopes,
     required this.id,

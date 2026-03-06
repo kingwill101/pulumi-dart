@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerPortMapping {
   /// Creates a new [VirtualNodeSpecListenerPortMapping].
   /// [port] Port used for the port mapping.
   /// [protocol] Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
-  VirtualNodeSpecListenerPortMapping({
+  const VirtualNodeSpecListenerPortMapping({
     required this.port,
     required this.protocol,
   });

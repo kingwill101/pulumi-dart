@@ -17,7 +17,7 @@ class SourceProvenanceResponse {
   /// [gitUri] A copy of the build's `source.git_uri`, if exists, with any commits resolved.
   /// [resolvedRepoSource] A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
   /// [resolvedStorageSource] A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-  SourceProvenanceResponse({
+  const SourceProvenanceResponse({
     required this.gitUri,
     required this.resolvedRepoSource,
     required this.resolvedStorageSource,

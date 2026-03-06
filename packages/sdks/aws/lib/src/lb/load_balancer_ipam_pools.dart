@@ -8,7 +8,7 @@ class LoadBalancerIpamPools {
 
   /// Creates a new [LoadBalancerIpamPools].
   /// [ipv4IpamPoolId] The ID of the IPv4 IPAM pool.
-  LoadBalancerIpamPools({
+  const LoadBalancerIpamPools({
     required this.ipv4IpamPoolId,
   });
 

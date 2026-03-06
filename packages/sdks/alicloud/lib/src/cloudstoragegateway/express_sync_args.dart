@@ -24,7 +24,7 @@ class ExpressSyncArgs {
   /// [bucketRegion] The region of the OSS Bucket.
   /// [description] The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
   /// [expressSyncName] The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
-  ExpressSyncArgs({
+  const ExpressSyncArgs({
     required this.bucketName,
     this.bucketPrefix,
     required this.bucketRegion,

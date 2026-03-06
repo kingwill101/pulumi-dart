@@ -60,7 +60,7 @@ class ResourceConfigurationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [type] Type of Resource Configuration. Must be one of `GROUP`, `CHILD`, `SINGLE`, `ARN`.
-  ResourceConfigurationState({
+  const ResourceConfigurationState({
     this.allowAssociationToShareableServiceNetwork,
     this.arn,
     this.customDomainName,

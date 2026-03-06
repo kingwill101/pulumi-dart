@@ -13,7 +13,7 @@ class CapacityReservationGroupInstanceViewResponse {
   /// Creates a new [CapacityReservationGroupInstanceViewResponse].
   /// [capacityReservations] List of instance view of the capacity reservations under the capacity reservation group.
   /// [sharedSubscriptionIds] List of the subscriptions that the capacity reservation group is shared with. **Note:** Minimum api-version: 2023-09-01. Please refer to https://aka.ms/computereservationsharing for more details.
-  CapacityReservationGroupInstanceViewResponse({
+  const CapacityReservationGroupInstanceViewResponse({
     required this.capacityReservations,
     required this.sharedSubscriptionIds,
   });

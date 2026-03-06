@@ -8,7 +8,7 @@ class GetClusterZonalShiftConfig {
 
   /// Creates a new [GetClusterZonalShiftConfig].
   /// [enabled] Whether zonal shift is enabled.
-  GetClusterZonalShiftConfig({
+  const GetClusterZonalShiftConfig({
     required this.enabled,
   });
 

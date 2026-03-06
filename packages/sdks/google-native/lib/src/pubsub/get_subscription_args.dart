@@ -13,7 +13,7 @@ class GetSubscriptionArgs {
   /// Creates a new [GetSubscriptionArgs].
   /// [project] Optional.
   /// [subscriptionId] Required.
-  GetSubscriptionArgs({
+  const GetSubscriptionArgs({
     this.project,
     required this.subscriptionId,
   });

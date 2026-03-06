@@ -12,7 +12,7 @@ class UrlSigningParamIdentifierResponse {
   /// Creates a new [UrlSigningParamIdentifierResponse].
   /// [paramIndicator] Indicates the purpose of the parameter
   /// [paramName] Parameter name
-  UrlSigningParamIdentifierResponse({
+  const UrlSigningParamIdentifierResponse({
     required this.paramIndicator,
     required this.paramName,
   });

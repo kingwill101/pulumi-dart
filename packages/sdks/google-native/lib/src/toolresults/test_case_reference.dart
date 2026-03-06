@@ -15,7 +15,7 @@ class TestCaseReference {
   /// [className] The name of the class.
   /// [name] The name of the test case. Required.
   /// [testSuiteName] The name of the test suite to which this test case belongs.
-  TestCaseReference({
+  const TestCaseReference({
     this.className,
     this.name,
     this.testSuiteName,

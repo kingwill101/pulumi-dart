@@ -25,7 +25,7 @@ class AwAssumeRoleAuthenticationDetailsPropertiesResponse {
   /// [awsAssumeRoleArn] Assumed role ID is an identifier that you can use to create temporary security credentials.
   /// [awsExternalId] A unique identifier that is required when you assume a role in another account.
   /// [grantedPermissions] The permissions detected in the cloud account.
-  AwAssumeRoleAuthenticationDetailsPropertiesResponse({
+  const AwAssumeRoleAuthenticationDetailsPropertiesResponse({
     required this.accountId,
     required this.authenticationProvisioningState,
     required this.authenticationType,

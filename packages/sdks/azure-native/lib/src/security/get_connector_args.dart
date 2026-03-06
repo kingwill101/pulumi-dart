@@ -12,7 +12,7 @@ class GetConnectorArgs {
 
   /// Creates a new [GetConnectorArgs].
   /// [connectorName] Name of the cloud account connector
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.connectorName,
   });
 

@@ -9,7 +9,7 @@ class CFNScanEc2InstanceWithFindingsConfiguration {
 
   /// Creates a new [CFNScanEc2InstanceWithFindingsConfiguration].
   /// [ebsVolumes] Property ebsVolumes
-  CFNScanEc2InstanceWithFindingsConfiguration({
+  const CFNScanEc2InstanceWithFindingsConfiguration({
     this.ebsVolumes,
   });
 

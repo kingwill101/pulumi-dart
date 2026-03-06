@@ -9,7 +9,7 @@ class BackupPropertiesResponse {
 
   /// Creates a new [BackupPropertiesResponse].
   /// [earliestRestoreTime] Earliest restore timestamp in UTC ISO8601 format.
-  BackupPropertiesResponse({
+  const BackupPropertiesResponse({
     required this.earliestRestoreTime,
   });
 

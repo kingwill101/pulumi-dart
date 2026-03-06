@@ -23,7 +23,7 @@ class TaskSpecResponse {
   /// [serviceAccountName] Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
   /// [timeoutSeconds] Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
   /// [volumes] Optional. List of volumes that can be mounted by containers belonging to the task.
-  TaskSpecResponse({
+  const TaskSpecResponse({
     required this.containers,
     required this.maxRetries,
     required this.serviceAccountName,

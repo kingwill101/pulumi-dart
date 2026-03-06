@@ -12,7 +12,7 @@ class ResourceInfoDefinitionResponse {
   /// Creates a new [ResourceInfoDefinitionResponse].
   /// [method] The type of action that the clients can perform on the broker: Connect, Publish or Subscribe.
   /// [topics] A list of topics or topic patterns that match the topics that the clients can publish or subscribe to. This subfield is required if the method is Publish or Subscribe.
-  ResourceInfoDefinitionResponse({
+  const ResourceInfoDefinitionResponse({
     required this.method,
     this.topics,
   });

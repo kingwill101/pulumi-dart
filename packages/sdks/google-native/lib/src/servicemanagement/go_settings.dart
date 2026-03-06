@@ -10,7 +10,7 @@ class GoSettings {
 
   /// Creates a new [GoSettings].
   /// [common] Some settings.
-  GoSettings({
+  const GoSettings({
     this.common,
   });
 

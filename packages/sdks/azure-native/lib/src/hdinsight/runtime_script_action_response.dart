@@ -21,7 +21,7 @@ class RuntimeScriptActionResponse {
   /// [parameters] The parameters for the script
   /// [roles] The list of roles where script will be executed.
   /// [uri] The URI to the script.
-  RuntimeScriptActionResponse({
+  const RuntimeScriptActionResponse({
     required this.applicationName,
     required this.name,
     this.parameters,

@@ -16,7 +16,7 @@ class AdvancedScheduleResponse {
   /// [monthDays] Days of the month that the job should execute on. Must be between 1 and 31.
   /// [monthlyOccurrences] Occurrences of days within a month.
   /// [weekDays] Days of the week that the job should execute on.
-  AdvancedScheduleResponse({
+  const AdvancedScheduleResponse({
     this.monthDays,
     this.monthlyOccurrences,
     this.weekDays,

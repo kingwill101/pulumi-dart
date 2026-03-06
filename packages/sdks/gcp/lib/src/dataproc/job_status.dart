@@ -17,7 +17,7 @@ class JobStatus {
   /// [state] A state message specifying the overall job state.
   /// [stateStartTime] The time when this state was entered.
   /// [substate] Additional state information, which includes status reported by the agent.
-  JobStatus({
+  const JobStatus({
     this.details,
     this.state,
     this.stateStartTime,

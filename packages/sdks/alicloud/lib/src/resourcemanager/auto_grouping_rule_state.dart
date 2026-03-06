@@ -43,7 +43,7 @@ class AutoGroupingRuleState {
   /// [ruleDesc] The description of the rule.
   /// [ruleName] The name of the rule.
   /// [ruleType] The type of the rule. Valid values:
-  AutoGroupingRuleState({
+  const AutoGroupingRuleState({
     this.excludeRegionIdsScope,
     this.excludeResourceGroupIdsScope,
     this.excludeResourceIdsScope,

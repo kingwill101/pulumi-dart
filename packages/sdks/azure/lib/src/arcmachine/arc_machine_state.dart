@@ -25,7 +25,7 @@ class ArcMachineState {
   /// [name] The name of the Arc machine. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Arc Machine should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Arc Machine.
-  ArcMachineState({
+  const ArcMachineState({
     this.identity,
     this.kind,
     this.location,

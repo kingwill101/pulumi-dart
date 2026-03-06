@@ -151,7 +151,7 @@ class SynchronizationJobState {
   /// [status] The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
   /// [structureInitialization] Whether to perform library table structure migration or initialization. Valid values: `true`, `false`.
   /// [synchronizationDirection] Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `alicloud.dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
-  SynchronizationJobState({
+  const SynchronizationJobState({
     this.checkpoint,
     this.dataCheckConfigure,
     this.dataInitialization,

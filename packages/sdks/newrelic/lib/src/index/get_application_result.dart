@@ -16,7 +16,7 @@ class GetApplicationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceIds] A list of instance IDs associated with the application.
   /// [name] Required.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.hostIds,
     required this.id,
     required this.instanceIds,

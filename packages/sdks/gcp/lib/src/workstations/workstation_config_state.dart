@@ -121,7 +121,7 @@ class WorkstationConfigState {
   /// [uid] The system-generated UID of the resource.
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] The ID to be assigned to the workstation cluster config.
-  WorkstationConfigState({
+  const WorkstationConfigState({
     this.allowedPorts,
     this.annotations,
     this.conditions,

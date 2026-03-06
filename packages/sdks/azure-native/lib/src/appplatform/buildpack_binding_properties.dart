@@ -13,7 +13,7 @@ class BuildpackBindingProperties {
   /// Creates a new [BuildpackBindingProperties].
   /// [bindingType] Buildpack Binding Type
   /// [launchProperties] The object describes the buildpack binding launch properties
-  BuildpackBindingProperties({
+  const BuildpackBindingProperties({
     this.bindingType,
     this.launchProperties,
   });

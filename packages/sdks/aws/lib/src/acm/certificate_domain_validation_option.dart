@@ -17,7 +17,7 @@ class CertificateDomainValidationOption {
   /// [resourceRecordName] The name of the DNS record to create to validate the certificate
   /// [resourceRecordType] The type of DNS record to create
   /// [resourceRecordValue] The value the DNS record needs to have
-  CertificateDomainValidationOption({
+  const CertificateDomainValidationOption({
     this.domainName,
     this.resourceRecordName,
     this.resourceRecordType,

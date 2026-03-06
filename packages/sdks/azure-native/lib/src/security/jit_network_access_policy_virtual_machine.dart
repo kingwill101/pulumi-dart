@@ -15,7 +15,7 @@ class JitNetworkAccessPolicyVirtualMachine {
   /// [id] Resource ID of the virtual machine that is linked to this policy
   /// [ports] Port configurations for the virtual machine
   /// [publicIpAddress] Public IP address of the Azure Firewall that is linked to this policy, if applicable
-  JitNetworkAccessPolicyVirtualMachine({
+  const JitNetworkAccessPolicyVirtualMachine({
     required this.id,
     required this.ports,
     this.publicIpAddress,

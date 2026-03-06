@@ -9,7 +9,7 @@ class GetOntapStorageVirtualMachineEndpointSmb {
   /// Creates a new [GetOntapStorageVirtualMachineEndpointSmb].
   /// [dnsName] Required.
   /// [ipAddresses] Required.
-  GetOntapStorageVirtualMachineEndpointSmb({
+  const GetOntapStorageVirtualMachineEndpointSmb({
     required this.dnsName,
     required this.ipAddresses,
   });

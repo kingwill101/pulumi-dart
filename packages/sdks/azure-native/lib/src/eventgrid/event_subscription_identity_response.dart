@@ -12,7 +12,7 @@ class EventSubscriptionIdentityResponse {
   /// Creates a new [EventSubscriptionIdentityResponse].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
   /// [userAssignedIdentity] The user identity associated with the resource.
-  EventSubscriptionIdentityResponse({
+  const EventSubscriptionIdentityResponse({
     this.type,
     this.userAssignedIdentity,
   });

@@ -41,7 +41,7 @@ class GetDeviceResult {
   /// [systemData] The system meta data relating to this resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDeviceResult({
+  const GetDeviceResult({
     required this.azureApiVersion,
     required this.deviceType,
     required this.id,

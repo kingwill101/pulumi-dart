@@ -17,7 +17,7 @@ class GetPoolStorageImageReference {
   /// [publisher] The name of the extension handler publisher.The name of the extension handler publisher.
   /// [sku] Required.
   /// [version] Required.
-  GetPoolStorageImageReference({
+  const GetPoolStorageImageReference({
     required this.id,
     required this.offer,
     required this.publisher,

@@ -112,7 +112,7 @@ class WorkspaceArgs {
   /// [v1LegacyMode] Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
   /// [workspaceHubConfig] WorkspaceHub's configuration object.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.allowPublicAccessWhenBehindVnet,
     this.applicationInsights,
     this.associatedWorkspaces,

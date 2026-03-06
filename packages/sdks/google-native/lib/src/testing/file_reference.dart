@@ -9,7 +9,7 @@ class FileReference {
 
   /// Creates a new [FileReference].
   /// [gcsPath] A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
-  FileReference({
+  const FileReference({
     this.gcsPath,
   });
 

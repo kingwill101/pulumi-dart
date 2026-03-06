@@ -7,7 +7,7 @@ class ProviderFeaturesStorage {
 
   /// Creates a new [ProviderFeaturesStorage].
   /// [dataPlaneAvailable] Optional.
-  ProviderFeaturesStorage({
+  const ProviderFeaturesStorage({
     this.dataPlaneAvailable,
   });
 

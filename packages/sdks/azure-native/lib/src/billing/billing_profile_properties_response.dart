@@ -83,7 +83,7 @@ class BillingProfilePropertiesResponse {
   /// [systemId] The system generated unique identifier for a billing profile.
   /// [tags] Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
   /// [targetClouds] Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds.
-  BillingProfilePropertiesResponse({
+  const BillingProfilePropertiesResponse({
     this.billTo,
     required this.billingRelationshipType,
     required this.currency,

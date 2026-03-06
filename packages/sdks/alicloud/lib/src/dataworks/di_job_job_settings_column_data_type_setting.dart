@@ -11,7 +11,7 @@ class DiJobJobSettingsColumnDataTypeSetting {
   /// Creates a new [DiJobJobSettingsColumnDataTypeSetting].
   /// [destinationDataType] The destination type of the mapping relationship
   /// [sourceDataType] The source type of the mapping type
-  DiJobJobSettingsColumnDataTypeSetting({
+  const DiJobJobSettingsColumnDataTypeSetting({
     this.destinationDataType,
     this.sourceDataType,
   });

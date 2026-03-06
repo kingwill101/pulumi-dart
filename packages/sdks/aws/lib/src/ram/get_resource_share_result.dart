@@ -35,7 +35,7 @@ class GetResourceShareResult {
   /// [resourceShareStatus] Optional.
   /// [status] Status of the resource share.
   /// [tags] Tags attached to the resource share.
-  GetResourceShareResult({
+  const GetResourceShareResult({
     required this.arn,
     this.filters,
     required this.id,

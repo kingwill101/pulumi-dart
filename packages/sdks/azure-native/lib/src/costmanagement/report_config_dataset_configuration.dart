@@ -9,7 +9,7 @@ class ReportConfigDatasetConfiguration {
 
   /// Creates a new [ReportConfigDatasetConfiguration].
   /// [columns] Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-  ReportConfigDatasetConfiguration({
+  const ReportConfigDatasetConfiguration({
     this.columns,
   });
 

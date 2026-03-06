@@ -21,7 +21,7 @@ class GetInterfaceResult {
   /// [public] Required.
   /// [vlan] Required.
   /// [vpc] Required.
-  GetInterfaceResult({
+  const GetInterfaceResult({
     required this.defaultRoute,
     required this.id,
     required this.linodeId,

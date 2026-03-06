@@ -23,7 +23,7 @@ class KubernetesPermissionPermission {
   /// [namespace] The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
   /// [roleName] Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
   /// [roleType] The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
-  KubernetesPermissionPermission({
+  const KubernetesPermissionPermission({
     required this.cluster,
     this.isCustom,
     this.isRamRole,

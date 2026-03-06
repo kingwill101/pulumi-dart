@@ -22,7 +22,7 @@ class OSPolicyResourceResponseOsconfigV1alpha {
   /// [file] File resource
   /// [pkg] Package resource
   /// [repository] Package repository resource
-  OSPolicyResourceResponseOsconfigV1alpha({
+  const OSPolicyResourceResponseOsconfigV1alpha({
     required this.exec,
     required this.file,
     required this.pkg,

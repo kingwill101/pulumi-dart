@@ -126,7 +126,7 @@ class SubscriptionJobArgs {
   /// [syncArchitecture] The sync architecture. Valid values: `bidirectional`, `oneway`.
   /// [synchronizationDirection] The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
   /// [tags] A mapping of tags to assign to the resource.
-  SubscriptionJobArgs({
+  const SubscriptionJobArgs({
     this.checkpoint,
     this.computeUnit,
     this.databaseCount,

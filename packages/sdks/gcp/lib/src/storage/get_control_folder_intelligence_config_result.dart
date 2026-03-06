@@ -24,7 +24,7 @@ class GetControlFolderIntelligenceConfigResult {
   /// [name] Required.
   /// [trialConfigs] Required.
   /// [updateTime] Required.
-  GetControlFolderIntelligenceConfigResult({
+  const GetControlFolderIntelligenceConfigResult({
     required this.editionConfig,
     required this.effectiveIntelligenceConfigs,
     required this.filters,

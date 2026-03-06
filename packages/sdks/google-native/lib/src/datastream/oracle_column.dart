@@ -33,7 +33,7 @@ class OracleColumn {
   /// [precision] Column precision.
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] Column scale.
-  OracleColumn({
+  const OracleColumn({
     this.column,
     this.dataType,
     this.encoding,

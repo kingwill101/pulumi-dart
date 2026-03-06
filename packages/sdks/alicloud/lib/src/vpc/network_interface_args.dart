@@ -62,7 +62,7 @@ class NetworkInterfaceArgs {
   /// [sourceDestCheck] Optional.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] The VSwitch to create the ENI in.
-  NetworkInterfaceArgs({
+  const NetworkInterfaceArgs({
     this.description,
     this.instanceType,
     this.ipv4PrefixCount,

@@ -15,7 +15,7 @@ class GetAnnotationArgs {
   /// [annotationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAnnotationArgs({
+  const GetAnnotationArgs({
     required this.annotationId,
     required this.location,
     this.project,

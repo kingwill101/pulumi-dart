@@ -9,7 +9,7 @@ class PatchBaselineApprovalRulePatchFilter {
   /// Creates a new [PatchBaselineApprovalRulePatchFilter].
   /// [key] Required.
   /// [values] Required.
-  PatchBaselineApprovalRulePatchFilter({
+  const PatchBaselineApprovalRulePatchFilter({
     required this.key,
     required this.values,
   });

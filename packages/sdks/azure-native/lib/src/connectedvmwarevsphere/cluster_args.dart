@@ -37,7 +37,7 @@ class ClusterArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [tags] Gets or sets the Resource tags.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this cluster resides.
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterName,
     this.extendedLocation,
     this.inventoryItemId,

@@ -16,7 +16,7 @@ class ContainerConfiguration {
   /// [containerImageNames] This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
   /// [containerRegistries] If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
   /// [type] The container technology to be used.
-  ContainerConfiguration({
+  const ContainerConfiguration({
     this.containerImageNames,
     this.containerRegistries,
     required this.type,

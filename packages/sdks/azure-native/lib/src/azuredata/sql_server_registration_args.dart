@@ -30,7 +30,7 @@ class SqlServerRegistrationArgs {
   /// [sqlServerRegistrationName] Name of the SQL Server registration.
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags.
-  SqlServerRegistrationArgs({
+  const SqlServerRegistrationArgs({
     this.location,
     this.propertyBag,
     this.resourceGroup,

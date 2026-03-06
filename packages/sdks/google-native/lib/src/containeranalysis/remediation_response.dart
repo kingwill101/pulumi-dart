@@ -16,7 +16,7 @@ class RemediationResponse {
   /// [details] Contains a comprehensive human-readable discussion of the remediation.
   /// [remediationType] The type of remediation that can be applied.
   /// [remediationUri] Contains the URL where to obtain the remediation.
-  RemediationResponse({
+  const RemediationResponse({
     required this.details,
     required this.remediationType,
     required this.remediationUri,

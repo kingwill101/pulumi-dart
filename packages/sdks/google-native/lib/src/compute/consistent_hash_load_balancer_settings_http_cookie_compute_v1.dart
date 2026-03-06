@@ -16,7 +16,7 @@ class ConsistentHashLoadBalancerSettingsHttpCookieComputeV1 {
   /// [name] Name of the cookie.
   /// [path] Path to set for the cookie.
   /// [ttl] Lifetime of the cookie.
-  ConsistentHashLoadBalancerSettingsHttpCookieComputeV1({
+  const ConsistentHashLoadBalancerSettingsHttpCookieComputeV1({
     this.name,
     this.path,
     this.ttl,

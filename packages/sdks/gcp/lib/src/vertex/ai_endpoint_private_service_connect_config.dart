@@ -19,7 +19,7 @@ class AiEndpointPrivateServiceConnectConfig {
   /// [enableSecurePrivateServiceConnect] If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
   /// [projectAllowlists] A list of Projects from which the forwarding rule will target the service attachment.
   /// [pscAutomationConfigs] List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
-  AiEndpointPrivateServiceConnectConfig({
+  const AiEndpointPrivateServiceConnectConfig({
     required this.enablePrivateServiceConnect,
     this.enableSecurePrivateServiceConnect,
     this.projectAllowlists,

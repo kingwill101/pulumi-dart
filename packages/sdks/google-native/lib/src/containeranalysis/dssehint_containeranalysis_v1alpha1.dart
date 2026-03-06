@@ -9,7 +9,7 @@ class DSSEHintContaineranalysisV1alpha1 {
 
   /// Creates a new [DSSEHintContaineranalysisV1alpha1].
   /// [humanReadableName] The human readable name of this attestation authority, for example "cloudbuild-prod".
-  DSSEHintContaineranalysisV1alpha1({
+  const DSSEHintContaineranalysisV1alpha1({
     required this.humanReadableName,
   });
 

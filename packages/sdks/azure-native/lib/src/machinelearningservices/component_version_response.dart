@@ -28,7 +28,7 @@ class ComponentVersionResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the component version.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ComponentVersionResponse({
+  const ComponentVersionResponse({
     this.componentSpec,
     this.description,
     this.isAnonymous,

@@ -11,7 +11,7 @@ class OneDashboardPageWidgetHeatmapUnitSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetHeatmapUnitSeriesOverride].
   /// [seriesName] Series name
   /// [unit] (Optional) Choose a unit to customize the unit on your Y axis and in each of your series.
-  OneDashboardPageWidgetHeatmapUnitSeriesOverride({
+  const OneDashboardPageWidgetHeatmapUnitSeriesOverride({
     this.seriesName,
     this.unit,
   });

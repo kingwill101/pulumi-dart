@@ -8,7 +8,7 @@ class EventTargetAppsyncTarget {
 
   /// Creates a new [EventTargetAppsyncTarget].
   /// [graphqlOperation] Contains the GraphQL mutation to be parsed and executed.
-  EventTargetAppsyncTarget({
+  const EventTargetAppsyncTarget({
     this.graphqlOperation,
   });
 

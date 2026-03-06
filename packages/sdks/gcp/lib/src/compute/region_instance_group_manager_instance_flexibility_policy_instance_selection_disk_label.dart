@@ -12,7 +12,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLa
   /// Creates a new [RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel].
   /// [key] , The unique key of the label to assign to disks.
   /// [value] , The value of the label to assign to disks.
-  RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel({
+  const RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskLabel({
     required this.key,
     required this.value,
   });

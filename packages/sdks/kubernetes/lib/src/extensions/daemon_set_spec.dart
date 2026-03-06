@@ -27,7 +27,7 @@ class DaemonSetSpec {
   /// [template] An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template
   /// [templateGeneration] DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.
   /// [updateStrategy] An update strategy to replace existing DaemonSet pods with new pods.
-  DaemonSetSpec({
+  const DaemonSetSpec({
     this.minReadySeconds,
     this.revisionHistoryLimit,
     this.selector,

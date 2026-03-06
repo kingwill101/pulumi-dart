@@ -16,7 +16,7 @@ class AcsChatChannel {
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
-  AcsChatChannel({
+  const AcsChatChannel({
     required this.channelName,
     this.etag,
     this.location,

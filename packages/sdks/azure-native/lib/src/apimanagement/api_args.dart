@@ -103,7 +103,7 @@ class ApiArgs {
   /// [translateRequiredQueryParametersConduct] Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query'
   /// [value] Content value when Importing an API.
   /// [wsdlSelector] Criteria to limit import of WSDL to a subset of the document.
-  ApiArgs({
+  const ApiArgs({
     this.apiId,
     this.apiRevision,
     this.apiRevisionDescription,

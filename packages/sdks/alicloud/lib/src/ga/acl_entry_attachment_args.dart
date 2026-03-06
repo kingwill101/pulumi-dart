@@ -18,7 +18,7 @@ class AclEntryAttachmentArgs {
   /// [aclId] The ID of the Acl.
   /// [entry] The entry (IP address or CIDR block) that you want to add.
   /// [entryDescription] The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-  AclEntryAttachmentArgs({
+  const AclEntryAttachmentArgs({
     required this.aclId,
     required this.entry,
     this.entryDescription,

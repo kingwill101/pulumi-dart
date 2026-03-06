@@ -73,7 +73,7 @@ class LoadBalancerArgs {
   /// [sourceSecurityGroup] The name of the security group that you can use as
   /// [subnets] A list of subnet IDs to attach to the ELB. When an update to subnets will remove all current subnets, this will force a new resource.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.accessLogs,
     this.availabilityZones,
     this.connectionDraining,

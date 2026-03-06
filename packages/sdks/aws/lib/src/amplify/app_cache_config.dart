@@ -8,7 +8,7 @@ class AppCacheConfig {
 
   /// Creates a new [AppCacheConfig].
   /// [type] Type of cache configuration to use for an Amplify app. Valid values: `AMPLIFY_MANAGED`, `AMPLIFY_MANAGED_NO_COOKIES`.
-  AppCacheConfig({
+  const AppCacheConfig({
     required this.type,
   });
 

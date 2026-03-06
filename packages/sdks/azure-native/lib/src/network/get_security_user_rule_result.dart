@@ -53,7 +53,7 @@ class GetSecurityUserRuleResult {
   /// [sources] The CIDR or source IP ranges.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetSecurityUserRuleResult({
+  const GetSecurityUserRuleResult({
     required this.azureApiVersion,
     this.description,
     this.destinationPortRanges,

@@ -9,7 +9,7 @@ class DataCacheConfigSqladminV1beta4 {
 
   /// Creates a new [DataCacheConfigSqladminV1beta4].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.
-  DataCacheConfigSqladminV1beta4({
+  const DataCacheConfigSqladminV1beta4({
     this.dataCacheEnabled,
   });
 

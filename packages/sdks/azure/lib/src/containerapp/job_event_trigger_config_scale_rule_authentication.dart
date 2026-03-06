@@ -11,7 +11,7 @@ class JobEventTriggerConfigScaleRuleAuthentication {
   /// Creates a new [JobEventTriggerConfigScaleRuleAuthentication].
   /// [secretName] Name of the secret from which to pull the auth params.
   /// [triggerParameter] Trigger Parameter that uses the secret.
-  JobEventTriggerConfigScaleRuleAuthentication({
+  const JobEventTriggerConfigScaleRuleAuthentication({
     required this.secretName,
     required this.triggerParameter,
   });

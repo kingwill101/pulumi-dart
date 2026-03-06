@@ -17,7 +17,7 @@ class GetWebhookArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [webhookId] Required.
-  GetWebhookArgs({
+  const GetWebhookArgs({
     required this.agentId,
     required this.location,
     this.project,

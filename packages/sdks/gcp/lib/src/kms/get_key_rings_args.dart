@@ -25,7 +25,7 @@ class GetKeyRingsArgs {
   /// [filter] The filter argument is used to add a filter query parameter that limits which key rings are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
   /// [location] The location that the underlying key ring resides in. e.g us-west1
   /// [project] The Project ID of the project.
-  GetKeyRingsArgs({
+  const GetKeyRingsArgs({
     this.filter,
     required this.location,
     this.project,

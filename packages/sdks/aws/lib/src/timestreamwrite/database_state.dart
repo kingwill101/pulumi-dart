@@ -27,7 +27,7 @@ class DatabaseState {
   /// [tableCount] The total number of tables found within the Timestream database.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  DatabaseState({
+  const DatabaseState({
     this.arn,
     this.databaseName,
     this.kmsKeyId,

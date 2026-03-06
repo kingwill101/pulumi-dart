@@ -308,7 +308,7 @@ class DdrInstanceArgs {
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
   /// [whitelistNetworkType] The network type of the IP address whitelist. Default value: MIX. Valid values:
   /// [zoneId] The Zone to launch the DB instance. It supports multiple zone.
-  DdrInstanceArgs({
+  const DdrInstanceArgs({
     this.acl,
     this.autoRenew,
     this.autoRenewPeriod,

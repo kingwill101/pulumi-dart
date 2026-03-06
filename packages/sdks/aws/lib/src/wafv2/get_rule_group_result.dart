@@ -20,7 +20,7 @@ class GetRuleGroupResult {
   /// [name] Required.
   /// [region] Required.
   /// [scope] Required.
-  GetRuleGroupResult({
+  const GetRuleGroupResult({
     required this.arn,
     required this.description,
     required this.id,

@@ -21,7 +21,7 @@ class ThreatIntelligenceExternalReference {
   /// [hashes] External reference hashes
   /// [sourceName] External reference source name
   /// [url] External reference URL
-  ThreatIntelligenceExternalReference({
+  const ThreatIntelligenceExternalReference({
     this.description,
     this.externalId,
     this.hashes,

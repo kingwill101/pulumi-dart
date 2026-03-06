@@ -13,7 +13,7 @@ class RoleAssignmentItemResponse {
   /// Creates a new [RoleAssignmentItemResponse].
   /// [principals] List of principal IDs to which to assign this role definition
   /// [roleDefinitionId] Role definition identifier
-  RoleAssignmentItemResponse({
+  const RoleAssignmentItemResponse({
     this.principals,
     required this.roleDefinitionId,
   });

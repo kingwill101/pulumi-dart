@@ -24,7 +24,7 @@ class FrameworkCloudControlDetailParameterParameterValue {
   /// [oneofValue] Sub-parameter values.
   /// [stringListValue] A list of strings.
   /// [stringValue] Represents a string value.
-  FrameworkCloudControlDetailParameterParameterValue({
+  const FrameworkCloudControlDetailParameterParameterValue({
     this.boolValue,
     this.numberValue,
     this.oneofValue,

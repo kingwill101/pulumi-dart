@@ -20,7 +20,7 @@ class QuickConnectQuickConnectConfig {
   /// [queueConfigs] Specifies the queue configuration of the Quick Connect. This is required only if `quick_connect_type` is `QUEUE`. The `queue_config` block is documented below.
   /// [quickConnectType] Specifies the configuration type of the quick connect. valid values are `PHONE_NUMBER`, `QUEUE`, `USER`.
   /// [userConfigs] Specifies the user configuration of the Quick Connect. This is required only if `quick_connect_type` is `USER`. The `user_config` block is documented below.
-  QuickConnectQuickConnectConfig({
+  const QuickConnectQuickConnectConfig({
     this.phoneConfigs,
     this.queueConfigs,
     required this.quickConnectType,

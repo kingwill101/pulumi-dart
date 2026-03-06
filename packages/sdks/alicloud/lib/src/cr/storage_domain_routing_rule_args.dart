@@ -16,7 +16,7 @@ class StorageDomainRoutingRuleArgs {
   /// Creates a new [StorageDomainRoutingRuleArgs].
   /// [instanceId] The ID of the Container Registry Instance.
   /// [routes] Domain name routing entry See `routes` below.
-  StorageDomainRoutingRuleArgs({
+  const StorageDomainRoutingRuleArgs({
     required this.instanceId,
     required this.routes,
   });

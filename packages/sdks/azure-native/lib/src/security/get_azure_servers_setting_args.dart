@@ -12,7 +12,7 @@ class GetAzureServersSettingArgs {
 
   /// Creates a new [GetAzureServersSettingArgs].
   /// [settingKind] The kind of the server vulnerability assessments setting
-  GetAzureServersSettingArgs({
+  const GetAzureServersSettingArgs({
     required this.settingKind,
   });
 

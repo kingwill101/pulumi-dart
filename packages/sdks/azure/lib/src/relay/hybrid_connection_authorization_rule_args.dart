@@ -30,7 +30,7 @@ class HybridConnectionAuthorizationRuleArgs {
   /// [namespaceName] Name of the Azure Relay Namespace for which this Azure Relay Hybrid Connection Authorization Rule will be created. Changing this forces a new Azure Relay Hybrid Connection Authorization Rule to be created.
   /// [resourceGroupName] The name of the Resource Group where the Azure Relay Hybrid Connection Authorization Rule should exist. Changing this forces a new Azure Relay Hybrid Connection Authorization Rule to be created.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
-  HybridConnectionAuthorizationRuleArgs({
+  const HybridConnectionAuthorizationRuleArgs({
     required this.hybridConnectionName,
     this.listen,
     this.manage,

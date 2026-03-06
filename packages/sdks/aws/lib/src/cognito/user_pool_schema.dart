@@ -28,7 +28,7 @@ class UserPoolSchema {
   /// [numberAttributeConstraints] Configuration block for the constraints for an attribute of the number type. Detailed below.
   /// [required] Whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail.
   /// [stringAttributeConstraints] Constraints for an attribute of the string type. Detailed below.
-  UserPoolSchema({
+  const UserPoolSchema({
     required this.attributeDataType,
     this.developerOnlyAttribute,
     this.mutable,

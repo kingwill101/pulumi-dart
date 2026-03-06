@@ -8,7 +8,7 @@ class NotebookExecutionDirectNotebookSource {
 
   /// Creates a new [NotebookExecutionDirectNotebookSource].
   /// [content] The base64-encoded contents of the input notebook file.
-  NotebookExecutionDirectNotebookSource({
+  const NotebookExecutionDirectNotebookSource({
     required this.content,
   });
 

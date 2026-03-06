@@ -16,7 +16,7 @@ class GetForwardingRulesForwardingRuleRuleCondition {
   /// [hostConfigs] Domain name configuration information.
   /// [pathConfigs] Path configuration information.
   /// [ruleConditionType] Forwarding condition type.
-  GetForwardingRulesForwardingRuleRuleCondition({
+  const GetForwardingRulesForwardingRuleRuleCondition({
     required this.hostConfigs,
     required this.pathConfigs,
     required this.ruleConditionType,

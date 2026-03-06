@@ -8,7 +8,7 @@ class GetPolicyPacksResult {
 
   /// Creates a new [GetPolicyPacksResult].
   /// [policyPacks] List of policy packs in the organization.
-  GetPolicyPacksResult({
+  const GetPolicyPacksResult({
     required this.policyPacks,
   });
 

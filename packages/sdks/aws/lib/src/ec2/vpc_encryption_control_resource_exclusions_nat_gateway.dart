@@ -11,7 +11,7 @@ class VpcEncryptionControlResourceExclusionsNatGateway {
   /// Creates a new [VpcEncryptionControlResourceExclusionsNatGateway].
   /// [state] The current state of the VPC Encryption Control.
   /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
-  VpcEncryptionControlResourceExclusionsNatGateway({
+  const VpcEncryptionControlResourceExclusionsNatGateway({
     required this.state,
     required this.stateMessage,
   });

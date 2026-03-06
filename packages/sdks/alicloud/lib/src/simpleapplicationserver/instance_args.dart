@@ -39,7 +39,7 @@ class InstanceArgs {
   /// [period] The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
   /// [planId] The ID of the plan. You can use the `alicloud.simpleapplicationserver.getServerPlans`  to query all the plans provided by Simple Application Server in the specified region.
   /// [status] The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
-  InstanceArgs({
+  const InstanceArgs({
     this.autoRenew,
     this.autoRenewPeriod,
     this.dataDiskSize,

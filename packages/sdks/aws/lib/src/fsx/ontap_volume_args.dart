@@ -74,7 +74,7 @@ class OntapVolumeArgs {
   /// [tieringPolicy] The data tiering policy for an FSx for ONTAP volume. See `tiering_policy` Block for details.
   /// [volumeStyle] Specifies the styles of volume, valid values are `FLEXVOL`, `FLEXGROUP`. Default value is `FLEXVOL`. FLEXGROUPS have a larger minimum and maximum size. See Volume Styles for more details. [Volume Styles](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-styles.html)
   /// [volumeType] The type of volume, currently the only valid value is `ONTAP`.
-  OntapVolumeArgs({
+  const OntapVolumeArgs({
     this.aggregateConfiguration,
     this.bypassSnaplockEnterpriseRetention,
     this.copyTagsToBackups,

@@ -10,7 +10,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency].
   /// [threshold] A duration string, e.g. 10s.
-  SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency({
+  const SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency({
     required this.threshold,
   });
 

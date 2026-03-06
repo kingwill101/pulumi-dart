@@ -49,7 +49,7 @@ class AzureLargeInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageProfile] Specifies the storage settings for the Azure Large Instance disks.
   /// [tags] Resource tags.
-  AzureLargeInstanceArgs({
+  const AzureLargeInstanceArgs({
     this.azureLargeInstanceId,
     this.azureLargeInstanceName,
     this.hardwareProfile,

@@ -32,7 +32,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecification {
   /// [predefinedMetricPairSpecification] Metric pair specification from which Amazon EC2 Auto Scaling determines the appropriate scaling metric and load metric to use.
   /// [predefinedScalingMetricSpecification] Predefined scaling metric specification.
   /// [targetValue] Target value for the metric.
-  PolicyPredictiveScalingConfigurationMetricSpecification({
+  const PolicyPredictiveScalingConfigurationMetricSpecification({
     this.customizedCapacityMetricSpecification,
     this.customizedLoadMetricSpecification,
     this.customizedScalingMetricSpecification,

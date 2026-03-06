@@ -12,7 +12,7 @@ class GetVMSkusArgs {
 
   /// Creates a new [GetVMSkusArgs].
   /// [customLocationResourceUri] The fully qualified Azure Resource Manager identifier of the custom location resource.
-  GetVMSkusArgs({
+  const GetVMSkusArgs({
     required this.customLocationResourceUri,
   });
 

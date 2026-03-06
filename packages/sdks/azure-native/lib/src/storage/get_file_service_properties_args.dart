@@ -18,7 +18,7 @@ class GetFileServicePropertiesArgs {
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   /// [fileServicesName] The name of the file Service within the specified storage account. File Service Name must be "default"
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetFileServicePropertiesArgs({
+  const GetFileServicePropertiesArgs({
     required this.accountName,
     required this.fileServicesName,
     required this.resourceGroupName,

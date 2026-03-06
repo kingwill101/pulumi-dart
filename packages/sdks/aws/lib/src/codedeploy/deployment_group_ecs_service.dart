@@ -11,7 +11,7 @@ class DeploymentGroupEcsService {
   /// Creates a new [DeploymentGroupEcsService].
   /// [clusterName] The name of the ECS cluster.
   /// [serviceName] The name of the ECS service.
-  DeploymentGroupEcsService({
+  const DeploymentGroupEcsService({
     required this.clusterName,
     required this.serviceName,
   });

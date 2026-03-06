@@ -57,7 +57,7 @@ class VaultState {
   /// [softDeleteEnabled] Is soft delete enable for this Vault? Defaults to `true`.
   /// [storageModeType] The storage type of the Recovery Services Vault. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Defaults to `GeoRedundant`.
   /// [tags] A mapping of tags to assign to the resource.
-  VaultState({
+  const VaultState({
     this.classicVmwareReplicationEnabled,
     this.crossRegionRestoreEnabled,
     this.encryption,

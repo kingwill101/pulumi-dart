@@ -65,7 +65,7 @@ class InstanceArgs {
   /// [renewalDurationUnit] Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
   /// [renewalStatus] Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
   /// [spec] Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
-  InstanceArgs({
+  const InstanceArgs({
     this.accountNumber,
     this.bandWidth,
     this.cfwAccount,

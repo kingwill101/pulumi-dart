@@ -24,7 +24,7 @@ class GetHybridMonitorSlsTasksResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [tasks] Required.
-  GetHybridMonitorSlsTasksResult({
+  const GetHybridMonitorSlsTasksResult({
     required this.id,
     required this.ids,
     this.keyword,

@@ -27,7 +27,7 @@ class ChannelEmailArgs {
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [magicCode] The magic code used to set up OAUTH authentication.
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
-  ChannelEmailArgs({
+  const ChannelEmailArgs({
     required this.botName,
     required this.emailAddress,
     this.emailPassword,

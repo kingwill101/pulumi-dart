@@ -13,7 +13,7 @@ class SettingsSectionDescription {
   /// Creates a new [SettingsSectionDescription].
   /// [name] The section name of the fabric settings.
   /// [parameters] The collection of parameters in the section.
-  SettingsSectionDescription({
+  const SettingsSectionDescription({
     required this.name,
     required this.parameters,
   });

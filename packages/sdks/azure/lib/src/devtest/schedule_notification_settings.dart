@@ -14,7 +14,7 @@ class ScheduleNotificationSettings {
   /// [status] The status of the notification. Possible values are `Enabled` and `Disabled`. Defaults to `Disabled`
   /// [timeInMinutes] Time in minutes before event at which notification will be sent.
   /// [webhookUrl] The webhook URL to which the notification will be sent.
-  ScheduleNotificationSettings({
+  const ScheduleNotificationSettings({
     this.status,
     this.timeInMinutes,
     this.webhookUrl,

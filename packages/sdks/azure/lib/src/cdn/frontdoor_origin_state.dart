@@ -46,7 +46,7 @@ class FrontdoorOriginState {
   /// [priority] Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy. Must be between `1` and `5` (inclusive). Defaults to `1`.
   /// [privateLink] A `private_link` block as defined below.
   /// [weight] The weight of the origin in a given origin group for load balancing. Must be between `1` and `1000`. Defaults to `500`.
-  FrontdoorOriginState({
+  const FrontdoorOriginState({
     this.cdnFrontdoorOriginGroupId,
     this.certificateNameCheckEnabled,
     this.enabled,

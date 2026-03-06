@@ -14,7 +14,7 @@ class InstanceFlexibilityPolicyResponse {
   /// Creates a new [InstanceFlexibilityPolicyResponse].
   /// [instanceSelectionList] Optional. List of instance selection options that the group will use when creating new VMs.
   /// [instanceSelectionResults] A list of instance selection results in the group.
-  InstanceFlexibilityPolicyResponse({
+  const InstanceFlexibilityPolicyResponse({
     required this.instanceSelectionList,
     required this.instanceSelectionResults,
   });

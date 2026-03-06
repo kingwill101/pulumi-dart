@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourc
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference].
   /// [bucketName] The bucket to scan.
   /// [projectId] If within a project-level config, then this must match the config's project id.
-  PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference({
     this.bucketName,
     this.projectId,
   });

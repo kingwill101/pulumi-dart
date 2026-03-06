@@ -12,7 +12,7 @@ class DiskEncryptionKeyInfo {
   /// Creates a new [DiskEncryptionKeyInfo].
   /// [keyVaultResourceArmId] The KeyVault resource ARM id for secret.
   /// [secretIdentifier] The secret url / identifier.
-  DiskEncryptionKeyInfo({
+  const DiskEncryptionKeyInfo({
     this.keyVaultResourceArmId,
     this.secretIdentifier,
   });

@@ -28,7 +28,7 @@ class PrivateLinkServiceIpConfiguration {
   /// [privateIPAddressVersion] Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
   /// [privateIPAllocationMethod] The private IP address allocation method.
   /// [subnet] The reference to the subnet resource.
-  PrivateLinkServiceIpConfiguration({
+  const PrivateLinkServiceIpConfiguration({
     this.id,
     this.name,
     this.primary,

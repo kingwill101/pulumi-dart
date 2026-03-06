@@ -33,7 +33,7 @@ class DicomStoreIamBindingArgs {
   /// [dicomStoreId] The DICOM store ID, in the form
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  DicomStoreIamBindingArgs({
+  const DicomStoreIamBindingArgs({
     this.condition,
     required this.dicomStoreId,
     required this.members,

@@ -12,7 +12,7 @@ class LogPublishingOptionResponse {
   /// Creates a new [LogPublishingOptionResponse].
   /// [cloudWatchLogsLogGroupArn] &lt;p&gt;The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.&lt;/p&gt;
   /// [enabled] &lt;p&gt;Whether the log should be published.&lt;/p&gt;
-  LogPublishingOptionResponse({
+  const LogPublishingOptionResponse({
     this.cloudWatchLogsLogGroupArn,
     this.enabled,
   });

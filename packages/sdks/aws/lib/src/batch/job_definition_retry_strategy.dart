@@ -12,7 +12,7 @@ class JobDefinitionRetryStrategy {
   /// Creates a new [JobDefinitionRetryStrategy].
   /// [attempts] Number of times to move a job to the `RUNNABLE` status. You may specify between `1` and `10` attempts.
   /// [evaluateOnExits] Evaluate on exit conditions under which the job should be retried or failed. If this parameter is specified, then the `attempts` parameter must also be specified. You may specify up to 5 configuration blocks.
-  JobDefinitionRetryStrategy({
+  const JobDefinitionRetryStrategy({
     this.attempts,
     this.evaluateOnExits,
   });

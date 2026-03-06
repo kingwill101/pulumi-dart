@@ -12,7 +12,7 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange {
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange].
   /// [max] The inclusive maximum of the acceptable range.
   /// [min] The inclusive minimum of the acceptable range.
-  EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange({
+  const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleDoubleRange({
     this.max,
     this.min,
   });

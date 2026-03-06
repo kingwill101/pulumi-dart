@@ -50,7 +50,7 @@ class GetServerTypesServerType {
   /// [name] Name of the Server Type.
   /// [storageType] Type of boot drive for a Server of this type.
   /// [unavailableAfter] Date of the Server Type removal. After this date, the Server Type cannot be used anymore.
-  GetServerTypesServerType({
+  const GetServerTypesServerType({
     required this.architecture,
     required this.category,
     required this.cores,

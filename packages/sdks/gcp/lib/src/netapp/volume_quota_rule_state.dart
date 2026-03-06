@@ -60,7 +60,7 @@ class VolumeQuotaRuleState {
   /// [target] The quota rule applies to the specified user or group.
   /// [type] Types of Quota Rule.
   /// [volumeName] Name of the volume to create the quotaRule in.
-  VolumeQuotaRuleState({
+  const VolumeQuotaRuleState({
     this.createTime,
     this.description,
     this.diskLimitMib,

@@ -18,7 +18,7 @@ class ElasticKeyVaultPropertiesResponse {
   /// [keyVaultResourceId] The resource ID of KeyVault.
   /// [keyVaultUri] The Uri of KeyVault.
   /// [status] Status of the KeyVault connection.
-  ElasticKeyVaultPropertiesResponse({
+  const ElasticKeyVaultPropertiesResponse({
     this.keyName,
     this.keyVaultResourceId,
     this.keyVaultUri,

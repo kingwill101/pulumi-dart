@@ -17,7 +17,7 @@ class GetManagementDnsZoneBindingArgs {
   /// [managementDnsZoneBindingId] Required.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetManagementDnsZoneBindingArgs({
+  const GetManagementDnsZoneBindingArgs({
     required this.location,
     required this.managementDnsZoneBindingId,
     required this.privateCloudId,

@@ -14,7 +14,7 @@ class GetSecretRotationRotationRule {
   /// [automaticallyAfterDays] Number of days between automatic scheduled rotations of the secret.
   /// [duration] Length of the rotation window in hours.
   /// [scheduleExpression] A `cron()` or `rate()` expression that defines the schedule for rotating the secret.
-  GetSecretRotationRotationRule({
+  const GetSecretRotationRotationRule({
     required this.automaticallyAfterDays,
     required this.duration,
     required this.scheduleExpression,

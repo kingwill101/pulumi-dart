@@ -41,7 +41,7 @@ class RouteServerState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualRouterAsn] Optional.
   /// [virtualRouterIps] Optional.
-  RouteServerState({
+  const RouteServerState({
     this.branchToBranchTrafficEnabled,
     this.hubRoutingPreference,
     this.location,

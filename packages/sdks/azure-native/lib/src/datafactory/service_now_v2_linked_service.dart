@@ -52,7 +52,7 @@ class ServiceNowV2LinkedService {
   /// [type] Type of linked service.
   /// [username] The user name used to connect to the ServiceNowV2 server for Basic and OAuth2 authentication.
   /// [version] Version of the linked service.
-  ServiceNowV2LinkedService({
+  const ServiceNowV2LinkedService({
     this.annotations,
     required this.authenticationType,
     this.clientId,

@@ -26,7 +26,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
   /// [desireds] (Output)
   /// [discovereds] (Output)
   /// [domainName] (Output)
-  AppHostingDomainCustomDomainStatusRequiredDnsUpdate({
+  const AppHostingDomainCustomDomainStatusRequiredDnsUpdate({
     this.checkTime,
     this.desireds,
     this.discovereds,

@@ -9,7 +9,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
-  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary({
+  const FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary({
     this.installation,
   });
 

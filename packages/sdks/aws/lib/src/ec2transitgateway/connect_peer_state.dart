@@ -39,7 +39,7 @@ class ConnectPeerState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayAddress] The IP address assigned to Transit Gateway, which will be used as tunnel endpoint. This address must be from associated Transit Gateway CIDR block. The address must be from the same address family as `peer_address`. If not set explicitly, it will be selected from associated Transit Gateway CIDR blocks
   /// [transitGatewayAttachmentId] The Transit Gateway Connect
-  ConnectPeerState({
+  const ConnectPeerState({
     this.arn,
     this.bgpAsn,
     this.bgpPeerAddress,

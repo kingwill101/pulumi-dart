@@ -11,7 +11,7 @@ class GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration {
   /// Creates a new [GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration].
   /// [guardrailIdentifier] Unique identifier of the guardrail.
   /// [guardrailVersion] Version of the guardrail.
-  GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration({
+  const GetAgentAgentVersionsAgentVersionSummaryGuardrailConfiguration({
     required this.guardrailIdentifier,
     required this.guardrailVersion,
   });

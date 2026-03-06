@@ -9,7 +9,7 @@ class TcpRetryPolicyResponse {
 
   /// Creates a new [TcpRetryPolicyResponse].
   /// [maxConnectAttempts] Maximum number of attempts to connect to the tcp service
-  TcpRetryPolicyResponse({
+  const TcpRetryPolicyResponse({
     this.maxConnectAttempts,
   });
 

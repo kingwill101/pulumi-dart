@@ -13,7 +13,7 @@ class GetMongoInstancesInstanceShard {
   /// [description] Required.
   /// [nodeId] Required.
   /// [storage] Required.
-  GetMongoInstancesInstanceShard({
+  const GetMongoInstancesInstanceShard({
     required this.class_,
     required this.description,
     required this.nodeId,

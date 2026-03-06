@@ -81,7 +81,7 @@ class VirtualMachineArgs {
   /// [virtualMachineName] Name of the VirtualMachine.
   /// [vmName] VMName is the name of VM on the SCVMM server.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     this.availabilitySets,
     this.checkpointType,
     this.checkpoints,

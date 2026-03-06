@@ -124,7 +124,7 @@ class LinuxFunctionAppSlotArgs {
   /// [virtualNetworkSubnetId] The subnet id which will be used by this Function App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   /// [vnetImagePullEnabled] Specifies whether traffic for the image pull should be routed over virtual network. Defaults to `false`.
   /// [webdeployPublishBasicAuthenticationEnabled] Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
-  LinuxFunctionAppSlotArgs({
+  const LinuxFunctionAppSlotArgs({
     this.appSettings,
     this.authSettings,
     this.authSettingsV2,

@@ -24,7 +24,7 @@ class GetReplicationMigrationItemResult {
   /// [name] Resource Name
   /// [properties] The migration item properties.
   /// [type] Resource Type
-  GetReplicationMigrationItemResult({
+  const GetReplicationMigrationItemResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

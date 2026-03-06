@@ -46,7 +46,7 @@ class AppEngineVersionIamMemberState {
   /// [role] The role that should be applied. Only one
   /// [service] Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
   /// [versionId] Used to find the parent resource to bind the IAM policy to
-  AppEngineVersionIamMemberState({
+  const AppEngineVersionIamMemberState({
     this.appId,
     this.condition,
     this.etag,

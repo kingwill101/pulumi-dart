@@ -10,7 +10,7 @@ class NodePoolDefaultsResponse {
 
   /// Creates a new [NodePoolDefaultsResponse].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  NodePoolDefaultsResponse({
+  const NodePoolDefaultsResponse({
     required this.nodeConfigDefaults,
   });
 

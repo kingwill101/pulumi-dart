@@ -15,7 +15,7 @@ class GetHciStoragePathArgs {
   /// Creates a new [GetHciStoragePathArgs].
   /// [name] The name of this Stack HCI Storage Path.
   /// [resourceGroupName] The name of the Resource Group where the Stack HCI Storage Path exists.
-  GetHciStoragePathArgs({
+  const GetHciStoragePathArgs({
     required this.name,
     required this.resourceGroupName,
   });

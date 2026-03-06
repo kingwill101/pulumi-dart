@@ -25,7 +25,7 @@ class GetSecurityGatewayProxyProtocolConfig {
   /// [contextualHeaders] Configuration for the contextual headers.
   /// [gatewayIdentity] Gateway identity configuration. Possible values: ["RESOURCE_NAME"]
   /// [metadataHeaders] Custom resource specific headers along with the values.
-  GetSecurityGatewayProxyProtocolConfig({
+  const GetSecurityGatewayProxyProtocolConfig({
     required this.allowedClientHeaders,
     required this.clientIp,
     required this.contextualHeaders,

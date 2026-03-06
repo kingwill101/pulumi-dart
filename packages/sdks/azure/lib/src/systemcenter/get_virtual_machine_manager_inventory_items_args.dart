@@ -15,7 +15,7 @@ class GetVirtualMachineManagerInventoryItemsArgs {
   /// Creates a new [GetVirtualMachineManagerInventoryItemsArgs].
   /// [inventoryType] The inventory type of the System Center Virtual Machine Manager Inventory Item. Possible values are `Cloud`, `VirtualMachine`, `VirtualMachineTemplate` and `VirtualNetwork`.
   /// [systemCenterVirtualMachineManagerServerId] The ID of the System Center Virtual Machine Manager Server.
-  GetVirtualMachineManagerInventoryItemsArgs({
+  const GetVirtualMachineManagerInventoryItemsArgs({
     required this.inventoryType,
     required this.systemCenterVirtualMachineManagerServerId,
   });

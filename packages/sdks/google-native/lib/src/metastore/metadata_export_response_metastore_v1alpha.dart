@@ -21,7 +21,7 @@ class MetadataExportResponseMetastoreV1alpha {
   /// [endTime] The time when the export ended.
   /// [startTime] The time when the export started.
   /// [state] The current state of the export.
-  MetadataExportResponseMetastoreV1alpha({
+  const MetadataExportResponseMetastoreV1alpha({
     required this.databaseDumpType,
     required this.destinationGcsUri,
     required this.endTime,

@@ -17,7 +17,7 @@ class GetDataSourceReferenceArgs {
   /// [dataSourceReferenceId] - (Required) The id of the data source reference.
   /// [location] Required.
   /// [project] - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  GetDataSourceReferenceArgs({
+  const GetDataSourceReferenceArgs({
     required this.dataSourceReferenceId,
     required this.location,
     this.project,

@@ -10,7 +10,7 @@ class SingletonPartitionScheme {
 
   /// Creates a new [SingletonPartitionScheme].
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
-  SingletonPartitionScheme({
+  const SingletonPartitionScheme({
     required this.partitionScheme,
   });
 

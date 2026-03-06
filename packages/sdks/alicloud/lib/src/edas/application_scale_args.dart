@@ -21,7 +21,7 @@ class ApplicationScaleArgs {
   /// [deployGroup] The ID of the instance group to which you want to add ECS instances to scale out the application.
   /// [ecuInfos] The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
   /// [forceStatus] This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
-  ApplicationScaleArgs({
+  const ApplicationScaleArgs({
     required this.appId,
     required this.deployGroup,
     required this.ecuInfos,

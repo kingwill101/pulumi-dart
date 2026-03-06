@@ -15,7 +15,7 @@ class DiJobJobSettingsCycleScheduleSettings {
   /// Creates a new [DiJobJobSettingsCycleScheduleSettings].
   /// [cycleMigrationType] The type of synchronization that requires periodic scheduling. Value range:
   /// [scheduleParameters] Scheduling Parameters
-  DiJobJobSettingsCycleScheduleSettings({
+  const DiJobJobSettingsCycleScheduleSettings({
     this.cycleMigrationType,
     this.scheduleParameters,
   });

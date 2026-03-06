@@ -51,7 +51,7 @@ class VMwareNodePoolArgs {
   /// [onPremVersion] Anthos version for the node pool. Defaults to the user cluster version.
   /// [project] The ID of the project in which the resource belongs.
   /// [vmwareCluster] The cluster this node pool belongs to.
-  VMwareNodePoolArgs({
+  const VMwareNodePoolArgs({
     this.annotations,
     required this.config,
     this.displayName,

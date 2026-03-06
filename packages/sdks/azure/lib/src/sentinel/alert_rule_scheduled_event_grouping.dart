@@ -8,7 +8,7 @@ class AlertRuleScheduledEventGrouping {
 
   /// Creates a new [AlertRuleScheduledEventGrouping].
   /// [aggregationMethod] The aggregation type of grouping the events. Possible values are `AlertPerResult` and `SingleAlert`.
-  AlertRuleScheduledEventGrouping({
+  const AlertRuleScheduledEventGrouping({
     required this.aggregationMethod,
   });
 

@@ -18,7 +18,7 @@ class EmployeePropertiesResponse {
   /// [city] City of employee
   /// [profile] Profile of employee
   /// [provisioningState] The status of the last operation.
-  EmployeePropertiesResponse({
+  const EmployeePropertiesResponse({
     this.age,
     this.city,
     this.profile,

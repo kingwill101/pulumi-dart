@@ -39,7 +39,7 @@ class EnvironmentIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [orgId] The Apigee Organization associated with the Apigee environment,
   /// [role] The role that should be applied. Only one
-  EnvironmentIamMemberState({
+  const EnvironmentIamMemberState({
     this.condition,
     this.envId,
     this.etag,

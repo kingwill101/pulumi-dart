@@ -9,7 +9,7 @@ class ExpressRouteConnectionIdResponse {
 
   /// Creates a new [ExpressRouteConnectionIdResponse].
   /// [id] The ID of the ExpressRouteConnection.
-  ExpressRouteConnectionIdResponse({
+  const ExpressRouteConnectionIdResponse({
     required this.id,
   });
 

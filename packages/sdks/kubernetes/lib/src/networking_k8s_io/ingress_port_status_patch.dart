@@ -18,7 +18,7 @@ class IngressPortStatusPatch {
   /// [error] error is to record the problem with the service port The format of the error shall comply with the following rules: - built-in error values shall be specified in this file and those shall use
   /// [port] port is the port number of the ingress port.
   /// [protocol] protocol is the protocol of the ingress port. The supported values are: "TCP", "UDP", "SCTP"
-  IngressPortStatusPatch({
+  const IngressPortStatusPatch({
     this.error,
     this.port,
     this.protocol,

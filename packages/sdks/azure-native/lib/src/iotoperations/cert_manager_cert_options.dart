@@ -16,7 +16,7 @@ class CertManagerCertOptions {
   /// [duration] Lifetime of certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
   /// [privateKey] Configuration of certificate private key.
   /// [renewBefore] When to begin renewing certificate. Must be specified using a Go time.Duration format (h|m|s). E.g. 240h for 240 hours and 45m for 45 minutes.
-  CertManagerCertOptions({
+  const CertManagerCertOptions({
     required this.duration,
     required this.privateKey,
     required this.renewBefore,

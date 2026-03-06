@@ -15,7 +15,7 @@ class GetDiskPoolArgs {
   /// Creates a new [GetDiskPoolArgs].
   /// [diskPoolName] The name of the Disk Pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiskPoolArgs({
+  const GetDiskPoolArgs({
     required this.diskPoolName,
     required this.resourceGroupName,
   });

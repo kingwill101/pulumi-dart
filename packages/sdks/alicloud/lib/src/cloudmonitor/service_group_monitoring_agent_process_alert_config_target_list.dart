@@ -17,7 +17,7 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
   /// [jsonParams] The parameters of the alert callback. Specify the parameters in the JSON format.
   /// [level] The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
   /// [targetListId] The ID of the resource for which alerts are triggered.
-  ServiceGroupMonitoringAgentProcessAlertConfigTargetList({
+  const ServiceGroupMonitoringAgentProcessAlertConfigTargetList({
     this.arn,
     this.jsonParams,
     this.level,

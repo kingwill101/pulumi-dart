@@ -15,7 +15,7 @@ class GetByoipPrefixResourcesResult {
   /// [addresses] A list of IP addresses allocated from the BYOIP prefix. Each address has the following attributes:
   /// [byoipPrefixUuid] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetByoipPrefixResourcesResult({
+  const GetByoipPrefixResourcesResult({
     required this.addresses,
     required this.byoipPrefixUuid,
     required this.id,

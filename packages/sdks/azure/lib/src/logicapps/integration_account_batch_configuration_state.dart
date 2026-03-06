@@ -25,7 +25,7 @@ class IntegrationAccountBatchConfigurationState {
   /// [name] The name which should be used for this Logic App Integration Account Batch Configuration. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   /// [releaseCriteria] A `release_criteria` block as documented below, which is used to select the criteria to meet before processing each batch.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Batch Configuration should exist. Changing this forces a new resource to be created.
-  IntegrationAccountBatchConfigurationState({
+  const IntegrationAccountBatchConfigurationState({
     this.batchGroupName,
     this.integrationAccountName,
     this.metadata,

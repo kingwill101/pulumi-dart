@@ -23,7 +23,7 @@ class ServiceState {
   /// [name] The resource name for the service in the
   /// [namespace] The resource name of the namespace this service will belong to.
   /// [serviceId] The Resource ID must be 1-63 characters long, including digits,
-  ServiceState({
+  const ServiceState({
     this.metadata,
     this.name,
     this.namespace,

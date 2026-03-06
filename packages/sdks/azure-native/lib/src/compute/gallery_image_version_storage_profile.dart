@@ -18,7 +18,7 @@ class GalleryImageVersionStorageProfile {
   /// [dataDiskImages] A list of data disk images.
   /// [osDiskImage] This is the OS disk image.
   /// [source] The source of the gallery artifact version.
-  GalleryImageVersionStorageProfile({
+  const GalleryImageVersionStorageProfile({
     this.dataDiskImages,
     this.osDiskImage,
     this.source,

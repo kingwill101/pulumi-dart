@@ -32,7 +32,7 @@ class VbrHealthCheckState {
   /// [vbrInstanceId] The ID of the VBR.
   /// [vbrInstanceOwnerId] The ID of the account to which the VBR belongs.
   /// [vbrInstanceRegionId] The ID of the region to which the VBR belongs.
-  VbrHealthCheckState({
+  const VbrHealthCheckState({
     this.cenId,
     this.healthCheckInterval,
     this.healthCheckSourceIp,

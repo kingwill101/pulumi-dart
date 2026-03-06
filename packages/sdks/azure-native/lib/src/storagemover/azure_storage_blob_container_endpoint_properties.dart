@@ -19,7 +19,7 @@ class AzureStorageBlobContainerEndpointProperties {
   /// [description] A description for the Endpoint.
   /// [endpointType] The Endpoint resource type.
   /// [storageAccountResourceId] The Azure Resource ID of the storage account that is the target destination.
-  AzureStorageBlobContainerEndpointProperties({
+  const AzureStorageBlobContainerEndpointProperties({
     required this.blobContainerName,
     this.description,
     required this.endpointType,

@@ -13,7 +13,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplate {
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplate].
   /// [launchTemplateSpecifications] List of overriding launch template specification objects.
   /// [overrides] List of properties overriding the same properties in the launch template.
-  GetGroupMixedInstancesPolicyLaunchTemplate({
+  const GetGroupMixedInstancesPolicyLaunchTemplate({
     required this.launchTemplateSpecifications,
     required this.overrides,
   });

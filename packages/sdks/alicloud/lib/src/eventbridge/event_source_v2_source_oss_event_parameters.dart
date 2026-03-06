@@ -15,7 +15,7 @@ class EventSourceV2SourceOssEventParameters {
   /// [eventTypes] OSS event type list.
   /// [matchRules] Matching rules. The event source will deliver OSS events that meet the matching requirements to the bus.
   /// [stsRoleArn] The ARN of the role. EventBridge will use this role to create MNS resources and deliver events to the corresponding bus.
-  EventSourceV2SourceOssEventParameters({
+  const EventSourceV2SourceOssEventParameters({
     this.eventTypes,
     this.matchRules,
     this.stsRoleArn,

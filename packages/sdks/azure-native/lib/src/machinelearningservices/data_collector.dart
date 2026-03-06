@@ -20,7 +20,7 @@ class DataCollector {
   /// [collections] [Required] The collection configuration. Each collection has it own configuration to collect model data and the name of collection can be arbitrary string.
   /// [requestLogging] The request logging configuration for mdc, it includes advanced logging settings for all collections. It's optional.
   /// [rollingRate] When model data is collected to blob storage, we need to roll the data to different path to avoid logging all of them in a single blob file.
-  DataCollector({
+  const DataCollector({
     required this.collections,
     this.requestLogging,
     this.rollingRate,

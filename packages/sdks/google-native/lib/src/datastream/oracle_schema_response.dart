@@ -13,7 +13,7 @@ class OracleSchemaResponse {
   /// Creates a new [OracleSchemaResponse].
   /// [oracleTables] Tables in the schema.
   /// [schema] Schema name.
-  OracleSchemaResponse({
+  const OracleSchemaResponse({
     required this.oracleTables,
     required this.schema,
   });

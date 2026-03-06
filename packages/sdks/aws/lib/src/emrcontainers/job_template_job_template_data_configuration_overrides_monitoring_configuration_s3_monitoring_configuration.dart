@@ -8,7 +8,7 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3M
 
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration].
   /// [logUri] Amazon S3 destination URI for log publishing.
-  JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration({
+  const JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationS3MonitoringConfiguration({
     required this.logUri,
   });
 

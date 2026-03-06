@@ -12,7 +12,7 @@ class GetConfigurationRecordersArgs {
 
   /// Creates a new [GetConfigurationRecordersArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConfigurationRecordersArgs({
+  const GetConfigurationRecordersArgs({
     this.outputFile,
   });
 

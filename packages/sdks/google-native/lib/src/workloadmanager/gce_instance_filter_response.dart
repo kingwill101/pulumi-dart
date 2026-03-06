@@ -9,7 +9,7 @@ class GceInstanceFilterResponse {
 
   /// Creates a new [GceInstanceFilterResponse].
   /// [serviceAccounts] Service account of compute engine
-  GceInstanceFilterResponse({
+  const GceInstanceFilterResponse({
     required this.serviceAccounts,
   });
 

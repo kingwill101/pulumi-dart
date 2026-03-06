@@ -39,7 +39,7 @@ class GetEntityArgs {
   /// [skiptoken] Page continuation token is only used if a previous operation returned a partial result.
   /// [top] Number of elements to return when retrieving results. Passing this in will override $skipToken.
   /// [view] The view parameter allows clients to filter the type of data that is returned by the getEntities call.
-  GetEntityArgs({
+  const GetEntityArgs({
     this.filter,
     this.groupName,
     this.search,

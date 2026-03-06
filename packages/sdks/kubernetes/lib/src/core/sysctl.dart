@@ -12,7 +12,7 @@ class Sysctl {
   /// Creates a new [Sysctl].
   /// [name] Name of a property to set
   /// [value] Value of a property to set
-  Sysctl({
+  const Sysctl({
     required this.name,
     required this.value,
   });

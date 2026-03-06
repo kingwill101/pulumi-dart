@@ -29,7 +29,7 @@ class GetClustersClusterInstanceModel {
   /// [role] The role.
   /// [singleTunnelVip] The single-thread IP address.
   /// [vip] (Deprecated from version 1.232.0)
-  GetClustersClusterInstanceModel({
+  const GetClustersClusterInstanceModel({
     required this.healthStatus,
     required this.instanceType,
     required this.internetIp,

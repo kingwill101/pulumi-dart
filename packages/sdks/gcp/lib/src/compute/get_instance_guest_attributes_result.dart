@@ -28,7 +28,7 @@ class GetInstanceGuestAttributesResult {
   /// [variableKey] Optional.
   /// [variableValue] Value of the queried guest_attribute.
   /// [zone] Required.
-  GetInstanceGuestAttributesResult({
+  const GetInstanceGuestAttributesResult({
     required this.id,
     required this.name,
     required this.project,

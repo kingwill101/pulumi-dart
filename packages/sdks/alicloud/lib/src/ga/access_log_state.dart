@@ -27,7 +27,7 @@ class AccessLogState {
   /// [slsProjectName] The name of the Log Service project.
   /// [slsRegionId] The region ID of the Log Service project.
   /// [status] Whether access log is enabled.
-  AccessLogState({
+  const AccessLogState({
     this.acceleratorId,
     this.endpointGroupId,
     this.listenerId,

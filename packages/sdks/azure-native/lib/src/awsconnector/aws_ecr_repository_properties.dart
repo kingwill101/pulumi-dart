@@ -40,7 +40,7 @@ class AwsEcrRepositoryProperties {
   /// [repositoryPolicyText] The JSON repository policy text to apply to the repository. For more information, see [Amazon ECR repository policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policy-examples.html) in the *Amazon Elastic Container Registry User Guide*.
   /// [repositoryUri] Property repositoryUri
   /// [tags] An array of key-value pairs to apply to this resource.
-  AwsEcrRepositoryProperties({
+  const AwsEcrRepositoryProperties({
     this.arn,
     this.emptyOnDelete,
     this.encryptionConfiguration,

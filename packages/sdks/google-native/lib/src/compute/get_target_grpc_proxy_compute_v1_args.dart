@@ -13,7 +13,7 @@ class GetTargetGrpcProxyComputeV1Args {
   /// Creates a new [GetTargetGrpcProxyComputeV1Args].
   /// [project] Optional.
   /// [targetGrpcProxy] Required.
-  GetTargetGrpcProxyComputeV1Args({
+  const GetTargetGrpcProxyComputeV1Args({
     this.project,
     required this.targetGrpcProxy,
   });

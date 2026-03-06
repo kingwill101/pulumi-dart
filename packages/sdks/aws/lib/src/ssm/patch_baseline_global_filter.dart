@@ -9,7 +9,7 @@ class PatchBaselineGlobalFilter {
   /// Creates a new [PatchBaselineGlobalFilter].
   /// [key] Required.
   /// [values] Required.
-  PatchBaselineGlobalFilter({
+  const PatchBaselineGlobalFilter({
     required this.key,
     required this.values,
   });

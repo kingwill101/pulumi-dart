@@ -97,7 +97,7 @@ class ManagedInstanceState {
   /// [timezoneId] The TimeZone ID that the SQL Managed Instance will be operating in. Defaults to `UTC`. Changing this forces a new resource to be created.
   /// [vcores] Number of cores that should be assigned to the SQL Managed Instance. Values can be `8`, `16`, or `24` for Gen4 SKUs, or `4`, `6`, `8`, `10`, `12`, `16`, `20`, `24`, `32`, `40`, `48`, `56`, `64`, `80`, `96` or `128` for Gen5 SKUs.
   /// [zoneRedundantEnabled] Specifies whether the SQL Managed Instance is zone redundant. Defaults to `false`.
-  ManagedInstanceState({
+  const ManagedInstanceState({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.azureActiveDirectoryAdministrator,

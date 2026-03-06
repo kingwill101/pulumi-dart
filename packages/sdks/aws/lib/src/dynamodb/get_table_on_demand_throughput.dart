@@ -9,7 +9,7 @@ class GetTableOnDemandThroughput {
   /// Creates a new [GetTableOnDemandThroughput].
   /// [maxReadRequestUnits] Required.
   /// [maxWriteRequestUnits] Required.
-  GetTableOnDemandThroughput({
+  const GetTableOnDemandThroughput({
     required this.maxReadRequestUnits,
     required this.maxWriteRequestUnits,
   });

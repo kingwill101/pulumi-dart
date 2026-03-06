@@ -18,7 +18,7 @@ class RepositoryRefDefinition {
   /// [commit] The commit SHA to checkout. This value must be combined with the branch name to be valid. This takes precedence over semver.
   /// [semver] The semver range used to match against git repository tags. This takes precedence over tag.
   /// [tag] The git repository tag name to checkout. This takes precedence over branch.
-  RepositoryRefDefinition({
+  const RepositoryRefDefinition({
     this.branch,
     this.commit,
     this.semver,

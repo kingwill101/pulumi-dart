@@ -33,7 +33,7 @@ class RemoteImageState {
   /// [pullTriggers] List of values which cause an image pull when changed. This is used to store the image digest from the registry when using the docker*registry*image.
   /// [repoDigest] The image sha256 digest in the form of `repo[:tag]@sha256:&lt;hash&gt;`. This may not be populated when building an image, because it is read from the local Docker client and so may be available only when the image was either pulled from the repo or pushed to the repo (perhaps using `docker.RegistryImage`) in a previous run.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RemoteImage` resource to be replaced. This can be used to rebuild an image when contents of source code folders change
-  RemoteImageState({
+  const RemoteImageState({
     this.build,
     this.forceRemove,
     this.imageId,

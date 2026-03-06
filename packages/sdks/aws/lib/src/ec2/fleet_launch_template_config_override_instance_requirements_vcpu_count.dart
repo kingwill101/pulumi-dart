@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount {
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount].
   /// [max] The maximum number of vCPUs. To specify no maximum limit, omit this parameter.
   /// [min] The minimum number of vCPUs. To specify no minimum limit, specify `0`.
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount({
     this.max,
     required this.min,
   });

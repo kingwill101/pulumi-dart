@@ -18,7 +18,7 @@ class SecurityPolicyAdvancedOptionsConfigComputeV1 {
   /// [jsonParsing] Optional.
   /// [logLevel] Optional.
   /// [userIpRequestHeaders] An optional list of case-insensitive request header names to use for resolving the callers client IP address.
-  SecurityPolicyAdvancedOptionsConfigComputeV1({
+  const SecurityPolicyAdvancedOptionsConfigComputeV1({
     this.jsonCustomConfig,
     this.jsonParsing,
     this.logLevel,

@@ -24,7 +24,7 @@ class Storage {
   /// [logOnDisk] Enable Log On Disk or not.
   /// [storageRedundancy] The redundant type of the server storage. The parameter is used for server creation.
   /// [storageSizeGB] Max storage size allowed for a server.
-  Storage({
+  const Storage({
     this.autoGrow,
     this.autoIoScaling,
     this.iops,

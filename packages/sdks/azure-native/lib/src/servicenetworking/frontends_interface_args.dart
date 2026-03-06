@@ -24,7 +24,7 @@ class FrontendsInterfaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [trafficControllerName] traffic controller name for path
-  FrontendsInterfaceArgs({
+  const FrontendsInterfaceArgs({
     this.frontendName,
     this.location,
     required this.resourceGroupName,

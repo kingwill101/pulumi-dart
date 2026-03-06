@@ -15,7 +15,7 @@ class GetDedicatedHostGroupArgs {
   /// Creates a new [GetDedicatedHostGroupArgs].
   /// [name] Specifies the name of the Dedicated Host Group.
   /// [resourceGroupName] Specifies the name of the resource group the Dedicated Host Group is located in.
-  GetDedicatedHostGroupArgs({
+  const GetDedicatedHostGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

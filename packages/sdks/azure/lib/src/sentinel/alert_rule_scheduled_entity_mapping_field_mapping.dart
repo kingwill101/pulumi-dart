@@ -11,7 +11,7 @@ class AlertRuleScheduledEntityMappingFieldMapping {
   /// Creates a new [AlertRuleScheduledEntityMappingFieldMapping].
   /// [columnName] The column name to be mapped to the identifier.
   /// [identifier] The identifier of the entity.
-  AlertRuleScheduledEntityMappingFieldMapping({
+  const AlertRuleScheduledEntityMappingFieldMapping({
     required this.columnName,
     required this.identifier,
   });

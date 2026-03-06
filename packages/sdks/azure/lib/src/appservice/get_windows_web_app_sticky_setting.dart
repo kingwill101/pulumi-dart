@@ -11,7 +11,7 @@ class GetWindowsWebAppStickySetting {
   /// Creates a new [GetWindowsWebAppStickySetting].
   /// [appSettingNames] A list of `app_setting` names that the Windows Web App will not swap between Slots when a swap operation is triggered.
   /// [connectionStringNames] A list of `connection_string` names that the Windows Web App will not swap between Slots when a swap operation is triggered.
-  GetWindowsWebAppStickySetting({
+  const GetWindowsWebAppStickySetting({
     required this.appSettingNames,
     required this.connectionStringNames,
   });

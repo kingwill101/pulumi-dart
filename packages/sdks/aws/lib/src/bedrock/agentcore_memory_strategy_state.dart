@@ -38,7 +38,7 @@ class AgentcoreMemoryStrategyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   /// [type] Type of memory strategy. Valid values: `SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `CUSTOM`. Changing this forces a new resource. Note that only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`) can exist per memory.
-  AgentcoreMemoryStrategyState({
+  const AgentcoreMemoryStrategyState({
     this.configuration,
     this.description,
     this.memoryExecutionRoleArn,

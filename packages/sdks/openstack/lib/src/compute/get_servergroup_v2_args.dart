@@ -16,7 +16,7 @@ class GetServergroupV2Args {
   /// Creates a new [GetServergroupV2Args].
   /// [name] The name of the server group.
   /// [region] The region in which to obtain the V2 Compute client.
-  GetServergroupV2Args({
+  const GetServergroupV2Args({
     required this.name,
     this.region,
   });

@@ -42,7 +42,7 @@ class GetInterconnectLocationResult {
   /// [project] Required.
   /// [selfLink] The URI of the created resource.
   /// [status] The status of this InterconnectLocation.
-  GetInterconnectLocationResult({
+  const GetInterconnectLocationResult({
     required this.address,
     required this.availabilityZone,
     required this.city,

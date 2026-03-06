@@ -9,7 +9,7 @@ class GetGatewayRouteSpecHttpRouteMatchPath {
   /// Creates a new [GetGatewayRouteSpecHttpRouteMatchPath].
   /// [exact] Required.
   /// [regex] Required.
-  GetGatewayRouteSpecHttpRouteMatchPath({
+  const GetGatewayRouteSpecHttpRouteMatchPath({
     required this.exact,
     required this.regex,
   });

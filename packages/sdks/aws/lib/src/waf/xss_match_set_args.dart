@@ -16,7 +16,7 @@ class XssMatchSetArgs {
   /// Creates a new [XssMatchSetArgs].
   /// [name] The name or description of the SizeConstraintSet.
   /// [xssMatchTuples] The parts of web requests that you want to inspect for cross-site scripting attacks.
-  XssMatchSetArgs({
+  const XssMatchSetArgs({
     this.name,
     this.xssMatchTuples,
   });

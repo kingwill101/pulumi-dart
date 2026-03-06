@@ -17,7 +17,7 @@ class GetFoldersFolder {
   /// [folderName] The Name of the Folder.
   /// [id] The ID of the Resource Manager Folder.
   /// [parentFolderId] The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
-  GetFoldersFolder({
+  const GetFoldersFolder({
     required this.folderId,
     required this.folderName,
     required this.id,

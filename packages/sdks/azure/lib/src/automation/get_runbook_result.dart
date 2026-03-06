@@ -38,7 +38,7 @@ class GetRunbookResult {
   /// [resourceGroupName] Required.
   /// [runbookType] The type of Runbook.
   /// [tags] A mapping of tags assigned to the Runbook.
-  GetRunbookResult({
+  const GetRunbookResult({
     required this.automationAccountName,
     required this.content,
     required this.description,

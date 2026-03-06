@@ -13,7 +13,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek].
   /// [day] The day of the week to create the snapshot. e.g. MONDAY
   /// [startTime] Time within the window to start the operations.
-  ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek({
+  const ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek({
     required this.day,
     required this.startTime,
   });

@@ -55,7 +55,7 @@ class GetLabResult {
   /// [totalBudget] Total budget
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Amount value.
-  GetLabResult({
+  const GetLabResult({
     required this.azureApiVersion,
     required this.budgetPerStudent,
     this.currency,

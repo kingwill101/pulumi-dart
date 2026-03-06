@@ -15,7 +15,7 @@ class WorkspacePropertiesAccessConnector {
   /// [id] The resource ID of Azure Databricks Access Connector Resource.
   /// [identityType] The identity type of the Access Connector Resource.
   /// [userAssignedIdentityId] The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
-  WorkspacePropertiesAccessConnector({
+  const WorkspacePropertiesAccessConnector({
     required this.id,
     required this.identityType,
     this.userAssignedIdentityId,

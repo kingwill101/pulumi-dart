@@ -10,7 +10,7 @@ class CustomRuleListResponse {
 
   /// Creates a new [CustomRuleListResponse].
   /// [rules] List of rules
-  CustomRuleListResponse({
+  const CustomRuleListResponse({
     this.rules,
   });
 

@@ -19,7 +19,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On`, `Off`.
   /// [internetChargeType] The new billing method. Valid values: `PayByTraffic` and `PayByBandwidth`. Default value: `PayByTraffic`.
-  GetServiceArgs({
+  const GetServiceArgs({
     this.enable,
     this.internetChargeType,
   });

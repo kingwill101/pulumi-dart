@@ -65,7 +65,7 @@ class AutoscalerAutoscalingPolicy {
   /// [scaleDownControl] Defines scale down controls to reduce the risk of response latency
   /// [scaleInControl] Defines scale in controls to reduce the risk of response latency
   /// [scalingSchedules] Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
-  AutoscalerAutoscalingPolicy({
+  const AutoscalerAutoscalingPolicy({
     this.cooldownPeriod,
     this.cpuUtilization,
     this.loadBalancingUtilization,

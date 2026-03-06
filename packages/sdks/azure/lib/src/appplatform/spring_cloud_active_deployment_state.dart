@@ -12,7 +12,7 @@ class SpringCloudActiveDeploymentState {
   /// Creates a new [SpringCloudActiveDeploymentState].
   /// [deploymentName] Specifies the name of Spring Cloud Deployment which is going to be active.
   /// [springCloudAppId] Specifies the id of the Spring Cloud Application. Changing this forces a new resource to be created.
-  SpringCloudActiveDeploymentState({
+  const SpringCloudActiveDeploymentState({
     this.deploymentName,
     this.springCloudAppId,
   });

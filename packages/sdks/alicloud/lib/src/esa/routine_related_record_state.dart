@@ -18,7 +18,7 @@ class RoutineRelatedRecordState {
   /// [recordId] The record ID.
   /// [recordName] The record name.
   /// [siteId] The website ID.
-  RoutineRelatedRecordState({
+  const RoutineRelatedRecordState({
     this.name,
     this.recordId,
     this.recordName,

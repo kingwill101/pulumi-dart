@@ -34,7 +34,7 @@ class PipeSourceParametersSelfManagedKafkaParameters {
   /// [startingPosition] The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
   /// [topicName] The name of the topic that the pipe will read from. Maximum length of 249.
   /// [vpc] This structure specifies the VPC subnets and security groups for the stream, and whether a public IP address is to be used. Detailed below.
-  PipeSourceParametersSelfManagedKafkaParameters({
+  const PipeSourceParametersSelfManagedKafkaParameters({
     this.additionalBootstrapServers,
     this.batchSize,
     this.consumerGroupId,

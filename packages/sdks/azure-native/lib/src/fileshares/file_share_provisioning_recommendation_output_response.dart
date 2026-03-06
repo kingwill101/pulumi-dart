@@ -15,7 +15,7 @@ class FileShareProvisioningRecommendationOutputResponse {
   /// [availableRedundancyOptions] Redundancy options for the share.
   /// [provisionedIOPerSec] The recommended value of provisioned IO / sec of the share.
   /// [provisionedThroughputMiBPerSec] The recommended value of provisioned throughput / sec of the share.
-  FileShareProvisioningRecommendationOutputResponse({
+  const FileShareProvisioningRecommendationOutputResponse({
     required this.availableRedundancyOptions,
     required this.provisionedIOPerSec,
     required this.provisionedThroughputMiBPerSec,

@@ -11,7 +11,7 @@ class UserProvisioningUserProvisioningStatistic {
   /// Creates a new [UserProvisioningUserProvisioningStatistic].
   /// [failedEventCount] Number of failed events
   /// [gmtLatestSync] Last Provisioning time
-  UserProvisioningUserProvisioningStatistic({
+  const UserProvisioningUserProvisioningStatistic({
     this.failedEventCount,
     this.gmtLatestSync,
   });

@@ -43,7 +43,7 @@ class GetKustoPoolAttachedDatabaseConfigurationResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tableLevelSharingProperties] Table level sharing specifications
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetKustoPoolAttachedDatabaseConfigurationResult({
+  const GetKustoPoolAttachedDatabaseConfigurationResult({
     required this.attachedDatabaseNames,
     required this.azureApiVersion,
     required this.databaseName,

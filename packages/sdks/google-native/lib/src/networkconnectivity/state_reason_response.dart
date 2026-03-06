@@ -15,7 +15,7 @@ class StateReasonResponse {
   /// [code] The code associated with this reason.
   /// [message] Human-readable details about this reason.
   /// [userDetails] Additional information provided by the user in the RejectSpoke call.
-  StateReasonResponse({
+  const StateReasonResponse({
     required this.code,
     required this.message,
     required this.userDetails,

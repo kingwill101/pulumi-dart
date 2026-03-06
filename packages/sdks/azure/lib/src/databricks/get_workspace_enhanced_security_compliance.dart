@@ -17,7 +17,7 @@ class GetWorkspaceEnhancedSecurityCompliance {
   /// [complianceSecurityProfileEnabled] Whether compliance security profile for this workspace is enabled.
   /// [complianceSecurityProfileStandards] A list of standards enforced on this workspace.
   /// [enhancedSecurityMonitoringEnabled] Whether enhanced security monitoring for this workspace is enabled.
-  GetWorkspaceEnhancedSecurityCompliance({
+  const GetWorkspaceEnhancedSecurityCompliance({
     required this.automaticClusterUpdateEnabled,
     required this.complianceSecurityProfileEnabled,
     required this.complianceSecurityProfileStandards,

@@ -14,7 +14,7 @@ class DeliveryRuleCacheExpirationActionResponse {
   /// Creates a new [DeliveryRuleCacheExpirationActionResponse].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  DeliveryRuleCacheExpirationActionResponse({
+  const DeliveryRuleCacheExpirationActionResponse({
     required this.name,
     required this.parameters,
   });

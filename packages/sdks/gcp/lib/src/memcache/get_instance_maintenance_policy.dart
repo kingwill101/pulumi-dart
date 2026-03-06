@@ -26,7 +26,7 @@ class GetInstanceMaintenancePolicy {
   /// [description] Optional. Description of what this policy is for.
   /// [updateTime] Output only. The time when the policy was updated.
   /// [weeklyMaintenanceWindows] Required. Maintenance window that is applied to resources covered by this policy.
-  GetInstanceMaintenancePolicy({
+  const GetInstanceMaintenancePolicy({
     required this.createTime,
     required this.description,
     required this.updateTime,

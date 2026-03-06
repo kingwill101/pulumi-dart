@@ -9,7 +9,7 @@ class AttestationAuthorityHintResponse {
 
   /// Creates a new [AttestationAuthorityHintResponse].
   /// [humanReadableName] The human readable name of this Attestation Authority, for example "qa".
-  AttestationAuthorityHintResponse({
+  const AttestationAuthorityHintResponse({
     required this.humanReadableName,
   });
 

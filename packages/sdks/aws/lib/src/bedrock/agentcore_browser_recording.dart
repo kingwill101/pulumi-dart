@@ -12,7 +12,7 @@ class AgentcoreBrowserRecording {
   /// Creates a new [AgentcoreBrowserRecording].
   /// [enabled] Whether to enable recording for browser sessions. Defaults to `false`.
   /// [s3Location] S3 location where browser session recordings are stored. See `s3_location` below.
-  AgentcoreBrowserRecording({
+  const AgentcoreBrowserRecording({
     this.enabled,
     this.s3Location,
   });

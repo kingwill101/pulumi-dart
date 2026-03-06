@@ -10,7 +10,7 @@ class K8sSchedulingOptionsResponse {
 
   /// Creates a new [K8sSchedulingOptionsResponse].
   /// [resources] The kubernetes resource limits and requests used to restrict or reserve resource usage.
-  K8sSchedulingOptionsResponse({
+  const K8sSchedulingOptionsResponse({
     this.resources,
   });
 

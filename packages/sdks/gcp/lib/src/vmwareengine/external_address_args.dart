@@ -23,7 +23,7 @@ class ExternalAddressArgs {
   /// [internalIp] The internal IP address of a workload VM.
   /// [name] The ID of the external IP Address.
   /// [parent] The resource name of the private cloud to create a new external address in.
-  ExternalAddressArgs({
+  const ExternalAddressArgs({
     this.description,
     required this.internalIp,
     this.name,

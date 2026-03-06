@@ -15,7 +15,7 @@ class APIServerAccessProfile {
   /// [enablePrivateCluster] Whether to create the Fleet hub as a private cluster or not.
   /// [enableVnetIntegration] Whether to enable apiserver vnet integration for the Fleet hub or not.
   /// [subnetId] The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet.
-  APIServerAccessProfile({
+  const APIServerAccessProfile({
     this.enablePrivateCluster,
     this.enableVnetIntegration,
     this.subnetId,

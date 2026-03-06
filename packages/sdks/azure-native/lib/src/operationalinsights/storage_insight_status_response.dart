@@ -12,7 +12,7 @@ class StorageInsightStatusResponse {
   /// Creates a new [StorageInsightStatusResponse].
   /// [description] Description of the state of the storage insight.
   /// [state] The state of the storage insight connection to the workspace
-  StorageInsightStatusResponse({
+  const StorageInsightStatusResponse({
     this.description,
     required this.state,
   });

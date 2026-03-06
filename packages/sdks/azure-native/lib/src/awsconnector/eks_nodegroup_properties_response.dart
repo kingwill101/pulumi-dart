@@ -34,7 +34,7 @@ class EksNodegroupPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EksNodegroupPropertiesResponse({
+  const EksNodegroupPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

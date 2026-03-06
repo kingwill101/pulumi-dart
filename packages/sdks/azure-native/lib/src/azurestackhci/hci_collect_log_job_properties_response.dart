@@ -41,7 +41,7 @@ class HciCollectLogJobPropertiesResponse {
   /// [startTimeUtc] The UTC date and time at which the job started.
   /// [status] Status of Edge device job.
   /// [toDate] To date for log collection.
-  HciCollectLogJobPropertiesResponse({
+  const HciCollectLogJobPropertiesResponse({
     this.deploymentMode,
     required this.endTimeUtc,
     required this.fromDate,

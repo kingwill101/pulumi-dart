@@ -51,7 +51,7 @@ class PipelineJobArgs {
   /// [mappingPipelineJob] Specifies mapping configuration.
   /// [name] Specifies the name of the pipeline job. This field is user-assigned.
   /// [reconciliationPipelineJob] Specifies reconciliation configuration.
-  PipelineJobArgs({
+  const PipelineJobArgs({
     this.backfillPipelineJob,
     required this.dataset,
     this.disableLineage,

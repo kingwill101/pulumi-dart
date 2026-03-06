@@ -28,7 +28,7 @@ class GetGuestConfigurationConnectedVMwarevSphereAssignmentResult {
   /// [properties] Properties of the Guest configuration assignment.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource.
-  GetGuestConfigurationConnectedVMwarevSphereAssignmentResult({
+  const GetGuestConfigurationConnectedVMwarevSphereAssignmentResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

@@ -17,7 +17,7 @@ class MembershipRole {
   /// [expiryDetail] The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
   /// [name] The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   /// [restrictionEvaluations] Evaluations of restrictions applied to parent group on this membership.
-  MembershipRole({
+  const MembershipRole({
     this.expiryDetail,
     this.name,
     this.restrictionEvaluations,

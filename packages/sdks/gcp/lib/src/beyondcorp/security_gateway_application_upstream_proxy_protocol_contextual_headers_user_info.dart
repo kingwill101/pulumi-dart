@@ -9,7 +9,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo {
 
   /// Creates a new [SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo].
   /// [outputType] The output type of the delegated user info.
-  SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo({
+  const SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo({
     this.outputType,
   });
 

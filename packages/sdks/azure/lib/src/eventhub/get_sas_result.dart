@@ -15,7 +15,7 @@ class GetSasResult {
   /// [expiry] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sas] The computed Event Hub Shared Access Signature (SAS).
-  GetSasResult({
+  const GetSasResult({
     required this.connectionString,
     required this.expiry,
     required this.id,

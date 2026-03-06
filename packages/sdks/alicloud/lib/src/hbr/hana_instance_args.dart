@@ -45,7 +45,7 @@ class HanaInstanceArgs {
   /// [userName] The username of the SYSTEMDB database.
   /// [validateCertificate] Specifies whether to verify the SSL certificate of the SAP HANA database.
   /// [vaultId] The ID of the backup vault.
-  HanaInstanceArgs({
+  const HanaInstanceArgs({
     this.alertSetting,
     this.ecsInstanceIds,
     this.hanaName,

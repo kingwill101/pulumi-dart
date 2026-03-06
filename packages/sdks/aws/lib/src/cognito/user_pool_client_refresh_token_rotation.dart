@@ -11,7 +11,7 @@ class UserPoolClientRefreshTokenRotation {
   /// Creates a new [UserPoolClientRefreshTokenRotation].
   /// [feature] The state of refresh token rotation for the current app client. Valid values are `ENABLED` or `DISABLED`.
   /// [retryGracePeriodSeconds] A period of time in seconds that the user has to use the old refresh token before it is invalidated. Valid values are between `0` and `60`.
-  UserPoolClientRefreshTokenRotation({
+  const UserPoolClientRefreshTokenRotation({
     required this.feature,
     this.retryGracePeriodSeconds,
   });

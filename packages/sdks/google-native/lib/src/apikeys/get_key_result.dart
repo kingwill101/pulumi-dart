@@ -36,7 +36,7 @@ class GetKeyResult {
   /// [restrictions] Key restrictions.
   /// [uid] Unique id in UUID4 format.
   /// [updateTime] A timestamp identifying the time this key was last updated.
-  GetKeyResult({
+  const GetKeyResult({
     required this.annotations,
     required this.createTime,
     required this.deleteTime,

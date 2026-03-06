@@ -15,7 +15,7 @@ class AzureContainerInfo {
   /// [containerName] Container name (Based on the data format specified, this represents the name of Azure Files/Page blob/Block blob).
   /// [dataFormat] Storage format used for the file represented by the share.
   /// [storageAccountCredentialId] ID of the storage account credential used to access storage.
-  AzureContainerInfo({
+  const AzureContainerInfo({
     required this.containerName,
     required this.dataFormat,
     required this.storageAccountCredentialId,

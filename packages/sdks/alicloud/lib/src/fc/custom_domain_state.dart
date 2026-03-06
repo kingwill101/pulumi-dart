@@ -32,7 +32,7 @@ class CustomDomainState {
   /// [lastModifiedTime] The date this resource was last modified.
   /// [protocol] The protocol, `HTTP` or `HTTP,HTTPS`.
   /// [routeConfigs] The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
-  CustomDomainState({
+  const CustomDomainState({
     this.accountId,
     this.apiVersion,
     this.certConfig,

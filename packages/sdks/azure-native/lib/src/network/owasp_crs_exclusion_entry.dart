@@ -19,7 +19,7 @@ class OwaspCrsExclusionEntry {
   /// [matchVariable] The variable to be excluded.
   /// [selector] When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
   /// [selectorMatchOperator] When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
-  OwaspCrsExclusionEntry({
+  const OwaspCrsExclusionEntry({
     this.exclusionManagedRuleSets,
     required this.matchVariable,
     required this.selector,

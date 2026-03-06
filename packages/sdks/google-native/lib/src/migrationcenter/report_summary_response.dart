@@ -14,7 +14,7 @@ class ReportSummaryResponse {
   /// Creates a new [ReportSummaryResponse].
   /// [allAssetsStats] Aggregate statistics for all the assets across all the groups.
   /// [groupFindings] Findings for each Group included in this report.
-  ReportSummaryResponse({
+  const ReportSummaryResponse({
     required this.allAssetsStats,
     required this.groupFindings,
   });

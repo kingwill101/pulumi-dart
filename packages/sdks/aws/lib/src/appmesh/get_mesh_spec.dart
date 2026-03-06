@@ -11,7 +11,7 @@ class GetMeshSpec {
   /// Creates a new [GetMeshSpec].
   /// [egressFilters] Required.
   /// [serviceDiscoveries] Required.
-  GetMeshSpec({
+  const GetMeshSpec({
     required this.egressFilters,
     required this.serviceDiscoveries,
   });

@@ -13,7 +13,7 @@ class ListAutomationAccountDeletedRunbooksResult {
   /// Creates a new [ListAutomationAccountDeletedRunbooksResult].
   /// [nextLink] Gets or sets the next link.
   /// [value] List of deleted runbooks in automation account.
-  ListAutomationAccountDeletedRunbooksResult({
+  const ListAutomationAccountDeletedRunbooksResult({
     this.nextLink,
     this.value,
   });

@@ -21,7 +21,7 @@ class WorkspaceArgs {
   /// [name] Specifies the name of the Healthcare Workspace. Changing this forces a new Healthcare Workspace to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Healthcare Workspace should exist. Changing this forces a new Healthcare Workspace to be created.
   /// [tags] A mapping of tags to assign to the Healthcare Workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

@@ -48,7 +48,7 @@ class PrefixArgs {
   /// [tags] A mapping of tags to assign to the Custom IP Prefix.
   /// [wanValidationSignedMessage] The signed base64-encoded authorization message, which will be sent to Microsoft for WAN verification. Required when provisioning an IPv4 prefix or IPv6 global prefix. Refer to [Azure documentation](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/create-custom-ip-address-prefix-cli#certificate-readiness) for more details about the process for your RIR. Changing this forces a new resource to be created.
   /// [zones] Specifies a list of Availability Zones in which this Custom IP Prefix should be located. Should not be specified when creating an IPv6 global prefix. Changing this forces a new resource to be created.
-  PrefixArgs({
+  const PrefixArgs({
     required this.cidr,
     this.commissioningEnabled,
     this.internetAdvertisingDisabled,

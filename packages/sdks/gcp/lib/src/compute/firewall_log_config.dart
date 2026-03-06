@@ -9,7 +9,7 @@ class FirewallLogConfig {
 
   /// Creates a new [FirewallLogConfig].
   /// [metadata] This field denotes whether to include or exclude metadata for firewall logs.
-  FirewallLogConfig({
+  const FirewallLogConfig({
     required this.metadata,
   });
 

@@ -9,7 +9,7 @@ class VolumeTypeEnumValueResponse {
 
   /// Creates a new [VolumeTypeEnumValueResponse].
   /// [value] Property value
-  VolumeTypeEnumValueResponse({
+  const VolumeTypeEnumValueResponse({
     this.value,
   });
 

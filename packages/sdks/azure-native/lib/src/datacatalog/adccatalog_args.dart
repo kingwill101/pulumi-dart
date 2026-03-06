@@ -40,7 +40,7 @@ class ADCCatalogArgs {
   /// [tags] Resource tags
   /// [units] Azure data catalog units.
   /// [users] Azure data catalog user list.
-  ADCCatalogArgs({
+  const ADCCatalogArgs({
     this.admins,
     this.catalogName,
     this.enableAutomaticUnitAdjustment,

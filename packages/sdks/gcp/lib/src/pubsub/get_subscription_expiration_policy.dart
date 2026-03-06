@@ -12,7 +12,7 @@ class GetSubscriptionExpirationPolicy {
 
   /// Creates a new [GetSubscriptionExpirationPolicy].
   /// [ttl] Specifies the "time-to-live" duration for an associated resource. The
-  GetSubscriptionExpirationPolicy({
+  const GetSubscriptionExpirationPolicy({
     required this.ttl,
   });
 

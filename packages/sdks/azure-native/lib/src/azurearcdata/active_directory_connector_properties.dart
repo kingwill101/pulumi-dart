@@ -18,7 +18,7 @@ class ActiveDirectoryConnectorProperties {
   /// [domainServiceAccountLoginInformation] Username and password for domain service account authentication.
   /// [spec] null
   /// [status] null
-  ActiveDirectoryConnectorProperties({
+  const ActiveDirectoryConnectorProperties({
     this.domainServiceAccountLoginInformation,
     required this.spec,
     this.status,

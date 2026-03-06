@@ -18,7 +18,7 @@ class InstanceGrantArgs {
   /// [cenId] The ID of the CEN.
   /// [cenOwnerId] The owner UID of the  CEN which the child instance granted to.
   /// [childInstanceId] The ID of the child instance to grant.
-  InstanceGrantArgs({
+  const InstanceGrantArgs({
     required this.cenId,
     required this.cenOwnerId,
     required this.childInstanceId,

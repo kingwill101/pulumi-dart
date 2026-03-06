@@ -15,7 +15,7 @@ class GetOrganizationAddressGroupNetworksecurityV1beta1Args {
   /// [addressGroupId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationAddressGroupNetworksecurityV1beta1Args({
+  const GetOrganizationAddressGroupNetworksecurityV1beta1Args({
     required this.addressGroupId,
     required this.location,
     required this.organizationId,

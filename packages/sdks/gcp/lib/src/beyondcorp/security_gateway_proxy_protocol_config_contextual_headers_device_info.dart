@@ -9,7 +9,7 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
 
   /// Creates a new [SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo].
   /// [outputType] The output type of the delegated device info.
-  SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo({
+  const SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo({
     this.outputType,
   });
 

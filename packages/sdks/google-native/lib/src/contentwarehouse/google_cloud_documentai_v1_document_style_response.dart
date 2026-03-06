@@ -33,7 +33,7 @@ class GoogleCloudDocumentaiV1DocumentStyleResponse {
   /// [textAnchor] Text anchor indexing into the Document.text.
   /// [textDecoration] [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
   /// [textStyle] [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
-  GoogleCloudDocumentaiV1DocumentStyleResponse({
+  const GoogleCloudDocumentaiV1DocumentStyleResponse({
     required this.backgroundColor,
     required this.color,
     required this.fontFamily,

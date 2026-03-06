@@ -11,7 +11,7 @@ class LogTransformerTransformerConfigTypeConverterEntry {
   /// Creates a new [LogTransformerTransformerConfigTypeConverterEntry].
   /// [key] Specifies the key with the value that will be converted to a different type.
   /// [type] Specifies the type to convert the field value to. Allowed values are: `integer`, `double`, `string` and `boolean`.
-  LogTransformerTransformerConfigTypeConverterEntry({
+  const LogTransformerTransformerConfigTypeConverterEntry({
     required this.key,
     required this.type,
   });

@@ -38,7 +38,7 @@ class ZipBlobState {
   /// [storageContainerName] Optional.
   /// [type] Optional.
   /// [url] Optional.
-  ZipBlobState({
+  const ZipBlobState({
     this.accessTier,
     this.cacheControl,
     this.content,

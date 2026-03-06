@@ -13,7 +13,7 @@ class LogTransformerTransformerConfigParseToOcsf {
   /// [eventSource] Required.
   /// [ocsfVersion] Specifies the version of the OCSF schema to use for the transformed log events. The only allowed value is `V1.1`.
   /// [source] Specifies the source field to be parsed. The only allowed value is `@message`. If omitted, the whole log message is processed.
-  LogTransformerTransformerConfigParseToOcsf({
+  const LogTransformerTransformerConfigParseToOcsf({
     required this.eventSource,
     required this.ocsfVersion,
     this.source,

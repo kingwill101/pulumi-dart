@@ -34,7 +34,7 @@ class CertificateArgs {
   /// [name] The name of the certificate for identification.
   /// [privateKey] The contents of a PEM-formatted private-key
   /// [type] The type of certificate to provision. Can be either
-  CertificateArgs({
+  const CertificateArgs({
     this.certificateChain,
     this.domains,
     this.leafCertificate,

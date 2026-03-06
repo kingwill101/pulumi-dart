@@ -15,7 +15,7 @@ class GetPacketMirroringComputeV1Args {
   /// [packetMirroring] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetPacketMirroringComputeV1Args({
+  const GetPacketMirroringComputeV1Args({
     required this.packetMirroring,
     this.project,
     required this.region,

@@ -11,7 +11,7 @@ class ListPartnerNamespaceSharedAccessKeysResult {
   /// Creates a new [ListPartnerNamespaceSharedAccessKeysResult].
   /// [key1] Shared access key1 for the partner namespace.
   /// [key2] Shared access key2 for the partner namespace.
-  ListPartnerNamespaceSharedAccessKeysResult({
+  const ListPartnerNamespaceSharedAccessKeysResult({
     this.key1,
     this.key2,
   });

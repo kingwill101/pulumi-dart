@@ -15,7 +15,7 @@ class RemediationDeploymentSummaryResponse {
   /// [failedDeployments] The number of deployments required by the remediation that have failed.
   /// [successfulDeployments] The number of deployments required by the remediation that have succeeded.
   /// [totalDeployments] The number of deployments required by the remediation.
-  RemediationDeploymentSummaryResponse({
+  const RemediationDeploymentSummaryResponse({
     required this.failedDeployments,
     required this.successfulDeployments,
     required this.totalDeployments,

@@ -11,7 +11,7 @@ class ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSl
   /// [passwordParam] Optional.
   /// [uri] Required.
   /// [username] Optional.
-  ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate({
+  const ChannelEncoderSettingsGlobalConfigurationInputLossBehaviorInputLossImageSlate({
     this.passwordParam,
     required this.uri,
     this.username,

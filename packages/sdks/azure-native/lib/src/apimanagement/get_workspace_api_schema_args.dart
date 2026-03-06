@@ -24,7 +24,7 @@ class GetWorkspaceApiSchemaArgs {
   /// [schemaId] Schema id identifier. Must be unique in the current API Management service instance.
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  GetWorkspaceApiSchemaArgs({
+  const GetWorkspaceApiSchemaArgs({
     required this.apiId,
     required this.resourceGroupName,
     required this.schemaId,

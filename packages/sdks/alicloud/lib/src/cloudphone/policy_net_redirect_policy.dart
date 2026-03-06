@@ -26,7 +26,7 @@ class PolicyNetRedirectPolicy {
   /// [proxyPassword] The proxy password. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
   /// [proxyType] Agent protocol type.
   /// [proxyUserName] The proxy user name. The length range is 1\~ 256. Chinese characters and white space characters are not allowed.
-  PolicyNetRedirectPolicy({
+  const PolicyNetRedirectPolicy({
     this.customProxy,
     this.hostAddr,
     this.netRedirect,

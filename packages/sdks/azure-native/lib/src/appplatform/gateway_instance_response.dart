@@ -12,7 +12,7 @@ class GatewayInstanceResponse {
   /// Creates a new [GatewayInstanceResponse].
   /// [name] Name of the Spring Cloud Gateway instance
   /// [status] Status of the Spring Cloud Gateway instance
-  GatewayInstanceResponse({
+  const GatewayInstanceResponse({
     required this.name,
     required this.status,
   });

@@ -10,7 +10,7 @@ class SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration {
 
   /// Creates a new [SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration].
   /// [kmsKeyArn] ARN for KMS Key.
-  SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration({
+  const SdkvoiceVoiceProfileDomainServerSideEncryptionConfiguration({
     required this.kmsKeyArn,
   });
 

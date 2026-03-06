@@ -22,7 +22,7 @@ class AliasArgs {
   /// [name] Name for the alias you are creating.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingConfigurations] The StateMachine alias' route configuration settings. Fields documented below
-  AliasArgs({
+  const AliasArgs({
     this.description,
     this.name,
     this.region,

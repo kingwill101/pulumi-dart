@@ -73,7 +73,7 @@ class SecurityProfileState {
   /// [type] The type of security profile.
   /// [updateTime] Time the security profile was updated in UTC.
   /// [urlFilteringProfile] The url filtering configuration for the security profile.
-  SecurityProfileState({
+  const SecurityProfileState({
     this.createTime,
     this.customInterceptProfile,
     this.customMirroringProfile,

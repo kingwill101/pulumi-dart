@@ -9,7 +9,7 @@ class DistributionGroupListReceiverValue {
 
   /// Creates a new [DistributionGroupListReceiverValue].
   /// [distributionGroups] The list of distribution groups.
-  DistributionGroupListReceiverValue({
+  const DistributionGroupListReceiverValue({
     this.distributionGroups,
   });
 

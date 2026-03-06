@@ -23,7 +23,7 @@ class FleetGkehubV1alphaArgs {
   /// [labels] Optional. Labels for this Fleet.
   /// [location] Optional.
   /// [project] Optional.
-  FleetGkehubV1alphaArgs({
+  const FleetGkehubV1alphaArgs({
     this.defaultClusterConfig,
     this.displayName,
     this.labels,

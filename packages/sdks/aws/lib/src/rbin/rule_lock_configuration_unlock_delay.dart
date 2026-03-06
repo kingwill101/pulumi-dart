@@ -11,7 +11,7 @@ class RuleLockConfigurationUnlockDelay {
   /// Creates a new [RuleLockConfigurationUnlockDelay].
   /// [unlockDelayUnit] Unit of time in which to measure the unlock delay. Currently, the unlock delay can be measure only in days.
   /// [unlockDelayValue] Unlock delay period, measured in the unit specified for UnlockDelayUnit.
-  RuleLockConfigurationUnlockDelay({
+  const RuleLockConfigurationUnlockDelay({
     required this.unlockDelayUnit,
     required this.unlockDelayValue,
   });

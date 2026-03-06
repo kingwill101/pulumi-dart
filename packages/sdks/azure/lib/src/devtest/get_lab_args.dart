@@ -15,7 +15,7 @@ class GetLabArgs {
   /// Creates a new [GetLabArgs].
   /// [name] The name of the Dev Test Lab.
   /// [resourceGroupName] The Name of the Resource Group where the Dev Test Lab exists.
-  GetLabArgs({
+  const GetLabArgs({
     required this.name,
     required this.resourceGroupName,
   });

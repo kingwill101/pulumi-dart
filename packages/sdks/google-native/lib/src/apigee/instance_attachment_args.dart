@@ -16,7 +16,7 @@ class InstanceAttachmentArgs {
   /// [environment] ID of the attached environment.
   /// [instanceId] Required.
   /// [organizationId] Required.
-  InstanceAttachmentArgs({
+  const InstanceAttachmentArgs({
     this.environment,
     required this.instanceId,
     required this.organizationId,

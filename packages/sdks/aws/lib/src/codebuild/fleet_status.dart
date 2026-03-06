@@ -14,7 +14,7 @@ class FleetStatus {
   /// [context] Additional information about a compute fleet.
   /// [message] Message associated with the status of a compute fleet.
   /// [statusCode] Status code of the compute fleet.
-  FleetStatus({
+  const FleetStatus({
     this.context,
     this.message,
     this.statusCode,

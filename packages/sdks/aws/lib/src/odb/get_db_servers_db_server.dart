@@ -66,7 +66,7 @@ class GetDbServersDbServer {
   /// [status] The current status of the database server.
   /// [statusReason] Additional information about the status of the database server.
   /// [vmClusterIds] The IDs of the VM clusters that are associated with the database server.
-  GetDbServersDbServer({
+  const GetDbServersDbServer({
     required this.autonomousVirtualMachineIds,
     required this.autonomousVmClusterIds,
     required this.computeModel,

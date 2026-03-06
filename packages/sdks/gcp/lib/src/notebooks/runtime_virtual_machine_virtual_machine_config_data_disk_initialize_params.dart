@@ -31,7 +31,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams {
   /// [diskSizeGb] Specifies the size of the disk in base-2 GB. If not
   /// [diskType] The type of the boot disk attached to this runtime,
   /// [labels] Labels to apply to this disk. These can be later modified
-  RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams({
+  const RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams({
     this.description,
     this.diskName,
     this.diskSizeGb,

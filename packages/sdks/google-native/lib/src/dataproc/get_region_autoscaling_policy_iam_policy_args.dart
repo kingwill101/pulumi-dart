@@ -15,7 +15,7 @@ class GetRegionAutoscalingPolicyIamPolicyArgs {
   /// [autoscalingPolicyId] Required.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionAutoscalingPolicyIamPolicyArgs({
+  const GetRegionAutoscalingPolicyIamPolicyArgs({
     required this.autoscalingPolicyId,
     this.project,
     required this.regionId,

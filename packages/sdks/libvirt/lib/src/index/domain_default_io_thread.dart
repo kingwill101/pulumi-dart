@@ -11,7 +11,7 @@ class DomainDefaultIoThread {
   /// Creates a new [DomainDefaultIoThread].
   /// [poolMax] Configures the maximum number of threads in the default IO thread pool, allowing for scalable IO resource handling.
   /// [poolMin] Sets the minimum number of threads in the default IO thread pool, ensuring baseline IO resource allocation.
-  DomainDefaultIoThread({
+  const DomainDefaultIoThread({
     this.poolMax,
     this.poolMin,
   });

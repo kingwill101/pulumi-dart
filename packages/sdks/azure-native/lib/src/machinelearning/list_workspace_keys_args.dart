@@ -15,7 +15,7 @@ class ListWorkspaceKeysArgs {
   /// Creates a new [ListWorkspaceKeysArgs].
   /// [resourceGroupName] The name of the resource group to which the machine learning workspace belongs.
   /// [workspaceName] The name of the machine learning workspace.
-  ListWorkspaceKeysArgs({
+  const ListWorkspaceKeysArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

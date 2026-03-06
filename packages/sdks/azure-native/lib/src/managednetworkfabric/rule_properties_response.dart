@@ -12,7 +12,7 @@ class RulePropertiesResponse {
   /// Creates a new [RulePropertiesResponse].
   /// [action] Specify action.
   /// [addressList] List of Addresses to be allowed or denied.
-  RulePropertiesResponse({
+  const RulePropertiesResponse({
     required this.action,
     required this.addressList,
   });

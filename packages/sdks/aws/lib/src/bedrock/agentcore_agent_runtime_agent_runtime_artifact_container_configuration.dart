@@ -8,7 +8,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration {
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration].
   /// [containerUri] URI of the container image in Amazon ECR.
-  AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration({
+  const AgentcoreAgentRuntimeAgentRuntimeArtifactContainerConfiguration({
     required this.containerUri,
   });
 

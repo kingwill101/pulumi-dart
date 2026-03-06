@@ -19,7 +19,7 @@ class EnvironmentRecordResponse {
   /// [id] Id of the environment
   /// [kind] Type of environment
   /// [metadata] Metadata of the record
-  EnvironmentRecordResponse({
+  const EnvironmentRecordResponse({
     this.displayName,
     this.id,
     this.kind,

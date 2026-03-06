@@ -20,7 +20,7 @@ class GetTemplateResult {
   /// [runtimeMetadata] Describes the runtime metadata with SDKInfo and available parameters.
   /// [status] The status of the get template request. Any problems with the request will be indicated in the error_details.
   /// [templateType] Template Type.
-  GetTemplateResult({
+  const GetTemplateResult({
     required this.metadata,
     required this.runtimeMetadata,
     required this.status,

@@ -13,7 +13,7 @@ class FirewallPolicyLogAnalyticsWorkspaceResponse {
   /// Creates a new [FirewallPolicyLogAnalyticsWorkspaceResponse].
   /// [region] Region to configure the Workspace.
   /// [workspaceId] The workspace Id for Firewall Policy Insights.
-  FirewallPolicyLogAnalyticsWorkspaceResponse({
+  const FirewallPolicyLogAnalyticsWorkspaceResponse({
     this.region,
     this.workspaceId,
   });

@@ -29,7 +29,7 @@ class AwsSageMakerAppProperties {
   /// [resourceSpec] The instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance.
   /// [tags] A list of tags to apply to the app.
   /// [userProfileName] The user profile name.
-  AwsSageMakerAppProperties({
+  const AwsSageMakerAppProperties({
     this.appArn,
     this.appName,
     this.appType,

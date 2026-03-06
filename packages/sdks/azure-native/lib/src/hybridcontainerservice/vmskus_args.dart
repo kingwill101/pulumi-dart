@@ -16,7 +16,7 @@ class VMSkusArgs {
   /// Creates a new [VMSkusArgs].
   /// [customLocationResourceUri] The fully qualified Azure Resource Manager identifier of the custom location resource.
   /// [extendedLocation] Extended location pointing to the underlying infrastructure
-  VMSkusArgs({
+  const VMSkusArgs({
     required this.customLocationResourceUri,
     this.extendedLocation,
   });

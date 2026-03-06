@@ -25,7 +25,7 @@ class ExportExport {
   /// [exportArn] Optional.
   /// [name] Name of this specific data export.
   /// [refreshCadences] Cadence for Amazon Web Services to update the export in your S3 bucket. See the `refresh_cadence` argument reference below.
-  ExportExport({
+  const ExportExport({
     this.dataQueries,
     this.description,
     this.destinationConfigurations,

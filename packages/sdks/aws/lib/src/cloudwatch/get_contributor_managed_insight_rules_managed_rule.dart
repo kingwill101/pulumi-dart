@@ -15,7 +15,7 @@ class GetContributorManagedInsightRulesManagedRule {
   /// [resourceArn] ARN of an Amazon Web Services resource that has managed Contributor Insights rules.
   /// [ruleStates] Describes the state of a managed rule. If the rule is enabled, it contains information about the Contributor Insights rule that contains information about the related Amazon Web Services resource. See `rule_state reference` below for details.
   /// [templateName] Template name for the managed rule. Used to enable managed rules using `PutManagedInsightRules`.
-  GetContributorManagedInsightRulesManagedRule({
+  const GetContributorManagedInsightRulesManagedRule({
     required this.resourceArn,
     required this.ruleStates,
     required this.templateName,

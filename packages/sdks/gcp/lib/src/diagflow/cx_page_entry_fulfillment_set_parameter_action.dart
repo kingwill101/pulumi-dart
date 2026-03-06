@@ -11,7 +11,7 @@ class CxPageEntryFulfillmentSetParameterAction {
   /// Creates a new [CxPageEntryFulfillmentSetParameterAction].
   /// [parameter] Display name of the parameter.
   /// [value] The new JSON-encoded value of the parameter. A null value clears the parameter.
-  CxPageEntryFulfillmentSetParameterAction({
+  const CxPageEntryFulfillmentSetParameterAction({
     this.parameter,
     this.value,
   });

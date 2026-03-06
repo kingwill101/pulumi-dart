@@ -30,7 +30,7 @@ class VpcIpv6CidrBlockAssociationArgs {
   /// [ipv6Pool] The  ID of an IPv6 address pool from which to allocate the IPv6 CIDR block. Conflicts with `assign_generated_ipv6_cidr_block` and `ipv6_ipam_pool_id`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC to make the association with.
-  VpcIpv6CidrBlockAssociationArgs({
+  const VpcIpv6CidrBlockAssociationArgs({
     this.assignGeneratedIpv6CidrBlock,
     this.ipv6CidrBlock,
     this.ipv6IpamPoolId,

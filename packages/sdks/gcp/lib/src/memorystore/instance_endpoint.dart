@@ -10,7 +10,7 @@ class InstanceEndpoint {
 
   /// Creates a new [InstanceEndpoint].
   /// [connections] A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
-  InstanceEndpoint({
+  const InstanceEndpoint({
     this.connections,
   });
 

@@ -37,7 +37,7 @@ class GetTagKeysKey {
   /// [purposeData] Purpose data corresponds to the policy system that the tag is intended for. See documentation for Purpose for formatting of this field.
   /// [shortName] The user friendly name for a TagKey. The short name should be unique for TagKeys wihting the same tag namespace.
   /// [updateTime] Update time.
-  GetTagKeysKey({
+  const GetTagKeysKey({
     required this.allowedValuesRegex,
     required this.createTime,
     required this.description,

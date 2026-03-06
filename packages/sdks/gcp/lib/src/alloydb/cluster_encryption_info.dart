@@ -13,7 +13,7 @@ class ClusterEncryptionInfo {
   /// Creates a new [ClusterEncryptionInfo].
   /// [encryptionType] (Output)
   /// [kmsKeyVersions] (Output)
-  ClusterEncryptionInfo({
+  const ClusterEncryptionInfo({
     this.encryptionType,
     this.kmsKeyVersions,
   });

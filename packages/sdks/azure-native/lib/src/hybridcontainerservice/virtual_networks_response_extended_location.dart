@@ -11,7 +11,7 @@ class VirtualNetworksResponseExtendedLocation {
   /// Creates a new [VirtualNetworksResponseExtendedLocation].
   /// [name] The extended location name.
   /// [type] The extended location type.
-  VirtualNetworksResponseExtendedLocation({
+  const VirtualNetworksResponseExtendedLocation({
     this.name,
     this.type,
   });

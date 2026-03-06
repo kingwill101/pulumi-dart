@@ -16,7 +16,7 @@ class LinuxWebAppSlotAuthSettingsV2GithubV2 {
   /// [clientId] The ID of the GitHub app used for login.
   /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for GitHub Login.
   /// [loginScopes] The list of OAuth 2.0 scopes that should be requested as part of GitHub Login authentication.
-  LinuxWebAppSlotAuthSettingsV2GithubV2({
+  const LinuxWebAppSlotAuthSettingsV2GithubV2({
     required this.clientId,
     required this.clientSecretSettingName,
     this.loginScopes,

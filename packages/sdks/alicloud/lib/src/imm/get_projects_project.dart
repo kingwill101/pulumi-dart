@@ -32,7 +32,7 @@ class GetProjectsProject {
   /// [project] The name of project.
   /// [serviceRole] The service role authorized to the Intelligent Media Management service to access other cloud resources.
   /// [type] The type of project.
-  GetProjectsProject({
+  const GetProjectsProject({
     required this.billingType,
     required this.computeUnit,
     required this.createTime,

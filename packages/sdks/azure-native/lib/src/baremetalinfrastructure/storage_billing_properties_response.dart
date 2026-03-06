@@ -12,7 +12,7 @@ class StorageBillingPropertiesResponse {
   /// Creates a new [StorageBillingPropertiesResponse].
   /// [azureBareMetalStorageInstanceSize] the SKU type that is provisioned
   /// [billingMode] the billing mode for the storage instance
-  StorageBillingPropertiesResponse({
+  const StorageBillingPropertiesResponse({
     this.azureBareMetalStorageInstanceSize,
     this.billingMode,
   });

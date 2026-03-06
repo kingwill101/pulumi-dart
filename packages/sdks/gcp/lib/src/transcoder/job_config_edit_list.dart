@@ -14,7 +14,7 @@ class JobConfigEditList {
   /// [inputs] List of values identifying files that should be used in this atom.
   /// [key] A unique key for this atom.
   /// [startTimeOffset] Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
-  JobConfigEditList({
+  const JobConfigEditList({
     this.inputs,
     this.key,
     this.startTimeOffset,

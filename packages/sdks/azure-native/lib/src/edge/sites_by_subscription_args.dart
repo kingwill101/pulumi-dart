@@ -16,7 +16,7 @@ class SitesBySubscriptionArgs {
   /// Creates a new [SitesBySubscriptionArgs].
   /// [properties] The resource-specific properties for this resource.
   /// [siteName] The name of the Site
-  SitesBySubscriptionArgs({
+  const SitesBySubscriptionArgs({
     this.properties,
     this.siteName,
   });

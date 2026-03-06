@@ -13,7 +13,7 @@ class DomainDevicesTpmBackendEmulatorSource {
   /// Creates a new [DomainDevicesTpmBackendEmulatorSource].
   /// [dir] Specifies the directory source setting for the emulator TPM backend.
   /// [file] Specifies the file source setting for the emulator TPM backend.
-  DomainDevicesTpmBackendEmulatorSource({
+  const DomainDevicesTpmBackendEmulatorSource({
     this.dir,
     this.file,
   });

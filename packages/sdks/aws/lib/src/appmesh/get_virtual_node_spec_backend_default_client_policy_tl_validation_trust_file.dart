@@ -7,7 +7,7 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile {
 
   /// Creates a new [GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile].
   /// [certificateChain] Required.
-  GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile({
+  const GetVirtualNodeSpecBackendDefaultClientPolicyTlValidationTrustFile({
     required this.certificateChain,
   });
 

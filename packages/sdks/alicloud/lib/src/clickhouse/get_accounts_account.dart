@@ -23,7 +23,7 @@ class GetAccountsAccount {
   /// [dbClusterId] The DBCluster id.
   /// [id] The ID of the Account. Its value is same as Queue Name.
   /// [status] The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
-  GetAccountsAccount({
+  const GetAccountsAccount({
     required this.accountDescription,
     required this.accountName,
     required this.accountType,

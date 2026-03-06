@@ -16,7 +16,7 @@ class InterfaceVpc {
   /// [ipv4] IPv4 configuration for the VPC interface.
   /// [ipv6] IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
   /// [subnetId] The VPC subnet identifier for this interface.
-  InterfaceVpc({
+  const InterfaceVpc({
     this.ipv4,
     this.ipv6,
     required this.subnetId,

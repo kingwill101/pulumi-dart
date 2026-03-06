@@ -33,7 +33,7 @@ class GetEngineVersionResult {
   /// [validUpgradeTargets] A set of engine versions that this database engine version can be upgraded to.
   /// [version] Required.
   /// [versionDescription] Description of the database engine version.
-  GetEngineVersionResult({
+  const GetEngineVersionResult({
     this.engine,
     required this.engineDescription,
     required this.exportableLogTypes,

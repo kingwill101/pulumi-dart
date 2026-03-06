@@ -21,7 +21,7 @@ class GetInstancesArgs {
   /// [ids] Matched instance IDs to filter data source result.
   /// [outputFile] File name to persist data source output.
   /// [tags] A map of tags assigned to the bastionhost instance.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.descriptionRegex,
     this.ids,
     this.outputFile,

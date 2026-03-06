@@ -12,7 +12,7 @@ class TypeProviderLabelEntry {
   /// Creates a new [TypeProviderLabelEntry].
   /// [key] Key of the label
   /// [value] Value of the label
-  TypeProviderLabelEntry({
+  const TypeProviderLabelEntry({
     this.key,
     this.value,
   });

@@ -21,7 +21,7 @@ class BareMetalNodePoolNodePoolConfigNodeConfig {
   /// Creates a new [BareMetalNodePoolNodePoolConfigNodeConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to
   /// [nodeIp] The default IPv4 address for SSH access and Kubernetes node.
-  BareMetalNodePoolNodePoolConfigNodeConfig({
+  const BareMetalNodePoolNodePoolConfigNodeConfig({
     this.labels,
     this.nodeIp,
   });

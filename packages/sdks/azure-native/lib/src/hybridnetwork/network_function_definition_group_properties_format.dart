@@ -9,7 +9,7 @@ class NetworkFunctionDefinitionGroupPropertiesFormat {
 
   /// Creates a new [NetworkFunctionDefinitionGroupPropertiesFormat].
   /// [description] The network function definition group description.
-  NetworkFunctionDefinitionGroupPropertiesFormat({
+  const NetworkFunctionDefinitionGroupPropertiesFormat({
     this.description,
   });
 

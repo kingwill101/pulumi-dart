@@ -27,7 +27,7 @@ class GatewayRouteTableAttachmentState {
   /// [ipv4GatewayId] The ID of the IPv4 Gateway instance.
   /// [routeTableId] The ID of the Gateway route table to be bound.
   /// [status] The status of the IPv4 Gateway instance. Value:
-  GatewayRouteTableAttachmentState({
+  const GatewayRouteTableAttachmentState({
     this.createTime,
     this.dryRun,
     this.ipv4GatewayId,

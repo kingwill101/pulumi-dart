@@ -46,7 +46,7 @@ class PostureState {
   /// [revisionId] Revision_id of the posture.
   /// [state] State of the posture. Update to state field should not be triggered along with
   /// [updateTime] Time the Posture was updated in UTC.
-  PostureState({
+  const PostureState({
     this.createTime,
     this.description,
     this.etag,

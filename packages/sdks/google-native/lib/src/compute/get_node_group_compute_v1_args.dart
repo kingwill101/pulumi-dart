@@ -15,7 +15,7 @@ class GetNodeGroupComputeV1Args {
   /// [nodeGroup] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetNodeGroupComputeV1Args({
+  const GetNodeGroupComputeV1Args({
     required this.nodeGroup,
     this.project,
     required this.zone,

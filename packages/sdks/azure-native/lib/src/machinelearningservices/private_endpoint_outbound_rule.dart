@@ -22,7 +22,7 @@ class PrivateEndpointOutboundRule {
   /// [fqdns] Optional.
   /// [status] Type of a managed network Outbound Rule of a machine learning workspace.
   /// [type] Type of a managed network Outbound Rule of a machine learning workspace.
-  PrivateEndpointOutboundRule({
+  const PrivateEndpointOutboundRule({
     this.category,
     this.destination,
     this.fqdns,

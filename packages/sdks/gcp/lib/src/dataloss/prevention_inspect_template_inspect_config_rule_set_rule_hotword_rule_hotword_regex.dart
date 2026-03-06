@@ -13,7 +13,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex].
   /// [groupIndexes] The index of the submatch to extract as findings. When not specified,
   /// [pattern] Pattern defining the regular expression. Its syntax
-  PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex({
     this.groupIndexes,
     required this.pattern,
   });

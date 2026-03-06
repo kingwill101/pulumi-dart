@@ -24,7 +24,7 @@ class GetIpaDomainsArgs {
   /// [ids] A list of Ipa Domain IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
-  GetIpaDomainsArgs({
+  const GetIpaDomainsArgs({
     this.domainName,
     this.enableDetails,
     this.ids,

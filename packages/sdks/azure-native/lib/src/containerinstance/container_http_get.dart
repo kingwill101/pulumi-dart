@@ -19,7 +19,7 @@ class ContainerHttpGet {
   /// [path] The path to probe.
   /// [port] The port number to probe.
   /// [scheme] The scheme.
-  ContainerHttpGet({
+  const ContainerHttpGet({
     this.httpHeaders,
     this.path,
     required this.port,

@@ -9,7 +9,7 @@ class AvailabilityZone {
 
   /// Creates a new [AvailabilityZone].
   /// [name] &lt;p&gt;The name of the Availability Zone.&lt;/p&gt;
-  AvailabilityZone({
+  const AvailabilityZone({
     this.name,
   });
 

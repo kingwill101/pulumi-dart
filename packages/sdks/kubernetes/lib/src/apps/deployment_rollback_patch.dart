@@ -22,7 +22,7 @@ class DeploymentRollbackPatch {
   /// [name] Required: This must match the Name of a deployment.
   /// [rollbackTo] The config of this deployment rollback.
   /// [updatedAnnotations] The annotations to be updated to a deployment
-  DeploymentRollbackPatch({
+  const DeploymentRollbackPatch({
     this.apiVersion,
     this.kind,
     this.name,

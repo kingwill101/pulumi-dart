@@ -8,7 +8,7 @@ class PlanWorkflowStepEksResourceScalingConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepEksResourceScalingConfigUngraceful].
   /// [minimumSuccessPercentage] Minimum success percentage required.
-  PlanWorkflowStepEksResourceScalingConfigUngraceful({
+  const PlanWorkflowStepEksResourceScalingConfigUngraceful({
     required this.minimumSuccessPercentage,
   });
 

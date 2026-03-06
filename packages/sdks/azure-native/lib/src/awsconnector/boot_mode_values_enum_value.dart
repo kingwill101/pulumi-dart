@@ -9,7 +9,7 @@ class BootModeValuesEnumValue {
 
   /// Creates a new [BootModeValuesEnumValue].
   /// [value] Property value
-  BootModeValuesEnumValue({
+  const BootModeValuesEnumValue({
     this.value,
   });
 

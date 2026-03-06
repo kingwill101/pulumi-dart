@@ -29,7 +29,7 @@ class GetExternalAddressResult {
   /// [state] The state of the resource.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
-  GetExternalAddressResult({
+  const GetExternalAddressResult({
     required this.createTime,
     required this.description,
     required this.externalIp,

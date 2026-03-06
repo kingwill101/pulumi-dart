@@ -15,7 +15,7 @@ class HeaderResponse {
   /// [glob] The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
   /// [headers] The additional headers to add to the response.
   /// [regex] The user-supplied RE2 regular expression to match against the request URL path.
-  HeaderResponse({
+  const HeaderResponse({
     required this.glob,
     required this.headers,
     required this.regex,

@@ -12,7 +12,7 @@ class MySQLServerSku {
   /// Creates a new [MySQLServerSku].
   /// [name] The name of the sku, e.g. Standard_D32s_v3.
   /// [tier] The tier of the particular SKU, e.g. GeneralPurpose.
-  MySQLServerSku({
+  const MySQLServerSku({
     required this.name,
     required this.tier,
   });

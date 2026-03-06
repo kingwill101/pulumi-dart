@@ -10,7 +10,7 @@ class SshConfigurationResponse {
 
   /// Creates a new [SshConfigurationResponse].
   /// [publicKeys] The list of SSH public keys used to authenticate with linux based VMs.
-  SshConfigurationResponse({
+  const SshConfigurationResponse({
     this.publicKeys,
   });
 

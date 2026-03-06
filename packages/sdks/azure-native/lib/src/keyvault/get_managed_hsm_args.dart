@@ -15,7 +15,7 @@ class GetManagedHsmArgs {
   /// Creates a new [GetManagedHsmArgs].
   /// [name] The name of the managed HSM Pool.
   /// [resourceGroupName] Name of the resource group that contains the managed HSM pool.
-  GetManagedHsmArgs({
+  const GetManagedHsmArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -11,7 +11,7 @@ class ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination].
   /// [deliveryStreamArn] The Amazon Resource Name (ARN) of the Amazon Kinesis Data Firehose stream that the Amazon SES API v2 sends email events to.
   /// [iamRoleArn] The Amazon Resource Name (ARN) of the IAM role that the Amazon SES API v2 uses to send email events to the Amazon Kinesis Data Firehose stream.
-  ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination({
+  const ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination({
     required this.deliveryStreamArn,
     required this.iamRoleArn,
   });

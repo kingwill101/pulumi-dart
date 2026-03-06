@@ -42,7 +42,7 @@ class VpnClientConnectionHealthDetailResponse {
   /// [vpnConnectionId] The vpn client Id.
   /// [vpnConnectionTime] The start time of a connected vpn client.
   /// [vpnUserName] The user name of a connected vpn client.
-  VpnClientConnectionHealthDetailResponse({
+  const VpnClientConnectionHealthDetailResponse({
     required this.egressBytesTransferred,
     required this.egressPacketsTransferred,
     required this.ingressBytesTransferred,

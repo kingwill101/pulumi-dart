@@ -21,7 +21,7 @@ class GetServiceTemplateSpecContainerResource {
   /// Creates a new [GetServiceTemplateSpecContainerResource].
   /// [limits] Limits describes the maximum amount of compute resources allowed.
   /// [requests] Requests describes the minimum amount of compute resources required.
-  GetServiceTemplateSpecContainerResource({
+  const GetServiceTemplateSpecContainerResource({
     required this.limits,
     required this.requests,
   });

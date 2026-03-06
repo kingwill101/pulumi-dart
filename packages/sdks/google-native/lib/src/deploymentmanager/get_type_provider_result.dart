@@ -44,7 +44,7 @@ class GetTypeProviderResult {
   /// [operation] The Operation that most recently ran, or is currently running, on this type provider.
   /// [options] Options to apply when handling any resources in this service.
   /// [selfLink] Self link for the type provider.
-  GetTypeProviderResult({
+  const GetTypeProviderResult({
     required this.collectionOverrides,
     required this.credential,
     required this.customCertificateAuthorityRoots,

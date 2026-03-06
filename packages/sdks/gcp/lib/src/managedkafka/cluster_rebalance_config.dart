@@ -8,7 +8,7 @@ class ClusterRebalanceConfig {
 
   /// Creates a new [ClusterRebalanceConfig].
   /// [mode] The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. Possible values: `MODE_UNSPECIFIED`, `NO_REBALANCE`, `AUTO_REBALANCE_ON_SCALE_UP`.
-  ClusterRebalanceConfig({
+  const ClusterRebalanceConfig({
     this.mode,
   });
 

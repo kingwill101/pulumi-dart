@@ -23,7 +23,7 @@ class InstanceGroupNamedPortState {
   /// [port] The port number, which can be a value between 1 and 65535.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] The zone of the instance group.
-  InstanceGroupNamedPortState({
+  const InstanceGroupNamedPortState({
     this.group,
     this.name,
     this.port,

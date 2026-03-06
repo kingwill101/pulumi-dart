@@ -17,7 +17,7 @@ class AutokeyConfigState {
   /// [etag] The etag of the AutokeyConfig for optimistic concurrency control.
   /// [folder] The folder for which to retrieve config.
   /// [keyProject] The target key project for a given folder where KMS Autokey will provision a
-  AutokeyConfigState({
+  const AutokeyConfigState({
     this.etag,
     this.folder,
     this.keyProject,

@@ -20,7 +20,7 @@ class GetCaCertsCert {
   /// [createTime] Creation time of the CA cert.
   /// [expirationTime] Expiration time of the CA cert.
   /// [sha1Fingerprint] SHA1 fingerprint of the CA cert.
-  GetCaCertsCert({
+  const GetCaCertsCert({
     required this.cert,
     required this.commonName,
     required this.createTime,

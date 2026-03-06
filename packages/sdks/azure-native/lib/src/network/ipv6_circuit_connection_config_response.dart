@@ -12,7 +12,7 @@ class Ipv6CircuitConnectionConfigResponse {
   /// Creates a new [Ipv6CircuitConnectionConfigResponse].
   /// [addressPrefix] /125 IP address space to carve out customer addresses for global reach.
   /// [circuitConnectionStatus] Express Route Circuit connection state.
-  Ipv6CircuitConnectionConfigResponse({
+  const Ipv6CircuitConnectionConfigResponse({
     this.addressPrefix,
     required this.circuitConnectionStatus,
   });

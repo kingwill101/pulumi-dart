@@ -12,7 +12,7 @@ class ServiceManagedIdentityIdentity {
   /// Creates a new [ServiceManagedIdentityIdentity].
   /// [type] Type of identity being specified, currently SystemAssigned and None are allowed.
   /// [userAssignedIdentities] The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  ServiceManagedIdentityIdentity({
+  const ServiceManagedIdentityIdentity({
     required this.type,
     this.userAssignedIdentities,
   });

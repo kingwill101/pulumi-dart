@@ -33,7 +33,7 @@ class CxVersionState {
   /// [nluSettings] The NLU settings of the flow at version creation.
   /// [parent] The Flow to create an Version for.
   /// [state] The state of this version.
-  CxVersionState({
+  const CxVersionState({
     this.createTime,
     this.description,
     this.displayName,

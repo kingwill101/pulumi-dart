@@ -15,7 +15,7 @@ class GetJobTemplateArgs {
   /// [jobTemplateId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetJobTemplateArgs({
+  const GetJobTemplateArgs({
     required this.jobTemplateId,
     required this.location,
     this.project,

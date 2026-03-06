@@ -43,7 +43,7 @@ class ImageCacheState {
   /// [status] The status of the image cache.
   /// [vswitchId] The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
   /// [zoneId] The zone id to cache image.
-  ImageCacheState({
+  const ImageCacheState({
     this.containerGroupId,
     this.eipInstanceId,
     this.imageCacheName,

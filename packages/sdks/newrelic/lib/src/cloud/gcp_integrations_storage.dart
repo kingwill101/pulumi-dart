@@ -11,7 +11,7 @@ class GcpIntegrationsStorage {
   /// Creates a new [GcpIntegrationsStorage].
   /// [fetchTags] to fetch tags of the resource
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsStorage({
+  const GcpIntegrationsStorage({
     this.fetchTags,
     this.metricsPollingInterval,
   });

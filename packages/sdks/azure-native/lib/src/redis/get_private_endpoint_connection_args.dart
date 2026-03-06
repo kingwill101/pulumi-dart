@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [cacheName] The name of the Redis cache.
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.cacheName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

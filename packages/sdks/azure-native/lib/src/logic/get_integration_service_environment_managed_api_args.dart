@@ -18,7 +18,7 @@ class GetIntegrationServiceEnvironmentManagedApiArgs {
   /// [apiName] The api name.
   /// [integrationServiceEnvironmentName] The integration service environment name.
   /// [resourceGroup] The resource group name.
-  GetIntegrationServiceEnvironmentManagedApiArgs({
+  const GetIntegrationServiceEnvironmentManagedApiArgs({
     required this.apiName,
     required this.integrationServiceEnvironmentName,
     required this.resourceGroup,

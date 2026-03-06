@@ -7,7 +7,7 @@ class CloudExadataInfrastructureMaintenanceWindowDaysOfWeek {
 
   /// Creates a new [CloudExadataInfrastructureMaintenanceWindowDaysOfWeek].
   /// [name] Required.
-  CloudExadataInfrastructureMaintenanceWindowDaysOfWeek({
+  const CloudExadataInfrastructureMaintenanceWindowDaysOfWeek({
     required this.name,
   });
 

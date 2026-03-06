@@ -25,7 +25,7 @@ class EnvReferencesArgs {
   /// [name] Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
   /// [refers] Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
   /// [resourceType] The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
-  EnvReferencesArgs({
+  const EnvReferencesArgs({
     this.description,
     required this.envId,
     this.name,

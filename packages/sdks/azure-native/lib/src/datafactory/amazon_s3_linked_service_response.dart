@@ -46,7 +46,7 @@ class AmazonS3LinkedServiceResponse {
   /// [sessionToken] The session token for the S3 temporary security credential.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AmazonS3LinkedServiceResponse({
+  const AmazonS3LinkedServiceResponse({
     this.accessKeyId,
     this.annotations,
     this.authenticationType,

@@ -23,7 +23,7 @@ class UserProfileUserSettingsCodeEditorAppSettings {
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a CodeEditor app. see Custom Image below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  UserProfileUserSettingsCodeEditorAppSettings({
+  const UserProfileUserSettingsCodeEditorAppSettings({
     this.appLifecycleManagement,
     this.builtInLifecycleConfigArn,
     this.customImages,

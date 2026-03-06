@@ -18,7 +18,7 @@ class DisasterRecoveryConfigurationArgs {
   /// [disasterRecoveryConfigurationName] The name of the disaster recovery configuration to be created/updated.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  DisasterRecoveryConfigurationArgs({
+  const DisasterRecoveryConfigurationArgs({
     this.disasterRecoveryConfigurationName,
     required this.resourceGroupName,
     required this.serverName,

@@ -29,7 +29,7 @@ class GetFolderBigQueryExportResult {
   /// [name] The relative resource name of this export. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format: "organizations/{organization_id}/bigQueryExports/{export_id}" Example format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format: "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when provided in create requests.
   /// [principal] The service account that needs permission to create table and upload data to the BigQuery dataset.
   /// [updateTime] The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
-  GetFolderBigQueryExportResult({
+  const GetFolderBigQueryExportResult({
     required this.createTime,
     required this.dataset,
     required this.description,

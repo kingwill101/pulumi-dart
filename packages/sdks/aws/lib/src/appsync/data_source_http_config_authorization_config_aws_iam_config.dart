@@ -11,7 +11,7 @@ class DataSourceHttpConfigAuthorizationConfigAwsIamConfig {
   /// Creates a new [DataSourceHttpConfigAuthorizationConfigAwsIamConfig].
   /// [signingRegion] Signing Amazon Web Services Region for IAM authorization.
   /// [signingServiceName] Signing service name for IAM authorization.
-  DataSourceHttpConfigAuthorizationConfigAwsIamConfig({
+  const DataSourceHttpConfigAuthorizationConfigAwsIamConfig({
     this.signingRegion,
     this.signingServiceName,
   });

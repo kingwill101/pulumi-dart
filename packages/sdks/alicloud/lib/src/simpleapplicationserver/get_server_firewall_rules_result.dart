@@ -18,7 +18,7 @@ class GetServerFirewallRulesResult {
   /// [instanceId] Required.
   /// [outputFile] Optional.
   /// [rules] Required.
-  GetServerFirewallRulesResult({
+  const GetServerFirewallRulesResult({
     required this.id,
     required this.ids,
     required this.instanceId,

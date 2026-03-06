@@ -21,7 +21,7 @@ class GetResourceAnchorResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Oracle Resource Anchor.
-  GetResourceAnchorResult({
+  const GetResourceAnchorResult({
     required this.id,
     required this.linkedCompartmentId,
     required this.location,

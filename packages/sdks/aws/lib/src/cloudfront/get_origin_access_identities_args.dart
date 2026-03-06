@@ -12,7 +12,7 @@ class GetOriginAccessIdentitiesArgs {
 
   /// Creates a new [GetOriginAccessIdentitiesArgs].
   /// [comments] Filter origin access identities by comment.
-  GetOriginAccessIdentitiesArgs({
+  const GetOriginAccessIdentitiesArgs({
     this.comments,
   });
 

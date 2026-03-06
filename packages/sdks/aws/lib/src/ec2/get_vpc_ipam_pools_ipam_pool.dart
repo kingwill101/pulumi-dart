@@ -56,7 +56,7 @@ class GetVpcIpamPoolsIpamPool {
   /// [sourceIpamPoolId] ID of the source IPAM pool.
   /// [state] Required.
   /// [tags] Map of tags to assigned to the resource.
-  GetVpcIpamPoolsIpamPool({
+  const GetVpcIpamPoolsIpamPool({
     required this.addressFamily,
     required this.allocationDefaultNetmaskLength,
     required this.allocationMaxNetmaskLength,

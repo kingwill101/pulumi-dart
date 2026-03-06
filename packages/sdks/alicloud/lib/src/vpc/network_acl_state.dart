@@ -45,7 +45,7 @@ class NetworkAclState {
   /// [status] The state of the network ACL.
   /// [tags] The tags of this resource.
   /// [vpcId] The ID of the associated VPC.
-  NetworkAclState({
+  const NetworkAclState({
     this.createTime,
     this.description,
     this.egressAclEntries,

@@ -11,7 +11,7 @@ class AiFeatureStoreIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AiFeatureStoreIamMemberCondition({
+  const AiFeatureStoreIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

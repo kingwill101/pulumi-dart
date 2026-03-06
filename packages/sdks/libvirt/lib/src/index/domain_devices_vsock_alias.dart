@@ -8,7 +8,7 @@ class DomainDevicesVsockAlias {
 
   /// Creates a new [DomainDevicesVsockAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesVsockAlias({
+  const DomainDevicesVsockAlias({
     required this.name,
   });
 

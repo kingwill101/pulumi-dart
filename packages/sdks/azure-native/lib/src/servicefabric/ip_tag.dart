@@ -12,7 +12,7 @@ class IpTag {
   /// Creates a new [IpTag].
   /// [ipTagType] IP tag type. Example: FirstPartyUsage.
   /// [tag] IP tag associated with the public IP. Example: SQL, Storage etc.
-  IpTag({
+  const IpTag({
     required this.ipTagType,
     required this.tag,
   });

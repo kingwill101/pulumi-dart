@@ -53,7 +53,7 @@ class ConfigurationStoreArgs {
   /// [sku] The sku of the configuration store.
   /// [softDeleteRetentionInDays] The amount of time in days that the configuration store will be retained when it is soft deleted.
   /// [tags] Resource tags.
-  ConfigurationStoreArgs({
+  const ConfigurationStoreArgs({
     this.configStoreName,
     this.createMode,
     this.dataPlaneProxy,

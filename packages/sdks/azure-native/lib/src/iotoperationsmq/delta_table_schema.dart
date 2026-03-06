@@ -18,7 +18,7 @@ class DeltaTableSchema {
   /// [mapping] Delta table schema mapping.
   /// [name] Delta table schema name.
   /// [optional] Delta table schema optional.
-  DeltaTableSchema({
+  const DeltaTableSchema({
     required this.format,
     required this.mapping,
     required this.name,

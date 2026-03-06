@@ -13,7 +13,7 @@ class EncryptionKey {
   /// Creates a new [EncryptionKey].
   /// [kmsKeyName] The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
   /// [type] Type.
-  EncryptionKey({
+  const EncryptionKey({
     this.kmsKeyName,
     this.type,
   });

@@ -24,7 +24,7 @@ class ServerNetworkArgs {
   /// [networkId] ID of the Network to attach the Server to. Using `subnet_id` is preferred. Required if `subnet_id` is not set. If `subnet_id` or `ip` are not set, the Server will be attached to the last subnet (ordered by `ip_range`).
   /// [serverId] ID of the Server.
   /// [subnetId] ID of the Subnet to attach the Server to. Required if `network_id` is not set.
-  ServerNetworkArgs({
+  const ServerNetworkArgs({
     this.aliasIps,
     this.ip,
     this.networkId,

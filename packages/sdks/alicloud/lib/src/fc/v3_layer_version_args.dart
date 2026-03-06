@@ -31,7 +31,7 @@ class V3LayerVersionArgs {
   /// [layerName] Name of the layer
   /// [license] Layer License Agreement
   /// [public] Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
-  V3LayerVersionArgs({
+  const V3LayerVersionArgs({
     this.acl,
     this.code,
     this.compatibleRuntimes,

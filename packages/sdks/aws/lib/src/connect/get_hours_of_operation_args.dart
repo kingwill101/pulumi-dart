@@ -26,7 +26,7 @@ class GetHoursOfOperationArgs {
   /// [name] Returns information on a specific Hours of Operation by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the Hours of Operation.
-  GetHoursOfOperationArgs({
+  const GetHoursOfOperationArgs({
     this.hoursOfOperationId,
     required this.instanceId,
     this.name,

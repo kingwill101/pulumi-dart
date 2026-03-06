@@ -14,7 +14,7 @@ class GetAccessPolicyAssignmentResult {
   /// [managedRedisName] Required.
   /// [objectId] Required.
   /// [resourceGroupName] Required.
-  GetAccessPolicyAssignmentResult({
+  const GetAccessPolicyAssignmentResult({
     required this.id,
     required this.managedRedisName,
     required this.objectId,

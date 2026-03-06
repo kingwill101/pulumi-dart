@@ -24,7 +24,7 @@ class GetInstancesResult {
   /// [lang] Optional.
   /// [outputFile] Optional.
   /// [userClientIp] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.domainType,
     required this.id,
     required this.ids,

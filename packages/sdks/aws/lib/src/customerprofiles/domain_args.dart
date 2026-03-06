@@ -37,7 +37,7 @@ class DomainArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleBasedMatching] A block that specifies the process of matching duplicate profiles using the Rule-Based matching. Documented below.
   /// [tags] Tags to apply to the domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DomainArgs({
+  const DomainArgs({
     this.deadLetterQueueUrl,
     this.defaultEncryptionKey,
     required this.defaultExpirationDays,

@@ -17,7 +17,7 @@ class GetQueueCloudtasksV2beta2Args {
   /// [project] Optional.
   /// [queueId] Required.
   /// [readMask] Optional.
-  GetQueueCloudtasksV2beta2Args({
+  const GetQueueCloudtasksV2beta2Args({
     required this.location,
     this.project,
     required this.queueId,

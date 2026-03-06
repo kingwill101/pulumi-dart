@@ -9,7 +9,7 @@ class IapTestServiceAccountInfoWebsecurityscannerV1beta {
 
   /// Creates a new [IapTestServiceAccountInfoWebsecurityscannerV1beta].
   /// [targetAudienceClientId] Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
-  IapTestServiceAccountInfoWebsecurityscannerV1beta({
+  const IapTestServiceAccountInfoWebsecurityscannerV1beta({
     required this.targetAudienceClientId,
   });
 

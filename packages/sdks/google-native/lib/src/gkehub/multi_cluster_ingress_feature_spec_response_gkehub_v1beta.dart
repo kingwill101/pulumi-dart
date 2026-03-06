@@ -12,7 +12,7 @@ class MultiClusterIngressFeatureSpecResponseGkehubV1beta {
   /// Creates a new [MultiClusterIngressFeatureSpecResponseGkehubV1beta].
   /// [billing] Deprecated: This field will be ignored and should not be set. Customer's billing structure.
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-  MultiClusterIngressFeatureSpecResponseGkehubV1beta({
+  const MultiClusterIngressFeatureSpecResponseGkehubV1beta({
     required this.billing,
     required this.configMembership,
   });

@@ -24,7 +24,7 @@ class SslConfiguration {
   /// [leafDomainLabel] Leaf domain label of public endpoint
   /// [overwriteExistingDomain] Indicates whether to overwrite existing domain label.
   /// [status] Enable or disable ssl for scoring
-  SslConfiguration({
+  const SslConfiguration({
     this.cert,
     this.cname,
     this.key,

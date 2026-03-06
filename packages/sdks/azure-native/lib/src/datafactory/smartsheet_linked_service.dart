@@ -34,7 +34,7 @@ class SmartsheetLinkedService {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  SmartsheetLinkedService({
+  const SmartsheetLinkedService({
     this.annotations,
     required this.apiToken,
     this.connectVia,

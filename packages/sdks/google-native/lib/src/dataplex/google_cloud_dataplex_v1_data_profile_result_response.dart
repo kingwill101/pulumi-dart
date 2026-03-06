@@ -21,7 +21,7 @@ class GoogleCloudDataplexV1DataProfileResultResponse {
   /// [profile] The profile information per field.
   /// [rowCount] The count of rows scanned.
   /// [scannedData] The data scanned for this result.
-  GoogleCloudDataplexV1DataProfileResultResponse({
+  const GoogleCloudDataplexV1DataProfileResultResponse({
     required this.postScanActionsResult,
     required this.profile,
     required this.rowCount,

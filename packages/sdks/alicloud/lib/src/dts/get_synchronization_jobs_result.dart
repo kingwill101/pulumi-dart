@@ -22,7 +22,7 @@ class GetSynchronizationJobsResult {
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetSynchronizationJobsResult({
+  const GetSynchronizationJobsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

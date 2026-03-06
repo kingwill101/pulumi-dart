@@ -18,7 +18,7 @@ class ExpressRouteConnectionRouting {
   /// [inboundRouteMapId] The ID of the Route Map associated with this Express Route Connection for inbound routes.
   /// [outboundRouteMapId] The ID of the Route Map associated with this Express Route Connection for outbound routes.
   /// [propagatedRouteTable] A `propagated_route_table` block as defined below.
-  ExpressRouteConnectionRouting({
+  const ExpressRouteConnectionRouting({
     this.associatedRouteTableId,
     this.inboundRouteMapId,
     this.outboundRouteMapId,

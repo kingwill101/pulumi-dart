@@ -28,7 +28,7 @@ class StorageSpaceRetrieveArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageSpacesName] Parameter for the name of the storage object
   /// [tags] Resource tags.
-  StorageSpaceRetrieveArgs({
+  const StorageSpaceRetrieveArgs({
     this.extendedLocation,
     this.location,
     this.properties,

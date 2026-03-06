@@ -25,7 +25,7 @@ class EndpointArgs {
   /// [securityGroupId] The ID of the Security Group.
   /// [vpcId] The VPC ID.
   /// [vpcRegionId] The Region of the VPC.
-  EndpointArgs({
+  const EndpointArgs({
     required this.endpointName,
     required this.ipConfigs,
     required this.securityGroupId,

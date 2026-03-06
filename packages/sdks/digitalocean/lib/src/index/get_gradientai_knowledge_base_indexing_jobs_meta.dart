@@ -14,7 +14,7 @@ class GetGradientaiKnowledgeBaseIndexingJobsMeta {
   /// [page] Current page number
   /// [pages] Total number of pages
   /// [total] Total number of items
-  GetGradientaiKnowledgeBaseIndexingJobsMeta({
+  const GetGradientaiKnowledgeBaseIndexingJobsMeta({
     required this.page,
     required this.pages,
     required this.total,

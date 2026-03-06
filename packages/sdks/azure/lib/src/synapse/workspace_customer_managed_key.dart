@@ -14,7 +14,7 @@ class WorkspaceCustomerManagedKey {
   /// [keyName] An identifier for the key. Name needs to match the name of the key used with the `azure.synapse.WorkspaceKey` resource. Defaults to "cmk" if not specified.
   /// [keyVersionlessId] The Azure Key Vault Key Versionless ID to be used as the Customer Managed Key (CMK) for double encryption (e.g. `https://example-keyvault.vault.azure.net/type/cmk/`).
   /// [userAssignedIdentityId] The User Assigned Identity ID to be used for accessing the Customer Managed Key for encryption.
-  WorkspaceCustomerManagedKey({
+  const WorkspaceCustomerManagedKey({
     this.keyName,
     required this.keyVersionlessId,
     this.userAssignedIdentityId,

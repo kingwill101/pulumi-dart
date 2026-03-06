@@ -9,7 +9,7 @@ class WorkspaceConnectionManagedIdentity {
   /// Creates a new [WorkspaceConnectionManagedIdentity].
   /// [clientId] Optional.
   /// [resourceId] Optional.
-  WorkspaceConnectionManagedIdentity({
+  const WorkspaceConnectionManagedIdentity({
     this.clientId,
     this.resourceId,
   });

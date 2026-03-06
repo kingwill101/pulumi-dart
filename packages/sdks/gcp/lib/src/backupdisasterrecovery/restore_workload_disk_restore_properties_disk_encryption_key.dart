@@ -17,7 +17,7 @@ class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
   /// [kmsKeyServiceAccount] (Optional)
   /// [rawKey] (Optional)
   /// [rsaEncryptedKey] (Optional)
-  RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey({
+  const RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey({
     this.kmsKeyName,
     this.kmsKeyServiceAccount,
     this.rawKey,

@@ -9,7 +9,7 @@ class InstanceIpv6PrefixResponse {
 
   /// Creates a new [InstanceIpv6PrefixResponse].
   /// [ipv6Prefix] &lt;p&gt;One or more IPv6 prefixes assigned to the network interface.&lt;/p&gt;
-  InstanceIpv6PrefixResponse({
+  const InstanceIpv6PrefixResponse({
     this.ipv6Prefix,
   });
 

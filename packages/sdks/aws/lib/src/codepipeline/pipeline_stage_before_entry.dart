@@ -9,7 +9,7 @@ class PipelineStageBeforeEntry {
 
   /// Creates a new [PipelineStageBeforeEntry].
   /// [condition] The conditions that are configured as entry condition. Defined as a `condition` block below.
-  PipelineStageBeforeEntry({
+  const PipelineStageBeforeEntry({
     required this.condition,
   });
 

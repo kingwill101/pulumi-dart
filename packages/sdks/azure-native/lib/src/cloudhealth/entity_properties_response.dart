@@ -49,7 +49,7 @@ class EntityPropertiesResponse {
   /// [labels] Optional set of labels (key-value pairs)
   /// [provisioningState] The status of the last operation.
   /// [signals] Signal groups which are assigned to this entity
-  EntityPropertiesResponse({
+  const EntityPropertiesResponse({
     this.alerts,
     this.canvasPosition,
     required this.deletionDate,

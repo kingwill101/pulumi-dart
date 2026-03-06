@@ -18,7 +18,7 @@ class GetAutonomousDatabasesArgs {
   /// Creates a new [GetAutonomousDatabasesArgs].
   /// [location] The location of the resource.
   /// [project] The project to which the resource belongs. If it
-  GetAutonomousDatabasesArgs({
+  const GetAutonomousDatabasesArgs({
     required this.location,
     this.project,
   });

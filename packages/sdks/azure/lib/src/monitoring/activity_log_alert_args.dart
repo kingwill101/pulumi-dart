@@ -38,7 +38,7 @@ class ActivityLogAlertArgs {
   /// [resourceGroupName] The name of the resource group in which to create the activity log alert instance. Changing this forces a new resource to be created.
   /// [scopes] The Scope at which the Activity Log should be applied. A list of strings which could be a resource group , or a subscription, or a resource ID (such as a Storage Account).
   /// [tags] A mapping of tags to assign to the resource.
-  ActivityLogAlertArgs({
+  const ActivityLogAlertArgs({
     this.actions,
     required this.criteria,
     this.description,

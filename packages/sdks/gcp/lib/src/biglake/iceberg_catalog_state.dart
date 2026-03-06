@@ -42,7 +42,7 @@ class IcebergCatalogState {
   /// [replicas] Output only. The replicas for the catalog metadata.
   /// [storageRegions] Output only. The GCP region(s) where the physical metadata for the tables is stored, e.g. `us-central1`, `nam4` or `us`. This will contain one value for all locations, except for the catalogs that are configured to use custom dual region buckets.
   /// [updateTime] Output only. The last modification time of the IcebergCatalog.
-  IcebergCatalogState({
+  const IcebergCatalogState({
     this.biglakeServiceAccount,
     this.catalogType,
     this.createTime,

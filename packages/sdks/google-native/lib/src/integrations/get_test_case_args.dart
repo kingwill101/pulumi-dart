@@ -19,7 +19,7 @@ class GetTestCaseArgs {
   /// [project] Optional.
   /// [testCaseId] Required.
   /// [versionId] Required.
-  GetTestCaseArgs({
+  const GetTestCaseArgs({
     required this.integrationId,
     required this.location,
     this.project,

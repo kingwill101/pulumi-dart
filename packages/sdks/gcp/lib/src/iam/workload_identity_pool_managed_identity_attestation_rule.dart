@@ -9,7 +9,7 @@ class WorkloadIdentityPoolManagedIdentityAttestationRule {
 
   /// Creates a new [WorkloadIdentityPoolManagedIdentityAttestationRule].
   /// [googleCloudResource] A single workload operating on Google Cloud. For example:
-  WorkloadIdentityPoolManagedIdentityAttestationRule({
+  const WorkloadIdentityPoolManagedIdentityAttestationRule({
     required this.googleCloudResource,
   });
 

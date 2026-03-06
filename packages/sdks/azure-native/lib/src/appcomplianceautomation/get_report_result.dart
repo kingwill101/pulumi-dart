@@ -69,7 +69,7 @@ class GetReportResult {
   /// [timeZone] Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
   /// [triggerTime] Report collection trigger time.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetReportResult({
+  const GetReportResult({
     required this.azureApiVersion,
     required this.certRecords,
     required this.complianceStatus,

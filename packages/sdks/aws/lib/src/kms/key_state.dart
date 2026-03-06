@@ -66,7 +66,7 @@ class KeyState {
   /// [tags] A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [xksKeyId] Identifies the external key that serves as key material for the KMS key in an external key store.
-  KeyState({
+  const KeyState({
     this.arn,
     this.bypassPolicyLockoutSafetyCheck,
     this.customKeyStoreId,

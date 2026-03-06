@@ -12,7 +12,7 @@ class Hub {
   /// Creates a new [Hub].
   /// [resourceId] Resource Id.
   /// [resourceType] Resource Type.
-  Hub({
+  const Hub({
     this.resourceId,
     this.resourceType,
   });

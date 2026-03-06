@@ -14,7 +14,7 @@ class DistributionTenantManagedCertificateRequest {
   /// [certificateTransparencyLoggingPreference] Certificate transparency logging preference. Valid values: `enabled`, `disabled`.
   /// [primaryDomainName] Primary domain name for the certificate.
   /// [validationTokenHost] Host for validation token. Valid values: `cloudfront`, `domain`.
-  DistributionTenantManagedCertificateRequest({
+  const DistributionTenantManagedCertificateRequest({
     this.certificateTransparencyLoggingPreference,
     this.primaryDomainName,
     this.validationTokenHost,

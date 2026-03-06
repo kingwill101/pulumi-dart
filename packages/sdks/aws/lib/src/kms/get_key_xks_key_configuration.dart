@@ -8,7 +8,7 @@ class GetKeyXksKeyConfiguration {
 
   /// Creates a new [GetKeyXksKeyConfiguration].
   /// [id] The globally unique identifier for the key
-  GetKeyXksKeyConfiguration({
+  const GetKeyXksKeyConfiguration({
     required this.id,
   });
 

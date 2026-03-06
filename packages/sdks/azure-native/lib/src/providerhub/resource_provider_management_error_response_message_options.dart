@@ -9,7 +9,7 @@ class ResourceProviderManagementErrorResponseMessageOptions {
 
   /// Creates a new [ResourceProviderManagementErrorResponseMessageOptions].
   /// [serverFailureResponseMessageType] Type of server failure response message.
-  ResourceProviderManagementErrorResponseMessageOptions({
+  const ResourceProviderManagementErrorResponseMessageOptions({
     this.serverFailureResponseMessageType,
   });
 

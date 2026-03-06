@@ -23,7 +23,7 @@ class GetSharedTargetsResult {
   /// [resourceShareId] The resource shared ID of resource manager.
   /// [status] The status of shared target.
   /// [targets] A list of Resource Manager Shared Targets. Each element contains the following attributes:
-  GetSharedTargetsResult({
+  const GetSharedTargetsResult({
     required this.id,
     required this.ids,
     this.outputFile,

@@ -14,7 +14,7 @@ class ClusterNode {
   /// [availabilityZone] Optional.
   /// [id] Optional.
   /// [port] The port used by the configuration endpoint
-  ClusterNode({
+  const ClusterNode({
     this.address,
     this.availabilityZone,
     this.id,

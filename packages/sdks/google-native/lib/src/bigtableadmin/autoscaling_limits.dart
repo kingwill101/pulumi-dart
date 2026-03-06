@@ -12,7 +12,7 @@ class AutoscalingLimits {
   /// Creates a new [AutoscalingLimits].
   /// [maxServeNodes] Maximum number of nodes to scale up to.
   /// [minServeNodes] Minimum number of nodes to scale down to.
-  AutoscalingLimits({
+  const AutoscalingLimits({
     required this.maxServeNodes,
     required this.minServeNodes,
   });

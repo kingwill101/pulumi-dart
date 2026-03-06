@@ -9,7 +9,7 @@ class ConnectionMonitorEndpointScopeItem {
 
   /// Creates a new [ConnectionMonitorEndpointScopeItem].
   /// [address] The address of the endpoint item. Supported types are IPv4/IPv6 subnet mask or IPv4/IPv6 IP address.
-  ConnectionMonitorEndpointScopeItem({
+  const ConnectionMonitorEndpointScopeItem({
     this.address,
   });
 

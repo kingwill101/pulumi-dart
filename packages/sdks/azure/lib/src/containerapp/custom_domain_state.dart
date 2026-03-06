@@ -27,7 +27,7 @@ class CustomDomainState {
   /// [containerAppEnvironmentManagedCertificateId] The ID of the Container App Environment Managed Certificate to use.
   /// [containerAppId] The ID of the Container App to which this Custom Domain should be bound. Changing this forces a new resource to be created.
   /// [name] The fully qualified name of the Custom Domain. Must be the CN or a named SAN in the certificate specified by the `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
-  CustomDomainState({
+  const CustomDomainState({
     this.certificateBindingType,
     this.containerAppEnvironmentCertificateId,
     this.containerAppEnvironmentManagedCertificateId,

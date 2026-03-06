@@ -8,7 +8,7 @@ class OneDashboardPageWidgetLineTooltip {
 
   /// Creates a new [OneDashboardPageWidgetLineTooltip].
   /// [mode] (Required) The tooltip display mode. Valid values are:
-  OneDashboardPageWidgetLineTooltip({
+  const OneDashboardPageWidgetLineTooltip({
     required this.mode,
   });
 

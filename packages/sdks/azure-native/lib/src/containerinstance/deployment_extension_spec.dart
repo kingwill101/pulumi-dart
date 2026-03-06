@@ -21,7 +21,7 @@ class DeploymentExtensionSpec {
   /// [protectedSettings] Protected settings for the extension.
   /// [settings] Settings for the extension.
   /// [version] Version of the extension being used.
-  DeploymentExtensionSpec({
+  const DeploymentExtensionSpec({
     required this.extensionType,
     required this.name,
     this.protectedSettings,

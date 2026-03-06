@@ -52,7 +52,7 @@ class DomainCpu {
   /// [numa] Configures NUMA (Non-Uniform Memory Access) settings for balancing memory allocation.
   /// [topology] Configures the CPU topology for the domain, specifying the physical arrangement of CPUs.
   /// [vendor] Specifies the vendor name of the CPU model being used for the domain.
-  DomainCpu({
+  const DomainCpu({
     this.cache,
     this.check,
     this.deprecatedFeatures,

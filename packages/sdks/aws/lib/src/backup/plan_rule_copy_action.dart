@@ -12,7 +12,7 @@ class PlanRuleCopyAction {
   /// Creates a new [PlanRuleCopyAction].
   /// [destinationVaultArn] An Amazon Resource Name (ARN) that uniquely identifies the destination backup vault for the copied backup.
   /// [lifecycle] The lifecycle defines when a protected resource is copied over to a backup vault and when it expires.  Fields documented above.
-  PlanRuleCopyAction({
+  const PlanRuleCopyAction({
     required this.destinationVaultArn,
     this.lifecycle,
   });

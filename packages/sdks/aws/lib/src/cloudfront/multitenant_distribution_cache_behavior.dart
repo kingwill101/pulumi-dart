@@ -48,7 +48,7 @@ class MultitenantDistributionCacheBehavior {
   /// [targetOriginId] Value of ID for the origin that you want CloudFront to route requests to when a request matches the path pattern either for a cache behavior or for the default cache behavior.
   /// [trustedKeyGroups] List of key group IDs that CloudFront can use to validate signed URLs or signed cookies.
   /// [viewerProtocolPolicy] Use this element to specify the protocol that users can use to access the files in the origin specified by TargetOriginId when a request matches the path pattern in PathPattern. One of `allow-all`, `https-only`, or `redirect-to-https`.
-  MultitenantDistributionCacheBehavior({
+  const MultitenantDistributionCacheBehavior({
     required this.allowedMethods,
     this.cachePolicyId,
     this.compress,

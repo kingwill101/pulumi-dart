@@ -13,7 +13,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema {
   /// Creates a new [StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema].
   /// [schema] Schema name.
   /// [tables] Tables in the schema.
-  StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema({
+  const StreamSourceConfigSpannerSourceConfigExcludeObjectsSchema({
     required this.schema,
     this.tables,
   });

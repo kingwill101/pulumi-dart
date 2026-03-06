@@ -29,7 +29,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfiguration {
   /// [multiMeasureMappings] Configuration block for multi-measure mappings. Only one of `mixed_measure_mappings` or `multi_measure_mappings` can be provided. `multi_measure_mappings` can be used to ingest data as multi measures in the derived table. See below.
   /// [tableName] Name of Timestream table that the query result will be written to. The table should be within the same database that is provided in Timestream configuration.
   /// [timeColumn] Column from query result that should be used as the time column in destination table. Column type for this should be TIMESTAMP.
-  ScheduledQueryTargetConfigurationTimestreamConfiguration({
+  const ScheduledQueryTargetConfigurationTimestreamConfiguration({
     required this.databaseName,
     required this.dimensionMappings,
     this.measureNameColumn,

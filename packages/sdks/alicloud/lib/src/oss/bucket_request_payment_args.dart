@@ -15,7 +15,7 @@ class BucketRequestPaymentArgs {
   /// Creates a new [BucketRequestPaymentArgs].
   /// [bucket] The name of the bucket.
   /// [payer] The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
-  BucketRequestPaymentArgs({
+  const BucketRequestPaymentArgs({
     required this.bucket,
     this.payer,
   });

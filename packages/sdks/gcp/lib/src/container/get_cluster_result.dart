@@ -240,7 +240,7 @@ class GetClusterResult {
   /// [verticalPodAutoscalings] Required.
   /// [workloadAltsConfigs] Required.
   /// [workloadIdentityConfigs] Required.
-  GetClusterResult({
+  const GetClusterResult({
     required this.addonsConfigs,
     required this.allowNetAdmin,
     required this.anonymousAuthenticationConfigs,

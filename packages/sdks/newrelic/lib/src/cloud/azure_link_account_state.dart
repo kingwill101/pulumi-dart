@@ -24,7 +24,7 @@ class AzureLinkAccountState {
   /// [name] The name of the application in New Relic APM.
   /// [subscriptionId] Subscription ID of the Azure cloud account.
   /// [tenantId] Tenant ID of the Azure cloud account.
-  AzureLinkAccountState({
+  const AzureLinkAccountState({
     this.accountId,
     this.applicationId,
     this.clientSecret,

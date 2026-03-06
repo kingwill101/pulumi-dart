@@ -20,7 +20,7 @@ class GetUsersResult {
   /// [keyword] Optional.
   /// [outputFile] Optional.
   /// [users] Required.
-  GetUsersResult({
+  const GetUsersResult({
     this.enableDetails,
     required this.id,
     required this.ids,

@@ -11,7 +11,7 @@ class VoiceConnectorStreamingMediaInsightsConfiguration {
   /// Creates a new [VoiceConnectorStreamingMediaInsightsConfiguration].
   /// [configurationArn] The media insights configuration that will be invoked by the Voice Connector.
   /// [disabled] When `true`, the media insights configuration is not enabled. Defaults to `false`.
-  VoiceConnectorStreamingMediaInsightsConfiguration({
+  const VoiceConnectorStreamingMediaInsightsConfiguration({
     this.configurationArn,
     this.disabled,
   });

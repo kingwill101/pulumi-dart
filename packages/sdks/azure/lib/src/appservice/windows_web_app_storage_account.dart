@@ -23,7 +23,7 @@ class WindowsWebAppStorageAccount {
   /// [name] The name which should be used for this TODO.
   /// [shareName] The Name of the File Share or Container Name for Blob storage.
   /// [type] The Azure Storage Type. Possible values include `AzureFiles` and `AzureBlob`
-  WindowsWebAppStorageAccount({
+  const WindowsWebAppStorageAccount({
     required this.accessKey,
     required this.accountName,
     this.mountPath,

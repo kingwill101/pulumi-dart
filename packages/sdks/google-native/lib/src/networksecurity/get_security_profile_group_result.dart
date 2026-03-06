@@ -26,7 +26,7 @@ class GetSecurityProfileGroupResult {
   /// [name] Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
   /// [threatPreventionProfile] Optional. Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   /// [updateTime] Last resource update timestamp.
-  GetSecurityProfileGroupResult({
+  const GetSecurityProfileGroupResult({
     required this.createTime,
     required this.description,
     required this.etag,

@@ -20,7 +20,7 @@ class PrivateEndpointConnectionPropertiesResponse {
   /// [privateEndpoint] Represents a Private Endpoint that is connected to Notification Hubs namespace using Private Endpoint Connection.
   /// [privateLinkServiceConnectionState] State of the Private Link Service connection.
   /// [provisioningState] State of Private Endpoint Connection.
-  PrivateEndpointConnectionPropertiesResponse({
+  const PrivateEndpointConnectionPropertiesResponse({
     required this.groupIds,
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,

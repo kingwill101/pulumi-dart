@@ -17,7 +17,7 @@ class RoleState {
   /// [domainId] The domain the role belongs to.
   /// [name] The name of the role.
   /// [region] The region in which to obtain the V3 Keystone client.
-  RoleState({
+  const RoleState({
     this.domainId,
     this.name,
     this.region,

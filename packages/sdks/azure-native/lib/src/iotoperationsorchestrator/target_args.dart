@@ -43,7 +43,7 @@ class TargetArgs {
   /// [tags] Resource tags.
   /// [topologies] Defines the device topology for a target or instance.
   /// [version] Version of the particular resource.
-  TargetArgs({
+  const TargetArgs({
     this.components,
     required this.extendedLocation,
     this.location,

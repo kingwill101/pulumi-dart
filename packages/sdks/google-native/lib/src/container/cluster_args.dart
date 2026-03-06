@@ -212,7 +212,7 @@ class ClusterArgs {
   /// [verticalPodAutoscaling] Cluster-level Vertical Pod Autoscaling configuration.
   /// [workloadIdentityConfig] Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
   /// [zone] Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
-  ClusterArgs({
+  const ClusterArgs({
     this.addonsConfig,
     this.authenticatorGroupsConfig,
     this.autopilot,

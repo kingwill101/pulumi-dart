@@ -25,7 +25,7 @@ class GetTargetGroupArgs {
   /// [name] Unique name of the target group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match a pair on the desired target group.
-  GetTargetGroupArgs({
+  const GetTargetGroupArgs({
     this.arn,
     this.loadBalancingAnomalyMitigation,
     this.name,

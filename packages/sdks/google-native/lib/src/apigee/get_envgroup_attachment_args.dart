@@ -15,7 +15,7 @@ class GetEnvgroupAttachmentArgs {
   /// [attachmentId] Required.
   /// [envgroupId] Required.
   /// [organizationId] Required.
-  GetEnvgroupAttachmentArgs({
+  const GetEnvgroupAttachmentArgs({
     required this.attachmentId,
     required this.envgroupId,
     required this.organizationId,

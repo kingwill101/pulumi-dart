@@ -21,7 +21,7 @@ class GetWebAppHybridConnectionArgs {
   /// [namespaceName] The namespace for this hybrid connection.
   /// [relayName] The relay name for this hybrid connection.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppHybridConnectionArgs({
+  const GetWebAppHybridConnectionArgs({
     required this.name,
     required this.namespaceName,
     required this.relayName,

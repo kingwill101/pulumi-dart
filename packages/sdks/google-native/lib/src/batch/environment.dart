@@ -16,7 +16,7 @@ class Environment {
   /// [encryptedVariables] An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
   /// [secretVariables] A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
   /// [variables] A map of environment variable names to values.
-  Environment({
+  const Environment({
     this.encryptedVariables,
     this.secretVariables,
     this.variables,

@@ -31,7 +31,7 @@ class ParticipantArgs {
   /// [project] Optional.
   /// [role] Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
   /// [sipRecordingMediaLabel] Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
-  ParticipantArgs({
+  const ParticipantArgs({
     required this.conversationId,
     this.documentsMetadataFilters,
     this.location,

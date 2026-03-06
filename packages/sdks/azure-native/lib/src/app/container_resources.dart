@@ -15,7 +15,7 @@ class ContainerResources {
   /// [cpu] Required CPU in cores, e.g. 0.5
   /// [gpu] Required GPU in cores for GPU based app, e.g. 1.0
   /// [memory] Required memory, e.g. "250Mb"
-  ContainerResources({
+  const ContainerResources({
     this.cpu,
     this.gpu,
     this.memory,

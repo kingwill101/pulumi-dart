@@ -9,7 +9,7 @@ class AaaaRecordResponse {
 
   /// Creates a new [AaaaRecordResponse].
   /// [ipv6Address] The IPv6 address of this AAAA record.
-  AaaaRecordResponse({
+  const AaaaRecordResponse({
     this.ipv6Address,
   });
 

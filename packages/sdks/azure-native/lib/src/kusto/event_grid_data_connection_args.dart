@@ -61,7 +61,7 @@ class EventGridDataConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageAccountResourceId] The resource ID of the storage account where the data resides.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
-  EventGridDataConnectionArgs({
+  const EventGridDataConnectionArgs({
     this.blobStorageEventType,
     required this.clusterName,
     required this.consumerGroup,

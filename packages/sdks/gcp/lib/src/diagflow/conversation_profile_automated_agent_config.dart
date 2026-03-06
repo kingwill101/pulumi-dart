@@ -12,7 +12,7 @@ class ConversationProfileAutomatedAgentConfig {
   /// Creates a new [ConversationProfileAutomatedAgentConfig].
   /// [agent] ID of the Dialogflow agent environment to use.
   /// [sessionTtl] Configure lifetime of the Dialogflow session.
-  ConversationProfileAutomatedAgentConfig({
+  const ConversationProfileAutomatedAgentConfig({
     required this.agent,
     this.sessionTtl,
   });

@@ -14,7 +14,7 @@ class GetLkeClusterPoolNode {
   /// [id] The LKE Cluster's ID.
   /// [instanceId] The ID of the underlying Linode instance.
   /// [status] The status of the node. (`ready`, `not_ready`)
-  GetLkeClusterPoolNode({
+  const GetLkeClusterPoolNode({
     required this.id,
     required this.instanceId,
     required this.status,

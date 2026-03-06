@@ -15,7 +15,7 @@ class GetRegionInstanceGroupManagerVersion {
   /// [instanceTemplate] The full URL to an instance template from which all new instances of this version will be created.
   /// [name] The name of the instance group. Either `name` or `self_link` must be provided.
   /// [targetSizes] The number of instances calculated as a fixed number or a percentage depending on the settings.
-  GetRegionInstanceGroupManagerVersion({
+  const GetRegionInstanceGroupManagerVersion({
     required this.instanceTemplate,
     required this.name,
     required this.targetSizes,

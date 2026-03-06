@@ -12,7 +12,7 @@ class ManagementGroupPathElementResponse {
   /// Creates a new [ManagementGroupPathElementResponse].
   /// [displayName] The friendly name of the group.
   /// [name] The name of the group.
-  ManagementGroupPathElementResponse({
+  const ManagementGroupPathElementResponse({
     this.displayName,
     this.name,
   });

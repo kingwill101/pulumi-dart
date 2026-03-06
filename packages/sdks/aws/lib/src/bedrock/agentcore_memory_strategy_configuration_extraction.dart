@@ -11,7 +11,7 @@ class AgentcoreMemoryStrategyConfigurationExtraction {
   /// Creates a new [AgentcoreMemoryStrategyConfigurationExtraction].
   /// [appendToPrompt] Additional text to append to the model prompt for extraction processing.
   /// [modelId] ID of the foundation model to use for extraction processing.
-  AgentcoreMemoryStrategyConfigurationExtraction({
+  const AgentcoreMemoryStrategyConfigurationExtraction({
     required this.appendToPrompt,
     required this.modelId,
   });

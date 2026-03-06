@@ -11,7 +11,7 @@ class Powershell72ModuleModuleLinkHash {
   /// Creates a new [Powershell72ModuleModuleLinkHash].
   /// [algorithm] Specifies the algorithm used for the hash content.
   /// [value] The hash value of the content.
-  Powershell72ModuleModuleLinkHash({
+  const Powershell72ModuleModuleLinkHash({
     required this.algorithm,
     required this.value,
   });

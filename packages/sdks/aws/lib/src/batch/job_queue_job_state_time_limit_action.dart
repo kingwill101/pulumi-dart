@@ -17,7 +17,7 @@ class JobQueueJobStateTimeLimitAction {
   /// [maxTimeSeconds] The approximate amount of time, in seconds, that must pass with the job in the specified state before the action is taken. Valid values include integers between `600` & `86400`
   /// [reason] The reason to log for the action being taken.
   /// [state] The state of the job needed to trigger the action. Valid values include `"RUNNABLE"`.
-  JobQueueJobStateTimeLimitAction({
+  const JobQueueJobStateTimeLimitAction({
     required this.action,
     required this.maxTimeSeconds,
     required this.reason,

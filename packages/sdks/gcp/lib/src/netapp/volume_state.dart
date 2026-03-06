@@ -180,7 +180,7 @@ class VolumeState {
   /// [unixPermissions] Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
   /// [usedGib] Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
   /// [zone] Specifies the active zone for regional volume.
-  VolumeState({
+  const VolumeState({
     this.activeDirectory,
     this.backupConfig,
     this.blockDevices,

@@ -21,7 +21,7 @@ class GetInboundNatRuleArgs {
   /// [inboundNatRuleName] The name of the inbound NAT rule.
   /// [loadBalancerName] The name of the load balancer.
   /// [resourceGroupName] The name of the resource group.
-  GetInboundNatRuleArgs({
+  const GetInboundNatRuleArgs({
     this.expand,
     required this.inboundNatRuleName,
     required this.loadBalancerName,

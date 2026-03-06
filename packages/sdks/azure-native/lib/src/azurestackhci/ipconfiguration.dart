@@ -13,7 +13,7 @@ class IPConfiguration {
   /// Creates a new [IPConfiguration].
   /// [name] Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [properties] InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
-  IPConfiguration({
+  const IPConfiguration({
     this.name,
     this.properties,
   });

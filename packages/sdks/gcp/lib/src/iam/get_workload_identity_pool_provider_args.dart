@@ -23,7 +23,7 @@ class GetWorkloadIdentityPoolProviderArgs {
   /// [project] The project in which the resource belongs. If it
   /// [workloadIdentityPoolId] The id of the pool which is the
   /// [workloadIdentityPoolProviderId] The id of the provider which is the
-  GetWorkloadIdentityPoolProviderArgs({
+  const GetWorkloadIdentityPoolProviderArgs({
     this.project,
     required this.workloadIdentityPoolId,
     required this.workloadIdentityPoolProviderId,

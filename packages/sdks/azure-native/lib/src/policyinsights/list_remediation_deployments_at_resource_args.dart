@@ -18,7 +18,7 @@ class ListRemediationDeploymentsAtResourceArgs {
   /// [remediationName] The name of the remediation.
   /// [resourceId] Resource ID.
   /// [top] Maximum number of records to return.
-  ListRemediationDeploymentsAtResourceArgs({
+  const ListRemediationDeploymentsAtResourceArgs({
     required this.remediationName,
     required this.resourceId,
     this.top,

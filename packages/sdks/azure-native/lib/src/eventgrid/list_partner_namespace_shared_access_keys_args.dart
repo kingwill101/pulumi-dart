@@ -15,7 +15,7 @@ class ListPartnerNamespaceSharedAccessKeysArgs {
   /// Creates a new [ListPartnerNamespaceSharedAccessKeysArgs].
   /// [partnerNamespaceName] Name of the partner namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  ListPartnerNamespaceSharedAccessKeysArgs({
+  const ListPartnerNamespaceSharedAccessKeysArgs({
     required this.partnerNamespaceName,
     required this.resourceGroupName,
   });

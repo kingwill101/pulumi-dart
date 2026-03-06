@@ -29,7 +29,7 @@ class ApiRequestParameter {
   /// [nameService] Backend service's parameter name.
   /// [required] Parameter required or not; values: REQUIRED and OPTIONAL.
   /// [type] Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
-  ApiRequestParameter({
+  const ApiRequestParameter({
     this.defaultValue,
     this.description,
     required this.in_,

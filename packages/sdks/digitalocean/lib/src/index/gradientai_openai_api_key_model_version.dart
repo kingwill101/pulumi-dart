@@ -14,7 +14,7 @@ class GradientaiOpenaiApiKeyModelVersion {
   /// [major] Major version of the model
   /// [minor] Minor version of the model
   /// [patch] Patch version of the model
-  GradientaiOpenaiApiKeyModelVersion({
+  const GradientaiOpenaiApiKeyModelVersion({
     this.major,
     this.minor,
     this.patch,

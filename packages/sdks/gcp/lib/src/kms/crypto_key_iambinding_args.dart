@@ -34,7 +34,7 @@ class CryptoKeyIAMBindingArgs {
   /// [cryptoKeyId] The crypto key ID, in the form
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Note that custom roles must be of the format
-  CryptoKeyIAMBindingArgs({
+  const CryptoKeyIAMBindingArgs({
     this.condition,
     required this.cryptoKeyId,
     required this.members,

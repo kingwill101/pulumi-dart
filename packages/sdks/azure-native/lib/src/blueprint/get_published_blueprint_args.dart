@@ -18,7 +18,7 @@ class GetPublishedBlueprintArgs {
   /// [blueprintName] Name of the blueprint definition.
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [versionId] Version of the published blueprint definition.
-  GetPublishedBlueprintArgs({
+  const GetPublishedBlueprintArgs({
     required this.blueprintName,
     required this.resourceScope,
     required this.versionId,

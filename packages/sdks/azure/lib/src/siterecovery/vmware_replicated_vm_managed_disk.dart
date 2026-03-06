@@ -17,7 +17,7 @@ class VmwareReplicatedVmManagedDisk {
   /// [logStorageAccountId] The ID of the storage account that should be used for logging during replication.
   /// [targetDiskEncryptionSetId] The ID of the Disk Encryption Set that should be used for the disks when a failover is done.
   /// [targetDiskType] The disk type of the disk to be created when a failover is done. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`.
-  VmwareReplicatedVmManagedDisk({
+  const VmwareReplicatedVmManagedDisk({
     required this.diskId,
     this.logStorageAccountId,
     this.targetDiskEncryptionSetId,

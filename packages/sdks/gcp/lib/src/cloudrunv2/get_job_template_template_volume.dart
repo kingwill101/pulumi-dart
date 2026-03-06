@@ -28,7 +28,7 @@ class GetJobTemplateTemplateVolume {
   /// [name] The name of the Cloud Run v2 Job.
   /// [nfs] NFS share mounted as a volume.
   /// [secrets] Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  GetJobTemplateTemplateVolume({
+  const GetJobTemplateTemplateVolume({
     required this.cloudSqlInstances,
     required this.emptyDirs,
     required this.gcs,

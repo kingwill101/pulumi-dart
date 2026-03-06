@@ -21,7 +21,7 @@ class ApiTagDescriptionArgs {
   /// [description] The description of the Tag.
   /// [externalDocumentationDescription] The description of the external documentation resources describing the tag.
   /// [externalDocumentationUrl] The URL of external documentation resources describing the tag.
-  ApiTagDescriptionArgs({
+  const ApiTagDescriptionArgs({
     required this.apiTagId,
     this.description,
     this.externalDocumentationDescription,

@@ -11,7 +11,7 @@ class BackupPlanIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  BackupPlanIamMemberCondition({
+  const BackupPlanIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

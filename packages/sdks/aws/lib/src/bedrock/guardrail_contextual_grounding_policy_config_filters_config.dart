@@ -11,7 +11,7 @@ class GuardrailContextualGroundingPolicyConfigFiltersConfig {
   /// Creates a new [GuardrailContextualGroundingPolicyConfigFiltersConfig].
   /// [threshold] The threshold for this filter.
   /// [type] Type of contextual grounding filter.
-  GuardrailContextualGroundingPolicyConfigFiltersConfig({
+  const GuardrailContextualGroundingPolicyConfigFiltersConfig({
     required this.threshold,
     required this.type,
   });

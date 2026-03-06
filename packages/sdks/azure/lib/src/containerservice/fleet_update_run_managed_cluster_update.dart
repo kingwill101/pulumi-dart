@@ -13,7 +13,7 @@ class FleetUpdateRunManagedClusterUpdate {
   /// Creates a new [FleetUpdateRunManagedClusterUpdate].
   /// [nodeImageSelection] A `node_image_selection` block as defined below.
   /// [upgrade] A `upgrade` block as defined below.
-  FleetUpdateRunManagedClusterUpdate({
+  const FleetUpdateRunManagedClusterUpdate({
     this.nodeImageSelection,
     required this.upgrade,
   });

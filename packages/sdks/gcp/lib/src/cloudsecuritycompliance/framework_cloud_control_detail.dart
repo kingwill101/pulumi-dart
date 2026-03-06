@@ -19,7 +19,7 @@ class FrameworkCloudControlDetail {
   /// [majorRevisionId] Major revision of cloudcontrol
   /// [name] The name of the CloudControl in the format:
   /// [parameters] Parameters is a key-value pair that is required by the CloudControl. The
-  FrameworkCloudControlDetail({
+  const FrameworkCloudControlDetail({
     required this.majorRevisionId,
     required this.name,
     this.parameters,

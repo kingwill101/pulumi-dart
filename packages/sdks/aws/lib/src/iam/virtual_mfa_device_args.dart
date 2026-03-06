@@ -18,7 +18,7 @@ class VirtualMfaDeviceArgs {
   /// [path] Path for the virtual MFA device.
   /// [tags] Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualMfaDeviceName] Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
-  VirtualMfaDeviceArgs({
+  const VirtualMfaDeviceArgs({
     this.path,
     this.tags,
     required this.virtualMfaDeviceName,

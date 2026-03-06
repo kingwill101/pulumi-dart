@@ -27,7 +27,7 @@ class GetKeysResult {
   /// [keys] A list of KMS keys. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [status] Status of the key. Possible values: `Enabled`, `Disabled` and `PendingDeletion`.
-  GetKeysResult({
+  const GetKeysResult({
     this.descriptionRegex,
     this.enableDetails,
     this.filters,

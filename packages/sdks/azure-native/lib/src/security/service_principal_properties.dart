@@ -12,7 +12,7 @@ class ServicePrincipalProperties {
   /// Creates a new [ServicePrincipalProperties].
   /// [applicationId] Application ID of service principal.
   /// [secret] A secret string that the application uses to prove its identity, also can be referred to as application password (write only).
-  ServicePrincipalProperties({
+  const ServicePrincipalProperties({
     this.applicationId,
     this.secret,
   });

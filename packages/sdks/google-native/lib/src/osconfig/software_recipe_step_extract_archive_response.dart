@@ -15,7 +15,7 @@ class SoftwareRecipeStepExtractArchiveResponse {
   /// [artifactId] The id of the relevant artifact in the recipe.
   /// [destination] Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
   /// [type] The type of the archive to extract.
-  SoftwareRecipeStepExtractArchiveResponse({
+  const SoftwareRecipeStepExtractArchiveResponse({
     required this.artifactId,
     required this.destination,
     required this.type,

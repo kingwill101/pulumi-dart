@@ -21,7 +21,7 @@ class FrontdoorBackendPool {
   /// [id] The ID of the FrontDoor.
   /// [loadBalancingName] Specifies the name of the `backend_pool_load_balancing` block within this resource to use for this `Backend Pool`.
   /// [name] Specifies the name of the Backend Pool.
-  FrontdoorBackendPool({
+  const FrontdoorBackendPool({
     required this.backends,
     required this.healthProbeName,
     this.id,

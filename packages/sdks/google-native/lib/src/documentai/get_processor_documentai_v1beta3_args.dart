@@ -15,7 +15,7 @@ class GetProcessorDocumentaiV1beta3Args {
   /// [location] Required.
   /// [processorId] Required.
   /// [project] Optional.
-  GetProcessorDocumentaiV1beta3Args({
+  const GetProcessorDocumentaiV1beta3Args({
     required this.location,
     required this.processorId,
     this.project,

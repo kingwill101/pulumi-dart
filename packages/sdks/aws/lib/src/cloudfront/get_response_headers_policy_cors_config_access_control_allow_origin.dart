@@ -7,7 +7,7 @@ class GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin {
 
   /// Creates a new [GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin].
   /// [items] Required.
-  GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin({
+  const GetResponseHeadersPolicyCorsConfigAccessControlAllowOrigin({
     required this.items,
   });
 

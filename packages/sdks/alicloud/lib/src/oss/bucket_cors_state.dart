@@ -16,7 +16,7 @@ class BucketCorsState {
   /// [bucket] The name of the Bucket.
   /// [corsRules] The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
   /// [responseVary] Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
-  BucketCorsState({
+  const BucketCorsState({
     this.bucket,
     this.corsRules,
     this.responseVary,

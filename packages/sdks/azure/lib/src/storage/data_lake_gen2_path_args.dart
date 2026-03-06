@@ -31,7 +31,7 @@ class DataLakeGen2PathArgs {
   /// [path] The path which should be created within the Data Lake Gen2 File System in the Storage Account. Changing this forces a new resource to be created.
   /// [resource] Specifies the type for path to create. Currently only `directory` is supported. Changing this forces a new resource to be created.
   /// [storageAccountId] Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
-  DataLakeGen2PathArgs({
+  const DataLakeGen2PathArgs({
     this.aces,
     required this.filesystemName,
     this.group,

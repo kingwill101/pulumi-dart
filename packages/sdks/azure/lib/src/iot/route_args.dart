@@ -30,7 +30,7 @@ class RouteArgs {
   /// [name] The name of the route. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the IotHub Route resource has to be created. Changing this forces a new resource to be created.
   /// [source] The source that the routing rule is to be applied to. Possible values include: `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents`, `DeviceLifecycleEvents`, `DeviceMessages`, `DigitalTwinChangeEvents`, `Invalid`, `TwinChangeEvents`.
-  RouteArgs({
+  const RouteArgs({
     this.condition,
     required this.enabled,
     required this.endpointNames,

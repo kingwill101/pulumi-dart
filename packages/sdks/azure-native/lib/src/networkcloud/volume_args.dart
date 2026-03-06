@@ -28,7 +28,7 @@ class VolumeArgs {
   /// [sizeMiB] The size of the allocation for this volume in Mebibytes.
   /// [tags] Resource tags.
   /// [volumeName] The name of the volume.
-  VolumeArgs({
+  const VolumeArgs({
     required this.extendedLocation,
     this.location,
     required this.resourceGroupName,

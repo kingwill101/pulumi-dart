@@ -31,7 +31,7 @@ class ApplicationGatewaySslCertificate {
   /// [name] The Name of the SSL certificate that is unique within this Application Gateway
   /// [password] Password for the pfx file specified in data. Required if `data` is set.
   /// [publicCertData] The Public Certificate Data associated with the SSL Certificate.
-  ApplicationGatewaySslCertificate({
+  const ApplicationGatewaySslCertificate({
     this.data,
     this.id,
     this.keyVaultSecretId,

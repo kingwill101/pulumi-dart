@@ -42,7 +42,7 @@ class PnsCredentialsResponse {
   /// [mpnsCredential] Description of a NotificationHub MpnsCredential.
   /// [wnsCredential] Description of a NotificationHub WnsCredential.
   /// [xiaomiCredential] Description of a NotificationHub XiaomiCredential.
-  PnsCredentialsResponse({
+  const PnsCredentialsResponse({
     this.admCredential,
     this.apnsCredential,
     this.baiduCredential,

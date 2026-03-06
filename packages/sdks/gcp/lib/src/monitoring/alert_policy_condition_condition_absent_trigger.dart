@@ -15,7 +15,7 @@ class AlertPolicyConditionConditionAbsentTrigger {
   /// Creates a new [AlertPolicyConditionConditionAbsentTrigger].
   /// [count] The absolute number of time series
   /// [percent] The percentage of time series that
-  AlertPolicyConditionConditionAbsentTrigger({
+  const AlertPolicyConditionConditionAbsentTrigger({
     this.count,
     this.percent,
   });

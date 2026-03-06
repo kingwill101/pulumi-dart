@@ -28,7 +28,7 @@ class ConnectedEnvironmentsCertificateArgs {
   /// [properties] Certificate resource specific properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ConnectedEnvironmentsCertificateArgs({
+  const ConnectedEnvironmentsCertificateArgs({
     this.certificateName,
     required this.connectedEnvironmentName,
     this.location,

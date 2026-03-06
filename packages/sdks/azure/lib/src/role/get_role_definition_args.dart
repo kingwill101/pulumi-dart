@@ -22,7 +22,7 @@ class GetRoleDefinitionArgs {
   /// [name] Specifies the Name of either a built-in or custom Role Definition.
   /// [roleDefinitionId] Specifies the ID of the Role Definition as a UUID/GUID.
   /// [scope] Specifies the Scope at which the Custom Role Definition exists.
-  GetRoleDefinitionArgs({
+  const GetRoleDefinitionArgs({
     this.name,
     this.roleDefinitionId,
     this.scope,

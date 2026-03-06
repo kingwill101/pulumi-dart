@@ -21,7 +21,7 @@ class WeeklyScheduleResponse {
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Weekly snapshot count to keep
   /// [usedBytes] Resource size in bytes, current storage usage for the volume in bytes
-  WeeklyScheduleResponse({
+  const WeeklyScheduleResponse({
     this.day,
     this.hour,
     this.minute,

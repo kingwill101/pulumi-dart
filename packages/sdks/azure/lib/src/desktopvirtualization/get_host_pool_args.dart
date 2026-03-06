@@ -15,7 +15,7 @@ class GetHostPoolArgs {
   /// Creates a new [GetHostPoolArgs].
   /// [name] The name of the Virtual Desktop Host Pool to retrieve.
   /// [resourceGroupName] The name of the resource group where the Virtual Desktop Host Pool exists.
-  GetHostPoolArgs({
+  const GetHostPoolArgs({
     required this.name,
     required this.resourceGroupName,
   });

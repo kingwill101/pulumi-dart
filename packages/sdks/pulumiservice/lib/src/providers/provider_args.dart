@@ -15,7 +15,7 @@ class ProviderArgs {
   /// Creates a new [ProviderArgs].
   /// [accessToken] Access Token to authenticate with Pulumi Cloud.
   /// [apiUrl] Optional override of Pulumi Cloud API endpoint.
-  ProviderArgs({
+  const ProviderArgs({
     this.accessToken,
     this.apiUrl,
   });

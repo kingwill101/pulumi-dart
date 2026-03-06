@@ -15,7 +15,7 @@ class SoftwareAssurancePropertiesResponse {
   /// [lastUpdated] TimeStamp denoting the latest SA benefit applicability is validated.
   /// [softwareAssuranceIntent] Customer Intent for Software Assurance Benefit.
   /// [softwareAssuranceStatus] Status of the Software Assurance for the cluster.
-  SoftwareAssurancePropertiesResponse({
+  const SoftwareAssurancePropertiesResponse({
     required this.lastUpdated,
     this.softwareAssuranceIntent,
     required this.softwareAssuranceStatus,

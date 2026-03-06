@@ -9,7 +9,7 @@ class EmailPreferencesResponse {
 
   /// Creates a new [EmailPreferencesResponse].
   /// [enableFailureEmail] If true, email notifications will be sent on transfer run failures.
-  EmailPreferencesResponse({
+  const EmailPreferencesResponse({
     required this.enableFailureEmail,
   });
 

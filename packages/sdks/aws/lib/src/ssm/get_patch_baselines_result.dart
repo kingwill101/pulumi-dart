@@ -20,7 +20,7 @@ class GetPatchBaselinesResult {
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetPatchBaselinesResult({
+  const GetPatchBaselinesResult({
     required this.baselineIdentities,
     this.defaultBaselines,
     this.filters,

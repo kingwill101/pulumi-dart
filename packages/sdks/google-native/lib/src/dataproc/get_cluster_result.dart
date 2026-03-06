@@ -37,7 +37,7 @@ class GetClusterResult {
   /// [status] Cluster status.
   /// [statusHistory] The previous cluster status.
   /// [virtualClusterConfig] Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
-  GetClusterResult({
+  const GetClusterResult({
     required this.clusterName,
     required this.clusterUuid,
     required this.config,

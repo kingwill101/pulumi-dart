@@ -47,7 +47,7 @@ class DefenseRuleConfigCondition {
   /// [opValue] Logical character. Value:
   /// [subKey] The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
   /// [values] Match the content and fill in the corresponding content as needed.
-  DefenseRuleConfigCondition({
+  const DefenseRuleConfigCondition({
     this.key,
     this.opValue,
     this.subKey,

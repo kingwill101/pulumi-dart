@@ -14,7 +14,7 @@ class GetDatabaseEnginesEngine {
   /// [engine] The Managed Database engine type.
   /// [id] The Managed Database engine ID in engine/version format.
   /// [version] The Managed Database engine version.
-  GetDatabaseEnginesEngine({
+  const GetDatabaseEnginesEngine({
     required this.engine,
     required this.id,
     required this.version,

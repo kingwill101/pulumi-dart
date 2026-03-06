@@ -51,7 +51,7 @@ class ServerGroupServer {
   /// [serverType] The type of the backend server. You can specify at most 200 servers in each call. Default values:
   /// [status] The status of the resource
   /// [weight] The weight of the backend server. Valid values: `0` to `100`. Default value: `0`. If the value is set to `0`, no requests are forwarded to the server. You can specify at most 200 servers in each call.
-  ServerGroupServer({
+  const ServerGroupServer({
     this.description,
     this.port,
     this.remoteIpEnabled,

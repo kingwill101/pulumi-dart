@@ -27,7 +27,7 @@ class GetApiConnectionResult {
   /// [parameterValues] A mapping of parameter names to their values for the API Connection.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the API Connection.
-  GetApiConnectionResult({
+  const GetApiConnectionResult({
     required this.displayName,
     required this.id,
     required this.location,

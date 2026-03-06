@@ -19,7 +19,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldResponse {
   /// [name] The name of the field.
   /// [profile] Profile information for the corresponding field.
   /// [type] The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Entity, it is the Entity Schema (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
-  GoogleCloudDataplexV1DataProfileResultProfileFieldResponse({
+  const GoogleCloudDataplexV1DataProfileResultProfileFieldResponse({
     required this.mode,
     required this.name,
     required this.profile,

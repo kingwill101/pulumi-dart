@@ -15,7 +15,7 @@ class KxClusterCacheStorageConfiguration {
   /// Creates a new [KxClusterCacheStorageConfiguration].
   /// [size] Required.
   /// [type] Type of KDB database. The following types are available:
-  KxClusterCacheStorageConfiguration({
+  const KxClusterCacheStorageConfiguration({
     required this.size,
     required this.type,
   });

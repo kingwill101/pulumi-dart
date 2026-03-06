@@ -40,7 +40,7 @@ class InstanceArgs {
   /// [networks] VPC networks to which the instance is connected. For this version, only a single network is supported.
   /// [project] Optional.
   /// [tier] The service tier of the instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.description,
     this.etag,
     this.fileShares,

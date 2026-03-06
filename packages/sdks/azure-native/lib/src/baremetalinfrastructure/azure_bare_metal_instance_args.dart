@@ -52,7 +52,7 @@ class AzureBareMetalInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageProfile] Specifies the storage settings for the Azure Bare Metal Instance disks.
   /// [tags] Resource tags.
-  AzureBareMetalInstanceArgs({
+  const AzureBareMetalInstanceArgs({
     this.azureBareMetalInstanceId,
     this.azureBareMetalInstanceName,
     this.hardwareProfile,

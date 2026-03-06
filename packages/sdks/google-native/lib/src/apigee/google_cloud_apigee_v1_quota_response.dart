@@ -15,7 +15,7 @@ class GoogleCloudApigeeV1QuotaResponse {
   /// [interval] Time interval over which the number of request messages is calculated.
   /// [limit] Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
   /// [timeUnit] Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.
-  GoogleCloudApigeeV1QuotaResponse({
+  const GoogleCloudApigeeV1QuotaResponse({
     required this.interval,
     required this.limit,
     required this.timeUnit,

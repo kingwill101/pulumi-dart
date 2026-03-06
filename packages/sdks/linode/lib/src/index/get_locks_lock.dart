@@ -23,7 +23,7 @@ class GetLocksLock {
   /// [entityUrl] The URL of the locked entity.
   /// [id] The unique ID of the Lock.
   /// [lockType] The type of lock.
-  GetLocksLock({
+  const GetLocksLock({
     required this.entityId,
     required this.entityLabel,
     required this.entityType,

@@ -10,7 +10,7 @@ class AgConfigurationResponse {
 
   /// Creates a new [AgConfigurationResponse].
   /// [replicas] Replica configurations.
-  AgConfigurationResponse({
+  const AgConfigurationResponse({
     this.replicas,
   });
 

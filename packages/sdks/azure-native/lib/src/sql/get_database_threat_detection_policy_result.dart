@@ -44,7 +44,7 @@ class GetDatabaseThreatDetectionPolicyResult {
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. If state is Enabled, storageEndpoint is required.
   /// [type] Resource type.
   /// [useServerDefault] Specifies whether to use the default server policy.
-  GetDatabaseThreatDetectionPolicyResult({
+  const GetDatabaseThreatDetectionPolicyResult({
     required this.azureApiVersion,
     this.disabledAlerts,
     this.emailAccountAdmins,

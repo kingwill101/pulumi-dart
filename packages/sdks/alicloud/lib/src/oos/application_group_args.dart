@@ -28,7 +28,7 @@ class ApplicationGroupArgs {
   /// [description] Application group description information.
   /// [importTagKey] The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is app-{ApplicationName} (application name).
   /// [importTagValue] The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
-  ApplicationGroupArgs({
+  const ApplicationGroupArgs({
     required this.applicationGroupName,
     required this.applicationName,
     required this.deployRegionId,

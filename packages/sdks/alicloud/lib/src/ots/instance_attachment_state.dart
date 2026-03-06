@@ -18,7 +18,7 @@ class InstanceAttachmentState {
   /// [vpcId] The ID of attaching VPC to instance.
   /// [vpcName] The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
   /// [vswitchId] The ID of attaching VSwitch to instance.
-  InstanceAttachmentState({
+  const InstanceAttachmentState({
     this.instanceName,
     this.vpcId,
     this.vpcName,

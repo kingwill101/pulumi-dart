@@ -34,7 +34,7 @@ class IamPasswordPolicyPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamPasswordPolicyPropertiesResponse({
+  const IamPasswordPolicyPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

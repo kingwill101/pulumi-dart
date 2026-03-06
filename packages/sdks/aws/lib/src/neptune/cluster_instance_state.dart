@@ -92,7 +92,7 @@ class ClusterInstanceState {
   /// [tags] A map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [writer] Boolean indicating if this instance is writable. `False` indicates this instance is a read replica.
-  ClusterInstanceState({
+  const ClusterInstanceState({
     this.address,
     this.applyImmediately,
     this.arn,

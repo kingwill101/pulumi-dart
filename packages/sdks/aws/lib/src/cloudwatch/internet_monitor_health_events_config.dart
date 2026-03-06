@@ -11,7 +11,7 @@ class InternetMonitorHealthEventsConfig {
   /// Creates a new [InternetMonitorHealthEventsConfig].
   /// [availabilityScoreThreshold] The health event threshold percentage set for availability scores.
   /// [performanceScoreThreshold] The health event threshold percentage set for performance scores.
-  InternetMonitorHealthEventsConfig({
+  const InternetMonitorHealthEventsConfig({
     this.availabilityScoreThreshold,
     this.performanceScoreThreshold,
   });

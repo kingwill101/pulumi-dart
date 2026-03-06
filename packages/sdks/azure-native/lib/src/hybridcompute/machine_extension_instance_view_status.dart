@@ -21,7 +21,7 @@ class MachineExtensionInstanceViewStatus {
   /// [level] The level code.
   /// [message] The detailed status message, including for alerts and error messages.
   /// [time] The time of the status.
-  MachineExtensionInstanceViewStatus({
+  const MachineExtensionInstanceViewStatus({
     this.code,
     this.displayStatus,
     this.level,

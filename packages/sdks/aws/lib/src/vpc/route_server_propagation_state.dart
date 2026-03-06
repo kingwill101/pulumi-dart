@@ -20,7 +20,7 @@ class RouteServerPropagationState {
   /// [routeServerId] The unique identifier for the route server to be associated.
   /// [routeTableId] The ID of the route table to which route server will propagate routes.
   /// [timeouts] Optional.
-  RouteServerPropagationState({
+  const RouteServerPropagationState({
     this.region,
     this.routeServerId,
     this.routeTableId,

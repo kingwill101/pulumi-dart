@@ -21,7 +21,7 @@ class EnvCustomJobState {
   /// [envCustomJobName] Custom job name.
   /// [environmentId] Environment id.
   /// [status] Status: run, stop.
-  EnvCustomJobState({
+  const EnvCustomJobState({
     this.aliyunLang,
     this.configYaml,
     this.envCustomJobName,

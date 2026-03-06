@@ -10,7 +10,7 @@ class BackendServiceParams {
 
   /// Creates a new [BackendServiceParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the backend service. Tag keys and values have the
-  BackendServiceParams({
+  const BackendServiceParams({
     this.resourceManagerTags,
   });
 

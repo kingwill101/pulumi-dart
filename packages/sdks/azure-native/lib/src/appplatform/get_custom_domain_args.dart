@@ -21,7 +21,7 @@ class GetCustomDomainArgs {
   /// [domainName] The name of the custom domain resource.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetCustomDomainArgs({
+  const GetCustomDomainArgs({
     required this.appName,
     required this.domainName,
     required this.resourceGroupName,

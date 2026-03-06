@@ -13,7 +13,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation {
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation].
   /// [subjectAlternativeNames] SANs for a TLS validation context.
   /// [trust] TLS validation context trust.
-  VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation({
+  const VirtualNodeSpecBackendDefaultsClientPolicyTlsValidation({
     this.subjectAlternativeNames,
     required this.trust,
   });

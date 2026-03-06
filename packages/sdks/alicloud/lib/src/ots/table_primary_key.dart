@@ -11,7 +11,7 @@ class TablePrimaryKey {
   /// Creates a new [TablePrimaryKey].
   /// [name] Name for primary key.
   /// [type] Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
-  TablePrimaryKey({
+  const TablePrimaryKey({
     required this.name,
     required this.type,
   });

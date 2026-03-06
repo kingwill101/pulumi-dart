@@ -10,7 +10,7 @@ class ServiceServiceReference {
 
   /// Creates a new [ServiceServiceReference].
   /// [uri] (Output)
-  ServiceServiceReference({
+  const ServiceServiceReference({
     this.uri,
   });
 

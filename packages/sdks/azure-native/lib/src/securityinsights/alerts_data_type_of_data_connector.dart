@@ -10,7 +10,7 @@ class AlertsDataTypeOfDataConnector {
 
   /// Creates a new [AlertsDataTypeOfDataConnector].
   /// [alerts] Alerts data type connection.
-  AlertsDataTypeOfDataConnector({
+  const AlertsDataTypeOfDataConnector({
     required this.alerts,
   });
 

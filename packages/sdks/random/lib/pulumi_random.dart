@@ -3,11 +3,11 @@
 import 'package:pulumi_random/index.dart' as module_index;
 import 'package:pulumi_random/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final RandomBytes = module_index.RandomBytes.new;
   final RandomBytesArgs = module_index.RandomBytesArgs.new;
   final RandomBytesState = module_index.RandomBytesState.new;
@@ -51,7 +51,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final ProviderTerraformConfigResult = module_providers.ProviderTerraformConfigResult.new;
   final ProviderTerraformConfigResultArgs = module_providers.ProviderTerraformConfigResult.new;
   final Random = module_providers.ProviderProvider.new;

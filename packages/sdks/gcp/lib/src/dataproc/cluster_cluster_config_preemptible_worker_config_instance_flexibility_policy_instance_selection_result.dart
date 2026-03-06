@@ -11,7 +11,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
   /// Creates a new [ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult].
   /// [machineType] Full machine-type names, e.g. "n1-standard-16".
   /// [vmCount] Number of VM provisioned with the machine_type.
-  ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult({
+  const ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult({
     this.machineType,
     this.vmCount,
   });

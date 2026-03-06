@@ -15,7 +15,7 @@ class DefenderCspmGcpOfferingResponseCiemDiscovery {
   /// [azureActiveDirectoryAppName] the azure active directory app name used of authenticating against GCP workload identity federation
   /// [serviceAccountEmailAddress] The service account email address in GCP for Permissions Management offering
   /// [workloadIdentityProviderId] The GCP workload identity provider id for Permissions Management offering
-  DefenderCspmGcpOfferingResponseCiemDiscovery({
+  const DefenderCspmGcpOfferingResponseCiemDiscovery({
     this.azureActiveDirectoryAppName,
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,

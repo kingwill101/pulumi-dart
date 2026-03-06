@@ -11,7 +11,7 @@ class BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel {
   /// Creates a new [BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel].
   /// [key] The key of the kubernetes label.
   /// [value] The value of the Label.
-  BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel({
+  const BackupPlanBackupConfigSelectedNamespaceLabelsResourceLabel({
     required this.key,
     required this.value,
   });

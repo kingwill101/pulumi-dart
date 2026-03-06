@@ -35,7 +35,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] Details about the state of the connection.
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.groupIds,
     required this.parentName,
     required this.parentType,

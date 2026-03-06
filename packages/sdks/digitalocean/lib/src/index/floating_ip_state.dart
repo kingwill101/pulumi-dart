@@ -18,7 +18,7 @@ class FloatingIpState {
   /// [floatingIpUrn] The uniform resource name of the floating ip
   /// [ipAddress] The IP Address of the resource
   /// [region] The region that the Floating IP is reserved to.
-  FloatingIpState({
+  const FloatingIpState({
     this.dropletId,
     this.floatingIpUrn,
     this.ipAddress,

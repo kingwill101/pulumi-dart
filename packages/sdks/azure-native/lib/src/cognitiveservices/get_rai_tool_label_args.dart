@@ -18,7 +18,7 @@ class GetRaiToolLabelArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [raiToolConnectionName] The name of the Rai Tool Label
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRaiToolLabelArgs({
+  const GetRaiToolLabelArgs({
     required this.accountName,
     required this.raiToolConnectionName,
     required this.resourceGroupName,

@@ -9,7 +9,7 @@ class DatasetResponseFolder {
 
   /// Creates a new [DatasetResponseFolder].
   /// [name] The name of the folder that this Dataset is in.
-  DatasetResponseFolder({
+  const DatasetResponseFolder({
     this.name,
   });
 

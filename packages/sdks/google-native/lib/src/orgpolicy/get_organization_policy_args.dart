@@ -13,7 +13,7 @@ class GetOrganizationPolicyArgs {
   /// Creates a new [GetOrganizationPolicyArgs].
   /// [organizationId] Required.
   /// [policyId] Required.
-  GetOrganizationPolicyArgs({
+  const GetOrganizationPolicyArgs({
     required this.organizationId,
     required this.policyId,
   });

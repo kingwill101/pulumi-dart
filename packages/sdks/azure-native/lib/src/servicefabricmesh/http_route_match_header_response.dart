@@ -15,7 +15,7 @@ class HttpRouteMatchHeaderResponse {
   /// [name] Name of header to match in request.
   /// [type] how to match header value
   /// [value] Value of header to match in request.
-  HttpRouteMatchHeaderResponse({
+  const HttpRouteMatchHeaderResponse({
     required this.name,
     this.type,
     this.value,

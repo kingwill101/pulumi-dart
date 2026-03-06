@@ -18,7 +18,7 @@ class GetMECRoleArgs {
   /// [deviceName] The device name.
   /// [name] The role name.
   /// [resourceGroupName] The resource group name.
-  GetMECRoleArgs({
+  const GetMECRoleArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

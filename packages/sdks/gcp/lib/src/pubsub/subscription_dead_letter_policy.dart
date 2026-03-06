@@ -26,7 +26,7 @@ class SubscriptionDeadLetterPolicy {
   /// Creates a new [SubscriptionDeadLetterPolicy].
   /// [deadLetterTopic] The name of the topic to which dead letter messages should be published.
   /// [maxDeliveryAttempts] The maximum number of delivery attempts for any message. The value must be
-  SubscriptionDeadLetterPolicy({
+  const SubscriptionDeadLetterPolicy({
     this.deadLetterTopic,
     this.maxDeliveryAttempts,
   });

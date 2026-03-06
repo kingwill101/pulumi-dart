@@ -12,7 +12,7 @@ class ConversionWorkspaceInfo {
   /// Creates a new [ConversionWorkspaceInfo].
   /// [commitId] The commit ID of the conversion workspace.
   /// [name] The resource name (URI) of the conversion workspace.
-  ConversionWorkspaceInfo({
+  const ConversionWorkspaceInfo({
     this.commitId,
     this.name,
   });

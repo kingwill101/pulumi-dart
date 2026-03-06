@@ -19,7 +19,7 @@ class GetConversationArgs {
   /// [dataStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConversationArgs({
+  const GetConversationArgs({
     required this.collectionId,
     required this.conversationId,
     required this.dataStoreId,

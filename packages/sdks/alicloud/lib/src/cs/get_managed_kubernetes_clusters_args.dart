@@ -24,7 +24,7 @@ class GetManagedKubernetesClustersArgs {
   /// [kubeConfigFilePrefix] The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/managed`, then it will be named with `~/.kube/managed-clusterID-kubeconfig`. From version 1.243.0, kube_config will not export kube_config if this field is not set. Please use the attribute output_file of new DataSource `alicloud.cs.getClusterCredential` to replace it
   /// [nameRegex] A regex string to filter results by cluster name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetManagedKubernetesClustersArgs({
+  const GetManagedKubernetesClustersArgs({
     this.enableDetails,
     this.ids,
     this.kubeConfigFilePrefix,

@@ -18,7 +18,7 @@ class SSISChildPackageResponse {
   /// [packageLastModifiedDate] Last modified date for embedded child package.
   /// [packageName] Name for embedded child package.
   /// [packagePath] Path for embedded child package. Type: string (or Expression with resultType string).
-  SSISChildPackageResponse({
+  const SSISChildPackageResponse({
     required this.packageContent,
     this.packageLastModifiedDate,
     this.packageName,

@@ -50,7 +50,7 @@ class GetStorageTaskResult {
   /// [tags] Resource tags.
   /// [taskVersion] Storage task version.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetStorageTaskResult({
+  const GetStorageTaskResult({
     required this.action,
     required this.azureApiVersion,
     required this.creationTimeInUtc,

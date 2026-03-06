@@ -19,7 +19,7 @@ class ProjectDefaultNetworkTierArgs {
   /// Creates a new [ProjectDefaultNetworkTierArgs].
   /// [networkTier] The default network tier to be configured for the project.
   /// [project] The ID of the project in which the resource belongs. If it
-  ProjectDefaultNetworkTierArgs({
+  const ProjectDefaultNetworkTierArgs({
     required this.networkTier,
     this.project,
   });

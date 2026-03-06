@@ -8,7 +8,7 @@ class GetDataQualityRulesRuleSqlAssertion {
 
   /// Creates a new [GetDataQualityRulesRuleSqlAssertion].
   /// [sqlStatement] The SQL expression.
-  GetDataQualityRulesRuleSqlAssertion({
+  const GetDataQualityRulesRuleSqlAssertion({
     required this.sqlStatement,
   });
 

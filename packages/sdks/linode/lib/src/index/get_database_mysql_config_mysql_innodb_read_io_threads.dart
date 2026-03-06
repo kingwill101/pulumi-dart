@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbReadIoThreads {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbReadIoThreads({
+  const GetDatabaseMysqlConfigMysqlInnodbReadIoThreads({
     required this.description,
     required this.example,
     required this.maximum,

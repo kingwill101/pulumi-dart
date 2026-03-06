@@ -18,7 +18,7 @@ class NetworkArgs {
   /// [dwResourceGroupId] The ID of the resource group.
   /// [vpcId] Virtual Private Cloud ID of network resources
   /// [vswitchId] The vSwitch ID of the network resource.
-  NetworkArgs({
+  const NetworkArgs({
     required this.dwResourceGroupId,
     required this.vpcId,
     required this.vswitchId,

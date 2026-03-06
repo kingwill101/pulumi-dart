@@ -26,7 +26,7 @@ class GetEnterpriseDatabaseResult {
   /// [name] The Redis Enterprise Database name.
   /// [primaryAccessKey] The Primary Access Key for the Redis Enterprise Database instance.
   /// [secondaryAccessKey] The Secondary Access Key for the Redis Enterprise Database instance.
-  GetEnterpriseDatabaseResult({
+  const GetEnterpriseDatabaseResult({
     required this.clusterId,
     required this.id,
     required this.linkedDatabaseGroupNickname,

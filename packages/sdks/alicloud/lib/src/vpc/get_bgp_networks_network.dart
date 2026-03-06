@@ -17,7 +17,7 @@ class GetBgpNetworksNetwork {
   /// [id] The ID of the Bgp Network. The value formats as `&lt;router_id&gt;:&lt;dst_cidr_block&gt;`.
   /// [routerId] The ID of the vRouter.
   /// [status] The state of the advertised BGP network.
-  GetBgpNetworksNetwork({
+  const GetBgpNetworksNetwork({
     required this.dstCidrBlock,
     required this.id,
     required this.routerId,

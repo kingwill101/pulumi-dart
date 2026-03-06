@@ -29,7 +29,7 @@ class GetCostCategoryRuleRuleAnd {
   /// [nots] Return results that do not match the `Dimension` object.
   /// [ors] Return results that match either `Dimension` object.
   /// [tags] Configuration block for the specific `Tag` to use for `Expression`. See below.
-  GetCostCategoryRuleRuleAnd({
+  const GetCostCategoryRuleRuleAnd({
     required this.ands,
     required this.costCategories,
     required this.dimensions,

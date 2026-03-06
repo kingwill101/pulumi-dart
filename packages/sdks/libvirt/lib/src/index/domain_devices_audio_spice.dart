@@ -11,7 +11,7 @@ class DomainDevicesAudioSpice {
   /// Creates a new [DomainDevicesAudioSpice].
   /// [input] Specifies the output settings for the SPICE audio backend.
   /// [output] Specifies the output settings for the SPICE audio backend.
-  DomainDevicesAudioSpice({
+  const DomainDevicesAudioSpice({
     this.input,
     this.output,
   });

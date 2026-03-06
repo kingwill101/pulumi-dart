@@ -11,7 +11,7 @@ class GetRulesRuleRuleConditionHeaderConfig {
   /// Creates a new [GetRulesRuleRuleConditionHeaderConfig].
   /// [key] The key of the query string.
   /// [values] Add one or more IP addresses or IP address segments.
-  GetRulesRuleRuleConditionHeaderConfig({
+  const GetRulesRuleRuleConditionHeaderConfig({
     required this.key,
     required this.values,
   });

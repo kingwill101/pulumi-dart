@@ -11,7 +11,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
 
   /// Creates a new [ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp].
   /// [links] (Output)
-  ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp({
+  const ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp({
     this.links,
   });
 

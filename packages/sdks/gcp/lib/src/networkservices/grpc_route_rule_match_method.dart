@@ -14,7 +14,7 @@ class GrpcRouteRuleMatchMethod {
   /// [caseSensitive] Specifies that matches are case sensitive. The default value is true.
   /// [grpcMethod] Required. Name of the method to match against.
   /// [grpcService] Required. Name of the service to match against.
-  GrpcRouteRuleMatchMethod({
+  const GrpcRouteRuleMatchMethod({
     this.caseSensitive,
     required this.grpcMethod,
     required this.grpcService,

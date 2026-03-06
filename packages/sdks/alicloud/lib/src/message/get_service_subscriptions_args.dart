@@ -28,7 +28,7 @@ class GetServiceSubscriptionsArgs {
   /// [pageSize] Optional.
   /// [subscriptionName] The name of the subscription.
   /// [topicName] The name of the topic.
-  GetServiceSubscriptionsArgs({
+  const GetServiceSubscriptionsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

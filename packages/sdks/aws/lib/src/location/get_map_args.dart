@@ -18,7 +18,7 @@ class GetMapArgs {
   /// [mapName] Name of the map resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the map.
-  GetMapArgs({
+  const GetMapArgs({
     required this.mapName,
     this.region,
     this.tags,

@@ -23,7 +23,7 @@ class GetApplicationGatewaySslProfile {
   /// [trustedClientCertificateNames] The name of the Trusted Client Certificate that will be used to authenticate requests from clients.
   /// [verifyClientCertificateIssuerDn] Required.
   /// [verifyClientCertificateRevocation] The method used to check client certificate revocation status.
-  GetApplicationGatewaySslProfile({
+  const GetApplicationGatewaySslProfile({
     required this.id,
     required this.name,
     required this.sslPolicies,

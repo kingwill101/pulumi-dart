@@ -31,7 +31,7 @@ class SecurityProfileV2State {
   /// [profileAssessmentConfigs] A map of the assessment name and the assessment config.
   /// [profileId] Resource ID of the security profile.
   /// [updateTime] The timestamp at which this profile was most recently updated.
-  SecurityProfileV2State({
+  const SecurityProfileV2State({
     this.createTime,
     this.description,
     this.name,

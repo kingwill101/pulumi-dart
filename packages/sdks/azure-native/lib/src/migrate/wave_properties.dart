@@ -22,7 +22,7 @@ class WaveProperties {
   /// [displayName] Display Name of the wave.
   /// [plannedCompletionDate] Planned completion date of the wave.
   /// [plannedStartDate] Planned start date of the wave.
-  WaveProperties({
+  const WaveProperties({
     required this.arg,
     this.description,
     required this.displayName,

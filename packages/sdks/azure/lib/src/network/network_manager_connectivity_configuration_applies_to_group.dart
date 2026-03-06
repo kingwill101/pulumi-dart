@@ -19,7 +19,7 @@ class NetworkManagerConnectivityConfigurationAppliesToGroup {
   /// [groupConnectivity] Specifies the group connectivity type. Possible values are `None` and `DirectlyConnected`.
   /// [networkGroupId] Specifies the resource ID of Network Group which the configuration applies to.
   /// [useHubGateway] Indicates whether the hub gateway is used. Possible values are `true` and `false`.
-  NetworkManagerConnectivityConfigurationAppliesToGroup({
+  const NetworkManagerConnectivityConfigurationAppliesToGroup({
     this.globalMeshEnabled,
     required this.groupConnectivity,
     required this.networkGroupId,

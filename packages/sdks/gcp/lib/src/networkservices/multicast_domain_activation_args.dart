@@ -46,7 +46,7 @@ class MulticastDomainActivationArgs {
   /// [multicastDomainActivationId] A unique name for the multicast domain activation.
   /// [project] The ID of the project in which the resource belongs.
   /// [trafficSpec] Specifies the traffic volume and multicast group scale parameters that are
-  MulticastDomainActivationArgs({
+  const MulticastDomainActivationArgs({
     this.description,
     this.disablePlacementPolicy,
     this.labels,

@@ -25,7 +25,7 @@ class EmailServiceDomainVerificationRecord {
   /// [dmarcs] (Optional) An `dmarc` block as defined below.
   /// [domains] (Optional) An `domain` block as defined below.
   /// [spfs] (Optional) An `spf` block as defined below.
-  EmailServiceDomainVerificationRecord({
+  const EmailServiceDomainVerificationRecord({
     this.dkim2s,
     this.dkims,
     this.dmarcs,

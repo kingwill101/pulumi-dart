@@ -17,7 +17,7 @@ class ContainerPort {
   /// [internal] Port within the container.
   /// [ip] IP address/mask that can access this port. Defaults to `0.0.0.0`.
   /// [protocol] Protocol that can be used over this port. Defaults to `tcp`.
-  ContainerPort({
+  const ContainerPort({
     this.external,
     required this.internal,
     this.ip,

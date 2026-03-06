@@ -33,7 +33,7 @@ class PipeSourceParametersKinesisStreamParameters {
   /// [parallelizationFactor] The number of batches to process concurrently from each shard. The default value is 1. Maximum value of 10.
   /// [startingPosition] The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
   /// [startingPositionTimestamp] With StartingPosition set to AT_TIMESTAMP, the time from which to start reading, in Unix time seconds.
-  PipeSourceParametersKinesisStreamParameters({
+  const PipeSourceParametersKinesisStreamParameters({
     this.batchSize,
     this.deadLetterConfig,
     this.maximumBatchingWindowInSeconds,

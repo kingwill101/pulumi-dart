@@ -11,7 +11,7 @@ class GetGenaiKnowledgeBaseIndexingJobsArgs {
 
   /// Creates a new [GetGenaiKnowledgeBaseIndexingJobsArgs].
   /// [knowledgeBaseUuid] Required.
-  GetGenaiKnowledgeBaseIndexingJobsArgs({
+  const GetGenaiKnowledgeBaseIndexingJobsArgs({
     required this.knowledgeBaseUuid,
   });
 

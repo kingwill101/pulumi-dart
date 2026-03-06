@@ -36,7 +36,7 @@ class GetManagedPrivateEndpointResult {
   /// [requestMessage] The user request message.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetManagedPrivateEndpointResult({
+  const GetManagedPrivateEndpointResult({
     required this.azureApiVersion,
     required this.groupId,
     required this.id,

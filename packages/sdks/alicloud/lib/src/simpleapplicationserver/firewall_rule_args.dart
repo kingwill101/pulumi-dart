@@ -21,7 +21,7 @@ class FirewallRuleArgs {
   /// [port] The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `&lt;start port number&gt;/&lt;end port number&gt;`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
   /// [remark] The remarks of the firewall rule.
   /// [ruleProtocol] The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.instanceId,
     required this.port,
     this.remark,

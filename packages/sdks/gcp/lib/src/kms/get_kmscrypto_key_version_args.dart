@@ -16,7 +16,7 @@ class GetKMSCryptoKeyVersionArgs {
   /// Creates a new [GetKMSCryptoKeyVersionArgs].
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// [version] The version number for this CryptoKeyVersion. Defaults to `1`.
-  GetKMSCryptoKeyVersionArgs({
+  const GetKMSCryptoKeyVersionArgs({
     required this.cryptoKey,
     this.version,
   });

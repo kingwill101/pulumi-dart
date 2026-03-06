@@ -10,7 +10,7 @@ class BackendServiceNetworkPassThroughLbTrafficPolicy {
 
   /// Creates a new [BackendServiceNetworkPassThroughLbTrafficPolicy].
   /// [zonalAffinity] When configured, new connections are load balanced across healthy backend endpoints in the local zone.
-  BackendServiceNetworkPassThroughLbTrafficPolicy({
+  const BackendServiceNetworkPassThroughLbTrafficPolicy({
     this.zonalAffinity,
   });
 

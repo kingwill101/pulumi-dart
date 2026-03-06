@@ -13,7 +13,7 @@ class WeightedPodAffinityTerm {
   /// Creates a new [WeightedPodAffinityTerm].
   /// [podAffinityTerm] Required. A pod affinity term, associated with the corresponding weight.
   /// [weight] weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
-  WeightedPodAffinityTerm({
+  const WeightedPodAffinityTerm({
     required this.podAffinityTerm,
     required this.weight,
   });

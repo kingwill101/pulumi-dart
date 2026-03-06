@@ -15,7 +15,7 @@ class PatchDeploymentRecurringScheduleMonthly {
   /// Creates a new [PatchDeploymentRecurringScheduleMonthly].
   /// [monthDay] One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
   /// [weekDayOfMonth] Week day in a month.
-  PatchDeploymentRecurringScheduleMonthly({
+  const PatchDeploymentRecurringScheduleMonthly({
     this.monthDay,
     this.weekDayOfMonth,
   });

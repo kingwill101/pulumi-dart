@@ -33,7 +33,7 @@ class GetHybridUseBenefitResult {
   /// [provisioningState] Provisioning state
   /// [sku] Hybrid use benefit SKU
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHybridUseBenefitResult({
+  const GetHybridUseBenefitResult({
     required this.azureApiVersion,
     required this.createdDate,
     required this.etag,

@@ -23,7 +23,7 @@ class GetWafRulesResult {
   /// [pageSize] Optional.
   /// [queryArgs] Optional.
   /// [wafRules] A list of Waf Rule Entries. Each element contains the following attributes:
-  GetWafRulesResult({
+  const GetWafRulesResult({
     required this.id,
     required this.ids,
     this.outputFile,

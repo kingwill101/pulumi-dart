@@ -11,7 +11,7 @@ class ListingDataProvider {
   /// Creates a new [ListingDataProvider].
   /// [name] Name of the data provider.
   /// [primaryContact] Email or URL of the data provider.
-  ListingDataProvider({
+  const ListingDataProvider({
     required this.name,
     this.primaryContact,
   });

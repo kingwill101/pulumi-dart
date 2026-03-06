@@ -39,7 +39,7 @@ class CachesIscsiVolumeArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetName] The name of the iSCSI target used by initiators to connect to the target and as a suffix for the target ARN. The target name must be unique across all volumes of a gateway.
   /// [volumeSizeInBytes] The size of the volume in bytes.
-  CachesIscsiVolumeArgs({
+  const CachesIscsiVolumeArgs({
     required this.gatewayArn,
     this.kmsEncrypted,
     this.kmsKey,

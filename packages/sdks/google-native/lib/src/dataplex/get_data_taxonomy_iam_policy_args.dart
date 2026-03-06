@@ -17,7 +17,7 @@ class GetDataTaxonomyIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDataTaxonomyIamPolicyArgs({
+  const GetDataTaxonomyIamPolicyArgs({
     required this.dataTaxonomyId,
     required this.location,
     this.optionsRequestedPolicyVersion,

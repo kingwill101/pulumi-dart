@@ -9,7 +9,7 @@ class DataQualityJobDefinitionJobResources {
 
   /// Creates a new [DataQualityJobDefinitionJobResources].
   /// [clusterConfig] The configuration for the cluster resources used to run the processing job. Fields are documented below.
-  DataQualityJobDefinitionJobResources({
+  const DataQualityJobDefinitionJobResources({
     required this.clusterConfig,
   });
 

@@ -27,7 +27,7 @@ class DataPartitionRuleState {
   /// [nrql] The NRQL to match events for this data partition rule. Logs matching this criteria will be routed to the specified data partition.
   /// [retentionPolicy] The retention policy of the data partition data. Valid values are `SECONDARY` and `STANDARD`.
   /// [targetDataPartition] The name of the data partition where logs will be allocated once the rule is enabled.
-  DataPartitionRuleState({
+  const DataPartitionRuleState({
     this.accountId,
     this.deleted,
     this.description,

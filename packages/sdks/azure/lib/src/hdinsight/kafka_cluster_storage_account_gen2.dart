@@ -21,7 +21,7 @@ class KafkaClusterStorageAccountGen2 {
   /// [isDefault] Is this the Default Storage Account for the HDInsight Hadoop Cluster? Changing this forces a new resource to be created.
   /// [managedIdentityResourceId] The ID of Managed Identity to use for accessing the Gen2 filesystem. Changing this forces a new resource to be created.
   /// [storageResourceId] The ID of the Storage Account. Changing this forces a new resource to be created.
-  KafkaClusterStorageAccountGen2({
+  const KafkaClusterStorageAccountGen2({
     required this.filesystemId,
     required this.isDefault,
     required this.managedIdentityResourceId,

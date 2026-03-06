@@ -19,7 +19,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
   /// [daysOfWeeks] Days of week. If left empty, all days of the week will be included.
   /// [endTime] End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
   /// [startTime] Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
-  DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow({
+  const DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow({
     this.daysOfWeeks,
     this.endTime,
     this.startTime,

@@ -13,7 +13,7 @@ class TeradataImportCommandResponse {
   /// Creates a new [TeradataImportCommandResponse].
   /// [additionalFormatOptions] Additional format options for Teradata Copy Command. The format options only applies to direct copy from CSV source. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "timeFormat": "HHhMImSSs" }
   /// [type] The import setting type.
-  TeradataImportCommandResponse({
+  const TeradataImportCommandResponse({
     this.additionalFormatOptions,
     required this.type,
   });

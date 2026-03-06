@@ -14,7 +14,7 @@ class FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd {
   /// [cents] The fractional portion, in cents, of the amount. Valid value range between `0` and `99`.
   /// [dollars] The whole number of dollars in the amount. Valid value range between `0` and `2`.
   /// [tenthFractionsOfACent] Fractions of a cent, in tenths. Valid value range between `0` and `9`.
-  FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd({
+  const FlowDefinitionHumanLoopConfigPublicWorkforceTaskPriceAmountInUsd({
     this.cents,
     this.dollars,
     this.tenthFractionsOfACent,

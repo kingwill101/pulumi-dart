@@ -15,7 +15,7 @@ class ApplicationGatewayTrustedClientCertificate {
   /// [data] Certificate public data.
   /// [id] Resource ID.
   /// [name] Name of the trusted client certificate that is unique within an Application Gateway.
-  ApplicationGatewayTrustedClientCertificate({
+  const ApplicationGatewayTrustedClientCertificate({
     this.data,
     this.id,
     this.name,

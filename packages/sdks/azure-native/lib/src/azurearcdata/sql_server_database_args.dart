@@ -28,7 +28,7 @@ class SqlServerDatabaseArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
   /// [tags] Resource tags.
-  SqlServerDatabaseArgs({
+  const SqlServerDatabaseArgs({
     this.databaseName,
     this.location,
     required this.properties,

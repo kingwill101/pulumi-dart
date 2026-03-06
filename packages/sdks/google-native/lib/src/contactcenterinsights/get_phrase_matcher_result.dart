@@ -40,7 +40,7 @@ class GetPhraseMatcherResult {
   /// [type] The type of this phrase matcher.
   /// [updateTime] The most recent time at which the phrase matcher was updated.
   /// [versionTag] The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
-  GetPhraseMatcherResult({
+  const GetPhraseMatcherResult({
     required this.activationUpdateTime,
     required this.active,
     required this.displayName,

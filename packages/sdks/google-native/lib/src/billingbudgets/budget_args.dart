@@ -36,7 +36,7 @@ class BudgetArgs {
   /// [notificationsRule] Optional. Rules to apply to notifications sent based on budget spend and thresholds.
   /// [ownershipScope] Optional.
   /// [thresholdRules] Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  BudgetArgs({
+  const BudgetArgs({
     required this.amount,
     required this.billingAccountId,
     this.budgetFilter,

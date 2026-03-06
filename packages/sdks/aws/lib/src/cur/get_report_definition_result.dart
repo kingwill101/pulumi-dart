@@ -43,7 +43,7 @@ class GetReportDefinitionResult {
   /// [s3Region] Region of customer S3 bucket.
   /// [tags] Map of key-value pairs assigned to the resource.
   /// [timeUnit] Frequency on which report data are measured and displayed.
-  GetReportDefinitionResult({
+  const GetReportDefinitionResult({
     required this.additionalArtifacts,
     required this.additionalSchemaElements,
     required this.compression,

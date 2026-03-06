@@ -105,7 +105,7 @@ class EventSourceMappingArgs {
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [topics] Name of the Kafka topics. Only available for MSK sources. A single topic name must be specified.
   /// [tumblingWindowInSeconds] Duration in seconds of a processing window for [AWS Lambda streaming analytics](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-windows). The range is between 1 second up to 900 seconds. Only available for stream sources (DynamoDB and Kinesis).
-  EventSourceMappingArgs({
+  const EventSourceMappingArgs({
     this.amazonManagedKafkaEventSourceConfig,
     this.batchSize,
     this.bisectBatchOnFunctionError,

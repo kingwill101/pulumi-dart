@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2DetectionRule {
 
   /// Creates a new [GooglePrivacyDlpV2DetectionRule].
   /// [hotwordRule] Hotword-based detection rule.
-  GooglePrivacyDlpV2DetectionRule({
+  const GooglePrivacyDlpV2DetectionRule({
     this.hotwordRule,
   });
 

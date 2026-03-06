@@ -33,7 +33,7 @@ class GetEndpointArgs {
   /// [serviceId] The service id this endpoint belongs to.
   /// [serviceName] The service name of the endpoint.
   /// [serviceType] The service type of the endpoint.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     this.endpointRegion,
     this.interface,
     this.name,

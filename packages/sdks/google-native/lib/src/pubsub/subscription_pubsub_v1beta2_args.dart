@@ -26,7 +26,7 @@ class SubscriptionPubsubV1beta2Args {
   /// [pushConfig] If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
   /// [subscriptionId] Required.
   /// [topic] The name of the topic from which this subscription is receiving messages. The value of this field will be `_deleted-topic_` if the topic has been deleted.
-  SubscriptionPubsubV1beta2Args({
+  const SubscriptionPubsubV1beta2Args({
     this.ackDeadlineSeconds,
     this.name,
     this.project,

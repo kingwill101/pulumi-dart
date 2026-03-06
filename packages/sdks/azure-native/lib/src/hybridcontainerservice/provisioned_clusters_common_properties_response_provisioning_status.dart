@@ -16,7 +16,7 @@ class ProvisionedClustersCommonPropertiesResponseProvisioningStatus {
   /// [operationId] Optional.
   /// [phase] Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
   /// [status] Optional.
-  ProvisionedClustersCommonPropertiesResponseProvisioningStatus({
+  const ProvisionedClustersCommonPropertiesResponseProvisioningStatus({
     this.error,
     this.operationId,
     this.phase,

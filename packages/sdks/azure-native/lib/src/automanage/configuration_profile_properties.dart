@@ -9,7 +9,7 @@ class ConfigurationProfileProperties {
 
   /// Creates a new [ConfigurationProfileProperties].
   /// [configuration] configuration dictionary of the configuration profile.
-  ConfigurationProfileProperties({
+  const ConfigurationProfileProperties({
     this.configuration,
   });
 

@@ -15,7 +15,7 @@ class GetRegistrationActivationKeyArgs {
   /// Creates a new [GetRegistrationActivationKeyArgs].
   /// [registrationName] Name of the Azure Stack registration.
   /// [resourceGroup] Name of the resource group.
-  GetRegistrationActivationKeyArgs({
+  const GetRegistrationActivationKeyArgs({
     required this.registrationName,
     required this.resourceGroup,
   });

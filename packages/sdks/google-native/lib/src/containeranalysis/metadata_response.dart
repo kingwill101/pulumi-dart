@@ -22,7 +22,7 @@ class MetadataResponse {
   /// [buildStartedOn] The timestamp of when the build started.
   /// [completeness] Indicates that the builder claims certain fields in this message to be complete.
   /// [reproducible] If true, the builder claims that running the recipe on materials will produce bit-for-bit identical output.
-  MetadataResponse({
+  const MetadataResponse({
     required this.buildFinishedOn,
     required this.buildInvocationId,
     required this.buildStartedOn,

@@ -17,7 +17,7 @@ class GetTrafficPolicyDocumentEndpoint {
   /// [region] To route traffic to an Amazon S3 bucket that is configured as a website endpoint, specify the region in which you created the bucket for `region`.
   /// [type] Type of the endpoint. Valid values are `value`, `cloudfront`, `elastic-load-balancer`, `s3-website`, `application-load-balancer`, `network-load-balancer` and `elastic-beanstalk`
   /// [value] Value of the `type`.
-  GetTrafficPolicyDocumentEndpoint({
+  const GetTrafficPolicyDocumentEndpoint({
     required this.id,
     this.region,
     this.type,

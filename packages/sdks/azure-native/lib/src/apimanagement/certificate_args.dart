@@ -28,7 +28,7 @@ class CertificateArgs {
   /// [password] Password for the Certificate
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  CertificateArgs({
+  const CertificateArgs({
     this.certificateId,
     this.data,
     this.keyVault,

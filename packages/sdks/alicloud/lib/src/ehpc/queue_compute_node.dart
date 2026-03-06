@@ -42,7 +42,7 @@ class QueueComputeNode {
   /// [spotPriceLimit] SpotPriceLimit
   /// [spotStrategy] SpotStrategy
   /// [systemDisk] SystemDisk See `system_disk` below.
-  QueueComputeNode({
+  const QueueComputeNode({
     this.autoRenew,
     this.autoRenewPeriod,
     this.duration,

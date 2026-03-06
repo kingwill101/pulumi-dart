@@ -48,7 +48,7 @@ class CaCertificateState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [validities] When the CA certificate is valid.
   /// [verificationCertificatePem] PEM encoded verification certificate containing the common name of a registration code. Review
-  CaCertificateState({
+  const CaCertificateState({
     this.active,
     this.allowAutoRegistration,
     this.arn,

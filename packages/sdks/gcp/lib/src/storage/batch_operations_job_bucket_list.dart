@@ -10,7 +10,7 @@ class BatchOperationsJobBucketList {
 
   /// Creates a new [BatchOperationsJobBucketList].
   /// [buckets] List of buckets and their objects to be transformed.
-  BatchOperationsJobBucketList({
+  const BatchOperationsJobBucketList({
     required this.buckets,
   });
 

@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationSubnet {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationSubnet({
+  const NetworkInsightsAnalysisExplanationSubnet({
     this.arn,
     this.id,
     this.name,

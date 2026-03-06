@@ -21,7 +21,7 @@ class HoneyPotArgs {
   /// [honeypotImageName] Honeypot mirror name.
   /// [honeypotName] Honeypot custom name.
   /// [nodeId] The ID of the honeypot management node.
-  HoneyPotArgs({
+  const HoneyPotArgs({
     required this.honeypotImageId,
     required this.honeypotImageName,
     required this.honeypotName,

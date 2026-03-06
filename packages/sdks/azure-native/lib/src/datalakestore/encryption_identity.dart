@@ -10,7 +10,7 @@ class EncryptionIdentity {
 
   /// Creates a new [EncryptionIdentity].
   /// [type] The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
-  EncryptionIdentity({
+  const EncryptionIdentity({
     required this.type,
   });
 

@@ -42,7 +42,7 @@ class WorkerPoolArgs {
   /// [privateServiceConnect] Private Service Connect configuration for the pool.
   /// [project] The project for the resource
   /// [workerConfig] Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
-  WorkerPoolArgs({
+  const WorkerPoolArgs({
     this.annotations,
     this.displayName,
     required this.location,

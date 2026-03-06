@@ -23,7 +23,7 @@ class ApiErrorResponse {
   /// [innererror] The Api inner error
   /// [message] The error message.
   /// [target] The target of the particular error.
-  ApiErrorResponse({
+  const ApiErrorResponse({
     this.code,
     this.details,
     this.innererror,

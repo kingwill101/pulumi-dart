@@ -24,7 +24,7 @@ class SharedPrivateLinkResourceProperties {
   /// [requestMessage] The message for requesting approval of the shared private link resource.
   /// [resourceRegion] Optional. Can be used to specify the Azure Resource Manager location of the resource for which a shared private link is being created. This is only required for those resources whose DNS configuration are regional (such as Azure Kubernetes Service).
   /// [status] Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected.
-  SharedPrivateLinkResourceProperties({
+  const SharedPrivateLinkResourceProperties({
     this.groupId,
     this.privateLinkResourceId,
     this.provisioningState,

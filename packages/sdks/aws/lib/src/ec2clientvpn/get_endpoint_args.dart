@@ -22,7 +22,7 @@ class GetEndpointArgs {
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired endpoint.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     this.clientVpnEndpointId,
     this.filters,
     this.region,

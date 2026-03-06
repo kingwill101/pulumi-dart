@@ -15,7 +15,7 @@ class CategoricalDataQualityMetricThreshold {
   /// [dataType] Expected value is 'Categorical'.
   /// [metric] [Required] The categorical data quality metric to calculate.
   /// [threshold] The threshold value. If null, a default value will be set depending on the selected metric.
-  CategoricalDataQualityMetricThreshold({
+  const CategoricalDataQualityMetricThreshold({
     required this.dataType,
     required this.metric,
     this.threshold,

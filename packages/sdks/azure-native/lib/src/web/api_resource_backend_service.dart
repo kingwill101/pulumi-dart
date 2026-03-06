@@ -9,7 +9,7 @@ class ApiResourceBackendService {
 
   /// Creates a new [ApiResourceBackendService].
   /// [serviceUrl] The service URL
-  ApiResourceBackendService({
+  const ApiResourceBackendService({
     this.serviceUrl,
   });
 

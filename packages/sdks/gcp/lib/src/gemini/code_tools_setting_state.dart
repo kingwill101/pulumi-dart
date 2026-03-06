@@ -43,7 +43,7 @@ class CodeToolsSettingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Update time stamp.
-  CodeToolsSettingState({
+  const CodeToolsSettingState({
     this.codeToolsSettingId,
     this.createTime,
     this.effectiveLabels,

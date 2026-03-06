@@ -32,7 +32,7 @@ class GetNatIpsIp {
   /// [natIpId] The ID of the NAT IP address.
   /// [natIpName] The name of the NAT IP address.
   /// [status] The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
-  GetNatIpsIp({
+  const GetNatIpsIp({
     required this.id,
     required this.isDefault,
     required this.natGatewayId,

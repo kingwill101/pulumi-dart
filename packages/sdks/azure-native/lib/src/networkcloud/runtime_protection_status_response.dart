@@ -20,7 +20,7 @@ class RuntimeProtectionStatusResponse {
   /// [scanCompletedTime] The timestamp of the most recently completed scan, or empty if there has never been a scan.
   /// [scanScheduledTime] The timestamp of the most recently scheduled scan, or empty if no scan has been scheduled.
   /// [scanStartedTime] The timestamp of the most recently started scan, or empty if there has never been a scan.
-  RuntimeProtectionStatusResponse({
+  const RuntimeProtectionStatusResponse({
     required this.definitionsLastUpdated,
     required this.definitionsVersion,
     required this.scanCompletedTime,

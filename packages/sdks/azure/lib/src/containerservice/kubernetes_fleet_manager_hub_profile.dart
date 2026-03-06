@@ -11,7 +11,7 @@ class KubernetesFleetManagerHubProfile {
   /// [dnsPrefix] Required.
   /// [fqdn] Optional.
   /// [kubernetesVersion] Optional.
-  KubernetesFleetManagerHubProfile({
+  const KubernetesFleetManagerHubProfile({
     required this.dnsPrefix,
     this.fqdn,
     this.kubernetesVersion,

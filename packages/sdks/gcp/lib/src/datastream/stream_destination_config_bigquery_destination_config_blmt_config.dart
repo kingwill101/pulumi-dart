@@ -20,7 +20,7 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
   /// [fileFormat] The file format.
   /// [rootPath] The root path inside the Cloud Storage bucket.
   /// [tableFormat] The table format.
-  StreamDestinationConfigBigqueryDestinationConfigBlmtConfig({
+  const StreamDestinationConfigBigqueryDestinationConfigBlmtConfig({
     required this.bucket,
     required this.connectionName,
     required this.fileFormat,

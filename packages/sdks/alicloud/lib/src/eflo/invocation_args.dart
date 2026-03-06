@@ -96,7 +96,7 @@ class InvocationArgs {
   /// [timeout] The timeout period for command execution. Unit: seconds. A timeout occurs when a command cannot be run due to a process, a missing module, or a missing cloud assistant Agent. After the timeout, the command process is forcibly terminated. Default value: 60.
   /// [username] The name of the user who executed the command in the instance. The length must not exceed 255 characters.
   /// [workingDir] You can customize the command execution path. The default path is as follows:
-  InvocationArgs({
+  const InvocationArgs({
     this.commandContent,
     this.commandId,
     this.contentEncoding,

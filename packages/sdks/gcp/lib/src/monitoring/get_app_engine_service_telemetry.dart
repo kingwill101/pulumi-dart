@@ -10,7 +10,7 @@ class GetAppEngineServiceTelemetry {
 
   /// Creates a new [GetAppEngineServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GetAppEngineServiceTelemetry({
+  const GetAppEngineServiceTelemetry({
     required this.resourceName,
   });
 

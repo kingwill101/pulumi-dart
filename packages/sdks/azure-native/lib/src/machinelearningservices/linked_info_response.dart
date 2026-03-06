@@ -15,7 +15,7 @@ class LinkedInfoResponse {
   /// [linkedId] LinkedId id.
   /// [linkedResourceName] Linked resource name.
   /// [origin] Datastore origin
-  LinkedInfoResponse({
+  const LinkedInfoResponse({
     this.linkedId,
     this.linkedResourceName,
     this.origin,

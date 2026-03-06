@@ -34,7 +34,7 @@ class CryptoKeyIAMMemberState {
   /// [etag] (Computed) The etag of the project's IAM policy.
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Note that custom roles must be of the format
-  CryptoKeyIAMMemberState({
+  const CryptoKeyIAMMemberState({
     this.condition,
     this.cryptoKeyId,
     this.etag,

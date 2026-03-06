@@ -17,7 +17,7 @@ class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
   /// [maxReplicas] The maximum number of instances.
   /// [minReplicas] The minimum number of instances.
   /// [targetReplicas] The number of target instances.
-  GetApplicationScalingRulesRuleScalingRuleTimerSchedule({
+  const GetApplicationScalingRulesRuleScalingRuleTimerSchedule({
     required this.atTime,
     required this.maxReplicas,
     required this.minReplicas,

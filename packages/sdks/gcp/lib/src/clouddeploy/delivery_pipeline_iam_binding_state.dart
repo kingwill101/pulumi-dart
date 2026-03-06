@@ -21,7 +21,7 @@ class DeliveryPipelineIamBindingState {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  DeliveryPipelineIamBindingState({
+  const DeliveryPipelineIamBindingState({
     this.condition,
     this.etag,
     this.location,

@@ -12,7 +12,7 @@ class RetentionPolicyResponse {
   /// Creates a new [RetentionPolicyResponse].
   /// [days] the number of days for the retention in days. A value of 0 will retain the events indefinitely.
   /// [enabled] a value indicating whether the retention policy is enabled.
-  RetentionPolicyResponse({
+  const RetentionPolicyResponse({
     required this.days,
     required this.enabled,
   });

@@ -51,7 +51,7 @@ class SecurityGroupRuleState {
   /// [sourceGroupOwnerAccount] The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
   /// [sourceSecurityGroupId] The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
   /// [type] The type of the Security Group Rule. Valid values:
-  SecurityGroupRuleState({
+  const SecurityGroupRuleState({
     this.cidrIp,
     this.description,
     this.ipProtocol,

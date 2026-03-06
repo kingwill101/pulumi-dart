@@ -20,7 +20,7 @@ class RecurrencePattern {
   /// [frequency] The frequency of the recurrence.
   /// [interval] The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
   /// [weekDays] The week days the schedule runs. Used for when the Frequency is set to Weekly.
-  RecurrencePattern({
+  const RecurrencePattern({
     required this.expirationDate,
     required this.frequency,
     this.interval,

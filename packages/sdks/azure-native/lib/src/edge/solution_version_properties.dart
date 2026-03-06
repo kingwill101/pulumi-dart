@@ -9,7 +9,7 @@ class SolutionVersionProperties {
 
   /// Creates a new [SolutionVersionProperties].
   /// [specification] App components spec
-  SolutionVersionProperties({
+  const SolutionVersionProperties({
     required this.specification,
   });
 

@@ -19,7 +19,7 @@ class AcceleratorBasicAuthSetting {
   /// [caCertResourceId] Resource Id of CA certificate for https URL of Git repository.
   /// [password] Password of git repository basic auth.
   /// [username] Username of git repository basic auth.
-  AcceleratorBasicAuthSetting({
+  const AcceleratorBasicAuthSetting({
     required this.authType,
     this.caCertResourceId,
     this.password,

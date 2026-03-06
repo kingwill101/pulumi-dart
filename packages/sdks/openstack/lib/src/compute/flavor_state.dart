@@ -55,7 +55,7 @@ class FlavorState {
   /// [rxTxFactor] RX/TX bandwith factor. The default is 1. Changing
   /// [swap] The amount of disk space in megabytes to use. If
   /// [vcpus] The number of virtual CPUs to use. Changing this creates
-  FlavorState({
+  const FlavorState({
     this.description,
     this.disk,
     this.ephemeral,

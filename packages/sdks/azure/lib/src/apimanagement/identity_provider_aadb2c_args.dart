@@ -45,7 +45,7 @@ class IdentityProviderAadb2cArgs {
   /// [signinPolicy] Signin Policy Name.
   /// [signinTenant] The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
   /// [signupPolicy] Signup Policy Name.
-  IdentityProviderAadb2cArgs({
+  const IdentityProviderAadb2cArgs({
     required this.allowedTenant,
     required this.apiManagementName,
     required this.authority,

@@ -21,7 +21,7 @@ class PrivateLinkServiceProxyResponse {
   /// [id] NRP resource ID.
   /// [remotePrivateEndpointConnection] Remote private endpoint connection details.
   /// [remotePrivateLinkServiceConnectionState] Remote private link service connection state
-  PrivateLinkServiceProxyResponse({
+  const PrivateLinkServiceProxyResponse({
     this.groupConnectivityInformation,
     this.id,
     this.remotePrivateEndpointConnection,

@@ -12,7 +12,7 @@ class RunCommandInputParameter {
   /// Creates a new [RunCommandInputParameter].
   /// [name] The run command parameter name.
   /// [value] The run command parameter value.
-  RunCommandInputParameter({
+  const RunCommandInputParameter({
     required this.name,
     required this.value,
   });

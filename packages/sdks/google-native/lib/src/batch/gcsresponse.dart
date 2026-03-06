@@ -9,7 +9,7 @@ class GCSResponse {
 
   /// Creates a new [GCSResponse].
   /// [remotePath] Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/
-  GCSResponse({
+  const GCSResponse({
     required this.remotePath,
   });
 

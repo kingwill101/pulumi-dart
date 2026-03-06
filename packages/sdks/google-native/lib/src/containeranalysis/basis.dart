@@ -13,7 +13,7 @@ class Basis {
   /// Creates a new [Basis].
   /// [fingerprint] The fingerprint of the base image.
   /// [resourceUrl] The resource_url for the resource representing the basis of associated occurrence images.
-  Basis({
+  const Basis({
     this.fingerprint,
     this.resourceUrl,
   });

@@ -15,7 +15,7 @@ class EndpointAuthenticationResponse {
   /// [aadTenantID] AAD tenant ID.
   /// [principalID] AAD principal ID.
   /// [principalType] AAD principal type.
-  EndpointAuthenticationResponse({
+  const EndpointAuthenticationResponse({
     this.aadTenantID,
     this.principalID,
     this.principalType,

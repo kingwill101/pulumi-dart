@@ -18,7 +18,7 @@ class GetDaprComponentArgs {
   /// [componentName] Name of the Dapr Component.
   /// [environmentName] Name of the Managed Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDaprComponentArgs({
+  const GetDaprComponentArgs({
     required this.componentName,
     required this.environmentName,
     required this.resourceGroupName,

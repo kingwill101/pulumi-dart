@@ -19,7 +19,7 @@ class GetForwardingRulesResult {
   /// [project] The project name being queried.
   /// [region] The region being queried.
   /// [rules] This is a list of the forwarding rules in the project. Each forwarding rule will list the backend, description, ip address. name, network, self link, service label, service name, and subnet.
-  GetForwardingRulesResult({
+  const GetForwardingRulesResult({
     required this.id,
     this.project,
     this.region,

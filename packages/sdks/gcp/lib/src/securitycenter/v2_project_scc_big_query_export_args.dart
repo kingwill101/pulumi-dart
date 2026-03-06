@@ -48,7 +48,7 @@ class V2ProjectSccBigQueryExportArgs {
   /// [filter] Expression that defines the filter to apply across create/update
   /// [location] location Id is provided by organization. If not provided, Use global as default.
   /// [project] The ID of the project in which the resource belongs.
-  V2ProjectSccBigQueryExportArgs({
+  const V2ProjectSccBigQueryExportArgs({
     required this.bigQueryExportId,
     this.dataset,
     this.description,

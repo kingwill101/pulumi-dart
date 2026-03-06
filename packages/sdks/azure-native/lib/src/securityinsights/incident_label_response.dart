@@ -12,7 +12,7 @@ class IncidentLabelResponse {
   /// Creates a new [IncidentLabelResponse].
   /// [labelName] The name of the label
   /// [labelType] The type of the label
-  IncidentLabelResponse({
+  const IncidentLabelResponse({
     required this.labelName,
     required this.labelType,
   });

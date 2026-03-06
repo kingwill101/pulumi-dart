@@ -147,7 +147,7 @@ class RegionInstanceGroupManagerState {
   /// [versions] Application versions managed by this instance group. Each
   /// [waitForInstances] Whether to wait for all instances to be created/updated before
   /// [waitForInstancesStatus] When used with `wait_for_instances` it specifies the status to wait for.
-  RegionInstanceGroupManagerState({
+  const RegionInstanceGroupManagerState({
     this.allInstancesConfig,
     this.autoHealingPolicies,
     this.baseInstanceName,

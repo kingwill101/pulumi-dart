@@ -96,7 +96,7 @@ class AttachedClusterArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [proxyConfig] Support for proxy configuration.
   /// [securityPostureConfig] (Optional, Deprecated)
-  AttachedClusterArgs({
+  const AttachedClusterArgs({
     this.annotations,
     this.authorization,
     this.binaryAuthorization,

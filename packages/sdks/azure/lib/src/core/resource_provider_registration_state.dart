@@ -15,7 +15,7 @@ class ResourceProviderRegistrationState {
   /// Creates a new [ResourceProviderRegistrationState].
   /// [features] A list of `feature` blocks as defined below.
   /// [name] The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
-  ResourceProviderRegistrationState({
+  const ResourceProviderRegistrationState({
     this.features,
     this.name,
   });

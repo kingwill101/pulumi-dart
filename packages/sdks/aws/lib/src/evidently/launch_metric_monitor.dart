@@ -9,7 +9,7 @@ class LaunchMetricMonitor {
 
   /// Creates a new [LaunchMetricMonitor].
   /// [metricDefinition] A block that defines the metric. Detailed below.
-  LaunchMetricMonitor({
+  const LaunchMetricMonitor({
     required this.metricDefinition,
   });
 

@@ -34,7 +34,7 @@ class IntegrationAccountPartnerArgs {
   /// [partnerType] The partner type.
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
-  IntegrationAccountPartnerArgs({
+  const IntegrationAccountPartnerArgs({
     required this.content,
     required this.integrationAccountName,
     this.location,

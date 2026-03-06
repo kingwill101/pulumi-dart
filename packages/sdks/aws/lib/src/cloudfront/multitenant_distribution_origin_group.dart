@@ -16,7 +16,7 @@ class MultitenantDistributionOriginGroup {
   /// [failoverCriteria] Failover criteria for when to failover to the secondary origin. See Failover Criteria below.
   /// [id] Identifier for the distribution.
   /// [members] List of origins in this origin group. Must contain exactly 2 members. See Origin Group Member below.
-  MultitenantDistributionOriginGroup({
+  const MultitenantDistributionOriginGroup({
     required this.failoverCriteria,
     required this.id,
     required this.members,

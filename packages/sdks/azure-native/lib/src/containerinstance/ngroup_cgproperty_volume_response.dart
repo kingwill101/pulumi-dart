@@ -13,7 +13,7 @@ class NGroupCGPropertyVolumeResponse {
   /// Creates a new [NGroupCGPropertyVolumeResponse].
   /// [azureFile] The Azure File volume.
   /// [name] The name of the volume.
-  NGroupCGPropertyVolumeResponse({
+  const NGroupCGPropertyVolumeResponse({
     this.azureFile,
     required this.name,
   });

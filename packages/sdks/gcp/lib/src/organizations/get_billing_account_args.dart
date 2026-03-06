@@ -24,7 +24,7 @@ class GetBillingAccountArgs {
   /// [displayName] The display name of the billing account.
   /// [lookupProjects] `true` if projects associated with the billing account should be read, `false` if this step
   /// [open] `true` if the billing account is open, `false` if the billing account is closed.
-  GetBillingAccountArgs({
+  const GetBillingAccountArgs({
     this.billingAccount,
     this.displayName,
     this.lookupProjects,

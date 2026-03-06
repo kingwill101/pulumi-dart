@@ -9,7 +9,7 @@ class PartnerRegionInfo {
 
   /// Creates a new [PartnerRegionInfo].
   /// [location] Geo location of the partner managed instances.
-  PartnerRegionInfo({
+  const PartnerRegionInfo({
     this.location,
   });
 

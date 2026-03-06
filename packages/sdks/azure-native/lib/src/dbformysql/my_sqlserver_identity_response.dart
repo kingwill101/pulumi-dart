@@ -19,7 +19,7 @@ class MySQLServerIdentityResponse {
   /// [tenantId] TenantId from the KeyVault
   /// [type] Type of managed service identity.
   /// [userAssignedIdentities] Metadata of user assigned identity.
-  MySQLServerIdentityResponse({
+  const MySQLServerIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

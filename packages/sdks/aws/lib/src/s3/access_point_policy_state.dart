@@ -18,7 +18,7 @@ class AccessPointPolicyState {
   /// [hasPublicAccessPolicy] Indicates whether this access point currently has a policy that allows public access.
   /// [policy] The policy that you want to apply to the specified access point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AccessPointPolicyState({
+  const AccessPointPolicyState({
     this.accessPointArn,
     this.hasPublicAccessPolicy,
     this.policy,

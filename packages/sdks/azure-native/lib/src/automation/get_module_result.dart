@@ -57,7 +57,7 @@ class GetModuleResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource.
   /// [version] Gets the version of the module.
-  GetModuleResult({
+  const GetModuleResult({
     this.activityCount,
     required this.azureApiVersion,
     this.creationTime,

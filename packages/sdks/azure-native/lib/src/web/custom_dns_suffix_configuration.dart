@@ -18,7 +18,7 @@ class CustomDnsSuffixConfiguration {
   /// [dnsSuffix] The default custom domain suffix to use for all sites deployed on the ASE.
   /// [keyVaultReferenceIdentity] The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
   /// [kind] Kind of resource.
-  CustomDnsSuffixConfiguration({
+  const CustomDnsSuffixConfiguration({
     this.certificateUrl,
     this.dnsSuffix,
     this.keyVaultReferenceIdentity,

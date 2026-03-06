@@ -20,7 +20,7 @@ class GetIngressesResult {
   /// [ingresses] Required.
   /// [namespaceId] Required.
   /// [outputFile] Optional.
-  GetIngressesResult({
+  const GetIngressesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

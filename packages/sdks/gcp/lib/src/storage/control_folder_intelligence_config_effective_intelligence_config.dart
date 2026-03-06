@@ -13,7 +13,7 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfig {
   /// Creates a new [ControlFolderIntelligenceConfigEffectiveIntelligenceConfig].
   /// [effectiveEdition] (Output)
   /// [intelligenceConfig] (Output)
-  ControlFolderIntelligenceConfigEffectiveIntelligenceConfig({
+  const ControlFolderIntelligenceConfigEffectiveIntelligenceConfig({
     this.effectiveEdition,
     this.intelligenceConfig,
   });

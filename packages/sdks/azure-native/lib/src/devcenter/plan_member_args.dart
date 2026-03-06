@@ -30,7 +30,7 @@ class PlanMemberArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [tier] The tier of the member.
-  PlanMemberArgs({
+  const PlanMemberArgs({
     this.memberId,
     this.memberName,
     this.memberType,

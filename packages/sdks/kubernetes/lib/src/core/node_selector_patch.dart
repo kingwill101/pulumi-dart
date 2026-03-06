@@ -10,7 +10,7 @@ class NodeSelectorPatch {
 
   /// Creates a new [NodeSelectorPatch].
   /// [nodeSelectorTerms] Required. A list of node selector terms. The terms are ORed.
-  NodeSelectorPatch({
+  const NodeSelectorPatch({
     this.nodeSelectorTerms,
   });
 

@@ -24,7 +24,7 @@ class GetPrimaryIpArgs {
   /// [ipAddress] IP address of the Primary IP.
   /// [name] Name of the Primary IP.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetPrimaryIpArgs({
+  const GetPrimaryIpArgs({
     this.assigneeId,
     this.id,
     this.ipAddress,

@@ -15,7 +15,7 @@ class GetServiceConnectionMapArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceConnectionMapId] Required.
-  GetServiceConnectionMapArgs({
+  const GetServiceConnectionMapArgs({
     required this.location,
     this.project,
     required this.serviceConnectionMapId,

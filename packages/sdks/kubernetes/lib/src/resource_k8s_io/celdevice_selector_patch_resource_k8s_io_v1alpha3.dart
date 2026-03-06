@@ -35,7 +35,7 @@ class CELDeviceSelectorPatchResourceK8sIoV1alpha3 {
 
   /// Creates a new [CELDeviceSelectorPatchResourceK8sIoV1alpha3].
   /// [expression] Expression is a CEL expression which evaluates a single device. It must evaluate to true when the device under consideration satisfies the desired criteria, and false when it does not. Any other result is an error and causes allocation of devices to abort.
-  CELDeviceSelectorPatchResourceK8sIoV1alpha3({
+  const CELDeviceSelectorPatchResourceK8sIoV1alpha3({
     this.expression,
   });
 

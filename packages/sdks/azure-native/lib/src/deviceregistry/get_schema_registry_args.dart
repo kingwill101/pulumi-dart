@@ -15,7 +15,7 @@ class GetSchemaRegistryArgs {
   /// Creates a new [GetSchemaRegistryArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaRegistryName] Schema registry name parameter.
-  GetSchemaRegistryArgs({
+  const GetSchemaRegistryArgs({
     required this.resourceGroupName,
     required this.schemaRegistryName,
   });

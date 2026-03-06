@@ -43,7 +43,7 @@ class GetCapacityReservationsResult {
   /// [resourceGroupId] The resource group id
   /// [status] The status of the capacity reservation.
   /// [tags] A mapping of tags to assign to the Capacity Reservation.
-  GetCapacityReservationsResult({
+  const GetCapacityReservationsResult({
     this.capacityReservationIds,
     required this.id,
     required this.ids,

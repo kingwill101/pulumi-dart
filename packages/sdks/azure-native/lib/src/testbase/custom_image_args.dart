@@ -30,7 +30,7 @@ class CustomImageArgs {
   /// [testBaseAccountName] The resource name of the Test Base Account.
   /// [versionName] Image version name.
   /// [vhdId] The Id of the associated VHD resource.
-  CustomImageArgs({
+  const CustomImageArgs({
     this.customImageName,
     required this.definitionName,
     required this.resourceGroupName,

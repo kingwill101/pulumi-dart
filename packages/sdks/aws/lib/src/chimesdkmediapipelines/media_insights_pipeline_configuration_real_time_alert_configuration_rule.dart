@@ -20,7 +20,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule {
   /// [keywordMatchConfiguration] Configuration for a keyword match rule.
   /// [sentimentConfiguration] Configuration for a sentiment rule.
   /// [type] Rule type.
-  MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule({
+  const MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRule({
     this.issueDetectionConfiguration,
     this.keywordMatchConfiguration,
     this.sentimentConfiguration,

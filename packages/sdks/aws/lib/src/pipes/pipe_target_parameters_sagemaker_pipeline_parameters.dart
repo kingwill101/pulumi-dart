@@ -9,7 +9,7 @@ class PipeTargetParametersSagemakerPipelineParameters {
 
   /// Creates a new [PipeTargetParametersSagemakerPipelineParameters].
   /// [pipelineParameters] List of Parameter names and values for SageMaker AI Model Building Pipeline execution. Detailed below.
-  PipeTargetParametersSagemakerPipelineParameters({
+  const PipeTargetParametersSagemakerPipelineParameters({
     this.pipelineParameters,
   });
 

@@ -21,7 +21,7 @@ class GetServiceLoadBalancer {
   /// [containerPort] Port on the container to associate with the load balancer.
   /// [elbName] Name of the load balancer.
   /// [targetGroupArn] ARN of the target group to associate with the load balancer.
-  GetServiceLoadBalancer({
+  const GetServiceLoadBalancer({
     required this.advancedConfigurations,
     required this.containerName,
     required this.containerPort,

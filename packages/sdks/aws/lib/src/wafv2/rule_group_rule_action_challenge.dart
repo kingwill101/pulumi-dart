@@ -9,7 +9,7 @@ class RuleGroupRuleActionChallenge {
 
   /// Creates a new [RuleGroupRuleActionChallenge].
   /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.
-  RuleGroupRuleActionChallenge({
+  const RuleGroupRuleActionChallenge({
     this.customRequestHandling,
   });
 

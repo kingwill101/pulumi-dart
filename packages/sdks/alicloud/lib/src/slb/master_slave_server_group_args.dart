@@ -22,7 +22,7 @@ class MasterSlaveServerGroupArgs {
   /// [loadBalancerId] The Load Balancer ID which is used to launch a new master slave server group.
   /// [name] Name of the master slave server group.
   /// [servers] A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
-  MasterSlaveServerGroupArgs({
+  const MasterSlaveServerGroupArgs({
     this.deleteProtectionValidation,
     required this.loadBalancerId,
     this.name,

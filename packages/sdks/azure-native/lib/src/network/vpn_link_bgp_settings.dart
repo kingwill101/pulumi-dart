@@ -12,7 +12,7 @@ class VpnLinkBgpSettings {
   /// Creates a new [VpnLinkBgpSettings].
   /// [asn] The BGP speaker's ASN.
   /// [bgpPeeringAddress] The BGP peering address and BGP identifier of this BGP speaker.
-  VpnLinkBgpSettings({
+  const VpnLinkBgpSettings({
     this.asn,
     this.bgpPeeringAddress,
   });

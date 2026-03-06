@@ -17,7 +17,7 @@ class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig {
   /// Creates a new [FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig].
   /// [folderCreationConfig] FolderCreationConfig contains the config to create a new folder to be used
   /// [projectCreationConfig] ProjectCreationConfig contains the config to create a new project to be used
-  FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig({
+  const FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig({
     this.folderCreationConfig,
     this.projectCreationConfig,
   });

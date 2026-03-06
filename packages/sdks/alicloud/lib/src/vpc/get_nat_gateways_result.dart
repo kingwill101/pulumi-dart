@@ -57,7 +57,7 @@ class GetNatGatewaysResult {
   /// [tags] The tags of NAT gateway.
   /// [totalCount] Required.
   /// [vpcId] The ID of the VPC.
-  GetNatGatewaysResult({
+  const GetNatGatewaysResult({
     this.dryRun,
     this.enableDetails,
     required this.gateways,

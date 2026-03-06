@@ -25,7 +25,7 @@ class PartitionIndexArgs {
   /// [partitionIndex] Configuration block for a partition index. See `partition_index` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] Name of the table. For Hive compatibility, this must be entirely lowercase.
-  PartitionIndexArgs({
+  const PartitionIndexArgs({
     this.catalogId,
     required this.databaseName,
     required this.partitionIndex,

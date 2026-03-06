@@ -13,7 +13,7 @@ class ConfigSignInEmail {
   /// Creates a new [ConfigSignInEmail].
   /// [enabled] Whether email auth is enabled for the project or not.
   /// [passwordRequired] Whether a password is required for email auth or not. If true, both an email and
-  ConfigSignInEmail({
+  const ConfigSignInEmail({
     required this.enabled,
     this.passwordRequired,
   });

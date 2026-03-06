@@ -13,7 +13,7 @@ class SacRealmPairingKey {
   /// Creates a new [SacRealmPairingKey].
   /// [expireTime] (Output)
   /// [key] (Output)
-  SacRealmPairingKey({
+  const SacRealmPairingKey({
     this.expireTime,
     this.key,
   });

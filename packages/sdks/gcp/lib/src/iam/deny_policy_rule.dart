@@ -13,7 +13,7 @@ class DenyPolicyRule {
   /// Creates a new [DenyPolicyRule].
   /// [denyRule] A deny rule in an IAM deny policy.
   /// [description] The description of the rule.
-  DenyPolicyRule({
+  const DenyPolicyRule({
     this.denyRule,
     this.description,
   });

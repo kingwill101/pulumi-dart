@@ -23,7 +23,7 @@ class GetKubernetesClusterKubeAdminConfig {
   /// [host] The Kubernetes cluster server host.
   /// [password] A password or token used to authenticate to the Kubernetes cluster.
   /// [username] A username used to authenticate to the Kubernetes cluster.
-  GetKubernetesClusterKubeAdminConfig({
+  const GetKubernetesClusterKubeAdminConfig({
     required this.clientCertificate,
     required this.clientKey,
     required this.clusterCaCertificate,

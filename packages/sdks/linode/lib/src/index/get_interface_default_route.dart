@@ -11,7 +11,7 @@ class GetInterfaceDefaultRoute {
   /// Creates a new [GetInterfaceDefaultRoute].
   /// [ipv4] Whether this interface is used for the IPv4 default route.
   /// [ipv6] Whether this interface is used for the IPv6 default route.
-  GetInterfaceDefaultRoute({
+  const GetInterfaceDefaultRoute({
     required this.ipv4,
     required this.ipv6,
   });

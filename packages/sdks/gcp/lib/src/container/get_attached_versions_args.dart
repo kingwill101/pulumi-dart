@@ -16,7 +16,7 @@ class GetAttachedVersionsArgs {
   /// Creates a new [GetAttachedVersionsArgs].
   /// [location] The location to list versions for.
   /// [project] ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
-  GetAttachedVersionsArgs({
+  const GetAttachedVersionsArgs({
     required this.location,
     required this.project,
   });

@@ -15,7 +15,7 @@ class GetGenaiKnowledgeBasesArgs {
   /// Creates a new [GetGenaiKnowledgeBasesArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGenaiKnowledgeBasesArgs({
+  const GetGenaiKnowledgeBasesArgs({
     this.filters,
     this.sorts,
   });

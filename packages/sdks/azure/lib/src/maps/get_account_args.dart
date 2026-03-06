@@ -17,7 +17,7 @@ class GetAccountArgs {
   /// [name] Specifies the name of the Maps Account.
   /// [resourceGroupName] Specifies the name of the Resource Group in which the Maps Account is located.
   /// [tags] Optional.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

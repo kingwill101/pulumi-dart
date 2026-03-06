@@ -18,7 +18,7 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskInput {
   /// [selectedDatabases] Databases to migrate
   /// [sourceConnectionInfo] Connection information for source Oracle
   /// [targetConnectionInfo] Connection information for target Azure Database for PostgreSQL
-  MigrateOracleAzureDbPostgreSqlSyncTaskInput({
+  const MigrateOracleAzureDbPostgreSqlSyncTaskInput({
     required this.selectedDatabases,
     required this.sourceConnectionInfo,
     required this.targetConnectionInfo,

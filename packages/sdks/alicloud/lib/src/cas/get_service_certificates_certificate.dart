@@ -59,7 +59,7 @@ class GetServiceCertificatesCertificate {
   /// [province] The province or autonomous region in which the organization is located.
   /// [sans] All domain names that are bound to the certificate.
   /// [startDate] The time at which the certificate starts to take effect.
-  GetServiceCertificatesCertificate({
+  const GetServiceCertificatesCertificate({
     required this.buyInAliyun,
     required this.cert,
     required this.certId,

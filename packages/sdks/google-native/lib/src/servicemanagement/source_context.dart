@@ -9,7 +9,7 @@ class SourceContext {
 
   /// Creates a new [SourceContext].
   /// [fileName] The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
-  SourceContext({
+  const SourceContext({
     this.fileName,
   });
 

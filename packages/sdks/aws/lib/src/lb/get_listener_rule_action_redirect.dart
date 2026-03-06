@@ -23,7 +23,7 @@ class GetListenerRuleActionRedirect {
   /// [protocol] The protocol.
   /// [query] The query parameters.
   /// [statusCode] The HTTP redirect code.
-  GetListenerRuleActionRedirect({
+  const GetListenerRuleActionRedirect({
     required this.host,
     required this.path,
     required this.port,

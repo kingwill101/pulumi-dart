@@ -14,7 +14,7 @@ class PrivatePoolV1ConfigResponse {
   /// Creates a new [PrivatePoolV1ConfigResponse].
   /// [networkConfig] Network configuration for the pool.
   /// [workerConfig] Machine configuration for the workers in the pool.
-  PrivatePoolV1ConfigResponse({
+  const PrivatePoolV1ConfigResponse({
     required this.networkConfig,
     required this.workerConfig,
   });

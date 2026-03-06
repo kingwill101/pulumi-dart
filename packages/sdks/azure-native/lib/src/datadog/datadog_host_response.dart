@@ -17,7 +17,7 @@ class DatadogHostResponse {
   /// [apps] The Datadog integrations reporting metrics for the host.
   /// [meta] Optional.
   /// [name] The name of the host.
-  DatadogHostResponse({
+  const DatadogHostResponse({
     this.aliases,
     this.apps,
     this.meta,

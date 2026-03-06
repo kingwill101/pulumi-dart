@@ -12,7 +12,7 @@ class UserPolicyAttachmentState {
   /// Creates a new [UserPolicyAttachmentState].
   /// [policyArn] The ARN of the policy you want to apply
   /// [user] The user the policy should be applied to
-  UserPolicyAttachmentState({
+  const UserPolicyAttachmentState({
     this.policyArn,
     this.user,
   });

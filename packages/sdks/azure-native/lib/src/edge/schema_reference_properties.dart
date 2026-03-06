@@ -9,7 +9,7 @@ class SchemaReferenceProperties {
 
   /// Creates a new [SchemaReferenceProperties].
   /// [schemaId] Schema Id of schema reference
-  SchemaReferenceProperties({
+  const SchemaReferenceProperties({
     required this.schemaId,
   });
 

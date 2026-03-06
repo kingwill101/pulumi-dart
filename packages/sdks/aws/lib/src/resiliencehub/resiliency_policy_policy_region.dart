@@ -11,7 +11,7 @@ class ResiliencyPolicyPolicyRegion {
   /// Creates a new [ResiliencyPolicyPolicyRegion].
   /// [rpo] Recovery Point Objective (RPO) as a Go duration.
   /// [rto] Recovery Time Objective (RTO) as a Go duration.
-  ResiliencyPolicyPolicyRegion({
+  const ResiliencyPolicyPolicyRegion({
     this.rpo,
     this.rto,
   });

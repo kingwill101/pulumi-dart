@@ -33,7 +33,7 @@ class GetAggregateConfigRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [riskLevel] The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
   /// [status] The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
-  GetAggregateConfigRulesArgs({
+  const GetAggregateConfigRulesArgs({
     this.aggregateConfigRuleName,
     required this.aggregatorId,
     this.enableDetails,

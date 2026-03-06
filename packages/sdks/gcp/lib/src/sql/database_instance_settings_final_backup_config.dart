@@ -11,7 +11,7 @@ class DatabaseInstanceSettingsFinalBackupConfig {
   /// Creates a new [DatabaseInstanceSettingsFinalBackupConfig].
   /// [enabled] True if enabled final backup.
   /// [retentionDays] The number of days we retain the final backup after instance deletion. The valid range is between 1 and 365. For instances managed by BackupDR, the valid range is between 1 day and 99 years.
-  DatabaseInstanceSettingsFinalBackupConfig({
+  const DatabaseInstanceSettingsFinalBackupConfig({
     this.enabled,
     this.retentionDays,
   });

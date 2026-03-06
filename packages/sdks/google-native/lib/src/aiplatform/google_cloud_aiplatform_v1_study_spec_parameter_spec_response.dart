@@ -32,7 +32,7 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecResponse {
   /// [integerValueSpec] The value spec for an 'INTEGER' parameter.
   /// [parameterId] The ID of the parameter. Must not contain whitespaces and must be unique amongst all ParameterSpecs.
   /// [scaleType] How the parameter should be scaled. Leave unset for `CATEGORICAL` parameters.
-  GoogleCloudAiplatformV1StudySpecParameterSpecResponse({
+  const GoogleCloudAiplatformV1StudySpecParameterSpecResponse({
     required this.categoricalValueSpec,
     required this.conditionalParameterSpecs,
     required this.discreteValueSpec,

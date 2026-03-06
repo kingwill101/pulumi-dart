@@ -11,7 +11,7 @@ class InsightsTableResultResponseColumns {
   /// Creates a new [InsightsTableResultResponseColumns].
   /// [name] the name of the column
   /// [type] the type of the column
-  InsightsTableResultResponseColumns({
+  const InsightsTableResultResponseColumns({
     this.name,
     this.type,
   });

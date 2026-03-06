@@ -18,7 +18,7 @@ class GetIntegrationAccountCertificateArgs {
   /// [certificateName] The integration account certificate name.
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationAccountCertificateArgs({
+  const GetIntegrationAccountCertificateArgs({
     required this.certificateName,
     required this.integrationAccountName,
     required this.resourceGroupName,

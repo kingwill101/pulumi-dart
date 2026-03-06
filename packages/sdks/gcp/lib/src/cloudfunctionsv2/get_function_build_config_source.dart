@@ -13,7 +13,7 @@ class GetFunctionBuildConfigSource {
   /// Creates a new [GetFunctionBuildConfigSource].
   /// [repoSources] If provided, get the source from this location in a Cloud Source Repository.
   /// [storageSources] If provided, get the source from this location in Google Cloud Storage.
-  GetFunctionBuildConfigSource({
+  const GetFunctionBuildConfigSource({
     required this.repoSources,
     required this.storageSources,
   });

@@ -40,7 +40,7 @@ class ApiArgs {
   /// [project] Optional.
   /// [recommendedDeployment] The recommended deployment of the API. Format: `projects/{project}/locations/{location}/apis/{api}/deployments/{deployment}`
   /// [recommendedVersion] The recommended version of the API. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}`
-  ApiArgs({
+  const ApiArgs({
     this.annotations,
     required this.apiId,
     this.availability,

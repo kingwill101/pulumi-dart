@@ -17,7 +17,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMul
   /// [mirrorMultiAlternateNumber] Image back-to-source multi-source station serial number
   /// [mirrorMultiAlternateUrl] Mirroring back-to-source multi-source site URL
   /// [mirrorMultiAlternateVpcId] Mirroring back-to-source multi-source VpcId
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate({
     this.mirrorMultiAlternateDstRegion,
     this.mirrorMultiAlternateNumber,
     this.mirrorMultiAlternateUrl,

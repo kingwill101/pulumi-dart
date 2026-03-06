@@ -12,7 +12,7 @@ class EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse].
   /// [exclusive] Whether the regex matcher is applied exclusively (if true, matching values will be rejected).
   /// [regex] The regex applied to the input value(s).
-  EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse({
+  const EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleStringRegexResponse({
     required this.exclusive,
     required this.regex,
   });

@@ -15,7 +15,7 @@ class ReleaseInputVariableDefault {
   /// [type] Name of a supported variable type. Supported types are STRING, INT, BOOL.
   /// [value] String encoded value for the variable.
   /// [variable] Name of the variable from actuation configs.
-  ReleaseInputVariableDefault({
+  const ReleaseInputVariableDefault({
     this.type,
     this.value,
     required this.variable,

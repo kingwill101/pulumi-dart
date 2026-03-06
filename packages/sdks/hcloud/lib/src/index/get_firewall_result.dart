@@ -27,7 +27,7 @@ class GetFirewallResult {
   /// [name] (string) Name of the Firewall.
   /// [rules] (string) Configuration of a Rule from this Firewall.
   /// [withSelector] Optional.
-  GetFirewallResult({
+  const GetFirewallResult({
     this.applyTos,
     this.id,
     this.labels,

@@ -38,7 +38,7 @@ class CertificateAuthorityArgs {
   /// [tags] Key-value map of user-defined tags that are attached to the certificate authority. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of the certificate authority. Defaults to `SUBORDINATE`. Valid values: `ROOT` and `SUBORDINATE`.
   /// [usageMode] Specifies whether the CA issues general-purpose certificates that typically require a revocation mechanism, or short-lived certificates that may optionally omit revocation because they expire quickly. Short-lived certificate validity is limited to seven days. Defaults to `GENERAL_PURPOSE`. Valid values: `GENERAL_PURPOSE` and `SHORT_LIVED_CERTIFICATE`.
-  CertificateAuthorityArgs({
+  const CertificateAuthorityArgs({
     required this.certificateAuthorityConfiguration,
     this.enabled,
     this.keyStorageSecurityStandard,

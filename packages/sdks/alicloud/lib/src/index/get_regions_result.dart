@@ -22,7 +22,7 @@ class GetRegionsResult {
   /// [name] Required.
   /// [outputFile] Optional.
   /// [regions] A list of regions. Each element contains the following attributes:
-  GetRegionsResult({
+  const GetRegionsResult({
     required this.current,
     required this.id,
     required this.ids,

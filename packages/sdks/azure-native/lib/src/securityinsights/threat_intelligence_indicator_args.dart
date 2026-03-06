@@ -110,7 +110,7 @@ class ThreatIntelligenceIndicatorArgs {
   /// [validFrom] Valid from
   /// [validUntil] Valid until
   /// [workspaceName] The name of the workspace.
-  ThreatIntelligenceIndicatorArgs({
+  const ThreatIntelligenceIndicatorArgs({
     this.confidence,
     this.created,
     this.createdByRef,

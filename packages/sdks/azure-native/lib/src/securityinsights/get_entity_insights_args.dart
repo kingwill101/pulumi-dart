@@ -30,7 +30,7 @@ class GetEntityInsightsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startTime] The start timeline date, so the results returned are after this date.
   /// [workspaceName] The name of the workspace.
-  GetEntityInsightsArgs({
+  const GetEntityInsightsArgs({
     this.addDefaultExtendedTimeRange,
     required this.endTime,
     required this.entityId,

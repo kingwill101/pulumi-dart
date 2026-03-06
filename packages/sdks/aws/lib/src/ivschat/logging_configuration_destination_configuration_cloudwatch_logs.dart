@@ -8,7 +8,7 @@ class LoggingConfigurationDestinationConfigurationCloudwatchLogs {
 
   /// Creates a new [LoggingConfigurationDestinationConfigurationCloudwatchLogs].
   /// [logGroupName] Name of the Amazon Cloudwatch Logs destination where chat activity will be logged.
-  LoggingConfigurationDestinationConfigurationCloudwatchLogs({
+  const LoggingConfigurationDestinationConfigurationCloudwatchLogs({
     required this.logGroupName,
   });
 

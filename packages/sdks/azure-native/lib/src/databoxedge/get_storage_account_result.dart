@@ -39,7 +39,7 @@ class GetStorageAccountResult {
   /// [storageAccountStatus] Current status of the storage account
   /// [systemData] Metadata pertaining to creation and last modification of StorageAccount
   /// [type] The hierarchical type of the object.
-  GetStorageAccountResult({
+  const GetStorageAccountResult({
     required this.azureApiVersion,
     required this.blobEndpoint,
     required this.containerCount,

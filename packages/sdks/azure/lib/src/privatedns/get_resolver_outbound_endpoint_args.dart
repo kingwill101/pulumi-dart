@@ -15,7 +15,7 @@ class GetResolverOutboundEndpointArgs {
   /// Creates a new [GetResolverOutboundEndpointArgs].
   /// [name] Name of the Private DNS Resolver Outbound Endpoint.
   /// [privateDnsResolverId] ID of the Private DNS Resolver Outbound Endpoint.
-  GetResolverOutboundEndpointArgs({
+  const GetResolverOutboundEndpointArgs({
     required this.name,
     required this.privateDnsResolverId,
   });

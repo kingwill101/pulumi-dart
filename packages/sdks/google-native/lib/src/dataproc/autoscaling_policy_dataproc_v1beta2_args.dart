@@ -26,7 +26,7 @@ class AutoscalingPolicyDataprocV1beta2Args {
   /// [project] Optional.
   /// [secondaryWorkerConfig] Optional. Describes how the autoscaler will operate for secondary workers.
   /// [workerConfig] Describes how the autoscaler will operate for primary workers.
-  AutoscalingPolicyDataprocV1beta2Args({
+  const AutoscalingPolicyDataprocV1beta2Args({
     this.basicAlgorithm,
     required this.id,
     this.location,

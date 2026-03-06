@@ -93,7 +93,7 @@ class RouteMapArgs {
   /// [sourceRouteTableIds] A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
   /// [transitRouterRouteTableId] The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
   /// [transmitDirection] The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
-  RouteMapArgs({
+  const RouteMapArgs({
     this.asPathMatchMode,
     required this.cenId,
     required this.cenRegionId,

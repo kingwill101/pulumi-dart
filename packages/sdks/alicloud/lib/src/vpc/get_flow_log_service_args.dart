@@ -14,7 +14,7 @@ class GetFlowLogServiceArgs {
 
   /// Creates a new [GetFlowLogServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
-  GetFlowLogServiceArgs({
+  const GetFlowLogServiceArgs({
     this.enable,
   });
 

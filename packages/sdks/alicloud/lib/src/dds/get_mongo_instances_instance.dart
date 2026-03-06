@@ -48,7 +48,7 @@ class GetMongoInstancesInstance {
   /// [status] Required.
   /// [storage] Required.
   /// [tags] Required.
-  GetMongoInstancesInstance({
+  const GetMongoInstancesInstance({
     required this.availabilityZone,
     required this.chargeType,
     required this.creationTime,

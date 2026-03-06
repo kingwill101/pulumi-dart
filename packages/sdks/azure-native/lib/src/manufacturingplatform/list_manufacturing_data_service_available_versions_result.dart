@@ -10,7 +10,7 @@ class ListManufacturingDataServiceAvailableVersionsResult {
 
   /// Creates a new [ListManufacturingDataServiceAvailableVersionsResult].
   /// [versions] The list of versions
-  ListManufacturingDataServiceAvailableVersionsResult({
+  const ListManufacturingDataServiceAvailableVersionsResult({
     required this.versions,
   });
 

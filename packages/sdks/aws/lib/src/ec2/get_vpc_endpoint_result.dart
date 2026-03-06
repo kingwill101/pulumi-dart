@@ -68,7 +68,7 @@ class GetVpcEndpointResult {
   /// [tags] Required.
   /// [vpcEndpointType] Required.
   /// [vpcId] Required.
-  GetVpcEndpointResult({
+  const GetVpcEndpointResult({
     required this.arn,
     required this.cidrBlocks,
     required this.dnsEntries,

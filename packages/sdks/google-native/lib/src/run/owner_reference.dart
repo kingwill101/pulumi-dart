@@ -24,7 +24,7 @@ class OwnerReference {
   /// [kind] This is not supported or used by Cloud Run.
   /// [name] This is not supported or used by Cloud Run.
   /// [uid] This is not supported or used by Cloud Run.
-  OwnerReference({
+  const OwnerReference({
     this.apiVersion,
     this.blockOwnerDeletion,
     this.controller,

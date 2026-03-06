@@ -26,7 +26,7 @@ class AppCheckRecaptchaEnterpriseConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [siteKey] The score-based site key created in reCAPTCHA Enterprise used to invoke reCAPTCHA and generate the reCAPTCHA tokens for your application.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from reCAPTCHA Enterprise artifacts will be valid.
-  AppCheckRecaptchaEnterpriseConfigState({
+  const AppCheckRecaptchaEnterpriseConfigState({
     this.appId,
     this.name,
     this.project,

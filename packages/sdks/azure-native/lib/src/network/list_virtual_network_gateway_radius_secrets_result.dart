@@ -13,7 +13,7 @@ class ListVirtualNetworkGatewayRadiusSecretsResult {
   /// Creates a new [ListVirtualNetworkGatewayRadiusSecretsResult].
   /// [nextLink] URL to get the next set of operation list results if there are any.
   /// [value] List of Radius servers with respective radius secrets.
-  ListVirtualNetworkGatewayRadiusSecretsResult({
+  const ListVirtualNetworkGatewayRadiusSecretsResult({
     this.nextLink,
     this.value,
   });

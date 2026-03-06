@@ -23,7 +23,7 @@ class CustomDomainArgs {
   /// [domainName] The custom domain name. For example, "example.com".
   /// [protocol] The protocol, `HTTP` or `HTTP,HTTPS`.
   /// [routeConfigs] The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
-  CustomDomainArgs({
+  const CustomDomainArgs({
     this.certConfig,
     required this.domainName,
     required this.protocol,

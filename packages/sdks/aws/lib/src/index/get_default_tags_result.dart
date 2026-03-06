@@ -10,7 +10,7 @@ class GetDefaultTagsResult {
   /// Creates a new [GetDefaultTagsResult].
   /// [id] Required.
   /// [tags] Key-value mapping of provider default tags.
-  GetDefaultTagsResult({
+  const GetDefaultTagsResult({
     required this.id,
     required this.tags,
   });

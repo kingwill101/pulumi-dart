@@ -15,7 +15,7 @@ class MetastoreServiceNetworkConfigConsumer {
   /// Creates a new [MetastoreServiceNetworkConfigConsumer].
   /// [endpointUri] (Output)
   /// [subnetwork] The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
-  MetastoreServiceNetworkConfigConsumer({
+  const MetastoreServiceNetworkConfigConsumer({
     this.endpointUri,
     required this.subnetwork,
   });

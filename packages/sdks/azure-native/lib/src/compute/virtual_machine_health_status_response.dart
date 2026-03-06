@@ -10,7 +10,7 @@ class VirtualMachineHealthStatusResponse {
 
   /// Creates a new [VirtualMachineHealthStatusResponse].
   /// [status] The health status information for the VM.
-  VirtualMachineHealthStatusResponse({
+  const VirtualMachineHealthStatusResponse({
     required this.status,
   });
 

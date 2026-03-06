@@ -18,7 +18,7 @@ class GetTargetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetName] The target resource name.
   /// [watcherName] The database watcher name.
-  GetTargetArgs({
+  const GetTargetArgs({
     required this.resourceGroupName,
     required this.targetName,
     required this.watcherName,

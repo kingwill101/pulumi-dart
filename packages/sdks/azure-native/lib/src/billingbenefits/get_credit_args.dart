@@ -15,7 +15,7 @@ class GetCreditArgs {
   /// Creates a new [GetCreditArgs].
   /// [creditName] Name of the credit
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCreditArgs({
+  const GetCreditArgs({
     required this.creditName,
     required this.resourceGroupName,
   });

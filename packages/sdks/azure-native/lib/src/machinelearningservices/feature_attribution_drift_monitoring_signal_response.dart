@@ -32,7 +32,7 @@ class FeatureAttributionDriftMonitoringSignalResponse {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [referenceData] [Required] The data to calculate drift against.
   /// [signalType] Expected value is 'FeatureAttributionDrift'.
-  FeatureAttributionDriftMonitoringSignalResponse({
+  const FeatureAttributionDriftMonitoringSignalResponse({
     this.featureDataTypeOverride,
     required this.featureImportanceSettings,
     required this.metricThreshold,

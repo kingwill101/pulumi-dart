@@ -40,7 +40,7 @@ class GetQueueResult {
   /// [region] Required.
   /// [status] Description of the Queue. Values are `ENABLED` or `DISABLED`.
   /// [tags] Map of tags assigned to the Queue.
-  GetQueueResult({
+  const GetQueueResult({
     required this.arn,
     required this.description,
     required this.hoursOfOperationId,

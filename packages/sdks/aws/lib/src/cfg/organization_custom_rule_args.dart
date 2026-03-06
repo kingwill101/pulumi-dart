@@ -45,7 +45,7 @@ class OrganizationCustomRuleArgs {
   /// [tagKeyScope] Tag key of AWS resources to evaluate
   /// [tagValueScope] Tag value of AWS resources to evaluate
   /// [triggerTypes] List of notification types that trigger AWS Config to run an evaluation for the rule. Valid values: `ConfigurationItemChangeNotification`, `OversizedConfigurationItemChangeNotification`, and `ScheduledNotification`
-  OrganizationCustomRuleArgs({
+  const OrganizationCustomRuleArgs({
     this.description,
     this.excludedAccounts,
     this.inputParameters,

@@ -14,7 +14,7 @@ class RequiredBucket {
   /// Creates a new [RequiredBucket].
   /// [args] Arguments to use instead of the default values during creation.
   /// [existing] Identity of an existing bucket to use. Cannot be used in combination with `args`.
-  RequiredBucket({
+  const RequiredBucket({
     this.args,
     this.existing,
   });

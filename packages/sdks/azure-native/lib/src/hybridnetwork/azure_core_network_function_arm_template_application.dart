@@ -25,7 +25,7 @@ class AzureCoreNetworkFunctionArmTemplateApplication {
   /// [dependsOnProfile] Depends on profile definition.
   /// [deployParametersMappingRuleProfile] Deploy mapping rule profile.
   /// [name] The name of the network function application.
-  AzureCoreNetworkFunctionArmTemplateApplication({
+  const AzureCoreNetworkFunctionArmTemplateApplication({
     this.artifactProfile,
     required this.artifactType,
     this.dependsOnProfile,

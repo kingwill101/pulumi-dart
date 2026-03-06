@@ -9,7 +9,7 @@ class AzureFirewallRCAction {
 
   /// Creates a new [AzureFirewallRCAction].
   /// [type] The type of action.
-  AzureFirewallRCAction({
+  const AzureFirewallRCAction({
     this.type,
   });
 

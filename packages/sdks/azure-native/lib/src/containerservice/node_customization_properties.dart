@@ -13,7 +13,7 @@ class NodeCustomizationProperties {
   /// Creates a new [NodeCustomizationProperties].
   /// [containerImages] The list of container images to cache on nodes. See https://kubernetes.io/docs/concepts/containers/images/#image-names
   /// [customizationScripts] The scripts to customize the node before or after image capture.
-  NodeCustomizationProperties({
+  const NodeCustomizationProperties({
     this.containerImages,
     this.customizationScripts,
   });

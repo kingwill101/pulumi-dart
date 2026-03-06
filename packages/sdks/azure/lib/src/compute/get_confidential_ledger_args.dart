@@ -15,7 +15,7 @@ class GetConfidentialLedgerArgs {
   /// Creates a new [GetConfidentialLedgerArgs].
   /// [name] Specifies the name of this Confidential Ledger.
   /// [resourceGroupName] Specifies the name of the Resource Group where this Confidential Ledger exists.
-  GetConfidentialLedgerArgs({
+  const GetConfidentialLedgerArgs({
     required this.name,
     required this.resourceGroupName,
   });

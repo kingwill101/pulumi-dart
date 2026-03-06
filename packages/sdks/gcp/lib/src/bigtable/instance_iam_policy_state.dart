@@ -18,7 +18,7 @@ class InstanceIamPolicyState {
   /// [instance] The name or relative resource id of the instance to manage IAM policies for.
   /// [policyData] Optional.
   /// [project] Optional.
-  InstanceIamPolicyState({
+  const InstanceIamPolicyState({
     this.etag,
     this.instance,
     this.policyData,

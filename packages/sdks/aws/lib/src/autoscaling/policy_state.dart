@@ -331,7 +331,7 @@ class PolicyState {
   /// [scalingAdjustment] Number of members by which to
   /// [stepAdjustments] Set of adjustments that manage
   /// [targetTrackingConfiguration] Target tracking policy. These have the following structure:
-  PolicyState({
+  const PolicyState({
     this.adjustmentType,
     this.arn,
     this.autoscalingGroupName,

@@ -24,7 +24,7 @@ class PolicyTagArgs {
   /// [parentPolicyTag] Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
   /// [project] Optional.
   /// [taxonomyId] Required.
-  PolicyTagArgs({
+  const PolicyTagArgs({
     this.description,
     required this.displayName,
     this.location,

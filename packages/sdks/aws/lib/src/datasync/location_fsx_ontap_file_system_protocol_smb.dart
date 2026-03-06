@@ -18,7 +18,7 @@ class LocationFsxOntapFileSystemProtocolSmb {
   /// [mountOptions] Mount options that are available for DataSync to access an SMB location. See SMB Mount Options below.
   /// [password] Password of a user who has permission to access your SVM.
   /// [user] Username that can mount the location and access the files, folders, and metadata that you need in the SVM.
-  LocationFsxOntapFileSystemProtocolSmb({
+  const LocationFsxOntapFileSystemProtocolSmb({
     this.domain,
     required this.mountOptions,
     required this.password,

@@ -35,7 +35,7 @@ class GetWorkloadGroupResult {
   /// [name] Resource name.
   /// [queryExecutionTimeout] The workload group query execution timeout.
   /// [type] Resource type.
-  GetWorkloadGroupResult({
+  const GetWorkloadGroupResult({
     required this.azureApiVersion,
     required this.id,
     this.importance,

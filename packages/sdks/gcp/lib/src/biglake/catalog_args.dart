@@ -20,7 +20,7 @@ class CatalogArgs {
   /// [location] The geographic location where the Catalog should reside.
   /// [name] The name of the Catalog. Format:
   /// [project] The ID of the project in which the resource belongs.
-  CatalogArgs({
+  const CatalogArgs({
     required this.location,
     this.name,
     this.project,

@@ -23,7 +23,7 @@ class GetInstanceFileShare {
   /// [name] The name of a Filestore instance.
   /// [nfsExportOptions] Nfs Export Options. There is a limit of 10 export options per file share.
   /// [sourceBackup] The resource name of the backup, in the format
-  GetInstanceFileShare({
+  const GetInstanceFileShare({
     required this.capacityGb,
     required this.name,
     required this.nfsExportOptions,

@@ -15,7 +15,7 @@ class GetConnectorVpcaccessV1beta1Args {
   /// [connectorId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConnectorVpcaccessV1beta1Args({
+  const GetConnectorVpcaccessV1beta1Args({
     required this.connectorId,
     required this.location,
     this.project,

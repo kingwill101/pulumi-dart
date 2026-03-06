@@ -18,7 +18,7 @@ class SymptomResponse {
   /// [details] Detailed information of the current Symptom.
   /// [symptomType] Type of the Symptom.
   /// [workerId] A string used to uniquely distinguish a worker within a TPU node.
-  SymptomResponse({
+  const SymptomResponse({
     required this.createTime,
     required this.details,
     required this.symptomType,

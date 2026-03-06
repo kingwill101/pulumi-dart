@@ -9,7 +9,7 @@ class VolumeOptions {
 
   /// Creates a new [VolumeOptions].
   /// [nocopy] Indicate whether volume is nocopy
-  VolumeOptions({
+  const VolumeOptions({
     this.nocopy,
   });
 

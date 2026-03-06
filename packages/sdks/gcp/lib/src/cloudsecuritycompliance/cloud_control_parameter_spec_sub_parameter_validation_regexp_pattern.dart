@@ -8,7 +8,7 @@ class CloudControlParameterSpecSubParameterValidationRegexpPattern {
 
   /// Creates a new [CloudControlParameterSpecSubParameterValidationRegexpPattern].
   /// [pattern] Regex Pattern to match the value(s) of parameter.
-  CloudControlParameterSpecSubParameterValidationRegexpPattern({
+  const CloudControlParameterSpecSubParameterValidationRegexpPattern({
     required this.pattern,
   });
 

@@ -10,7 +10,7 @@ class GoogleCloudContentwarehouseV1PropertyArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyArrayResponse].
   /// [properties] List of property values.
-  GoogleCloudContentwarehouseV1PropertyArrayResponse({
+  const GoogleCloudContentwarehouseV1PropertyArrayResponse({
     required this.properties,
   });
 

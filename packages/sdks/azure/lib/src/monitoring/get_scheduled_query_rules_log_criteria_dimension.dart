@@ -14,7 +14,7 @@ class GetScheduledQueryRulesLogCriteriaDimension {
   /// [name] Specifies the name of the scheduled query rule.
   /// [operator] Operator for dimension values.
   /// [values] List of dimension values.
-  GetScheduledQueryRulesLogCriteriaDimension({
+  const GetScheduledQueryRulesLogCriteriaDimension({
     required this.name,
     required this.operator,
     required this.values,

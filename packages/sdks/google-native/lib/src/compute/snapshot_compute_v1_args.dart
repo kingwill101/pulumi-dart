@@ -49,7 +49,7 @@ class SnapshotComputeV1Args {
   /// [sourceDiskEncryptionKey] The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
   /// [sourceDiskForRecoveryCheckpoint] The source disk whose recovery checkpoint will be used to create this snapshot.
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
-  SnapshotComputeV1Args({
+  const SnapshotComputeV1Args({
     this.chainName,
     this.description,
     this.labels,

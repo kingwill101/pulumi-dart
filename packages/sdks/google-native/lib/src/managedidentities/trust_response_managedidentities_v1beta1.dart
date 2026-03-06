@@ -39,7 +39,7 @@ class TrustResponseManagedidentitiesV1beta1 {
   /// [trustHandshakeSecret] Input only. The trust secret used for the handshake with the target domain. It will not be stored.
   /// [trustType] The type of trust represented by the trust resource.
   /// [updateTime] The last update time.
-  TrustResponseManagedidentitiesV1beta1({
+  const TrustResponseManagedidentitiesV1beta1({
     required this.createTime,
     required this.lastTrustHeartbeatTime,
     required this.selectiveAuthentication,

@@ -52,7 +52,7 @@ class ConnectionArgs {
   /// [location] The location for the resource
   /// [name] Immutable. The resource name of the connection.
   /// [project] The ID of the project in which the resource belongs.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.annotations,
     this.bitbucketCloudConfig,
     this.bitbucketDataCenterConfig,

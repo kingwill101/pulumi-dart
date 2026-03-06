@@ -33,7 +33,7 @@ class GetModernizeProjectResult {
   /// [systemData] Required.
   /// [tags] Gets or sets the resource tags.
   /// [type] Gets or sets the type of the resource.
-  GetModernizeProjectResult({
+  const GetModernizeProjectResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

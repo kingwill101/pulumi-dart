@@ -25,7 +25,7 @@ class AdvancedMachineFeatures {
   /// [performanceMonitoringUnit] Type of Performance Monitoring Unit requested on instance.
   /// [threadsPerCore] The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
   /// [visibleCoreCount] The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
-  AdvancedMachineFeatures({
+  const AdvancedMachineFeatures({
     this.enableNestedVirtualization,
     this.enableUefiNetworking,
     this.numaNodeCount,

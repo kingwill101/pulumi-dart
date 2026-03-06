@@ -11,7 +11,7 @@ class IcebergCatalogIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  IcebergCatalogIamMemberCondition({
+  const IcebergCatalogIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

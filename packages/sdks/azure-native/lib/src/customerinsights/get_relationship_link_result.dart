@@ -53,7 +53,7 @@ class GetRelationshipLinkResult {
   /// [relationshipName] The Relationship associated with the Link.
   /// [tenantId] The hub name.
   /// [type] Resource type.
-  GetRelationshipLinkResult({
+  const GetRelationshipLinkResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

@@ -19,7 +19,7 @@ class IssueArgs {
   /// [issueName] The name of the IssueResource
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  IssueArgs({
+  const IssueArgs({
     this.issueName,
     this.properties,
     required this.resourceUri,

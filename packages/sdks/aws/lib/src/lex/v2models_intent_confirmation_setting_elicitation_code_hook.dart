@@ -11,7 +11,7 @@ class V2modelsIntentConfirmationSettingElicitationCodeHook {
   /// Creates a new [V2modelsIntentConfirmationSettingElicitationCodeHook].
   /// [enableCodeHookInvocation] Whether a Lambda function should be invoked for the dialog.
   /// [invocationLabel] Label that indicates the dialog step from which the dialog code hook is happening.
-  V2modelsIntentConfirmationSettingElicitationCodeHook({
+  const V2modelsIntentConfirmationSettingElicitationCodeHook({
     this.enableCodeHookInvocation,
     this.invocationLabel,
   });

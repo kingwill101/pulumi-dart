@@ -13,7 +13,7 @@ class GetNetworkFirewallPolicyComputeBetaArgs {
   /// Creates a new [GetNetworkFirewallPolicyComputeBetaArgs].
   /// [firewallPolicy] Required.
   /// [project] Optional.
-  GetNetworkFirewallPolicyComputeBetaArgs({
+  const GetNetworkFirewallPolicyComputeBetaArgs({
     required this.firewallPolicy,
     this.project,
   });

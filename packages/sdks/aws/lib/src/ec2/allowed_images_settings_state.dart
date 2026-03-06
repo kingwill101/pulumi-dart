@@ -16,7 +16,7 @@ class AllowedImagesSettingsState {
   /// [imageCriterions] List of image criteria. Maximum of 10 criterion blocks allowed. See `image_criterion` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] State of the allowed images settings. Valid values are `enabled` or `audit-mode`.
-  AllowedImagesSettingsState({
+  const AllowedImagesSettingsState({
     this.imageCriterions,
     this.region,
     this.state,

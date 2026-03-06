@@ -22,7 +22,7 @@ class InstanceEffectiveReplicationReplica {
   /// [peerInstance] The peer instance.
   /// [state] (Output)
   /// [stateReasons] (Output)
-  InstanceEffectiveReplicationReplica({
+  const InstanceEffectiveReplicationReplica({
     this.lastActiveSyncTime,
     this.peerInstance,
     this.state,

@@ -20,7 +20,7 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2 {
   /// [rrdatas] Required.
   /// [signatureRrdatas] DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
   /// [weight] The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured, the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the sum of weights configured for all items. This weight must be non-negative.
-  RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2({
+  const RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseDnsV1beta2({
     required this.healthCheckedTargets,
     required this.kind,
     required this.rrdatas,

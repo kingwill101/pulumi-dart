@@ -12,7 +12,7 @@ class GetResourceDirectoriesArgs {
 
   /// Creates a new [GetResourceDirectoriesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetResourceDirectoriesArgs({
+  const GetResourceDirectoriesArgs({
     this.outputFile,
   });
 

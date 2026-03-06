@@ -27,7 +27,7 @@ class GetResourceResult {
   /// [roleArn] Role that the resource was registered with.
   /// [withFederation] Whether the resource is a federated resource.
   /// [withPrivilegedAccess] Boolean to grant the calling principal the permissions to perform all supported Lake Formation operations on the registered data location.
-  GetResourceResult({
+  const GetResourceResult({
     required this.arn,
     required this.hybridAccessEnabled,
     required this.id,

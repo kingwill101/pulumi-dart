@@ -16,7 +16,7 @@ class Encryption {
   /// [identity] The managed service identities assigned to this resource.
   /// [keyName] The name of the key vault key.
   /// [keyVaultUri] The URI of the key vault.
-  Encryption({
+  const Encryption({
     this.identity,
     required this.keyName,
     required this.keyVaultUri,

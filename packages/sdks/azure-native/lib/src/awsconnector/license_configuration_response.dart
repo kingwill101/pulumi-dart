@@ -9,7 +9,7 @@ class LicenseConfigurationResponse {
 
   /// Creates a new [LicenseConfigurationResponse].
   /// [licenseConfigurationArn] &lt;p&gt;The Amazon Resource Name (ARN) of the license configuration.&lt;/p&gt;
-  LicenseConfigurationResponse({
+  const LicenseConfigurationResponse({
     this.licenseConfigurationArn,
   });
 

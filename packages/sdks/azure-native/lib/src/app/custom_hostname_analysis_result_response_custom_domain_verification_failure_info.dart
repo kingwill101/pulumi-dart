@@ -19,7 +19,7 @@ class CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo {
   /// [details] Details or the error
   /// [message] Detailed error description and debugging information.
   /// [target] Detailed error description and debugging information.
-  CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo({
+  const CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo({
     required this.code,
     this.details,
     required this.message,

@@ -93,7 +93,7 @@ class ReleaseState {
   /// [uid] The unique identifier of the resource. UID is unique in the time
   /// [unitKind] Reference to the UnitKind this Release corresponds to (required and
   /// [updateTime] The timestamp when the resource was last updated. Any
-  ReleaseState({
+  const ReleaseState({
     this.annotations,
     this.blueprint,
     this.createTime,

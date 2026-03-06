@@ -16,7 +16,7 @@ class VersionArgs {
   /// [description] Optional. The developer-provided description of this version.
   /// [location] Optional.
   /// [project] Optional.
-  VersionArgs({
+  const VersionArgs({
     this.description,
     this.location,
     this.project,

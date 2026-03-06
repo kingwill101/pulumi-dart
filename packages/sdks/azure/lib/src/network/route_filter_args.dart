@@ -25,7 +25,7 @@ class RouteFilterArgs {
   /// [resourceGroupName] The name of the Resource Group where the Route Filter should exist. Changing this forces a new Route Filter to be created.
   /// [rule] A `rule` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the Route Filter.
-  RouteFilterArgs({
+  const RouteFilterArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

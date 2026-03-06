@@ -15,7 +15,7 @@ class ApplicationGatewayIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Application Gateway. Only possible value is `UserAssigned`.
-  ApplicationGatewayIdentity({
+  const ApplicationGatewayIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

@@ -26,7 +26,7 @@ class GetApplicationResult {
   /// [name] Resource name
   /// [sourceResourceType] The application source, what it affects, e.g. Assessments
   /// [type] Resource type
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

@@ -21,7 +21,7 @@ class SignalRNetworkACLsResponse {
   /// [ipRules] IP rules for filtering public traffic
   /// [privateEndpoints] ACLs for requests from private endpoints
   /// [publicNetwork] Network ACL
-  SignalRNetworkACLsResponse({
+  const SignalRNetworkACLsResponse({
     this.defaultAction,
     this.ipRules,
     this.privateEndpoints,

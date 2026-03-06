@@ -16,7 +16,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
   /// [archiveCdnSettings] Parameters that control the interactions with the CDN. See Archive CDN Settings for more details.
   /// [destination] A director and base filename where archive files should be written. See Destination for more details.
   /// [rolloverInterval] Number of seconds to write to archive file before closing and starting a new one.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting({
     this.archiveCdnSettings,
     required this.destination,
     this.rolloverInterval,

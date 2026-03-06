@@ -31,7 +31,7 @@ class NoneAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  NoneAuthTypeConnectionProperties({
+  const NoneAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.error,

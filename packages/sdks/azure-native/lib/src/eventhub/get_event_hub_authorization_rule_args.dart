@@ -21,7 +21,7 @@ class GetEventHubAuthorizationRuleArgs {
   /// [eventHubName] The Event Hub name
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetEventHubAuthorizationRuleArgs({
+  const GetEventHubAuthorizationRuleArgs({
     required this.authorizationRuleName,
     required this.eventHubName,
     required this.namespaceName,

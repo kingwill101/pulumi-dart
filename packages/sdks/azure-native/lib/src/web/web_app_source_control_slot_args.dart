@@ -43,7 +43,7 @@ class WebAppSourceControlSlotArgs {
   /// [repoUrl] Repository or source control URL.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will update the source control configuration for the production slot.
-  WebAppSourceControlSlotArgs({
+  const WebAppSourceControlSlotArgs({
     this.branch,
     this.deploymentRollbackEnabled,
     this.gitHubActionConfiguration,

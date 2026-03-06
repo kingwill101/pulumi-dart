@@ -10,7 +10,7 @@ class AzureNodePoolMaxPodsConstraint {
 
   /// Creates a new [AzureNodePoolMaxPodsConstraint].
   /// [maxPodsPerNode] The maximum number of pods to schedule on a single node.
-  AzureNodePoolMaxPodsConstraint({
+  const AzureNodePoolMaxPodsConstraint({
     required this.maxPodsPerNode,
   });
 

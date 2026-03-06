@@ -15,7 +15,7 @@ class GetEmrClusterArgs {
   /// Creates a new [GetEmrClusterArgs].
   /// [name] Name of EmrCluster
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEmrClusterArgs({
+  const GetEmrClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

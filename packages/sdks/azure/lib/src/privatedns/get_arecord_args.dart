@@ -18,7 +18,7 @@ class GetARecordArgs {
   /// [name] The name of the Private DNS A Record.
   /// [resourceGroupName] Specifies the resource group where the Private DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the Private DNS Zone where the resource exists.
-  GetARecordArgs({
+  const GetARecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

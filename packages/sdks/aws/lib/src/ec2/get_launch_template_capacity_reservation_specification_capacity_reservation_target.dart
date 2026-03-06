@@ -9,7 +9,7 @@ class GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget
   /// Creates a new [GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget].
   /// [capacityReservationId] Required.
   /// [capacityReservationResourceGroupArn] Required.
-  GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget({
+  const GetLaunchTemplateCapacityReservationSpecificationCapacityReservationTarget({
     required this.capacityReservationId,
     required this.capacityReservationResourceGroupArn,
   });

@@ -13,7 +13,7 @@ class ListServiceGroupAncestorsResult {
   /// Creates a new [ListServiceGroupAncestorsResult].
   /// [nextLink] URL to query the next page of results for this request
   /// [value] Array of service groups based on the request criteria
-  ListServiceGroupAncestorsResult({
+  const ListServiceGroupAncestorsResult({
     this.nextLink,
     this.value,
   });

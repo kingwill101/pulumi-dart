@@ -41,7 +41,7 @@ class RegionResizeRequestState {
   /// [resizeBy] The number of instances to be created by this resize request. The group's target size will be increased by this number.
   /// [state] Current state of the request.
   /// [statuses] Status of the request.
-  RegionResizeRequestState({
+  const RegionResizeRequestState({
     this.creationTimestamp,
     this.description,
     this.instanceGroupManager,

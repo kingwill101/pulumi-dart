@@ -18,7 +18,7 @@ class GroupArgs {
   /// [description] The Description of the group. The description can be up to `1024` characters long.
   /// [directoryId] The ID of the Directory.
   /// [groupName] The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
-  GroupArgs({
+  const GroupArgs({
     this.description,
     required this.directoryId,
     required this.groupName,

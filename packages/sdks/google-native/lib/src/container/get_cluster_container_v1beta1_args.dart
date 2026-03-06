@@ -19,7 +19,7 @@ class GetClusterContainerV1beta1Args {
   /// [project] Optional.
   /// [projectId] Required.
   /// [zone] Required.
-  GetClusterContainerV1beta1Args({
+  const GetClusterContainerV1beta1Args({
     required this.clusterId,
     required this.location,
     this.project,

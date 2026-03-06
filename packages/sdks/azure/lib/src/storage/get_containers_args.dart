@@ -15,7 +15,7 @@ class GetContainersArgs {
   /// Creates a new [GetContainersArgs].
   /// [namePrefix] A prefix match used for the Storage Container `name` field.
   /// [storageAccountId] The ID of the Storage Account that the Storage Containers reside in.
-  GetContainersArgs({
+  const GetContainersArgs({
     this.namePrefix,
     required this.storageAccountId,
   });

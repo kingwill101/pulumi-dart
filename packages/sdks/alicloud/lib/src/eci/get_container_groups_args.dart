@@ -43,7 +43,7 @@ class GetContainerGroupsArgs {
   /// [vswitchId] The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
   /// [withEvent] Optional.
   /// [zoneId] The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
-  GetContainerGroupsArgs({
+  const GetContainerGroupsArgs({
     this.containerGroupName,
     this.enableDetails,
     this.ids,

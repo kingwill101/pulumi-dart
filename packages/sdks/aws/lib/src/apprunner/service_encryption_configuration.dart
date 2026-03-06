@@ -8,7 +8,7 @@ class ServiceEncryptionConfiguration {
 
   /// Creates a new [ServiceEncryptionConfiguration].
   /// [kmsKey] ARN of the KMS key used for encryption.
-  ServiceEncryptionConfiguration({
+  const ServiceEncryptionConfiguration({
     required this.kmsKey,
   });
 

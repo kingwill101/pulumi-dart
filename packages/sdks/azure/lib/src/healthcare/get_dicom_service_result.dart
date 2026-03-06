@@ -46,7 +46,7 @@ class GetDicomServiceResult {
   /// [storages] The `storage` block as defined below.
   /// [tags] A map of tags assigned to the Healthcare DICOM Service.
   /// [workspaceId] Required.
-  GetDicomServiceResult({
+  const GetDicomServiceResult({
     required this.authentications,
     required this.cors,
     required this.dataPartitionsEnabled,

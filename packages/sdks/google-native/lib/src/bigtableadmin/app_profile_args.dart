@@ -44,7 +44,7 @@ class AppProfileArgs {
   /// [project] Optional.
   /// [singleClusterRouting] Use a single-cluster routing policy.
   /// [standardIsolation] The standard options used for isolating this app profile's traffic from other use cases.
-  AppProfileArgs({
+  const AppProfileArgs({
     required this.appProfileId,
     this.description,
     this.etag,

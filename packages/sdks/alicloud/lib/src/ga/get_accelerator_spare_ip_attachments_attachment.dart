@@ -17,7 +17,7 @@ class GetAcceleratorSpareIpAttachmentsAttachment {
   /// [id] The ID of the Accelerator Spare Ip Attachment.
   /// [spareIp] The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
   /// [status] The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
-  GetAcceleratorSpareIpAttachmentsAttachment({
+  const GetAcceleratorSpareIpAttachmentsAttachment({
     required this.acceleratorId,
     required this.id,
     required this.spareIp,

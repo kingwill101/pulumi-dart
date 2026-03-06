@@ -9,7 +9,7 @@ class BackupPolicyKubernetesClusterDefaultRetentionRule {
 
   /// Creates a new [BackupPolicyKubernetesClusterDefaultRetentionRule].
   /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
-  BackupPolicyKubernetesClusterDefaultRetentionRule({
+  const BackupPolicyKubernetesClusterDefaultRetentionRule({
     required this.lifeCycles,
   });
 

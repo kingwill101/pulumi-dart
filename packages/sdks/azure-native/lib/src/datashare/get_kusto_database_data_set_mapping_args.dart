@@ -21,7 +21,7 @@ class GetKustoDatabaseDataSetMappingArgs {
   /// [dataSetMappingName] The name of the dataSetMapping.
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
-  GetKustoDatabaseDataSetMappingArgs({
+  const GetKustoDatabaseDataSetMappingArgs({
     required this.accountName,
     required this.dataSetMappingName,
     required this.resourceGroupName,

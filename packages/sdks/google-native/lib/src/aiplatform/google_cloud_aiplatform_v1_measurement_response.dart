@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1MeasurementResponse {
   /// [elapsedDuration] Time that the Trial has been running at the point of this Measurement.
   /// [metrics] A list of metrics got by evaluating the objective functions using suggested Parameter values.
   /// [stepCount] The number of steps the machine learning model has been trained for. Must be non-negative.
-  GoogleCloudAiplatformV1MeasurementResponse({
+  const GoogleCloudAiplatformV1MeasurementResponse({
     required this.elapsedDuration,
     required this.metrics,
     required this.stepCount,

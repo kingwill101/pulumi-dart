@@ -15,7 +15,7 @@ class AliasPatternResponse {
   /// [phrase] The alias pattern phrase.
   /// [type] The type of alias pattern
   /// [variable] The alias pattern variable.
-  AliasPatternResponse({
+  const AliasPatternResponse({
     this.phrase,
     this.type,
     this.variable,

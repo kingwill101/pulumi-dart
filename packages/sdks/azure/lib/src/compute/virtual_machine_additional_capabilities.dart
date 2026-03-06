@@ -10,7 +10,7 @@ class VirtualMachineAdditionalCapabilities {
 
   /// Creates a new [VirtualMachineAdditionalCapabilities].
   /// [ultraSsdEnabled] Should Ultra SSD disk be enabled for this Virtual Machine? Changing this forces a new resource to be created.
-  VirtualMachineAdditionalCapabilities({
+  const VirtualMachineAdditionalCapabilities({
     required this.ultraSsdEnabled,
   });
 

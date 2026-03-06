@@ -41,7 +41,7 @@ class EndpointModelPropertiesResponse {
   /// [skus] The list of Model Sku.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [version] Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
-  EndpointModelPropertiesResponse({
+  const EndpointModelPropertiesResponse({
     this.capabilities,
     this.deprecation,
     this.finetuneCapabilities,

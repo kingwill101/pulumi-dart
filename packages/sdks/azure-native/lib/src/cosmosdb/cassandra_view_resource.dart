@@ -12,7 +12,7 @@ class CassandraViewResource {
   /// Creates a new [CassandraViewResource].
   /// [id] Name of the Cosmos DB Cassandra view
   /// [viewDefinition] View Definition of the Cosmos DB Cassandra view
-  CassandraViewResource({
+  const CassandraViewResource({
     required this.id,
     required this.viewDefinition,
   });

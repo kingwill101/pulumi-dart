@@ -30,7 +30,7 @@ class PreventionJobTriggerInspectJobStorageConfig {
   /// [datastoreOptions] Options defining a data set within Google Cloud Datastore.
   /// [hybridOptions] Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
   /// [timespanConfig] Configuration of the timespan of the items to include in scanning
-  PreventionJobTriggerInspectJobStorageConfig({
+  const PreventionJobTriggerInspectJobStorageConfig({
     this.bigQueryOptions,
     this.cloudStorageOptions,
     this.datastoreOptions,

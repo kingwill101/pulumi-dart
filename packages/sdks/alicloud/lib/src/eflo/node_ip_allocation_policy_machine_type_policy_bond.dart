@@ -11,7 +11,7 @@ class NodeIpAllocationPolicyMachineTypePolicyBond {
   /// Creates a new [NodeIpAllocationPolicyMachineTypePolicyBond].
   /// [name] Bond Name
   /// [subnet] IP source cluster subnet
-  NodeIpAllocationPolicyMachineTypePolicyBond({
+  const NodeIpAllocationPolicyMachineTypePolicyBond({
     this.name,
     this.subnet,
   });

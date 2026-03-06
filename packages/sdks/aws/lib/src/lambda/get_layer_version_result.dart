@@ -55,7 +55,7 @@ class GetLayerVersionResult {
   /// [sourceCodeHash] (**Deprecated** use `code_sha256` instead) Base64-encoded representation of raw SHA-256 sum of the zip file.
   /// [sourceCodeSize] Size in bytes of the function .zip file.
   /// [version] Lambda Layer version.
-  GetLayerVersionResult({
+  const GetLayerVersionResult({
     required this.arn,
     required this.codeSha256,
     this.compatibleArchitecture,

@@ -50,7 +50,7 @@ class GetPolicyExemptionResult {
   /// [resourceSelectors] The resource selector list to filter policies by resource properties.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource (Microsoft.Authorization/policyExemptions).
-  GetPolicyExemptionResult({
+  const GetPolicyExemptionResult({
     this.assignmentScopeValidation,
     required this.azureApiVersion,
     this.description,

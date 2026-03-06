@@ -31,7 +31,7 @@ class LandingZoneState {
   /// [tags] Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the landing zone, including those inherited from the provider `default_tags` configuration block.
   /// [version] The landing zone version.
-  LandingZoneState({
+  const LandingZoneState({
     this.arn,
     this.driftStatuses,
     this.latestAvailableVersion,

@@ -23,7 +23,7 @@ class GetInstanceAutoscalingConfig {
   /// [asymmetricAutoscalingOptions] Asymmetric autoscaling options for specific replicas.
   /// [autoscalingLimits] Defines scale in controls to reduce the risk of response latency
   /// [autoscalingTargets] Defines scale in controls to reduce the risk of response latency
-  GetInstanceAutoscalingConfig({
+  const GetInstanceAutoscalingConfig({
     required this.asymmetricAutoscalingOptions,
     required this.autoscalingLimits,
     required this.autoscalingTargets,

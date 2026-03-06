@@ -15,7 +15,7 @@ class GetDelegatedSubnetServiceDetailsArgs {
   /// Creates a new [GetDelegatedSubnetServiceDetailsArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
-  GetDelegatedSubnetServiceDetailsArgs({
+  const GetDelegatedSubnetServiceDetailsArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

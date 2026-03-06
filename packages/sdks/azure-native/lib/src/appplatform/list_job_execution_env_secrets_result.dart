@@ -10,7 +10,7 @@ class ListJobExecutionEnvSecretsResult {
 
   /// Creates a new [ListJobExecutionEnvSecretsResult].
   /// [value] Collection of resources.
-  ListJobExecutionEnvSecretsResult({
+  const ListJobExecutionEnvSecretsResult({
     required this.value,
   });
 

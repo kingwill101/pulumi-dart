@@ -13,7 +13,7 @@ class OSPolicyResourcePackageResourceDebResponseOsconfigV1alpha {
   /// Creates a new [OSPolicyResourcePackageResourceDebResponseOsconfigV1alpha].
   /// [pullDeps] Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
   /// [source] A deb package.
-  OSPolicyResourcePackageResourceDebResponseOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceDebResponseOsconfigV1alpha({
     required this.pullDeps,
     required this.source,
   });

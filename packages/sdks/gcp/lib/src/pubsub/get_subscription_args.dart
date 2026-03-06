@@ -18,7 +18,7 @@ class GetSubscriptionArgs {
   /// Creates a new [GetSubscriptionArgs].
   /// [name] The name of the Cloud Pub/Sub Subscription.
   /// [project] The project in which the resource belongs. If it
-  GetSubscriptionArgs({
+  const GetSubscriptionArgs({
     required this.name,
     this.project,
   });

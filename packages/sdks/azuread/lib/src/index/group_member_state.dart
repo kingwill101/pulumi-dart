@@ -12,7 +12,7 @@ class GroupMemberState {
   /// Creates a new [GroupMemberState].
   /// [groupObjectId] The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
   /// [memberObjectId] The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-  GroupMemberState({
+  const GroupMemberState({
     this.groupObjectId,
     this.memberObjectId,
   });

@@ -11,7 +11,7 @@ class ScheduleFlexibleTimeWindow {
   /// Creates a new [ScheduleFlexibleTimeWindow].
   /// [maximumWindowInMinutes] Maximum time window during which a schedule can be invoked. Ranges from `1` to `1440` minutes.
   /// [mode] Determines whether the schedule is invoked within a flexible time window. One of: `OFF`, `FLEXIBLE`.
-  ScheduleFlexibleTimeWindow({
+  const ScheduleFlexibleTimeWindow({
     this.maximumWindowInMinutes,
     required this.mode,
   });

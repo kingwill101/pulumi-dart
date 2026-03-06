@@ -77,7 +77,7 @@ class OccurrenceContaineranalysisV1beta1Args {
   /// [spdxPackage] Describes a specific SPDX Package.
   /// [spdxRelationship] Describes a specific SPDX Relationship.
   /// [vulnerability] Describes a security vulnerability.
-  OccurrenceContaineranalysisV1beta1Args({
+  const OccurrenceContaineranalysisV1beta1Args({
     this.attestation,
     this.build,
     this.deployment,

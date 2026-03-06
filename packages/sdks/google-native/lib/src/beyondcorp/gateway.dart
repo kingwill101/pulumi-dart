@@ -10,7 +10,7 @@ class Gateway {
 
   /// Creates a new [Gateway].
   /// [type] The type of hosting used by the gateway.
-  Gateway({
+  const Gateway({
     required this.type,
   });
 

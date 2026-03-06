@@ -26,7 +26,7 @@ class ServiceStatusTraffic {
   /// [revisionName] RevisionName of a specific revision to which to send this portion of traffic.
   /// [tag] Tag is optionally used to expose a dedicated url for referencing this target exclusively.
   /// [url] (Output)
-  ServiceStatusTraffic({
+  const ServiceStatusTraffic({
     this.latestRevision,
     this.percent,
     this.revisionName,

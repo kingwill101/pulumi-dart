@@ -19,7 +19,7 @@ class MembershipArgs {
   /// [groupId] Required.
   /// [preferredMemberKey] Immutable. The `EntityKey` of the member.
   /// [roles] The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-  MembershipArgs({
+  const MembershipArgs({
     required this.groupId,
     required this.preferredMemberKey,
     this.roles,

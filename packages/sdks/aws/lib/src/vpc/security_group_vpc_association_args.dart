@@ -21,7 +21,7 @@ class SecurityGroupVpcAssociationArgs {
   /// [securityGroupId] The ID of the security group.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC to make the association with.
-  SecurityGroupVpcAssociationArgs({
+  const SecurityGroupVpcAssociationArgs({
     this.region,
     required this.securityGroupId,
     this.timeouts,

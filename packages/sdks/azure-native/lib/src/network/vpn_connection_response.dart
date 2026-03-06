@@ -77,7 +77,7 @@ class VpnConnectionResponse {
   /// [usePolicyBasedTrafficSelectors] Enable policy-based traffic selectors.
   /// [vpnConnectionProtocolType] Connection protocol used for this connection.
   /// [vpnLinkConnections] List of all vpn site link connections to the gateway.
-  VpnConnectionResponse({
+  const VpnConnectionResponse({
     this.connectionBandwidth,
     required this.connectionStatus,
     this.dpdTimeoutSeconds,

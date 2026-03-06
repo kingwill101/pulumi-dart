@@ -9,7 +9,7 @@ class GetTablesTableDefinedColumn {
   /// Creates a new [GetTablesTableDefinedColumn].
   /// [name] Required.
   /// [type] Required.
-  GetTablesTableDefinedColumn({
+  const GetTablesTableDefinedColumn({
     required this.name,
     required this.type,
   });

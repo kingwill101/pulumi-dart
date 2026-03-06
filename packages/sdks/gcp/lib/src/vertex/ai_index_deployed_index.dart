@@ -13,7 +13,7 @@ class AiIndexDeployedIndex {
   /// Creates a new [AiIndexDeployedIndex].
   /// [deployedIndexId] (Output)
   /// [indexEndpoint] (Output)
-  AiIndexDeployedIndex({
+  const AiIndexDeployedIndex({
     this.deployedIndexId,
     this.indexEndpoint,
   });

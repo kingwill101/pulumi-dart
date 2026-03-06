@@ -13,7 +13,7 @@ class ListComputeNodesResult {
   /// Creates a new [ListComputeNodesResult].
   /// [nextLink] The continuation token.
   /// [nodes] The collection of returned AmlCompute nodes details.
-  ListComputeNodesResult({
+  const ListComputeNodesResult({
     required this.nextLink,
     required this.nodes,
   });

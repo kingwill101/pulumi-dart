@@ -22,7 +22,7 @@ class FabricAgentArgs {
   /// [fabricName] The fabric name.
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  FabricAgentArgs({
+  const FabricAgentArgs({
     this.fabricAgentName,
     required this.fabricName,
     this.properties,

@@ -12,7 +12,7 @@ class PersistentVolumeClaimVolumeSourcePatch {
   /// Creates a new [PersistentVolumeClaimVolumeSourcePatch].
   /// [claimName] claimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
   /// [readOnly] readOnly Will force the ReadOnly setting in VolumeMounts. Default false.
-  PersistentVolumeClaimVolumeSourcePatch({
+  const PersistentVolumeClaimVolumeSourcePatch({
     this.claimName,
     this.readOnly,
   });

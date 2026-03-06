@@ -33,7 +33,7 @@ class AppVersionSnapshotGuardrailCodeCallback {
   /// [afterModelCallbacks] (Output)
   /// [beforeAgentCallbacks] (Output)
   /// [beforeModelCallbacks] (Output)
-  AppVersionSnapshotGuardrailCodeCallback({
+  const AppVersionSnapshotGuardrailCodeCallback({
     this.afterAgentCallbacks,
     this.afterModelCallbacks,
     this.beforeAgentCallbacks,

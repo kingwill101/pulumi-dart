@@ -13,7 +13,7 @@ class ComputeEnginePreferencesResponse {
   /// Creates a new [ComputeEnginePreferencesResponse].
   /// [licenseType] License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan.
   /// [machinePreferences] Preferences concerning the machine types to consider on Compute Engine.
-  ComputeEnginePreferencesResponse({
+  const ComputeEnginePreferencesResponse({
     required this.licenseType,
     required this.machinePreferences,
   });

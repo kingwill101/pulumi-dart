@@ -12,7 +12,7 @@ class LoadBalancerSku {
   /// Creates a new [LoadBalancerSku].
   /// [name] Name of a load balancer SKU.
   /// [tier] Tier of a load balancer SKU.
-  LoadBalancerSku({
+  const LoadBalancerSku({
     this.name,
     this.tier,
   });

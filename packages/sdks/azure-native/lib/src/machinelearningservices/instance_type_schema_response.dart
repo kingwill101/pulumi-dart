@@ -13,7 +13,7 @@ class InstanceTypeSchemaResponse {
   /// Creates a new [InstanceTypeSchemaResponse].
   /// [nodeSelector] Node Selector
   /// [resources] Resource requests/limits for this instance type
-  InstanceTypeSchemaResponse({
+  const InstanceTypeSchemaResponse({
     this.nodeSelector,
     this.resources,
   });

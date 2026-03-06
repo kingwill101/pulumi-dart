@@ -18,7 +18,7 @@ class GetStorageBoxArgs {
   /// [id] ID of the Storage Box.
   /// [name] Name of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
-  GetStorageBoxArgs({
+  const GetStorageBoxArgs({
     this.id,
     this.name,
     this.withSelector,

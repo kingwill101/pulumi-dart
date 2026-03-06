@@ -15,7 +15,7 @@ class GetBackupPlanAssociationRulesConfigInfo {
   /// [lastBackupErrors] google.rpc.Status object to store the last backup error
   /// [lastBackupState] State of last backup taken.
   /// [ruleId] Backup Rule id fetched from backup plan.
-  GetBackupPlanAssociationRulesConfigInfo({
+  const GetBackupPlanAssociationRulesConfigInfo({
     required this.lastBackupErrors,
     required this.lastBackupState,
     required this.ruleId,

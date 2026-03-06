@@ -98,7 +98,7 @@ class LoadBalancerArgs {
   /// [tlsCipherPolicy] The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
   /// [type] The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
   /// [vpcUuid] The ID of the VPC where the load balancer will be located.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.algorithm,
     this.disableLetsEncryptDnsRecords,
     this.domains,

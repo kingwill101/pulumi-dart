@@ -39,7 +39,7 @@ class AllocatedDeviceStatusResourceK8sIoV1beta2 {
   /// [networkData] NetworkData contains network-related information specific to the device.
   /// [pool] This name together with the driver name and the device name field identify which device was allocated (`&lt;driver name&gt;/&lt;pool name&gt;/&lt;device name&gt;`).
   /// [shareID] ShareID uniquely identifies an individual allocation share of the device.
-  AllocatedDeviceStatusResourceK8sIoV1beta2({
+  const AllocatedDeviceStatusResourceK8sIoV1beta2({
     this.conditions,
     this.data,
     required this.device,

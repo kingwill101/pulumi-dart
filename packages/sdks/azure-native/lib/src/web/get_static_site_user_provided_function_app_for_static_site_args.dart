@@ -18,7 +18,7 @@ class GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs {
   /// [functionAppName] Name of the function app registered with the static site.
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs({
+  const GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs({
     required this.functionAppName,
     required this.name,
     required this.resourceGroupName,

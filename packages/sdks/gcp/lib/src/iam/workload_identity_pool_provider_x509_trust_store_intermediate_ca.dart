@@ -9,7 +9,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
 
   /// Creates a new [WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa].
   /// [pemCertificate] PEM certificate of the PKI used for validation. Must only contain one
-  WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa({
+  const WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa({
     this.pemCertificate,
   });
 

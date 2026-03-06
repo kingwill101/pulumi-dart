@@ -28,7 +28,7 @@ class A2AVmManagedDiskInputDetails {
   /// [recoveryReplicaDiskAccountType] The replica disk type. Its an optional value and will be same as source disk type if not user provided.
   /// [recoveryResourceGroupId] The target resource group Arm Id.
   /// [recoveryTargetDiskAccountType] The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
-  A2AVmManagedDiskInputDetails({
+  const A2AVmManagedDiskInputDetails({
     this.diskEncryptionInfo,
     required this.diskId,
     required this.primaryStagingAzureStorageAccountId,

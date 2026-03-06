@@ -28,7 +28,7 @@ class PrometheusHaClusterProviderInstancePropertiesResponse {
   /// [sid] Gets or sets the cluster sid.
   /// [sslCertificateUri] Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
   /// [sslPreference] Gets or sets certificate preference if secure communication is enabled.
-  PrometheusHaClusterProviderInstancePropertiesResponse({
+  const PrometheusHaClusterProviderInstancePropertiesResponse({
     this.clusterName,
     this.hostname,
     this.prometheusUrl,

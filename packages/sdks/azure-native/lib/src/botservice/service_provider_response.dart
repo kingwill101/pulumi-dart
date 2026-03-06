@@ -10,7 +10,7 @@ class ServiceProviderResponse {
 
   /// Creates a new [ServiceProviderResponse].
   /// [properties] The Properties of a Service Provider Object
-  ServiceProviderResponse({
+  const ServiceProviderResponse({
     this.properties,
   });
 

@@ -23,7 +23,7 @@ class GetResourceGroupsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Required.
   /// [outputFile] Optional.
-  GetResourceGroupsResult({
+  const GetResourceGroupsResult({
     required this.dbClusterId,
     this.groupName,
     required this.groups,

@@ -21,7 +21,7 @@ class GetBatchDeploymentArgs {
   /// [endpointName] Endpoint name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetBatchDeploymentArgs({
+  const GetBatchDeploymentArgs({
     required this.deploymentName,
     required this.endpointName,
     required this.resourceGroupName,

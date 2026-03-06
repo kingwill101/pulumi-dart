@@ -18,7 +18,7 @@ class BoundObjectReference {
   /// [kind] Kind of the referent. Valid kinds are 'Pod' and 'Secret'.
   /// [name] Name of the referent.
   /// [uid] UID of the referent.
-  BoundObjectReference({
+  const BoundObjectReference({
     this.apiVersion,
     this.kind,
     this.name,

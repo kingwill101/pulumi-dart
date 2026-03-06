@@ -15,7 +15,7 @@ class KvNamespaceArgs {
   /// Creates a new [KvNamespaceArgs].
   /// [description] Namespace description information
   /// [namespace] Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
-  KvNamespaceArgs({
+  const KvNamespaceArgs({
     required this.description,
     required this.namespace,
   });

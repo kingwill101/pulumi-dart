@@ -34,7 +34,7 @@ class NetworkAdapter {
   /// [macAddress] MAC address.
   /// [subnetMask] Subnet mask.
   /// [vlanId] VLAN ID for the network setup.
-  NetworkAdapter({
+  const NetworkAdapter({
     this.adapterName,
     this.dnsAddressArray,
     this.gateway,

@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoTaskUiConfigResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskUiConfigResponse].
   /// [taskUiModuleConfigs] Configurations of included config modules.
-  EnterpriseCrmEventbusProtoTaskUiConfigResponse({
+  const EnterpriseCrmEventbusProtoTaskUiConfigResponse({
     required this.taskUiModuleConfigs,
   });
 

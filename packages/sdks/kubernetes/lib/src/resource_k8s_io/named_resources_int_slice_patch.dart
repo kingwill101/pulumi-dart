@@ -9,7 +9,7 @@ class NamedResourcesIntSlicePatch {
 
   /// Creates a new [NamedResourcesIntSlicePatch].
   /// [ints] Ints is the slice of 64-bit integers.
-  NamedResourcesIntSlicePatch({
+  const NamedResourcesIntSlicePatch({
     this.ints,
   });
 

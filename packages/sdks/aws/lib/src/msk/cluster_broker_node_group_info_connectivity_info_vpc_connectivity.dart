@@ -9,7 +9,7 @@ class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity].
   /// [clientAuthentication] Configuration block for specifying a client authentication. See client_authentication Argument Reference below.
-  ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity({
+  const ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity({
     this.clientAuthentication,
   });
 

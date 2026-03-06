@@ -30,7 +30,7 @@ class GetDbInstancePlansArgs {
   /// [planScheduleType] Plan scheduling type. Valid values: `Postpone`, `Regular`.
   /// [planType] The type of the Plan. Valid values: `PauseResume`, `Resize`.
   /// [status] Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
-  GetDbInstancePlansArgs({
+  const GetDbInstancePlansArgs({
     required this.dbInstanceId,
     this.ids,
     this.nameRegex,

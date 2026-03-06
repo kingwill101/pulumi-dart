@@ -19,7 +19,7 @@ class MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse {
   /// [events] List of error events.
   /// [id] Result identifier
   /// [resultType] Result type
-  MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse({
+  const MigrateOracleAzureDbPostgreSqlSyncTaskOutputDatabaseErrorResponse({
     this.errorMessage,
     this.events,
     required this.id,

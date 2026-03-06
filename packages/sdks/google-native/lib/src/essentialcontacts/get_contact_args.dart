@@ -13,7 +13,7 @@ class GetContactArgs {
   /// Creates a new [GetContactArgs].
   /// [contactId] Required.
   /// [project] Optional.
-  GetContactArgs({
+  const GetContactArgs({
     required this.contactId,
     this.project,
   });

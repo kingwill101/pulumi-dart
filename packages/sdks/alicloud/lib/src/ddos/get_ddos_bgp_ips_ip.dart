@@ -20,7 +20,7 @@ class GetDdosBgpIpsIp {
   /// [ip] The IP address.
   /// [product] The type of cloud asset to which the IP address belongs.
   /// [status] The current state of the IP address.
-  GetDdosBgpIpsIp({
+  const GetDdosBgpIpsIp({
     required this.id,
     required this.instanceId,
     required this.ip,

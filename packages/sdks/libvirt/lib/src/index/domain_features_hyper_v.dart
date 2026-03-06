@@ -76,7 +76,7 @@ class DomainFeaturesHyperV {
   /// [vendorId] Configures the vendor ID presented to the guest operating system by Hyper-V.
   /// [vpIndex] Enables or disables support for PS/2 devices in the virtual machine.
   /// [xmmInput] Enables or disables support for PS/2 devices in the virtual machine.
-  DomainFeaturesHyperV({
+  const DomainFeaturesHyperV({
     this.avic,
     this.emsrBitmap,
     this.evmcs,

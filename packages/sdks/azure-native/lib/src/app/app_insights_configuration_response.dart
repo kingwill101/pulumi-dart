@@ -9,7 +9,7 @@ class AppInsightsConfigurationResponse {
 
   /// Creates a new [AppInsightsConfigurationResponse].
   /// [connectionString] Application Insights connection string
-  AppInsightsConfigurationResponse({
+  const AppInsightsConfigurationResponse({
     this.connectionString,
   });
 

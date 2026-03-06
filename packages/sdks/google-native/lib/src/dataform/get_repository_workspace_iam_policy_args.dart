@@ -19,7 +19,7 @@ class GetRepositoryWorkspaceIamPolicyArgs {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [workspaceId] Required.
-  GetRepositoryWorkspaceIamPolicyArgs({
+  const GetRepositoryWorkspaceIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

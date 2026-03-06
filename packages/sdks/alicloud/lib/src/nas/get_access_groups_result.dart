@@ -39,7 +39,7 @@ class GetAccessGroupsResult {
   /// [outputFile] Optional.
   /// [type] (Deprecated in v1.95.0+) AccessGroupType of the AccessGroup. The Field replace by `access_group_type` after version 1.95.0.
   /// [useutcDateTime] Optional.
-  GetAccessGroupsResult({
+  const GetAccessGroupsResult({
     this.accessGroupName,
     this.accessGroupType,
     this.description,

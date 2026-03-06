@@ -24,7 +24,7 @@ class SecurityProfileCustomMirroringProfile {
   /// [mirroringDeploymentGroups] The target downstream Mirroring Deployment Groups.
   /// [mirroringEndpointGroup] The target Mirroring Endpoint Group.
   /// [mirroringEndpointGroupType] (Output, Beta)
-  SecurityProfileCustomMirroringProfile({
+  const SecurityProfileCustomMirroringProfile({
     this.mirroringDeploymentGroups,
     required this.mirroringEndpointGroup,
     this.mirroringEndpointGroupType,

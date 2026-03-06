@@ -90,7 +90,7 @@ class URLMapState {
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
   /// [tests] The list of expected URL mapping tests. Request to update this UrlMap will
-  URLMapState({
+  const URLMapState({
     this.creationTimestamp,
     this.defaultCustomErrorResponsePolicy,
     this.defaultRouteAction,

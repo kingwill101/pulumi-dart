@@ -37,7 +37,7 @@ class KafkaAzureCosmosDBSourceConnectorInfo {
   /// [serviceAccountId] Kafka Service Account Id
   /// [topicRegex] Kafka topics Regex pattern
   /// [topicsDir] Kafka topics directory
-  KafkaAzureCosmosDBSourceConnectorInfo({
+  const KafkaAzureCosmosDBSourceConnectorInfo({
     this.apiKey,
     this.apiSecret,
     this.authType,

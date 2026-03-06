@@ -22,7 +22,7 @@ class GetDatabaseMigrationsSqlDbResult {
   /// [properties] Database Migration Resource properties for SQL database.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Required.
-  GetDatabaseMigrationsSqlDbResult({
+  const GetDatabaseMigrationsSqlDbResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -9,7 +9,7 @@ class GetGenaiOpenaiApiKeysSort {
   /// Creates a new [GetGenaiOpenaiApiKeysSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGenaiOpenaiApiKeysSort({
+  const GetGenaiOpenaiApiKeysSort({
     this.direction,
     required this.key,
   });

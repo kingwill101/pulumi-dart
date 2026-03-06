@@ -22,7 +22,7 @@ class VolumeReplicationDestinationVolumeParameters {
   /// [storagePool] Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
   /// [tieringPolicy] Tiering policy for the volume.
   /// [volumeId] Name for the destination volume to be created. If not specified, the name of the source volume will be used.
-  VolumeReplicationDestinationVolumeParameters({
+  const VolumeReplicationDestinationVolumeParameters({
     this.description,
     this.shareName,
     required this.storagePool,

@@ -9,7 +9,7 @@ class EventGridAndResourceGraphResponse {
 
   /// Creates a new [EventGridAndResourceGraphResponse].
   /// [enable] Specifies if event grid and resource graph is enabled for Scheduled event related configurations.
-  EventGridAndResourceGraphResponse({
+  const EventGridAndResourceGraphResponse({
     this.enable,
   });
 

@@ -8,7 +8,7 @@ class GcpIntegrationsDataProc {
 
   /// Creates a new [GcpIntegrationsDataProc].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsDataProc({
+  const GcpIntegrationsDataProc({
     this.metricsPollingInterval,
   });
 

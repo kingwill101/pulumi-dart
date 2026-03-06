@@ -19,7 +19,7 @@ class MaintenanceWindowSqladminV1beta4 {
   /// [hour] hour of day - 0 to 23.
   /// [kind] This is always `sql#maintenanceWindow`.
   /// [updateTrack] Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
-  MaintenanceWindowSqladminV1beta4({
+  const MaintenanceWindowSqladminV1beta4({
     this.day,
     this.hour,
     this.kind,

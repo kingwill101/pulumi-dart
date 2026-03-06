@@ -9,7 +9,7 @@ class ContinuousBackupsStatusEnumValue {
 
   /// Creates a new [ContinuousBackupsStatusEnumValue].
   /// [value] Property value
-  ContinuousBackupsStatusEnumValue({
+  const ContinuousBackupsStatusEnumValue({
     this.value,
   });
 

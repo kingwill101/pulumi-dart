@@ -18,7 +18,7 @@ class GetGlobalReachConnectionArgs {
   /// [globalReachConnectionName] Name of the global reach connection
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGlobalReachConnectionArgs({
+  const GetGlobalReachConnectionArgs({
     required this.globalReachConnectionName,
     required this.privateCloudName,
     required this.resourceGroupName,

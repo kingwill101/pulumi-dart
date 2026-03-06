@@ -61,7 +61,7 @@ class MemberState {
   /// [tags] A list of simple strings assigned to the member.
   /// [tenantId] Required for admins. The UUID of the tenant who owns
   /// [weight] A positive integer value that indicates the relative
-  MemberState({
+  const MemberState({
     this.address,
     this.adminStateUp,
     this.backup,

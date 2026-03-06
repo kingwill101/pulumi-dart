@@ -15,7 +15,7 @@ class V2modelsSlotSubSlotSettingSlotSpecification {
   /// [mapBlockKey] Required.
   /// [slotTypeId] Unique identifier assigned to the slot type.
   /// [valueElicitationSettings] Elicitation setting details for constituent sub slots of a composite slot.
-  V2modelsSlotSubSlotSettingSlotSpecification({
+  const V2modelsSlotSubSlotSettingSlotSpecification({
     required this.mapBlockKey,
     required this.slotTypeId,
     this.valueElicitationSettings,

@@ -18,7 +18,7 @@ class VPNTunnelCipherSuite {
   /// Creates a new [VPNTunnelCipherSuite].
   /// [phase1] Cipher configuration for phase 1 of the IKE protocol.
   /// [phase2] Cipher configuration for phase 2 of the IKE protocol.
-  VPNTunnelCipherSuite({
+  const VPNTunnelCipherSuite({
     this.phase1,
     this.phase2,
   });

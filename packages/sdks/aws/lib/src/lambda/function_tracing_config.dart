@@ -8,7 +8,7 @@ class FunctionTracingConfig {
 
   /// Creates a new [FunctionTracingConfig].
   /// [mode] X-Ray tracing mode. Valid values: `Active`, `PassThrough`.
-  FunctionTracingConfig({
+  const FunctionTracingConfig({
     required this.mode,
   });
 

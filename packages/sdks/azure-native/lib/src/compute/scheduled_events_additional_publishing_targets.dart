@@ -9,7 +9,7 @@ class ScheduledEventsAdditionalPublishingTargets {
 
   /// Creates a new [ScheduledEventsAdditionalPublishingTargets].
   /// [eventGridAndResourceGraph] The configuration parameters used while creating eventGridAndResourceGraph Scheduled Event setting.
-  ScheduledEventsAdditionalPublishingTargets({
+  const ScheduledEventsAdditionalPublishingTargets({
     this.eventGridAndResourceGraph,
   });
 

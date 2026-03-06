@@ -15,7 +15,7 @@ class SpacesBucketPolicyState {
   /// [bucket] The name of the bucket to which to apply the policy.
   /// [policy] The text of the policy.
   /// [region] The region where the bucket resides.
-  SpacesBucketPolicyState({
+  const SpacesBucketPolicyState({
     this.bucket,
     this.policy,
     this.region,

@@ -16,7 +16,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume {
   /// [efsVolumeConfigurations] This parameter is specified when you're using an Amazon Elastic File System file system for job storage.
   /// [hosts] The contents of the host parameter determine whether your data volume persists on the host container instance and where it's stored.
   /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolume({
     required this.efsVolumeConfigurations,
     required this.hosts,
     required this.name,

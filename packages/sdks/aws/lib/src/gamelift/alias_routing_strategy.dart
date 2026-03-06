@@ -14,7 +14,7 @@ class AliasRoutingStrategy {
   /// [fleetId] ID of the GameLift Fleet to point the alias to.
   /// [message] Message text to be used with the `TERMINAL` routing strategy.
   /// [type] Type of routing strategyE.g., `SIMPLE` or `TERMINAL`
-  AliasRoutingStrategy({
+  const AliasRoutingStrategy({
     this.fleetId,
     this.message,
     required this.type,

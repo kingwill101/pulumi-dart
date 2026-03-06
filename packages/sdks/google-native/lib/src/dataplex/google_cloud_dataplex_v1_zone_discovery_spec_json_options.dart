@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions {
   /// Creates a new [GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions].
   /// [disableTypeInference] Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
   /// [encoding] Optional. The character encoding of the data. The default is UTF-8.
-  GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions({
+  const GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions({
     this.disableTypeInference,
     this.encoding,
   });

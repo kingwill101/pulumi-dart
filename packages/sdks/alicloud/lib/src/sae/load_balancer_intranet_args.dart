@@ -19,7 +19,7 @@ class LoadBalancerIntranetArgs {
   /// [appId] The target application ID that needs to be bound to the SLB.
   /// [intranetSlbId] The intranet SLB ID.
   /// [intranets] The bound private network SLB. See `intranet` below.
-  LoadBalancerIntranetArgs({
+  const LoadBalancerIntranetArgs({
     required this.appId,
     this.intranetSlbId,
     required this.intranets,

@@ -11,7 +11,7 @@ class GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration 
   /// Creates a new [GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration].
   /// [headerName] Header name of the header configuration.
   /// [headerValue] Header value of the header configuration.
-  GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration({
+  const GetApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration({
     required this.headerName,
     required this.headerValue,
   });

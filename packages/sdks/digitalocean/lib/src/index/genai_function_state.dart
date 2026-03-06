@@ -30,7 +30,7 @@ class GenaiFunctionState {
   /// [functionUuid] The unique identifier of the GradientAI function.
   /// [inputSchema] The input schema of the GradientAI resource.
   /// [outputSchema] The output schema of the GradientAI resource.
-  GenaiFunctionState({
+  const GenaiFunctionState({
     this.agentId,
     this.description,
     this.faasName,

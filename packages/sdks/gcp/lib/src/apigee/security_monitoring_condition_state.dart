@@ -38,7 +38,7 @@ class SecurityMonitoringConditionState {
   /// [totalDeployedResources] Total number of deployed resources within scope.
   /// [totalMonitoredResources] Total number of monitored resources within this condition.
   /// [updateTime] The timestamp at which this profile was most recently updated.
-  SecurityMonitoringConditionState({
+  const SecurityMonitoringConditionState({
     this.conditionId,
     this.createTime,
     this.includeAllResources,

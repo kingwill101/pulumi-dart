@@ -34,7 +34,7 @@ class TextNer {
   /// [taskType] AutoMLJob Task type.
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
-  TextNer({
+  const TextNer({
     this.featurizationSettings,
     this.limitSettings,
     this.logVerbosity,

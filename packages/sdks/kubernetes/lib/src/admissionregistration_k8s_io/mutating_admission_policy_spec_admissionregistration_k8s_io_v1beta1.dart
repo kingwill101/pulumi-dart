@@ -53,7 +53,7 @@ class MutatingAdmissionPolicySpecAdmissionregistrationK8sIoV1beta1 {
   /// [paramKind] paramKind specifies the kind of resources used to parameterize this policy. If absent, there are no parameters for this policy and the param CEL variable will not be provided to validation expressions. If paramKind refers to a non-existent kind, this policy definition is mis-configured and the FailurePolicy is applied. If paramKind is specified but paramRef is unset in MutatingAdmissionPolicyBinding, the params variable will be null.
   /// [reinvocationPolicy] reinvocationPolicy indicates whether mutations may be called multiple times per MutatingAdmissionPolicyBinding as part of a single admission evaluation. Allowed values are "Never" and "IfNeeded".
   /// [variables] variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except matchConditions because matchConditions are evaluated before the rest of the policy.
-  MutatingAdmissionPolicySpecAdmissionregistrationK8sIoV1beta1({
+  const MutatingAdmissionPolicySpecAdmissionregistrationK8sIoV1beta1({
     this.failurePolicy,
     this.matchConditions,
     this.matchConstraints,

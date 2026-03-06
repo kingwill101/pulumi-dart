@@ -16,7 +16,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup {
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user.
   /// [variations] Configuration blocks for message variations to send to the user.
-  V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroup({
     this.message,
     this.variations,
   });

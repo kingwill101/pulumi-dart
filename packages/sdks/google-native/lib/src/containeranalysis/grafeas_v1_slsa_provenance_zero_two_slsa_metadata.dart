@@ -17,7 +17,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
   /// [buildStartedOn] Optional.
   /// [completeness] Optional.
   /// [reproducible] Optional.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata({
     this.buildFinishedOn,
     this.buildInvocationId,
     this.buildStartedOn,

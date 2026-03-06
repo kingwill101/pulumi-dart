@@ -22,7 +22,7 @@ class PortAssociateV2Route {
   /// [localPref] The BGP LOCAL\_PREF value of the routes that will
   /// [prefix] The CIDR prefix (v4 or v6) to be advertised. Required
   /// [type] Can be `prefix` or `bgpvpn`. For the `prefix` type, the
-  PortAssociateV2Route({
+  const PortAssociateV2Route({
     this.bgpvpnId,
     this.localPref,
     this.prefix,

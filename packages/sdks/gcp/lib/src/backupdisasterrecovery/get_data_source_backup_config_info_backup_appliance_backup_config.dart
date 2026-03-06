@@ -26,7 +26,7 @@ class GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
   /// [slaId] The ID of the SLA of this application.
   /// [slpName] The name of the SLP associated with the application.
   /// [sltName] The name of the SLT associated with the application.
-  GetDataSourceBackupConfigInfoBackupApplianceBackupConfig({
+  const GetDataSourceBackupConfigInfoBackupApplianceBackupConfig({
     required this.applicationName,
     required this.backupApplianceId,
     required this.backupApplianceName,

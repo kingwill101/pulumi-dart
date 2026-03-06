@@ -35,7 +35,7 @@ class GetIpamIpamsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  GetIpamIpamsResult({
+  const GetIpamIpamsResult({
     required this.id,
     required this.ids,
     this.ipamId,

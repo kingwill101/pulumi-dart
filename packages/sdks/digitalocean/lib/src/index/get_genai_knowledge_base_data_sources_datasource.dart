@@ -30,7 +30,7 @@ class GetGenaiKnowledgeBaseDataSourcesDatasource {
   /// [updatedAt] Timestamp when the Knowledge Base was updated
   /// [uuid] UUID of the Knowledge Base
   /// [webCrawlerDataSources] Web crawler data source configuration
-  GetGenaiKnowledgeBaseDataSourcesDatasource({
+  const GetGenaiKnowledgeBaseDataSourcesDatasource({
     required this.createdAt,
     this.fileUploadDataSources,
     this.lastIndexingJobs,

@@ -35,7 +35,7 @@ class WebAppRelayServiceConnectionSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [resourceType] Optional.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create or update a hybrid connection for the production slot.
-  WebAppRelayServiceConnectionSlotArgs({
+  const WebAppRelayServiceConnectionSlotArgs({
     this.biztalkUri,
     this.entityConnectionString,
     this.entityName,

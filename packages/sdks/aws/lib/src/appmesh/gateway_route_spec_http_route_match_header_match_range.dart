@@ -11,7 +11,7 @@ class GatewayRouteSpecHttpRouteMatchHeaderMatchRange {
   /// Creates a new [GatewayRouteSpecHttpRouteMatchHeaderMatchRange].
   /// [end] End of the range.
   /// [start] Start of the range.
-  GatewayRouteSpecHttpRouteMatchHeaderMatchRange({
+  const GatewayRouteSpecHttpRouteMatchHeaderMatchRange({
     required this.end,
     required this.start,
   });

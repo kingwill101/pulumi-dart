@@ -24,7 +24,7 @@ class CacheDirectoryLdap {
   /// [downloadCertificateAutomatically] Whether the certificate should be automatically downloaded. This can be set to `true` only when `certificate_validation_uri` is provided.
   /// [encrypted] Whether the LDAP connection should be encrypted?
   /// [server] The FQDN or IP address of the LDAP server.
-  CacheDirectoryLdap({
+  const CacheDirectoryLdap({
     required this.baseDn,
     this.bind,
     this.certificateValidationUri,

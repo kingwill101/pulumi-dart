@@ -8,7 +8,7 @@ class ThirdPartyExtension {
 
   /// Creates a new [ThirdPartyExtension].
   /// [name] Name of third party extension.
-  ThirdPartyExtension({
+  const ThirdPartyExtension({
     this.name,
   });
 

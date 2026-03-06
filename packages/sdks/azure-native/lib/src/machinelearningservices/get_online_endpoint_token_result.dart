@@ -17,7 +17,7 @@ class GetOnlineEndpointTokenResult {
   /// [expiryTimeUtc] Access token expiry time (UTC).
   /// [refreshAfterTimeUtc] Refresh access token after time (UTC).
   /// [tokenType] Access token type.
-  GetOnlineEndpointTokenResult({
+  const GetOnlineEndpointTokenResult({
     this.accessToken,
     this.expiryTimeUtc,
     this.refreshAfterTimeUtc,

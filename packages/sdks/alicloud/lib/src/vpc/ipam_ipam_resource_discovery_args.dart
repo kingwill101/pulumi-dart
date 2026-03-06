@@ -24,7 +24,7 @@ class IpamIpamResourceDiscoveryArgs {
   /// [operatingRegionLists] The list of operating regions for resource discovery.
   /// [resourceGroupId] The ID of the resource group
   /// [tags] Label list information.
-  IpamIpamResourceDiscoveryArgs({
+  const IpamIpamResourceDiscoveryArgs({
     this.ipamResourceDiscoveryDescription,
     this.ipamResourceDiscoveryName,
     required this.operatingRegionLists,

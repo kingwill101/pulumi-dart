@@ -49,7 +49,7 @@ class ClusterArgs {
   /// [servicePrincipal] A `service_principal` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [workerProfile] A `worker_profile` block as defined below. Changing this forces a new resource to be created.
-  ClusterArgs({
+  const ClusterArgs({
     required this.apiServerProfile,
     required this.clusterProfile,
     required this.ingressProfile,

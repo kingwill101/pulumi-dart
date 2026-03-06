@@ -24,7 +24,7 @@ class HybridIdentityMetadatumArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceUid] The unique identifier for the resource.
   /// [virtualMachineName] Name of the vm.
-  HybridIdentityMetadatumArgs({
+  const HybridIdentityMetadatumArgs({
     this.metadataName,
     this.publicKey,
     required this.resourceGroupName,

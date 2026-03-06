@@ -8,7 +8,7 @@ class GetFunctionEventTriggerFailurePolicy {
 
   /// Creates a new [GetFunctionEventTriggerFailurePolicy].
   /// [retry] Whether the function should be retried on failure.
-  GetFunctionEventTriggerFailurePolicy({
+  const GetFunctionEventTriggerFailurePolicy({
     required this.retry,
   });
 

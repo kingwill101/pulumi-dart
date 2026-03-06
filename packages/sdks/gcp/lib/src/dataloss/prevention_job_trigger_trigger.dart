@@ -13,7 +13,7 @@ class PreventionJobTriggerTrigger {
   /// Creates a new [PreventionJobTriggerTrigger].
   /// [manual] For use with hybrid jobs. Jobs must be manually created and finished.
   /// [schedule] Schedule for triggered jobs
-  PreventionJobTriggerTrigger({
+  const PreventionJobTriggerTrigger({
     this.manual,
     this.schedule,
   });

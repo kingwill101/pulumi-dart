@@ -89,7 +89,7 @@ class CacheRuleState {
   /// [userDeviceType] When generating the cache key, add the client device type. Possible values:
   /// [userGeo] When generating the cache key, add the client's geographic location. Possible values:
   /// [userLanguage] When generating cache keys, include the client's language type. Possible values:
-  CacheRuleState({
+  const CacheRuleState({
     this.additionalCacheablePorts,
     this.browserCacheMode,
     this.browserCacheTtl,

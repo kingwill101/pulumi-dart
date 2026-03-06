@@ -29,7 +29,7 @@ class GetScimServerCredentialsCredential {
   /// [expireTime] The ExpireTime of the resource.
   /// [id] The ID of the SCIM Server Credential.
   /// [status] The Status of the resource. Valid values: `Disabled`, `Enabled`.
-  GetScimServerCredentialsCredential({
+  const GetScimServerCredentialsCredential({
     required this.createTime,
     required this.credentialId,
     required this.credentialSecret,

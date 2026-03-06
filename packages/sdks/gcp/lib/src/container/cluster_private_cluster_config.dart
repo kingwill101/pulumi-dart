@@ -48,7 +48,7 @@ class ClusterPrivateClusterConfig {
   /// [privateEndpoint] The internal IP address of this cluster's master endpoint.
   /// [privateEndpointSubnetwork] Subnetwork in cluster's network where master's endpoint will be provisioned.
   /// [publicEndpoint] The external IP address of this cluster's master endpoint.
-  ClusterPrivateClusterConfig({
+  const ClusterPrivateClusterConfig({
     this.enablePrivateEndpoint,
     this.enablePrivateNodes,
     this.masterGlobalAccessConfig,

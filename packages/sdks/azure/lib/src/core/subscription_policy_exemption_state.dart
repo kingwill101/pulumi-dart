@@ -33,7 +33,7 @@ class SubscriptionPolicyExemptionState {
   /// [policyAssignmentId] The ID of the Policy Assignment to be exempted at the specified Scope. Changing this forces a new resource to be created.
   /// [policyDefinitionReferenceIds] The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
   /// [subscriptionId] The Subscription ID where the Policy Exemption should be applied. Changing this forces a new resource to be created.
-  SubscriptionPolicyExemptionState({
+  const SubscriptionPolicyExemptionState({
     this.description,
     this.displayName,
     this.exemptionCategory,

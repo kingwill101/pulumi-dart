@@ -17,7 +17,7 @@ class GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
   /// [policyTagId] Required.
   /// [project] Optional.
   /// [taxonomyId] Required.
-  GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args({
+  const GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args({
     required this.location,
     required this.policyTagId,
     this.project,

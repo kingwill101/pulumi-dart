@@ -92,7 +92,7 @@ class AutonomousDatabaseCloneFromDatabaseArgs {
   /// [subnetId] The ID of the subnet the resource is associated with. Changing this forces a new Autonomous Database Clone to be created.
   /// [tags] A mapping of tags to assign to the Autonomous Database Clone. Changing this forces a new Autonomous Database Clone to be created.
   /// [virtualNetworkId] The ID of the Virtual Network this Autonomous Database Clone should be created in. Changing this forces a new Autonomous Database Clone to be created.
-  AutonomousDatabaseCloneFromDatabaseArgs({
+  const AutonomousDatabaseCloneFromDatabaseArgs({
     required this.adminPassword,
     this.allowedIpAddresses,
     required this.autoScalingEnabled,

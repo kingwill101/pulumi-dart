@@ -9,7 +9,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoa
 
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification].
   /// [metricDataQueries] One or more metric data queries to provide data points for a metric specification. See supported fields below.
-  PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification({
+  const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedLoadMetricSpecification({
     required this.metricDataQueries,
   });
 

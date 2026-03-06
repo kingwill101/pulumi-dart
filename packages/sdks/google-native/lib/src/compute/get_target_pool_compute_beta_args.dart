@@ -15,7 +15,7 @@ class GetTargetPoolComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [targetPool] Required.
-  GetTargetPoolComputeBetaArgs({
+  const GetTargetPoolComputeBetaArgs({
     this.project,
     required this.region,
     required this.targetPool,

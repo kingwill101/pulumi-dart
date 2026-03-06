@@ -36,7 +36,7 @@ class TelephonyPhoneNumbers {
   /// [id] The element id.
   /// [offerType] Optional Property that will determine the offering type of the phone.
   /// [phoneNumber] The phone number.
-  TelephonyPhoneNumbers({
+  const TelephonyPhoneNumbers({
     this.acsEndpoint,
     this.acsResourceId,
     this.acsSecret,

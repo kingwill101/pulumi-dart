@@ -8,7 +8,7 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig {
 
   /// Creates a new [CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig].
   /// [oauthToken] Oauth token value or parameter name to pass it through.
-  CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig({
+  const CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig({
     required this.oauthToken,
   });
 

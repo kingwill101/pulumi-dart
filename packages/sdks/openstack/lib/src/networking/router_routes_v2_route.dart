@@ -12,7 +12,7 @@ class RouterRoutesV2Route {
   /// Creates a new [RouterRoutesV2Route].
   /// [destinationCidr] CIDR block to match on the packet’s
   /// [nextHop] IP address of the next hop gateway.
-  RouterRoutesV2Route({
+  const RouterRoutesV2Route({
     required this.destinationCidr,
     required this.nextHop,
   });

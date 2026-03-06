@@ -11,7 +11,7 @@ class ComputeInstanceAssignToUser {
   /// Creates a new [ComputeInstanceAssignToUser].
   /// [objectId] User’s AAD Object Id.
   /// [tenantId] User’s AAD Tenant Id.
-  ComputeInstanceAssignToUser({
+  const ComputeInstanceAssignToUser({
     this.objectId,
     this.tenantId,
   });

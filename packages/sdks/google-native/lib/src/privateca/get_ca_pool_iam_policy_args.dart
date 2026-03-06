@@ -17,7 +17,7 @@ class GetCaPoolIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetCaPoolIamPolicyArgs({
+  const GetCaPoolIamPolicyArgs({
     required this.caPoolId,
     required this.location,
     this.optionsRequestedPolicyVersion,

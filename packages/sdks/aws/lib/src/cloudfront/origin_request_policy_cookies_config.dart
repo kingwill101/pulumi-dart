@@ -10,7 +10,7 @@ class OriginRequestPolicyCookiesConfig {
   /// Creates a new [OriginRequestPolicyCookiesConfig].
   /// [cookieBehavior] Required.
   /// [cookies] Optional.
-  OriginRequestPolicyCookiesConfig({
+  const OriginRequestPolicyCookiesConfig({
     required this.cookieBehavior,
     this.cookies,
   });

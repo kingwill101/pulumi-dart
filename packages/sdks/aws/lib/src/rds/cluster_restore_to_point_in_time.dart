@@ -21,7 +21,7 @@ class ClusterRestoreToPointInTime {
   /// [sourceClusterIdentifier] Identifier of the source database cluster from which to restore. When restoring from a cluster in another AWS account, the identifier is the ARN of that cluster.
   /// [sourceClusterResourceId] Cluster resource ID of the source database cluster from which to restore. To be used for restoring a deleted cluster in the same account which still has a retained automatic backup available.
   /// [useLatestRestorableTime] Set to true to restore the database cluster to the latest restorable backup time. Defaults to false. Conflicts with `restore_to_time`.
-  ClusterRestoreToPointInTime({
+  const ClusterRestoreToPointInTime({
     this.restoreToTime,
     this.restoreType,
     this.sourceClusterIdentifier,

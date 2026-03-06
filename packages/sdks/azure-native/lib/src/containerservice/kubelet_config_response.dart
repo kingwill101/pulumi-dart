@@ -39,7 +39,7 @@ class KubeletConfigResponse {
   /// [imageGcLowThreshold] The percent of disk usage before which image garbage collection is never run. This cannot be set higher than imageGcHighThreshold. The default is 80%
   /// [podMaxPids] The maximum number of processes per pod.
   /// [topologyManagerPolicy] The Topology Manager policy to use. For more information see [Kubernetes Topology Manager](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager). The default is 'none'. Allowed values are 'none', 'best-effort', 'restricted', and 'single-numa-node'.
-  KubeletConfigResponse({
+  const KubeletConfigResponse({
     this.allowedUnsafeSysctls,
     this.containerLogMaxFiles,
     this.containerLogMaxSizeMB,

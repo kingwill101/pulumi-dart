@@ -13,7 +13,7 @@ class PlatformManagementGroupProperties {
   /// Creates a new [PlatformManagementGroupProperties].
   /// [name] Management group name.
   /// [policyInitiativesAssignmentProperties] Array of policy initiatives applied to the management group.
-  PlatformManagementGroupProperties({
+  const PlatformManagementGroupProperties({
     required this.name,
     required this.policyInitiativesAssignmentProperties,
   });

@@ -35,7 +35,7 @@ class InstanceIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] Optional.
   /// [role] The role that should be applied. Only one
-  InstanceIamMemberState({
+  const InstanceIamMemberState({
     this.condition,
     this.etag,
     this.instance,

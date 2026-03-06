@@ -10,7 +10,7 @@ class RepositoryRemoteRepositoryConfigYumRepository {
 
   /// Creates a new [RepositoryRemoteRepositoryConfigYumRepository].
   /// [publicRepository] One of the publicly available Yum repositories supported by Artifact Registry.
-  RepositoryRemoteRepositoryConfigYumRepository({
+  const RepositoryRemoteRepositoryConfigYumRepository({
     this.publicRepository,
   });
 

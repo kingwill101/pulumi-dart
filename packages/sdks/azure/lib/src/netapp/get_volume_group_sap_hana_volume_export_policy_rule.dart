@@ -26,7 +26,7 @@ class GetVolumeGroupSapHanaVolumeExportPolicyRule {
   /// [ruleIndex] The index number of the rule.
   /// [unixReadOnly] Is the file system on unix read only?.
   /// [unixReadWrite] Is the file system on unix read and write?.
-  GetVolumeGroupSapHanaVolumeExportPolicyRule({
+  const GetVolumeGroupSapHanaVolumeExportPolicyRule({
     required this.allowedClients,
     required this.nfsv3Enabled,
     required this.nfsv41Enabled,

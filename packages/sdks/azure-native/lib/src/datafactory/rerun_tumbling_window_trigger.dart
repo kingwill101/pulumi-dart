@@ -28,7 +28,7 @@ class RerunTumblingWindowTrigger {
   /// [requestedStartTime] The start time for the time period for which restatement is initiated. Only UTC time is currently supported.
   /// [rerunConcurrency] The max number of parallel time windows (ready for execution) for which a rerun is triggered.
   /// [type] Trigger type.
-  RerunTumblingWindowTrigger({
+  const RerunTumblingWindowTrigger({
     this.annotations,
     this.description,
     required this.parentTrigger,

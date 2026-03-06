@@ -23,7 +23,7 @@ class WebPubSubHubProperties {
   /// [eventHandlers] Event handler of a hub.
   /// [eventListeners] Event listener settings for forwarding your client events to listeners.
   /// [webSocketKeepAliveIntervalInSeconds] The settings for configuring the WebSocket ping-pong interval in seconds for all clients in the hub. Valid range: 1 to 120. Default to 20 seconds.
-  WebPubSubHubProperties({
+  const WebPubSubHubProperties({
     this.anonymousConnectPolicy,
     this.eventHandlers,
     this.eventListeners,

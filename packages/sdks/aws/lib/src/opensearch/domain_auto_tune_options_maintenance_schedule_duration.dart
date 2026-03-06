@@ -11,7 +11,7 @@ class DomainAutoTuneOptionsMaintenanceScheduleDuration {
   /// Creates a new [DomainAutoTuneOptionsMaintenanceScheduleDuration].
   /// [unit] Unit of time specifying the duration of an Auto-Tune maintenance window. Valid values: `HOURS`.
   /// [value] An integer specifying the value of the duration of an Auto-Tune maintenance window.
-  DomainAutoTuneOptionsMaintenanceScheduleDuration({
+  const DomainAutoTuneOptionsMaintenanceScheduleDuration({
     required this.unit,
     required this.value,
   });

@@ -88,7 +88,7 @@ class AssetArgs {
   /// [serialNumber] Asset serial number.
   /// [softwareRevision] Revision number of the software.
   /// [tags] Resource tags.
-  AssetArgs({
+  const AssetArgs({
     required this.assetEndpointProfileRef,
     this.assetName,
     this.attributes,

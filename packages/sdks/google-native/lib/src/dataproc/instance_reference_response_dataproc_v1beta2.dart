@@ -15,7 +15,7 @@ class InstanceReferenceResponseDataprocV1beta2 {
   /// [instanceId] The unique identifier of the Compute Engine instance.
   /// [instanceName] The user-friendly name of the Compute Engine instance.
   /// [publicKey] The public key used for sharing data with this instance.
-  InstanceReferenceResponseDataprocV1beta2({
+  const InstanceReferenceResponseDataprocV1beta2({
     required this.instanceId,
     required this.instanceName,
     required this.publicKey,

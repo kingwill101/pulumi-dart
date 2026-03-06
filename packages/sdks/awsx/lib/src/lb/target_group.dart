@@ -894,7 +894,7 @@ class TargetGroup {
   /// [targetHealthStates] Target health state block. Only applicable for Network Load Balancer target groups when `protocol` is `TCP` or `TLS`. See target_health_state for more information.
   /// [targetType] Type of target that you must specify when registering targets with this target group.
   /// [vpcId] Identifier of the VPC in which to create the target group. Required when `target_type` is `instance`, `ip` or `alb`. Does not apply when `target_type` is `lambda`.
-  TargetGroup({
+  const TargetGroup({
     this.connectionTermination,
     this.deregistrationDelay,
     this.healthCheck,

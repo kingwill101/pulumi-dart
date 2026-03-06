@@ -11,7 +11,7 @@ class GetDatabaseIdentity {
   /// Creates a new [GetDatabaseIdentity].
   /// [identityIds] The list of User Assigned Managed Identity IDs assigned to this Microsoft SQL Database.
   /// [type] The type of Managed Service Identity that is configured on this Microsoft SQL Database.
-  GetDatabaseIdentity({
+  const GetDatabaseIdentity({
     required this.identityIds,
     required this.type,
   });

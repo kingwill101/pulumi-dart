@@ -30,7 +30,7 @@ class PostgresqlColumn {
   /// [precision] Column precision.
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] Column scale.
-  PostgresqlColumn({
+  const PostgresqlColumn({
     this.column,
     this.dataType,
     this.length,

@@ -11,7 +11,7 @@ class InfraAlertConditionCritical {
   /// [duration] Required.
   /// [timeFunction] Optional.
   /// [value] Optional.
-  InfraAlertConditionCritical({
+  const InfraAlertConditionCritical({
     required this.duration,
     this.timeFunction,
     this.value,

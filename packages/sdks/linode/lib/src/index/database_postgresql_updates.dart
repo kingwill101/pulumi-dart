@@ -20,7 +20,7 @@ class DatabasePostgresqlUpdates {
   /// [frequency] Whether maintenance occurs on a weekly or monthly basis.
   /// [hourOfDay] The hour to begin maintenance based in UTC time.
   /// [weekOfMonth] The week of the month to perform monthly frequency updates. Required for monthly frequency updates.
-  DatabasePostgresqlUpdates({
+  const DatabasePostgresqlUpdates({
     required this.dayOfWeek,
     required this.duration,
     required this.frequency,

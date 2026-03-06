@@ -56,7 +56,7 @@ class GetResolverFirewallRulesFirewallRule {
   /// [name] The name of the rule.
   /// [priority] The setting that determines the processing order of the rules in a rule group.
   /// [qType] The DNS query type that the rule evaluates.
-  GetResolverFirewallRulesFirewallRule({
+  const GetResolverFirewallRulesFirewallRule({
     required this.action,
     required this.blockOverrideDnsType,
     required this.blockOverrideDomain,

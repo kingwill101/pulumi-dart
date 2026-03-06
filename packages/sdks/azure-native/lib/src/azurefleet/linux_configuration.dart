@@ -29,7 +29,7 @@ class LinuxConfiguration {
   /// [patchSettings] [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
   /// [provisionVMAgent] Indicates whether virtual machine agent should be provisioned on the virtual
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  LinuxConfiguration({
+  const LinuxConfiguration({
     this.disablePasswordAuthentication,
     this.enableVMAgentPlatformUpdates,
     this.patchSettings,

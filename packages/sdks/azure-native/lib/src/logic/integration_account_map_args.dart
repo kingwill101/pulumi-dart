@@ -40,7 +40,7 @@ class IntegrationAccountMapArgs {
   /// [parametersSchema] The parameters schema of integration account map.
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
-  IntegrationAccountMapArgs({
+  const IntegrationAccountMapArgs({
     this.content,
     this.contentType,
     required this.integrationAccountName,

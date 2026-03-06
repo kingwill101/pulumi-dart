@@ -44,7 +44,7 @@ class EdgeCacheKeysetArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [publicKeys] An ordered list of Ed25519 public keys to use for validating signed requests.
   /// [validationSharedKeys] An ordered list of shared keys to use for validating signed requests.
-  EdgeCacheKeysetArgs({
+  const EdgeCacheKeysetArgs({
     this.description,
     this.labels,
     this.name,

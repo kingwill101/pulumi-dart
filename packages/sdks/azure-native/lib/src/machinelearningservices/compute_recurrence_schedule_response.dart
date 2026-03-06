@@ -17,7 +17,7 @@ class ComputeRecurrenceScheduleResponse {
   /// [minutes] [Required] List of minutes for the schedule.
   /// [monthDays] List of month days for the schedule
   /// [weekDays] List of days for the schedule.
-  ComputeRecurrenceScheduleResponse({
+  const ComputeRecurrenceScheduleResponse({
     required this.hours,
     required this.minutes,
     this.monthDays,

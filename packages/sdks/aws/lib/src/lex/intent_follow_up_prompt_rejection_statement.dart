@@ -10,7 +10,7 @@ class IntentFollowUpPromptRejectionStatement {
   /// Creates a new [IntentFollowUpPromptRejectionStatement].
   /// [messages] Required.
   /// [responseCard] Optional.
-  IntentFollowUpPromptRejectionStatement({
+  const IntentFollowUpPromptRejectionStatement({
     required this.messages,
     this.responseCard,
   });

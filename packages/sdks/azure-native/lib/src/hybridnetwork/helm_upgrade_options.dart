@@ -15,7 +15,7 @@ class HelmUpgradeOptions {
   /// [atomic] The helm deployment atomic options
   /// [timeout] The helm deployment timeout options
   /// [wait] The helm deployment wait options
-  HelmUpgradeOptions({
+  const HelmUpgradeOptions({
     this.atomic,
     this.timeout,
     this.wait,

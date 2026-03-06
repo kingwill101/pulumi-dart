@@ -46,7 +46,7 @@ class GetStorageAccountCredentialResult {
   /// [systemData] Metadata pertaining to creation and last modification of StorageAccountCredential
   /// [type] The hierarchical type of the object.
   /// [userName] Username for the storage account.
-  GetStorageAccountCredentialResult({
+  const GetStorageAccountCredentialResult({
     this.accountKey,
     required this.accountType,
     required this.alias,

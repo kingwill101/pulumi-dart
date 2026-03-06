@@ -148,7 +148,7 @@ class InstanceState {
   /// [vpcId] The vpc ID of the resource.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the instance.
-  InstanceState({
+  const InstanceState({
     this.availabilityZone,
     this.connectionString,
     this.createSampleData,

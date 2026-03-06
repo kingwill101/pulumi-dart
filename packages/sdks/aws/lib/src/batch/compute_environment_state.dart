@@ -54,7 +54,7 @@ class ComputeEnvironmentState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of the compute environment. Valid items are `MANAGED` or `UNMANAGED`.
   /// [updatePolicy] Specifies the infrastructure update policy for the compute environment. See details below.
-  ComputeEnvironmentState({
+  const ComputeEnvironmentState({
     this.arn,
     this.computeResources,
     this.ecsClusterArn,

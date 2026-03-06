@@ -16,7 +16,7 @@ class SizeConstraintSetArgs {
   /// Creates a new [SizeConstraintSetArgs].
   /// [name] Name or description of the Size Constraint Set.
   /// [sizeConstraints] Parts of web requests that you want to inspect the size of.
-  SizeConstraintSetArgs({
+  const SizeConstraintSetArgs({
     this.name,
     this.sizeConstraints,
   });

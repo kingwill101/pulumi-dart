@@ -14,7 +14,7 @@ class EventSourceV2SourceMnsParameters {
   /// [isBase64Decode] Whether to enable Base64 decoding. By default, it is selected, that is, Base64 decoding is enabled.
   /// [queueName] The name of the Queue of the lightweight message Queue (formerly MNS).
   /// [regionId] The region of the lightweight message queue (formerly MNS).
-  EventSourceV2SourceMnsParameters({
+  const EventSourceV2SourceMnsParameters({
     this.isBase64Decode,
     this.queueName,
     this.regionId,

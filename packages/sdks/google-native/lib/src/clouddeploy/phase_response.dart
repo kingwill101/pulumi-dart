@@ -20,7 +20,7 @@ class PhaseResponse {
   /// [deploymentJobs] Deployment job composition.
   /// [skipMessage] Additional information on why the Phase was skipped, if available.
   /// [state] Current state of the Phase.
-  PhaseResponse({
+  const PhaseResponse({
     required this.childRolloutJobs,
     required this.deploymentJobs,
     required this.skipMessage,

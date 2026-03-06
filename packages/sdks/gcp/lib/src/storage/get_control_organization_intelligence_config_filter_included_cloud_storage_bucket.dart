@@ -8,7 +8,7 @@ class GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket {
 
   /// Creates a new [GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket].
   /// [bucketIdRegexes] List of bucket id regexes to exclude in the storage intelligence plan.
-  GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket({
+  const GetControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucket({
     required this.bucketIdRegexes,
   });
 

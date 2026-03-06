@@ -12,7 +12,7 @@ class ConditionResponseFailingPeriods {
   /// Creates a new [ConditionResponseFailingPeriods].
   /// [minFailingPeriodsToAlert] The number of violations to trigger an alert. Should be smaller or equal to numberOfEvaluationPeriods. Default value is 1
   /// [numberOfEvaluationPeriods] The number of aggregated lookback points. The lookback time window is calculated based on the aggregation granularity (windowSize) and the selected number of aggregated points. Default value is 1
-  ConditionResponseFailingPeriods({
+  const ConditionResponseFailingPeriods({
     this.minFailingPeriodsToAlert,
     this.numberOfEvaluationPeriods,
   });

@@ -13,7 +13,7 @@ class AccessConfigResponse {
   /// Creates a new [AccessConfigResponse].
   /// [authenticationMode] &lt;p&gt;The current authentication mode of the cluster.&lt;/p&gt;
   /// [bootstrapClusterCreatorAdminPermissions] &lt;p&gt;Specifies whether or not the cluster creator IAM principal was set as a cluster admin access entry during cluster creation time.&lt;/p&gt;
-  AccessConfigResponse({
+  const AccessConfigResponse({
     this.authenticationMode,
     this.bootstrapClusterCreatorAdminPermissions,
   });

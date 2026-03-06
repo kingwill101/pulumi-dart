@@ -12,7 +12,7 @@ class NodeIpAllocationPolicyMachineTypePolicy {
   /// Creates a new [NodeIpAllocationPolicyMachineTypePolicy].
   /// [bonds] Bond information See `bonds` below.
   /// [machineType] Model
-  NodeIpAllocationPolicyMachineTypePolicy({
+  const NodeIpAllocationPolicyMachineTypePolicy({
     this.bonds,
     this.machineType,
   });

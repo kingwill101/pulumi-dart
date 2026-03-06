@@ -35,7 +35,7 @@ class GetRegistrationResult {
   /// [objectId] The object identifier associated with the Azure Stack connecting to Azure.
   /// [tags] Custom tags for the resource.
   /// [type] Type of Resource.
-  GetRegistrationResult({
+  const GetRegistrationResult({
     required this.azureApiVersion,
     this.billingModel,
     this.cloudId,

@@ -20,7 +20,7 @@ class MqttBridgeRemoteBrokerConnectionSpec {
   /// [endpoint] The endpoint of remote broker to connect to.
   /// [protocol] Protocol for remote connection.
   /// [tls] TLS details for Remote broker Connection.
-  MqttBridgeRemoteBrokerConnectionSpec({
+  const MqttBridgeRemoteBrokerConnectionSpec({
     required this.authentication,
     required this.endpoint,
     this.protocol,

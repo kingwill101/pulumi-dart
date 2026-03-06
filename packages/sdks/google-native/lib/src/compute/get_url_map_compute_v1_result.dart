@@ -54,7 +54,7 @@ class GetUrlMapComputeV1Result {
   /// [region] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [selfLink] Server-defined URL for the resource.
   /// [tests] The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
-  GetUrlMapComputeV1Result({
+  const GetUrlMapComputeV1Result({
     required this.creationTimestamp,
     required this.defaultRouteAction,
     required this.defaultService,

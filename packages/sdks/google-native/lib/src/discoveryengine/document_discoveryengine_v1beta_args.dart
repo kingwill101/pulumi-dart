@@ -44,7 +44,7 @@ class DocumentDiscoveryengineV1betaArgs {
   /// [project] Optional.
   /// [schemaId] The identifier of the schema located in the same data store.
   /// [structData] The structured JSON data for the document. It should conform to the registered Schema or an `INVALID_ARGUMENT` error is thrown.
-  DocumentDiscoveryengineV1betaArgs({
+  const DocumentDiscoveryengineV1betaArgs({
     required this.branchId,
     required this.collectionId,
     this.content,

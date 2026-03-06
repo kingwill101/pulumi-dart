@@ -18,7 +18,7 @@ class IdentityAwareProxyResponseAppengineV1beta {
   /// [oauth2ClientId] OAuth2 client ID to use for the authentication flow.
   /// [oauth2ClientSecret] OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
   /// [oauth2ClientSecretSha256] Hex-encoded SHA-256 hash of the client secret.
-  IdentityAwareProxyResponseAppengineV1beta({
+  const IdentityAwareProxyResponseAppengineV1beta({
     required this.enabled,
     required this.oauth2ClientId,
     required this.oauth2ClientSecret,

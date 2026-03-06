@@ -18,7 +18,7 @@ class ManagedHardwareSecurityModuleKeyRotationPolicyState {
   /// [managedHsmKeyId] The ID of the Managed HSM Key. Changing this forces a new Managed HSM Key rotation policy to be created.
   /// [timeAfterCreation] Rotate automatically at a duration after key creation as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
   /// [timeBeforeExpiry] Rotate automatically at a duration before key expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). Exactly one of `time_after_creation` or `time_before_expiry` should be specified.
-  ManagedHardwareSecurityModuleKeyRotationPolicyState({
+  const ManagedHardwareSecurityModuleKeyRotationPolicyState({
     this.expireAfter,
     this.managedHsmKeyId,
     this.timeAfterCreation,

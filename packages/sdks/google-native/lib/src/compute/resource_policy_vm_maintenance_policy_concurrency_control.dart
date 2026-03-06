@@ -8,7 +8,7 @@ class ResourcePolicyVmMaintenancePolicyConcurrencyControl {
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicyConcurrencyControl].
   /// [concurrencyLimit] Optional.
-  ResourcePolicyVmMaintenancePolicyConcurrencyControl({
+  const ResourcePolicyVmMaintenancePolicyConcurrencyControl({
     this.concurrencyLimit,
   });
 

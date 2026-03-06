@@ -71,7 +71,7 @@ class AccountSubscriptionState {
   /// [readerProGroups] Reader PRO group associated with your Active Directory or IAM Identity Center account.
   /// [realm] Realm of the Active Directory that is associated with your Amazon QuickSight account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AccountSubscriptionState({
+  const AccountSubscriptionState({
     this.accountName,
     this.accountSubscriptionStatus,
     this.activeDirectoryName,

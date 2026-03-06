@@ -11,7 +11,7 @@ class BucketV2LifecycleRuleNoncurrentVersionTransition {
   /// Creates a new [BucketV2LifecycleRuleNoncurrentVersionTransition].
   /// [days] Specifies the number of days noncurrent object versions transition.
   /// [storageClass] Specifies the Amazon S3 [storage class](https://docs.aws.amazon.com/AmazonS3/latest/API/API_Transition.html#AmazonS3-Type-Transition-StorageClass) to which you want the object to transition.
-  BucketV2LifecycleRuleNoncurrentVersionTransition({
+  const BucketV2LifecycleRuleNoncurrentVersionTransition({
     this.days,
     required this.storageClass,
   });

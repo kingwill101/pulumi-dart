@@ -68,7 +68,7 @@ class GetLoadBalancerResult {
   /// [targetLoadBalancerIds] Required.
   /// [type] Required.
   /// [vpcUuid] Required.
-  GetLoadBalancerResult({
+  const GetLoadBalancerResult({
     required this.algorithm,
     required this.disableLetsEncryptDnsRecords,
     required this.domains,

@@ -13,7 +13,7 @@ class Envelope {
   /// [payload] Optional.
   /// [payloadType] Optional.
   /// [signatures] Optional.
-  Envelope({
+  const Envelope({
     this.payload,
     this.payloadType,
     this.signatures,

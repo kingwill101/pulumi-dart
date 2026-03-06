@@ -119,7 +119,7 @@ class FhirStoreState {
   /// [streamConfigs] A list of streaming configs that configure the destinations of streaming export for every resource mutation in
   /// [validationConfig] Configuration for how to validate incoming FHIR resources against configured profiles.
   /// [version] The FHIR specification version.
-  FhirStoreState({
+  const FhirStoreState({
     this.complexDataTypeReferenceParsing,
     this.consentConfig,
     this.dataset,

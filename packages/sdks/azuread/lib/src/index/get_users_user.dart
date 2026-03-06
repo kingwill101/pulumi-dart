@@ -38,7 +38,7 @@ class GetUsersUser {
   /// [onpremisesUserPrincipalName] The on-premise user principal name of the user.
   /// [usageLocation] The usage location of the user.
   /// [userPrincipalName] The user principal name (UPN) of the user.
-  GetUsersUser({
+  const GetUsersUser({
     required this.accountEnabled,
     required this.displayName,
     required this.employeeId,

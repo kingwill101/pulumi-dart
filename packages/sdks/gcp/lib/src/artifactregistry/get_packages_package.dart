@@ -20,7 +20,7 @@ class GetPackagesPackage {
   /// [displayName] The display name of the package.
   /// [name] The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped.
   /// [updateTime] The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
-  GetPackagesPackage({
+  const GetPackagesPackage({
     required this.annotations,
     required this.createTime,
     required this.displayName,

@@ -11,7 +11,7 @@ class FirewallPolicyDns {
   /// Creates a new [FirewallPolicyDns].
   /// [proxyEnabled] Whether to enable DNS proxy on Firewalls attached to this Firewall Policy? Defaults to `false`.
   /// [servers] A list of custom DNS servers' IP addresses.
-  FirewallPolicyDns({
+  const FirewallPolicyDns({
     this.proxyEnabled,
     this.servers,
   });

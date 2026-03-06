@@ -12,7 +12,7 @@ class DashboardDefinitionPropertiesResponse {
   /// Creates a new [DashboardDefinitionPropertiesResponse].
   /// [provisioningState] The provisioning state of the dashboard definition resource.
   /// [serializedData] The dashboard definition data in JSON format.
-  DashboardDefinitionPropertiesResponse({
+  const DashboardDefinitionPropertiesResponse({
     required this.provisioningState,
     this.serializedData,
   });

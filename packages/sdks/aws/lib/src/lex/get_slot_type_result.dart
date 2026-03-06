@@ -42,7 +42,7 @@ class GetSlotTypeResult {
   /// [region] Required.
   /// [valueSelectionStrategy] Determines the slot resolution strategy that Amazon Lex
   /// [version] Version of the slot type.
-  GetSlotTypeResult({
+  const GetSlotTypeResult({
     required this.checksum,
     required this.createdDate,
     required this.description,

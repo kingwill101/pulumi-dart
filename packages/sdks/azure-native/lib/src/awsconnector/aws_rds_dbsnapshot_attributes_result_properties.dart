@@ -13,7 +13,7 @@ class AwsRdsDBSnapshotAttributesResultProperties {
   /// Creates a new [AwsRdsDBSnapshotAttributesResultProperties].
   /// [dbSnapshotAttributes] &lt;p&gt;The list of attributes and values for the manual DB snapshot.&lt;/p&gt;
   /// [dbSnapshotIdentifier] &lt;p&gt;The identifier of the manual DB snapshot that the attributes apply to.&lt;/p&gt;
-  AwsRdsDBSnapshotAttributesResultProperties({
+  const AwsRdsDBSnapshotAttributesResultProperties({
     this.dbSnapshotAttributes,
     this.dbSnapshotIdentifier,
   });

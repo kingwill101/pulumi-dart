@@ -41,7 +41,7 @@ class ConnectorMappingArgs {
   /// [mappingName] The name of the connector mapping.
   /// [mappingProperties] The properties of the mapping.
   /// [resourceGroupName] The name of the resource group.
-  ConnectorMappingArgs({
+  const ConnectorMappingArgs({
     required this.connectorName,
     this.connectorType,
     this.description,

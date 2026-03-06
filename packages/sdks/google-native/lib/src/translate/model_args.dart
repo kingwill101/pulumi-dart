@@ -22,7 +22,7 @@ class ModelArgs {
   /// [location] Optional.
   /// [name] The resource name of the model, in form of `projects/{project-number-or-id}/locations/{location_id}/models/{model_id}`
   /// [project] Optional.
-  ModelArgs({
+  const ModelArgs({
     this.dataset,
     this.displayName,
     this.location,

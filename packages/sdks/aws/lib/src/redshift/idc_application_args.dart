@@ -40,7 +40,7 @@ class IdcApplicationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceIntegration] Collection of service integrations for the Redshift IAM Identity Center application. Refer to the service_integration documentation for more details.
   /// [tags] Optional.
-  IdcApplicationArgs({
+  const IdcApplicationArgs({
     this.applicationType,
     this.authorizedTokenIssuer,
     required this.iamRoleArn,

@@ -15,7 +15,7 @@ class GalleryDiskImageSource {
   /// [id] The id of the gallery artifact version source.
   /// [storageAccountId] The Storage Account Id that contains the vhd blob being used as a source for this artifact version.
   /// [uri] The uri of the gallery artifact version source. Currently used to specify vhd/blob source.
-  GalleryDiskImageSource({
+  const GalleryDiskImageSource({
     this.id,
     this.storageAccountId,
     this.uri,

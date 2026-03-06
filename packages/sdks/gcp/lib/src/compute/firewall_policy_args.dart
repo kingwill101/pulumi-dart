@@ -20,7 +20,7 @@ class FirewallPolicyArgs {
   /// [description] An optional description of this resource. Provide this property when you create the resource.
   /// [parent] The parent of the firewall policy.
   /// [shortName] User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created.
-  FirewallPolicyArgs({
+  const FirewallPolicyArgs({
     this.description,
     required this.parent,
     required this.shortName,

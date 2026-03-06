@@ -12,7 +12,7 @@ class AdditionalNodeNetworkConfig {
   /// Creates a new [AdditionalNodeNetworkConfig].
   /// [network] Name of the VPC where the additional interface belongs
   /// [subnetwork] Name of the subnetwork where the additional interface belongs
-  AdditionalNodeNetworkConfig({
+  const AdditionalNodeNetworkConfig({
     this.network,
     this.subnetwork,
   });

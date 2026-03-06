@@ -32,7 +32,7 @@ class ProbeState {
   /// [probeThreshold] The number of consecutive successful or failed probes that allow or deny traffic to this endpoint. Possible values range from `1` to `100`. The default value is `1`.
   /// [protocol] Specifies the protocol of the end point. Possible values are `Http`, `Https` or `Tcp`. If TCP is specified, a received ACK is required for the probe to be successful. If HTTP is specified, a 200 OK response from the specified URI is required for the probe to be successful. Defaults to `Tcp`.
   /// [requestPath] The URI used for requesting health status from the backend endpoint. Required if protocol is set to `Http` or `Https`. Otherwise, it is not allowed.
-  ProbeState({
+  const ProbeState({
     this.intervalInSeconds,
     this.loadBalancerRules,
     this.loadbalancerId,

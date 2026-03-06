@@ -18,7 +18,7 @@ class GetRaiBlocklistArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [raiBlocklistName] The name of the RaiBlocklist associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRaiBlocklistArgs({
+  const GetRaiBlocklistArgs({
     required this.accountName,
     required this.raiBlocklistName,
     required this.resourceGroupName,

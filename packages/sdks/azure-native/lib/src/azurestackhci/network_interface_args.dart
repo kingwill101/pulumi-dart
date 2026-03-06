@@ -43,7 +43,7 @@ class NetworkInterfaceArgs {
   /// [networkSecurityGroup] NetworkSecurityGroup - Network Security Group attached to the network interface.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkInterfaceArgs({
+  const NetworkInterfaceArgs({
     this.createFromLocal,
     this.dnsSettings,
     this.extendedLocation,

@@ -25,7 +25,7 @@ class IntegrationRuntimeSelfHostedArgs {
   /// [name] The name which should be used for this Data Factory. Changing this forces a new Data Factory Self-hosted Integration Runtime to be created.
   /// [rbacAuthorizations] A `rbac_authorization` block as defined below. Changing this forces a new resource to be created.
   /// [selfContainedInteractiveAuthoringEnabled] Specifies whether enable interactive authoring function when your self-hosted integration runtime is unable to establish a connection with Azure Relay.
-  IntegrationRuntimeSelfHostedArgs({
+  const IntegrationRuntimeSelfHostedArgs({
     required this.dataFactoryId,
     this.description,
     this.name,

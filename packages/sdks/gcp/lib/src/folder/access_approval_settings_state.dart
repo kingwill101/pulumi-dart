@@ -42,7 +42,7 @@ class AccessApprovalSettingsState {
   /// [invalidKeyVersion] If the field is true, that indicates that there is some configuration issue with the active_key_version
   /// [name] The resource name of the settings. Format is "folders/{folder_id}/accessApprovalSettings"
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
-  AccessApprovalSettingsState({
+  const AccessApprovalSettingsState({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
     this.enrolledAncestor,

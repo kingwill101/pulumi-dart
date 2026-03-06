@@ -31,7 +31,7 @@ class BackupInstanceKubernetesClusterState {
   /// [protectionState] The protection state of the Backup Instance Kubernetes Cluster.
   /// [snapshotResourceGroupName] The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-  BackupInstanceKubernetesClusterState({
+  const BackupInstanceKubernetesClusterState({
     this.backupDatasourceParameters,
     this.backupPolicyId,
     this.kubernetesClusterId,

@@ -18,7 +18,7 @@ class GetGuestConfigurationAssignmentArgs {
   /// [guestConfigurationAssignmentName] The guest configuration assignment name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmName] The name of the virtual machine.
-  GetGuestConfigurationAssignmentArgs({
+  const GetGuestConfigurationAssignmentArgs({
     required this.guestConfigurationAssignmentName,
     required this.resourceGroupName,
     required this.vmName,

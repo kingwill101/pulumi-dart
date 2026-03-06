@@ -9,7 +9,7 @@ class ApplicationFeatureSettings {
 
   /// Creates a new [ApplicationFeatureSettings].
   /// [splitHealthChecks] Set to false to use the legacy health check instead of the readiness
-  ApplicationFeatureSettings({
+  const ApplicationFeatureSettings({
     required this.splitHealthChecks,
   });
 

@@ -26,7 +26,7 @@ class DomainNameDomainNameConfiguration {
   /// [ownershipVerificationCertificateArn] ARN of the AWS-issued certificate used to validate custom domain ownership (when `certificate_arn` is issued via an ACM Private CA or `mutual_tls_authentication` is configured with an ACM-imported certificate.)
   /// [securityPolicy] Transport Layer Security (TLS) version of the [security policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-custom-domain-tls-version.html) for the domain name. Valid values: `TLS_1_2`.
   /// [targetDomainName] Target domain name.
-  DomainNameDomainNameConfiguration({
+  const DomainNameDomainNameConfiguration({
     required this.certificateArn,
     required this.endpointType,
     this.hostedZoneId,

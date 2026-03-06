@@ -37,7 +37,7 @@ class PrivateLinkServiceIpConfigurationResponse {
   /// [provisioningState] The provisioning state of the private link service IP configuration resource.
   /// [subnet] The reference to the subnet resource.
   /// [type] The resource type.
-  PrivateLinkServiceIpConfigurationResponse({
+  const PrivateLinkServiceIpConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

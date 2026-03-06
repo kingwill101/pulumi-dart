@@ -11,7 +11,7 @@ class GetRecordsResourceRecordSetCidrRoutingConfig {
   /// Creates a new [GetRecordsResourceRecordSetCidrRoutingConfig].
   /// [collectionId] The CIDR collection ID.
   /// [locationName] The CIDR collection location name.
-  GetRecordsResourceRecordSetCidrRoutingConfig({
+  const GetRecordsResourceRecordSetCidrRoutingConfig({
     required this.collectionId,
     required this.locationName,
   });

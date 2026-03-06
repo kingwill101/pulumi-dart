@@ -24,7 +24,7 @@ class JobConditionPatch {
   /// [reason] (brief) reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of job condition, Complete or Failed.
-  JobConditionPatch({
+  const JobConditionPatch({
     this.lastProbeTime,
     this.lastTransitionTime,
     this.message,

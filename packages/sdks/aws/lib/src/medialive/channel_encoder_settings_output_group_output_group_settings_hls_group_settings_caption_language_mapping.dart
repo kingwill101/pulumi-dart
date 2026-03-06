@@ -12,7 +12,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptio
   /// [captionChannel] Required.
   /// [languageCode] Required.
   /// [languageDescription] Human readable information to indicate captions available for players (eg. English, or Spanish).
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsCaptionLanguageMapping({
     required this.captionChannel,
     required this.languageCode,
     required this.languageDescription,

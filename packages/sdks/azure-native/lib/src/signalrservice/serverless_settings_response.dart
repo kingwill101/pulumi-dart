@@ -16,7 +16,7 @@ class ServerlessSettingsResponse {
 
   /// Creates a new [ServerlessSettingsResponse].
   /// [connectionTimeoutInSeconds] Gets or sets Client Connection Timeout. Optional to be set.
-  ServerlessSettingsResponse({
+  const ServerlessSettingsResponse({
     this.connectionTimeoutInSeconds,
   });
 

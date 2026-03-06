@@ -21,7 +21,7 @@ class GroupGroupKey {
   /// Creates a new [GroupGroupKey].
   /// [id] The ID of the entity.
   /// [namespace] The namespace in which the entity exists.
-  GroupGroupKey({
+  const GroupGroupKey({
     required this.id,
     this.namespace,
   });

@@ -116,7 +116,7 @@ class GetServiceResult {
   /// [tags] Resource tags.
   /// [taskDefinition] Task definition ARN
   /// [taskSets] Task sets for the service. See `task_sets` Block for details.
-  GetServiceResult({
+  const GetServiceResult({
     required this.arn,
     required this.availabilityZoneRebalancing,
     required this.capacityProviderStrategies,

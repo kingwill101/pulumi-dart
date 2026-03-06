@@ -210,7 +210,7 @@ class InstanceState {
   /// [tags] A list of network tags to attach to the instance.
   /// [tagsFingerprint] The unique fingerprint of the tags.
   /// [zone] The zone that the machine should be created in. If it is not provided, the provider zone is used.
-  InstanceState({
+  const InstanceState({
     this.advancedMachineFeatures,
     this.allowStoppingForUpdate,
     this.attachedDisks,

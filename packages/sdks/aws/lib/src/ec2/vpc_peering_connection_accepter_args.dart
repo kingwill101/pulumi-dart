@@ -31,7 +31,7 @@ class VpcPeeringConnectionAccepterArgs {
   /// [requester] A configuration block that describes [VPC Peering Connection]
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcPeeringConnectionId] The VPC Peering Connection ID to manage.
-  VpcPeeringConnectionAccepterArgs({
+  const VpcPeeringConnectionAccepterArgs({
     this.accepter,
     this.autoAccept,
     this.region,

@@ -20,7 +20,7 @@ class ClusterTrustBundleList {
   /// [items] items is a collection of ClusterTrustBundle objects
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] metadata contains the list metadata.
-  ClusterTrustBundleList({
+  const ClusterTrustBundleList({
     this.apiVersion,
     required this.items,
     this.kind,

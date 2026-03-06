@@ -9,7 +9,7 @@ class ServiceExportConfigurationInfoResponse {
 
   /// Creates a new [ServiceExportConfigurationInfoResponse].
   /// [storageAccountName] The name of the default export storage account.
-  ServiceExportConfigurationInfoResponse({
+  const ServiceExportConfigurationInfoResponse({
     this.storageAccountName,
   });
 

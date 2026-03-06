@@ -14,7 +14,7 @@ class GetArnArgs {
   /// Creates a new [GetArnArgs].
   /// [arn] ARN to parse.
   /// [id] Optional.
-  GetArnArgs({
+  const GetArnArgs({
     required this.arn,
     this.id,
   });

@@ -18,7 +18,7 @@ class GetMetadataSchemaArgs {
   /// [metadataSchemaName] The name of the metadata schema.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of Azure API Center service.
-  GetMetadataSchemaArgs({
+  const GetMetadataSchemaArgs({
     required this.metadataSchemaName,
     required this.resourceGroupName,
     required this.serviceName,

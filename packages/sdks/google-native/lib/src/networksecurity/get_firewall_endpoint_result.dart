@@ -32,7 +32,7 @@ class GetFirewallEndpointResult {
   /// [reconciling] Whether reconciling is in progress, recommended per https://google.aip.dev/128.
   /// [state] Current state of the endpoint.
   /// [updateTime] Update time stamp
-  GetFirewallEndpointResult({
+  const GetFirewallEndpointResult({
     required this.associatedNetworks,
     required this.billingProjectId,
     required this.createTime,

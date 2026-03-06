@@ -14,7 +14,7 @@ class CapacityProviderInstanceRequirement {
   /// [allowedInstanceTypes] List of allowed instance types (e.g., `["m5.xlarge"]`).
   /// [architectures] List of CPU architectures. Valid values are `["x86_64"]` and `["arm64"]`.
   /// [excludedInstanceTypes] List of excluded instance types. You can specify only one of `allowed_instance_types` or `excluded_instance_types`.
-  CapacityProviderInstanceRequirement({
+  const CapacityProviderInstanceRequirement({
     required this.allowedInstanceTypes,
     required this.architectures,
     required this.excludedInstanceTypes,

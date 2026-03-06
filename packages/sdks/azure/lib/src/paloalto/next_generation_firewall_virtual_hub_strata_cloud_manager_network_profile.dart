@@ -35,7 +35,7 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile {
   /// [trustedSubnetId] The ID of trusted subnet.
   /// [untrustedSubnetId] The ID of untrusted subnet.
   /// [virtualHubId] The ID of the Virtual Hub this Next Generation Firewall will be deployed in. Changing this forces a new Palo Alto Next Generation Firewall Virtual Hub Strata Cloud Manager to be created.
-  NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile({
+  const NextGenerationFirewallVirtualHubStrataCloudManagerNetworkProfile({
     this.egressNatIpAddressIds,
     this.egressNatIpAddresses,
     this.ipOfTrustForUserDefinedRoutes,

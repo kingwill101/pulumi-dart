@@ -137,7 +137,7 @@ class InstanceFromTemplateArgs {
   /// [sourceInstanceTemplate] Name or self link of an instance
   /// [tags] The list of tags attached to the instance.
   /// [zone] The zone that the machine should be created in. If not
-  InstanceFromTemplateArgs({
+  const InstanceFromTemplateArgs({
     this.advancedMachineFeatures,
     this.allowStoppingForUpdate,
     this.attachedDisks,

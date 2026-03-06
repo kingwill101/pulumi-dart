@@ -40,7 +40,7 @@ class PhoneNumberState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetArn] The Amazon Resource Name (ARN) for Amazon Connect instances that phone numbers are claimed to.
   /// [type] The type of phone number. Valid Values: `TOLL_FREE` | `DID`.
-  PhoneNumberState({
+  const PhoneNumberState({
     this.arn,
     this.countryCode,
     this.description,

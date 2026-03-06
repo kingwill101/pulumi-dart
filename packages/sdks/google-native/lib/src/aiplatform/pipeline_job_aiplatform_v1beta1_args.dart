@@ -45,7 +45,7 @@ class PipelineJobAiplatformV1beta1Args {
   /// [runtimeConfig] Runtime config of the pipeline.
   /// [serviceAccount] The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
   /// [templateUri] A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
-  PipelineJobAiplatformV1beta1Args({
+  const PipelineJobAiplatformV1beta1Args({
     this.displayName,
     this.encryptionSpec,
     this.labels,

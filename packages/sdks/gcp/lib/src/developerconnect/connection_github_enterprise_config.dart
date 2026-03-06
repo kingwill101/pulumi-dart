@@ -44,7 +44,7 @@ class ConnectionGithubEnterpriseConfig {
   /// [serviceDirectoryConfig] ServiceDirectoryConfig represents Service Directory configuration for a
   /// [sslCaCertificate] Optional. SSL certificate to use for requests to GitHub Enterprise.
   /// [webhookSecretSecretVersion] Optional. SecretManager resource containing the webhook secret of the GitHub App,
-  ConnectionGithubEnterpriseConfig({
+  const ConnectionGithubEnterpriseConfig({
     this.appId,
     this.appInstallationId,
     this.appSlug,

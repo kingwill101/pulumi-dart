@@ -15,7 +15,7 @@ class AutomationRolloutMetadataResponse {
   /// [advanceAutomationRuns] The IDs of the AutomationRuns initiated by an advance rollout rule.
   /// [promoteAutomationRun] The ID of the AutomationRun initiated by a promote release rule.
   /// [repairAutomationRuns] The IDs of the AutomationRuns initiated by a repair rollout rule.
-  AutomationRolloutMetadataResponse({
+  const AutomationRolloutMetadataResponse({
     required this.advanceAutomationRuns,
     required this.promoteAutomationRun,
     required this.repairAutomationRuns,

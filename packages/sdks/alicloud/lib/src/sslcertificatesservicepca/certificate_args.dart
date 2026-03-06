@@ -71,7 +71,7 @@ class CertificateArgs {
   /// [state] The name of the province, municipality, or autonomous region in which the organization is located. Support the use of Chinese, English characters.
   /// [tags] The tag of the resource.
   /// [years] The validity period of the CA certificate, in years.
-  CertificateArgs({
+  const CertificateArgs({
     this.algorithm,
     this.aliasName,
     this.certificateType,

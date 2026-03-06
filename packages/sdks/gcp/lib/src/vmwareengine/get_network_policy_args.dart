@@ -17,7 +17,7 @@ class GetNetworkPolicyArgs {
   /// [location] Location of the resource.
   /// [name] Name of the resource.
   /// [project] Optional.
-  GetNetworkPolicyArgs({
+  const GetNetworkPolicyArgs({
     required this.location,
     required this.name,
     this.project,

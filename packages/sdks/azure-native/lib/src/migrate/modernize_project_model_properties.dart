@@ -10,7 +10,7 @@ class ModernizeProjectModelProperties {
 
   /// Creates a new [ModernizeProjectModelProperties].
   /// [migrationConfiguration] MigrationConfiguration properties.
-  ModernizeProjectModelProperties({
+  const ModernizeProjectModelProperties({
     this.migrationConfiguration,
   });
 

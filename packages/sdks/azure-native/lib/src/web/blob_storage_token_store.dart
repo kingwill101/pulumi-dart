@@ -9,7 +9,7 @@ class BlobStorageTokenStore {
 
   /// Creates a new [BlobStorageTokenStore].
   /// [sasUrlSettingName] The name of the app setting containing the SAS URL of the blob storage containing the tokens.
-  BlobStorageTokenStore({
+  const BlobStorageTokenStore({
     this.sasUrlSettingName,
   });
 

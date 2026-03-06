@@ -15,7 +15,7 @@ class GetSchemaArgs {
   /// Creates a new [GetSchemaArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
-  GetSchemaArgs({
+  const GetSchemaArgs({
     required this.resourceGroupName,
     required this.schemaName,
   });

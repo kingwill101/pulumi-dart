@@ -33,7 +33,7 @@ class ClusterPrincipalAssignmentState {
   /// [role] The cluster role assigned to the principal. Valid values include `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`. Changing this forces a new resource to be created.
   /// [tenantId] The tenant id in which the principal resides. Changing this forces a new resource to be created.
   /// [tenantName] The name of the tenant.
-  ClusterPrincipalAssignmentState({
+  const ClusterPrincipalAssignmentState({
     this.clusterName,
     this.name,
     this.principalId,

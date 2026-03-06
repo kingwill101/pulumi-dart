@@ -59,7 +59,7 @@ class GetDatabaseResult {
   /// [transparentDataEncryptionKeyAutomaticRotationEnabled] Whether or not TDE automatically rotates the encryption Key to latest version.
   /// [transparentDataEncryptionKeyVaultKeyId] The Key Vault key URI to be used as the `Customer Managed Key`(CMK/BYOK) for the `Transparent Data Encryption`(TDE) layer.
   /// [zoneRedundant] Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.collation,
     required this.elasticPoolId,
     required this.enclaveType,

@@ -42,7 +42,7 @@ class GetStackResult {
   /// [tags] Map of tags associated with this stack.
   /// [templateBody] Structure containing the template body.
   /// [timeoutInMinutes] Amount of time that can pass before the stack status becomes `CREATE_FAILED`
-  GetStackResult({
+  const GetStackResult({
     required this.capabilities,
     required this.description,
     required this.disableRollback,

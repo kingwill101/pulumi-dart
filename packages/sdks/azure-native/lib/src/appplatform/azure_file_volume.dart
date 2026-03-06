@@ -25,7 +25,7 @@ class AzureFileVolume {
   /// [readOnly] Indicates whether the persistent disk is a readOnly one.
   /// [shareName] The share name of the Azure File share.
   /// [type] The type of the underlying resource to mount as a persistent disk.
-  AzureFileVolume({
+  const AzureFileVolume({
     this.enableSubPath,
     this.mountOptions,
     required this.mountPath,

@@ -21,7 +21,7 @@ class WebAppFtpAllowedArgs {
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppFtpAllowedArgs({
+  const WebAppFtpAllowedArgs({
     required this.allow,
     this.kind,
     required this.name,

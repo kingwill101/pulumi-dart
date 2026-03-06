@@ -75,7 +75,7 @@ class FastUdpAppState {
   /// [virtualServer] `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// [vlansAlloweds] Names of existing VLANs to allow.
   /// [vlansRejecteds] Names of existing VLANs to reject.
-  FastUdpAppState({
+  const FastUdpAppState({
     this.application,
     this.enableFastl4,
     this.existingMonitor,

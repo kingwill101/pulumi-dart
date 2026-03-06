@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse].
   /// [type] Looker specific column type of this column.
-  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse({
+  const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse({
     required this.type,
   });
 

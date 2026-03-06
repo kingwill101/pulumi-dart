@@ -39,7 +39,7 @@ class IotDpsResourceArgs {
   /// [sku] Sku info for a provisioning Service.
   /// [subscriptionid] The subscription id of the resource.
   /// [tags] The resource tags.
-  IotDpsResourceArgs({
+  const IotDpsResourceArgs({
     this.identity,
     this.location,
     required this.properties,

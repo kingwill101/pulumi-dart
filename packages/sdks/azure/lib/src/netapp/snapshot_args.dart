@@ -27,7 +27,7 @@ class SnapshotArgs {
   /// [poolName] The name of the NetApp pool in which the NetApp Volume should be created. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the NetApp Snapshot should be created. Changing this forces a new resource to be created.
   /// [volumeName] The name of the NetApp volume in which the NetApp Snapshot should be created. Changing this forces a new resource to be created.
-  SnapshotArgs({
+  const SnapshotArgs({
     required this.accountName,
     this.location,
     this.name,

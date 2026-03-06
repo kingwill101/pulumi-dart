@@ -20,7 +20,7 @@ class GetGenaiAgentsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [onlyDeployed] Optional.
   /// [sorts] Optional.
-  GetGenaiAgentsResult({
+  const GetGenaiAgentsResult({
     required this.agents,
     this.filters,
     required this.id,

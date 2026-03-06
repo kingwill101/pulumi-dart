@@ -11,7 +11,7 @@ class FilterFilterCriteriaCodeRepositoryProviderType {
   /// Creates a new [FilterFilterCriteriaCodeRepositoryProviderType].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaCodeRepositoryProviderType({
+  const FilterFilterCriteriaCodeRepositoryProviderType({
     required this.comparison,
     required this.value,
   });

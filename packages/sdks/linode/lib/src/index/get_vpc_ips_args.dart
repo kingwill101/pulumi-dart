@@ -19,7 +19,7 @@ class GetVpcIpsArgs {
   /// [filters] Optional.
   /// [ipv6] Optional.
   /// [vpcId] The id of the parent VPC for the list of VPC IPs.
-  GetVpcIpsArgs({
+  const GetVpcIpsArgs({
     this.filters,
     this.ipv6,
     this.vpcId,

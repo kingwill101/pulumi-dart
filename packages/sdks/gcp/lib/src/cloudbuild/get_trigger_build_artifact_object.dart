@@ -17,7 +17,7 @@ class GetTriggerBuildArtifactObject {
   /// [location] The Cloud Build location for the trigger.
   /// [paths] Path globs used to match files in the build's workspace.
   /// [timings] Output only. Stores timing information for pushing all artifact objects.
-  GetTriggerBuildArtifactObject({
+  const GetTriggerBuildArtifactObject({
     required this.location,
     required this.paths,
     required this.timings,

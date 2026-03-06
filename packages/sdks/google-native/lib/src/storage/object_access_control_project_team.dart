@@ -12,7 +12,7 @@ class ObjectAccessControlProjectTeam {
   /// Creates a new [ObjectAccessControlProjectTeam].
   /// [projectNumber] The project number.
   /// [team] The team.
-  ObjectAccessControlProjectTeam({
+  const ObjectAccessControlProjectTeam({
     this.projectNumber,
     this.team,
   });

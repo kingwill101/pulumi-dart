@@ -77,7 +77,7 @@ class IntentArgs {
   /// [rejectionStatement] When the user answers "no" to the question defined in
   /// [sampleUtterances] An array of utterances (strings) that a user might say to signal
   /// [slots] An list of intent slots. At runtime, Amazon Lex elicits required slot values
-  IntentArgs({
+  const IntentArgs({
     this.conclusionStatement,
     this.confirmationPrompt,
     this.createVersion,

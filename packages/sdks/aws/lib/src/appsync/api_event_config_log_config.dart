@@ -11,7 +11,7 @@ class ApiEventConfigLogConfig {
   /// Creates a new [ApiEventConfigLogConfig].
   /// [cloudwatchLogsRoleArn] ARN of the IAM role for CloudWatch logs.
   /// [logLevel] Log level. Valid values: `NONE`, `ERROR`, `ALL`, `INFO`, `DEBUG`.
-  ApiEventConfigLogConfig({
+  const ApiEventConfigLogConfig({
     required this.cloudwatchLogsRoleArn,
     required this.logLevel,
   });

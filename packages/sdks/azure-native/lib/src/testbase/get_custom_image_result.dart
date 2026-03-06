@@ -61,7 +61,7 @@ class GetCustomImageResult {
   /// [versionName] Image version name.
   /// [vhdFileName] The file name of the associated VHD resource.
   /// [vhdId] The Id of the associated VHD resource.
-  GetCustomImageResult({
+  const GetCustomImageResult({
     required this.azureApiVersion,
     required this.creationTime,
     required this.definitionName,

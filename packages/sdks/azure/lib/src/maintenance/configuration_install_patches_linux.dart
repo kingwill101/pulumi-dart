@@ -14,7 +14,7 @@ class ConfigurationInstallPatchesLinux {
   /// [classificationsToIncludes] List of Classification category of patches to be patched. Possible values are `Critical`, `Security` and `Other`.
   /// [packageNamesMaskToExcludes] List of package names to be excluded from patching.
   /// [packageNamesMaskToIncludes] List of package names to be included for patching.
-  ConfigurationInstallPatchesLinux({
+  const ConfigurationInstallPatchesLinux({
     this.classificationsToIncludes,
     this.packageNamesMaskToExcludes,
     this.packageNamesMaskToIncludes,

@@ -43,7 +43,7 @@ class TempUrlState {
   /// [split] Split is the string on which to split the object URL.
   /// [ttl] The TTL, in seconds, for the URL. For how long it should
   /// [url] The URL
-  TempUrlState({
+  const TempUrlState({
     this.container,
     this.digest,
     this.key,

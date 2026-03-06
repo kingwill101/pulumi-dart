@@ -9,7 +9,7 @@ class DefenderForContainersAwsOfferingCloudWatchToKinesis {
 
   /// Creates a new [DefenderForContainersAwsOfferingCloudWatchToKinesis].
   /// [cloudRoleArn] The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
-  DefenderForContainersAwsOfferingCloudWatchToKinesis({
+  const DefenderForContainersAwsOfferingCloudWatchToKinesis({
     this.cloudRoleArn,
   });
 

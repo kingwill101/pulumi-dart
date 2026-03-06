@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageCon
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions].
   /// [includedBucketAttributes] Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if unset.
   /// [includedObjectAttributes] Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes.
-  PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditions({
     this.includedBucketAttributes,
     this.includedObjectAttributes,
   });

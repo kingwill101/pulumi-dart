@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceDictionaryConfigResponse].
   /// [wordList] A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-  GooglePrivacyDlpV2ReplaceDictionaryConfigResponse({
+  const GooglePrivacyDlpV2ReplaceDictionaryConfigResponse({
     required this.wordList,
   });
 

@@ -17,7 +17,7 @@ class GetRegionBackendServiceIap {
   /// [oauth2ClientId] OAuth2 Client ID for IAP
   /// [oauth2ClientSecret] OAuth2 Client Secret for IAP
   /// [oauth2ClientSecretSha256] OAuth2 Client Secret SHA-256 for IAP
-  GetRegionBackendServiceIap({
+  const GetRegionBackendServiceIap({
     required this.enabled,
     required this.oauth2ClientId,
     required this.oauth2ClientSecret,

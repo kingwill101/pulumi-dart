@@ -29,7 +29,7 @@ class InstanceNetworkInterfaceAttachmentResponse {
   /// [enaSrdSpecification] &lt;p&gt;Contains the ENA Express settings for the network interface that's attached to the instance.&lt;/p&gt;
   /// [networkCardIndex] &lt;p&gt;The index of the network card.&lt;/p&gt;
   /// [status] &lt;p&gt;The attachment state.&lt;/p&gt;
-  InstanceNetworkInterfaceAttachmentResponse({
+  const InstanceNetworkInterfaceAttachmentResponse({
     this.attachTime,
     this.attachmentId,
     this.deleteOnTermination,

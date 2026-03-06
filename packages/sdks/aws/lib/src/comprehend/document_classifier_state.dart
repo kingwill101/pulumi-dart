@@ -75,7 +75,7 @@ class DocumentClassifierState {
   /// [versionNamePrefix] Creates a unique version name beginning with the specified prefix.
   /// [volumeKmsKeyId] KMS Key used to encrypt storage volumes during job processing.
   /// [vpcConfig] Configuration parameters for VPC to contain Document Classifier resources.
-  DocumentClassifierState({
+  const DocumentClassifierState({
     this.arn,
     this.dataAccessRoleArn,
     this.inputDataConfig,

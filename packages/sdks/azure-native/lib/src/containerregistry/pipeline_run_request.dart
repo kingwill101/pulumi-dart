@@ -26,7 +26,7 @@ class PipelineRunRequest {
   /// [pipelineResourceId] The resource ID of the pipeline to run.
   /// [source] The source properties of the pipeline run.
   /// [target] The target properties of the pipeline run.
-  PipelineRunRequest({
+  const PipelineRunRequest({
     this.artifacts,
     this.catalogDigest,
     this.pipelineResourceId,

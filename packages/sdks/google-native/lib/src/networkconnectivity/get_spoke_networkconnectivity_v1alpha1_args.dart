@@ -15,7 +15,7 @@ class GetSpokeNetworkconnectivityV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [spokeId] Required.
-  GetSpokeNetworkconnectivityV1alpha1Args({
+  const GetSpokeNetworkconnectivityV1alpha1Args({
     required this.location,
     this.project,
     required this.spokeId,

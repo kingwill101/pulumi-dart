@@ -13,7 +13,7 @@ class DeploymentConfiguration {
   /// Creates a new [DeploymentConfiguration].
   /// [scaleUnits] Scale units will contains list of deployment data
   /// [version] deployment template version
-  DeploymentConfiguration({
+  const DeploymentConfiguration({
     required this.scaleUnits,
     this.version,
   });

@@ -39,7 +39,7 @@ class TimeSeriesDatabaseConnectionArgs {
   /// [kustoDatabaseName] Name of the Kusto Database. Changing this forces a new resource to be created.
   /// [kustoTableName] Name of the Kusto Table. Defaults to `AdtPropertyEvents`. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Digital Twins Time Series Database Connection. Changing this forces a new resource to be created.
-  TimeSeriesDatabaseConnectionArgs({
+  const TimeSeriesDatabaseConnectionArgs({
     required this.digitalTwinsId,
     this.eventhubConsumerGroupName,
     required this.eventhubName,

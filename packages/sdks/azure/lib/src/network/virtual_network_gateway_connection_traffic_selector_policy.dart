@@ -11,7 +11,7 @@ class VirtualNetworkGatewayConnectionTrafficSelectorPolicy {
   /// Creates a new [VirtualNetworkGatewayConnectionTrafficSelectorPolicy].
   /// [localAddressCidrs] List of local CIDRs.
   /// [remoteAddressCidrs] List of remote CIDRs.
-  VirtualNetworkGatewayConnectionTrafficSelectorPolicy({
+  const VirtualNetworkGatewayConnectionTrafficSelectorPolicy({
     required this.localAddressCidrs,
     required this.remoteAddressCidrs,
   });

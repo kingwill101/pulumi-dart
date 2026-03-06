@@ -8,7 +8,7 @@ class GetFunctionTenancyConfig {
 
   /// Creates a new [GetFunctionTenancyConfig].
   /// [tenantIsolationMode] (Required) Tenant Isolation Mode. Valid values: `PER_TENANT`.
-  GetFunctionTenancyConfig({
+  const GetFunctionTenancyConfig({
     required this.tenantIsolationMode,
   });
 

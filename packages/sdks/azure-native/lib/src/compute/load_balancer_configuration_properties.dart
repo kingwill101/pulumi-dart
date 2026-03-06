@@ -10,7 +10,7 @@ class LoadBalancerConfigurationProperties {
 
   /// Creates a new [LoadBalancerConfigurationProperties].
   /// [frontendIpConfigurations] Specifies the frontend IP to be used for the load balancer. Only IPv4 frontend IP address is supported. Each load balancer configuration must have exactly one frontend IP configuration.
-  LoadBalancerConfigurationProperties({
+  const LoadBalancerConfigurationProperties({
     required this.frontendIpConfigurations,
   });
 

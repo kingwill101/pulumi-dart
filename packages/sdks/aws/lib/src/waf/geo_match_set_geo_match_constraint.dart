@@ -13,7 +13,7 @@ class GeoMatchSetGeoMatchConstraint {
   /// Creates a new [GeoMatchSetGeoMatchConstraint].
   /// [type] The type of geographical area you want AWS WAF to search for. Currently Country is the only valid value.
   /// [value] The country that you want AWS WAF to search for.
-  GeoMatchSetGeoMatchConstraint({
+  const GeoMatchSetGeoMatchConstraint({
     required this.type,
     required this.value,
   });

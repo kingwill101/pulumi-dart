@@ -45,7 +45,7 @@ class DashboardDashboardPublishOptions {
   /// [sheetLayoutElementMaximizationOption] The sheet layout maximization options of a dashboard. See sheet_layout_element_maximization_option.
   /// [visualAxisSortOption] The axis sort options of a dashboard. See visual_axis_sort_option.
   /// [visualMenuOption] The menu options of a visual in a dashboard. See visual_menu_option.
-  DashboardDashboardPublishOptions({
+  const DashboardDashboardPublishOptions({
     this.adHocFilteringOption,
     this.dataPointDrillUpDownOption,
     this.dataPointMenuLabelOption,

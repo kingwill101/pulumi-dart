@@ -11,7 +11,7 @@ class DiagnosticBackendResponseDataMaskingQueryParam {
   /// Creates a new [DiagnosticBackendResponseDataMaskingQueryParam].
   /// [mode] The data masking mode. Possible values are `Mask` and `Hide` for `query_params`. The only possible value is `Mask` for `headers`.
   /// [value] The name of the header or the query parameter to mask.
-  DiagnosticBackendResponseDataMaskingQueryParam({
+  const DiagnosticBackendResponseDataMaskingQueryParam({
     required this.mode,
     required this.value,
   });

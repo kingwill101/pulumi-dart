@@ -15,7 +15,7 @@ class NumericalPredictionDriftMetricThresholdResponse {
   /// [dataType] Expected value is 'Numerical'.
   /// [metric] [Required] The numerical prediction drift metric to calculate.
   /// [threshold] The threshold value. If null, a default value will be set depending on the selected metric.
-  NumericalPredictionDriftMetricThresholdResponse({
+  const NumericalPredictionDriftMetricThresholdResponse({
     required this.dataType,
     required this.metric,
     this.threshold,

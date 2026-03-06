@@ -16,7 +16,7 @@ class GetKMSCryptoKeyArgs {
   /// Creates a new [GetKMSCryptoKeyArgs].
   /// [keyRing] The `id` of the Google Cloud Platform KeyRing to which the key belongs.
   /// [name] The CryptoKey's name.
-  GetKMSCryptoKeyArgs({
+  const GetKMSCryptoKeyArgs({
     required this.keyRing,
     required this.name,
   });

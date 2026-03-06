@@ -35,7 +35,7 @@ class GetAccessConnectorResult {
   /// [systemData] The system metadata relating to this resource
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetAccessConnectorResult({
+  const GetAccessConnectorResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

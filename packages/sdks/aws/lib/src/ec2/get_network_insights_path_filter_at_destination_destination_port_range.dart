@@ -9,7 +9,7 @@ class GetNetworkInsightsPathFilterAtDestinationDestinationPortRange {
   /// Creates a new [GetNetworkInsightsPathFilterAtDestinationDestinationPortRange].
   /// [fromPort] Required.
   /// [toPort] Required.
-  GetNetworkInsightsPathFilterAtDestinationDestinationPortRange({
+  const GetNetworkInsightsPathFilterAtDestinationDestinationPortRange({
     required this.fromPort,
     required this.toPort,
   });

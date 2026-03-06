@@ -15,7 +15,7 @@ class GetSupportPlanTypeArgs {
   /// Creates a new [GetSupportPlanTypeArgs].
   /// [planTypeName] The Canonical support plan type.
   /// [providerName] The support plan type. For now the only valid type is "canonical".
-  GetSupportPlanTypeArgs({
+  const GetSupportPlanTypeArgs({
     required this.planTypeName,
     required this.providerName,
   });

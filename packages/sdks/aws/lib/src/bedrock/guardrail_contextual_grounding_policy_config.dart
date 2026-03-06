@@ -9,7 +9,7 @@ class GuardrailContextualGroundingPolicyConfig {
 
   /// Creates a new [GuardrailContextualGroundingPolicyConfig].
   /// [filtersConfigs] One or more blocks defining contextual grounding filter configs. See Contextual Grounding Filters Config for more information.
-  GuardrailContextualGroundingPolicyConfig({
+  const GuardrailContextualGroundingPolicyConfig({
     this.filtersConfigs,
   });
 

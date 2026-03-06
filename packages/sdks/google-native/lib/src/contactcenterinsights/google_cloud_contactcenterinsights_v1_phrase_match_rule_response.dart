@@ -16,7 +16,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse {
   /// [config] Provides additional information about the rule that specifies how to apply the rule.
   /// [negated] Specifies whether the phrase must be missing from the transcript segment or present in the transcript segment.
   /// [query] The phrase to be matched.
-  GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse({
+  const GoogleCloudContactcenterinsightsV1PhraseMatchRuleResponse({
     required this.config,
     required this.negated,
     required this.query,

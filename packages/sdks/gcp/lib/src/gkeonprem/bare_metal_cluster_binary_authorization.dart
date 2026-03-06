@@ -10,7 +10,7 @@ class BareMetalClusterBinaryAuthorization {
 
   /// Creates a new [BareMetalClusterBinaryAuthorization].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified,
-  BareMetalClusterBinaryAuthorization({
+  const BareMetalClusterBinaryAuthorization({
     this.evaluationMode,
   });
 

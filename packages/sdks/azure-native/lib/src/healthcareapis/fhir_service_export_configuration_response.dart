@@ -9,7 +9,7 @@ class FhirServiceExportConfigurationResponse {
 
   /// Creates a new [FhirServiceExportConfigurationResponse].
   /// [storageAccountName] The name of the default export storage account.
-  FhirServiceExportConfigurationResponse({
+  const FhirServiceExportConfigurationResponse({
     this.storageAccountName,
   });
 

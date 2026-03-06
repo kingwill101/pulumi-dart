@@ -9,7 +9,7 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule {
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule].
   /// [retentionArchiveTier] Information about retention period in the Amazon EBS Snapshots Archive. See the `retention_archive_tier` block.
-  LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule({
+  const LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule({
     required this.retentionArchiveTier,
   });
 

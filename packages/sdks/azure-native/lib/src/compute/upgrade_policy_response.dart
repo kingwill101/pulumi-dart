@@ -17,7 +17,7 @@ class UpgradePolicyResponse {
   /// [automaticOSUpgradePolicy] Configuration parameters used for performing automatic OS Upgrade.
   /// [mode] Specifies the mode of an upgrade to virtual machines in the scale set.&lt;br /&gt;&lt;br /&gt; Possible values are:&lt;br /&gt;&lt;br /&gt; **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.&lt;br /&gt;&lt;br /&gt; **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
   /// [rollingUpgradePolicy] The configuration parameters used while performing a rolling upgrade.
-  UpgradePolicyResponse({
+  const UpgradePolicyResponse({
     this.automaticOSUpgradePolicy,
     this.mode,
     this.rollingUpgradePolicy,

@@ -8,7 +8,7 @@ class NodePoolManagementAutoUpgradePolicy {
 
   /// Creates a new [NodePoolManagementAutoUpgradePolicy].
   /// [autoUpgradeKubelet] Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-  NodePoolManagementAutoUpgradePolicy({
+  const NodePoolManagementAutoUpgradePolicy({
     this.autoUpgradeKubelet,
   });
 

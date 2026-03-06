@@ -38,7 +38,7 @@ class DomainVerificationState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [txtRecordName] The name of the TXT record that must be created for domain verification.
   /// [txtRecordValue] The value that must be added to the TXT record for domain verification.
-  DomainVerificationState({
+  const DomainVerificationState({
     this.arn,
     this.createdAt,
     this.domainName,

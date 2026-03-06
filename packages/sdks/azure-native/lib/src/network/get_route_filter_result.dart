@@ -41,7 +41,7 @@ class GetRouteFilterResult {
   /// [rules] Collection of RouteFilterRules contained within a route filter.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetRouteFilterResult({
+  const GetRouteFilterResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

@@ -28,7 +28,7 @@ class GetEventRulesResult {
   /// [pageSize] Optional.
   /// [rules] Required.
   /// [status] Optional.
-  GetEventRulesResult({
+  const GetEventRulesResult({
     required this.id,
     required this.ids,
     this.namePrefix,

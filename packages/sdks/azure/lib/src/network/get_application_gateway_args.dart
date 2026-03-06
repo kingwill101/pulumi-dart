@@ -15,7 +15,7 @@ class GetApplicationGatewayArgs {
   /// Creates a new [GetApplicationGatewayArgs].
   /// [name] The name of this Application Gateway.
   /// [resourceGroupName] The name of the Resource Group where the Application Gateway exists.
-  GetApplicationGatewayArgs({
+  const GetApplicationGatewayArgs({
     required this.name,
     required this.resourceGroupName,
   });

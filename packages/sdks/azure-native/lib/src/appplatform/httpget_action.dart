@@ -20,7 +20,7 @@ class HTTPGetAction {
   /// [path] Path to access on the HTTP server.
   /// [scheme] Scheme to use for connecting to the host. Defaults to HTTP.
   /// [type] The type of the action to take to perform the health check.
-  HTTPGetAction({
+  const HTTPGetAction({
     this.path,
     this.scheme,
     required this.type,

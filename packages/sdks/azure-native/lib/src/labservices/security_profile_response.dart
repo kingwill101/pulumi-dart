@@ -12,7 +12,7 @@ class SecurityProfileResponse {
   /// Creates a new [SecurityProfileResponse].
   /// [openAccess] Whether any user or only specified users can register to a lab.
   /// [registrationCode] The registration code for the lab.
-  SecurityProfileResponse({
+  const SecurityProfileResponse({
     this.openAccess,
     required this.registrationCode,
   });

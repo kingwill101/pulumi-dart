@@ -28,7 +28,7 @@ class CustomDomainConfigurationResponse {
   /// [fullyQualifiedDomainName] Fully Qualified Domain Name (FQDN) for the custom domain.
   /// [identity] Identity info for accessing the certificate for the custom domain. This identity info must match an identity that has been set on the namespace.
   /// [validationState] Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
-  CustomDomainConfigurationResponse({
+  const CustomDomainConfigurationResponse({
     this.certificateUrl,
     this.expectedTxtRecordName,
     this.expectedTxtRecordValue,

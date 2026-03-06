@@ -13,7 +13,7 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifact {
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifact].
   /// [codeConfiguration] Code configuration block for the agent runtime artifact, including the source code location and execution settings. Exactly one of `code_configuration` or `container_configuration` must be specified. See `code_configuration` below.
   /// [containerConfiguration] Container configuration block for the agent artifact. Exactly one of `code_configuration` or `container_configuration` must be specified. See `container_configuration` below.
-  AgentcoreAgentRuntimeAgentRuntimeArtifact({
+  const AgentcoreAgentRuntimeAgentRuntimeArtifact({
     this.codeConfiguration,
     this.containerConfiguration,
   });

@@ -9,7 +9,7 @@ class ResourceRecordSetRegionEnumValueResponse {
 
   /// Creates a new [ResourceRecordSetRegionEnumValueResponse].
   /// [value] Property value
-  ResourceRecordSetRegionEnumValueResponse({
+  const ResourceRecordSetRegionEnumValueResponse({
     this.value,
   });
 

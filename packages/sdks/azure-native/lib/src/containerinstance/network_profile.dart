@@ -14,7 +14,7 @@ class NetworkProfile {
   /// Creates a new [NetworkProfile].
   /// [applicationGateway] Application Gateway the CG profile will use to interact with CGs in a backend pool
   /// [loadBalancer] LoadBalancer the CG profile will use to interact with CGs in a backend pool
-  NetworkProfile({
+  const NetworkProfile({
     this.applicationGateway,
     this.loadBalancer,
   });

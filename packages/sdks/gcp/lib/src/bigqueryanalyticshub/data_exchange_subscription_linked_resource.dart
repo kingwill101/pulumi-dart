@@ -13,7 +13,7 @@ class DataExchangeSubscriptionLinkedResource {
   /// Creates a new [DataExchangeSubscriptionLinkedResource].
   /// [linkedDataset] (Output)
   /// [listing] (Output)
-  DataExchangeSubscriptionLinkedResource({
+  const DataExchangeSubscriptionLinkedResource({
     this.linkedDataset,
     this.listing,
   });

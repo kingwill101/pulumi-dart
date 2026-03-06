@@ -21,7 +21,7 @@ class FhirServiceCorsConfiguration {
   /// [maxAge] The max age to be allowed via CORS.
   /// [methods] The methods to be allowed via CORS.
   /// [origins] The origins to be allowed via CORS.
-  FhirServiceCorsConfiguration({
+  const FhirServiceCorsConfiguration({
     this.allowCredentials,
     this.headers,
     this.maxAge,

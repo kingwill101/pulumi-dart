@@ -22,7 +22,7 @@ class VoiceConnectorOriginationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routes] Set of call distribution properties defined for your SIP hosts. See route below for more details. Minimum of 1. Maximum of 20.
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
-  VoiceConnectorOriginationArgs({
+  const VoiceConnectorOriginationArgs({
     this.disabled,
     this.region,
     required this.routes,

@@ -15,7 +15,7 @@ class ListenerRuleMatchHttpMatchHeaderMatchMatch {
   /// [contains] Specifies a contains type match.
   /// [exact] Specifies an exact type match.
   /// [prefix] Specifies a prefix type match.
-  ListenerRuleMatchHttpMatchHeaderMatchMatch({
+  const ListenerRuleMatchHttpMatchHeaderMatchMatch({
     this.contains,
     this.exact,
     this.prefix,

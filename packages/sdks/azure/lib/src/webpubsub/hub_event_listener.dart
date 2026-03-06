@@ -17,7 +17,7 @@ class HubEventListener {
   /// [eventhubNamespaceName] Specifies the event hub namespace name to receive the events.
   /// [systemEventNameFilters] Specifies the list of system events. Supported values are `connected` and `disconnected`.
   /// [userEventNameFilters] Specifies the list of matching user event names. `["*"]` can be used to match all events.
-  HubEventListener({
+  const HubEventListener({
     required this.eventhubName,
     required this.eventhubNamespaceName,
     this.systemEventNameFilters,

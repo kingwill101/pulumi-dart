@@ -9,7 +9,7 @@ class AnalyticsApplicationInputsProcessingConfiguration {
 
   /// Creates a new [AnalyticsApplicationInputsProcessingConfiguration].
   /// [lambda] The Lambda function configuration. See Lambda below for more details.
-  AnalyticsApplicationInputsProcessingConfiguration({
+  const AnalyticsApplicationInputsProcessingConfiguration({
     required this.lambda,
   });
 

@@ -9,7 +9,7 @@ class AdvancedMachineFeaturesResponse {
 
   /// Creates a new [AdvancedMachineFeaturesResponse].
   /// [threadsPerCore] The number of threads per physical core.
-  AdvancedMachineFeaturesResponse({
+  const AdvancedMachineFeaturesResponse({
     required this.threadsPerCore,
   });
 

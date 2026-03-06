@@ -10,7 +10,7 @@ class GetSystemTopicEventSubscriptionDeliveryAttributesResult {
 
   /// Creates a new [GetSystemTopicEventSubscriptionDeliveryAttributesResult].
   /// [value] A collection of DeliveryAttributeMapping
-  GetSystemTopicEventSubscriptionDeliveryAttributesResult({
+  const GetSystemTopicEventSubscriptionDeliveryAttributesResult({
     this.value,
   });
 

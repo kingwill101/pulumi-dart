@@ -32,7 +32,7 @@ class TransferJobTransferSpecTransferOptionsMetadataOptions {
   /// [temporaryHold] Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
   /// [timeCreated] Specifies how each object's timeCreated metadata is preserved for transfers.
   /// [uid] Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
-  TransferJobTransferSpecTransferOptionsMetadataOptions({
+  const TransferJobTransferSpecTransferOptionsMetadataOptions({
     this.acl,
     this.gid,
     this.kmsKey,

@@ -28,7 +28,7 @@ class CustomHttpsConfigurationResponse {
   /// [secretName] The name of the Key Vault secret representing the full certificate PFX
   /// [secretVersion] The version of the Key Vault secret representing the full certificate PFX
   /// [vault] The Key Vault containing the SSL certificate
-  CustomHttpsConfigurationResponse({
+  const CustomHttpsConfigurationResponse({
     required this.certificateSource,
     this.certificateType,
     required this.minimumTlsVersion,

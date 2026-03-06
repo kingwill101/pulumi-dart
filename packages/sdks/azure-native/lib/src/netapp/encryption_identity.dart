@@ -9,7 +9,7 @@ class EncryptionIdentity {
 
   /// Creates a new [EncryptionIdentity].
   /// [userAssignedIdentity] The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  EncryptionIdentity({
+  const EncryptionIdentity({
     this.userAssignedIdentity,
   });
 

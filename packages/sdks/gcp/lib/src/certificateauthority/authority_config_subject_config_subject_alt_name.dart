@@ -17,7 +17,7 @@ class AuthorityConfigSubjectConfigSubjectAltName {
   /// [emailAddresses] Contains only valid RFC 2822 E-mail addresses.
   /// [ipAddresses] Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
   /// [uris] Contains only valid RFC 3986 URIs.
-  AuthorityConfigSubjectConfigSubjectAltName({
+  const AuthorityConfigSubjectConfigSubjectAltName({
     this.dnsNames,
     this.emailAddresses,
     this.ipAddresses,

@@ -18,7 +18,7 @@ class Cert {
   /// [certNeeded] Gets or sets a value indicating whether certificate is needed or not.
   /// [certProvided] Gets or sets a value indicating whether certificate is provided or not.
   /// [secretStore] Gets or sets the type of secret store for the certificate.
-  Cert({
+  const Cert({
     this.certData,
     this.certNeeded,
     this.certProvided,

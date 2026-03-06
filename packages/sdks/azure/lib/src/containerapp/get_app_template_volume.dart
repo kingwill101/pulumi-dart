@@ -17,7 +17,7 @@ class GetAppTemplateVolume {
   /// [name] The name of the Container App.
   /// [storageName] The name of the `AzureFile` storage.
   /// [storageType] The type of storage volume.
-  GetAppTemplateVolume({
+  const GetAppTemplateVolume({
     required this.mountOptions,
     required this.name,
     required this.storageName,

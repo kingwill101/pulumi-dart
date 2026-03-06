@@ -13,7 +13,7 @@ class InsightsTableResultResponse {
   /// Creates a new [InsightsTableResultResponse].
   /// [columns] Columns Metadata of the table
   /// [rows] Rows data of the table
-  InsightsTableResultResponse({
+  const InsightsTableResultResponse({
     this.columns,
     this.rows,
   });

@@ -36,7 +36,7 @@ class GetQueuedResourceResult {
   /// [spot] Optional. The Spot tier.
   /// [state] State of the QueuedResource request.
   /// [tpu] Defines a TPU resource.
-  GetQueuedResourceResult({
+  const GetQueuedResourceResult({
     required this.bestEffort,
     required this.createTime,
     required this.guaranteed,

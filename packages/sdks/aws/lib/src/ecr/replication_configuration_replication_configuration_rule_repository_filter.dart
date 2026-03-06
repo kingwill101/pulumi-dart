@@ -11,7 +11,7 @@ class ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter {
   /// Creates a new [ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter].
   /// [filter] The repository filter details.
   /// [filterType] The repository filter type. The only supported value is `PREFIX_MATCH`, which is a repository name prefix specified with the filter parameter.
-  ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter({
+  const ReplicationConfigurationReplicationConfigurationRuleRepositoryFilter({
     required this.filter,
     required this.filterType,
   });

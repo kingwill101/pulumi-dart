@@ -18,7 +18,7 @@ class GetJitNetworkAccessPolicyArgs {
   /// [ascLocation] The location where ASC stores the data of the subscription. can be retrieved from Get locations
   /// [jitNetworkAccessPolicyName] Name of a Just-in-Time access configuration policy.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetJitNetworkAccessPolicyArgs({
+  const GetJitNetworkAccessPolicyArgs({
     required this.ascLocation,
     required this.jitNetworkAccessPolicyName,
     required this.resourceGroupName,

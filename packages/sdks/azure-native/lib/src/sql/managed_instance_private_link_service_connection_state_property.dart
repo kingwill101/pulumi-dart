@@ -11,7 +11,7 @@ class ManagedInstancePrivateLinkServiceConnectionStateProperty {
   /// Creates a new [ManagedInstancePrivateLinkServiceConnectionStateProperty].
   /// [description] The private link service connection description.
   /// [status] The private link service connection status.
-  ManagedInstancePrivateLinkServiceConnectionStateProperty({
+  const ManagedInstancePrivateLinkServiceConnectionStateProperty({
     required this.description,
     required this.status,
   });

@@ -14,7 +14,7 @@ class DatasetAccessDataset {
   /// Creates a new [DatasetAccessDataset].
   /// [dataset] The dataset this entry applies to
   /// [targetTypes] Which resources in the dataset this entry applies to. Currently, only views are supported,
-  DatasetAccessDataset({
+  const DatasetAccessDataset({
     required this.dataset,
     required this.targetTypes,
   });

@@ -23,7 +23,7 @@ class RoleCustomPermissionState {
   /// [namespace] Namespace containing the role. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [role] Role. Valid values are `ADMIN`, `AUTHOR`, `READER`, `ADMIN_PRO`, `AUTHOR_PRO`, and `READER_PRO`.
-  RoleCustomPermissionState({
+  const RoleCustomPermissionState({
     this.awsAccountId,
     this.customPermissionsName,
     this.namespace,

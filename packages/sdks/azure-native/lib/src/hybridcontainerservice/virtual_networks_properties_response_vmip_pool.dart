@@ -11,7 +11,7 @@ class VirtualNetworksPropertiesResponseVmipPool {
   /// Creates a new [VirtualNetworksPropertiesResponseVmipPool].
   /// [endIP] Ending IP address for the IP Pool
   /// [startIP] Starting IP address for the IP Pool
-  VirtualNetworksPropertiesResponseVmipPool({
+  const VirtualNetworksPropertiesResponseVmipPool({
     this.endIP,
     this.startIP,
   });

@@ -22,7 +22,7 @@ class CapacityReservationState {
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zone] Specifies the Availability Zone for this Capacity Reservation. Changing this forces a new resource to be created.
-  CapacityReservationState({
+  const CapacityReservationState({
     this.capacityReservationGroupId,
     this.name,
     this.sku,

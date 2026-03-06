@@ -46,7 +46,7 @@ class BillingAccountSinkState {
   /// [filter] The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// [name] The name of the logging sink.
   /// [writerIdentity] The identity associated with this sink. This identity must be granted write access to the
-  BillingAccountSinkState({
+  const BillingAccountSinkState({
     this.bigqueryOptions,
     this.billingAccount,
     this.description,

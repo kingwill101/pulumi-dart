@@ -18,7 +18,7 @@ class HttpRouteTarget {
   /// [label] Label/Revision to route requests to
   /// [revision] Revision to route requests to
   /// [weight] Weighted routing
-  HttpRouteTarget({
+  const HttpRouteTarget({
     required this.containerApp,
     this.label,
     this.revision,

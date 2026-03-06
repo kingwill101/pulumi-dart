@@ -9,7 +9,7 @@ class ClusterUserCreatedConnectionsClusterEndpoint {
 
   /// Creates a new [ClusterUserCreatedConnectionsClusterEndpoint].
   /// [connections] Structure is documented below.
-  ClusterUserCreatedConnectionsClusterEndpoint({
+  const ClusterUserCreatedConnectionsClusterEndpoint({
     this.connections,
   });
 

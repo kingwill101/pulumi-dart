@@ -9,7 +9,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSetti
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings].
   /// [destination] A director and base filename where archive files should be written. See Destination for more details.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings({
     required this.destination,
   });
 

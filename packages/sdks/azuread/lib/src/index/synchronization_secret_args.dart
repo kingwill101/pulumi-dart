@@ -16,7 +16,7 @@ class SynchronizationSecretArgs {
   /// Creates a new [SynchronizationSecretArgs].
   /// [credentials] One or more `credential` blocks as documented below.
   /// [servicePrincipalId] The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
-  SynchronizationSecretArgs({
+  const SynchronizationSecretArgs({
     this.credentials,
     required this.servicePrincipalId,
   });

@@ -58,7 +58,7 @@ class NetworkEndpointGroupState {
   /// [size] Number of network endpoints in the network endpoint group.
   /// [subnetwork] Optional subnetwork to which all network endpoints in the NEG belong.
   /// [zone] Zone where the network endpoint group is located.
-  NetworkEndpointGroupState({
+  const NetworkEndpointGroupState({
     this.defaultPort,
     this.description,
     this.generatedId,

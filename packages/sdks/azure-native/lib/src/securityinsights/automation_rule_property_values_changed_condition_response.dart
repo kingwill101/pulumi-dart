@@ -13,7 +13,7 @@ class AutomationRulePropertyValuesChangedConditionResponse {
   /// [operator] Optional.
   /// [propertyName] Optional.
   /// [propertyValues] Optional.
-  AutomationRulePropertyValuesChangedConditionResponse({
+  const AutomationRulePropertyValuesChangedConditionResponse({
     this.changeType,
     this.operator,
     this.propertyName,

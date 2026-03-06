@@ -21,7 +21,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfi
   /// [exactResponseFields] Configuration block for exact response fields. See `exact_response_fields`.
   /// [includeFields] List of fields to include in the response.
   /// [indexName] Name of the OpenSearch index.
-  V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration({
+  const V2modelsIntentQnaIntentConfigurationDataSourceConfigurationOpensearchConfiguration({
     required this.domainEndpoint,
     this.exactResponse,
     this.exactResponseFields,

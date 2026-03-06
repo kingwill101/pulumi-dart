@@ -28,7 +28,7 @@ class AzureWorkloadSQLAutoProtectionIntent {
   /// [protectionState] Backup state of this backup item.
   /// [sourceResourceId] ARM ID of the resource to be backed up.
   /// [workloadItemType] Workload item type of the item for which intent is to be set
-  AzureWorkloadSQLAutoProtectionIntent({
+  const AzureWorkloadSQLAutoProtectionIntent({
     this.backupManagementType,
     this.itemId,
     this.policyId,

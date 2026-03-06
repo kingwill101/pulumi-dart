@@ -26,7 +26,7 @@ class ClusterClusterConfigMasterConfigDiskConfig {
   /// [bootDiskType] The disk type of the primary disk attached to each node.
   /// [localSsdInterface] Optional. Interface type of local SSDs (default is "scsi").
   /// [numLocalSsds] The amount of local SSD disks that will be
-  ClusterClusterConfigMasterConfigDiskConfig({
+  const ClusterClusterConfigMasterConfigDiskConfig({
     this.bootDiskSizeGb,
     this.bootDiskType,
     this.localSsdInterface,

@@ -9,7 +9,7 @@ class MultichannelResponse {
 
   /// Creates a new [MultichannelResponse].
   /// [enabled] Indicates whether multichannel is enabled
-  MultichannelResponse({
+  const MultichannelResponse({
     this.enabled,
   });
 

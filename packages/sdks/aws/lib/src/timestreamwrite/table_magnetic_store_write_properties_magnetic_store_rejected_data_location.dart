@@ -9,7 +9,7 @@ class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation {
 
   /// Creates a new [TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation].
   /// [s3Configuration] Configuration of an S3 location to write error reports for records rejected, asynchronously, during magnetic store writes. See S3 Configuration below for more details.
-  TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation({
+  const TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocation({
     this.s3Configuration,
   });
 

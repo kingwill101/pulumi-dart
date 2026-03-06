@@ -18,7 +18,7 @@ class ProviderAssumeRole {
   /// [roleArn] The ARN of a RAM role to assume prior to making API calls.
   /// [sessionExpiration] The time after which the established session for assuming role expires. Valid value range: [900-3600] seconds. Default to 0 (in this case Alicloud use own default value).
   /// [sessionName] Optional.
-  ProviderAssumeRole({
+  const ProviderAssumeRole({
     this.externalId,
     this.policy,
     required this.roleArn,

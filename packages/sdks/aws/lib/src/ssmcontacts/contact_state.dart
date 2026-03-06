@@ -30,7 +30,7 @@ class ContactState {
   /// [tags] Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of contact engaged. A single contact is type PERSONAL and an escalation
-  ContactState({
+  const ContactState({
     this.alias,
     this.arn,
     this.displayName,

@@ -39,7 +39,7 @@ class EnvironmentIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [orgId] The Apigee Organization associated with the Apigee environment,
   /// [role] The role that should be applied. Only one
-  EnvironmentIamBindingArgs({
+  const EnvironmentIamBindingArgs({
     this.condition,
     required this.envId,
     required this.members,

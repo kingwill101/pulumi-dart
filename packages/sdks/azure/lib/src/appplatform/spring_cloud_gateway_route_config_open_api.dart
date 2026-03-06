@@ -8,7 +8,7 @@ class SpringCloudGatewayRouteConfigOpenApi {
 
   /// Creates a new [SpringCloudGatewayRouteConfigOpenApi].
   /// [uri] The URI of OpenAPI specification.
-  SpringCloudGatewayRouteConfigOpenApi({
+  const SpringCloudGatewayRouteConfigOpenApi({
     this.uri,
   });
 

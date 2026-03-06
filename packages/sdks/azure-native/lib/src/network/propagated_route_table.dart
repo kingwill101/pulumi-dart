@@ -13,7 +13,7 @@ class PropagatedRouteTable {
   /// Creates a new [PropagatedRouteTable].
   /// [ids] The list of resource ids of all the RouteTables.
   /// [labels] The list of labels.
-  PropagatedRouteTable({
+  const PropagatedRouteTable({
     this.ids,
     this.labels,
   });

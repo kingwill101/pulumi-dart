@@ -8,7 +8,7 @@ class BareMetalAdminClusterLoadBalancerVipConfig {
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
-  BareMetalAdminClusterLoadBalancerVipConfig({
+  const BareMetalAdminClusterLoadBalancerVipConfig({
     required this.controlPlaneVip,
   });
 

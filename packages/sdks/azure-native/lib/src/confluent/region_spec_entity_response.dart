@@ -17,7 +17,7 @@ class RegionSpecEntityResponse {
   /// [name] Display Name of the region
   /// [packages] Optional.
   /// [regionName] Region name
-  RegionSpecEntityResponse({
+  const RegionSpecEntityResponse({
     this.cloud,
     this.name,
     this.packages,

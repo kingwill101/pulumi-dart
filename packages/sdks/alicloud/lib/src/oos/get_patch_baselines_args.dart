@@ -27,7 +27,7 @@ class GetPatchBaselinesArgs {
   /// [operationSystem] Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [shareType] Patch baseline sharing type. Valid values: `Private`, `Public`.
-  GetPatchBaselinesArgs({
+  const GetPatchBaselinesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

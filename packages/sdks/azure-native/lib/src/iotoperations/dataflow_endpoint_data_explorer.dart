@@ -20,7 +20,7 @@ class DataflowEndpointDataExplorer {
   /// [batching] Azure Data Explorer endpoint batching configuration.
   /// [database] Database name.
   /// [host] Host of the Azure Data Explorer in the form of &lt;cluster&gt;.&lt;region&gt;.kusto.windows.net .
-  DataflowEndpointDataExplorer({
+  const DataflowEndpointDataExplorer({
     required this.authentication,
     this.batching,
     required this.database,

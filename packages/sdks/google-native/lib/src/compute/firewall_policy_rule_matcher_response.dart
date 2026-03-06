@@ -44,7 +44,7 @@ class FirewallPolicyRuleMatcherResponse {
   /// [srcRegionCodes] Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
   /// [srcSecureTags] List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
   /// [srcThreatIntelligences] Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
-  FirewallPolicyRuleMatcherResponse({
+  const FirewallPolicyRuleMatcherResponse({
     required this.destAddressGroups,
     required this.destFqdns,
     required this.destIpRanges,

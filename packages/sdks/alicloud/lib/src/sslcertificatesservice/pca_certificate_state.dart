@@ -71,7 +71,7 @@ class PcaCertificateState {
   /// [status] The status of the CA certificate.
   /// [tags] The tag of the resource.
   /// [years] The validity period of the CA certificate, in years.
-  PcaCertificateState({
+  const PcaCertificateState({
     this.algorithm,
     this.aliasName,
     this.certificateType,

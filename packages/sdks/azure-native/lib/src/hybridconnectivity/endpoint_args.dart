@@ -21,7 +21,7 @@ class EndpointArgs {
   /// [resourceId] The resource Id of the connectivity endpoint (optional).
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [type] The type of endpoint.
-  EndpointArgs({
+  const EndpointArgs({
     this.endpointName,
     this.resourceId,
     required this.resourceUri,

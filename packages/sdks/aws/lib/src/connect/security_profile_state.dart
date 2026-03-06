@@ -37,7 +37,7 @@ class SecurityProfileState {
   /// [securityProfileId] The identifier for the Security Profile.
   /// [tags] Tags to apply to the Security Profile. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  SecurityProfileState({
+  const SecurityProfileState({
     this.arn,
     this.description,
     this.instanceId,

@@ -12,7 +12,7 @@ class VmwareControlPlaneVsphereConfig {
   /// Creates a new [VmwareControlPlaneVsphereConfig].
   /// [datastore] The Vsphere datastore used by the control plane Node.
   /// [storagePolicyName] The Vsphere storage policy used by the control plane Node.
-  VmwareControlPlaneVsphereConfig({
+  const VmwareControlPlaneVsphereConfig({
     this.datastore,
     this.storagePolicyName,
   });

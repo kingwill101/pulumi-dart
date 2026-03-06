@@ -21,7 +21,7 @@ class GetScheduleArgs {
   /// [labName] labs
   /// [name] The name of the Schedule
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetScheduleArgs({
+  const GetScheduleArgs({
     this.expand,
     required this.labName,
     required this.name,

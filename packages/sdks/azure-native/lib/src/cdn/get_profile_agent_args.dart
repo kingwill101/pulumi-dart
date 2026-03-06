@@ -18,7 +18,7 @@ class GetProfileAgentArgs {
   /// [agentName] Name of the web agent association.
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProfileAgentArgs({
+  const GetProfileAgentArgs({
     required this.agentName,
     required this.profileName,
     required this.resourceGroupName,

@@ -50,7 +50,7 @@ class GetDatacenterConnectorVmmigrationV1alpha1Result {
   /// [updateTime] The last time the connector was updated with an API call.
   /// [upgradeStatus] The status of the current / last upgradeAppliance operation.
   /// [version] The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
-  GetDatacenterConnectorVmmigrationV1alpha1Result({
+  const GetDatacenterConnectorVmmigrationV1alpha1Result({
     required this.applianceInfrastructureVersion,
     required this.applianceSoftwareVersion,
     required this.availableVersions,

@@ -50,7 +50,7 @@ class GetVolumeGroupResult {
   /// [provisioningState] State of the operation on the resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetVolumeGroupResult({
+  const GetVolumeGroupResult({
     required this.azureApiVersion,
     this.encryption,
     this.encryptionProperties,

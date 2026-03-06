@@ -12,7 +12,7 @@ class SecretStore {
   /// Creates a new [SecretStore].
   /// [keyVaultId] The key vault id to store secret
   /// [keyVaultSecretName] The key vault secret name to store secret, only valid when storing one secret
-  SecretStore({
+  const SecretStore({
     this.keyVaultId,
     this.keyVaultSecretName,
   });

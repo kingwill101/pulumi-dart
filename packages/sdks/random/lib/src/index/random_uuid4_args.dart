@@ -12,7 +12,7 @@ class RandomUuid4Args {
 
   /// Creates a new [RandomUuid4Args].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  RandomUuid4Args({
+  const RandomUuid4Args({
     this.keepers,
   });
 

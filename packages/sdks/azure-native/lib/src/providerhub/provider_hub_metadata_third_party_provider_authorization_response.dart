@@ -13,7 +13,7 @@ class ProviderHubMetadataThirdPartyProviderAuthorizationResponse {
   /// Creates a new [ProviderHubMetadataThirdPartyProviderAuthorizationResponse].
   /// [authorizations] The authorizations.
   /// [managedByTenantId] The managed by tenant id.
-  ProviderHubMetadataThirdPartyProviderAuthorizationResponse({
+  const ProviderHubMetadataThirdPartyProviderAuthorizationResponse({
     this.authorizations,
     this.managedByTenantId,
   });

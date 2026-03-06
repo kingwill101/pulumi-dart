@@ -14,7 +14,7 @@ class VpnGatewayIpConfiguration {
   /// [id] The identifier of the IP configuration for the VPN Gateway.
   /// [privateIpAddress] The private IP address of this IP configuration.
   /// [publicIpAddress] The public IP address of this IP configuration.
-  VpnGatewayIpConfiguration({
+  const VpnGatewayIpConfiguration({
     this.id,
     this.privateIpAddress,
     this.publicIpAddress,

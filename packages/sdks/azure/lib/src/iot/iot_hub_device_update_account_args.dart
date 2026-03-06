@@ -31,7 +31,7 @@ class IotHubDeviceUpdateAccountArgs {
   /// [resourceGroupName] Specifies the name of the Resource Group where the IoT Hub Device Update Account should exist. Changing this forces a new resource to be created.
   /// [sku] Sku of the IoT Hub Device Update Account. Possible values are `Free` and `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the IoT Hub Device Update Account.
-  IotHubDeviceUpdateAccountArgs({
+  const IotHubDeviceUpdateAccountArgs({
     this.identity,
     this.location,
     this.name,

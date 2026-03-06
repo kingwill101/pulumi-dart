@@ -39,7 +39,7 @@ class ProviderResourceTypeResponse {
   /// [properties] The properties.
   /// [resourceType] The resource type.
   /// [zoneMappings] Optional.
-  ProviderResourceTypeResponse({
+  const ProviderResourceTypeResponse({
     this.aliases,
     required this.apiProfiles,
     this.apiVersions,

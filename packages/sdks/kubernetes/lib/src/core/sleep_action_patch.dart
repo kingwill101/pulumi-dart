@@ -9,7 +9,7 @@ class SleepActionPatch {
 
   /// Creates a new [SleepActionPatch].
   /// [seconds] Seconds is the number of seconds to sleep.
-  SleepActionPatch({
+  const SleepActionPatch({
     this.seconds,
   });
 

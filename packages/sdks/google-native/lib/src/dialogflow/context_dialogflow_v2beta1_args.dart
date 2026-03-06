@@ -28,7 +28,7 @@ class ContextDialogflowV2beta1Args {
   /// [project] Optional.
   /// [sessionId] Required.
   /// [userId] Required.
-  ContextDialogflowV2beta1Args({
+  const ContextDialogflowV2beta1Args({
     required this.environmentId,
     this.lifespanCount,
     this.location,

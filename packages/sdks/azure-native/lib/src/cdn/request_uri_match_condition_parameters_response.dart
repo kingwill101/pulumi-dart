@@ -21,7 +21,7 @@ class RequestUriMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleRequestUriConditionParameters'.
-  RequestUriMatchConditionParametersResponse({
+  const RequestUriMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

@@ -15,7 +15,7 @@ class ServiceServiceConnectConfigurationServiceTls {
   /// [issuerCertAuthority] Details of the certificate authority which will issue the certificate.
   /// [kmsKey] KMS key used to encrypt the private key in Secrets Manager.
   /// [roleArn] ARN of the IAM Role that's associated with the Service Connect TLS.
-  ServiceServiceConnectConfigurationServiceTls({
+  const ServiceServiceConnectConfigurationServiceTls({
     required this.issuerCertAuthority,
     this.kmsKey,
     this.roleArn,

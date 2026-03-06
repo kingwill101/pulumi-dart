@@ -15,7 +15,7 @@ class MeshIstio {
   /// [meshUid] Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
   /// [serviceName] The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
   /// [serviceNamespace] The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
-  MeshIstio({
+  const MeshIstio({
     this.meshUid,
     this.serviceName,
     this.serviceNamespace,

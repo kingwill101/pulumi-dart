@@ -10,7 +10,7 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool].
   /// [name] Name of the prompt.
-  AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool({
+  const AgentPromptVariantTemplateConfigurationChatToolConfigurationToolChoiceTool({
     required this.name,
   });
 

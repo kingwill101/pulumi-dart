@@ -26,7 +26,7 @@ class GetWorkflowConfigResult {
   /// [recentScheduledExecutionRecords] Records of the 10 most recent scheduled execution attempts, ordered in in descending order of `execution_time`. Updated whenever automatic creation of a workflow invocation is triggered by cron_schedule.
   /// [releaseConfig] The name of the release config whose release_compilation_result should be executed. Must be in the format `projects/*/locations/*/repositories/*/releaseConfigs/*`.
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  GetWorkflowConfigResult({
+  const GetWorkflowConfigResult({
     required this.cronSchedule,
     required this.invocationConfig,
     required this.name,

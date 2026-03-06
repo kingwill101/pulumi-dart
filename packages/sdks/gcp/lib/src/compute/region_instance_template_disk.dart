@@ -114,7 +114,7 @@ class RegionInstanceTemplateDisk {
   /// [sourceSnapshot] The source snapshot to create this disk.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption
   /// [type] The type of GCE disk, can be either `"SCRATCH"` or
-  RegionInstanceTemplateDisk({
+  const RegionInstanceTemplateDisk({
     this.architecture,
     this.autoDelete,
     this.boot,

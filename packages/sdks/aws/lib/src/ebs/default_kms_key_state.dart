@@ -12,7 +12,7 @@ class DefaultKmsKeyState {
   /// Creates a new [DefaultKmsKeyState].
   /// [keyArn] The ARN of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use to encrypt the EBS volume.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DefaultKmsKeyState({
+  const DefaultKmsKeyState({
     this.keyArn,
     this.region,
   });

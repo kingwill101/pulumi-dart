@@ -10,7 +10,7 @@ class GetSAPDiskConfigurationsResult {
 
   /// Creates a new [GetSAPDiskConfigurationsResult].
   /// [volumeConfigurations] The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
-  GetSAPDiskConfigurationsResult({
+  const GetSAPDiskConfigurationsResult({
     this.volumeConfigurations,
   });
 

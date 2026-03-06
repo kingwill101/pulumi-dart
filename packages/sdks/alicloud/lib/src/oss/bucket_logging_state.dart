@@ -18,7 +18,7 @@ class BucketLoggingState {
   /// [loggingRole] Authorization role used for bucket logging
   /// [targetBucket] The bucket that stores access logs.
   /// [targetPrefix] The prefix of the saved log objects. This element can be left empty.
-  BucketLoggingState({
+  const BucketLoggingState({
     this.bucket,
     this.loggingRole,
     this.targetBucket,

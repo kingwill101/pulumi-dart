@@ -11,7 +11,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3 {
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3].
   /// [bucketOwnerAccountId] Account ID of the S3 bucket owner.
   /// [uri] S3 URI where the schema is stored.
-  AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3({
+  const AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaS3({
     this.bucketOwnerAccountId,
     this.uri,
   });

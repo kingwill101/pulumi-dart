@@ -14,7 +14,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScope {
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationScope].
   /// [selectors] Optional. Selectors of the orchestration scope. There is a logical AND between each
-  V2PolicyOrchestratorForOrganizationOrchestrationScope({
+  const V2PolicyOrchestratorForOrganizationOrchestrationScope({
     this.selectors,
   });
 

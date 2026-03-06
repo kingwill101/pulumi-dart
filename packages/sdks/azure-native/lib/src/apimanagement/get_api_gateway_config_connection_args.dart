@@ -18,7 +18,7 @@ class GetApiGatewayConfigConnectionArgs {
   /// [configConnectionName] The name of the API Management gateway config connection.
   /// [gatewayName] The name of the API Management gateway.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApiGatewayConfigConnectionArgs({
+  const GetApiGatewayConfigConnectionArgs({
     required this.configConnectionName,
     required this.gatewayName,
     required this.resourceGroupName,

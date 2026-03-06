@@ -18,7 +18,7 @@ class SkaffoldSupportedConditionResponse {
   /// [skaffoldSupportState] The skaffold support state for this release's version of skaffold.
   /// [status] True if the version of skaffold used by this release is supported.
   /// [supportExpirationTime] The time at which this release's version of skaffold will no longer be supported.
-  SkaffoldSupportedConditionResponse({
+  const SkaffoldSupportedConditionResponse({
     required this.maintenanceModeTime,
     required this.skaffoldSupportState,
     required this.status,

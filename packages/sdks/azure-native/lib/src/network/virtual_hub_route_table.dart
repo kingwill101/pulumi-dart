@@ -10,7 +10,7 @@ class VirtualHubRouteTable {
 
   /// Creates a new [VirtualHubRouteTable].
   /// [routes] List of all routes.
-  VirtualHubRouteTable({
+  const VirtualHubRouteTable({
     this.routes,
   });
 

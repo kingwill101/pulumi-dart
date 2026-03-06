@@ -11,7 +11,7 @@ class GetAccessPointsPointAccessPointFeatureModel {
   /// Creates a new [GetAccessPointsPointAccessPointFeatureModel].
   /// [featureKey] The Access Point Properties.
   /// [featureValue] The Access Point Characteristic Value.
-  GetAccessPointsPointAccessPointFeatureModel({
+  const GetAccessPointsPointAccessPointFeatureModel({
     required this.featureKey,
     required this.featureValue,
   });

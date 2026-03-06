@@ -38,7 +38,7 @@ class GetAutoSnapShotPoliciesAutoSnapShotPolicy {
   /// [status] Automatic snapshot policy status
   /// [statusDetail] Automatic snapshot policy status details
   /// [timePoints] The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
-  GetAutoSnapShotPoliciesAutoSnapShotPolicy({
+  const GetAutoSnapShotPoliciesAutoSnapShotPolicy({
     required this.appliedDbfsNumber,
     required this.createTime,
     required this.id,

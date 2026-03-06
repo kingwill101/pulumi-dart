@@ -18,7 +18,7 @@ class GetPrivateLinkServiceArgs {
   /// [expand] Expands referenced resources.
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the private link service.
-  GetPrivateLinkServiceArgs({
+  const GetPrivateLinkServiceArgs({
     this.expand,
     required this.resourceGroupName,
     required this.serviceName,

@@ -32,7 +32,7 @@ class NetworkSettingsState {
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The VPC that streaming instances will connect to.
-  NetworkSettingsState({
+  const NetworkSettingsState({
     this.associatedPortalArns,
     this.networkSettingsArn,
     this.region,

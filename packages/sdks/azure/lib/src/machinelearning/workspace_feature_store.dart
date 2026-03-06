@@ -16,7 +16,7 @@ class WorkspaceFeatureStore {
   /// [computerSparkRuntimeVersion] The version of Spark runtime.
   /// [offlineConnectionName] The name of offline store connection.
   /// [onlineConnectionName] The name of online store connection.
-  WorkspaceFeatureStore({
+  const WorkspaceFeatureStore({
     this.computerSparkRuntimeVersion,
     this.offlineConnectionName,
     this.onlineConnectionName,

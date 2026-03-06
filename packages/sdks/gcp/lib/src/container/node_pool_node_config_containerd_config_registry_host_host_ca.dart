@@ -8,7 +8,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostCa {
 
   /// Creates a new [NodePoolNodeConfigContainerdConfigRegistryHostHostCa].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the certificate.
-  NodePoolNodeConfigContainerdConfigRegistryHostHostCa({
+  const NodePoolNodeConfigContainerdConfigRegistryHostHostCa({
     this.gcpSecretManagerSecretUri,
   });
 

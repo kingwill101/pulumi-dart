@@ -12,7 +12,7 @@ class ClusterMetricsResponse {
   /// Creates a new [ClusterMetricsResponse].
   /// [hdfsMetrics] The HDFS metrics.
   /// [yarnMetrics] YARN metrics.
-  ClusterMetricsResponse({
+  const ClusterMetricsResponse({
     required this.hdfsMetrics,
     required this.yarnMetrics,
   });

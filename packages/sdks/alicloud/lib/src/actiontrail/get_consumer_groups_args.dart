@@ -21,7 +21,7 @@ class GetConsumerGroupsArgs {
   /// [ids] A list of ALIKAFKA Consumer Groups IDs, It is formatted to `&lt;instance_id&gt;:&lt;consumer_id&gt;`.
   /// [instanceId] ID of the ALIKAFKA Instance that owns the consumer groups.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConsumerGroupsArgs({
+  const GetConsumerGroupsArgs({
     this.consumerIdRegex,
     this.ids,
     required this.instanceId,

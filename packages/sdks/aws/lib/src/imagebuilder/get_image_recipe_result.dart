@@ -54,7 +54,7 @@ class GetImageRecipeResult {
   /// [userDataBase64] Base64 encoded contents of user data. Commands or a command script to run when build instance is launched.
   /// [version] Version of the image recipe.
   /// [workingDirectory] Working directory used during build and test workflows.
-  GetImageRecipeResult({
+  const GetImageRecipeResult({
     required this.amiTags,
     required this.arn,
     required this.blockDeviceMappings,

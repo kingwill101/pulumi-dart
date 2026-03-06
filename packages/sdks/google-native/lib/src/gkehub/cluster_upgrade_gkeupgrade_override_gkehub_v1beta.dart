@@ -14,7 +14,7 @@ class ClusterUpgradeGKEUpgradeOverrideGkehubV1beta {
   /// Creates a new [ClusterUpgradeGKEUpgradeOverrideGkehubV1beta].
   /// [postConditions] Post conditions to override for the specified upgrade (name + version). Required.
   /// [upgrade] Which upgrade to override. Required.
-  ClusterUpgradeGKEUpgradeOverrideGkehubV1beta({
+  const ClusterUpgradeGKEUpgradeOverrideGkehubV1beta({
     required this.postConditions,
     required this.upgrade,
   });

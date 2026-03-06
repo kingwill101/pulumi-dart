@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationVpc {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationVpc({
+  const NetworkInsightsAnalysisExplanationVpc({
     this.arn,
     this.id,
     this.name,

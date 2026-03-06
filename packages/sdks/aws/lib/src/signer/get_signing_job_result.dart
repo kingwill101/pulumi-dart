@@ -61,7 +61,7 @@ class GetSigningJobResult {
   /// [sources] Object that contains the name of your S3 bucket or your raw code.
   /// [status] Status of the signing job.
   /// [statusReason] String value that contains the status reason.
-  GetSigningJobResult({
+  const GetSigningJobResult({
     required this.completedAt,
     required this.createdAt,
     required this.id,

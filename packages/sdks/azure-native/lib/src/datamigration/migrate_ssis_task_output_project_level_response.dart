@@ -37,7 +37,7 @@ class MigrateSsisTaskOutputProjectLevelResponse {
   /// [stage] Stage of SSIS migration.
   /// [startedOn] Migration start time
   /// [state] Current state of migration
-  MigrateSsisTaskOutputProjectLevelResponse({
+  const MigrateSsisTaskOutputProjectLevelResponse({
     required this.endedOn,
     required this.exceptionsAndWarnings,
     required this.folderName,

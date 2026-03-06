@@ -31,7 +31,7 @@ class ObjectStorageKeyState {
   /// [regions] A set of regions where the key will grant access to create buckets.
   /// [regionsDetails] A set of objects containing the detailed info of the regions where this key can access.
   /// [secretKey] This keypair's secret key.
-  ObjectStorageKeyState({
+  const ObjectStorageKeyState({
     this.accessKey,
     this.bucketAccesses,
     this.label,

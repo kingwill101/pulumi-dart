@@ -20,7 +20,7 @@ class HciDeploymentSettingScaleUnitCluster {
   /// [name] Specifies the name of the cluster. It must be 3-15 characters long and contain only letters, numbers and hyphens. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [witnessPath] Specifies the fileshare path of the local witness for the Azure Stack HCI cluster. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [witnessType] Specifies the type of the witness. Possible values are `Cloud`, `FileShare`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitCluster({
+  const HciDeploymentSettingScaleUnitCluster({
     required this.azureServiceEndpoint,
     required this.cloudAccountName,
     required this.name,

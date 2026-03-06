@@ -15,7 +15,7 @@ class MessagingEndpointResponse {
   /// [address] The endpoint address to connect to.
   /// [endpointType] Type of connection used for messaging endpoint.
   /// [resourceId] The messaging endpoint Azure resource Id.
-  MessagingEndpointResponse({
+  const MessagingEndpointResponse({
     required this.address,
     this.endpointType,
     this.resourceId,

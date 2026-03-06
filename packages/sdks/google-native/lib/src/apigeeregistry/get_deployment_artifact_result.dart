@@ -32,7 +32,7 @@ class GetDeploymentArtifactResult {
   /// [name] Resource name.
   /// [sizeBytes] The size of the artifact in bytes. If the artifact is gzipped, this is the size of the uncompressed artifact.
   /// [updateTime] Last update timestamp.
-  GetDeploymentArtifactResult({
+  const GetDeploymentArtifactResult({
     required this.annotations,
     required this.contents,
     required this.createTime,

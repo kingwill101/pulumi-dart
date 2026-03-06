@@ -26,7 +26,7 @@ class SimpleSchedulePolicyResponse {
   /// [scheduleRunFrequency] Frequency of the schedule operation of this policy.
   /// [scheduleRunTimes] List of times of day this schedule has to be run.
   /// [scheduleWeeklyFrequency] At every number weeks this schedule has to be run.
-  SimpleSchedulePolicyResponse({
+  const SimpleSchedulePolicyResponse({
     this.hourlySchedule,
     required this.schedulePolicyType,
     this.scheduleRunDays,

@@ -15,7 +15,7 @@ class GetDdosProtectionPlanArgs {
   /// Creates a new [GetDdosProtectionPlanArgs].
   /// [ddosProtectionPlanName] The name of the DDoS protection plan.
   /// [resourceGroupName] The name of the resource group.
-  GetDdosProtectionPlanArgs({
+  const GetDdosProtectionPlanArgs({
     required this.ddosProtectionPlanName,
     required this.resourceGroupName,
   });

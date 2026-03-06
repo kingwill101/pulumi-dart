@@ -12,7 +12,7 @@ class ResourceClaimPatch {
   /// Creates a new [ResourceClaimPatch].
   /// [name] Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.
   /// [request] Request is the name chosen for a request in the referenced claim. If empty, everything from the claim is made available, otherwise only the result of this request.
-  ResourceClaimPatch({
+  const ResourceClaimPatch({
     this.name,
     this.request,
   });

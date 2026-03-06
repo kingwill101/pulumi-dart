@@ -10,7 +10,7 @@ class TypeChecking {
 
   /// Creates a new [TypeChecking].
   /// [expressionWarnings] The type checking warnings for each expression.
-  TypeChecking({
+  const TypeChecking({
     this.expressionWarnings,
   });
 

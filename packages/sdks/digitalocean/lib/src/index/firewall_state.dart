@@ -42,7 +42,7 @@ class FirewallState {
   /// [pendingChanges] An list of object containing the fields, "droplet_id",
   /// [status] A status string indicating the current state of the Firewall.
   /// [tags] The names of the Tags assigned to the Firewall (max. 5).
-  FirewallState({
+  const FirewallState({
     this.createdAt,
     this.dropletIds,
     this.inboundRules,

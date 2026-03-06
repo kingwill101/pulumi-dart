@@ -17,7 +17,7 @@ class GetEntityTypeArgs {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetEntityTypeArgs({
+  const GetEntityTypeArgs({
     required this.entityTypeId,
     this.languageCode,
     required this.location,

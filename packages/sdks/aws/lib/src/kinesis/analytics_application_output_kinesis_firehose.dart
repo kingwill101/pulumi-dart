@@ -11,7 +11,7 @@ class AnalyticsApplicationOutputKinesisFirehose {
   /// Creates a new [AnalyticsApplicationOutputKinesisFirehose].
   /// [resourceArn] The ARN of the Kinesis Firehose delivery stream.
   /// [roleArn] The ARN of the IAM Role used to access the stream.
-  AnalyticsApplicationOutputKinesisFirehose({
+  const AnalyticsApplicationOutputKinesisFirehose({
     required this.resourceArn,
     required this.roleArn,
   });

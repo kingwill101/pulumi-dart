@@ -19,7 +19,7 @@ class GetExperimentArgs {
   /// [experimentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetExperimentArgs({
+  const GetExperimentArgs({
     required this.agentId,
     required this.environmentId,
     required this.experimentId,

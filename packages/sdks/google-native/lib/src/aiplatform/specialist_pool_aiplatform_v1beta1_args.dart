@@ -25,7 +25,7 @@ class SpecialistPoolAiplatformV1beta1Args {
   /// [project] Optional.
   /// [specialistManagerEmails] The email addresses of the managers in the SpecialistPool.
   /// [specialistWorkerEmails] The email addresses of workers in the SpecialistPool.
-  SpecialistPoolAiplatformV1beta1Args({
+  const SpecialistPoolAiplatformV1beta1Args({
     required this.displayName,
     this.location,
     this.name,

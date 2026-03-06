@@ -17,7 +17,7 @@ class FleetHubProfile {
   /// [agentProfile] The agent profile for the Fleet hub.
   /// [apiServerAccessProfile] The access profile for the Fleet hub API server.
   /// [dnsPrefix] DNS prefix used to create the FQDN for the Fleet hub.
-  FleetHubProfile({
+  const FleetHubProfile({
     this.agentProfile,
     this.apiServerAccessProfile,
     this.dnsPrefix,

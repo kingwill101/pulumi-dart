@@ -24,7 +24,7 @@ class RouteArgs {
   /// [destinationCidrBlock] The IPv4 or IPv6 address range, in CIDR notation, of the route destination.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetVpcSubnetId] The ID of the Subnet to route the traffic through. It must already be attached to the Client VPN.
-  RouteArgs({
+  const RouteArgs({
     required this.clientVpnEndpointId,
     this.description,
     required this.destinationCidrBlock,

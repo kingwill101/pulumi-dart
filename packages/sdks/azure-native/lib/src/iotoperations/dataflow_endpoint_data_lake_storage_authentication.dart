@@ -21,7 +21,7 @@ class DataflowEndpointDataLakeStorageAuthentication {
   /// [method] Mode of Authentication.
   /// [systemAssignedManagedIdentitySettings] System-assigned managed identity authentication.
   /// [userAssignedManagedIdentitySettings] User-assigned managed identity authentication.
-  DataflowEndpointDataLakeStorageAuthentication({
+  const DataflowEndpointDataLakeStorageAuthentication({
     this.accessTokenSettings,
     required this.method,
     this.systemAssignedManagedIdentitySettings,

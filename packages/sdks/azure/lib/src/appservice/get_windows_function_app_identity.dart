@@ -17,7 +17,7 @@ class GetWindowsFunctionAppIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Windows Function App.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Windows Function App.
   /// [type] The type of Managed Service Identity that is configured on this Windows Function App.
-  GetWindowsFunctionAppIdentity({
+  const GetWindowsFunctionAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

@@ -62,7 +62,7 @@ class HubArgs {
   /// [resourceGroupName] The name of the Resource Group where the AI Foundry Hub should exist. Changing this forces a new AI Foundry Hub to be created.
   /// [storageAccountId] The Storage Account ID that should be used by this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
   /// [tags] A mapping of tags which should be assigned to the AI Foundry Hub.
-  HubArgs({
+  const HubArgs({
     this.applicationInsightsId,
     this.containerRegistryId,
     this.description,

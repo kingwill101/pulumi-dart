@@ -23,7 +23,7 @@ class TaxonomyDatacatalogV1beta1Args {
   /// [displayName] User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
   /// [location] Optional.
   /// [project] Optional.
-  TaxonomyDatacatalogV1beta1Args({
+  const TaxonomyDatacatalogV1beta1Args({
     this.activatedPolicyTypes,
     this.description,
     required this.displayName,

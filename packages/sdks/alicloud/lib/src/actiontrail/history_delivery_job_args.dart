@@ -12,7 +12,7 @@ class HistoryDeliveryJobArgs {
 
   /// Creates a new [HistoryDeliveryJobArgs].
   /// [trailName] The Track Name.
-  HistoryDeliveryJobArgs({
+  const HistoryDeliveryJobArgs({
     required this.trailName,
   });
 

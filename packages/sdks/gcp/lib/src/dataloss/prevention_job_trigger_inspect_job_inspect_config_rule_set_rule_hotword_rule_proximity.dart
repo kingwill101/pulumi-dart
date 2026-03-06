@@ -11,7 +11,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity].
   /// [windowAfter] Number of characters after the finding to consider. Either this or window_before must be specified
   /// [windowBefore] Number of characters before the finding to consider. Either this or window_after must be specified
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity({
     this.windowAfter,
     this.windowBefore,
   });

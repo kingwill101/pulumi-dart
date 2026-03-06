@@ -17,7 +17,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference].
   /// [description] A human readable description of the diff, showing the actual output vs expected output.
   /// [type] The type of diff.
-  CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference({
+  const CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference({
     this.description,
     this.type,
   });

@@ -20,7 +20,7 @@ class GetGradientaiAgentVersionsAgentVersionAttachedFunction {
   /// [faasNamespace] FaaS namespace of the function
   /// [isDeleted] Function is deleted
   /// [name] Name of the function
-  GetGradientaiAgentVersionsAgentVersionAttachedFunction({
+  const GetGradientaiAgentVersionsAgentVersionAttachedFunction({
     required this.description,
     required this.faasName,
     required this.faasNamespace,

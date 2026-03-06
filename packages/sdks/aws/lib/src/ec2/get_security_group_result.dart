@@ -25,7 +25,7 @@ class GetSecurityGroupResult {
   /// [region] Required.
   /// [tags] Required.
   /// [vpcId] Required.
-  GetSecurityGroupResult({
+  const GetSecurityGroupResult({
     required this.arn,
     required this.description,
     this.filters,

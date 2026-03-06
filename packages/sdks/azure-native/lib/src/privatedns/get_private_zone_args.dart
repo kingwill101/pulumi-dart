@@ -15,7 +15,7 @@ class GetPrivateZoneArgs {
   /// Creates a new [GetPrivateZoneArgs].
   /// [privateZoneName] The name of the Private DNS zone (without a terminating dot).
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateZoneArgs({
+  const GetPrivateZoneArgs({
     required this.privateZoneName,
     required this.resourceGroupName,
   });

@@ -10,7 +10,7 @@ class OperationErrorResponse {
 
   /// Creates a new [OperationErrorResponse].
   /// [errors] The array of errors encountered while processing this operation.
-  OperationErrorResponse({
+  const OperationErrorResponse({
     required this.errors,
   });
 

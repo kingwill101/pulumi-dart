@@ -21,7 +21,7 @@ class GetInstanceArgs {
   /// [name] The ID of the memcache instance.
   /// [project] (optional)
   /// [region] (optional)
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.name,
     this.project,
     this.region,

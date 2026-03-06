@@ -8,7 +8,7 @@ class GetVirtualNodeSpecLoggingAccessLog {
 
   /// Creates a new [GetVirtualNodeSpecLoggingAccessLog].
   /// [files] Required.
-  GetVirtualNodeSpecLoggingAccessLog({
+  const GetVirtualNodeSpecLoggingAccessLog({
     required this.files,
   });
 

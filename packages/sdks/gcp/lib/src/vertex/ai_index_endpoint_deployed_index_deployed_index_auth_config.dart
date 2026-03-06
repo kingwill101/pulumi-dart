@@ -10,7 +10,7 @@ class AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
 
   /// Creates a new [AiIndexEndpointDeployedIndexDeployedIndexAuthConfig].
   /// [authProvider] Defines the authentication provider that the DeployedIndex uses.
-  AiIndexEndpointDeployedIndexDeployedIndexAuthConfig({
+  const AiIndexEndpointDeployedIndexDeployedIndexAuthConfig({
     this.authProvider,
   });
 

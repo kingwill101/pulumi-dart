@@ -9,7 +9,7 @@ class PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1 {
 
   /// Creates a new [PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1].
   /// [enabled] Whenever master is accessible globally or not.
-  PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1({
+  const PrivateClusterMasterGlobalAccessConfigResponseContainerV1beta1({
     required this.enabled,
   });
 

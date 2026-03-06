@@ -18,7 +18,7 @@ class LongRunning {
   /// [maxPollDelay] Maximum time between two subsequent poll requests. Default value: 45 seconds.
   /// [pollDelayMultiplier] Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
   /// [totalPollTimeout] Total polling timeout. Default value: 5 minutes.
-  LongRunning({
+  const LongRunning({
     this.initialPollDelay,
     this.maxPollDelay,
     this.pollDelayMultiplier,

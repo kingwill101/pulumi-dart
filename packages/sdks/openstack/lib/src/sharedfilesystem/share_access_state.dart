@@ -32,7 +32,7 @@ class ShareAccessState {
   /// [region] The region in which to obtain the V2 Shared File System
   /// [shareId] The UUID of the share to which you are granted access.
   /// [state] The share access state.
-  ShareAccessState({
+  const ShareAccessState({
     this.accessKey,
     this.accessLevel,
     this.accessTo,

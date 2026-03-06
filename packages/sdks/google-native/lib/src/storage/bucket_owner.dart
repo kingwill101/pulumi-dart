@@ -12,7 +12,7 @@ class BucketOwner {
   /// Creates a new [BucketOwner].
   /// [entity] The entity, in the form project-owner-projectId.
   /// [entityId] The ID for the entity.
-  BucketOwner({
+  const BucketOwner({
     this.entity,
     this.entityId,
   });

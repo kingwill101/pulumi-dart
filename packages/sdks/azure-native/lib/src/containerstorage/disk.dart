@@ -12,7 +12,7 @@ class Disk {
   /// Creates a new [Disk].
   /// [id] ID is the disk identifier visible to the OS. It is typically the WWN or disk ID in formats such as eui.e8238fa6bf530001001b448b45263379 or 0x5002cf6cbc5dd460
   /// [reference] Reference is the location of the disk in an external system.
-  Disk({
+  const Disk({
     required this.id,
     required this.reference,
   });

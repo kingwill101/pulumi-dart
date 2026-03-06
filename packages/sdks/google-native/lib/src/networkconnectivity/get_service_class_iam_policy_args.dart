@@ -17,7 +17,7 @@ class GetServiceClassIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceClassId] Required.
-  GetServiceClassIamPolicyArgs({
+  const GetServiceClassIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

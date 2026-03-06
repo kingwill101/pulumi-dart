@@ -17,7 +17,7 @@ class ServiceLogConfig {
   /// [enableRequestMetrics] Enable request level metrics.
   /// [logstore] The log store name of Alicloud Simple Log Service.
   /// [project] The project name of the Alicloud Simple Log Service.
-  ServiceLogConfig({
+  const ServiceLogConfig({
     this.enableInstanceMetrics,
     this.enableRequestMetrics,
     required this.logstore,

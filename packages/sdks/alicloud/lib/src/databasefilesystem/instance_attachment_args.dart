@@ -15,7 +15,7 @@ class InstanceAttachmentArgs {
   /// Creates a new [InstanceAttachmentArgs].
   /// [ecsId] The ID of the ECS instance.
   /// [instanceId] The ID of the Database File System.
-  InstanceAttachmentArgs({
+  const InstanceAttachmentArgs({
     required this.ecsId,
     required this.instanceId,
   });

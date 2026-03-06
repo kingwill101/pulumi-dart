@@ -15,7 +15,7 @@ class AppVersionSnapshotExampleMessageChunkToolCallToolsetTool {
   /// Creates a new [AppVersionSnapshotExampleMessageChunkToolCallToolsetTool].
   /// [toolId] (Output)
   /// [toolset] (Output)
-  AppVersionSnapshotExampleMessageChunkToolCallToolsetTool({
+  const AppVersionSnapshotExampleMessageChunkToolCallToolsetTool({
     this.toolId,
     this.toolset,
   });

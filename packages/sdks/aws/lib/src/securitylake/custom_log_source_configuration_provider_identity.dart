@@ -11,7 +11,7 @@ class CustomLogSourceConfigurationProviderIdentity {
   /// Creates a new [CustomLogSourceConfigurationProviderIdentity].
   /// [externalId] The external ID used to estalish trust relationship with the AWS identity.
   /// [principal] The AWS identity principal.
-  CustomLogSourceConfigurationProviderIdentity({
+  const CustomLogSourceConfigurationProviderIdentity({
     required this.externalId,
     required this.principal,
   });

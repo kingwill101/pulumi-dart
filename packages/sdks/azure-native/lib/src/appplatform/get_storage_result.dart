@@ -25,7 +25,7 @@ class GetStorageResult {
   /// [properties] Properties of the storage resource payload.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetStorageResult({
+  const GetStorageResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

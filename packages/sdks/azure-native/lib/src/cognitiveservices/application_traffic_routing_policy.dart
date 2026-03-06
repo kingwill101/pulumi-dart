@@ -13,7 +13,7 @@ class ApplicationTrafficRoutingPolicy {
   /// Creates a new [ApplicationTrafficRoutingPolicy].
   /// [protocol] Methodology used to route traffic to the application's deployments.
   /// [rules] Gets or sets the collection of traffic routing rules.
-  ApplicationTrafficRoutingPolicy({
+  const ApplicationTrafficRoutingPolicy({
     this.protocol,
     this.rules,
   });

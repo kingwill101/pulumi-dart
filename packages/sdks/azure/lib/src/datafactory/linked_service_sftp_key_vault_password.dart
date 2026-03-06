@@ -11,7 +11,7 @@ class LinkedServiceSftpKeyVaultPassword {
   /// Creates a new [LinkedServiceSftpKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the name of the secret containing the password.
-  LinkedServiceSftpKeyVaultPassword({
+  const LinkedServiceSftpKeyVaultPassword({
     required this.linkedServiceName,
     required this.secretName,
   });

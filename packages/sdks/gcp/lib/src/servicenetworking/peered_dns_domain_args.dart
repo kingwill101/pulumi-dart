@@ -24,7 +24,7 @@ class PeeredDnsDomainArgs {
   /// [network] The network in the consumer project.
   /// [project] The producer project number. If not provided, the provider project is used.
   /// [service] Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
-  PeeredDnsDomainArgs({
+  const PeeredDnsDomainArgs({
     required this.dnsSuffix,
     this.name,
     required this.network,

@@ -8,7 +8,7 @@ class GraphVectorSearchConfiguration {
 
   /// Creates a new [GraphVectorSearchConfiguration].
   /// [vectorSearchDimension] Specifies the number of dimensions for vector embeddings.  Value must be between 1 and 65,535.
-  GraphVectorSearchConfiguration({
+  const GraphVectorSearchConfiguration({
     this.vectorSearchDimension,
   });
 

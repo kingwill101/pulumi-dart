@@ -8,7 +8,7 @@ class GetMetastoreServiceTelemetryConfig {
 
   /// Creates a new [GetMetastoreServiceTelemetryConfig].
   /// [logFormat] The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
-  GetMetastoreServiceTelemetryConfig({
+  const GetMetastoreServiceTelemetryConfig({
     required this.logFormat,
   });
 

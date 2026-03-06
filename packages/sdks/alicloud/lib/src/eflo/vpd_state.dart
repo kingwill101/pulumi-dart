@@ -33,7 +33,7 @@ class VpdState {
   /// [status] The current state of the instance.
   /// [tags] The tag of the resource.
   /// [vpdName] The name of the VPD instance.
-  VpdState({
+  const VpdState({
     this.cidr,
     this.createTime,
     this.gmtModified,

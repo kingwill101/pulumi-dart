@@ -12,7 +12,7 @@ class GetPolicyDefinitionArgs {
 
   /// Creates a new [GetPolicyDefinitionArgs].
   /// [policyDefinitionName] The name of the policy definition to get.
-  GetPolicyDefinitionArgs({
+  const GetPolicyDefinitionArgs({
     required this.policyDefinitionName,
   });
 

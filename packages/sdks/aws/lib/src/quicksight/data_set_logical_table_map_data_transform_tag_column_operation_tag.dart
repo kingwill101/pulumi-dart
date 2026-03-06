@@ -12,7 +12,7 @@ class DataSetLogicalTableMapDataTransformTagColumnOperationTag {
   /// Creates a new [DataSetLogicalTableMapDataTransformTagColumnOperationTag].
   /// [columnDescription] A description for a column. See column_description.
   /// [columnGeographicRole] A geospatial role for a column. Valid values are `COUNTRY`, `STATE`, `COUNTY`, `CITY`, `POSTCODE`, `LONGITUDE`, and `LATITUDE`.
-  DataSetLogicalTableMapDataTransformTagColumnOperationTag({
+  const DataSetLogicalTableMapDataTransformTagColumnOperationTag({
     this.columnDescription,
     this.columnGeographicRole,
   });

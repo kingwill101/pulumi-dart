@@ -41,7 +41,7 @@ class ApiState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [wafWebAclArn] ARN of the associated WAF web ACL.
   /// [xrayEnabled] Optional.
-  ApiState({
+  const ApiState({
     this.apiArn,
     this.apiId,
     this.dns,

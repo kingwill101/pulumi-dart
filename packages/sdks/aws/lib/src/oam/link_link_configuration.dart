@@ -13,7 +13,7 @@ class LinkLinkConfiguration {
   /// Creates a new [LinkLinkConfiguration].
   /// [logGroupConfiguration] Configuration for filtering which log groups are to send log events from the source account to the monitoring account. See `log_group_configuration` Block for details.
   /// [metricConfiguration] Configuration for filtering which metric namespaces are to be shared from the source account to the monitoring account. See `metric_configuration` Block for details.
-  LinkLinkConfiguration({
+  const LinkLinkConfiguration({
     this.logGroupConfiguration,
     this.metricConfiguration,
   });

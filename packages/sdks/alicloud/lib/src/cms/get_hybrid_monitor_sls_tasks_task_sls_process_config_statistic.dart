@@ -17,7 +17,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
   /// [parameterOne] The value of the function that is used to aggregate logs imported from Log Service.
   /// [parameterTwo] The value of the function that is used to aggregate logs imported from Log Service.
   /// [slsKeyName] Required.
-  GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic({
+  const GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic({
     required this.alias,
     required this.function,
     required this.parameterOne,

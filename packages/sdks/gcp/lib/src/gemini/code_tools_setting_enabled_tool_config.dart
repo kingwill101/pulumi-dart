@@ -11,7 +11,7 @@ class CodeToolsSettingEnabledToolConfig {
   /// Creates a new [CodeToolsSettingEnabledToolConfig].
   /// [key] Key of the configuration item.
   /// [value] Value of the configuration item.
-  CodeToolsSettingEnabledToolConfig({
+  const CodeToolsSettingEnabledToolConfig({
     required this.key,
     required this.value,
   });

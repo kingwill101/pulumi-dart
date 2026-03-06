@@ -8,7 +8,7 @@ class DomainDevicesControllerUsbMaster {
 
   /// Creates a new [DomainDevicesControllerUsbMaster].
   /// [startPort] Sets the starting port number for the master USB controller device configuration.
-  DomainDevicesControllerUsbMaster({
+  const DomainDevicesControllerUsbMaster({
     required this.startPort,
   });
 

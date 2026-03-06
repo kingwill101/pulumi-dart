@@ -16,7 +16,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConf
   /// [autoDeployImpactedBaselineThreshold] Optional.
   /// [autoDeployLoadThreshold] Optional.
   /// [name] The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
-  SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeV1({
+  const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeV1({
     this.autoDeployConfidenceThreshold,
     this.autoDeployExpirationSec,
     this.autoDeployImpactedBaselineThreshold,

@@ -13,7 +13,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation {
   /// [configSource] Optional.
   /// [environment] Optional.
   /// [parameters] Optional.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaInvocation({
     this.configSource,
     this.environment,
     this.parameters,

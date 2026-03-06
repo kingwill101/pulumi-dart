@@ -81,7 +81,7 @@ class ReplicatedVMState {
   /// [targetZone] Specifies the Availability Zone where the Failover VM should exist. Changing this forces a new resource to be created.
   /// [testNetworkId] Network to use when a test failover is done.
   /// [unmanagedDisks] One or more `unmanaged_disk` block as defined below. Changing this forces a new resource to be created.
-  ReplicatedVMState({
+  const ReplicatedVMState({
     this.managedDisks,
     this.multiVmGroupName,
     this.name,

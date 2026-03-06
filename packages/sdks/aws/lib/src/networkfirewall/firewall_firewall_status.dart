@@ -13,7 +13,7 @@ class FirewallFirewallStatus {
   /// Creates a new [FirewallFirewallStatus].
   /// [syncStates] Set of subnets configured for use by the firewall.
   /// [transitGatewayAttachmentSyncStates] Set of transit gateway configured for use by the firewall.
-  FirewallFirewallStatus({
+  const FirewallFirewallStatus({
     this.syncStates,
     this.transitGatewayAttachmentSyncStates,
   });

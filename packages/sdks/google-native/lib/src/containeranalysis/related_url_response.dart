@@ -12,7 +12,7 @@ class RelatedUrlResponse {
   /// Creates a new [RelatedUrlResponse].
   /// [label] Label to describe usage of the URL.
   /// [url] Specific URL associated with the resource.
-  RelatedUrlResponse({
+  const RelatedUrlResponse({
     required this.label,
     required this.url,
   });

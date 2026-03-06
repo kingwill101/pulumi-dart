@@ -33,7 +33,7 @@ class FeaturestoreAiplatformV1beta1Args {
   /// [onlineServingConfig] Optional. Config for online storage resources. The field should not co-exist with the field of `OnlineStoreReplicationConfig`. If both of it and OnlineStoreReplicationConfig are unset, the feature store will not have an online store and cannot be used for online serving.
   /// [onlineStorageTtlDays] Optional. TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than `online_storage_ttl_days` since the feature generation time. Note that `online_storage_ttl_days` should be less than or equal to `offline_storage_ttl_days` for each EntityType under a featurestore. If not set, default to 4000 days
   /// [project] Optional.
-  FeaturestoreAiplatformV1beta1Args({
+  const FeaturestoreAiplatformV1beta1Args({
     this.encryptionSpec,
     this.etag,
     required this.featurestoreId,

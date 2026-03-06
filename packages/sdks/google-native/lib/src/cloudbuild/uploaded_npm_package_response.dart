@@ -17,7 +17,7 @@ class UploadedNpmPackageResponse {
   /// [fileHashes] Hash types and values of the npm package.
   /// [pushTiming] Stores timing information for pushing the specified artifact.
   /// [uri] URI of the uploaded npm package.
-  UploadedNpmPackageResponse({
+  const UploadedNpmPackageResponse({
     required this.fileHashes,
     required this.pushTiming,
     required this.uri,

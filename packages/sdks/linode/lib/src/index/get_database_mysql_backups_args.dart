@@ -26,7 +26,7 @@ class GetDatabaseMysqlBackupsArgs {
   /// [latest] If true, only the latest backup will be returned.
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. (`created`)
-  GetDatabaseMysqlBackupsArgs({
+  const GetDatabaseMysqlBackupsArgs({
     required this.databaseId,
     this.filters,
     this.latest,

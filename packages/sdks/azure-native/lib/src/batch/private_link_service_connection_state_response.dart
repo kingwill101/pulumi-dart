@@ -15,7 +15,7 @@ class PrivateLinkServiceConnectionStateResponse {
   /// [actionsRequired] Action required on the private connection state
   /// [description] Description of the private Connection state
   /// [status] The status of the Batch private endpoint connection
-  PrivateLinkServiceConnectionStateResponse({
+  const PrivateLinkServiceConnectionStateResponse({
     required this.actionsRequired,
     this.description,
     required this.status,

@@ -45,7 +45,7 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProc
   /// [vocabularyFilterMethod] Method for applying a vocabulary filter to Utterance events.
   /// [vocabularyFilterName] Name of the custom vocabulary filter to use when processing Utterance events.
   /// [vocabularyName] Name of the custom vocabulary to use when processing Utterance events.
-  MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration({
+  const MediaInsightsPipelineConfigurationElementAmazonTranscribeCallAnalyticsProcessorConfiguration({
     this.callAnalyticsStreamCategories,
     this.contentIdentificationType,
     this.contentRedactionType,

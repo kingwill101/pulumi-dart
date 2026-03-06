@@ -26,7 +26,7 @@ class RouterNatRule {
   /// [description] An optional description of this rule.
   /// [match] CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
   /// [ruleNumber] An integer uniquely identifying a rule in the list.
-  RouterNatRule({
+  const RouterNatRule({
     this.action,
     this.description,
     required this.match,

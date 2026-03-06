@@ -21,7 +21,7 @@ class ReplicationPendingModifiedValues {
   /// [multiAZ] &lt;p&gt; Specifies whether the replication instance is a Multi-AZ deployment. You can't set the &lt;code&gt;AvailabilityZone&lt;/code&gt; parameter if the Multi-AZ parameter is set to &lt;code&gt;true&lt;/code&gt;. &lt;/p&gt;
   /// [networkType] &lt;p&gt;The type of IP address protocol used by a replication instance, such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.&lt;/p&gt;
   /// [replicationInstanceClass] &lt;p&gt;The compute and memory capacity of the replication instance as defined for the specified replication instance class.&lt;/p&gt; &lt;p&gt;For more information on the settings and capacities for the available replication instance classes, see &lt;a href='https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth'&gt; Selecting the right DMS replication instance for your migration&lt;/a&gt;. &lt;/p&gt;
-  ReplicationPendingModifiedValues({
+  const ReplicationPendingModifiedValues({
     this.allocatedStorage,
     this.engineVersion,
     this.multiAZ,

@@ -49,7 +49,7 @@ class GetMHSMPrivateEndpointConnectionResult {
   /// [systemData] Metadata pertaining to creation and last modification of the key vault resource.
   /// [tags] Resource tags
   /// [type] The resource type of the managed HSM Pool.
-  GetMHSMPrivateEndpointConnectionResult({
+  const GetMHSMPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

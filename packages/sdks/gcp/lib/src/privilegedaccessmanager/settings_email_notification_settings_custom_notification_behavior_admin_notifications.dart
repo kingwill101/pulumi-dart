@@ -21,7 +21,7 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificati
   /// [grantActivationFailed] Notification mode for grant activation failed.
   /// [grantEnded] Notification mode for grant ended.
   /// [grantExternallyModified] Notification mode for grant externally modified.
-  SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications({
+  const SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications({
     this.grantActivated,
     this.grantActivationFailed,
     this.grantEnded,

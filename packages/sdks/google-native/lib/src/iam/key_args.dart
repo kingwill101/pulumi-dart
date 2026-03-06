@@ -21,7 +21,7 @@ class KeyArgs {
   /// [privateKeyType] The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
   /// [project] Optional.
   /// [serviceAccountId] Required.
-  KeyArgs({
+  const KeyArgs({
     this.keyAlgorithm,
     this.privateKeyType,
     this.project,

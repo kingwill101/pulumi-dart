@@ -24,7 +24,7 @@ class PostArgsMatchConditionParameters {
   /// [selector] Name of PostArg to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRulePostArgsConditionParameters'.
-  PostArgsMatchConditionParameters({
+  const PostArgsMatchConditionParameters({
     this.matchValues,
     this.negateCondition,
     required this.operator,

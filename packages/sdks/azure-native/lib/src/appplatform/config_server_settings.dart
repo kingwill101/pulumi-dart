@@ -10,7 +10,7 @@ class ConfigServerSettings {
 
   /// Creates a new [ConfigServerSettings].
   /// [gitProperty] Property of git environment.
-  ConfigServerSettings({
+  const ConfigServerSettings({
     this.gitProperty,
   });
 

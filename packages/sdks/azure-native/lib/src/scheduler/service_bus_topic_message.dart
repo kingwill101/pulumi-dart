@@ -29,7 +29,7 @@ class ServiceBusTopicMessage {
   /// [namespace] Gets or sets the namespace.
   /// [topicPath] Gets or sets the topic path.
   /// [transportType] Gets or sets the transport type.
-  ServiceBusTopicMessage({
+  const ServiceBusTopicMessage({
     this.authentication,
     this.brokeredMessageProperties,
     this.customMessageProperties,

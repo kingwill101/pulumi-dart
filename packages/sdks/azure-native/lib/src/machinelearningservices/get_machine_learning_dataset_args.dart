@@ -18,7 +18,7 @@ class GetMachineLearningDatasetArgs {
   /// [datasetName] The Dataset name.
   /// [resourceGroupName] Name of the resource group in which workspace is located.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetMachineLearningDatasetArgs({
+  const GetMachineLearningDatasetArgs({
     required this.datasetName,
     required this.resourceGroupName,
     required this.workspaceName,

@@ -55,7 +55,7 @@ class VolumeArgs {
   /// [throughput] Throughput that the volume supports, in MiB/s. Only valid for `type` of `gp3`.
   /// [type] Type of EBS volume. Can be `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1` or `st1` (Default: `gp2`).
   /// [volumeInitializationRate] EBS provisioned rate for volume initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume. This argument can only be set if `snapshot_id` is specified.
-  VolumeArgs({
+  const VolumeArgs({
     required this.availabilityZone,
     this.encrypted,
     this.finalSnapshot,

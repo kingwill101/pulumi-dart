@@ -13,7 +13,7 @@ class KubernetesPatchVersionsResponse {
   /// Creates a new [KubernetesPatchVersionsResponse].
   /// [readiness] Indicates whether the kubernetes version image is ready or not
   /// [upgrades] Possible upgrade paths for given patch version
-  KubernetesPatchVersionsResponse({
+  const KubernetesPatchVersionsResponse({
     this.readiness,
     this.upgrades,
   });

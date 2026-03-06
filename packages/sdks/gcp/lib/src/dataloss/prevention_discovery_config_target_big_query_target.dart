@@ -23,7 +23,7 @@ class PreventionDiscoveryConfigTargetBigQueryTarget {
   /// [conditions] In addition to matching the filter, these conditions must be true before a profile is generated
   /// [disabled] Tables that match this filter will not have profiles created.
   /// [filter] Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
-  PreventionDiscoveryConfigTargetBigQueryTarget({
+  const PreventionDiscoveryConfigTargetBigQueryTarget({
     this.cadence,
     this.conditions,
     this.disabled,

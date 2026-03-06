@@ -14,7 +14,7 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse {
   /// [expirationSec] Required.
   /// [impactedBaselineThreshold] Required.
   /// [loadThreshold] Required.
-  SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse({
+  const SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse({
     required this.confidenceThreshold,
     required this.expirationSec,
     required this.impactedBaselineThreshold,

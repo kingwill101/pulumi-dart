@@ -12,7 +12,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowWindow {
   /// Creates a new [ClusterMaintenancePolicyWindowRecurringWindowWindow].
   /// [endTime] The time that the window ends. The end time must take place after the
   /// [startTime] The time that the window first starts.
-  ClusterMaintenancePolicyWindowRecurringWindowWindow({
+  const ClusterMaintenancePolicyWindowRecurringWindowWindow({
     this.endTime,
     this.startTime,
   });

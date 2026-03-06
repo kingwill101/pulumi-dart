@@ -38,7 +38,7 @@ class GetRegionHealthCheckServiceComputeV1Result {
   /// [notificationEndpoints] A list of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
   /// [region] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [selfLink] Server-defined URL for the resource.
-  GetRegionHealthCheckServiceComputeV1Result({
+  const GetRegionHealthCheckServiceComputeV1Result({
     required this.creationTimestamp,
     required this.description,
     required this.fingerprint,

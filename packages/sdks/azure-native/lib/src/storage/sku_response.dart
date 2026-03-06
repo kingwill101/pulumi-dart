@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [name] The SKU name. Required for account creation; optional for update. Note that in older versions, SKU name was called accountType.
   /// [tier] The SKU tier. This is based on the SKU name.
-  SkuResponse({
+  const SkuResponse({
     required this.name,
     required this.tier,
   });

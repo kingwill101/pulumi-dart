@@ -15,7 +15,7 @@ class SubscriptionMessageTransform {
   /// Creates a new [SubscriptionMessageTransform].
   /// [disabled] Controls whether or not to use this transform. If not set or `false`,
   /// [javascriptUdf] Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-  SubscriptionMessageTransform({
+  const SubscriptionMessageTransform({
     this.disabled,
     this.javascriptUdf,
   });

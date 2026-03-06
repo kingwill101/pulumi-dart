@@ -11,7 +11,7 @@ class AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMa
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping].
   /// [metadataField] Name of the field in which Amazon Bedrock stores metadata about the vector store.
   /// [textField] Name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
-  AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping({
+  const AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping({
     required this.metadataField,
     required this.textField,
   });

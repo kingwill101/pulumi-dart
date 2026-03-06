@@ -43,7 +43,7 @@ class CxToolArgs {
   /// [functionSpec] Client side executed function specification.
   /// [openApiSpec] OpenAPI specification of the Tool.
   /// [parent] The agent to create a Tool for.
-  CxToolArgs({
+  const CxToolArgs({
     this.connectorSpec,
     this.dataStoreSpec,
     required this.description,

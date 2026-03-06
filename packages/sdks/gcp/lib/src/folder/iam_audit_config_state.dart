@@ -19,7 +19,7 @@ class IamAuditConfigState {
   /// [etag] (Computed) The etag of the folder's IAM policy.
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
-  IamAuditConfigState({
+  const IamAuditConfigState({
     this.auditLogConfigs,
     this.etag,
     this.folder,

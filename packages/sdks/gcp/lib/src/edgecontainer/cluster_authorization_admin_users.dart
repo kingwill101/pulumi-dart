@@ -8,7 +8,7 @@ class ClusterAuthorizationAdminUsers {
 
   /// Creates a new [ClusterAuthorizationAdminUsers].
   /// [username] An active Google username.
-  ClusterAuthorizationAdminUsers({
+  const ClusterAuthorizationAdminUsers({
     required this.username,
   });
 

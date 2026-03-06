@@ -20,7 +20,7 @@ class EndpointAuthenticationOption {
   /// [samlProviderArn] The ARN of the IAM SAML identity provider if type is `federated-authentication`.
   /// [selfServiceSamlProviderArn] The ARN of the IAM SAML identity provider for the self service portal if type is `federated-authentication`.
   /// [type] The type of client authentication to be used. Specify `certificate-authentication` to use certificate-based authentication, `directory-service-authentication` to use Active Directory authentication, or `federated-authentication` to use Federated Authentication via SAML 2.0.
-  EndpointAuthenticationOption({
+  const EndpointAuthenticationOption({
     this.activeDirectoryId,
     this.rootCertificateChainArn,
     this.samlProviderArn,

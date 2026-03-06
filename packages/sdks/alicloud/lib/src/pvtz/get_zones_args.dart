@@ -41,7 +41,7 @@ class GetZonesArgs {
   /// [queryVpcId] The ID of the VPC associated with the zone.
   /// [resourceGroupId] The ID of the resource group to which the zone belongs.
   /// [searchMode] The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
-  GetZonesArgs({
+  const GetZonesArgs({
     this.enableDetails,
     this.ids,
     this.keyword,

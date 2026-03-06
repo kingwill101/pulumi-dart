@@ -39,7 +39,7 @@ class GetTensorboardAiplatformV1beta1Result {
   /// [name] Name of the Tensorboard. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
   /// [runCount] The number of Runs stored in this Tensorboard.
   /// [updateTime] Timestamp when this Tensorboard was last updated.
-  GetTensorboardAiplatformV1beta1Result({
+  const GetTensorboardAiplatformV1beta1Result({
     required this.blobStoragePathPrefix,
     required this.createTime,
     required this.description,

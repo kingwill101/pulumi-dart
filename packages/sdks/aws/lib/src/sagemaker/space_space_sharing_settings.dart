@@ -8,7 +8,7 @@ class SpaceSpaceSharingSettings {
 
   /// Creates a new [SpaceSpaceSharingSettings].
   /// [sharingType] Specifies the sharing type of the space. Valid values are `Private` and `Shared`.
-  SpaceSpaceSharingSettings({
+  const SpaceSpaceSharingSettings({
     required this.sharingType,
   });
 

@@ -16,7 +16,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   /// [fmp4HlsSettings] Optional.
   /// [frameCaptureHlsSettings] Optional.
   /// [standardHlsSettings] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings({
     this.audioOnlyHlsSettings,
     this.fmp4HlsSettings,
     this.frameCaptureHlsSettings,

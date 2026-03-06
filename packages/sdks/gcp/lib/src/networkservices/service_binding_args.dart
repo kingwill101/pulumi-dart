@@ -28,7 +28,7 @@ class ServiceBindingArgs {
   /// [name] Name of the ServiceBinding resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The full Service Directory Service name of the format
-  ServiceBindingArgs({
+  const ServiceBindingArgs({
     this.description,
     this.labels,
     this.name,

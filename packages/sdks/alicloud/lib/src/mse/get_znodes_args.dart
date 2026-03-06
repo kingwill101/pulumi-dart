@@ -27,7 +27,7 @@ class GetZnodesArgs {
   /// [nameRegex] A regex string to filter results by Znode name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [path] The Node path.
-  GetZnodesArgs({
+  const GetZnodesArgs({
     this.acceptLanguage,
     required this.clusterId,
     this.ids,

@@ -25,7 +25,7 @@ class MapperAttributeMappingResponse {
   /// [functionName] Name of the function used for 'Aggregate' and 'Derived' (except 'Advanced') type mapping.
   /// [name] Name of the target column.
   /// [type] Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
-  MapperAttributeMappingResponse({
+  const MapperAttributeMappingResponse({
     this.attributeReference,
     this.attributeReferences,
     this.expression,

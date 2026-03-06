@@ -53,7 +53,7 @@ class PrivateLinkServiceArgs {
   /// [serviceName] The name of the private link service.
   /// [tags] Resource tags.
   /// [visibility] The visibility list of the private link service.
-  PrivateLinkServiceArgs({
+  const PrivateLinkServiceArgs({
     this.autoApproval,
     this.destinationIPAddress,
     this.enableProxyProtocol,

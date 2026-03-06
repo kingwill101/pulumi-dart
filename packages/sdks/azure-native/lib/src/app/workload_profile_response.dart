@@ -21,7 +21,7 @@ class WorkloadProfileResponse {
   /// [minimumCount] The minimum capacity.
   /// [name] Workload profile type for the workloads to run on.
   /// [workloadProfileType] Workload profile type for the workloads to run on.
-  WorkloadProfileResponse({
+  const WorkloadProfileResponse({
     this.enableFips,
     this.maximumCount,
     this.minimumCount,

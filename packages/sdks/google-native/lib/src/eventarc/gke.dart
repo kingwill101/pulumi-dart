@@ -21,7 +21,7 @@ class GKE {
   /// [namespace] The namespace the GKE service is running in.
   /// [path] Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
   /// [service] Name of the GKE service.
-  GKE({
+  const GKE({
     required this.cluster,
     required this.location,
     required this.namespace,

@@ -21,7 +21,7 @@ class GetClusterClusterCertificate {
   /// [clusterCsr] The certificate signing request (CSR). Available only in UNINITIALIZED state.
   /// [hsmCertificate] The HSM certificate issued (signed) by the HSM hardware.
   /// [manufacturerHardwareCertificate] The HSM hardware certificate issued (signed) by the hardware manufacturer.
-  GetClusterClusterCertificate({
+  const GetClusterClusterCertificate({
     required this.awsHardwareCertificate,
     required this.clusterCertificate,
     required this.clusterCsr,

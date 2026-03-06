@@ -15,7 +15,7 @@ class GetAccountsArgs {
   /// Creates a new [GetAccountsArgs].
   /// [dbClusterId] The polarDB cluster ID.
   /// [nameRegex] A regex string to filter results by account name.
-  GetAccountsArgs({
+  const GetAccountsArgs({
     required this.dbClusterId,
     this.nameRegex,
   });

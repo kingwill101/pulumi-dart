@@ -12,7 +12,7 @@ class ApiResourceDefinitionsResponse {
   /// Creates a new [ApiResourceDefinitionsResponse].
   /// [modifiedSwaggerUrl] The modified swagger URL
   /// [originalSwaggerUrl] The original swagger URL
-  ApiResourceDefinitionsResponse({
+  const ApiResourceDefinitionsResponse({
     this.modifiedSwaggerUrl,
     this.originalSwaggerUrl,
   });

@@ -15,7 +15,7 @@ class GetIdentityAwareProxyClientArgs {
   /// [brandId] Required.
   /// [identityAwareProxyClientId] Required.
   /// [project] Optional.
-  GetIdentityAwareProxyClientArgs({
+  const GetIdentityAwareProxyClientArgs({
     required this.brandId,
     required this.identityAwareProxyClientId,
     this.project,

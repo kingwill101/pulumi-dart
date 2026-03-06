@@ -13,7 +13,7 @@ class GetPermissionsDatabase {
   /// Creates a new [GetPermissionsDatabase].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [name] Name of the database resource. Unique to the Data Catalog.
-  GetPermissionsDatabase({
+  const GetPermissionsDatabase({
     required this.catalogId,
     required this.name,
   });

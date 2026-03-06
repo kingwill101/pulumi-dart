@@ -20,7 +20,7 @@ class AccountRaiPolicyContentFilter {
   /// [name] The name of the content filter.
   /// [severityThreshold] The severity threshold for the filter. Possible values are `Low`, `Medium` or `High`.
   /// [source] Content source to apply the content filter. Possible values are `Prompt` or `Completion`.
-  AccountRaiPolicyContentFilter({
+  const AccountRaiPolicyContentFilter({
     required this.blockEnabled,
     required this.filterEnabled,
     required this.name,

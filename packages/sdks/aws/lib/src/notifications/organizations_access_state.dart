@@ -12,7 +12,7 @@ class OrganizationsAccessState {
   /// Creates a new [OrganizationsAccessState].
   /// [enabled] Whether to enable organizations access for AWS User Notifications in AWS Organizations. When set to `true`, enables organizations access. When set to `false`, disables organizations access.
   /// [timeouts] Optional.
-  OrganizationsAccessState({
+  const OrganizationsAccessState({
     this.enabled,
     this.timeouts,
   });

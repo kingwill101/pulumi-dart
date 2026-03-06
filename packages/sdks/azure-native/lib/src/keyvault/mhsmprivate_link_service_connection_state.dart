@@ -15,7 +15,7 @@ class MHSMPrivateLinkServiceConnectionState {
   /// [actionsRequired] A message indicating if changes on the service provider require any updates on the consumer.
   /// [description] The reason for approval or rejection.
   /// [status] Indicates whether the connection has been approved, rejected or removed by the key vault owner.
-  MHSMPrivateLinkServiceConnectionState({
+  const MHSMPrivateLinkServiceConnectionState({
     this.actionsRequired,
     this.description,
     this.status,

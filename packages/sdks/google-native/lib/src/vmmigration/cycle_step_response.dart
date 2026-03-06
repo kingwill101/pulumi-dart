@@ -22,7 +22,7 @@ class CycleStepResponse {
   /// [postProcessing] Post processing step.
   /// [replicating] Replicating step.
   /// [startTime] The time the cycle step has started.
-  CycleStepResponse({
+  const CycleStepResponse({
     required this.endTime,
     required this.initializingReplication,
     required this.postProcessing,

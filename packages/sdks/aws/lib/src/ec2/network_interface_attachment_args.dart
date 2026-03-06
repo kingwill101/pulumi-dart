@@ -24,7 +24,7 @@ class NetworkInterfaceAttachmentArgs {
   /// [networkCardIndex] Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
   /// [networkInterfaceId] ENI ID to attach.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  NetworkInterfaceAttachmentArgs({
+  const NetworkInterfaceAttachmentArgs({
     required this.deviceIndex,
     required this.instanceId,
     this.networkCardIndex,

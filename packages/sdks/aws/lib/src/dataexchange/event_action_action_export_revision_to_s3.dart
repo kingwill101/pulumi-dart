@@ -15,7 +15,7 @@ class EventActionActionExportRevisionToS3 {
   /// Creates a new [EventActionActionExportRevisionToS3].
   /// [encryption] Configures server-side encryption of the exported revision.
   /// [revisionDestination] Configures the S3 destination of the exported revision.
-  EventActionActionExportRevisionToS3({
+  const EventActionActionExportRevisionToS3({
     this.encryption,
     required this.revisionDestination,
   });

@@ -74,7 +74,7 @@ class ConnectionProfileState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] The current connection profile state.
-  ConnectionProfileState({
+  const ConnectionProfileState({
     this.alloydb,
     this.cloudsql,
     this.connectionProfileId,

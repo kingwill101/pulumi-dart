@@ -28,7 +28,7 @@ class GetStorageBundlesResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [totalCount] Required.
-  GetStorageBundlesResult({
+  const GetStorageBundlesResult({
     required this.backendBucketRegionId,
     required this.bundles,
     required this.id,

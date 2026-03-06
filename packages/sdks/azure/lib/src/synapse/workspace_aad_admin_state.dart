@@ -18,7 +18,7 @@ class WorkspaceAadAdminState {
   /// [objectId] The object id of the Azure AD Administrator of this Synapse Workspace.
   /// [synapseWorkspaceId] The ID of the Synapse Workspace where the Azure AD Administrator should be configured.
   /// [tenantId] The tenant id of the Azure AD Administrator of this Synapse Workspace.
-  WorkspaceAadAdminState({
+  const WorkspaceAadAdminState({
     this.login,
     this.objectId,
     this.synapseWorkspaceId,

@@ -19,7 +19,7 @@ class GetAttributeDefinitionArgs {
   /// [datasetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAttributeDefinitionArgs({
+  const GetAttributeDefinitionArgs({
     required this.attributeDefinitionId,
     required this.consentStoreId,
     required this.datasetId,

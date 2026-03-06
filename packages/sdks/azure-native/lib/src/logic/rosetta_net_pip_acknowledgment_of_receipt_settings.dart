@@ -12,7 +12,7 @@ class RosettaNetPipAcknowledgmentOfReceiptSettings {
   /// Creates a new [RosettaNetPipAcknowledgmentOfReceiptSettings].
   /// [isNonRepudiationRequired] The non-repudiation is required or not.
   /// [timeToAcknowledgeInSeconds] The time to acknowledge in seconds.
-  RosettaNetPipAcknowledgmentOfReceiptSettings({
+  const RosettaNetPipAcknowledgmentOfReceiptSettings({
     required this.isNonRepudiationRequired,
     required this.timeToAcknowledgeInSeconds,
   });

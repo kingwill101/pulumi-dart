@@ -22,7 +22,7 @@ class DataConnectorArgs {
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [properties] DataConnector Properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DataConnectorArgs({
+  const DataConnectorArgs({
     this.dataConnectorName,
     required this.dataManagerForAgricultureResourceName,
     required this.properties,

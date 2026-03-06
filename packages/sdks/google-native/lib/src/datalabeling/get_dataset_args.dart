@@ -13,7 +13,7 @@ class GetDatasetArgs {
   /// Creates a new [GetDatasetArgs].
   /// [datasetId] Required.
   /// [project] Optional.
-  GetDatasetArgs({
+  const GetDatasetArgs({
     required this.datasetId,
     this.project,
   });

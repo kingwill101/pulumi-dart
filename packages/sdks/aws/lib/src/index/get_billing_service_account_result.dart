@@ -11,7 +11,7 @@ class GetBillingServiceAccountResult {
   /// Creates a new [GetBillingServiceAccountResult].
   /// [arn] ARN of the AWS billing service account.
   /// [id] ID of the AWS billing service account.
-  GetBillingServiceAccountResult({
+  const GetBillingServiceAccountResult({
     required this.arn,
     required this.id,
   });

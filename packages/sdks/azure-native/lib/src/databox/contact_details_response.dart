@@ -25,7 +25,7 @@ class ContactDetailsResponse {
   /// [notificationPreference] Notification preference for a job stage.
   /// [phone] Phone number of the contact person.
   /// [phoneExtension] Phone extension number of the contact person.
-  ContactDetailsResponse({
+  const ContactDetailsResponse({
     required this.contactName,
     required this.emailList,
     this.mobile,

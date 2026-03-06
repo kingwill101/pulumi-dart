@@ -11,7 +11,7 @@ class ServiceSubscriptionDlqPolicy {
   /// Creates a new [ServiceSubscriptionDlqPolicy].
   /// [deadLetterTargetQueue] The queue to which dead-letter messages are delivered.
   /// [enabled] Specifies whether to enable the dead-letter message delivery. Valid values: `true`, `false`.
-  ServiceSubscriptionDlqPolicy({
+  const ServiceSubscriptionDlqPolicy({
     this.deadLetterTargetQueue,
     this.enabled,
   });

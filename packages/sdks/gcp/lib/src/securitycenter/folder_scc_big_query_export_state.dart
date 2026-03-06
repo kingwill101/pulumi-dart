@@ -63,7 +63,7 @@ class FolderSccBigQueryExportState {
   /// [name] The resource name of this export, in the format
   /// [principal] The service account that needs permission to create table and upload data to the BigQuery dataset.
   /// [updateTime] The most recent time at which the BigQuery export was updated.
-  FolderSccBigQueryExportState({
+  const FolderSccBigQueryExportState({
     this.bigQueryExportId,
     this.createTime,
     this.dataset,

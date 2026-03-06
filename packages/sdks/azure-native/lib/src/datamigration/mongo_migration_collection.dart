@@ -18,7 +18,7 @@ class MongoMigrationCollection {
   /// [sourceDatabase] Source database name.
   /// [targetCollection] Target collection name.
   /// [targetDatabase] Target database name.
-  MongoMigrationCollection({
+  const MongoMigrationCollection({
     this.sourceCollection,
     this.sourceDatabase,
     this.targetCollection,

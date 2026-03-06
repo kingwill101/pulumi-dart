@@ -18,7 +18,7 @@ class GetTxtRecordArgs {
   /// [name] The name of the DNS TXT Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetTxtRecordArgs({
+  const GetTxtRecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

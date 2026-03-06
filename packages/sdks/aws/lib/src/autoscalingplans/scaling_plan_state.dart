@@ -23,7 +23,7 @@ class ScalingPlanState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scalingInstructions] Scaling instructions. More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html).
   /// [scalingPlanVersion] The version number of the scaling plan. This value is always 1.
-  ScalingPlanState({
+  const ScalingPlanState({
     this.applicationSource,
     this.name,
     this.region,

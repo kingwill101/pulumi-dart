@@ -48,7 +48,7 @@ class WorkstationConfigIamMemberState {
   /// [role] The role that should be applied. Only one
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] Used to find the parent resource to bind the IAM policy to
-  WorkstationConfigIamMemberState({
+  const WorkstationConfigIamMemberState({
     this.condition,
     this.etag,
     this.location,

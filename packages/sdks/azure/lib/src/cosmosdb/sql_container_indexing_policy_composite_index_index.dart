@@ -11,7 +11,7 @@ class SqlContainerIndexingPolicyCompositeIndexIndex {
   /// Creates a new [SqlContainerIndexingPolicyCompositeIndexIndex].
   /// [order] Order of the index. Possible values are `Ascending` or `Descending`.
   /// [path] Path for which the indexing behaviour applies to.
-  SqlContainerIndexingPolicyCompositeIndexIndex({
+  const SqlContainerIndexingPolicyCompositeIndexIndex({
     required this.order,
     required this.path,
   });

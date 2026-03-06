@@ -38,7 +38,7 @@ class SingleQueryResultResponse {
   /// [severity] Describes the severity of signature: 1 - High, 2 - Medium, 3 - Low
   /// [signatureId] The ID of the signature
   /// [sourcePorts] Describes the list of source ports related to this signature
-  SingleQueryResultResponse({
+  const SingleQueryResultResponse({
     this.description,
     this.destinationPorts,
     this.direction,

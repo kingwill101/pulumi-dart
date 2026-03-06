@@ -27,7 +27,7 @@ class HttpRouteRuleMatch {
   /// [prefixMatch] The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
   /// [queryParameters] Specifies a list of query parameters to match against.
   /// [regexMatch] The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
-  HttpRouteRuleMatch({
+  const HttpRouteRuleMatch({
     this.fullPathMatch,
     this.headers,
     this.ignoreCase,

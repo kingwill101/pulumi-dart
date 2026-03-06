@@ -23,7 +23,7 @@ class GetSaslAclsAcl {
   /// [aclResourceType] Get results for the specified resource type.
   /// [host] The host of the sasl acl.
   /// [username] Get results for the specified username.
-  GetSaslAclsAcl({
+  const GetSaslAclsAcl({
     required this.aclOperationType,
     required this.aclResourceName,
     required this.aclResourcePatternType,

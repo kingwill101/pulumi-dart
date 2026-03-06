@@ -33,7 +33,7 @@ class ChannelSlackArgs {
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   /// [signingSecret] The Signing Secret that will be used to sign the requests.
   /// [verificationToken] The Verification Token that will be used to authenticate with Slack.
-  ChannelSlackArgs({
+  const ChannelSlackArgs({
     required this.botName,
     required this.clientId,
     required this.clientSecret,

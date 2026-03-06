@@ -12,7 +12,7 @@ class GetByoipPrefixArgs {
 
   /// Creates a new [GetByoipPrefixArgs].
   /// [uuid] The UUID of the BYOIP prefix.
-  GetByoipPrefixArgs({
+  const GetByoipPrefixArgs({
     required this.uuid,
   });
 

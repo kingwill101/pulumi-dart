@@ -12,7 +12,7 @@ class TagItem {
   /// Creates a new [TagItem].
   /// [key] Property key
   /// [value] Property value
-  TagItem({
+  const TagItem({
     this.key,
     this.value,
   });

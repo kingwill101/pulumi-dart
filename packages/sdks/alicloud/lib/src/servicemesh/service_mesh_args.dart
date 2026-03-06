@@ -60,7 +60,7 @@ class ServiceMeshArgs {
   /// [serviceMeshName] ServiceMeshName
   /// [tags] The tag of the resource
   /// [version] Service grid version number
-  ServiceMeshArgs({
+  const ServiceMeshArgs({
     this.clusterIds,
     this.clusterSpec,
     this.customizedPrometheus,

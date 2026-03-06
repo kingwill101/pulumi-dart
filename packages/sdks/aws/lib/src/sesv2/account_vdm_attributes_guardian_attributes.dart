@@ -8,7 +8,7 @@ class AccountVdmAttributesGuardianAttributes {
 
   /// Creates a new [AccountVdmAttributesGuardianAttributes].
   /// [optimizedSharedDelivery] Specifies the status of your VDM optimized shared delivery. Valid values: `ENABLED`, `DISABLED`.
-  AccountVdmAttributesGuardianAttributes({
+  const AccountVdmAttributesGuardianAttributes({
     this.optimizedSharedDelivery,
   });
 

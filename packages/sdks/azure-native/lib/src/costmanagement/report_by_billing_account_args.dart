@@ -30,7 +30,7 @@ class ReportByBillingAccountArgs {
   /// [format] The format of the report being delivered.
   /// [reportName] Report Name.
   /// [schedule] Has schedule information for the report.
-  ReportByBillingAccountArgs({
+  const ReportByBillingAccountArgs({
     required this.billingAccountId,
     required this.definition,
     required this.deliveryInfo,

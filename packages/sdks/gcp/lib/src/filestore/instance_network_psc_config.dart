@@ -11,7 +11,7 @@ class InstanceNetworkPscConfig {
 
   /// Creates a new [InstanceNetworkPscConfig].
   /// [endpointProject] Consumer service project in which the Private Service Connect endpoint
-  InstanceNetworkPscConfig({
+  const InstanceNetworkPscConfig({
     this.endpointProject,
   });
 

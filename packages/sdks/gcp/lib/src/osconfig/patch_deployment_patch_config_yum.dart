@@ -19,7 +19,7 @@ class PatchDeploymentPatchConfigYum {
   /// [exclusivePackages] An exclusive list of packages to be updated. These are the only packages that will be updated.
   /// [minimal] Will cause patch to run yum update-minimal instead.
   /// [security] Adds the --security flag to yum update. Not supported on all platforms.
-  PatchDeploymentPatchConfigYum({
+  const PatchDeploymentPatchConfigYum({
     this.excludes,
     this.exclusivePackages,
     this.minimal,

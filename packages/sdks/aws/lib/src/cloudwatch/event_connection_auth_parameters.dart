@@ -21,7 +21,7 @@ class EventConnectionAuthParameters {
   /// [basic] Parameters used for BASIC authorization. A maximum of 1 are allowed. Conflicts with `api_key` and `oauth`. Documented below.
   /// [invocationHttpParameters] Invocation Http Parameters are additional credentials used to sign each Invocation of the ApiDestination created from this Connection. If the ApiDestination Rule Target has additional HttpParameters, the values will be merged together, with the Connection Invocation Http Parameters taking precedence. Secret values are stored and managed by AWS Secrets Manager. A maximum of 1 are allowed. Documented below.
   /// [oauth] Parameters used for OAUTH_CLIENT_CREDENTIALS authorization. A maximum of 1 are allowed. Conflicts with `basic` and `api_key`. Documented below.
-  EventConnectionAuthParameters({
+  const EventConnectionAuthParameters({
     this.apiKey,
     this.basic,
     this.invocationHttpParameters,

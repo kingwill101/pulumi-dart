@@ -72,7 +72,7 @@ class GetWorkflowResult {
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
   /// [version] Gets the version.
-  GetWorkflowResult({
+  const GetWorkflowResult({
     this.accessControl,
     required this.accessEndpoint,
     required this.azureApiVersion,

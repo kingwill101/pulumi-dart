@@ -22,7 +22,7 @@ class RuleGroupArgs {
   /// [metricName] A friendly name for the metrics from the rule group
   /// [name] Name of the rule group. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  RuleGroupArgs({
+  const RuleGroupArgs({
     this.activatedRules,
     required this.metricName,
     this.name,

@@ -13,7 +13,7 @@ class FleetObservabilityFleetObservabilityLoggingStateResponse {
   /// Creates a new [FleetObservabilityFleetObservabilityLoggingStateResponse].
   /// [defaultLog] The base feature state of fleet default log.
   /// [scopeLog] The base feature state of fleet scope log.
-  FleetObservabilityFleetObservabilityLoggingStateResponse({
+  const FleetObservabilityFleetObservabilityLoggingStateResponse({
     required this.defaultLog,
     required this.scopeLog,
   });

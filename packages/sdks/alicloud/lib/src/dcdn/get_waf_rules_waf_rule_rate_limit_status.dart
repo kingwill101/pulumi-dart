@@ -14,7 +14,7 @@ class GetWafRulesWafRuleRateLimitStatus {
   /// [code] The HTTP status code returned.
   /// [count] The number of times that the HTTP status code that was returned.
   /// [ratio] The percentage of HTTP status codes.
-  GetWafRulesWafRuleRateLimitStatus({
+  const GetWafRulesWafRuleRateLimitStatus({
     required this.code,
     required this.count,
     required this.ratio,

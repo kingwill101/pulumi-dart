@@ -134,7 +134,7 @@ class ProviderRegistrationPropertiesResponse {
   /// [subscriptionLifecycleNotificationSpecifications] The subscription lifecycle notification specifications.
   /// [templateDeploymentOptions] The template deployment options.
   /// [tokenAuthConfiguration] The token auth configuration.
-  ProviderRegistrationPropertiesResponse({
+  const ProviderRegistrationPropertiesResponse({
     this.capabilities,
     this.crossTenantTokenValidation,
     this.customManifestVersion,

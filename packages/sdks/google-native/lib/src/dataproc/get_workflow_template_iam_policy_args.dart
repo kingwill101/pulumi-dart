@@ -15,7 +15,7 @@ class GetWorkflowTemplateIamPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [workflowTemplateId] Required.
-  GetWorkflowTemplateIamPolicyArgs({
+  const GetWorkflowTemplateIamPolicyArgs({
     required this.location,
     this.project,
     required this.workflowTemplateId,

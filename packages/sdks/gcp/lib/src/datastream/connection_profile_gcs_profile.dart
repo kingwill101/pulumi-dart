@@ -11,7 +11,7 @@ class ConnectionProfileGcsProfile {
   /// Creates a new [ConnectionProfileGcsProfile].
   /// [bucket] The Cloud Storage bucket name.
   /// [rootPath] The root path inside the Cloud Storage bucket.
-  ConnectionProfileGcsProfile({
+  const ConnectionProfileGcsProfile({
     required this.bucket,
     this.rootPath,
   });

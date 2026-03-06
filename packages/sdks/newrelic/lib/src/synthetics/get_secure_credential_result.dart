@@ -18,7 +18,7 @@ class GetSecureCredentialResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [key] Required.
   /// [lastUpdated] The time the secure credential was last updated.
-  GetSecureCredentialResult({
+  const GetSecureCredentialResult({
     required this.accountId,
     required this.description,
     required this.id,

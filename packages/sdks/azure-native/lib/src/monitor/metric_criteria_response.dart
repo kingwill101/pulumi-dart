@@ -35,7 +35,7 @@ class MetricCriteriaResponse {
   /// [skipMetricValidation] Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
   /// [threshold] the criteria threshold value that activates the alert.
   /// [timeAggregation] the criteria time aggregation types.
-  MetricCriteriaResponse({
+  const MetricCriteriaResponse({
     required this.criterionType,
     this.dimensions,
     required this.metricName,

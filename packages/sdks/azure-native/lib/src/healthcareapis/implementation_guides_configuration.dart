@@ -9,7 +9,7 @@ class ImplementationGuidesConfiguration {
 
   /// Creates a new [ImplementationGuidesConfiguration].
   /// [usCoreMissingData] If US Core Missing Data requirement is enabled.
-  ImplementationGuidesConfiguration({
+  const ImplementationGuidesConfiguration({
     this.usCoreMissingData,
   });
 

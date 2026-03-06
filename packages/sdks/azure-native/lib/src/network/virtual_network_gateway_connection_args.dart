@@ -93,7 +93,7 @@ class VirtualNetworkGatewayConnectionArgs {
   /// [virtualNetworkGateway1] The reference to virtual network gateway resource.
   /// [virtualNetworkGateway2] The reference to virtual network gateway resource.
   /// [virtualNetworkGatewayConnectionName] The name of the virtual network gateway connection.
-  VirtualNetworkGatewayConnectionArgs({
+  const VirtualNetworkGatewayConnectionArgs({
     this.authorizationKey,
     this.connectionMode,
     this.connectionProtocol,

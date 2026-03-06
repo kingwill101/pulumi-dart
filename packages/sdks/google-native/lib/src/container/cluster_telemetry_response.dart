@@ -9,7 +9,7 @@ class ClusterTelemetryResponse {
 
   /// Creates a new [ClusterTelemetryResponse].
   /// [type] Type of the integration.
-  ClusterTelemetryResponse({
+  const ClusterTelemetryResponse({
     required this.type,
   });
 

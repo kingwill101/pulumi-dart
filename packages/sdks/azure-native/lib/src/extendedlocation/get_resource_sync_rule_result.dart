@@ -40,7 +40,7 @@ class GetResourceSyncRuleResult {
   /// [tags] Resource tags.
   /// [targetResourceGroup] For an unmapped custom resource, its labels will be used to find matching resource sync rules. If this resource sync rule is one of the matching rules with highest priority, then the unmapped custom resource will be projected to the target resource group associated with this resource sync rule. The user creating this resource sync rule should have write permissions on the target resource group and this write permission will be validated when creating the resource sync rule.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetResourceSyncRuleResult({
+  const GetResourceSyncRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

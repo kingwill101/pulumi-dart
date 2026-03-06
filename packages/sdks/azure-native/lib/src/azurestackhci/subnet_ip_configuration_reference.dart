@@ -9,7 +9,7 @@ class SubnetIpConfigurationReference {
 
   /// Creates a new [SubnetIpConfigurationReference].
   /// [id] The Azure Resource ID for a Network Interface.
-  SubnetIpConfigurationReference({
+  const SubnetIpConfigurationReference({
     this.id,
   });
 

@@ -21,7 +21,7 @@ class ServerCommunicationLinkArgs {
   /// [partnerServer] The name of the partner server.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  ServerCommunicationLinkArgs({
+  const ServerCommunicationLinkArgs({
     this.communicationLinkName,
     required this.partnerServer,
     required this.resourceGroupName,

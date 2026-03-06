@@ -42,7 +42,7 @@ class AggregateRemediationArgs {
   /// [remediationSourceType] The source of the template to perform the correction. Value:
   /// [remediationTemplateId] The ID of the correction template.
   /// [remediationType] Remediation type. Value:
-  AggregateRemediationArgs({
+  const AggregateRemediationArgs({
     required this.aggregatorId,
     required this.configRuleId,
     required this.invokeType,

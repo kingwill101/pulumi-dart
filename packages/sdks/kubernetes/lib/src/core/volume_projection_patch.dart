@@ -48,7 +48,7 @@ class VolumeProjectionPatch {
   /// [podCertificate] Projects an auto-rotating credential bundle (private key and certificate chain) that the pod can use either as a TLS client or server.
   /// [secret] secret information about the secret data to project
   /// [serviceAccountToken] serviceAccountToken is information about the serviceAccountToken data to project
-  VolumeProjectionPatch({
+  const VolumeProjectionPatch({
     this.clusterTrustBundle,
     this.configMap,
     this.downwardAPI,

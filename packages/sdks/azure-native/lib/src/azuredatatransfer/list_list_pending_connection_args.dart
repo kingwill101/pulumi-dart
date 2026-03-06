@@ -15,7 +15,7 @@ class ListListPendingConnectionArgs {
   /// Creates a new [ListListPendingConnectionArgs].
   /// [connectionName] The name for the connection that is to be requested.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListListPendingConnectionArgs({
+  const ListListPendingConnectionArgs({
     required this.connectionName,
     required this.resourceGroupName,
   });

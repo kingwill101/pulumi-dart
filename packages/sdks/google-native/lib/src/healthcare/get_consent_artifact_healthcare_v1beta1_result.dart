@@ -32,7 +32,7 @@ class GetConsentArtifactHealthcareV1beta1Result {
   /// [userId] User's UUID provided by the client.
   /// [userSignature] Optional. User's signature.
   /// [witnessSignature] Optional. A signature from a witness.
-  GetConsentArtifactHealthcareV1beta1Result({
+  const GetConsentArtifactHealthcareV1beta1Result({
     required this.consentContentScreenshots,
     required this.consentContentVersion,
     required this.guardianSignature,

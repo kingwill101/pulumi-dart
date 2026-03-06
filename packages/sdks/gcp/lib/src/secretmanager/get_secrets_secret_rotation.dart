@@ -11,7 +11,7 @@ class GetSecretsSecretRotation {
   /// Creates a new [GetSecretsSecretRotation].
   /// [nextRotationTime] Timestamp in UTC at which the Secret is scheduled to rotate.
   /// [rotationPeriod] The Duration between rotation notifications.
-  GetSecretsSecretRotation({
+  const GetSecretsSecretRotation({
     required this.nextRotationTime,
     required this.rotationPeriod,
   });

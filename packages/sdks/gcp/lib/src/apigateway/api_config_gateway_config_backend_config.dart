@@ -9,7 +9,7 @@ class ApiConfigGatewayConfigBackendConfig {
 
   /// Creates a new [ApiConfigGatewayConfigBackendConfig].
   /// [googleServiceAccount] Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-  ApiConfigGatewayConfigBackendConfig({
+  const ApiConfigGatewayConfigBackendConfig({
     required this.googleServiceAccount,
   });
 

@@ -15,7 +15,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint 
   /// [effect] Specifies the nodes operating system (default: LINUX).
   /// [key] Key associated with the effect.
   /// [value] Value associated with the effect.
-  BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint({
+  const BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint({
     this.effect,
     this.key,
     this.value,

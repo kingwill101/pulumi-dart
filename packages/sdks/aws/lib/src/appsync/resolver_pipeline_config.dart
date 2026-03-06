@@ -8,7 +8,7 @@ class ResolverPipelineConfig {
 
   /// Creates a new [ResolverPipelineConfig].
   /// [functions] A list of Function objects.
-  ResolverPipelineConfig({
+  const ResolverPipelineConfig({
     this.functions,
   });
 

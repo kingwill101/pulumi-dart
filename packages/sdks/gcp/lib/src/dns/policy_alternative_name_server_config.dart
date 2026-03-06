@@ -12,7 +12,7 @@ class PolicyAlternativeNameServerConfig {
 
   /// Creates a new [PolicyAlternativeNameServerConfig].
   /// [targetNameServers] Sets an alternative name server for the associated networks. When specified,
-  PolicyAlternativeNameServerConfig({
+  const PolicyAlternativeNameServerConfig({
     required this.targetNameServers,
   });
 

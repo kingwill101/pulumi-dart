@@ -22,7 +22,7 @@ class AdditionalAuthenticationProviderResponse {
   /// [lambdaAuthorizerConfig] &lt;p&gt;Configuration for Lambda function authorization.&lt;/p&gt;
   /// [openIDConnectConfig] &lt;p&gt;The OIDC configuration.&lt;/p&gt;
   /// [userPoolConfig] &lt;p&gt;The Amazon Cognito user pool configuration.&lt;/p&gt;
-  AdditionalAuthenticationProviderResponse({
+  const AdditionalAuthenticationProviderResponse({
     this.authenticationType,
     this.lambdaAuthorizerConfig,
     this.openIDConnectConfig,

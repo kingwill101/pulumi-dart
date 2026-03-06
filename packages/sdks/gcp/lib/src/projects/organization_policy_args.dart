@@ -37,7 +37,7 @@ class OrganizationPolicyArgs {
   /// [project] The project id of the project to set the policy for.
   /// [restorePolicy] A restore policy is a constraint to restore the default policy. Structure is documented below.
   /// [version] Version of the Policy. Default version is 0.
-  OrganizationPolicyArgs({
+  const OrganizationPolicyArgs({
     this.booleanPolicy,
     required this.constraint,
     this.listPolicy,

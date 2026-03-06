@@ -12,7 +12,7 @@ class ReportGrouping {
   /// Creates a new [ReportGrouping].
   /// [name] The name of the column to group.
   /// [type] Has type of the column to group.
-  ReportGrouping({
+  const ReportGrouping({
     required this.name,
     required this.type,
   });

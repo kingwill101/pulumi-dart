@@ -24,7 +24,7 @@ class VirtualMachineManagerAvailabilitySetState {
   /// [resourceGroupName] The name of the Resource Group where the System Center Virtual Machine Availability Set should exist. Changing this forces a new resource to be created.
   /// [systemCenterVirtualMachineManagerServerId] The ID of the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the System Center Virtual Machine Manager Availability Set.
-  VirtualMachineManagerAvailabilitySetState({
+  const VirtualMachineManagerAvailabilitySetState({
     this.customLocationId,
     this.location,
     this.name,

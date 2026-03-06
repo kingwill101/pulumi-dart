@@ -24,7 +24,7 @@ class NodeConditionPatch {
   /// [reason] (brief) reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of node condition.
-  NodeConditionPatch({
+  const NodeConditionPatch({
     this.lastHeartbeatTime,
     this.lastTransitionTime,
     this.message,

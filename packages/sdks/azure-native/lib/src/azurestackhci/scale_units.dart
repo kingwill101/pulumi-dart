@@ -14,7 +14,7 @@ class ScaleUnits {
   /// Creates a new [ScaleUnits].
   /// [deploymentData] Deployment Data to deploy AzureStackHCI Cluster.
   /// [sbePartnerInfo] Solution builder extension (SBE) partner properties
-  ScaleUnits({
+  const ScaleUnits({
     required this.deploymentData,
     this.sbePartnerInfo,
   });

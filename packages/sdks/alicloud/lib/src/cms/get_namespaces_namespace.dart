@@ -26,7 +26,7 @@ class GetNamespacesNamespace {
   /// [namespace] Indicator warehouse name.
   /// [namespaceId] The ID of the Namespace.
   /// [specification] Data storage duration.
-  GetNamespacesNamespace({
+  const GetNamespacesNamespace({
     required this.createTime,
     required this.description,
     required this.id,

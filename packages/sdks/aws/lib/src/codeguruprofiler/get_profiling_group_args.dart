@@ -15,7 +15,7 @@ class GetProfilingGroupArgs {
   /// Creates a new [GetProfilingGroupArgs].
   /// [name] The name of the profiling group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetProfilingGroupArgs({
+  const GetProfilingGroupArgs({
     required this.name,
     this.region,
   });

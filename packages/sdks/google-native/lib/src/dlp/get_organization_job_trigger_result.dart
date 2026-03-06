@@ -39,7 +39,7 @@ class GetOrganizationJobTriggerResult {
   /// [status] A status for this trigger.
   /// [triggers] A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
   /// [updateTime] The last update timestamp of a triggeredJob.
-  GetOrganizationJobTriggerResult({
+  const GetOrganizationJobTriggerResult({
     required this.createTime,
     required this.description,
     required this.displayName,

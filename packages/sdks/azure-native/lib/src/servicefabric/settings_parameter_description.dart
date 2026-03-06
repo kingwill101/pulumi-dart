@@ -12,7 +12,7 @@ class SettingsParameterDescription {
   /// Creates a new [SettingsParameterDescription].
   /// [name] The parameter name of fabric setting.
   /// [value] The parameter value of fabric setting.
-  SettingsParameterDescription({
+  const SettingsParameterDescription({
     required this.name,
     required this.value,
   });

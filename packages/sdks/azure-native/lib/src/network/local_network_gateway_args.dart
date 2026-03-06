@@ -38,7 +38,7 @@ class LocalNetworkGatewayArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  LocalNetworkGatewayArgs({
+  const LocalNetworkGatewayArgs({
     this.bgpSettings,
     this.fqdn,
     this.gatewayIpAddress,

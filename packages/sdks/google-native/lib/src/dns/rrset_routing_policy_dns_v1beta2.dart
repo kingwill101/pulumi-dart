@@ -21,7 +21,7 @@ class RRSetRoutingPolicyDnsV1beta2 {
   /// [primaryBackup] Optional.
   /// [wrr] Optional.
   /// [wrrPolicy] Optional.
-  RRSetRoutingPolicyDnsV1beta2({
+  const RRSetRoutingPolicyDnsV1beta2({
     this.geo,
     this.geoPolicy,
     this.kind,

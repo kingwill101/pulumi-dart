@@ -18,7 +18,7 @@ class AppEngineVersionInfoResponseNetworkmanagementV1beta1 {
   /// [environment] App Engine execution environment for a version.
   /// [runtime] Runtime of the App Engine version.
   /// [uri] URI of an App Engine version.
-  AppEngineVersionInfoResponseNetworkmanagementV1beta1({
+  const AppEngineVersionInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.environment,
     required this.runtime,

@@ -8,7 +8,7 @@ class LinuxVirtualMachineOsImageNotification {
 
   /// Creates a new [LinuxVirtualMachineOsImageNotification].
   /// [timeout] Length of time a notification to be sent to the VM on the instance metadata server till the VM gets OS upgraded. The only possible value is `PT15M`. Defaults to `PT15M`.
-  LinuxVirtualMachineOsImageNotification({
+  const LinuxVirtualMachineOsImageNotification({
     this.timeout,
   });
 

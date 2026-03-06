@@ -10,7 +10,7 @@ class DiskConfiguration {
 
   /// Creates a new [DiskConfiguration].
   /// [diskVolumeConfigurations] The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
-  DiskConfiguration({
+  const DiskConfiguration({
     this.diskVolumeConfigurations,
   });
 

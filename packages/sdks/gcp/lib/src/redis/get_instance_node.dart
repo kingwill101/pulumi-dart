@@ -11,7 +11,7 @@ class GetInstanceNode {
   /// Creates a new [GetInstanceNode].
   /// [id] Node identifying string. e.g. 'node-0', 'node-1'
   /// [zone] Location of the node.
-  GetInstanceNode({
+  const GetInstanceNode({
     required this.id,
     required this.zone,
   });

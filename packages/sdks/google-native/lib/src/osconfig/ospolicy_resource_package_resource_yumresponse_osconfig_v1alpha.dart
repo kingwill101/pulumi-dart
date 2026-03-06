@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceYUMResponseOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceYUMResponseOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceYUMResponseOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceYUMResponseOsconfigV1alpha({
     required this.name,
   });
 

@@ -18,7 +18,7 @@ class GetTokenArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tokenName] The name of the token.
-  GetTokenArgs({
+  const GetTokenArgs({
     required this.registryName,
     required this.resourceGroupName,
     required this.tokenName,

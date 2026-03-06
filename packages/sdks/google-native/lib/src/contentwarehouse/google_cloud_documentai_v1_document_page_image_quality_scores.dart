@@ -13,7 +13,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageImageQualityScores].
   /// [detectedDefects] A list of detected defects.
   /// [qualityScore] The overall quality score. Range `[0, 1]` where `1` is perfect quality.
-  GoogleCloudDocumentaiV1DocumentPageImageQualityScores({
+  const GoogleCloudDocumentaiV1DocumentPageImageQualityScores({
     this.detectedDefects,
     this.qualityScore,
   });

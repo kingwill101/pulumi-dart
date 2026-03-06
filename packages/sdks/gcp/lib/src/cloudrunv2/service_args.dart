@@ -99,7 +99,7 @@ class ServiceArgs {
   /// [scaling] Scaling settings that apply to the whole service
   /// [template] The template used to create revisions for this Service.
   /// [traffics] Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
-  ServiceArgs({
+  const ServiceArgs({
     this.annotations,
     this.binaryAuthorization,
     this.buildConfig,

@@ -26,7 +26,7 @@ class NamespaceEvent {
   /// [eventNotifier] The address of the notifier of the event in the asset (e.g. URL) so that a client can access the event on the asset.
   /// [name] The name of the event.
   /// [typeRef] URI or type definition ID.
-  NamespaceEvent({
+  const NamespaceEvent({
     this.dataPoints,
     this.destinations,
     this.eventConfiguration,

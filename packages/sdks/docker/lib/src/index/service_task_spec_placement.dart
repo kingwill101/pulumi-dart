@@ -18,7 +18,7 @@ class ServiceTaskSpecPlacement {
   /// [maxReplicas] Maximum number of replicas for per node (default value is `0`, which is unlimited)
   /// [platforms] Platforms stores all the platforms that the service's image can run on
   /// [prefs] Preferences provide a way to make the scheduler aware of factors such as topology. They are provided in order from highest to lowest precedence, e.g.: `spread=node.role.manager`
-  ServiceTaskSpecPlacement({
+  const ServiceTaskSpecPlacement({
     this.constraints,
     this.maxReplicas,
     this.platforms,

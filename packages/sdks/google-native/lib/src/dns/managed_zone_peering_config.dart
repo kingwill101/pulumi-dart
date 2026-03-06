@@ -11,7 +11,7 @@ class ManagedZonePeeringConfig {
   /// Creates a new [ManagedZonePeeringConfig].
   /// [kind] Optional.
   /// [targetNetwork] The network with which to peer.
-  ManagedZonePeeringConfig({
+  const ManagedZonePeeringConfig({
     this.kind,
     this.targetNetwork,
   });

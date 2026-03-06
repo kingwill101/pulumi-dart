@@ -43,7 +43,7 @@ class MigrateSqlServerSqlMITaskInput {
   /// [sourceConnectionInfo] Information for connecting to source
   /// [startedOn] Date and time relative to UTC when the migration was started on
   /// [targetConnectionInfo] Information for connecting to target
-  MigrateSqlServerSqlMITaskInput({
+  const MigrateSqlServerSqlMITaskInput({
     this.aadDomainName,
     required this.backupBlobShare,
     this.backupFileShare,

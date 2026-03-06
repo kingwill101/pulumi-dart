@@ -27,7 +27,7 @@ class PipelineNotifications {
   /// [error] The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition while processing a job in this pipeline.
   /// [progressing] The topic ARN for the Amazon Simple Notification Service (Amazon SNS) topic that you want to notify when Elastic Transcoder has started to process a job in this pipeline.
   /// [warning] The topic ARN for the Amazon SNS topic that you want to notify when Elastic Transcoder encounters a warning condition while processing a job in this pipeline.
-  PipelineNotifications({
+  const PipelineNotifications({
     this.completed,
     this.error,
     this.progressing,

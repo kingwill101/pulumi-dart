@@ -25,7 +25,7 @@ class PipelineRunArgs {
   /// [registryName] The name of the container registry.
   /// [request] The request parameters for a pipeline run.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PipelineRunArgs({
+  const PipelineRunArgs({
     this.forceUpdateTag,
     this.pipelineRunName,
     required this.registryName,

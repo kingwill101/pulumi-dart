@@ -23,7 +23,7 @@ class InstanceStateArgs {
   /// [instanceId] ID of the instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] State of the instance. Valid values are `stopped`, `running`.
-  InstanceStateArgs({
+  const InstanceStateArgs({
     this.force,
     required this.instanceId,
     this.region,

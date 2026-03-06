@@ -43,7 +43,7 @@ class ProvisioningTemplateState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [templateBody] The JSON formatted contents of the fleet provisioning template.
   /// [type] The type you define in a provisioning template.
-  ProvisioningTemplateState({
+  const ProvisioningTemplateState({
     this.arn,
     this.defaultVersionId,
     this.description,

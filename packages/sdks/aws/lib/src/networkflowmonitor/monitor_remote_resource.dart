@@ -11,7 +11,7 @@ class MonitorRemoteResource {
   /// Creates a new [MonitorRemoteResource].
   /// [identifier] The identifier of the resource. For VPC resources, this is the VPC ARN.
   /// [type] The type of the resource. Valid values are `AWS::EC2::VPC`, `AWS::EC2::Subnet`, `AWS::EC2::AvailabilityZone`, `AWS::EC2::Region`, and `AWS::EKS::Cluster`.
-  MonitorRemoteResource({
+  const MonitorRemoteResource({
     required this.identifier,
     required this.type,
   });

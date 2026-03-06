@@ -18,7 +18,7 @@ class GetSigningProfileArgs {
   /// [name] Name of the target signing profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] List of tags associated with the signing profile.
-  GetSigningProfileArgs({
+  const GetSigningProfileArgs({
     required this.name,
     this.region,
     this.tags,

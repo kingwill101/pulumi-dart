@@ -25,7 +25,7 @@ class GetDedicatedHostAccountsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetDedicatedHostAccountsArgs({
+  const GetDedicatedHostAccountsArgs({
     this.dedicatedHostId,
     this.ids,
     this.nameRegex,

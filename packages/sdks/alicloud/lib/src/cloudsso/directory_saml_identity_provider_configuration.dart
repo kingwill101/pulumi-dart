@@ -32,7 +32,7 @@ class DirectorySamlIdentityProviderConfiguration {
   /// [ssoStatus] SSOStatus
   /// [updateTime] UpdateTime
   /// [wantRequestSigned] SP Request whether the signature is required
-  DirectorySamlIdentityProviderConfiguration({
+  const DirectorySamlIdentityProviderConfiguration({
     this.bindingType,
     this.certificateIds,
     this.createTime,

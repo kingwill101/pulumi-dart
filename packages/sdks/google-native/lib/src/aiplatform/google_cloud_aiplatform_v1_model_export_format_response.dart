@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1ModelExportFormatResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1ModelExportFormatResponse].
   /// [exportableContents] The content of this Model that may be exported.
-  GoogleCloudAiplatformV1ModelExportFormatResponse({
+  const GoogleCloudAiplatformV1ModelExportFormatResponse({
     required this.exportableContents,
   });
 

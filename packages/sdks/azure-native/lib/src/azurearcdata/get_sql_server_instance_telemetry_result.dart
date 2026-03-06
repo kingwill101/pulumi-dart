@@ -16,7 +16,7 @@ class GetSqlServerInstanceTelemetryResult {
   /// [columns] The columns of the result telemetry table for the SQL Server instance.
   /// [nextLink] The link to the next section of rows of the telemetry response for the SQL Server instance. Null if no more sections are available.
   /// [rows] A list of rows from the result telemetry table for the SQL Server instance.
-  GetSqlServerInstanceTelemetryResult({
+  const GetSqlServerInstanceTelemetryResult({
     required this.columns,
     required this.nextLink,
     required this.rows,

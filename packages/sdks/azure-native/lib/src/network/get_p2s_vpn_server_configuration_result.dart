@@ -21,7 +21,7 @@ class GetP2sVpnServerConfigurationResult {
   /// [id] Resource ID.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [properties] Properties of the P2SVpnServer configuration.
-  GetP2sVpnServerConfigurationResult({
+  const GetP2sVpnServerConfigurationResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

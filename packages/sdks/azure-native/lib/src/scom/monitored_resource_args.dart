@@ -18,7 +18,7 @@ class MonitoredResourceArgs {
   /// [instanceName] Name of the SCOM managed instance.
   /// [monitoredResourceName] The monitored resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  MonitoredResourceArgs({
+  const MonitoredResourceArgs({
     required this.instanceName,
     this.monitoredResourceName,
     required this.resourceGroupName,

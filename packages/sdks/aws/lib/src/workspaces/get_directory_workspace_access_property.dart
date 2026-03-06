@@ -29,7 +29,7 @@ class GetDirectoryWorkspaceAccessProperty {
   /// [deviceTypeWeb] (Optional) Indicates whether users can access their WorkSpaces through a web browser.
   /// [deviceTypeWindows] (Optional) Indicates whether users can use Windows clients to access their WorkSpaces.
   /// [deviceTypeZeroclient] (Optional) Indicates whether users can use zero client devices to access their WorkSpaces.
-  GetDirectoryWorkspaceAccessProperty({
+  const GetDirectoryWorkspaceAccessProperty({
     required this.deviceTypeAndroid,
     required this.deviceTypeChromeos,
     required this.deviceTypeIos,

@@ -18,7 +18,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVolume {
   /// [pool] Specifies the pool from which the volume source is derived in the backing store.
   /// [secLabels] Configures the security label settings for the volume in the backing store.
   /// [volume] Provides the volume definition used as the backing store source.
-  DomainDevicesDiskMirrorBackingStoreSourceVolume({
+  const DomainDevicesDiskMirrorBackingStoreSourceVolume({
     this.mode,
     this.pool,
     this.secLabels,

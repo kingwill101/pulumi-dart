@@ -21,7 +21,7 @@ class VpcEndpointServiceUserArgs {
   /// [serviceId] The endpoint service ID.
   /// [userArn] The whitelist in the format of ARN.
   /// [userId] The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
-  VpcEndpointServiceUserArgs({
+  const VpcEndpointServiceUserArgs({
     this.dryRun,
     required this.serviceId,
     this.userArn,

@@ -19,7 +19,7 @@ class GetDbInstancesResult {
   /// [instances] A list of SelectDB DBInstance. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [tags] Optional.
-  GetDbInstancesResult({
+  const GetDbInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

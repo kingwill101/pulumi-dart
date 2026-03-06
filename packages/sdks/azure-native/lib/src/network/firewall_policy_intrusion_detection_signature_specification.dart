@@ -12,7 +12,7 @@ class FirewallPolicyIntrusionDetectionSignatureSpecification {
   /// Creates a new [FirewallPolicyIntrusionDetectionSignatureSpecification].
   /// [id] Signature id.
   /// [mode] The signature state.
-  FirewallPolicyIntrusionDetectionSignatureSpecification({
+  const FirewallPolicyIntrusionDetectionSignatureSpecification({
     this.id,
     this.mode,
   });

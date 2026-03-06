@@ -24,7 +24,7 @@ class AwsGovcloudLinkAccountArgs {
   /// [arn] The Amazon Resource Name (ARN) of the IAM role.
   /// [metricCollectionMode] The mode by which metric data is to be collected from the linked AWS GovCloud account. Defaults to `PULL`, if not specified in the configuration.
   /// [name] The name/identifier of the AWS GovCloud - New Relic 'linked' account.
-  AwsGovcloudLinkAccountArgs({
+  const AwsGovcloudLinkAccountArgs({
     this.accountId,
     required this.arn,
     this.metricCollectionMode,

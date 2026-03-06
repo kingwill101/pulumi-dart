@@ -11,7 +11,7 @@ class GetSubscriptionCloudStorageConfigAvroConfig {
   /// Creates a new [GetSubscriptionCloudStorageConfigAvroConfig].
   /// [useTopicSchema] When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
   /// [writeMetadata] When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
-  GetSubscriptionCloudStorageConfigAvroConfig({
+  const GetSubscriptionCloudStorageConfigAvroConfig({
     required this.useTopicSchema,
     required this.writeMetadata,
   });

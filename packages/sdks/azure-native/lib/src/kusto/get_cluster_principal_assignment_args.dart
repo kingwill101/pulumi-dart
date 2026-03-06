@@ -18,7 +18,7 @@ class GetClusterPrincipalAssignmentArgs {
   /// [clusterName] The name of the Kusto cluster.
   /// [principalAssignmentName] The name of the Kusto principalAssignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetClusterPrincipalAssignmentArgs({
+  const GetClusterPrincipalAssignmentArgs({
     required this.clusterName,
     required this.principalAssignmentName,
     required this.resourceGroupName,

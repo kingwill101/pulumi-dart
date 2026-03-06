@@ -54,7 +54,7 @@ class GetServerGroupsGroup {
   /// [status] The status of the server group.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the VPC to which the server group belongs.
-  GetServerGroupsGroup({
+  const GetServerGroupsGroup({
     required this.addressIpVersion,
     required this.connectionDrain,
     required this.connectionDrainTimeout,

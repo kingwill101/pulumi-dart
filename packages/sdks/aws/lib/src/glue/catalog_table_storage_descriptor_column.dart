@@ -17,7 +17,7 @@ class CatalogTableStorageDescriptorColumn {
   /// [name] Name of the Column.
   /// [parameters] Key-value pairs defining properties associated with the column.
   /// [type] Datatype of data in the Column.
-  CatalogTableStorageDescriptorColumn({
+  const CatalogTableStorageDescriptorColumn({
     this.comment,
     required this.name,
     this.parameters,

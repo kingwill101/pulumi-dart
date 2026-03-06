@@ -25,7 +25,7 @@ class ShareState {
   /// [name] The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
   /// [snapshotSchedule] A `snapshot_schedule` block as defined below.
   /// [terms] The terms of the Data Share.
-  ShareState({
+  const ShareState({
     this.accountId,
     this.description,
     this.kind,

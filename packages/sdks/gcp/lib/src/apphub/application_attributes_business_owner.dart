@@ -11,7 +11,7 @@ class ApplicationAttributesBusinessOwner {
   /// Creates a new [ApplicationAttributesBusinessOwner].
   /// [displayName] Optional. Contact's name.
   /// [email] Required. Email address of the contacts.
-  ApplicationAttributesBusinessOwner({
+  const ApplicationAttributesBusinessOwner({
     this.displayName,
     required this.email,
   });

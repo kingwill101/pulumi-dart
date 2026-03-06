@@ -22,7 +22,7 @@ class DatabaseOnlineMigrationArgs {
   /// [disableSsl] When set to true, enables SSL encryption when connecting to the source database.
   /// [ignoreDbs] A list of databases that should be ignored during migration.
   /// [source] Configuration for migration
-  DatabaseOnlineMigrationArgs({
+  const DatabaseOnlineMigrationArgs({
     required this.clusterId,
     this.disableSsl,
     this.ignoreDbs,

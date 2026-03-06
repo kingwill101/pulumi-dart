@@ -32,7 +32,7 @@ class GetBudgetSubscriptionResult {
   /// [subscriptionId] Required.
   /// [timeGrain] The time covered by a budget.
   /// [timePeriods] A `time_period` block as defined below.
-  GetBudgetSubscriptionResult({
+  const GetBudgetSubscriptionResult({
     required this.amount,
     required this.filters,
     required this.id,

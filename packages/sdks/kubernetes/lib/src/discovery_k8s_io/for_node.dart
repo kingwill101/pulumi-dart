@@ -9,7 +9,7 @@ class ForNode {
 
   /// Creates a new [ForNode].
   /// [name] name represents the name of the node.
-  ForNode({
+  const ForNode({
     required this.name,
   });
 

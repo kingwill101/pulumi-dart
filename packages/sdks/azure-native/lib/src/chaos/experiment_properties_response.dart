@@ -21,7 +21,7 @@ class ExperimentPropertiesResponse {
   /// [provisioningState] Most recent provisioning state for the given experiment resource.
   /// [selectors] List of selectors.
   /// [steps] List of steps.
-  ExperimentPropertiesResponse({
+  const ExperimentPropertiesResponse({
     this.customerDataStorage,
     required this.provisioningState,
     required this.selectors,

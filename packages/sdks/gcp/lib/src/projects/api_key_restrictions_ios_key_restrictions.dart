@@ -8,7 +8,7 @@ class ApiKeyRestrictionsIosKeyRestrictions {
 
   /// Creates a new [ApiKeyRestrictionsIosKeyRestrictions].
   /// [allowedBundleIds] A list of bundle IDs that are allowed when making API calls with this key.
-  ApiKeyRestrictionsIosKeyRestrictions({
+  const ApiKeyRestrictionsIosKeyRestrictions({
     required this.allowedBundleIds,
   });
 

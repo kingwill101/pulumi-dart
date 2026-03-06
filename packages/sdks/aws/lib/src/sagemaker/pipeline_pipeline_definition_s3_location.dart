@@ -14,7 +14,7 @@ class PipelinePipelineDefinitionS3Location {
   /// [bucket] Name of the S3 bucket.
   /// [objectKey] The object key (or key name) uniquely identifies the object in an S3 bucket.
   /// [versionId] Version Id of the pipeline definition file. If not specified, Amazon SageMaker AI will retrieve the latest version.
-  PipelinePipelineDefinitionS3Location({
+  const PipelinePipelineDefinitionS3Location({
     required this.bucket,
     required this.objectKey,
     this.versionId,

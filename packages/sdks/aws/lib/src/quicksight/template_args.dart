@@ -37,7 +37,7 @@ class TemplateArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [templateId] Identifier for the template.
   /// [versionDescription] A description of the current template version being created/updated.
-  TemplateArgs({
+  const TemplateArgs({
     this.awsAccountId,
     this.name,
     this.permissions,

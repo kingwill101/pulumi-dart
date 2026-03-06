@@ -38,7 +38,7 @@ class Info {
   /// [minCompatibilityMinor] MinCompatibilityMinor is the minor version of the minimum compatibility version
   /// [minor] Minor is the minor version of the binary version
   /// [platform] Required.
-  Info({
+  const Info({
     required this.buildDate,
     required this.compiler,
     this.emulationMajor,

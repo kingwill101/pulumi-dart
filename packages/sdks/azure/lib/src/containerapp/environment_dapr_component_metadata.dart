@@ -14,7 +14,7 @@ class EnvironmentDaprComponentMetadata {
   /// [name] The name of the Metadata configuration item.
   /// [secretName] The name of a secret specified in the `secrets` block that contains the value for this metadata configuration item.
   /// [value] The value for this metadata configuration item.
-  EnvironmentDaprComponentMetadata({
+  const EnvironmentDaprComponentMetadata({
     required this.name,
     this.secretName,
     this.value,

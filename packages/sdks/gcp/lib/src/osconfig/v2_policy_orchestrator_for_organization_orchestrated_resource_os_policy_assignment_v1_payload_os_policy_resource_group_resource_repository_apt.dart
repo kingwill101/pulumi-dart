@@ -26,7 +26,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// [distribution] Required. Distribution of this repository.
   /// [gpgKey] URI of the key file for this repository. The agent maintains a
   /// [uri] Required. URI for this repository.
-  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt({
+  const V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryApt({
     required this.archiveType,
     required this.components,
     required this.distribution,

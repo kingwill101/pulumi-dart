@@ -64,7 +64,7 @@ class MasterTargetServerResponse {
   /// [retentionVolumes] The retention volumes of Master target Server.
   /// [validationErrors] Validation errors.
   /// [versionStatus] Version status.
-  MasterTargetServerResponse({
+  const MasterTargetServerResponse({
     this.agentExpiryDate,
     this.agentVersion,
     this.agentVersionDetails,

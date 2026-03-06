@@ -8,7 +8,7 @@ class FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet {
 
   /// Creates a new [FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet].
   /// [definitions] Set of IPv4 or IPv6 addresses in CIDR notation to use for the Suricata `HOME_NET` variable.
-  FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet({
+  const FirewallPolicyFirewallPolicyPolicyVariablesRuleVariableIpSet({
     required this.definitions,
   });
 

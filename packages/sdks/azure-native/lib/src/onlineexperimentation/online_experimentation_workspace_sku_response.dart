@@ -12,7 +12,7 @@ class OnlineExperimentationWorkspaceSkuResponse {
   /// Creates a new [OnlineExperimentationWorkspaceSkuResponse].
   /// [name] The name of the SKU. Ex - F0, P0. It is typically a letter+number code
   /// [tier] The name of the SKU tier
-  OnlineExperimentationWorkspaceSkuResponse({
+  const OnlineExperimentationWorkspaceSkuResponse({
     required this.name,
     required this.tier,
   });

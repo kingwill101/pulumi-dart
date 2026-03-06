@@ -21,7 +21,7 @@ class GetFleetDatabaseArgs {
   /// [fleetName] Name of the database fleet.
   /// [fleetspaceName] Name of the fleetspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFleetDatabaseArgs({
+  const GetFleetDatabaseArgs({
     required this.databaseName,
     required this.fleetName,
     required this.fleetspaceName,

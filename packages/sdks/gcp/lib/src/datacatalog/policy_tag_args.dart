@@ -28,7 +28,7 @@ class PolicyTagArgs {
   /// [displayName] User defined name of this policy tag. It must: be unique within the parent
   /// [parentPolicyTag] Resource name of this policy tag's parent policy tag.
   /// [taxonomy] Taxonomy the policy tag is associated with
-  PolicyTagArgs({
+  const PolicyTagArgs({
     this.description,
     required this.displayName,
     this.parentPolicyTag,

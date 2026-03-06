@@ -8,7 +8,7 @@ class ContainerMountBindOptions {
 
   /// Creates a new [ContainerMountBindOptions].
   /// [propagation] A propagation mode with the value.
-  ContainerMountBindOptions({
+  const ContainerMountBindOptions({
     this.propagation,
   });
 

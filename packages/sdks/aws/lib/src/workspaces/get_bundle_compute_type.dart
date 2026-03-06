@@ -8,7 +8,7 @@ class GetBundleComputeType {
 
   /// Creates a new [GetBundleComputeType].
   /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
-  GetBundleComputeType({
+  const GetBundleComputeType({
     required this.name,
   });
 

@@ -57,7 +57,7 @@ class AvailabilityGroupInfoResponse {
   /// [secondaryRecoveryHealthDescription] Indicates the recovery health of a secondary replica.
   /// [synchronizationHealthDescription] Reflects a roll-up of the synchronization health of all availability replicas in the availability group.
   /// [version] SQL Server availability group current version.
-  AvailabilityGroupInfoResponse({
+  const AvailabilityGroupInfoResponse({
     required this.automatedBackupPreferenceDescription,
     this.basicFeatures,
     required this.clusterTypeDescription,

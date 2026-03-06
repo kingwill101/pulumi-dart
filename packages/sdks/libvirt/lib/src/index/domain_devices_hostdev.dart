@@ -59,7 +59,7 @@ class DomainDevicesHostdev {
   /// [subsysScsi] Configures SCSI parameters for the host device passed through to the VM.
   /// [subsysScsiHost] Configures SCSI host device parameters for the host device passed through to the VM.
   /// [subsysUsb] Configures a USB subsystem device to be utilized by the virtual machine.
-  DomainDevicesHostdev({
+  const DomainDevicesHostdev({
     this.acpi,
     this.address,
     this.alias,

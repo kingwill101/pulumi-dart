@@ -14,7 +14,7 @@ class GetServiceNetworkConfiguration {
   /// [assignPublicIp] Whether tasks receive public IP addresses
   /// [securityGroups] Security groups associated with tasks
   /// [subnets] Subnets associated with tasks
-  GetServiceNetworkConfiguration({
+  const GetServiceNetworkConfiguration({
     required this.assignPublicIp,
     required this.securityGroups,
     required this.subnets,

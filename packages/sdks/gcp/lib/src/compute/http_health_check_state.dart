@@ -59,7 +59,7 @@ class HttpHealthCheckState {
   /// [selfLink] The URI of the created resource.
   /// [timeoutSec] How long (in seconds) to wait before claiming failure.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many
-  HttpHealthCheckState({
+  const HttpHealthCheckState({
     this.checkIntervalSec,
     this.creationTimestamp,
     this.description,

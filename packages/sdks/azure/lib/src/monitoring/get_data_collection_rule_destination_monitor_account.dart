@@ -11,7 +11,7 @@ class GetDataCollectionRuleDestinationMonitorAccount {
   /// Creates a new [GetDataCollectionRuleDestinationMonitorAccount].
   /// [monitorAccountId] The resource ID of the Monitor Account.
   /// [name] Specifies the name of the Data Collection Rule.
-  GetDataCollectionRuleDestinationMonitorAccount({
+  const GetDataCollectionRuleDestinationMonitorAccount({
     required this.monitorAccountId,
     required this.name,
   });

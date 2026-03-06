@@ -10,7 +10,7 @@ class CopyOnExpiryOptionResponse {
 
   /// Creates a new [CopyOnExpiryOptionResponse].
   /// [objectType] Type of the specific object - used for deserializing
-  CopyOnExpiryOptionResponse({
+  const CopyOnExpiryOptionResponse({
     required this.objectType,
   });
 

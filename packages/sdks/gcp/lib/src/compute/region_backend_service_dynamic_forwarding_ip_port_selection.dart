@@ -8,7 +8,7 @@ class RegionBackendServiceDynamicForwardingIpPortSelection {
 
   /// Creates a new [RegionBackendServiceDynamicForwardingIpPortSelection].
   /// [enabled] A boolean flag enabling IP:PORT based dynamic forwarding.
-  RegionBackendServiceDynamicForwardingIpPortSelection({
+  const RegionBackendServiceDynamicForwardingIpPortSelection({
     this.enabled,
   });
 

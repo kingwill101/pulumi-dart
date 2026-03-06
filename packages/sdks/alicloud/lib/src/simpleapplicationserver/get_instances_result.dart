@@ -24,7 +24,7 @@ class GetInstancesResult {
   /// [outputFile] Optional.
   /// [paymentType] Optional.
   /// [status] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

@@ -27,7 +27,7 @@ class AwsAccessAnalyzerAnalyzerProperties {
   /// [arn] Amazon Resource Name (ARN) of the analyzer
   /// [tags] An array of key-value pairs to apply to this resource.
   /// [type] The type of the analyzer, must be one of ACCOUNT, ORGANIZATION, ACCOUNT_UNUSED_ACCESS or ORGANIZATION_UNUSED_ACCESS
-  AwsAccessAnalyzerAnalyzerProperties({
+  const AwsAccessAnalyzerAnalyzerProperties({
     this.analyzerConfiguration,
     this.analyzerName,
     this.archiveRules,

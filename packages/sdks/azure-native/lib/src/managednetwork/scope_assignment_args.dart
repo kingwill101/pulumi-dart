@@ -21,7 +21,7 @@ class ScopeAssignmentArgs {
   /// [location] The geo-location where the resource lives
   /// [scope] The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use 'subscriptions/{subscription-id}' for a subscription, 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
   /// [scopeAssignmentName] The name of the scope assignment to create.
-  ScopeAssignmentArgs({
+  const ScopeAssignmentArgs({
     this.assignedManagedNetwork,
     this.location,
     required this.scope,

@@ -19,7 +19,7 @@ class GetRoutersRouterInterface {
   /// [privateIpAddress] Required.
   /// [redundantInterface] Required.
   /// [subnetwork] Required.
-  GetRoutersRouterInterface({
+  const GetRoutersRouterInterface({
     required this.ipRange,
     required this.linkedInterconnectAttachment,
     required this.linkedVpnTunnel,

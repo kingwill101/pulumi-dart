@@ -40,7 +40,7 @@ class PostgreSqlTableDatasetResponse {
   /// [table] The PostgreSQL table name. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  PostgreSqlTableDatasetResponse({
+  const PostgreSqlTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

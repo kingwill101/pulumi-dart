@@ -107,7 +107,7 @@ class GetAppServicePlanResult {
   /// [type] Resource type.
   /// [workerTierName] Target worker tier assigned to the App Service plan.
   /// [zoneRedundant] If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
-  GetAppServicePlanResult({
+  const GetAppServicePlanResult({
     required this.azureApiVersion,
     this.elasticScaleEnabled,
     this.extendedLocation,

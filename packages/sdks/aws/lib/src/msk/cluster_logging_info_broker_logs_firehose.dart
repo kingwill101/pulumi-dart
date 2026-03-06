@@ -10,7 +10,7 @@ class ClusterLoggingInfoBrokerLogsFirehose {
   /// Creates a new [ClusterLoggingInfoBrokerLogsFirehose].
   /// [deliveryStream] Name of the Kinesis Data Firehose delivery stream to deliver logs to.
   /// [enabled] Required.
-  ClusterLoggingInfoBrokerLogsFirehose({
+  const ClusterLoggingInfoBrokerLogsFirehose({
     this.deliveryStream,
     required this.enabled,
   });

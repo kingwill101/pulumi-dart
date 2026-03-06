@@ -98,7 +98,7 @@ class RegionalSecretArgs {
   /// [ttl] The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
   /// [versionAliases] Mapping from version alias to version name.
   /// [versionDestroyTtl] Secret Version TTL after destruction request.
-  RegionalSecretArgs({
+  const RegionalSecretArgs({
     this.annotations,
     this.customerManagedEncryption,
     this.deletionProtection,

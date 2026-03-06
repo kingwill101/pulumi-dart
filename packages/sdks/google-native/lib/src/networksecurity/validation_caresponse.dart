@@ -14,7 +14,7 @@ class ValidationCAResponse {
   /// Creates a new [ValidationCAResponse].
   /// [certificateProviderInstance] The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
   /// [grpcEndpoint] gRPC specific configuration to access the gRPC server to obtain the CA certificate.
-  ValidationCAResponse({
+  const ValidationCAResponse({
     required this.certificateProviderInstance,
     required this.grpcEndpoint,
   });

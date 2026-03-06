@@ -10,7 +10,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjects {
 
   /// Creates a new [StreamSourceConfigOracleSourceConfigIncludeObjects].
   /// [oracleSchemas] Oracle schemas/databases in the database server
-  StreamSourceConfigOracleSourceConfigIncludeObjects({
+  const StreamSourceConfigOracleSourceConfigIncludeObjects({
     required this.oracleSchemas,
   });
 

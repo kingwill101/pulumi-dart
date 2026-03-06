@@ -20,7 +20,7 @@ class DomainCpuTuneCacheTuneCach {
   /// [size] Configures the size of the cache allocated in the CPU tuning parameters.
   /// [type] Sets the type of cache being configured in the domain's CPU tuning settings.
   /// [unit] Specifies the unit of measurement for the configured cache size in CPU tuning.
-  DomainCpuTuneCacheTuneCach({
+  const DomainCpuTuneCacheTuneCach({
     this.id,
     required this.level,
     required this.size,

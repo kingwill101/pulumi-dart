@@ -21,7 +21,7 @@ class ImageReference {
   /// [publisher] The image publisher
   /// [sku] The image SKU
   /// [version] The image version specified on creation.
-  ImageReference({
+  const ImageReference({
     this.id,
     this.offer,
     this.publisher,

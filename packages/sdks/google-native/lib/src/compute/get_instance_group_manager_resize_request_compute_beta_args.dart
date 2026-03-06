@@ -17,7 +17,7 @@ class GetInstanceGroupManagerResizeRequestComputeBetaArgs {
   /// [project] Optional.
   /// [resizeRequest] Required.
   /// [zone] Required.
-  GetInstanceGroupManagerResizeRequestComputeBetaArgs({
+  const GetInstanceGroupManagerResizeRequestComputeBetaArgs({
     required this.instanceGroupManager,
     this.project,
     required this.resizeRequest,

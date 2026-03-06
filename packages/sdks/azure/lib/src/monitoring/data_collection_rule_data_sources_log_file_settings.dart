@@ -9,7 +9,7 @@ class DataCollectionRuleDataSourcesLogFileSettings {
 
   /// Creates a new [DataCollectionRuleDataSourcesLogFileSettings].
   /// [text] A `text` block as defined below.
-  DataCollectionRuleDataSourcesLogFileSettings({
+  const DataCollectionRuleDataSourcesLogFileSettings({
     required this.text,
   });
 

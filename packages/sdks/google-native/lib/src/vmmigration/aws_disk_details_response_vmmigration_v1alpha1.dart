@@ -15,7 +15,7 @@ class AwsDiskDetailsResponseVmmigrationV1alpha1 {
   /// [diskNumber] The ordinal number of the disk.
   /// [sizeGb] Size in GB.
   /// [volumeId] AWS volume ID.
-  AwsDiskDetailsResponseVmmigrationV1alpha1({
+  const AwsDiskDetailsResponseVmmigrationV1alpha1({
     required this.diskNumber,
     required this.sizeGb,
     required this.volumeId,

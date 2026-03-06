@@ -94,7 +94,7 @@ class DomainArgs {
   /// [softwareUpdateOptions] Software update options for the domain. Detailed below.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcOptions] Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html)). Detailed below.
-  DomainArgs({
+  const DomainArgs({
     this.accessPolicies,
     this.advancedOptions,
     this.advancedSecurityOptions,

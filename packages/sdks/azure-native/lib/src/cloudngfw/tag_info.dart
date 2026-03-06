@@ -12,7 +12,7 @@ class TagInfo {
   /// Creates a new [TagInfo].
   /// [key] tag name
   /// [value] tag value
-  TagInfo({
+  const TagInfo({
     required this.key,
     required this.value,
   });

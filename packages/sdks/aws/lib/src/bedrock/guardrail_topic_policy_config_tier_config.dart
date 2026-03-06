@@ -8,7 +8,7 @@ class GuardrailTopicPolicyConfigTierConfig {
 
   /// Creates a new [GuardrailTopicPolicyConfigTierConfig].
   /// [tierName] The name of the content policy tier. Valid values include STANDARD or CLASSIC.
-  GuardrailTopicPolicyConfigTierConfig({
+  const GuardrailTopicPolicyConfigTierConfig({
     required this.tierName,
   });
 

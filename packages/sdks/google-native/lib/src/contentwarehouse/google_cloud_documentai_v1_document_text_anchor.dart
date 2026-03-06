@@ -13,7 +13,7 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentTextAnchor].
   /// [content] Contains the content of the text span so that users do not have to look it up in the text_segments. It is always populated for formFields.
   /// [textSegments] The text segments from the Document.text.
-  GoogleCloudDocumentaiV1DocumentTextAnchor({
+  const GoogleCloudDocumentaiV1DocumentTextAnchor({
     this.content,
     this.textSegments,
   });

@@ -15,7 +15,7 @@ class GetEndpointPolicyNetworkservicesV1beta1Args {
   /// [endpointPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEndpointPolicyNetworkservicesV1beta1Args({
+  const GetEndpointPolicyNetworkservicesV1beta1Args({
     required this.endpointPolicyId,
     required this.location,
     this.project,

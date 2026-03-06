@@ -18,7 +18,7 @@ class GetWebAppVnetConnectionArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [vnetName] Name of the virtual network.
-  GetWebAppVnetConnectionArgs({
+  const GetWebAppVnetConnectionArgs({
     required this.name,
     required this.resourceGroupName,
     required this.vnetName,

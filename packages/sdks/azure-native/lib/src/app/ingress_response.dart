@@ -54,7 +54,7 @@ class IngressResponse {
   /// [targetPortHttpScheme] Whether an http app listens on http or https
   /// [traffic] Traffic weights for app's revisions
   /// [transport] Ingress transport protocol
-  IngressResponse({
+  const IngressResponse({
     this.additionalPortMappings,
     this.allowInsecure,
     this.clientCertificateMode,

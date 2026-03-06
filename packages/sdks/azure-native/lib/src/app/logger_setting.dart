@@ -12,7 +12,7 @@ class LoggerSetting {
   /// Creates a new [LoggerSetting].
   /// [level] The specified logger's log level.
   /// [logger] Logger name.
-  LoggerSetting({
+  const LoggerSetting({
     required this.level,
     required this.logger,
   });

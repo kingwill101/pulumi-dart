@@ -11,7 +11,7 @@ class GetBucketsBucketLogging {
   /// Creates a new [GetBucketsBucketLogging].
   /// [targetBucket] Bucket for storing access logs.
   /// [targetPrefix] Prefix of the saved access log file paths.
-  GetBucketsBucketLogging({
+  const GetBucketsBucketLogging({
     required this.targetBucket,
     required this.targetPrefix,
   });

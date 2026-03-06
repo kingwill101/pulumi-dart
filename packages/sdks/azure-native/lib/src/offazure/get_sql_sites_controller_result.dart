@@ -37,7 +37,7 @@ class GetSqlSitesControllerResult {
   /// [siteAppliancePropertiesCollection] Gets or sets the appliance details used by service to communicate
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSqlSitesControllerResult({
+  const GetSqlSitesControllerResult({
     required this.azureApiVersion,
     this.discoveryScenario,
     required this.id,

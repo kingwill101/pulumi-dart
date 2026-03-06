@@ -14,7 +14,7 @@ class SdkvoiceSipRuleTargetApplication {
   /// [awsRegion] The AWS Region of the target application.
   /// [priority] Priority of the SIP media application in the target list.
   /// [sipMediaApplicationId] The SIP media application ID.
-  SdkvoiceSipRuleTargetApplication({
+  const SdkvoiceSipRuleTargetApplication({
     required this.awsRegion,
     required this.priority,
     required this.sipMediaApplicationId,

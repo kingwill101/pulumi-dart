@@ -15,7 +15,7 @@ class DiagnosticConditionResponse {
   /// [code] The opaque diagnostic code.
   /// [message] The human-readable message describing the condition in detail. Localized in the Accept-Language of the client request.
   /// [since] The UTC timestamp of when the condition started. Customers should be able to find a corresponding event in the ops log around this time.
-  DiagnosticConditionResponse({
+  const DiagnosticConditionResponse({
     required this.code,
     required this.message,
     required this.since,

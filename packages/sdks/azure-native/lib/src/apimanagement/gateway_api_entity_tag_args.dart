@@ -25,7 +25,7 @@ class GatewayApiEntityTagArgs {
   /// [provisioningState] Provisioning state.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GatewayApiEntityTagArgs({
+  const GatewayApiEntityTagArgs({
     this.apiId,
     required this.gatewayId,
     this.provisioningState,

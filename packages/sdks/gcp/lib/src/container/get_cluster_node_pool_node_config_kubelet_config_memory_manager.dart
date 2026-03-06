@@ -8,7 +8,7 @@ class GetClusterNodePoolNodeConfigKubeletConfigMemoryManager {
 
   /// Creates a new [GetClusterNodePoolNodeConfigKubeletConfigMemoryManager].
   /// [policy] The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
-  GetClusterNodePoolNodeConfigKubeletConfigMemoryManager({
+  const GetClusterNodePoolNodeConfigKubeletConfigMemoryManager({
     required this.policy,
   });
 

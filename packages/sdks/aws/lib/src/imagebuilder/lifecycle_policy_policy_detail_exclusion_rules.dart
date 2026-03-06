@@ -12,7 +12,7 @@ class LifecyclePolicyPolicyDetailExclusionRules {
   /// Creates a new [LifecyclePolicyPolicyDetailExclusionRules].
   /// [amis] Lists configuration values that apply to AMIs that Image Builder should exclude from the lifecycle action. Detailed below.
   /// [tagMap] Contains a list of tags that Image Builder uses to skip lifecycle actions for Image Builder image resources that have them.
-  LifecyclePolicyPolicyDetailExclusionRules({
+  const LifecyclePolicyPolicyDetailExclusionRules({
     this.amis,
     this.tagMap,
   });

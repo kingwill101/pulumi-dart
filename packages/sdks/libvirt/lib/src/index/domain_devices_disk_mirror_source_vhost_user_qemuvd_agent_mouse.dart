@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse({
+  const DomainDevicesDiskMirrorSourceVhostUserQemuvdAgentMouse({
     required this.mode,
   });
 

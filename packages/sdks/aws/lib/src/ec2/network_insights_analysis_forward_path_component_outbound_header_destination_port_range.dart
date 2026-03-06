@@ -9,7 +9,7 @@ class NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRa
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange({
+  const NetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange({
     this.from,
     this.to,
   });

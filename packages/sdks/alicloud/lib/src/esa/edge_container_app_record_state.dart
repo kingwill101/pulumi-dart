@@ -18,7 +18,7 @@ class EdgeContainerAppRecordState {
   /// [createTime] The time when the domain name was added. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
   /// [recordName] The associated domain name.
   /// [siteId] The website ID.
-  EdgeContainerAppRecordState({
+  const EdgeContainerAppRecordState({
     this.appId,
     this.createTime,
     this.recordName,

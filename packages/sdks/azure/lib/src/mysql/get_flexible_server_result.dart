@@ -69,7 +69,7 @@ class GetFlexibleServerResult {
   /// [tags] A mapping of tags which are assigned to the MySQL Flexible Server.
   /// [version] The version of the MySQL Flexible Server.
   /// [zone] The Availability Zones where this MySQL Flexible Server is located.
-  GetFlexibleServerResult({
+  const GetFlexibleServerResult({
     required this.administratorLogin,
     required this.backupRetentionDays,
     required this.delegatedSubnetId,

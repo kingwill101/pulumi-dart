@@ -15,7 +15,7 @@ class CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
   /// [delegatedIdentityClientId] delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
   /// [identityType] Values can be systemAssignedIdentity or userAssignedIdentity
   /// [userAssignedIdentityResourceId] user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
-  CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity({
+  const CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity({
     this.delegatedIdentityClientId,
     this.identityType,
     this.userAssignedIdentityResourceId,

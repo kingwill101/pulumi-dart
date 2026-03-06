@@ -38,7 +38,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
   /// [mutationEnabled] Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
   /// [policyContent] Specifies the desired policy content on the cluster. Structure is documented below.
   /// [referentialRulesEnabled] Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
-  FeatureMembershipPolicycontrollerPolicyControllerHubConfig({
+  const FeatureMembershipPolicycontrollerPolicyControllerHubConfig({
     this.auditIntervalSeconds,
     this.constraintViolationLimit,
     this.deploymentConfigs,

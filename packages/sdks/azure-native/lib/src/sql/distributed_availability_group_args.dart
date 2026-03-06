@@ -43,7 +43,7 @@ class DistributedAvailabilityGroupArgs {
   /// [replicationMode] Replication mode of the link
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [seedingMode] Database seeding mode – can be Automatic (default), or Manual for supported scenarios.
-  DistributedAvailabilityGroupArgs({
+  const DistributedAvailabilityGroupArgs({
     this.databases,
     this.distributedAvailabilityGroupName,
     this.failoverMode,

@@ -9,7 +9,7 @@ class DomainSysInfoSmbiosChassis {
 
   /// Creates a new [DomainSysInfoSmbiosChassis].
   /// [entries] Defines individual entries for the chassis information in the SMBIOS configuration.
-  DomainSysInfoSmbiosChassis({
+  const DomainSysInfoSmbiosChassis({
     this.entries,
   });
 

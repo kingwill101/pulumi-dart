@@ -18,7 +18,7 @@ class GoogleCloudDiscoveryengineV1betaReplyReference {
   /// [end] Anchor text end index.
   /// [start] Anchor text start index.
   /// [uri] URI link reference.
-  GoogleCloudDiscoveryengineV1betaReplyReference({
+  const GoogleCloudDiscoveryengineV1betaReplyReference({
     this.anchorText,
     this.end,
     this.start,

@@ -9,7 +9,7 @@ class FullTextIndexPathResponse {
 
   /// Creates a new [FullTextIndexPathResponse].
   /// [path] The path to the full text field in the document.
-  FullTextIndexPathResponse({
+  const FullTextIndexPathResponse({
     required this.path,
   });
 

@@ -8,7 +8,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds {
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds].
   /// [secretName] Name of the secret for a virtual gateway's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
-  VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds({
+  const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationTrustSds({
     required this.secretName,
   });
 

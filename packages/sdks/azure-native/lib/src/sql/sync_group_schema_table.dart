@@ -13,7 +13,7 @@ class SyncGroupSchemaTable {
   /// Creates a new [SyncGroupSchemaTable].
   /// [columns] List of columns in sync group schema.
   /// [quotedName] Quoted name of sync group schema table.
-  SyncGroupSchemaTable({
+  const SyncGroupSchemaTable({
     this.columns,
     this.quotedName,
   });

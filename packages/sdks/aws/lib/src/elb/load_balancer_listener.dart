@@ -23,7 +23,7 @@ class LoadBalancerListener {
   /// [lbPort] The port to listen on for the load balancer
   /// [lbProtocol] The protocol to listen on. Valid values are `HTTP`,
   /// [sslCertificateId] The ARN of an SSL certificate you have
-  LoadBalancerListener({
+  const LoadBalancerListener({
     required this.instancePort,
     required this.instanceProtocol,
     required this.lbPort,

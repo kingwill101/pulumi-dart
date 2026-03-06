@@ -19,7 +19,7 @@ class TargetCostAllocationResource {
   /// [policyType] Method of cost allocation for the rule
   /// [resourceType] Type of resources contained in this cost allocation rule
   /// [values] Target resources for cost allocation. This list cannot contain more than 25 values.
-  TargetCostAllocationResource({
+  const TargetCostAllocationResource({
     required this.name,
     required this.policyType,
     required this.resourceType,

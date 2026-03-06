@@ -23,7 +23,7 @@ class GetFirewallRule {
   /// [port] (Required, string) Port of the Firewall Rule. Required when `protocol` is `tcp` or `udp`
   /// [protocol] (Required, string) Protocol of the Firewall Rule. `tcp`, `icmp`, `udp`, `gre`, `esp`
   /// [sourceIps] (Required, List) List of CIDRs that are allowed within this Firewall Rule (when `direction` is `in`)
-  GetFirewallRule({
+  const GetFirewallRule({
     this.description,
     this.destinationIps,
     required this.direction,

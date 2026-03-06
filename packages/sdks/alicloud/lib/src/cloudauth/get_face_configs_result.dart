@@ -20,7 +20,7 @@ class GetFaceConfigsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetFaceConfigsResult({
+  const GetFaceConfigsResult({
     required this.configs,
     required this.id,
     required this.ids,

@@ -24,7 +24,7 @@ class ChannelEncoderSettingsCaptionDescription {
   /// [languageCode] ISO 639-2 three-digit code.
   /// [languageDescription] Human readable information to indicate captions available for players (eg. English, or Spanish).
   /// [name] Name of the caption description. Used to associate a caption description with an output. Names must be unique within an event.
-  ChannelEncoderSettingsCaptionDescription({
+  const ChannelEncoderSettingsCaptionDescription({
     this.accessibility,
     required this.captionSelectorName,
     this.destinationSettings,

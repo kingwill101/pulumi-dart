@@ -21,7 +21,7 @@ class AgentKnowledgeBaseStorageConfigurationRdsConfiguration {
   /// [fieldMapping] Names of the fields to which to map information about the vector store. This block supports the following arguments:
   /// [resourceArn] ARN of the vector store.
   /// [tableName] Name of the table in the database.
-  AgentKnowledgeBaseStorageConfigurationRdsConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationRdsConfiguration({
     required this.credentialsSecretArn,
     required this.databaseName,
     required this.fieldMapping,

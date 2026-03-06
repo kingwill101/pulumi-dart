@@ -9,7 +9,7 @@ class TableSchema {
 
   /// Creates a new [TableSchema].
   /// [fields] Describes the fields in a table.
-  TableSchema({
+  const TableSchema({
     this.fields,
   });
 

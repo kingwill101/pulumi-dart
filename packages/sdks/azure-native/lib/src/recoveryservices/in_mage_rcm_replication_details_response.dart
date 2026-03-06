@@ -205,7 +205,7 @@ class InMageRcmReplicationDetailsResponse {
   /// [testNetworkId] The test network Id.
   /// [unprotectedDisks] The list of unprotected disks.
   /// [vmNics] The network details.
-  InMageRcmReplicationDetailsResponse({
+  const InMageRcmReplicationDetailsResponse({
     required this.agentUpgradeAttemptToVersion,
     this.agentUpgradeBlockingErrorDetails,
     required this.agentUpgradeJobId,

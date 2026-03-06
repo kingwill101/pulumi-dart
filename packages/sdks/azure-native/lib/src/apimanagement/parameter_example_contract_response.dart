@@ -18,7 +18,7 @@ class ParameterExampleContractResponse {
   /// [externalValue] A URL that points to the literal example
   /// [summary] Short description for the example
   /// [value] Example value. May be a primitive value, or an object.
-  ParameterExampleContractResponse({
+  const ParameterExampleContractResponse({
     this.description,
     this.externalValue,
     this.summary,

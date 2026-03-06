@@ -48,7 +48,7 @@ class PoolSource {
   /// [product] Identifies the product details associated with the storage source.
   /// [protocol] Sets the protocol used to connect to the storage source.
   /// [vendor] Specifies the vendor information for the storage source being used.
-  PoolSource({
+  const PoolSource({
     this.adapter,
     this.auth,
     this.devices,

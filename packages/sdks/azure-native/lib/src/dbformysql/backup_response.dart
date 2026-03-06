@@ -18,7 +18,7 @@ class BackupResponse {
   /// [backupRetentionDays] Backup retention days for the server.
   /// [earliestRestoreDate] Earliest restore point creation time (ISO8601 format)
   /// [geoRedundantBackup] Whether or not geo redundant backup is enabled.
-  BackupResponse({
+  const BackupResponse({
     this.backupIntervalHours,
     this.backupRetentionDays,
     required this.earliestRestoreDate,

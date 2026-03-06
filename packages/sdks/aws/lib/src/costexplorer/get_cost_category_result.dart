@@ -36,7 +36,7 @@ class GetCostCategoryResult {
   /// [rules] Configuration block for the `Expression` object used to categorize costs. See below.
   /// [splitChargeRules] Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
   /// [tags] Configuration block for the specific `Tag` to use for `Expression`. See below.
-  GetCostCategoryResult({
+  const GetCostCategoryResult({
     required this.costCategoryArn,
     required this.defaultValue,
     required this.effectiveEnd,

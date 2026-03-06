@@ -19,7 +19,7 @@ class NetworkRuleSetsResponse {
   /// [applyToIoTCentral] Whether these rules apply for connectivity via IoT Central web portal and APIs.
   /// [defaultAction] The default network action to apply.
   /// [ipRules] List of IP rules.
-  NetworkRuleSetsResponse({
+  const NetworkRuleSetsResponse({
     this.applyToDevices,
     this.applyToIoTCentral,
     this.defaultAction,

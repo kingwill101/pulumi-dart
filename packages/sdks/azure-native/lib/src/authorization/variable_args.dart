@@ -16,7 +16,7 @@ class VariableArgs {
   /// Creates a new [VariableArgs].
   /// [columns] Variable column definitions.
   /// [variableName] The name of the variable to operate on.
-  VariableArgs({
+  const VariableArgs({
     required this.columns,
     this.variableName,
   });

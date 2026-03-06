@@ -27,7 +27,7 @@ class SoftwareRecipe {
   /// [name] Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
   /// [updateSteps] Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
   /// [version] The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
-  SoftwareRecipe({
+  const SoftwareRecipe({
     this.artifacts,
     this.desiredState,
     this.installSteps,

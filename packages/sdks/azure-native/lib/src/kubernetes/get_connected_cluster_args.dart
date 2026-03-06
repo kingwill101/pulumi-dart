@@ -15,7 +15,7 @@ class GetConnectedClusterArgs {
   /// Creates a new [GetConnectedClusterArgs].
   /// [clusterName] The name of the Kubernetes cluster on which get is called.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConnectedClusterArgs({
+  const GetConnectedClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

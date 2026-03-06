@@ -11,7 +11,7 @@ class LinkedServiceSftpKeyVaultPrivateKeyContentBase64 {
   /// Creates a new [LinkedServiceSftpKeyVaultPrivateKeyContentBase64].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the name of the secret containing the Base64 encoded SSH private key.
-  LinkedServiceSftpKeyVaultPrivateKeyContentBase64({
+  const LinkedServiceSftpKeyVaultPrivateKeyContentBase64({
     required this.linkedServiceName,
     required this.secretName,
   });

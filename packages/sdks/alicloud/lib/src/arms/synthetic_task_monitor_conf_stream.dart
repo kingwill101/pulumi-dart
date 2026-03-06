@@ -30,7 +30,7 @@ class SyntheticTaskMonitorConfStream {
   /// [streamType] Audio and video flags: 0-video, 1-audio.
   /// [targetUrl] The target URL.
   /// [whiteList] DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-  SyntheticTaskMonitorConfStream({
+  const SyntheticTaskMonitorConfStream({
     this.customHeaderContent,
     this.playerType,
     this.streamAddressType,

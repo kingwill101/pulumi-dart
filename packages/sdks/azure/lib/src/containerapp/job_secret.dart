@@ -23,7 +23,7 @@ class JobSecret {
   /// [keyVaultSecretId] The ID of a Key Vault secret. This can be a versioned or version-less ID.
   /// [name] The secret name.
   /// [value] The value for this secret.
-  JobSecret({
+  const JobSecret({
     this.identity,
     this.keyVaultSecretId,
     required this.name,

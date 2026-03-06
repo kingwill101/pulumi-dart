@@ -18,7 +18,7 @@ class GetSmtpUsernameArgs {
   /// [communicationServiceName] The name of the CommunicationService resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [smtpUsername] The name of the SmtpUsernameResource.
-  GetSmtpUsernameArgs({
+  const GetSmtpUsernameArgs({
     required this.communicationServiceName,
     required this.resourceGroupName,
     required this.smtpUsername,

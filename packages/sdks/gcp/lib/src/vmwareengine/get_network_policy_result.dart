@@ -35,7 +35,7 @@ class GetNetworkPolicyResult {
   /// [updateTime] Required.
   /// [vmwareEngineNetwork] Required.
   /// [vmwareEngineNetworkCanonical] Required.
-  GetNetworkPolicyResult({
+  const GetNetworkPolicyResult({
     required this.createTime,
     required this.description,
     required this.edgeServicesCidr,

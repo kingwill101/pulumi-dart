@@ -31,7 +31,7 @@ class GetClustersResult {
   /// [outputFile] Optional.
   /// [status] Status of the cluster.
   /// [tags] Optional.
-  GetClustersResult({
+  const GetClustersResult({
     required this.clusters,
     this.dbType,
     this.descriptionRegex,

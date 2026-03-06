@@ -11,7 +11,7 @@ class AzureIntegrationsMachineLearning {
   /// Creates a new [AzureIntegrationsMachineLearning].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsMachineLearning({
+  const AzureIntegrationsMachineLearning({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

@@ -16,7 +16,7 @@ class AgentcoreGatewayInterceptorConfiguration {
   /// [inputConfiguration] Input configuration for the interceptor. See `input_configuration` below.
   /// [interceptionPoints] Set of interception points. Valid values: `REQUEST`, `RESPONSE`.
   /// [interceptor] Interceptor infrastructure configuration. See `interceptor` below.
-  AgentcoreGatewayInterceptorConfiguration({
+  const AgentcoreGatewayInterceptorConfiguration({
     this.inputConfiguration,
     required this.interceptionPoints,
     this.interceptor,

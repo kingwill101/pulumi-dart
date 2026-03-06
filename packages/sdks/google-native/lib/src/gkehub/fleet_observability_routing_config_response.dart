@@ -9,7 +9,7 @@ class FleetObservabilityRoutingConfigResponse {
 
   /// Creates a new [FleetObservabilityRoutingConfigResponse].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfigResponse({
+  const FleetObservabilityRoutingConfigResponse({
     required this.mode,
   });
 

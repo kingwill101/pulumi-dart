@@ -30,7 +30,7 @@ class GetLabelByWorkspaceResult {
   /// [provisioningState] Resource provisioning state.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLabelByWorkspaceResult({
+  const GetLabelByWorkspaceResult({
     required this.azureApiVersion,
     this.color,
     this.displayName,

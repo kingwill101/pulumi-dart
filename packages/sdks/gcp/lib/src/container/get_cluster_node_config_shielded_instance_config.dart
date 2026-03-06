@@ -11,7 +11,7 @@ class GetClusterNodeConfigShieldedInstanceConfig {
   /// Creates a new [GetClusterNodeConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines whether the instance has integrity monitoring enabled.
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  GetClusterNodeConfigShieldedInstanceConfig({
+  const GetClusterNodeConfigShieldedInstanceConfig({
     required this.enableIntegrityMonitoring,
     required this.enableSecureBoot,
   });

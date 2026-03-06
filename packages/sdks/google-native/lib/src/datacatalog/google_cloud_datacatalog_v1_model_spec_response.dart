@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1ModelSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1ModelSpecResponse].
   /// [vertexModelSpec] Specification for vertex model resources.
-  GoogleCloudDatacatalogV1ModelSpecResponse({
+  const GoogleCloudDatacatalogV1ModelSpecResponse({
     required this.vertexModelSpec,
   });
 

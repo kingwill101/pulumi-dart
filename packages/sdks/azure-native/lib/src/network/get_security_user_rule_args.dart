@@ -24,7 +24,7 @@ class GetSecurityUserRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleCollectionName] The name of the network manager security Configuration rule collection.
   /// [ruleName] The name of the rule.
-  GetSecurityUserRuleArgs({
+  const GetSecurityUserRuleArgs({
     required this.configurationName,
     required this.networkManagerName,
     required this.resourceGroupName,

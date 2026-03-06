@@ -15,7 +15,7 @@ class GetSubnetworkComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [subnetwork] Required.
-  GetSubnetworkComputeV1Args({
+  const GetSubnetworkComputeV1Args({
     this.project,
     required this.region,
     required this.subnetwork,

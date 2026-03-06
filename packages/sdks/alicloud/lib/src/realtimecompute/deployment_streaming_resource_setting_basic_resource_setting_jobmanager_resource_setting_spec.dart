@@ -9,7 +9,7 @@ class DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSe
   /// Creates a new [DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec].
   /// [cpu] Optional.
   /// [memory] Optional.
-  DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec({
+  const DeploymentStreamingResourceSettingBasicResourceSettingJobmanagerResourceSettingSpec({
     this.cpu,
     this.memory,
   });

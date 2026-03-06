@@ -23,7 +23,7 @@ class ToolDataStoreToolEngineSource {
   /// [dataStoreSources] Use to target specific DataStores within the Engine.
   /// [engine] Full resource name of the Engine.
   /// [filter] A filter applied to the search across the Engine. Not relevant and not
-  ToolDataStoreToolEngineSource({
+  const ToolDataStoreToolEngineSource({
     this.dataStoreSources,
     required this.engine,
     this.filter,

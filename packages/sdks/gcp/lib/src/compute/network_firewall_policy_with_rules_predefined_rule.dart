@@ -80,7 +80,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRule {
   /// [targetSecureTags] (Output)
   /// [targetServiceAccounts] (Output)
   /// [tlsInspect] (Output)
-  NetworkFirewallPolicyWithRulesPredefinedRule({
+  const NetworkFirewallPolicyWithRulesPredefinedRule({
     this.action,
     this.description,
     this.direction,

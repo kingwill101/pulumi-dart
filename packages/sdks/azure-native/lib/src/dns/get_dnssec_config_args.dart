@@ -15,7 +15,7 @@ class GetDnssecConfigArgs {
   /// Creates a new [GetDnssecConfigArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
-  GetDnssecConfigArgs({
+  const GetDnssecConfigArgs({
     required this.resourceGroupName,
     required this.zoneName,
   });

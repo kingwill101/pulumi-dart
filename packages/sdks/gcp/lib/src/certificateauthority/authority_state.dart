@@ -125,7 +125,7 @@ class AuthorityState {
   /// [type] The Type of this CertificateAuthority.
   /// [updateTime] The time at which this CertificateAuthority was updated.
   /// [userDefinedAccessUrls] Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
-  AuthorityState({
+  const AuthorityState({
     this.accessUrls,
     this.certificateAuthorityId,
     this.config,

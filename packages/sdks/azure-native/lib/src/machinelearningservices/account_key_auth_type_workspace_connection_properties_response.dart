@@ -38,7 +38,7 @@ class AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse({
+  const AccountKeyAuthTypeWorkspaceConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

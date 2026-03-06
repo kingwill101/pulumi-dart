@@ -29,7 +29,7 @@ class GetPortfolioResult {
   /// [providerName] Name of the person or organization who owns the portfolio.
   /// [region] Required.
   /// [tags] Tags applied to the portfolio.
-  GetPortfolioResult({
+  const GetPortfolioResult({
     this.acceptLanguage,
     required this.arn,
     required this.createdTime,

@@ -17,7 +17,7 @@ class GetSecretsResult {
   /// [plaintext] Map containing each `secret` `name` as the key with its decrypted plaintext value
   /// [region] Required.
   /// [secrets] Required.
-  GetSecretsResult({
+  const GetSecretsResult({
     required this.id,
     required this.plaintext,
     required this.region,

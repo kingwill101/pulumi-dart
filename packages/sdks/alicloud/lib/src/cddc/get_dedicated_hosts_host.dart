@@ -95,7 +95,7 @@ class GetDedicatedHostsHost {
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the host is connected.
   /// [vswitchId] The ID of the vSwitch.
   /// [zoneId] The zone ID of the host.
-  GetDedicatedHostsHost({
+  const GetDedicatedHostsHost({
     required this.allocationStatus,
     required this.bastionInstanceId,
     required this.cpuAllocationRatio,

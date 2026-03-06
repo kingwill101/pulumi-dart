@@ -25,7 +25,7 @@ class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
   /// [approverJustificationRequired] Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor
   /// [enableAlternativeApprovalInDays] Forward to alternate approver(s) after how many days?
   /// [primaryApprovers] The users who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors and externalSponsors. When creating or updating a policy, include at least one userSet in this collection
-  AccessPackageAssignmentPolicyApprovalSettingsApprovalStage({
+  const AccessPackageAssignmentPolicyApprovalSettingsApprovalStage({
     this.alternativeApprovalEnabled,
     this.alternativeApprovers,
     required this.approvalTimeoutInDays,

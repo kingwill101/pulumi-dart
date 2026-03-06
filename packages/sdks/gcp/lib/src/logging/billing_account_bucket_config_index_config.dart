@@ -12,7 +12,7 @@ class BillingAccountBucketConfigIndexConfig {
   /// Creates a new [BillingAccountBucketConfigIndexConfig].
   /// [fieldPath] The LogEntry field path to index.
   /// [type] The type of data in this index. Allowed types include `INDEX_TYPE_UNSPECIFIED`, `INDEX_TYPE_STRING` and `INDEX_TYPE_INTEGER`.
-  BillingAccountBucketConfigIndexConfig({
+  const BillingAccountBucketConfigIndexConfig({
     required this.fieldPath,
     required this.type,
   });

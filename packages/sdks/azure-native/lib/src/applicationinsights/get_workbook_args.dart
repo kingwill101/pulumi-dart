@@ -18,7 +18,7 @@ class GetWorkbookArgs {
   /// [canFetchContent] Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the workbook resource. The value must be an UUID.
-  GetWorkbookArgs({
+  const GetWorkbookArgs({
     this.canFetchContent,
     required this.resourceGroupName,
     required this.resourceName,

@@ -15,7 +15,7 @@ class EventSeries {
   /// [count] Number of occurrences in this series up to the last heartbeat time
   /// [lastObservedTime] Time of the last occurrence observed
   /// [state] State of this Series: Ongoing or Finished Deprecated. Planned removal for 1.18
-  EventSeries({
+  const EventSeries({
     this.count,
     this.lastObservedTime,
     this.state,

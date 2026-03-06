@@ -39,7 +39,7 @@ class PipelineArgs {
   /// [name] Specifies the name of the Data Factory Pipeline. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Pipeline.
   /// [variables] A map of variables to associate with the Data Factory Pipeline.
-  PipelineArgs({
+  const PipelineArgs({
     this.activitiesJson,
     this.annotations,
     this.concurrency,

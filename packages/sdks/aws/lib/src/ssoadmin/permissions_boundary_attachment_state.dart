@@ -19,7 +19,7 @@ class PermissionsBoundaryAttachmentState {
   /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
   /// [permissionsBoundary] The permissions boundary policy. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PermissionsBoundaryAttachmentState({
+  const PermissionsBoundaryAttachmentState({
     this.instanceArn,
     this.permissionSetArn,
     this.permissionsBoundary,

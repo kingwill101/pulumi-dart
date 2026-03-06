@@ -77,7 +77,7 @@ class ShareState {
   /// [shareType] The share type name. If you omit this parameter, the default
   /// [size] The share size, in GBs. The requested share size cannot be greater
   /// [snapshotId] The UUID of the share's base snapshot. Changing this creates
-  ShareState({
+  const ShareState({
     this.allMetadata,
     this.availabilityZone,
     this.description,

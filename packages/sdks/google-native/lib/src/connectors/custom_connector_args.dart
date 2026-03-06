@@ -33,7 +33,7 @@ class CustomConnectorArgs {
   /// [logo] Optional. Logo of the resource.
   /// [name] Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
   /// [project] Optional.
-  CustomConnectorArgs({
+  const CustomConnectorArgs({
     required this.customConnectorId,
     required this.customConnectorType,
     this.description,

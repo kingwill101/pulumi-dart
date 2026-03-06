@@ -21,7 +21,7 @@ class GetGatewayRouteConfigArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [routeConfigName] The name of the Spring Cloud Gateway route config.
   /// [serviceName] The name of the Service resource.
-  GetGatewayRouteConfigArgs({
+  const GetGatewayRouteConfigArgs({
     required this.gatewayName,
     required this.resourceGroupName,
     required this.routeConfigName,

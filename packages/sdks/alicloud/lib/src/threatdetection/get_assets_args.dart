@@ -41,7 +41,7 @@ class GetAssetsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetAssetsArgs({
+  const GetAssetsArgs({
     this.criteria,
     this.ids,
     this.importance,

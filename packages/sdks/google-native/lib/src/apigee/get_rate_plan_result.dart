@@ -66,7 +66,7 @@ class GetRatePlanResult {
   /// [setupFee] Initial, one-time fee paid when purchasing the API product.
   /// [startTime] Time when the rate plan becomes active in milliseconds since epoch.
   /// [state] Current state of the rate plan (draft or published).
-  GetRatePlanResult({
+  const GetRatePlanResult({
     required this.apiproduct,
     required this.billingPeriod,
     required this.consumptionPricingRates,

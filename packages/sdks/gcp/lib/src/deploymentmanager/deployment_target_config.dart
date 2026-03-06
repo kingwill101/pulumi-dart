@@ -8,7 +8,7 @@ class DeploymentTargetConfig {
 
   /// Creates a new [DeploymentTargetConfig].
   /// [content] The full YAML contents of your configuration file.
-  DeploymentTargetConfig({
+  const DeploymentTargetConfig({
     required this.content,
   });
 

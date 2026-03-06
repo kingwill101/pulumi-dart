@@ -9,7 +9,7 @@ class FunctionsScaleAndConcurrencyResponseHttp {
 
   /// Creates a new [FunctionsScaleAndConcurrencyResponseHttp].
   /// [perInstanceConcurrency] The maximum number of concurrent HTTP trigger invocations per instance.
-  FunctionsScaleAndConcurrencyResponseHttp({
+  const FunctionsScaleAndConcurrencyResponseHttp({
     this.perInstanceConcurrency,
   });
 

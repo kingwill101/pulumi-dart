@@ -10,7 +10,7 @@ class LogConfigDataAccessOptions {
 
   /// Creates a new [LogConfigDataAccessOptions].
   /// [logMode] This is deprecated and has no effect. Do not use.
-  LogConfigDataAccessOptions({
+  const LogConfigDataAccessOptions({
     this.logMode,
   });
 

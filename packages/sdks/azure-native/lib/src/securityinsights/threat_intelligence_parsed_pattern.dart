@@ -13,7 +13,7 @@ class ThreatIntelligenceParsedPattern {
   /// Creates a new [ThreatIntelligenceParsedPattern].
   /// [patternTypeKey] Pattern type key
   /// [patternTypeValues] Pattern type keys
-  ThreatIntelligenceParsedPattern({
+  const ThreatIntelligenceParsedPattern({
     this.patternTypeKey,
     this.patternTypeValues,
   });

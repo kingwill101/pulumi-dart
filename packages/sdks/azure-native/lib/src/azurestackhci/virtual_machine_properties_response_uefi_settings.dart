@@ -8,7 +8,7 @@ class VirtualMachinePropertiesResponseUefiSettings {
 
   /// Creates a new [VirtualMachinePropertiesResponseUefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine.
-  VirtualMachinePropertiesResponseUefiSettings({
+  const VirtualMachinePropertiesResponseUefiSettings({
     this.secureBootEnabled,
   });
 

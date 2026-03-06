@@ -73,7 +73,7 @@ class GetAuthorizationServerResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [useInApiDocumentation] If true, the authorization server will be used in the API documentation in the developer portal. False by default if no value is provided.
   /// [useInTestConsole] If true, the authorization server may be used in the developer portal test console. True by default if no value is provided.
-  GetAuthorizationServerResult({
+  const GetAuthorizationServerResult({
     required this.authorizationEndpoint,
     this.authorizationMethods,
     required this.azureApiVersion,

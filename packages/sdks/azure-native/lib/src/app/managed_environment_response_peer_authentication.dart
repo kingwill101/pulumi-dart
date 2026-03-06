@@ -10,7 +10,7 @@ class ManagedEnvironmentResponsePeerAuthentication {
 
   /// Creates a new [ManagedEnvironmentResponsePeerAuthentication].
   /// [mtls] Mutual TLS authentication settings for the Managed Environment
-  ManagedEnvironmentResponsePeerAuthentication({
+  const ManagedEnvironmentResponsePeerAuthentication({
     this.mtls,
   });
 

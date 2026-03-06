@@ -54,7 +54,7 @@ class InstanceArgs {
   /// [name] Resource ID of the instance.
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [peeringCidrRange] The size of the CIDR block range that will be reserved by the instance. For valid values,
-  InstanceArgs({
+  const InstanceArgs({
     this.accessLoggingConfig,
     this.consumerAcceptLists,
     this.description,

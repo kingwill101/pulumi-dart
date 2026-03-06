@@ -33,7 +33,7 @@ class Hl7StoreIamBindingState {
   /// [hl7V2StoreId] The HL7v2 store ID, in the form
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  Hl7StoreIamBindingState({
+  const Hl7StoreIamBindingState({
     this.condition,
     this.etag,
     this.hl7V2StoreId,

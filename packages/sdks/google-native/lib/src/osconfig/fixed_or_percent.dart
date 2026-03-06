@@ -12,7 +12,7 @@ class FixedOrPercent {
   /// Creates a new [FixedOrPercent].
   /// [fixed] Specifies a fixed value.
   /// [percent] Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-  FixedOrPercent({
+  const FixedOrPercent({
     this.fixed,
     this.percent,
   });

@@ -16,7 +16,7 @@ class AccessKeyInfoBase {
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
   /// [authType] The authentication type.
   /// [permissions] Permissions of the accessKey. `Read` and `Write` are for Azure Cosmos DB and Azure App Configuration, `Listen`, `Send` and `Manage` are for Azure Event Hub and Azure Service Bus.
-  AccessKeyInfoBase({
+  const AccessKeyInfoBase({
     this.authMode,
     required this.authType,
     this.permissions,

@@ -9,7 +9,7 @@ class LocalRulestackOutboundUntrustCertificateAssociationState {
 
   /// Creates a new [LocalRulestackOutboundUntrustCertificateAssociationState].
   /// [certificateId] The ID of the Certificate to use as the Outbound Untrust Certificate. Changing this forces a new Palo Alto Networks Rulestack Outbound Untrust Certificate Association to be created.
-  LocalRulestackOutboundUntrustCertificateAssociationState({
+  const LocalRulestackOutboundUntrustCertificateAssociationState({
     this.certificateId,
   });
 

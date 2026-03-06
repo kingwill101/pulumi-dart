@@ -27,7 +27,7 @@ class HttpApiArgs {
   /// [protocols] API protocol
   /// [resourceGroupId] The ID of the resource group
   /// [type] API type
-  HttpApiArgs({
+  const HttpApiArgs({
     this.basePath,
     this.description,
     required this.httpApiName,

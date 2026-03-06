@@ -12,7 +12,7 @@ class AdvancedScheduleMonthlyOccurrence {
   /// Creates a new [AdvancedScheduleMonthlyOccurrence].
   /// [day] Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
   /// [occurrence] Occurrence of the week within the month. Must be between 1 and 5
-  AdvancedScheduleMonthlyOccurrence({
+  const AdvancedScheduleMonthlyOccurrence({
     this.day,
     this.occurrence,
   });

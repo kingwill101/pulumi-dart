@@ -9,7 +9,7 @@ class FilterResponse {
 
   /// Creates a new [FilterResponse].
   /// [eventType] Event types to allowlist.
-  FilterResponse({
+  const FilterResponse({
     required this.eventType,
   });
 

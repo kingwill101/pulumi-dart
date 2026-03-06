@@ -37,7 +37,7 @@ class AlertPrometheusRuleGroupRule {
   /// [labels] Specifies the labels to add or overwrite before storing the result.
   /// [record] Specifies the recorded metrics name.
   /// [severity] Specifies the severity of the alerts fired by the rule. Possible values are between 0 and 4.
-  AlertPrometheusRuleGroupRule({
+  const AlertPrometheusRuleGroupRule({
     this.actions,
     this.alert,
     this.alertResolution,

@@ -26,7 +26,7 @@ class GetServerSnapshotsResult {
   /// [outputFile] Optional.
   /// [snapshots] Required.
   /// [status] Optional.
-  GetServerSnapshotsResult({
+  const GetServerSnapshotsResult({
     this.diskId,
     required this.id,
     required this.ids,

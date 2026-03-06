@@ -36,7 +36,7 @@ class V2OrganizationSourceIamMemberState {
   /// [organization] Optional.
   /// [role] The role that should be applied. Only one
   /// [source] Used to find the parent resource to bind the IAM policy to
-  V2OrganizationSourceIamMemberState({
+  const V2OrganizationSourceIamMemberState({
     this.condition,
     this.etag,
     this.member,

@@ -30,7 +30,7 @@ class CodeCompilationConfig {
   /// [schemaSuffix] Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
   /// [tablePrefix] Optional. The prefix that should be prepended to all table names.
   /// [vars] Optional. User-defined variables that are made available to project code during compilation.
-  CodeCompilationConfig({
+  const CodeCompilationConfig({
     this.assertionSchema,
     this.databaseSuffix,
     this.defaultDatabase,

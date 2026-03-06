@@ -12,7 +12,7 @@ class RecorderRecordingMode {
   /// Creates a new [RecorderRecordingMode].
   /// [recordingFrequency] Default recording frequency. `CONTINUOUS` or `DAILY`.
   /// [recordingModeOverride] Recording mode overrides. Detailed below.
-  RecorderRecordingMode({
+  const RecorderRecordingMode({
     this.recordingFrequency,
     this.recordingModeOverride,
   });

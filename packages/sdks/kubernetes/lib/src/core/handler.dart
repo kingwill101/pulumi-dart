@@ -18,7 +18,7 @@ class Handler {
   /// [exec] One and only one of the following should be specified. Exec specifies the action to take.
   /// [httpGet] HTTPGet specifies the http request to perform.
   /// [tcpSocket] TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported
-  Handler({
+  const Handler({
     this.exec,
     this.httpGet,
     this.tcpSocket,

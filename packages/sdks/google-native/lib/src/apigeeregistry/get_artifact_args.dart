@@ -21,7 +21,7 @@ class GetArtifactArgs {
   /// [project] Optional.
   /// [specId] Required.
   /// [versionId] Required.
-  GetArtifactArgs({
+  const GetArtifactArgs({
     required this.apiId,
     required this.artifactId,
     required this.location,

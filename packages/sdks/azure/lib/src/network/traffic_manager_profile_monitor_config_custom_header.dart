@@ -11,7 +11,7 @@ class TrafficManagerProfileMonitorConfigCustomHeader {
   /// Creates a new [TrafficManagerProfileMonitorConfigCustomHeader].
   /// [name] The name of the custom header.
   /// [value] The value of custom header. Applicable for HTTP and HTTPS protocol.
-  TrafficManagerProfileMonitorConfigCustomHeader({
+  const TrafficManagerProfileMonitorConfigCustomHeader({
     required this.name,
     required this.value,
   });

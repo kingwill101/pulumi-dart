@@ -27,7 +27,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetric {
   /// [minReplicas] The minimum number of instances.
   /// [scaleDownRules] The shrink rule.
   /// [scaleUpRules] The expansion rules.
-  GetApplicationScalingRulesRuleScalingRuleMetric({
+  const GetApplicationScalingRulesRuleScalingRuleMetric({
     required this.maxReplicas,
     required this.metrics,
     required this.metricsStatuses,

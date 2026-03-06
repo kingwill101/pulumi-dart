@@ -12,7 +12,7 @@ class ManagedIdentityAuthenticationResponse {
   /// Creates a new [ManagedIdentityAuthenticationResponse].
   /// [audience] Token audience.
   /// [extensionName] Arc Extension name.
-  ManagedIdentityAuthenticationResponse({
+  const ManagedIdentityAuthenticationResponse({
     required this.audience,
     this.extensionName,
   });

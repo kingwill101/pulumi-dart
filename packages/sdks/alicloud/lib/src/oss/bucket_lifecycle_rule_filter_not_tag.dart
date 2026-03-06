@@ -11,7 +11,7 @@ class BucketLifecycleRuleFilterNotTag {
   /// Creates a new [BucketLifecycleRuleFilterNotTag].
   /// [key] The key of the tag that is specified for the objects.
   /// [value] The value of the tag that is specified for the objects.
-  BucketLifecycleRuleFilterNotTag({
+  const BucketLifecycleRuleFilterNotTag({
     required this.key,
     required this.value,
   });

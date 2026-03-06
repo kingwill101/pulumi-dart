@@ -14,7 +14,7 @@ class PrivateCloudManagementCluster {
   /// [hosts] A list of hosts in the management cluster.
   /// [id] The ID of the management cluster.
   /// [size] The size of the management cluster. This field can not updated with `internet_connection_enabled` together.
-  PrivateCloudManagementCluster({
+  const PrivateCloudManagementCluster({
     this.hosts,
     this.id,
     required this.size,

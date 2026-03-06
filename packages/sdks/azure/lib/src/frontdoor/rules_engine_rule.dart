@@ -19,7 +19,7 @@ class RulesEngineRule {
   /// [matchConditions] One or more `match_condition` block as defined below.
   /// [name] The name of the rule.
   /// [priority] Priority of the rule, must be unique per rules engine definition.
-  RulesEngineRule({
+  const RulesEngineRule({
     this.action,
     this.matchConditions,
     required this.name,

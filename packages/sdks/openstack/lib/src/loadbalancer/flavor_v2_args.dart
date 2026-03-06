@@ -31,7 +31,7 @@ class FlavorV2Args {
   /// [flavorProfileId] The flavor_profile_id that the flavor
   /// [name] Name of the flavor. Changing this updates the existing
   /// [region] The region in which to obtain the V2 Networking client.
-  FlavorV2Args({
+  const FlavorV2Args({
     this.description,
     this.enabled,
     required this.flavorProfileId,

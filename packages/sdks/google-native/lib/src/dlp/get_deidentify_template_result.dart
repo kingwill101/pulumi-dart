@@ -24,7 +24,7 @@ class GetDeidentifyTemplateResult {
   /// [displayName] Display name (max 256 chars).
   /// [name] The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
   /// [updateTime] The last update timestamp of an inspectTemplate.
-  GetDeidentifyTemplateResult({
+  const GetDeidentifyTemplateResult({
     required this.createTime,
     required this.deidentifyConfig,
     required this.description,

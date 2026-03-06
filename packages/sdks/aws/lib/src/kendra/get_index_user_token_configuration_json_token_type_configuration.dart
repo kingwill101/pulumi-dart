@@ -11,7 +11,7 @@ class GetIndexUserTokenConfigurationJsonTokenTypeConfiguration {
   /// Creates a new [GetIndexUserTokenConfigurationJsonTokenTypeConfiguration].
   /// [groupAttributeField] The group attribute field.
   /// [userNameAttributeField] The user name attribute field.
-  GetIndexUserTokenConfigurationJsonTokenTypeConfiguration({
+  const GetIndexUserTokenConfigurationJsonTokenTypeConfiguration({
     required this.groupAttributeField,
     required this.userNameAttributeField,
   });

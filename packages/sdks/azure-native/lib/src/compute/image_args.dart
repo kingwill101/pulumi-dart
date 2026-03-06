@@ -36,7 +36,7 @@ class ImageArgs {
   /// [sourceVirtualMachine] The source virtual machine from which Image is created.
   /// [storageProfile] Specifies the storage settings for the virtual machine disks.
   /// [tags] Resource tags.
-  ImageArgs({
+  const ImageArgs({
     this.extendedLocation,
     this.hyperVGeneration,
     this.imageName,

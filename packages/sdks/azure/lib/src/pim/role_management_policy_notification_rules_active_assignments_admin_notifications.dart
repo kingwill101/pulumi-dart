@@ -14,7 +14,7 @@ class RoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications {
   /// [additionalRecipients] The additional recipients to notify
   /// [defaultRecipients] Whether the default recipients are notified
   /// [notificationLevel] What level of notifications are sent
-  RoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications({
+  const RoleManagementPolicyNotificationRulesActiveAssignmentsAdminNotifications({
     this.additionalRecipients,
     required this.defaultRecipients,
     required this.notificationLevel,

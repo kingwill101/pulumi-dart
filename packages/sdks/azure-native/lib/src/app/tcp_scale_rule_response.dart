@@ -16,7 +16,7 @@ class TcpScaleRuleResponse {
   /// [auth] Authentication secrets for the tcp scale rule.
   /// [identity] The resource ID of a user-assigned managed identity that is assigned to the Container App, or 'system' for system-assigned identity.
   /// [metadata] Metadata properties to describe tcp scale rule.
-  TcpScaleRuleResponse({
+  const TcpScaleRuleResponse({
     this.auth,
     this.identity,
     this.metadata,

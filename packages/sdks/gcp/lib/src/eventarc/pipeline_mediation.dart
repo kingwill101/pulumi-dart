@@ -10,7 +10,7 @@ class PipelineMediation {
 
   /// Creates a new [PipelineMediation].
   /// [transformation] Transformation defines the way to transform an incoming message.
-  PipelineMediation({
+  const PipelineMediation({
     this.transformation,
   });
 

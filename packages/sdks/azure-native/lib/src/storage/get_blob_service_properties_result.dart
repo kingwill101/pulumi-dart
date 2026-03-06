@@ -53,7 +53,7 @@ class GetBlobServicePropertiesResult {
   /// [restorePolicy] The blob service properties for blob restore policy.
   /// [sku] Sku name and tier.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetBlobServicePropertiesResult({
+  const GetBlobServicePropertiesResult({
     this.automaticSnapshotPolicyEnabled,
     required this.azureApiVersion,
     this.changeFeed,

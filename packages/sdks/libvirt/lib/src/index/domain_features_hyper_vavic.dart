@@ -8,7 +8,7 @@ class DomainFeaturesHyperVAvic {
 
   /// Creates a new [DomainFeaturesHyperVAvic].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVAvic({
+  const DomainFeaturesHyperVAvic({
     this.state,
   });
 

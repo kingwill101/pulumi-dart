@@ -16,7 +16,7 @@ class KeyVaultConnectionProperties {
   /// [credentials] KeyVault credentials.
   /// [directoryId] KeyVault directoryId.
   /// [name] KeyVault name.
-  KeyVaultConnectionProperties({
+  const KeyVaultConnectionProperties({
     required this.credentials,
     required this.directoryId,
     required this.name,

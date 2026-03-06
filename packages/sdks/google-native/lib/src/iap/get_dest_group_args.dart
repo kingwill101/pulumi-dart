@@ -15,7 +15,7 @@ class GetDestGroupArgs {
   /// [destGroupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDestGroupArgs({
+  const GetDestGroupArgs({
     required this.destGroupId,
     required this.location,
     this.project,

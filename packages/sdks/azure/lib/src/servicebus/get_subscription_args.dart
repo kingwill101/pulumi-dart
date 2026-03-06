@@ -21,7 +21,7 @@ class GetSubscriptionArgs {
   /// [resourceGroupName] Optional.
   /// [topicId] The ID of the ServiceBus Topic where the Service Bus Subscription exists.
   /// [topicName] Optional.
-  GetSubscriptionArgs({
+  const GetSubscriptionArgs({
     required this.name,
     this.namespaceName,
     this.resourceGroupName,

@@ -42,7 +42,7 @@ class GetEdgeActionExecutionFilterResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [versionId] The referenced versionId of the edgeaction version
-  GetEdgeActionExecutionFilterResult({
+  const GetEdgeActionExecutionFilterResult({
     required this.azureApiVersion,
     required this.executionFilterIdentifierHeaderName,
     required this.executionFilterIdentifierHeaderValue,

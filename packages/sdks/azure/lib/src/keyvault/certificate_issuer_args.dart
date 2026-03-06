@@ -31,7 +31,7 @@ class CertificateIssuerArgs {
   /// [orgId] The ID of the organization as provided to the issuer.
   /// [password] The password associated with the account and organization ID at the third-party Certificate Issuer. If not specified, will not overwrite any previous value.
   /// [providerName] The name of the third-party Certificate Issuer. Possible values are: `DigiCert`, `GlobalSign`, `OneCertV2-PrivateCA`, `OneCertV2-PublicCA` and `SslAdminV2`.
-  CertificateIssuerArgs({
+  const CertificateIssuerArgs({
     this.accountId,
     this.admins,
     required this.keyVaultId,

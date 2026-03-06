@@ -12,7 +12,7 @@ class UserSecretStore {
   /// Creates a new [UserSecretStore].
   /// [keyVaultId] The ID of the user's Key vault.
   /// [keyVaultUri] The URI of the user's Key vault.
-  UserSecretStore({
+  const UserSecretStore({
     this.keyVaultId,
     this.keyVaultUri,
   });

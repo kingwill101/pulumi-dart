@@ -15,7 +15,7 @@ class FleetStackAssociationState {
   /// [fleetName] Name of the fleet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stackName] Name of the stack.
-  FleetStackAssociationState({
+  const FleetStackAssociationState({
     this.fleetName,
     this.region,
     this.stackName,

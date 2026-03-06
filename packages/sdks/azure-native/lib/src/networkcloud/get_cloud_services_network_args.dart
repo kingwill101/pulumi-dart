@@ -15,7 +15,7 @@ class GetCloudServicesNetworkArgs {
   /// Creates a new [GetCloudServicesNetworkArgs].
   /// [cloudServicesNetworkName] The name of the cloud services network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudServicesNetworkArgs({
+  const GetCloudServicesNetworkArgs({
     required this.cloudServicesNetworkName,
     required this.resourceGroupName,
   });

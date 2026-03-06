@@ -21,7 +21,7 @@ class UserPasswordState {
   /// [keyFingerprint] The fingerprint of the PGP key used to encrypt the password
   /// [pgpKey] Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
   /// [user] The IAM user to associate with this access key.
-  UserPasswordState({
+  const UserPasswordState({
     this.encryptedPassword,
     this.host,
     this.keyFingerprint,

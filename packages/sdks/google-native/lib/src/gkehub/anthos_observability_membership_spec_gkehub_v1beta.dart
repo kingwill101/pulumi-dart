@@ -15,7 +15,7 @@ class AnthosObservabilityMembershipSpecGkehubV1beta {
   /// [doNotOptimizeMetrics] Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
   /// [enableStackdriverOnApplications] Enable collecting and reporting metrics and logs from user apps.
   /// [version] the version of stackdriver operator used by this feature
-  AnthosObservabilityMembershipSpecGkehubV1beta({
+  const AnthosObservabilityMembershipSpecGkehubV1beta({
     this.doNotOptimizeMetrics,
     this.enableStackdriverOnApplications,
     this.version,

@@ -24,7 +24,7 @@ class SecretSyncConditionResponse {
   /// [reason] Reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to de-conflict is important. The regex it matches is (dns1123SubdomainFmt/)?(qualifiedNameFmt)
-  SecretSyncConditionResponse({
+  const SecretSyncConditionResponse({
     required this.lastTransitionTime,
     required this.message,
     required this.observedGeneration,

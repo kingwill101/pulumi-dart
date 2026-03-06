@@ -17,7 +17,7 @@ class GetCertificateArgs {
   /// [certificateId] A customer-assigned name for the certificate. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.certificateId,
     this.region,
     this.tags,

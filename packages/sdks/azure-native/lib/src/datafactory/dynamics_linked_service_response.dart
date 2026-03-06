@@ -71,7 +71,7 @@ class DynamicsLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [username] User name to access the Dynamics instance. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  DynamicsLinkedServiceResponse({
+  const DynamicsLinkedServiceResponse({
     this.annotations,
     required this.authenticationType,
     this.connectVia,

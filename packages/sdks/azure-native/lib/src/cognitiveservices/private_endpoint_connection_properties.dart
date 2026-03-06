@@ -13,7 +13,7 @@ class PrivateEndpointConnectionProperties {
   /// Creates a new [PrivateEndpointConnectionProperties].
   /// [groupIds] The private link resource group ids.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
-  PrivateEndpointConnectionProperties({
+  const PrivateEndpointConnectionProperties({
     this.groupIds,
     required this.privateLinkServiceConnectionState,
   });

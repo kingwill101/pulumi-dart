@@ -34,7 +34,7 @@ class WavePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [stage] The current stage of the wave.
   /// [status] The status of the wave.
-  WavePropertiesResponse({
+  const WavePropertiesResponse({
     required this.actualStartDate,
     required this.arg,
     this.description,

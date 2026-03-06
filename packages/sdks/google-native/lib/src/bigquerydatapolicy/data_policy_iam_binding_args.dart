@@ -27,7 +27,7 @@ class DataPolicyIamBindingArgs {
   /// [members] Identities that will be granted the privilege in role. Each entry can have one of the following values:
   /// [name] The name of the resource to manage IAM policies for.
   /// [role] The role that should be applied. Only one `IamBinding` can be used per role.
-  DataPolicyIamBindingArgs({
+  const DataPolicyIamBindingArgs({
     this.condition,
     required this.members,
     required this.name,

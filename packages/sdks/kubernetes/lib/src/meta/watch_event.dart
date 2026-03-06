@@ -15,7 +15,7 @@ class WatchEvent {
   /// Creates a new [WatchEvent].
   /// [object_] Object is:
   /// [type] Required.
-  WatchEvent({
+  const WatchEvent({
     required this.object_,
     required this.type,
   });

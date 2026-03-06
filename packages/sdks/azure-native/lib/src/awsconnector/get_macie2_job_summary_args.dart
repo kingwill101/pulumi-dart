@@ -15,7 +15,7 @@ class GetMacie2JobSummaryArgs {
   /// Creates a new [GetMacie2JobSummaryArgs].
   /// [name] Name of Macie2JobSummary
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMacie2JobSummaryArgs({
+  const GetMacie2JobSummaryArgs({
     required this.name,
     required this.resourceGroupName,
   });

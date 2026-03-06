@@ -31,7 +31,7 @@ class NetworkManagerArgs {
   /// [scope] A `scope` block as defined below.
   /// [scopeAccesses] A list of configuration deployment types. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`, which specify whether Connectivity Configuration, Security Admin Configuration or Routing Configuration are allowed for the Network Manager.
   /// [tags] A mapping of tags which should be assigned to the Network Manager.
-  NetworkManagerArgs({
+  const NetworkManagerArgs({
     this.description,
     this.location,
     this.name,

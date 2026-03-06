@@ -9,7 +9,7 @@ class ContainerResponse {
 
   /// Creates a new [ContainerResponse].
   /// [id] Resource ID.
-  ContainerResponse({
+  const ContainerResponse({
     this.id,
   });
 

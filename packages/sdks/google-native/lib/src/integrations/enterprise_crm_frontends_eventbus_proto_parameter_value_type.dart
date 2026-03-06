@@ -36,7 +36,7 @@ class EnterpriseCrmFrontendsEventbusProtoParameterValueType {
   /// [serializedObjectValue] Optional.
   /// [stringArray] Optional.
   /// [stringValue] Optional.
-  EnterpriseCrmFrontendsEventbusProtoParameterValueType({
+  const EnterpriseCrmFrontendsEventbusProtoParameterValueType({
     this.booleanArray,
     this.booleanValue,
     this.doubleArray,

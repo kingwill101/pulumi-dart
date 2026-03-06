@@ -12,7 +12,7 @@ class StateResponse {
   /// Creates a new [StateResponse].
   /// [code] Status code of the Instance.
   /// [name] Status code of the Instance.
-  StateResponse({
+  const StateResponse({
     this.code,
     this.name,
   });

@@ -12,7 +12,7 @@ class DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange {
   /// Creates a new [DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange].
   /// [after] The predicted value after the deployment is executed.
   /// [before] The predicted value before the deployment is executed.
-  DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange({
+  const DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange({
     this.after,
     this.before,
   });

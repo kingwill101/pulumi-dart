@@ -13,7 +13,7 @@ class FeaturesVirtualMachine {
   /// [detachImplicitDataDiskOnDeletion] Optional.
   /// [gracefulShutdown] Optional.
   /// [skipShutdownAndForceDelete] Optional.
-  FeaturesVirtualMachine({
+  const FeaturesVirtualMachine({
     this.deleteOsDiskOnDeletion,
     this.detachImplicitDataDiskOnDeletion,
     this.gracefulShutdown,

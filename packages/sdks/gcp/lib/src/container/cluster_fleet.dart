@@ -23,7 +23,7 @@ class ClusterFleet {
   /// [membershipType] Sets the membership type of the cluster.  Available option is `LIGHTWEIGHT` to support only lightweight compatible features.  If unspecified, the membership_type will be a regular membership that supports all features.
   /// [preRegistered] Whether the cluster has been registered via the fleet API.
   /// [project] The name of the Fleet host project where this cluster will be registered.
-  ClusterFleet({
+  const ClusterFleet({
     this.membership,
     this.membershipId,
     this.membershipLocation,

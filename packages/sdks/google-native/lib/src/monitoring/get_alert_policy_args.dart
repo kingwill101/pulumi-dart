@@ -13,7 +13,7 @@ class GetAlertPolicyArgs {
   /// Creates a new [GetAlertPolicyArgs].
   /// [alertPolicyId] Required.
   /// [project] Optional.
-  GetAlertPolicyArgs({
+  const GetAlertPolicyArgs({
     required this.alertPolicyId,
     this.project,
   });

@@ -14,7 +14,7 @@ class UsagePlanQuotaSettings {
   /// [limit] Maximum number of requests that can be made in a given time period.
   /// [offset] Number of requests subtracted from the given limit in the initial time period.
   /// [period] Time period in which the limit applies. Valid values are "DAY", "WEEK" or "MONTH".
-  UsagePlanQuotaSettings({
+  const UsagePlanQuotaSettings({
     required this.limit,
     this.offset,
     required this.period,

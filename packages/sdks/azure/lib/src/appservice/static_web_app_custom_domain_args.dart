@@ -22,7 +22,7 @@ class StaticWebAppCustomDomainArgs {
   /// [domainName] The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
   /// [staticWebAppId] The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   /// [validationType] One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
-  StaticWebAppCustomDomainArgs({
+  const StaticWebAppCustomDomainArgs({
     required this.domainName,
     required this.staticWebAppId,
     required this.validationType,

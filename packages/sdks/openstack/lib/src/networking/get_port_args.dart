@@ -59,7 +59,7 @@ class GetPortArgs {
   /// [status] The status of the port.
   /// [tags] The list of port tags to filter.
   /// [tenantId] Optional.
-  GetPortArgs({
+  const GetPortArgs({
     this.adminStateUp,
     this.description,
     this.deviceId,

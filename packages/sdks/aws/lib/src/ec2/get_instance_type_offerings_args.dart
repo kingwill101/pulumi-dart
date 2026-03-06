@@ -19,7 +19,7 @@ class GetInstanceTypeOfferingsArgs {
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
   /// [locationType] Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetInstanceTypeOfferingsArgs({
+  const GetInstanceTypeOfferingsArgs({
     this.filters,
     this.locationType,
     this.region,

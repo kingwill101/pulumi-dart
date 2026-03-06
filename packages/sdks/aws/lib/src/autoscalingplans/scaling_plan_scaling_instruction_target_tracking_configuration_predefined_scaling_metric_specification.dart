@@ -11,7 +11,7 @@ class ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingM
   /// Creates a new [ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification].
   /// [predefinedScalingMetricType] Metric type. Valid values: `ALBRequestCountPerTarget`, `ASGAverageCPUUtilization`, `ASGAverageNetworkIn`, `ASGAverageNetworkOut`, `DynamoDBReadCapacityUtilization`, `DynamoDBWriteCapacityUtilization`, `ECSServiceAverageCPUUtilization`, `ECSServiceAverageMemoryUtilization`, `EC2SpotFleetRequestAverageCPUUtilization`, `EC2SpotFleetRequestAverageNetworkIn`, `EC2SpotFleetRequestAverageNetworkOut`, `RDSReaderAverageCPUUtilization`, `RDSReaderAverageDatabaseConnections`.
   /// [resourceLabel] Identifies the resource associated with the metric type.
-  ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification({
+  const ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification({
     required this.predefinedScalingMetricType,
     this.resourceLabel,
   });

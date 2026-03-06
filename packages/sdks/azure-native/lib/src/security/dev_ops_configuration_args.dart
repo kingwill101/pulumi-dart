@@ -19,7 +19,7 @@ class DevOpsConfigurationArgs {
   /// [properties] DevOps Configuration properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  DevOpsConfigurationArgs({
+  const DevOpsConfigurationArgs({
     this.properties,
     required this.resourceGroupName,
     required this.securityConnectorName,

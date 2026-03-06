@@ -38,7 +38,7 @@ class VirtualNetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnetOverrides] The subnet overrides of the virtual network.
   /// [tags] The tags of the resource.
-  VirtualNetworkArgs({
+  const VirtualNetworkArgs({
     this.allowedSubnets,
     this.description,
     this.externalProviderResourceId,

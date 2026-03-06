@@ -18,7 +18,7 @@ class DbNodeArgs {
   /// [classCode] The specification information of the node.
   /// [dbInstanceId] The Id of instance that can run database.
   /// [zoneId] The zone ID of the node.
-  DbNodeArgs({
+  const DbNodeArgs({
     required this.classCode,
     required this.dbInstanceId,
     required this.zoneId,

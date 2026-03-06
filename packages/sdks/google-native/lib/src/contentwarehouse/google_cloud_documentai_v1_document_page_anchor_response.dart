@@ -10,7 +10,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorResponse {
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageAnchorResponse].
   /// [pageRefs] One or more references to visual page elements
-  GoogleCloudDocumentaiV1DocumentPageAnchorResponse({
+  const GoogleCloudDocumentaiV1DocumentPageAnchorResponse({
     required this.pageRefs,
   });
 

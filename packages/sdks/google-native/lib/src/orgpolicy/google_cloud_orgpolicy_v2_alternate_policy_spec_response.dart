@@ -13,7 +13,7 @@ class GoogleCloudOrgpolicyV2AlternatePolicySpecResponse {
   /// Creates a new [GoogleCloudOrgpolicyV2AlternatePolicySpecResponse].
   /// [launch] Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
   /// [spec] Specify constraint for configurations of Google Cloud resources.
-  GoogleCloudOrgpolicyV2AlternatePolicySpecResponse({
+  const GoogleCloudOrgpolicyV2AlternatePolicySpecResponse({
     required this.launch,
     required this.spec,
   });

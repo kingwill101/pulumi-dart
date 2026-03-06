@@ -9,7 +9,7 @@ class GetTableGlobalSecondaryIndexWarmThroughput {
   /// Creates a new [GetTableGlobalSecondaryIndexWarmThroughput].
   /// [readUnitsPerSecond] Required.
   /// [writeUnitsPerSecond] Required.
-  GetTableGlobalSecondaryIndexWarmThroughput({
+  const GetTableGlobalSecondaryIndexWarmThroughput({
     required this.readUnitsPerSecond,
     required this.writeUnitsPerSecond,
   });

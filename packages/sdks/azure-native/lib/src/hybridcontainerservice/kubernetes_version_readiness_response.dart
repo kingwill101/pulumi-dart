@@ -18,7 +18,7 @@ class KubernetesVersionReadinessResponse {
   /// [osSku] Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
   /// [osType] The particular KubernetesVersion Image OS Type (Linux, Windows)
   /// [ready] Whether the kubernetes version image is ready or not
-  KubernetesVersionReadinessResponse({
+  const KubernetesVersionReadinessResponse({
     required this.errorMessage,
     this.osSku,
     required this.osType,

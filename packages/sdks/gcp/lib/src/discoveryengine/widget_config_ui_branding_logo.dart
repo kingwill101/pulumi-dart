@@ -8,7 +8,7 @@ class WidgetConfigUiBrandingLogo {
 
   /// Creates a new [WidgetConfigUiBrandingLogo].
   /// [url] Image URL.
-  WidgetConfigUiBrandingLogo({
+  const WidgetConfigUiBrandingLogo({
     this.url,
   });
 

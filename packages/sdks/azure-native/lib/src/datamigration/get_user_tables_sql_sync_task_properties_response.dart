@@ -32,7 +32,7 @@ class GetUserTablesSqlSyncTaskPropertiesResponse {
   /// [output] Task output. This is ignored if submitted.
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  GetUserTablesSqlSyncTaskPropertiesResponse({
+  const GetUserTablesSqlSyncTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

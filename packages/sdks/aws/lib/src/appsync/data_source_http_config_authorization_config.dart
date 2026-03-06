@@ -12,7 +12,7 @@ class DataSourceHttpConfigAuthorizationConfig {
   /// Creates a new [DataSourceHttpConfigAuthorizationConfig].
   /// [authorizationType] Authorization type that the HTTP endpoint requires. Default values is `AWS_IAM`.
   /// [awsIamConfig] Identity and Access Management (IAM) settings. See `aws_iam_config` Block for details.
-  DataSourceHttpConfigAuthorizationConfig({
+  const DataSourceHttpConfigAuthorizationConfig({
     this.authorizationType,
     this.awsIamConfig,
   });

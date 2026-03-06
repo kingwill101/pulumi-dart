@@ -12,7 +12,7 @@ class GradientaiIndexingJobCancelArgs {
 
   /// Creates a new [GradientaiIndexingJobCancelArgs].
   /// [uuid] The UUID of the indexing job to cancel.
-  GradientaiIndexingJobCancelArgs({
+  const GradientaiIndexingJobCancelArgs({
     required this.uuid,
   });
 

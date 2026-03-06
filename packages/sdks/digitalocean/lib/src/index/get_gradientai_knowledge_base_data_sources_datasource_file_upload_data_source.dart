@@ -14,7 +14,7 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
   /// [originalFileName] The original name of the uploaded file
   /// [sizeInBytes] The size of the file in bytes
   /// [storedObjectKey] The stored object key for the file
-  GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource({
+  const GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource({
     this.originalFileName,
     this.sizeInBytes,
     this.storedObjectKey,

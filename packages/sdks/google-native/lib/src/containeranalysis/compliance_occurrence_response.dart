@@ -11,7 +11,7 @@ class ComplianceOccurrenceResponse {
   /// Creates a new [ComplianceOccurrenceResponse].
   /// [nonComplianceReason] Required.
   /// [nonCompliantFiles] Required.
-  ComplianceOccurrenceResponse({
+  const ComplianceOccurrenceResponse({
     required this.nonComplianceReason,
     required this.nonCompliantFiles,
   });

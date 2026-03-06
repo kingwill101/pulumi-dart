@@ -7,7 +7,7 @@ class ServerBindingResponseComputeV1 {
 
   /// Creates a new [ServerBindingResponseComputeV1].
   /// [type] Required.
-  ServerBindingResponseComputeV1({
+  const ServerBindingResponseComputeV1({
     required this.type,
   });
 

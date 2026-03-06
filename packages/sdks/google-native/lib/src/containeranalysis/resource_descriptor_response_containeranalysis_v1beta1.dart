@@ -19,7 +19,7 @@ class ResourceDescriptorResponseContaineranalysisV1beta1 {
   /// [mediaType] Required.
   /// [name] Required.
   /// [uri] Required.
-  ResourceDescriptorResponseContaineranalysisV1beta1({
+  const ResourceDescriptorResponseContaineranalysisV1beta1({
     required this.annotations,
     required this.content,
     required this.digest,

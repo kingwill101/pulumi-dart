@@ -28,7 +28,7 @@ class InterfaceState {
   /// [public] Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   /// [vlan] Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
   /// [vpc] Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-  InterfaceState({
+  const InterfaceState({
     this.defaultRoute,
     this.firewallId,
     this.linodeId,

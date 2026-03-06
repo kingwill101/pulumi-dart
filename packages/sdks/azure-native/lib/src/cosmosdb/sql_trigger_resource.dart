@@ -18,7 +18,7 @@ class SqlTriggerResource {
   /// [id] Name of the Cosmos DB SQL trigger
   /// [triggerOperation] The operation the trigger is associated with
   /// [triggerType] Type of the Trigger
-  SqlTriggerResource({
+  const SqlTriggerResource({
     this.body,
     required this.id,
     this.triggerOperation,

@@ -11,7 +11,7 @@ class Datapolicyv2DataPolicyIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  Datapolicyv2DataPolicyIamBindingCondition({
+  const Datapolicyv2DataPolicyIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -9,7 +9,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction].
   /// [transformationLambdaConfiguration] The configuration of the lambda function.
-  AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction({
+  const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunction({
     this.transformationLambdaConfiguration,
   });
 

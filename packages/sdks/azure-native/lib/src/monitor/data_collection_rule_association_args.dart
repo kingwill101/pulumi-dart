@@ -24,7 +24,7 @@ class DataCollectionRuleAssociationArgs {
   /// [dataCollectionRuleId] The resource ID of the data collection rule that is to be associated.
   /// [description] Description of the association.
   /// [resourceUri] The identifier of the resource.
-  DataCollectionRuleAssociationArgs({
+  const DataCollectionRuleAssociationArgs({
     this.associationName,
     this.dataCollectionEndpointId,
     this.dataCollectionRuleId,

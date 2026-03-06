@@ -17,7 +17,7 @@ class GetAppConnectionIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAppConnectionIamPolicyArgs({
+  const GetAppConnectionIamPolicyArgs({
     required this.appConnectionId,
     required this.location,
     this.optionsRequestedPolicyVersion,

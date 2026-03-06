@@ -15,7 +15,7 @@ class SolutionProperties {
   /// [containedResources] The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.
   /// [referencedResources] The resources that will be referenced from this solution. Deleting any of those solution out of band will break the solution.
   /// [workspaceResourceId] The azure resourceId for the workspace where the solution will be deployed/enabled.
-  SolutionProperties({
+  const SolutionProperties({
     this.containedResources,
     this.referencedResources,
     required this.workspaceResourceId,

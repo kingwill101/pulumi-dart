@@ -16,7 +16,7 @@ class ArmResourceDefinitionResourceElementTemplate {
   /// [artifactProfile] Artifact profile properties.
   /// [parameterValues] Name and value pairs that define the parameter values. It can be  a well formed escaped JSON string.
   /// [templateType] The template type.
-  ArmResourceDefinitionResourceElementTemplate({
+  const ArmResourceDefinitionResourceElementTemplate({
     this.artifactProfile,
     this.parameterValues,
     this.templateType,

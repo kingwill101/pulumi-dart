@@ -11,7 +11,7 @@ class GetLoadBalancersBalancerModificationProtectionConfig {
   /// Creates a new [GetLoadBalancersBalancerModificationProtectionConfig].
   /// [reason] The reason for modification protection.
   /// [status] The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-  GetLoadBalancersBalancerModificationProtectionConfig({
+  const GetLoadBalancersBalancerModificationProtectionConfig({
     required this.reason,
     required this.status,
   });

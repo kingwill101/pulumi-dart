@@ -28,7 +28,7 @@ class GuestAgentProfileResponse {
   /// [mssqlDiscovered] Specifies whether any MS SQL instance is discovered on the machine.
   /// [status] The status of the hybrid machine agent.
   /// [vmUuid] Specifies the VM's unique SMBIOS ID.
-  GuestAgentProfileResponse({
+  const GuestAgentProfileResponse({
     required this.agentVersion,
     this.clientPublicKey,
     required this.errorDetails,

@@ -11,7 +11,7 @@ class DataQualityJobDefinitionNetworkConfigVpcConfig {
   /// Creates a new [DataQualityJobDefinitionNetworkConfigVpcConfig].
   /// [securityGroupIds] The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for the VPC that is specified in the `subnets` field.
   /// [subnets] The ID of the subnets in the VPC to which you want to connect your training job or model.
-  DataQualityJobDefinitionNetworkConfigVpcConfig({
+  const DataQualityJobDefinitionNetworkConfigVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
   });

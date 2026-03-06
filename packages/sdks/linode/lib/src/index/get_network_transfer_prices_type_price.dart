@@ -11,7 +11,7 @@ class GetNetworkTransferPricesTypePrice {
   /// Creates a new [GetNetworkTransferPricesTypePrice].
   /// [hourly] Cost (in US dollars) per hour.
   /// [monthly] Cost (in US dollars) per month.
-  GetNetworkTransferPricesTypePrice({
+  const GetNetworkTransferPricesTypePrice({
     required this.hourly,
     required this.monthly,
   });

@@ -10,7 +10,7 @@ class ManagedZonePeeringConfigTargetNetwork {
 
   /// Creates a new [ManagedZonePeeringConfigTargetNetwork].
   /// [networkUrl] The id or fully qualified URL of the VPC network to forward queries to.
-  ManagedZonePeeringConfigTargetNetwork({
+  const ManagedZonePeeringConfigTargetNetwork({
     required this.networkUrl,
   });
 

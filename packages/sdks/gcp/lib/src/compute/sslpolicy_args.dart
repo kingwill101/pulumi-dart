@@ -56,7 +56,7 @@ class SSLPolicyArgs {
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [profile] Profile specifies the set of SSL features that can be used by the
   /// [project] The ID of the project in which the resource belongs.
-  SSLPolicyArgs({
+  const SSLPolicyArgs({
     this.customFeatures,
     this.description,
     this.minTlsVersion,

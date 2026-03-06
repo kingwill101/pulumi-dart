@@ -21,7 +21,7 @@ class GetAiFeatureOnlineStoreIamPolicyArgs {
   /// [featureOnlineStore] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature online store. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
-  GetAiFeatureOnlineStoreIamPolicyArgs({
+  const GetAiFeatureOnlineStoreIamPolicyArgs({
     required this.featureOnlineStore,
     this.project,
     this.region,

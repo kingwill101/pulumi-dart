@@ -12,7 +12,7 @@ class ServiceEndpoint {
   /// Creates a new [ServiceEndpoint].
   /// [locations] A list of locations.
   /// [service] The type of the endpoint service.
-  ServiceEndpoint({
+  const ServiceEndpoint({
     this.locations,
     required this.service,
   });

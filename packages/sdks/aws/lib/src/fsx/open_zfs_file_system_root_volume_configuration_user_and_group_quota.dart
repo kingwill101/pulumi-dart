@@ -14,7 +14,7 @@ class OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota {
   /// [id] The ID of the user or group. Valid values between `0` and `2147483647`
   /// [storageCapacityQuotaGib] The amount of storage that the user or group can use in gibibytes (GiB). Valid values between `0` and `2147483647`
   /// [type] A value that specifies whether the quota applies to a user or group. Valid values are `USER` or `GROUP`.
-  OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota({
+  const OpenZfsFileSystemRootVolumeConfigurationUserAndGroupQuota({
     required this.id,
     required this.storageCapacityQuotaGib,
     required this.type,

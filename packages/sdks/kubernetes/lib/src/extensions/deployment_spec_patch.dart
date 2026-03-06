@@ -37,7 +37,7 @@ class DeploymentSpecPatch {
   /// [selector] Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.
   /// [strategy] The deployment strategy to use to replace existing pods with new ones.
   /// [template] Template describes the pods that will be created.
-  DeploymentSpecPatch({
+  const DeploymentSpecPatch({
     this.minReadySeconds,
     this.paused,
     this.progressDeadlineSeconds,

@@ -18,7 +18,7 @@ class ObjectLambdaAccessPointConfiguration {
   /// [cloudWatchMetricsEnabled] Whether or not the CloudWatch metrics configuration is enabled.
   /// [supportingAccessPoint] Standard access point associated with the Object Lambda Access Point.
   /// [transformationConfigurations] List of transformation configurations for the Object Lambda Access Point. See Transformation Configuration below for more details.
-  ObjectLambdaAccessPointConfiguration({
+  const ObjectLambdaAccessPointConfiguration({
     this.allowedFeatures,
     this.cloudWatchMetricsEnabled,
     required this.supportingAccessPoint,

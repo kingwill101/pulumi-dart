@@ -17,7 +17,7 @@ class MultitenantDistributionCustomErrorResponse {
   /// [errorCode] HTTP status code for which you want to specify a custom error page and/or a caching duration.
   /// [responseCode] HTTP status code that you want CloudFront to return to the viewer along with the custom error page. Both `response_code` and `response_page_path` must be specified or both must be omitted.
   /// [responsePagePath] Path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ErrorCode. Both `response_code` and `response_page_path` must be specified or both must be omitted.
-  MultitenantDistributionCustomErrorResponse({
+  const MultitenantDistributionCustomErrorResponse({
     this.errorCachingMinTtl,
     required this.errorCode,
     this.responseCode,

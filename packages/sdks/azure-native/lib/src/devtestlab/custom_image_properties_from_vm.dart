@@ -17,7 +17,7 @@ class CustomImagePropertiesFromVm {
   /// [linuxOsInfo] The Linux OS information of the VM.
   /// [sourceVmId] The source vm identifier.
   /// [windowsOsInfo] The Windows OS information of the VM.
-  CustomImagePropertiesFromVm({
+  const CustomImagePropertiesFromVm({
     this.linuxOsInfo,
     this.sourceVmId,
     this.windowsOsInfo,

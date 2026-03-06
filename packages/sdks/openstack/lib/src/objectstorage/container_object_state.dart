@@ -96,7 +96,7 @@ class ContainerObjectState {
   /// [region] The region in which to create the container. If
   /// [source] A string representing the local path of a file which will be used
   /// [transId] A unique transaction ID for this request. Your service provider might
-  ContainerObjectState({
+  const ContainerObjectState({
     this.containerName,
     this.content,
     this.contentDisposition,

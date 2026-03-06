@@ -13,7 +13,7 @@ class ListCatalogDeploymentsResult {
   /// Creates a new [ListCatalogDeploymentsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Deployment items on this page
-  ListCatalogDeploymentsResult({
+  const ListCatalogDeploymentsResult({
     this.nextLink,
     required this.value,
   });

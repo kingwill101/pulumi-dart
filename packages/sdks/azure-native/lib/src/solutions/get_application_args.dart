@@ -15,7 +15,7 @@ class GetApplicationArgs {
   /// Creates a new [GetApplicationArgs].
   /// [applicationName] The name of the managed application.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.applicationName,
     required this.resourceGroupName,
   });

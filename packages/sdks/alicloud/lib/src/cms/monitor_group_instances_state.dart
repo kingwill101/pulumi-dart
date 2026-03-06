@@ -13,7 +13,7 @@ class MonitorGroupInstancesState {
   /// Creates a new [MonitorGroupInstancesState].
   /// [groupId] The id of Cms Group.
   /// [instances] Instance information added to the Cms Group. See `instances` below.
-  MonitorGroupInstancesState({
+  const MonitorGroupInstancesState({
     this.groupId,
     this.instances,
   });

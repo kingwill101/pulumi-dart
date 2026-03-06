@@ -20,7 +20,7 @@ class UserPasswordPolicy {
   /// [enablePasswordVerification] If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
   /// [passwordExpirationDuration] Password expiration duration with one week grace period.
   /// [statuses] Optional.
-  UserPasswordPolicy({
+  const UserPasswordPolicy({
     this.allowedFailedAttempts,
     this.enableFailedAttemptsCheck,
     this.enablePasswordVerification,

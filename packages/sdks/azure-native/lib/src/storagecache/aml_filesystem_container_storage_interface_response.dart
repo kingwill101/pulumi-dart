@@ -15,7 +15,7 @@ class AmlFilesystemContainerStorageInterfaceResponse {
   /// [persistentVolume] Recommended AKS Persistent Volume for the CSI driver, in Base64 encoded YAML
   /// [persistentVolumeClaim] Recommended AKS Persistent Volume Claim for the CSI driver, in Base64 encoded YAML
   /// [storageClass] Recommended AKS Storage Class for the CSI driver, in Base64 encoded YAML
-  AmlFilesystemContainerStorageInterfaceResponse({
+  const AmlFilesystemContainerStorageInterfaceResponse({
     required this.persistentVolume,
     required this.persistentVolumeClaim,
     required this.storageClass,

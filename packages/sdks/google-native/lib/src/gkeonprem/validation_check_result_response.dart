@@ -21,7 +21,7 @@ class ValidationCheckResultResponse {
   /// [details] Detailed failure information, which might be unformatted.
   /// [reason] A human-readable message of the check failure.
   /// [state] The validation check state.
-  ValidationCheckResultResponse({
+  const ValidationCheckResultResponse({
     required this.category,
     required this.description,
     required this.details,

@@ -59,7 +59,7 @@ class ReservedInstanceArgs {
   /// [scope] Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
-  ReservedInstanceArgs({
+  const ReservedInstanceArgs({
     this.autoRenewPeriod,
     this.description,
     this.instanceAmount,

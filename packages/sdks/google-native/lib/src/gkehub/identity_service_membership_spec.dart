@@ -10,7 +10,7 @@ class IdentityServiceMembershipSpec {
 
   /// Creates a new [IdentityServiceMembershipSpec].
   /// [authMethods] A member may support multiple auth methods.
-  IdentityServiceMembershipSpec({
+  const IdentityServiceMembershipSpec({
     this.authMethods,
   });
 

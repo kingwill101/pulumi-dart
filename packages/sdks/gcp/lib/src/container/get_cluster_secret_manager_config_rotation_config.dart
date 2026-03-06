@@ -11,7 +11,7 @@ class GetClusterSecretManagerConfigRotationConfig {
   /// Creates a new [GetClusterSecretManagerConfigRotationConfig].
   /// [enabled] Enable the Secret manager auto rotation.
   /// [rotationInterval] The interval between two consecutive rotations. Default rotation interval is 2 minutes
-  GetClusterSecretManagerConfigRotationConfig({
+  const GetClusterSecretManagerConfigRotationConfig({
     required this.enabled,
     required this.rotationInterval,
   });

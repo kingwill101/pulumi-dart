@@ -21,7 +21,7 @@ class GetTrafficMirrorFilterIngressRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
   /// [trafficMirrorFilterId] The ID of the Traffic Mirror Filter.
-  GetTrafficMirrorFilterIngressRulesArgs({
+  const GetTrafficMirrorFilterIngressRulesArgs({
     this.ids,
     this.outputFile,
     this.status,

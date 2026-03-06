@@ -13,7 +13,7 @@ class Encryption {
   /// Creates a new [Encryption].
   /// [keySource] Enumerates the possible value of keySource for Encryption
   /// [keyVaultProperties] Properties of KeyVault
-  Encryption({
+  const Encryption({
     this.keySource,
     this.keyVaultProperties,
   });

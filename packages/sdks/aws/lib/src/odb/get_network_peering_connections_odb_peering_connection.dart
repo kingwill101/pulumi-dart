@@ -20,7 +20,7 @@ class GetNetworkPeeringConnectionsOdbPeeringConnection {
   /// [id] The unique identifier of the  ODB network peering connection.
   /// [odbNetworkArn] ARN of the ODB network peering connection.
   /// [peerNetworkArn] ARN of the peer network peering connection.
-  GetNetworkPeeringConnectionsOdbPeeringConnection({
+  const GetNetworkPeeringConnectionsOdbPeeringConnection({
     required this.arn,
     required this.displayName,
     required this.id,

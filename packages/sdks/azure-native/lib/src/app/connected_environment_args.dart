@@ -35,7 +35,7 @@ class ConnectedEnvironmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [staticIp] Static IP of the connectedEnvironment
   /// [tags] Resource tags.
-  ConnectedEnvironmentArgs({
+  const ConnectedEnvironmentArgs({
     this.connectedEnvironmentName,
     this.customDomainConfiguration,
     this.daprAIConnectionString,

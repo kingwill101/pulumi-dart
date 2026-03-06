@@ -25,7 +25,7 @@ class GetDropletAutoscaleResult {
   /// [name] Optional.
   /// [status] Required.
   /// [updatedAt] Required.
-  GetDropletAutoscaleResult({
+  const GetDropletAutoscaleResult({
     required this.configs,
     required this.createdAt,
     required this.currentUtilizations,

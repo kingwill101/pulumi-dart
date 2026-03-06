@@ -17,7 +17,7 @@ class GetVolumeGroupOracleVolumeDataProtectionReplication {
   /// [remoteVolumeLocation] Location of the primary volume.
   /// [remoteVolumeResourceId] Resource ID of the primary volume.
   /// [replicationFrequency] Replication frequency.
-  GetVolumeGroupOracleVolumeDataProtectionReplication({
+  const GetVolumeGroupOracleVolumeDataProtectionReplication({
     required this.endpointType,
     required this.remoteVolumeLocation,
     required this.remoteVolumeResourceId,

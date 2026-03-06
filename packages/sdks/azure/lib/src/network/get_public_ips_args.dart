@@ -21,7 +21,7 @@ class GetPublicIPsArgs {
   /// [attachmentStatus] Filter to include IP Addresses which are attached to a device, such as a VM/LB (`Attached`) or unattached (`Unattached`).
   /// [namePrefix] A prefix match used for the IP Addresses `name` field, case sensitive.
   /// [resourceGroupName] Specifies the name of the resource group.
-  GetPublicIPsArgs({
+  const GetPublicIPsArgs({
     this.allocationType,
     this.attachmentStatus,
     this.namePrefix,

@@ -15,7 +15,7 @@ class ContainerGroupDnsConfig {
   /// [nameServers] The list of DNS server IP addresses.
   /// [options] The structure of options. See `options` below.
   /// [searches] The list of DNS lookup domains.
-  ContainerGroupDnsConfig({
+  const ContainerGroupDnsConfig({
     this.nameServers,
     this.options,
     this.searches,

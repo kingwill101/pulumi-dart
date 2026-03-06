@@ -12,7 +12,7 @@ class CidrBlockResponse {
   /// Creates a new [CidrBlockResponse].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.
   /// [displayName] display_name is an optional field for users to identify CIDR blocks.
-  CidrBlockResponse({
+  const CidrBlockResponse({
     required this.cidrBlock,
     required this.displayName,
   });

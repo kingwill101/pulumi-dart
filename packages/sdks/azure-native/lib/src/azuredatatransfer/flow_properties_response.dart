@@ -98,7 +98,7 @@ class FlowPropertiesResponse {
   /// [streamId] The flow stream identifier
   /// [streamLatency] The latency of the stream in milliseconds
   /// [streamProtocol] The protocol of the stream
-  FlowPropertiesResponse({
+  const FlowPropertiesResponse({
     this.apiFlowOptions,
     this.connection,
     this.consumerGroup,

@@ -11,7 +11,7 @@ class GetClusterPscServiceAttachment {
   /// Creates a new [GetClusterPscServiceAttachment].
   /// [connectionType] Type of a PSC connection targeting this service attachment.
   /// [serviceAttachment] Service attachment URI which your self-created PscConnection should use as
-  GetClusterPscServiceAttachment({
+  const GetClusterPscServiceAttachment({
     required this.connectionType,
     required this.serviceAttachment,
   });

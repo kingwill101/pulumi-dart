@@ -11,7 +11,7 @@ class DeploymentLoggingLogReservePolicy {
   /// Creates a new [DeploymentLoggingLogReservePolicy].
   /// [expirationDays] Number of days to retain logs after log retention is enabled
   /// [openHistory] Whether to enable log retention
-  DeploymentLoggingLogReservePolicy({
+  const DeploymentLoggingLogReservePolicy({
     this.expirationDays,
     this.openHistory,
   });

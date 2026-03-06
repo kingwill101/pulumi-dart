@@ -46,7 +46,7 @@ class DbInstanceArgs {
   /// [vpcId] ID of the VPC.
   /// [vswitchId] The ID of attaching vswitch to instance.
   /// [zoneId] The zone ID of the resource.
-  DbInstanceArgs({
+  const DbInstanceArgs({
     required this.dbInstanceCategory,
     this.dbInstanceDescription,
     this.dbInstanceIpArrays,

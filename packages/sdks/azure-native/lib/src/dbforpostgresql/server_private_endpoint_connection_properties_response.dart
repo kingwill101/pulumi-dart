@@ -17,7 +17,7 @@ class ServerPrivateEndpointConnectionPropertiesResponse {
   /// [privateEndpoint] Private endpoint which the connection belongs to.
   /// [privateLinkServiceConnectionState] Connection state of the private endpoint connection.
   /// [provisioningState] State of the private endpoint connection.
-  ServerPrivateEndpointConnectionPropertiesResponse({
+  const ServerPrivateEndpointConnectionPropertiesResponse({
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     required this.provisioningState,

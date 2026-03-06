@@ -23,7 +23,7 @@ class MasterSlaveServerGroupServer {
   /// [serverType] The server type of the backend server. Valid value Master, Slave.
   /// [type] Type of the backend server. Valid value ecs, eni. Default to eni.
   /// [weight] Weight of the backend server. Valid value range: [0-100]. Default to 100.
-  MasterSlaveServerGroupServer({
+  const MasterSlaveServerGroupServer({
     this.isBackup,
     required this.port,
     required this.serverId,

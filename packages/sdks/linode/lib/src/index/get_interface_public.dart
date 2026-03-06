@@ -13,7 +13,7 @@ class GetInterfacePublic {
   /// Creates a new [GetInterfacePublic].
   /// [ipv4] The public IPv4 configuration for the interface.
   /// [ipv6] The public IPv6 configuration for the interface.
-  GetInterfacePublic({
+  const GetInterfacePublic({
     required this.ipv4,
     required this.ipv6,
   });

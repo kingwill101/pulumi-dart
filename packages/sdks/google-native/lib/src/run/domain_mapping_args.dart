@@ -30,7 +30,7 @@ class DomainMappingArgs {
   /// [metadata] Metadata associated with this BuildTemplate.
   /// [project] Optional.
   /// [spec] The spec for this DomainMapping.
-  DomainMappingArgs({
+  const DomainMappingArgs({
     this.apiVersion,
     this.dryRun,
     this.kind,

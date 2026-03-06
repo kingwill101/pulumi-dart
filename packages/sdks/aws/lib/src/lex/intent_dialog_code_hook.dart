@@ -13,7 +13,7 @@ class IntentDialogCodeHook {
   /// Creates a new [IntentDialogCodeHook].
   /// [messageVersion] The version of the request-response that you want Amazon Lex to use
   /// [uri] The Amazon Resource Name (ARN) of the Lambda function.
-  IntentDialogCodeHook({
+  const IntentDialogCodeHook({
     required this.messageVersion,
     required this.uri,
   });

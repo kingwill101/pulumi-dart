@@ -8,7 +8,7 @@ class GetClusterControlPlaneEndpointsConfigIpEndpointsConfig {
 
   /// Creates a new [GetClusterControlPlaneEndpointsConfigIpEndpointsConfig].
   /// [enabled] Controls whether to allow direct IP access.
-  GetClusterControlPlaneEndpointsConfigIpEndpointsConfig({
+  const GetClusterControlPlaneEndpointsConfigIpEndpointsConfig({
     required this.enabled,
   });
 

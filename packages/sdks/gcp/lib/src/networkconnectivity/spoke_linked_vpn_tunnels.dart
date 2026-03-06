@@ -15,7 +15,7 @@ class SpokeLinkedVpnTunnels {
   /// [includeImportRanges] IP ranges allowed to be included during import from hub (does not control transit connectivity).
   /// [siteToSiteDataTransfer] A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
   /// [uris] The URIs of linked VPN tunnel resources.
-  SpokeLinkedVpnTunnels({
+  const SpokeLinkedVpnTunnels({
     this.includeImportRanges,
     required this.siteToSiteDataTransfer,
     required this.uris,

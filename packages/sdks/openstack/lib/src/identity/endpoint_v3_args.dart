@@ -30,7 +30,7 @@ class EndpointV3Args {
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [serviceId] The endpoint service ID.
   /// [url] The endpoint url.
-  EndpointV3Args({
+  const EndpointV3Args({
     required this.endpointRegion,
     this.interface,
     this.name,

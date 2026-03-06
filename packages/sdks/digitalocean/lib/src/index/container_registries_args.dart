@@ -15,7 +15,7 @@ class ContainerRegistriesArgs {
   /// [name] Optional.
   /// [region] Optional.
   /// [subscriptionTierSlug] Required.
-  ContainerRegistriesArgs({
+  const ContainerRegistriesArgs({
     this.name,
     this.region,
     required this.subscriptionTierSlug,

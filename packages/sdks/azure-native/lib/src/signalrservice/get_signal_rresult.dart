@@ -130,7 +130,7 @@ class GetSignalRResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [upstream] The settings for the Upstream when the service is in server-less mode.
   /// [version] Version of the resource. Probably you need the same or higher version of client SDKs.
-  GetSignalRResult({
+  const GetSignalRResult({
     required this.azureApiVersion,
     this.cors,
     this.disableAadAuth,

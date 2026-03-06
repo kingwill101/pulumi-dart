@@ -38,7 +38,7 @@ class CacheToRegistry {
   /// [mode] The cache mode to use. Defaults to `min`.
   /// [ociMediaTypes] Whether to use OCI media types in exported manifests. Defaults to
   /// [ref] Fully qualified name of the cache image to import.
-  CacheToRegistry({
+  const CacheToRegistry({
     this.compression,
     this.compressionLevel,
     this.forceCompression,

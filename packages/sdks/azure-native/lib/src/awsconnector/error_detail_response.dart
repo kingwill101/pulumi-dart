@@ -15,7 +15,7 @@ class ErrorDetailResponse {
   /// [errorCode] &lt;p&gt;The name or code associated with the error.&lt;/p&gt;
   /// [errorData] &lt;p&gt;A list of key value pairs that provides contextual information about why an error occured.&lt;/p&gt;
   /// [errorMessage] &lt;p&gt;A message that describes the error.&lt;/p&gt;
-  ErrorDetailResponse({
+  const ErrorDetailResponse({
     this.errorCode,
     this.errorData,
     this.errorMessage,

@@ -37,7 +37,7 @@ class PhraseMatcherArgs {
   /// [roleMatch] The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
   /// [type] The type of this phrase matcher.
   /// [versionTag] The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
-  PhraseMatcherArgs({
+  const PhraseMatcherArgs({
     this.active,
     this.displayName,
     this.location,

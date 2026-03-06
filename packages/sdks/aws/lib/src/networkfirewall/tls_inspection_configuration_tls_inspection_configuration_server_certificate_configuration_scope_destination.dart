@@ -8,7 +8,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination].
   /// [addressDefinition] An IP address or a block of IP addresses in CIDR notation. AWS Network Firewall supports all address ranges for IPv4.
-  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination({
+  const TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeDestination({
     required this.addressDefinition,
   });
 

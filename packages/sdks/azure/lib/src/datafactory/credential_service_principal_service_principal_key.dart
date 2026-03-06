@@ -14,7 +14,7 @@ class CredentialServicePrincipalServicePrincipalKey {
   /// [linkedServiceName] The name of the Linked Service to use for the Service Principal Key.
   /// [secretName] The name of the Secret in the Key Vault.
   /// [secretVersion] The version of the Secret in the Key Vault.
-  CredentialServicePrincipalServicePrincipalKey({
+  const CredentialServicePrincipalServicePrincipalKey({
     required this.linkedServiceName,
     required this.secretName,
     this.secretVersion,

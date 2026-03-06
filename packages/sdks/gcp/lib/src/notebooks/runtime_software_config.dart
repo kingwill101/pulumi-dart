@@ -45,7 +45,7 @@ class RuntimeSoftwareConfig {
   /// [postStartupScript] Path to a Bash script that automatically runs after a notebook instance
   /// [postStartupScriptBehavior] Behavior for the post startup script.
   /// [upgradeable] (Output)
-  RuntimeSoftwareConfig({
+  const RuntimeSoftwareConfig({
     this.customGpuDriverPath,
     this.enableHealthMonitoring,
     this.idleShutdown,

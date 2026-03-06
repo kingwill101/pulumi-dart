@@ -11,7 +11,7 @@ class ServiceIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ServiceIamMemberCondition({
+  const ServiceIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

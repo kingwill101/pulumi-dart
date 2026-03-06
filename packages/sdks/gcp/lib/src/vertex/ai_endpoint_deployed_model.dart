@@ -58,7 +58,7 @@ class AiEndpointDeployedModel {
   /// [privateEndpoints] (Output)
   /// [serviceAccount] (Output)
   /// [sharedResources] (Output)
-  AiEndpointDeployedModel({
+  const AiEndpointDeployedModel({
     this.automaticResources,
     this.createTime,
     this.dedicatedResources,

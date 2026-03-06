@@ -21,7 +21,7 @@ class MoverAgentState {
   /// [description] Specifies a description for this Storage Mover Agent.
   /// [name] Specifies the name which should be used for this Storage Mover Agent. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the Storage Mover that this Agent should be connected to. Changing this forces a new resource to be created.
-  MoverAgentState({
+  const MoverAgentState({
     this.arcVirtualMachineId,
     this.arcVirtualMachineUuid,
     this.description,

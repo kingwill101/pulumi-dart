@@ -10,7 +10,7 @@ class CapacityReservationProfile {
 
   /// Creates a new [CapacityReservationProfile].
   /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
-  CapacityReservationProfile({
+  const CapacityReservationProfile({
     this.capacityReservationGroup,
   });
 

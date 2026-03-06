@@ -21,7 +21,7 @@ class GetSAPAvailabilityZoneDetailsArgs {
   /// [databaseType] The database type. Eg: HANA, DB2, etc
   /// [location] The name of Azure region.
   /// [sapProduct] Defines the SAP Product type.
-  GetSAPAvailabilityZoneDetailsArgs({
+  const GetSAPAvailabilityZoneDetailsArgs({
     required this.appLocation,
     required this.databaseType,
     required this.location,

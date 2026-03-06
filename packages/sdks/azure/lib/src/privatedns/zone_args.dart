@@ -24,7 +24,7 @@ class ZoneArgs {
   /// [resourceGroupName] Specifies the resource group where the resource exists. Changing this forces a new resource to be created.
   /// [soaRecord] An `soa_record` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  ZoneArgs({
+  const ZoneArgs({
     this.name,
     required this.resourceGroupName,
     this.soaRecord,

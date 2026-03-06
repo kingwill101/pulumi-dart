@@ -37,7 +37,7 @@ class JobTemplateState {
   /// [name] The resource name of the job template.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  JobTemplateState({
+  const JobTemplateState({
     this.config,
     this.effectiveLabels,
     this.jobTemplateId,

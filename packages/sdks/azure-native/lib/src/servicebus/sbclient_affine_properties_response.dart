@@ -15,7 +15,7 @@ class SBClientAffinePropertiesResponse {
   /// [clientId] Indicates the Client ID of the application that created the client-affine subscription.
   /// [isDurable] For client-affine subscriptions, this value indicates whether the subscription is durable or not.
   /// [isShared] For client-affine subscriptions, this value indicates whether the subscription is shared or not.
-  SBClientAffinePropertiesResponse({
+  const SBClientAffinePropertiesResponse({
     this.clientId,
     this.isDurable,
     this.isShared,

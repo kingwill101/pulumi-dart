@@ -15,7 +15,7 @@ class ApiBridgePropertiesResponse {
   /// [allowedAddressPrefixes] The allowed source IP addresses or CIDR ranges for accessing the API Bridge
   /// [configureApiBridge] The activation state of the API Bridge for this Communications Gateway
   /// [endpointFqdns] FQDNs for sending requests to the API Bridge endpoint
-  ApiBridgePropertiesResponse({
+  const ApiBridgePropertiesResponse({
     this.allowedAddressPrefixes,
     this.configureApiBridge,
     required this.endpointFqdns,

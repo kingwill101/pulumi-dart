@@ -18,7 +18,7 @@ class GetTagRuleArgs {
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleSetName] Tag Rule Set resource name
-  GetTagRuleArgs({
+  const GetTagRuleArgs({
     required this.monitorName,
     required this.resourceGroupName,
     required this.ruleSetName,

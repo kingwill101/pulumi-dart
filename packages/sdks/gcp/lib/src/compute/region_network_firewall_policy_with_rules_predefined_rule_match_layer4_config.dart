@@ -22,7 +22,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config {
   /// Creates a new [RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config].
   /// [ipProtocol] (Output)
   /// [ports] (Output)
-  RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config({
+  const RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config({
     this.ipProtocol,
     this.ports,
   });

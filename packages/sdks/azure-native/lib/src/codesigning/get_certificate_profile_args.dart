@@ -18,7 +18,7 @@ class GetCertificateProfileArgs {
   /// [accountName] Trusted Signing account name.
   /// [profileName] Certificate profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCertificateProfileArgs({
+  const GetCertificateProfileArgs({
     required this.accountName,
     required this.profileName,
     required this.resourceGroupName,

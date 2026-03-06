@@ -7,7 +7,7 @@ class GetVirtualNodeSpecListenerTlCertificateSd {
 
   /// Creates a new [GetVirtualNodeSpecListenerTlCertificateSd].
   /// [secretName] Required.
-  GetVirtualNodeSpecListenerTlCertificateSd({
+  const GetVirtualNodeSpecListenerTlCertificateSd({
     required this.secretName,
   });
 

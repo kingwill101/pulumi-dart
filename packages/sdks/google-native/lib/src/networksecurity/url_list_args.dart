@@ -25,7 +25,7 @@ class UrlListArgs {
   /// [project] Optional.
   /// [urlListId] Required. Short name of the UrlList resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "url_list".
   /// [values] FQDNs and URLs.
-  UrlListArgs({
+  const UrlListArgs({
     this.description,
     this.location,
     this.name,

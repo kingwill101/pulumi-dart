@@ -14,7 +14,7 @@ class GetGroupLaunchTemplate {
   /// [id] ID of the launch template.
   /// [name] Specify the exact name of the desired autoscaling group.
   /// [version] Template version.
-  GetGroupLaunchTemplate({
+  const GetGroupLaunchTemplate({
     required this.id,
     required this.name,
     required this.version,

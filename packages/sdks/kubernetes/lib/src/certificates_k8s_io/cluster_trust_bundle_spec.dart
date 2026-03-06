@@ -24,7 +24,7 @@ class ClusterTrustBundleSpec {
   /// Creates a new [ClusterTrustBundleSpec].
   /// [signerName] signerName indicates the associated signer, if any.
   /// [trustBundle] trustBundle contains the individual X.509 trust anchors for this bundle, as PEM bundle of PEM-wrapped, DER-formatted X.509 certificates.
-  ClusterTrustBundleSpec({
+  const ClusterTrustBundleSpec({
     this.signerName,
     required this.trustBundle,
   });

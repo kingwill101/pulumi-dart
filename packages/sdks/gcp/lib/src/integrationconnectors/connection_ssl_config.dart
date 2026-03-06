@@ -49,7 +49,7 @@ class ConnectionSslConfig {
   /// [trustModel] Enum for Trust Model
   /// [type] Enum for controlling the SSL Type (TLS/MTLS)
   /// [useSsl] Bool for enabling SSL
-  ConnectionSslConfig({
+  const ConnectionSslConfig({
     this.additionalVariables,
     this.clientCertType,
     this.clientCertificate,

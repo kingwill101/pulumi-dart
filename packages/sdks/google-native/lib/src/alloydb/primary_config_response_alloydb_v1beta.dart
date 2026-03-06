@@ -9,7 +9,7 @@ class PrimaryConfigResponseAlloydbV1beta {
 
   /// Creates a new [PrimaryConfigResponseAlloydbV1beta].
   /// [secondaryClusterNames] Names of the clusters that are replicating from this cluster.
-  PrimaryConfigResponseAlloydbV1beta({
+  const PrimaryConfigResponseAlloydbV1beta({
     required this.secondaryClusterNames,
   });
 

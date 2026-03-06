@@ -8,7 +8,7 @@ class GetBackendServiceDynamicForwardingIpPortSelection {
 
   /// Creates a new [GetBackendServiceDynamicForwardingIpPortSelection].
   /// [enabled] A boolean flag enabling IP:PORT based dynamic forwarding.
-  GetBackendServiceDynamicForwardingIpPortSelection({
+  const GetBackendServiceDynamicForwardingIpPortSelection({
     required this.enabled,
   });
 

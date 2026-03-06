@@ -12,7 +12,7 @@ class PublicIPAddressSkuResponse {
   /// Creates a new [PublicIPAddressSkuResponse].
   /// [name] Specify public IP sku name
   /// [tier] Specify public IP sku tier
-  PublicIPAddressSkuResponse({
+  const PublicIPAddressSkuResponse({
     this.name,
     this.tier,
   });

@@ -11,7 +11,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
   /// Creates a new [InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions].
   /// [bucket] The destination bucket that stores the generated inventory reports.
   /// [destinationPath] The path within the destination bucket to store generated inventory reports.
-  InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions({
+  const InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions({
     required this.bucket,
     this.destinationPath,
   });

@@ -34,7 +34,7 @@ class GoogleSheetsLinkedServiceResponse {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  GoogleSheetsLinkedServiceResponse({
+  const GoogleSheetsLinkedServiceResponse({
     this.annotations,
     required this.apiToken,
     this.connectVia,

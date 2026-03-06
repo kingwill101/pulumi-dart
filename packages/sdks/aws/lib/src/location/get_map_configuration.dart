@@ -8,7 +8,7 @@ class GetMapConfiguration {
 
   /// Creates a new [GetMapConfiguration].
   /// [style] The map style selected from an available data provider.
-  GetMapConfiguration({
+  const GetMapConfiguration({
     required this.style,
   });
 

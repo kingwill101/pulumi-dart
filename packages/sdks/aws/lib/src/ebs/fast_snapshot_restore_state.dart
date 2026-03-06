@@ -21,7 +21,7 @@ class FastSnapshotRestoreState {
   /// [snapshotId] ID of the snapshot.
   /// [state] State of fast snapshot restores. Valid values are `enabling`, `optimizing`, `enabled`, `disabling`, `disabled`.
   /// [timeouts] Optional.
-  FastSnapshotRestoreState({
+  const FastSnapshotRestoreState({
     this.availabilityZone,
     this.region,
     this.snapshotId,

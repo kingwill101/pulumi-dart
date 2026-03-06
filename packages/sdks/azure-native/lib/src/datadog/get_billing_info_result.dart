@@ -13,7 +13,7 @@ class GetBillingInfoResult {
   /// Creates a new [GetBillingInfoResult].
   /// [marketplaceSaasInfo] Marketplace Subscription details
   /// [partnerBillingEntity] Partner Billing Entity details: Organization Info
-  GetBillingInfoResult({
+  const GetBillingInfoResult({
     this.marketplaceSaasInfo,
     this.partnerBillingEntity,
   });

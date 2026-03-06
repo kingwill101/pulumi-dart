@@ -41,7 +41,7 @@ class GetInstancesInstance {
   /// [storage] The storage of Cloud Bastionhost instance in TB.
   /// [tags] A map of tags assigned to the bastionhost instance.
   /// [userVswitchId] The instance's vSwitch ID.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.bandwidth,
     required this.description,
     required this.id,

@@ -15,7 +15,7 @@ class GetReceivedLicenseArgs {
   /// Creates a new [GetReceivedLicenseArgs].
   /// [licenseArn] The ARN of the received license you want data for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetReceivedLicenseArgs({
+  const GetReceivedLicenseArgs({
     required this.licenseArn,
     this.region,
   });

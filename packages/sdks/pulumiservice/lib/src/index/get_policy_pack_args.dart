@@ -18,7 +18,7 @@ class GetPolicyPackArgs {
   /// [organizationName] The name of the Pulumi organization.
   /// [policyPackName] The name of the policy pack.
   /// [version] The version number of the policy pack. If not specified, returns the latest version.
-  GetPolicyPackArgs({
+  const GetPolicyPackArgs({
     required this.organizationName,
     required this.policyPackName,
     this.version,

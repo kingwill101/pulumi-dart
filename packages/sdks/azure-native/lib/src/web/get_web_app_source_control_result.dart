@@ -42,7 +42,7 @@ class GetWebAppSourceControlResult {
   /// [name] Resource Name.
   /// [repoUrl] Repository or source control URL.
   /// [type] Resource type.
-  GetWebAppSourceControlResult({
+  const GetWebAppSourceControlResult({
     required this.azureApiVersion,
     this.branch,
     this.deploymentRollbackEnabled,

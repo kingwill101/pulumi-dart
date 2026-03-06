@@ -45,7 +45,7 @@ class RuntimeArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [softwareConfig] The config settings for software inside the runtime.
   /// [virtualMachine] Use a Compute Engine VM image to start the managed notebook instance.
-  RuntimeArgs({
+  const RuntimeArgs({
     this.accessConfig,
     this.labels,
     required this.location,

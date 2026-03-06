@@ -10,7 +10,7 @@ class TemplateScratchSourceResourceGroup {
   /// Creates a new [TemplateScratchSourceResourceGroup].
   /// [resourceGroupId] The ID of the Source Resource Group.
   /// [resourceTypeFilters] Optional.
-  TemplateScratchSourceResourceGroup({
+  const TemplateScratchSourceResourceGroup({
     required this.resourceGroupId,
     this.resourceTypeFilters,
   });

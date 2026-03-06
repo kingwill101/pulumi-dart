@@ -15,7 +15,7 @@ class GatewayEndpointRouteTableAttachmentArgs {
   /// Creates a new [GatewayEndpointRouteTableAttachmentArgs].
   /// [gatewayEndpointId] The ID of the gateway endpoint instance to which you want to associate the route table.
   /// [routeTableId] Routing table ID.
-  GatewayEndpointRouteTableAttachmentArgs({
+  const GatewayEndpointRouteTableAttachmentArgs({
     required this.gatewayEndpointId,
     required this.routeTableId,
   });

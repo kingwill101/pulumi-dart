@@ -35,7 +35,7 @@ class GetVpcFlowLogsLog {
   /// [resourceType] The resource type.
   /// [status] The status of flow log.
   /// [trafficType] The traffic type.
-  GetVpcFlowLogsLog({
+  const GetVpcFlowLogsLog({
     required this.description,
     required this.flowLogId,
     required this.flowLogName,

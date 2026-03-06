@@ -23,7 +23,7 @@ class SourceArgs {
   /// [description] The description of the source (max of 1024 characters).
   /// [displayName] The source’s display name. A source’s display name must be unique
   /// [organization] The organization whose Cloud Security Command Center the Source
-  SourceArgs({
+  const SourceArgs({
     this.description,
     required this.displayName,
     required this.organization,

@@ -23,7 +23,7 @@ class GetEnterpriseProxyAccessesResult {
   /// [ids] A list of Proxy Access IDs.
   /// [outputFile] Optional.
   /// [proxyId] The ID of the security agent.
-  GetEnterpriseProxyAccessesResult({
+  const GetEnterpriseProxyAccessesResult({
     required this.accesses,
     this.enableDetails,
     required this.id,

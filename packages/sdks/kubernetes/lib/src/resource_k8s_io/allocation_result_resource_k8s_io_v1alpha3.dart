@@ -21,7 +21,7 @@ class AllocationResultResourceK8sIoV1alpha3 {
   /// [controller] Controller is the name of the DRA driver which handled the allocation. That driver is also responsible for deallocating the claim. It is empty when the claim can be deallocated without involving a driver.
   /// [devices] Devices is the result of allocating devices.
   /// [nodeSelector] NodeSelector defines where the allocated resources are available. If unset, they are available everywhere.
-  AllocationResultResourceK8sIoV1alpha3({
+  const AllocationResultResourceK8sIoV1alpha3({
     this.controller,
     this.devices,
     this.nodeSelector,

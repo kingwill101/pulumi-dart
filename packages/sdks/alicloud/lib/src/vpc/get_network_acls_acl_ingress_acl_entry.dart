@@ -23,7 +23,7 @@ class GetNetworkAclsAclIngressAclEntry {
   /// [port] Source port range.
   /// [protocol] Transport layer protocol.
   /// [sourceCidrIp] The source address field.
-  GetNetworkAclsAclIngressAclEntry({
+  const GetNetworkAclsAclIngressAclEntry({
     required this.description,
     required this.networkAclEntryName,
     required this.policy,

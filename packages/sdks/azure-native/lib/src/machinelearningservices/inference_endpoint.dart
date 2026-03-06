@@ -23,7 +23,7 @@ class InferenceEndpoint {
   /// [groupName] [Required] Group within the same pool with which this endpoint needs to be associated with.
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [requestConfiguration] RequestConfiguration for endpoint.
-  InferenceEndpoint({
+  const InferenceEndpoint({
     required this.authMode,
     this.description,
     required this.groupName,

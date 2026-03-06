@@ -23,7 +23,7 @@ class GetDeployGroupsResult {
   /// [nameRegex] Optional.
   /// [names] A list of deploy group names.
   /// [outputFile] Optional.
-  GetDeployGroupsResult({
+  const GetDeployGroupsResult({
     required this.appId,
     required this.groups,
     required this.id,

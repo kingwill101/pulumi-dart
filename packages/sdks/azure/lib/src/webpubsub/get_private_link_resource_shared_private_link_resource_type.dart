@@ -11,7 +11,7 @@ class GetPrivateLinkResourceSharedPrivateLinkResourceType {
   /// Creates a new [GetPrivateLinkResourceSharedPrivateLinkResourceType].
   /// [description] The description of the resource type that has been onboarded to private link service.
   /// [subresourceName] The  name for the resource that has been onboarded to private link service.
-  GetPrivateLinkResourceSharedPrivateLinkResourceType({
+  const GetPrivateLinkResourceSharedPrivateLinkResourceType({
     required this.description,
     required this.subresourceName,
   });

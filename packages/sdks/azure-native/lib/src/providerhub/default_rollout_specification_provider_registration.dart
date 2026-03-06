@@ -12,7 +12,7 @@ class DefaultRolloutSpecificationProviderRegistration {
   /// Creates a new [DefaultRolloutSpecificationProviderRegistration].
   /// [kind] Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [properties] Optional.
-  DefaultRolloutSpecificationProviderRegistration({
+  const DefaultRolloutSpecificationProviderRegistration({
     this.kind,
     this.properties,
   });

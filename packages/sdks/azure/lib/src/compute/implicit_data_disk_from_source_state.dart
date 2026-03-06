@@ -38,7 +38,7 @@ class ImplicitDataDiskFromSourceState {
   /// [sourceResourceId] The ID of the source resource which this Data Disk was created from. Changing this forces a new resource to be created.
   /// [virtualMachineId] The ID of the Virtual Machine to which the Data Disk should be attached. Changing this forces a new resource to be created.
   /// [writeAcceleratorEnabled] Specifies if Write Accelerator is enabled on the disk. This can only be enabled on `Premium_LRS` managed disks with no caching and [M-Series VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/how-to-enable-write-accelerator). Defaults to `false`.
-  ImplicitDataDiskFromSourceState({
+  const ImplicitDataDiskFromSourceState({
     this.caching,
     this.createOption,
     this.diskSizeGb,

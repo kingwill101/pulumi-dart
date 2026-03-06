@@ -10,7 +10,7 @@ class WindowsNodeConfig {
 
   /// Creates a new [WindowsNodeConfig].
   /// [osVersion] OSVersion specifies the Windows node config to be used on the node
-  WindowsNodeConfig({
+  const WindowsNodeConfig({
     this.osVersion,
   });
 

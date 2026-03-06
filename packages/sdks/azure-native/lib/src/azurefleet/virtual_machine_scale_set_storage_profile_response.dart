@@ -30,7 +30,7 @@ class VirtualMachineScaleSetStorageProfileResponse {
   /// [diskControllerType] Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
   /// [imageReference] Specifies information about the image to use. You can specify information about
   /// [osDisk] Specifies information about the operating system disk used by the virtual
-  VirtualMachineScaleSetStorageProfileResponse({
+  const VirtualMachineScaleSetStorageProfileResponse({
     this.dataDisks,
     this.diskControllerType,
     this.imageReference,

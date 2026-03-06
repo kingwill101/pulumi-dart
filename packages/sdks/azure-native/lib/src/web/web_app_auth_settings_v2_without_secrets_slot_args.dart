@@ -41,7 +41,7 @@ class WebAppAuthSettingsV2WithoutSecretsSlotArgs {
   /// [platform] The configuration settings of the platform of App Service Authentication/Authorization.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of web app slot. If not specified then will default to production slot.
-  WebAppAuthSettingsV2WithoutSecretsSlotArgs({
+  const WebAppAuthSettingsV2WithoutSecretsSlotArgs({
     this.globalValidation,
     this.httpSettings,
     this.identityProviders,

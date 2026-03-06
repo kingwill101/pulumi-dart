@@ -8,7 +8,7 @@ class DomainDevicesControllerPciModel {
 
   /// Creates a new [DomainDevicesControllerPciModel].
   /// [name] Specifies the name of the PCI model being used.
-  DomainDevicesControllerPciModel({
+  const DomainDevicesControllerPciModel({
     required this.name,
   });
 

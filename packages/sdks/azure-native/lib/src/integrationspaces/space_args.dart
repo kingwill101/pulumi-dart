@@ -24,7 +24,7 @@ class SpaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
   /// [tags] Resource tags.
-  SpaceArgs({
+  const SpaceArgs({
     this.description,
     this.location,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class InternalRangeMigration {
   /// Creates a new [InternalRangeMigration].
   /// [source] Resource path as an URI of the source resource, for example a subnet.
   /// [target] Resource path of the target resource. The target project can be
-  InternalRangeMigration({
+  const InternalRangeMigration({
     required this.source,
     required this.target,
   });

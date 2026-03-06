@@ -8,7 +8,7 @@ class GetBucketHierarchicalNamespace {
 
   /// Creates a new [GetBucketHierarchicalNamespace].
   /// [enabled] Set this field true to organize bucket with logical file system structure.
-  GetBucketHierarchicalNamespace({
+  const GetBucketHierarchicalNamespace({
     required this.enabled,
   });
 

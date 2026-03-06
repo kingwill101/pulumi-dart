@@ -41,7 +41,7 @@ class DaprSubscriptionArgs {
   /// [routes] Subscription routes
   /// [scopes] Application scopes to restrict the subscription to specific apps.
   /// [topic] Topic name
-  DaprSubscriptionArgs({
+  const DaprSubscriptionArgs({
     this.bulkSubscribe,
     this.deadLetterTopic,
     required this.environmentName,

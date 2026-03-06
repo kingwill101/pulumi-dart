@@ -24,7 +24,7 @@ class GetGroupResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [path] Path to the IAM user.
   /// [users] List of objects containing group member information. See below.
-  GetGroupResult({
+  const GetGroupResult({
     required this.arn,
     required this.groupId,
     required this.groupName,

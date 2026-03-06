@@ -12,7 +12,7 @@ class DeviceStateResponse {
   /// Creates a new [DeviceStateResponse].
   /// [binaryData] The device state data.
   /// [updateTime] [Output only] The time at which this state version was updated in Cloud IoT Core.
-  DeviceStateResponse({
+  const DeviceStateResponse({
     required this.binaryData,
     required this.updateTime,
   });

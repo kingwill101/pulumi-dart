@@ -29,7 +29,7 @@ class ClusterClusterConfigLifecycleConfig {
   /// [idleDeleteTtl] The duration to keep the cluster alive while idling
   /// [idleStartTime] Time when the cluster became idle
   /// [idleStopTtl] The duration to keep the cluster alive while idling
-  ClusterClusterConfigLifecycleConfig({
+  const ClusterClusterConfigLifecycleConfig({
     this.autoDeleteTime,
     this.autoStopTime,
     this.idleDeleteTtl,

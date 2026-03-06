@@ -13,7 +13,7 @@ class ServicePrincipalDatastoreSecrets {
   /// Creates a new [ServicePrincipalDatastoreSecrets].
   /// [clientSecret] Service principal secret.
   /// [secretsType] Enum to determine the datastore secrets type.
-  ServicePrincipalDatastoreSecrets({
+  const ServicePrincipalDatastoreSecrets({
     this.clientSecret,
     required this.secretsType,
   });

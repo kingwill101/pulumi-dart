@@ -9,7 +9,7 @@ class RetentionTag {
 
   /// Creates a new [RetentionTag].
   /// [tagName] Retention Tag Name to relate it to retention rule.
-  RetentionTag({
+  const RetentionTag({
     required this.tagName,
   });
 

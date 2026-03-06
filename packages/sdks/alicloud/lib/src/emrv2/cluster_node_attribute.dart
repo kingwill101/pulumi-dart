@@ -32,7 +32,7 @@ class ClusterNodeAttribute {
   /// [systemDiskKmsKeyId] The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
   /// [vpcId] Used to retrieve instances belong to specified VPC.
   /// [zoneId] Zone ID, e.g. cn-hangzhou-i
-  ClusterNodeAttribute({
+  const ClusterNodeAttribute({
     this.dataDiskEncrypted,
     this.dataDiskKmsKeyId,
     required this.keyPairName,

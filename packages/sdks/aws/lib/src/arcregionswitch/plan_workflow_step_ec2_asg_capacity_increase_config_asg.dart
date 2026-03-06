@@ -14,7 +14,7 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg {
   /// [arn] ARN of the Auto Scaling group.
   /// [crossAccountRole] ARN of the cross-account role to assume.
   /// [externalId] External ID for cross-account role assumption.
-  PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg({
+  const PlanWorkflowStepEc2AsgCapacityIncreaseConfigAsg({
     required this.arn,
     this.crossAccountRole,
     this.externalId,

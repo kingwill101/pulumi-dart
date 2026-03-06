@@ -8,7 +8,7 @@ class GetOrganizationApiKeyResult {
 
   /// Creates a new [GetOrganizationApiKeyResult].
   /// [properties] Required.
-  GetOrganizationApiKeyResult({
+  const GetOrganizationApiKeyResult({
     required this.properties,
   });
 

@@ -13,7 +13,7 @@ class RepoIdContaineranalysisV1beta1 {
   /// Creates a new [RepoIdContaineranalysisV1beta1].
   /// [projectRepoId] A combination of a project ID and a repo name.
   /// [uid] A server-assigned, globally unique identifier.
-  RepoIdContaineranalysisV1beta1({
+  const RepoIdContaineranalysisV1beta1({
     this.projectRepoId,
     this.uid,
   });

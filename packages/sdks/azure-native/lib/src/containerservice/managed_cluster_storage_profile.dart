@@ -22,7 +22,7 @@ class ManagedClusterStorageProfile {
   /// [diskCSIDriver] AzureDisk CSI Driver settings for the storage profile.
   /// [fileCSIDriver] AzureFile CSI Driver settings for the storage profile.
   /// [snapshotController] Snapshot Controller settings for the storage profile.
-  ManagedClusterStorageProfile({
+  const ManagedClusterStorageProfile({
     this.blobCSIDriver,
     this.diskCSIDriver,
     this.fileCSIDriver,

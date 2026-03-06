@@ -26,7 +26,7 @@ class VolumeGroupSapHanaVolumeExportPolicyRule {
   /// [ruleIndex] The index number of the rule, must start at 1 and maximum 5.
   /// [unixReadOnly] Is the file system on unix read only? Defaults to `false.
   /// [unixReadWrite] Is the file system on unix read and write? Defaults to `true`.
-  VolumeGroupSapHanaVolumeExportPolicyRule({
+  const VolumeGroupSapHanaVolumeExportPolicyRule({
     required this.allowedClients,
     required this.nfsv3Enabled,
     required this.nfsv41Enabled,

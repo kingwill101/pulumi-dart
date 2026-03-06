@@ -9,7 +9,7 @@ class GoogleCloudIntegrationsV1alphaIntParameterArrayResponse {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaIntParameterArrayResponse].
   /// [intValues] Integer array.
-  GoogleCloudIntegrationsV1alphaIntParameterArrayResponse({
+  const GoogleCloudIntegrationsV1alphaIntParameterArrayResponse({
     required this.intValues,
   });
 

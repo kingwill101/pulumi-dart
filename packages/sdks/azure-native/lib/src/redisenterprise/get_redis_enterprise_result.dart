@@ -67,7 +67,7 @@ class GetRedisEnterpriseResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] The Availability Zones where this cluster will be deployed.
-  GetRedisEnterpriseResult({
+  const GetRedisEnterpriseResult({
     required this.azureApiVersion,
     this.encryption,
     this.highAvailability,

@@ -12,7 +12,7 @@ class GetKubeconfigArgs {
 
   /// Creates a new [GetKubeconfigArgs].
   /// [self] Required.
-  GetKubeconfigArgs({
+  const GetKubeconfigArgs({
     required this.self,
   });
 

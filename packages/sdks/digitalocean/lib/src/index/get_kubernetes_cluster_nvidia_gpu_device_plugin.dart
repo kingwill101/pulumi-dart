@@ -7,7 +7,7 @@ class GetKubernetesClusterNvidiaGpuDevicePlugin {
 
   /// Creates a new [GetKubernetesClusterNvidiaGpuDevicePlugin].
   /// [enabled] Required.
-  GetKubernetesClusterNvidiaGpuDevicePlugin({
+  const GetKubernetesClusterNvidiaGpuDevicePlugin({
     required this.enabled,
   });
 

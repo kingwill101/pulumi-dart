@@ -50,7 +50,7 @@ class GetDirectoriesDirectoryTask {
   /// [targetType] The Type of Deploy Target.
   /// [taskId] The ID of the Task.
   /// [taskType] The Type of the Task.
-  GetDirectoriesDirectoryTask({
+  const GetDirectoriesDirectoryTask({
     required this.accessConfigurationId,
     required this.accessConfigurationName,
     required this.endTime,

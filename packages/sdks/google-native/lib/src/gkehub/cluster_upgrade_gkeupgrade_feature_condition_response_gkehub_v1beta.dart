@@ -18,7 +18,7 @@ class ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta {
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of the condition, for example, "ready".
   /// [updateTime] Last timestamp the condition was updated.
-  ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta({
+  const ClusterUpgradeGKEUpgradeFeatureConditionResponseGkehubV1beta({
     required this.reason,
     required this.status,
     required this.type,

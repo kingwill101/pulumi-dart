@@ -15,7 +15,7 @@ class ApplicationArtifactResponse {
   /// [name] The managed application artifact name.
   /// [type] The managed application artifact type.
   /// [uri] The managed application artifact blob uri.
-  ApplicationArtifactResponse({
+  const ApplicationArtifactResponse({
     required this.name,
     required this.type,
     required this.uri,

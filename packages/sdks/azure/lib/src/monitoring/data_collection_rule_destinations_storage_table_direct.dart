@@ -14,7 +14,7 @@ class DataCollectionRuleDestinationsStorageTableDirect {
   /// [name] The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
   /// [storageAccountId] The resource ID of the Storage Account.
   /// [tableName] The Storage Table name.
-  DataCollectionRuleDestinationsStorageTableDirect({
+  const DataCollectionRuleDestinationsStorageTableDirect({
     required this.name,
     required this.storageAccountId,
     required this.tableName,

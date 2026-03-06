@@ -24,7 +24,7 @@ class IotHubCertificateArgs {
   /// [isVerified] Specifies if the certificate is created in verified state. Defaults to `false`. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Iot Device Provisioning Service Certificate resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the Iot Device Provisioning Service Certificate resource has to be created. Changing this forces a new resource to be created.
-  IotHubCertificateArgs({
+  const IotHubCertificateArgs({
     required this.certificateContent,
     required this.iotDpsName,
     this.isVerified,

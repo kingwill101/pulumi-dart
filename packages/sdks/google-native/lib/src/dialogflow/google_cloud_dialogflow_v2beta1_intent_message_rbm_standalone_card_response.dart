@@ -16,7 +16,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse {
   /// [cardContent] Card content.
   /// [cardOrientation] Orientation of the card.
   /// [thumbnailImageAlignment] Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
-  GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse({
     required this.cardContent,
     required this.cardOrientation,
     required this.thumbnailImageAlignment,

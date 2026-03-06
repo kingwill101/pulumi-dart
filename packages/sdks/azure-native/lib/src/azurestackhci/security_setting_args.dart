@@ -27,7 +27,7 @@ class SecuritySettingArgs {
   /// [securitySettingsName] Name of security setting
   /// [smbEncryptionForIntraClusterTrafficComplianceAssignment] SMB encryption for intra-cluster traffic Compliance Assignment
   /// [wdacComplianceAssignment] WDAC Compliance Assignment
-  SecuritySettingArgs({
+  const SecuritySettingArgs({
     required this.clusterName,
     required this.resourceGroupName,
     this.securedCoreComplianceAssignment,

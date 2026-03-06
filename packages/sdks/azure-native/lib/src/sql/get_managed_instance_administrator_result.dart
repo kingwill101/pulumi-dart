@@ -29,7 +29,7 @@ class GetManagedInstanceAdministratorResult {
   /// [sid] SID (object ID) of the managed instance administrator.
   /// [tenantId] Tenant ID of the managed instance administrator.
   /// [type] Resource type.
-  GetManagedInstanceAdministratorResult({
+  const GetManagedInstanceAdministratorResult({
     required this.administratorType,
     required this.azureApiVersion,
     required this.id,

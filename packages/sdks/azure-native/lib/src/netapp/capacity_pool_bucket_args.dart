@@ -35,7 +35,7 @@ class CapacityPoolBucketArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [server] Properties of the server managing the lifecycle of volume buckets
   /// [volumeName] The name of the volume
-  CapacityPoolBucketArgs({
+  const CapacityPoolBucketArgs({
     required this.accountName,
     this.bucketName,
     this.fileSystemUser,

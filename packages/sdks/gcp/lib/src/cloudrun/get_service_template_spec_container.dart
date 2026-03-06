@@ -64,7 +64,7 @@ class GetServiceTemplateSpecContainer {
   /// [startupProbes] Startup probe of application within the container.
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] Container's working directory.
-  GetServiceTemplateSpecContainer({
+  const GetServiceTemplateSpecContainer({
     required this.args,
     required this.commands,
     required this.envFroms,

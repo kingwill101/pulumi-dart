@@ -12,7 +12,7 @@ class SkuCapabilityResponse {
   /// Creates a new [SkuCapabilityResponse].
   /// [name] The name of the SkuCapability.
   /// [value] The value of the SkuCapability.
-  SkuCapabilityResponse({
+  const SkuCapabilityResponse({
     this.name,
     this.value,
   });

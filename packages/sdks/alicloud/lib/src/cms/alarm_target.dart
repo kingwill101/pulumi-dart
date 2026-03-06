@@ -21,7 +21,7 @@ class AlarmTarget {
   /// [jsonParams] The parameters of the alert callback. The parameters are in the JSON format.
   /// [level] The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
   /// [targetId] The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
-  AlarmTarget({
+  const AlarmTarget({
     this.arn,
     this.jsonParams,
     this.level,

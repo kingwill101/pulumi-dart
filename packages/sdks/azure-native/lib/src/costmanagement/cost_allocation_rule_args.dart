@@ -19,7 +19,7 @@ class CostAllocationRuleArgs {
   /// [billingAccountId] BillingAccount ID
   /// [properties] Cost allocation rule properties
   /// [ruleName] Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
-  CostAllocationRuleArgs({
+  const CostAllocationRuleArgs({
     required this.billingAccountId,
     this.properties,
     this.ruleName,

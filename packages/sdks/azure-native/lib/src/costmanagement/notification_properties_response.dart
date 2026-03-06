@@ -21,7 +21,7 @@ class NotificationPropertiesResponse {
   /// [regionalFormat] Regional format used for formatting date/time and currency values in the email.
   /// [subject] Subject of the email. Length is limited to 70 characters.
   /// [to] Array of email addresses.
-  NotificationPropertiesResponse({
+  const NotificationPropertiesResponse({
     this.language,
     this.message,
     this.regionalFormat,

@@ -13,7 +13,7 @@ class AzureResourceDetailsResponse {
   /// Creates a new [AzureResourceDetailsResponse].
   /// [id] Azure resource Id of the assessed resource
   /// [source] The platform where the assessed resource resides
-  AzureResourceDetailsResponse({
+  const AzureResourceDetailsResponse({
     required this.id,
     required this.source,
   });

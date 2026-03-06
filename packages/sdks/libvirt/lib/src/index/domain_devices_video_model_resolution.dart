@@ -11,7 +11,7 @@ class DomainDevicesVideoModelResolution {
   /// Creates a new [DomainDevicesVideoModelResolution].
   /// [x] Sets the horizontal resolution for the video device model.
   /// [y] Sets the vertical resolution for the video device model.
-  DomainDevicesVideoModelResolution({
+  const DomainDevicesVideoModelResolution({
     required this.x,
     required this.y,
   });

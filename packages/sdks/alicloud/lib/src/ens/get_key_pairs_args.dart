@@ -21,7 +21,7 @@ class GetKeyPairsArgs {
   /// [nameRegex] A regex string to filter results by Key Pair name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [version] The version number.
-  GetKeyPairsArgs({
+  const GetKeyPairsArgs({
     this.keyPairName,
     this.nameRegex,
     this.outputFile,

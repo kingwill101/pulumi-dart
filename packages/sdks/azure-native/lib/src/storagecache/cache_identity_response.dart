@@ -19,7 +19,7 @@ class CacheIdentityResponse {
   /// [tenantId] The tenant ID associated with the cache.
   /// [type] The type of identity used for the cache
   /// [userAssignedIdentities] A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  CacheIdentityResponse({
+  const CacheIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

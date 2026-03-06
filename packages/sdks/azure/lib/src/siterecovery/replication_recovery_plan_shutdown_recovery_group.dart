@@ -13,7 +13,7 @@ class ReplicationRecoveryPlanShutdownRecoveryGroup {
   /// Creates a new [ReplicationRecoveryPlanShutdownRecoveryGroup].
   /// [postActions] one or more `action` block as defined below. which will be executed after the group recovery.
   /// [preActions] one or more `action` block as defined below. which will be executed before the group recovery.
-  ReplicationRecoveryPlanShutdownRecoveryGroup({
+  const ReplicationRecoveryPlanShutdownRecoveryGroup({
     this.postActions,
     this.preActions,
   });

@@ -13,7 +13,7 @@ class AddActionGroupsResponse {
   /// Creates a new [AddActionGroupsResponse].
   /// [actionGroupIds] List of action group Ids to add to alert processing rule.
   /// [actionType] Action that should be applied.
-  AddActionGroupsResponse({
+  const AddActionGroupsResponse({
     required this.actionGroupIds,
     required this.actionType,
   });

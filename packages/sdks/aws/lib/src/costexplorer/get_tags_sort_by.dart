@@ -11,7 +11,7 @@ class GetTagsSortBy {
   /// Creates a new [GetTagsSortBy].
   /// [key] key that's used to sort the data. Valid values are: `BlendedCost`,  `UnblendedCost`, `AmortizedCost`, `NetAmortizedCost`, `NetUnblendedCost`, `UsageQuantity`, `NormalizedUsageAmount`.
   /// [sortOrder] order that's used to sort the data. Valid values are: `ASCENDING`,  `DESCENDING`.
-  GetTagsSortBy({
+  const GetTagsSortBy({
     this.key,
     this.sortOrder,
   });

@@ -14,7 +14,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy {
   /// Creates a new [RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy].
   /// [backendService] The full or partial URL to the RegionBackendService resource being mirrored to.
   /// [mirrorPercent] The percentage of requests to be mirrored to backendService.
-  RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy({
+  const RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy({
     required this.backendService,
     this.mirrorPercent,
   });

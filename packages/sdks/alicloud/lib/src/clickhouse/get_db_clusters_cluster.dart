@@ -123,7 +123,7 @@ class GetDbClustersCluster {
   /// [vpcId] The VPC ID of the DBCluster.
   /// [vswitchId] The vswitch id of the DBCluster.
   /// [zoneId] The zone ID of the DBCluster.
-  GetDbClustersCluster({
+  const GetDbClustersCluster({
     required this.aliUid,
     required this.bid,
     required this.category,

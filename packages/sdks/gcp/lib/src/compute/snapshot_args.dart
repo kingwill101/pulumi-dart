@@ -78,7 +78,7 @@ class SnapshotArgs {
   /// [sourceInstantSnapshot] A reference to the instant snapshot used to create this snapshot.
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
   /// [zone] A reference to the zone where the disk is hosted.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.chainName,
     this.description,
     this.guestFlush,

@@ -18,7 +18,7 @@ class NetworkInterfaceAttachmentState {
   /// [networkInterfaceId] The ENI ID to attach.
   /// [trunkNetworkInstanceId] Optional.
   /// [waitForNetworkConfigurationReady] Optional.
-  NetworkInterfaceAttachmentState({
+  const NetworkInterfaceAttachmentState({
     this.instanceId,
     this.networkCardIndex,
     this.networkInterfaceId,

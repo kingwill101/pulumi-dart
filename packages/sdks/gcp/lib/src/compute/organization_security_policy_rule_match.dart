@@ -19,7 +19,7 @@ class OrganizationSecurityPolicyRuleMatch {
   /// [config] The configuration options for matching the rule.
   /// [description] A description of the rule.
   /// [versionedExpr] Preconfigured versioned expression. For organization security policy rules,
-  OrganizationSecurityPolicyRuleMatch({
+  const OrganizationSecurityPolicyRuleMatch({
     required this.config,
     this.description,
     this.versionedExpr,

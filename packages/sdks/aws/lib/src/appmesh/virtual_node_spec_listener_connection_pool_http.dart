@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerConnectionPoolHttp {
   /// Creates a new [VirtualNodeSpecListenerConnectionPoolHttp].
   /// [maxConnections] Maximum number of outbound TCP connections Envoy can establish concurrently with all hosts in upstream cluster. Minimum value of `1`.
   /// [maxPendingRequests] Number of overflowing requests after `max_connections` Envoy will queue to upstream cluster. Minimum value of `1`.
-  VirtualNodeSpecListenerConnectionPoolHttp({
+  const VirtualNodeSpecListenerConnectionPoolHttp({
     required this.maxConnections,
     this.maxPendingRequests,
   });

@@ -11,7 +11,7 @@ class GatewayRouteSpecGrpcRouteMatch {
   /// Creates a new [GatewayRouteSpecGrpcRouteMatch].
   /// [port] The port number to match from the request.
   /// [serviceName] Fully qualified domain name for the service to match from the request.
-  GatewayRouteSpecGrpcRouteMatch({
+  const GatewayRouteSpecGrpcRouteMatch({
     this.port,
     required this.serviceName,
   });

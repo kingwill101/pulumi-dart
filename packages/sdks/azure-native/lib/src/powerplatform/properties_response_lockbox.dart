@@ -9,7 +9,7 @@ class PropertiesResponseLockbox {
 
   /// Creates a new [PropertiesResponseLockbox].
   /// [state] lockbox configuration
-  PropertiesResponseLockbox({
+  const PropertiesResponseLockbox({
     this.state,
   });
 

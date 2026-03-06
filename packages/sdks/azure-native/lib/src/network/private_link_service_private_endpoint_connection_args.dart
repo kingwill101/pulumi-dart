@@ -28,7 +28,7 @@ class PrivateLinkServicePrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the private link service.
-  PrivateLinkServicePrivateEndpointConnectionArgs({
+  const PrivateLinkServicePrivateEndpointConnectionArgs({
     this.id,
     this.name,
     this.peConnectionName,

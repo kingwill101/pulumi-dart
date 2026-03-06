@@ -9,7 +9,7 @@ class GoogleCloudDatalabelingV1beta1CsvInstructionResponse {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1CsvInstructionResponse].
   /// [gcsFileUri] CSV file for the instruction. Only gcs path is allowed.
-  GoogleCloudDatalabelingV1beta1CsvInstructionResponse({
+  const GoogleCloudDatalabelingV1beta1CsvInstructionResponse({
     required this.gcsFileUri,
   });
 

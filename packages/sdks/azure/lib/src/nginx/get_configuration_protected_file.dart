@@ -14,7 +14,7 @@ class GetConfigurationProtectedFile {
   /// [content] The base-64 encoded contents of this configuration file.
   /// [contentHash] The hash of the contents of this configuration file prefixed by the algorithm used.
   /// [virtualPath] The path of this configuration file.
-  GetConfigurationProtectedFile({
+  const GetConfigurationProtectedFile({
     required this.content,
     required this.contentHash,
     required this.virtualPath,

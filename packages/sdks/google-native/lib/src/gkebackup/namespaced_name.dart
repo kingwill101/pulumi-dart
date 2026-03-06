@@ -12,7 +12,7 @@ class NamespacedName {
   /// Creates a new [NamespacedName].
   /// [name] Optional. The name of the Kubernetes resource.
   /// [namespace] Optional. The Namespace of the Kubernetes resource.
-  NamespacedName({
+  const NamespacedName({
     this.name,
     this.namespace,
   });

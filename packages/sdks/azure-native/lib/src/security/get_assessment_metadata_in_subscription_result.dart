@@ -61,7 +61,7 @@ class GetAssessmentMetadataInSubscriptionResult {
   /// [threats] Optional.
   /// [type] Resource type
   /// [userImpact] The user impact of the assessment
-  GetAssessmentMetadataInSubscriptionResult({
+  const GetAssessmentMetadataInSubscriptionResult({
     required this.assessmentType,
     required this.azureApiVersion,
     this.categories,

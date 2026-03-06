@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm {
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm].
   /// [certificateAuthorityArns] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustAcm({
     required this.certificateAuthorityArns,
   });
 

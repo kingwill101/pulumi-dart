@@ -17,7 +17,7 @@ class AzureDisk {
   /// [disks] Only required if individual disk selection is desired. Path to disk, e.g. &lt;nodename&gt;:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool
   /// [skuName] Sku name
-  AzureDisk({
+  const AzureDisk({
     this.disks,
     this.encryption,
     this.skuName,

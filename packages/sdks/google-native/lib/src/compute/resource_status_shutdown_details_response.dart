@@ -19,7 +19,7 @@ class ResourceStatusShutdownDetailsResponse {
   /// [requestTimestamp] Past timestamp indicating the beginning of current `stopState` in RFC3339 text format.
   /// [stopState] Current stopping state of the instance.
   /// [targetState] Target instance state.
-  ResourceStatusShutdownDetailsResponse({
+  const ResourceStatusShutdownDetailsResponse({
     required this.maxDuration,
     required this.requestTimestamp,
     required this.stopState,

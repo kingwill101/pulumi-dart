@@ -14,7 +14,7 @@ class ListenerDefaultAction {
   /// Creates a new [ListenerDefaultAction].
   /// [fixedResponse] Optional.
   /// [forwards] Route requests to one or more target groups. See Forward blocks below.
-  ListenerDefaultAction({
+  const ListenerDefaultAction({
     this.fixedResponse,
     this.forwards,
   });

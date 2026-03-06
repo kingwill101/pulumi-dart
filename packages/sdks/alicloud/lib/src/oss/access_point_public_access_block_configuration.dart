@@ -8,7 +8,7 @@ class AccessPointPublicAccessBlockConfiguration {
 
   /// Creates a new [AccessPointPublicAccessBlockConfiguration].
   /// [blockPublicAccess] Block public access enabled for access point
-  AccessPointPublicAccessBlockConfiguration({
+  const AccessPointPublicAccessBlockConfiguration({
     this.blockPublicAccess,
   });
 

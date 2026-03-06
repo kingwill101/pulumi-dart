@@ -46,7 +46,7 @@ class A2ASharedDiskReplicationDetailsResponse {
   /// [rpoInSeconds] The last RPO value in seconds.
   /// [sharedDiskIRErrors] The IR Errors.
   /// [unprotectedDisks] The list of unprotected disks.
-  A2ASharedDiskReplicationDetailsResponse({
+  const A2ASharedDiskReplicationDetailsResponse({
     this.failoverRecoveryPointId,
     required this.instanceType,
     this.lastRpoCalculatedTime,

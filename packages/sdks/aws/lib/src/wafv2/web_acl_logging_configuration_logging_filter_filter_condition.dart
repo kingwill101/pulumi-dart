@@ -13,7 +13,7 @@ class WebAclLoggingConfigurationLoggingFilterFilterCondition {
   /// Creates a new [WebAclLoggingConfigurationLoggingFilterFilterCondition].
   /// [actionCondition] Configuration for a single action condition. See Action Condition below for more details.
   /// [labelNameCondition] Condition for a single label name. See Label Name Condition below for more details.
-  WebAclLoggingConfigurationLoggingFilterFilterCondition({
+  const WebAclLoggingConfigurationLoggingFilterFilterCondition({
     this.actionCondition,
     this.labelNameCondition,
   });

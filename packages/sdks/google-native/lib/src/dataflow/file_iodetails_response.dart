@@ -9,7 +9,7 @@ class FileIODetailsResponse {
 
   /// Creates a new [FileIODetailsResponse].
   /// [filePattern] File Pattern used to access files by the connector.
-  FileIODetailsResponse({
+  const FileIODetailsResponse({
     required this.filePattern,
   });
 

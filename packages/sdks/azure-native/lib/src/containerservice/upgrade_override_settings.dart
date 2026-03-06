@@ -12,7 +12,7 @@ class UpgradeOverrideSettings {
   /// Creates a new [UpgradeOverrideSettings].
   /// [forceUpgrade] Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution.
   /// [until] Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect.
-  UpgradeOverrideSettings({
+  const UpgradeOverrideSettings({
     this.forceUpgrade,
     this.until,
   });

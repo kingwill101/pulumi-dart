@@ -12,7 +12,7 @@ class NetworkPolicyInternetAccess {
   /// Creates a new [NetworkPolicyInternetAccess].
   /// [enabled] True if the service is enabled; false otherwise.
   /// [state] (Output)
-  NetworkPolicyInternetAccess({
+  const NetworkPolicyInternetAccess({
     this.enabled,
     this.state,
   });

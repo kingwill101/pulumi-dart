@@ -12,7 +12,7 @@ class LogConfigCounterOptionsCustomFieldComputeBeta {
   /// Creates a new [LogConfigCounterOptionsCustomFieldComputeBeta].
   /// [name] This is deprecated and has no effect. Do not use.
   /// [value] This is deprecated and has no effect. Do not use.
-  LogConfigCounterOptionsCustomFieldComputeBeta({
+  const LogConfigCounterOptionsCustomFieldComputeBeta({
     this.name,
     this.value,
   });

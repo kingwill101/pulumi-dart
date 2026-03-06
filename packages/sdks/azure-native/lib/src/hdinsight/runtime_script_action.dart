@@ -18,7 +18,7 @@ class RuntimeScriptAction {
   /// [parameters] The parameters for the script
   /// [roles] The list of roles where script will be executed.
   /// [uri] The URI to the script.
-  RuntimeScriptAction({
+  const RuntimeScriptAction({
     required this.name,
     this.parameters,
     required this.roles,

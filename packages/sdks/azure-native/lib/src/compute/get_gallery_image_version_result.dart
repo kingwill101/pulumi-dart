@@ -57,7 +57,7 @@ class GetGalleryImageVersionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationsProfile] This is the validations profile of a Gallery Image Version.
-  GetGalleryImageVersionResult({
+  const GetGalleryImageVersionResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

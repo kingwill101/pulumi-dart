@@ -17,7 +17,7 @@ class CatalogTablePartitionKey {
   /// [name] Name of the Partition Key.
   /// [parameters] Map of key-value pairs.
   /// [type] Datatype of data in the Partition Key.
-  CatalogTablePartitionKey({
+  const CatalogTablePartitionKey({
     this.comment,
     required this.name,
     this.parameters,

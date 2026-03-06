@@ -10,7 +10,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   /// Creates a new [GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo].
   /// [provisionedThroughputs] Required.
   /// [volumeSize] Required.
-  GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo({
+  const GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo({
     required this.provisionedThroughputs,
     required this.volumeSize,
   });

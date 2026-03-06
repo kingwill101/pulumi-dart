@@ -21,7 +21,7 @@ class GetAgreementResult {
   /// [plan] Required.
   /// [privacyPolicyLink] Required.
   /// [publisher] Required.
-  GetAgreementResult({
+  const GetAgreementResult({
     required this.accepted,
     required this.id,
     required this.licenseTextLink,

@@ -8,7 +8,7 @@ class ApiProperties {
 
   /// Creates a new [ApiProperties].
   /// [serverVersion] Describes the version of the MongoDB account.
-  ApiProperties({
+  const ApiProperties({
     this.serverVersion,
   });
 

@@ -39,7 +39,7 @@ class QosCarArgs {
   /// [percentSourceType] The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
   /// [priority] The priority of the specified stream.
   /// [qosId] The instance ID of the QoS.
-  QosCarArgs({
+  const QosCarArgs({
     this.description,
     required this.limitType,
     this.maxBandwidthAbs,

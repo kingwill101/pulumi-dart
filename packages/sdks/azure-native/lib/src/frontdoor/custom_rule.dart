@@ -35,7 +35,7 @@ class CustomRule {
   /// [rateLimitDurationInMinutes] Time window for resetting the rate limit count. Default is 1 minute.
   /// [rateLimitThreshold] Number of allowed requests per client within the time window.
   /// [ruleType] Describes type of rule.
-  CustomRule({
+  const CustomRule({
     required this.action,
     this.enabledState,
     this.groupBy,

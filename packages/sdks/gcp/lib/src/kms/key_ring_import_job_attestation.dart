@@ -14,7 +14,7 @@ class KeyRingImportJobAttestation {
   /// Creates a new [KeyRingImportJobAttestation].
   /// [content] (Output)
   /// [format] (Output)
-  KeyRingImportJobAttestation({
+  const KeyRingImportJobAttestation({
     this.content,
     this.format,
   });

@@ -38,7 +38,7 @@ class GetRouteResult {
   /// [routeTableId] Required.
   /// [transitGatewayId] Required.
   /// [vpcPeeringConnectionId] Required.
-  GetRouteResult({
+  const GetRouteResult({
     required this.carrierGatewayId,
     required this.coreNetworkArn,
     required this.destinationCidrBlock,

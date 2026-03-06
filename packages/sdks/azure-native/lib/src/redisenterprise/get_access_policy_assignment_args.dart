@@ -21,7 +21,7 @@ class GetAccessPolicyAssignmentArgs {
   /// [clusterName] The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   /// [databaseName] The name of the Redis Enterprise database.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccessPolicyAssignmentArgs({
+  const GetAccessPolicyAssignmentArgs({
     required this.accessPolicyAssignmentName,
     required this.clusterName,
     required this.databaseName,

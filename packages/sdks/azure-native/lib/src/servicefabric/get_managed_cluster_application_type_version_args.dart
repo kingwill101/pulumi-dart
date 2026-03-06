@@ -21,7 +21,7 @@ class GetManagedClusterApplicationTypeVersionArgs {
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group.
   /// [version] The application type version.
-  GetManagedClusterApplicationTypeVersionArgs({
+  const GetManagedClusterApplicationTypeVersionArgs({
     required this.applicationTypeName,
     required this.clusterName,
     required this.resourceGroupName,

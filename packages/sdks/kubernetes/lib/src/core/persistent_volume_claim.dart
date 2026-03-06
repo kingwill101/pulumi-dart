@@ -24,7 +24,7 @@ class PersistentVolumeClaim {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
   /// [status] status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
-  PersistentVolumeClaim({
+  const PersistentVolumeClaim({
     this.apiVersion,
     this.kind,
     this.metadata,

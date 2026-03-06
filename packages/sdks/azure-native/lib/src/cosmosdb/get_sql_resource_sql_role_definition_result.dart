@@ -28,7 +28,7 @@ class GetSqlResourceSqlRoleDefinitionResult {
   /// [permissions] The set of operations allowed through this Role Definition.
   /// [roleName] A user-friendly name for the Role Definition. Must be unique for the database account.
   /// [type] The type of Azure resource.
-  GetSqlResourceSqlRoleDefinitionResult({
+  const GetSqlResourceSqlRoleDefinitionResult({
     this.assignableScopes,
     required this.azureApiVersion,
     required this.id,

@@ -19,7 +19,7 @@ class DeidServicePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicNetworkAccess] Gets or sets allow or disallow public network access to resource
   /// [serviceUrl] Deid service url.
-  DeidServicePropertiesResponse({
+  const DeidServicePropertiesResponse({
     required this.privateEndpointConnections,
     required this.provisioningState,
     this.publicNetworkAccess,

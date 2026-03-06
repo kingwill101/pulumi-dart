@@ -11,7 +11,7 @@ class GetPolicyDocumentStatementPrincipal {
   /// Creates a new [GetPolicyDocumentStatementPrincipal].
   /// [entity] The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
   /// [identifiers] The identifiers of the principal.
-  GetPolicyDocumentStatementPrincipal({
+  const GetPolicyDocumentStatementPrincipal({
     required this.entity,
     required this.identifiers,
   });

@@ -13,7 +13,7 @@ class GetFrameworkControlSet {
   /// [controls] Required.
   /// [id] Required.
   /// [name] Name of the framework.
-  GetFrameworkControlSet({
+  const GetFrameworkControlSet({
     required this.controls,
     required this.id,
     required this.name,

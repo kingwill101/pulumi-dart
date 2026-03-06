@@ -11,7 +11,7 @@ class ApiMockServiceConfig {
   /// Creates a new [ApiMockServiceConfig].
   /// [aoneName] The name of aone.
   /// [result] The result of the mock service.
-  ApiMockServiceConfig({
+  const ApiMockServiceConfig({
     this.aoneName,
     required this.result,
   });

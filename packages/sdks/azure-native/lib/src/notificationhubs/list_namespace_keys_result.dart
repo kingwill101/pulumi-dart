@@ -21,7 +21,7 @@ class ListNamespaceKeysResult {
   /// [primaryKey] Gets or sets primaryKey of the created AuthorizationRule.
   /// [secondaryConnectionString] Gets or sets secondaryConnectionString of the created
   /// [secondaryKey] Gets or sets secondaryKey of the created AuthorizationRule
-  ListNamespaceKeysResult({
+  const ListNamespaceKeysResult({
     required this.keyName,
     required this.primaryConnectionString,
     required this.primaryKey,

@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisReturnPathComponentAttachedTo {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisReturnPathComponentAttachedTo({
+  const NetworkInsightsAnalysisReturnPathComponentAttachedTo({
     this.arn,
     this.id,
     this.name,

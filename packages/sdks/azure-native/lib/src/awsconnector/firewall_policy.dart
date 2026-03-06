@@ -38,7 +38,7 @@ class FirewallPolicy {
   /// [statelessFragmentDefaultActions] Property statelessFragmentDefaultActions
   /// [statelessRuleGroupReferences] Property statelessRuleGroupReferences
   /// [tlsInspectionConfigurationArn] A resource ARN.
-  FirewallPolicy({
+  const FirewallPolicy({
     this.policyVariables,
     this.statefulDefaultActions,
     this.statefulEngineOptions,

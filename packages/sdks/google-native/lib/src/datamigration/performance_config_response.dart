@@ -9,7 +9,7 @@ class PerformanceConfigResponse {
 
   /// Creates a new [PerformanceConfigResponse].
   /// [dumpParallelLevel] Initial dump parallelism level.
-  PerformanceConfigResponse({
+  const PerformanceConfigResponse({
     required this.dumpParallelLevel,
   });
 

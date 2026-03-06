@@ -15,7 +15,7 @@ class GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse {
   /// [keyId] Key ID for the private key.
   /// [privateKey] Private key used for signing the client secret JWT.
   /// [teamId] Apple Developer Team ID.
-  GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse({
     required this.keyId,
     required this.privateKey,
     required this.teamId,

@@ -26,7 +26,7 @@ class SharedPrivateLinkResourceState {
   /// [status] The status of a private endpoint connection. Possible values are `Pending`, `Approved`, `Rejected` or `Disconnected`.
   /// [subResourceName] The sub resource name which the Signalr Private Endpoint can connect to. Possible values are `sites`, `vault`. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Shared Private Link Enabled Remote Resource which this Signalr Private Endpoint should be connected to. Changing this forces a new resource to be created.
-  SharedPrivateLinkResourceState({
+  const SharedPrivateLinkResourceState({
     this.name,
     this.requestMessage,
     this.signalrServiceId,

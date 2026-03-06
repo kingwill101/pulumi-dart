@@ -18,7 +18,7 @@ class GetNamespacesArgs {
   /// [ids] A list of Namespace IDs.
   /// [nameRegex] A regex string to filter results by Namespace name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetNamespacesArgs({
+  const GetNamespacesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

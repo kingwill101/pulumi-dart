@@ -18,7 +18,7 @@ class DomainTopicArgs {
   /// [domainName] Name of the domain.
   /// [domainTopicName] Name of the domain topic.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  DomainTopicArgs({
+  const DomainTopicArgs({
     required this.domainName,
     this.domainTopicName,
     required this.resourceGroupName,

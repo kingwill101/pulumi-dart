@@ -11,7 +11,7 @@ class ManagedZoneCloudLoggingConfigResponse {
   /// Creates a new [ManagedZoneCloudLoggingConfigResponse].
   /// [enableLogging] If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
   /// [kind] Required.
-  ManagedZoneCloudLoggingConfigResponse({
+  const ManagedZoneCloudLoggingConfigResponse({
     required this.enableLogging,
     required this.kind,
   });

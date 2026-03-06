@@ -34,7 +34,7 @@ class ConnectionSettingProperties {
   /// [scopes] Scopes associated with the Connection Setting
   /// [serviceProviderDisplayName] Service Provider Display Name associated with the Connection Setting
   /// [serviceProviderId] Service Provider Id associated with the Connection Setting
-  ConnectionSettingProperties({
+  const ConnectionSettingProperties({
     this.clientId,
     this.clientSecret,
     this.id,

@@ -8,7 +8,7 @@ class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
 
   /// Creates a new [ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled.
-  ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig({
+  const ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig({
     this.enableConfidentialCompute,
   });
 

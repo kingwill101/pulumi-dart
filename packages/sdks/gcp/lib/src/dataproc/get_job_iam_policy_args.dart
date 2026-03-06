@@ -16,7 +16,7 @@ class GetJobIamPolicyArgs {
   /// [jobId] The name or relative resource id of the job to manage IAM policies for.
   /// [project] Optional.
   /// [region] Optional.
-  GetJobIamPolicyArgs({
+  const GetJobIamPolicyArgs({
     required this.jobId,
     this.project,
     this.region,

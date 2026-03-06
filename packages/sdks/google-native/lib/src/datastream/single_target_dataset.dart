@@ -9,7 +9,7 @@ class SingleTargetDataset {
 
   /// Creates a new [SingleTargetDataset].
   /// [datasetId] The dataset ID of the target dataset. DatasetIds allowed characters: https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
-  SingleTargetDataset({
+  const SingleTargetDataset({
     this.datasetId,
   });
 

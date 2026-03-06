@@ -19,7 +19,7 @@ class FunctionResponse {
   /// [name] Resource name
   /// [properties] The properties that are associated with a function.
   /// [type] Resource type
-  FunctionResponse({
+  const FunctionResponse({
     required this.id,
     this.name,
     this.properties,

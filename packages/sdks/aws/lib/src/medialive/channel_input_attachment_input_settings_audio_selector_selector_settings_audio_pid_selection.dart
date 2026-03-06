@@ -8,7 +8,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSe
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection].
   /// [pid] Selects a specific PID from within a source.
-  ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection({
+  const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection({
     required this.pid,
   });
 

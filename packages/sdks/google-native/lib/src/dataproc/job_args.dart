@@ -75,7 +75,7 @@ class JobArgs {
   /// [sparkRJob] Optional. Job is a SparkR job.
   /// [sparkSqlJob] Optional. Job is a SparkSql job.
   /// [trinoJob] Optional. Job is a Trino job.
-  JobArgs({
+  const JobArgs({
     this.driverSchedulingConfig,
     this.flinkJob,
     this.hadoopJob,

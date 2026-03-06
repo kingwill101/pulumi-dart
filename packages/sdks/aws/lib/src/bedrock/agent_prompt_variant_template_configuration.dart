@@ -13,7 +13,7 @@ class AgentPromptVariantTemplateConfiguration {
   /// Creates a new [AgentPromptVariantTemplateConfiguration].
   /// [chat] Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
   /// [text] Contains configurations for the text in a message for a prompt. See Text Template Configuration
-  AgentPromptVariantTemplateConfiguration({
+  const AgentPromptVariantTemplateConfiguration({
     this.chat,
     this.text,
   });

@@ -20,7 +20,7 @@ class LaunchTemplateBlockDeviceMapping {
   /// [ebs] Configure EBS volume properties.
   /// [noDevice] Suppresses the specified device included in the AMI's block device mapping.
   /// [virtualName] The [Instance Store Device
-  LaunchTemplateBlockDeviceMapping({
+  const LaunchTemplateBlockDeviceMapping({
     this.deviceName,
     this.ebs,
     this.noDevice,

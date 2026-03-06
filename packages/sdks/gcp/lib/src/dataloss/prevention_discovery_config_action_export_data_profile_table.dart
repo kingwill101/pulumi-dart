@@ -14,7 +14,7 @@ class PreventionDiscoveryConfigActionExportDataProfileTable {
   /// [datasetId] Dataset Id of the table
   /// [projectId] The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
   /// [tableId] Name of the table
-  PreventionDiscoveryConfigActionExportDataProfileTable({
+  const PreventionDiscoveryConfigActionExportDataProfileTable({
     this.datasetId,
     this.projectId,
     this.tableId,

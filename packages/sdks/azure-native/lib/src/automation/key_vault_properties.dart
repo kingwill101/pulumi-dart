@@ -15,7 +15,7 @@ class KeyVaultProperties {
   /// [keyName] The name of key used to encrypt data.
   /// [keyVersion] The key version of the key used to encrypt data.
   /// [keyvaultUri] The URI of the key vault key used to encrypt data.
-  KeyVaultProperties({
+  const KeyVaultProperties({
     this.keyName,
     this.keyVersion,
     this.keyvaultUri,

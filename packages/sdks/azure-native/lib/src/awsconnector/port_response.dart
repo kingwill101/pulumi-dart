@@ -36,7 +36,7 @@ class PortResponse {
   /// [ipv6Cidrs] IPv6 Cidrs
   /// [protocol] Port Protocol of the Instance.
   /// [toPort] To Port of the Instance.
-  PortResponse({
+  const PortResponse({
     this.accessDirection,
     this.accessFrom,
     this.accessType,

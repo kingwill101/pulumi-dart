@@ -43,7 +43,7 @@ class InitialAgentPoolConfigurationResponse {
   /// [taints] The taints applied to the nodes in this agent pool.
   /// [upgradeSettings] The configuration of the agent pool.
   /// [vmSkuName] The name of the VM SKU that determines the size of resources allocated for node VMs.
-  InitialAgentPoolConfigurationResponse({
+  const InitialAgentPoolConfigurationResponse({
     this.administratorConfiguration,
     this.agentOptions,
     this.attachedNetworkConfiguration,

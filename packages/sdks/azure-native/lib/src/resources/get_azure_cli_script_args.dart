@@ -15,7 +15,7 @@ class GetAzureCliScriptArgs {
   /// Creates a new [GetAzureCliScriptArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptName] Name of the deployment script.
-  GetAzureCliScriptArgs({
+  const GetAzureCliScriptArgs({
     required this.resourceGroupName,
     required this.scriptName,
   });

@@ -9,7 +9,7 @@ class ManagedKubernetesOperationPolicy {
 
   /// Creates a new [ManagedKubernetesOperationPolicy].
   /// [clusterAutoUpgrade] Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
-  ManagedKubernetesOperationPolicy({
+  const ManagedKubernetesOperationPolicy({
     this.clusterAutoUpgrade,
   });
 

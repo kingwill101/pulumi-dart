@@ -14,7 +14,7 @@ class GoogleCloudDocumentaiV1BoundingPoly {
   /// Creates a new [GoogleCloudDocumentaiV1BoundingPoly].
   /// [normalizedVertices] The bounding polygon normalized vertices.
   /// [vertices] The bounding polygon vertices.
-  GoogleCloudDocumentaiV1BoundingPoly({
+  const GoogleCloudDocumentaiV1BoundingPoly({
     this.normalizedVertices,
     this.vertices,
   });

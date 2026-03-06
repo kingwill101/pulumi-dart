@@ -15,7 +15,7 @@ class NumericalDataQualityMetricThreshold {
   /// [dataType] Expected value is 'Numerical'.
   /// [metric] [Required] The numerical data quality metric to calculate.
   /// [threshold] The threshold value. If null, a default value will be set depending on the selected metric.
-  NumericalDataQualityMetricThreshold({
+  const NumericalDataQualityMetricThreshold({
     required this.dataType,
     required this.metric,
     this.threshold,

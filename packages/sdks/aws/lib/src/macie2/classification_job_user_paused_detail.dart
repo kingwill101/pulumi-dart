@@ -11,7 +11,7 @@ class ClassificationJobUserPausedDetail {
   /// [jobExpiresAt] Optional.
   /// [jobImminentExpirationHealthEventArn] Optional.
   /// [jobPausedAt] Optional.
-  ClassificationJobUserPausedDetail({
+  const ClassificationJobUserPausedDetail({
     this.jobExpiresAt,
     this.jobImminentExpirationHealthEventArn,
     this.jobPausedAt,

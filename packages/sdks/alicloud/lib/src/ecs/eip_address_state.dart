@@ -139,7 +139,7 @@ class EipAddressState {
   /// [status] The state of the EIP.
   /// [tags] The tag of the resource
   /// [zone] The zone of the EIP. When the service type of the IP address pool specified by `PublicIpAddressPoolId` is CloudBox, the default value is the zone of the IP address pool. For more information, see [ListPublicIpAddressPools](https://www.alibabacloud.com/help/en/doc-detail/429433.html).
-  EipAddressState({
+  const EipAddressState({
     this.activityId,
     this.addressName,
     this.allocationId,

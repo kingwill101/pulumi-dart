@@ -22,7 +22,7 @@ class VmwareLoadBalancerConfig {
   /// [manualLbConfig] Manually configured load balancers.
   /// [metalLbConfig] Configuration for MetalLB typed load balancers.
   /// [vipConfig] The VIPs used by the load balancer.
-  VmwareLoadBalancerConfig({
+  const VmwareLoadBalancerConfig({
     this.f5Config,
     this.manualLbConfig,
     this.metalLbConfig,

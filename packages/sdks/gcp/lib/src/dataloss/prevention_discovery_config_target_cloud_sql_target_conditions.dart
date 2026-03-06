@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetConditions {
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetConditions].
   /// [databaseEngines] Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if unspecified.
   /// [types] Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
-  PreventionDiscoveryConfigTargetCloudSqlTargetConditions({
+  const PreventionDiscoveryConfigTargetCloudSqlTargetConditions({
     this.databaseEngines,
     this.types,
   });

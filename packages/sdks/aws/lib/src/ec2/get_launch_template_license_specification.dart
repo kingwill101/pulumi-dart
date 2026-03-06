@@ -7,7 +7,7 @@ class GetLaunchTemplateLicenseSpecification {
 
   /// Creates a new [GetLaunchTemplateLicenseSpecification].
   /// [licenseConfigurationArn] Required.
-  GetLaunchTemplateLicenseSpecification({
+  const GetLaunchTemplateLicenseSpecification({
     required this.licenseConfigurationArn,
   });
 

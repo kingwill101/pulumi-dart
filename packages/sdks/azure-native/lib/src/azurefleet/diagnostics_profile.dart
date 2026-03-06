@@ -14,7 +14,7 @@ class DiagnosticsProfile {
 
   /// Creates a new [DiagnosticsProfile].
   /// [bootDiagnostics] Boot Diagnostics is a debugging feature which allows you to view Console Output
-  DiagnosticsProfile({
+  const DiagnosticsProfile({
     this.bootDiagnostics,
   });
 

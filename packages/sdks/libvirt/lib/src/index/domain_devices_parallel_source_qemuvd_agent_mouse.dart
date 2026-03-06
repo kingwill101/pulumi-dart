@@ -8,7 +8,7 @@ class DomainDevicesParallelSourceQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesParallelSourceQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesParallelSourceQemuvdAgentMouse({
+  const DomainDevicesParallelSourceQemuvdAgentMouse({
     required this.mode,
   });
 

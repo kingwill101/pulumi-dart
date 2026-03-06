@@ -15,7 +15,7 @@ class SparkConfigProperties {
   /// [configurationType] The type of the spark config properties file.
   /// [content] The spark config properties.
   /// [filename] The filename of the spark config properties file.
-  SparkConfigProperties({
+  const SparkConfigProperties({
     this.configurationType,
     this.content,
     this.filename,

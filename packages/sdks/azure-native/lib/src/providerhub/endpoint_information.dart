@@ -14,7 +14,7 @@ class EndpointInformation {
   /// [endpoint] The endpoint.
   /// [endpointType] The endpoint type.
   /// [schemaVersion] The schema version.
-  EndpointInformation({
+  const EndpointInformation({
     this.endpoint,
     this.endpointType,
     this.schemaVersion,

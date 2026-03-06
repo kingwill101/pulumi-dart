@@ -12,7 +12,7 @@ class ManagedInstancePairInfoResponse {
   /// Creates a new [ManagedInstancePairInfoResponse].
   /// [partnerManagedInstanceId] Id of Partner Managed Instance in pair.
   /// [primaryManagedInstanceId] Id of Primary Managed Instance in pair.
-  ManagedInstancePairInfoResponse({
+  const ManagedInstancePairInfoResponse({
     this.partnerManagedInstanceId,
     this.primaryManagedInstanceId,
   });

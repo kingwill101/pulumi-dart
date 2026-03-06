@@ -18,7 +18,7 @@ class IdentityProviderGoogleState {
   /// [clientId] Client Id for Google Sign-in.
   /// [clientSecret] Client secret for Google Sign-in.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  IdentityProviderGoogleState({
+  const IdentityProviderGoogleState({
     this.apiManagementName,
     this.clientId,
     this.clientSecret,

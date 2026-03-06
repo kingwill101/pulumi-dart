@@ -29,7 +29,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessC
   /// [publicPtrDomainName] (Optional)
   /// [setPublicPtr] (Optional)
   /// [type] Output only. Type of the resource.
-  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig({
+  const RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfig({
     this.externalIp,
     this.externalIpv6,
     this.externalIpv6PrefixLength,

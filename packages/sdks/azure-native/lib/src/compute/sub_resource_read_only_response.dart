@@ -8,7 +8,7 @@ class SubResourceReadOnlyResponse {
 
   /// Creates a new [SubResourceReadOnlyResponse].
   /// [id] Resource Id
-  SubResourceReadOnlyResponse({
+  const SubResourceReadOnlyResponse({
     required this.id,
   });
 

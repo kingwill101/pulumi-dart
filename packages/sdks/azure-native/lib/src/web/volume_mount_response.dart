@@ -17,7 +17,7 @@ class VolumeMountResponse {
   /// [data] Config Data to be mounted on the volume
   /// [readOnly] Boolean to specify if the mount is read only on the container
   /// [volumeSubPath] Sub path in the volume where volume is mounted from.
-  VolumeMountResponse({
+  const VolumeMountResponse({
     required this.containerMountPath,
     this.data,
     this.readOnly,

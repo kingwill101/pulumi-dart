@@ -29,7 +29,7 @@ class ClusterUserManagedKeysConfig {
   /// [gkeopsEtcdBackupEncryptionKey] Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
   /// [serviceAccountSigningKeys] The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
   /// [serviceAccountVerificationKeys] The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
-  ClusterUserManagedKeysConfig({
+  const ClusterUserManagedKeysConfig({
     this.aggregationCa,
     this.clusterCa,
     this.controlPlaneDiskEncryptionKey,

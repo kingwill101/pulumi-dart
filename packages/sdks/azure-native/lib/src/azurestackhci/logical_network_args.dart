@@ -36,7 +36,7 @@ class LogicalNetworkArgs {
   /// [subnets] Subnet - list of subnets under the logical network
   /// [tags] Resource tags.
   /// [vmSwitchName] name of the network switch to be used for VMs
-  LogicalNetworkArgs({
+  const LogicalNetworkArgs({
     this.dhcpOptions,
     this.extendedLocation,
     this.location,

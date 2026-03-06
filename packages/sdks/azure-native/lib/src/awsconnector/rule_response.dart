@@ -59,7 +59,7 @@ class RuleResponse {
   /// [tagFilters] Tags to use to identify a subset of objects to which the lifecycle rule applies.
   /// [transition] (Deprecated.) Specifies when an object transitions to a specified storage class. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. If you specify this property, don't specify the ``Transitions`` property. Specifies when an object transitions to a specified storage class. For more information about Amazon S3 lifecycle configuration rules, see [Transitioning Objects Using Amazon S3 Lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html) in the *Amazon S3 User Guide*.
   /// [transitions] One or more transition rules that specify when an object transitions to a specified storage class. If you specify an expiration and transition time, you must use the same time unit for both properties (either in days or by date). The expiration time must also be later than the transition time. If you specify this property, don't specify the ``Transition`` property.
-  RuleResponse({
+  const RuleResponse({
     this.abortIncompleteMultipartUpload,
     this.expirationDate,
     this.expirationInDays,

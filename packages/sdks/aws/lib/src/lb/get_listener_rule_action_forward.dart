@@ -15,7 +15,7 @@ class GetListenerRuleActionForward {
   /// Creates a new [GetListenerRuleActionForward].
   /// [stickinesses] Target group stickiness for the rule.
   /// [targetGroups] Set of target groups for the action.
-  GetListenerRuleActionForward({
+  const GetListenerRuleActionForward({
     this.stickinesses,
     this.targetGroups,
   });

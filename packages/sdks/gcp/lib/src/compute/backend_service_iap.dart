@@ -20,7 +20,7 @@ class BackendServiceIap {
   /// [oauth2ClientId] OAuth2 Client ID for IAP
   /// [oauth2ClientSecret] OAuth2 Client Secret for IAP
   /// [oauth2ClientSecretSha256] (Output)
-  BackendServiceIap({
+  const BackendServiceIap({
     required this.enabled,
     this.oauth2ClientId,
     this.oauth2ClientSecret,

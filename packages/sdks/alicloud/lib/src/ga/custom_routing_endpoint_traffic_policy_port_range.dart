@@ -11,7 +11,7 @@ class CustomRoutingEndpointTrafficPolicyPortRange {
   /// Creates a new [CustomRoutingEndpointTrafficPolicyPortRange].
   /// [fromPort] The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
   /// [toPort] The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
-  CustomRoutingEndpointTrafficPolicyPortRange({
+  const CustomRoutingEndpointTrafficPolicyPortRange({
     this.fromPort,
     this.toPort,
   });

@@ -15,7 +15,7 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse {
   /// [height] Optional. Height of the image in number of pixels.
   /// [uri] URL of the image with a length limit of 5 KiB.
   /// [width] Optional. Width of the image in number of pixels.
-  GoogleCloudRecommendationengineV1beta1ImageResponse({
+  const GoogleCloudRecommendationengineV1beta1ImageResponse({
     required this.height,
     required this.uri,
     required this.width,

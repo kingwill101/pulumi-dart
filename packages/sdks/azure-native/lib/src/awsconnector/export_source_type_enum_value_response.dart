@@ -9,7 +9,7 @@ class ExportSourceTypeEnumValueResponse {
 
   /// Creates a new [ExportSourceTypeEnumValueResponse].
   /// [value] Property value
-  ExportSourceTypeEnumValueResponse({
+  const ExportSourceTypeEnumValueResponse({
     this.value,
   });
 

@@ -13,7 +13,7 @@ class JobTemplateConfigElementaryStreamVideoStream {
 
   /// Creates a new [JobTemplateConfigElementaryStreamVideoStream].
   /// [h264] H264 codec settings
-  JobTemplateConfigElementaryStreamVideoStream({
+  const JobTemplateConfigElementaryStreamVideoStream({
     this.h264,
   });
 

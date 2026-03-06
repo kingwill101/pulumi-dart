@@ -21,7 +21,7 @@ class GetLifecycleHooksArgs {
   /// [nameRegex] A regex string to filter resulting lifecycle hook by name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [scalingGroupId] Scaling group id the lifecycle hooks belong to.
-  GetLifecycleHooksArgs({
+  const GetLifecycleHooksArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

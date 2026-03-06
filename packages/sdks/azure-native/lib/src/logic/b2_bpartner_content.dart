@@ -10,7 +10,7 @@ class B2BPartnerContent {
 
   /// Creates a new [B2BPartnerContent].
   /// [businessIdentities] The list of partner business identities.
-  B2BPartnerContent({
+  const B2BPartnerContent({
     this.businessIdentities,
   });
 

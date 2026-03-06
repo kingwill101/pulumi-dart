@@ -13,7 +13,7 @@ class ConnectorProfileConnectorProfileConfig {
   /// Creates a new [ConnectorProfileConnectorProfileConfig].
   /// [connectorProfileCredentials] The connector-specific credentials required by each connector. See Connector Profile Credentials for more details.
   /// [connectorProfileProperties] The connector-specific properties of the profile configuration. See Connector Profile Properties for more details.
-  ConnectorProfileConnectorProfileConfig({
+  const ConnectorProfileConnectorProfileConfig({
     required this.connectorProfileCredentials,
     required this.connectorProfileProperties,
   });

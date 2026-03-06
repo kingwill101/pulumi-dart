@@ -13,7 +13,7 @@ class IcebergCatalogReplica {
   /// Creates a new [IcebergCatalogReplica].
   /// [region] (Output)
   /// [state] (Output)
-  IcebergCatalogReplica({
+  const IcebergCatalogReplica({
     this.region,
     this.state,
   });

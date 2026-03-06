@@ -14,7 +14,7 @@ class QueueReservationPlanSettings {
   /// [commitment] The length of the term of your reserved queue pricing plan commitment. Valid value is `ONE_YEAR`.
   /// [renewalType] Specifies whether the term of your reserved queue pricing plan. Valid values are `AUTO_RENEW` or `EXPIRE`.
   /// [reservedSlots] Specifies the number of reserved transcode slots (RTS) for queue.
-  QueueReservationPlanSettings({
+  const QueueReservationPlanSettings({
     required this.commitment,
     required this.renewalType,
     required this.reservedSlots,

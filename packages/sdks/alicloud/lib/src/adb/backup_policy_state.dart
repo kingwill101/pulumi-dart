@@ -18,7 +18,7 @@ class BackupPolicyState {
   /// [dbClusterId] The Id of cluster that can run database.
   /// [preferredBackupPeriods] ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
   /// [preferredBackupTime] ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
-  BackupPolicyState({
+  const BackupPolicyState({
     this.backupRetentionPeriod,
     this.dbClusterId,
     this.preferredBackupPeriods,

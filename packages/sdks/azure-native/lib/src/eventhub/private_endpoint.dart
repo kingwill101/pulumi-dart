@@ -9,7 +9,7 @@ class PrivateEndpoint {
 
   /// Creates a new [PrivateEndpoint].
   /// [id] The ARM identifier for Private Endpoint.
-  PrivateEndpoint({
+  const PrivateEndpoint({
     this.id,
   });
 

@@ -10,7 +10,7 @@ class LinuxConfiguration {
 
   /// Creates a new [LinuxConfiguration].
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  LinuxConfiguration({
+  const LinuxConfiguration({
     this.ssh,
   });
 

@@ -25,7 +25,7 @@ class ApplicationArgs {
   /// [properties] The properties of the application.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] The tags for the application.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.applicationName,
     required this.clusterName,
     this.properties,

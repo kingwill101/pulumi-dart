@@ -19,7 +19,7 @@ class DeploymentExtensionResponse {
   /// [configId] The configuration ID of the extension usage. It uniquely identifies a target the extension deploys to.
   /// [name] The extension name.
   /// [version] The extension version.
-  DeploymentExtensionResponse({
+  const DeploymentExtensionResponse({
     this.config,
     this.configId,
     required this.name,

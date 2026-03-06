@@ -10,7 +10,7 @@ class UpcomingMaintenanceTimeWindowResponse {
   /// Creates a new [UpcomingMaintenanceTimeWindowResponse].
   /// [earliest] Required.
   /// [latest] Required.
-  UpcomingMaintenanceTimeWindowResponse({
+  const UpcomingMaintenanceTimeWindowResponse({
     required this.earliest,
     required this.latest,
   });

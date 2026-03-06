@@ -23,7 +23,7 @@ class GetMainVersionsResult {
   /// [ids] A list of emr instance types IDs.
   /// [mainVersions] A list of versions of the emr cluster instance. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetMainVersionsResult({
+  const GetMainVersionsResult({
     this.clusterTypes,
     this.emrVersion,
     required this.id,

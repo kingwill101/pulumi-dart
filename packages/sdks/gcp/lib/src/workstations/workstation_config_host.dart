@@ -10,7 +10,7 @@ class WorkstationConfigHost {
 
   /// Creates a new [WorkstationConfigHost].
   /// [gceInstance] A runtime using a Compute Engine instance.
-  WorkstationConfigHost({
+  const WorkstationConfigHost({
     this.gceInstance,
   });
 

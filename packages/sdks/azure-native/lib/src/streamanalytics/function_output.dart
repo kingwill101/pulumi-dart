@@ -9,7 +9,7 @@ class FunctionOutput {
 
   /// Creates a new [FunctionOutput].
   /// [dataType] The (Azure Stream Analytics supported) data type of the function output. A list of valid Azure Stream Analytics data types are described at https://msdn.microsoft.com/en-us/library/azure/dn835065.aspx
-  FunctionOutput({
+  const FunctionOutput({
     this.dataType,
   });
 

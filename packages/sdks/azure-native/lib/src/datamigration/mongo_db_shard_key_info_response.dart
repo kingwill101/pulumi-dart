@@ -13,7 +13,7 @@ class MongoDbShardKeyInfoResponse {
   /// Creates a new [MongoDbShardKeyInfoResponse].
   /// [fields] The fields within the shard key
   /// [isUnique] Whether the shard key is unique
-  MongoDbShardKeyInfoResponse({
+  const MongoDbShardKeyInfoResponse({
     required this.fields,
     required this.isUnique,
   });

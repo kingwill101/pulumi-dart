@@ -8,7 +8,7 @@ class DomainDevicesInterfaceScript {
 
   /// Creates a new [DomainDevicesInterfaceScript].
   /// [path] Defines the path to the down script that will be executed when the interface is brought down.
-  DomainDevicesInterfaceScript({
+  const DomainDevicesInterfaceScript({
     required this.path,
   });
 

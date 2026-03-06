@@ -11,7 +11,7 @@ class EventConnectionAuthParametersApiKey {
   /// Creates a new [EventConnectionAuthParametersApiKey].
   /// [key] Header Name.
   /// [value] Header Value. Created and stored in AWS Secrets Manager.
-  EventConnectionAuthParametersApiKey({
+  const EventConnectionAuthParametersApiKey({
     required this.key,
     required this.value,
   });

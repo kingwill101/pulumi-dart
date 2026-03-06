@@ -7,7 +7,7 @@ class GetLoadbalancerV2Listener {
 
   /// Creates a new [GetLoadbalancerV2Listener].
   /// [id] Required.
-  GetLoadbalancerV2Listener({
+  const GetLoadbalancerV2Listener({
     required this.id,
   });
 

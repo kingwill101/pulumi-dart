@@ -28,7 +28,7 @@ class PreventionDiscoveryConfigTarget {
   /// [cloudStorageTarget] Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
   /// [otherCloudTarget] Other clouds target for discovery. The first target to match a resource will be the one applied.
   /// [secretsTarget] Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
-  PreventionDiscoveryConfigTarget({
+  const PreventionDiscoveryConfigTarget({
     this.bigQueryTarget,
     this.cloudSqlTarget,
     this.cloudStorageTarget,

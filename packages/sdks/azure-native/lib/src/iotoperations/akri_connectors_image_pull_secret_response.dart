@@ -9,7 +9,7 @@ class AkriConnectorsImagePullSecretResponse {
 
   /// Creates a new [AkriConnectorsImagePullSecretResponse].
   /// [secretRef] The name of the image pull secret.
-  AkriConnectorsImagePullSecretResponse({
+  const AkriConnectorsImagePullSecretResponse({
     required this.secretRef,
   });
 

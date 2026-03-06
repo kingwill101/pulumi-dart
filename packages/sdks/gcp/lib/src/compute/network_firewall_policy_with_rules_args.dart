@@ -35,7 +35,7 @@ class NetworkFirewallPolicyWithRulesArgs {
   /// [policyType] Policy type is used to determine which resources (networks) the policy can be associated with.
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] A list of firewall policy rules.
-  NetworkFirewallPolicyWithRulesArgs({
+  const NetworkFirewallPolicyWithRulesArgs({
     this.description,
     this.name,
     this.policyType,

@@ -12,7 +12,7 @@ class WindowsVirtualMachineScaleSetSecret {
   /// Creates a new [WindowsVirtualMachineScaleSetSecret].
   /// [certificates] One or more `certificate` blocks as defined above.
   /// [keyVaultId] The ID of the Key Vault from which all Secrets should be sourced.
-  WindowsVirtualMachineScaleSetSecret({
+  const WindowsVirtualMachineScaleSetSecret({
     required this.certificates,
     required this.keyVaultId,
   });

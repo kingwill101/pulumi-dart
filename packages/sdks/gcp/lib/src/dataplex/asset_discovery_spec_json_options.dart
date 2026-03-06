@@ -11,7 +11,7 @@ class AssetDiscoverySpecJsonOptions {
   /// Creates a new [AssetDiscoverySpecJsonOptions].
   /// [disableTypeInference] Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
   /// [encoding] Optional. The character encoding of the data. The default is UTF-8.
-  AssetDiscoverySpecJsonOptions({
+  const AssetDiscoverySpecJsonOptions({
     this.disableTypeInference,
     this.encoding,
   });

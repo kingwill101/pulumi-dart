@@ -19,7 +19,7 @@ class GetGatewayHostNameConfigurationArgs {
   /// [apiManagementId] The ID of the API Management Service.
   /// [gatewayName] The name of the API Management Gateway.
   /// [name] The name of the API Management Gateway Host Name Configuration.
-  GetGatewayHostNameConfigurationArgs({
+  const GetGatewayHostNameConfigurationArgs({
     required this.apiManagementId,
     required this.gatewayName,
     required this.name,

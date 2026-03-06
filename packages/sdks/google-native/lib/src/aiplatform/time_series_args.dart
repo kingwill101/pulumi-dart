@@ -41,7 +41,7 @@ class TimeSeriesArgs {
   /// [tensorboardId] Required.
   /// [tensorboardTimeSeriesId] Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}"
   /// [valueType] Immutable. Type of TensorboardTimeSeries value.
-  TimeSeriesArgs({
+  const TimeSeriesArgs({
     this.description,
     required this.displayName,
     this.etag,

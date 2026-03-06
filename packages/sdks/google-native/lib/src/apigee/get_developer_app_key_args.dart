@@ -17,7 +17,7 @@ class GetDeveloperAppKeyArgs {
   /// [developerId] Required.
   /// [keyId] Required.
   /// [organizationId] Required.
-  GetDeveloperAppKeyArgs({
+  const GetDeveloperAppKeyArgs({
     required this.appId,
     required this.developerId,
     required this.keyId,

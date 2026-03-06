@@ -12,7 +12,7 @@ class AppleRegistration {
   /// Creates a new [AppleRegistration].
   /// [clientId] The Client ID of the app used for login.
   /// [clientSecretSettingName] The app setting name that contains the client secret.
-  AppleRegistration({
+  const AppleRegistration({
     this.clientId,
     this.clientSecretSettingName,
   });

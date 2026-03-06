@@ -24,7 +24,7 @@ class ContainerEventResponse {
   /// [message] The event message
   /// [name] The name of the container event.
   /// [type] The event type.
-  ContainerEventResponse({
+  const ContainerEventResponse({
     this.count,
     this.firstTimestamp,
     this.lastTimestamp,

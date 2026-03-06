@@ -20,7 +20,7 @@ class SlackChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Slack channel resource
-  SlackChannel({
+  const SlackChannel({
     required this.channelName,
     this.etag,
     this.location,

@@ -22,7 +22,7 @@ class IdentityModel {
   /// [audience] Gets or sets the audience of the SPN with which MigrateAgent communicates to service.
   /// [objectId] Gets or sets the object Id of the SPN with which MigrateAgent communicates to service.
   /// [tenantId] Gets or sets the tenant Id of the SPN with which MigrateAgent communicates to service.
-  IdentityModel({
+  const IdentityModel({
     this.aadAuthority,
     this.applicationId,
     this.audience,

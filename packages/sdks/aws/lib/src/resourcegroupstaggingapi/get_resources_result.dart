@@ -26,7 +26,7 @@ class GetResourcesResult {
   /// [resourceTagMappingLists] List of objects matching the search criteria.
   /// [resourceTypeFilters] Optional.
   /// [tagFilters] Optional.
-  GetResourcesResult({
+  const GetResourcesResult({
     this.excludeCompliantResources,
     required this.id,
     this.includeComplianceDetails,

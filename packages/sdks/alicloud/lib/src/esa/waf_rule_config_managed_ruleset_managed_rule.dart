@@ -13,7 +13,7 @@ class WafRuleConfigManagedRulesetManagedRule {
   /// [action] Optional.
   /// [id] The internal unique ID of the WAF rule.
   /// [status] The status of the managed rule: whether it is enabled or disabled.
-  WafRuleConfigManagedRulesetManagedRule({
+  const WafRuleConfigManagedRulesetManagedRule({
     this.action,
     this.id,
     this.status,

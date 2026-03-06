@@ -33,7 +33,7 @@ class SingleServerArgs {
   /// [serverName] The name of the server.
   /// [sku] The SKU (pricing tier) of the server.
   /// [tags] Application-specific metadata in the form of key-value pairs.
-  SingleServerArgs({
+  const SingleServerArgs({
     this.identity,
     this.location,
     required this.properties,

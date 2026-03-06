@@ -60,7 +60,7 @@ class GetTriggerBuild {
   /// [substitutions] Substitutions data for Build resource.
   /// [tags] Tags for annotation of a Build. These are not docker tags.
   /// [timeout] Amount of time that this build should be allowed to run, to second granularity.
-  GetTriggerBuild({
+  const GetTriggerBuild({
     required this.artifacts,
     required this.availableSecrets,
     required this.images,

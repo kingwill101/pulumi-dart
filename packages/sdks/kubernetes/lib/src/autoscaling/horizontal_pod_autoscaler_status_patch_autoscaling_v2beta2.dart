@@ -26,7 +26,7 @@ class HorizontalPodAutoscalerStatusPatchAutoscalingV2beta2 {
   /// [desiredReplicas] desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.
   /// [lastScaleTime] lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.
   /// [observedGeneration] observedGeneration is the most recent generation observed by this autoscaler.
-  HorizontalPodAutoscalerStatusPatchAutoscalingV2beta2({
+  const HorizontalPodAutoscalerStatusPatchAutoscalingV2beta2({
     this.conditions,
     this.currentMetrics,
     this.currentReplicas,

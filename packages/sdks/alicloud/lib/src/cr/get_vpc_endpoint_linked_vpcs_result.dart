@@ -26,7 +26,7 @@ class GetVpcEndpointLinkedVpcsResult {
   /// [outputFile] Optional.
   /// [status] The status of the Vpc Endpoint Linked Vpc.
   /// [vpcEndpointLinkedVpcs] A list of CR Vpc Endpoint Linked Vpcs. Each element contains the following attributes:
-  GetVpcEndpointLinkedVpcsResult({
+  const GetVpcEndpointLinkedVpcsResult({
     required this.id,
     required this.ids,
     required this.instanceId,

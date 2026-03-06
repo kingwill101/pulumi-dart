@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [clusterName] Name of the cluster.
   /// [resourceGroupName] The Resource Group Name.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

@@ -26,7 +26,7 @@ class DatasetCreateRequestParameters {
   /// [query] Optional.
   /// [separator] The separator used to split columns for 'delimited_files' sourceType.
   /// [sourceType] Data source type.
-  DatasetCreateRequestParameters({
+  const DatasetCreateRequestParameters({
     this.header,
     this.includePath,
     this.partitionFormat,

@@ -9,7 +9,7 @@ class BrokerStateStoreDestinationConfigurationResponse {
 
   /// Creates a new [BrokerStateStoreDestinationConfigurationResponse].
   /// [key] The MQTT broker state store destination key.
-  BrokerStateStoreDestinationConfigurationResponse({
+  const BrokerStateStoreDestinationConfigurationResponse({
     required this.key,
   });
 

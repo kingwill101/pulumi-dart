@@ -14,7 +14,7 @@ class AssetSecurityStatus {
   /// [message] Additional information about the current state.
   /// [state] Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   /// [updateTime] Output only. The time when the asset was last updated.
-  AssetSecurityStatus({
+  const AssetSecurityStatus({
     this.message,
     this.state,
     this.updateTime,

@@ -14,7 +14,7 @@ class GetSharedImageVersionsImageTargetRegion {
   /// [name] The Azure Region in which this Image Version exists.
   /// [regionalReplicaCount] The number of replicas of the Image Version to be created per region.
   /// [storageAccountType] The storage account type for the image version.
-  GetSharedImageVersionsImageTargetRegion({
+  const GetSharedImageVersionsImageTargetRegion({
     required this.name,
     required this.regionalReplicaCount,
     required this.storageAccountType,

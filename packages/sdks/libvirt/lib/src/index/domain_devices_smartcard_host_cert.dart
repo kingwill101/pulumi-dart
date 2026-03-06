@@ -8,7 +8,7 @@ class DomainDevicesSmartcardHostCert {
 
   /// Creates a new [DomainDevicesSmartcardHostCert].
   /// [file] Specifies the file path for the host certificate linked to the smartcard.
-  DomainDevicesSmartcardHostCert({
+  const DomainDevicesSmartcardHostCert({
     required this.file,
   });
 

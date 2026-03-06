@@ -92,7 +92,7 @@ class ClusterArgs {
   /// [tags] Resource tags.
   /// [updateStrategy] The strategy for updating the cluster.
   /// [vulnerabilityScanningSettings] The settings for how security vulnerability scanning is applied to the cluster.
-  ClusterArgs({
+  const ClusterArgs({
     required this.aggregatorOrSingleRackDefinition,
     this.analyticsOutputSettings,
     this.analyticsWorkspaceId,

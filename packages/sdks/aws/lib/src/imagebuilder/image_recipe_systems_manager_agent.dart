@@ -8,7 +8,7 @@ class ImageRecipeSystemsManagerAgent {
 
   /// Creates a new [ImageRecipeSystemsManagerAgent].
   /// [uninstallAfterBuild] Whether to remove the Systems Manager Agent after the image has been built.
-  ImageRecipeSystemsManagerAgent({
+  const ImageRecipeSystemsManagerAgent({
     required this.uninstallAfterBuild,
   });
 

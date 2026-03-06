@@ -39,7 +39,7 @@ class GoogleCloudAiplatformV1ExecutionResponse {
   /// [schemaVersion] The version of the schema in `schema_title` to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   /// [state] The state of this Execution. This is a property of the Execution, and does not imply or capture any ongoing process. This property is managed by clients (such as Vertex AI Pipelines) and the system does not prescribe or check the validity of state transitions.
   /// [updateTime] Timestamp when this Execution was last updated.
-  GoogleCloudAiplatformV1ExecutionResponse({
+  const GoogleCloudAiplatformV1ExecutionResponse({
     required this.createTime,
     required this.description,
     required this.displayName,

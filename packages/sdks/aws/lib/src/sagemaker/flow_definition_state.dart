@@ -40,7 +40,7 @@ class FlowDefinitionState {
   /// [roleArn] The Amazon Resource Name (ARN) of the role needed to call other services on your behalf.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  FlowDefinitionState({
+  const FlowDefinitionState({
     this.arn,
     this.flowDefinitionName,
     this.humanLoopActivationConfig,

@@ -32,7 +32,7 @@ class GetStacksResult {
   /// [stacks] Required.
   /// [status] Optional.
   /// [tags] Optional.
-  GetStacksResult({
+  const GetStacksResult({
     this.enableDetails,
     required this.id,
     required this.ids,

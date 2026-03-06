@@ -71,7 +71,7 @@ class InstanceDatafusionV1beta1Args {
   /// [type] Instance type.
   /// [version] Current version of Data Fusion.
   /// [zone] Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
-  InstanceDatafusionV1beta1Args({
+  const InstanceDatafusionV1beta1Args({
     this.cryptoKeyConfig,
     this.dataprocServiceAccount,
     this.description,

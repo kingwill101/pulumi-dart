@@ -38,7 +38,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse {
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskId] Task id
   /// [taskType] Task type.
-  MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse({
+  const MigrateMySqlAzureDbForMySqlOfflineTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

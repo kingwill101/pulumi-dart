@@ -16,7 +16,7 @@ class Settings {
   /// [isCompression] Workload compression flag. This has been added so that 'isSqlCompression'
   /// [issqlcompression] SQL compression flag
   /// [timeZone] TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  Settings({
+  const Settings({
     this.isCompression,
     this.issqlcompression,
     this.timeZone,

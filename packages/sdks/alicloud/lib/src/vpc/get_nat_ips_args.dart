@@ -32,7 +32,7 @@ class GetNatIpsArgs {
   /// [natIpNames] NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
-  GetNatIpsArgs({
+  const GetNatIpsArgs({
     this.ids,
     this.nameRegex,
     required this.natGatewayId,

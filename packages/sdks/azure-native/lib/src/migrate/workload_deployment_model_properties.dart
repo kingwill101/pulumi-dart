@@ -20,7 +20,7 @@ class WorkloadDeploymentModelProperties {
   /// [displayName] Gets or sets the display name.
   /// [targetPlatform] Gets or sets the deployment target platform.
   /// [workloadInstanceProperties] Workload instance model properties.
-  WorkloadDeploymentModelProperties({
+  const WorkloadDeploymentModelProperties({
     this.customProperties,
     this.displayName,
     this.targetPlatform,

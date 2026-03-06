@@ -48,7 +48,7 @@ class LoggingSettingBindingState {
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
   /// [updateTime] Update time stamp.
-  LoggingSettingBindingState({
+  const LoggingSettingBindingState({
     this.createTime,
     this.effectiveLabels,
     this.labels,

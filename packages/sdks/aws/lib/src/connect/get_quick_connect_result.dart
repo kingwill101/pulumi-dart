@@ -31,7 +31,7 @@ class GetQuickConnectResult {
   /// [quickConnectId] Identifier for the Quick Connect.
   /// [region] Required.
   /// [tags] Map of tags to assign to the Quick Connect.
-  GetQuickConnectResult({
+  const GetQuickConnectResult({
     required this.arn,
     required this.description,
     required this.id,

@@ -57,7 +57,7 @@ class MccCacheNodeAutoUpdateInfoResponse {
   /// [ruleRequestedWeek] Auto update image uri before update.
   /// [timeToGoLiveDateTime] Auto update time to go live date time.
   /// [updatedRegistryDateTimeUtc] Auto update entity last updated datetime.
-  MccCacheNodeAutoUpdateInfoResponse({
+  const MccCacheNodeAutoUpdateInfoResponse({
     required this.autoUpdateLastAppliedStatus,
     required this.autoUpdateLastAppliedStatusDetailedText,
     required this.autoUpdateLastAppliedStatusText,

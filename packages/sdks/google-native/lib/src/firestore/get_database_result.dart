@@ -47,7 +47,7 @@ class GetDatabaseResult {
   /// [uid] The system-generated UUID4 for this Database.
   /// [updateTime] The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
   /// [versionRetentionPeriod] The period during which past versions of data are retained in the database. Any read or query can specify a `read_time` within this window, and will read the state of the database at that time. If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.appEngineIntegrationMode,
     required this.concurrencyMode,
     required this.createTime,

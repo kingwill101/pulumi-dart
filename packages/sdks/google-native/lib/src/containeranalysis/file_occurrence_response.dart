@@ -28,7 +28,7 @@ class FileOccurrenceResponse {
   /// [filesLicenseInfo] This field contains the license information actually found in the file, if any
   /// [licenseConcluded] This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
   /// [notice] This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
-  FileOccurrenceResponse({
+  const FileOccurrenceResponse({
     required this.attributions,
     required this.comment,
     required this.contributors,

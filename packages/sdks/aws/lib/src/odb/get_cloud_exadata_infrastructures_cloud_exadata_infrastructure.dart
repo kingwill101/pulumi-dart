@@ -23,7 +23,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   /// [ociResourceAnchorName] The name of the OCI resource anchor for the Exadata infrastructure.
   /// [ociUrl] The HTTPS link to the Exadata infrastructure in OCI.
   /// [ocid] The OCID of the Exadata infrastructure in OCI.
-  GetCloudExadataInfrastructuresCloudExadataInfrastructure({
+  const GetCloudExadataInfrastructuresCloudExadataInfrastructure({
     required this.arn,
     required this.displayName,
     required this.id,

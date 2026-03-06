@@ -18,7 +18,7 @@ class AppClientCertificateSettings {
   /// [passphrase] The passphrase to decrypt the private key.
   /// [privateKey] The name of the SecretManager secret version resource
   /// [tlsCertificate] The TLS certificate encoded in PEM format.
-  AppClientCertificateSettings({
+  const AppClientCertificateSettings({
     this.passphrase,
     required this.privateKey,
     required this.tlsCertificate,

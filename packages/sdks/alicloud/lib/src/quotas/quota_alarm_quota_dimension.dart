@@ -11,7 +11,7 @@ class QuotaAlarmQuotaDimension {
   /// Creates a new [QuotaAlarmQuotaDimension].
   /// [key] The Key of quota_dimensions.
   /// [value] The Value of quota_dimensions.
-  QuotaAlarmQuotaDimension({
+  const QuotaAlarmQuotaDimension({
     this.key,
     this.value,
   });

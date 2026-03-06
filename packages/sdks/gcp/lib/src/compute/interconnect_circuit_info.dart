@@ -18,7 +18,7 @@ class InterconnectCircuitInfo {
   /// [customerDemarcId] (Output)
   /// [googleCircuitId] (Output)
   /// [googleDemarcId] (Output)
-  InterconnectCircuitInfo({
+  const InterconnectCircuitInfo({
     this.customerDemarcId,
     this.googleCircuitId,
     this.googleDemarcId,

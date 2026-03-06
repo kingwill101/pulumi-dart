@@ -23,7 +23,7 @@ class KikChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Kik channel resource
   /// [provisioningState] Provisioning state of the resource
-  KikChannelResponse({
+  const KikChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

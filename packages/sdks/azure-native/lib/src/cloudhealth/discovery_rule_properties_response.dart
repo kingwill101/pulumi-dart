@@ -36,7 +36,7 @@ class DiscoveryRulePropertiesResponse {
   /// [numberOfDiscoveredEntities] Number of discovered entities in the last discovery operation.
   /// [provisioningState] The status of the last operation.
   /// [resourceGraphQuery] Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
-  DiscoveryRulePropertiesResponse({
+  const DiscoveryRulePropertiesResponse({
     required this.addRecommendedSignals,
     required this.authenticationSetting,
     required this.deletionDate,

@@ -15,7 +15,7 @@ class GetDomainTopicResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [resourceGroupName] Required.
-  GetDomainTopicResult({
+  const GetDomainTopicResult({
     required this.domainName,
     required this.id,
     required this.name,

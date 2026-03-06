@@ -12,7 +12,7 @@ class ManagedClusterAddonProfile {
   /// Creates a new [ManagedClusterAddonProfile].
   /// [config] Key-value pairs for configuring an add-on.
   /// [enabled] Whether the add-on is enabled or not.
-  ManagedClusterAddonProfile({
+  const ManagedClusterAddonProfile({
     this.config,
     required this.enabled,
   });

@@ -24,7 +24,7 @@ class CloudSQLInstanceInfoResponseNetworkmanagementV1beta1 {
   /// [networkUri] URI of a Cloud SQL instance network or empty string if the instance does not have one.
   /// [region] Region in which the Cloud SQL instance is running.
   /// [uri] URI of a Cloud SQL instance.
-  CloudSQLInstanceInfoResponseNetworkmanagementV1beta1({
+  const CloudSQLInstanceInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.externalIp,
     required this.internalIp,

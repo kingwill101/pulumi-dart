@@ -51,7 +51,7 @@ class ApplicationGroupArgs {
   /// [showInFeed] Boolean representing whether the applicationGroup is show in the feed.
   /// [sku] Optional.
   /// [tags] Resource tags.
-  ApplicationGroupArgs({
+  const ApplicationGroupArgs({
     this.applicationGroupName,
     required this.applicationGroupType,
     this.description,

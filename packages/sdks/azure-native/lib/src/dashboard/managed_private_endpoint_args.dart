@@ -39,7 +39,7 @@ class ManagedPrivateEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
-  ManagedPrivateEndpointArgs({
+  const ManagedPrivateEndpointArgs({
     this.groupIds,
     this.location,
     this.managedPrivateEndpointName,

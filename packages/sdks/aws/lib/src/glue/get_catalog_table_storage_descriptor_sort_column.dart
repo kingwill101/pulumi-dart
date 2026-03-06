@@ -11,7 +11,7 @@ class GetCatalogTableStorageDescriptorSortColumn {
   /// Creates a new [GetCatalogTableStorageDescriptorSortColumn].
   /// [column] Name of the column.
   /// [sortOrder] Whether the column is sorted in ascending (`1`) or descending order (`0`).
-  GetCatalogTableStorageDescriptorSortColumn({
+  const GetCatalogTableStorageDescriptorSortColumn({
     required this.column,
     required this.sortOrder,
   });

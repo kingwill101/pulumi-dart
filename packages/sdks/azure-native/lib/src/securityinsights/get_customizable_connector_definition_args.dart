@@ -18,7 +18,7 @@ class GetCustomizableConnectorDefinitionArgs {
   /// [dataConnectorDefinitionName] The data connector definition name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetCustomizableConnectorDefinitionArgs({
+  const GetCustomizableConnectorDefinitionArgs({
     required this.dataConnectorDefinitionName,
     required this.resourceGroupName,
     required this.workspaceName,

@@ -42,7 +42,7 @@ class GmsaAuthenticationPropertiesResponse {
   /// [gmsaSecretName] Gets name of the secret where GMSA secret is stored in the KeyVault.
   /// [gmsaUserPassword] Gets or sets the password of the user specified by RestApi.Controllers.V2022_05_01_preview.Models.WorkloadDeployment.Gmsa.GmsaAuthenticationProperties.GmsaUsername.
   /// [gmsaUsername] Gets or sets username of the user having authorization to access GMSA on Active Directory.
-  GmsaAuthenticationPropertiesResponse({
+  const GmsaAuthenticationPropertiesResponse({
     this.adDomainControllerDns,
     this.adDomainFqdn,
     this.akvProperties,

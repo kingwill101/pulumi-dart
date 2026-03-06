@@ -99,5 +99,5 @@ class DockerConfig {
 
 }
 
-final config = DockerConfig();
+const config = DockerConfig();
 

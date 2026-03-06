@@ -17,7 +17,7 @@ class V3FunctionCustomRuntimeConfigHealthCheckConfig {
   /// [periodSeconds] Optional.
   /// [successThreshold] Optional.
   /// [timeoutSeconds] Optional.
-  V3FunctionCustomRuntimeConfigHealthCheckConfig({
+  const V3FunctionCustomRuntimeConfigHealthCheckConfig({
     this.failureThreshold,
     this.httpGetUrl,
     this.initialDelaySeconds,

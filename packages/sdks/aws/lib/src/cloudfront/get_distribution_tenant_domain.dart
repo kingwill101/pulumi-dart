@@ -13,7 +13,7 @@ class GetDistributionTenantDomain {
   /// Creates a new [GetDistributionTenantDomain].
   /// [domain] An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
   /// [status] Current status of the distribution tenant. `Deployed` if the
-  GetDistributionTenantDomain({
+  const GetDistributionTenantDomain({
     required this.domain,
     required this.status,
   });

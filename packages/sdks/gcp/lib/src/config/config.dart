@@ -1442,5 +1442,5 @@ class GcpConfig {
 
 }
 
-final config = GcpConfig();
+const config = GcpConfig();
 

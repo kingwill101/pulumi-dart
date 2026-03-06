@@ -18,7 +18,7 @@ class GetOutputArgs {
   /// [jobName] The name of the streaming job.
   /// [outputName] The name of the output.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOutputArgs({
+  const GetOutputArgs({
     required this.jobName,
     required this.outputName,
     required this.resourceGroupName,

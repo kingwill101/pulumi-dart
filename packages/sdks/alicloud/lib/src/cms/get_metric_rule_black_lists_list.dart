@@ -47,7 +47,7 @@ class GetMetricRuleBlackListsList {
   /// [namespace] The data namespace of the cloud service.
   /// [scopeType] The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
   /// [scopeValues] Application Group ID list. The format is JSON Array.&gt; This parameter is displayed only when 'ScopeType' is 'GROUP.
-  GetMetricRuleBlackListsList({
+  const GetMetricRuleBlackListsList({
     required this.category,
     required this.createTime,
     required this.effectiveTime,

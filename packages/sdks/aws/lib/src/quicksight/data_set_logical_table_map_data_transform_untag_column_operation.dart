@@ -11,7 +11,7 @@ class DataSetLogicalTableMapDataTransformUntagColumnOperation {
   /// Creates a new [DataSetLogicalTableMapDataTransformUntagColumnOperation].
   /// [columnName] Column name.
   /// [tagNames] The column tags to remove from this column.
-  DataSetLogicalTableMapDataTransformUntagColumnOperation({
+  const DataSetLogicalTableMapDataTransformUntagColumnOperation({
     required this.columnName,
     required this.tagNames,
   });

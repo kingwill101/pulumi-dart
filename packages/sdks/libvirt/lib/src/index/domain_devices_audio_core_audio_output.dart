@@ -8,7 +8,7 @@ class DomainDevicesAudioCoreAudioOutput {
 
   /// Creates a new [DomainDevicesAudioCoreAudioOutput].
   /// [bufferCount] Sets the number of output buffers for the CoreAudio audio device.
-  DomainDevicesAudioCoreAudioOutput({
+  const DomainDevicesAudioCoreAudioOutput({
     this.bufferCount,
   });
 

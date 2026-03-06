@@ -22,7 +22,7 @@ class GetDirectoryConnectSetting {
   /// [customerUsername] Username corresponding to the password provided.
   /// [subnetIds] Identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
   /// [vpcId] ID of the VPC that the connector is in.
-  GetDirectoryConnectSetting({
+  const GetDirectoryConnectSetting({
     required this.availabilityZones,
     required this.connectIps,
     required this.customerDnsIps,

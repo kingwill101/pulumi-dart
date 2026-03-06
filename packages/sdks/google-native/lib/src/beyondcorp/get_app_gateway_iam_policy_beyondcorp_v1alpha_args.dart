@@ -17,7 +17,7 @@ class GetAppGatewayIamPolicyBeyondcorpV1alphaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAppGatewayIamPolicyBeyondcorpV1alphaArgs({
+  const GetAppGatewayIamPolicyBeyondcorpV1alphaArgs({
     required this.appGatewayId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -21,7 +21,7 @@ class NrqlDropRuleArgs {
   /// [action] An action type specifying how to apply the NRQL string (either `drop_data`, `drop_attributes`, or ` drop_attributes_from_metric_aggregates`).
   /// [description] The description of the drop rule.
   /// [nrql] A NRQL string that specifies what data types to drop.
-  NrqlDropRuleArgs({
+  const NrqlDropRuleArgs({
     this.accountId,
     required this.action,
     this.description,

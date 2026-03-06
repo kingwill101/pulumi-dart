@@ -17,7 +17,7 @@ class PipelineTriggerAllGitConfigurationPush {
   /// [branches] The field that specifies to filter on branches for the push trigger configuration. A `branches` block is documented below.
   /// [filePaths] The field that specifies to filter on file paths for the push trigger configuration. A `file_paths` block is documented below.
   /// [tags] The field that contains the details for the Git tags trigger configuration. A `tags` block is documented below.
-  PipelineTriggerAllGitConfigurationPush({
+  const PipelineTriggerAllGitConfigurationPush({
     this.branches,
     this.filePaths,
     this.tags,

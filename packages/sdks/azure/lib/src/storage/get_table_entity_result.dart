@@ -17,7 +17,7 @@ class GetTableEntityResult {
   /// [partitionKey] Required.
   /// [rowKey] Required.
   /// [storageTableId] Required.
-  GetTableEntityResult({
+  const GetTableEntityResult({
     required this.entity,
     required this.id,
     required this.partitionKey,

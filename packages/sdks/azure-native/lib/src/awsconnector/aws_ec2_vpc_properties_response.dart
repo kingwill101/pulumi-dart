@@ -43,7 +43,7 @@ class AwsEc2VpcPropertiesResponse {
   /// [ipv6CidrBlocks] Property ipv6CidrBlocks
   /// [tags] The tags for the VPC.
   /// [vpcId] Property vpcId
-  AwsEc2VpcPropertiesResponse({
+  const AwsEc2VpcPropertiesResponse({
     this.cidrBlock,
     this.cidrBlockAssociations,
     this.defaultNetworkAcl,

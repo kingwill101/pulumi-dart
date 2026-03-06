@@ -14,7 +14,7 @@ class KubernetesConfigResponse {
   /// Creates a new [KubernetesConfigResponse].
   /// [gatewayServiceMesh] Kubernetes Gateway API service mesh configuration.
   /// [serviceNetworking] Kubernetes Service networking configuration.
-  KubernetesConfigResponse({
+  const KubernetesConfigResponse({
     required this.gatewayServiceMesh,
     required this.serviceNetworking,
   });

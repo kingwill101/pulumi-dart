@@ -14,7 +14,7 @@ class HciMarketplaceGalleryImageIdentifier {
   /// [offer] The offer of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   /// [publisher] The publisher of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
   /// [sku] The sku of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  HciMarketplaceGalleryImageIdentifier({
+  const HciMarketplaceGalleryImageIdentifier({
     required this.offer,
     required this.publisher,
     required this.sku,

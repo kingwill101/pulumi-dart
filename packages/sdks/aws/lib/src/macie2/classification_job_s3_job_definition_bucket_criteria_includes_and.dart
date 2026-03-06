@@ -13,7 +13,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd {
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd].
   /// [simpleCriterion] A property-based condition that defines a property, operator, and one or more values for including or excluding an S3 buckets from the job. (documented below)
   /// [tagCriterion] A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an S3 buckets from the job. (documented below)
-  ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd({
+  const ClassificationJobS3JobDefinitionBucketCriteriaIncludesAnd({
     this.simpleCriterion,
     this.tagCriterion,
   });

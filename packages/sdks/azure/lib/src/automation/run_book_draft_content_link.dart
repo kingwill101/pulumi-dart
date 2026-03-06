@@ -15,7 +15,7 @@ class RunBookDraftContentLink {
   /// [hash] A `hash` block as defined below.
   /// [uri] The URI of the runbook content.
   /// [version] Specifies the version of the content
-  RunBookDraftContentLink({
+  const RunBookDraftContentLink({
     this.hash,
     required this.uri,
     this.version,

@@ -41,7 +41,7 @@ class GetMonitorGroupsGroup {
   /// [tags] A map of tags assigned to the Cms Monitor Group.
   /// [templateIds] The alert templates applied to the application group.
   /// [type] The type of the application group.
-  GetMonitorGroupsGroup({
+  const GetMonitorGroupsGroup({
     required this.bindUrl,
     required this.contactGroups,
     required this.dynamicTagRuleId,

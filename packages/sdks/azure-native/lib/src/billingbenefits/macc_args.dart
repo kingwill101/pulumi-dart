@@ -94,7 +94,7 @@ class MaccArgs {
   /// [status] Represents the current status of the MACC.
   /// [systemId] This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
   /// [tags] Resource tags.
-  MaccArgs({
+  const MaccArgs({
     this.allowContributors,
     this.automaticShortfall,
     this.automaticShortfallSuppressReason,

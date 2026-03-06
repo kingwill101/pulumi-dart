@@ -12,7 +12,7 @@ class GetUserSettingsArgs {
 
   /// Creates a new [GetUserSettingsArgs].
   /// [userSettingsName] The name of the user settings
-  GetUserSettingsArgs({
+  const GetUserSettingsArgs({
     required this.userSettingsName,
   });
 

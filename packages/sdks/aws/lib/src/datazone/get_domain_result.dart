@@ -38,7 +38,7 @@ class GetDomainResult {
   /// [region] Required.
   /// [rootDomainUnitId] ID of the root domain unit.
   /// [status] Status of the Domain.
-  GetDomainResult({
+  const GetDomainResult({
     required this.arn,
     required this.createdAt,
     required this.description,

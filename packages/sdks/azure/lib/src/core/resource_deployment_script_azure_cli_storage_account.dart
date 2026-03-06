@@ -11,7 +11,7 @@ class ResourceDeploymentScriptAzureCliStorageAccount {
   /// Creates a new [ResourceDeploymentScriptAzureCliStorageAccount].
   /// [key] Specifies the storage account access key.
   /// [name] Specifies the storage account name.
-  ResourceDeploymentScriptAzureCliStorageAccount({
+  const ResourceDeploymentScriptAzureCliStorageAccount({
     required this.key,
     required this.name,
   });

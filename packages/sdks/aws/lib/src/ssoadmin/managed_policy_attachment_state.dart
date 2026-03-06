@@ -21,7 +21,7 @@ class ManagedPolicyAttachmentState {
   /// [managedPolicyName] The name of the IAM Managed Policy.
   /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ManagedPolicyAttachmentState({
+  const ManagedPolicyAttachmentState({
     this.instanceArn,
     this.managedPolicyArn,
     this.managedPolicyName,

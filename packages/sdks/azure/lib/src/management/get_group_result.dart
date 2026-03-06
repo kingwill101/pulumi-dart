@@ -30,7 +30,7 @@ class GetGroupResult {
   /// [parentManagementGroupId] The ID of any Parent Management Group.
   /// [subscriptionIds] A list of Subscription IDs which are directly assigned to this Management Group.
   /// [tenantScopedId] The Management Group ID with the Tenant ID prefix.
-  GetGroupResult({
+  const GetGroupResult({
     required this.allManagementGroupIds,
     required this.allSubscriptionIds,
     required this.displayName,

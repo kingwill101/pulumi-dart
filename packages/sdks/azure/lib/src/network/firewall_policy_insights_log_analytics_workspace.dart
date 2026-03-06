@@ -11,7 +11,7 @@ class FirewallPolicyInsightsLogAnalyticsWorkspace {
   /// Creates a new [FirewallPolicyInsightsLogAnalyticsWorkspace].
   /// [firewallLocation] The location of the Firewalls, that when matches this Log Analytics Workspace will be used to consume their logs.
   /// [id] The ID of the Log Analytics Workspace that the Firewalls associated with this Firewall Policy will send their logs to when their locations match the `firewall_location`.
-  FirewallPolicyInsightsLogAnalyticsWorkspace({
+  const FirewallPolicyInsightsLogAnalyticsWorkspace({
     required this.firewallLocation,
     required this.id,
   });

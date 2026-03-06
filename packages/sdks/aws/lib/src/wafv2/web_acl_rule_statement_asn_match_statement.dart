@@ -12,7 +12,7 @@ class WebAclRuleStatementAsnMatchStatement {
   /// Creates a new [WebAclRuleStatementAsnMatchStatement].
   /// [asnLists] List of Autonomous System Numbers (ASNs).
   /// [forwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `forwarded_ip_config` below for more details.
-  WebAclRuleStatementAsnMatchStatement({
+  const WebAclRuleStatementAsnMatchStatement({
     required this.asnLists,
     this.forwardedIpConfig,
   });

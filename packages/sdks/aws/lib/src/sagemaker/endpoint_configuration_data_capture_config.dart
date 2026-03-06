@@ -25,7 +25,7 @@ class EndpointConfigurationDataCaptureConfig {
   /// [enableCapture] Flag to enable data capture. Defaults to `false`.
   /// [initialSamplingPercentage] Portion of data to capture. Should be between 0 and 100.
   /// [kmsKeyId] ARN of a KMS key that SageMaker AI uses to encrypt the captured data on S3.
-  EndpointConfigurationDataCaptureConfig({
+  const EndpointConfigurationDataCaptureConfig({
     this.captureContentTypeHeader,
     required this.captureOptions,
     required this.destinationS3Uri,

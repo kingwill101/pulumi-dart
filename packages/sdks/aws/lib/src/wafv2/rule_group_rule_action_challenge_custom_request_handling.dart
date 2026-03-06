@@ -9,7 +9,7 @@ class RuleGroupRuleActionChallengeCustomRequestHandling {
 
   /// Creates a new [RuleGroupRuleActionChallengeCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See Custom HTTP Header below for details.
-  RuleGroupRuleActionChallengeCustomRequestHandling({
+  const RuleGroupRuleActionChallengeCustomRequestHandling({
     required this.insertHeaders,
   });
 

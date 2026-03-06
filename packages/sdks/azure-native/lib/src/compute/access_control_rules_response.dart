@@ -22,7 +22,7 @@ class AccessControlRulesResponse {
   /// [privileges] A list of privileges.
   /// [roleAssignments] A list of role assignments.
   /// [roles] A list of roles.
-  AccessControlRulesResponse({
+  const AccessControlRulesResponse({
     this.identities,
     this.privileges,
     this.roleAssignments,

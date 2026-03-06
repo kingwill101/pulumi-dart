@@ -9,7 +9,7 @@ class DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSetti
   /// Creates a new [DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec].
   /// [cpu] Optional.
   /// [memory] Optional.
-  DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec({
+  const DeploymentBatchResourceSettingBasicResourceSettingTaskmanagerResourceSettingSpec({
     this.cpu,
     this.memory,
   });

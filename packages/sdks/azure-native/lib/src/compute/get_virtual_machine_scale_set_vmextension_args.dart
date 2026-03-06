@@ -24,7 +24,7 @@ class GetVirtualMachineScaleSetVMExtensionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmExtensionName] The name of the virtual machine extension.
   /// [vmScaleSetName] The name of the VM scale set.
-  GetVirtualMachineScaleSetVMExtensionArgs({
+  const GetVirtualMachineScaleSetVMExtensionArgs({
     this.expand,
     required this.instanceId,
     required this.resourceGroupName,

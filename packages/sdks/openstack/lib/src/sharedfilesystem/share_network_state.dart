@@ -49,7 +49,7 @@ class ShareNetworkState {
   /// [region] The region in which to obtain the V2 Shared File System client.
   /// [securityServiceIds] The list of security service IDs to associate with
   /// [segmentationId] The share network segmentation ID.
-  ShareNetworkState({
+  const ShareNetworkState({
     this.cidr,
     this.description,
     this.ipVersion,

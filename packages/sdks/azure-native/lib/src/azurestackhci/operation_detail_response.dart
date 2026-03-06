@@ -28,7 +28,7 @@ class OperationDetailResponse {
   /// [resourceId] operation resource id.
   /// [status] operation status.
   /// [type] operation type.
-  OperationDetailResponse({
+  const OperationDetailResponse({
     required this.description,
     required this.error,
     required this.id,

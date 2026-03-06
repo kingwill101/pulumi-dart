@@ -39,7 +39,7 @@ class DestinationArgs {
   /// [multicloudDataTransferConfig] The multicloud data transfer config of the destination.
   /// [name] The name of the destination.
   /// [project] The ID of the project in which the resource belongs.
-  DestinationArgs({
+  const DestinationArgs({
     this.description,
     required this.endpoints,
     required this.ipPrefix,

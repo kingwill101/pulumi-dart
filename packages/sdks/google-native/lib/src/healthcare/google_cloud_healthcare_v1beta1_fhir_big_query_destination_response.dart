@@ -19,7 +19,7 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse {
   /// [force] Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
   /// [schemaConfig] The configuration for the exported BigQuery schema.
   /// [writeDisposition] Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-  GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse({
+  const GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse({
     required this.datasetUri,
     required this.force,
     required this.schemaConfig,

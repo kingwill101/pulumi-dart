@@ -14,7 +14,7 @@ class GetDedicatedIpPoolDedicatedIp {
   /// [ip] IPv4 address.
   /// [warmupPercentage] Indicates how complete the dedicated IP warm-up process is. When this value equals `1`, the address has completed the warm-up process and is ready for use.
   /// [warmupStatus] The warm-up status of a dedicated IP address. Valid values: `IN_PROGRESS`, `DONE`.
-  GetDedicatedIpPoolDedicatedIp({
+  const GetDedicatedIpPoolDedicatedIp({
     required this.ip,
     required this.warmupPercentage,
     required this.warmupStatus,

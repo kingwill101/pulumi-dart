@@ -7,7 +7,7 @@ class WorkspaceConnectionSharedAccessSignatureResponse {
 
   /// Creates a new [WorkspaceConnectionSharedAccessSignatureResponse].
   /// [sas] Optional.
-  WorkspaceConnectionSharedAccessSignatureResponse({
+  const WorkspaceConnectionSharedAccessSignatureResponse({
     this.sas,
   });
 

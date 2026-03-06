@@ -15,7 +15,7 @@ class GetStandardsControlAssociationsArgs {
   /// Creates a new [GetStandardsControlAssociationsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityControlId] The identifier of the control (identified with `SecurityControlId`, `SecurityControlArn`, or a mix of both parameters).
-  GetStandardsControlAssociationsArgs({
+  const GetStandardsControlAssociationsArgs({
     this.region,
     required this.securityControlId,
   });

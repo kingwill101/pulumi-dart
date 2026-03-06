@@ -33,7 +33,7 @@ class GetClassDetailsArgs {
   /// [commodityCode] The commodity code of the instance. Valid values:
   /// [engine] Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
   /// [engineVersion] Database version. Value options:
-  GetClassDetailsArgs({
+  const GetClassDetailsArgs({
     required this.classCode,
     required this.commodityCode,
     required this.engine,

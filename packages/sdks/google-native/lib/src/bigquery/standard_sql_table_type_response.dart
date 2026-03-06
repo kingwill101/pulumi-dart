@@ -10,7 +10,7 @@ class StandardSqlTableTypeResponse {
 
   /// Creates a new [StandardSqlTableTypeResponse].
   /// [columns] The columns in this table type
-  StandardSqlTableTypeResponse({
+  const StandardSqlTableTypeResponse({
     required this.columns,
   });
 

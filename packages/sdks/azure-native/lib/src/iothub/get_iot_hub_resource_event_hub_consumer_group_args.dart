@@ -21,7 +21,7 @@ class GetIotHubResourceEventHubConsumerGroupArgs {
   /// [name] The name of the consumer group to retrieve.
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
-  GetIotHubResourceEventHubConsumerGroupArgs({
+  const GetIotHubResourceEventHubConsumerGroupArgs({
     required this.eventHubEndpointName,
     required this.name,
     required this.resourceGroupName,

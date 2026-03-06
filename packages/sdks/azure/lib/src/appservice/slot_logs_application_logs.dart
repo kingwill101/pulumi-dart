@@ -12,7 +12,7 @@ class SlotLogsApplicationLogs {
   /// Creates a new [SlotLogsApplicationLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
   /// [fileSystemLevel] The file system log level. Possible values are `Off`, `Error`, `Warning`, `Information`, and `Verbose`. Defaults to `Off`.
-  SlotLogsApplicationLogs({
+  const SlotLogsApplicationLogs({
     this.azureBlobStorage,
     this.fileSystemLevel,
   });

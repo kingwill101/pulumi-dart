@@ -108,7 +108,7 @@ class GetBareMetalAdminClusterResult {
   /// [uid] The unique identifier of the bare metal admin cluster.
   /// [updateTime] The time at which this bare metal admin cluster was last updated.
   /// [validationCheck] ValidationCheck representing the result of the preflight check.
-  GetBareMetalAdminClusterResult({
+  const GetBareMetalAdminClusterResult({
     required this.annotations,
     required this.bareMetalVersion,
     required this.binaryAuthorization,

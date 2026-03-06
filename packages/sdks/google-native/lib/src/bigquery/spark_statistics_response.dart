@@ -18,7 +18,7 @@ class SparkStatisticsResponse {
   /// [loggingInfo] Logging info is used to generate a link to Cloud Logging.
   /// [sparkJobId] Spark job id if a Spark job is created successfully.
   /// [sparkJobLocation] Location where the Spark job is executed.
-  SparkStatisticsResponse({
+  const SparkStatisticsResponse({
     required this.endpoints,
     required this.loggingInfo,
     required this.sparkJobId,

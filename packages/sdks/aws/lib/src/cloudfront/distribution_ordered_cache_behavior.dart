@@ -72,7 +72,7 @@ class DistributionOrderedCacheBehavior {
   /// [trustedKeyGroups] List of nested attributes for active trusted key groups, if the distribution is set up to serve private content with signed URLs.
   /// [trustedSigners] List of nested attributes for active trusted signers, if the distribution is set up to serve private content with signed URLs.
   /// [viewerProtocolPolicy] Use this element to specify the protocol that users can use to access the files in the origin specified by TargetOriginId when a request matches the path pattern in PathPattern. One of `allow-all`, `https-only`, or `redirect-to-https`.
-  DistributionOrderedCacheBehavior({
+  const DistributionOrderedCacheBehavior({
     required this.allowedMethods,
     this.cachePolicyId,
     required this.cachedMethods,

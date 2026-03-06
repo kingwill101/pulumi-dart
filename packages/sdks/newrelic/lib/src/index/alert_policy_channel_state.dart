@@ -15,7 +15,7 @@ class AlertPolicyChannelState {
   /// [accountId] Determines the New Relic account where the alert policy channel will be created. Defaults to the account associated with the API key used.
   /// [channelIds] Array of channel IDs to apply to the specified policy. We recommended sorting channel IDs in ascending order to avoid drift your Terraform state.
   /// [policyId] The ID of the policy.
-  AlertPolicyChannelState({
+  const AlertPolicyChannelState({
     this.accountId,
     this.channelIds,
     this.policyId,

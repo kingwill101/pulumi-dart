@@ -16,7 +16,7 @@ class CustomerSubscriptionDetails {
   /// [locationPlacementId] Location placement Id of a subscription.
   /// [quotaId] Quota ID of a subscription.
   /// [registeredFeatures] List of registered feature flags for subscription.
-  CustomerSubscriptionDetails({
+  const CustomerSubscriptionDetails({
     this.locationPlacementId,
     required this.quotaId,
     this.registeredFeatures,

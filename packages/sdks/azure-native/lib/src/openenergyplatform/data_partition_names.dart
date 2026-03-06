@@ -8,7 +8,7 @@ class DataPartitionNames {
 
   /// Creates a new [DataPartitionNames].
   /// [name] Optional.
-  DataPartitionNames({
+  const DataPartitionNames({
     this.name,
   });
 

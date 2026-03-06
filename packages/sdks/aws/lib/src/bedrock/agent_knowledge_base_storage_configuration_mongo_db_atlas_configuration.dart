@@ -30,7 +30,7 @@ class AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration {
   /// [fieldMapping] Contains the names of the fields to which to map information about the vector store.
   /// [textIndexName] The name of the vector index.
   /// [vectorIndexName] The name of the vector index.
-  AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration({
     required this.collectionName,
     required this.credentialsSecretArn,
     required this.databaseName,

@@ -9,7 +9,7 @@ class LocationFsxOntapFileSystemProtocolNfs {
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolNfs].
   /// [mountOptions] Mount options that are available for DataSync to access an NFS location. See NFS Mount Options below.
-  LocationFsxOntapFileSystemProtocolNfs({
+  const LocationFsxOntapFileSystemProtocolNfs({
     required this.mountOptions,
   });
 

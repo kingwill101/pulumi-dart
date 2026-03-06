@@ -11,7 +11,7 @@ class ActionGroupAzureAppPushReceiver {
   /// Creates a new [ActionGroupAzureAppPushReceiver].
   /// [emailAddress] The email address of the user signed into the mobile app who will receive push notifications from this receiver.
   /// [name] The name of the Azure app push receiver.
-  ActionGroupAzureAppPushReceiver({
+  const ActionGroupAzureAppPushReceiver({
     required this.emailAddress,
     required this.name,
   });

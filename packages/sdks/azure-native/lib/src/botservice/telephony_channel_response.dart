@@ -23,7 +23,7 @@ class TelephonyChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Telephony channel resource
   /// [provisioningState] Provisioning state of the resource
-  TelephonyChannelResponse({
+  const TelephonyChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

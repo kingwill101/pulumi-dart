@@ -14,7 +14,7 @@ class GetDefinitionResult {
   /// [location] Required.
   /// [name] Required.
   /// [resourceGroupName] Required.
-  GetDefinitionResult({
+  const GetDefinitionResult({
     required this.id,
     required this.location,
     required this.name,

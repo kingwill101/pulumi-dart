@@ -22,7 +22,7 @@ class AddonArgs {
   /// [privateCloudName] Name of the private cloud
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AddonArgs({
+  const AddonArgs({
     this.addonName,
     required this.privateCloudName,
     this.properties,

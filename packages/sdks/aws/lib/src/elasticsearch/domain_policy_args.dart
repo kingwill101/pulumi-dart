@@ -18,7 +18,7 @@ class DomainPolicyArgs {
   /// [accessPolicies] IAM policy document specifying the access policies for the domain
   /// [domainName] Name of the domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainPolicyArgs({
+  const DomainPolicyArgs({
     required this.accessPolicies,
     required this.domainName,
     this.region,

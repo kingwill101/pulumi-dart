@@ -27,7 +27,7 @@ class InvoiceSectionPropertiesResponse {
   /// [systemId] The system generated unique identifier for an invoice section.
   /// [tags] Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
   /// [targetCloud] Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
-  InvoiceSectionPropertiesResponse({
+  const InvoiceSectionPropertiesResponse({
     this.displayName,
     required this.provisioningState,
     this.reasonCode,

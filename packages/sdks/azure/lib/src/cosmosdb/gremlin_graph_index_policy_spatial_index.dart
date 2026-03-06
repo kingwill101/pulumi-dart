@@ -10,7 +10,7 @@ class GremlinGraphIndexPolicySpatialIndex {
   /// Creates a new [GremlinGraphIndexPolicySpatialIndex].
   /// [path] Path for which the indexing behaviour applies to. According to the service design, all spatial types including `LineString`, `MultiPolygon`, `Point`, and `Polygon` will be applied to the path.
   /// [types] Optional.
-  GremlinGraphIndexPolicySpatialIndex({
+  const GremlinGraphIndexPolicySpatialIndex({
     required this.path,
     this.types,
   });

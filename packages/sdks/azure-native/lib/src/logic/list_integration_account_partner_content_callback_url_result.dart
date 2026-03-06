@@ -24,7 +24,7 @@ class ListIntegrationAccountPartnerContentCallbackUrlResult {
   /// [relativePath] Gets the workflow trigger callback URL relative path.
   /// [relativePathParameters] Gets the workflow trigger callback URL relative path parameters.
   /// [value] Gets the workflow trigger callback URL.
-  ListIntegrationAccountPartnerContentCallbackUrlResult({
+  const ListIntegrationAccountPartnerContentCallbackUrlResult({
     required this.basePath,
     required this.method,
     this.queries,

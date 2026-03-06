@@ -10,7 +10,7 @@ class ImageTemplateAutoRun {
 
   /// Creates a new [ImageTemplateAutoRun].
   /// [state] Enabling this field will trigger an automatic build on image template creation or update.
-  ImageTemplateAutoRun({
+  const ImageTemplateAutoRun({
     this.state,
   });
 

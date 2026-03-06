@@ -97,7 +97,7 @@ class GetRestoreJobsJob {
   /// [targetPrefix] The file prefix of target OSS object.
   /// [updatedTime] The update Time of restore job. Unix Time in Seconds.
   /// [vaultId] The ID of backup vault.
-  GetRestoreJobsJob({
+  const GetRestoreJobsJob({
     required this.actualBytes,
     required this.actualItems,
     required this.bytesDone,

@@ -11,7 +11,7 @@ class FleetVpcConfig {
   /// Creates a new [FleetVpcConfig].
   /// [securityGroupIds] Identifiers of the security groups for the fleet or image builder.
   /// [subnetIds] Identifiers of the subnets to which a network interface is attached from the fleet instance or image builder instance.
-  FleetVpcConfig({
+  const FleetVpcConfig({
     this.securityGroupIds,
     this.subnetIds,
   });

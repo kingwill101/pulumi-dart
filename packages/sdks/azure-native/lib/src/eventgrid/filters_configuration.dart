@@ -13,7 +13,7 @@ class FiltersConfiguration {
   /// Creates a new [FiltersConfiguration].
   /// [filters] An array of filters that are used for filtering event subscriptions.
   /// [includedEventTypes] A list of applicable event types that need to be part of the event subscription. If it is desired to subscribe to all default event types, set the IncludedEventTypes to null.
-  FiltersConfiguration({
+  const FiltersConfiguration({
     this.filters,
     this.includedEventTypes,
   });

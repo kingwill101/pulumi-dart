@@ -23,7 +23,7 @@ class GuestPoliciesPackageRepositoryApt {
   /// [distribution] Distribution of this repository.
   /// [gpgKey] URI of the key file for this repository. The agent maintains a keyring at
   /// [uri] URI for this repository.
-  GuestPoliciesPackageRepositoryApt({
+  const GuestPoliciesPackageRepositoryApt({
     this.archiveType,
     required this.components,
     required this.distribution,

@@ -11,7 +11,7 @@ class DeploymentDeploymentTarget {
   /// Creates a new [DeploymentDeploymentTarget].
   /// [mode] Deployment mode, valid values: PER_JOB or SESSION
   /// [name] Deployment target name
-  DeploymentDeploymentTarget({
+  const DeploymentDeploymentTarget({
     required this.mode,
     required this.name,
   });

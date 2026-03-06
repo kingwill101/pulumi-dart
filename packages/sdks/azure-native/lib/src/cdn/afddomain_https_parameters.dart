@@ -24,7 +24,7 @@ class AFDDomainHttpsParameters {
   /// [customizedCipherSuiteSet] Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
   /// [minimumTlsVersion] TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
   /// [secret] Resource reference to the secret. ie. subs/rg/profile/secret
-  AFDDomainHttpsParameters({
+  const AFDDomainHttpsParameters({
     required this.certificateType,
     this.cipherSuiteSetType,
     this.customizedCipherSuiteSet,

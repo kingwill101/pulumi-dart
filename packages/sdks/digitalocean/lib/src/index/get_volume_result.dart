@@ -33,7 +33,7 @@ class GetVolumeResult {
   /// [size] The size of the block storage volume in GiB.
   /// [tags] A list of the tags associated to the Volume.
   /// [urn] The uniform resource name for the storage volume.
-  GetVolumeResult({
+  const GetVolumeResult({
     this.description,
     required this.dropletIds,
     required this.filesystemLabel,

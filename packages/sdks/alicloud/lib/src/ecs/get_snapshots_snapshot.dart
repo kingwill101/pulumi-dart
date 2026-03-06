@@ -72,7 +72,7 @@ class GetSnapshotsSnapshot {
   /// [tags] A map of tags assigned to the snapshot.
   /// [type] Required.
   /// [usage] Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
-  GetSnapshotsSnapshot({
+  const GetSnapshotsSnapshot({
     required this.category,
     required this.creationTime,
     required this.description,

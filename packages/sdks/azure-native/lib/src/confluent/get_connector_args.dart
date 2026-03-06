@@ -24,7 +24,7 @@ class GetConnectorArgs {
   /// [environmentId] Confluent environment id
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.clusterId,
     required this.connectorName,
     required this.environmentId,

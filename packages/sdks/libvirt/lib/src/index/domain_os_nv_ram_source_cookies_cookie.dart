@@ -11,7 +11,7 @@ class DomainOsNvRamSourceCookiesCookie {
   /// Creates a new [DomainOsNvRamSourceCookiesCookie].
   /// [name] Sets the name of the cookie for use in the backing store source configuration.
   /// [value] Sets the value associated with the cookie defined in the backing store source.
-  DomainOsNvRamSourceCookiesCookie({
+  const DomainOsNvRamSourceCookiesCookie({
     required this.name,
     required this.value,
   });

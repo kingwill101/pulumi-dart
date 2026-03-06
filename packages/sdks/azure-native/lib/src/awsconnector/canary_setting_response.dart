@@ -18,7 +18,7 @@ class CanarySettingResponse {
   /// [percentTraffic] The percent (0-100) of traffic diverted to a canary deployment.
   /// [stageVariableOverrides] Stage variables overridden for a canary release deployment, including new stage variables introduced in the canary. These stage variables are represented as a string-to-string map between stage variable names and their values.
   /// [useStageCache] A Boolean flag to indicate whether the canary deployment uses the stage cache or not.
-  CanarySettingResponse({
+  const CanarySettingResponse({
     this.deploymentId,
     this.percentTraffic,
     this.stageVariableOverrides,

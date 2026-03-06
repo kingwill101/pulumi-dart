@@ -16,7 +16,7 @@ class GatewayLocalResponseCachePerInstanceProperties {
   /// [responseCacheType] The type of the response cache.
   /// [size] Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
   /// [timeToLive] Time before a cached entry is expired (300s, 5m, 1h...)
-  GatewayLocalResponseCachePerInstanceProperties({
+  const GatewayLocalResponseCachePerInstanceProperties({
     required this.responseCacheType,
     this.size,
     this.timeToLive,

@@ -75,7 +75,7 @@ class ContainerGroupProfileArgs {
   /// [tags] The resource tags.
   /// [volumes] The list of volumes that can be mounted by containers in this container group.
   /// [zones] The zones for the container group.
-  ContainerGroupProfileArgs({
+  const ContainerGroupProfileArgs({
     this.confidentialComputeProperties,
     this.containerGroupProfileName,
     required this.containers,

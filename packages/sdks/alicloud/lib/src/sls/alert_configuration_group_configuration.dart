@@ -10,7 +10,7 @@ class AlertConfigurationGroupConfiguration {
   /// Creates a new [AlertConfigurationGroupConfiguration].
   /// [fields] The field used for grouping evaluation. When type is set to custom, fields must be set.
   /// [type] Optional.
-  AlertConfigurationGroupConfiguration({
+  const AlertConfigurationGroupConfiguration({
     this.fields,
     this.type,
   });

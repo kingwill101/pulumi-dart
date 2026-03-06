@@ -78,7 +78,7 @@ class VpnSiteLinkConnectionResponse {
   /// [vpnGatewayCustomBgpAddresses] vpnGatewayCustomBgpAddresses used by this connection.
   /// [vpnLinkConnectionMode] Vpn link connection mode.
   /// [vpnSiteLink] Id of the connected vpn site link.
-  VpnSiteLinkConnectionResponse({
+  const VpnSiteLinkConnectionResponse({
     this.connectionBandwidth,
     required this.connectionStatus,
     this.dpdTimeoutSeconds,

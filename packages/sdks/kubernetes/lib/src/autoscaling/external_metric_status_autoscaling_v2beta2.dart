@@ -14,7 +14,7 @@ class ExternalMetricStatusAutoscalingV2beta2 {
   /// Creates a new [ExternalMetricStatusAutoscalingV2beta2].
   /// [current] current contains the current value for the given metric
   /// [metric] metric identifies the target metric by name and selector
-  ExternalMetricStatusAutoscalingV2beta2({
+  const ExternalMetricStatusAutoscalingV2beta2({
     required this.current,
     required this.metric,
   });

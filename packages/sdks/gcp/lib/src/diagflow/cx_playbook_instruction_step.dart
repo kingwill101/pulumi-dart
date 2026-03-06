@@ -12,7 +12,7 @@ class CxPlaybookInstructionStep {
   /// Creates a new [CxPlaybookInstructionStep].
   /// [steps] Sub-processing needed to execute the current step.
   /// [text] Step instruction in text format.
-  CxPlaybookInstructionStep({
+  const CxPlaybookInstructionStep({
     this.steps,
     this.text,
   });

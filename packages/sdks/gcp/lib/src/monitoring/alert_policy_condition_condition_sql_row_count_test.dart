@@ -19,7 +19,7 @@ class AlertPolicyConditionConditionSqlRowCountTest {
   /// Creates a new [AlertPolicyConditionConditionSqlRowCountTest].
   /// [comparison] The comparison to apply between the time
   /// [threshold] The value against which to compare the row count.
-  AlertPolicyConditionConditionSqlRowCountTest({
+  const AlertPolicyConditionConditionSqlRowCountTest({
     required this.comparison,
     required this.threshold,
   });

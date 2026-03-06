@@ -14,7 +14,7 @@ class AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse {
   /// Creates a new [AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse].
   /// [established] &lt;p&gt;The last established policy for the Multi-Region Access Point.&lt;/p&gt;
   /// [proposed] &lt;p&gt;The proposed policy for the Multi-Region Access Point.&lt;/p&gt;
-  AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse({
+  const AwsS3ControlMultiRegionAccessPointPolicyDocumentPropertiesResponse({
     this.established,
     this.proposed,
   });

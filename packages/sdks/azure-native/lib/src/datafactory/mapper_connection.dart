@@ -23,7 +23,7 @@ class MapperConnection {
   /// [linkedService] Linked service reference.
   /// [linkedServiceType] Type of the linked service e.g.: AzureBlobFS.
   /// [type] Type of connection via linked service or dataset.
-  MapperConnection({
+  const MapperConnection({
     this.commonDslConnectorProperties,
     this.isInlineDataset,
     this.linkedService,

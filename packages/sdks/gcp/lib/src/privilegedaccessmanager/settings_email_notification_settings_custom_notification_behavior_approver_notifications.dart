@@ -9,7 +9,7 @@ class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotific
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications].
   /// [pendingApproval] Notification mode for pending approval.
-  SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications({
+  const SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications({
     this.pendingApproval,
   });
 

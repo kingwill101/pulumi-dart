@@ -15,7 +15,7 @@ class GetWorkspaceArgs {
   /// Creates a new [GetWorkspaceArgs].
   /// [apiManagementId] The ID of the API Management Workspace.
   /// [name] The name of this API Management Workspace.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.apiManagementId,
     required this.name,
   });

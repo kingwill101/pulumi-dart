@@ -27,7 +27,7 @@ class SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1 {
   /// [invocation] Identifies the event that kicked off the build.
   /// [materials] The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
   /// [metadata] Other properties of the build.
-  SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1({
+  const SlsaProvenanceZeroTwoResponseContaineranalysisV1alpha1({
     required this.buildConfig,
     required this.buildType,
     required this.builder,

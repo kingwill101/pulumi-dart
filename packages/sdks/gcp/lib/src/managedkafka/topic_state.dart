@@ -31,7 +31,7 @@ class TopicState {
   /// [project] The ID of the project in which the resource belongs.
   /// [replicationFactor] The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
   /// [topicId] The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-  TopicState({
+  const TopicState({
     this.cluster,
     this.configs,
     this.location,

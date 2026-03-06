@@ -37,7 +37,7 @@ class AgentKnowledgeBaseArgs {
   /// [storageConfiguration] Details about the storage configuration of the knowledge base. See `storage_configuration` block for details.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  AgentKnowledgeBaseArgs({
+  const AgentKnowledgeBaseArgs({
     this.description,
     required this.knowledgeBaseConfiguration,
     this.name,

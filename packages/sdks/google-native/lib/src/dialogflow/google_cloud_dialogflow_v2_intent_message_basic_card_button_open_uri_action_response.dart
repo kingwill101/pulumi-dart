@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse].
   /// [uri] The HTTP or HTTPS scheme URI.
-  GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse({
+  const GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse({
     required this.uri,
   });
 

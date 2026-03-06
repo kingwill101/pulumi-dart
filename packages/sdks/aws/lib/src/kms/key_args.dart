@@ -60,7 +60,7 @@ class KeyArgs {
   /// [rotationPeriodInDays] Custom period of time between each rotation date. Must be a number between 90 and 2560 (inclusive).
   /// [tags] A map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [xksKeyId] Identifies the external key that serves as key material for the KMS key in an external key store.
-  KeyArgs({
+  const KeyArgs({
     this.bypassPolicyLockoutSafetyCheck,
     this.customKeyStoreId,
     this.customerMasterKeySpec,

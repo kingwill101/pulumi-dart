@@ -17,7 +17,7 @@ class BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity {
   /// Creates a new [BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity].
   /// [spillover] This field indicates whether zonal affinity is enabled or not.
   /// [spilloverRatio] The value of the field must be in [0, 1]. When the ratio of the count of healthy backend endpoints in a zone
-  BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity({
+  const BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity({
     this.spillover,
     this.spilloverRatio,
   });

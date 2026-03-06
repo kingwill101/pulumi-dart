@@ -18,7 +18,7 @@ class YumSettings {
   /// [exclusivePackages] An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field must not be specified with any other patch configuration fields.
   /// [minimal] Will cause patch to run `yum update-minimal` instead.
   /// [security] Adds the `--security` flag to `yum update`. Not supported on all platforms.
-  YumSettings({
+  const YumSettings({
     this.excludes,
     this.exclusivePackages,
     this.minimal,

@@ -9,7 +9,7 @@ class DomainOsNvRamSourceNetworkInitiator {
 
   /// Creates a new [DomainOsNvRamSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  DomainOsNvRamSourceNetworkInitiator({
+  const DomainOsNvRamSourceNetworkInitiator({
     this.iqn,
   });
 

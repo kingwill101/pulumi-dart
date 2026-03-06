@@ -11,7 +11,7 @@ class DomainDevicesInterfaceVlanTag {
   /// Creates a new [DomainDevicesInterfaceVlanTag].
   /// [id] Sets the identifier for the VLAN tag.
   /// [nativeMode] Configures whether the VLAN tag operates in native mode.
-  DomainDevicesInterfaceVlanTag({
+  const DomainDevicesInterfaceVlanTag({
     this.id,
     this.nativeMode,
   });

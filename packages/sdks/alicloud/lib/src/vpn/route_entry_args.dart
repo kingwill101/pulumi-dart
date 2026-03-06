@@ -24,7 +24,7 @@ class RouteEntryArgs {
   /// [routeDest] The destination network segment of the destination route.
   /// [vpnGatewayId] The id of the vpn gateway.
   /// [weight] The value should be 0 or 100.
-  RouteEntryArgs({
+  const RouteEntryArgs({
     required this.nextHop,
     required this.publishVpc,
     required this.routeDest,

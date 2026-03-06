@@ -16,7 +16,7 @@ class PrivateDnsNameOptionsResponse {
   /// [enableResourceNameDnsAAAARecord] &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.&lt;/p&gt;
   /// [enableResourceNameDnsARecord] &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS A records.&lt;/p&gt;
   /// [hostnameType] &lt;p&gt;The type of hostname to assign to an instance.&lt;/p&gt;
-  PrivateDnsNameOptionsResponse({
+  const PrivateDnsNameOptionsResponse({
     this.enableResourceNameDnsAAAARecord,
     this.enableResourceNameDnsARecord,
     this.hostnameType,

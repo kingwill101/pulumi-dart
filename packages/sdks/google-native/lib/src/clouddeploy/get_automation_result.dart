@@ -44,7 +44,7 @@ class GetAutomationResult {
   /// [suspended] Optional. When Suspended, automation is deactivated from execution.
   /// [uid] Unique identifier of the `Automation`.
   /// [updateTime] Time at which the automation was updated.
-  GetAutomationResult({
+  const GetAutomationResult({
     required this.annotations,
     required this.createTime,
     required this.description,

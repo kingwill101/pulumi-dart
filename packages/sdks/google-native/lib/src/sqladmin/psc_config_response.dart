@@ -12,7 +12,7 @@ class PscConfigResponse {
   /// Creates a new [PscConfigResponse].
   /// [allowedConsumerProjects] Optional. The list of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
   /// [pscEnabled] Whether PSC connectivity is enabled for this instance.
-  PscConfigResponse({
+  const PscConfigResponse({
     required this.allowedConsumerProjects,
     required this.pscEnabled,
   });

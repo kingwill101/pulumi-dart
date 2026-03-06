@@ -17,7 +17,7 @@ class GetDocumentArgs {
   /// [knowledgeBaseId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDocumentArgs({
+  const GetDocumentArgs({
     required this.documentId,
     required this.knowledgeBaseId,
     required this.location,

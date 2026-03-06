@@ -15,7 +15,7 @@ class AccessLevelsState {
   /// Creates a new [AccessLevelsState].
   /// [accessLevels] The desired Access Levels that should replace all existing Access Levels in the Access Policy.
   /// [parent] The AccessPolicy this AccessLevel lives in.
-  AccessLevelsState({
+  const AccessLevelsState({
     this.accessLevels,
     this.parent,
   });

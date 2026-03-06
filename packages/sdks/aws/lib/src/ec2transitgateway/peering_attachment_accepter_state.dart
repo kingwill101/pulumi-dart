@@ -29,7 +29,7 @@ class PeeringAttachmentAccepterState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayAttachmentId] The ID of the EC2 Transit Gateway Peering Attachment to manage.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
-  PeeringAttachmentAccepterState({
+  const PeeringAttachmentAccepterState({
     this.peerAccountId,
     this.peerRegion,
     this.peerTransitGatewayId,

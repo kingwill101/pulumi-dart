@@ -18,7 +18,7 @@ class SolutionPlanResponse {
   /// [product] name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/&lt;solutionType&gt;. This is case sensitive
   /// [promotionCode] promotionCode, Not really used now, can you left as empty
   /// [publisher] Publisher name. For gallery solution, it is Microsoft.
-  SolutionPlanResponse({
+  const SolutionPlanResponse({
     this.name,
     this.product,
     this.promotionCode,

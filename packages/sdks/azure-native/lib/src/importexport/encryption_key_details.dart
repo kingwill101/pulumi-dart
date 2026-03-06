@@ -15,7 +15,7 @@ class EncryptionKeyDetails {
   /// [kekType] The type of kek encryption key
   /// [kekUrl] Specifies the url for kek encryption key.
   /// [kekVaultResourceID] Specifies the keyvault resource id for kek encryption key.
-  EncryptionKeyDetails({
+  const EncryptionKeyDetails({
     this.kekType,
     this.kekUrl,
     this.kekVaultResourceID,

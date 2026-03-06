@@ -9,7 +9,7 @@ class GcsSource {
 
   /// Creates a new [GcsSource].
   /// [inputUri] Source data URI. For example, `gs://my_bucket/my_object`.
-  GcsSource({
+  const GcsSource({
     required this.inputUri,
   });
 

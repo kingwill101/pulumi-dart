@@ -10,7 +10,7 @@ class ClusterConfig {
 
   /// Creates a new [ClusterConfig].
   /// [clusterAutoscalingConfig] Autoscaling configuration for this cluster.
-  ClusterConfig({
+  const ClusterConfig({
     this.clusterAutoscalingConfig,
   });
 

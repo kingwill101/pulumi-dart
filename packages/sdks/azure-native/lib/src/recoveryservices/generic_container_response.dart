@@ -35,7 +35,7 @@ class GenericContainerResponse {
   /// [healthStatus] Status of health of the container.
   /// [protectableObjectType] Type of the protectable object associated with this container
   /// [registrationStatus] Status of registration of the container with the Recovery Services Vault.
-  GenericContainerResponse({
+  const GenericContainerResponse({
     this.backupManagementType,
     required this.containerType,
     this.extendedInformation,

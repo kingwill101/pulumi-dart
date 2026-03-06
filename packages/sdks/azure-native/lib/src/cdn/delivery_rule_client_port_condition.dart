@@ -14,7 +14,7 @@ class DeliveryRuleClientPortCondition {
   /// Creates a new [DeliveryRuleClientPortCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleClientPortCondition({
+  const DeliveryRuleClientPortCondition({
     required this.name,
     required this.parameters,
   });

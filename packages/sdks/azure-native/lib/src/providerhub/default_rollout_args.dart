@@ -19,7 +19,7 @@ class DefaultRolloutArgs {
   /// [properties] Properties of the rollout.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [rolloutName] The rollout name.
-  DefaultRolloutArgs({
+  const DefaultRolloutArgs({
     this.properties,
     required this.providerNamespace,
     this.rolloutName,

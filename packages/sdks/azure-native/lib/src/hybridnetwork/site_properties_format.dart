@@ -10,7 +10,7 @@ class SitePropertiesFormat {
 
   /// Creates a new [SitePropertiesFormat].
   /// [nfvis] List of NFVIs
-  SitePropertiesFormat({
+  const SitePropertiesFormat({
     this.nfvis,
   });
 

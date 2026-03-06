@@ -11,7 +11,7 @@ class BucketWebsiteErrorDocument {
   /// Creates a new [BucketWebsiteErrorDocument].
   /// [httpStatus] The HTTP status code when the error page is returned. The default 404.
   /// [key] The error page file. If the Object accessed does not exist, this error page is returned.
-  BucketWebsiteErrorDocument({
+  const BucketWebsiteErrorDocument({
     this.httpStatus,
     this.key,
   });

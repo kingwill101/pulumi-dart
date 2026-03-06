@@ -65,7 +65,7 @@ class ExpressRouteCircuitPeering {
   /// [state] The peering state.
   /// [stats] The peering stats of express route circuit.
   /// [vlanId] The VLAN ID.
-  ExpressRouteCircuitPeering({
+  const ExpressRouteCircuitPeering({
     this.azureASN,
     this.connections,
     this.gatewayManagerEtag,

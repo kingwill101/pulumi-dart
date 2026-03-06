@@ -20,7 +20,7 @@ class RoutingControlArgs {
   /// [clusterArn] ARN of the cluster in which this routing control will reside.
   /// [controlPanelArn] ARN of the control panel in which this routing control will reside.
   /// [name] The name describing the routing control.
-  RoutingControlArgs({
+  const RoutingControlArgs({
     required this.clusterArn,
     this.controlPanelArn,
     this.name,

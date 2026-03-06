@@ -27,7 +27,7 @@ class RouteEntryState {
   /// [status] (Available since v1.161.0) The status of the vpn route entry.
   /// [vpnGatewayId] The id of the vpn gateway.
   /// [weight] The value should be 0 or 100.
-  RouteEntryState({
+  const RouteEntryState({
     this.nextHop,
     this.publishVpc,
     this.routeDest,

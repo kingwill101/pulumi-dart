@@ -11,7 +11,7 @@ class ReservationShareSettingsProjectMap {
   /// Creates a new [ReservationShareSettingsProjectMap].
   /// [id] The identifier for this object. Format specified above.
   /// [projectId] The project id/number, should be same as the key of this project config in the project map.
-  ReservationShareSettingsProjectMap({
+  const ReservationShareSettingsProjectMap({
     required this.id,
     this.projectId,
   });

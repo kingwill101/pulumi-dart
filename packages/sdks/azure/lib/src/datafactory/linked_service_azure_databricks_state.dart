@@ -53,7 +53,7 @@ class LinkedServiceAzureDatabricksState {
   /// [name] Specifies the name of the Data Factory Linked Service. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [newClusterConfig] Creates new clusters within the linked ADB instance as defined in the `new_cluster_config` block below.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  LinkedServiceAzureDatabricksState({
+  const LinkedServiceAzureDatabricksState({
     this.accessToken,
     this.adbDomain,
     this.additionalProperties,

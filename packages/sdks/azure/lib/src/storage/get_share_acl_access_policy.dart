@@ -14,7 +14,7 @@ class GetShareAclAccessPolicy {
   /// [expiry] The time at which this Access Policy is valid until.
   /// [permissions] The permissions which should be associated with this Shared Identifier. Possible value is combination of `r` (read), `w` (write), `d` (delete), and `l` (list).
   /// [start] The time at which this Access Policy is valid from.
-  GetShareAclAccessPolicy({
+  const GetShareAclAccessPolicy({
     required this.expiry,
     required this.permissions,
     required this.start,

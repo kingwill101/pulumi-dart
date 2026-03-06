@@ -24,7 +24,7 @@ class VariableObjectState {
   /// [name] The name of the Automation Variable. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Automation Variable. Changing this forces a new resource to be created.
   /// [value] The value of the Automation Variable as a `jsonencode()` string.
-  VariableObjectState({
+  const VariableObjectState({
     this.automationAccountName,
     this.description,
     this.encrypted,

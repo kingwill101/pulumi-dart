@@ -12,7 +12,7 @@ class KmsWrappedCryptoKeyHealthcareV1beta1 {
   /// Creates a new [KmsWrappedCryptoKeyHealthcareV1beta1].
   /// [cryptoKey] The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
   /// [wrappedKey] The wrapped data crypto key.
-  KmsWrappedCryptoKeyHealthcareV1beta1({
+  const KmsWrappedCryptoKeyHealthcareV1beta1({
     required this.cryptoKey,
     required this.wrappedKey,
   });

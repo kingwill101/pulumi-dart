@@ -38,7 +38,7 @@ class AppGatewayArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the AppGateway.
   /// [type] The type of network connectivity used by the AppGateway.
-  AppGatewayArgs({
+  const AppGatewayArgs({
     this.displayName,
     this.hostType,
     this.labels,

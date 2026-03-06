@@ -14,7 +14,7 @@ class VolumeTargetTimestamps {
   /// [atime] Sets the last access time timestamp for the storage volume target.
   /// [ctime] Specifies the last status change time for the storage volume target.
   /// [mtime] Sets the last modification time for the storage volume target.
-  VolumeTargetTimestamps({
+  const VolumeTargetTimestamps({
     required this.atime,
     required this.ctime,
     required this.mtime,

@@ -11,7 +11,7 @@ class GetListenerRuleConditionPathPattern {
   /// Creates a new [GetListenerRuleConditionPathPattern].
   /// [regexValues] Set of regular expressions to compare against the request URL.
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleConditionPathPattern({
+  const GetListenerRuleConditionPathPattern({
     required this.regexValues,
     required this.values,
   });

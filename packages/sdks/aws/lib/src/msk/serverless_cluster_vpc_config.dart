@@ -11,7 +11,7 @@ class ServerlessClusterVpcConfig {
   /// Creates a new [ServerlessClusterVpcConfig].
   /// [securityGroupIds] Specifies up to five security groups that control inbound and outbound traffic for the serverless cluster.
   /// [subnetIds] A list of subnets in at least two different Availability Zones that host your client applications.
-  ServerlessClusterVpcConfig({
+  const ServerlessClusterVpcConfig({
     this.securityGroupIds,
     required this.subnetIds,
   });

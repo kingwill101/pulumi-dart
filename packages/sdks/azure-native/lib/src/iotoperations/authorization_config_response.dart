@@ -13,7 +13,7 @@ class AuthorizationConfigResponse {
   /// Creates a new [AuthorizationConfigResponse].
   /// [cache] Enable caching of the authorization rules.
   /// [rules] The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll.
-  AuthorizationConfigResponse({
+  const AuthorizationConfigResponse({
     this.cache,
     this.rules,
   });

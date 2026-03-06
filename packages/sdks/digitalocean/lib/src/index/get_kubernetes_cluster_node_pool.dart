@@ -43,7 +43,7 @@ class GetKubernetesClusterNodePool {
   /// [size] The slug identifier for the type of Droplet used as workers in the node pool.
   /// [tags] A list of tag names applied to the node pool.
   /// [taints] A list of taints applied to all nodes in the pool. Each taint exports the following attributes:
-  GetKubernetesClusterNodePool({
+  const GetKubernetesClusterNodePool({
     required this.actualNodeCount,
     required this.autoScale,
     required this.id,

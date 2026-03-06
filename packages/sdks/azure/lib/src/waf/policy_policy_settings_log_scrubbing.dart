@@ -12,7 +12,7 @@ class PolicyPolicySettingsLogScrubbing {
   /// Creates a new [PolicyPolicySettingsLogScrubbing].
   /// [enabled] Whether the log scrubbing is enabled or disabled. Defaults to `true`.
   /// [rules] One or more `scrubbing_rule` blocks as define below.
-  PolicyPolicySettingsLogScrubbing({
+  const PolicyPolicySettingsLogScrubbing({
     this.enabled,
     this.rules,
   });

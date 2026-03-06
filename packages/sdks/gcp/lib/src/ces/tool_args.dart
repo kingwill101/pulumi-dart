@@ -57,7 +57,7 @@ class ToolArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [pythonFunction] A Python function tool.
   /// [toolId] The ID to use for the tool, which will become the final component of
-  ToolArgs({
+  const ToolArgs({
     required this.app,
     this.clientFunction,
     this.dataStoreTool,

@@ -14,7 +14,7 @@ class GetAppDedicatedIp {
   /// [id] The ID of the dedicated egress IP.
   /// [ip] The IP address of the dedicated egress IP.
   /// [status] The status of the dedicated egress IP.
-  GetAppDedicatedIp({
+  const GetAppDedicatedIp({
     required this.id,
     required this.ip,
     required this.status,

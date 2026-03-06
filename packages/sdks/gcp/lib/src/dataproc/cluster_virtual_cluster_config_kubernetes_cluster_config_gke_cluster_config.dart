@@ -15,7 +15,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig {
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig].
   /// [gkeClusterTarget] A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster
   /// [nodePoolTargets] GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT`
-  ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig({
+  const ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig({
     this.gkeClusterTarget,
     this.nodePoolTargets,
   });

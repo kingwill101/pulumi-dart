@@ -42,7 +42,7 @@ class RedisEnterpriseArgs {
   /// [sku] The SKU to create, which affects price, performance, and features.
   /// [tags] Resource tags.
   /// [zones] The Availability Zones where this cluster will be deployed.
-  RedisEnterpriseArgs({
+  const RedisEnterpriseArgs({
     this.clusterName,
     this.encryption,
     this.highAvailability,

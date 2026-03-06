@@ -20,7 +20,7 @@ class GetAccessPackageResult {
   /// [hidden] Whether the access package is hidden from the requestor.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [objectId] Required.
-  GetAccessPackageResult({
+  const GetAccessPackageResult({
     this.catalogId,
     required this.description,
     required this.displayName,

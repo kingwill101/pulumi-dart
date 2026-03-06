@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionByNameArgs {
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetPrivateEndpointConnectionByNameArgs({
+  const GetPrivateEndpointConnectionByNameArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.serviceName,

@@ -14,7 +14,7 @@ class PoolCertificate {
   /// [storeLocation] Required.
   /// [storeName] Optional.
   /// [visibilities] Optional.
-  PoolCertificate({
+  const PoolCertificate({
     required this.id,
     required this.storeLocation,
     this.storeName,

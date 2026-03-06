@@ -25,7 +25,7 @@ class GetDomainRecordsRecord {
   /// [ttl] Required.
   /// [type] Required.
   /// [value] Required.
-  GetDomainRecordsRecord({
+  const GetDomainRecordsRecord({
     required this.domainName,
     required this.hostRecord,
     required this.line,

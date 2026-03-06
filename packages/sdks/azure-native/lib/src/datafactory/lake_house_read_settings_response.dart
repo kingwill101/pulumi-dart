@@ -43,7 +43,7 @@ class LakeHouseReadSettingsResponse {
   /// [type] The read setting type.
   /// [wildcardFileName] Microsoft Fabric Lakehouse Files wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Microsoft Fabric Lakehouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
-  LakeHouseReadSettingsResponse({
+  const LakeHouseReadSettingsResponse({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

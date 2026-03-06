@@ -35,7 +35,7 @@ class AddressBookArgs {
   /// [groupType] The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
   /// [lang] The language of the content within the request and response. Valid values: `zh`, `en`.
   /// [tagRelation] The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
-  AddressBookArgs({
+  const AddressBookArgs({
     this.addressLists,
     this.autoAddTagEcs,
     required this.description,

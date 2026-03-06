@@ -12,7 +12,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResp
   /// Creates a new [GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse].
   /// [conversationProfile] Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
   /// [summarizationModel] Default summarization model to be used.
-  GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse({
+  const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigResponse({
     required this.conversationProfile,
     required this.summarizationModel,
   });

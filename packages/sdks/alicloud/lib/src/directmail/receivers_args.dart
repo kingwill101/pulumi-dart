@@ -18,7 +18,7 @@ class ReceiversArgs {
   /// [description] The description of receivers and 1-50 characters in length.
   /// [receiversAlias] The alias of receivers. Must email address and less than 30 characters in length.
   /// [receiversName] The name of the resource. The length that cannot be repeated is 1-30 characters.
-  ReceiversArgs({
+  const ReceiversArgs({
     this.description,
     required this.receiversAlias,
     required this.receiversName,

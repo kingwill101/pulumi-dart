@@ -24,7 +24,7 @@ class DeepCreatedOriginGroup {
   /// [origins] The source of the content being delivered via CDN within given origin group.
   /// [responseBasedOriginErrorDetectionSettings] The JSON object that contains the properties to determine origin health using real requests/responses.This property is currently not supported.
   /// [trafficRestorationTimeToHealedOrNewEndpointsInMinutes] Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
-  DeepCreatedOriginGroup({
+  const DeepCreatedOriginGroup({
     this.healthProbeSettings,
     required this.name,
     required this.origins,

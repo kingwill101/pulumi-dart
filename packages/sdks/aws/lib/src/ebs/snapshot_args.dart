@@ -33,7 +33,7 @@ class SnapshotArgs {
   /// [tags] A map of tags to assign to the snapshot. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   /// [volumeId] The Volume ID of which to make a snapshot.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.description,
     this.outpostArn,
     this.permanentRestore,

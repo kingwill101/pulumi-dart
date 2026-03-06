@@ -24,7 +24,7 @@ class InstanceMemberState {
   /// [memberUid] The UID of the cloud firewall member account.
   /// [modifyTime] The last modification time of the cloud firewall member account.&gt; use second-level timestamp format.
   /// [status] The resource attribute field that represents the resource status.
-  InstanceMemberState({
+  const InstanceMemberState({
     this.createTime,
     this.memberDesc,
     this.memberDisplayName,

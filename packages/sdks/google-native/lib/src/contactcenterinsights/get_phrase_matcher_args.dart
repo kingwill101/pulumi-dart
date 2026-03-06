@@ -15,7 +15,7 @@ class GetPhraseMatcherArgs {
   /// [location] Required.
   /// [phraseMatcherId] Required.
   /// [project] Optional.
-  GetPhraseMatcherArgs({
+  const GetPhraseMatcherArgs({
     required this.location,
     required this.phraseMatcherId,
     this.project,

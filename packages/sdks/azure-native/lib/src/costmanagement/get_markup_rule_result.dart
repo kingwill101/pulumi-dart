@@ -36,7 +36,7 @@ class GetMarkupRuleResult {
   /// [percentage] The markup percentage of the rule.
   /// [startDate] Starting date of the markup rule.
   /// [type] Resource type.
-  GetMarkupRuleResult({
+  const GetMarkupRuleResult({
     required this.azureApiVersion,
     required this.customerDetails,
     this.description,

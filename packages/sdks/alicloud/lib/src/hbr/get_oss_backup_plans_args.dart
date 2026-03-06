@@ -24,7 +24,7 @@ class GetOssBackupPlansArgs {
   /// [nameRegex] A regex string to filter results by OssBackupPlan name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [vaultId] The ID of backup vault the OssBackupPlan used.
-  GetOssBackupPlansArgs({
+  const GetOssBackupPlansArgs({
     this.bucket,
     this.ids,
     this.nameRegex,

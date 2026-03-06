@@ -144,7 +144,7 @@ class EdgeKubernetesArgs {
   /// [workerInstanceTypes] The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
   /// [workerNumber] The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
   /// [workerVswitchIds] The vswitches used by workers.
-  EdgeKubernetesArgs({
+  const EdgeKubernetesArgs({
     this.addons,
     this.availabilityZone,
     this.clientCert,

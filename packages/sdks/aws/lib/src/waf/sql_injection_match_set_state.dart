@@ -16,7 +16,7 @@ class SqlInjectionMatchSetState {
   /// [arn] Amazon Resource Name (ARN) of the SQL injection match set.
   /// [name] The name or description of the SQL Injection Match Set.
   /// [sqlInjectionMatchTuples] The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  SqlInjectionMatchSetState({
+  const SqlInjectionMatchSetState({
     this.arn,
     this.name,
     this.sqlInjectionMatchTuples,

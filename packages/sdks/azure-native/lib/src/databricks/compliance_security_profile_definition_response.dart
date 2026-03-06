@@ -11,7 +11,7 @@ class ComplianceSecurityProfileDefinitionResponse {
   /// Creates a new [ComplianceSecurityProfileDefinitionResponse].
   /// [complianceStandards] Compliance standards associated with the workspace.
   /// [value] Optional.
-  ComplianceSecurityProfileDefinitionResponse({
+  const ComplianceSecurityProfileDefinitionResponse({
     this.complianceStandards,
     this.value,
   });

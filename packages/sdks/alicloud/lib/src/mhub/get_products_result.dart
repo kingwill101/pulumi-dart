@@ -20,7 +20,7 @@ class GetProductsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [products] Required.
-  GetProductsResult({
+  const GetProductsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

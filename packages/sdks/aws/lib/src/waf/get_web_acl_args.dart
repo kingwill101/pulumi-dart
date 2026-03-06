@@ -12,7 +12,7 @@ class GetWebAclArgs {
 
   /// Creates a new [GetWebAclArgs].
   /// [name] Name of the WAF Web ACL.
-  GetWebAclArgs({
+  const GetWebAclArgs({
     required this.name,
   });
 

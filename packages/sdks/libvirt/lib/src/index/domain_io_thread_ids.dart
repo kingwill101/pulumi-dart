@@ -9,7 +9,7 @@ class DomainIoThreadIDs {
 
   /// Creates a new [DomainIoThreadIDs].
   /// [ioThreads] Defines the individual I/O threads associated with the domain.
-  DomainIoThreadIDs({
+  const DomainIoThreadIDs({
     this.ioThreads,
   });
 

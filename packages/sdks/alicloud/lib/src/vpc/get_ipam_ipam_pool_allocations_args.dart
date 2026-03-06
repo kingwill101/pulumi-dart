@@ -30,7 +30,7 @@ class GetIpamIpamPoolAllocationsArgs {
   /// [ipamPoolId] The ID of the IPAM Pool.
   /// [nameRegex] A regex string to filter results by Group Metric Rule name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetIpamIpamPoolAllocationsArgs({
+  const GetIpamIpamPoolAllocationsArgs({
     this.cidr,
     this.ids,
     this.ipamPoolAllocationId,

@@ -14,7 +14,7 @@ class AlertPolicyConfiguration {
   /// [actionPolicyId] Action Policy Id.
   /// [alertPolicyId] Alert Policy Id.
   /// [repeatInterval] Repeat interval used by alert policy, 1h, 1m.e.g.
-  AlertPolicyConfiguration({
+  const AlertPolicyConfiguration({
     this.actionPolicyId,
     required this.alertPolicyId,
     required this.repeatInterval,

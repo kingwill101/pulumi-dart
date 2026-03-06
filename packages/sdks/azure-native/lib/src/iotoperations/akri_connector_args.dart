@@ -25,7 +25,7 @@ class AkriConnectorArgs {
   /// [extendedLocation] Edge location of the resource.
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AkriConnectorArgs({
+  const AkriConnectorArgs({
     required this.akriConnectorTemplateName,
     this.connectorName,
     this.extendedLocation,

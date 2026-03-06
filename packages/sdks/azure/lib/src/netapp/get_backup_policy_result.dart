@@ -33,7 +33,7 @@ class GetBackupPolicyResult {
   /// [resourceGroupName] Required.
   /// [tags] List of tags assigned to the resource.
   /// [weeklyBackupsToKeep] The number of weekly backups to keep.
-  GetBackupPolicyResult({
+  const GetBackupPolicyResult({
     required this.accountName,
     required this.dailyBackupsToKeep,
     required this.enabled,

@@ -29,7 +29,7 @@ class LoadBalancerArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.extendedLocation,
     this.loadBalancerName,
     this.location,

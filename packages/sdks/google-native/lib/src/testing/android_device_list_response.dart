@@ -10,7 +10,7 @@ class AndroidDeviceListResponse {
 
   /// Creates a new [AndroidDeviceListResponse].
   /// [androidDevices] A list of Android devices.
-  AndroidDeviceListResponse({
+  const AndroidDeviceListResponse({
     required this.androidDevices,
   });
 

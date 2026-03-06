@@ -8,7 +8,7 @@ class DataPartitionNamesResponse {
 
   /// Creates a new [DataPartitionNamesResponse].
   /// [name] Optional.
-  DataPartitionNamesResponse({
+  const DataPartitionNamesResponse({
     this.name,
   });
 

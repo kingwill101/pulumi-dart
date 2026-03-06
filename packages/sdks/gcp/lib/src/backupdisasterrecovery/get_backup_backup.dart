@@ -23,7 +23,7 @@ class GetBackupBackup {
   /// [dataSourceId] The ID of the Data Source in which the Backup belongs.
   /// [location] The location in which the Backup belongs.
   /// [name] Name of the resource.
-  GetBackupBackup({
+  const GetBackupBackup({
     required this.backupId,
     required this.backupVaultId,
     required this.createTime,

@@ -23,7 +23,7 @@ class GetImageArgs {
   /// [name] The name of the image.
   /// [slug] The slug of the official image.
   /// [source] Restrict the search to one of the following categories of images:
-  GetImageArgs({
+  const GetImageArgs({
     this.id,
     this.name,
     this.slug,

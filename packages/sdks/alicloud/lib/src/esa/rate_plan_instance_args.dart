@@ -38,7 +38,7 @@ class RatePlanInstanceArgs {
   /// [period] Subscription period (in months).
   /// [planName] Package name.
   /// [type] The DNS setup option for the website. Valid values:
-  RatePlanInstanceArgs({
+  const RatePlanInstanceArgs({
     this.autoPay,
     this.autoRenew,
     this.coverage,

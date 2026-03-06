@@ -17,7 +17,7 @@ class DomainDevicesDiskBackingStoreSourceNetworkHost {
   /// [port] Specifies the port number for the iSCSI host connection.
   /// [socket] Sets the socket configuration for the iSCSI host connection.
   /// [transport] Specifies the transport method used for the iSCSI host connection.
-  DomainDevicesDiskBackingStoreSourceNetworkHost({
+  const DomainDevicesDiskBackingStoreSourceNetworkHost({
     this.name,
     this.port,
     this.socket,

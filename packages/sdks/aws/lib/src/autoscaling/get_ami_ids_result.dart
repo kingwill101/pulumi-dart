@@ -20,7 +20,7 @@ class GetAmiIdsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] List of the Autoscaling Groups in the current region.
   /// [region] Required.
-  GetAmiIdsResult({
+  const GetAmiIdsResult({
     required this.arns,
     this.filters,
     required this.id,

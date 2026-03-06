@@ -12,7 +12,7 @@ class GooglePrivacyDlpV2TransformationErrorHandlingResponse {
   /// Creates a new [GooglePrivacyDlpV2TransformationErrorHandlingResponse].
   /// [leaveUntransformed] Ignore errors
   /// [throwError] Throw an error
-  GooglePrivacyDlpV2TransformationErrorHandlingResponse({
+  const GooglePrivacyDlpV2TransformationErrorHandlingResponse({
     required this.leaveUntransformed,
     required this.throwError,
   });

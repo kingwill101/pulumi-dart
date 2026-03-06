@@ -49,7 +49,7 @@ class GetManagementServerResult {
   /// [updateTime] The time when the instance was updated.
   /// [workforceIdentityBasedManagementUri] The hostnames of the exposed AGM endpoints for both types of user i.e. 1p and 3p, used to connect AGM/RM UI.
   /// [workforceIdentityBasedOauth2ClientId] The OAuth client IDs for both types of user i.e. 1p and 3p.
-  GetManagementServerResult({
+  const GetManagementServerResult({
     required this.createTime,
     required this.description,
     required this.etag,

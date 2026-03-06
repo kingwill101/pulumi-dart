@@ -26,7 +26,7 @@ class ExpressGatewayServicePrimaryContainer {
   /// [image] Docker image to use for the container.
   /// [repositoryCredentials] Optional.
   /// [secrets] Optional.
-  ExpressGatewayServicePrimaryContainer({
+  const ExpressGatewayServicePrimaryContainer({
     this.awsLogsConfigurations,
     this.commands,
     this.containerPort,

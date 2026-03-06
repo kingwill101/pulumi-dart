@@ -30,7 +30,7 @@ class GetRouterNatRule {
   /// [description] An optional description of this rule.
   /// [match] CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
   /// [ruleNumber] An integer uniquely identifying a rule in the list.
-  GetRouterNatRule({
+  const GetRouterNatRule({
     required this.actions,
     required this.description,
     required this.match,

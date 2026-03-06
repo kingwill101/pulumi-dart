@@ -23,7 +23,7 @@ class GetBoolVariableResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [value] The value of the Automation Variable as a `boolean`.
-  GetBoolVariableResult({
+  const GetBoolVariableResult({
     required this.automationAccountName,
     required this.description,
     required this.encrypted,

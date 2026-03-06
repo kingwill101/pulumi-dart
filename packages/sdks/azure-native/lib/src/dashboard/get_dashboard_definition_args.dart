@@ -18,7 +18,7 @@ class GetDashboardDefinitionArgs {
   /// [dashboardName] The name of the Azure Managed Dashboard.
   /// [definitionName] The name of the Dashboard Definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDashboardDefinitionArgs({
+  const GetDashboardDefinitionArgs({
     required this.dashboardName,
     required this.definitionName,
     required this.resourceGroupName,

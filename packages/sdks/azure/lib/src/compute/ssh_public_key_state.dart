@@ -21,7 +21,7 @@ class SshPublicKeyState {
   /// [publicKey] SSH public key used to authenticate to a virtual machine through ssh. the provided public key needs to be at least 2048-bit and in ssh-rsa format.
   /// [resourceGroupName] The name of the Resource Group where the SSH Public Key should exist. Changing this forces a new SSH Public Key to be created.
   /// [tags] A mapping of tags which should be assigned to the SSH Public Key.
-  SshPublicKeyState({
+  const SshPublicKeyState({
     this.location,
     this.name,
     this.publicKey,

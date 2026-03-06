@@ -12,7 +12,7 @@ class EncryptionConfig {
   /// Creates a new [EncryptionConfig].
   /// [gcePdKmsKeyName] Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
   /// [kmsKey] Optional. The Cloud KMS key name to use for encrypting customer core content in spanner and cluster PD disk for all instances in the cluster.
-  EncryptionConfig({
+  const EncryptionConfig({
     this.gcePdKmsKeyName,
     this.kmsKey,
   });

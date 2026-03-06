@@ -33,7 +33,7 @@ class DomainMappingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceRecords] The resource records required to configure this domain mapping. These records must be added to the domain's DNS
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-  DomainMappingState({
+  const DomainMappingState({
     this.domainName,
     this.name,
     this.overrideStrategy,

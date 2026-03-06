@@ -59,7 +59,7 @@ class DeploymentArgs {
   /// [preview] If set to true, a deployment is created with "shell" resources
   /// [project] The ID of the project in which the resource belongs.
   /// [target] Parameters that define your deployment, including the deployment
-  DeploymentArgs({
+  const DeploymentArgs({
     this.createPolicy,
     this.deletePolicy,
     this.description,

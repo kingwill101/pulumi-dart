@@ -11,7 +11,7 @@ class GetVirtualNodeSpecServiceDiscoveryAwsCloudMap {
   /// [attributes] Required.
   /// [namespaceName] Required.
   /// [serviceName] Required.
-  GetVirtualNodeSpecServiceDiscoveryAwsCloudMap({
+  const GetVirtualNodeSpecServiceDiscoveryAwsCloudMap({
     required this.attributes,
     required this.namespaceName,
     required this.serviceName,

@@ -14,7 +14,7 @@ class TopicInputMappingDefaultValues {
   /// [dataVersion] Specifies the default data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   /// [eventType] Specifies the default event type of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   /// [subject] Specifies the default subject of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  TopicInputMappingDefaultValues({
+  const TopicInputMappingDefaultValues({
     this.dataVersion,
     this.eventType,
     this.subject,

@@ -32,7 +32,7 @@ class GetTableResourceTableRoleDefinitionResult {
   /// [roleName] A user-friendly name for the Role Definition. Must be unique for the database account.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTableResourceTableRoleDefinitionResult({
+  const GetTableResourceTableRoleDefinitionResult({
     this.assignableScopes,
     required this.azureApiVersion,
     required this.id,

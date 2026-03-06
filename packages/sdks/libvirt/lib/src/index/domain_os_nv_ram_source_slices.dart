@@ -9,7 +9,7 @@ class DomainOsNvRamSourceSlices {
 
   /// Creates a new [DomainOsNvRamSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.
-  DomainOsNvRamSourceSlices({
+  const DomainOsNvRamSourceSlices({
     this.slices,
   });
 

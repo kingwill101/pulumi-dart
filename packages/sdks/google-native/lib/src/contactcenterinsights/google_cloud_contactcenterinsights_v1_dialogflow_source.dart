@@ -9,7 +9,7 @@ class GoogleCloudContactcenterinsightsV1DialogflowSource {
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1DialogflowSource].
   /// [audioUri] Cloud Storage URI that points to a file that contains the conversation audio.
-  GoogleCloudContactcenterinsightsV1DialogflowSource({
+  const GoogleCloudContactcenterinsightsV1DialogflowSource({
     this.audioUri,
   });
 

@@ -12,7 +12,7 @@ class AuthorizationProviderOAuth2GrantTypesResponse {
   /// Creates a new [AuthorizationProviderOAuth2GrantTypesResponse].
   /// [authorizationCode] OAuth2 authorization code grant parameters
   /// [clientCredentials] OAuth2 client credential grant parameters
-  AuthorizationProviderOAuth2GrantTypesResponse({
+  const AuthorizationProviderOAuth2GrantTypesResponse({
     this.authorizationCode,
     this.clientCredentials,
   });

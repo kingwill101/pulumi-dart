@@ -10,7 +10,7 @@ class ApigatewayApiConfigOpenApiDocumentApigatewayV1beta {
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocumentApigatewayV1beta].
   /// [document] The OpenAPI Specification document file.
-  ApigatewayApiConfigOpenApiDocumentApigatewayV1beta({
+  const ApigatewayApiConfigOpenApiDocumentApigatewayV1beta({
     this.document,
   });
 

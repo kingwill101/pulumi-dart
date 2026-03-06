@@ -8,7 +8,7 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderV
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue].
   /// [exact] Exact string value to match in the header.
-  ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue({
+  const ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue({
     required this.exact,
   });
 

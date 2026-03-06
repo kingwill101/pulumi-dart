@@ -72,7 +72,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// [replaceDictionaryConfig] Replace with a value randomly drawn (with replacement) from a dictionary.
   /// [replaceWithInfoTypeConfig] Replace each matching finding with the name of the info type.
   /// [timePartConfig] For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformation({
     this.bucketingConfig,
     this.characterMaskConfig,
     this.cryptoDeterministicConfig,

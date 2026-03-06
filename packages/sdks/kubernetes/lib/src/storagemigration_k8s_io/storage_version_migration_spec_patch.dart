@@ -13,7 +13,7 @@ class StorageVersionMigrationSpecPatch {
   /// Creates a new [StorageVersionMigrationSpecPatch].
   /// [continueToken] The token used in the list options to get the next chunk of objects to migrate. When the .status.conditions indicates the migration is "Running", users can use this token to check the progress of the migration.
   /// [resource] The resource that is being migrated. The migrator sends requests to the endpoint serving the resource. Immutable.
-  StorageVersionMigrationSpecPatch({
+  const StorageVersionMigrationSpecPatch({
     this.continueToken,
     this.resource,
   });

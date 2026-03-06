@@ -28,7 +28,7 @@ class JobErrorActionResponse {
   /// [serviceBusQueueMessage] Gets or sets the service bus queue message.
   /// [serviceBusTopicMessage] Gets or sets the service bus topic message.
   /// [type] Gets or sets the job error action type.
-  JobErrorActionResponse({
+  const JobErrorActionResponse({
     this.queueMessage,
     this.request,
     this.retryPolicy,

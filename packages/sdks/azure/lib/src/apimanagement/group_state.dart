@@ -27,7 +27,7 @@ class GroupState {
   /// [name] The name of the API Management Group. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the API Management Group should exist. Changing this forces a new resource to be created.
   /// [type] The type of this API Management Group. Possible values are `custom`, `external` and `system`. Default is `custom`. Changing this forces a new resource to be created.
-  GroupState({
+  const GroupState({
     this.apiManagementName,
     this.description,
     this.displayName,

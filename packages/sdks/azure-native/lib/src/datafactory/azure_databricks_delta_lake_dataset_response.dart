@@ -40,7 +40,7 @@ class AzureDatabricksDeltaLakeDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [table] The name of delta table. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  AzureDatabricksDeltaLakeDatasetResponse({
+  const AzureDatabricksDeltaLakeDatasetResponse({
     this.annotations,
     this.database,
     this.description,

@@ -18,7 +18,7 @@ class GetBucketObjectContentArgs {
   /// [bucket] The name of the containing bucket.
   /// [content] (Computed) The content of the object.
   /// [name] The name of the object.
-  GetBucketObjectContentArgs({
+  const GetBucketObjectContentArgs({
     required this.bucket,
     this.content,
     required this.name,

@@ -27,7 +27,7 @@ class ConnectionGatewayArgs {
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags
-  ConnectionGatewayArgs({
+  const ConnectionGatewayArgs({
     this.connectionGatewayName,
     this.location,
     this.properties,

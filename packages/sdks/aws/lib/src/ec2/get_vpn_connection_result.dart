@@ -63,7 +63,7 @@ class GetVpnConnectionResult {
   /// [vpnConcentratorId] ID of a VPN concentrator associated with the VPN connection.
   /// [vpnConnectionId] Required.
   /// [vpnGatewayId] ID of a virtual private gateway associated with the VPN connection.
-  GetVpnConnectionResult({
+  const GetVpnConnectionResult({
     required this.category,
     required this.coreNetworkArn,
     required this.coreNetworkAttachmentArn,

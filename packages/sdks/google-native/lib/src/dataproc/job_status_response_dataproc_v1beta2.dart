@@ -18,7 +18,7 @@ class JobStatusResponseDataprocV1beta2 {
   /// [state] A state message specifying the overall job state.
   /// [stateStartTime] The time when this state was entered.
   /// [substate] Additional state information, which includes status reported by the agent.
-  JobStatusResponseDataprocV1beta2({
+  const JobStatusResponseDataprocV1beta2({
     required this.details,
     required this.state,
     required this.stateStartTime,

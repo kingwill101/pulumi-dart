@@ -11,7 +11,7 @@ class DomainDevicesInterfaceFilterRefParameter {
   /// Creates a new [DomainDevicesInterfaceFilterRefParameter].
   /// [name] Sets the name of the filter parameter.
   /// [value] Specifies the value associated with the filter parameter.
-  DomainDevicesInterfaceFilterRefParameter({
+  const DomainDevicesInterfaceFilterRefParameter({
     required this.name,
     required this.value,
   });

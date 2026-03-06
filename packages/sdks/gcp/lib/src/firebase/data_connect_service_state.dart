@@ -75,7 +75,7 @@ class DataConnectServiceState {
   /// [serviceId] Required. The ID to use for the service, which will become the final component of the
   /// [uid] Output only. System-assigned, unique identifier.
   /// [updateTime] Output only. [Output only] Update time stamp.
-  DataConnectServiceState({
+  const DataConnectServiceState({
     this.annotations,
     this.createTime,
     this.deletionPolicy,

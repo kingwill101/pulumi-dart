@@ -24,7 +24,7 @@ class GetScalingRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [scalingGroupId] Scaling group id the scaling rules belong to.
   /// [type] Type of scaling rule.
-  GetScalingRulesArgs({
+  const GetScalingRulesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

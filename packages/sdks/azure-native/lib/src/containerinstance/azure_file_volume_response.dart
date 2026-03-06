@@ -21,7 +21,7 @@ class AzureFileVolumeResponse {
   /// [storageAccountKey] The storage account access key used to access the Azure File share.
   /// [storageAccountKeyReference] The reference to the storage account access key used to access the Azure File share.
   /// [storageAccountName] The name of the storage account that contains the Azure File share.
-  AzureFileVolumeResponse({
+  const AzureFileVolumeResponse({
     this.readOnly,
     required this.shareName,
     this.storageAccountKey,

@@ -30,7 +30,7 @@ class ImageEventOperationState {
   /// [operationCode] The operation code.
   /// [scenarios] The application scope of the rule.
   /// [source] The source of the whitelist. Valid values:
-  ImageEventOperationState({
+  const ImageEventOperationState({
     this.conditions,
     this.eventKey,
     this.eventName,

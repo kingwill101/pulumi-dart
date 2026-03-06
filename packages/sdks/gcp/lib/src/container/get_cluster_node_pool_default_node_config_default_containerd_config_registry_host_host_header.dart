@@ -11,7 +11,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost
   /// Creates a new [GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader].
   /// [key] Configures the header key.
   /// [values] Configures the header value.
-  GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader({
+  const GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeader({
     required this.key,
     required this.values,
   });

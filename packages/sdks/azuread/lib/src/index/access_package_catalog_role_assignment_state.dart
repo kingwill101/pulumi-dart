@@ -15,7 +15,7 @@ class AccessPackageCatalogRoleAssignmentState {
   /// [catalogId] The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
   /// [principalObjectId] The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   /// [roleId] The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
-  AccessPackageCatalogRoleAssignmentState({
+  const AccessPackageCatalogRoleAssignmentState({
     this.catalogId,
     this.principalObjectId,
     this.roleId,

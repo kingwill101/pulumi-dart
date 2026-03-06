@@ -35,7 +35,7 @@ class ResourceMachineTypes {
   /// [networkMode] Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
   /// [nodeCount] Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
   /// [type] Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
-  ResourceMachineTypes({
+  const ResourceMachineTypes({
     this.bondNum,
     required this.cpuInfo,
     this.diskInfo,

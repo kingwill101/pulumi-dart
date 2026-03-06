@@ -29,7 +29,7 @@ class GetDomainsArgs {
   /// [onlyInitial] Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
   /// [onlyRoot] Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
   /// [supportsServices] A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.adminManaged,
     this.includeUnverified,
     this.onlyDefault,

@@ -56,7 +56,7 @@ class AwsEfsFileSystemProperties {
   /// [provisionedThroughputInMibps] The throughput, measured in mebibytes per second (MiBps), that you want to provision for a file system that you're creating. Required if ``ThroughputMode`` is set to ``provisioned``. Valid values are 1-3414 MiBps, with the upper limit depending on Region. To increase this limit, contact SUP. For more information, see [Amazon EFS quotas that you can increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in the *Amazon EFS User Guide*.
   /// [replicationConfiguration] Describes the replication configuration for a specific file system. Describes the replication configuration for a specific file system.
   /// [throughputMode] Specifies the throughput mode for the file system. The mode can be ``bursting``, ``provisioned``, or ``elastic``. If you set ``ThroughputMode`` to ``provisioned``, you must also set a value for ``ProvisionedThroughputInMibps``. After you create the file system, you can decrease your file system's Provisioned throughput or change between the throughput modes, with certain time restrictions. For more information, see [Specifying throughput with provisioned mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput) in the *Amazon EFS User Guide*.  Default is ``bursting``.
-  AwsEfsFileSystemProperties({
+  const AwsEfsFileSystemProperties({
     this.arn,
     this.availabilityZoneName,
     this.backupPolicy,

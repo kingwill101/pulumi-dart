@@ -32,7 +32,7 @@ class GetServerSnapshotsSnapshot {
   /// [snapshotName] The name of the snapshot.
   /// [sourceDiskType] A snapshot of the source of a disk type. Possible values: `System`, `Data`.
   /// [status] The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
-  GetServerSnapshotsSnapshot({
+  const GetServerSnapshotsSnapshot({
     required this.createTime,
     required this.diskId,
     required this.id,

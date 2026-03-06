@@ -24,7 +24,7 @@ class GetEventSourceResult {
   /// [namePrefix] Optional.
   /// [region] Required.
   /// [state] State of the event source (`ACTIVE` or `PENDING`)
-  GetEventSourceResult({
+  const GetEventSourceResult({
     required this.arn,
     required this.createdBy,
     required this.id,

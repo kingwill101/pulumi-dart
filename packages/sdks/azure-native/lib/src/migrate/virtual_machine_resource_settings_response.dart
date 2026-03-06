@@ -31,7 +31,7 @@ class VirtualMachineResourceSettingsResponse {
   /// [targetResourceName] Gets or sets the target Resource name.
   /// [targetVmSize] Gets or sets the target virtual machine size.
   /// [userManagedIdentities] Gets or sets user-managed identities
-  VirtualMachineResourceSettingsResponse({
+  const VirtualMachineResourceSettingsResponse({
     required this.resourceType,
     this.tags,
     this.targetAvailabilitySetId,

@@ -13,7 +13,7 @@ class FirewallPendingChange {
   /// [dropletId] Optional.
   /// [removing] Optional.
   /// [status] A status string indicating the current state of the Firewall.
-  FirewallPendingChange({
+  const FirewallPendingChange({
     this.dropletId,
     this.removing,
     this.status,

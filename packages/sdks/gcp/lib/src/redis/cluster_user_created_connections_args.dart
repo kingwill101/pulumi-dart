@@ -24,7 +24,7 @@ class ClusterUserCreatedConnectionsArgs {
   /// [name] The name of the Redis cluster these endpoints should be added to.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The name of the region of the Redis cluster these endpoints should be added to.
-  ClusterUserCreatedConnectionsArgs({
+  const ClusterUserCreatedConnectionsArgs({
     this.clusterEndpoints,
     this.name,
     this.project,

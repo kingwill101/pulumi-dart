@@ -14,7 +14,7 @@ class GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1 {
   /// Creates a new [GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1].
   /// [abort] The specification for aborting to client requests.
   /// [delay] The specification for injecting delay to client requests.
-  GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1({
+  const GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1({
     this.abort,
     this.delay,
   });

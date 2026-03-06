@@ -30,7 +30,7 @@ class GetTrafficManagerProfileMonitorConfig {
   /// [protocol] The protocol used by the monitoring checks.
   /// [timeoutInSeconds] The amount of time the Traffic Manager probing agent should wait before considering that check a failure when a health check probe is sent to the endpoint.
   /// [toleratedNumberOfFailures] The number of failures a Traffic Manager probing agent tolerates before marking that endpoint as unhealthy.
-  GetTrafficManagerProfileMonitorConfig({
+  const GetTrafficManagerProfileMonitorConfig({
     required this.customHeaders,
     required this.expectedStatusCodeRanges,
     required this.intervalInSeconds,

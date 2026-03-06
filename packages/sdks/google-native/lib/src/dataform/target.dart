@@ -15,7 +15,7 @@ class Target {
   /// [database] The action's database (Google Cloud project ID) .
   /// [name] The action's name, within `database` and `schema`.
   /// [schema] The action's schema (BigQuery dataset ID), within `database`.
-  Target({
+  const Target({
     this.database,
     this.name,
     this.schema,

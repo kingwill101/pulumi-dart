@@ -9,7 +9,7 @@ class RouterNatNat64Subnetwork {
 
   /// Creates a new [RouterNatNat64Subnetwork].
   /// [name] Name of the NAT service. The name must be 1-63 characters long and
-  RouterNatNat64Subnetwork({
+  const RouterNatNat64Subnetwork({
     required this.name,
   });
 

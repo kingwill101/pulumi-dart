@@ -12,7 +12,7 @@ class GetIntegrationRuntimeStatusResult {
   /// Creates a new [GetIntegrationRuntimeStatusResult].
   /// [name] The integration runtime name.
   /// [properties] Integration runtime properties.
-  GetIntegrationRuntimeStatusResult({
+  const GetIntegrationRuntimeStatusResult({
     required this.name,
     required this.properties,
   });

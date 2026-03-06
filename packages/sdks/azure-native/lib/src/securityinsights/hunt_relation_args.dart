@@ -27,7 +27,7 @@ class HuntRelationArgs {
   /// [relatedResourceId] The id of the related resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  HuntRelationArgs({
+  const HuntRelationArgs({
     required this.huntId,
     this.huntRelationId,
     this.labels,

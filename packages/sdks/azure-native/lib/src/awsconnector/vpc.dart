@@ -12,7 +12,7 @@ class VPC {
   /// Creates a new [VPC].
   /// [vpcId] *Private hosted zones only:* The ID of an Amazon VPC.  For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``.
   /// [vpcRegion] *Private hosted zones only:* The region that an Amazon VPC was created in.  For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``.
-  VPC({
+  const VPC({
     this.vpcId,
     this.vpcRegion,
   });

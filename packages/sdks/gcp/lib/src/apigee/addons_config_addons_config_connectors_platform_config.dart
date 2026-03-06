@@ -12,7 +12,7 @@ class AddonsConfigAddonsConfigConnectorsPlatformConfig {
   /// Creates a new [AddonsConfigAddonsConfigConnectorsPlatformConfig].
   /// [enabled] Flag that specifies whether the Connectors Platform add-on is enabled.
   /// [expiresAt] (Output)
-  AddonsConfigAddonsConfigConnectorsPlatformConfig({
+  const AddonsConfigAddonsConfigConnectorsPlatformConfig({
     this.enabled,
     this.expiresAt,
   });

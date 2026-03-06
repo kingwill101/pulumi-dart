@@ -18,7 +18,7 @@ class GetResolverFirewallConfigResult {
   /// [ownerId] The Amazon Web Services account ID of the owner of the VPC that this firewall configuration applies to.
   /// [region] Required.
   /// [resourceId] Required.
-  GetResolverFirewallConfigResult({
+  const GetResolverFirewallConfigResult({
     required this.firewallFailOpen,
     required this.id,
     required this.ownerId,

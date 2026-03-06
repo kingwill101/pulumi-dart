@@ -11,7 +11,7 @@ class AssetIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AssetIamBindingCondition({
+  const AssetIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

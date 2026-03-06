@@ -16,7 +16,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
   /// [filecacheDuration] Optional.
   /// [numRetries] Number of retry attempts.
   /// [restartDelay] Number of seconds to wait until a restart is initiated.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings({
     this.connectionRetryInterval,
     this.filecacheDuration,
     this.numRetries,

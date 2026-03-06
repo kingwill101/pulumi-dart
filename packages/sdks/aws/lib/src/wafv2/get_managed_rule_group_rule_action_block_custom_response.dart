@@ -12,7 +12,7 @@ class GetManagedRuleGroupRuleActionBlockCustomResponse {
   /// [customResponseBodyKey] Required.
   /// [responseCode] Required.
   /// [responseHeaders] Required.
-  GetManagedRuleGroupRuleActionBlockCustomResponse({
+  const GetManagedRuleGroupRuleActionBlockCustomResponse({
     required this.customResponseBodyKey,
     required this.responseCode,
     required this.responseHeaders,

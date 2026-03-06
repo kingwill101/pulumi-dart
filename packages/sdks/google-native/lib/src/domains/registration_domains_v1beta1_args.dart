@@ -46,7 +46,7 @@ class RegistrationDomainsV1beta1Args {
   /// [project] Optional.
   /// [validateOnly] When true, only validation is performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
   /// [yearlyPrice] Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
-  RegistrationDomainsV1beta1Args({
+  const RegistrationDomainsV1beta1Args({
     this.contactNotices,
     required this.contactSettings,
     this.dnsSettings,

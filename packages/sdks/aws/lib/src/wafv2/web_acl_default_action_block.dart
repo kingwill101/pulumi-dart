@@ -9,7 +9,7 @@ class WebAclDefaultActionBlock {
 
   /// Creates a new [WebAclDefaultActionBlock].
   /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
-  WebAclDefaultActionBlock({
+  const WebAclDefaultActionBlock({
     this.customResponse,
   });
 

@@ -21,7 +21,7 @@ class InstanceStateInfoUpdateInfo {
   /// [targetNodeType] (Output)
   /// [targetReplicaCount] (Output)
   /// [targetShardCount] (Output)
-  InstanceStateInfoUpdateInfo({
+  const InstanceStateInfoUpdateInfo({
     this.targetEngineVersion,
     this.targetNodeType,
     this.targetReplicaCount,

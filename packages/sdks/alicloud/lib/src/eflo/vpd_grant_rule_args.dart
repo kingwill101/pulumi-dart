@@ -18,7 +18,7 @@ class VpdGrantRuleArgs {
   /// [erId] The ID of the ER instance under the cross-account tenant.
   /// [grantTenantId] Cross-account authorized tenant ID.
   /// [instanceId] Instance ID of VPD.
-  VpdGrantRuleArgs({
+  const VpdGrantRuleArgs({
     required this.erId,
     required this.grantTenantId,
     required this.instanceId,

@@ -16,7 +16,7 @@ class GetHoursOfOperationConfig {
   /// [day] Day that the hours of operation applies to.
   /// [endTimes] End time block specifies the time that your contact center closes. The `end_time` is documented below.
   /// [startTimes] Start time block specifies the time that your contact center opens. The `start_time` is documented below.
-  GetHoursOfOperationConfig({
+  const GetHoursOfOperationConfig({
     required this.day,
     required this.endTimes,
     required this.startTimes,

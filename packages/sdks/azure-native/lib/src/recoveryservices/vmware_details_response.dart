@@ -114,7 +114,7 @@ class VMwareDetailsResponse {
   /// [versionStatus] Version status.
   /// [webLoad] The web load.
   /// [webLoadStatus] The web load status.
-  VMwareDetailsResponse({
+  const VMwareDetailsResponse({
     this.agentCount,
     this.agentExpiryDate,
     this.agentVersion,

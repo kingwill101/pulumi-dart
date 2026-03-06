@@ -12,7 +12,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentState {
   /// Creates a new [ServicePrincipalClaimsMappingPolicyAssignmentState].
   /// [claimsMappingPolicyId] The ID of the claims mapping policy to assign.
   /// [servicePrincipalId] The ID of the service principal for the policy assignment.
-  ServicePrincipalClaimsMappingPolicyAssignmentState({
+  const ServicePrincipalClaimsMappingPolicyAssignmentState({
     this.claimsMappingPolicyId,
     this.servicePrincipalId,
   });

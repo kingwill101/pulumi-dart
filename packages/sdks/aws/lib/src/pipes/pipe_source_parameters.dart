@@ -37,7 +37,7 @@ class PipeSourceParameters {
   /// [rabbitmqBrokerParameters] The parameters for using a Rabbit MQ broker as a source. Detailed below.
   /// [selfManagedKafkaParameters] The parameters for using a self-managed Apache Kafka stream as a source. Detailed below.
   /// [sqsQueueParameters] The parameters for using a Amazon SQS stream as a source. Detailed below.
-  PipeSourceParameters({
+  const PipeSourceParameters({
     this.activemqBrokerParameters,
     this.dynamodbStreamParameters,
     this.filterCriteria,

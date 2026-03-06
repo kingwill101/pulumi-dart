@@ -11,7 +11,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter].
   /// [name] The parameter name.
   /// [values] The array of strings.
-  MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter({
+  const MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter({
     required this.name,
     required this.values,
   });

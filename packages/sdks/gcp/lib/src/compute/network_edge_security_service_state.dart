@@ -38,7 +38,7 @@ class NetworkEdgeSecurityServiceState {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithServiceId] Server-defined URL for this resource with the resource id.
   /// [serviceId] The unique identifier for the resource. This identifier is defined by the server.
-  NetworkEdgeSecurityServiceState({
+  const NetworkEdgeSecurityServiceState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

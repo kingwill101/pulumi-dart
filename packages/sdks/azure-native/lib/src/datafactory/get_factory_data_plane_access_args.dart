@@ -30,7 +30,7 @@ class GetFactoryDataPlaneAccessArgs {
   /// [profileName] The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
   /// [resourceGroupName] The resource group name.
   /// [startTime] Start time for the token. If not specified the current time will be used.
-  GetFactoryDataPlaneAccessArgs({
+  const GetFactoryDataPlaneAccessArgs({
     this.accessResourcePath,
     this.expireTime,
     required this.factoryName,

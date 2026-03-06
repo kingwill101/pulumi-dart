@@ -17,7 +17,7 @@ class AclAclEntry {
   /// [description] The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
   /// [entry] The IP address for the ACL entry.
   /// [status] The status of the ACL entry. Valid values:
-  AclAclEntry({
+  const AclAclEntry({
     this.description,
     this.entry,
     this.status,

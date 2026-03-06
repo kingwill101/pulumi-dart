@@ -48,7 +48,7 @@ class ReleaseChannelSettingBindingState {
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
   /// [updateTime] Update time stamp.
-  ReleaseChannelSettingBindingState({
+  const ReleaseChannelSettingBindingState({
     this.createTime,
     this.effectiveLabels,
     this.labels,

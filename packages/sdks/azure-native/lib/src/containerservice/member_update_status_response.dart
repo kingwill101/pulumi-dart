@@ -22,7 +22,7 @@ class MemberUpdateStatusResponse {
   /// [name] The name of the FleetMember.
   /// [operationId] The operation resource id of the latest attempt to perform the operation.
   /// [status] The status of the MemberUpdate operation.
-  MemberUpdateStatusResponse({
+  const MemberUpdateStatusResponse({
     required this.clusterResourceId,
     required this.message,
     required this.name,

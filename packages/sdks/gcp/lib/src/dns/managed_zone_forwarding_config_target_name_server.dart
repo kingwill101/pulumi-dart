@@ -24,7 +24,7 @@ class ManagedZoneForwardingConfigTargetNameServer {
   /// [forwardingPath] Forwarding path for this TargetNameServer. If unset or `default`
   /// [ipv4Address] IPv4 address of a target name server.
   /// [ipv6Address] IPv6 address of a target name server.
-  ManagedZoneForwardingConfigTargetNameServer({
+  const ManagedZoneForwardingConfigTargetNameServer({
     this.domainName,
     this.forwardingPath,
     this.ipv4Address,

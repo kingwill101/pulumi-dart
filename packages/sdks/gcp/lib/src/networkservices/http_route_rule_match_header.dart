@@ -31,7 +31,7 @@ class HttpRouteRuleMatchHeader {
   /// [rangeMatch] If specified, the rule will match if the request header value is within the range.
   /// [regexMatch] The value of the header must match the regular expression specified in regexMatch.
   /// [suffixMatch] The value of the header must end with the contents of suffixMatch.
-  HttpRouteRuleMatchHeader({
+  const HttpRouteRuleMatchHeader({
     this.exactMatch,
     this.header,
     this.invertMatch,

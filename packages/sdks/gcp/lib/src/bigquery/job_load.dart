@@ -133,7 +133,7 @@ class JobLoad {
   /// [sourceUris] The fully-qualified URIs that point to your data in Google Cloud.
   /// [timePartitioning] Time-based partitioning specification for the destination table.
   /// [writeDisposition] Specifies the action that occurs if the destination table already exists. The following values are supported:
-  JobLoad({
+  const JobLoad({
     this.allowJaggedRows,
     this.allowQuotedNewlines,
     this.autodetect,

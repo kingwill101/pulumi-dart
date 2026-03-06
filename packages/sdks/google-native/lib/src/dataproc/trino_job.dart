@@ -29,7 +29,7 @@ class TrinoJob {
   /// [properties] Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryList] A list of queries.
-  TrinoJob({
+  const TrinoJob({
     this.clientTags,
     this.continueOnFailure,
     this.loggingConfig,

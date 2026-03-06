@@ -42,7 +42,7 @@ class ContextAiplatformV1beta1Args {
   /// [project] Optional.
   /// [schemaTitle] The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   /// [schemaVersion] The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
-  ContextAiplatformV1beta1Args({
+  const ContextAiplatformV1beta1Args({
     this.contextId,
     this.description,
     this.displayName,

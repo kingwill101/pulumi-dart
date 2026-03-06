@@ -167,7 +167,7 @@ class RouterPeerState {
   /// [routerApplianceInstance] The URI of the VM instance that is used as third-party router appliances
   /// [zeroAdvertisedRoutePriority] The user-defined zero-advertised-route-priority for a advertised-route-priority in BGP session.
   /// [zeroCustomLearnedRoutePriority] The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
-  RouterPeerState({
+  const RouterPeerState({
     this.advertiseMode,
     this.advertisedGroups,
     this.advertisedIpRanges,

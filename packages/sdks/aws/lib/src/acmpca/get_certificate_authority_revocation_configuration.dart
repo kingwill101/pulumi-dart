@@ -12,7 +12,7 @@ class GetCertificateAuthorityRevocationConfiguration {
   /// Creates a new [GetCertificateAuthorityRevocationConfiguration].
   /// [crlConfigurations] Nested attribute containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority.
   /// [ocspConfigurations] Required.
-  GetCertificateAuthorityRevocationConfiguration({
+  const GetCertificateAuthorityRevocationConfiguration({
     required this.crlConfigurations,
     required this.ocspConfigurations,
   });

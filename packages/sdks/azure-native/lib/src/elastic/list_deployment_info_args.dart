@@ -15,7 +15,7 @@ class ListDeploymentInfoArgs {
   /// Creates a new [ListDeploymentInfoArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListDeploymentInfoArgs({
+  const ListDeploymentInfoArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

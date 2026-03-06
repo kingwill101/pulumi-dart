@@ -58,7 +58,7 @@ class ApiKeyAuthWorkspaceConnectionPropertiesResponse {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  ApiKeyAuthWorkspaceConnectionPropertiesResponse({
+  const ApiKeyAuthWorkspaceConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

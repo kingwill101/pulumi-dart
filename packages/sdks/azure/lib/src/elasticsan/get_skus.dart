@@ -11,7 +11,7 @@ class GetSkus {
   /// Creates a new [GetSkus].
   /// [name] The name of this Elastic SAN.
   /// [tier] The SKU tier.
-  GetSkus({
+  const GetSkus({
     required this.name,
     required this.tier,
   });

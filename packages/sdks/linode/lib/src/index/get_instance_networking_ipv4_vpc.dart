@@ -44,7 +44,7 @@ class GetInstanceNetworkingIpv4Vpc {
   /// [subnetId] The unique globally general API entity identifier for the VPC subnet.
   /// [subnetMask] The subnet mask.
   /// [vpcId] The unique globally general API entity identifier for the VPC.
-  GetInstanceNetworkingIpv4Vpc({
+  const GetInstanceNetworkingIpv4Vpc({
     required this.active,
     required this.address,
     required this.addressRange,

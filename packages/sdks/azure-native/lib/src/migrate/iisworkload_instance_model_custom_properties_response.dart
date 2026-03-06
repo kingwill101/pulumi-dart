@@ -26,7 +26,7 @@ class IISWorkloadInstanceModelCustomPropertiesResponse {
   /// [instanceType] Gets or sets the instance type.
   /// [webAppArmId] Gets or sets the Web application ARM id.
   /// [webAppSiteName] Gets or sets the Web application site name.
-  IISWorkloadInstanceModelCustomPropertiesResponse({
+  const IISWorkloadInstanceModelCustomPropertiesResponse({
     this.containerName,
     this.fileshareName,
     this.iisWebApplication,

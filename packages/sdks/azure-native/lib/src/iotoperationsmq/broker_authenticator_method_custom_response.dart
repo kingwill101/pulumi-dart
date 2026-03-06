@@ -19,7 +19,7 @@ class BrokerAuthenticatorMethodCustomResponse {
   /// [caCertConfigMap] CA cert config map to use.
   /// [endpoint] Endpoint to connect to.
   /// [headers] Configuration Headers to use.
-  BrokerAuthenticatorMethodCustomResponse({
+  const BrokerAuthenticatorMethodCustomResponse({
     this.auth,
     this.caCertConfigMap,
     required this.endpoint,

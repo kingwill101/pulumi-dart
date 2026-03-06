@@ -27,7 +27,7 @@ class ExtensionChainExtensionResponse {
   /// [service] The reference to the service that runs the extension. Must be a reference to a [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
   /// [supportedEvents] Optional. A set of events during request or response processing for which this extension is called. This field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension` resource.
   /// [timeout] Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-  ExtensionChainExtensionResponse({
+  const ExtensionChainExtensionResponse({
     required this.authority,
     required this.failOpen,
     required this.forwardHeaders,

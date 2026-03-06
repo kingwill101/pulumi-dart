@@ -19,7 +19,7 @@ class ServerNetwork {
   /// [ip] Specify the IP the server should get in the network
   /// [macAddress] (Optional, string) The MAC address the private interface of the server has
   /// [networkId] ID of the network
-  ServerNetwork({
+  const ServerNetwork({
     this.aliasIps,
     this.ip,
     this.macAddress,

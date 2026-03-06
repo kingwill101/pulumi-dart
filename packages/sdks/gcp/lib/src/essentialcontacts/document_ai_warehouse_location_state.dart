@@ -31,7 +31,7 @@ class DocumentAiWarehouseLocationState {
   /// [kmsKey] The KMS key used for CMEK encryption. It is required that
   /// [location] The location in which the instance is to be provisioned. It takes the form projects/{projectNumber}/locations/{location}.
   /// [projectNumber] The unique identifier of the project.
-  DocumentAiWarehouseLocationState({
+  const DocumentAiWarehouseLocationState({
     this.accessControlMode,
     this.databaseType,
     this.documentCreatorDefaultRole,

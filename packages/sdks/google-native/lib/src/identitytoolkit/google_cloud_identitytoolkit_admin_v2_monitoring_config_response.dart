@@ -10,7 +10,7 @@ class GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse].
   /// [requestLogging] Configuration for logging requests made to this project to Stackdriver Logging
-  GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse({
     required this.requestLogging,
   });
 

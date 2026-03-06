@@ -14,7 +14,7 @@ class GetInstanceMasterUserSecret {
   /// [kmsKeyId] The Amazon Web Services KMS key identifier that is used to encrypt the secret.
   /// [secretArn] The Amazon Resource Name (ARN) of the secret.
   /// [secretStatus] The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
-  GetInstanceMasterUserSecret({
+  const GetInstanceMasterUserSecret({
     required this.kmsKeyId,
     required this.secretArn,
     required this.secretStatus,

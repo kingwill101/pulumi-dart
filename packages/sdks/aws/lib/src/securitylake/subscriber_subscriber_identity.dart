@@ -11,7 +11,7 @@ class SubscriberSubscriberIdentity {
   /// Creates a new [SubscriberSubscriberIdentity].
   /// [externalId] The AWS Regions where Security Lake is automatically enabled.
   /// [principal] Provides encryption details of Amazon Security Lake object.
-  SubscriberSubscriberIdentity({
+  const SubscriberSubscriberIdentity({
     required this.externalId,
     required this.principal,
   });

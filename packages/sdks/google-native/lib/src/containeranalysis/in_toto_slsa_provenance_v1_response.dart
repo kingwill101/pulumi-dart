@@ -16,7 +16,7 @@ class InTotoSlsaProvenanceV1Response {
   /// [predicateType] Required.
   /// [subject] Required.
   /// [type] InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement
-  InTotoSlsaProvenanceV1Response({
+  const InTotoSlsaProvenanceV1Response({
     required this.predicate,
     required this.predicateType,
     required this.subject,

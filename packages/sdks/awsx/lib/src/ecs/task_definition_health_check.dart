@@ -21,7 +21,7 @@ class TaskDefinitionHealthCheck {
   /// [retries] The number of times to retry a failed health check before the container is considered unhealthy. You may specify between 1 and 10 retries. The default value is three retries.
   /// [startPeriod] The optional grace period within which to provide containers time to bootstrap before failed health checks count towards the maximum number of retries. You may specify between 0 and 300 seconds. The startPeriod is disabled by default.
   /// [timeout] The time period in seconds to wait for a health check to succeed before it is considered a failure. You may specify between 2 and 60 seconds. The default value is 5 seconds.
-  TaskDefinitionHealthCheck({
+  const TaskDefinitionHealthCheck({
     this.command,
     this.interval,
     this.retries,

@@ -20,7 +20,7 @@ class GetDirectoryWorkspaceCreationProperty {
   /// [enableInternetAccess] Indicates whether internet access is enabled for your WorkSpaces.
   /// [enableMaintenanceMode] Indicates whether maintenance mode is enabled for your WorkSpaces. For more information, see [WorkSpace Maintenance](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html).
   /// [userEnabledAsLocalAdministrator] Indicates whether users are local administrators of their WorkSpaces.
-  GetDirectoryWorkspaceCreationProperty({
+  const GetDirectoryWorkspaceCreationProperty({
     required this.customSecurityGroupId,
     required this.defaultOu,
     required this.enableInternetAccess,

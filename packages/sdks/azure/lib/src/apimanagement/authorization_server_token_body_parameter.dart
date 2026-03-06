@@ -11,7 +11,7 @@ class AuthorizationServerTokenBodyParameter {
   /// Creates a new [AuthorizationServerTokenBodyParameter].
   /// [name] The Name of the Parameter.
   /// [value] The Value of the Parameter.
-  AuthorizationServerTokenBodyParameter({
+  const AuthorizationServerTokenBodyParameter({
     required this.name,
     required this.value,
   });

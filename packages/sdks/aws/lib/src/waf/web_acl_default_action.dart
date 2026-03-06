@@ -9,7 +9,7 @@ class WebAclDefaultAction {
 
   /// Creates a new [WebAclDefaultAction].
   /// [type] Specifies how you want AWS WAF to respond to requests that don't match the criteria in any of the `rules`.
-  WebAclDefaultAction({
+  const WebAclDefaultAction({
     required this.type,
   });
 

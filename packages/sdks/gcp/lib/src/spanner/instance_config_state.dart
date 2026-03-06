@@ -44,7 +44,7 @@ class InstanceConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [replicas] The geographic placement of nodes in this instance configuration and their replication properties.
-  InstanceConfigState({
+  const InstanceConfigState({
     this.baseConfig,
     this.configType,
     this.displayName,

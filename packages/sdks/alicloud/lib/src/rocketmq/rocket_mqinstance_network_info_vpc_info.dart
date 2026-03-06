@@ -18,7 +18,7 @@ class RocketMQInstanceNetworkInfoVpcInfo {
   /// [vpcId] Proprietary Network.
   /// [vswitchId] VPC switch id.
   /// [vswitches] Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
-  RocketMQInstanceNetworkInfoVpcInfo({
+  const RocketMQInstanceNetworkInfoVpcInfo({
     this.securityGroupIds,
     required this.vpcId,
     this.vswitchId,

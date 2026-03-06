@@ -15,7 +15,7 @@ class ManagedClusterAddonProfileResponseIdentity {
   /// [clientId] The client ID of the user assigned identity.
   /// [objectId] The object ID of the user assigned identity.
   /// [resourceId] The resource ID of the user assigned identity.
-  ManagedClusterAddonProfileResponseIdentity({
+  const ManagedClusterAddonProfileResponseIdentity({
     this.clientId,
     this.objectId,
     this.resourceId,

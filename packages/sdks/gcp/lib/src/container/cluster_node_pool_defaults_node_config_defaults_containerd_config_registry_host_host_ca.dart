@@ -8,7 +8,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostC
 
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the certificate.
-  ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa({
+  const ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa({
     this.gcpSecretManagerSecretUri,
   });
 

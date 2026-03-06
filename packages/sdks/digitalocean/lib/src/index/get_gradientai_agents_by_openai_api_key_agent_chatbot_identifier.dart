@@ -8,7 +8,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
 
   /// Creates a new [GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier].
   /// [chatbotId] Chatbot ID
-  GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier({
     this.chatbotId,
   });
 

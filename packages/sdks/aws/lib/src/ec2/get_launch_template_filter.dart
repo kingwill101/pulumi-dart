@@ -11,7 +11,7 @@ class GetLaunchTemplateFilter {
   /// Creates a new [GetLaunchTemplateFilter].
   /// [name] Name of the filter field. Valid values can be found in the [EC2 DescribeLaunchTemplates API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetLaunchTemplateFilter({
+  const GetLaunchTemplateFilter({
     required this.name,
     required this.values,
   });

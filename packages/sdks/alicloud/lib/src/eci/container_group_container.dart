@@ -65,7 +65,7 @@ class ContainerGroupContainer {
   /// [securityContexts] The security context of the container. See `security_context` below.
   /// [volumeMounts] The structure of volumeMounts. See `volume_mounts` below.
   /// [workingDir] The working directory of the container.
-  ContainerGroupContainer({
+  const ContainerGroupContainer({
     this.args,
     this.commands,
     this.cpu,

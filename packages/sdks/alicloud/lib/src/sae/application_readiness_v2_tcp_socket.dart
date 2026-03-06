@@ -7,7 +7,7 @@ class ApplicationReadinessV2TcpSocket {
 
   /// Creates a new [ApplicationReadinessV2TcpSocket].
   /// [port] Optional.
-  ApplicationReadinessV2TcpSocket({
+  const ApplicationReadinessV2TcpSocket({
     this.port,
   });
 

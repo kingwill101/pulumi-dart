@@ -44,7 +44,7 @@ class TemplateQuotaArgs {
   /// [productCode] The abbreviation of the cloud service name.
   /// [quotaActionCode] The quota ID.
   /// [quotaCategory] Type of quota. Value:
-  TemplateQuotaArgs({
+  const TemplateQuotaArgs({
     required this.desireValue,
     this.dimensions,
     this.effectiveTime,

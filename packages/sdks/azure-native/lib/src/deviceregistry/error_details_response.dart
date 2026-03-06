@@ -18,7 +18,7 @@ class ErrorDetailsResponse {
   /// [correlationId] Unique identifier for the transaction to aid in debugging.
   /// [info] Human-readable helpful detailed text context for debugging (ex: “The following mechanisms are supported...”).
   /// [message] Human-readable helpful error message to provide additional context for error (ex: “Authentication method not supported”).
-  ErrorDetailsResponse({
+  const ErrorDetailsResponse({
     required this.code,
     required this.correlationId,
     required this.info,

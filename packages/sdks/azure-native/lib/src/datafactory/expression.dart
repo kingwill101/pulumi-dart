@@ -12,7 +12,7 @@ class Expression {
   /// Creates a new [Expression].
   /// [type] Expression type.
   /// [value] Expression value.
-  Expression({
+  const Expression({
     required this.type,
     required this.value,
   });

@@ -37,7 +37,7 @@ class WorkbookTemplateArgs {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Application Insights Workbook Template should exist. Changing this forces a new Application Insights Workbook Template to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Insights Workbook Template.
   /// [templateData] Valid JSON object containing workbook template payload.
-  WorkbookTemplateArgs({
+  const WorkbookTemplateArgs({
     this.author,
     required this.galleries,
     this.localized,

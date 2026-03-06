@@ -37,7 +37,7 @@ class FieldResponse {
   /// [options] The protocol buffer options.
   /// [packed] Whether to use alternative packed wire representation.
   /// [typeUrl] The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
-  FieldResponse({
+  const FieldResponse({
     required this.cardinality,
     required this.defaultValue,
     required this.jsonName,

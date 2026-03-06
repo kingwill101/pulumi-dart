@@ -33,7 +33,7 @@ class GetImageArgs {
   /// [mostRecent] A boolean to indicate either to take to most recent image if your filter
   /// [name] , `family` or `filter` - (Required) The name of a specific image or a family.
   /// [project] The project in which the resource belongs. If it is not
-  GetImageArgs({
+  const GetImageArgs({
     this.family,
     this.filter,
     this.mostRecent,

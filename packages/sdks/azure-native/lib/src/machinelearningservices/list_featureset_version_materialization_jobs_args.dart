@@ -33,7 +33,7 @@ class ListFeaturesetVersionMaterializationJobsArgs {
   /// [skip] Continuation token for pagination.
   /// [version] Version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ListFeaturesetVersionMaterializationJobsArgs({
+  const ListFeaturesetVersionMaterializationJobsArgs({
     this.featureWindowEnd,
     this.featureWindowStart,
     this.filters,

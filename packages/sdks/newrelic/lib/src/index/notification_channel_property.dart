@@ -17,7 +17,7 @@ class NotificationChannelProperty {
   /// [key] Notification property key.
   /// [label] Notification property label.
   /// [value] Notification property value.
-  NotificationChannelProperty({
+  const NotificationChannelProperty({
     this.displayValue,
     required this.key,
     this.label,

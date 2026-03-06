@@ -39,7 +39,7 @@ class RepositoryState {
   /// [repositoryName] The name for the repository. This needs to be less than 100 characters.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  RepositoryState({
+  const RepositoryState({
     this.arn,
     this.cloneUrlHttp,
     this.cloneUrlSsh,

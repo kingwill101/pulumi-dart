@@ -23,7 +23,7 @@ class GetTransitRouterRouteTablesTable {
   /// [transitRouterRouteTableId] The ID of the Transit Router Route Table.
   /// [transitRouterRouteTableName] The name of the route table.
   /// [transitRouterRouteTableType] The type of the route table. Valid values: `System`, `Custom`.
-  GetTransitRouterRouteTablesTable({
+  const GetTransitRouterRouteTablesTable({
     required this.id,
     required this.status,
     required this.transitRouterRouteTableDescription,

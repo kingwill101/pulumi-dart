@@ -8,7 +8,7 @@ class Addressable {
 
   /// Creates a new [Addressable].
   /// [url] Optional.
-  Addressable({
+  const Addressable({
     this.url,
   });
 

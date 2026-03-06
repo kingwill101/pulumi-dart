@@ -131,7 +131,7 @@ class LoadBalancerState {
   /// [vpcId] Optional.
   /// [xffHeaderProcessingMode] Determines how the load balancer modifies the `X-Forwarded-For` header in the HTTP request before sending the request to the target. The possible values are `append`, `preserve`, and `remove`. Only valid for Load Balancers of type `application`. The default is `append`.
   /// [zoneId] Canonical hosted zone ID of the load balancer (to be used in a Route 53 Alias record).
-  LoadBalancerState({
+  const LoadBalancerState({
     this.accessLogs,
     this.arn,
     this.arnSuffix,

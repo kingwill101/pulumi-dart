@@ -8,7 +8,7 @@ class SqlContainerIndexingPolicyExcludedPath {
 
   /// Creates a new [SqlContainerIndexingPolicyExcludedPath].
   /// [path] Path that is excluded from indexing.
-  SqlContainerIndexingPolicyExcludedPath({
+  const SqlContainerIndexingPolicyExcludedPath({
     required this.path,
   });
 

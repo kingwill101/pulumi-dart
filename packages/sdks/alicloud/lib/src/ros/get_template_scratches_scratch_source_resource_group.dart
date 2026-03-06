@@ -11,7 +11,7 @@ class GetTemplateScratchesScratchSourceResourceGroup {
   /// Creates a new [GetTemplateScratchesScratchSourceResourceGroup].
   /// [resourceGroupId] The ID of the Source Resource Group.
   /// [resourceTypeFilters] Source resource type filter list.
-  GetTemplateScratchesScratchSourceResourceGroup({
+  const GetTemplateScratchesScratchSourceResourceGroup({
     required this.resourceGroupId,
     required this.resourceTypeFilters,
   });

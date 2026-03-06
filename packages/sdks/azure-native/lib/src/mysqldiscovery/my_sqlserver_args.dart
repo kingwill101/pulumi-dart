@@ -58,7 +58,7 @@ class MySQLServerArgs {
   /// [supportEndIn] Time when mysql version support end.
   /// [supportStatus] mysql version support status.
   /// [tags] Resource tags
-  MySQLServerArgs({
+  const MySQLServerArgs({
     this.edition,
     this.errors,
     this.hostIp,

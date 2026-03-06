@@ -18,7 +18,7 @@ class GetWebAppHostNameBindingArgs {
   /// [hostName] Hostname in the hostname binding.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppHostNameBindingArgs({
+  const GetWebAppHostNameBindingArgs({
     required this.hostName,
     required this.name,
     required this.resourceGroupName,

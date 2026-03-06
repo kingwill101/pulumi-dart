@@ -35,7 +35,7 @@ class VolumeMountPatch {
   /// [recursiveReadOnly] RecursiveReadOnly specifies whether read-only mounts should be handled recursively.
   /// [subPath] Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
   /// [subPathExpr] Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). SubPathExpr and SubPath are mutually exclusive.
-  VolumeMountPatch({
+  const VolumeMountPatch({
     this.mountPath,
     this.mountPropagation,
     this.name,

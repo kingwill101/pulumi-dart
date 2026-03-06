@@ -21,7 +21,7 @@ class PscConnectionResponseRedisV1beta1 {
   /// [network] The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
   /// [project] The consumer project_id where the forwarding rule is created from.
   /// [pscConnectionId] The PSC connection id of the forwarding rule connected to the service attachment.
-  PscConnectionResponseRedisV1beta1({
+  const PscConnectionResponseRedisV1beta1({
     required this.address,
     required this.forwardingRule,
     required this.network,

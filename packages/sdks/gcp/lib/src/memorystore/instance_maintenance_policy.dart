@@ -24,7 +24,7 @@ class InstanceMaintenancePolicy {
   /// [createTime] (Output)
   /// [updateTime] (Output)
   /// [weeklyMaintenanceWindows] Optional. Maintenance window that is applied to resources covered by this policy.
-  InstanceMaintenancePolicy({
+  const InstanceMaintenancePolicy({
     this.createTime,
     this.updateTime,
     this.weeklyMaintenanceWindows,

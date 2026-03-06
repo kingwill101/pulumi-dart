@@ -95,7 +95,7 @@ class GetStaticSiteResult {
   /// [templateProperties] Template options for generating a new repository.
   /// [type] Resource type.
   /// [userProvidedFunctionApps] User provided function apps registered with the static site
-  GetStaticSiteResult({
+  const GetStaticSiteResult({
     this.allowConfigFileUpdates,
     required this.azureApiVersion,
     this.branch,

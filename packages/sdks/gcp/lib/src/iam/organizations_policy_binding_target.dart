@@ -13,7 +13,7 @@ class OrganizationsPolicyBindingTarget {
 
   /// Creates a new [OrganizationsPolicyBindingTarget].
   /// [principalSet] Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
-  OrganizationsPolicyBindingTarget({
+  const OrganizationsPolicyBindingTarget({
     this.principalSet,
   });
 

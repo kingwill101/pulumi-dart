@@ -12,7 +12,7 @@ class GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
   /// Creates a new [GetResourcePolicySnapshotSchedulePolicyRetentionPolicy].
   /// [maxRetentionDays] Maximum age of the snapshot that is allowed to be kept.
   /// [onSourceDiskDelete] Specifies the behavior to apply to scheduled snapshots when
-  GetResourcePolicySnapshotSchedulePolicyRetentionPolicy({
+  const GetResourcePolicySnapshotSchedulePolicyRetentionPolicy({
     required this.maxRetentionDays,
     required this.onSourceDiskDelete,
   });

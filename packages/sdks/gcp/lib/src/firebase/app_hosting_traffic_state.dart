@@ -55,7 +55,7 @@ class AppHostingTrafficState {
   /// [target] Set to manually control the desired traffic for the backend. This will
   /// [uid] System-assigned, unique identifier.
   /// [updateTime] Time at which the backend was last updated.
-  AppHostingTrafficState({
+  const AppHostingTrafficState({
     this.backend,
     this.createTime,
     this.currents,

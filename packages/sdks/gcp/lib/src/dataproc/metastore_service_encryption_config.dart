@@ -9,7 +9,7 @@ class MetastoreServiceEncryptionConfig {
 
   /// Creates a new [MetastoreServiceEncryptionConfig].
   /// [kmsKey] The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
-  MetastoreServiceEncryptionConfig({
+  const MetastoreServiceEncryptionConfig({
     required this.kmsKey,
   });
 

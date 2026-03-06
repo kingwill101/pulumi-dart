@@ -38,7 +38,7 @@ class ConfigIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  ConfigIamBindingState({
+  const ConfigIamBindingState({
     this.condition,
     this.config,
     this.etag,

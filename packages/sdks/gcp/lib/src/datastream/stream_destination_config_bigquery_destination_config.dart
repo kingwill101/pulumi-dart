@@ -36,7 +36,7 @@ class StreamDestinationConfigBigqueryDestinationConfig {
   /// [merge] Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
   /// [singleTargetDataset] A single target dataset to which all data will be streamed.
   /// [sourceHierarchyDatasets] Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
-  StreamDestinationConfigBigqueryDestinationConfig({
+  const StreamDestinationConfigBigqueryDestinationConfig({
     this.appendOnly,
     this.blmtConfig,
     this.dataFreshness,

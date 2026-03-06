@@ -56,7 +56,7 @@ class UserState {
   /// [name] The name of the user.
   /// [password] The password for the user.
   /// [region] The region in which to obtain the V3 Keystone client.
-  UserState({
+  const UserState({
     this.defaultProjectId,
     this.description,
     this.domainId,

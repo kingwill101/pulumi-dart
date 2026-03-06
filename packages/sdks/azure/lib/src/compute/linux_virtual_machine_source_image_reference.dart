@@ -17,7 +17,7 @@ class LinuxVirtualMachineSourceImageReference {
   /// [publisher] Specifies the publisher of the image used to create the virtual machines. Changing this forces a new resource to be created.
   /// [sku] Specifies the SKU of the image used to create the virtual machines. Changing this forces a new resource to be created.
   /// [version] Specifies the version of the image used to create the virtual machines. Changing this forces a new resource to be created.
-  LinuxVirtualMachineSourceImageReference({
+  const LinuxVirtualMachineSourceImageReference({
     required this.offer,
     required this.publisher,
     required this.sku,

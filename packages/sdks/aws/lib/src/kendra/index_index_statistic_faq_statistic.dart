@@ -8,7 +8,7 @@ class IndexIndexStatisticFaqStatistic {
 
   /// Creates a new [IndexIndexStatisticFaqStatistic].
   /// [indexedQuestionAnswersCount] The total number of FAQ questions and answers contained in the index.
-  IndexIndexStatisticFaqStatistic({
+  const IndexIndexStatisticFaqStatistic({
     this.indexedQuestionAnswersCount,
   });
 

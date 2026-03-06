@@ -11,7 +11,7 @@ class GetSpringCloudAppPersistentDisk {
   /// Creates a new [GetSpringCloudAppPersistentDisk].
   /// [mountPath] The mount path of the persistent disk.
   /// [sizeInGb] The size of the persistent disk in GB.
-  GetSpringCloudAppPersistentDisk({
+  const GetSpringCloudAppPersistentDisk({
     required this.mountPath,
     required this.sizeInGb,
   });

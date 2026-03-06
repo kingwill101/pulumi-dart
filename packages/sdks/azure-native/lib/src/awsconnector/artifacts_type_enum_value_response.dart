@@ -9,7 +9,7 @@ class ArtifactsTypeEnumValueResponse {
 
   /// Creates a new [ArtifactsTypeEnumValueResponse].
   /// [value] Property value
-  ArtifactsTypeEnumValueResponse({
+  const ArtifactsTypeEnumValueResponse({
     this.value,
   });
 

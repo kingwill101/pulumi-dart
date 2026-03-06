@@ -8,7 +8,7 @@ class GetRecordsResourceRecordSetResourceRecord {
 
   /// Creates a new [GetRecordsResourceRecordSetResourceRecord].
   /// [value] The DNS record value.
-  GetRecordsResourceRecordSetResourceRecord({
+  const GetRecordsResourceRecordSetResourceRecord({
     required this.value,
   });
 

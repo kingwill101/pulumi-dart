@@ -27,7 +27,7 @@ class FailoverGroupSpecResponse {
   /// [role] The role of the SQL managed instance in this failover group.
   /// [sharedName] The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name.
   /// [sourceMI] The name of the SQL managed instance with this failover group role.
-  FailoverGroupSpecResponse({
+  const FailoverGroupSpecResponse({
     this.partnerMI,
     this.partnerMirroringCert,
     this.partnerMirroringURL,

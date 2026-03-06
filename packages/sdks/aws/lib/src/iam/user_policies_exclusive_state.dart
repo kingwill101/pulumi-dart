@@ -12,7 +12,7 @@ class UserPoliciesExclusiveState {
   /// Creates a new [UserPoliciesExclusiveState].
   /// [policyNames] A list of inline policy names to be assigned to the user. Policies attached to this user but not configured in this argument will be removed.
   /// [userName] IAM user name.
-  UserPoliciesExclusiveState({
+  const UserPoliciesExclusiveState({
     this.policyNames,
     this.userName,
   });

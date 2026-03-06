@@ -24,7 +24,7 @@ class SqlDiscoverySiteDataSourceControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
   /// [sqlSiteName] SQL site name.
-  SqlDiscoverySiteDataSourceControllerArgs({
+  const SqlDiscoverySiteDataSourceControllerArgs({
     this.discoverySiteDataSourceName,
     this.discoverySiteId,
     required this.resourceGroupName,

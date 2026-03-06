@@ -18,7 +18,7 @@ class GetBackupInstanceArgs {
   /// [backupInstanceName] The name of the backup instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the backup vault.
-  GetBackupInstanceArgs({
+  const GetBackupInstanceArgs({
     required this.backupInstanceName,
     required this.resourceGroupName,
     required this.vaultName,

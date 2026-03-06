@@ -9,7 +9,7 @@ class GcsFuseCsiDriverConfig {
 
   /// Creates a new [GcsFuseCsiDriverConfig].
   /// [enabled] Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
-  GcsFuseCsiDriverConfig({
+  const GcsFuseCsiDriverConfig({
     this.enabled,
   });
 

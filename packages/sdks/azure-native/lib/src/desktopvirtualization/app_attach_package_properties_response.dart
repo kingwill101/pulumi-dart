@@ -22,7 +22,7 @@ class AppAttachPackagePropertiesResponse {
   /// [image] Detailed properties for App Attach Package
   /// [keyVaultURL] URL path to certificate name located in keyVault
   /// [provisioningState] The provisioning state of the App Attach Package.
-  AppAttachPackagePropertiesResponse({
+  const AppAttachPackagePropertiesResponse({
     this.failHealthCheckOnStagingFailure,
     this.hostPoolReferences,
     this.image,

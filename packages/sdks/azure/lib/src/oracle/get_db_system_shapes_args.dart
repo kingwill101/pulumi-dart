@@ -15,7 +15,7 @@ class GetDbSystemShapesArgs {
   /// Creates a new [GetDbSystemShapesArgs].
   /// [location] The Azure Region to query for the system shapes in.
   /// [zone] The Cloud Exadata Infrastructure Azure zone, used to filter out the available DB System Shapes in the specific zone.
-  GetDbSystemShapesArgs({
+  const GetDbSystemShapesArgs({
     required this.location,
     this.zone,
   });

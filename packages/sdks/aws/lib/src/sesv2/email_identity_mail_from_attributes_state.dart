@@ -18,7 +18,7 @@ class EmailIdentityMailFromAttributesState {
   /// [emailIdentity] The verified email identity.
   /// [mailFromDomain] The custom MAIL FROM domain that you want the verified identity to use. Required if `behavior_on_mx_failure` is `REJECT_MESSAGE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EmailIdentityMailFromAttributesState({
+  const EmailIdentityMailFromAttributesState({
     this.behaviorOnMxFailure,
     this.emailIdentity,
     this.mailFromDomain,
